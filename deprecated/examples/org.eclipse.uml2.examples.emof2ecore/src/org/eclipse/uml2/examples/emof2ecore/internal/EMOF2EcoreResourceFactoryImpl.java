@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.4 2005/03/15 20:28:16 khussey Exp $
+ * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.5 2005/03/18 21:15:42 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore.internal;
 
@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResourceHandler;
+import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLPackage;
+import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLRegistry;
+import org.eclipse.emf.mapping.ecore2xml.impl.Ecore2XMLRegistryImpl;
+import org.eclipse.emf.mapping.ecore2xml.util.Ecore2XMLExtendedMetaData;
 import org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResource;
-import org.eclipse.uml2.mapping.ecore2xml.Ecore2XMLPackage;
-import org.eclipse.uml2.mapping.ecore2xml.Ecore2XMLRegistry;
-import org.eclipse.uml2.mapping.ecore2xml.impl.Ecore2XMLRegistryImpl;
-import org.eclipse.uml2.mapping.ecore2xml.util.Ecore2XMLExtendedMetaData;
+import org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResourceHandler;
 
 /**
  * The <b>Resource Factory </b> associated with the package.

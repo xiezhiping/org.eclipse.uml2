@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore2xml:XMLMap xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:ecore2xml="http://www.eclipse.org/uml2/1.1.0/Ecore2XML">
+<ecore2xml:XMLMap xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:ecore2xml="http://www.eclipse.org/emf/2005/Ecore2XML">
   <ecoreToXMLInfo>
     <key xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
     <value name="EMOF" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
