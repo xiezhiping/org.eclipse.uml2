@@ -8,7 +8,7 @@
 # * Contributors: 
 # *   IBM - Initial API and implementation
 # *
-# * $Id: about.mappings,v 1.8 2004/04/29 02:52:28 khussey Exp $
+# * $Id: about.mappings,v 1.9 2004/04/29 15:54:09 khussey Exp $
 # */
 
 # about.mappings
@@ -16,4 +16,4 @@
 # java.io.Properties file (ISO 8859-1 with "\" escapes)
 # This file does not need to be translated.
 
-0=200404282150
+0=@build@
