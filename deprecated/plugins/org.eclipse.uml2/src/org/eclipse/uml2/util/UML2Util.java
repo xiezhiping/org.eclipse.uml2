@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Util.java,v 1.1 2005/01/12 22:03:28 khussey Exp $
+ * $Id: UML2Util.java,v 1.2 2005/01/12 22:52:52 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -317,7 +317,7 @@ public class UML2Util {
 		protected Collection packages = null;
 
 		protected void setName(ENamedElement eNamedElement, String name) {
-			eNamedElement.setName(name);
+			eNamedElement.setName(getValidIdentifier(name));
 		}
 
 		protected void setName(ENamedElement eNamedElement,
@@ -2220,6 +2220,38 @@ public class UML2Util {
 		}
 
 		element.setValue(stereotype, propertyName, value);
+	}
+
+	protected static String getValidIdentifier(String name) {
+		return appendValidIdentifier(new StringBuffer(), name).toString();
+	}
+
+	protected static StringBuffer appendValidIdentifier(
+			StringBuffer validIdentifier, String name) {
+
+		if (!isEmpty(name)) {
+			char char_0 = name.charAt(0);
+
+			if (Character.isJavaIdentifierStart(char_0)) {
+				validIdentifier.append(char_0);
+			} else {
+				validIdentifier.append('_');
+
+				if (Character.isJavaIdentifierPart(char_0)) {
+					validIdentifier.append(char_0);
+				}
+			}
+
+			for (int i = 1; i < name.length(); ++i) {
+				char char_i = name.charAt(i);
+
+				if (Character.isJavaIdentifierPart(char_i)) {
+					validIdentifier.append(char_i);
+				}
+			}
+		}
+
+		return validIdentifier;
 	}
 
 	protected static String getQualifiedText(EObject eObject) {
