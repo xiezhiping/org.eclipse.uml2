@@ -340,10 +340,10 @@
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Operation/class_"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//Operation/isQuery"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Operation/datatype"/>
-      <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//Operation/precondition"/>
-      <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//Operation/postcondition"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Operation/precondition"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Operation/postcondition"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Operation/redefinedOperation"/>
-      <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//Operation/bodyCondition"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Operation/bodyCondition"/>
       <genOperations ecoreOperation="UML2.ecore#//Operation/validateTypeOfResult">
         <genParameters ecoreParameter="UML2.ecore#//Operation/validateTypeOfResult/diagnostics"/>
         <genParameters ecoreParameter="UML2.ecore#//Operation/validateTypeOfResult/context"/>

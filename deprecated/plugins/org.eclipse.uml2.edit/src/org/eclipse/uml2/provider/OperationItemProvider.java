@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.13 2004/10/01 19:38:53 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.14 2005/01/12 22:44:24 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -430,9 +430,6 @@ public class OperationItemProvider
 			childrenFeatures.add(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue());
 			childrenFeatures.add(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
 			childrenFeatures.add(UML2Package.eINSTANCE.getOperation_OwnedParameter());
-			childrenFeatures.add(UML2Package.eINSTANCE.getOperation_Precondition());
-			childrenFeatures.add(UML2Package.eINSTANCE.getOperation_Postcondition());
-			childrenFeatures.add(UML2Package.eINSTANCE.getOperation_BodyCondition());
 		}
 		return childrenFeatures;
 	}
@@ -501,9 +498,6 @@ public class OperationItemProvider
 			case UML2Package.OPERATION__UPPER_VALUE:
 			case UML2Package.OPERATION__LOWER_VALUE:
 			case UML2Package.OPERATION__OWNED_PARAMETER:
-			case UML2Package.OPERATION__PRECONDITION:
-			case UML2Package.OPERATION__POSTCONDITION:
-			case UML2Package.OPERATION__BODY_CONDITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -654,81 +648,6 @@ public class OperationItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getOperation_OwnedParameter(),
 				 UML2Factory.eINSTANCE.createParameter()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_Precondition(),
-				 UML2Factory.eINSTANCE.createConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_Precondition(),
-				 UML2Factory.eINSTANCE.createInteractionConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_Precondition(),
-				 UML2Factory.eINSTANCE.createIntervalConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_Precondition(),
-				 UML2Factory.eINSTANCE.createTimeConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_Precondition(),
-				 UML2Factory.eINSTANCE.createDurationConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_Postcondition(),
-				 UML2Factory.eINSTANCE.createConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_Postcondition(),
-				 UML2Factory.eINSTANCE.createInteractionConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_Postcondition(),
-				 UML2Factory.eINSTANCE.createIntervalConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_Postcondition(),
-				 UML2Factory.eINSTANCE.createTimeConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_Postcondition(),
-				 UML2Factory.eINSTANCE.createDurationConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_BodyCondition(),
-				 UML2Factory.eINSTANCE.createConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_BodyCondition(),
-				 UML2Factory.eINSTANCE.createInteractionConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_BodyCondition(),
-				 UML2Factory.eINSTANCE.createIntervalConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_BodyCondition(),
-				 UML2Factory.eINSTANCE.createTimeConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getOperation_BodyCondition(),
-				 UML2Factory.eINSTANCE.createDurationConstraint()));
 	}
 
 	/**
@@ -740,9 +659,6 @@ public class OperationItemProvider
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
 			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			feature == UML2Package.eINSTANCE.getOperation_Precondition() ||
-			feature == UML2Package.eINSTANCE.getOperation_Postcondition() ||
-			feature == UML2Package.eINSTANCE.getOperation_BodyCondition() ||
 			feature == UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter() ||
 			feature == UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult() ||
 			feature == UML2Package.eINSTANCE.getOperation_OwnedParameter() ||
