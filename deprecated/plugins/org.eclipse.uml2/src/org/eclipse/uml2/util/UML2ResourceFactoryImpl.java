@@ -7,6 +7,8 @@
  *
  * Contributors:
  *   IBM - Initial API and implementation
+ *
+ * $Id: UML2ResourceFactoryImpl.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
