@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Validator.java,v 1.3 2004/04/27 16:38:55 khussey Exp $
+ * $Id: Validator.java,v 1.4 2004/04/27 17:23:14 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -31,7 +31,7 @@ public interface Validator {
 
 	public static class ValidationContext {
 
-		private final Map context = new HashMap();
+		private final Map data = new HashMap();
 
 		private final BasicDiagnostic diagnostics;
 
