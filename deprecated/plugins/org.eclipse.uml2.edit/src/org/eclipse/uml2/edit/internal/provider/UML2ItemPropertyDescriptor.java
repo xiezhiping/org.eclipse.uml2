@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ItemPropertyDescriptor.java,v 1.3 2004/06/19 02:53:34 khussey Exp $
+ * $Id: UML2ItemPropertyDescriptor.java,v 1.4 2004/06/21 19:25:03 khussey Exp $
  */
 package org.eclipse.uml2.edit.internal.provider;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.UniqueEList;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
@@ -192,23 +191,4 @@ public class UML2ItemPropertyDescriptor
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.edit.provider.IItemPropertyDescriptor#getPropertyValue(java.lang.Object)
-	 */
-	public Object getPropertyValue(Object object) {
-
-		if (EAttribute.class.isInstance(feature)) {
-			Object result = ((EObject) object).eGet(feature);
-
-			if (null == result) {
-				return getDefaultValue(feature.getEType());
-			} else {
-				return createPropertyValueWrapper(object, result);
-			}
-		} else {
-			return super.getPropertyValue(object);
-		}
-	}
 }

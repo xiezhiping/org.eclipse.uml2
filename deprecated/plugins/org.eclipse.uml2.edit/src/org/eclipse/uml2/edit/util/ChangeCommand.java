@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ChangeCommand.java,v 1.3 2004/06/17 19:49:16 khussey Exp $
+ * $Id: ChangeCommand.java,v 1.4 2004/06/21 19:25:03 khussey Exp $
  */
 package org.eclipse.uml2.edit.util;
 
@@ -17,17 +17,14 @@ import java.util.Iterator;
 import java.util.ListIterator;
 
 import org.eclipse.emf.common.command.AbstractCommand;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.change.ChangeDescription;
 import org.eclipse.emf.ecore.change.ChangeKind;
 import org.eclipse.emf.ecore.change.FeatureChange;
 import org.eclipse.emf.ecore.change.ListChange;
 import org.eclipse.emf.ecore.change.impl.ListChangeImpl;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 /**
@@ -92,111 +89,42 @@ public class ChangeCommand
 
 	private static final ChangeRecorder CHANGE_RECORDER = new ChangeRecorder() {
 
-		protected ListChange createUniqueListChange(EList changesList,
+		private boolean featureIsUnique = false;
+
+		protected ListChange createListChange(EList changesList,
 				ChangeKind kind, int index) {
-			ListChange listChange = new UniqueListChangeImpl();
 
-			listChange.setKind(kind);
-			listChange.setIndex(index);
+			if (featureIsUnique) {
+				ListChange listChange = new UniqueListChangeImpl();
 
-			changesList.add(listChange);
+				listChange.setKind(kind);
+				listChange.setIndex(index);
 
-			return listChange;
+				changesList.add(listChange);
+
+				return listChange;
+			} else {
+				return super.createListChange(changesList, kind, index);
+			}
 		}
 
-		protected void createUniqueListChanges(EList oldList, EList newList,
-				EList changesList) {
-			int index = 0;
+		protected void createRemoveListChange(EList oldList, EList changesList,
+				Object newObject, int index, int targetIndex) {
 
-			for (Iterator objects = newList.iterator(); objects.hasNext(); ++index) {
-				Object newObject = objects.next();
-
-				if (oldList.size() <= index) {
-					ListChange listChange = createUniqueListChange(changesList,
-						ChangeKind.ADD_LITERAL, index);
-					listChange.getValues().add(newObject);
-					oldList.add(newObject);
-				} else {
-					boolean done;
-
-					do {
-						done = true;
-						Object targetObject = oldList.get(index);
-
-						if (null == targetObject
-							? null != newObject
-							: !targetObject.equals(newObject)) {
-
-							int position = EcoreUtil.indexOf(oldList,
-								newObject, index);
-
-							if (-1 != position) {
-								int targetIndex = EcoreUtil.indexOf(newList,
-									targetObject, index);
-
-								if (-1 == targetIndex) {
-									ListChange listChange = createUniqueListChange(
-										changesList, ChangeKind.REMOVE_LITERAL,
-										index);
-									listChange.getValues().add(
-										oldList.remove(index));
-									done = false;
-								} else if (targetIndex > position) {
-
-									if (oldList.size() <= targetIndex) {
-										targetIndex = oldList.size() - 1;
-									}
-
-									ListChange listChange = createUniqueListChange(
-										changesList, ChangeKind.MOVE_LITERAL,
-										index);
-									listChange.setMoveToIndex(targetIndex);
-									oldList.move(targetIndex, index);
-									done = false;
-								} else {
-									ListChange listChange = createUniqueListChange(
-										changesList, ChangeKind.MOVE_LITERAL,
-										position);
-									listChange.setMoveToIndex(index);
-									oldList.move(index, position);
-								}
-							} else {
-								ListChange listChange = createUniqueListChange(
-									changesList, ChangeKind.ADD_LITERAL, index);
-								listChange.getValues().add(newObject);
-								oldList.add(index, newObject);
-							}
-						}
-					} while (!done);
-				}
-			}
-
-			for (int i = oldList.size(); i > index;) {
-				ListChange listChange = createUniqueListChange(changesList,
-					ChangeKind.REMOVE_LITERAL, --i);
-				listChange.getValues().add(oldList.remove(i));
+			if (featureIsUnique) {
+				ListChange listChange = createListChange(changesList,
+					ChangeKind.REMOVE_LITERAL, index);
+				listChange.getValues().add(oldList.remove(index));
+			} else {
+				super.createRemoveListChange(oldList, changesList, newObject,
+					index, targetIndex);
 			}
 		}
 
 		protected void finalizeChange(FeatureChange change, EObject eObject) {
+			featureIsUnique = change.getFeature().isUnique();
 
-			if (change.isSet()) {
-				EStructuralFeature feature = change.getFeature();
-
-				if (feature.isMany()) {
-					EList oldList = new BasicEList((EList) eObject
-						.eGet(feature));
-					EList newList = (EList) change.getValue();
-
-					if (feature.isUnique()) {
-						createUniqueListChanges(oldList, newList, change
-							.getListChanges());
-					} else {
-						createListChanges(oldList, newList, change
-							.getListChanges());
-					}
-				}
-			}
+			super.finalizeChange(change, eObject);
 		}
 
 	};

@@ -8,12 +8,15 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.6 2004/05/21 20:20:27 khussey Exp $
+ * $Id: UML2Operations.java,v 1.7 2004/06/21 19:25:06 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
 
@@ -22,10 +25,17 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EContentsEList;
+import org.eclipse.emf.ecore.util.ECrossReferenceEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Artifact;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.Element;
@@ -40,6 +50,190 @@ import org.eclipse.uml2.util.UML2Switch;
  * The base class for all UML2 operation utility classes.
  */
 class UML2Operations {
+
+	protected static class FilteredECrossReferenceEList
+		extends ECrossReferenceEList {
+
+		private final FilteredUsageCrossReferencer.Filter filter;
+
+		protected static class FilteredFeatureIteratorImpl
+			extends ECrossReferenceEList.FeatureIteratorImpl {
+
+			private final FilteredUsageCrossReferencer.Filter filter;
+
+			public FilteredFeatureIteratorImpl(EObject eObject,
+					EStructuralFeature[] eStructuralFeatures,
+					FilteredUsageCrossReferencer.Filter filter) {
+				super(eObject, eStructuralFeatures);
+
+				this.filter = filter;
+			}
+
+			protected boolean isIncluded(EStructuralFeature eStructuralFeature) {
+				return super.isIncluded(eStructuralFeature)
+					&& filter.accept(eStructuralFeature);
+			}
+
+			protected boolean isIncludedEntry(
+					EStructuralFeature eStructuralFeature) {
+				return super.isIncludedEntry(eStructuralFeature)
+					&& filter.accept(eStructuralFeature);
+			}
+		}
+
+		protected static class FilteredResolvingFeatureIteratorImpl
+			extends FilteredFeatureIteratorImpl {
+
+			public FilteredResolvingFeatureIteratorImpl(EObject eObject,
+					EStructuralFeature[] eStructuralFeatures,
+					FilteredUsageCrossReferencer.Filter filter) {
+				super(eObject, eStructuralFeatures, filter);
+			}
+
+			protected boolean resolve() {
+				return true;
+			}
+		}
+
+		protected FilteredECrossReferenceEList(EObject eObject,
+				FilteredUsageCrossReferencer.Filter filter) {
+			super(eObject);
+
+			this.filter = filter;
+		}
+
+		protected FilteredECrossReferenceEList(EObject eObject,
+				EStructuralFeature[] eStructuralFeatures,
+				FilteredUsageCrossReferencer.Filter filter) {
+			super(eObject, eStructuralFeatures);
+
+			this.filter = filter;
+		}
+
+		protected boolean isIncluded(EStructuralFeature eStructuralFeature) {
+			return super.isIncluded(eStructuralFeature)
+				&& filter.accept(eStructuralFeature);
+		}
+
+		protected ListIterator newListIterator() {
+			return this.resolve()
+				? new FilteredResolvingFeatureIteratorImpl(eObject,
+					eStructuralFeatures, filter)
+				: new FilteredFeatureIteratorImpl(eObject, eStructuralFeatures,
+					filter);
+		}
+
+		public List basicList() {
+			return new FilteredECrossReferenceEList(eObject,
+				eStructuralFeatures, filter) {
+
+				protected boolean resolve() {
+					return false;
+				}
+			};
+		}
+
+		public Iterator basicIterator() {
+
+			if (null == eStructuralFeatures) {
+				return FilteredFeatureIteratorImpl.EMPTY_ITERATOR;
+			}
+
+			return new FilteredFeatureIteratorImpl(eObject,
+				eStructuralFeatures, filter);
+		}
+
+		public ListIterator basicListIterator() {
+
+			if (null == eStructuralFeatures) {
+				return FeatureIteratorImpl.EMPTY_ITERATOR;
+			}
+
+			return new FilteredFeatureIteratorImpl(eObject,
+				eStructuralFeatures, filter);
+		}
+
+		public ListIterator basicListIterator(int index) {
+
+			if (null == eStructuralFeatures) {
+
+				if (0 > index || 1 < index) {
+					throw new IndexOutOfBoundsException("index = " + index //$NON-NLS-1$
+						+ ", size = 0"); //$NON-NLS-1$
+				}
+
+				return FilteredFeatureIteratorImpl.EMPTY_ITERATOR;
+			}
+
+			ListIterator result = new FilteredFeatureIteratorImpl(eObject,
+				eStructuralFeatures, filter);
+
+			for (int i = 0; i < index; i++) {
+				result.next();
+			}
+
+			return result;
+		}
+
+	}
+
+	public static class FilteredUsageCrossReferencer
+		extends EcoreUtil.UsageCrossReferencer {
+
+		public static interface Filter {
+
+			boolean accept(EStructuralFeature eStructuralFeature);
+
+		}
+
+		private final Filter filter;
+
+		public static Collection find(EObject eObject, ResourceSet resourceSet,
+				Filter filter) {
+			return new FilteredUsageCrossReferencer(resourceSet, filter)
+				.findUsage(eObject);
+		}
+
+		public static Collection find(EObject eObject, Resource resource,
+				Filter filter) {
+			return new FilteredUsageCrossReferencer(resource, filter)
+				.findUsage(eObject);
+		}
+
+		protected FilteredUsageCrossReferencer(ResourceSet resourceSet,
+				Filter filter) {
+			super(resourceSet);
+
+			this.filter = filter;
+		}
+
+		protected FilteredUsageCrossReferencer(Resource resource, Filter filter) {
+			super(resource);
+
+			this.filter = filter;
+		}
+
+		protected void handleCrossReference(EObject eObject) {
+			InternalEList filteredCrossReferences = new FilteredECrossReferenceEList(
+				eObject, filter);
+
+			EContentsEList.FeatureIterator crossReferences = (EContentsEList.FeatureIterator) (resolve()
+				? filteredCrossReferences.iterator()
+				: filteredCrossReferences.basicIterator());
+
+			while (crossReferences.hasNext()) {
+				EObject crossReferencedEObject = (EObject) crossReferences
+					.next();
+				EReference eReference = (EReference) crossReferences.feature();
+
+				if (crossReference(eObject, eReference, crossReferencedEObject)) {
+					getCollection(crossReferencedEObject).add(
+						((InternalEObject) eObject).eSetting(eReference));
+				}
+			}
+		}
+
+	}
 
 	/**
 	 * The empty string.
@@ -72,7 +266,8 @@ class UML2Operations {
 		EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
 
 		return null == eAnnotation
-			? createEAnnotation(source, eModelElement) : eAnnotation;
+			? createEAnnotation(source, eModelElement)
+			: eAnnotation;
 	}
 
 	protected static EAnnotation getEAnnotation(String source,
@@ -80,12 +275,14 @@ class UML2Operations {
 		EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
 
 		return null == eAnnotation
-			? EcoreFactory.eINSTANCE.createEAnnotation() : eAnnotation;
+			? EcoreFactory.eINSTANCE.createEAnnotation()
+			: eAnnotation;
 	}
 
 	protected static boolean safeEquals(Object thisObject, Object thatObject) {
 		return null == thisObject
-			? null == thatObject : thisObject.equals(thatObject);
+			? null == thatObject
+			: thisObject.equals(thatObject);
 	}
 
 	protected static boolean isEmpty(String string) {
@@ -161,18 +358,18 @@ class UML2Operations {
 
 	protected static Object[] getMessageSubstitutions(Map context,
 			Object object0) {
-		return new Object[] {getMessageSubstitution(context, object0)};
+		return new Object[]{getMessageSubstitution(context, object0)};
 	}
 
 	protected static Object[] getMessageSubstitutions(Map context,
 			Object object0, Object object1) {
-		return new Object[] {getMessageSubstitution(context, object0),
+		return new Object[]{getMessageSubstitution(context, object0),
 			getMessageSubstitution(context, object1)};
 	}
 
 	protected static Object[] getMessageSubstitutions(Map context,
 			Object object0, Object object1, Object object2) {
-		return new Object[] {getMessageSubstitution(context, object0),
+		return new Object[]{getMessageSubstitution(context, object0),
 			getMessageSubstitution(context, object1),
 			getMessageSubstitution(context, object2)};
 	}

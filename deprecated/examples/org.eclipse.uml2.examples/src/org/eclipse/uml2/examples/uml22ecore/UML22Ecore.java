@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML22Ecore.java,v 1.3 2004/05/26 18:12:15 khussey Exp $
+ * $Id: UML22Ecore.java,v 1.4 2004/06/21 19:25:02 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml22ecore;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -164,12 +163,21 @@ public class UML22Ecore
 		}
 	}
 
-	protected void setXMLName(NamedElement namedElement, Stereotype stereotype,
-			ENamedElement eNamedElement) {
-		String xmlName = (String) namedElement.getValue(stereotype, "xmlName"); //$NON-NLS-1$
+	protected void setXMLName(Classifier classifier, Stereotype stereotype,
+			EClassifier eClassifier) {
+		String xmlName = (String) classifier.getValue(stereotype, "xmlName"); //$NON-NLS-1$
 
 		if (null != xmlName && 0 != xmlName.length()) {
-			ExtendedMetaData.INSTANCE.setName(eNamedElement, xmlName);
+			ExtendedMetaData.INSTANCE.setName(eClassifier, xmlName);
+		}
+	}
+
+	protected void setXMLName(Property property, Stereotype stereotype,
+			EStructuralFeature eStructuralFeature) {
+		String xmlName = (String) property.getValue(stereotype, "xmlName"); //$NON-NLS-1$
+
+		if (null != xmlName && 0 != xmlName.length()) {
+			ExtendedMetaData.INSTANCE.setName(eStructuralFeature, xmlName);
 		}
 	}
 
@@ -231,12 +239,14 @@ public class UML22Ecore
 		}
 
 		return elementMap.containsKey(theEObject)
-			? elementMap.get(theEObject) : super.doSwitch(theEObject);
+			? elementMap.get(theEObject)
+			: super.doSwitch(theEObject);
 	}
 
 	public Object doSwitch(Resource resource) {
 		return modelMap.containsKey(resource)
-			? modelMap.get(resource) : caseResource(resource);
+			? modelMap.get(resource)
+			: caseResource(resource);
 	}
 
 	public Object caseResource(Resource object) {
@@ -299,7 +309,7 @@ public class UML22Ecore
 
 		if (null != eClassStereotype) {
 			setName(object, eClassStereotype, eClass);
-			
+
 			setXMLName(object, eClassStereotype, eClass);
 
 			EnumerationLiteral xmlContentKind = (EnumerationLiteral) object
@@ -325,8 +335,8 @@ public class UML22Ecore
 				eClass.getESuperTypes().add(
 					null == object.getAppliedStereotype("Ecore" //$NON-NLS-1$
 						+ NamedElement.SEPARATOR + "Extend") //$NON-NLS-1$
-						? eClass.getESuperTypes().size() : 0,
-					doSwitch(generalization.getGeneral()));
+						? eClass.getESuperTypes().size()
+						: 0, doSwitch(generalization.getGeneral()));
 			}
 		}
 
@@ -407,8 +417,6 @@ public class UML22Ecore
 			if (null != enumLiteralName && 0 != enumLiteralName.length()) {
 				eEnumLiteral.setName(enumLiteralName);
 			}
-
-			setXMLName(object, eEnumLiteralStereotype, eEnumLiteral);
 		}
 
 		setAnnotations(object, eEnumLiteral);
@@ -504,12 +512,13 @@ public class UML22Ecore
 	 */
 	public Object casePackage(org.eclipse.uml2.Package object) {
 		EPackage ePackage = null == object.getNestingPackage()
-			? (EPackage) doSwitch(object.eResource()) : EcoreFactory.eINSTANCE
-				.createEPackage();
+			? (EPackage) doSwitch(object.eResource())
+			: EcoreFactory.eINSTANCE.createEPackage();
 		elementMap.put(object, ePackage);
 
 		EPackage eSuperPackage = (EPackage) (null == object.getNestingPackage()
-			? null : doSwitch(object.getNestingPackage()));
+			? null
+			: doSwitch(object.getNestingPackage()));
 
 		if (null != eSuperPackage) {
 			eSuperPackage.getESubpackages().add(ePackage);
@@ -521,16 +530,19 @@ public class UML22Ecore
 			+ NamedElement.SEPARATOR + "EPackage"); //$NON-NLS-1$
 
 		String packageName = (String) (null == ePackageStereotype
-			? null : object.getValue(ePackageStereotype, "packageName")); //$NON-NLS-1$
+			? null
+			: object.getValue(ePackageStereotype, "packageName")); //$NON-NLS-1$
 
 		if (null != packageName && 0 != packageName.length()) {
 			ePackage.setName(packageName);
 		}
 
 		String basePackage = (String) (null == ePackageStereotype
-			? null : object.getValue(ePackageStereotype, "basePackage")); //$NON-NLS-1$
+			? null
+			: object.getValue(ePackageStereotype, "basePackage")); //$NON-NLS-1$
 		String nsPrefix = (String) (null == ePackageStereotype
-			? null : object.getValue(ePackageStereotype, "nsPrefix")); //$NON-NLS-1$
+			? null
+			: object.getValue(ePackageStereotype, "nsPrefix")); //$NON-NLS-1$
 
 		if (null == nsPrefix || 0 == nsPrefix.length()) {
 			nsPrefix = ePackage.getName();
@@ -545,7 +557,8 @@ public class UML22Ecore
 		ePackage.setNsPrefix(nsPrefix);
 
 		String nsURI = (String) (null == ePackageStereotype
-			? null : object.getValue(ePackageStereotype, "nsURI")); //$NON-NLS-1$
+			? null
+			: object.getValue(ePackageStereotype, "nsURI")); //$NON-NLS-1$
 
 		if (null == nsURI || 0 == nsURI.length()) {
 			nsURI = "http:///" + nsPrefix.replace('.', '/') + ".ecore"; //$NON-NLS-1$ //$NON-NLS-2$
@@ -710,7 +723,8 @@ public class UML22Ecore
 		}
 
 		eStructuralFeature.setName(null == eStructuralFeature.getName()
-			? object.getName() : eStructuralFeature.getName());
+			? object.getName()
+			: eStructuralFeature.getName());
 
 		eStructuralFeature.setChangeable(!object.isReadOnly());
 		eStructuralFeature.setDerived(object.isDerived());
@@ -726,7 +740,8 @@ public class UML22Ecore
 		eStructuralFeature.setUnique(object.isUnique());
 
 		eStructuralFeature.setEType(null == object.getType()
-			? EcorePackage.eINSTANCE.getEObject() : getEClassifier(object));
+			? EcorePackage.eINSTANCE.getEObject()
+			: getEClassifier(object));
 
 		if (null != eStructuralFeatureStereotype) {
 			eStructuralFeature.setTransient(Boolean.TRUE.equals(object

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.3 2004/05/13 03:16:20 khussey Exp $
+ * $Id: ClassOperations.java,v 1.4 2004/06/21 19:25:06 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -16,8 +16,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.RedefinableElement;
+import org.eclipse.uml2.UML2Package;
 
 /**
  * A static utility class that provides operations related to classes.
@@ -36,7 +40,7 @@ public final class ClassOperations
 	public static Set inherit(org.eclipse.uml2.Class class_, Set inhs) {
 		Set inherit = new HashSet();
 
-		iLoop: for (Iterator i = inhs.iterator(); i.hasNext();) {
+		iLoop : for (Iterator i = inhs.iterator(); i.hasNext();) {
 			NamedElement inh = (NamedElement) i.next();
 
 			for (Iterator ownedMembers = class_.getOwnedMembers().iterator(); ownedMembers
@@ -71,4 +75,35 @@ public final class ClassOperations
 			+ NamedElement.SEPARATOR + "Metaclass"); //$NON-NLS-1$
 	}
 
+	public static Set getExtensions(org.eclipse.uml2.Class class_) {
+		Set extensions = new HashSet();
+
+		if (null != class_ && class_.isMetaclass()) {
+			Resource resource = class_.eResource();
+
+			if (null != resource) {
+				FilteredUsageCrossReferencer.Filter filter = new FilteredUsageCrossReferencer.Filter() {
+
+					public boolean accept(EStructuralFeature eStructuralFeature) {
+						return UML2Package.eINSTANCE.getExtension_Metaclass() == eStructuralFeature;
+					}
+				};
+
+				ResourceSet resourceSet = resource.getResourceSet();
+
+				Iterator settings = null == resourceSet
+					? FilteredUsageCrossReferencer.find(class_, resource,
+						filter).iterator()
+					: FilteredUsageCrossReferencer.find(class_, resourceSet,
+						filter).iterator();
+
+				while (settings.hasNext()) {
+					extensions.add(((EStructuralFeature.Setting) settings
+						.next()).getEObject());
+				}
+			}
+		}
+
+		return extensions;
+	}
 }
