@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2URIConverterImpl.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: UML2URIConverterImpl.java,v 1.3 2004/05/18 21:00:48 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IPluginDescriptor;
@@ -52,9 +53,14 @@ public class UML2URIConverterImpl
 					new PluginVersionIdentifier(platformPluginPath.substring(
 						versionIndex + 1, segmentIndex)));
 
-			return plugin.find(
-				new Path(platformPluginPath.substring(segmentIndex + 1)))
-				.openConnection().getInputStream();
+			URL url = plugin.find(new Path(platformPluginPath
+				.substring(segmentIndex + 1)));
+
+			if (null == url) {
+				throw new IOException();
+			}
+
+			return url.openConnection().getInputStream();
 		}
 	}
 

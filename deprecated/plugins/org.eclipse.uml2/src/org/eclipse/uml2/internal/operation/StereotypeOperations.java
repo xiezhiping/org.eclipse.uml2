@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.4 2004/04/29 01:38:36 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.5 2004/05/18 21:00:48 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -16,6 +16,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.StringTokenizer;
 
@@ -903,6 +905,41 @@ public final class StereotypeOperations
 	public static Profile getProfile(Stereotype stereotype) {
 		return null == stereotype
 			? null : (Profile) stereotype.getPackage();
+	}
+
+	/**
+	 * Retrieves the keyword for the specified stereotype.
+	 * 
+	 * @param stereotype The stereotype for which to retrieve the keyword.
+	 * @return The keyword for the stereotype.
+	 */
+	public static String getKeyword(Stereotype stereotype) {
+		String keyword = EMPTY_STRING;
+
+		if (null != stereotype) {
+
+			try {
+				ResourceBundle resourceBundle = ProfileOperations
+					.getResourceBundle(stereotype.getProfile());
+
+				if (null != resourceBundle) {
+					keyword = resourceBundle.getString(stereotype
+						.getQualifiedName().replace(':', '_'));
+				}
+			} catch (MissingResourceException mre) {
+				// ignore
+			}
+
+			if (isEmpty(keyword)) {
+				String identifier = getValidIdentifier(stereotype.getName());
+
+				keyword = identifier.length() > 0
+					? Character.toLowerCase(identifier.charAt(0))
+						+ identifier.substring(1) : identifier;
+			}
+		}
+
+		return keyword;
 	}
 
 }

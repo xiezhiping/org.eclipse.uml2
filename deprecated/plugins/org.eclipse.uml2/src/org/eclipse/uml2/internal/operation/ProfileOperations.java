@@ -8,19 +8,27 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.6 2004/05/12 22:21:59 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.7 2004/05/18 21:00:48 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -35,6 +43,10 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.Element;
@@ -55,6 +67,7 @@ import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.util.UML2URIConverterImpl;
 
 /**
  * A static utility class that provides operations related to profiles.
@@ -79,39 +92,28 @@ public final class ProfileOperations
 	public static final String ANNOTATION_DETAILS_KEY__VERSION = "version"; //$NON-NLS-1$
 
 	/**
+	 * The default URI converter for resource bundle look-ups.
+	 */
+	private static final URIConverter DEFAULT_URI_CONVERTER = new URIConverterImpl();
+
+	/**
+	 * A cache of locales per profile.
+	 */
+	private static final Map PROFILE_LOCALES = Collections
+		.synchronizedMap(new HashMap());
+
+	/**
+	 * A cache of resource bundles per profile.
+	 */
+	private static final Map PROFILE_RESOURCE_BUNDLES = Collections
+		.synchronizedMap(new HashMap());
+
+	/**
 	 * Constructs a new Profile Operations. This constructor should never be
 	 * called because this is a static utility class.
 	 */
 	private ProfileOperations() {
 		super();
-	}
-
-	protected static String getValidIdentifier(String name) {
-
-		if (isEmpty(name)) {
-			return name;
-		}
-
-		StringBuffer validIdentifier = new StringBuffer();
-
-		if (Character.isJavaIdentifierStart(name.charAt(0))) {
-			validIdentifier.append(name.charAt(0));
-		} else {
-			validIdentifier.append('_');
-
-			if (Character.isJavaIdentifierPart(name.charAt(0))) {
-				validIdentifier.append(name.charAt(0));
-			}
-		}
-
-		for (int i = 1; i < name.length(); ++i) {
-
-			if (Character.isJavaIdentifierPart(name.charAt(i))) {
-				validIdentifier.append(name.charAt(i));
-			}
-		}
-
-		return validIdentifier.toString();
 	}
 
 	/**
@@ -604,7 +606,7 @@ public final class ProfileOperations
 			package_.getAppliedProfiles().add(profileApplication);
 		} else {
 			profileApplication = getProfileApplication(profile, package_);
-			
+
 			if (null == profileApplication) {
 				throw new IllegalArgumentException(String.valueOf(package_));
 			}
@@ -1160,6 +1162,68 @@ public final class ProfileOperations
 		packageImport.setImportedPackage(model);
 
 		profile.getMetamodelReferences().add(packageImport);
+	}
+
+	/**
+	 * Retrieves the (cached) resource bundle for the specified profile in the
+	 * specified locale.
+	 * 
+	 * @param profile
+	 *            The profile for which to retrieve the resource bundle.
+	 * @param locale
+	 *            The locale in which to retrieve the resource bundle.
+	 * @return The resource bundle for the profile in the locale.
+	 */
+	protected static ResourceBundle getResourceBundle(Profile profile,
+			Locale locale) {
+
+		if (!PROFILE_RESOURCE_BUNDLES.containsKey(profile)
+			|| !locale.equals(PROFILE_LOCALES.get(profile))) {
+
+			ResourceBundle resourceBundle = null;
+			Resource resource = profile.eResource();
+
+			if (null != resource) {
+				ResourceSet resourceSet = resource.getResourceSet();
+				URIConverter uriConverter = new UML2URIConverterImpl(
+						null == resourceSet
+							? DEFAULT_URI_CONVERTER : resourceSet
+								.getURIConverter());
+
+				for (Iterator resourceBundleURIs = getResourceBundleURIs(
+					resource.getURI(), locale).iterator(); resourceBundleURIs
+					.hasNext();) {
+
+					try {
+						resourceBundle = new PropertyResourceBundle(
+								uriConverter
+									.createInputStream((URI) resourceBundleURIs
+										.next()));
+						locale = resourceBundle.getLocale();
+						break;
+					} catch (IOException ioe) {
+						// ignore
+					}
+				}
+			}
+
+			PROFILE_LOCALES.put(profile, locale);
+			PROFILE_RESOURCE_BUNDLES.put(profile, resourceBundle);
+		}
+
+		return (ResourceBundle) PROFILE_RESOURCE_BUNDLES.get(profile);
+	}
+
+	/**
+	 * Retrieves the (cached) resource bundle for the specified profile in the
+	 * default locale.
+	 * 
+	 * @param profile
+	 *            The profile for which to retrieve the resource bundle.
+	 * @return The resource bundle for the profile in the default locale.
+	 */
+	protected static ResourceBundle getResourceBundle(Profile profile) {
+		return getResourceBundle(profile, Locale.getDefault());
 	}
 
 }

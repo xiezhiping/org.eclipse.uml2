@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Element.java,v 1.5 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Element.java,v 1.6 2004/05/18 21:00:48 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -330,6 +330,43 @@ public interface Element extends EModelElement{
 	 *         applied.
 	 */
 	public String getAppliedVersion(Stereotype stereotype);
+
+	/**
+	 * Retrieves the set of keywords for this element.
+	 * 
+	 * @return The keywords for this element.
+	 */
+	public Set getKeywords();
+
+	/**
+	 * Determines whether this element has the specified keyword.
+	 * 
+	 * @param keyword
+	 *            The keyword in question.
+	 * @return <code>true</code> if this element has the specified keyword;
+	 *         <code>false</code> otherwise.
+	 */
+	public boolean hasKeyword(String keyword);
+
+	/**
+	 * Adds the specified keyword to this element.
+	 * 
+	 * @param keyword
+	 *            The keyword to be added.
+	 * @throws IllegalArgumentException
+	 *             If the keyword is invalid (i.e. empty).
+	 */
+	public void addKeyword(String keyword);
+
+	/**
+	 * Removes the specified keyword from this element.
+	 * 
+	 * @param keyword
+	 *            The keyword to be removed.
+	 * @throws IllegalArgumentException
+	 *             If this element does not have the keyword.
+	 */
+	public void removeKeyword(String keyword);
 
 	// <!-- end-custom-operations -->
 

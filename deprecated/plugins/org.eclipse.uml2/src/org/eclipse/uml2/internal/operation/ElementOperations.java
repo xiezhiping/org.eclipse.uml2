@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
+ * $Id: ElementOperations.java,v 1.7 2004/05/18 21:00:48 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -200,6 +201,11 @@ public final class ElementOperations
 	}
 
 	/**
+	 * The source for the keywords annotation on elements.
+	 */
+	public static final String ANNOTATION_SOURCE__KEYWORDS = "keywords"; //$NON-NLS-1$
+
+	/**
 	 * Constructs a new Element Operations. This constructor should never be
 	 * called because this is a static utility class.
 	 */
@@ -309,6 +315,95 @@ public final class ElementOperations
 		}
 
 		EcoreUtil.remove(element);
+	}
+
+	/**
+	 * Retrieves the set of keywords for the specified element.
+	 * 
+	 * @param element
+	 *            The element for which to retrieve keywords.
+	 * @return The keywords for the specified element.
+	 */
+	public static Set getKeywords(Element element) {
+
+		if (null == element) {
+			return Collections.EMPTY_SET;
+		}
+
+		return Collections.unmodifiableSet(getEAnnotation(
+			ANNOTATION_SOURCE__KEYWORDS, element).getDetails().keySet());
+	}
+
+	/**
+	 * Determines whether the specified element has the specified keyword.
+	 * 
+	 * @param element
+	 *            The element in question.
+	 * @param keyword
+	 *            The keyword in question.
+	 * @return <code>true</code> if the specified element has the specified
+	 *         keyword; <code>false</code> otherwise.
+	 */
+	public static boolean hasKeyword(Element element, String keyword) {
+
+		if (null == element) {
+			return false;
+		}
+
+		if (isEmpty(keyword)) {
+			return false;
+		}
+
+		return getEAnnotation(ANNOTATION_SOURCE__KEYWORDS, element)
+			.getDetails().containsKey(keyword);
+	}
+
+	/**
+	 * Adds the specified keyword to the specified element.
+	 * 
+	 * @param element
+	 *            The element to which to add the keyword.
+	 * @param keyword
+	 *            The keyword to be added.
+	 * @throws IllegalArgumentException
+	 *             If the keyword is invalid (i.e. empty).
+	 */
+	public static void addKeyword(Element element, String keyword) {
+
+		if (null == element) {
+			throw new IllegalArgumentException(String.valueOf(element));
+		}
+
+		if (isEmpty(keyword)) {
+			throw new IllegalArgumentException(String.valueOf(keyword));
+		}
+
+		getOrCreateEAnnotation(ANNOTATION_SOURCE__KEYWORDS, element)
+			.getDetails().put(keyword, null);
+	}
+
+	/**
+	 * Removes the specified keyword from the specified element.
+	 * 
+	 * @param element
+	 *            The element from which to remove the keyword.
+	 * @param keyword
+	 *            The keyword to be removed.
+	 * @throws IllegalArgumentException
+	 *             If the element does not have the keyword.
+	 */
+	public static void removeKeyword(Element element, String keyword) {
+
+		if (null == element) {
+			throw new IllegalArgumentException(String.valueOf(element));
+		}
+
+		if (!hasKeyword(element, keyword)) {
+			throw new IllegalArgumentException(String.valueOf(keyword));
+		}
+
+		getEAnnotation(ANNOTATION_SOURCE__KEYWORDS, element).getDetails()
+			.removeKey(keyword);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Stereotype.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Stereotype.java,v 1.3 2004/05/18 21:00:48 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -53,6 +53,13 @@ public interface Stereotype extends org.eclipse.uml2.Class{
 	 * @return The profile that owns this stereotype.
 	 */
 	public Profile getProfile();
+
+	/**
+	 * Retrieves the keyword for this stereotype.
+	 * 
+	 * @return The keyword for this stereotype.
+	 */
+	public String getKeyword();
 
 	// <!-- end-custom-operations -->
 
