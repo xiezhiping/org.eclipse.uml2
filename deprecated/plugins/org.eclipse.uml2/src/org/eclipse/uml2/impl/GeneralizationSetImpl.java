@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.4 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -532,7 +532,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 			case UML2Package.GENERALIZATION_SET__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.GENERALIZATION_SET__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.GENERALIZATION_SET__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.GENERALIZATION_SET__NAME_EXPRESSION:

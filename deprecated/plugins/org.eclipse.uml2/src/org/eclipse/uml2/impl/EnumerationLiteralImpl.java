@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.4 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -417,7 +417,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 			case UML2Package.ENUMERATION_LITERAL__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.ENUMERATION_LITERAL__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.ENUMERATION_LITERAL__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__NAME_EXPRESSION:

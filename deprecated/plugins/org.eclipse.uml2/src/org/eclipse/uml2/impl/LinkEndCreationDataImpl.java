@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.4 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -333,7 +333,7 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 			case UML2Package.LINK_END_CREATION_DATA__END:
 				return end != null;
 			case UML2Package.LINK_END_CREATION_DATA__QUALIFIER:
-				return qualifier != null && !qualifier.isEmpty();
+				return !getQualifiers().isEmpty();
 			case UML2Package.LINK_END_CREATION_DATA__IS_REPLACE_ALL:
 				return isReplaceAll != IS_REPLACE_ALL_EDEFAULT;
 			case UML2Package.LINK_END_CREATION_DATA__INSERT_AT:

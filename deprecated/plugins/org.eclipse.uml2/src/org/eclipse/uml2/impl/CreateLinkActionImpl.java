@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.4 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -480,7 +480,7 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 			case UML2Package.CREATE_LINK_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__END_DATA:
-				return endData != null && !endData.isEmpty();
+				return !getEndData().isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
 	}

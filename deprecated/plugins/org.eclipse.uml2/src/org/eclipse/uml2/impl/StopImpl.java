@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StopImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: StopImpl.java,v 1.3 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -408,7 +408,7 @@ public class StopImpl extends EventOccurrenceImpl implements Stop {
 			case UML2Package.STOP__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.STOP__COVERED:
-				return covered != null && !covered.isEmpty();
+				return !getCovereds().isEmpty();
 			case UML2Package.STOP__GENERAL_ORDERING:
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UML2Package.STOP__ENCLOSING_INTERACTION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UsageImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: UsageImpl.java,v 1.3 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -329,7 +329,7 @@ public class UsageImpl extends DependencyImpl implements Usage {
 			case UML2Package.USAGE__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.USAGE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.USAGE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.USAGE__NAME_EXPRESSION:

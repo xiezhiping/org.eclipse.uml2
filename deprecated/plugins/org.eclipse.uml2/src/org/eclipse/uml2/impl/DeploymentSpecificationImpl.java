@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.9 2004/06/02 05:02:25 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.10 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -622,7 +622,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 			case UML2Package.DEPLOYMENT_SPECIFICATION__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.DEPLOYMENT_SPECIFICATION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEPLOYMENT_SPECIFICATION__NAME_EXPRESSION:

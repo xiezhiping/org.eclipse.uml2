@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.4 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -477,7 +477,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 				setIsStatic(IS_STATIC_EDEFAULT);
 				return;
 			case UML2Package.EXTENSION_END__TYPE:
-				setType((Type)null);
+				setType(null);
 				return;
 			case UML2Package.EXTENSION_END__IS_ORDERED:
 				setIsOrdered(IS_ORDERED_EDEFAULT);
@@ -492,7 +492,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 				setLowerValue((ValueSpecification)null);
 				return;
 			case UML2Package.EXTENSION_END__IS_READ_ONLY:
-				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
+				setIsReadOnly(false);
 				return;
 			case UML2Package.EXTENSION_END__TEMPLATE_PARAMETER:
 				setTemplateParameter((TemplateParameter)null);
@@ -581,7 +581,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__IS_STATIC:
 				return isStatic != IS_STATIC_EDEFAULT;
 			case UML2Package.EXTENSION_END__TYPE:
-				return type != null;
+				return basicGetType() != null;
 			case UML2Package.EXTENSION_END__IS_ORDERED:
 				return isOrdered != IS_ORDERED_EDEFAULT;
 			case UML2Package.EXTENSION_END__IS_UNIQUE:
@@ -595,7 +595,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__LOWER_VALUE:
 				return lowerValue != null;
 			case UML2Package.EXTENSION_END__IS_READ_ONLY:
-				return isReadOnly != IS_READ_ONLY_EDEFAULT;
+				return isReadOnly() != false;
 			case UML2Package.EXTENSION_END__TEMPLATE_PARAMETER:
 				return templateParameter != null;
 			case UML2Package.EXTENSION_END__OWNING_PARAMETER:

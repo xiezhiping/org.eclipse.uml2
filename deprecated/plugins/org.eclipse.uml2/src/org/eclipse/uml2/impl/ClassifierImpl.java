@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.14 2004/06/02 16:01:35 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.15 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1708,7 +1708,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.CLASSIFIER__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.CLASSIFIER__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CLASSIFIER__NAME_EXPRESSION:

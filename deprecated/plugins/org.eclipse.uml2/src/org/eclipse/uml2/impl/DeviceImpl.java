@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeviceImpl.java,v 1.11 2004/06/02 05:02:25 khussey Exp $
+ * $Id: DeviceImpl.java,v 1.12 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -538,7 +538,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 			case UML2Package.DEVICE__IS_ABSTRACT:
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
+				setIsAbstract(false);
 				return;
 			case UML2Package.DEVICE__GENERALIZATION:
 				getGeneralizations().clear();
@@ -634,7 +634,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.DEVICE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.DEVICE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEVICE__NAME_EXPRESSION:
@@ -664,7 +664,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.DEVICE__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != false;
 			case UML2Package.DEVICE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.DEVICE__GENERAL:

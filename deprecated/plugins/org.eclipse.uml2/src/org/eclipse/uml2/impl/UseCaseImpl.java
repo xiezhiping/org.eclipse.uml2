@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.9 2004/06/02 05:02:25 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.10 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -816,7 +816,7 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.USE_CASE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.USE_CASE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.USE_CASE__NAME_EXPRESSION:

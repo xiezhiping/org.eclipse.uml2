@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.6 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -539,7 +539,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 			case UML2Package.DEPENDENCY__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.DEPENDENCY__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.DEPENDENCY__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEPENDENCY__NAME_EXPRESSION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.5 2004/06/02 05:02:25 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.6 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -452,7 +452,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 			case UML2Package.STATE_INVARIANT__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.STATE_INVARIANT__COVERED:
-				return covered != null && !covered.isEmpty();
+				return !getCovereds().isEmpty();
 			case UML2Package.STATE_INVARIANT__GENERAL_ORDERING:
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UML2Package.STATE_INVARIANT__ENCLOSING_INTERACTION:

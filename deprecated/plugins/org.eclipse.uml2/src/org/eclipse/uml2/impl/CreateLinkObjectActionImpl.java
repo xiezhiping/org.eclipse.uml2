@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CreateLinkObjectActionImpl.java,v 1.5 2004/06/02 05:02:25 khussey Exp $
+ * $Id: CreateLinkObjectActionImpl.java,v 1.6 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -589,7 +589,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA:
-				return endData != null && !endData.isEmpty();
+				return !getEndData().isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT:
 				return result != null;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: IntervalConstraintImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: IntervalConstraintImpl.java,v 1.4 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -346,7 +346,7 @@ public class IntervalConstraintImpl extends ConstraintImpl implements IntervalCo
 				setNamespace(null);
 				return;
 			case UML2Package.INTERVAL_CONSTRAINT__SPECIFICATION:
-				setSpecification((ValueSpecification)null);
+				setSpecification(null);
 				return;
 			case UML2Package.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT:
 				getConstrainedElements().clear();
@@ -379,7 +379,7 @@ public class IntervalConstraintImpl extends ConstraintImpl implements IntervalCo
 			case UML2Package.INTERVAL_CONSTRAINT__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.INTERVAL_CONSTRAINT__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INTERVAL_CONSTRAINT__NAME_EXPRESSION:
@@ -395,7 +395,7 @@ public class IntervalConstraintImpl extends ConstraintImpl implements IntervalCo
 			case UML2Package.INTERVAL_CONSTRAINT__NAMESPACE:
 				return getNamespace() != null;
 			case UML2Package.INTERVAL_CONSTRAINT__SPECIFICATION:
-				return specification != null;
+				return getSpecification() != null;
 			case UML2Package.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT:
 				return constrainedElement != null && !constrainedElement.isEmpty();
 		}

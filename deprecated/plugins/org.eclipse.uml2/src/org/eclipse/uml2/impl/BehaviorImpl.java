@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.13 2004/06/02 05:02:25 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.14 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1151,7 +1151,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 			case UML2Package.BEHAVIOR__IS_ABSTRACT:
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
+				setIsAbstract(false);
 				return;
 			case UML2Package.BEHAVIOR__GENERALIZATION:
 				getGeneralizations().clear();
@@ -1265,7 +1265,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.BEHAVIOR__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.BEHAVIOR__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.BEHAVIOR__NAME_EXPRESSION:
@@ -1295,7 +1295,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.BEHAVIOR__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != false;
 			case UML2Package.BEHAVIOR__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.BEHAVIOR__GENERAL:

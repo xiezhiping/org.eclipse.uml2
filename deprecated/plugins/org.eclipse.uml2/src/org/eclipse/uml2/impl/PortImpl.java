@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PortImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
+ * $Id: PortImpl.java,v 1.6 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -856,7 +856,7 @@ public class PortImpl extends PropertyImpl implements Port {
 				setLowerValue((ValueSpecification)null);
 				return;
 			case UML2Package.PORT__IS_READ_ONLY:
-				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
+				setIsReadOnly(false);
 				return;
 			case UML2Package.PORT__TEMPLATE_PARAMETER:
 				setTemplateParameter((TemplateParameter)null);
@@ -971,7 +971,7 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__LOWER_VALUE:
 				return lowerValue != null;
 			case UML2Package.PORT__IS_READ_ONLY:
-				return isReadOnly != IS_READ_ONLY_EDEFAULT;
+				return isReadOnly() != false;
 			case UML2Package.PORT__TEMPLATE_PARAMETER:
 				return templateParameter != null;
 			case UML2Package.PORT__OWNING_PARAMETER:

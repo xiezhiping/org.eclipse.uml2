@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateableClassifierImpl.java,v 1.9 2004/06/02 05:02:25 khussey Exp $
+ * $Id: TemplateableClassifierImpl.java,v 1.10 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -465,7 +465,7 @@ public abstract class TemplateableClassifierImpl extends ClassifierImpl implemen
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__NAME_EXPRESSION:

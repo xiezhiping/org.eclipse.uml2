@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.9 2004/06/02 16:01:35 khussey Exp $
+ * $Id: OperationImpl.java,v 1.10 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1626,11 +1626,11 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__PARAMETER:
 				return !getParameters().isEmpty();
 			case UML2Package.OPERATION__FORMAL_PARAMETER:
-				return formalParameter != null && !formalParameter.isEmpty();
+				return !getFormalParameters().isEmpty();
 			case UML2Package.OPERATION__RETURN_RESULT:
 				return returnResult != null && !returnResult.isEmpty();
 			case UML2Package.OPERATION__RAISED_EXCEPTION:
-				return raisedException != null && !raisedException.isEmpty();
+				return !getRaisedExceptions().isEmpty();
 			case UML2Package.OPERATION__IS_ABSTRACT:
 				return isAbstract != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.OPERATION__METHOD:

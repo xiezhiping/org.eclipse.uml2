@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EventOccurrenceImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: EventOccurrenceImpl.java,v 1.4 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -738,7 +738,7 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			case UML2Package.EVENT_OCCURRENCE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.EVENT_OCCURRENCE__COVERED:
-				return covered != null && !covered.isEmpty();
+				return !getCovereds().isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__GENERAL_ORDERING:
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION:

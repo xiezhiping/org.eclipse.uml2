@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.11 2004/06/02 16:01:35 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.12 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1593,7 +1593,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 				setLowerValue((ValueSpecification)null);
 				return;
 			case UML2Package.PROPERTY__IS_READ_ONLY:
-				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
+				setIsReadOnly(false);
 				return;
 			case UML2Package.PROPERTY__TEMPLATE_PARAMETER:
 				setTemplateParameter((TemplateParameter)null);
@@ -1696,7 +1696,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__LOWER_VALUE:
 				return lowerValue != null;
 			case UML2Package.PROPERTY__IS_READ_ONLY:
-				return isReadOnly != IS_READ_ONLY_EDEFAULT;
+				return isReadOnly() != false;
 			case UML2Package.PROPERTY__TEMPLATE_PARAMETER:
 				return templateParameter != null;
 			case UML2Package.PROPERTY__OWNING_PARAMETER:

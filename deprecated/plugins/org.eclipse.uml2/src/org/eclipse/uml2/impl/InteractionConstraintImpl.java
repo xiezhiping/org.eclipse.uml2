@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.6 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -531,7 +531,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 			case UML2Package.INTERACTION_CONSTRAINT__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.INTERACTION_CONSTRAINT__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INTERACTION_CONSTRAINT__NAME_EXPRESSION:

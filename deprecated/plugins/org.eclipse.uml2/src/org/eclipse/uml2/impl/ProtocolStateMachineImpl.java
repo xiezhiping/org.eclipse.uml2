@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.11 2004/06/02 05:02:26 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.12 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -704,7 +704,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_ABSTRACT:
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
+				setIsAbstract(false);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__GENERALIZATION:
 				getGeneralizations().clear();
@@ -833,7 +833,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.PROTOCOL_STATE_MACHINE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__NAME_EXPRESSION:
@@ -863,7 +863,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != false;
 			case UML2Package.PROTOCOL_STATE_MACHINE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__GENERAL:

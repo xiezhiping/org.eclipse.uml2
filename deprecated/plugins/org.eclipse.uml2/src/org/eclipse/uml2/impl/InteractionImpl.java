@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.11 2004/06/02 05:02:26 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.12 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1120,7 +1120,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 			case UML2Package.INTERACTION__IS_ABSTRACT:
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
+				setIsAbstract(false);
 				return;
 			case UML2Package.INTERACTION__GENERALIZATION:
 				getGeneralizations().clear();
@@ -1258,7 +1258,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.INTERACTION__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.INTERACTION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INTERACTION__NAME_EXPRESSION:
@@ -1288,7 +1288,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.INTERACTION__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != false;
 			case UML2Package.INTERACTION__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.INTERACTION__GENERAL:

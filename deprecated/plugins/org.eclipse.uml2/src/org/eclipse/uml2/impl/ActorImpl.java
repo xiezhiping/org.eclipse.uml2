@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActorImpl.java,v 1.9 2004/06/02 05:02:25 khussey Exp $
+ * $Id: ActorImpl.java,v 1.10 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -465,7 +465,7 @@ public class ActorImpl extends ClassifierImpl implements Actor {
 			case UML2Package.ACTOR__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.ACTOR__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.ACTOR__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ACTOR__NAME_EXPRESSION:

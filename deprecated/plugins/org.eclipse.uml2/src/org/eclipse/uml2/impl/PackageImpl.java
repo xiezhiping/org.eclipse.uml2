@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.15 2004/06/03 02:59:18 khussey Exp $
+ * $Id: PackageImpl.java,v 1.16 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -998,7 +998,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.PACKAGE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.PACKAGE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PACKAGE__NAME_EXPRESSION:

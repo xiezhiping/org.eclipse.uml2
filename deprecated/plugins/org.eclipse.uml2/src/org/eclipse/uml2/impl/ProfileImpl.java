@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.10 2004/06/03 02:59:18 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.11 2004/06/15 16:13:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -559,7 +559,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__QUALIFIED_NAME:
 				return !"".equals(getQualifiedName()); //$NON-NLS-1$
 			case UML2Package.PROFILE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
 			case UML2Package.PROFILE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PROFILE__NAME_EXPRESSION:
