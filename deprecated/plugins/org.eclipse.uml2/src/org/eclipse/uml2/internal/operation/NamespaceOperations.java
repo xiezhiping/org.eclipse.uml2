@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.7 2004/05/28 05:13:45 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.8 2004/11/04 16:58:49 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -117,21 +117,22 @@ public final class NamespaceOperations
 		for (Iterator elementImports = namespace.getElementImports().iterator(); elementImports
 			.hasNext();) {
 
-			ElementImport elementImport = (ElementImport) elementImports.next();
+			PackageableElement importedElement = ((ElementImport) elementImports
+				.next()).getImportedElement();
 
-			if (null != elementImport.getImportedElement()) {
-				importedMember.add(elementImport.getImportedElement());
+			if (null != importedElement) {
+				importedMember.add(importedElement);
 			}
 		}
 
 		for (Iterator packageImports = namespace.getPackageImports().iterator(); packageImports
 			.hasNext();) {
 
-			PackageImport packageImport = (PackageImport) packageImports.next();
+			org.eclipse.uml2.Package importedPackage = ((PackageImport) packageImports
+				.next()).getImportedPackage();
 
-			if (null != packageImport.getImportedPackage()) {
-				importedMember.addAll(packageImport.getImportedPackage()
-					.visibleMembers());
+			if (null != importedPackage) {
+				importedMember.addAll(importedPackage.visibleMembers());
 			}
 		}
 

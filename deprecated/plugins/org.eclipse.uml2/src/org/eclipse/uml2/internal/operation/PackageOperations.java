@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
+ * $Id: PackageOperations.java,v 1.7 2004/11/04 16:58:49 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -25,9 +25,9 @@ import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageableElement;
-import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.util.UML2Validator;
 
 /**
  * A static utility class that provides operations related to packages.
@@ -72,9 +72,11 @@ public final class PackageOperations
 				|| VisibilityKind.PUBLIC_LITERAL.equals(packageImport
 					.getVisibility())) {
 
-				return null != packageImport.getImportedPackage()
-					&& packageImport.getImportedPackage().visibleMembers()
-						.contains(el);
+				org.eclipse.uml2.Package importedPackage = packageImport
+					.getImportedPackage();
+
+				return null != importedPackage
+					&& importedPackage.visibleMembers().contains(el);
 			}
 		}
 
@@ -87,6 +89,21 @@ public final class PackageOperations
 
 	public static Set visibleMembers(org.eclipse.uml2.Package package_) {
 		Set visibleMembers = new HashSet();
+
+		visibleMembersHelper(package_, visibleMembers);
+
+		for (Iterator allImportedPackages = allImportedPackagesHelper(package_,
+			new HashSet()).iterator(); allImportedPackages.hasNext();) {
+
+			visibleMembersHelper((org.eclipse.uml2.Package) allImportedPackages
+				.next(), visibleMembers);
+		}
+
+		return visibleMembers;
+	}
+
+	protected static Set visibleMembersHelper(
+			org.eclipse.uml2.Package package_, Set visibleMembers) {
 
 		for (Iterator ownedMembers = package_.getOwnedMembers().iterator(); ownedMembers
 			.hasNext();) {
@@ -111,9 +128,20 @@ public final class PackageOperations
 				|| VisibilityKind.PUBLIC_LITERAL.equals(elementImport
 					.getVisibility())) {
 
-				visibleMembers.add(elementImport.getImportedElement());
+				PackageableElement importedElement = elementImport
+					.getImportedElement();
+
+				if (null != importedElement) {
+					visibleMembers.add(importedElement);
+				}
 			}
 		}
+
+		return visibleMembers;
+	}
+
+	protected static Set allImportedPackagesHelper(
+			org.eclipse.uml2.Package package_, Set allImportedPackages) {
 
 		for (Iterator packageImports = package_.getPackageImports().iterator(); packageImports
 			.hasNext();) {
@@ -124,12 +152,21 @@ public final class PackageOperations
 				|| VisibilityKind.PUBLIC_LITERAL.equals(packageImport
 					.getVisibility())) {
 
-				visibleMembers.addAll(packageImport.getImportedPackage()
-					.visibleMembers());
+				org.eclipse.uml2.Package importedPackage = packageImport
+					.getImportedPackage();
+
+				if (null != importedPackage
+					&& !allImportedPackages.contains(importedPackage)) {
+
+					allImportedPackages.add(importedPackage);
+
+					allImportedPackagesHelper(importedPackage,
+						allImportedPackages);
+				}
 			}
 		}
 
-		return visibleMembers;
+		return allImportedPackages;
 	}
 
 	/**
@@ -162,15 +199,15 @@ public final class PackageOperations
 					} else {
 						diagnostics
 							.add(new BasicDiagnostic(
-									Diagnostic.WARNING,
-									UML2Validator.DIAGNOSTIC_SOURCE,
-									UML2Validator.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
-									UML2Plugin.INSTANCE
-										.getString(
-											"_UI_Package_ElementsPublicOrPrivate_diagnostic", //$NON-NLS-1$
-											getMessageSubstitutions(context,
-												ownedElement, package_)),
-									new Object[] {package_, ownedElement}));
+								Diagnostic.WARNING,
+								UML2Validator.DIAGNOSTIC_SOURCE,
+								UML2Validator.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
+								UML2Plugin.INSTANCE
+									.getString(
+										"_UI_Package_ElementsPublicOrPrivate_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											ownedElement, package_)),
+								new Object[]{package_, ownedElement}));
 					}
 				}
 			}
