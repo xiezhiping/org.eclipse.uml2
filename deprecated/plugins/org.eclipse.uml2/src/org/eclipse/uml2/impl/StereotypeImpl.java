@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.15 2004/06/02 05:02:25 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.16 2004/06/02 17:55:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -720,21 +720,47 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 * 
 	 * @see org.eclipse.uml2.Stereotype#getExtendedEClasses()
 	 */
-	public Set getExtendedEClasses() {
+	public Set getAllExtendedEClasses() {
 
 		try {
-			Method method = getClass().getMethod("getExtendedEClasses", null); //$NON-NLS-1$
-			Set extendedEClasses = (Set) getCacheAdapter().get(this, method);
+			Method method = getClass().getMethod("getAllExtendedEClasses", null); //$NON-NLS-1$
+			Set allExtendedEClasses = (Set) getCacheAdapter().get(this, method);
 
-			if (null == extendedEClasses) {
-				extendedEClasses = StereotypeOperations
-					.getExtendedEClasses(this);
-				getCacheAdapter().put(this, method, extendedEClasses);
+			if (null == allExtendedEClasses) {
+				allExtendedEClasses = StereotypeOperations
+					.getAllExtendedEClasses(this);
+				getCacheAdapter().put(this, method, allExtendedEClasses);
 			}
 
-			return extendedEClasses;
+			return allExtendedEClasses;
 		} catch (Exception e) {
-			return StereotypeOperations.getExtendedEClasses(this);
+			return StereotypeOperations.getAllExtendedEClasses(this);
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Stereotype#getExtendedMetaclasses()
+	 */
+	public Set getExtendedMetaclasses() {
+
+		try {
+			Method method = getClass()
+				.getMethod("getExtendedMetaclasses", null); //$NON-NLS-1$
+			Set extendedMetaclasses = (Set) getCacheAdapter().get(eResource(),
+				this, method);
+
+			if (null == extendedMetaclasses) {
+				extendedMetaclasses = StereotypeOperations
+					.getExtendedMetaclasses(this);
+				getCacheAdapter().put(eResource(), this, method,
+					extendedMetaclasses);
+			}
+
+			return extendedMetaclasses;
+		} catch (Exception e) {
+			return StereotypeOperations.getExtendedMetaclasses(this);
 		}
 	}
 

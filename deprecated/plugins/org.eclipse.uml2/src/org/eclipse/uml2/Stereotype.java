@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Stereotype.java,v 1.4 2004/05/28 05:13:45 khussey Exp $
+ * $Id: Stereotype.java,v 1.5 2004/06/02 17:55:37 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,12 +50,20 @@ public interface Stereotype extends org.eclipse.uml2.Class{
 	public Extension createExtension(EClass eClass, boolean required);
 
 	/**
-	 * Retrieves the set of Ecore classes extended by this stereotype,
-	 * including the Ecore classes extended by its super(stereo)types.
+	 * Retrieves the set of Ecore classes extended by this stereotype, including
+	 * the Ecore classes extended by its super(stereo)types.
 	 * 
-	 * @return The Ecore classes extended by this stereotype.
+	 * @return The Ecore classes extended by this stereotype and its
+	 *         super(stereo)types.
 	 */
-	public Set getExtendedEClasses();
+	public Set getAllExtendedEClasses();
+
+	/**
+	 * Retrieves the metaclasses extended by this stereotype.
+	 * 
+	 * @return The metaclasses extended by this stereotype.
+	 */
+	public Set getExtendedMetaclasses();
 
 	/**
 	 * Retrieves the profile that owns this stereotype.
