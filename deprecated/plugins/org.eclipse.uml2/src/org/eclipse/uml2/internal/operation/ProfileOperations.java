@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.11 2004/11/11 17:52:45 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.12 2004/11/18 18:07:06 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -61,7 +61,6 @@ import org.eclipse.uml2.InstanceValue;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.NamedElement;
-import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.Profile;
@@ -961,9 +960,11 @@ public final class ProfileOperations
 		while (null != package_) {
 			allProfileApplications.addAll(package_.getAppliedProfiles());
 
-			package_ = null == package_.getNamespace()
-				? null
-				: package_.getNamespace().getNearestPackage();
+			EObject eContainer = package_.eContainer();
+
+			package_ = Element.class.isInstance(eContainer)
+				? ((Element) eContainer).getNearestPackage()
+				: null;
 		}
 
 		return allProfileApplications;
@@ -995,11 +996,12 @@ public final class ProfileOperations
 			}
 		}
 
-		Namespace namespace = package_.getNamespace();
+		EObject eContainer = package_.eContainer();
 
-		if (null != namespace) {
-			allAppliedProfiles.addAll(getAllAppliedProfiles(namespace
-				.getNearestPackage()));
+		if (Element.class.isInstance(eContainer)) {
+			allAppliedProfiles
+				.addAll(getAllAppliedProfiles(((Element) eContainer)
+					.getNearestPackage()));
 		}
 
 		return allAppliedProfiles;
@@ -1047,10 +1049,11 @@ public final class ProfileOperations
 			return getVersion(profileApplication);
 		}
 
-		Namespace namespace = package_.getNamespace();
+		EObject eContainer = package_.eContainer();
 
-		if (null != namespace) {
-			return getAppliedVersion(profile, namespace.getNearestPackage());
+		if (Element.class.isInstance(eContainer)) {
+			return getAppliedVersion(profile, ((Element) eContainer)
+				.getNearestPackage());
 		}
 
 		return null;
