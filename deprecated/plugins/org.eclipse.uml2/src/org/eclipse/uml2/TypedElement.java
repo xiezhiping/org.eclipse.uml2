@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TypedElement.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: TypedElement.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -49,6 +49,9 @@ public interface TypedElement extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The type of the TypedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(Type)
 	 * @see org.eclipse.uml2.UML2Package#getTypedElement_Type()

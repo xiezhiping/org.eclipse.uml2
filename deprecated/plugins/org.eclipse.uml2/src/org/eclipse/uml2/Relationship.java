@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Relationship.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Relationship.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -51,6 +51,9 @@ public interface Relationship extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the elements related by the Relationship. This is a derived union.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Related Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRelationship_RelatedElement()
 	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"

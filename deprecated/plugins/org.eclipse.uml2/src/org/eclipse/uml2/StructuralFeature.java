@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuralFeature.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: StructuralFeature.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,6 +50,9 @@ public interface StructuralFeature extends Feature, TypedElement, MultiplicityEl
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * States whether the feature’s value may be modified by a client. Default is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Read Only</em>' attribute.
 	 * @see #setIsReadOnly(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getStructuralFeature_IsReadOnly()

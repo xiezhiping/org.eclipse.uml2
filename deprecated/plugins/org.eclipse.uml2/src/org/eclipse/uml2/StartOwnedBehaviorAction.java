@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StartOwnedBehaviorAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: StartOwnedBehaviorAction.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Start Owned Behavior Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * (CompleteActions) StartOwnedBehaviorAction is an action that starts the owned behavior of the input. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -48,6 +52,9 @@ public interface StartOwnedBehaviorAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Holds the object on which to start the owned behavior. (Specializes Action.input.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getStartOwnedBehaviorAction_Object()

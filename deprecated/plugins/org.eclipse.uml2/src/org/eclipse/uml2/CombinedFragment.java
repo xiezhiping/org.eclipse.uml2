@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CombinedFragment.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: CombinedFragment.java,v 1.4 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -22,9 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An interaction fragment that decomposes into a set of other interaction fragments under some operator.
- * In principle the whole sequence diagram is an combined interaction. Syntactically, however, we will have special notation for combineations such that operands may be easily distinguished.
- * Combined interactions consist of operands and an implicit or explicit operator
+ * A combined fragment defines an expression of interaction fragments. A combined fragment is defined by an interaction operator and corresponding interaction operands. Through the use of CombinedFragments the user will be able to describe a number of traces in a compact and concise manner. CombinedFragment is a specialization of InteractionFragment. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -57,6 +55,9 @@ public interface CombinedFragment extends InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the operation which defines the semantics of this combination of InteractionFragments.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interaction Operator</em>' attribute.
 	 * @see org.eclipse.uml2.InteractionOperator
 	 * @see #setInteractionOperator(InteractionOperator)
@@ -86,6 +87,9 @@ public interface CombinedFragment extends InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * set of operands of the combined fragment.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operand</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getCombinedFragment_Operand()
 	 * @model type="org.eclipse.uml2.InteractionOperand" containment="true" required="true" ordered="false"
@@ -124,6 +128,9 @@ public interface CombinedFragment extends InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the gates that form the interface between this CombinedFragment and its surroundings
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Cfragment Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getCombinedFragment_CfragmentGate()
 	 * @model type="org.eclipse.uml2.Gate" containment="true" ordered="false"

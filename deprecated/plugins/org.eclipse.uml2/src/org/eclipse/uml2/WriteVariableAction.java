@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: WriteVariableAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: WriteVariableAction.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Write Variable Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A write variable action operates on a variable to modify its values. It has an input pin on which the value that will be added or removed is put. Other aspects of write variable actions are inherited from VariableAction. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -48,6 +52,9 @@ public interface WriteVariableAction extends VariableAction{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * (Specialized from Action:input) Value to be added or removed from the variable.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getWriteVariableAction_Value()

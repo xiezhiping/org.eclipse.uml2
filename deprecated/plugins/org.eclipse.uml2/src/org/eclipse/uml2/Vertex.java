@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Vertex.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Vertex.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -49,6 +49,9 @@ public interface Vertex extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The region that contains this vertex.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Container</em>' container reference.
 	 * @see #setContainer(Region)
 	 * @see org.eclipse.uml2.UML2Package#getVertex_Container()
@@ -78,6 +81,9 @@ public interface Vertex extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the transitions departing from this vertex.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Outgoing</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getVertex_Outgoing()
 	 * @see org.eclipse.uml2.Transition#getSource
@@ -107,6 +113,9 @@ public interface Vertex extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the transitions entering this vertex.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Incoming</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getVertex_Incoming()
 	 * @see org.eclipse.uml2.Transition#getTarget

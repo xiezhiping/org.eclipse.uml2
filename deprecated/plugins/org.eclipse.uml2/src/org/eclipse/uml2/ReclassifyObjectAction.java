@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReclassifyObjectAction.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ReclassifyObjectAction.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Reclassify Object Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * ReclassifyObjectAction adds given classifier to an object and removes given classifiers from that object. Multiple classifiers may be added and removed at a time. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -52,6 +56,9 @@ public interface ReclassifyObjectAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies whether existing classifiers should be removed before adding the new classifiers. The default value is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Replace All</em>' attribute.
 	 * @see #setIsReplaceAll(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getReclassifyObjectAction_IsReplaceAll()
@@ -79,6 +86,9 @@ public interface ReclassifyObjectAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A set of classifiers to be removed from the classifiers of the object.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Old Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getReclassifyObjectAction_OldClassifier()
 	 * @model type="org.eclipse.uml2.Classifier" ordered="false"
@@ -106,6 +116,9 @@ public interface ReclassifyObjectAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A set of classifiers to be added to the classifiers of the object.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>New Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getReclassifyObjectAction_NewClassifier()
 	 * @model type="org.eclipse.uml2.Classifier" ordered="false"
@@ -132,6 +145,9 @@ public interface ReclassifyObjectAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Holds the object to be reclassified. (Specializes Action.input.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReclassifyObjectAction_Object()

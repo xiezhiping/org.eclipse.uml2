@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AddStructuralFeatureValueAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: AddStructuralFeatureValueAction.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Add Structural Feature Value Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Structural Features are potentially multi-valued and ordered, so the action supports specification of insertion points for new values. It also supports the removal of existing values of the structural feature before the new value is added. The object to access is specified dynamically, by referring to an input pin on which the object will be placed at runtime. The type of the value of this pin is the classifier that owns the specified structural feature, and the value’s multiplicity is 1..1. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -50,6 +54,9 @@ public interface AddStructuralFeatureValueAction extends WriteStructuralFeatureA
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies whether existing values of the structural feature of the object should be removed before adding the new value.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Replace All</em>' attribute.
 	 * @see #setIsReplaceAll(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getAddStructuralFeatureValueAction_IsReplaceAll()
@@ -76,6 +83,9 @@ public interface AddStructuralFeatureValueAction extends WriteStructuralFeatureA
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * (Specialized from Action:input) Gives the position at which to insert a new value or move an existing value in ordered structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero. This pin is omitted for unordered structural features.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Insert At</em>' containment reference.
 	 * @see #setInsertAt(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getAddStructuralFeatureValueAction_InsertAt()

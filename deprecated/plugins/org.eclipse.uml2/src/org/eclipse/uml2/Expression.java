@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Expression.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Expression.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,6 +54,9 @@ public interface Expression extends OpaqueExpression{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The symbol associated with the node in the expression tree.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Symbol</em>' attribute.
 	 * @see #setSymbol(String)
 	 * @see org.eclipse.uml2.UML2Package#getExpression_Symbol()
@@ -81,6 +84,9 @@ public interface Expression extends OpaqueExpression{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a sequence of operands. Subsets Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operand</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getExpression_Operand()
 	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true"

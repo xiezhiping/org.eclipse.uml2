@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Continuation.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Continuation.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Continuation</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A Continuation is a syntactic way to define continuations of different branches of an Alternative CombinedFragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -46,6 +50,9 @@ public interface Continuation extends InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Setting</em>' attribute.
 	 * @see #setSetting(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getContinuation_Setting()

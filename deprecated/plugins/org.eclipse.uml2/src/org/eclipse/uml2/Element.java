@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Element.java,v 1.7 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Element.java,v 1.8 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -61,6 +61,9 @@ public interface Element extends EModelElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Elements owned by this element. This is a derived union.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getElement_OwnedElement()
 	 * @see org.eclipse.uml2.Element#getOwner
@@ -78,6 +81,9 @@ public interface Element extends EModelElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Element that owns this element. This is a derived union.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owner</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getElement_Owner()
 	 * @see org.eclipse.uml2.Element#getOwnedElements
@@ -95,6 +101,9 @@ public interface Element extends EModelElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Comments owned by this element. Subsets Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Comment</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getElement_OwnedComment()
 	 * @model type="org.eclipse.uml2.Comment" containment="true" ordered="false"

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ChangeTrigger.java,v 1.3 2004/06/03 02:59:18 khussey Exp $
+ * $Id: ChangeTrigger.java,v 1.4 2004/06/06 01:35:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A change trigger specifies an event that occurs when a Boolean-valued expression becomes true as a result of a change in 
+ * A change trigger specifies an event that occurs when a Boolean-valued expression becomes true as a result of a change in value of one or more attributes or associations. A change event is raised implicitly and is not the result of an explicit action. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -52,6 +52,9 @@ public interface ChangeTrigger extends Trigger{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A Boolean-valued expression that will result in a change event whenever its value changes from false to true.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Change Expression</em>' containment reference.
 	 * @see #setChangeExpression(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getChangeTrigger_ChangeExpression()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionFragment.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: InteractionFragment.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -152,6 +152,9 @@ public interface InteractionFragment extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * operand enclosing this InteractionFragment (they may nest recursively)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Enclosing Operand</em>' container reference.
 	 * @see #setEnclosingOperand(InteractionOperand)
 	 * @see org.eclipse.uml2.UML2Package#getInteractionFragment_EnclosingOperand()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Type.java,v 1.3 2004/06/03 02:59:18 khussey Exp $
+ * $Id: Type.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -49,6 +49,9 @@ public interface Type extends PackageableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the owning package of a package. Subsets NamedElement::namespace.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Package</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getType_Package()
 	 * @see org.eclipse.uml2.Package#getOwnedTypes

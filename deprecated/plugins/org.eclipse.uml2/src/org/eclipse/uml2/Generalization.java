@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Generalization.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Generalization.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier. 
+ * A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier. Package PowerTypes (“PowerTypes” on page 109) A generalization can be designated as being a member of a particular generalization set. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +53,9 @@ public interface Generalization extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates whether the specific classifier can be used whereever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Substitutable</em>' attribute.
 	 * @see #setIsSubstitutable(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getGeneralization_IsSubstitutable()
@@ -80,6 +83,9 @@ public interface Generalization extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the specializing classifier in the Generalization relationship. Subsets DirectedRelationship::source and Element::owner. Package PowerTypes (“PowerTypes” on page 109) • generalizationSet Designates a set in which instances of Generalization is considered members.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Specific</em>' container reference.
 	 * @see #setSpecific(Classifier)
 	 * @see org.eclipse.uml2.UML2Package#getGeneralization_Specific()
@@ -107,6 +113,9 @@ public interface Generalization extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the general classifier in the Generalization relationship. Subsets DirectedRelationship::target.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>General</em>' reference.
 	 * @see #setGeneral(Classifier)
 	 * @see org.eclipse.uml2.UML2Package#getGeneralization_General()

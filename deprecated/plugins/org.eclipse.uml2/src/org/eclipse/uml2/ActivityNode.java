@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ActivityNode.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -183,6 +183,9 @@ public interface ActivityNode extends RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Structured activity node containing the node.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Structured Node</em>' container reference.
 	 * @see #setInStructuredNode(StructuredActivityNode)
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InStructuredNode()

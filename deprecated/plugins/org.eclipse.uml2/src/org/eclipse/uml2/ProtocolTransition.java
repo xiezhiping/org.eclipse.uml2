@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,6 +54,9 @@ public interface ProtocolTransition extends Transition{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Post Condition</em>' containment reference.
 	 * @see #setPostCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getProtocolTransition_PostCondition()
@@ -118,6 +121,9 @@ public interface ProtocolTransition extends Transition{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation refered by the transition if any.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Pre Condition</em>' reference.
 	 * @see #setPreCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getProtocolTransition_PreCondition()

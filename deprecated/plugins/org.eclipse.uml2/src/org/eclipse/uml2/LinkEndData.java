@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkEndData.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: LinkEndData.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,6 +50,9 @@ public interface LinkEndData extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an “open” end for reading.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' reference.
 	 * @see #setValue(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getLinkEndData_Value()
@@ -76,6 +79,9 @@ public interface LinkEndData extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Association end for which this link-end data specifies values.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' reference.
 	 * @see #setEnd(Property)
 	 * @see org.eclipse.uml2.UML2Package#getLinkEndData_End()
@@ -103,6 +109,9 @@ public interface LinkEndData extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Attribute representing the qualifier for which the value is to be specified.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLinkEndData_Qualifier()
 	 * @model type="org.eclipse.uml2.QualifierValue" containment="true" volatile="true" ordered="false"

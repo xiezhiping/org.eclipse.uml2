@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OutputPin.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: OutputPin.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Output Pin</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An output pin is a pin that holds output values produced by an action. Output pins are object nodes and deliver values to other actions through object flows. See Pin, Action, and ObjectNode for more details. 
+ * <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.uml2.UML2Package#getOutputPin()

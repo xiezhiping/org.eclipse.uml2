@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterSubstitution.java,v 1.5 2004/06/03 02:59:17 khussey Exp $
+ * $Id: TemplateParameterSubstitution.java,v 1.6 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -55,6 +55,9 @@ public interface TemplateParameterSubstitution extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The formal template parameter that is associated with this substitution.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Formal</em>' reference.
 	 * @see #setFormal(TemplateParameter)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameterSubstitution_Formal()
@@ -110,6 +113,9 @@ public interface TemplateParameterSubstitution extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * elements that are the actual parameters for this substitution.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Actual</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameterSubstitution_Actual()
 	 * @model type="org.eclipse.uml2.ParameterableElement" required="true" volatile="true" ordered="false"
@@ -126,6 +132,9 @@ public interface TemplateParameterSubstitution extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The actual parameters that are owned by this substitution. Subsets Element:: ownedElement and actual.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Actual</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameterSubstitution_OwnedActual()
 	 * @model type="org.eclipse.uml2.ParameterableElement" containment="true" volatile="true" ordered="false"

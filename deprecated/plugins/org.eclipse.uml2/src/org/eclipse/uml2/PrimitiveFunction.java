@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PrimitiveFunction.java,v 1.3 2004/05/20 03:20:04 khussey Exp $
+ * $Id: PrimitiveFunction.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Primitive Function</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * PrimitiveFunction is not an action. It is the signature of a function that produces output values from input values for use with ApplyFunctionAction. The behavior is described using the body and language attributes. The specification of the detailed behavior is expressed in an external language and is not further specified within UML. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -30,7 +34,7 @@ package org.eclipse.uml2;
  * @model 
  * @generated
  */
-public interface PrimitiveFunction extends PackageableElement {
+public interface PrimitiveFunction extends PackageableElement{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -47,6 +51,9 @@ public interface PrimitiveFunction extends PackageableElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A textual representation of the function in the named surface language.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' attribute.
 	 * @see #setBody(String)
 	 * @see org.eclipse.uml2.UML2Package#getPrimitiveFunction_Body()
@@ -74,6 +81,9 @@ public interface PrimitiveFunction extends PackageableElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the language in which the body of the primitive function is stated. The interpretation of the body depends on the language. If the language is unspecified, it might be implicit from the body or the context.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Language</em>' attribute.
 	 * @see #setLanguage(String)
 	 * @see org.eclipse.uml2.UML2Package#getPrimitiveFunction_Language()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateInvariant.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: StateInvariant.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>State Invariant</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A StateInvariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A StateInvariant is an InteractionFragment and it is placed on a Lifeline. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -48,6 +52,9 @@ public interface StateInvariant extends InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A Constraint that should hold at runtime for this StateInvariant
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Invariant</em>' containment reference.
 	 * @see #setInvariant(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getStateInvariant_Invariant()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,6 +58,9 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element. Communications
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
 	 * @see #setIsAbstract(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_IsAbstract()
@@ -114,6 +117,9 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the parameters of the BehavioralFeature. Subsets Namespace::member. This is a derived union and is ordered.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_Parameter()
 	 * @model type="org.eclipse.uml2.Parameter" transient="true" changeable="false" volatile="true" derived="true"
@@ -141,6 +147,9 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the ordered set of formal parameters of this BehavioralFeature. Subsets BehavioralFeature::parameter and Namespace::ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Formal Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_FormalParameter()
 	 * @model type="org.eclipse.uml2.Parameter" containment="true" volatile="true"
@@ -179,6 +188,9 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the ordered set of return results of this BehavioralFeature. Subsets Behavioral- Feature::parameter and Namespace::ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Return Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_ReturnResult()
 	 * @model type="org.eclipse.uml2.Parameter" containment="true"
@@ -217,6 +229,9 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Types representing exceptions that may be raised during an invocation of this operation.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Raised Exception</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_RaisedException()
 	 * @model type="org.eclipse.uml2.Type" volatile="true" ordered="false"
@@ -245,6 +260,9 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Method</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_Method()
 	 * @see org.eclipse.uml2.Behavior#getSpecification

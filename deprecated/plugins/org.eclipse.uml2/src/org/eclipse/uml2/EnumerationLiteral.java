@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EnumerationLiteral.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: EnumerationLiteral.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,6 +50,9 @@ public interface EnumerationLiteral extends InstanceSpecification{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Enumeration that this EnumerationLiteral is a member of. Subsets NamedElement:: namespace.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Enumeration</em>' container reference.
 	 * @see #setEnumeration(Enumeration)
 	 * @see org.eclipse.uml2.UML2Package#getEnumerationLiteral_Enumeration()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InformationFlow.java,v 1.4 2004/05/20 03:20:04 khussey Exp $
+ * $Id: InformationFlow.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Information Flow</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An Information Flow specifies that one or more information items circulate from its sources to its targets. Information flows require some kind of “information channel” for transmitting information items from the source to the destination. An information channel is repersented in various ways depending on the nature of its sources and targets. It may be represented by connectors, links, associations, or even dependencies. For example, if the source and destination are parts in some composite structure such as a collaboration, then the information channel is likely to be represented by a connector between them. Or, if the source and target are objects (which are a kind of InstanceSpecification), they may be represented by a link that joins the two, and so on. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -31,7 +35,7 @@ import org.eclipse.emf.common.util.EList;
  * @model 
  * @generated
  */
-public interface InformationFlow extends PackageableElement, DirectedRelationship {
+public interface InformationFlow extends PackageableElement, DirectedRelationship{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48,6 +52,9 @@ public interface InformationFlow extends PackageableElement, DirectedRelationshi
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * : Determines which Relationship will realize the specified flow
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Realization</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInformationFlow_Realization()
 	 * @model type="org.eclipse.uml2.Relationship" ordered="false"
@@ -64,6 +71,9 @@ public interface InformationFlow extends PackageableElement, DirectedRelationshi
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * : Specifies the information items that may circulate on this information flow.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Conveyed</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInformationFlow_Conveyed()
 	 * @model type="org.eclipse.uml2.Classifier" required="true" ordered="false"

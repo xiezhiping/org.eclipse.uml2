@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ObjectFlow.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ObjectFlow.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -102,6 +102,9 @@ public interface ObjectFlow extends ActivityEdge{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Changes or replaces data tokens flowing along edge.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Transformation</em>' reference.
 	 * @see #setTransformation(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getObjectFlow_Transformation()
@@ -128,6 +131,9 @@ public interface ObjectFlow extends ActivityEdge{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Selects tokens from a source object node.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Selection</em>' reference.
 	 * @see #setSelection(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getObjectFlow_Selection()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionOperand.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: InteractionOperand.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -22,8 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An InteractionExpressionOperand is of course an InteractionFragment such that expressions can be nested freely.
- * An operand may be guarded. If the guard evaluates to true, the operand is eligible in the expression, otherwise it is ignored. (very intuitively speaking, formalization has been done in Z.120 Annex B)
+ * An InteractionOperand is contained in a CombinedFragment. An InteractionOperand represent one operand of the expression given by the enclosing CombinedFragment. An InteractionOperand is an InteractionFragment with an optional guard expression. An InteractionOperand may be guarded by a InteractionConstraint. Only InteractionOperands with a guard that evaluates to true at this point in the interaction will be considered for the production of the traces for the enclosing CombinedFragment. InteractionOperand contains an ordered set of InteractionFragments. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -54,6 +53,9 @@ public interface InteractionOperand extends Namespace, InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * of the operand
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(InteractionConstraint)
 	 * @see org.eclipse.uml2.UML2Package#getInteractionOperand_Guard()
@@ -93,6 +95,9 @@ public interface InteractionOperand extends Namespace, InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * fragments of the operand.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Fragment</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteractionOperand_Fragment()
 	 * @see org.eclipse.uml2.InteractionFragment#getEnclosingOperand

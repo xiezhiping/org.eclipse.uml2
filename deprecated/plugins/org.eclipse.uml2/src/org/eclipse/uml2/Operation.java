@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Operation.java,v 1.6 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Operation.java,v 1.7 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -63,6 +63,9 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false). The default value is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Query</em>' attribute.
 	 * @see #setIsQuery(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getOperation_IsQuery()
@@ -186,6 +189,9 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An optional set of Constraints on the state of the system when the Operation is invoked. Subsets Namespace::ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Precondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Precondition()
 	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
@@ -213,6 +219,9 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An optional set of Constraints specifying the state of the system when the Operation is completed. Subsets Namespace::ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Postcondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Postcondition()
 	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
@@ -240,6 +249,9 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * the Operations that are redefined by this Operation. Subsets RedefinableElement. redefinedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Operation</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_RedefinedOperation()
 	 * @model type="org.eclipse.uml2.Operation" ordered="false"
@@ -266,6 +278,9 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * optional Constraint on the result values of an invocation of this Operation. Subsets Namespace::ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Condition</em>' reference.
 	 * @see #setBodyCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getOperation_BodyCondition()

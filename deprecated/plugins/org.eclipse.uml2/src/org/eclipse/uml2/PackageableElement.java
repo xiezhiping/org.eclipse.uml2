@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageableElement.java,v 1.3 2004/06/03 02:59:18 khussey Exp $
+ * $Id: PackageableElement.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,6 +50,9 @@ public interface PackageableElement extends NamedElement, ParameterableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that packageable elements must always have a visibility, i.e., visibility is not optional. Redefines NamedElement::visibility.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Packageable Element visibility</em>' attribute.
 	 * @see org.eclipse.uml2.VisibilityKind
 	 * @see #setPackageableElement_visibility(VisibilityKind)

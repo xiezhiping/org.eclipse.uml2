@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Classifier.java,v 1.10 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Classifier.java,v 1.11 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -69,6 +69,9 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships. Default value is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
 	 * @see #setIsAbstract(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_IsAbstract()
@@ -397,6 +400,9 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References a collaboration occurrence which indicates the collaboration that represents this classifier. (Subsets Classifier.occurrence.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Representation</em>' reference.
 	 * @see #setRepresentation(CollaborationOccurrence)
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Representation()
@@ -424,6 +430,9 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the collaboration occurrences owned by the classifier. (Subsets Element. ownedElement.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Occurrence</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Occurrence()
 	 * @model type="org.eclipse.uml2.CollaborationOccurrence" containment="true" volatile="true" ordered="false"

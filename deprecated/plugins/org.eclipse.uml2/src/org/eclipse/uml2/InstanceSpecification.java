@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.5 2004/06/03 02:59:17 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.6 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -59,6 +59,9 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description. Subsets Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Slot</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInstanceSpecification_Slot()
 	 * @see org.eclipse.uml2.Slot#getOwningInstance
@@ -87,6 +90,9 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInstanceSpecification_Classifier()
 	 * @model type="org.eclipse.uml2.Classifier" ordered="false"
@@ -113,6 +119,9 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A specification of how to compute, derive, or construct the instance. Subsets Element:: ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Specification</em>' containment reference.
 	 * @see #setSpecification(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getInstanceSpecification_Specification()

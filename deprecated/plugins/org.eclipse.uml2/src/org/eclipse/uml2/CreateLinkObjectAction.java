@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CreateLinkObjectAction.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: CreateLinkObjectAction.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Create Link Object Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * This action is exclusively for creating links of association classes. It returns the created link object. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

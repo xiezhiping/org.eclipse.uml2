@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Gate.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: Gate.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -19,9 +19,7 @@ package org.eclipse.uml2;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A gate is a connection point. When the conceptual replacement of InteractionReferences with its referred Sequence Diagram is done, the actual gates of the reference must match the formal gates of the sequence diagram.
- * More implicitly the unnamed gate of the atomic fragment match adjacent fragment gates.
- * Expression gates are found on the border of the expression and they serve both as formal and actual gates. (Details to be explained other place)
+ * A Gate is a connection point for relating a Message outside an InteractionFragment with a Message inside the InteractionFragment. Gate is a specialization of MessageEnd. Gates are connected through Messages. A Gate is actually a representative of an EventOccurrence that is not in the same scope as the Gate. Gates play different roles: we have formal gates on Interactions, actual gates on InteractionOccurrences, expression gates on CombinedFragments. 
  * <!-- end-model-doc -->
  *
  *

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InvocationAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: InvocationAction.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,6 +50,9 @@ public interface InvocationAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specification of an argument value that appears during execution.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInvocationAction_Argument()
 	 * @model type="org.eclipse.uml2.InputPin" containment="true"

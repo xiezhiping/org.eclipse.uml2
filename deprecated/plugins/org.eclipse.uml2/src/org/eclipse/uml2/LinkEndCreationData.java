@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkEndCreationData.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: LinkEndCreationData.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -48,6 +48,9 @@ public interface LinkEndCreationData extends LinkEndData{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * = falseSpecifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Replace All</em>' attribute.
 	 * @see #setIsReplaceAll(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getLinkEndCreationData_IsReplaceAll()
@@ -74,6 +77,9 @@ public interface LinkEndCreationData extends LinkEndData{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Insert At</em>' reference.
 	 * @see #setInsertAt(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getLinkEndCreationData_InsertAt()

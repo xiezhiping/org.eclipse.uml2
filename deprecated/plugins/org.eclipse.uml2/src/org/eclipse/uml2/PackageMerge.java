@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageMerge.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: PackageMerge.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -52,6 +52,9 @@ public interface PackageMerge extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Package that is being extended with the contents of the target of the PackageMerge. Subsets Element::owner and DirectedRelationship::source.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Merging Package</em>' container reference.
 	 * @see #setMergingPackage(org.eclipse.uml2.Package)
 	 * @see org.eclipse.uml2.UML2Package#getPackageMerge_MergingPackage()
@@ -79,6 +82,9 @@ public interface PackageMerge extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Package that is to be merged with the source of the PackageMerge. Subsets DirectedRelationship;;target.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Merged Package</em>' reference.
 	 * @see #setMergedPackage(org.eclipse.uml2.Package)
 	 * @see org.eclipse.uml2.UML2Package#getPackageMerge_MergedPackage()

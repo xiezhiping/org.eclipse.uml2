@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierTemplateParameter.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: ClassifierTemplateParameter.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,6 +50,9 @@ public interface ClassifierTemplateParameter extends TemplateParameter{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * the required relationship between an actual parameter and the parameteredElement for this formal parameter. Default is true.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Allow Substitutable</em>' attribute.
 	 * @see #setAllowSubstitutable(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getClassifierTemplateParameter_AllowSubstitutable()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,6 +56,9 @@ public interface StructuredClassifier extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the properties owned by the classifier. (Subsets StructuredClassifier.role, Classifier. attribute,and Namespace.ownedMember)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_OwnedAttribute()
 	 * @model type="org.eclipse.uml2.Property" containment="true" volatile="true" ordered="false"
@@ -94,6 +97,9 @@ public interface StructuredClassifier extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Part</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_Part()
 	 * @model type="org.eclipse.uml2.Property" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -121,6 +127,9 @@ public interface StructuredClassifier extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the roles that instances may play in this classifier. (Abstract union; subsets Classifier.feature.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_Role()
 	 * @model type="org.eclipse.uml2.ConnectableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -148,6 +157,9 @@ public interface StructuredClassifier extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the connectors owned by the classifier. (Subsets Classifier.feature and Namespace.ownedMember)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Connector</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_OwnedConnector()
 	 * @model type="org.eclipse.uml2.Connector" containment="true" ordered="false"

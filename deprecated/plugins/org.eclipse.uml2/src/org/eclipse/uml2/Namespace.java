@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Namespace.java,v 1.5 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Namespace.java,v 1.6 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -61,6 +61,9 @@ public interface Namespace extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance. This is a derived union.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Member</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_Member()
 	 * @model type="org.eclipse.uml2.NamedElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -89,6 +92,9 @@ public interface Namespace extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a set of Constraints owned by this Namespace. Subsets Namespace::ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Rule</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_OwnedRule()
 	 * @see org.eclipse.uml2.Constraint#getNamespace
@@ -128,6 +134,9 @@ public interface Namespace extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports. Subsets Namespace::member.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Imported Member</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_ImportedMember()
 	 * @model type="org.eclipse.uml2.PackageableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -156,6 +165,9 @@ public interface Namespace extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the ElementImports owned by the Namespace. Subsets Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Element Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_ElementImport()
 	 * @see org.eclipse.uml2.ElementImport#getImportingNamespace
@@ -185,6 +197,9 @@ public interface Namespace extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the PackageImports owned by the Namespace. Subsets Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Package Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_PackageImport()
 	 * @see org.eclipse.uml2.PackageImport#getImportingNamespace

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionOperator.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: InteractionOperator.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -23,6 +23,9 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * A representation of the literals of the enumeration '<em><b>Interaction Operator</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * <!-- begin-model-doc -->
+ * Interaction Operator is an enumeration designating the different kinds of operators of CombinedFragments. The InteractionOperand defines the type of operator of a CombinedFragment. 
+ * <!-- end-model-doc -->
  * @see org.eclipse.uml2.UML2Package#getInteractionOperator()
  * @model
  * @generated

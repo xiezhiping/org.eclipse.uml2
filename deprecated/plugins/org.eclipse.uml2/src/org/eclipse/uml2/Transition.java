@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Transition.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Transition.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,6 +56,9 @@ public interface Transition extends RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * See definition of TransitionKind.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.TransitionKind
 	 * @see #setKind(TransitionKind)
@@ -113,6 +116,9 @@ public interface Transition extends RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Designates the originating vertex (state or pseudostate) of the transition.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(Vertex)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Source()
@@ -141,6 +147,9 @@ public interface Transition extends RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Designates the target vertex that is reached when the transition is taken.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(Vertex)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Target()
@@ -195,6 +204,9 @@ public interface Transition extends RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the triggers that may fire the transition.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Trigger</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Trigger()
 	 * @model type="org.eclipse.uml2.Trigger" ordered="false"
@@ -221,6 +233,9 @@ public interface Transition extends RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Guard()
@@ -258,6 +273,9 @@ public interface Transition extends RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies an optional activity to be performed when the transition fires.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Effect</em>' containment reference.
 	 * @see #setEffect(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Effect()

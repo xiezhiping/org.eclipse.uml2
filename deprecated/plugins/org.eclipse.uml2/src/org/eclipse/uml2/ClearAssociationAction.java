@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClearAssociationAction.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ClearAssociationAction.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Clear Association Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * This action destroys all links of an association that have a particular object at one end. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -49,6 +53,9 @@ public interface ClearAssociationAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * (Specialized from Action:input) Gives the input pin from which is obtained the object whose participation in the association is to be cleared.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getClearAssociationAction_Object()
@@ -86,6 +93,9 @@ public interface ClearAssociationAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Association to be cleared.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Association</em>' reference.
 	 * @see #setAssociation(Association)
 	 * @see org.eclipse.uml2.UML2Package#getClearAssociationAction_Association()

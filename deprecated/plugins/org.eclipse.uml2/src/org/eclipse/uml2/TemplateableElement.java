@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,6 +57,9 @@ public interface TemplateableElement extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * optional bindings from this element to templates.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Template Binding</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateableElement_TemplateBinding()
 	 * @see org.eclipse.uml2.TemplateBinding#getBoundElement

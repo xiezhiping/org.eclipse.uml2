@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CallBehaviorAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: CallBehaviorAction.java,v 1.3 2004/06/06 01:35:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Call Behavior Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * CallBehaviorAction is a call action that invokes a behavior directly rather than invoking a behavioral feature that, in turn, results in the invocation of that behavior. The argument values of the action are available to the execution of the invoked behavior. The execution of the call behavior action waits until the execution of the invoked behavior completes and a result is returned on its output pin. In particular, the invoked behavior may be an activity. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -45,6 +49,9 @@ public interface CallBehaviorAction extends CallAction{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The invoked behavior. It must be capable of accepting and returning control.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Behavior</em>' reference.
 	 * @see #setBehavior(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getCallBehaviorAction_Behavior()

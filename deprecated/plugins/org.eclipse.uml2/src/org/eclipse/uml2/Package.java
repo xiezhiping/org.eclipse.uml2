@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Package.java,v 1.8 2004/06/03 02:59:18 khussey Exp $
+ * $Id: Package.java,v 1.9 2004/06/06 01:35:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -65,6 +65,9 @@ public interface Package extends Namespace, PackageableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the owned members that are Packages. Subsets Package::ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Package</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_NestedPackage()
 	 * @see org.eclipse.uml2.Package#getNestingPackage
@@ -111,6 +114,9 @@ public interface Package extends Namespace, PackageableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the owned members that are Types. Subsets Package::ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Type</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_OwnedType()
 	 * @see org.eclipse.uml2.Type#getPackage
@@ -139,6 +145,9 @@ public interface Package extends Namespace, PackageableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the members that are owned by this Package. Redefines Namespace::ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Member</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_OwnedMember()
 	 * @model type="org.eclipse.uml2.PackageableElement" containment="true" volatile="true" ordered="false"

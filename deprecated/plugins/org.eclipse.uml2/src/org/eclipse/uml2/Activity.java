@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Activity.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Activity.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -61,6 +61,9 @@ public interface Activity extends Behavior{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A textual representation of the computation in the surface language determined by the language attribute.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' attribute.
 	 * @see #setBody(String)
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Body()
@@ -88,6 +91,9 @@ public interface Activity extends Behavior{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the language in which the body of the activity is stated. The interpretation of the expression body depends on the language.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Language</em>' attribute.
 	 * @see #setLanguage(String)
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Language()

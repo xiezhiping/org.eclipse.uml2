@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityGroup.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ActivityGroup.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Activity Group</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Activity groups are a generic grouping construct for nodes and edges. Nodes and edges can belong to more than group. They have no inherent semantics and can be used for various purposes. Subclasses of ActivityGroup may add semantics. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -63,6 +67,9 @@ public interface ActivityGroup extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Activity containing the group.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Activity Group activity</em>' container reference.
 	 * @see #setActivityGroup_activity(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getActivityGroup_ActivityGroup_activity()

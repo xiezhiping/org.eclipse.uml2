@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: VariableAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: VariableAction.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Variable Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * VariableAction is an abstract class for actions that operate on a statically specified variable. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -45,6 +49,9 @@ public interface VariableAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Variable to be read.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Variable</em>' reference.
 	 * @see #setVariable(Variable)
 	 * @see org.eclipse.uml2.UML2Package#getVariableAction_Variable()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Clause.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Clause.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -168,6 +168,9 @@ public interface Clause extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A list of output pins within the body fragment whose values are copied to the result pins of the containing conditional node or conditional node after execution of the clause body.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Output</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClause_BodyOutput()
 	 * @model type="org.eclipse.uml2.OutputPin" ordered="false"

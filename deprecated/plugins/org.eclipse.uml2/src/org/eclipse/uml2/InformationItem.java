@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InformationItem.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: InformationItem.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Information Item</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An information Item is an abstraction of all kinds of information that can be exchanged between objects. It is a kind of classifier intended for representing information at a very abstract way, which is cannot be instanciated. One purpose of Information Items is to be able to define preliminary models, before having taken detailed modeling decisions on types or stuctures. One other purpose of information items and information flows is to abstract complex models by a less precise but more general representation of the information exchanged betwen entities of a system. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -47,6 +51,9 @@ public interface InformationItem extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * : Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers. Customer Company Employee product wage <<flow>> <<flow>>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Represented</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInformationItem_Represented()
 	 * @model type="org.eclipse.uml2.Classifier" ordered="false"

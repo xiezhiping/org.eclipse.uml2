@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImport.java,v 1.4 2004/06/03 02:59:18 khussey Exp $
+ * $Id: ElementImport.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,6 +57,9 @@ public interface ElementImport extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Visibility</em>' attribute.
 	 * @see org.eclipse.uml2.VisibilityKind
 	 * @see #setVisibility(VisibilityKind)
@@ -86,6 +89,9 @@ public interface ElementImport extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the name that should be added to the namespace of the importing Pack-age in lieu of the name of the imported PackagableElement. The aliased name must not clash with any other member name in the importing Package. By default, no alias is used.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Alias</em>' attribute.
 	 * @see #setAlias(String)
 	 * @see org.eclipse.uml2.UML2Package#getElementImport_Alias()
@@ -112,6 +118,9 @@ public interface ElementImport extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the PackageableElement whose name is to be added to a Namespace. Subsets DirectedRelationship::target.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Imported Element</em>' reference.
 	 * @see #setImportedElement(PackageableElement)
 	 * @see org.eclipse.uml2.UML2Package#getElementImport_ImportedElement()
@@ -139,6 +148,9 @@ public interface ElementImport extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the Namespace that imports a PackageableElement from another Package. Subsets DirectedRelationship::source and Element::owner.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Importing Namespace</em>' container reference.
 	 * @see #setImportingNamespace(Namespace)
 	 * @see org.eclipse.uml2.UML2Package#getElementImport_ImportingNamespace()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectionPointReference.java,v 1.4 2004/06/03 02:59:18 khussey Exp $
+ * $Id: ConnectionPointReference.java,v 1.5 2004/06/06 01:35:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -52,6 +52,9 @@ public interface ConnectionPointReference extends Vertex{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The entryPoint kind pseudo states corresponding to this connection point.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Entry</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConnectionPointReference_Entry()
 	 * @model type="org.eclipse.uml2.Pseudostate" ordered="false"
@@ -79,6 +82,9 @@ public interface ConnectionPointReference extends Vertex{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The exitPoints kind pseudo states corresponding to this connection point.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exit</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConnectionPointReference_Exit()
 	 * @model type="org.eclipse.uml2.Pseudostate" ordered="false"

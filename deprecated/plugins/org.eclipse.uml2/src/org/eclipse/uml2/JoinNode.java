@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: JoinNode.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: JoinNode.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,6 +50,9 @@ public interface JoinNode extends ControlNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Tells whether tokens having objects with the same identity are combined into one by the join. Default value is true.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Combine Duplicate</em>' attribute.
 	 * @see #setIsCombineDuplicate(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getJoinNode_IsCombineDuplicate()
@@ -76,6 +79,9 @@ public interface JoinNode extends ControlNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A specification giving the conditions under which the join will emit a token. Default is “and”.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Join Spec</em>' containment reference.
 	 * @see #setJoinSpec(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getJoinNode_JoinSpec()

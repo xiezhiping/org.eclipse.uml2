@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateSignature.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: TemplateSignature.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,6 +57,9 @@ public interface TemplateSignature extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The complete set of formal template parameters for this template signature.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateSignature_Parameter()
 	 * @model type="org.eclipse.uml2.TemplateParameter" required="true" volatile="true" ordered="false"
@@ -74,6 +77,9 @@ public interface TemplateSignature extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The formal template parameters that are owned by this template signature. Subsets parameter and Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateSignature_OwnedParameter()
 	 * @see org.eclipse.uml2.TemplateParameter#getSignature
@@ -148,6 +154,9 @@ public interface TemplateSignature extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * element that owns this template signature. Subsets Element::owner.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Template</em>' container reference.
 	 * @see #setTemplate(TemplateableElement)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateSignature_Template()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Class.java,v 1.9 2004/06/03 02:59:18 khussey Exp $
+ * $Id: Class.java,v 1.10 2004/06/06 01:35:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -59,6 +59,9 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether an object specified by this class is active or not. If true, then the owning class is referred to as an active class. If false, then such a class is referred to as a passive class.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Active</em>' attribute.
 	 * @see #setIsActive(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getClass_IsActive()
@@ -87,6 +90,9 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The operations owned by the class. The association is ordered. Subsets Classifier::feature and Namespace::ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_OwnedOperation()
 	 * @see org.eclipse.uml2.Operation#getClass_
@@ -126,6 +132,9 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This gives the superclasses of a class. It redefines Classifier::general. This is derived.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Super Class</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_SuperClass()
 	 * @model type="org.eclipse.uml2.Class" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -182,6 +191,9 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References all the Classifiers that are defined (nested) within the Class. Subsets Element:: ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Classifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_NestedClassifier()
 	 * @model type="org.eclipse.uml2.Classifier" containment="true"
@@ -220,6 +232,9 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Receptions that objects of this class are willing to accept. (Specializes Namespace.owned- Member and Classifier.feature.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_OwnedReception()
 	 * @model type="org.eclipse.uml2.Reception" containment="true" ordered="false"

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElement.java,v 1.5 2004/06/03 02:59:17 khussey Exp $
+ * $Id: NamedElement.java,v 1.6 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -62,6 +62,9 @@ public interface NamedElement extends TemplateableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The name of the NamedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.uml2.UML2Package#getNamedElement_Name()
@@ -89,6 +92,9 @@ public interface NamedElement extends TemplateableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself. This is a derived attribute.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualified Name</em>' attribute.
 	 * @see org.eclipse.uml2.UML2Package#getNamedElement_QualifiedName()
 	 * @model default="" dataType="org.eclipse.uml2.String" transient="true" changeable="false" volatile="true" derived="true"
@@ -105,6 +111,9 @@ public interface NamedElement extends TemplateableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines the visibility of the NamedElement within different Namespaces within the overall model. Package Dependencies (“Dependencies” on page 94)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Visibility</em>' attribute.
 	 * @see org.eclipse.uml2.VisibilityKind
 	 * @see #setVisibility(VisibilityKind)
@@ -162,6 +171,9 @@ public interface NamedElement extends TemplateableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The expression used to define the name of this named element.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Name Expression</em>' containment reference.
 	 * @see #setNameExpression(StringExpression)
 	 * @see org.eclipse.uml2.UML2Package#getNamedElement_NameExpression()

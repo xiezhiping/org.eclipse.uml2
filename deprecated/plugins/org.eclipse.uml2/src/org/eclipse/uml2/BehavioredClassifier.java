@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.5 2004/06/03 02:59:18 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.6 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,6 +58,9 @@ public interface BehavioredClassifier extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References behavior specifications owned by a classifier. (Specializes Namespace.owned- Member.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Behavior</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedBehavior()
 	 * @see org.eclipse.uml2.Behavior#getContext
@@ -96,6 +99,9 @@ public interface BehavioredClassifier extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A behavior specification that specifies the behavior of the classifier itself. (Specializes BehavioredClassifier.ownedBehavior.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier Behavior</em>' reference.
 	 * @see #setClassifierBehavior(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_ClassifierBehavior()
@@ -124,6 +130,9 @@ public interface BehavioredClassifier extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * (Specializes Element.ownedElement and Realization.clientDependency.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Implementation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_Implementation()
 	 * @see org.eclipse.uml2.Implementation#getImplementingClassifier

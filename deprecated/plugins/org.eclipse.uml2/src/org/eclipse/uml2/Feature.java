@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Feature.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Feature.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -52,6 +52,9 @@ public interface Feature extends RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies whether the feature is applied at the classifier-level (true) or the instance-level (false). Default value is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Static</em>' attribute.
 	 * @see #setIsStatic(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getFeature_IsStatic()
@@ -80,6 +83,9 @@ public interface Feature extends RedefinableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Classifiers that have this Feature as a feature. This is a derived union.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Featuring Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getFeature_FeaturingClassifier()
 	 * @see org.eclipse.uml2.Classifier#getFeatures

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CommunicationPath.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: CommunicationPath.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Communication Path</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A communication path is an association between two Nodes, through which Nodes are able to exchange signals and messages. In the metamodel, CommunicationPath is a subclass of Association. 
+ * <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.uml2.UML2Package#getCommunicationPath()

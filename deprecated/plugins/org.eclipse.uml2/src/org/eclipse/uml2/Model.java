@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Model.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Model.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,6 +50,9 @@ public interface Model extends org.eclipse.uml2.Package{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Viewpoint</em>' attribute.
 	 * @see #setViewpoint(String)
 	 * @see org.eclipse.uml2.UML2Package#getModel_Viewpoint()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Pin.java,v 1.3 2004/05/20 03:20:04 khussey Exp $
+ * $Id: Pin.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,12 +18,16 @@ package org.eclipse.uml2;
  * A representation of the model object '<em><b>Pin</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * Pins are connected as inputs and outputs to actions. They provide values to actions and accept result values from them. 
+ * <!-- end-model-doc -->
+ *
  *
  * @see org.eclipse.uml2.UML2Package#getPin()
  * @model abstract="true"
  * @generated
  */
-public interface Pin extends ObjectNode, MultiplicityElement {
+public interface Pin extends ObjectNode, MultiplicityElement{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

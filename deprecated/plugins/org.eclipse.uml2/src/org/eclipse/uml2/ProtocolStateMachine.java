@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolStateMachine.java,v 1.3 2004/05/11 15:24:01 khussey Exp $
+ * $Id: ProtocolStateMachine.java,v 1.4 2004/06/06 01:35:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,6 +50,9 @@ public interface ProtocolStateMachine extends StateMachine{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * : Conformance between protocol state machines.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Conformance</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProtocolStateMachine_Conformance()
 	 * @see org.eclipse.uml2.ProtocolConformance#getSpecificMachine

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImport.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: PackageImport.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,6 +56,9 @@ public interface PackageImport extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the visibility of the imported PackageableElements within the import-ing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not. By default, the value of visibility is public.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Visibility</em>' attribute.
 	 * @see org.eclipse.uml2.VisibilityKind
 	 * @see #setVisibility(VisibilityKind)
@@ -84,6 +87,9 @@ public interface PackageImport extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the Package whose members are imported into a Namespace. Subsets DirectedRelationship::target.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Imported Package</em>' reference.
 	 * @see #setImportedPackage(org.eclipse.uml2.Package)
 	 * @see org.eclipse.uml2.UML2Package#getPackageImport_ImportedPackage()
@@ -111,6 +117,9 @@ public interface PackageImport extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the Namespace that imports the members from a Package. Subsets DirectedRelationship::source and Element::owner.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Importing Namespace</em>' container reference.
 	 * @see #setImportingNamespace(Namespace)
 	 * @see org.eclipse.uml2.UML2Package#getPackageImport_ImportingNamespace()

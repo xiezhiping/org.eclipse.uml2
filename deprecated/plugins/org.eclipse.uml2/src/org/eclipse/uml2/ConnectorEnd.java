@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectorEnd.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: ConnectorEnd.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -67,6 +67,9 @@ public interface ConnectorEnd extends MultiplicityElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' reference.
 	 * @see #setRole(ConnectableElement)
 	 * @see org.eclipse.uml2.UML2Package#getConnectorEnd_Role()

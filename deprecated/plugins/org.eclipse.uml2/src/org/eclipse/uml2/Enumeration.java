@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Enumeration.java,v 1.3 2004/06/03 02:59:18 khussey Exp $
+ * $Id: Enumeration.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,6 +54,9 @@ public interface Enumeration extends DataType{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * ordered set of literals for this Enumeration. Subsets Element::ownedMember.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Literal</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getEnumeration_OwnedLiteral()
 	 * @see org.eclipse.uml2.EnumerationLiteral#getEnumeration

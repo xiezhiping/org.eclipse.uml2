@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Reception.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Reception.java,v 1.4 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -49,6 +49,9 @@ public interface Reception extends BehavioralFeature{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The signal that this reception handles.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Signal</em>' reference.
 	 * @see #setSignal(Signal)
 	 * @see org.eclipse.uml2.UML2Package#getReception_Signal()

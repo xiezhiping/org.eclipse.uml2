@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RaiseExceptionAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: RaiseExceptionAction.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Raise Exception Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * (CompleteActions) RaiseExceptionAction is an action that causes an exception to occur. The input value becomes the exception object. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -46,6 +50,9 @@ public interface RaiseExceptionAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An input pin whose value becomes an exception object.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exception</em>' reference.
 	 * @see #setException(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getRaiseExceptionAction_Exception()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ReadIsClassifiedObjectAction.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Read Is Classified Object Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * This action tests the classification of an object against a given class. It can be restricted to testing direct instances. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -52,6 +56,9 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates whether the classifier must directly classify the input object. The default value is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Direct</em>' attribute.
 	 * @see #setIsDirect(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getReadIsClassifiedObjectAction_IsDirect()
@@ -78,6 +85,9 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The classifier against which the classification of the input object is tested.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier</em>' reference.
 	 * @see #setClassifier(Classifier)
 	 * @see org.eclipse.uml2.UML2Package#getReadIsClassifiedObjectAction_Classifier()
@@ -104,6 +114,9 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * After termination of the action, will hold the result of the test. (Specializes Action.output.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReadIsClassifiedObjectAction_Result()
@@ -141,6 +154,9 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Holds the object whose classification is to be tested. (Specializes Action.input.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReadIsClassifiedObjectAction_Object()

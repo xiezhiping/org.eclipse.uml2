@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -61,6 +61,9 @@ public interface MultiplicityElement extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered. Default is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
 	 * @see #setIsOrdered(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getMultiplicityElement_IsOrdered()
@@ -88,6 +91,9 @@ public interface MultiplicityElement extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique. Default is true.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Unique</em>' attribute.
 	 * @see #setIsUnique(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getMultiplicityElement_IsUnique()
@@ -115,6 +121,9 @@ public interface MultiplicityElement extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the lower bound of the multiplicity interval, if it is expressed as an integer.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lower</em>' attribute.
 	 * @see org.eclipse.uml2.UML2Package#getMultiplicityElement_Lower()
 	 * @model default="1" dataType="org.eclipse.uml2.Integer" transient="true" changeable="false" volatile="true" derived="true"
@@ -131,6 +140,9 @@ public interface MultiplicityElement extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper</em>' attribute.
 	 * @see org.eclipse.uml2.UML2Package#getMultiplicityElement_Upper()
 	 * @model default="1" dataType="org.eclipse.uml2.UnlimitedNatural" transient="true" changeable="false" volatile="true" derived="true"
@@ -146,6 +158,9 @@ public interface MultiplicityElement extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The specification of the upper bound for this multiplicity. Subsets Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper Value</em>' containment reference.
 	 * @see #setUpperValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getMultiplicityElement_UpperValue()
@@ -183,6 +198,9 @@ public interface MultiplicityElement extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The specification of the lower bound for this multiplicity. Subsets Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lower Value</em>' containment reference.
 	 * @see #setLowerValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getMultiplicityElement_LowerValue()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ObjectNode.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ObjectNode.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -53,6 +53,9 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * = FIFO Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Ordering</em>' attribute.
 	 * @see org.eclipse.uml2.ObjectNodeOrderingKind
 	 * @see #setOrdering(ObjectNodeOrderingKind)
@@ -119,6 +122,9 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The required states of the object available at this point in the activity.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In State</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getObjectNode_InState()
 	 * @model type="org.eclipse.uml2.State" ordered="false"

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Comment.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Comment.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -55,6 +55,9 @@ public interface Comment extends TemplateableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a string that is the comment.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' attribute.
 	 * @see #setBody(String)
 	 * @see org.eclipse.uml2.UML2Package#getComment_Body()
@@ -82,6 +85,9 @@ public interface Comment extends TemplateableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Element(s) being commented.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Annotated Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getComment_AnnotatedElement()
 	 * @model type="org.eclipse.uml2.Element" ordered="false"

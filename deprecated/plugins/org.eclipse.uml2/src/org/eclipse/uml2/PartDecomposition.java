@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PartDecomposition.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: PartDecomposition.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -19,7 +19,7 @@ package org.eclipse.uml2;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A part decomposition is a special InteractionReference that defines the behavior within one interacting entity (Part) in one sequence diagram.
+ * PartDecomposition is a description of the internal interactions of one Lifeline relative to an Interaction. A Lifeline has a class associated as the type of the ConnectableElement that the Lifeline represents. That class may have an internal structure and the PartDecomposition is an Interaction that describes the behavior of that internal structure relative to the Interaction where the decomposition is referenced. A PartDecomposition is a specialization of InteractionOccurrence. It associates with the ConnectableElement that it decomposes. 
  * <!-- end-model-doc -->
  *
  *

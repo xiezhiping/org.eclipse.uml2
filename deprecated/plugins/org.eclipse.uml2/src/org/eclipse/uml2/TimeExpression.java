@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeExpression.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: TimeExpression.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -51,6 +51,9 @@ public interface TimeExpression extends ValueSpecification{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * True if the TimeExpression describes the first point in time of the NamedElement referenced by event, in cases where the NamedElement describes something which extends in time. False if the TimeExpression describes the last point in time for the referenced NamedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>First Time</em>' attribute.
 	 * @see #setFirstTime(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getTimeExpression_FirstTime()
@@ -77,6 +80,9 @@ public interface TimeExpression extends ValueSpecification{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Refers to the specification of the event occurrence that the TimeExpression describes
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Event</em>' reference.
 	 * @see #setEvent(NamedElement)
 	 * @see org.eclipse.uml2.UML2Package#getTimeExpression_Event()

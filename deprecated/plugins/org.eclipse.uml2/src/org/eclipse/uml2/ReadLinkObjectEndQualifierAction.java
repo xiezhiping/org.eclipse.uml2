@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierAction.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Read Link Object End Qualifier Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * This action reads a qualifier value or values on an end of a link object. The association end to retrieve the qualifier from is specified statically, and the link object to read is provided on the input pin at run time. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -50,6 +54,9 @@ public interface ReadLinkObjectEndQualifierAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * (Specialized from Action:input) Gives the input pin from which the link object is obtained.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReadLinkObjectEndQualifierAction_Object()
@@ -87,6 +94,9 @@ public interface ReadLinkObjectEndQualifierAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Pin where the result value is placed
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReadLinkObjectEndQualifierAction_Result()
@@ -124,6 +134,9 @@ public interface ReadLinkObjectEndQualifierAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The attribute representing the qualifier to be read.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualifier</em>' reference.
 	 * @see #setQualifier(Property)
 	 * @see org.eclipse.uml2.UML2Package#getReadLinkObjectEndQualifierAction_Qualifier()

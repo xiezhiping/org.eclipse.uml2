@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AcceptCallAction.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: AcceptCallAction.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Accept Call Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * (CompleteActions) AcceptCallAction is an accept event action representing the receipt of a synchronous call request. In addition to the normal operation parameters, the action produces a output token that is needed later to supply the information to the ReplyAction necessary to return control to the caller. This action is for synchronous calls. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -46,6 +50,9 @@ public interface AcceptCallAction extends AcceptEventAction{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Pin where a token is placed containing sufficient information to perform a subsequent reply and return control to the caller. The value in this token is opaque. It can be passed and copied but it cannot be manipulated by the model.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Return Information</em>' reference.
 	 * @see #setReturnInformation(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getAcceptCallAction_ReturnInformation()

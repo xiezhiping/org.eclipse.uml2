@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExecutionOccurrence.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ExecutionOccurrence.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Execution Occurrence</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An ExecutionOccurrence is an instantiation of a unit of behavior within the Lifeline. Since the ExecutionOccurrence will have some duration, it is represented by two Eventoccurrences, the start EventOccurrence and the finish EventOccurrence. An ExecutionOccurrence is an InteractionFragment. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -49,6 +53,9 @@ public interface ExecutionOccurrence extends InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Eventoccurrence that designates the start of the Action
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Start</em>' reference.
 	 * @see #setStart(EventOccurrence)
 	 * @see org.eclipse.uml2.UML2Package#getExecutionOccurrence_Start()
@@ -77,6 +84,9 @@ public interface ExecutionOccurrence extends InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Eventoccurrence that designates the finish of the Action.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Finish</em>' reference.
 	 * @see #setFinish(EventOccurrence)
 	 * @see org.eclipse.uml2.UML2Package#getExecutionOccurrence_Finish()
@@ -105,6 +115,9 @@ public interface ExecutionOccurrence extends InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the associated behavior
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Behavior</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getExecutionOccurrence_Behavior()
 	 * @model type="org.eclipse.uml2.Behavior"

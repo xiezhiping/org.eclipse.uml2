@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MessageEnd.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: MessageEnd.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Message End</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A MessageEnd is an abstract NamedElement that represents what can occur at the end of a Message. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -47,6 +51,9 @@ public interface MessageEnd extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * the Message that contains the information of a receiveEvent
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Receive Message</em>' reference.
 	 * @see #setReceiveMessage(Message)
 	 * @see org.eclipse.uml2.UML2Package#getMessageEnd_ReceiveMessage()
@@ -75,6 +82,9 @@ public interface MessageEnd extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Message that contains the information of a sendEvent
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Send Message</em>' reference.
 	 * @see #setSendMessage(Message)
 	 * @see org.eclipse.uml2.UML2Package#getMessageEnd_SendMessage()

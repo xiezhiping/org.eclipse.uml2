@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExpansionNode.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ExpansionNode.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Expansion Node</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * (ExtraStructuredActivities) An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -47,6 +51,9 @@ public interface ExpansionNode extends ObjectNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * expansion region for which the node is an output.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Region As Output</em>' reference.
 	 * @see #setRegionAsOutput(ExpansionRegion)
 	 * @see org.eclipse.uml2.UML2Package#getExpansionNode_RegionAsOutput()
@@ -75,6 +82,9 @@ public interface ExpansionNode extends ObjectNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * expansion region for which the node is an input.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Region As Input</em>' reference.
 	 * @see #setRegionAsInput(ExpansionRegion)
 	 * @see org.eclipse.uml2.UML2Package#getExpansionNode_RegionAsInput()

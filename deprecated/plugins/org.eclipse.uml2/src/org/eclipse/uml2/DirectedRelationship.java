@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DirectedRelationship.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: DirectedRelationship.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -52,6 +52,9 @@ public interface DirectedRelationship extends Relationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the sources of the DirectedRelationship. Subsets Relationship::relatedElement. This is a derived union.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDirectedRelationship_Source()
 	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -68,6 +71,9 @@ public interface DirectedRelationship extends Relationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the targets of the DirectedRelationship. Subsets Relationship::relatedElement. This is a derived union.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDirectedRelationship_Target()
 	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"

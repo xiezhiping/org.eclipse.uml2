@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CallAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: CallAction.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Call Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * CallAction is an abstract class for actions that invoke behavior and receive return values. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -50,6 +54,9 @@ public interface CallAction extends InvocationAction{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Synchronous</em>' attribute.
 	 * @see #setIsSynchronous(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getCallAction_IsSynchronous()
@@ -77,6 +84,9 @@ public interface CallAction extends InvocationAction{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A list of output pins where the results of performing the invocation are placed.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getCallAction_Result()
 	 * @model type="org.eclipse.uml2.OutputPin" containment="true"

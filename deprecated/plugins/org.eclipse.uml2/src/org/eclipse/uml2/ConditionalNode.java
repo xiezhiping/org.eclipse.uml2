@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConditionalNode.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ConditionalNode.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -131,6 +131,9 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A list of output pins that constitute the data flow outputs of the conditional.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConditionalNode_Result()
 	 * @model type="org.eclipse.uml2.OutputPin" containment="true"

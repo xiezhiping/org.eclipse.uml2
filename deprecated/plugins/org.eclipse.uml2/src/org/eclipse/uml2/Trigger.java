@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Trigger.java,v 1.5 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Trigger.java,v 1.6 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -51,6 +51,9 @@ public interface Trigger extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the ports at which a communication that caused an event may have arrived.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Port</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTrigger_Port()
 	 * @model type="org.eclipse.uml2.Port" ordered="false"

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Parameter.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Parameter.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -77,6 +77,9 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates whether a parameter is being sent into or out of a behavioral element. The default value is in.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Direction</em>' attribute.
 	 * @see org.eclipse.uml2.ParameterDirectionKind
 	 * @see #setDirection(ParameterDirectionKind)
@@ -189,6 +192,9 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Operation for which this is a formal parameter. Subsets NamedElement:: namespace.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operation</em>' container reference.
 	 * @see #setOperation(Operation)
 	 * @see org.eclipse.uml2.UML2Package#getParameter_Operation()
@@ -216,6 +222,9 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter. Subsets Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getParameter_DefaultValue()

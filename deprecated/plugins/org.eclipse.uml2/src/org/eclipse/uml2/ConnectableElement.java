@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectableElement.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: ConnectableElement.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -52,6 +52,9 @@ public interface ConnectableElement extends NamedElement, ParameterableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Denotes a connector that attaches to this connectable element.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConnectableElement_End()
 	 * @see org.eclipse.uml2.ConnectorEnd#getRole

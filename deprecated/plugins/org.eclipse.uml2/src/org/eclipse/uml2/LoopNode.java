@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LoopNode.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: LoopNode.java,v 1.4 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -190,6 +190,9 @@ public interface LoopNode extends StructuredActivityNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A list of output pins that constitute the data flow output of the entire loop.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLoopNode_Result()
 	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
@@ -228,6 +231,9 @@ public interface LoopNode extends StructuredActivityNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A list of output pins owned by the loop that hold the values of the loop variables during an execution of the loop. When the test fails, the values are copied to the result pins of the loop.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Loop Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLoopNode_LoopVariable()
 	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
@@ -266,6 +272,9 @@ public interface LoopNode extends StructuredActivityNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A list of output pins within the body fragment the values of which are copied to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Output</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLoopNode_BodyOutput()
 	 * @model type="org.eclipse.uml2.OutputPin" ordered="false"
@@ -293,6 +302,9 @@ public interface LoopNode extends StructuredActivityNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A list of values that are copied into the loop variable pins before the first iteration of the loop.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Loop Variable Input</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLoopNode_LoopVariableInput()
 	 * @model type="org.eclipse.uml2.InputPin" containment="true"

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadLinkObjectEndAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ReadLinkObjectEndAction.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Read Link Object End Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * This action reads the object on an end of a link object. The association end to retrieve the object from is specified statically, and the link object to read is provided on the input pin at run time. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -87,6 +91,9 @@ public interface ReadLinkObjectEndAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Link end to be read.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' reference.
 	 * @see #setEnd(Property)
 	 * @see org.eclipse.uml2.UML2Package#getReadLinkObjectEndAction_End()

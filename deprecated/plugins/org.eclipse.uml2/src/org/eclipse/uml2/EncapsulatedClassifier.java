@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EncapsulatedClassifier.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: EncapsulatedClassifier.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -53,6 +53,9 @@ public interface EncapsulatedClassifier extends StructuredClassifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References a set of ports that an encapsulated classifier owns. (Subsets Classifier.feature and Namespace.ownedMember.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Port</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getEncapsulatedClassifier_OwnedPort()
 	 * @model type="org.eclipse.uml2.Port" containment="true" ordered="false"

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralUnlimitedNatural.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: LiteralUnlimitedNatural.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -49,6 +49,9 @@ public interface LiteralUnlimitedNatural extends LiteralSpecification{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The specified UnlimitedNatural value.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(int)
 	 * @see org.eclipse.uml2.UML2Package#getLiteralUnlimitedNatural_Value()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Port.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Port.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,6 +56,9 @@ public interface Port extends Property{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier (see “BehavioredClassifier (from BasicBehaviors)” on page 387). Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain. The default value is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Behavior</em>' attribute.
 	 * @see #setIsBehavior(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getPort_IsBehavior()
@@ -83,6 +86,9 @@ public interface Port extends Property{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If true indicates that this port is used to provide the published functionality of a classifier; if false, this port is used to implement the classifier but is not part of the essential externally- visible functionality of the classifier and can, therefore, be altered or deleted along with the internal implementation of the classifier and other properties that are considered part of its implementation. The default value for this attribute is true.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Service</em>' attribute.
 	 * @see #setIsService(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getPort_IsService()
@@ -110,6 +116,9 @@ public interface Port extends Property{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the interfaces specifying the set of operations and receptions which the classifier expects its environment to handle. This association is derived as the set of interfaces required by the type of the port or its supertypes.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Required</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPort_Required()
 	 * @model type="org.eclipse.uml2.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -137,6 +146,9 @@ public interface Port extends Property{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes. (Subsets Element.redefinedElement.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Port</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPort_RedefinedPort()
 	 * @model type="org.eclipse.uml2.Port" ordered="false"
@@ -164,6 +176,9 @@ public interface Port extends Property{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the interfaces specifying the set of operations and receptions which the classifier offers to its environment, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived from the interfaces realized by the type of the port or by the type of the port, if the port was typed by an interface.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Provided</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPort_Provided()
 	 * @model type="org.eclipse.uml2.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -190,6 +205,9 @@ public interface Port extends Property{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References an optional protocol state machine which describes valid interactions at this interaction point.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Protocol</em>' reference.
 	 * @see #setProtocol(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getPort_Protocol()

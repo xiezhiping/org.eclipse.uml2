@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TransitionKind.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: TransitionKind.java,v 1.3 2004/06/06 01:35:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -23,6 +23,9 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * A representation of the literals of the enumeration '<em><b>Transition Kind</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * <!-- begin-model-doc -->
+ * TransitionKind is an enumeration of the following literal values: • external • internal • local 
+ * <!-- end-model-doc -->
  * @see org.eclipse.uml2.UML2Package#getTransitionKind()
  * @model
  * @generated

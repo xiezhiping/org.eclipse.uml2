@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Connector.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Connector.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -85,6 +85,9 @@ public interface Connector extends Feature{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An optional association that specifies the link corresponding to this connector.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(Association)
 	 * @see org.eclipse.uml2.UML2Package#getConnector_Type()
@@ -112,6 +115,9 @@ public interface Connector extends Feature{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced. (Subsets Element.redefinedElement.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Connector</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConnector_RedefinedConnector()
 	 * @model type="org.eclipse.uml2.Connector" ordered="false"
@@ -139,6 +145,9 @@ public interface Connector extends Feature{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A connector consists of at two connector ends, each of which represents the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered. (Subsets Element.ownedElement.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConnector_End()
 	 * @model type="org.eclipse.uml2.ConnectorEnd" containment="true" lower="2"

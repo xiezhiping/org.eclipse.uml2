@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Activity Partition</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Partitions divide the nodes and edges to constrain and show a view of the contained nodes. Partitions can share contents. They often correspond to organizational units in a business model. They may be used to allocate characteristics or resources among the nodes of an activity. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -55,6 +59,9 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Tells whether the partition groups other partitions along a dimension.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Dimension</em>' attribute.
 	 * @see #setIsDimension(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_IsDimension()
@@ -82,6 +89,9 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Tells whether the partition represents an entity to which the partitioning structure does not apply.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is External</em>' attribute.
 	 * @see #setIsExternal(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_IsExternal()
@@ -234,6 +244,9 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An element constraining behaviors invoked by nodes in the partition.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Represents</em>' reference.
 	 * @see #setRepresents(Element)
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_Represents()

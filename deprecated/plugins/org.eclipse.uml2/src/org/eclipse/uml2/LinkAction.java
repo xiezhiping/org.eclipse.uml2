@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkAction.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: LinkAction.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Link Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A link action creates, destroys, or reads links, identifying a link by its end objects and qualifier values, if any. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -49,6 +53,9 @@ public interface LinkAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Data identifying one end of a link by the objects on its ends and qualifiers.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End Data</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLinkAction_EndData()
 	 * @model type="org.eclipse.uml2.LinkEndData" containment="true" lower="2" volatile="true" ordered="false"

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExceptionHandler.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ExceptionHandler.java,v 1.4 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Exception Handler</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * (ExtraStructuredActivities) An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -50,6 +54,9 @@ public interface ExceptionHandler extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Protected Node</em>' container reference.
 	 * @see #setProtectedNode(ExecutableNode)
 	 * @see org.eclipse.uml2.UML2Package#getExceptionHandler_ProtectedNode()
@@ -77,6 +84,9 @@ public interface ExceptionHandler extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A node that is executed if the handler satisfies an uncaught exception.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Handler Body</em>' reference.
 	 * @see #setHandlerBody(ExecutableNode)
 	 * @see org.eclipse.uml2.UML2Package#getExceptionHandler_HandlerBody()

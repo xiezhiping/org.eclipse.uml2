@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CallTrigger.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: CallTrigger.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Call Trigger</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A call trigger represents the reception of a request to invoke a specific operation and specifies a call event. A call event is distinct from the call action that caused it. A call event may cause the invocation of a behavior that is the method of the operation referenced by the call request, if that operation is owned or inherited by the classifier that specified the receiver object. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -45,6 +49,9 @@ public interface CallTrigger extends MessageTrigger{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Designates the operation whose invocation raised the call event that is specified by the call trigger.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operation</em>' reference.
 	 * @see #setOperation(Operation)
 	 * @see org.eclipse.uml2.UML2Package#getCallTrigger_Operation()

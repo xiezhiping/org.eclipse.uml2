@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ValuePin.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ValuePin.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -19,6 +19,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Value Pin</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A value pin is an input pin that provides a value to an action that does not come from an incoming object flow edge. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -47,6 +51,9 @@ public interface ValuePin extends InputPin{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Value that the pin will provide.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getValuePin_Value()

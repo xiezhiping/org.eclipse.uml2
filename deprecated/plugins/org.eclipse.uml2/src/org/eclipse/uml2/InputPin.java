@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InputPin.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: InputPin.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Input Pin</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An input pin is a pin that holds input values to be consumed by an action. They are object nodes and receive values from other actions through object flows. See Pin, Action, and ObjectNode for more details. 
+ * <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.uml2.UML2Package#getInputPin()

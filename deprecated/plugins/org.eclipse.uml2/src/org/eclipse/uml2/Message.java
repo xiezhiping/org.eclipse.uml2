@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Message.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Message.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Message</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A Message defines a particular communication between Lifelines of an Interaction. A Message is a NamedElement that defines one specific kind of communication in an Interaction. A communication can be e.g. raising a signal, invoking an Operation, creating or destroying an Instance. The Message specifies not only the kind of communication given by the dispatching ExecutionOccurrence, but also the sender and the receiver. A Message associates normally two EventOccurrences - one sending EventOccurrence and one receiving EventOccurrence. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -56,6 +60,9 @@ public interface Message extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The derived kind of the Message (complete, lost, found or unknown) complete = sendEvent and receiveEvent are present lost = sendEvent present and receiveEvent absent found = sendEvent absent and receiveEvent present unknown = sendEvent and receiveEvent absent (should not appear)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Message Kind</em>' attribute.
 	 * @see org.eclipse.uml2.MessageKind
 	 * @see org.eclipse.uml2.UML2Package#getMessage_MessageKind()
@@ -102,6 +109,9 @@ public interface Message extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * the Receiving of the Message
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Receive Event</em>' reference.
 	 * @see #setReceiveEvent(MessageEnd)
 	 * @see org.eclipse.uml2.UML2Package#getMessage_ReceiveEvent()
@@ -130,6 +140,9 @@ public interface Message extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Sending of the Message.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Send Event</em>' reference.
 	 * @see #setSendEvent(MessageEnd)
 	 * @see org.eclipse.uml2.UML2Package#getMessage_SendEvent()
@@ -157,6 +170,9 @@ public interface Message extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Connector on which this Message is sent.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Connector</em>' reference.
 	 * @see #setConnector(Connector)
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Connector()
@@ -184,6 +200,9 @@ public interface Message extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The enclosing Interaction owning the Message
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interaction</em>' container reference.
 	 * @see #setInteraction(Interaction)
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Interaction()
@@ -211,6 +230,9 @@ public interface Message extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The definition of the type or signature of the Message (depending on its kind)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Signature</em>' reference.
 	 * @see #setSignature(NamedElement)
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Signature()
@@ -238,6 +260,9 @@ public interface Message extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * arguments of the Message
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Argument()
 	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true" ordered="false"

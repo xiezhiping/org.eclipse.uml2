@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionConstraint.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: InteractionConstraint.java,v 1.3 2004/06/06 01:35:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Interaction Constraint</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An InteractionConstraint is a boolean expression that guards an operand in a CombinedFragment. InteractionConstraint is a specialization of Constraint. Furthermore the InteractionConstraint contains two expressions designating the minimum and maximum number of times a loop CombinedFragment should execute. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -49,6 +53,9 @@ public interface InteractionConstraint extends Constraint{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * minimum number of iterations of a loop
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Minint</em>' containment reference.
 	 * @see #setMinint(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getInteractionConstraint_Minint()
@@ -86,6 +93,9 @@ public interface InteractionConstraint extends Constraint{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * maximum number of iterations of a loop
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Maxint</em>' containment reference.
 	 * @see #setMaxint(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getInteractionConstraint_Maxint()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Substitution.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Substitution.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -51,6 +51,9 @@ public interface Substitution extends Realization{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * (Specializes Dependency.target.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contract</em>' reference.
 	 * @see #setContract(Classifier)
 	 * @see org.eclipse.uml2.UML2Package#getSubstitution_Contract()
@@ -78,6 +81,9 @@ public interface Substitution extends Realization{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * (Specializes Dependency.client.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Substituting Classifier</em>' container reference.
 	 * @see #setSubstitutingClassifier(Classifier)
 	 * @see org.eclipse.uml2.UML2Package#getSubstitution_SubstitutingClassifier()

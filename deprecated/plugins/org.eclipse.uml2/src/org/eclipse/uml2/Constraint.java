@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Constraint.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Constraint.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,6 +58,9 @@ public interface Constraint extends PackageableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the Namespace that is the context for evaluating this constraint. This is a derived union.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Context</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getConstraint_Context()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -101,6 +104,9 @@ public interface Constraint extends PackageableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A condition that must be true when evaluated in order for the constraint to be satisfied. Subsets Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Specification</em>' containment reference.
 	 * @see #setSpecification(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getConstraint_Specification()
@@ -139,6 +145,9 @@ public interface Constraint extends PackageableElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * ordered set of Elements referenced by this Constraint.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Constrained Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConstraint_ConstrainedElement()
 	 * @model type="org.eclipse.uml2.Element"

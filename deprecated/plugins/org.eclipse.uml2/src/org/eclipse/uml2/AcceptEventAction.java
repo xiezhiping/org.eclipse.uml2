@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.4 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -48,6 +48,9 @@ public interface AcceptEventAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The type of event accepted by the action, as specified by a trigger. If it is a signal trigger, a signal of any subtype of the specified signal type is accepted.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Trigger</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAcceptEventAction_Trigger()
 	 * @model type="org.eclipse.uml2.Trigger" volatile="true"
@@ -75,6 +78,9 @@ public interface AcceptEventAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Pin holding the event object that has been received. Event objects may be copied in transmission, so identity might not be preserved.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAcceptEventAction_Result()
 	 * @model type="org.eclipse.uml2.OutputPin" ordered="false"

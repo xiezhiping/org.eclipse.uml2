@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReplyAction.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ReplyAction.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Reply Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * (CompleteActions) ReplyAction is an action that accepts a set of return values and a token containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -48,6 +52,9 @@ public interface ReplyAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The operation call trigger being replied to.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Reply To Call</em>' reference.
 	 * @see #setReplyToCall(CallTrigger)
 	 * @see org.eclipse.uml2.UML2Package#getReplyAction_ReplyToCall()
@@ -75,6 +82,9 @@ public interface ReplyAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A list of pins containing the reply values of the operation. These values are returned to the caller.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Reply Value</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getReplyAction_ReplyValue()
 	 * @model type="org.eclipse.uml2.InputPin" ordered="false"
@@ -101,6 +111,9 @@ public interface ReplyAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A pin containing the return information token produced by an earlier AcceptCallAction.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Return Information</em>' reference.
 	 * @see #setReturnInformation(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReplyAction_ReturnInformation()

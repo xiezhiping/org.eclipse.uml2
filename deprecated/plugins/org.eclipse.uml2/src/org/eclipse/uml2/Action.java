@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Action.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Action.java,v 1.4 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -150,6 +150,9 @@ public interface Action extends ExecutableNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Constraint that must be satisfied when execution is started.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Local Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_LocalPrecondition()
 	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
@@ -188,6 +191,9 @@ public interface Action extends ExecutableNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Constraint that must be satisfied when executed is completed.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Local Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_LocalPostcondition()
 	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Association.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Association.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,6 +56,9 @@ public interface Association extends Classifier, Relationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies whether the association is derived from other model elements such as other associations or constraints. The default value is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_IsDerived()
@@ -84,6 +87,9 @@ public interface Association extends Classifier, Relationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The non-navigable ends that are owned by the association itself. This is an ordered association. Subsets Association::memberEnd, Classifier::feature, and Namespace::owned- Member.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned End</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_OwnedEnd()
 	 * @see org.eclipse.uml2.Property#getOwningAssociation
@@ -123,6 +129,9 @@ public interface Association extends Classifier, Relationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the classifiers that are used as types of the ends of the association.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End Type</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_EndType()
 	 * @model type="org.eclipse.uml2.Type" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -151,6 +160,9 @@ public interface Association extends Classifier, Relationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Each end represents participation of instances of the classifier connected to the end in links of the association. This is an ordered association. Subsets Namespace::member.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Member End</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_MemberEnd()
 	 * @see org.eclipse.uml2.Property#getAssociation

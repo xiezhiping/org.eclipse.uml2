@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Duration.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Duration.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -52,6 +52,9 @@ public interface Duration extends ValueSpecification{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If the duration is between times of two NamedElements, there are two Boolean attributes, one for the start of the duration and one for the end of the duration. For each of these it holds that firstTime is true if the time information is associated with the first point in time of the NamedElement referenced by event, and false if it represents the last point in time of the NamedElement. If there is only one NamedElement referenced by event, then this attribute is irrelevant. The default value is true.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>First Time</em>' attribute.
 	 * @see #setFirstTime(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getDuration_FirstTime()
@@ -79,6 +82,9 @@ public interface Duration extends ValueSpecification{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Refers to the specification(s) that describes the starting TimeExpression and the ending TimeExpression of the Duration. If only one NamedElement is referenced, the duration is from the first point in time of that NamedElement until the last point in time of that NamedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Event</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDuration_Event()
 	 * @model type="org.eclipse.uml2.NamedElement" upper="2" ordered="false"

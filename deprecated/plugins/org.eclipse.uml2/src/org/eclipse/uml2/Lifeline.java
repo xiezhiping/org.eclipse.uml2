@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Lifeline.java,v 1.4 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Lifeline.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -22,8 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A Lifelineis the concept behind a lifeline in a Sequence 
- * Diagram. A Participant may be a Part or it may be a parameter representing a part. Its qualification is a Classifier which in turn may be an Interface (or ClassifierRole?)
+ * A lifeline represents an individual participant in the Interaction. While Parts and StructuralFeatures may have multiplicity greater than 1, Lifelines represent only one interacting entity. Lifeline is a specialization of NamedElement. If the referenced ConnectableElement is multivalued (i.e. has a multiplicity > 1), then the Lifeline may have an expression (the ‘selector’) that specifies which particular part is represented by this Lifeline. If the selector is omitted this means that an arbitrary representative of the multivalued ConnectableElement is chosen. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -86,6 +85,9 @@ public interface Lifeline extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * the ConnectableElement within the classifier that contains the enclosing interaction.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Represents</em>' reference.
 	 * @see #setRepresents(ConnectableElement)
 	 * @see org.eclipse.uml2.UML2Package#getLifeline_Represents()
@@ -113,6 +115,9 @@ public interface Lifeline extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Interaction enclosing this Lifeline.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interaction</em>' container reference.
 	 * @see #setInteraction(Interaction)
 	 * @see org.eclipse.uml2.UML2Package#getLifeline_Interaction()
@@ -140,6 +145,9 @@ public interface Lifeline extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Selector</em>' containment reference.
 	 * @see #setSelector(OpaqueExpression)
 	 * @see org.eclipse.uml2.UML2Package#getLifeline_Selector()

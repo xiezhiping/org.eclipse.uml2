@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ApplyFunctionAction.java,v 1.3 2004/05/11 15:24:01 khussey Exp $
+ * $Id: ApplyFunctionAction.java,v 1.4 2004/06/06 01:35:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Apply Function Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * ApplyFunctionAction is an action that invokes a primitive predefined function that computes output values based only on the input values and the function. The execution does not have access to object memory or to any objects. The execution of a primitive function has no side effects on any other object. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -50,6 +54,9 @@ public interface ApplyFunctionAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The primitive function to be invoked.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Function</em>' reference.
 	 * @see #setFunction(PrimitiveFunction)
 	 * @see org.eclipse.uml2.UML2Package#getApplyFunctionAction_Function()
@@ -77,6 +84,9 @@ public interface ApplyFunctionAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The pins that provide inputs to the function. (Specializes Action.input.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getApplyFunctionAction_Argument()
 	 * @model type="org.eclipse.uml2.InputPin" containment="true" ordered="false"
@@ -115,6 +125,9 @@ public interface ApplyFunctionAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The pins on which the results of invoking the function are returned. (Specializes Action.output.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getApplyFunctionAction_Result()
 	 * @model type="org.eclipse.uml2.OutputPin" containment="true"

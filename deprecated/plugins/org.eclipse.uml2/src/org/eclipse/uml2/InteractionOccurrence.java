@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionOccurrence.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: InteractionOccurrence.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,6 +54,9 @@ public interface InteractionOccurrence extends InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Refers to the Interaction that defines its meaning
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Refers To</em>' reference.
 	 * @see #setRefersTo(Interaction)
 	 * @see org.eclipse.uml2.UML2Package#getInteractionOccurrence_RefersTo()
@@ -81,6 +84,9 @@ public interface InteractionOccurrence extends InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The actual gates of the InteractionOccurrence
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Actual Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteractionOccurrence_ActualGate()
 	 * @model type="org.eclipse.uml2.Gate" containment="true" ordered="false"
@@ -119,6 +125,9 @@ public interface InteractionOccurrence extends InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The actual arguments of the Interaction
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteractionOccurrence_Argument()
 	 * @model type="org.eclipse.uml2.InputPin" containment="true" ordered="false"

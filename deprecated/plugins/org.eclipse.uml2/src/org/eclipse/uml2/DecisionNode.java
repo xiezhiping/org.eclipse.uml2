@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DecisionNode.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: DecisionNode.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Decision Node</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A decision node has one incoming edge and multiple outgoing activity edges. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -45,6 +49,9 @@ public interface DecisionNode extends ControlNode{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Provides input to guard specifications on edges outgoing from the decision node.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Decision Input</em>' reference.
 	 * @see #setDecisionInput(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getDecisionNode_DecisionInput()

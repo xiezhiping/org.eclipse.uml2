@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateBinding.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: TemplateBinding.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -55,6 +55,9 @@ public interface TemplateBinding extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * element that is bound by this binding. Subsets DirectedRelationship::source.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Bound Element</em>' container reference.
 	 * @see #setBoundElement(TemplateableElement)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateBinding_BoundElement()
@@ -110,6 +113,9 @@ public interface TemplateBinding extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * parameter substitutions owned by this template binding. Subsets Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter Substitution</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateBinding_ParameterSubstitution()
 	 * @see org.eclipse.uml2.TemplateParameterSubstitution#getTemplateBinding

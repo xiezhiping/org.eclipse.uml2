@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameter.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: TemplateParameter.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -151,6 +151,9 @@ public interface TemplateParameter extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * element that is the default for this formal template parameter.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default</em>' reference.
 	 * @see #setDefault(ParameterableElement)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameter_Default()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeTrigger.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: TimeTrigger.java,v 1.4 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -53,6 +53,9 @@ public interface TimeTrigger extends Trigger{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies whether it is relative or absolute time.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Relative</em>' attribute.
 	 * @see #setIsRelative(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getTimeTrigger_IsRelative()
@@ -79,6 +82,9 @@ public interface TimeTrigger extends Trigger{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the corresponding time deadline.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>When</em>' containment reference.
 	 * @see #setWhen(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getTimeTrigger_When()

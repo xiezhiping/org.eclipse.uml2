@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Interface.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Interface.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,6 +58,9 @@ public interface Interface extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the properties owned by the Interface. (Subsets Namespace.ownedMember and Classifier.feature.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedAttribute()
 	 * @model type="org.eclipse.uml2.Property" containment="true"
@@ -96,6 +99,9 @@ public interface Interface extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the operations owned by the Interface. (Subsets Namespace.ownedMember and Classifier.feature.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedOperation()
 	 * @model type="org.eclipse.uml2.Operation" containment="true"
@@ -134,6 +140,9 @@ public interface Interface extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * (Subsets Element.redefinedElement.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Interface</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_RedefinedInterface()
 	 * @model type="org.eclipse.uml2.Interface" ordered="false"
@@ -199,6 +208,9 @@ public interface Interface extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Receptions that objects providing this interface are willing to accept. (Subsets Namespace.ownedMember and Classifier.feature.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedReception()
 	 * @model type="org.eclipse.uml2.Reception" containment="true" ordered="false"
@@ -236,6 +248,9 @@ public interface Interface extends Classifier{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Protocol</em>' containment reference.
 	 * @see #setProtocol(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getInterface_Protocol()

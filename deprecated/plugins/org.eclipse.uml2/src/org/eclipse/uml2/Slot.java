@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Slot.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Slot.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -55,6 +55,9 @@ public interface Slot extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The instance specification that owns this slot. Subsets Element::owner.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owning Instance</em>' container reference.
 	 * @see #setOwningInstance(InstanceSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getSlot_OwningInstance()
@@ -120,6 +123,9 @@ public interface Slot extends Element{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The structural feature that specifies the values that may be held by the slot.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Defining Feature</em>' reference.
 	 * @see #setDefiningFeature(StructuralFeature)
 	 * @see org.eclipse.uml2.UML2Package#getSlot_DefiningFeature()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: GeneralOrdering.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: GeneralOrdering.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>General Ordering</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A GeneralOrdering represents a binary relation between two Eventoccurrences, to describe that one Eventoccurrence must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of EventOccurrences that may otherwise not have a specified order. A GeneralOrdering is a specialization of NamedElement. A GeneralOrdering may appear anywhere in an Interaction, but only between Eventoccurrences. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -47,6 +51,9 @@ public interface GeneralOrdering extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Eventoccurrence referred comes before the Eventoccurrence referred by after
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Before</em>' reference.
 	 * @see #setBefore(EventOccurrence)
 	 * @see org.eclipse.uml2.UML2Package#getGeneralOrdering_Before()
@@ -75,6 +82,9 @@ public interface GeneralOrdering extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Eventoccurrence referred comes after the Eventoccurrence referred by before
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>After</em>' reference.
 	 * @see #setAfter(EventOccurrence)
 	 * @see org.eclipse.uml2.UML2Package#getGeneralOrdering_After()

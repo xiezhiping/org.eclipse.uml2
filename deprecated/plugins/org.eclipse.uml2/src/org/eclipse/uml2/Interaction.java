@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Interaction.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Interaction.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -176,6 +176,9 @@ public interface Interaction extends Behavior, InteractionFragment{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the gates that form the message interface between this Interaction and any InteractionOccurrences which reference it.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Formal Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteraction_FormalGate()
 	 * @model type="org.eclipse.uml2.Gate" containment="true" ordered="false"

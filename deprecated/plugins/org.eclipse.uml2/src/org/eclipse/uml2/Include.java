@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Include.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Include.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Include</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Include is a DirectedRelationship between two use cases, implying that the behavior of the included use case is inserted into the behavior of the including use case. It is also a kind of NamedElement so that it can have a name in the context of its owning use case. The including use case may only depend on the result (value) of the included use case. This value is obtained as a result of the execution of the included use case. Note that the included use case is not optional, and is always required for the including use case to execute correctly. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -48,6 +52,9 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the use case which will include the addition and owns the include relationship. (Specializes DirectedRelationship.source.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Including Case</em>' container reference.
 	 * @see #setIncludingCase(UseCase)
 	 * @see org.eclipse.uml2.UML2Package#getInclude_IncludingCase()
@@ -75,6 +82,9 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the use case that is to be included. (Specializes DirectedRelationship.target.)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Addition</em>' reference.
 	 * @see #setAddition(UseCase)
 	 * @see org.eclipse.uml2.UML2Package#getInclude_Addition()

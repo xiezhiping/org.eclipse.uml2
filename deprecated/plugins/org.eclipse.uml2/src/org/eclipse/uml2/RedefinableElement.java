@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.5 2004/06/03 02:59:17 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.6 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -55,6 +55,9 @@ public interface RedefinableElement extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates whether it is possible to further specialize a RedefinableElement. If the value is true, then it is not possible to further specialize the RedefinableElement. Default value is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Leaf</em>' attribute.
 	 * @see #setIsLeaf(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_IsLeaf()
@@ -110,6 +113,9 @@ public interface RedefinableElement extends NamedElement{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * the contexts that this element may be redefined from. This is a derived union.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefinition Context</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinitionContext()
 	 * @model type="org.eclipse.uml2.Classifier" transient="true" changeable="false" volatile="true" derived="true" ordered="false"

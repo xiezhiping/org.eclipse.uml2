@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Abstraction.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Abstraction.java,v 1.4 2004/06/06 01:35:03 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints. (See also, the definition of abstration in the Glossary.) In the metamodel, an Abstraction is a Dependency in which there is a mapping between the supplier and the client. 
+ * An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints. In the metamodel, an Abstraction is a Dependency in which there is a mapping between the supplier and the client. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -52,6 +52,9 @@ public interface Abstraction extends Dependency{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Mapping</em>' containment reference.
 	 * @see #setMapping(OpaqueExpression)
 	 * @see org.eclipse.uml2.UML2Package#getAbstraction_Mapping()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolConformance.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ProtocolConformance.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -48,6 +48,9 @@ public interface ProtocolConformance extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * : Specifies the state machine which conforms to the general state machine.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Specific Machine</em>' container reference.
 	 * @see #setSpecificMachine(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getProtocolConformance_SpecificMachine()
@@ -75,6 +78,9 @@ public interface ProtocolConformance extends DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * : Specifies the protocol state machine to which the specific state machine conforms.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>General Machine</em>' reference.
 	 * @see #setGeneralMachine(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getProtocolConformance_GeneralMachine()

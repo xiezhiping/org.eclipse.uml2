@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InterruptibleActivityRegion.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: InterruptibleActivityRegion.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Interruptible Activity Region</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An interruptible region contains activity nodes. When a token leaves an interruptible region via edges designated by the region as interrupting edges, all tokens and behaviors in the region are terminated. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -49,6 +53,9 @@ public interface InterruptibleActivityRegion extends ActivityGroup{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * .The edges leaving the region that will abort other tokens flowing in the region.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interrupting Edge</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterruptibleActivityRegion_InterruptingEdge()
 	 * @see org.eclipse.uml2.ActivityEdge#getInterrupts

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Implementation.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: Implementation.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -51,6 +51,9 @@ public interface Implementation extends Realization{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Interface specifying the conformance contract. (Specializes Dependency. supplier and Relationship.target)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contract</em>' reference.
 	 * @see #setContract(Interface)
 	 * @see org.eclipse.uml2.UML2Package#getImplementation_Contract()
@@ -78,6 +81,9 @@ public interface Implementation extends Realization{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the operations owned by the Interface. (Specializes Dependency.client and Relationship.source)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Implementing Classifier</em>' container reference.
 	 * @see #setImplementingClassifier(BehavioredClassifier)
 	 * @see org.eclipse.uml2.UML2Package#getImplementation_ImplementingClassifier()

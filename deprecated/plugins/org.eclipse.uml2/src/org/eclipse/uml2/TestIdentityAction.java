@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TestIdentityAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: TestIdentityAction.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Test Identity Action</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * This action returns true if the two input values are the same identity, false if they are not. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -50,6 +54,9 @@ public interface TestIdentityAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * . (Specialized from Action:input) Gives the pin on which an object is placed.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>First</em>' containment reference.
 	 * @see #setFirst(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getTestIdentityAction_First()
@@ -87,6 +94,9 @@ public interface TestIdentityAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * (Specialized from Action:input) Gives the pin on which an object is placed.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Second</em>' containment reference.
 	 * @see #setSecond(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getTestIdentityAction_Second()
@@ -124,6 +134,9 @@ public interface TestIdentityAction extends Action{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * (Specialized from Action:output) Tells whether the two input objects are identical.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getTestIdentityAction_Result()

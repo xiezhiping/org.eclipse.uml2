@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -53,6 +53,9 @@ public interface OpaqueExpression extends ValueSpecification{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The text of the expression.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' attribute.
 	 * @see #setBody(String)
 	 * @see org.eclipse.uml2.UML2Package#getOpaqueExpression_Body()
@@ -80,6 +83,9 @@ public interface OpaqueExpression extends ValueSpecification{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the language in which the expression is stated. The interpretation of the expression body depends on the language. If language is unspecified, it might be implicit from the expression body or the context.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Language</em>' attribute.
 	 * @see #setLanguage(String)
 	 * @see org.eclipse.uml2.UML2Package#getOpaqueExpression_Language()
@@ -106,6 +112,9 @@ public interface OpaqueExpression extends ValueSpecification{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getOpaqueExpression_Result()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -121,6 +130,9 @@ public interface OpaqueExpression extends ValueSpecification{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the behavior of the opaque expression.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Behavior</em>' reference.
 	 * @see #setBehavior(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getOpaqueExpression_Behavior()

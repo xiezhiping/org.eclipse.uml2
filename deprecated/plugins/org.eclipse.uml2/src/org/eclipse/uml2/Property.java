@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Property.java,v 1.5 2004/06/03 02:59:18 khussey Exp $
+ * $Id: Property.java,v 1.6 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association (see semantics of Association). Property is indirectly a subclass of Constructs::TypedElement. The range of valid values represented by the property can be controlled by setting the property’s type. 
+ * Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association (see semantics of Association). Property is indirectly a subclass of Constructs::TypedElement. The range of valid values represented by the property can be controlled by setting the property’s type. Package AssociationClasses (“AssociationClasses” on page 107) A property may have other properties (attributes) that serve as qualifiers. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -103,6 +103,9 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information. The default value is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_IsDerived()
@@ -130,6 +133,9 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies whether the property is derived as the union of all of the properties that are constrained to subset it. The default value is false.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived Union</em>' attribute.
 	 * @see #setIsDerivedUnion(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_IsDerivedUnion()
@@ -158,6 +164,9 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the kind of aggregation that applies to the Property. The default value is none.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Aggregation</em>' attribute.
 	 * @see org.eclipse.uml2.AggregationKind
 	 * @see #setAggregation(AggregationKind)
@@ -217,6 +226,9 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the owning association of this property. Subsets Property::association, NamedElement::namespace, Feature::featuringClassifier, and RedefinableElement:: redefinitionContext.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owning Association</em>' container reference.
 	 * @see #setOwningAssociation(Association)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_OwningAssociation()
@@ -299,6 +311,9 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The DataType that owns this Property. Subsets NamedElement::namespace, Feature::featuringClassifier, and Property::classifier.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Datatype</em>' container reference.
 	 * @see #setDatatype(DataType)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_Datatype()
@@ -327,6 +342,9 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the association of which this property is a member, if any.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Association</em>' reference.
 	 * @see #setAssociation(Association)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_Association()
@@ -354,6 +372,9 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is is instantiated. Subsets Element::ownedElement.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_DefaultValue()

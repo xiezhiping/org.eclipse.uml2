@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Manifestation.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: Manifestation.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Manifestation</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * In the metamodel, a Manifestation is a subtype of Abstraction. A Manifestation is owned by an Artifact. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -46,6 +50,9 @@ public interface Manifestation extends Abstraction{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The model element that is utilized in the manifestation in an Artifact. This association specializes the supplier association.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Utilized Element</em>' reference.
 	 * @see #setUtilizedElement(PackageableElement)
 	 * @see org.eclipse.uml2.UML2Package#getManifestation_UtilizedElement()

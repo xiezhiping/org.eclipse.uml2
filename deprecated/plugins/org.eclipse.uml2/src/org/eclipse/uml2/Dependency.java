@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Dependency.java,v 1.4 2004/06/03 02:59:18 khussey Exp $
+ * $Id: Dependency.java,v 1.5 2004/06/06 01:35:07 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -53,6 +53,9 @@ public interface Dependency extends PackageableElement, DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The element that is affected by the supplier element. In some cases (such as a Trace Abstraction) the direction is unimportant and serves only to distinguish the two elements.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Client</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDependency_Client()
 	 * @see org.eclipse.uml2.NamedElement#getClientDependencies
@@ -81,6 +84,9 @@ public interface Dependency extends PackageableElement, DirectedRelationship{
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Designates the element that is unaffected by a change. In a two-way relationship (such as some Refinement Abstractions) this would be the more general element. In an undirected situation, such as a Trace Abstraction, the choice of client and supplier is not relevant.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Supplier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDependency_Supplier()
 	 * @model type="org.eclipse.uml2.NamedElement" required="true" volatile="true" ordered="false"
