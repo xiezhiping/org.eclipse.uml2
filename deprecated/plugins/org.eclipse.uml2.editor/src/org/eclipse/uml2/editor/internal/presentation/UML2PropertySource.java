@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2PropertySource.java,v 1.2 2004/04/10 03:56:09 khussey Exp $
+ * $Id: UML2PropertySource.java,v 1.1 2004/05/21 20:20:11 khussey Exp $
  */
-package org.eclipse.uml2.presentation;
+package org.eclipse.uml2.editor.internal.presentation;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;

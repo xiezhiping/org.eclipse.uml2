@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.5 2004/05/21 17:37:12 khussey Exp $
+ * $Id: plugin.xml,v 1.6 2004/05/21 20:20:18 khussey Exp $
  */
 -->
 
@@ -24,11 +24,11 @@
    class="org.eclipse.uml2.examples.ui.ExamplesUIPlugin">
 
    <requires>
+      <import plugin="org.eclipse.uml2.examples" export="true"/>
+      <import plugin="org.eclipse.uml2.editor" export="true"/>
+      <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.eclipse.core.runtime.compatibility"/>
       <import plugin="org.eclipse.core.resources"/>
-      <import plugin="org.eclipse.ui.ide"/>
-      <import plugin="org.eclipse.uml2.editor" export="true"/>
-      <import plugin="org.eclipse.uml2.examples" export="true"/>
    </requires>
 
    <runtime>

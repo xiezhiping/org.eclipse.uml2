@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2PropertyDescriptor.java,v 1.4 2004/04/11 02:53:38 khussey Exp $
+ * $Id: UML2PropertyDescriptor.java,v 1.1 2004/05/21 20:20:11 khussey Exp $
  */
-package org.eclipse.uml2.presentation;
+package org.eclipse.uml2.editor.internal.presentation;
 
 import java.util.ArrayList;
 import java.util.Arrays;

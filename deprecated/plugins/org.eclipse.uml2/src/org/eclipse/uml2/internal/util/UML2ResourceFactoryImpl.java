@@ -8,24 +8,25 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ResourceFactoryImpl.java,v 1.7 2004/05/20 03:20:08 khussey Exp $
+ * $Id: UML2ResourceFactoryImpl.java,v 1.1 2004/05/21 20:20:27 khussey Exp $
  */
-package org.eclipse.uml2.util;
+package org.eclipse.uml2.internal.util;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.uml2.util.UML2Resource;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.eclipse.uml2.util.UML2ResourceImpl
+ * @see org.eclipse.uml2.internal.util.UML2ResourceImpl
  * @generated
  */
-public class UML2ResourceFactoryImpl extends ResourceFactoryImpl {
+public class UML2ResourceFactoryImpl extends ResourceFactoryImpl implements UML2Resource.Factory {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -54,6 +55,7 @@ public class UML2ResourceFactoryImpl extends ResourceFactoryImpl {
 		Resource result = new UML2ResourceImpl(uri);
 		return result;
 	}
+
 	public Resource createResource(URI uri) {
 		XMIResource resource = (XMIResource) createResourceGen(uri);
 

@@ -10,7 +10,7 @@
   <foreignModel>UML2.mdl</foreignModel>
   <foreignModel>VABASE_PLUGINS_PATH</foreignModel>
   <foreignModel>../..</foreignModel>
-  <genPackages prefix="UML2" basePackage="org.eclipse" resource="XMI" ecorePackage="UML2.ecore#/">
+  <genPackages prefix="UML2" basePackage="org.eclipse" ecorePackage="UML2.ecore#/">
     <genEnums ecoreEnum="UML2.ecore#//VisibilityKind">
       <genEnumLiterals ecoreEnumLiteral="UML2.ecore#//VisibilityKind/public"/>
       <genEnumLiterals ecoreEnumLiteral="UML2.ecore#//VisibilityKind/private"/>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementOperationsTest.java,v 1.1 2004/04/29 14:56:55 khussey Exp $
+ * $Id: ElementOperationsTest.java,v 1.2 2004/05/21 20:19:52 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -29,7 +29,7 @@ import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.internal.operation.ElementOperations;
-import org.eclipse.uml2.util.UML2ResourceFactoryImpl;
+import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Switch;
 
 /**
@@ -60,7 +60,7 @@ public class ElementOperationsTest
 		super.setUp();
 
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
-			"uml2", new UML2ResourceFactoryImpl()); //$NON-NLS-1$
+			UML2Resource.FILE_EXTENSION, UML2Resource.Factory.INSTANCE);
 	}
 
 	/**
@@ -187,19 +187,22 @@ public class ElementOperationsTest
 
 		final Comment comment1 = UML2Factory.eINSTANCE.createComment();
 		new ResourceSetImpl().createResource(
-			URI.createFileURI(new Date().getTime() + ".uml2")) //$NON-NLS-1$
+			URI.createFileURI(String.valueOf(new Date().getTime()))
+				.appendFileExtension(UML2Resource.FILE_EXTENSION))
 			.getContents().add(comment1);
 
 		ResourceSet resourceSet = new ResourceSetImpl();
 
 		final Comment comment2 = UML2Factory.eINSTANCE.createComment();
 		resourceSet.createResource(
-			URI.createFileURI(new Date().getTime() + ".uml2")) //$NON-NLS-1$
+			URI.createFileURI(String.valueOf(new Date().getTime()))
+				.appendFileExtension(UML2Resource.FILE_EXTENSION))
 			.getContents().add(comment2);
 
 		final Model model = UML2Factory.eINSTANCE.createModel();
 		resourceSet.createResource(
-			URI.createFileURI(new Date().getTime() + ".uml2")) //$NON-NLS-1$
+			URI.createFileURI(String.valueOf(new Date().getTime()))
+				.appendFileExtension(UML2Resource.FILE_EXTENSION))
 			.getContents().add(model);
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(

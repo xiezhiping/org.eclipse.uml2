@@ -8,17 +8,25 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Resource.java,v 1.1 2004/05/04 19:17:48 khussey Exp $
+ * $Id: UML2Resource.java,v 1.2 2004/05/21 20:20:27 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
+import org.eclipse.uml2.internal.util.UML2ResourceFactoryImpl;
 
 /**
  *
  */
 public interface UML2Resource
 	extends XMIResource {
+	
+	public interface Factory extends Resource.Factory {
+		
+		public static final Factory INSTANCE = new UML2ResourceFactoryImpl();
+
+	}
 
 	public static final String UML2_NS_URI = "http://www.eclipse.org/uml2/1.0.0/UML"; //$NON-NLS-1$
 

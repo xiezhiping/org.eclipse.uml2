@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML22EcoreWizardResourceImportPage.java,v 1.1 2004/04/29 15:31:14 khussey Exp $
+ * $Id: UML22EcoreWizardResourceImportPage.java,v 1.2 2004/05/21 20:20:18 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.wizards.uml22ecore;
 
@@ -17,6 +17,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Composite;
 
 import org.eclipse.uml2.examples.ui.wizards.ExampleWizardResourceImportPage;
+import org.eclipse.uml2.util.UML2Resource;
 
 /**
  *  
@@ -38,7 +39,7 @@ public class UML22EcoreWizardResourceImportPage
 		createFileSelectionGroup(parent);
 
 		selectionGroup.setRoot(createFileSystemElement(null, ResourcesPlugin
-			.getWorkspace().getRoot(), "uml2")); //$NON-NLS-1$
+			.getWorkspace().getRoot(), UML2Resource.FILE_EXTENSION));
 	}
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Ecore2UML2ImportWizard.java,v 1.1 2004/04/29 15:31:14 khussey Exp $
+ * $Id: Ecore2UML2ImportWizard.java,v 1.2 2004/05/21 20:20:18 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.wizards.ecore2uml2;
 
@@ -25,6 +25,7 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.FileSystemElement;
 import org.eclipse.uml2.examples.ecore2uml2.Ecore2UML2;
 import org.eclipse.uml2.examples.ui.wizards.ExampleImportWizard;
+import org.eclipse.uml2.util.UML2Resource;
 
 /**
  *  
@@ -72,7 +73,8 @@ public class Ecore2UML2ImportWizard
 							progressMonitor.subTask("Converting to UML2..."); //$NON-NLS-1$
 
 							new Ecore2UML2().convert(resourceSet, mainPage
-								.getSpecifiedContainer(), "uml2"); //$NON-NLS-1$
+								.getSpecifiedContainer(),
+								UML2Resource.FILE_EXTENSION);
 
 							mainPage.getSpecifiedContainer().refreshLocal(
 								IResource.DEPTH_INFINITE,

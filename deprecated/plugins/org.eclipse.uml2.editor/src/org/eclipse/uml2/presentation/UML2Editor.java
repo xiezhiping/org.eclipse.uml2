@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.4 2004/05/14 14:12:09 khussey Exp $
+ * $Id: UML2Editor.java,v 1.5 2004/05/21 20:20:11 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -149,6 +149,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import org.eclipse.uml2.editor.internal.presentation.*;
 import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 
@@ -628,7 +629,7 @@ public class UML2Editor
 		}
 	}
 
-	public class UML2ReverseAdapterFactoryContentProvider extends UML2AdapterFactoryContentProvider {
+	protected class UML2ReverseAdapterFactoryContentProvider extends UML2AdapterFactoryContentProvider {
 		public UML2ReverseAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
 			super(adapterFactory);
 		}
