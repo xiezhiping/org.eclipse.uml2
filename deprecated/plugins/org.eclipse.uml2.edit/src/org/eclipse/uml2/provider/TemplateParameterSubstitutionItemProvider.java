@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.5 2004/04/30 17:20:12 khussey Exp $
+ * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.6 2004/05/01 18:37:32 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -36,7 +36,6 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.edit.internal.command.SubsetAddCommand;
 import org.eclipse.uml2.edit.internal.command.SubsetReplaceCommand;
-import org.eclipse.uml2.edit.internal.command.SubsetSetCommand;
 import org.eclipse.uml2.edit.internal.command.SupersetRemoveCommand;
 import org.eclipse.uml2.edit.internal.command.SupersetReplaceCommand;
 

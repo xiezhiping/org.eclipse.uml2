@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ActionBarContributor.java,v 1.4 2004/04/30 17:18:18 khussey Exp $
+ * $Id: UML2ActionBarContributor.java,v 1.5 2004/05/01 18:37:26 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -16,7 +16,6 @@ package org.eclipse.uml2.presentation;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.emf.edit.ui.action.LoadResourceAction;

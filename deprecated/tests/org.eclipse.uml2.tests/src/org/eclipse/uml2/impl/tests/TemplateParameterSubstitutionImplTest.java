@@ -8,18 +8,13 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImplTest.java,v 1.2 2004/04/30 17:18:09 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImplTest.java,v 1.3 2004/05/01 18:37:21 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
-import java.util.Iterator;
-
 import junit.textui.TestRunner;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.uml2.ParameterableElement;
 import org.eclipse.uml2.UML2Factory;
-import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl;
 
 /**
