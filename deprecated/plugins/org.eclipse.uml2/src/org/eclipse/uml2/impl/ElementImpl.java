@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.11 2004/05/28 05:39:37 khussey Exp $
+ * $Id: ElementImpl.java,v 1.12 2004/06/01 20:05:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -393,14 +393,16 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		try {
 			Method method = getClass().getMethod("getApplicableStereotypes", //$NON-NLS-1$
 				null);
+			Set applicableStereotypes = StereotypeOperations
+				.getApplicableStereotypes(this);
 
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this, method,
-					StereotypeOperations.getApplicableStereotypes(this));
+			if (null == applicableStereotypes) {
+				applicableStereotypes = StereotypeOperations
+					.getApplicableStereotypes(this);
+				getCacheAdapter().put(this, method, applicableStereotypes);
 			}
 
-			return (Set) getCacheAdapter().get(this, method);
-
+			return applicableStereotypes;
 		} catch (Exception e) {
 			return StereotypeOperations.getApplicableStereotypes(this);
 		}
@@ -425,14 +427,15 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 
 		try {
 			Method method = getClass().getMethod("getAppliedStereotypes", null); //$NON-NLS-1$
+			Set appliedStereotypes = (Set) getCacheAdapter().get(this, method);
 
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this, method,
-					StereotypeOperations.getAppliedStereotypes(this));
+			if (null == appliedStereotypes) {
+				appliedStereotypes = StereotypeOperations
+					.getAppliedStereotypes(this);
+				getCacheAdapter().put(this, method, appliedStereotypes);
 			}
 
-			return (Set) getCacheAdapter().get(this, method);
-
+			return appliedStereotypes;
 		} catch (Exception e) {
 			return StereotypeOperations.getAppliedStereotypes(this);
 		}
@@ -540,14 +543,14 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 
 		try {
 			Method method = getClass().getMethod("getKeywords", null); //$NON-NLS-1$
+			Set keywords = (Set) getCacheAdapter().get(this, method);
 
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this, method,
-					ElementOperations.getKeywords(this));
+			if (null == keywords) {
+				keywords = ElementOperations.getKeywords(this);
+				getCacheAdapter().put(this, method, keywords);
 			}
 
-			return (Set) getCacheAdapter().get(this, method);
-
+			return keywords;
 		} catch (Exception e) {
 			return ElementOperations.getKeywords(this);
 		}

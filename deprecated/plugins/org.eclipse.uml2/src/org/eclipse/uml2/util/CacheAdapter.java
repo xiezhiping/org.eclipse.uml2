@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.3 2004/05/12 22:21:59 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.4 2004/06/01 20:05:27 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -22,18 +23,22 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.Resource;
 
 /**
- *
+ *  
  */
 public class CacheAdapter
 	extends AdapterImpl {
 
 	public static final CacheAdapter INSTANCE = new CacheAdapter();
 
-	private static final Map values = new HashMap();
+	private static final Map values = Collections
+		.synchronizedMap(new HashMap());
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.notify.Adapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void notifyChanged(Notification msg) {
@@ -43,20 +48,20 @@ public class CacheAdapter
 			.getFeature()) {
 
 			switch (msg.getEventType()) {
-				case Notification.ADD:
+				case Notification.ADD :
 					((EAnnotation) msg.getNewValue()).eAdapters().add(this);
 					break;
-				case Notification.ADD_MANY:
+				case Notification.ADD_MANY :
 					for (Iterator newValues = ((List) msg.getNewValue())
 						.iterator(); newValues.hasNext();) {
 
 						((EAnnotation) newValues.next()).eAdapters().add(this);
 					}
 					break;
-				case Notification.REMOVE:
+				case Notification.REMOVE :
 					((EAnnotation) msg.getOldValue()).eAdapters().remove(this);
 					break;
-				case Notification.REMOVE_MANY:
+				case Notification.REMOVE_MANY :
 					for (Iterator oldValues = ((List) msg.getOldValue())
 						.iterator(); oldValues.hasNext();) {
 
@@ -67,30 +72,82 @@ public class CacheAdapter
 			}
 		}
 
+		Object notifier = msg.getNotifier();
+
+		if (EObject.class.isInstance(notifier)) {
+			clear(((EObject) notifier).eResource());
+		}
+
 		clear();
 	}
 
 	public void clear() {
-		values.clear();
+		clear(null);
+	}
+
+	public void clear(Resource resource) {
+		values.remove(resource);
 	}
 
 	public boolean containsKey(EObject eObject, Object key) {
-		return values.containsKey(eObject)
-			&& ((Map) values.get(eObject)).containsKey(key);
+		return containsKey(null, eObject, key);
+	}
+
+	public boolean containsKey(Resource resource, EObject eObject, Object key) {
+		Map resourceMap = (Map) values.get(resource);
+
+		if (null != resourceMap) {
+			Map eObjectMap = (Map) resourceMap.get(eObject);
+
+			if (null != eObjectMap) {
+				return eObjectMap.containsKey(key);
+			}
+		}
+
+		return false;
 	}
 
 	public Object get(EObject eObject, Object key) {
-		return values.containsKey(eObject)
-			? ((Map) values.get(eObject)).get(key) : null;
+		return get(null, eObject, key);
+	}
+
+	public Object get(Resource resource, EObject eObject, Object key) {
+		Map resourceMap = (Map) values.get(resource);
+
+		if (null != resourceMap) {
+			Map eObjectMap = (Map) resourceMap.get(eObject);
+
+			if (null != eObjectMap) {
+				return eObjectMap.get(key);
+			}
+		}
+
+		return null;
 	}
 
 	public Object put(EObject eObject, Object key, Object value) {
+		return put(null, eObject, key, value);
+	}
 
-		if (!values.containsKey(eObject)) {
-			values.put(eObject, new HashMap());
+	public Object put(Resource resource, EObject eObject, Object key,
+			Object value) {
+		Map resourceMap = (Map) values.get(resource);
+
+		if (null == resourceMap) {
+			resourceMap = new HashMap();
+
+			values.put(resource, resourceMap);
 		}
 
-		return ((Map) values.get(eObject)).put(key, value);
+		Map eObjectMap = (Map) resourceMap.get(eObject);
+
+		if (null == eObjectMap) {
+			eObjectMap = new HashMap();
+
+			resourceMap.put(eObject, eObjectMap);
+		}
+
+		return eObjectMap.put(key, value);
 	}
 
 }

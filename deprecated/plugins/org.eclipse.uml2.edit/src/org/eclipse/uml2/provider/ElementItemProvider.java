@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.6 2004/06/01 20:05:19 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -20,6 +20,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.provider.EModelElementItemProvider;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -210,6 +212,21 @@ public class ElementItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.edit.command.CreateChildCommand.Helper#getCreateChildImage(java.lang.Object,
+	 *      java.lang.Object, java.lang.Object, java.util.Collection)
+	 */
+	public Object getCreateChildImage(Object owner, Object feature,
+			Object child, Collection selection) {
+
+		return feature instanceof EReference && child instanceof EObject
+			? getResourceLocator().getImage(
+				"full/obj16/" + ((EObject) child).eClass().getName()) //$NON-NLS-1$
+			: super.getCreateChildImage(owner, feature, child, selection);
 	}
 
 }

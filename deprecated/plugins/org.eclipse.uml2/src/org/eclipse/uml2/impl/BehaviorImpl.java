@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.10 2004/05/28 05:39:37 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.11 2004/06/01 20:05:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -373,26 +373,33 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated NOT
 	 */
 	public EList getFormalParameters() {
+		EList formalParameters = (EList) getCacheAdapter().get(eResource(),
+			this, UML2Package.eINSTANCE.getBehavior_FormalParameter());
 
-	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavior_FormalParameter())) {
-	        List formalParameter = new ArrayList();
-	        
-	        for (Iterator parameters = getParameters().iterator(); parameters.hasNext();) {
-	            Parameter parameter = (Parameter) parameters.next();
-	            
-	            if (!ParameterDirectionKind.RETURN_LITERAL.equals(parameter.getDirection())) {
-	                formalParameter.add(parameter);
-	            }
-	        }
-	        
-	        getCacheAdapter().put(
-	                this,
-	                UML2Package.eINSTANCE.getBehavior_FormalParameter(),
-	                new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getBehavior_FormalParameter(), formalParameter.size(), formalParameter
-	                        .toArray()));
-	    }
-	    
-	    return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getBehavior_FormalParameter());
+		if (null == formalParameters) {
+			List formalParameter = new ArrayList();
+
+			for (Iterator parameters = getParameters().iterator(); parameters
+				.hasNext();) {
+
+				Parameter parameter = (Parameter) parameters.next();
+
+				if (!ParameterDirectionKind.RETURN_LITERAL.equals(parameter
+					.getDirection())) {
+
+					formalParameter.add(parameter);
+				}
+			}
+
+			formalParameters = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getBehavior_FormalParameter(),
+				formalParameter.size(), formalParameter.toArray());
+			getCacheAdapter().put(this,
+				UML2Package.eINSTANCE.getBehavior_FormalParameter(),
+				formalParameters);
+		}
+
+		return formalParameters;
 	}
 
     /**

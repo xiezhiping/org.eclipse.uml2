@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.6 2004/05/28 05:39:37 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.7 2004/06/01 20:05:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -108,26 +108,32 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * @generated NOT
 	 */
 	public EList getOwnedStereotypes() {
+		EList ownedStereotypes = (EList) getCacheAdapter().get(eResource(),
+			this, UML2Package.eINSTANCE.getProfile_OwnedStereotype());
 
-	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getProfile_OwnedStereotype())) {
-	        Set ownedStereotype = new HashSet();
-	        
-	        for (Iterator ownedMembers = getOwnedMembers().iterator(); ownedMembers.hasNext();) {
-	            NamedElement ownedMember = (NamedElement) ownedMembers.next();
-	            
-	            if (Stereotype.class.isInstance(ownedMember)) {
-	                ownedStereotype.add(ownedMember);
-	            }
-	        }
-	        
-	        getCacheAdapter().put(
-	                this,
-	                UML2Package.eINSTANCE.getProfile_OwnedStereotype(),
-	                new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getProfile_OwnedStereotype(), ownedStereotype.size(), ownedStereotype
-	                        .toArray()));
-	    }
-	    
-	    return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getProfile_OwnedStereotype());
+		if (null == ownedStereotypes) {
+			Set ownedStereotype = new HashSet();
+
+			for (Iterator ownedMembers = getOwnedMembers().iterator(); ownedMembers
+				.hasNext();) {
+
+				NamedElement ownedMember = (NamedElement) ownedMembers.next();
+
+				if (Stereotype.class.isInstance(ownedMember)) {
+					ownedStereotype.add(ownedMember);
+				}
+			}
+
+			ownedStereotypes = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getProfile_OwnedStereotype(),
+				ownedStereotype.size(), ownedStereotype.toArray());
+
+			getCacheAdapter().put(eResource(), this,
+				UML2Package.eINSTANCE.getProfile_OwnedStereotype(),
+				ownedStereotypes);
+		}
+
+		return ownedStereotypes;
 	}
 
     /**
@@ -617,14 +623,17 @@ public class ProfileImpl extends PackageImpl implements Profile {
 		try {
 			Method method = getClass().getMethod(
 				"getReferencedMetaclasses", null); //$NON-NLS-1$
+			Set referencedMetaclasses = (Set) getCacheAdapter().get(
+				eResource(), this, method);
 
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this, method,
-					ProfileOperations.getReferencedMetaclasses(this));
+			if (null == referencedMetaclasses) {
+				referencedMetaclasses = ProfileOperations
+					.getReferencedMetaclasses(this);
+				getCacheAdapter().put(eResource(), this, method,
+					referencedMetaclasses);
 			}
 
-			return (Set) getCacheAdapter().get(this, method);
-
+			return referencedMetaclasses;
 		} catch (Exception e) {
 			return ProfileOperations.getReferencedMetaclasses(this);
 		}
@@ -640,14 +649,17 @@ public class ProfileImpl extends PackageImpl implements Profile {
 		try {
 			Method method = getClass().getMethod(
 				"getReferencedMetamodels", null); //$NON-NLS-1$
+			Set referencedMetamodels = (Set) getCacheAdapter().get(eResource(),
+				this, method);
 
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this, method,
-					ProfileOperations.getReferencedMetamodels(this));
+			if (null == referencedMetamodels) {
+				referencedMetamodels = ProfileOperations
+					.getReferencedMetamodels(this);
+				getCacheAdapter().put(eResource(), this, method,
+					referencedMetamodels);
 			}
 
-			return (Set) getCacheAdapter().get(this, method);
-
+			return referencedMetamodels;
 		} catch (Exception e) {
 			return ProfileOperations.getReferencedMetamodels(this);
 		}

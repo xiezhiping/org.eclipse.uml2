@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.7 2004/05/20 03:20:02 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.8 2004/06/01 20:05:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -183,32 +183,44 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated NOT
 	 */
 	public EList getDeployedElements() {
+		EList deployedElements = (EList) getCacheAdapter().get(this,
+			UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement());
 
-	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement())) {
-	        Set deployedElement = new HashSet();
-	        
-	        for (Iterator deployments = getDeployments().iterator(); deployments.hasNext();) {
-	            
-	            for (Iterator deployedArtifacts = ((Deployment) deployments.next()).getDeployedArtifacts().iterator(); deployedArtifacts.hasNext();) {
-	                DeployedArtifact deployedArtifact = (DeployedArtifact) deployedArtifacts.next();
-	                
-	                if (Artifact.class.isInstance(deployedArtifact)) {
-	                    
-	                    for (Iterator manifestations = ((Artifact) deployedArtifact).getManifestations().iterator(); manifestations.hasNext();) {
-	                        deployedElement.add(((Manifestation) manifestations.next()).getUtilizedElement());
-	                    }
-	                }
-	            }
-	        }
-	        
-	        getCacheAdapter().put(
-	                this,
-	                UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
-	                new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(), deployedElement.size(), deployedElement
-	                        .toArray()));
-	    }
-	    
-	    return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement());
+		if (null == deployedElements) {
+			Set deployedElement = new HashSet();
+
+			for (Iterator deployments = getDeployments().iterator(); deployments
+				.hasNext();) {
+
+				for (Iterator deployedArtifacts = ((Deployment) deployments
+					.next()).getDeployedArtifacts().iterator(); deployedArtifacts
+					.hasNext();) {
+
+					DeployedArtifact deployedArtifact = (DeployedArtifact) deployedArtifacts
+						.next();
+
+					if (Artifact.class.isInstance(deployedArtifact)) {
+
+						for (Iterator manifestations = ((Artifact) deployedArtifact)
+							.getManifestations().iterator(); manifestations
+							.hasNext();) {
+
+							deployedElement.add(((Manifestation) manifestations
+								.next()).getUtilizedElement());
+						}
+					}
+				}
+			}
+
+			deployedElements = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
+				deployedElement.size(), deployedElement.toArray());
+			getCacheAdapter().put(this,
+				UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
+				deployedElements);
+		}
+
+		return deployedElements;
 	}
 
     /**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.6 2004/05/28 05:13:45 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.7 2004/06/01 20:05:27 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.uml2.AggregationKind;
+import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.EnumerationLiteral;
 import org.eclipse.uml2.Extension;
@@ -187,12 +188,13 @@ public final class StereotypeOperations
 			.getOwnedAttributes().iterator(); ownedAttributes.hasNext();) {
 
 			Property property = (Property) ownedAttributes.next();
+			Type type = property.getType();
 
-			if (org.eclipse.uml2.Class.class.isInstance(property.getType())
+			if (org.eclipse.uml2.Class.class.isInstance(type)
 				&& Extension.class.isInstance(property.getAssociation())) {
 
 				EClassifier eClassifier = UML2Package.eINSTANCE
-					.getEClassifier(property.getType().getName());
+					.getEClassifier(type.getName());
 
 				if (EClass.class.isInstance(eClassifier)) {
 
@@ -214,12 +216,12 @@ public final class StereotypeOperations
 		for (Iterator generalizations = stereotype.getGeneralizations()
 			.iterator(); generalizations.hasNext();) {
 
-			Generalization generalization = (Generalization) generalizations
-				.next();
+			Classifier general = ((Generalization) generalizations.next())
+				.getGeneral();
 
-			if (Stereotype.class.isInstance(generalization.getGeneral())) {
-				getExtendedEClassesHelper((Stereotype) generalization
-					.getGeneral(), extendedEClasses);
+			if (Stereotype.class.isInstance(general)) {
+				getExtendedEClassesHelper((Stereotype) general,
+					extendedEClasses);
 			}
 		}
 	}
@@ -625,15 +627,16 @@ public final class StereotypeOperations
 
 				if (eStructuralFeature.isMany()) {
 					List list = null == eObject
-						? Collections.EMPTY_LIST : (List) eObject
-							.eGet(eStructuralFeature);
+						? Collections.EMPTY_LIST
+						: (List) eObject.eGet(eStructuralFeature);
 
 					value = -1 == index
-						? list : list.get(index);
+						? list
+						: list.get(index);
 				} else {
 					value = null == eObject
-						? eStructuralFeature.getDefaultValue() : eObject
-							.eGet(eStructuralFeature);
+						? eStructuralFeature.getDefaultValue()
+						: eObject.eGet(eStructuralFeature);
 				}
 
 				if (EcorePackage.eINSTANCE.getEEnum().isInstance(
@@ -912,7 +915,8 @@ public final class StereotypeOperations
 	 */
 	public static Profile getProfile(Stereotype stereotype) {
 		return null == stereotype
-			? null : (Profile) stereotype.getPackage();
+			? null
+			: (Profile) stereotype.getPackage();
 	}
 
 	/**
@@ -944,7 +948,8 @@ public final class StereotypeOperations
 
 				keyword = identifier.length() > 0
 					? Character.toLowerCase(identifier.charAt(0))
-						+ identifier.substring(1) : identifier;
+						+ identifier.substring(1)
+					: identifier;
 			}
 		}
 

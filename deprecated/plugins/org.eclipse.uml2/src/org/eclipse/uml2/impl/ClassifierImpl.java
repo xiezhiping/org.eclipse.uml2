@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.10 2004/05/28 05:39:37 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.11 2004/06/01 20:05:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -585,16 +585,20 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated NOT
 	 */
 	public EList getGenerals() {
+		EList generals = (EList) getCacheAdapter().get(eResource(), this,
+			UML2Package.eINSTANCE.getClassifier_General());
 
-        if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_General())) {
-    		Set generals = general();
-            getCacheAdapter().put(
-                    this,
-                    UML2Package.eINSTANCE.getClassifier_General(),
-                    new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_General(), generals.size(), generals.toArray()));
-        }
+		if (null == generals) {
+			Set general = general();
 
-        return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_General());
+			generals = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getClassifier_General(), general.size(),
+				general.toArray());
+			getCacheAdapter().put(eResource(), this,
+				UML2Package.eINSTANCE.getClassifier_General(), generals);
+		}
+
+		return generals;
 	}
 
     /**

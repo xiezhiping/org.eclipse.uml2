@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.10 2004/05/28 05:39:37 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.11 2004/06/01 20:05:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -224,19 +224,26 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * @generated NOT
 	 */
 	public EList getEndTypes() {
+		EList endTypes = (EList) getCacheAdapter().get(this,
+			UML2Package.eINSTANCE.getAssociation_EndType());
 
-        if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAssociation_EndType())) {
-            List endType = new ArrayList();
+		if (null == endTypes) {
+			List endType = new ArrayList();
 
-            for (Iterator memberEnds = getMemberEnds().iterator(); memberEnds.hasNext();) {
-                endType.add(((Property) memberEnds.next()).getType());
-            }
+			for (Iterator memberEnds = getMemberEnds().iterator(); memberEnds
+				.hasNext();) {
 
-            getCacheAdapter().put(this, UML2Package.eINSTANCE.getAssociation_EndType(),
-                    new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAssociation_EndType(), endType.size(), endType.toArray()));
-        }
+				endType.add(((Property) memberEnds.next()).getType());
+			}
 
-        return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAssociation_EndType());
+			endTypes = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getAssociation_EndType(), endType.size(),
+				endType.toArray());
+			getCacheAdapter().put(this,
+				UML2Package.eINSTANCE.getAssociation_EndType(), endTypes);
+		}
+
+		return endTypes;
 	}
 
     /**

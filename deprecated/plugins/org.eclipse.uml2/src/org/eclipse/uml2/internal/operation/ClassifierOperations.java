@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.7 2004/06/01 20:05:27 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -24,10 +24,10 @@ import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Feature;
 import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.NamedElement;
-import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.util.UML2Validator;
 
 /**
  * A static utility class that provides operations related to classifiers.
@@ -151,11 +151,11 @@ public final class ClassifierOperations
 		for (Iterator generalizations = classifier.getGeneralizations()
 			.iterator(); generalizations.hasNext();) {
 
-			Generalization generalization = (Generalization) generalizations
-				.next();
+			Classifier general = ((Generalization) generalizations.next())
+				.getGeneral();
 
-			if (null != generalization.getGeneral()) {
-				parents.add(generalization.getGeneral());
+			if (null != general) {
+				parents.add(general);
 			}
 		}
 
@@ -211,16 +211,13 @@ public final class ClassifierOperations
 			result = false;
 
 			if (null != diagnostics) {
-				diagnostics
-					.add(new BasicDiagnostic(
-							Diagnostic.WARNING,
-							UML2Validator.DIAGNOSTIC_SOURCE,
-							UML2Validator.CLASSIFIER__NO_CYCLES_IN_GENERALIZATION,
-							UML2Plugin.INSTANCE
-								.getString(
-									"_UI_Classifier_NoCyclesInGeneralization_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context, classifier)),
-							new Object[] {classifier}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UML2Validator.DIAGNOSTIC_SOURCE,
+					UML2Validator.CLASSIFIER__NO_CYCLES_IN_GENERALIZATION,
+					UML2Plugin.INSTANCE.getString(
+						"_UI_Classifier_NoCyclesInGeneralization_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, classifier)),
+					new Object[]{classifier}));
 			}
 		}
 
@@ -247,15 +244,13 @@ public final class ClassifierOperations
 					return result;
 				} else {
 					diagnostics
-						.add(new BasicDiagnostic(
-								Diagnostic.WARNING,
-								UML2Validator.DIAGNOSTIC_SOURCE,
-								UML2Validator.CLASSIFIER__SPECIALIZE_TYPE,
-								UML2Plugin.INSTANCE.getString(
-									"_UI_Classifier_SpecializeType_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context,
-										classifier, parent)),
-								new Object[] {classifier, parent}));
+						.add(new BasicDiagnostic(Diagnostic.WARNING,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.CLASSIFIER__SPECIALIZE_TYPE,
+							UML2Plugin.INSTANCE.getString(
+								"_UI_Classifier_SpecializeType_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, classifier,
+									parent)), new Object[]{classifier, parent}));
 				}
 			}
 		}
@@ -287,15 +282,13 @@ public final class ClassifierOperations
 			result = false;
 
 			if (null != diagnostics) {
-				diagnostics
-					.add(new BasicDiagnostic(
-							Diagnostic.ERROR,
-							UML2Validator.DIAGNOSTIC_SOURCE,
-							UML2Validator.CLASSIFIER__INHERITED_MEMBER,
-							UML2Plugin.INSTANCE.getString(
-								"_UI_Classifier_InheritedMember_diagnostic", //$NON-NLS-1$
-								getMessageSubstitutions(context, classifier)),
-							new Object[] {classifier}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UML2Validator.DIAGNOSTIC_SOURCE,
+					UML2Validator.CLASSIFIER__INHERITED_MEMBER,
+					UML2Plugin.INSTANCE.getString(
+						"_UI_Classifier_InheritedMember_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, classifier)),
+					new Object[]{classifier}));
 			}
 		}
 
@@ -315,16 +308,13 @@ public final class ClassifierOperations
 			result = false;
 
 			if (null != diagnostics) {
-				diagnostics
-					.add(new BasicDiagnostic(
-							Diagnostic.ERROR,
-							UML2Validator.DIAGNOSTIC_SOURCE,
-							UML2Validator.CLASSIFIER__GENERAL_EQUALS_PARENTS,
-							UML2Plugin.INSTANCE
-								.getString(
-									"_UI_Classifier_GeneralEqualsParents_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context, classifier)),
-							new Object[] {classifier}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UML2Validator.DIAGNOSTIC_SOURCE,
+					UML2Validator.CLASSIFIER__GENERAL_EQUALS_PARENTS,
+					UML2Plugin.INSTANCE.getString(
+						"_UI_Classifier_GeneralEqualsParents_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, classifier)),
+					new Object[]{classifier}));
 			}
 		}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.7 2004/05/28 05:39:37 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.8 2004/06/01 20:05:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -169,7 +169,18 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated NOT
 	 */
 	public String getQualifiedName() {
-		return qualifiedName();
+		String qualifiedName = (String) getCacheAdapter().get(eResource(),
+			this, UML2Package.eINSTANCE.getNamedElement_QualifiedName());
+
+		if (null == qualifiedName) {
+			qualifiedName = qualifiedName();
+
+			getCacheAdapter().put(eResource(), this,
+				UML2Package.eINSTANCE.getNamedElement_QualifiedName(),
+				qualifiedName);
+		}
+
+		return qualifiedName;
 	}
 
 	/**
