@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.17 2005/03/15 18:44:46 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.18 2005/03/18 04:00:53 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -984,18 +984,32 @@ public final class StereotypeOperations
 	}
 
 	/**
-	 * Retrieves the keyword for the specified stereotype.
+	 * Retrieves the localized keyword for the specified stereotype.
 	 * 
 	 * @param stereotype
-	 *            The stereotype for which to retrieve the keyword.
-	 * @return The keyword for the stereotype.
+	 *            The stereotype for which to retrieve the localized keyword.
+	 * @return The localized keyword for the stereotype.
 	 */
 	public static String getKeyword(Stereotype stereotype) {
+		return getKeyword(stereotype, true);
+	}
+
+	/**
+	 * Retrieves the keyword for the specified stereotype, localized if
+	 * indicated.
+	 * 
+	 * @param stereotype
+	 *            The stereotype for which to retrieve the (localized) keyword.
+	 * @param localize
+	 *            Whether the keyword should be localized.
+	 * @return The (localized) keyword for the stereotype.
+	 */
+	public static String getKeyword(Stereotype stereotype, boolean localize) {
 		String keyword = EMPTY_STRING;
 
 		if (null != stereotype) {
 			keyword = getString(stereotype, getValidIdentifier(stereotype
-				.getQualifiedName().replace(':', '_')), EMPTY_STRING);
+				.getQualifiedName().replace(':', '_')), EMPTY_STRING, localize);
 
 			if (isEmpty(keyword)) {
 				String identifier = getValidIdentifier(stereotype.getName());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.16 2005/03/15 18:44:46 khussey Exp $
+ * $Id: UML2Operations.java,v 1.17 2005/03/18 04:00:53 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -361,14 +361,15 @@ class UML2Operations
 
 	/**
 	 * Retrieves the candidate resource bundle URIs for the specified URI in the
-	 * specified locale.
+	 * specified locale (if specified).
 	 * 
 	 * @param uri
 	 *            The URI upon which to base the candidate resource bundle URIs.
 	 * @param locale
 	 *            The locale within which to base the candidate resource bundle
-	 *            URIs.
-	 * @return The candidate resource bundle URIs for the URI in the locale.
+	 *            URIs, or <code>null</code>.
+	 * @return The candidate resource bundle URIs for the URI in the locale (if
+	 *         specified).
 	 */
 	protected static List getResourceBundleURIs(URI uri, Locale locale) {
 		List resourceBundleURIs = new ArrayList();
@@ -379,14 +380,16 @@ class UML2Operations
 		resourceBundleURIs.add(baseURI.appendSegment(baseSegment)
 			.appendFileExtension(PROPERTIES_FILE_EXTENSION));
 
-		Locale defaultLocale = Locale.getDefault();
+		if (null != locale) {
+			Locale defaultLocale = Locale.getDefault();
 
-		resourceBundleURIs.addAll(0, getResourceBundleURIs(baseURI,
-			baseSegment, defaultLocale));
-
-		if (!defaultLocale.equals(locale)) {
 			resourceBundleURIs.addAll(0, getResourceBundleURIs(baseURI,
 				baseSegment, defaultLocale));
+
+			if (!defaultLocale.equals(locale)) {
+				resourceBundleURIs.addAll(0, getResourceBundleURIs(baseURI,
+					baseSegment, locale));
+			}
 		}
 
 		return resourceBundleURIs;
@@ -394,37 +397,41 @@ class UML2Operations
 
 	/**
 	 * Retrieves the (cached) resource bundle for the specified object in the
-	 * specified locale.
+	 * specified locale (if specified).
 	 * 
 	 * @param eObject
 	 *            The object for which to retrieve the resource bundle.
 	 * @param locale
-	 *            The locale in which to retrieve the resource bundle.
-	 * @return The resource bundle for the object in the locale.
+	 *            The locale in which to retrieve the resource bundle, or
+	 *            <code>null</code>.
+	 * @return The resource bundle for the object in the locale (if specified).
 	 */
 	protected static ResourceBundle getResourceBundle(EObject eObject,
 			Locale locale) {
+		Resource resource = eObject.eResource();
 
-		eObject = EcoreUtil.getRootContainer(eObject);
+		if (null != resource) {
+			Map resourceBundles = (Map) RESOURCE_BUNDLES.get(resource);
 
-		if (!RESOURCE_BUNDLES.containsKey(eObject)
-			|| !locale.equals(LOCALES.get(eObject))) {
+			if (null == resourceBundles) {
+				RESOURCE_BUNDLES.put(resource, resourceBundles = Collections
+					.synchronizedMap(new HashMap()));
+			}
 
-			ResourceBundle resourceBundle = null;
-			Resource resource = eObject.eResource();
+			ResourceBundle resourceBundle = (ResourceBundle) resourceBundles
+				.get(locale);
 
-			if (null != resource) {
+			if (null == resourceBundle) {
 				ResourceSet resourceSet = resource.getResourceSet();
 				URIConverter uriConverter = null == resourceSet
 					? DEFAULT_URI_CONVERTER
 					: resourceSet.getURIConverter();
 
-				List resourceBundleURIs = getResourceBundleURIs(resource
-					.getURI(), locale);
+				URI uri = resource.getURI();
+				List resourceBundleURIs = getResourceBundleURIs(uri, locale);
 
 				if (EcorePlugin.IS_ECLIPSE_RUNNING) {
-					URI normalizedURI = uriConverter.normalize(resource
-						.getURI());
+					URI normalizedURI = uriConverter.normalize(uri);
 					int segmentCount = normalizedURI.segmentCount();
 
 					if (UML2Resource.URI_SCHEME_PLATFORM.equals(normalizedURI
@@ -461,60 +468,70 @@ class UML2Operations
 				for (Iterator i = resourceBundleURIs.iterator(); i.hasNext();) {
 
 					try {
-						InputStream inputStream = uriConverter.createInputStream((URI) i.next());
+						InputStream inputStream = uriConverter
+							.createInputStream((URI) i.next());
 						try {
-							resourceBundle = new PropertyResourceBundle(inputStream);							
+							resourceBundle = new PropertyResourceBundle(
+								inputStream);
 						} finally {
 							inputStream.close();
 						}
-						locale = resourceBundle.getLocale();
 						break;
 					} catch (IOException ioe) {
 						// ignore
 					}
 				}
+
+				resourceBundles.put(locale, resourceBundle);
 			}
 
-			LOCALES.put(eObject, locale);
-			RESOURCE_BUNDLES.put(eObject, resourceBundle);
+			return resourceBundle;
 		}
 
-		return (ResourceBundle) RESOURCE_BUNDLES.get(eObject);
+		return null;
 	}
 
 	/**
-	 * Retrieves the (cached) resource bundle for the specified object in the
-	 * default locale.
+	 * Retrieves the (cached) resource bundle for the specified object,
+	 * localized in the default locale if indicated.
 	 * 
 	 * @param eObject
 	 *            The object for which to retrieve the resource bundle.
-	 * @return The resource bundle for the object in the default locale.
+	 * @param localize
+	 *            Whether to retrieve the resource bundle based on (the default)
+	 *            locale.
+	 * @return The resource bundle for the object (in the default locale).
 	 */
-	protected static ResourceBundle getResourceBundle(EObject eObject) {
-		return getResourceBundle(eObject, Locale.getDefault());
+	protected static ResourceBundle getResourceBundle(EObject eObject,
+			boolean localize) {
+		return getResourceBundle(eObject, localize
+			? Locale.getDefault()
+			: null);
 	}
 
 	/**
-	 * Retrieves a (localized) string for the specified object.
+	 * Retrieves a string for the specified object, localized if indicated.
 	 * 
 	 * @param object
-	 *            The object for which to retrieve a string.
+	 *            The object for which to retrieve a (localized) string.
 	 * @param key
 	 *            The key in the resource bundle.
 	 * @param defaultString
 	 *            The string to return if no string for the given key can be
 	 *            found.
+	 * @param localize
+	 *            Whether the string should be localized.
 	 * @return The (localized) string.
 	 */
 	protected static String getString(EObject eObject, String key,
-			String defaultString) {
-
+			String defaultString, boolean localize) {
 		String string = defaultString;
 
 		if (null != eObject) {
 
 			try {
-				ResourceBundle resourceBundle = getResourceBundle(eObject);
+				ResourceBundle resourceBundle = getResourceBundle(eObject,
+					localize);
 
 				if (null != resourceBundle) {
 					string = resourceBundle.getString(key);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.8 2005/03/15 18:44:42 khussey Exp $
+ * $Id: NamedElement.java,v 1.9 2005/03/18 04:00:53 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -344,11 +344,20 @@ public interface NamedElement extends TemplateableElement{
 	public static final String SEPARATOR = "::"; //$NON-NLS-1$
 
 	/**
-	 * Retrieves a (localized) label for this named element.
+	 * Retrieves a localized label for this named element.
 	 * 
-	 * @return A label for this named element.
+	 * @return A localized label for this named element.
 	 */
 	public String getLabel();
+
+	/**
+	 * Retrieves a label for this named element, localized if indicated.
+	 * 
+	 * @param localize
+	 *            Whether the label should be localized.
+	 * @return A (localized) label for this named element.
+	 */
+	public String getLabel(boolean localize);
 
 	// <!-- end-custom-operations -->
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.12 2005/03/15 18:44:38 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.13 2005/03/18 04:00:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -644,6 +644,15 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 */
 	public String getLabel() {
 		return NamedElementOperations.getLabel(this);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.NamedElement#getLabel(boolean)
+	 */
+	public String getLabel(boolean localize) {
+		return NamedElementOperations.getLabel(this, localize);
 	}
 
 	// <!-- end-custom-operations -->

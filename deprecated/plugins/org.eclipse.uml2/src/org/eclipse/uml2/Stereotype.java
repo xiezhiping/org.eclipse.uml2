@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.8 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Stereotype.java,v 1.9 2005/03/18 04:00:53 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -69,11 +69,20 @@ public interface Stereotype extends org.eclipse.uml2.Class{
 	public Profile getProfile();
 
 	/**
-	 * Retrieves the keyword for this stereotype.
+	 * Retrieves the localized keyword for this stereotype.
 	 * 
-	 * @return The keyword for this stereotype.
+	 * @return The localized keyword for this stereotype.
 	 */
 	public String getKeyword();
+
+	/**
+	 * Retrieves the keyword for this stereotype, localized if indicated.
+	 * 
+	 * @param localize
+	 *            Whether the keyword should be localized.
+	 * @return The (localized) keyword for this stereotype.
+	 */
+	public String getKeyword(boolean localize);
 
 	// <!-- end-custom-operations -->
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.8 2005/03/15 18:44:46 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.9 2005/03/18 04:00:53 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -209,19 +209,33 @@ public final class NamedElementOperations
 	}
 
 	/**
-	 * Retrieves a (localized) label for the specified named element.
+	 * Retrieves a localized label for the specified named element.
 	 * 
 	 * @param namedElement
-	 *            The named element for which to retrieve a label.
-	 * @return A label for the named element.
+	 *            The named element for which to retrieve a localized label.
+	 * @return A localized label for the named element.
 	 */
 	public static String getLabel(NamedElement namedElement) {
+		return getLabel(namedElement, true);
+	}
+
+	/**
+	 * Retrieves a label for the specified named element, localized if
+	 * indicated.
+	 * 
+	 * @param namedElement
+	 *            The named element for which to retrieve a (localized) label.
+	 * @param localize
+	 *            Whether the label should be localized.
+	 * @return A (localized) label for the named element.
+	 */
+	public static String getLabel(NamedElement namedElement, boolean localize) {
 		String label = EMPTY_STRING;
 
 		if (null != namedElement) {
 			label = getString(namedElement, LABEL_KEY_PREFIX
 				+ getValidIdentifier(namedElement.getQualifiedName().replace(
-					':', '_')), namedElement.getName());
+					':', '_')), namedElement.getName(), localize);
 		}
 
 		return label;
