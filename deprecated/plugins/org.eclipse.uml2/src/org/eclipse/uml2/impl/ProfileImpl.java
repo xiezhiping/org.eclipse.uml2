@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.8 2004/06/02 05:02:25 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.9 2004/06/02 19:52:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -606,11 +606,24 @@ public class ProfileImpl extends PackageImpl implements Profile {
 
 	// <!-- begin-custom-operations -->
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Profile#define()
 	 */
 	public void define() {
 		ProfileOperations.define(this);
+	}
+
+	private static Method GET_REFERENCED_METACLASSES_METHOD = null;
+
+	static {
+		try {
+			GET_REFERENCED_METACLASSES_METHOD = ProfileImpl.class.getMethod(
+				"getReferencedMetaclasses", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// do nothing
+		}
 	}
 
 	/*
@@ -619,23 +632,27 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * @see org.eclipse.uml2.Profile#getReferencedMetaclasses()
 	 */
 	public Set getReferencedMetaclasses() {
+		Set referencedMetaclasses = (Set) getCacheAdapter().get(eResource(),
+			this, GET_REFERENCED_METACLASSES_METHOD);
 
+		if (null == referencedMetaclasses) {
+			referencedMetaclasses = ProfileOperations
+				.getReferencedMetaclasses(this);
+			getCacheAdapter().put(eResource(), this,
+				GET_REFERENCED_METACLASSES_METHOD, referencedMetaclasses);
+		}
+
+		return referencedMetaclasses;
+	}
+
+	private static Method GET_REFERENCED_METAMODELS_METHOD = null;
+
+	static {
 		try {
-			Method method = getClass().getMethod(
-				"getReferencedMetaclasses", null); //$NON-NLS-1$
-			Set referencedMetaclasses = (Set) getCacheAdapter().get(
-				eResource(), this, method);
-
-			if (null == referencedMetaclasses) {
-				referencedMetaclasses = ProfileOperations
-					.getReferencedMetaclasses(this);
-				getCacheAdapter().put(eResource(), this, method,
-					referencedMetaclasses);
-			}
-
-			return referencedMetaclasses;
+			GET_REFERENCED_METAMODELS_METHOD = ProfileImpl.class.getMethod(
+				"getReferencedMetamodels", null); //$NON-NLS-1$
 		} catch (Exception e) {
-			return ProfileOperations.getReferencedMetaclasses(this);
+			// do nothing
 		}
 	}
 
@@ -645,24 +662,17 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * @see org.eclipse.uml2.Profile#getReferencedMetamodels()
 	 */
 	public Set getReferencedMetamodels() {
+		Set referencedMetamodels = (Set) getCacheAdapter().get(eResource(),
+			this, GET_REFERENCED_METAMODELS_METHOD);
 
-		try {
-			Method method = getClass().getMethod(
-				"getReferencedMetamodels", null); //$NON-NLS-1$
-			Set referencedMetamodels = (Set) getCacheAdapter().get(eResource(),
-				this, method);
-
-			if (null == referencedMetamodels) {
-				referencedMetamodels = ProfileOperations
-					.getReferencedMetamodels(this);
-				getCacheAdapter().put(eResource(), this, method,
-					referencedMetamodels);
-			}
-
-			return referencedMetamodels;
-		} catch (Exception e) {
-			return ProfileOperations.getReferencedMetamodels(this);
+		if (null == referencedMetamodels) {
+			referencedMetamodels = ProfileOperations
+				.getReferencedMetamodels(this);
+			getCacheAdapter().put(eResource(), this,
+				GET_REFERENCED_METAMODELS_METHOD, referencedMetamodels);
 		}
+
+		return referencedMetamodels;
 	}
 
 	/*
@@ -674,21 +684,27 @@ public class ProfileImpl extends PackageImpl implements Profile {
 		return ProfileOperations.getVersion(this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Profile#isDefined()
 	 */
 	public boolean isDefined() {
 		return ProfileOperations.isDefined(this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Profile#referenceMetaclass(org.eclipse.uml2.Class)
 	 */
 	public void referenceMetaclass(org.eclipse.uml2.Class class_) {
 		ProfileOperations.referenceMetaclass(this, class_);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Profile#referenceMetamodel(org.eclipse.uml2.Model)
 	 */
 	public void referenceMetamodel(Model model) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.4 2004/06/01 20:05:27 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.5 2004/06/02 19:52:53 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -131,6 +131,11 @@ public class CacheAdapter
 
 	public Object put(Resource resource, EObject eObject, Object key,
 			Object value) {
+
+		if (null == key) {
+			throw new IllegalArgumentException(String.valueOf(key));
+		}
+
 		Map resourceMap = (Map) values.get(resource);
 
 		if (null == resourceMap) {

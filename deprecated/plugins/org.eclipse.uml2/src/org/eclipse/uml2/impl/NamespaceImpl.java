@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.10 2004/06/02 05:02:26 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.11 2004/06/02 19:52:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -654,29 +654,33 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 
 	// <!-- begin-custom-operations -->
 
+	private static Method GET_IMPORTED_PACKAGES_METHOD = null;
+
+	static {
+		try {
+			GET_IMPORTED_PACKAGES_METHOD = NamespaceImpl.class.getMethod(
+				"getImportedPackages", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// do nothing
+		}
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.eclipse.uml2.Namespace#getImportedPackages()
 	 */
 	public Set getImportedPackages() {
+		Set importedPackages = (Set) getCacheAdapter().get(eResource(), this,
+			GET_IMPORTED_PACKAGES_METHOD);
 
-		try {
-			Method method = getClass().getMethod("getImportedPackages", null); //$NON-NLS-1$
-			Set importedPackages = (Set) getCacheAdapter().get(eResource(),
-				this, method);
-
-			if (null == importedPackages) {
-				importedPackages = NamespaceOperations
-					.getImportedPackages(this);
-				getCacheAdapter().put(eResource(), this, method,
-					importedPackages);
-			}
-
-			return importedPackages;
-		} catch (Exception e) {
-			return NamespaceOperations.getImportedPackages(this);
+		if (null == importedPackages) {
+			importedPackages = NamespaceOperations.getImportedPackages(this);
+			getCacheAdapter().put(eResource(), this,
+				GET_IMPORTED_PACKAGES_METHOD, importedPackages);
 		}
+
+		return importedPackages;
 	}
 
 	/*

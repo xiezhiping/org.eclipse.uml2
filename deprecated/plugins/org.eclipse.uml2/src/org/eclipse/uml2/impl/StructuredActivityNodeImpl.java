@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.10 2004/06/02 05:02:25 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.11 2004/06/02 19:52:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1320,29 +1320,33 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 
 	// <!-- begin-custom-operations -->
 
+	private static Method GET_IMPORTED_PACKAGES_METHOD = null;
+
+	static {
+		try {
+			GET_IMPORTED_PACKAGES_METHOD = StructuredActivityNodeImpl.class
+				.getMethod("getImportedPackages", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// do nothing
+		}
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.eclipse.uml2.Namespace#getImportedPackages()
 	 */
 	public Set getImportedPackages() {
+		Set importedPackages = (Set) getCacheAdapter().get(eResource(), this,
+			GET_IMPORTED_PACKAGES_METHOD);
 
-		try {
-			Method method = getClass().getMethod("getImportedPackages", null); //$NON-NLS-1$
-			Set importedPackages = (Set) getCacheAdapter().get(eResource(),
-				this, method);
-
-			if (null == importedPackages) {
-				importedPackages = NamespaceOperations
-					.getImportedPackages(this);
-				getCacheAdapter().put(eResource(), this, method,
-					importedPackages);
-			}
-
-			return importedPackages;
-		} catch (Exception e) {
-			return NamespaceOperations.getImportedPackages(this);
+		if (null == importedPackages) {
+			importedPackages = NamespaceOperations.getImportedPackages(this);
+			getCacheAdapter().put(eResource(), this,
+				GET_IMPORTED_PACKAGES_METHOD, importedPackages);
 		}
+
+		return importedPackages;
 	}
 
 	/*

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.16 2004/06/02 17:55:37 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.17 2004/06/02 19:52:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -705,6 +705,17 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 
 	// <!-- begin-custom-operations -->
 
+	private static Method GET_ALL_EXTENDED_E_CLASSES_METHOD = null;
+
+	static {
+		try {
+			GET_ALL_EXTENDED_E_CLASSES_METHOD = StereotypeImpl.class.getMethod(
+				"getAllExtendedEClasses", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// do nothing
+		}
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -721,47 +732,17 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 * @see org.eclipse.uml2.Stereotype#getExtendedEClasses()
 	 */
 	public Set getAllExtendedEClasses() {
+		Set allExtendedEClasses = (Set) getCacheAdapter().get(this,
+			GET_ALL_EXTENDED_E_CLASSES_METHOD);
 
-		try {
-			Method method = getClass().getMethod("getAllExtendedEClasses", null); //$NON-NLS-1$
-			Set allExtendedEClasses = (Set) getCacheAdapter().get(this, method);
-
-			if (null == allExtendedEClasses) {
-				allExtendedEClasses = StereotypeOperations
-					.getAllExtendedEClasses(this);
-				getCacheAdapter().put(this, method, allExtendedEClasses);
-			}
-
-			return allExtendedEClasses;
-		} catch (Exception e) {
-			return StereotypeOperations.getAllExtendedEClasses(this);
+		if (null == allExtendedEClasses) {
+			allExtendedEClasses = StereotypeOperations
+				.getAllExtendedEClasses(this);
+			getCacheAdapter().put(this, GET_ALL_EXTENDED_E_CLASSES_METHOD,
+				allExtendedEClasses);
 		}
-	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.uml2.Stereotype#getExtendedMetaclasses()
-	 */
-	public Set getExtendedMetaclasses() {
-
-		try {
-			Method method = getClass()
-				.getMethod("getExtendedMetaclasses", null); //$NON-NLS-1$
-			Set extendedMetaclasses = (Set) getCacheAdapter().get(eResource(),
-				this, method);
-
-			if (null == extendedMetaclasses) {
-				extendedMetaclasses = StereotypeOperations
-					.getExtendedMetaclasses(this);
-				getCacheAdapter().put(eResource(), this, method,
-					extendedMetaclasses);
-			}
-
-			return extendedMetaclasses;
-		} catch (Exception e) {
-			return StereotypeOperations.getExtendedMetaclasses(this);
-		}
+		return allExtendedEClasses;
 	}
 
 	/*

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Stereotype.java,v 1.5 2004/06/02 17:55:37 khussey Exp $
+ * $Id: Stereotype.java,v 1.6 2004/06/02 19:52:53 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,13 +57,6 @@ public interface Stereotype extends org.eclipse.uml2.Class{
 	 *         super(stereo)types.
 	 */
 	public Set getAllExtendedEClasses();
-
-	/**
-	 * Retrieves the metaclasses extended by this stereotype.
-	 * 
-	 * @return The metaclasses extended by this stereotype.
-	 */
-	public Set getExtendedMetaclasses();
 
 	/**
 	 * Retrieves the profile that owns this stereotype.

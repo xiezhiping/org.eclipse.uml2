@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.8 2004/06/02 17:55:37 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.9 2004/06/02 19:52:53 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -185,26 +185,32 @@ public final class StereotypeOperations
 	protected static void getAllExtendedEClassesHelper(Stereotype stereotype,
 			Set allExtendedEClasses) {
 
-		extendedMetaclassesLoop : for (Iterator extendedMetaclasses = stereotype
-			.getExtendedMetaclasses().iterator(); extendedMetaclasses.hasNext();) {
+		ownedAttributesLoop : for (Iterator ownedAttributes = stereotype
+			.getOwnedAttributes().iterator(); ownedAttributes.hasNext();) {
 
-			EClassifier eClassifier = UML2Package.eINSTANCE
-				.getEClassifier(((org.eclipse.uml2.Class) extendedMetaclasses
-					.next()).getName());
+			Property property = (Property) ownedAttributes.next();
+			Type type = property.getType();
 
-			if (EClass.class.isInstance(eClassifier)) {
+			if (org.eclipse.uml2.Class.class.isInstance(type)
+				&& Extension.class.isInstance(property.getAssociation())) {
 
-				for (Iterator eClasses = allExtendedEClasses.iterator(); eClasses
-					.hasNext();) {
+				EClassifier eClassifier = UML2Package.eINSTANCE
+					.getEClassifier(type.getName());
 
-					EClass eClass = (EClass) eClasses.next();
+				if (EClass.class.isInstance(eClassifier)) {
 
-					if (((EClass) eClassifier).isSuperTypeOf(eClass)) {
-						continue extendedMetaclassesLoop;
+					for (Iterator eClasses = allExtendedEClasses.iterator(); eClasses
+						.hasNext();) {
+
+						EClass eClass = (EClass) eClasses.next();
+
+						if (((EClass) eClassifier).isSuperTypeOf(eClass)) {
+							continue ownedAttributesLoop;
+						}
 					}
-				}
 
-				allExtendedEClasses.add(eClassifier);
+					allExtendedEClasses.add(eClassifier);
+				}
 			}
 		}
 

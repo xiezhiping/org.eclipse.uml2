@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.13 2004/06/02 05:02:25 khussey Exp $
+ * $Id: ElementImpl.java,v 1.14 2004/06/02 19:52:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -384,29 +384,34 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			qualifiedStereotypeName);
 	}
 
+	private static Method GET_APPLICABLE_STEREOTYPES_METHOD = null;
+
+	static {
+		try {
+			GET_APPLICABLE_STEREOTYPES_METHOD = ElementImpl.class.getMethod(
+				"getApplicableStereotypes", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// do nothing
+		}
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.eclipse.uml2.Element#getApplicableStereotypes()
 	 */
 	public Set getApplicableStereotypes() {
+		Set applicableStereotypes = (Set) getCacheAdapter().get(this,
+			GET_APPLICABLE_STEREOTYPES_METHOD);
 
-		try {
-			Method method = getClass().getMethod("getApplicableStereotypes", //$NON-NLS-1$
-				null);
-			Set applicableStereotypes = StereotypeOperations
+		if (null == applicableStereotypes) {
+			applicableStereotypes = StereotypeOperations
 				.getApplicableStereotypes(this);
-
-			if (null == applicableStereotypes) {
-				applicableStereotypes = StereotypeOperations
-					.getApplicableStereotypes(this);
-				getCacheAdapter().put(this, method, applicableStereotypes);
-			}
-
-			return applicableStereotypes;
-		} catch (Exception e) {
-			return StereotypeOperations.getApplicableStereotypes(this);
+			getCacheAdapter().put(this, GET_APPLICABLE_STEREOTYPES_METHOD,
+				applicableStereotypes);
 		}
+
+		return applicableStereotypes;
 	}
 
 	/*
@@ -419,27 +424,34 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			qualifiedStereotypeName);
 	}
 
+	private static Method GET_APPLIED_STEREOTYPES_METHOD = null;
+
+	static {
+		try {
+			GET_APPLIED_STEREOTYPES_METHOD = ElementImpl.class.getMethod(
+				"getAppliedStereotypes", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// do nothing
+		}
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.eclipse.uml2.Element#getAppliedStereotypes()
 	 */
 	public Set getAppliedStereotypes() {
+		Set appliedStereotypes = (Set) getCacheAdapter().get(this,
+			GET_APPLIED_STEREOTYPES_METHOD);
 
-		try {
-			Method method = getClass().getMethod("getAppliedStereotypes", null); //$NON-NLS-1$
-			Set appliedStereotypes = (Set) getCacheAdapter().get(this, method);
-
-			if (null == appliedStereotypes) {
-				appliedStereotypes = StereotypeOperations
-					.getAppliedStereotypes(this);
-				getCacheAdapter().put(this, method, appliedStereotypes);
-			}
-
-			return appliedStereotypes;
-		} catch (Exception e) {
-			return StereotypeOperations.getAppliedStereotypes(this);
+		if (null == appliedStereotypes) {
+			appliedStereotypes = StereotypeOperations
+				.getAppliedStereotypes(this);
+			getCacheAdapter().put(this, GET_APPLIED_STEREOTYPES_METHOD,
+				appliedStereotypes);
 		}
+
+		return appliedStereotypes;
 	}
 
 	/*
@@ -535,26 +547,31 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		ElementOperations.addKeyword(this, keyword);
 	}
 
+	private static Method GET_KEYWORDS_METHOD = null;
+
+	static {
+		try {
+			GET_KEYWORDS_METHOD = ElementImpl.class.getMethod(
+				"getKeywords", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// do nothing
+		}
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.eclipse.uml2.Element#getKeywords()
 	 */
 	public Set getKeywords() {
+		Set keywords = (Set) getCacheAdapter().get(this, GET_KEYWORDS_METHOD);
 
-		try {
-			Method method = getClass().getMethod("getKeywords", null); //$NON-NLS-1$
-			Set keywords = (Set) getCacheAdapter().get(this, method);
-
-			if (null == keywords) {
-				keywords = ElementOperations.getKeywords(this);
-				getCacheAdapter().put(this, method, keywords);
-			}
-
-			return keywords;
-		} catch (Exception e) {
-			return ElementOperations.getKeywords(this);
+		if (null == keywords) {
+			keywords = ElementOperations.getKeywords(this);
+			getCacheAdapter().put(this, GET_KEYWORDS_METHOD, keywords);
 		}
+
+		return keywords;
 	}
 
 	/*

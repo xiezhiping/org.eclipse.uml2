@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.13 2004/06/02 16:01:35 khussey Exp $
+ * $Id: PackageImpl.java,v 1.14 2004/06/02 19:52:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1083,11 +1083,24 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 
 	// <!-- begin-custom-operations -->
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Package#apply(org.eclipse.uml2.Profile)
 	 */
 	public void apply(Profile profile) {
 		ProfileOperations.apply(profile, this);
+	}
+
+	private static Method GET_ALL_APPLIED_PROFILES_METHOD = null;
+
+	static {
+		try {
+			GET_ALL_APPLIED_PROFILES_METHOD = PackageImpl.class.getMethod(
+				"getAllAppliedProfiles", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// do nothing
+		}
 	}
 
 	/*
@@ -1096,23 +1109,16 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @see org.eclipse.uml2.Package#getAllAppliedProfiles()
 	 */
 	public Set getAllAppliedProfiles() {
+		Set allAppliedProfiles = (Set) getCacheAdapter().get(eResource(), this,
+			GET_ALL_APPLIED_PROFILES_METHOD);
 
-		try {
-			Method method = getClass().getMethod("getAllAppliedProfiles", null); //$NON-NLS-1$
-			Set allAppliedProfiles = (Set) getCacheAdapter().get(eResource(),
-				this, method);
-
-			if (null == allAppliedProfiles) {
-				allAppliedProfiles = ProfileOperations
-					.getAllAppliedProfiles(this);
-				getCacheAdapter().put(eResource(), this, method,
-					allAppliedProfiles);
-			}
-
-			return allAppliedProfiles;
-		} catch (Exception e) {
-			return ProfileOperations.getAllAppliedProfiles(this);
+		if (null == allAppliedProfiles) {
+			allAppliedProfiles = ProfileOperations.getAllAppliedProfiles(this);
+			getCacheAdapter().put(eResource(), this,
+				GET_ALL_APPLIED_PROFILES_METHOD, allAppliedProfiles);
 		}
+
+		return allAppliedProfiles;
 	}
 
 	/*
@@ -1124,14 +1130,18 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return ProfileOperations.isApplied(profile, this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Package#unapply(org.eclipse.uml2.Profile)
 	 */
 	public void unapply(Profile profile) {
 		ProfileOperations.unapply(profile, this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Package#getAppliedVersion(org.eclipse.uml2.Profile)
 	 */
 	public String getAppliedVersion(Profile profile) {
