@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Classifier.java,v 1.11 2004/06/06 01:35:02 khussey Exp $
+ * $Id: Classifier.java,v 1.12 2004/06/15 21:01:05 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,8 +39,8 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.Classifier#getGeneralizations <em>Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#getPowertypeExtents <em>Powertype Extent</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getSubstitutions <em>Substitution</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#getPowertypeExtents <em>Powertype Extent</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getOwnedUseCases <em>Owned Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getUseCases <em>Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getRepresentation <em>Representation</em>}</li>

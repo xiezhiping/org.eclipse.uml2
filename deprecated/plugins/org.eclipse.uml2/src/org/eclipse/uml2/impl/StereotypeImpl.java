@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.19 2004/06/15 16:13:32 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.20 2004/06/15 21:01:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -103,10 +103,10 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 					return eBasicSetContainer(otherEnd, UML2Package.STEREOTYPE__OWNING_PARAMETER, msgs);
 				case UML2Package.STEREOTYPE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
@@ -158,10 +158,10 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 					return eBasicSetContainer(null, UML2Package.STEREOTYPE__OWNING_PARAMETER, msgs);
 				case UML2Package.STEREOTYPE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__USE_CASE:
@@ -280,10 +280,10 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				return getAttributes();
 			case UML2Package.STEREOTYPE__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.STEREOTYPE__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.STEREOTYPE__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.STEREOTYPE__USE_CASE:
@@ -398,13 +398,13 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.STEREOTYPE__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.STEREOTYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -532,11 +532,11 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.STEREOTYPE__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.STEREOTYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -655,10 +655,10 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				return !getAttributes().isEmpty();
 			case UML2Package.STEREOTYPE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.STEREOTYPE__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.STEREOTYPE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.STEREOTYPE__USE_CASE:

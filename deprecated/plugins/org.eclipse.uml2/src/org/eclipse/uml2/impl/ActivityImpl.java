@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.13 2004/06/15 16:13:32 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.14 2004/06/15 21:01:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -552,10 +552,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 					return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY__OWNING_PARAMETER, msgs);
 				case UML2Package.ACTIVITY__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
@@ -633,10 +633,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 					return eBasicSetContainer(null, UML2Package.ACTIVITY__OWNING_PARAMETER, msgs);
 				case UML2Package.ACTIVITY__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__USE_CASE:
@@ -783,10 +783,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return getAttributes();
 			case UML2Package.ACTIVITY__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.ACTIVITY__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.ACTIVITY__USE_CASE:
@@ -940,13 +940,13 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.ACTIVITY__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1131,11 +1131,11 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.ACTIVITY__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1302,10 +1302,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return !getAttributes().isEmpty();
 			case UML2Package.ACTIVITY__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ACTIVITY__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.ACTIVITY__USE_CASE:

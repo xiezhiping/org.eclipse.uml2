@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierItemProvider.java,v 1.10 2004/06/06 01:25:31 khussey Exp $
+ * $Id: ClassifierItemProvider.java,v 1.11 2004/06/15 20:59:09 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -95,8 +95,8 @@ public class ClassifierItemProvider
 			addGeneralizationPropertyDescriptor(object);
 			addAttributePropertyDescriptor(object);
 			addRedefinedClassifierPropertyDescriptor(object);
-			addPowertypeExtentPropertyDescriptor(object);
 			addSubstitutionPropertyDescriptor(object);
+			addPowertypeExtentPropertyDescriptor(object);
 			addOwnedUseCasePropertyDescriptor(object);
 			addUseCasePropertyDescriptor(object);
 			addRepresentationPropertyDescriptor(object);

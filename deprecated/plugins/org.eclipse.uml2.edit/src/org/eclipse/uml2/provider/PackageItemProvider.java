@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageItemProvider.java,v 1.11 2004/06/06 01:25:31 khussey Exp $
+ * $Id: PackageItemProvider.java,v 1.12 2004/06/15 20:59:09 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -404,36 +404,6 @@ public class PackageItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createAssociationClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createActivity()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createGeneralizationSet()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createModel()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createInformationItem()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createInformationFlow()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
 				 UML2Factory.eINSTANCE.createDependency()));
 
 		newChildDescriptors.add
@@ -464,12 +434,32 @@ public class PackageItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createArtifact()));
+				 UML2Factory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createManifestation()));
+				 UML2Factory.eINSTANCE.createInformationFlow()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Factory.eINSTANCE.createAssociationClass()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Factory.eINSTANCE.createGeneralizationSet()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Factory.eINSTANCE.createModel()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -484,6 +474,16 @@ public class PackageItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Factory.eINSTANCE.createArtifact()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Factory.eINSTANCE.createManifestation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
 				 UML2Factory.eINSTANCE.createInterface()));
 
 		newChildDescriptors.add
@@ -494,7 +494,7 @@ public class PackageItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createCollaboration()));
+				 UML2Factory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -504,12 +504,7 @@ public class PackageItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createInteraction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createStateMachine()));
+				 UML2Factory.eINSTANCE.createCollaboration()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -519,7 +514,22 @@ public class PackageItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Factory.eINSTANCE.createStateMachine()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
 				 UML2Factory.eINSTANCE.createPrimitiveFunction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Factory.eINSTANCE.createComponent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -560,16 +570,6 @@ public class PackageItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
 				 UML2Factory.eINSTANCE.createCommunicationPath()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createComponent()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter

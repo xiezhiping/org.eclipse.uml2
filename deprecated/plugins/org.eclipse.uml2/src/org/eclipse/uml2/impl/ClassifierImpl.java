@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.15 2004/06/15 16:13:32 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.16 2004/06/15 21:01:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,8 +84,8 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getGeneralizations <em>Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPowertypeExtents <em>Powertype Extent</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getSubstitutions <em>Substitution</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPowertypeExtents <em>Powertype Extent</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOwnedUseCases <em>Owned Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getUseCases <em>Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRepresentation <em>Representation</em>}</li>
@@ -194,16 +194,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	protected EList redefinedClassifier = null;
 
 	/**
-	 * The cached value of the '{@link #getPowertypeExtents() <em>Powertype Extent</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPowertypeExtents()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList powertypeExtent = null;
-
-	/**
 	 * The cached value of the '{@link #getSubstitutions() <em>Substitution</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,6 +202,16 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @ordered
 	 */
 	protected EList substitution = null;
+
+	/**
+	 * The cached value of the '{@link #getPowertypeExtents() <em>Powertype Extent</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPowertypeExtents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList powertypeExtent = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedUseCases() <em>Owned Use Case</em>}' containment reference list.
@@ -1339,10 +1339,10 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 					return eBasicSetContainer(otherEnd, UML2Package.CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
@@ -1386,10 +1386,10 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 					return eBasicSetContainer(null, UML2Package.CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__USE_CASE:
@@ -1488,10 +1488,10 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				return getAttributes();
 			case UML2Package.CLASSIFIER__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.CLASSIFIER__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.CLASSIFIER__USE_CASE:
@@ -1574,13 +1574,13 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.CLASSIFIER__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1662,11 +1662,11 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.CLASSIFIER__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1749,10 +1749,10 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				return !getAttributes().isEmpty();
 			case UML2Package.CLASSIFIER__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.CLASSIFIER__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.CLASSIFIER__USE_CASE:

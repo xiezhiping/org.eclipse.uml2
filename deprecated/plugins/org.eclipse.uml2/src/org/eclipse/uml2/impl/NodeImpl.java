@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.13 2004/06/15 16:13:32 khussey Exp $
+ * $Id: NodeImpl.java,v 1.14 2004/06/15 21:01:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -333,10 +333,10 @@ public class NodeImpl extends ClassImpl implements Node {
 					return eBasicSetContainer(otherEnd, UML2Package.NODE__OWNING_PARAMETER, msgs);
 				case UML2Package.NODE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.NODE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.NODE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_BEHAVIOR:
@@ -390,10 +390,10 @@ public class NodeImpl extends ClassImpl implements Node {
 					return eBasicSetContainer(null, UML2Package.NODE__OWNING_PARAMETER, msgs);
 				case UML2Package.NODE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.NODE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.NODE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__USE_CASE:
@@ -516,10 +516,10 @@ public class NodeImpl extends ClassImpl implements Node {
 				return getAttributes();
 			case UML2Package.NODE__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.NODE__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.NODE__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.NODE__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.NODE__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.NODE__USE_CASE:
@@ -640,13 +640,13 @@ public class NodeImpl extends ClassImpl implements Node {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.NODE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.NODE__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.NODE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.NODE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -782,11 +782,11 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.NODE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.NODE__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.NODE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.NODE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -911,10 +911,10 @@ public class NodeImpl extends ClassImpl implements Node {
 				return !getAttributes().isEmpty();
 			case UML2Package.NODE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.NODE__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.NODE__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.NODE__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.NODE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.NODE__USE_CASE:

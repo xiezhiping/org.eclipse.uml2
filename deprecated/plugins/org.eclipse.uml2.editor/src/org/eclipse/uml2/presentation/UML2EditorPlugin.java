@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2EditorPlugin.java,v 1.3 2004/05/25 20:02:56 khussey Exp $
+ * $Id: UML2EditorPlugin.java,v 1.4 2004/06/15 20:59:04 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -93,7 +93,6 @@ public final class UML2EditorPlugin extends EMFPlugin {
 		 * Creates an instance.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @param descriptor the description of the plugin.
 		 * @generated
 		 */
 		public Implementation() {
