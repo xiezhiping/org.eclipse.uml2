@@ -8,14 +8,17 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ActionBarContributor.java,v 1.8 2004/05/25 20:02:56 khussey Exp $
+ * $Id: UML2ActionBarContributor.java,v 1.9 2004/11/02 15:42:33 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -300,7 +303,7 @@ public class UML2ActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection generateCreateChildActions(Collection descriptors, ISelection selection) {
+	protected Collection generateCreateChildActionsGen(Collection descriptors, ISelection selection) {
 		Collection actions = new ArrayList();
 		if (descriptors != null) {
 			for (Iterator i = descriptors.iterator(); i.hasNext(); ) {
@@ -310,6 +313,18 @@ public class UML2ActionBarContributor
 		return actions;
 	}
 
+	protected Collection generateCreateChildActions(Collection descriptors, ISelection selection) {
+		List createChildActions = (List) generateCreateChildActionsGen(descriptors, selection);
+
+		Collections.sort(createChildActions, new Comparator() {
+			public int compare(Object o1, Object o2) {
+				return ((IAction) o1).getText().compareTo(((IAction) o2).getText());
+			}
+		});
+
+		return createChildActions;
+	}
+	
 	/**
 	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
 	 * and returns the collection of these actions.
@@ -317,7 +332,7 @@ public class UML2ActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection generateCreateSiblingActions(Collection descriptors, ISelection selection) {
+	protected Collection generateCreateSiblingActionsGen(Collection descriptors, ISelection selection) {
 		Collection actions = new ArrayList();
 		if (descriptors != null) {
 			for (Iterator i = descriptors.iterator(); i.hasNext(); ) {
@@ -325,6 +340,18 @@ public class UML2ActionBarContributor
 			}
 		}
 		return actions;
+	}
+
+	protected Collection generateCreateSiblingActions(Collection descriptors, ISelection selection) {
+		List createSiblingActions = (List) generateCreateSiblingActionsGen(descriptors, selection);
+
+		Collections.sort(createSiblingActions, new Comparator() {
+			public int compare(Object o1, Object o2) {
+				return ((IAction) o1).getText().compareTo(((IAction) o2).getText());
+			}
+		});
+
+		return createSiblingActions;
 	}
 
 	/**
