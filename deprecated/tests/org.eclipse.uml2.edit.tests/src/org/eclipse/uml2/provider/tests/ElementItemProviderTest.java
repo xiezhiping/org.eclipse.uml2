@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProviderTest.java,v 1.3 2005/02/24 21:43:36 khussey Exp $
+ * $Id: ElementItemProviderTest.java,v 1.4 2005/02/25 00:40:19 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -232,66 +232,66 @@ public abstract class ElementItemProviderTest
 		return modelObject;
 	}
 
-//	public void testSetTarget() {
-//		ReferenceQueue referenceQueue = new ReferenceQueue();
-//		Reference reference = new PhantomReference(getModelObject(),
-//			referenceQueue);
-//
-//		Adapter adapter = adapterFactory.adapt(getModelObject(),
-//			IEditingDomainItemProvider.class);
-//		adapter.setTarget(null);
-//
-//		getModelObject().eAdapters().clear();
-//		setModelObject(null);
-//
-//		System.gc();
-//
-//		if (!reference.isEnqueued()) {
-//			System.runFinalization();
-//		}
-//
-//		assertTrue(reference.isEnqueued());
-//
-//		try {
-//			reference = referenceQueue.remove();
-//
-//			if (null != reference) {
-//				reference.clear();
-//			}
-//		} catch (InterruptedException ie) {
-//			// do nothing
-//		}
-//	}
-//
-//	public void testDispose() {
-//		ReferenceQueue referenceQueue = new ReferenceQueue();
-//		Reference reference = new PhantomReference(getModelObject(),
-//			referenceQueue);
-//
-//		Adapter adapter = adapterFactory.adapt(getModelObject(),
-//			IEditingDomainItemProvider.class);
-//		adapter.setTarget(null);
-//
-//		((IDisposable) adapter).dispose();
-//		setModelObject(null);
-//
-//		System.gc();
-//
-//		if (!reference.isEnqueued()) {
-//			System.runFinalization();
-//		}
-//
-//		assertTrue(reference.isEnqueued());
-//
-//		try {
-//			reference = referenceQueue.remove();
-//
-//			if (null != reference) {
-//				reference.clear();
-//			}
-//		} catch (InterruptedException ie) {
-//			// do nothing
-//		}
-//	}
+	public void testSetTarget() {
+		ReferenceQueue referenceQueue = new ReferenceQueue();
+		Reference reference = new PhantomReference(getModelObject(),
+			referenceQueue);
+
+		Adapter adapter = adapterFactory.adapt(getModelObject(),
+			IEditingDomainItemProvider.class);
+		adapter.setTarget(null);
+
+		getModelObject().eAdapters().clear();
+		setModelObject(null);
+
+		System.gc();
+
+		if (!reference.isEnqueued()) {
+			System.runFinalization();
+		}
+
+		assertTrue(reference.isEnqueued());
+
+		try {
+			reference = referenceQueue.remove();
+
+			if (null != reference) {
+				reference.clear();
+			}
+		} catch (InterruptedException ie) {
+			// do nothing
+		}
+	}
+
+	public void testDispose() {
+		ReferenceQueue referenceQueue = new ReferenceQueue();
+		Reference reference = new PhantomReference(getModelObject(),
+			referenceQueue);
+
+		Adapter adapter = adapterFactory.adapt(getModelObject(),
+			IEditingDomainItemProvider.class);
+		adapter.setTarget(null);
+
+		((IDisposable) adapter).dispose();
+		setModelObject(null);
+
+		System.gc();
+
+		if (!reference.isEnqueued()) {
+			System.runFinalization();
+		}
+
+		assertTrue(reference.isEnqueued());
+
+		try {
+			reference = referenceQueue.remove();
+
+			if (null != reference) {
+				reference.clear();
+			}
+		} catch (InterruptedException ie) {
+			// do nothing
+		}
+	}
 
 } //ElementItemProviderTest
