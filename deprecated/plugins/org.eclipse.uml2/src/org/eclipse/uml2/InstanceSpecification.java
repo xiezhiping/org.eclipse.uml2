@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.4 2004/05/11 15:24:00 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.5 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -23,6 +23,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Instance Specification</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * In the metamodel, InstanceSpecification is a specialization of DeploymentTarget and DeployedArtifact. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

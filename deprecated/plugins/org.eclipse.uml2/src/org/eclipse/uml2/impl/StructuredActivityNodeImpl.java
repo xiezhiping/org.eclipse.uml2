@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.11 2004/06/02 19:52:53 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.12 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1327,7 +1327,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			GET_IMPORTED_PACKAGES_METHOD = StructuredActivityNodeImpl.class
 				.getMethod("getImportedPackages", null); //$NON-NLS-1$
 		} catch (Exception e) {
-			// do nothing
+			// ignore
 		}
 	}
 	

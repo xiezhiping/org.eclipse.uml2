@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Element.java,v 1.6 2004/05/18 21:00:48 khussey Exp $
+ * $Id: Element.java,v 1.7 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -25,6 +25,10 @@ import org.eclipse.emf.ecore.EModelElement;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Element</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Element is an abstract metaclass with no superclass. It is used as the common superclass for all metaclasses in the infrastructure library. Element has a derived composition association to itself to support the general capability for elements to own other elements. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

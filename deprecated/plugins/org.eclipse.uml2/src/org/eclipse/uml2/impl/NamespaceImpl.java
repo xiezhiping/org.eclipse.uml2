@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.11 2004/06/02 19:52:53 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.12 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -661,7 +661,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 			GET_IMPORTED_PACKAGES_METHOD = NamespaceImpl.class.getMethod(
 				"getImportedPackages", null); //$NON-NLS-1$
 		} catch (Exception e) {
-			// do nothing
+			// ignore
 		}
 	}
 	

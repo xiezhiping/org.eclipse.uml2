@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Dependency.java,v 1.3 2004/05/11 15:24:01 khussey Exp $
+ * $Id: Dependency.java,v 1.4 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Dependency</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A dependency is a relationship that signifies that a single or a set of model elements requires other model elements for their specification or implementation. This means that the complete semantics of the depending elements is either semantically or structurally dependent on the definition of the supplier element(s). 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Permission.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Permission.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Permission</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A Permission signifies granting of access rights from the supplier model element to a client model element. Or to put it another way, it signifies that the client requires access to some or all of the constituent elements of the supplier. The supplier element gives the client permission to access some or all of its constituents elements. 
+ * <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.uml2.UML2Package#getPermission()

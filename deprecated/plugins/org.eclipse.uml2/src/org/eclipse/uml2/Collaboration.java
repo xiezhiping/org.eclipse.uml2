@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Collaboration.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Collaboration.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Collaboration</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A collaboration is represented as a kind of classifier and defines a set of cooperating entities to be played by instances (its roles), as well as a set of connectors that define communication paths between the participating instances. The cooperating entities are the properties of the collaboration (see “Property” on page 161). A collaboration specifies a view (or projection) of a set of cooperating classifiers. It describes the required links between instances that play the roles of the collaboration, as well as the features required of the classifiers that specify the participating instances. Several collaborations may describe different projections of the same set of classifiers. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

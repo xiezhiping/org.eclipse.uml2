@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionOccurrence.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: InteractionOccurrence.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A reference to an interaction with actual values. The interpretation is that the sequence diagram replaces the reference (with actual parameters substituted)
+ * InteractionOccurrence is a specialization of InteractionFragment. An InteractionOccurrence has a set of actual gates that must match the formal gates of the referenced Interaction. 
  * <!-- end-model-doc -->
  *
  * <p>

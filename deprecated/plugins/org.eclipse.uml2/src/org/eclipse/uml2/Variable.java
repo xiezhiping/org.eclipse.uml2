@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Variable.java,v 1.3 2004/05/20 03:20:04 khussey Exp $
+ * $Id: Variable.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Variable</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A variable is considered a connectable element. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -29,7 +33,7 @@ package org.eclipse.uml2;
  * @model 
  * @generated
  */
-public interface Variable extends ConnectableElement, TypedElement, MultiplicityElement {
+public interface Variable extends ConnectableElement, TypedElement, MultiplicityElement{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

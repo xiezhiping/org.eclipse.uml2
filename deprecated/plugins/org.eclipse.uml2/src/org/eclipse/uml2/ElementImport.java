@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImport.java,v 1.3 2004/04/27 16:38:55 khussey Exp $
+ * $Id: ElementImport.java,v 1.4 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -21,6 +21,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Element Import</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An element import is defined as a directed relationship between an importing namespace and a packageable element. The name of the packageable element or its alias is to be added to the namespace of the importing namespace. It is also possible to control whether the imported element can be further imported. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

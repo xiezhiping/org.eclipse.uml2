@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Model.java,v 1.3 2004/05/13 03:16:20 khussey Exp $
+ * $Id: Model.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Model</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * The Model construct is defined as a Package. It contains a (hierarchical) set of elements that together describe the physical system being modeled. A Model may also contain a set of elements that represents the environment of the system, typically Actors, together with their interrelationships, such as Associations and Dependencies 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

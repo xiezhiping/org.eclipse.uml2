@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -22,6 +22,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Templateable Element</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * TemplateableElement may contain a template signature which specifies the formal template parameters. A TemplateableElement that contains a template signature is often referred to as a template. TemplateableElement may contain bindings to templates that describe how the templateable element is constructed by replacing the formal template parameters with actual parameters. A TemplateableElement containing bindings is often referred to as a bound element. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

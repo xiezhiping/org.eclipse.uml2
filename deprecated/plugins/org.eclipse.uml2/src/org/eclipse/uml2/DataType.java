@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DataType.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: DataType.java,v 1.3 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -22,6 +22,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Data Type</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * DataType defines a kind of classifier in which operations are all pure functions (i.e., they can return data values but they cannot change data values, because they have no identity). For example, an “add” operation on a number with another number as an argument yields a third number as a result; the target and argument are unchanged. A DataType may also contain attributes to support the modeling of structured data types. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Interval.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Interval.java,v 1.3 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Interval</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An Interval defines the range between two value specifications. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

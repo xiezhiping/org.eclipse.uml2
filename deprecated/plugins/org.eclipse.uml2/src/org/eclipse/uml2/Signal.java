@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Signal.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Signal.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -21,6 +21,10 @@ import org.eclipse.emf.ecore.EClass;
  * A representation of the model object '<em><b>Signal</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * A signal is a specification of type of send request instances communicated between objects. The receiving object handles the signal instance as specified by its receptions. The data carried by a send request and passed to it by the occurrence of the send invocation event that caused the request is represented as attributes of the signal instance. A signal is defined independently of the classifiers handling the signal. 
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -32,7 +36,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model 
  * @generated
  */
-public interface Signal extends Classifier {
+public interface Signal extends Classifier{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

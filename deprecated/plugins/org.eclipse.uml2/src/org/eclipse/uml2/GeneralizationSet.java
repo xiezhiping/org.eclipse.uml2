@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: GeneralizationSet.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: GeneralizationSet.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Generalization Set</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Each Generalization is a binary relationship that relates a specific Classifier to a more general Classifier (i.e., a subclass). Each GeneralizationSet defines a particular set of Generalization relationships that describe the way in which a specific Classifier 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeInterval.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: TimeInterval.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Time Interval</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A TimeInterval defines the range between two TimeExpressions. 
+ * <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.uml2.UML2Package#getTimeInterval()

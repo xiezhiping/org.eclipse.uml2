@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Connector.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Connector.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Connector</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Each connector may be attached to two or more connectable elements, each representing a set of instances. Each connector end 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImport.java,v 1.3 2004/04/27 16:38:55 khussey Exp $
+ * $Id: PackageImport.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -21,6 +21,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Package Import</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A package import is defined as a directed relationship that identifies a package whose members are to be imported by a namespace. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Property.java,v 1.4 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Property.java,v 1.5 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -24,6 +24,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Property</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association (see semantics of Association). Property is indirectly a subclass of Constructs::TypedElement. The range of valid values represented by the property can be controlled by setting the property’s type. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

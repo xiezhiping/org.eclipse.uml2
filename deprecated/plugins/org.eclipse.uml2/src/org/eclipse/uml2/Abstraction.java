@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Abstraction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Abstraction.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Abstraction</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints. (See also, the definition of abstration in the Glossary.) In the metamodel, an Abstraction is a Dependency in which there is a mapping between the supplier and the client. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

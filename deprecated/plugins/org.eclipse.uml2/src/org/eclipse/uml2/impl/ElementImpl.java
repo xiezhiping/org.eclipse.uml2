@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.14 2004/06/02 19:52:53 khussey Exp $
+ * $Id: ElementImpl.java,v 1.15 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -391,7 +391,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			GET_APPLICABLE_STEREOTYPES_METHOD = ElementImpl.class.getMethod(
 				"getApplicableStereotypes", null); //$NON-NLS-1$
 		} catch (Exception e) {
-			// do nothing
+			// ignore
 		}
 	}
 	
@@ -431,7 +431,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			GET_APPLIED_STEREOTYPES_METHOD = ElementImpl.class.getMethod(
 				"getAppliedStereotypes", null); //$NON-NLS-1$
 		} catch (Exception e) {
-			// do nothing
+			// ignore
 		}
 	}
 	
@@ -554,7 +554,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			GET_KEYWORDS_METHOD = ElementImpl.class.getMethod(
 				"getKeywords", null); //$NON-NLS-1$
 		} catch (Exception e) {
-			// do nothing
+			// ignore
 		}
 	}
 	

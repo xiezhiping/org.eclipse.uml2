@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Usage.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Usage.java,v 1.3 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Usage</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. In the metamodel, a Usage is a Dependency in which the client requires the presence of the supplier. 
+ * <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.uml2.UML2Package#getUsage()

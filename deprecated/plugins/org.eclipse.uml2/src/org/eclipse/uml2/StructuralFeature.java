@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuralFeature.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: StructuralFeature.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Structural Feature</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A structural feature is a typed feature of a classifier that specify the structure of instances of the classifier. Structural feature is an abstract metaclass. By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the set of values associated with an instantiation of the structural feature. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

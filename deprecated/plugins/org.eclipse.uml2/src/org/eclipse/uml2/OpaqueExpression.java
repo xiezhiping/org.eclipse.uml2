@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Opaque Expression</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An expression contains a language-specific text string used to describe a value or values, and an optional specification of the language. One predefined language for specifying expressions is OCL. Natural language or programming languages may also be used. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

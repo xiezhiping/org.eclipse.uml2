@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.9 2004/06/02 19:52:53 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.10 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -622,7 +622,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			GET_REFERENCED_METACLASSES_METHOD = ProfileImpl.class.getMethod(
 				"getReferencedMetaclasses", null); //$NON-NLS-1$
 		} catch (Exception e) {
-			// do nothing
+			// ignore
 		}
 	}
 
@@ -652,7 +652,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			GET_REFERENCED_METAMODELS_METHOD = ProfileImpl.class.getMethod(
 				"getReferencedMetamodels", null); //$NON-NLS-1$
 		} catch (Exception e) {
-			// do nothing
+			// ignore
 		}
 	}
 

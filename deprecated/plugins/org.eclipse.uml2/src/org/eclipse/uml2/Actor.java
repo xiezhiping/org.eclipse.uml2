@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Actor.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Actor.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Actor</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An Actor models a type of role played by an entity that interacts with the subject (e.g., by exchanging signals and data), 
+ * <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.uml2.UML2Package#getActor()

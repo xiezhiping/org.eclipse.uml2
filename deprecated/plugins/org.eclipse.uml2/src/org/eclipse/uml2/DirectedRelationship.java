@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DirectedRelationship.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: DirectedRelationship.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Directed Relationship</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A directed relationship references one or more source elements and one or more target elements. Directed relationship is an abstract metaclass. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

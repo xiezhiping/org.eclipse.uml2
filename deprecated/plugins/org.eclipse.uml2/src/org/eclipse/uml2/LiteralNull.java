@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralNull.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: LiteralNull.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Literal Null</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A literal null is used to represent null, i.e., the absence of a value. 
+ * <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.uml2.UML2Package#getLiteralNull()

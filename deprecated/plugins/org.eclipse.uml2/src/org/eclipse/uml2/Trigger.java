@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Trigger.java,v 1.4 2004/05/20 03:20:04 khussey Exp $
+ * $Id: Trigger.java,v 1.5 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Trigger</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A trigger specifies the an event that may cause the execution of an associated behavior. An event is often ultimately caused by the execution of an action, but need not be. Trigger is an abstract metaclass. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -30,7 +34,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface Trigger extends NamedElement {
+public interface Trigger extends NamedElement{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

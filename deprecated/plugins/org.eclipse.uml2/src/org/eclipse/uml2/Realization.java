@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Realization.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Realization.java,v 1.3 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Realization</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * In the metamodel, a Realization is a subtype of Dependencies::Realization. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CollaborationOccurrence.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: CollaborationOccurrence.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Collaboration Occurrence</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A collaboration occurrence represents one particular use of a collaboration to explain the relationships between the properties of a classifier. A collaboration occurrence indicates a set of roles and connectors that cooperate within the classifier according to a given collaboration, indicated by the type of the collaboration occurrence. There may be multiple occurrences of a given collaboration within a classifier, each involving a different set of roles and connectors. A given role or connector may be involved in multiple occurrences of the same or different collaborations. Associated dependencies map features of the collaboration type to features in the classifier. These dependencies indicate which role in the classifier plays which role in the collaboration. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

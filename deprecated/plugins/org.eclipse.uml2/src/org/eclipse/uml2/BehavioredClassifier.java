@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.4 2004/05/20 03:20:04 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.5 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Behaviored Classifier</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A classifier can have behavior specifications defined in its namespace. One of these may specify the behavior of the classifier itself. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

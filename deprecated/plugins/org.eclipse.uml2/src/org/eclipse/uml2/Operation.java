@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Operation.java,v 1.5 2004/05/20 03:20:04 khussey Exp $
+ * $Id: Operation.java,v 1.6 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -23,6 +23,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Operation</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

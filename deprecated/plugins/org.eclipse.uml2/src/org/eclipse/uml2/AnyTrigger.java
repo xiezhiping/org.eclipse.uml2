@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AnyTrigger.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: AnyTrigger.java,v 1.3 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -17,6 +17,10 @@ package org.eclipse.uml2;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Any Trigger</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An AnyTrigger for a given state specifies that the transition is triggered for all applicable message triggers except for those specified explicitly on other transitions for this state. 
+ * <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.uml2.UML2Package#getAnyTrigger()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Activity.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Activity.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Activity</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An activity contains a language-specific text string used to describe a computation, and an optional specification of the language. OCL, natural language, or programming languages may be used to specify an activity. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

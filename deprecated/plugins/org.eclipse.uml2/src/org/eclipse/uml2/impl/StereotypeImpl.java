@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.17 2004/06/02 19:52:53 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.18 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -712,7 +712,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			GET_ALL_EXTENDED_E_CLASSES_METHOD = StereotypeImpl.class.getMethod(
 				"getAllExtendedEClasses", null); //$NON-NLS-1$
 		} catch (Exception e) {
-			// do nothing
+			// ignore
 		}
 	}
 

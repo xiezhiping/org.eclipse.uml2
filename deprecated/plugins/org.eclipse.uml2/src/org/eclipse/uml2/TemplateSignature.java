@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateSignature.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: TemplateSignature.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,6 +20,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Template Signature</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A TemplateSignature is owned by a TemplateableElement and has one or more TemplateParameters that define the signature for binding this template. A TemplateSignature may reference a set of nested template signatures to reflect the hierarchical nature of a template. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectableElement.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ConnectableElement.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Connectable Element</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A ConnectableElement is an abstract metaclass representing a set of instances that are owned by a containing classifier instance. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.14 2004/06/02 19:52:53 khussey Exp $
+ * $Id: PackageImpl.java,v 1.15 2004/06/03 02:59:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1099,7 +1099,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			GET_ALL_APPLIED_PROFILES_METHOD = PackageImpl.class.getMethod(
 				"getAllAppliedProfiles", null); //$NON-NLS-1$
 		} catch (Exception e) {
-			// do nothing
+			// ignore
 		}
 	}
 

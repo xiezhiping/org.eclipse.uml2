@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Duration.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Duration.java,v 1.4 2004/06/03 02:59:17 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Duration</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A duration defines a value specification that specifies the temporal distance between two time expressions that specify time instants. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
