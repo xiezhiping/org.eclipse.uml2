@@ -60,9 +60,6 @@
 				<group title="UML2 Model"  packages="@org.eclipse.uml2@"/>
 				<group title="UML2 Edit"   packages="@org.eclipse.uml2.edit@"/>
 				<group title="UML2 Editor" packages="@org.eclipse.uml2.editor@"/>
-				<group title="Ecore2XML Model"  packages="@org.eclipse.uml2.mapping.ecore2xml@"/>
-				<group title="Ecore2XML Edit"   packages="@org.eclipse.uml2.mapping.ecore2xml.edit@"/>
-				<group title="Ecore2XML Editor" packages="@org.eclipse.uml2.mapping.ecore2xml.editor@"/>
 @packagesets@
 				
 		</javadoc>
