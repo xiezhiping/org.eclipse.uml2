@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.7 2004/05/18 21:00:48 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8 2004/05/28 05:13:45 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -678,19 +678,19 @@ public final class ProfileOperations
 					switch (targetEStructuralFeature.getEType().eClass()
 						.getClassifierID()) {
 
-						case EcorePackage.ECLASS:
+						case EcorePackage.ECLASS :
 							copyEClassValue(sourceEObject,
 								sourceEStructuralFeature, targetEObject,
 								targetEStructuralFeature);
 
 							break;
-						case EcorePackage.EDATA_TYPE:
+						case EcorePackage.EDATA_TYPE :
 							copyEDataTypeValue(sourceEObject,
 								sourceEStructuralFeature, targetEObject,
 								targetEStructuralFeature);
 
 							break;
-						case EcorePackage.EENUM:
+						case EcorePackage.EENUM :
 							copyEEnumValue(sourceEObject,
 								sourceEStructuralFeature, targetEObject,
 								targetEStructuralFeature);
@@ -1096,7 +1096,7 @@ public final class ProfileOperations
 		}
 
 		if (null == class_
-			|| getReferencedMetaclasses(profile).contains(class_)) {
+			|| profile.getReferencedMetaclasses().contains(class_)) {
 
 			throw new IllegalArgumentException(String.valueOf(class_));
 		}
@@ -1151,7 +1151,7 @@ public final class ProfileOperations
 			throw new IllegalArgumentException(String.valueOf(profile));
 		}
 
-		if (null == model || getReferencedMetamodels(profile).contains(model)) {
+		if (null == model || profile.getReferencedMetamodels().contains(model)) {
 			throw new IllegalArgumentException(String.valueOf(model));
 		}
 
@@ -1186,9 +1186,8 @@ public final class ProfileOperations
 			if (null != resource) {
 				ResourceSet resourceSet = resource.getResourceSet();
 				URIConverter uriConverter = new UML2URIConverterImpl(
-						null == resourceSet
-							? DEFAULT_URI_CONVERTER : resourceSet
-								.getURIConverter());
+					null == resourceSet
+						? DEFAULT_URI_CONVERTER : resourceSet.getURIConverter());
 
 				for (Iterator resourceBundleURIs = getResourceBundleURIs(
 					resource.getURI(), locale).iterator(); resourceBundleURIs
@@ -1196,9 +1195,9 @@ public final class ProfileOperations
 
 					try {
 						resourceBundle = new PropertyResourceBundle(
-								uriConverter
-									.createInputStream((URI) resourceBundleURIs
-										.next()));
+							uriConverter
+								.createInputStream((URI) resourceBundleURIs
+									.next()));
 						locale = resourceBundle.getLocale();
 						break;
 					} catch (IOException ioe) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CreateExtensionAction.java,v 1.1 2004/04/29 15:31:14 khussey Exp $
+ * $Id: CreateExtensionAction.java,v 1.2 2004/05/28 05:13:28 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -31,7 +31,6 @@ import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.edit.util.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
-import org.eclipse.uml2.internal.operation.StereotypeOperations;
 
 /**
  *  
@@ -81,8 +80,7 @@ public class CreateExtensionAction
 					.getEClassifier(((org.eclipse.uml2.Class) referencedMetaclasses
 						.next()).getName());
 
-				if (!StereotypeOperations.getExtendedEClasses(stereotype)
-					.contains(eClassifier)) {
+				if (!stereotype.getExtendedEClasses().contains(eClassifier)) {
 
 					choiceOfValues.add(eClassifier);
 				}

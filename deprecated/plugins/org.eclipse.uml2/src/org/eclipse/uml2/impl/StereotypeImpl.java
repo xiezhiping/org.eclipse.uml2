@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.11 2004/05/25 20:05:05 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.12 2004/05/28 05:13:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
+import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -711,6 +713,28 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 */
 	public Extension createExtension(EClass eClass, boolean required) {
 		return StereotypeOperations.createExtension(this, eClass, required);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Stereotype#getExtendedEClasses()
+	 */
+	public Set getExtendedEClasses() {
+
+		try {
+			Method method = getClass().getMethod("getExtendedEClasses", null); //$NON-NLS-1$
+
+			if (!getCacheAdapter().containsKey(this, method)) {
+				getCacheAdapter().put(this, method,
+					StereotypeOperations.getExtendedEClasses(this));
+			}
+
+			return (Set) getCacheAdapter().get(this, method);
+
+		} catch (Exception e) {
+			return StereotypeOperations.getExtendedEClasses(this);
+		}
 	}
 
 	/*

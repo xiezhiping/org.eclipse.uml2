@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.6 2004/05/20 03:20:02 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.7 2004/05/28 05:13:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1314,27 +1314,33 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 
 	// <!-- begin-custom-operations -->
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Namespace#getImportedPackages()
 	 */
 	public Set getImportedPackages() {
 
-	    try {
-            Method method = getClass().getMethod("getImportedPackages", new Class[] {}); //$NON-NLS-1$
+		try {
+			Method method = getClass().getMethod("getImportedPackages", null); //$NON-NLS-1$
 
-            if (!getCacheAdapter().containsKey(this, method)) {
-                getCacheAdapter().put(this, method, NamespaceOperations.getImportedPackages(this));
-            }
+			if (!getCacheAdapter().containsKey(this, method)) {
+				getCacheAdapter().put(this, method,
+					NamespaceOperations.getImportedPackages(this));
+			}
 
-            return (Set) getCacheAdapter().get(this, method);
+			return (Set) getCacheAdapter().get(this, method);
 
-        } catch (Exception e) {
-    		return NamespaceOperations.getImportedPackages(this);
-        }
+		} catch (Exception e) {
+			return NamespaceOperations.getImportedPackages(this);
+		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.uml2.Namespace#importElement(org.eclipse.uml2.VisibilityKind, org.eclipse.uml2.PackageableElement)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Namespace#importElement(org.eclipse.uml2.VisibilityKind,
+	 *      org.eclipse.uml2.PackageableElement)
 	 */
 	public void importElement(VisibilityKind visibility, PackageableElement element) {
 		NamespaceOperations.importElement(this, this.visibility, element);

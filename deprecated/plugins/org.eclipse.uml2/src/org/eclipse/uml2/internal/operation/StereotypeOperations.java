@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.5 2004/05/18 21:00:48 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.6 2004/05/28 05:13:45 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -139,8 +139,8 @@ public final class StereotypeOperations
 	}
 
 	/**
-	 * Retrieves the enumeration literal represented by the specified Ecore
-	 * enum literal.
+	 * Retrieves the enumeration literal represented by the specified Ecore enum
+	 * literal.
 	 * 
 	 * @param eEnumLiteral
 	 *            The Ecore enum literal for which to retrieve the enumeration
@@ -183,7 +183,7 @@ public final class StereotypeOperations
 	protected static void getExtendedEClassesHelper(Stereotype stereotype,
 			Set extendedEClasses) {
 
-		ownedAttributesLoop: for (Iterator ownedAttributes = stereotype
+		ownedAttributesLoop : for (Iterator ownedAttributes = stereotype
 			.getOwnedAttributes().iterator(); ownedAttributes.hasNext();) {
 
 			Property property = (Property) ownedAttributes.next();
@@ -237,8 +237,12 @@ public final class StereotypeOperations
 	 */
 	public static void apply(Stereotype stereotype, Element element) {
 
+		if (null == element) {
+			throw new IllegalArgumentException(String.valueOf(element));
+		}
+
 		if (null == stereotype || isApplied(stereotype, element)
-			|| !getApplicableStereotypes(element).contains(stereotype)) {
+			|| !element.getApplicableStereotypes().contains(stereotype)) {
 
 			throw new IllegalArgumentException(String.valueOf(stereotype));
 		}
@@ -253,18 +257,18 @@ public final class StereotypeOperations
 	}
 
 	/**
-	 * Creates a(n) (required) extension of the specified metaclass with the
+	 * Creates a(n) (required) extension of the specified Ecore class with the
 	 * specified stereotype.
 	 * 
 	 * @param stereotype
-	 *            The stereotype with which to extend the metaclass.
+	 *            The stereotype with which to extend the Ecore class.
 	 * @param eClass
-	 *            The metaclass to be extended.
+	 *            The Ecore class to be extended.
 	 * @param required
 	 *            Whether the extension should be required.
 	 * @return The new extension.
 	 * @throws IllegalArgumentException
-	 *             If the stereotype already extends the metaclass.
+	 *             If the stereotype already extends the Ecore class.
 	 */
 	public static Extension createExtension(Stereotype stereotype,
 			EClass eClass, boolean required) {
@@ -279,7 +283,7 @@ public final class StereotypeOperations
 			throw new IllegalArgumentException(String.valueOf(eClass));
 		}
 
-		for (Iterator extendedEClasses = getExtendedEClasses(stereotype)
+		for (Iterator extendedEClasses = stereotype.getExtendedEClasses()
 			.iterator(); extendedEClasses.hasNext();) {
 
 			if (eClass.isSuperTypeOf((EClass) extendedEClasses.next())) {
@@ -330,7 +334,8 @@ public final class StereotypeOperations
 		ExtensionEnd extensionEnd = (ExtensionEnd) extension
 			.createOwnedEnd(UML2Package.eINSTANCE.getExtensionEnd());
 
-		extensionEnd.setName(STEREOTYPE_EXTENSION_ROLE_PREFIX + stereotype.getName());
+		extensionEnd.setName(STEREOTYPE_EXTENSION_ROLE_PREFIX
+			+ stereotype.getName());
 		extensionEnd.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 		extensionEnd.setType(stereotype);
 
@@ -368,6 +373,8 @@ public final class StereotypeOperations
 			.getAllAppliedProfiles().iterator(); allAppliedProfiles.hasNext();) {
 
 			Profile profile = (Profile) allAppliedProfiles.next();
+			String appliedVersion = ProfileOperations.getAppliedVersion(
+				profile, element.getNearestPackage());
 
 			for (Iterator ownedStereotypes = profile.getOwnedStereotypes()
 				.iterator(); ownedStereotypes.hasNext();) {
@@ -375,12 +382,11 @@ public final class StereotypeOperations
 				Stereotype stereotype = (Stereotype) ownedStereotypes.next();
 
 				if (!stereotype.isAbstract()
-					&& null != getEClass(stereotype,
-						ProfileOperations.getAppliedVersion(profile, element
-							.getNearestPackage()))) {
+					&& null != getEClass(stereotype, appliedVersion)) {
 
-					for (Iterator extendedEClasses = getExtendedEClasses(
-						stereotype).iterator(); extendedEClasses.hasNext();) {
+					for (Iterator extendedEClasses = stereotype
+						.getExtendedEClasses().iterator(); extendedEClasses
+						.hasNext();) {
 
 						if (((EClass) extendedEClasses.next())
 							.isInstance(element)) {
@@ -413,8 +419,9 @@ public final class StereotypeOperations
 			return null;
 		}
 
-		for (Iterator applicableStereotypes = getApplicableStereotypes(element)
-			.iterator(); applicableStereotypes.hasNext();) {
+		for (Iterator applicableStereotypes = element
+			.getApplicableStereotypes().iterator(); applicableStereotypes
+			.hasNext();) {
 
 			Stereotype applicableStereotype = (Stereotype) applicableStereotypes
 				.next();
@@ -443,8 +450,9 @@ public final class StereotypeOperations
 			return appliedStereotypes;
 		}
 
-		for (Iterator allApplicableStereotypes = getApplicableStereotypes(
-			element).iterator(); allApplicableStereotypes.hasNext();) {
+		for (Iterator allApplicableStereotypes = element
+			.getApplicableStereotypes().iterator(); allApplicableStereotypes
+			.hasNext();) {
 
 			Stereotype stereotype = (Stereotype) allApplicableStereotypes
 				.next();
@@ -475,7 +483,7 @@ public final class StereotypeOperations
 			return null;
 		}
 
-		for (Iterator appliedStereotypes = getAppliedStereotypes(element)
+		for (Iterator appliedStereotypes = element.getAppliedStereotypes()
 			.iterator(); appliedStereotypes.hasNext();) {
 
 			Stereotype appliedStereotype = (Stereotype) appliedStereotypes
@@ -562,7 +570,7 @@ public final class StereotypeOperations
 		EObject eObject = getEObject(stereotype, element);
 
 		for (StringTokenizer tokens = new StringTokenizer(propertyName,
-				NamedElement.SEPARATOR); tokens.hasMoreTokens();) {
+			NamedElement.SEPARATOR); tokens.hasMoreTokens();) {
 
 			String token = tokens.nextToken();
 
@@ -674,8 +682,8 @@ public final class StereotypeOperations
 	}
 
 	/**
-	 * Determines whether the specified stereotype is required for the
-	 * specified element.
+	 * Determines whether the specified stereotype is required for the specified
+	 * element.
 	 * 
 	 * @param stereotype
 	 *            The stereotype to test for requirement.
@@ -910,7 +918,8 @@ public final class StereotypeOperations
 	/**
 	 * Retrieves the keyword for the specified stereotype.
 	 * 
-	 * @param stereotype The stereotype for which to retrieve the keyword.
+	 * @param stereotype
+	 *            The stereotype for which to retrieve the keyword.
 	 * @return The keyword for the stereotype.
 	 */
 	public static String getKeyword(Stereotype stereotype) {

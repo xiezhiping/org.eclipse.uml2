@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.4 2004/05/25 20:05:05 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.5 2004/05/28 05:13:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -607,45 +607,55 @@ public class ProfileImpl extends PackageImpl implements Profile {
 		ProfileOperations.define(this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Profile#getReferencedMetaclasses()
 	 */
 	public Set getReferencedMetaclasses() {
-	    
-	    try {
-            Method method = getClass().getMethod("getReferencedMetaclasses", new Class[] {}); //$NON-NLS-1$
 
-            if (!getCacheAdapter().containsKey(this, method)) {
-                getCacheAdapter().put(this, method, ProfileOperations.getReferencedMetaclasses(this));
-            }
+		try {
+			Method method = getClass().getMethod(
+				"getReferencedMetaclasses", null); //$NON-NLS-1$
 
-            return (Set) getCacheAdapter().get(this, method);
+			if (!getCacheAdapter().containsKey(this, method)) {
+				getCacheAdapter().put(this, method,
+					ProfileOperations.getReferencedMetaclasses(this));
+			}
 
-        } catch (Exception e) {
-    		return ProfileOperations.getReferencedMetaclasses(this);
-        }
+			return (Set) getCacheAdapter().get(this, method);
+
+		} catch (Exception e) {
+			return ProfileOperations.getReferencedMetaclasses(this);
+		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Profile#getReferencedMetamodels()
 	 */
 	public Set getReferencedMetamodels() {
 
-	    try {
-            Method method = getClass().getMethod("getReferencedMetamodels", new Class[] {}); //$NON-NLS-1$
+		try {
+			Method method = getClass().getMethod(
+				"getReferencedMetamodels", null); //$NON-NLS-1$
 
-            if (!getCacheAdapter().containsKey(this, method)) {
-                getCacheAdapter().put(this, method, ProfileOperations.getReferencedMetamodels(this));
-            }
+			if (!getCacheAdapter().containsKey(this, method)) {
+				getCacheAdapter().put(this, method,
+					ProfileOperations.getReferencedMetamodels(this));
+			}
 
-            return (Set) getCacheAdapter().get(this, method);
+			return (Set) getCacheAdapter().get(this, method);
 
-        } catch (Exception e) {
-    		return ProfileOperations.getReferencedMetamodels(this);
-        }
+		} catch (Exception e) {
+			return ProfileOperations.getReferencedMetamodels(this);
+		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Profile#getVersion()
 	 */
 	public String getVersion() {

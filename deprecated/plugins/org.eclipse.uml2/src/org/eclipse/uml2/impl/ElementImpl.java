@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.9 2004/05/20 04:55:48 khussey Exp $
+ * $Id: ElementImpl.java,v 1.10 2004/05/28 05:13:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -392,7 +392,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 
 		try {
 			Method method = getClass().getMethod("getApplicableStereotypes", //$NON-NLS-1$
-				new Class[] {});
+				null);
 
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this, method,
@@ -424,8 +424,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	public Set getAppliedStereotypes() {
 
 		try {
-			Method method = getClass().getMethod("getAppliedStereotypes", //$NON-NLS-1$
-				new Class[] {});
+			Method method = getClass().getMethod("getAppliedStereotypes", null); //$NON-NLS-1$
 
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this, method,
@@ -540,8 +539,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	public Set getKeywords() {
 
 		try {
-			Method method = getClass().getMethod("getKeywords", //$NON-NLS-1$
-				new Class[] {});
+			Method method = getClass().getMethod("getKeywords", null); //$NON-NLS-1$
 
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this, method,

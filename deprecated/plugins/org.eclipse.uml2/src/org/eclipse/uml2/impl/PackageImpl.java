@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.7 2004/05/25 20:05:05 khussey Exp $
+ * $Id: PackageImpl.java,v 1.8 2004/05/28 05:13:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1067,14 +1067,15 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		ProfileOperations.apply(profile, this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Package#getAllAppliedProfiles()
 	 */
 	public Set getAllAppliedProfiles() {
 
 		try {
-			Method method = getClass().getMethod("getAllAppliedProfiles", //$NON-NLS-1$
-				new Class[] {});
+			Method method = getClass().getMethod("getAllAppliedProfiles", null); //$NON-NLS-1$
 
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this, method,
@@ -1088,7 +1089,9 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Package#isApplied(org.eclipse.uml2.Profile)
 	 */
 	public boolean isApplied(Profile profile) {

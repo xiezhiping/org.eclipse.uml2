@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.7 2004/05/28 05:13:45 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -26,10 +26,10 @@ import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageableElement;
-import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.util.UML2Validator;
 
 /**
  * A static utility class that provides operations related to namespaces.
@@ -48,7 +48,7 @@ public final class NamespaceOperations
 	public static Set excludeCollisions(Namespace namespace, Set imps) {
 		Set excludeCollisions = new HashSet();
 
-		imps1Loop: for (Iterator imps1 = imps.iterator(); imps1.hasNext();) {
+		imps1Loop : for (Iterator imps1 = imps.iterator(); imps1.hasNext();) {
 			PackageableElement imp1 = (PackageableElement) imps1.next();
 
 			for (Iterator imps2 = imps.iterator(); imps2.hasNext();) {
@@ -141,7 +141,7 @@ public final class NamespaceOperations
 	public static Set importMembers(Namespace namespace, Set imps) {
 		Set importMembers = new HashSet();
 
-		excludeCollisionsLoop: for (Iterator excludeCollisions = namespace
+		excludeCollisionsLoop : for (Iterator excludeCollisions = namespace
 			.excludeCollisions(imps).iterator(); excludeCollisions.hasNext();) {
 
 			PackageableElement excludeCollision = (PackageableElement) excludeCollisions
@@ -276,7 +276,7 @@ public final class NamespaceOperations
 		}
 
 		if (null == package_
-			|| getImportedPackages(namespace).contains(package_)) {
+			|| namespace.getImportedPackages().contains(package_)) {
 
 			throw new IllegalArgumentException(String.valueOf(package_));
 		}
@@ -300,16 +300,13 @@ public final class NamespaceOperations
 			result = false;
 
 			if (null != diagnostics) {
-				diagnostics
-					.add(new BasicDiagnostic(
-							Diagnostic.WARNING,
-							UML2Validator.DIAGNOSTIC_SOURCE,
-							UML2Validator.NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE,
-							UML2Plugin.INSTANCE
-								.getString(
-									"_UI_Namespace_MembersAreDistinguishable_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context, namespace)),
-							new Object[] {namespace}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UML2Validator.DIAGNOSTIC_SOURCE,
+					UML2Validator.NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE,
+					UML2Plugin.INSTANCE.getString(
+						"_UI_Namespace_MembersAreDistinguishable_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, namespace)),
+					new Object[]{namespace}));
 			}
 		}
 
@@ -354,16 +351,13 @@ public final class NamespaceOperations
 			result = false;
 
 			if (null != diagnostics) {
-				diagnostics
-					.add(new BasicDiagnostic(
-							Diagnostic.ERROR,
-							UML2Validator.DIAGNOSTIC_SOURCE,
-							UML2Validator.NAMESPACE__IMPORTED_MEMBER_DERIVED,
-							UML2Plugin.INSTANCE
-								.getString(
-									"_UI_Namespace_ImportedMemberDerived_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context, namespace)),
-							new Object[] {namespace}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UML2Validator.DIAGNOSTIC_SOURCE,
+					UML2Validator.NAMESPACE__IMPORTED_MEMBER_DERIVED,
+					UML2Plugin.INSTANCE.getString(
+						"_UI_Namespace_ImportedMemberDerived_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, namespace)),
+					new Object[]{namespace}));
 			}
 		}
 
