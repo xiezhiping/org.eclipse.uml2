@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InformationFlowImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: InformationFlowImplTest.java,v 1.2 2004/04/30 21:58:06 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -88,17 +88,31 @@ public class InformationFlowImplTest extends DirectedRelationshipImplTest {
 		// TODO implement setUpOwner
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DirectedRelationshipImplTest#setUpSources()
 	 */
 	protected void setUpSources() {
 		// TODO implement setUpSources
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DirectedRelationshipImplTest#setUpTargets()
 	 */
 	protected void setUpTargets() {
+		// TODO implement setUpTargets
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.eclipse.uml2.impl.tests.DirectedRelationshipImplTest#testGetSources()
+	 */
+	public void testGetSources() {
+		// TODO implement setUpSources
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.uml2.impl.tests.DirectedRelationshipImplTest#testGetTargets()
+	 */
+	public void testGetTargets() {
 		// TODO implement setUpTargets
 	}
 
