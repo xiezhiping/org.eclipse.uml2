@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+/*
+ * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Common Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/cpl-v10.html
+ * 
+ * Contributors: 
+ *   IBM - Initial API and implementation
+ *
+ * $Id: plugin.xml,v 1.1 2004/04/29 15:14:39 khussey Exp $
+ */
+-->
+
+<plugin
+   id="org.eclipse.uml2.examples"
+   version="1.0.0"
+   name="%pluginName"
+   provider-name="%providerName"
+   class="org.eclipse.uml2.examples.ExamplesPlugin">
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.uml2.edit" export="true"/>
+   </requires>
+
+   <runtime>
+      <library name="uml2.examples.jar">
+         <export name="*"/>
+         <packages prefixes="org.eclipse.uml2.examples,org.eclipse.uml2.examples.commands,org.eclipse.uml2.examples.ecore2uml2,org.eclipse.uml2.examples.uml22ecore"/>
+      </library>
+   </runtime>
+
+</plugin>
