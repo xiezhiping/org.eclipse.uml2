@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML22Ecore.java,v 1.5 2004/10/01 19:38:34 khussey Exp $
+ * $Id: UML22Ecore.java,v 1.6 2004/11/18 18:07:54 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml22ecore;
 
@@ -63,11 +63,11 @@ import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Switch;
 
 /**
- *  
+ * 
  */
 public class UML22Ecore
-	extends UML2Switch
-	implements Converter {
+		extends UML2Switch
+		implements Converter {
 
 	protected final Map modelMap = new HashMap();
 
@@ -775,6 +775,86 @@ public class UML22Ecore
 			if (0 != featureKind) {
 				ExtendedMetaData.INSTANCE.setFeatureKind(eStructuralFeature,
 					featureKind);
+			}
+
+			try {
+				EnumerationLiteral visibility = (EnumerationLiteral) object
+					.getValue(eStructuralFeatureStereotype, "visibility"); //$NON-NLS-1$
+
+				int visibilityKind = visibility.getEnumeration()
+					.getOwnedLiterals().indexOf(visibility);
+
+				switch (visibilityKind) {
+					case 1 :
+						EcoreUtil.setSuppressedVisibility(eStructuralFeature,
+							EcoreUtil.GET, true);
+
+						if (eStructuralFeature.isChangeable()
+							&& !eStructuralFeature.isMany()) {
+
+							EcoreUtil.setSuppressedVisibility(
+								eStructuralFeature, EcoreUtil.SET, true);
+						}
+
+						if (eStructuralFeature.isUnsettable()) {
+							EcoreUtil.setSuppressedVisibility(
+								eStructuralFeature, EcoreUtil.IS_SET, true);
+
+							if (eStructuralFeature.isChangeable()) {
+								EcoreUtil.setSuppressedVisibility(
+									eStructuralFeature, EcoreUtil.UNSET, true);
+							}
+						}
+						break;
+					case 2 :
+						if (!eStructuralFeature.isMany()
+							&& eStructuralFeature.isChangeable()) {
+
+							EcoreUtil.setSuppressedVisibility(
+								eStructuralFeature, EcoreUtil.SET, true);
+						}
+
+						if (eStructuralFeature.isUnsettable()) {
+							EcoreUtil.setSuppressedVisibility(
+								eStructuralFeature, EcoreUtil.IS_SET, true);
+
+							if (eStructuralFeature.isChangeable()) {
+								EcoreUtil.setSuppressedVisibility(
+									eStructuralFeature, EcoreUtil.UNSET, true);
+							}
+						}
+						break;
+					case 3 :
+						if (eStructuralFeature.isUnsettable()) {
+							EcoreUtil.setSuppressedVisibility(
+								eStructuralFeature, EcoreUtil.IS_SET, true);
+
+							if (eStructuralFeature.isChangeable()) {
+								EcoreUtil.setSuppressedVisibility(
+									eStructuralFeature, EcoreUtil.UNSET, true);
+							}
+						}
+						break;
+					case 4 :
+						if (!eStructuralFeature.isMany()
+							&& eStructuralFeature.isChangeable()) {
+
+							EcoreUtil.setSuppressedVisibility(
+								eStructuralFeature, EcoreUtil.SET, true);
+						}
+
+						if (eStructuralFeature.isUnsettable()
+							&& eStructuralFeature.isChangeable()) {
+
+							EcoreUtil.setSuppressedVisibility(
+								eStructuralFeature, EcoreUtil.UNSET, true);
+						}
+						break;
+					default :
+						break;
+				}
+			} catch (IllegalArgumentException iae) {
+				// ignore
 			}
 		}
 
