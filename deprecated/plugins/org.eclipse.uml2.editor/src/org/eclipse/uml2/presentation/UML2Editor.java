@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.12 2005/03/15 18:50:31 khussey Exp $
+ * $Id: UML2Editor.java,v 1.13 2005/04/04 19:01:27 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -1470,13 +1470,4 @@ public class UML2Editor
 		super.dispose();
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.ui.part.WorkbenchPart#getOrientation()
-	 */
-	public int getOrientation() {
-		return Window.getDefaultOrientation();
-	}
-
 }
