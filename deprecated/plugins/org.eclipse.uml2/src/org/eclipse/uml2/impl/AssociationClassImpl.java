@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.12 2004/06/01 21:08:23 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.13 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -133,17 +133,16 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * @generated
 	 */
 	public EList getRelatedElementsGen() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRelationship_RelatedElement())) {
+		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+
+		if (null == relatedElement) {
 			Set union = new LinkedHashSet();
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getRelationship_RelatedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getRelationship_RelatedElement(),
-					union.size(),
-					union.toArray()));
+
+			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+
+		return relatedElement;
 	}
 
 	public EList getRelatedElements() {
@@ -311,19 +310,18 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * @generated
 	 */
 	public EList getFeatures() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
+		EList feature = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		if (null == feature) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
 			union.addAll(getOwnedEnds());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier_Feature(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getClassifier_Feature(),
-					union.size(),
-					union.toArray()));
+
+			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		return feature;
 	}
 
 	/**
@@ -332,16 +330,18 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAssociationClass().getEAllOperations().get(87))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAssociationClass().getEAllOperations().get(87));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getOwnedEnds());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getAssociationClass().getEAllOperations().get(87),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAssociationClass().getEAllOperations().get(87), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAssociationClass().getEAllOperations().get(87));
+
+		return result;
 	}
 
 	/**
@@ -350,19 +350,18 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * @generated
 	 */
 	public EList getMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
+		EList member = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
+
+		if (null == member) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getMembers());
 			union.addAll(getMemberEnds());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getNamespace_Member(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getNamespace_Member(),
-					union.size(),
-					union.toArray()));
+
+			member = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getNamespace_Member(), member);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
+
+		return member;
 	}
 
 	/**
@@ -399,10 +398,10 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 					return eBasicSetContainer(otherEnd, UML2Package.ASSOCIATION_CLASS__OWNING_PARAMETER, msgs);
 				case UML2Package.ASSOCIATION_CLASS__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__OWNED_BEHAVIOR:
@@ -458,10 +457,10 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 					return eBasicSetContainer(null, UML2Package.ASSOCIATION_CLASS__OWNING_PARAMETER, msgs);
 				case UML2Package.ASSOCIATION_CLASS__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__USE_CASE:
@@ -584,10 +583,10 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				return getAttributes();
 			case UML2Package.ASSOCIATION_CLASS__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.ASSOCIATION_CLASS__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.ASSOCIATION_CLASS__USE_CASE:
@@ -620,10 +619,10 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				return getOwnedOperations();
 			case UML2Package.ASSOCIATION_CLASS__SUPER_CLASS:
 				return getSuperClasses();
-			case UML2Package.ASSOCIATION_CLASS__EXTENSION:
-				return getExtensions();
 			case UML2Package.ASSOCIATION_CLASS__NESTED_CLASSIFIER:
 				return getNestedClassifiers();
+			case UML2Package.ASSOCIATION_CLASS__EXTENSION:
+				return getExtensions();
 			case UML2Package.ASSOCIATION_CLASS__IS_ACTIVE:
 				return isActive() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_RECEPTION:
@@ -712,13 +711,13 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -857,11 +856,11 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -989,10 +988,10 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				return !getAttributes().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__USE_CASE:
@@ -1025,10 +1024,10 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__SUPER_CLASS:
 				return !getSuperClasses().isEmpty();
-			case UML2Package.ASSOCIATION_CLASS__EXTENSION:
-				return !getExtensions().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UML2Package.ASSOCIATION_CLASS__EXTENSION:
+				return !getExtensions().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_RECEPTION:

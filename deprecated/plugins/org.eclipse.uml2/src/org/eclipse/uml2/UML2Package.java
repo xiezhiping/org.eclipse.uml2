@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Package.java,v 1.10 2004/05/28 05:39:37 khussey Exp $
+ * $Id: UML2Package.java,v 1.11 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -246,7 +246,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateableElement()
 	 * @generated
 	 */
-	int TEMPLATEABLE_ELEMENT = 109;
+	int TEMPLATEABLE_ELEMENT = 95;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -256,7 +256,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getNamedElement()
 	 * @generated
 	 */
-	int NAMED_ELEMENT = 6;
+	int NAMED_ELEMENT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.NamespaceImpl <em>Namespace</em>}' class.
@@ -266,7 +266,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getNamespace()
 	 * @generated
 	 */
-	int NAMESPACE = 7;
+	int NAMESPACE = 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ClassifierImpl <em>Classifier</em>}' class.
@@ -276,7 +276,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClassifier()
 	 * @generated
 	 */
-	int CLASSIFIER = 22;
+	int CLASSIFIER = 27;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.StructuredClassifierImpl <em>Structured Classifier</em>}' class.
@@ -296,7 +296,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getEncapsulatedClassifier()
 	 * @generated
 	 */
-	int ENCAPSULATED_CLASSIFIER = 96;
+	int ENCAPSULATED_CLASSIFIER = 109;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ClassImpl <em>Class</em>}' class.
@@ -336,7 +336,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRedefinableElement()
 	 * @generated
 	 */
-	int REDEFINABLE_ELEMENT = 36;
+	int REDEFINABLE_ELEMENT = 32;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.FeatureImpl <em>Feature</em>}' class.
@@ -346,7 +346,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getFeature()
 	 * @generated
 	 */
-	int FEATURE = 23;
+	int FEATURE = 28;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.StructuralFeatureImpl <em>Structural Feature</em>}' class.
@@ -356,7 +356,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStructuralFeature()
 	 * @generated
 	 */
-	int STRUCTURAL_FEATURE = 30;
+	int STRUCTURAL_FEATURE = 31;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.PropertyImpl <em>Property</em>}' class.
@@ -376,7 +376,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getBehavioralFeature()
 	 * @generated
 	 */
-	int BEHAVIORAL_FEATURE = 31;
+	int BEHAVIORAL_FEATURE = 30;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.OperationImpl <em>Operation</em>}' class.
@@ -456,7 +456,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInstanceSpecification()
 	 * @generated
 	 */
-	int INSTANCE_SPECIFICATION = 33;
+	int INSTANCE_SPECIFICATION = 34;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.EnumerationLiteralImpl <em>Enumeration Literal</em>}' class.
@@ -486,7 +486,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getValueSpecification()
 	 * @generated
 	 */
-	int VALUE_SPECIFICATION = 3;
+	int VALUE_SPECIFICATION = 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.OpaqueExpressionImpl <em>Opaque Expression</em>}' class.
@@ -496,7 +496,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getOpaqueExpression()
 	 * @generated
 	 */
-	int OPAQUE_EXPRESSION = 2;
+	int OPAQUE_EXPRESSION = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -506,7 +506,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 4;
+	int EXPRESSION = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CommentImpl <em>Comment</em>}' class.
@@ -516,7 +516,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getComment()
 	 * @generated
 	 */
-	int COMMENT = 5;
+	int COMMENT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.RelationshipImpl <em>Relationship</em>}' class.
@@ -526,7 +526,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRelationship()
 	 * @generated
 	 */
-	int RELATIONSHIP = 9;
+	int RELATIONSHIP = 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DirectedRelationshipImpl <em>Directed Relationship</em>}' class.
@@ -536,70 +536,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDirectedRelationship()
 	 * @generated
 	 */
-	int DIRECTED_RELATIONSHIP = 8;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_ELEMENT__EANNOTATIONS = ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_ELEMENT__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_ELEMENT__OWNER = ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_ELEMENT__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING = ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE = ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>Templateable Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_ELEMENT_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
+	int DIRECTED_RELATIONSHIP = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.LiteralSpecificationImpl <em>Literal Specification</em>}' class.
@@ -609,7 +546,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralSpecification()
 	 * @generated
 	 */
-	int LITERAL_SPECIFICATION = 25;
+	int LITERAL_SPECIFICATION = 22;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.LiteralBooleanImpl <em>Literal Boolean</em>}' class.
@@ -619,7 +556,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralBoolean()
 	 * @generated
 	 */
-	int LITERAL_BOOLEAN = 24;
+	int LITERAL_BOOLEAN = 21;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.LiteralStringImpl <em>Literal String</em>}' class.
@@ -629,7 +566,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralString()
 	 * @generated
 	 */
-	int LITERAL_STRING = 26;
+	int LITERAL_STRING = 23;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.LiteralNullImpl <em>Literal Null</em>}' class.
@@ -639,7 +576,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralNull()
 	 * @generated
 	 */
-	int LITERAL_NULL = 27;
+	int LITERAL_NULL = 24;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.LiteralIntegerImpl <em>Literal Integer</em>}' class.
@@ -649,7 +586,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralInteger()
 	 * @generated
 	 */
-	int LITERAL_INTEGER = 28;
+	int LITERAL_INTEGER = 25;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.LiteralUnlimitedNaturalImpl <em>Literal Unlimited Natural</em>}' class.
@@ -659,7 +596,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLiteralUnlimitedNatural()
 	 * @generated
 	 */
-	int LITERAL_UNLIMITED_NATURAL = 29;
+	int LITERAL_UNLIMITED_NATURAL = 26;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ConstraintImpl <em>Constraint</em>}' class.
@@ -669,7 +606,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConstraint()
 	 * @generated
 	 */
-	int CONSTRAINT = 21;
+	int CONSTRAINT = 29;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.SlotImpl <em>Slot</em>}' class.
@@ -679,7 +616,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSlot()
 	 * @generated
 	 */
-	int SLOT = 34;
+	int SLOT = 35;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InstanceValueImpl <em>Instance Value</em>}' class.
@@ -689,7 +626,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInstanceValue()
 	 * @generated
 	 */
-	int INSTANCE_VALUE = 35;
+	int INSTANCE_VALUE = 36;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.GeneralizationImpl <em>Generalization</em>}' class.
@@ -699,7 +636,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getGeneralization()
 	 * @generated
 	 */
-	int GENERALIZATION = 32;
+	int GENERALIZATION = 33;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ElementImportImpl <em>Element Import</em>}' class.
@@ -799,7 +736,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInformationItem()
 	 * @generated
 	 */
-	int INFORMATION_ITEM = 48;
+	int INFORMATION_ITEM = 47;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InformationFlowImpl <em>Information Flow</em>}' class.
@@ -809,7 +746,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInformationFlow()
 	 * @generated
 	 */
-	int INFORMATION_FLOW = 49;
+	int INFORMATION_FLOW = 48;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.GeneralizationSetImpl <em>Generalization Set</em>}' class.
@@ -819,7 +756,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getGeneralizationSet()
 	 * @generated
 	 */
-	int GENERALIZATION_SET = 60;
+	int GENERALIZATION_SET = 52;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.AssociationClassImpl <em>Association Class</em>}' class.
@@ -829,7 +766,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAssociationClass()
 	 * @generated
 	 */
-	int ASSOCIATION_CLASS = 47;
+	int ASSOCIATION_CLASS = 54;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ModelImpl <em>Model</em>}' class.
@@ -839,7 +776,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getModel()
 	 * @generated
 	 */
-	int MODEL = 59;
+	int MODEL = 53;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.BehaviorImpl <em>Behavior</em>}' class.
@@ -849,7 +786,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getBehavior()
 	 * @generated
 	 */
-	int BEHAVIOR = 56;
+	int BEHAVIOR = 49;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.BehavioredClassifierImpl <em>Behaviored Classifier</em>}' class.
@@ -859,7 +796,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getBehavioredClassifier()
 	 * @generated
 	 */
-	int BEHAVIORED_CLASSIFIER = 57;
+	int BEHAVIORED_CLASSIFIER = 50;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ActivityImpl <em>Activity</em>}' class.
@@ -869,7 +806,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivity()
 	 * @generated
 	 */
-	int ACTIVITY = 58;
+	int ACTIVITY = 51;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DependencyImpl <em>Dependency</em>}' class.
@@ -879,7 +816,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDependency()
 	 * @generated
 	 */
-	int DEPENDENCY = 51;
+	int DEPENDENCY = 56;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.PermissionImpl <em>Permission</em>}' class.
@@ -889,7 +826,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPermission()
 	 * @generated
 	 */
-	int PERMISSION = 50;
+	int PERMISSION = 55;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.UsageImpl <em>Usage</em>}' class.
@@ -899,7 +836,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getUsage()
 	 * @generated
 	 */
-	int USAGE = 52;
+	int USAGE = 57;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.AbstractionImpl <em>Abstraction</em>}' class.
@@ -909,7 +846,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAbstraction()
 	 * @generated
 	 */
-	int ABSTRACTION = 53;
+	int ABSTRACTION = 58;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.RealizationImpl <em>Realization</em>}' class.
@@ -919,7 +856,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRealization()
 	 * @generated
 	 */
-	int REALIZATION = 54;
+	int REALIZATION = 59;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.SubstitutionImpl <em>Substitution</em>}' class.
@@ -929,7 +866,196 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSubstitution()
 	 * @generated
 	 */
-	int SUBSTITUTION = 55;
+	int SUBSTITUTION = 60;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIONSHIP__EANNOTATIONS = ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIONSHIP__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIONSHIP__OWNER = ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIONSHIP__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIONSHIP__RELATED_ELEMENT = ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the the '<em>Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIONSHIP_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_RELATIONSHIP__EANNOTATIONS = RELATIONSHIP__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_RELATIONSHIP__OWNED_ELEMENT = RELATIONSHIP__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_RELATIONSHIP__OWNER = RELATIONSHIP__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_RELATIONSHIP__OWNED_COMMENT = RELATIONSHIP__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_RELATIONSHIP__RELATED_ELEMENT = RELATIONSHIP__RELATED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_RELATIONSHIP__SOURCE = RELATIONSHIP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_RELATIONSHIP__TARGET = RELATIONSHIP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the the '<em>Directed Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_RELATIONSHIP_FEATURE_COUNT = RELATIONSHIP_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_ELEMENT__EANNOTATIONS = ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_ELEMENT__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_ELEMENT__OWNER = ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_ELEMENT__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING = ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE = ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the the '<em>Templateable Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_ELEMENT_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -1901,132 +2027,6 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int RELATIONSHIP__EANNOTATIONS = ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELATIONSHIP__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELATIONSHIP__OWNER = ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELATIONSHIP__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELATIONSHIP__RELATED_ELEMENT = ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the the '<em>Relationship</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELATIONSHIP_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTED_RELATIONSHIP__EANNOTATIONS = RELATIONSHIP__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTED_RELATIONSHIP__OWNED_ELEMENT = RELATIONSHIP__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTED_RELATIONSHIP__OWNER = RELATIONSHIP__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTED_RELATIONSHIP__OWNED_COMMENT = RELATIONSHIP__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTED_RELATIONSHIP__RELATED_ELEMENT = RELATIONSHIP__RELATED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTED_RELATIONSHIP__SOURCE = RELATIONSHIP_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTED_RELATIONSHIP__TARGET = RELATIONSHIP_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>Directed Relationship</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTED_RELATIONSHIP_FEATURE_COUNT = RELATIONSHIP_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
 	int CLASSIFIER__EANNOTATIONS = NAMESPACE__EANNOTATIONS;
 
 	/**
@@ -2282,22 +2282,22 @@ public interface UML2Package extends EPackage{
 	int CLASSIFIER__REDEFINED_CLASSIFIER = NAMESPACE_FEATURE_COUNT + 12;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER__SUBSTITUTION = NAMESPACE_FEATURE_COUNT + 13;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFIER__POWERTYPE_EXTENT = NAMESPACE_FEATURE_COUNT + 14;
+	int CLASSIFIER__POWERTYPE_EXTENT = NAMESPACE_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER__SUBSTITUTION = NAMESPACE_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -2606,15 +2606,6 @@ public interface UML2Package extends EPackage{
 	int BEHAVIORED_CLASSIFIER__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIORED_CLASSIFIER__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2622,6 +2613,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIORED_CLASSIFIER__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -2975,15 +2975,6 @@ public interface UML2Package extends EPackage{
 	int CLASS__REDEFINED_CLASSIFIER = BEHAVIORED_CLASSIFIER__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__SUBSTITUTION = BEHAVIORED_CLASSIFIER__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2991,6 +2982,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int CLASS__POWERTYPE_EXTENT = BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__SUBSTITUTION = BEHAVIORED_CLASSIFIER__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -3137,22 +3137,22 @@ public interface UML2Package extends EPackage{
 	int CLASS__SUPER_CLASS = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__EXTENSION = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 7;
-
-	/**
 	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS__NESTED_CLASSIFIER = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 8;
+	int CLASS__NESTED_CLASSIFIER = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__EXTENSION = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
@@ -5621,22 +5621,22 @@ public interface UML2Package extends EPackage{
 	int PACKAGE__PACKAGE_MERGE = NAMESPACE_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Applied Profile</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE__APPLIED_PROFILE = NAMESPACE_FEATURE_COUNT + 8;
-
-	/**
 	 * The feature id for the '<em><b>Package Extension</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PACKAGE__PACKAGE_EXTENSION = NAMESPACE_FEATURE_COUNT + 9;
+	int PACKAGE__PACKAGE_EXTENSION = NAMESPACE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Applied Profile</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PACKAGE__APPLIED_PROFILE = NAMESPACE_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the the '<em>Package</em>' class.
@@ -5909,15 +5909,6 @@ public interface UML2Package extends EPackage{
 	int DATA_TYPE__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_TYPE__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5925,6 +5916,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int DATA_TYPE__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -6251,15 +6251,6 @@ public interface UML2Package extends EPackage{
 	int ENUMERATION__REDEFINED_CLASSIFIER = DATA_TYPE__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENUMERATION__SUBSTITUTION = DATA_TYPE__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6267,6 +6258,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int ENUMERATION__POWERTYPE_EXTENT = DATA_TYPE__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__SUBSTITUTION = DATA_TYPE__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -6971,15 +6971,6 @@ public interface UML2Package extends EPackage{
 	int PRIMITIVE_TYPE__REDEFINED_CLASSIFIER = DATA_TYPE__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRIMITIVE_TYPE__SUBSTITUTION = DATA_TYPE__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6987,6 +6978,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int PRIMITIVE_TYPE__POWERTYPE_EXTENT = DATA_TYPE__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE__SUBSTITUTION = DATA_TYPE__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -7050,177 +7050,6 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int PRIMITIVE_TYPE_FEATURE_COUNT = DATA_TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__EANNOTATIONS = PACKAGEABLE_ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__OWNED_ELEMENT = PACKAGEABLE_ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__OWNER = PACKAGEABLE_ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__OWNED_COMMENT = PACKAGEABLE_ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__TEMPLATE_BINDING = PACKAGEABLE_ELEMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__OWNED_TEMPLATE_SIGNATURE = PACKAGEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__NAME = PACKAGEABLE_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__QUALIFIED_NAME = PACKAGEABLE_ELEMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__VISIBILITY = PACKAGEABLE_ELEMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__CLIENT_DEPENDENCY = PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__NAME_EXPRESSION = PACKAGEABLE_ELEMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__TEMPLATE_PARAMETER = PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__OWNING_PARAMETER = PACKAGEABLE_ELEMENT__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY = PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Context</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__CONTEXT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Namespace</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__NAMESPACE = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Specification</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__SPECIFICATION = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Constrained Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__CONSTRAINED_ELEMENT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the the '<em>Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT_FEATURE_COUNT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -8075,6 +7904,177 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
+	int CONSTRAINT__EANNOTATIONS = PACKAGEABLE_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__OWNED_ELEMENT = PACKAGEABLE_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__OWNER = PACKAGEABLE_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__OWNED_COMMENT = PACKAGEABLE_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__TEMPLATE_BINDING = PACKAGEABLE_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__OWNED_TEMPLATE_SIGNATURE = PACKAGEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__NAME = PACKAGEABLE_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__QUALIFIED_NAME = PACKAGEABLE_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__VISIBILITY = PACKAGEABLE_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__CLIENT_DEPENDENCY = PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__NAME_EXPRESSION = PACKAGEABLE_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__TEMPLATE_PARAMETER = PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__OWNING_PARAMETER = PACKAGEABLE_ELEMENT__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY = PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__CONTEXT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__NAMESPACE = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Specification</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__SPECIFICATION = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Constrained Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__CONSTRAINED_ELEMENT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the the '<em>Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_FEATURE_COUNT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
 	int GENERALIZATION__EANNOTATIONS = DIRECTED_RELATIONSHIP__EANNOTATIONS;
 
 	/**
@@ -8861,15 +8861,6 @@ public interface UML2Package extends EPackage{
 	int ASSOCIATION__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8877,6 +8868,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int ASSOCIATION__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -9320,15 +9320,6 @@ public interface UML2Package extends EPackage{
 	int STEREOTYPE__REDEFINED_CLASSIFIER = CLASS__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEREOTYPE__SUBSTITUTION = CLASS__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9336,6 +9327,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int STEREOTYPE__POWERTYPE_EXTENT = CLASS__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEREOTYPE__SUBSTITUTION = CLASS__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -9482,15 +9482,6 @@ public interface UML2Package extends EPackage{
 	int STEREOTYPE__SUPER_CLASS = CLASS__SUPER_CLASS;
 
 	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEREOTYPE__EXTENSION = CLASS__EXTENSION;
-
-	/**
 	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9498,6 +9489,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int STEREOTYPE__NESTED_CLASSIFIER = CLASS__NESTED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEREOTYPE__EXTENSION = CLASS__EXTENSION;
 
 	/**
 	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
@@ -9743,15 +9743,6 @@ public interface UML2Package extends EPackage{
 	int PROFILE__PACKAGE_MERGE = PACKAGE__PACKAGE_MERGE;
 
 	/**
-	 * The feature id for the '<em><b>Applied Profile</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROFILE__APPLIED_PROFILE = PACKAGE__APPLIED_PROFILE;
-
-	/**
 	 * The feature id for the '<em><b>Package Extension</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9759,6 +9750,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int PROFILE__PACKAGE_EXTENSION = PACKAGE__PACKAGE_EXTENSION;
+
+	/**
+	 * The feature id for the '<em><b>Applied Profile</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILE__APPLIED_PROFILE = PACKAGE__APPLIED_PROFILE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Stereotype</b></em>' reference list.
@@ -10166,15 +10166,6 @@ public interface UML2Package extends EPackage{
 	int EXTENSION__REDEFINED_CLASSIFIER = ASSOCIATION__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION__SUBSTITUTION = ASSOCIATION__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10182,6 +10173,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int EXTENSION__POWERTYPE_EXTENT = ASSOCIATION__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION__SUBSTITUTION = ASSOCIATION__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -10694,519 +10694,6 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ASSOCIATION_CLASS__EANNOTATIONS = CLASS__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_ELEMENT = CLASS__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNER = CLASS__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_COMMENT = CLASS__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__TEMPLATE_BINDING = CLASS__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_TEMPLATE_SIGNATURE = CLASS__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__NAME = CLASS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__QUALIFIED_NAME = CLASS__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__VISIBILITY = CLASS__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__CLIENT_DEPENDENCY = CLASS__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__NAME_EXPRESSION = CLASS__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__MEMBER = CLASS__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_RULE = CLASS__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__IMPORTED_MEMBER = CLASS__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__ELEMENT_IMPORT = CLASS__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__PACKAGE_IMPORT = CLASS__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__TEMPLATE_PARAMETER = CLASS__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNING_PARAMETER = CLASS__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__PACKAGEABLE_ELEMENT_VISIBILITY = CLASS__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__PACKAGE = CLASS__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__REDEFINITION_CONTEXT = CLASS__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__IS_LEAF = CLASS__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__FEATURE = CLASS__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__IS_ABSTRACT = CLASS__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__INHERITED_MEMBER = CLASS__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__GENERAL = CLASS__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__GENERALIZATION = CLASS__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__ATTRIBUTE = CLASS__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__REDEFINED_CLASSIFIER = CLASS__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__SUBSTITUTION = CLASS__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__POWERTYPE_EXTENT = CLASS__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_USE_CASE = CLASS__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__USE_CASE = CLASS__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__REPRESENTATION = CLASS__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OCCURRENCE = CLASS__OCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_BEHAVIOR = CLASS__OWNED_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__CLASSIFIER_BEHAVIOR = CLASS__CLASSIFIER_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__IMPLEMENTATION = CLASS__IMPLEMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_TRIGGER = CLASS__OWNED_TRIGGER;
-
-	/**
-	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_STATE_MACHINE = CLASS__OWNED_STATE_MACHINE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_ATTRIBUTE = CLASS__OWNED_ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Part</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__PART = CLASS__PART;
-
-	/**
-	 * The feature id for the '<em><b>Role</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__ROLE = CLASS__ROLE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_CONNECTOR = CLASS__OWNED_CONNECTOR;
-
-	/**
-	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_PORT = CLASS__OWNED_PORT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_OPERATION = CLASS__OWNED_OPERATION;
-
-	/**
-	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__SUPER_CLASS = CLASS__SUPER_CLASS;
-
-	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__EXTENSION = CLASS__EXTENSION;
-
-	/**
-	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__NESTED_CLASSIFIER = CLASS__NESTED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__IS_ACTIVE = CLASS__IS_ACTIVE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_RECEPTION = CLASS__OWNED_RECEPTION;
-
-	/**
-	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__RELATED_ELEMENT = CLASS_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__IS_DERIVED = CLASS_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Owned End</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_END = CLASS_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>End Type</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__END_TYPE = CLASS_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Member End</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__MEMBER_END = CLASS_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the the '<em>Association Class</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS_FEATURE_COUNT = CLASS_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
 	int INFORMATION_ITEM__EANNOTATIONS = CLASSIFIER__EANNOTATIONS;
 
 	/**
@@ -11462,15 +10949,6 @@ public interface UML2Package extends EPackage{
 	int INFORMATION_ITEM__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INFORMATION_ITEM__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11478,6 +10956,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int INFORMATION_ITEM__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_ITEM__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -11712,6 +11199,2139 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int INFORMATION_FLOW_FEATURE_COUNT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__EANNOTATIONS = CLASS__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_ELEMENT = CLASS__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNER = CLASS__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_COMMENT = CLASS__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__TEMPLATE_BINDING = CLASS__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_TEMPLATE_SIGNATURE = CLASS__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__NAME = CLASS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__QUALIFIED_NAME = CLASS__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__VISIBILITY = CLASS__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__CLIENT_DEPENDENCY = CLASS__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__NAME_EXPRESSION = CLASS__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__MEMBER = CLASS__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_RULE = CLASS__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__IMPORTED_MEMBER = CLASS__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__ELEMENT_IMPORT = CLASS__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__PACKAGE_IMPORT = CLASS__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__TEMPLATE_PARAMETER = CLASS__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNING_PARAMETER = CLASS__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__PACKAGEABLE_ELEMENT_VISIBILITY = CLASS__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__PACKAGE = CLASS__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__REDEFINITION_CONTEXT = CLASS__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__IS_LEAF = CLASS__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__FEATURE = CLASS__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__IS_ABSTRACT = CLASS__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__INHERITED_MEMBER = CLASS__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__GENERAL = CLASS__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__GENERALIZATION = CLASS__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__ATTRIBUTE = CLASS__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__REDEFINED_CLASSIFIER = CLASS__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__POWERTYPE_EXTENT = CLASS__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__SUBSTITUTION = CLASS__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_USE_CASE = CLASS__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__USE_CASE = CLASS__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__REPRESENTATION = CLASS__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OCCURRENCE = CLASS__OCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_BEHAVIOR = CLASS__OWNED_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__CLASSIFIER_BEHAVIOR = CLASS__CLASSIFIER_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__IMPLEMENTATION = CLASS__IMPLEMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_TRIGGER = CLASS__OWNED_TRIGGER;
+
+	/**
+	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_STATE_MACHINE = CLASS__OWNED_STATE_MACHINE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_ATTRIBUTE = CLASS__OWNED_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Part</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__PART = CLASS__PART;
+
+	/**
+	 * The feature id for the '<em><b>Role</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__ROLE = CLASS__ROLE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_CONNECTOR = CLASS__OWNED_CONNECTOR;
+
+	/**
+	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_PORT = CLASS__OWNED_PORT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_OPERATION = CLASS__OWNED_OPERATION;
+
+	/**
+	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__SUPER_CLASS = CLASS__SUPER_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__NESTED_CLASSIFIER = CLASS__NESTED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__EXTENSION = CLASS__EXTENSION;
+
+	/**
+	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__IS_ACTIVE = CLASS__IS_ACTIVE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_RECEPTION = CLASS__OWNED_RECEPTION;
+
+	/**
+	 * The feature id for the '<em><b>Is Reentrant</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__IS_REENTRANT = CLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__CONTEXT = CLASS_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Behavior</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__REDEFINED_BEHAVIOR = CLASS_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Specification</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__SPECIFICATION = CLASS_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__PARAMETER = CLASS_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Formal Parameter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__FORMAL_PARAMETER = CLASS_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Return Result</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__RETURN_RESULT = CLASS_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__PRECONDITION = CLASS_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__POSTCONDITION = CLASS_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__OWNED_PARAMETER_SET = CLASS_FEATURE_COUNT + 9;
+
+	/**
+	 * The number of structural features of the the '<em>Behavior</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR_FEATURE_COUNT = CLASS_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__EANNOTATIONS = BEHAVIOR__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_ELEMENT = BEHAVIOR__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNER = BEHAVIOR__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_COMMENT = BEHAVIOR__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__TEMPLATE_BINDING = BEHAVIOR__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_TEMPLATE_SIGNATURE = BEHAVIOR__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__NAME = BEHAVIOR__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__QUALIFIED_NAME = BEHAVIOR__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__VISIBILITY = BEHAVIOR__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__CLIENT_DEPENDENCY = BEHAVIOR__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__NAME_EXPRESSION = BEHAVIOR__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__MEMBER = BEHAVIOR__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_RULE = BEHAVIOR__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__IMPORTED_MEMBER = BEHAVIOR__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ELEMENT_IMPORT = BEHAVIOR__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PACKAGE_IMPORT = BEHAVIOR__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__TEMPLATE_PARAMETER = BEHAVIOR__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNING_PARAMETER = BEHAVIOR__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PACKAGEABLE_ELEMENT_VISIBILITY = BEHAVIOR__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PACKAGE = BEHAVIOR__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__REDEFINITION_CONTEXT = BEHAVIOR__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__IS_LEAF = BEHAVIOR__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__FEATURE = BEHAVIOR__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__IS_ABSTRACT = BEHAVIOR__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__INHERITED_MEMBER = BEHAVIOR__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__GENERAL = BEHAVIOR__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__GENERALIZATION = BEHAVIOR__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ATTRIBUTE = BEHAVIOR__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__REDEFINED_CLASSIFIER = BEHAVIOR__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__POWERTYPE_EXTENT = BEHAVIOR__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__SUBSTITUTION = BEHAVIOR__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_USE_CASE = BEHAVIOR__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__USE_CASE = BEHAVIOR__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__REPRESENTATION = BEHAVIOR__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OCCURRENCE = BEHAVIOR__OCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_BEHAVIOR = BEHAVIOR__OWNED_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__CLASSIFIER_BEHAVIOR = BEHAVIOR__CLASSIFIER_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__IMPLEMENTATION = BEHAVIOR__IMPLEMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_TRIGGER = BEHAVIOR__OWNED_TRIGGER;
+
+	/**
+	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_STATE_MACHINE = BEHAVIOR__OWNED_STATE_MACHINE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_ATTRIBUTE = BEHAVIOR__OWNED_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Part</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PART = BEHAVIOR__PART;
+
+	/**
+	 * The feature id for the '<em><b>Role</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ROLE = BEHAVIOR__ROLE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_CONNECTOR = BEHAVIOR__OWNED_CONNECTOR;
+
+	/**
+	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_PORT = BEHAVIOR__OWNED_PORT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_OPERATION = BEHAVIOR__OWNED_OPERATION;
+
+	/**
+	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__SUPER_CLASS = BEHAVIOR__SUPER_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__NESTED_CLASSIFIER = BEHAVIOR__NESTED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__EXTENSION = BEHAVIOR__EXTENSION;
+
+	/**
+	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__IS_ACTIVE = BEHAVIOR__IS_ACTIVE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_RECEPTION = BEHAVIOR__OWNED_RECEPTION;
+
+	/**
+	 * The feature id for the '<em><b>Is Reentrant</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__IS_REENTRANT = BEHAVIOR__IS_REENTRANT;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__CONTEXT = BEHAVIOR__CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Behavior</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__REDEFINED_BEHAVIOR = BEHAVIOR__REDEFINED_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Specification</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__SPECIFICATION = BEHAVIOR__SPECIFICATION;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PARAMETER = BEHAVIOR__PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Formal Parameter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__FORMAL_PARAMETER = BEHAVIOR__FORMAL_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Return Result</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__RETURN_RESULT = BEHAVIOR__RETURN_RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PRECONDITION = BEHAVIOR__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__POSTCONDITION = BEHAVIOR__POSTCONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNED_PARAMETER_SET = BEHAVIOR__OWNED_PARAMETER_SET;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__BODY = BEHAVIOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__LANGUAGE = BEHAVIOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Edge</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__EDGE = BEHAVIOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Group</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__GROUP = BEHAVIOR_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__NODE = BEHAVIOR_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Action</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ACTION = BEHAVIOR_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Structured Node</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__STRUCTURED_NODE = BEHAVIOR_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Is Single Execution</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__IS_SINGLE_EXECUTION = BEHAVIOR_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Is Read Only</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__IS_READ_ONLY = BEHAVIOR_FEATURE_COUNT + 8;
+
+	/**
+	 * The number of structural features of the the '<em>Activity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_FEATURE_COUNT = BEHAVIOR_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__EANNOTATIONS = PACKAGEABLE_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__OWNED_ELEMENT = PACKAGEABLE_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__OWNER = PACKAGEABLE_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__OWNED_COMMENT = PACKAGEABLE_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__TEMPLATE_BINDING = PACKAGEABLE_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__OWNED_TEMPLATE_SIGNATURE = PACKAGEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__NAME = PACKAGEABLE_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__QUALIFIED_NAME = PACKAGEABLE_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__VISIBILITY = PACKAGEABLE_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__CLIENT_DEPENDENCY = PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__NAME_EXPRESSION = PACKAGEABLE_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__TEMPLATE_PARAMETER = PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__OWNING_PARAMETER = PACKAGEABLE_ELEMENT__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__PACKAGEABLE_ELEMENT_VISIBILITY = PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Is Covering</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__IS_COVERING = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Is Disjoint</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__IS_DISJOINT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Powertype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__POWERTYPE = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET__GENERALIZATION = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the the '<em>Generalization Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_SET_FEATURE_COUNT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__EANNOTATIONS = PACKAGE__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__OWNED_ELEMENT = PACKAGE__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__OWNER = PACKAGE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__OWNED_COMMENT = PACKAGE__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__TEMPLATE_BINDING = PACKAGE__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__OWNED_TEMPLATE_SIGNATURE = PACKAGE__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__NAME = PACKAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__QUALIFIED_NAME = PACKAGE__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__VISIBILITY = PACKAGE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__CLIENT_DEPENDENCY = PACKAGE__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__NAME_EXPRESSION = PACKAGE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__MEMBER = PACKAGE__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__OWNED_RULE = PACKAGE__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__IMPORTED_MEMBER = PACKAGE__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__ELEMENT_IMPORT = PACKAGE__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__PACKAGE_IMPORT = PACKAGE__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__TEMPLATE_PARAMETER = PACKAGE__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__OWNING_PARAMETER = PACKAGE__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__PACKAGEABLE_ELEMENT_VISIBILITY = PACKAGE__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Nested Package</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__NESTED_PACKAGE = PACKAGE__NESTED_PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Nesting Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__NESTING_PACKAGE = PACKAGE__NESTING_PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Type</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__OWNED_TYPE = PACKAGE__OWNED_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Member</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__OWNED_MEMBER = PACKAGE__OWNED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Package Merge</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__PACKAGE_MERGE = PACKAGE__PACKAGE_MERGE;
+
+	/**
+	 * The feature id for the '<em><b>Package Extension</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__PACKAGE_EXTENSION = PACKAGE__PACKAGE_EXTENSION;
+
+	/**
+	 * The feature id for the '<em><b>Applied Profile</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__APPLIED_PROFILE = PACKAGE__APPLIED_PROFILE;
+
+	/**
+	 * The feature id for the '<em><b>Viewpoint</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__VIEWPOINT = PACKAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the the '<em>Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_FEATURE_COUNT = PACKAGE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__EANNOTATIONS = CLASS__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_ELEMENT = CLASS__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNER = CLASS__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_COMMENT = CLASS__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__TEMPLATE_BINDING = CLASS__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_TEMPLATE_SIGNATURE = CLASS__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__NAME = CLASS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__QUALIFIED_NAME = CLASS__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__VISIBILITY = CLASS__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__CLIENT_DEPENDENCY = CLASS__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__NAME_EXPRESSION = CLASS__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__MEMBER = CLASS__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_RULE = CLASS__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__IMPORTED_MEMBER = CLASS__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__ELEMENT_IMPORT = CLASS__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__PACKAGE_IMPORT = CLASS__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__TEMPLATE_PARAMETER = CLASS__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNING_PARAMETER = CLASS__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__PACKAGEABLE_ELEMENT_VISIBILITY = CLASS__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__PACKAGE = CLASS__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__REDEFINITION_CONTEXT = CLASS__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__IS_LEAF = CLASS__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__FEATURE = CLASS__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__IS_ABSTRACT = CLASS__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__INHERITED_MEMBER = CLASS__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__GENERAL = CLASS__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__GENERALIZATION = CLASS__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__ATTRIBUTE = CLASS__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__REDEFINED_CLASSIFIER = CLASS__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__POWERTYPE_EXTENT = CLASS__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__SUBSTITUTION = CLASS__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_USE_CASE = CLASS__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__USE_CASE = CLASS__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__REPRESENTATION = CLASS__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OCCURRENCE = CLASS__OCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_BEHAVIOR = CLASS__OWNED_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__CLASSIFIER_BEHAVIOR = CLASS__CLASSIFIER_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__IMPLEMENTATION = CLASS__IMPLEMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_TRIGGER = CLASS__OWNED_TRIGGER;
+
+	/**
+	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_STATE_MACHINE = CLASS__OWNED_STATE_MACHINE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_ATTRIBUTE = CLASS__OWNED_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Part</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__PART = CLASS__PART;
+
+	/**
+	 * The feature id for the '<em><b>Role</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__ROLE = CLASS__ROLE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_CONNECTOR = CLASS__OWNED_CONNECTOR;
+
+	/**
+	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_PORT = CLASS__OWNED_PORT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_OPERATION = CLASS__OWNED_OPERATION;
+
+	/**
+	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__SUPER_CLASS = CLASS__SUPER_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__NESTED_CLASSIFIER = CLASS__NESTED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__EXTENSION = CLASS__EXTENSION;
+
+	/**
+	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__IS_ACTIVE = CLASS__IS_ACTIVE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_RECEPTION = CLASS__OWNED_RECEPTION;
+
+	/**
+	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__RELATED_ELEMENT = CLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__IS_DERIVED = CLASS_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Owned End</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__OWNED_END = CLASS_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>End Type</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__END_TYPE = CLASS_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Member End</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS__MEMBER_END = CLASS_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the the '<em>Association Class</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_CLASS_FEATURE_COUNT = CLASS_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -12875,1626 +14495,6 @@ public interface UML2Package extends EPackage{
 	int SUBSTITUTION_FEATURE_COUNT = REALIZATION_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__EANNOTATIONS = CLASS__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_ELEMENT = CLASS__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNER = CLASS__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_COMMENT = CLASS__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__TEMPLATE_BINDING = CLASS__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_TEMPLATE_SIGNATURE = CLASS__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__NAME = CLASS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__QUALIFIED_NAME = CLASS__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__VISIBILITY = CLASS__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__CLIENT_DEPENDENCY = CLASS__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__NAME_EXPRESSION = CLASS__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__MEMBER = CLASS__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_RULE = CLASS__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__IMPORTED_MEMBER = CLASS__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__ELEMENT_IMPORT = CLASS__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__PACKAGE_IMPORT = CLASS__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__TEMPLATE_PARAMETER = CLASS__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNING_PARAMETER = CLASS__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__PACKAGEABLE_ELEMENT_VISIBILITY = CLASS__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__PACKAGE = CLASS__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__REDEFINITION_CONTEXT = CLASS__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__IS_LEAF = CLASS__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__FEATURE = CLASS__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__IS_ABSTRACT = CLASS__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__INHERITED_MEMBER = CLASS__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__GENERAL = CLASS__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__GENERALIZATION = CLASS__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__ATTRIBUTE = CLASS__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__REDEFINED_CLASSIFIER = CLASS__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__SUBSTITUTION = CLASS__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__POWERTYPE_EXTENT = CLASS__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_USE_CASE = CLASS__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__USE_CASE = CLASS__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__REPRESENTATION = CLASS__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OCCURRENCE = CLASS__OCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_BEHAVIOR = CLASS__OWNED_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__CLASSIFIER_BEHAVIOR = CLASS__CLASSIFIER_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__IMPLEMENTATION = CLASS__IMPLEMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_TRIGGER = CLASS__OWNED_TRIGGER;
-
-	/**
-	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_STATE_MACHINE = CLASS__OWNED_STATE_MACHINE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_ATTRIBUTE = CLASS__OWNED_ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Part</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__PART = CLASS__PART;
-
-	/**
-	 * The feature id for the '<em><b>Role</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__ROLE = CLASS__ROLE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_CONNECTOR = CLASS__OWNED_CONNECTOR;
-
-	/**
-	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_PORT = CLASS__OWNED_PORT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_OPERATION = CLASS__OWNED_OPERATION;
-
-	/**
-	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__SUPER_CLASS = CLASS__SUPER_CLASS;
-
-	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__EXTENSION = CLASS__EXTENSION;
-
-	/**
-	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__NESTED_CLASSIFIER = CLASS__NESTED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__IS_ACTIVE = CLASS__IS_ACTIVE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_RECEPTION = CLASS__OWNED_RECEPTION;
-
-	/**
-	 * The feature id for the '<em><b>Is Reentrant</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__IS_REENTRANT = CLASS_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Context</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__CONTEXT = CLASS_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Behavior</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__REDEFINED_BEHAVIOR = CLASS_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Specification</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__SPECIFICATION = CLASS_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__PARAMETER = CLASS_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Formal Parameter</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__FORMAL_PARAMETER = CLASS_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Return Result</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__RETURN_RESULT = CLASS_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__PRECONDITION = CLASS_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Postcondition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__POSTCONDITION = CLASS_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_PARAMETER_SET = CLASS_FEATURE_COUNT + 9;
-
-	/**
-	 * The number of structural features of the the '<em>Behavior</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR_FEATURE_COUNT = CLASS_FEATURE_COUNT + 10;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__EANNOTATIONS = BEHAVIOR__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_ELEMENT = BEHAVIOR__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNER = BEHAVIOR__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_COMMENT = BEHAVIOR__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__TEMPLATE_BINDING = BEHAVIOR__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_TEMPLATE_SIGNATURE = BEHAVIOR__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__NAME = BEHAVIOR__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__QUALIFIED_NAME = BEHAVIOR__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__VISIBILITY = BEHAVIOR__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__CLIENT_DEPENDENCY = BEHAVIOR__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__NAME_EXPRESSION = BEHAVIOR__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__MEMBER = BEHAVIOR__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_RULE = BEHAVIOR__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__IMPORTED_MEMBER = BEHAVIOR__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__ELEMENT_IMPORT = BEHAVIOR__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__PACKAGE_IMPORT = BEHAVIOR__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__TEMPLATE_PARAMETER = BEHAVIOR__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNING_PARAMETER = BEHAVIOR__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__PACKAGEABLE_ELEMENT_VISIBILITY = BEHAVIOR__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__PACKAGE = BEHAVIOR__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__REDEFINITION_CONTEXT = BEHAVIOR__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__IS_LEAF = BEHAVIOR__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__FEATURE = BEHAVIOR__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__IS_ABSTRACT = BEHAVIOR__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__INHERITED_MEMBER = BEHAVIOR__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__GENERAL = BEHAVIOR__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__GENERALIZATION = BEHAVIOR__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__ATTRIBUTE = BEHAVIOR__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__REDEFINED_CLASSIFIER = BEHAVIOR__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__SUBSTITUTION = BEHAVIOR__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__POWERTYPE_EXTENT = BEHAVIOR__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_USE_CASE = BEHAVIOR__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__USE_CASE = BEHAVIOR__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__REPRESENTATION = BEHAVIOR__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OCCURRENCE = BEHAVIOR__OCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_BEHAVIOR = BEHAVIOR__OWNED_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__CLASSIFIER_BEHAVIOR = BEHAVIOR__CLASSIFIER_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__IMPLEMENTATION = BEHAVIOR__IMPLEMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_TRIGGER = BEHAVIOR__OWNED_TRIGGER;
-
-	/**
-	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_STATE_MACHINE = BEHAVIOR__OWNED_STATE_MACHINE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_ATTRIBUTE = BEHAVIOR__OWNED_ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Part</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__PART = BEHAVIOR__PART;
-
-	/**
-	 * The feature id for the '<em><b>Role</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__ROLE = BEHAVIOR__ROLE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_CONNECTOR = BEHAVIOR__OWNED_CONNECTOR;
-
-	/**
-	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_PORT = BEHAVIOR__OWNED_PORT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_OPERATION = BEHAVIOR__OWNED_OPERATION;
-
-	/**
-	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__SUPER_CLASS = BEHAVIOR__SUPER_CLASS;
-
-	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__EXTENSION = BEHAVIOR__EXTENSION;
-
-	/**
-	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__NESTED_CLASSIFIER = BEHAVIOR__NESTED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__IS_ACTIVE = BEHAVIOR__IS_ACTIVE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_RECEPTION = BEHAVIOR__OWNED_RECEPTION;
-
-	/**
-	 * The feature id for the '<em><b>Is Reentrant</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__IS_REENTRANT = BEHAVIOR__IS_REENTRANT;
-
-	/**
-	 * The feature id for the '<em><b>Context</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__CONTEXT = BEHAVIOR__CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Behavior</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__REDEFINED_BEHAVIOR = BEHAVIOR__REDEFINED_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Specification</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__SPECIFICATION = BEHAVIOR__SPECIFICATION;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__PARAMETER = BEHAVIOR__PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Formal Parameter</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__FORMAL_PARAMETER = BEHAVIOR__FORMAL_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Return Result</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__RETURN_RESULT = BEHAVIOR__RETURN_RESULT;
-
-	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__PRECONDITION = BEHAVIOR__PRECONDITION;
-
-	/**
-	 * The feature id for the '<em><b>Postcondition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__POSTCONDITION = BEHAVIOR__POSTCONDITION;
-
-	/**
-	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_PARAMETER_SET = BEHAVIOR__OWNED_PARAMETER_SET;
-
-	/**
-	 * The feature id for the '<em><b>Body</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__BODY = BEHAVIOR_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Language</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__LANGUAGE = BEHAVIOR_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Edge</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__EDGE = BEHAVIOR_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Group</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__GROUP = BEHAVIOR_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Node</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__NODE = BEHAVIOR_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Action</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__ACTION = BEHAVIOR_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Structured Node</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__STRUCTURED_NODE = BEHAVIOR_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Is Single Execution</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__IS_SINGLE_EXECUTION = BEHAVIOR_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Is Read Only</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__IS_READ_ONLY = BEHAVIOR_FEATURE_COUNT + 8;
-
-	/**
-	 * The number of structural features of the the '<em>Activity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY_FEATURE_COUNT = BEHAVIOR_FEATURE_COUNT + 9;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__EANNOTATIONS = PACKAGE__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__OWNED_ELEMENT = PACKAGE__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__OWNER = PACKAGE__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__OWNED_COMMENT = PACKAGE__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__TEMPLATE_BINDING = PACKAGE__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__OWNED_TEMPLATE_SIGNATURE = PACKAGE__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__NAME = PACKAGE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__QUALIFIED_NAME = PACKAGE__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__VISIBILITY = PACKAGE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__CLIENT_DEPENDENCY = PACKAGE__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__NAME_EXPRESSION = PACKAGE__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__MEMBER = PACKAGE__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__OWNED_RULE = PACKAGE__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__IMPORTED_MEMBER = PACKAGE__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__ELEMENT_IMPORT = PACKAGE__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__PACKAGE_IMPORT = PACKAGE__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__TEMPLATE_PARAMETER = PACKAGE__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__OWNING_PARAMETER = PACKAGE__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__PACKAGEABLE_ELEMENT_VISIBILITY = PACKAGE__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Nested Package</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__NESTED_PACKAGE = PACKAGE__NESTED_PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Nesting Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__NESTING_PACKAGE = PACKAGE__NESTING_PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Type</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__OWNED_TYPE = PACKAGE__OWNED_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Member</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__OWNED_MEMBER = PACKAGE__OWNED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Package Merge</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__PACKAGE_MERGE = PACKAGE__PACKAGE_MERGE;
-
-	/**
-	 * The feature id for the '<em><b>Applied Profile</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__APPLIED_PROFILE = PACKAGE__APPLIED_PROFILE;
-
-	/**
-	 * The feature id for the '<em><b>Package Extension</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__PACKAGE_EXTENSION = PACKAGE__PACKAGE_EXTENSION;
-
-	/**
-	 * The feature id for the '<em><b>Viewpoint</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL__VIEWPOINT = PACKAGE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the the '<em>Model</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_FEATURE_COUNT = PACKAGE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__EANNOTATIONS = PACKAGEABLE_ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__OWNED_ELEMENT = PACKAGEABLE_ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__OWNER = PACKAGEABLE_ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__OWNED_COMMENT = PACKAGEABLE_ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__TEMPLATE_BINDING = PACKAGEABLE_ELEMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__OWNED_TEMPLATE_SIGNATURE = PACKAGEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__NAME = PACKAGEABLE_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__QUALIFIED_NAME = PACKAGEABLE_ELEMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__VISIBILITY = PACKAGEABLE_ELEMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__CLIENT_DEPENDENCY = PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__NAME_EXPRESSION = PACKAGEABLE_ELEMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__TEMPLATE_PARAMETER = PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__OWNING_PARAMETER = PACKAGEABLE_ELEMENT__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__PACKAGEABLE_ELEMENT_VISIBILITY = PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Is Covering</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__IS_COVERING = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Is Disjoint</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__IS_DISJOINT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Powertype</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__POWERTYPE = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET__GENERALIZATION = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the the '<em>Generalization Set</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZATION_SET_FEATURE_COUNT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ArtifactImpl <em>Artifact</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14502,7 +14502,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getArtifact()
 	 * @generated
 	 */
-	int ARTIFACT = 89;
+	int ARTIFACT = 84;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ManifestationImpl <em>Manifestation</em>}' class.
@@ -14512,7 +14512,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getManifestation()
 	 * @generated
 	 */
-	int MANIFESTATION = 90;
+	int MANIFESTATION = 85;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InterfaceImpl <em>Interface</em>}' class.
@@ -14522,7 +14522,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInterface()
 	 * @generated
 	 */
-	int INTERFACE = 91;
+	int INTERFACE = 86;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ImplementationImpl <em>Implementation</em>}' class.
@@ -14532,7 +14532,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getImplementation()
 	 * @generated
 	 */
-	int IMPLEMENTATION = 92;
+	int IMPLEMENTATION = 87;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ActorImpl <em>Actor</em>}' class.
@@ -14542,7 +14542,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActor()
 	 * @generated
 	 */
-	int ACTOR = 65;
+	int ACTOR = 88;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ExtendImpl <em>Extend</em>}' class.
@@ -14552,7 +14552,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExtend()
 	 * @generated
 	 */
-	int EXTEND = 66;
+	int EXTEND = 89;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.UseCaseImpl <em>Use Case</em>}' class.
@@ -14562,7 +14562,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getUseCase()
 	 * @generated
 	 */
-	int USE_CASE = 67;
+	int USE_CASE = 90;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ExtensionPointImpl <em>Extension Point</em>}' class.
@@ -14572,7 +14572,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExtensionPoint()
 	 * @generated
 	 */
-	int EXTENSION_POINT = 68;
+	int EXTENSION_POINT = 91;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.IncludeImpl <em>Include</em>}' class.
@@ -14582,7 +14582,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInclude()
 	 * @generated
 	 */
-	int INCLUDE = 69;
+	int INCLUDE = 92;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ActivityEdgeImpl <em>Activity Edge</em>}' class.
@@ -14592,7 +14592,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityEdge()
 	 * @generated
 	 */
-	int ACTIVITY_EDGE = 70;
+	int ACTIVITY_EDGE = 65;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ActivityGroupImpl <em>Activity Group</em>}' class.
@@ -14602,7 +14602,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityGroup()
 	 * @generated
 	 */
-	int ACTIVITY_GROUP = 71;
+	int ACTIVITY_GROUP = 66;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ActivityNodeImpl <em>Activity Node</em>}' class.
@@ -14612,7 +14612,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityNode()
 	 * @generated
 	 */
-	int ACTIVITY_NODE = 72;
+	int ACTIVITY_NODE = 67;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ExecutableNodeImpl <em>Executable Node</em>}' class.
@@ -14622,7 +14622,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExecutableNode()
 	 * @generated
 	 */
-	int EXECUTABLE_NODE = 83;
+	int EXECUTABLE_NODE = 78;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ActionImpl <em>Action</em>}' class.
@@ -14632,7 +14632,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAction()
 	 * @generated
 	 */
-	int ACTION = 73;
+	int ACTION = 68;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ObjectNodeImpl <em>Object Node</em>}' class.
@@ -14642,7 +14642,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getObjectNode()
 	 * @generated
 	 */
-	int OBJECT_NODE = 74;
+	int OBJECT_NODE = 69;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ControlNodeImpl <em>Control Node</em>}' class.
@@ -14652,7 +14652,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getControlNode()
 	 * @generated
 	 */
-	int CONTROL_NODE = 75;
+	int CONTROL_NODE = 70;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ControlFlowImpl <em>Control Flow</em>}' class.
@@ -14662,7 +14662,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getControlFlow()
 	 * @generated
 	 */
-	int CONTROL_FLOW = 76;
+	int CONTROL_FLOW = 71;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ObjectFlowImpl <em>Object Flow</em>}' class.
@@ -14672,7 +14672,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getObjectFlow()
 	 * @generated
 	 */
-	int OBJECT_FLOW = 77;
+	int OBJECT_FLOW = 72;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InitialNodeImpl <em>Initial Node</em>}' class.
@@ -14682,7 +14682,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInitialNode()
 	 * @generated
 	 */
-	int INITIAL_NODE = 78;
+	int INITIAL_NODE = 73;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.FinalNodeImpl <em>Final Node</em>}' class.
@@ -14692,7 +14692,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getFinalNode()
 	 * @generated
 	 */
-	int FINAL_NODE = 79;
+	int FINAL_NODE = 74;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ActivityFinalNodeImpl <em>Activity Final Node</em>}' class.
@@ -14702,7 +14702,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityFinalNode()
 	 * @generated
 	 */
-	int ACTIVITY_FINAL_NODE = 80;
+	int ACTIVITY_FINAL_NODE = 75;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DecisionNodeImpl <em>Decision Node</em>}' class.
@@ -14712,7 +14712,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDecisionNode()
 	 * @generated
 	 */
-	int DECISION_NODE = 81;
+	int DECISION_NODE = 76;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.MergeNodeImpl <em>Merge Node</em>}' class.
@@ -14722,7 +14722,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getMergeNode()
 	 * @generated
 	 */
-	int MERGE_NODE = 82;
+	int MERGE_NODE = 77;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.PinImpl <em>Pin</em>}' class.
@@ -14732,7 +14732,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPin()
 	 * @generated
 	 */
-	int PIN = 86;
+	int PIN = 81;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.OutputPinImpl <em>Output Pin</em>}' class.
@@ -14742,7 +14742,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getOutputPin()
 	 * @generated
 	 */
-	int OUTPUT_PIN = 84;
+	int OUTPUT_PIN = 79;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InputPinImpl <em>Input Pin</em>}' class.
@@ -14752,7 +14752,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInputPin()
 	 * @generated
 	 */
-	int INPUT_PIN = 85;
+	int INPUT_PIN = 80;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ActivityParameterNodeImpl <em>Activity Parameter Node</em>}' class.
@@ -14762,7 +14762,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityParameterNode()
 	 * @generated
 	 */
-	int ACTIVITY_PARAMETER_NODE = 87;
+	int ACTIVITY_PARAMETER_NODE = 82;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ValuePinImpl <em>Value Pin</em>}' class.
@@ -14772,7 +14772,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getValuePin()
 	 * @generated
 	 */
-	int VALUE_PIN = 88;
+	int VALUE_PIN = 83;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.VariableImpl <em>Variable</em>}' class.
@@ -14782,7 +14782,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 129;
+	int VARIABLE = 120;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl <em>Structured Activity Node</em>}' class.
@@ -14792,7 +14792,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStructuredActivityNode()
 	 * @generated
 	 */
-	int STRUCTURED_ACTIVITY_NODE = 130;
+	int STRUCTURED_ACTIVITY_NODE = 121;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ConditionalNodeImpl <em>Conditional Node</em>}' class.
@@ -14802,7 +14802,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConditionalNode()
 	 * @generated
 	 */
-	int CONDITIONAL_NODE = 131;
+	int CONDITIONAL_NODE = 122;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ClauseImpl <em>Clause</em>}' class.
@@ -14812,7 +14812,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClause()
 	 * @generated
 	 */
-	int CLAUSE = 132;
+	int CLAUSE = 123;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.LoopNodeImpl <em>Loop Node</em>}' class.
@@ -14822,7 +14822,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLoopNode()
 	 * @generated
 	 */
-	int LOOP_NODE = 133;
+	int LOOP_NODE = 124;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ConnectorEndImpl <em>Connector End</em>}' class.
@@ -14852,7 +14852,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTrigger()
 	 * @generated
 	 */
-	int TRIGGER = 123;
+	int TRIGGER = 128;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.MessageTriggerImpl <em>Message Trigger</em>}' class.
@@ -14862,7 +14862,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getMessageTrigger()
 	 * @generated
 	 */
-	int MESSAGE_TRIGGER = 121;
+	int MESSAGE_TRIGGER = 126;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CallTriggerImpl <em>Call Trigger</em>}' class.
@@ -14872,7 +14872,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCallTrigger()
 	 * @generated
 	 */
-	int CALL_TRIGGER = 120;
+	int CALL_TRIGGER = 125;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ChangeTriggerImpl <em>Change Trigger</em>}' class.
@@ -14882,7 +14882,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getChangeTrigger()
 	 * @generated
 	 */
-	int CHANGE_TRIGGER = 122;
+	int CHANGE_TRIGGER = 127;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ReceptionImpl <em>Reception</em>}' class.
@@ -14892,7 +14892,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReception()
 	 * @generated
 	 */
-	int RECEPTION = 124;
+	int RECEPTION = 129;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.SignalImpl <em>Signal</em>}' class.
@@ -14902,7 +14902,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSignal()
 	 * @generated
 	 */
-	int SIGNAL = 125;
+	int SIGNAL = 130;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.SignalTriggerImpl <em>Signal Trigger</em>}' class.
@@ -14912,7 +14912,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSignalTrigger()
 	 * @generated
 	 */
-	int SIGNAL_TRIGGER = 126;
+	int SIGNAL_TRIGGER = 131;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TimeTriggerImpl <em>Time Trigger</em>}' class.
@@ -14922,7 +14922,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTimeTrigger()
 	 * @generated
 	 */
-	int TIME_TRIGGER = 127;
+	int TIME_TRIGGER = 132;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.AnyTriggerImpl <em>Any Trigger</em>}' class.
@@ -14932,7 +14932,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAnyTrigger()
 	 * @generated
 	 */
-	int ANY_TRIGGER = 128;
+	int ANY_TRIGGER = 133;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -15511,15 +15511,6 @@ public interface UML2Package extends EPackage{
 	int STRUCTURED_CLASSIFIER__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRUCTURED_CLASSIFIER__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15527,6 +15518,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_CLASSIFIER__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -15608,1194 +15608,6 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int STRUCTURED_CLASSIFIER_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__EANNOTATIONS = CLASSIFIER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__OWNED_ELEMENT = CLASSIFIER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__OWNER = CLASSIFIER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__OWNED_COMMENT = CLASSIFIER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__TEMPLATE_BINDING = CLASSIFIER__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__OWNED_TEMPLATE_SIGNATURE = CLASSIFIER__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__NAME = CLASSIFIER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__QUALIFIED_NAME = CLASSIFIER__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__VISIBILITY = CLASSIFIER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__CLIENT_DEPENDENCY = CLASSIFIER__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__NAME_EXPRESSION = CLASSIFIER__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__MEMBER = CLASSIFIER__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__OWNED_RULE = CLASSIFIER__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__IMPORTED_MEMBER = CLASSIFIER__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__ELEMENT_IMPORT = CLASSIFIER__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__PACKAGE_IMPORT = CLASSIFIER__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__TEMPLATE_PARAMETER = CLASSIFIER__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__OWNING_PARAMETER = CLASSIFIER__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__PACKAGEABLE_ELEMENT_VISIBILITY = CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__PACKAGE = CLASSIFIER__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__REDEFINITION_CONTEXT = CLASSIFIER__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__IS_LEAF = CLASSIFIER__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__FEATURE = CLASSIFIER__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__IS_ABSTRACT = CLASSIFIER__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__INHERITED_MEMBER = CLASSIFIER__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__GENERAL = CLASSIFIER__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__GENERALIZATION = CLASSIFIER__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__ATTRIBUTE = CLASSIFIER__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__OWNED_USE_CASE = CLASSIFIER__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__USE_CASE = CLASSIFIER__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__REPRESENTATION = CLASSIFIER__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__OCCURRENCE = CLASSIFIER__OCCURRENCE;
-
-	/**
-	 * The number of structural features of the the '<em>Actor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__OWNER = NAMED_ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__RELATED_ELEMENT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__SOURCE = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Extended Case</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__EXTENDED_CASE = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Extension</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__EXTENSION = NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Extension Location</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND__EXTENSION_LOCATION = NAMED_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The number of structural features of the the '<em>Extend</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTEND_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__EANNOTATIONS = BEHAVIORED_CLASSIFIER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OWNED_ELEMENT = BEHAVIORED_CLASSIFIER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OWNER = BEHAVIORED_CLASSIFIER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OWNED_COMMENT = BEHAVIORED_CLASSIFIER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__TEMPLATE_BINDING = BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OWNED_TEMPLATE_SIGNATURE = BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__NAME = BEHAVIORED_CLASSIFIER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__QUALIFIED_NAME = BEHAVIORED_CLASSIFIER__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__VISIBILITY = BEHAVIORED_CLASSIFIER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__CLIENT_DEPENDENCY = BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__NAME_EXPRESSION = BEHAVIORED_CLASSIFIER__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__MEMBER = BEHAVIORED_CLASSIFIER__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OWNED_RULE = BEHAVIORED_CLASSIFIER__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__IMPORTED_MEMBER = BEHAVIORED_CLASSIFIER__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__ELEMENT_IMPORT = BEHAVIORED_CLASSIFIER__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__PACKAGE_IMPORT = BEHAVIORED_CLASSIFIER__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__TEMPLATE_PARAMETER = BEHAVIORED_CLASSIFIER__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OWNING_PARAMETER = BEHAVIORED_CLASSIFIER__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__PACKAGEABLE_ELEMENT_VISIBILITY = BEHAVIORED_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__PACKAGE = BEHAVIORED_CLASSIFIER__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__REDEFINITION_CONTEXT = BEHAVIORED_CLASSIFIER__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__IS_LEAF = BEHAVIORED_CLASSIFIER__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__FEATURE = BEHAVIORED_CLASSIFIER__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__IS_ABSTRACT = BEHAVIORED_CLASSIFIER__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__INHERITED_MEMBER = BEHAVIORED_CLASSIFIER__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__GENERAL = BEHAVIORED_CLASSIFIER__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__GENERALIZATION = BEHAVIORED_CLASSIFIER__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__ATTRIBUTE = BEHAVIORED_CLASSIFIER__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__REDEFINED_CLASSIFIER = BEHAVIORED_CLASSIFIER__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__SUBSTITUTION = BEHAVIORED_CLASSIFIER__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__POWERTYPE_EXTENT = BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OWNED_USE_CASE = BEHAVIORED_CLASSIFIER__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__USE_CASE = BEHAVIORED_CLASSIFIER__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__REPRESENTATION = BEHAVIORED_CLASSIFIER__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OCCURRENCE = BEHAVIORED_CLASSIFIER__OCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OWNED_BEHAVIOR = BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__CLASSIFIER_BEHAVIOR = BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__IMPLEMENTATION = BEHAVIORED_CLASSIFIER__IMPLEMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OWNED_TRIGGER = BEHAVIORED_CLASSIFIER__OWNED_TRIGGER;
-
-	/**
-	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OWNED_STATE_MACHINE = BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE;
-
-	/**
-	 * The feature id for the '<em><b>Include</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__INCLUDE = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Extend</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__EXTEND = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Extension Point</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__EXTENSION_POINT = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Subject</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__SUBJECT = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the the '<em>Use Case</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE_FEATURE_COUNT = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__EANNOTATIONS = REDEFINABLE_ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__OWNED_ELEMENT = REDEFINABLE_ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__OWNER = REDEFINABLE_ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__OWNED_COMMENT = REDEFINABLE_ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__TEMPLATE_BINDING = REDEFINABLE_ELEMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE = REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__NAME = REDEFINABLE_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__QUALIFIED_NAME = REDEFINABLE_ELEMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__VISIBILITY = REDEFINABLE_ELEMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__CLIENT_DEPENDENCY = REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__NAME_EXPRESSION = REDEFINABLE_ELEMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__REDEFINITION_CONTEXT = REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__IS_LEAF = REDEFINABLE_ELEMENT__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT__USE_CASE = REDEFINABLE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the the '<em>Extension Point</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION_POINT_FEATURE_COUNT = REDEFINABLE_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__OWNER = NAMED_ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__RELATED_ELEMENT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__SOURCE = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Including Case</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__INCLUDING_CASE = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Addition</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE__ADDITION = NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the the '<em>Include</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCLUDE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -21361,15 +20173,6 @@ public interface UML2Package extends EPackage{
 	int ARTIFACT__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21377,6 +20180,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int ARTIFACT__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARTIFACT__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -21928,15 +20740,6 @@ public interface UML2Package extends EPackage{
 	int INTERFACE__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERFACE__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21944,6 +20747,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int INTERFACE__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -22270,6 +21082,1194 @@ public interface UML2Package extends EPackage{
 	int IMPLEMENTATION_FEATURE_COUNT = REALIZATION_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__EANNOTATIONS = CLASSIFIER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__OWNED_ELEMENT = CLASSIFIER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__OWNER = CLASSIFIER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__OWNED_COMMENT = CLASSIFIER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__TEMPLATE_BINDING = CLASSIFIER__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__OWNED_TEMPLATE_SIGNATURE = CLASSIFIER__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__NAME = CLASSIFIER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__QUALIFIED_NAME = CLASSIFIER__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__VISIBILITY = CLASSIFIER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__CLIENT_DEPENDENCY = CLASSIFIER__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__NAME_EXPRESSION = CLASSIFIER__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__MEMBER = CLASSIFIER__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__OWNED_RULE = CLASSIFIER__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__IMPORTED_MEMBER = CLASSIFIER__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__ELEMENT_IMPORT = CLASSIFIER__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__PACKAGE_IMPORT = CLASSIFIER__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__TEMPLATE_PARAMETER = CLASSIFIER__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__OWNING_PARAMETER = CLASSIFIER__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__PACKAGEABLE_ELEMENT_VISIBILITY = CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__PACKAGE = CLASSIFIER__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__REDEFINITION_CONTEXT = CLASSIFIER__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__IS_LEAF = CLASSIFIER__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__FEATURE = CLASSIFIER__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__IS_ABSTRACT = CLASSIFIER__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__INHERITED_MEMBER = CLASSIFIER__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__GENERAL = CLASSIFIER__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__GENERALIZATION = CLASSIFIER__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__ATTRIBUTE = CLASSIFIER__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__OWNED_USE_CASE = CLASSIFIER__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__USE_CASE = CLASSIFIER__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__REPRESENTATION = CLASSIFIER__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__OCCURRENCE = CLASSIFIER__OCCURRENCE;
+
+	/**
+	 * The number of structural features of the the '<em>Actor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__OWNER = NAMED_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__RELATED_ELEMENT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__SOURCE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Extended Case</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__EXTENDED_CASE = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__EXTENSION = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Extension Location</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__EXTENSION_LOCATION = NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of structural features of the the '<em>Extend</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__EANNOTATIONS = BEHAVIORED_CLASSIFIER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__OWNED_ELEMENT = BEHAVIORED_CLASSIFIER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__OWNER = BEHAVIORED_CLASSIFIER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__OWNED_COMMENT = BEHAVIORED_CLASSIFIER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__TEMPLATE_BINDING = BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__OWNED_TEMPLATE_SIGNATURE = BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__NAME = BEHAVIORED_CLASSIFIER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__QUALIFIED_NAME = BEHAVIORED_CLASSIFIER__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__VISIBILITY = BEHAVIORED_CLASSIFIER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__CLIENT_DEPENDENCY = BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__NAME_EXPRESSION = BEHAVIORED_CLASSIFIER__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__MEMBER = BEHAVIORED_CLASSIFIER__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__OWNED_RULE = BEHAVIORED_CLASSIFIER__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__IMPORTED_MEMBER = BEHAVIORED_CLASSIFIER__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__ELEMENT_IMPORT = BEHAVIORED_CLASSIFIER__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__PACKAGE_IMPORT = BEHAVIORED_CLASSIFIER__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__TEMPLATE_PARAMETER = BEHAVIORED_CLASSIFIER__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__OWNING_PARAMETER = BEHAVIORED_CLASSIFIER__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__PACKAGEABLE_ELEMENT_VISIBILITY = BEHAVIORED_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__PACKAGE = BEHAVIORED_CLASSIFIER__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__REDEFINITION_CONTEXT = BEHAVIORED_CLASSIFIER__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__IS_LEAF = BEHAVIORED_CLASSIFIER__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__FEATURE = BEHAVIORED_CLASSIFIER__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__IS_ABSTRACT = BEHAVIORED_CLASSIFIER__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__INHERITED_MEMBER = BEHAVIORED_CLASSIFIER__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__GENERAL = BEHAVIORED_CLASSIFIER__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__GENERALIZATION = BEHAVIORED_CLASSIFIER__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__ATTRIBUTE = BEHAVIORED_CLASSIFIER__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__REDEFINED_CLASSIFIER = BEHAVIORED_CLASSIFIER__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__POWERTYPE_EXTENT = BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__SUBSTITUTION = BEHAVIORED_CLASSIFIER__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__OWNED_USE_CASE = BEHAVIORED_CLASSIFIER__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__USE_CASE = BEHAVIORED_CLASSIFIER__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__REPRESENTATION = BEHAVIORED_CLASSIFIER__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__OCCURRENCE = BEHAVIORED_CLASSIFIER__OCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__OWNED_BEHAVIOR = BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__CLASSIFIER_BEHAVIOR = BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__IMPLEMENTATION = BEHAVIORED_CLASSIFIER__IMPLEMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__OWNED_TRIGGER = BEHAVIORED_CLASSIFIER__OWNED_TRIGGER;
+
+	/**
+	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__OWNED_STATE_MACHINE = BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE;
+
+	/**
+	 * The feature id for the '<em><b>Include</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__INCLUDE = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Extend</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__EXTEND = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Extension Point</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__EXTENSION_POINT = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Subject</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__SUBJECT = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the the '<em>Use Case</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE_FEATURE_COUNT = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__EANNOTATIONS = REDEFINABLE_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__OWNED_ELEMENT = REDEFINABLE_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__OWNER = REDEFINABLE_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__OWNED_COMMENT = REDEFINABLE_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__TEMPLATE_BINDING = REDEFINABLE_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE = REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__NAME = REDEFINABLE_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__QUALIFIED_NAME = REDEFINABLE_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__VISIBILITY = REDEFINABLE_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__CLIENT_DEPENDENCY = REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__NAME_EXPRESSION = REDEFINABLE_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__REDEFINITION_CONTEXT = REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__IS_LEAF = REDEFINABLE_ELEMENT__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT__USE_CASE = REDEFINABLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the the '<em>Extension Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_POINT_FEATURE_COUNT = REDEFINABLE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__OWNER = NAMED_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__RELATED_ELEMENT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__SOURCE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Including Case</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__INCLUDING_CASE = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Addition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__ADDITION = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the the '<em>Include</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TemplateSignatureImpl <em>Template Signature</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22277,7 +22277,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateSignature()
 	 * @generated
 	 */
-	int TEMPLATE_SIGNATURE = 107;
+	int TEMPLATE_SIGNATURE = 93;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TemplateParameterImpl <em>Template Parameter</em>}' class.
@@ -22287,7 +22287,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateParameter()
 	 * @generated
 	 */
-	int TEMPLATE_PARAMETER = 108;
+	int TEMPLATE_PARAMETER = 94;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.StringExpressionImpl <em>String Expression</em>}' class.
@@ -22297,7 +22297,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStringExpression()
 	 * @generated
 	 */
-	int STRING_EXPRESSION = 110;
+	int STRING_EXPRESSION = 96;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ParameterableElementImpl <em>Parameterable Element</em>}' class.
@@ -22307,7 +22307,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getParameterableElement()
 	 * @generated
 	 */
-	int PARAMETERABLE_ELEMENT = 111;
+	int PARAMETERABLE_ELEMENT = 97;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TemplateBindingImpl <em>Template Binding</em>}' class.
@@ -22317,7 +22317,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateBinding()
 	 * @generated
 	 */
-	int TEMPLATE_BINDING = 112;
+	int TEMPLATE_BINDING = 98;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl <em>Template Parameter Substitution</em>}' class.
@@ -22327,7 +22327,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateParameterSubstitution()
 	 * @generated
 	 */
-	int TEMPLATE_PARAMETER_SUBSTITUTION = 113;
+	int TEMPLATE_PARAMETER_SUBSTITUTION = 99;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CollaborationImpl <em>Collaboration</em>}' class.
@@ -22337,7 +22337,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCollaboration()
 	 * @generated
 	 */
-	int COLLABORATION = 94;
+	int COLLABORATION = 100;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.OperationTemplateParameterImpl <em>Operation Template Parameter</em>}' class.
@@ -22347,7 +22347,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getOperationTemplateParameter()
 	 * @generated
 	 */
-	int OPERATION_TEMPLATE_PARAMETER = 114;
+	int OPERATION_TEMPLATE_PARAMETER = 101;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ClassifierTemplateParameterImpl <em>Classifier Template Parameter</em>}' class.
@@ -22357,7 +22357,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClassifierTemplateParameter()
 	 * @generated
 	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER = 115;
+	int CLASSIFIER_TEMPLATE_PARAMETER = 102;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ParameterableClassifierImpl <em>Parameterable Classifier</em>}' class.
@@ -22367,7 +22367,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getParameterableClassifier()
 	 * @generated
 	 */
-	int PARAMETERABLE_CLASSIFIER = 116;
+	int PARAMETERABLE_CLASSIFIER = 103;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.RedefinableTemplateSignatureImpl <em>Redefinable Template Signature</em>}' class.
@@ -22377,7 +22377,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRedefinableTemplateSignature()
 	 * @generated
 	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE = 117;
+	int REDEFINABLE_TEMPLATE_SIGNATURE = 104;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TemplateableClassifierImpl <em>Templateable Classifier</em>}' class.
@@ -22387,7 +22387,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTemplateableClassifier()
 	 * @generated
 	 */
-	int TEMPLATEABLE_CLASSIFIER = 118;
+	int TEMPLATEABLE_CLASSIFIER = 105;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ConnectableElementTemplateParameterImpl <em>Connectable Element Template Parameter</em>}' class.
@@ -22397,7 +22397,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConnectableElementTemplateParameter()
 	 * @generated
 	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER = 119;
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER = 106;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ForkNodeImpl <em>Fork Node</em>}' class.
@@ -22407,7 +22407,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getForkNode()
 	 * @generated
 	 */
-	int FORK_NODE = 185;
+	int FORK_NODE = 137;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.JoinNodeImpl <em>Join Node</em>}' class.
@@ -22417,7 +22417,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getJoinNode()
 	 * @generated
 	 */
-	int JOIN_NODE = 186;
+	int JOIN_NODE = 138;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.FlowFinalNodeImpl <em>Flow Final Node</em>}' class.
@@ -22427,7 +22427,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getFlowFinalNode()
 	 * @generated
 	 */
-	int FLOW_FINAL_NODE = 187;
+	int FLOW_FINAL_NODE = 139;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CentralBufferNodeImpl <em>Central Buffer Node</em>}' class.
@@ -22437,7 +22437,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCentralBufferNode()
 	 * @generated
 	 */
-	int CENTRAL_BUFFER_NODE = 188;
+	int CENTRAL_BUFFER_NODE = 140;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl <em>Activity Partition</em>}' class.
@@ -22447,7 +22447,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getActivityPartition()
 	 * @generated
 	 */
-	int ACTIVITY_PARTITION = 189;
+	int ACTIVITY_PARTITION = 141;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.PortImpl <em>Port</em>}' class.
@@ -22457,7 +22457,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPort()
 	 * @generated
 	 */
-	int PORT = 95;
+	int PORT = 108;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ExpansionNodeImpl <em>Expansion Node</em>}' class.
@@ -22467,7 +22467,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExpansionNode()
 	 * @generated
 	 */
-	int EXPANSION_NODE = 174;
+	int EXPANSION_NODE = 134;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ExpansionRegionImpl <em>Expansion Region</em>}' class.
@@ -22477,7 +22477,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExpansionRegion()
 	 * @generated
 	 */
-	int EXPANSION_REGION = 175;
+	int EXPANSION_REGION = 135;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ExceptionHandlerImpl <em>Exception Handler</em>}' class.
@@ -22487,7 +22487,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExceptionHandler()
 	 * @generated
 	 */
-	int EXCEPTION_HANDLER = 176;
+	int EXCEPTION_HANDLER = 136;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InteractionImpl <em>Interaction</em>}' class.
@@ -22497,7 +22497,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteraction()
 	 * @generated
 	 */
-	int INTERACTION = 97;
+	int INTERACTION = 110;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InteractionFragmentImpl <em>Interaction Fragment</em>}' class.
@@ -22507,7 +22507,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteractionFragment()
 	 * @generated
 	 */
-	int INTERACTION_FRAGMENT = 98;
+	int INTERACTION_FRAGMENT = 111;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.LifelineImpl <em>Lifeline</em>}' class.
@@ -22517,7 +22517,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLifeline()
 	 * @generated
 	 */
-	int LIFELINE = 99;
+	int LIFELINE = 112;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.MessageImpl <em>Message</em>}' class.
@@ -22527,7 +22527,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getMessage()
 	 * @generated
 	 */
-	int MESSAGE = 100;
+	int MESSAGE = 113;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.GeneralOrderingImpl <em>General Ordering</em>}' class.
@@ -22537,7 +22537,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getGeneralOrdering()
 	 * @generated
 	 */
-	int GENERAL_ORDERING = 101;
+	int GENERAL_ORDERING = 114;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.MessageEndImpl <em>Message End</em>}' class.
@@ -22547,7 +22547,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getMessageEnd()
 	 * @generated
 	 */
-	int MESSAGE_END = 102;
+	int MESSAGE_END = 115;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.EventOccurrenceImpl <em>Event Occurrence</em>}' class.
@@ -22557,7 +22557,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getEventOccurrence()
 	 * @generated
 	 */
-	int EVENT_OCCURRENCE = 103;
+	int EVENT_OCCURRENCE = 116;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ExecutionOccurrenceImpl <em>Execution Occurrence</em>}' class.
@@ -22567,7 +22567,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExecutionOccurrence()
 	 * @generated
 	 */
-	int EXECUTION_OCCURRENCE = 104;
+	int EXECUTION_OCCURRENCE = 117;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.StateInvariantImpl <em>State Invariant</em>}' class.
@@ -22577,7 +22577,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStateInvariant()
 	 * @generated
 	 */
-	int STATE_INVARIANT = 105;
+	int STATE_INVARIANT = 118;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.StopImpl <em>Stop</em>}' class.
@@ -22587,7 +22587,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStop()
 	 * @generated
 	 */
-	int STOP = 106;
+	int STOP = 119;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CollaborationOccurrenceImpl <em>Collaboration Occurrence</em>}' class.
@@ -22597,7 +22597,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCollaborationOccurrence()
 	 * @generated
 	 */
-	int COLLABORATION_OCCURRENCE = 93;
+	int COLLABORATION_OCCURRENCE = 107;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CreateObjectActionImpl <em>Create Object Action</em>}' class.
@@ -22607,7 +22607,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCreateObjectAction()
 	 * @generated
 	 */
-	int CREATE_OBJECT_ACTION = 134;
+	int CREATE_OBJECT_ACTION = 142;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DestroyObjectActionImpl <em>Destroy Object Action</em>}' class.
@@ -22617,7 +22617,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDestroyObjectAction()
 	 * @generated
 	 */
-	int DESTROY_OBJECT_ACTION = 135;
+	int DESTROY_OBJECT_ACTION = 143;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TestIdentityActionImpl <em>Test Identity Action</em>}' class.
@@ -22627,7 +22627,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTestIdentityAction()
 	 * @generated
 	 */
-	int TEST_IDENTITY_ACTION = 136;
+	int TEST_IDENTITY_ACTION = 144;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ReadSelfActionImpl <em>Read Self Action</em>}' class.
@@ -22637,7 +22637,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadSelfAction()
 	 * @generated
 	 */
-	int READ_SELF_ACTION = 137;
+	int READ_SELF_ACTION = 145;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.StructuralFeatureActionImpl <em>Structural Feature Action</em>}' class.
@@ -22647,7 +22647,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStructuralFeatureAction()
 	 * @generated
 	 */
-	int STRUCTURAL_FEATURE_ACTION = 138;
+	int STRUCTURAL_FEATURE_ACTION = 146;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ReadStructuralFeatureActionImpl <em>Read Structural Feature Action</em>}' class.
@@ -22657,7 +22657,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadStructuralFeatureAction()
 	 * @generated
 	 */
-	int READ_STRUCTURAL_FEATURE_ACTION = 139;
+	int READ_STRUCTURAL_FEATURE_ACTION = 147;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.WriteStructuralFeatureActionImpl <em>Write Structural Feature Action</em>}' class.
@@ -22667,7 +22667,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getWriteStructuralFeatureAction()
 	 * @generated
 	 */
-	int WRITE_STRUCTURAL_FEATURE_ACTION = 140;
+	int WRITE_STRUCTURAL_FEATURE_ACTION = 148;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ClearStructuralFeatureActionImpl <em>Clear Structural Feature Action</em>}' class.
@@ -22677,7 +22677,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClearStructuralFeatureAction()
 	 * @generated
 	 */
-	int CLEAR_STRUCTURAL_FEATURE_ACTION = 141;
+	int CLEAR_STRUCTURAL_FEATURE_ACTION = 149;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.RemoveStructuralFeatureValueActionImpl <em>Remove Structural Feature Value Action</em>}' class.
@@ -22687,7 +22687,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRemoveStructuralFeatureValueAction()
 	 * @generated
 	 */
-	int REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION = 142;
+	int REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION = 150;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.AddStructuralFeatureValueActionImpl <em>Add Structural Feature Value Action</em>}' class.
@@ -22697,7 +22697,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAddStructuralFeatureValueAction()
 	 * @generated
 	 */
-	int ADD_STRUCTURAL_FEATURE_VALUE_ACTION = 143;
+	int ADD_STRUCTURAL_FEATURE_VALUE_ACTION = 151;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.LinkActionImpl <em>Link Action</em>}' class.
@@ -22707,7 +22707,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLinkAction()
 	 * @generated
 	 */
-	int LINK_ACTION = 144;
+	int LINK_ACTION = 152;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.LinkEndDataImpl <em>Link End Data</em>}' class.
@@ -22717,7 +22717,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLinkEndData()
 	 * @generated
 	 */
-	int LINK_END_DATA = 145;
+	int LINK_END_DATA = 153;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ReadLinkActionImpl <em>Read Link Action</em>}' class.
@@ -22727,7 +22727,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadLinkAction()
 	 * @generated
 	 */
-	int READ_LINK_ACTION = 146;
+	int READ_LINK_ACTION = 154;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.LinkEndCreationDataImpl <em>Link End Creation Data</em>}' class.
@@ -22737,7 +22737,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getLinkEndCreationData()
 	 * @generated
 	 */
-	int LINK_END_CREATION_DATA = 147;
+	int LINK_END_CREATION_DATA = 155;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.WriteLinkActionImpl <em>Write Link Action</em>}' class.
@@ -22747,7 +22747,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getWriteLinkAction()
 	 * @generated
 	 */
-	int WRITE_LINK_ACTION = 149;
+	int WRITE_LINK_ACTION = 157;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CreateLinkActionImpl <em>Create Link Action</em>}' class.
@@ -22757,7 +22757,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCreateLinkAction()
 	 * @generated
 	 */
-	int CREATE_LINK_ACTION = 148;
+	int CREATE_LINK_ACTION = 156;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DestroyLinkActionImpl <em>Destroy Link Action</em>}' class.
@@ -22767,7 +22767,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDestroyLinkAction()
 	 * @generated
 	 */
-	int DESTROY_LINK_ACTION = 150;
+	int DESTROY_LINK_ACTION = 158;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ClearAssociationActionImpl <em>Clear Association Action</em>}' class.
@@ -22777,7 +22777,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClearAssociationAction()
 	 * @generated
 	 */
-	int CLEAR_ASSOCIATION_ACTION = 151;
+	int CLEAR_ASSOCIATION_ACTION = 159;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.VariableActionImpl <em>Variable Action</em>}' class.
@@ -22787,7 +22787,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getVariableAction()
 	 * @generated
 	 */
-	int VARIABLE_ACTION = 152;
+	int VARIABLE_ACTION = 160;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ReadVariableActionImpl <em>Read Variable Action</em>}' class.
@@ -22797,7 +22797,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getReadVariableAction()
 	 * @generated
 	 */
-	int READ_VARIABLE_ACTION = 153;
+	int READ_VARIABLE_ACTION = 161;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.WriteVariableActionImpl <em>Write Variable Action</em>}' class.
@@ -22807,7 +22807,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getWriteVariableAction()
 	 * @generated
 	 */
-	int WRITE_VARIABLE_ACTION = 154;
+	int WRITE_VARIABLE_ACTION = 162;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ClearVariableActionImpl <em>Clear Variable Action</em>}' class.
@@ -22817,7 +22817,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getClearVariableAction()
 	 * @generated
 	 */
-	int CLEAR_VARIABLE_ACTION = 155;
+	int CLEAR_VARIABLE_ACTION = 163;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.AddVariableValueActionImpl <em>Add Variable Value Action</em>}' class.
@@ -22827,7 +22827,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getAddVariableValueAction()
 	 * @generated
 	 */
-	int ADD_VARIABLE_VALUE_ACTION = 156;
+	int ADD_VARIABLE_VALUE_ACTION = 164;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.RemoveVariableValueActionImpl <em>Remove Variable Value Action</em>}' class.
@@ -22837,7 +22837,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRemoveVariableValueAction()
 	 * @generated
 	 */
-	int REMOVE_VARIABLE_VALUE_ACTION = 157;
+	int REMOVE_VARIABLE_VALUE_ACTION = 165;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ApplyFunctionActionImpl <em>Apply Function Action</em>}' class.
@@ -22847,7 +22847,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getApplyFunctionAction()
 	 * @generated
 	 */
-	int APPLY_FUNCTION_ACTION = 158;
+	int APPLY_FUNCTION_ACTION = 166;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.PrimitiveFunctionImpl <em>Primitive Function</em>}' class.
@@ -22857,7 +22857,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPrimitiveFunction()
 	 * @generated
 	 */
-	int PRIMITIVE_FUNCTION = 159;
+	int PRIMITIVE_FUNCTION = 167;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InvocationActionImpl <em>Invocation Action</em>}' class.
@@ -22867,7 +22867,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInvocationAction()
 	 * @generated
 	 */
-	int INVOCATION_ACTION = 161;
+	int INVOCATION_ACTION = 169;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CallActionImpl <em>Call Action</em>}' class.
@@ -22877,7 +22877,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCallAction()
 	 * @generated
 	 */
-	int CALL_ACTION = 160;
+	int CALL_ACTION = 168;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.SendSignalActionImpl <em>Send Signal Action</em>}' class.
@@ -22887,7 +22887,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSendSignalAction()
 	 * @generated
 	 */
-	int SEND_SIGNAL_ACTION = 162;
+	int SEND_SIGNAL_ACTION = 170;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.BroadcastSignalActionImpl <em>Broadcast Signal Action</em>}' class.
@@ -22897,7 +22897,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getBroadcastSignalAction()
 	 * @generated
 	 */
-	int BROADCAST_SIGNAL_ACTION = 163;
+	int BROADCAST_SIGNAL_ACTION = 171;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.SendObjectActionImpl <em>Send Object Action</em>}' class.
@@ -22907,7 +22907,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getSendObjectAction()
 	 * @generated
 	 */
-	int SEND_OBJECT_ACTION = 164;
+	int SEND_OBJECT_ACTION = 172;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CallOperationActionImpl <em>Call Operation Action</em>}' class.
@@ -22917,7 +22917,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCallOperationAction()
 	 * @generated
 	 */
-	int CALL_OPERATION_ACTION = 165;
+	int CALL_OPERATION_ACTION = 173;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CallBehaviorActionImpl <em>Call Behavior Action</em>}' class.
@@ -22927,7 +22927,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCallBehaviorAction()
 	 * @generated
 	 */
-	int CALL_BEHAVIOR_ACTION = 166;
+	int CALL_BEHAVIOR_ACTION = 174;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.StateMachineImpl <em>State Machine</em>}' class.
@@ -22937,7 +22937,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getStateMachine()
 	 * @generated
 	 */
-	int STATE_MACHINE = 177;
+	int STATE_MACHINE = 175;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.RegionImpl <em>Region</em>}' class.
@@ -22947,7 +22947,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getRegion()
 	 * @generated
 	 */
-	int REGION = 178;
+	int REGION = 176;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.VertexImpl <em>Vertex</em>}' class.
@@ -22957,7 +22957,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getVertex()
 	 * @generated
 	 */
-	int VERTEX = 181;
+	int VERTEX = 179;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.PseudostateImpl <em>Pseudostate</em>}' class.
@@ -22967,7 +22967,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPseudostate()
 	 * @generated
 	 */
-	int PSEUDOSTATE = 179;
+	int PSEUDOSTATE = 177;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.StateImpl <em>State</em>}' class.
@@ -22977,7 +22977,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 180;
+	int STATE = 178;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ConnectionPointReferenceImpl <em>Connection Point Reference</em>}' class.
@@ -22987,7 +22987,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConnectionPointReference()
 	 * @generated
 	 */
-	int CONNECTION_POINT_REFERENCE = 182;
+	int CONNECTION_POINT_REFERENCE = 180;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TransitionImpl <em>Transition</em>}' class.
@@ -22997,7 +22997,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTransition()
 	 * @generated
 	 */
-	int TRANSITION = 183;
+	int TRANSITION = 181;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.FinalStateImpl <em>Final State</em>}' class.
@@ -23007,7 +23007,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getFinalState()
 	 * @generated
 	 */
-	int FINAL_STATE = 184;
+	int FINAL_STATE = 182;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -23016,7 +23016,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+	int TEMPLATE_SIGNATURE__EANNOTATIONS = ELEMENT__EANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -23025,7 +23025,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+	int TEMPLATE_SIGNATURE__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -23034,7 +23034,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__OWNER = NAMED_ELEMENT__OWNER;
+	int TEMPLATE_SIGNATURE__OWNER = ELEMENT__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -23043,7 +23043,187 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+	int TEMPLATE_SIGNATURE__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_SIGNATURE__PARAMETER = ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Owned Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_SIGNATURE__OWNED_PARAMETER = ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Nested Signature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_SIGNATURE__NESTED_SIGNATURE = ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Nesting Signature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_SIGNATURE__NESTING_SIGNATURE = ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Template</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_SIGNATURE__TEMPLATE = ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the the '<em>Template Signature</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_SIGNATURE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER__EANNOTATIONS = ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER__OWNER = ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Signature</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER__SIGNATURE = ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Parametered Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER__PARAMETERED_ELEMENT = ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Owned Parametered Element</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT = ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER__DEFAULT = ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Owned Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER__OWNED_DEFAULT = ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the the '<em>Template Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_EXPRESSION__EANNOTATIONS = TEMPLATEABLE_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_EXPRESSION__OWNED_ELEMENT = TEMPLATEABLE_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_EXPRESSION__OWNER = TEMPLATEABLE_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_EXPRESSION__OWNED_COMMENT = TEMPLATEABLE_ELEMENT__OWNED_COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
@@ -23052,7 +23232,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
+	int STRING_EXPRESSION__TEMPLATE_BINDING = TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
@@ -23061,79 +23241,277 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+	int STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE = TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Sub Expression</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__NAME = NAMED_ELEMENT__NAME;
+	int STRING_EXPRESSION__SUB_EXPRESSION = TEMPLATEABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Owning Expression</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+	int STRING_EXPRESSION__OWNING_EXPRESSION = TEMPLATEABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * The number of structural features of the the '<em>String Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+	int STRING_EXPRESSION_FEATURE_COUNT = TEMPLATEABLE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+	int PARAMETERABLE_ELEMENT__EANNOTATIONS = ELEMENT__EANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+	int PARAMETERABLE_ELEMENT__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int PARAMETERABLE_ELEMENT__OWNER = ELEMENT__OWNER;
 
 	/**
-	 * The feature id for the '<em><b>Role Binding</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE__ROLE_BINDING = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int PARAMETERABLE_ELEMENT__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
 
 	/**
-	 * The number of structural features of the the '<em>Collaboration Occurrence</em>' class.
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLLABORATION_OCCURRENCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER = ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_ELEMENT__OWNING_PARAMETER = ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the the '<em>Parameterable Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_ELEMENT_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_BINDING__EANNOTATIONS = DIRECTED_RELATIONSHIP__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_BINDING__OWNED_ELEMENT = DIRECTED_RELATIONSHIP__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_BINDING__OWNER = DIRECTED_RELATIONSHIP__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_BINDING__OWNED_COMMENT = DIRECTED_RELATIONSHIP__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_BINDING__RELATED_ELEMENT = DIRECTED_RELATIONSHIP__RELATED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_BINDING__SOURCE = DIRECTED_RELATIONSHIP__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_BINDING__TARGET = DIRECTED_RELATIONSHIP__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Bound Element</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_BINDING__BOUND_ELEMENT = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Signature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_BINDING__SIGNATURE = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Parameter Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_BINDING__PARAMETER_SUBSTITUTION = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the the '<em>Template Binding</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_BINDING_FEATURE_COUNT = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS = ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER_SUBSTITUTION__OWNER = ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Formal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL = ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING = ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Actual</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL = ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Owned Actual</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL = ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the the '<em>Template Parameter Substitution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_PARAMETER_SUBSTITUTION_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -23397,15 +23775,6 @@ public interface UML2Package extends EPackage{
 	int COLLABORATION__REDEFINED_CLASSIFIER = BEHAVIORED_CLASSIFIER__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLLABORATION__SUBSTITUTION = BEHAVIORED_CLASSIFIER__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -23413,6 +23782,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int COLLABORATION__POWERTYPE_EXTENT = BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION__SUBSTITUTION = BEHAVIORED_CLASSIFIER__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -23548,6 +23926,1230 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int COLLABORATION_FEATURE_COUNT = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_TEMPLATE_PARAMETER__EANNOTATIONS = TEMPLATE_PARAMETER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_TEMPLATE_PARAMETER__OWNED_ELEMENT = TEMPLATE_PARAMETER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_TEMPLATE_PARAMETER__OWNER = TEMPLATE_PARAMETER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_TEMPLATE_PARAMETER__OWNED_COMMENT = TEMPLATE_PARAMETER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Signature</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_TEMPLATE_PARAMETER__SIGNATURE = TEMPLATE_PARAMETER__SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Parametered Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__PARAMETERED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Parametered Element</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_TEMPLATE_PARAMETER__DEFAULT = TEMPLATE_PARAMETER__DEFAULT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_TEMPLATE_PARAMETER__OWNED_DEFAULT = TEMPLATE_PARAMETER__OWNED_DEFAULT;
+
+	/**
+	 * The number of structural features of the the '<em>Operation Template Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_TEMPLATE_PARAMETER_FEATURE_COUNT = TEMPLATE_PARAMETER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS = TEMPLATE_PARAMETER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER_TEMPLATE_PARAMETER__OWNED_ELEMENT = TEMPLATE_PARAMETER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER_TEMPLATE_PARAMETER__OWNER = TEMPLATE_PARAMETER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT = TEMPLATE_PARAMETER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Signature</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE = TEMPLATE_PARAMETER__SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Parametered Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__PARAMETERED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Parametered Element</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT = TEMPLATE_PARAMETER__DEFAULT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT = TEMPLATE_PARAMETER__OWNED_DEFAULT;
+
+	/**
+	 * The feature id for the '<em><b>Allow Substitutable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE = TEMPLATE_PARAMETER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the the '<em>Classifier Template Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER_TEMPLATE_PARAMETER_FEATURE_COUNT = TEMPLATE_PARAMETER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__EANNOTATIONS = CLASSIFIER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__OWNED_ELEMENT = CLASSIFIER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__OWNER = CLASSIFIER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__OWNED_COMMENT = CLASSIFIER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__TEMPLATE_BINDING = CLASSIFIER__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE = CLASSIFIER__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__NAME = CLASSIFIER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__QUALIFIED_NAME = CLASSIFIER__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__VISIBILITY = CLASSIFIER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__CLIENT_DEPENDENCY = CLASSIFIER__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__NAME_EXPRESSION = CLASSIFIER__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__MEMBER = CLASSIFIER__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__OWNED_RULE = CLASSIFIER__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__IMPORTED_MEMBER = CLASSIFIER__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__ELEMENT_IMPORT = CLASSIFIER__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__PACKAGE_IMPORT = CLASSIFIER__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__TEMPLATE_PARAMETER = CLASSIFIER__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__OWNING_PARAMETER = CLASSIFIER__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY = CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__PACKAGE = CLASSIFIER__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__REDEFINITION_CONTEXT = CLASSIFIER__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__IS_LEAF = CLASSIFIER__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__FEATURE = CLASSIFIER__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__IS_ABSTRACT = CLASSIFIER__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__INHERITED_MEMBER = CLASSIFIER__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__GENERAL = CLASSIFIER__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__GENERALIZATION = CLASSIFIER__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__ATTRIBUTE = CLASSIFIER__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__OWNED_USE_CASE = CLASSIFIER__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__USE_CASE = CLASSIFIER__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__REPRESENTATION = CLASSIFIER__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER__OCCURRENCE = CLASSIFIER__OCCURRENCE;
+
+	/**
+	 * The number of structural features of the the '<em>Parameterable Classifier</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETERABLE_CLASSIFIER_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS = REDEFINABLE_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT = REDEFINABLE_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__OWNER = REDEFINABLE_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT = REDEFINABLE_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE_BINDING = REDEFINABLE_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE = REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__NAME = REDEFINABLE_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__QUALIFIED_NAME = REDEFINABLE_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY = REDEFINABLE_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY = REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__NAME_EXPRESSION = REDEFINABLE_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT = REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__IS_LEAF = REDEFINABLE_ELEMENT__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER = REDEFINABLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Owned Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER = REDEFINABLE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Nested Signature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__NESTED_SIGNATURE = REDEFINABLE_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Nesting Signature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__NESTING_SIGNATURE = REDEFINABLE_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Template</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE = REDEFINABLE_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the the '<em>Redefinable Template Signature</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REDEFINABLE_TEMPLATE_SIGNATURE_FEATURE_COUNT = REDEFINABLE_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__EANNOTATIONS = CLASSIFIER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__OWNED_ELEMENT = CLASSIFIER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__OWNER = CLASSIFIER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__OWNED_COMMENT = CLASSIFIER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__TEMPLATE_BINDING = CLASSIFIER__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE = CLASSIFIER__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__NAME = CLASSIFIER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__QUALIFIED_NAME = CLASSIFIER__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__VISIBILITY = CLASSIFIER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__CLIENT_DEPENDENCY = CLASSIFIER__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__NAME_EXPRESSION = CLASSIFIER__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__MEMBER = CLASSIFIER__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__OWNED_RULE = CLASSIFIER__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__IMPORTED_MEMBER = CLASSIFIER__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__ELEMENT_IMPORT = CLASSIFIER__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__PACKAGE_IMPORT = CLASSIFIER__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__TEMPLATE_PARAMETER = CLASSIFIER__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__OWNING_PARAMETER = CLASSIFIER__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY = CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__PACKAGE = CLASSIFIER__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__REDEFINITION_CONTEXT = CLASSIFIER__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__IS_LEAF = CLASSIFIER__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__FEATURE = CLASSIFIER__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__IS_ABSTRACT = CLASSIFIER__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__INHERITED_MEMBER = CLASSIFIER__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__GENERAL = CLASSIFIER__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__GENERALIZATION = CLASSIFIER__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__ATTRIBUTE = CLASSIFIER__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__OWNED_USE_CASE = CLASSIFIER__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__USE_CASE = CLASSIFIER__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__REPRESENTATION = CLASSIFIER__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER__OCCURRENCE = CLASSIFIER__OCCURRENCE;
+
+	/**
+	 * The number of structural features of the the '<em>Templateable Classifier</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATEABLE_CLASSIFIER_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__EANNOTATIONS = TEMPLATE_PARAMETER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_ELEMENT = TEMPLATE_PARAMETER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNER = TEMPLATE_PARAMETER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT = TEMPLATE_PARAMETER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Signature</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE = TEMPLATE_PARAMETER__SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Parametered Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__PARAMETERED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Parametered Element</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__DEFAULT = TEMPLATE_PARAMETER__DEFAULT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT = TEMPLATE_PARAMETER__OWNED_DEFAULT;
+
+	/**
+	 * The number of structural features of the the '<em>Connectable Element Template Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER_FEATURE_COUNT = TEMPLATE_PARAMETER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__OWNER = NAMED_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Role Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE__ROLE_BINDING = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the the '<em>Collaboration Occurrence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLABORATION_OCCURRENCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -24261,15 +25863,6 @@ public interface UML2Package extends EPackage{
 	int ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER = STRUCTURED_CLASSIFIER__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENCAPSULATED_CLASSIFIER__SUBSTITUTION = STRUCTURED_CLASSIFIER__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24277,6 +25870,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT = STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENCAPSULATED_CLASSIFIER__SUBSTITUTION = STRUCTURED_CLASSIFIER__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -24630,15 +26232,6 @@ public interface UML2Package extends EPackage{
 	int INTERACTION__REDEFINED_CLASSIFIER = BEHAVIOR__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION__SUBSTITUTION = BEHAVIOR__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24646,6 +26239,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int INTERACTION__POWERTYPE_EXTENT = BEHAVIOR__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION__SUBSTITUTION = BEHAVIOR__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -24792,15 +26394,6 @@ public interface UML2Package extends EPackage{
 	int INTERACTION__SUPER_CLASS = BEHAVIOR__SUPER_CLASS;
 
 	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION__EXTENSION = BEHAVIOR__EXTENSION;
-
-	/**
 	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24808,6 +26401,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int INTERACTION__NESTED_CLASSIFIER = BEHAVIOR__NESTED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION__EXTENSION = BEHAVIOR__EXTENSION;
 
 	/**
 	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
@@ -26454,3066 +28056,6 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE_SIGNATURE__EANNOTATIONS = ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_SIGNATURE__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_SIGNATURE__OWNER = ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_SIGNATURE__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_SIGNATURE__PARAMETER = ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Owned Parameter</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_SIGNATURE__OWNED_PARAMETER = ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Nested Signature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_SIGNATURE__NESTED_SIGNATURE = ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Nesting Signature</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_SIGNATURE__NESTING_SIGNATURE = ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Template</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_SIGNATURE__TEMPLATE = ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the the '<em>Template Signature</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_SIGNATURE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER__EANNOTATIONS = ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER__OWNER = ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Signature</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER__SIGNATURE = ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Parametered Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER__PARAMETERED_ELEMENT = ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Owned Parametered Element</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT = ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Default</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER__DEFAULT = ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Owned Default</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER__OWNED_DEFAULT = ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the the '<em>Template Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_EXPRESSION__EANNOTATIONS = TEMPLATEABLE_ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_EXPRESSION__OWNED_ELEMENT = TEMPLATEABLE_ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_EXPRESSION__OWNER = TEMPLATEABLE_ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_EXPRESSION__OWNED_COMMENT = TEMPLATEABLE_ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_EXPRESSION__TEMPLATE_BINDING = TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE = TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Sub Expression</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_EXPRESSION__SUB_EXPRESSION = TEMPLATEABLE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Owning Expression</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_EXPRESSION__OWNING_EXPRESSION = TEMPLATEABLE_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>String Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_EXPRESSION_FEATURE_COUNT = TEMPLATEABLE_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_ELEMENT__EANNOTATIONS = ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_ELEMENT__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_ELEMENT__OWNER = ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_ELEMENT__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER = ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_ELEMENT__OWNING_PARAMETER = ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>Parameterable Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_ELEMENT_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_BINDING__EANNOTATIONS = DIRECTED_RELATIONSHIP__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_BINDING__OWNED_ELEMENT = DIRECTED_RELATIONSHIP__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_BINDING__OWNER = DIRECTED_RELATIONSHIP__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_BINDING__OWNED_COMMENT = DIRECTED_RELATIONSHIP__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_BINDING__RELATED_ELEMENT = DIRECTED_RELATIONSHIP__RELATED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_BINDING__SOURCE = DIRECTED_RELATIONSHIP__SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_BINDING__TARGET = DIRECTED_RELATIONSHIP__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Bound Element</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_BINDING__BOUND_ELEMENT = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Signature</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_BINDING__SIGNATURE = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Parameter Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_BINDING__PARAMETER_SUBSTITUTION = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the the '<em>Template Binding</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_BINDING_FEATURE_COUNT = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS = ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER_SUBSTITUTION__OWNER = ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Formal</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL = ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING = ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Actual</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL = ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Owned Actual</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL = ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the the '<em>Template Parameter Substitution</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATE_PARAMETER_SUBSTITUTION_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_TEMPLATE_PARAMETER__EANNOTATIONS = TEMPLATE_PARAMETER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_TEMPLATE_PARAMETER__OWNED_ELEMENT = TEMPLATE_PARAMETER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_TEMPLATE_PARAMETER__OWNER = TEMPLATE_PARAMETER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_TEMPLATE_PARAMETER__OWNED_COMMENT = TEMPLATE_PARAMETER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Signature</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_TEMPLATE_PARAMETER__SIGNATURE = TEMPLATE_PARAMETER__SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Parametered Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__PARAMETERED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Parametered Element</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Default</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_TEMPLATE_PARAMETER__DEFAULT = TEMPLATE_PARAMETER__DEFAULT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Default</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_TEMPLATE_PARAMETER__OWNED_DEFAULT = TEMPLATE_PARAMETER__OWNED_DEFAULT;
-
-	/**
-	 * The number of structural features of the the '<em>Operation Template Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_TEMPLATE_PARAMETER_FEATURE_COUNT = TEMPLATE_PARAMETER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS = TEMPLATE_PARAMETER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER__OWNED_ELEMENT = TEMPLATE_PARAMETER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER__OWNER = TEMPLATE_PARAMETER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT = TEMPLATE_PARAMETER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Signature</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE = TEMPLATE_PARAMETER__SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Parametered Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__PARAMETERED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Parametered Element</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Default</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT = TEMPLATE_PARAMETER__DEFAULT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Default</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT = TEMPLATE_PARAMETER__OWNED_DEFAULT;
-
-	/**
-	 * The feature id for the '<em><b>Allow Substitutable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE = TEMPLATE_PARAMETER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the the '<em>Classifier Template Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER_TEMPLATE_PARAMETER_FEATURE_COUNT = TEMPLATE_PARAMETER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__EANNOTATIONS = CLASSIFIER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__OWNED_ELEMENT = CLASSIFIER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__OWNER = CLASSIFIER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__OWNED_COMMENT = CLASSIFIER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__TEMPLATE_BINDING = CLASSIFIER__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE = CLASSIFIER__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__NAME = CLASSIFIER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__QUALIFIED_NAME = CLASSIFIER__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__VISIBILITY = CLASSIFIER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__CLIENT_DEPENDENCY = CLASSIFIER__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__NAME_EXPRESSION = CLASSIFIER__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__MEMBER = CLASSIFIER__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__OWNED_RULE = CLASSIFIER__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__IMPORTED_MEMBER = CLASSIFIER__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__ELEMENT_IMPORT = CLASSIFIER__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__PACKAGE_IMPORT = CLASSIFIER__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__TEMPLATE_PARAMETER = CLASSIFIER__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__OWNING_PARAMETER = CLASSIFIER__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY = CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__PACKAGE = CLASSIFIER__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__REDEFINITION_CONTEXT = CLASSIFIER__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__IS_LEAF = CLASSIFIER__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__FEATURE = CLASSIFIER__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__IS_ABSTRACT = CLASSIFIER__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__INHERITED_MEMBER = CLASSIFIER__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__GENERAL = CLASSIFIER__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__GENERALIZATION = CLASSIFIER__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__ATTRIBUTE = CLASSIFIER__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__OWNED_USE_CASE = CLASSIFIER__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__USE_CASE = CLASSIFIER__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__REPRESENTATION = CLASSIFIER__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER__OCCURRENCE = CLASSIFIER__OCCURRENCE;
-
-	/**
-	 * The number of structural features of the the '<em>Parameterable Classifier</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERABLE_CLASSIFIER_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS = REDEFINABLE_ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT = REDEFINABLE_ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__OWNER = REDEFINABLE_ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT = REDEFINABLE_ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE_BINDING = REDEFINABLE_ELEMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE = REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__NAME = REDEFINABLE_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__QUALIFIED_NAME = REDEFINABLE_ELEMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__VISIBILITY = REDEFINABLE_ELEMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY = REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__NAME_EXPRESSION = REDEFINABLE_ELEMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT = REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__IS_LEAF = REDEFINABLE_ELEMENT__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER = REDEFINABLE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Owned Parameter</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER = REDEFINABLE_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Nested Signature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__NESTED_SIGNATURE = REDEFINABLE_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Nesting Signature</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__NESTING_SIGNATURE = REDEFINABLE_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Template</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE = REDEFINABLE_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the the '<em>Redefinable Template Signature</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REDEFINABLE_TEMPLATE_SIGNATURE_FEATURE_COUNT = REDEFINABLE_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__EANNOTATIONS = CLASSIFIER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__OWNED_ELEMENT = CLASSIFIER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__OWNER = CLASSIFIER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__OWNED_COMMENT = CLASSIFIER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__TEMPLATE_BINDING = CLASSIFIER__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE = CLASSIFIER__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__NAME = CLASSIFIER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__QUALIFIED_NAME = CLASSIFIER__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__VISIBILITY = CLASSIFIER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__CLIENT_DEPENDENCY = CLASSIFIER__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__NAME_EXPRESSION = CLASSIFIER__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__MEMBER = CLASSIFIER__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__OWNED_RULE = CLASSIFIER__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__IMPORTED_MEMBER = CLASSIFIER__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__ELEMENT_IMPORT = CLASSIFIER__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__PACKAGE_IMPORT = CLASSIFIER__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__TEMPLATE_PARAMETER = CLASSIFIER__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__OWNING_PARAMETER = CLASSIFIER__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY = CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__PACKAGE = CLASSIFIER__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__REDEFINITION_CONTEXT = CLASSIFIER__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__IS_LEAF = CLASSIFIER__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__FEATURE = CLASSIFIER__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__IS_ABSTRACT = CLASSIFIER__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__INHERITED_MEMBER = CLASSIFIER__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__GENERAL = CLASSIFIER__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__GENERALIZATION = CLASSIFIER__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__ATTRIBUTE = CLASSIFIER__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__OWNED_USE_CASE = CLASSIFIER__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__USE_CASE = CLASSIFIER__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__REPRESENTATION = CLASSIFIER__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER__OCCURRENCE = CLASSIFIER__OCCURRENCE;
-
-	/**
-	 * The number of structural features of the the '<em>Templateable Classifier</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATEABLE_CLASSIFIER_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__EANNOTATIONS = TEMPLATE_PARAMETER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_ELEMENT = TEMPLATE_PARAMETER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNER = TEMPLATE_PARAMETER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT = TEMPLATE_PARAMETER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Signature</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE = TEMPLATE_PARAMETER__SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Parametered Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__PARAMETERED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Parametered Element</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Default</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__DEFAULT = TEMPLATE_PARAMETER__DEFAULT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Default</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT = TEMPLATE_PARAMETER__OWNED_DEFAULT;
-
-	/**
-	 * The number of structural features of the the '<em>Connectable Element Template Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER_FEATURE_COUNT = TEMPLATE_PARAMETER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__OWNER = NAMED_ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Port</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__PORT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the the '<em>Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__EANNOTATIONS = TRIGGER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__OWNED_ELEMENT = TRIGGER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__OWNER = TRIGGER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__OWNED_COMMENT = TRIGGER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__TEMPLATE_BINDING = TRIGGER__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE = TRIGGER__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__NAME = TRIGGER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__QUALIFIED_NAME = TRIGGER__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__VISIBILITY = TRIGGER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__CLIENT_DEPENDENCY = TRIGGER__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__NAME_EXPRESSION = TRIGGER__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Port</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER__PORT = TRIGGER__PORT;
-
-	/**
-	 * The number of structural features of the the '<em>Message Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__EANNOTATIONS = MESSAGE_TRIGGER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__OWNED_ELEMENT = MESSAGE_TRIGGER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__OWNER = MESSAGE_TRIGGER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__OWNED_COMMENT = MESSAGE_TRIGGER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__TEMPLATE_BINDING = MESSAGE_TRIGGER__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__OWNED_TEMPLATE_SIGNATURE = MESSAGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__NAME = MESSAGE_TRIGGER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__QUALIFIED_NAME = MESSAGE_TRIGGER__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__VISIBILITY = MESSAGE_TRIGGER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__CLIENT_DEPENDENCY = MESSAGE_TRIGGER__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__NAME_EXPRESSION = MESSAGE_TRIGGER__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Port</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__PORT = MESSAGE_TRIGGER__PORT;
-
-	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER__OPERATION = MESSAGE_TRIGGER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the the '<em>Call Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_TRIGGER_FEATURE_COUNT = MESSAGE_TRIGGER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__EANNOTATIONS = TRIGGER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__OWNED_ELEMENT = TRIGGER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__OWNER = TRIGGER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__OWNED_COMMENT = TRIGGER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__TEMPLATE_BINDING = TRIGGER__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE = TRIGGER__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__NAME = TRIGGER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__QUALIFIED_NAME = TRIGGER__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__VISIBILITY = TRIGGER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__CLIENT_DEPENDENCY = TRIGGER__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__NAME_EXPRESSION = TRIGGER__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Port</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__PORT = TRIGGER__PORT;
-
-	/**
-	 * The feature id for the '<em><b>Change Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER__CHANGE_EXPRESSION = TRIGGER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the the '<em>Change Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__EANNOTATIONS = BEHAVIORAL_FEATURE__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__OWNED_ELEMENT = BEHAVIORAL_FEATURE__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__OWNER = BEHAVIORAL_FEATURE__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__OWNED_COMMENT = BEHAVIORAL_FEATURE__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__TEMPLATE_BINDING = BEHAVIORAL_FEATURE__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__OWNED_TEMPLATE_SIGNATURE = BEHAVIORAL_FEATURE__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__NAME = BEHAVIORAL_FEATURE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__QUALIFIED_NAME = BEHAVIORAL_FEATURE__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__VISIBILITY = BEHAVIORAL_FEATURE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__CLIENT_DEPENDENCY = BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__NAME_EXPRESSION = BEHAVIORAL_FEATURE__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__MEMBER = BEHAVIORAL_FEATURE__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__OWNED_RULE = BEHAVIORAL_FEATURE__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__IMPORTED_MEMBER = BEHAVIORAL_FEATURE__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__ELEMENT_IMPORT = BEHAVIORAL_FEATURE__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__PACKAGE_IMPORT = BEHAVIORAL_FEATURE__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__REDEFINITION_CONTEXT = BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__IS_LEAF = BEHAVIORAL_FEATURE__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Featuring Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__FEATURING_CLASSIFIER = BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Is Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__IS_STATIC = BEHAVIORAL_FEATURE__IS_STATIC;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__PARAMETER = BEHAVIORAL_FEATURE__PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Formal Parameter</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__FORMAL_PARAMETER = BEHAVIORAL_FEATURE__FORMAL_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Return Result</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__RETURN_RESULT = BEHAVIORAL_FEATURE__RETURN_RESULT;
-
-	/**
-	 * The feature id for the '<em><b>Raised Exception</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__RAISED_EXCEPTION = BEHAVIORAL_FEATURE__RAISED_EXCEPTION;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__IS_ABSTRACT = BEHAVIORAL_FEATURE__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Method</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__METHOD = BEHAVIORAL_FEATURE__METHOD;
-
-	/**
-	 * The feature id for the '<em><b>Concurrency</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__CONCURRENCY = BEHAVIORAL_FEATURE__CONCURRENCY;
-
-	/**
-	 * The feature id for the '<em><b>Signal</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION__SIGNAL = BEHAVIORAL_FEATURE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the the '<em>Reception</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEPTION_FEATURE_COUNT = BEHAVIORAL_FEATURE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__EANNOTATIONS = CLASSIFIER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__OWNED_ELEMENT = CLASSIFIER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__OWNER = CLASSIFIER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__OWNED_COMMENT = CLASSIFIER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__TEMPLATE_BINDING = CLASSIFIER__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__OWNED_TEMPLATE_SIGNATURE = CLASSIFIER__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__NAME = CLASSIFIER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__QUALIFIED_NAME = CLASSIFIER__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__VISIBILITY = CLASSIFIER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__CLIENT_DEPENDENCY = CLASSIFIER__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__NAME_EXPRESSION = CLASSIFIER__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__MEMBER = CLASSIFIER__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__OWNED_RULE = CLASSIFIER__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__IMPORTED_MEMBER = CLASSIFIER__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__ELEMENT_IMPORT = CLASSIFIER__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__PACKAGE_IMPORT = CLASSIFIER__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__TEMPLATE_PARAMETER = CLASSIFIER__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__OWNING_PARAMETER = CLASSIFIER__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__PACKAGEABLE_ELEMENT_VISIBILITY = CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__PACKAGE = CLASSIFIER__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__REDEFINITION_CONTEXT = CLASSIFIER__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__IS_LEAF = CLASSIFIER__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__FEATURE = CLASSIFIER__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__IS_ABSTRACT = CLASSIFIER__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__INHERITED_MEMBER = CLASSIFIER__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__GENERAL = CLASSIFIER__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__GENERALIZATION = CLASSIFIER__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__ATTRIBUTE = CLASSIFIER__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__OWNED_USE_CASE = CLASSIFIER__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__USE_CASE = CLASSIFIER__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__REPRESENTATION = CLASSIFIER__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__OCCURRENCE = CLASSIFIER__OCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__OWNED_ATTRIBUTE = CLASSIFIER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the the '<em>Signal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__EANNOTATIONS = MESSAGE_TRIGGER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__OWNED_ELEMENT = MESSAGE_TRIGGER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__OWNER = MESSAGE_TRIGGER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__OWNED_COMMENT = MESSAGE_TRIGGER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__TEMPLATE_BINDING = MESSAGE_TRIGGER__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__OWNED_TEMPLATE_SIGNATURE = MESSAGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__NAME = MESSAGE_TRIGGER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__QUALIFIED_NAME = MESSAGE_TRIGGER__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__VISIBILITY = MESSAGE_TRIGGER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__CLIENT_DEPENDENCY = MESSAGE_TRIGGER__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__NAME_EXPRESSION = MESSAGE_TRIGGER__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Port</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__PORT = MESSAGE_TRIGGER__PORT;
-
-	/**
-	 * The feature id for the '<em><b>Signal</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER__SIGNAL = MESSAGE_TRIGGER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the the '<em>Signal Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_TRIGGER_FEATURE_COUNT = MESSAGE_TRIGGER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__EANNOTATIONS = TRIGGER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__OWNED_ELEMENT = TRIGGER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__OWNER = TRIGGER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__OWNED_COMMENT = TRIGGER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__TEMPLATE_BINDING = TRIGGER__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__OWNED_TEMPLATE_SIGNATURE = TRIGGER__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__NAME = TRIGGER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__QUALIFIED_NAME = TRIGGER__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__VISIBILITY = TRIGGER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__CLIENT_DEPENDENCY = TRIGGER__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__NAME_EXPRESSION = TRIGGER__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Port</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__PORT = TRIGGER__PORT;
-
-	/**
-	 * The feature id for the '<em><b>Is Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__IS_RELATIVE = TRIGGER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER__WHEN = TRIGGER_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>Time Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__EANNOTATIONS = MESSAGE_TRIGGER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__OWNED_ELEMENT = MESSAGE_TRIGGER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__OWNER = MESSAGE_TRIGGER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__OWNED_COMMENT = MESSAGE_TRIGGER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__TEMPLATE_BINDING = MESSAGE_TRIGGER__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__OWNED_TEMPLATE_SIGNATURE = MESSAGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__NAME = MESSAGE_TRIGGER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__QUALIFIED_NAME = MESSAGE_TRIGGER__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__VISIBILITY = MESSAGE_TRIGGER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__CLIENT_DEPENDENCY = MESSAGE_TRIGGER__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__NAME_EXPRESSION = MESSAGE_TRIGGER__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Port</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER__PORT = MESSAGE_TRIGGER__PORT;
-
-	/**
-	 * The number of structural features of the the '<em>Any Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_TRIGGER_FEATURE_COUNT = MESSAGE_TRIGGER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
 	int VARIABLE__EANNOTATIONS = CONNECTABLE_ELEMENT__EANNOTATIONS;
 
 	/**
@@ -31011,6 +29553,1464 @@ public interface UML2Package extends EPackage{
 	int LOOP_NODE_FEATURE_COUNT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__OWNER = NAMED_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__PORT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the the '<em>Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__EANNOTATIONS = TRIGGER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__OWNED_ELEMENT = TRIGGER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__OWNER = TRIGGER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__OWNED_COMMENT = TRIGGER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__TEMPLATE_BINDING = TRIGGER__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE = TRIGGER__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__NAME = TRIGGER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__QUALIFIED_NAME = TRIGGER__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__VISIBILITY = TRIGGER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__CLIENT_DEPENDENCY = TRIGGER__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__NAME_EXPRESSION = TRIGGER__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER__PORT = TRIGGER__PORT;
+
+	/**
+	 * The number of structural features of the the '<em>Message Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__EANNOTATIONS = MESSAGE_TRIGGER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__OWNED_ELEMENT = MESSAGE_TRIGGER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__OWNER = MESSAGE_TRIGGER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__OWNED_COMMENT = MESSAGE_TRIGGER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__TEMPLATE_BINDING = MESSAGE_TRIGGER__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__OWNED_TEMPLATE_SIGNATURE = MESSAGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__NAME = MESSAGE_TRIGGER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__QUALIFIED_NAME = MESSAGE_TRIGGER__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__VISIBILITY = MESSAGE_TRIGGER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__CLIENT_DEPENDENCY = MESSAGE_TRIGGER__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__NAME_EXPRESSION = MESSAGE_TRIGGER__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__PORT = MESSAGE_TRIGGER__PORT;
+
+	/**
+	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER__OPERATION = MESSAGE_TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the the '<em>Call Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TRIGGER_FEATURE_COUNT = MESSAGE_TRIGGER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__EANNOTATIONS = TRIGGER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__OWNED_ELEMENT = TRIGGER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__OWNER = TRIGGER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__OWNED_COMMENT = TRIGGER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__TEMPLATE_BINDING = TRIGGER__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE = TRIGGER__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__NAME = TRIGGER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__QUALIFIED_NAME = TRIGGER__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__VISIBILITY = TRIGGER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__CLIENT_DEPENDENCY = TRIGGER__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__NAME_EXPRESSION = TRIGGER__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__PORT = TRIGGER__PORT;
+
+	/**
+	 * The feature id for the '<em><b>Change Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER__CHANGE_EXPRESSION = TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the the '<em>Change Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__EANNOTATIONS = BEHAVIORAL_FEATURE__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__OWNED_ELEMENT = BEHAVIORAL_FEATURE__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__OWNER = BEHAVIORAL_FEATURE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__OWNED_COMMENT = BEHAVIORAL_FEATURE__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__TEMPLATE_BINDING = BEHAVIORAL_FEATURE__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__OWNED_TEMPLATE_SIGNATURE = BEHAVIORAL_FEATURE__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__NAME = BEHAVIORAL_FEATURE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__QUALIFIED_NAME = BEHAVIORAL_FEATURE__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__VISIBILITY = BEHAVIORAL_FEATURE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__CLIENT_DEPENDENCY = BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__NAME_EXPRESSION = BEHAVIORAL_FEATURE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__MEMBER = BEHAVIORAL_FEATURE__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__OWNED_RULE = BEHAVIORAL_FEATURE__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__IMPORTED_MEMBER = BEHAVIORAL_FEATURE__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__ELEMENT_IMPORT = BEHAVIORAL_FEATURE__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__PACKAGE_IMPORT = BEHAVIORAL_FEATURE__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__REDEFINITION_CONTEXT = BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__IS_LEAF = BEHAVIORAL_FEATURE__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Featuring Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__FEATURING_CLASSIFIER = BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Is Static</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__IS_STATIC = BEHAVIORAL_FEATURE__IS_STATIC;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__PARAMETER = BEHAVIORAL_FEATURE__PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Formal Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__FORMAL_PARAMETER = BEHAVIORAL_FEATURE__FORMAL_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Return Result</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__RETURN_RESULT = BEHAVIORAL_FEATURE__RETURN_RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Raised Exception</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__RAISED_EXCEPTION = BEHAVIORAL_FEATURE__RAISED_EXCEPTION;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__IS_ABSTRACT = BEHAVIORAL_FEATURE__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Method</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__METHOD = BEHAVIORAL_FEATURE__METHOD;
+
+	/**
+	 * The feature id for the '<em><b>Concurrency</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__CONCURRENCY = BEHAVIORAL_FEATURE__CONCURRENCY;
+
+	/**
+	 * The feature id for the '<em><b>Signal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION__SIGNAL = BEHAVIORAL_FEATURE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the the '<em>Reception</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEPTION_FEATURE_COUNT = BEHAVIORAL_FEATURE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__EANNOTATIONS = CLASSIFIER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__OWNED_ELEMENT = CLASSIFIER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__OWNER = CLASSIFIER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__OWNED_COMMENT = CLASSIFIER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__TEMPLATE_BINDING = CLASSIFIER__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__OWNED_TEMPLATE_SIGNATURE = CLASSIFIER__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__NAME = CLASSIFIER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__QUALIFIED_NAME = CLASSIFIER__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__VISIBILITY = CLASSIFIER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__CLIENT_DEPENDENCY = CLASSIFIER__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__NAME_EXPRESSION = CLASSIFIER__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__MEMBER = CLASSIFIER__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__OWNED_RULE = CLASSIFIER__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__IMPORTED_MEMBER = CLASSIFIER__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__ELEMENT_IMPORT = CLASSIFIER__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__PACKAGE_IMPORT = CLASSIFIER__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__TEMPLATE_PARAMETER = CLASSIFIER__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__OWNING_PARAMETER = CLASSIFIER__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__PACKAGEABLE_ELEMENT_VISIBILITY = CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__PACKAGE = CLASSIFIER__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__REDEFINITION_CONTEXT = CLASSIFIER__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__IS_LEAF = CLASSIFIER__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__FEATURE = CLASSIFIER__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__IS_ABSTRACT = CLASSIFIER__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__INHERITED_MEMBER = CLASSIFIER__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__GENERAL = CLASSIFIER__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__GENERALIZATION = CLASSIFIER__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__ATTRIBUTE = CLASSIFIER__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__REDEFINED_CLASSIFIER = CLASSIFIER__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__POWERTYPE_EXTENT = CLASSIFIER__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__SUBSTITUTION = CLASSIFIER__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__OWNED_USE_CASE = CLASSIFIER__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__USE_CASE = CLASSIFIER__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__REPRESENTATION = CLASSIFIER__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__OCCURRENCE = CLASSIFIER__OCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__OWNED_ATTRIBUTE = CLASSIFIER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the the '<em>Signal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__EANNOTATIONS = MESSAGE_TRIGGER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__OWNED_ELEMENT = MESSAGE_TRIGGER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__OWNER = MESSAGE_TRIGGER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__OWNED_COMMENT = MESSAGE_TRIGGER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__TEMPLATE_BINDING = MESSAGE_TRIGGER__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__OWNED_TEMPLATE_SIGNATURE = MESSAGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__NAME = MESSAGE_TRIGGER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__QUALIFIED_NAME = MESSAGE_TRIGGER__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__VISIBILITY = MESSAGE_TRIGGER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__CLIENT_DEPENDENCY = MESSAGE_TRIGGER__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__NAME_EXPRESSION = MESSAGE_TRIGGER__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__PORT = MESSAGE_TRIGGER__PORT;
+
+	/**
+	 * The feature id for the '<em><b>Signal</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER__SIGNAL = MESSAGE_TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the the '<em>Signal Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_TRIGGER_FEATURE_COUNT = MESSAGE_TRIGGER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__EANNOTATIONS = TRIGGER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__OWNED_ELEMENT = TRIGGER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__OWNER = TRIGGER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__OWNED_COMMENT = TRIGGER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__TEMPLATE_BINDING = TRIGGER__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__OWNED_TEMPLATE_SIGNATURE = TRIGGER__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__NAME = TRIGGER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__QUALIFIED_NAME = TRIGGER__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__VISIBILITY = TRIGGER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__CLIENT_DEPENDENCY = TRIGGER__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__NAME_EXPRESSION = TRIGGER__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__PORT = TRIGGER__PORT;
+
+	/**
+	 * The feature id for the '<em><b>Is Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__IS_RELATIVE = TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>When</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER__WHEN = TRIGGER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the the '<em>Time Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__EANNOTATIONS = MESSAGE_TRIGGER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__OWNED_ELEMENT = MESSAGE_TRIGGER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__OWNER = MESSAGE_TRIGGER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__OWNED_COMMENT = MESSAGE_TRIGGER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__TEMPLATE_BINDING = MESSAGE_TRIGGER__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__OWNED_TEMPLATE_SIGNATURE = MESSAGE_TRIGGER__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__NAME = MESSAGE_TRIGGER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__QUALIFIED_NAME = MESSAGE_TRIGGER__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__VISIBILITY = MESSAGE_TRIGGER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__CLIENT_DEPENDENCY = MESSAGE_TRIGGER__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__NAME_EXPRESSION = MESSAGE_TRIGGER__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER__PORT = MESSAGE_TRIGGER__PORT;
+
+	/**
+	 * The number of structural features of the the '<em>Any Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_TRIGGER_FEATURE_COUNT = MESSAGE_TRIGGER_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ReadExtentActionImpl <em>Read Extent Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31138,7 +31138,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDataStoreNode()
 	 * @generated
 	 */
-	int DATA_STORE_NODE = 190;
+	int DATA_STORE_NODE = 204;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InterruptibleActivityRegionImpl <em>Interruptible Activity Region</em>}' class.
@@ -31148,7 +31148,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInterruptibleActivityRegion()
 	 * @generated
 	 */
-	int INTERRUPTIBLE_ACTIVITY_REGION = 191;
+	int INTERRUPTIBLE_ACTIVITY_REGION = 205;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ParameterSetImpl <em>Parameter Set</em>}' class.
@@ -31158,7 +31158,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getParameterSet()
 	 * @generated
 	 */
-	int PARAMETER_SET = 192;
+	int PARAMETER_SET = 206;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InteractionOccurrenceImpl <em>Interaction Occurrence</em>}' class.
@@ -31168,7 +31168,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteractionOccurrence()
 	 * @generated
 	 */
-	int INTERACTION_OCCURRENCE = 167;
+	int INTERACTION_OCCURRENCE = 183;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.GateImpl <em>Gate</em>}' class.
@@ -31178,7 +31178,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getGate()
 	 * @generated
 	 */
-	int GATE = 168;
+	int GATE = 184;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.PartDecompositionImpl <em>Part Decomposition</em>}' class.
@@ -31188,7 +31188,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPartDecomposition()
 	 * @generated
 	 */
-	int PART_DECOMPOSITION = 169;
+	int PART_DECOMPOSITION = 185;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InteractionOperandImpl <em>Interaction Operand</em>}' class.
@@ -31198,7 +31198,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteractionOperand()
 	 * @generated
 	 */
-	int INTERACTION_OPERAND = 170;
+	int INTERACTION_OPERAND = 186;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.InteractionConstraintImpl <em>Interaction Constraint</em>}' class.
@@ -31208,7 +31208,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteractionConstraint()
 	 * @generated
 	 */
-	int INTERACTION_CONSTRAINT = 171;
+	int INTERACTION_CONSTRAINT = 187;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CombinedFragmentImpl <em>Combined Fragment</em>}' class.
@@ -31218,7 +31218,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCombinedFragment()
 	 * @generated
 	 */
-	int COMBINED_FRAGMENT = 172;
+	int COMBINED_FRAGMENT = 188;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ContinuationImpl <em>Continuation</em>}' class.
@@ -31228,7 +31228,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getContinuation()
 	 * @generated
 	 */
-	int CONTINUATION = 173;
+	int CONTINUATION = 189;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TimeExpressionImpl <em>Time Expression</em>}' class.
@@ -31238,7 +31238,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTimeExpression()
 	 * @generated
 	 */
-	int TIME_EXPRESSION = 204;
+	int TIME_EXPRESSION = 194;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DurationImpl <em>Duration</em>}' class.
@@ -31248,7 +31248,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDuration()
 	 * @generated
 	 */
-	int DURATION = 205;
+	int DURATION = 195;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TimeObservationActionImpl <em>Time Observation Action</em>}' class.
@@ -31258,7 +31258,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTimeObservationAction()
 	 * @generated
 	 */
-	int TIME_OBSERVATION_ACTION = 206;
+	int TIME_OBSERVATION_ACTION = 196;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.IntervalImpl <em>Interval</em>}' class.
@@ -31268,7 +31268,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInterval()
 	 * @generated
 	 */
-	int INTERVAL = 208;
+	int INTERVAL = 198;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DurationIntervalImpl <em>Duration Interval</em>}' class.
@@ -31278,7 +31278,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDurationInterval()
 	 * @generated
 	 */
-	int DURATION_INTERVAL = 207;
+	int DURATION_INTERVAL = 197;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.IntervalConstraintImpl <em>Interval Constraint</em>}' class.
@@ -31288,7 +31288,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getIntervalConstraint()
 	 * @generated
 	 */
-	int INTERVAL_CONSTRAINT = 210;
+	int INTERVAL_CONSTRAINT = 200;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TimeConstraintImpl <em>Time Constraint</em>}' class.
@@ -31298,7 +31298,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTimeConstraint()
 	 * @generated
 	 */
-	int TIME_CONSTRAINT = 209;
+	int TIME_CONSTRAINT = 199;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.TimeIntervalImpl <em>Time Interval</em>}' class.
@@ -31308,7 +31308,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTimeInterval()
 	 * @generated
 	 */
-	int TIME_INTERVAL = 211;
+	int TIME_INTERVAL = 201;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DurationObservationActionImpl <em>Duration Observation Action</em>}' class.
@@ -31318,7 +31318,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDurationObservationAction()
 	 * @generated
 	 */
-	int DURATION_OBSERVATION_ACTION = 212;
+	int DURATION_OBSERVATION_ACTION = 202;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DurationConstraintImpl <em>Duration Constraint</em>}' class.
@@ -31328,7 +31328,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDurationConstraint()
 	 * @generated
 	 */
-	int DURATION_CONSTRAINT = 213;
+	int DURATION_CONSTRAINT = 203;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ProtocolConformanceImpl <em>Protocol Conformance</em>}' class.
@@ -31338,7 +31338,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getProtocolConformance()
 	 * @generated
 	 */
-	int PROTOCOL_CONFORMANCE = 201;
+	int PROTOCOL_CONFORMANCE = 191;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ProtocolStateMachineImpl <em>Protocol State Machine</em>}' class.
@@ -31348,7 +31348,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getProtocolStateMachine()
 	 * @generated
 	 */
-	int PROTOCOL_STATE_MACHINE = 202;
+	int PROTOCOL_STATE_MACHINE = 192;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ProtocolTransitionImpl <em>Protocol Transition</em>}' class.
@@ -31358,7 +31358,1780 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getProtocolTransition()
 	 * @generated
 	 */
-	int PROTOCOL_TRANSITION = 203;
+	int PROTOCOL_TRANSITION = 193;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__EANNOTATIONS = OBJECT_NODE__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__OWNED_ELEMENT = OBJECT_NODE__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__OWNER = OBJECT_NODE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__OWNED_COMMENT = OBJECT_NODE__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__TEMPLATE_BINDING = OBJECT_NODE__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__OWNED_TEMPLATE_SIGNATURE = OBJECT_NODE__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__NAME = OBJECT_NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__QUALIFIED_NAME = OBJECT_NODE__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__VISIBILITY = OBJECT_NODE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__CLIENT_DEPENDENCY = OBJECT_NODE__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__NAME_EXPRESSION = OBJECT_NODE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__REDEFINITION_CONTEXT = OBJECT_NODE__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__IS_LEAF = OBJECT_NODE__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__OUTGOING = OBJECT_NODE__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__INCOMING = OBJECT_NODE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__IN_GROUP = OBJECT_NODE__IN_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__ACTIVITY = OBJECT_NODE__ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__REDEFINED_ELEMENT = OBJECT_NODE__REDEFINED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__IN_STRUCTURED_NODE = OBJECT_NODE__IN_STRUCTURED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__IN_PARTITION = OBJECT_NODE__IN_PARTITION;
+
+	/**
+	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__IN_INTERRUPTIBLE_REGION = OBJECT_NODE__IN_INTERRUPTIBLE_REGION;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__TYPE = OBJECT_NODE__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Ordering</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__ORDERING = OBJECT_NODE__ORDERING;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__UPPER_BOUND = OBJECT_NODE__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>In State</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__IN_STATE = OBJECT_NODE__IN_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Selection</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__SELECTION = OBJECT_NODE__SELECTION;
+
+	/**
+	 * The feature id for the '<em><b>Region As Output</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__REGION_AS_OUTPUT = OBJECT_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Region As Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE__REGION_AS_INPUT = OBJECT_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the the '<em>Expansion Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_NODE_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__EANNOTATIONS = STRUCTURED_ACTIVITY_NODE__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__OWNED_ELEMENT = STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__OWNER = STRUCTURED_ACTIVITY_NODE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__OWNED_COMMENT = STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__TEMPLATE_BINDING = STRUCTURED_ACTIVITY_NODE__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE = STRUCTURED_ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__NAME = STRUCTURED_ACTIVITY_NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__QUALIFIED_NAME = STRUCTURED_ACTIVITY_NODE__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__VISIBILITY = STRUCTURED_ACTIVITY_NODE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__CLIENT_DEPENDENCY = STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__NAME_EXPRESSION = STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__REDEFINITION_CONTEXT = STRUCTURED_ACTIVITY_NODE__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__IS_LEAF = STRUCTURED_ACTIVITY_NODE__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__OUTGOING = STRUCTURED_ACTIVITY_NODE__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__INCOMING = STRUCTURED_ACTIVITY_NODE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__IN_GROUP = STRUCTURED_ACTIVITY_NODE__IN_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__ACTIVITY = STRUCTURED_ACTIVITY_NODE__ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__REDEFINED_ELEMENT = STRUCTURED_ACTIVITY_NODE__REDEFINED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__IN_STRUCTURED_NODE = STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__IN_PARTITION = STRUCTURED_ACTIVITY_NODE__IN_PARTITION;
+
+	/**
+	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__IN_INTERRUPTIBLE_REGION = STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION;
+
+	/**
+	 * The feature id for the '<em><b>Handler</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__HANDLER = STRUCTURED_ACTIVITY_NODE__HANDLER;
+
+	/**
+	 * The feature id for the '<em><b>Effect</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__EFFECT = STRUCTURED_ACTIVITY_NODE__EFFECT;
+
+	/**
+	 * The feature id for the '<em><b>Output</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__OUTPUT = STRUCTURED_ACTIVITY_NODE__OUTPUT;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__INPUT = STRUCTURED_ACTIVITY_NODE__INPUT;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__CONTEXT = STRUCTURED_ACTIVITY_NODE__CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Local Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__LOCAL_PRECONDITION = STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Local Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__LOCAL_POSTCONDITION = STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__MEMBER = STRUCTURED_ACTIVITY_NODE__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__OWNED_RULE = STRUCTURED_ACTIVITY_NODE__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__IMPORTED_MEMBER = STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__ELEMENT_IMPORT = STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__PACKAGE_IMPORT = STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Super Group</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__SUPER_GROUP = STRUCTURED_ACTIVITY_NODE__SUPER_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Activity Group activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY = STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Variable</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__VARIABLE = STRUCTURED_ACTIVITY_NODE__VARIABLE;
+
+	/**
+	 * The feature id for the '<em><b>Contained Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__CONTAINED_NODE = STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>Contained Edge</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__CONTAINED_EDGE = STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE;
+
+	/**
+	 * The feature id for the '<em><b>Must Isolate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__MUST_ISOLATE = STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE;
+
+	/**
+	 * The feature id for the '<em><b>Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__MODE = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Output Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__OUTPUT_ELEMENT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Input Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION__INPUT_ELEMENT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the the '<em>Expansion Region</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_REGION_FEATURE_COUNT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION_HANDLER__EANNOTATIONS = ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION_HANDLER__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION_HANDLER__OWNER = ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION_HANDLER__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Protected Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION_HANDLER__PROTECTED_NODE = ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Handler Body</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION_HANDLER__HANDLER_BODY = ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Exception Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION_HANDLER__EXCEPTION_INPUT = ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Exception Type</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION_HANDLER__EXCEPTION_TYPE = ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the the '<em>Exception Handler</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION_HANDLER_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__EANNOTATIONS = CONTROL_NODE__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__OWNED_ELEMENT = CONTROL_NODE__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__OWNER = CONTROL_NODE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__OWNED_COMMENT = CONTROL_NODE__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__TEMPLATE_BINDING = CONTROL_NODE__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__OWNED_TEMPLATE_SIGNATURE = CONTROL_NODE__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__NAME = CONTROL_NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__QUALIFIED_NAME = CONTROL_NODE__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__VISIBILITY = CONTROL_NODE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__CLIENT_DEPENDENCY = CONTROL_NODE__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__NAME_EXPRESSION = CONTROL_NODE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__REDEFINITION_CONTEXT = CONTROL_NODE__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__IS_LEAF = CONTROL_NODE__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__OUTGOING = CONTROL_NODE__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__INCOMING = CONTROL_NODE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__IN_GROUP = CONTROL_NODE__IN_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__ACTIVITY = CONTROL_NODE__ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__REDEFINED_ELEMENT = CONTROL_NODE__REDEFINED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__IN_STRUCTURED_NODE = CONTROL_NODE__IN_STRUCTURED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__IN_PARTITION = CONTROL_NODE__IN_PARTITION;
+
+	/**
+	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__IN_INTERRUPTIBLE_REGION = CONTROL_NODE__IN_INTERRUPTIBLE_REGION;
+
+	/**
+	 * The number of structural features of the the '<em>Fork Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE_FEATURE_COUNT = CONTROL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__EANNOTATIONS = CONTROL_NODE__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__OWNED_ELEMENT = CONTROL_NODE__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__OWNER = CONTROL_NODE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__OWNED_COMMENT = CONTROL_NODE__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__TEMPLATE_BINDING = CONTROL_NODE__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__OWNED_TEMPLATE_SIGNATURE = CONTROL_NODE__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__NAME = CONTROL_NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__QUALIFIED_NAME = CONTROL_NODE__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__VISIBILITY = CONTROL_NODE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__CLIENT_DEPENDENCY = CONTROL_NODE__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__NAME_EXPRESSION = CONTROL_NODE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__REDEFINITION_CONTEXT = CONTROL_NODE__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__IS_LEAF = CONTROL_NODE__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__OUTGOING = CONTROL_NODE__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__INCOMING = CONTROL_NODE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__IN_GROUP = CONTROL_NODE__IN_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__ACTIVITY = CONTROL_NODE__ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__REDEFINED_ELEMENT = CONTROL_NODE__REDEFINED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__IN_STRUCTURED_NODE = CONTROL_NODE__IN_STRUCTURED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__IN_PARTITION = CONTROL_NODE__IN_PARTITION;
+
+	/**
+	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__IN_INTERRUPTIBLE_REGION = CONTROL_NODE__IN_INTERRUPTIBLE_REGION;
+
+	/**
+	 * The feature id for the '<em><b>Is Combine Duplicate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__IS_COMBINE_DUPLICATE = CONTROL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Join Spec</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__JOIN_SPEC = CONTROL_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the the '<em>Join Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE_FEATURE_COUNT = CONTROL_NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__EANNOTATIONS = FINAL_NODE__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__OWNED_ELEMENT = FINAL_NODE__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__OWNER = FINAL_NODE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__OWNED_COMMENT = FINAL_NODE__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__TEMPLATE_BINDING = FINAL_NODE__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__OWNED_TEMPLATE_SIGNATURE = FINAL_NODE__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__NAME = FINAL_NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__QUALIFIED_NAME = FINAL_NODE__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__VISIBILITY = FINAL_NODE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__CLIENT_DEPENDENCY = FINAL_NODE__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__NAME_EXPRESSION = FINAL_NODE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__REDEFINITION_CONTEXT = FINAL_NODE__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__IS_LEAF = FINAL_NODE__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__OUTGOING = FINAL_NODE__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__INCOMING = FINAL_NODE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__IN_GROUP = FINAL_NODE__IN_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__ACTIVITY = FINAL_NODE__ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__REDEFINED_ELEMENT = FINAL_NODE__REDEFINED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__IN_STRUCTURED_NODE = FINAL_NODE__IN_STRUCTURED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__IN_PARTITION = FINAL_NODE__IN_PARTITION;
+
+	/**
+	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE__IN_INTERRUPTIBLE_REGION = FINAL_NODE__IN_INTERRUPTIBLE_REGION;
+
+	/**
+	 * The number of structural features of the the '<em>Flow Final Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_FINAL_NODE_FEATURE_COUNT = FINAL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__EANNOTATIONS = OBJECT_NODE__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__OWNED_ELEMENT = OBJECT_NODE__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__OWNER = OBJECT_NODE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__OWNED_COMMENT = OBJECT_NODE__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__TEMPLATE_BINDING = OBJECT_NODE__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__OWNED_TEMPLATE_SIGNATURE = OBJECT_NODE__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__NAME = OBJECT_NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__QUALIFIED_NAME = OBJECT_NODE__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__VISIBILITY = OBJECT_NODE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__CLIENT_DEPENDENCY = OBJECT_NODE__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__NAME_EXPRESSION = OBJECT_NODE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__REDEFINITION_CONTEXT = OBJECT_NODE__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__IS_LEAF = OBJECT_NODE__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__OUTGOING = OBJECT_NODE__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__INCOMING = OBJECT_NODE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__IN_GROUP = OBJECT_NODE__IN_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__ACTIVITY = OBJECT_NODE__ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__REDEFINED_ELEMENT = OBJECT_NODE__REDEFINED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__IN_STRUCTURED_NODE = OBJECT_NODE__IN_STRUCTURED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__IN_PARTITION = OBJECT_NODE__IN_PARTITION;
+
+	/**
+	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__IN_INTERRUPTIBLE_REGION = OBJECT_NODE__IN_INTERRUPTIBLE_REGION;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__TYPE = OBJECT_NODE__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Ordering</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__ORDERING = OBJECT_NODE__ORDERING;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__UPPER_BOUND = OBJECT_NODE__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>In State</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__IN_STATE = OBJECT_NODE__IN_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Selection</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE__SELECTION = OBJECT_NODE__SELECTION;
+
+	/**
+	 * The number of structural features of the the '<em>Central Buffer Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CENTRAL_BUFFER_NODE_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__OWNER = NAMED_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Super Group</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__SUPER_GROUP = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Activity Group activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Is Dimension</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__IS_DIMENSION = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Is External</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__IS_EXTERNAL = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Contained Edge</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__CONTAINED_EDGE = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Contained Node</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__CONTAINED_NODE = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Subgroup</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__SUBGROUP = NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Super Partition</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__SUPER_PARTITION = NAMED_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Represents</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__REPRESENTS = NAMED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The number of structural features of the the '<em>Activity Partition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -40214,1923 +41987,6 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int INTERACTION_OCCURRENCE__EANNOTATIONS = INTERACTION_FRAGMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__OWNED_ELEMENT = INTERACTION_FRAGMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__OWNER = INTERACTION_FRAGMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__OWNED_COMMENT = INTERACTION_FRAGMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__TEMPLATE_BINDING = INTERACTION_FRAGMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE = INTERACTION_FRAGMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__NAME = INTERACTION_FRAGMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__QUALIFIED_NAME = INTERACTION_FRAGMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__VISIBILITY = INTERACTION_FRAGMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__CLIENT_DEPENDENCY = INTERACTION_FRAGMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__NAME_EXPRESSION = INTERACTION_FRAGMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Covered</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__COVERED = INTERACTION_FRAGMENT__COVERED;
-
-	/**
-	 * The feature id for the '<em><b>General Ordering</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__GENERAL_ORDERING = INTERACTION_FRAGMENT__GENERAL_ORDERING;
-
-	/**
-	 * The feature id for the '<em><b>Enclosing Interaction</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__ENCLOSING_INTERACTION = INTERACTION_FRAGMENT__ENCLOSING_INTERACTION;
-
-	/**
-	 * The feature id for the '<em><b>Enclosing Operand</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__ENCLOSING_OPERAND = INTERACTION_FRAGMENT__ENCLOSING_OPERAND;
-
-	/**
-	 * The feature id for the '<em><b>Refers To</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__REFERS_TO = INTERACTION_FRAGMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Actual Gate</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__ACTUAL_GATE = INTERACTION_FRAGMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Argument</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE__ARGUMENT = INTERACTION_FRAGMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the the '<em>Interaction Occurrence</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OCCURRENCE_FEATURE_COUNT = INTERACTION_FRAGMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__EANNOTATIONS = MESSAGE_END__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__OWNED_ELEMENT = MESSAGE_END__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__OWNER = MESSAGE_END__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__OWNED_COMMENT = MESSAGE_END__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__TEMPLATE_BINDING = MESSAGE_END__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__OWNED_TEMPLATE_SIGNATURE = MESSAGE_END__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__NAME = MESSAGE_END__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__QUALIFIED_NAME = MESSAGE_END__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__VISIBILITY = MESSAGE_END__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__CLIENT_DEPENDENCY = MESSAGE_END__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__NAME_EXPRESSION = MESSAGE_END__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Receive Message</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__RECEIVE_MESSAGE = MESSAGE_END__RECEIVE_MESSAGE;
-
-	/**
-	 * The feature id for the '<em><b>Send Message</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__SEND_MESSAGE = MESSAGE_END__SEND_MESSAGE;
-
-	/**
-	 * The number of structural features of the the '<em>Gate</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE_FEATURE_COUNT = MESSAGE_END_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__EANNOTATIONS = INTERACTION_OCCURRENCE__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__OWNED_ELEMENT = INTERACTION_OCCURRENCE__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__OWNER = INTERACTION_OCCURRENCE__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__OWNED_COMMENT = INTERACTION_OCCURRENCE__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__TEMPLATE_BINDING = INTERACTION_OCCURRENCE__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__OWNED_TEMPLATE_SIGNATURE = INTERACTION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__NAME = INTERACTION_OCCURRENCE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__QUALIFIED_NAME = INTERACTION_OCCURRENCE__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__VISIBILITY = INTERACTION_OCCURRENCE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__CLIENT_DEPENDENCY = INTERACTION_OCCURRENCE__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__NAME_EXPRESSION = INTERACTION_OCCURRENCE__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Covered</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__COVERED = INTERACTION_OCCURRENCE__COVERED;
-
-	/**
-	 * The feature id for the '<em><b>General Ordering</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__GENERAL_ORDERING = INTERACTION_OCCURRENCE__GENERAL_ORDERING;
-
-	/**
-	 * The feature id for the '<em><b>Enclosing Interaction</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__ENCLOSING_INTERACTION = INTERACTION_OCCURRENCE__ENCLOSING_INTERACTION;
-
-	/**
-	 * The feature id for the '<em><b>Enclosing Operand</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__ENCLOSING_OPERAND = INTERACTION_OCCURRENCE__ENCLOSING_OPERAND;
-
-	/**
-	 * The feature id for the '<em><b>Refers To</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__REFERS_TO = INTERACTION_OCCURRENCE__REFERS_TO;
-
-	/**
-	 * The feature id for the '<em><b>Actual Gate</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__ACTUAL_GATE = INTERACTION_OCCURRENCE__ACTUAL_GATE;
-
-	/**
-	 * The feature id for the '<em><b>Argument</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION__ARGUMENT = INTERACTION_OCCURRENCE__ARGUMENT;
-
-	/**
-	 * The number of structural features of the the '<em>Part Decomposition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PART_DECOMPOSITION_FEATURE_COUNT = INTERACTION_OCCURRENCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__EANNOTATIONS = NAMESPACE__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__OWNED_ELEMENT = NAMESPACE__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__OWNER = NAMESPACE__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__OWNED_COMMENT = NAMESPACE__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__TEMPLATE_BINDING = NAMESPACE__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__OWNED_TEMPLATE_SIGNATURE = NAMESPACE__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__NAME = NAMESPACE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__QUALIFIED_NAME = NAMESPACE__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__VISIBILITY = NAMESPACE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__CLIENT_DEPENDENCY = NAMESPACE__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__NAME_EXPRESSION = NAMESPACE__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__MEMBER = NAMESPACE__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__OWNED_RULE = NAMESPACE__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__IMPORTED_MEMBER = NAMESPACE__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__ELEMENT_IMPORT = NAMESPACE__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__PACKAGE_IMPORT = NAMESPACE__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Covered</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__COVERED = NAMESPACE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>General Ordering</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__GENERAL_ORDERING = NAMESPACE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Enclosing Interaction</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__ENCLOSING_INTERACTION = NAMESPACE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Enclosing Operand</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__ENCLOSING_OPERAND = NAMESPACE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Guard</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__GUARD = NAMESPACE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Fragment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__FRAGMENT = NAMESPACE_FEATURE_COUNT + 5;
-
-	/**
-	 * The number of structural features of the the '<em>Interaction Operand</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND_FEATURE_COUNT = NAMESPACE_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__EANNOTATIONS = CONSTRAINT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__OWNED_ELEMENT = CONSTRAINT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__OWNER = CONSTRAINT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__OWNED_COMMENT = CONSTRAINT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__TEMPLATE_BINDING = CONSTRAINT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE = CONSTRAINT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__NAME = CONSTRAINT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__QUALIFIED_NAME = CONSTRAINT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__VISIBILITY = CONSTRAINT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY = CONSTRAINT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__NAME_EXPRESSION = CONSTRAINT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER = CONSTRAINT__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__OWNING_PARAMETER = CONSTRAINT__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY = CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Context</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__CONTEXT = CONSTRAINT__CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Namespace</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__NAMESPACE = CONSTRAINT__NAMESPACE;
-
-	/**
-	 * The feature id for the '<em><b>Specification</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__SPECIFICATION = CONSTRAINT__SPECIFICATION;
-
-	/**
-	 * The feature id for the '<em><b>Constrained Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT = CONSTRAINT__CONSTRAINED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Minint</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__MININT = CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Maxint</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT__MAXINT = CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>Interaction Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__EANNOTATIONS = INTERACTION_FRAGMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__OWNED_ELEMENT = INTERACTION_FRAGMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__OWNER = INTERACTION_FRAGMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__OWNED_COMMENT = INTERACTION_FRAGMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__TEMPLATE_BINDING = INTERACTION_FRAGMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__OWNED_TEMPLATE_SIGNATURE = INTERACTION_FRAGMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__NAME = INTERACTION_FRAGMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__QUALIFIED_NAME = INTERACTION_FRAGMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__VISIBILITY = INTERACTION_FRAGMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__CLIENT_DEPENDENCY = INTERACTION_FRAGMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__NAME_EXPRESSION = INTERACTION_FRAGMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Covered</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__COVERED = INTERACTION_FRAGMENT__COVERED;
-
-	/**
-	 * The feature id for the '<em><b>General Ordering</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__GENERAL_ORDERING = INTERACTION_FRAGMENT__GENERAL_ORDERING;
-
-	/**
-	 * The feature id for the '<em><b>Enclosing Interaction</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__ENCLOSING_INTERACTION = INTERACTION_FRAGMENT__ENCLOSING_INTERACTION;
-
-	/**
-	 * The feature id for the '<em><b>Enclosing Operand</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__ENCLOSING_OPERAND = INTERACTION_FRAGMENT__ENCLOSING_OPERAND;
-
-	/**
-	 * The feature id for the '<em><b>Interaction Operator</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__INTERACTION_OPERATOR = INTERACTION_FRAGMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Operand</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__OPERAND = INTERACTION_FRAGMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Cfragment Gate</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__CFRAGMENT_GATE = INTERACTION_FRAGMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the the '<em>Combined Fragment</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT_FEATURE_COUNT = INTERACTION_FRAGMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__EANNOTATIONS = INTERACTION_FRAGMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__OWNED_ELEMENT = INTERACTION_FRAGMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__OWNER = INTERACTION_FRAGMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__OWNED_COMMENT = INTERACTION_FRAGMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__TEMPLATE_BINDING = INTERACTION_FRAGMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__OWNED_TEMPLATE_SIGNATURE = INTERACTION_FRAGMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__NAME = INTERACTION_FRAGMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__QUALIFIED_NAME = INTERACTION_FRAGMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__VISIBILITY = INTERACTION_FRAGMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__CLIENT_DEPENDENCY = INTERACTION_FRAGMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__NAME_EXPRESSION = INTERACTION_FRAGMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Covered</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__COVERED = INTERACTION_FRAGMENT__COVERED;
-
-	/**
-	 * The feature id for the '<em><b>General Ordering</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__GENERAL_ORDERING = INTERACTION_FRAGMENT__GENERAL_ORDERING;
-
-	/**
-	 * The feature id for the '<em><b>Enclosing Interaction</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__ENCLOSING_INTERACTION = INTERACTION_FRAGMENT__ENCLOSING_INTERACTION;
-
-	/**
-	 * The feature id for the '<em><b>Enclosing Operand</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__ENCLOSING_OPERAND = INTERACTION_FRAGMENT__ENCLOSING_OPERAND;
-
-	/**
-	 * The feature id for the '<em><b>Setting</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION__SETTING = INTERACTION_FRAGMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the the '<em>Continuation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUATION_FEATURE_COUNT = INTERACTION_FRAGMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__EANNOTATIONS = OBJECT_NODE__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__OWNED_ELEMENT = OBJECT_NODE__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__OWNER = OBJECT_NODE__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__OWNED_COMMENT = OBJECT_NODE__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__TEMPLATE_BINDING = OBJECT_NODE__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__OWNED_TEMPLATE_SIGNATURE = OBJECT_NODE__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__NAME = OBJECT_NODE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__QUALIFIED_NAME = OBJECT_NODE__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__VISIBILITY = OBJECT_NODE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__CLIENT_DEPENDENCY = OBJECT_NODE__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__NAME_EXPRESSION = OBJECT_NODE__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__REDEFINITION_CONTEXT = OBJECT_NODE__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__IS_LEAF = OBJECT_NODE__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__OUTGOING = OBJECT_NODE__OUTGOING;
-
-	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__INCOMING = OBJECT_NODE__INCOMING;
-
-	/**
-	 * The feature id for the '<em><b>In Group</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__IN_GROUP = OBJECT_NODE__IN_GROUP;
-
-	/**
-	 * The feature id for the '<em><b>Activity</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__ACTIVITY = OBJECT_NODE__ACTIVITY;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__REDEFINED_ELEMENT = OBJECT_NODE__REDEFINED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__IN_STRUCTURED_NODE = OBJECT_NODE__IN_STRUCTURED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__IN_PARTITION = OBJECT_NODE__IN_PARTITION;
-
-	/**
-	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__IN_INTERRUPTIBLE_REGION = OBJECT_NODE__IN_INTERRUPTIBLE_REGION;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__TYPE = OBJECT_NODE__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Ordering</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__ORDERING = OBJECT_NODE__ORDERING;
-
-	/**
-	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__UPPER_BOUND = OBJECT_NODE__UPPER_BOUND;
-
-	/**
-	 * The feature id for the '<em><b>In State</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__IN_STATE = OBJECT_NODE__IN_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Selection</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__SELECTION = OBJECT_NODE__SELECTION;
-
-	/**
-	 * The feature id for the '<em><b>Region As Output</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__REGION_AS_OUTPUT = OBJECT_NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Region As Input</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE__REGION_AS_INPUT = OBJECT_NODE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>Expansion Node</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_NODE_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__EANNOTATIONS = STRUCTURED_ACTIVITY_NODE__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__OWNED_ELEMENT = STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__OWNER = STRUCTURED_ACTIVITY_NODE__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__OWNED_COMMENT = STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__TEMPLATE_BINDING = STRUCTURED_ACTIVITY_NODE__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__OWNED_TEMPLATE_SIGNATURE = STRUCTURED_ACTIVITY_NODE__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__NAME = STRUCTURED_ACTIVITY_NODE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__QUALIFIED_NAME = STRUCTURED_ACTIVITY_NODE__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__VISIBILITY = STRUCTURED_ACTIVITY_NODE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__CLIENT_DEPENDENCY = STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__NAME_EXPRESSION = STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__REDEFINITION_CONTEXT = STRUCTURED_ACTIVITY_NODE__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__IS_LEAF = STRUCTURED_ACTIVITY_NODE__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__OUTGOING = STRUCTURED_ACTIVITY_NODE__OUTGOING;
-
-	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__INCOMING = STRUCTURED_ACTIVITY_NODE__INCOMING;
-
-	/**
-	 * The feature id for the '<em><b>In Group</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__IN_GROUP = STRUCTURED_ACTIVITY_NODE__IN_GROUP;
-
-	/**
-	 * The feature id for the '<em><b>Activity</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__ACTIVITY = STRUCTURED_ACTIVITY_NODE__ACTIVITY;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__REDEFINED_ELEMENT = STRUCTURED_ACTIVITY_NODE__REDEFINED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__IN_STRUCTURED_NODE = STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__IN_PARTITION = STRUCTURED_ACTIVITY_NODE__IN_PARTITION;
-
-	/**
-	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__IN_INTERRUPTIBLE_REGION = STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION;
-
-	/**
-	 * The feature id for the '<em><b>Handler</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__HANDLER = STRUCTURED_ACTIVITY_NODE__HANDLER;
-
-	/**
-	 * The feature id for the '<em><b>Effect</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__EFFECT = STRUCTURED_ACTIVITY_NODE__EFFECT;
-
-	/**
-	 * The feature id for the '<em><b>Output</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__OUTPUT = STRUCTURED_ACTIVITY_NODE__OUTPUT;
-
-	/**
-	 * The feature id for the '<em><b>Input</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__INPUT = STRUCTURED_ACTIVITY_NODE__INPUT;
-
-	/**
-	 * The feature id for the '<em><b>Context</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__CONTEXT = STRUCTURED_ACTIVITY_NODE__CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Local Precondition</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__LOCAL_PRECONDITION = STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION;
-
-	/**
-	 * The feature id for the '<em><b>Local Postcondition</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__LOCAL_POSTCONDITION = STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__MEMBER = STRUCTURED_ACTIVITY_NODE__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__OWNED_RULE = STRUCTURED_ACTIVITY_NODE__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__IMPORTED_MEMBER = STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__ELEMENT_IMPORT = STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__PACKAGE_IMPORT = STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Super Group</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__SUPER_GROUP = STRUCTURED_ACTIVITY_NODE__SUPER_GROUP;
-
-	/**
-	 * The feature id for the '<em><b>Activity Group activity</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY = STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY;
-
-	/**
-	 * The feature id for the '<em><b>Variable</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__VARIABLE = STRUCTURED_ACTIVITY_NODE__VARIABLE;
-
-	/**
-	 * The feature id for the '<em><b>Contained Node</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__CONTAINED_NODE = STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>Contained Edge</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__CONTAINED_EDGE = STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE;
-
-	/**
-	 * The feature id for the '<em><b>Must Isolate</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__MUST_ISOLATE = STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE;
-
-	/**
-	 * The feature id for the '<em><b>Mode</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__MODE = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Output Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__OUTPUT_ELEMENT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Input Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION__INPUT_ELEMENT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the the '<em>Expansion Region</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_REGION_FEATURE_COUNT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCEPTION_HANDLER__EANNOTATIONS = ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCEPTION_HANDLER__OWNED_ELEMENT = ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCEPTION_HANDLER__OWNER = ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCEPTION_HANDLER__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Protected Node</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCEPTION_HANDLER__PROTECTED_NODE = ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Handler Body</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCEPTION_HANDLER__HANDLER_BODY = ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Exception Input</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCEPTION_HANDLER__EXCEPTION_INPUT = ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Exception Type</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCEPTION_HANDLER__EXCEPTION_TYPE = ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the the '<em>Exception Handler</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCEPTION_HANDLER_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
 	int STATE_MACHINE__EANNOTATIONS = BEHAVIOR__EANNOTATIONS;
 
 	/**
@@ -42386,15 +42242,6 @@ public interface UML2Package extends EPackage{
 	int STATE_MACHINE__REDEFINED_CLASSIFIER = BEHAVIOR__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE_MACHINE__SUBSTITUTION = BEHAVIOR__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -42402,6 +42249,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int STATE_MACHINE__POWERTYPE_EXTENT = BEHAVIOR__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE__SUBSTITUTION = BEHAVIOR__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -42548,15 +42404,6 @@ public interface UML2Package extends EPackage{
 	int STATE_MACHINE__SUPER_CLASS = BEHAVIOR__SUPER_CLASS;
 
 	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE_MACHINE__EXTENSION = BEHAVIOR__EXTENSION;
-
-	/**
 	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -42564,6 +42411,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int STATE_MACHINE__NESTED_CLASSIFIER = BEHAVIOR__NESTED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE__EXTENSION = BEHAVIOR__EXTENSION;
 
 	/**
 	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
@@ -44201,7 +44057,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__EANNOTATIONS = CONTROL_NODE__EANNOTATIONS;
+	int INTERACTION_OCCURRENCE__EANNOTATIONS = INTERACTION_FRAGMENT__EANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -44210,7 +44066,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__OWNED_ELEMENT = CONTROL_NODE__OWNED_ELEMENT;
+	int INTERACTION_OCCURRENCE__OWNED_ELEMENT = INTERACTION_FRAGMENT__OWNED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -44219,7 +44075,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__OWNER = CONTROL_NODE__OWNER;
+	int INTERACTION_OCCURRENCE__OWNER = INTERACTION_FRAGMENT__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -44228,7 +44084,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__OWNED_COMMENT = CONTROL_NODE__OWNED_COMMENT;
+	int INTERACTION_OCCURRENCE__OWNED_COMMENT = INTERACTION_FRAGMENT__OWNED_COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
@@ -44237,7 +44093,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__TEMPLATE_BINDING = CONTROL_NODE__TEMPLATE_BINDING;
+	int INTERACTION_OCCURRENCE__TEMPLATE_BINDING = INTERACTION_FRAGMENT__TEMPLATE_BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
@@ -44246,7 +44102,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__OWNED_TEMPLATE_SIGNATURE = CONTROL_NODE__OWNED_TEMPLATE_SIGNATURE;
+	int INTERACTION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE = INTERACTION_FRAGMENT__OWNED_TEMPLATE_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -44255,7 +44111,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__NAME = CONTROL_NODE__NAME;
+	int INTERACTION_OCCURRENCE__NAME = INTERACTION_FRAGMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
@@ -44264,7 +44120,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__QUALIFIED_NAME = CONTROL_NODE__QUALIFIED_NAME;
+	int INTERACTION_OCCURRENCE__QUALIFIED_NAME = INTERACTION_FRAGMENT__QUALIFIED_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -44273,7 +44129,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__VISIBILITY = CONTROL_NODE__VISIBILITY;
+	int INTERACTION_OCCURRENCE__VISIBILITY = INTERACTION_FRAGMENT__VISIBILITY;
 
 	/**
 	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
@@ -44282,7 +44138,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__CLIENT_DEPENDENCY = CONTROL_NODE__CLIENT_DEPENDENCY;
+	int INTERACTION_OCCURRENCE__CLIENT_DEPENDENCY = INTERACTION_FRAGMENT__CLIENT_DEPENDENCY;
 
 	/**
 	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
@@ -44291,106 +44147,79 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__NAME_EXPRESSION = CONTROL_NODE__NAME_EXPRESSION;
+	int INTERACTION_OCCURRENCE__NAME_EXPRESSION = INTERACTION_FRAGMENT__NAME_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * The feature id for the '<em><b>Covered</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__REDEFINITION_CONTEXT = CONTROL_NODE__REDEFINITION_CONTEXT;
+	int INTERACTION_OCCURRENCE__COVERED = INTERACTION_FRAGMENT__COVERED;
 
 	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * The feature id for the '<em><b>General Ordering</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__IS_LEAF = CONTROL_NODE__IS_LEAF;
+	int INTERACTION_OCCURRENCE__GENERAL_ORDERING = INTERACTION_FRAGMENT__GENERAL_ORDERING;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * The feature id for the '<em><b>Enclosing Interaction</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__OUTGOING = CONTROL_NODE__OUTGOING;
+	int INTERACTION_OCCURRENCE__ENCLOSING_INTERACTION = INTERACTION_FRAGMENT__ENCLOSING_INTERACTION;
 
 	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * The feature id for the '<em><b>Enclosing Operand</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__INCOMING = CONTROL_NODE__INCOMING;
+	int INTERACTION_OCCURRENCE__ENCLOSING_OPERAND = INTERACTION_FRAGMENT__ENCLOSING_OPERAND;
 
 	/**
-	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * The feature id for the '<em><b>Refers To</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__IN_GROUP = CONTROL_NODE__IN_GROUP;
+	int INTERACTION_OCCURRENCE__REFERS_TO = INTERACTION_FRAGMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * The feature id for the '<em><b>Actual Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__ACTIVITY = CONTROL_NODE__ACTIVITY;
+	int INTERACTION_OCCURRENCE__ACTUAL_GATE = INTERACTION_FRAGMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * The feature id for the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__REDEFINED_ELEMENT = CONTROL_NODE__REDEFINED_ELEMENT;
+	int INTERACTION_OCCURRENCE__ARGUMENT = INTERACTION_FRAGMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * The number of structural features of the the '<em>Interaction Occurrence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_NODE__IN_STRUCTURED_NODE = CONTROL_NODE__IN_STRUCTURED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORK_NODE__IN_PARTITION = CONTROL_NODE__IN_PARTITION;
-
-	/**
-	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORK_NODE__IN_INTERRUPTIBLE_REGION = CONTROL_NODE__IN_INTERRUPTIBLE_REGION;
-
-	/**
-	 * The number of structural features of the the '<em>Fork Node</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORK_NODE_FEATURE_COUNT = CONTROL_NODE_FEATURE_COUNT + 0;
+	int INTERACTION_OCCURRENCE_FEATURE_COUNT = INTERACTION_FRAGMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -44399,7 +44228,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__EANNOTATIONS = CONTROL_NODE__EANNOTATIONS;
+	int GATE__EANNOTATIONS = MESSAGE_END__EANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -44408,7 +44237,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__OWNED_ELEMENT = CONTROL_NODE__OWNED_ELEMENT;
+	int GATE__OWNED_ELEMENT = MESSAGE_END__OWNED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -44417,7 +44246,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__OWNER = CONTROL_NODE__OWNER;
+	int GATE__OWNER = MESSAGE_END__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -44426,7 +44255,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__OWNED_COMMENT = CONTROL_NODE__OWNED_COMMENT;
+	int GATE__OWNED_COMMENT = MESSAGE_END__OWNED_COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
@@ -44435,7 +44264,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__TEMPLATE_BINDING = CONTROL_NODE__TEMPLATE_BINDING;
+	int GATE__TEMPLATE_BINDING = MESSAGE_END__TEMPLATE_BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
@@ -44444,7 +44273,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__OWNED_TEMPLATE_SIGNATURE = CONTROL_NODE__OWNED_TEMPLATE_SIGNATURE;
+	int GATE__OWNED_TEMPLATE_SIGNATURE = MESSAGE_END__OWNED_TEMPLATE_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -44453,7 +44282,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__NAME = CONTROL_NODE__NAME;
+	int GATE__NAME = MESSAGE_END__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
@@ -44462,7 +44291,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__QUALIFIED_NAME = CONTROL_NODE__QUALIFIED_NAME;
+	int GATE__QUALIFIED_NAME = MESSAGE_END__QUALIFIED_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -44471,7 +44300,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__VISIBILITY = CONTROL_NODE__VISIBILITY;
+	int GATE__VISIBILITY = MESSAGE_END__VISIBILITY;
 
 	/**
 	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
@@ -44480,7 +44309,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__CLIENT_DEPENDENCY = CONTROL_NODE__CLIENT_DEPENDENCY;
+	int GATE__CLIENT_DEPENDENCY = MESSAGE_END__CLIENT_DEPENDENCY;
 
 	/**
 	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
@@ -44489,124 +44318,34 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__NAME_EXPRESSION = CONTROL_NODE__NAME_EXPRESSION;
+	int GATE__NAME_EXPRESSION = MESSAGE_END__NAME_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * The feature id for the '<em><b>Receive Message</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__REDEFINITION_CONTEXT = CONTROL_NODE__REDEFINITION_CONTEXT;
+	int GATE__RECEIVE_MESSAGE = MESSAGE_END__RECEIVE_MESSAGE;
 
 	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * The feature id for the '<em><b>Send Message</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__IS_LEAF = CONTROL_NODE__IS_LEAF;
+	int GATE__SEND_MESSAGE = MESSAGE_END__SEND_MESSAGE;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * The number of structural features of the the '<em>Gate</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_NODE__OUTGOING = CONTROL_NODE__OUTGOING;
-
-	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_NODE__INCOMING = CONTROL_NODE__INCOMING;
-
-	/**
-	 * The feature id for the '<em><b>In Group</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_NODE__IN_GROUP = CONTROL_NODE__IN_GROUP;
-
-	/**
-	 * The feature id for the '<em><b>Activity</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_NODE__ACTIVITY = CONTROL_NODE__ACTIVITY;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_NODE__REDEFINED_ELEMENT = CONTROL_NODE__REDEFINED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_NODE__IN_STRUCTURED_NODE = CONTROL_NODE__IN_STRUCTURED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_NODE__IN_PARTITION = CONTROL_NODE__IN_PARTITION;
-
-	/**
-	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_NODE__IN_INTERRUPTIBLE_REGION = CONTROL_NODE__IN_INTERRUPTIBLE_REGION;
-
-	/**
-	 * The feature id for the '<em><b>Is Combine Duplicate</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_NODE__IS_COMBINE_DUPLICATE = CONTROL_NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Join Spec</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_NODE__JOIN_SPEC = CONTROL_NODE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>Join Node</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_NODE_FEATURE_COUNT = CONTROL_NODE_FEATURE_COUNT + 2;
+	int GATE_FEATURE_COUNT = MESSAGE_END_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -44615,7 +44354,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__EANNOTATIONS = FINAL_NODE__EANNOTATIONS;
+	int PART_DECOMPOSITION__EANNOTATIONS = INTERACTION_OCCURRENCE__EANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -44624,7 +44363,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__OWNED_ELEMENT = FINAL_NODE__OWNED_ELEMENT;
+	int PART_DECOMPOSITION__OWNED_ELEMENT = INTERACTION_OCCURRENCE__OWNED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -44633,7 +44372,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__OWNER = FINAL_NODE__OWNER;
+	int PART_DECOMPOSITION__OWNER = INTERACTION_OCCURRENCE__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -44642,7 +44381,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__OWNED_COMMENT = FINAL_NODE__OWNED_COMMENT;
+	int PART_DECOMPOSITION__OWNED_COMMENT = INTERACTION_OCCURRENCE__OWNED_COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
@@ -44651,7 +44390,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__TEMPLATE_BINDING = FINAL_NODE__TEMPLATE_BINDING;
+	int PART_DECOMPOSITION__TEMPLATE_BINDING = INTERACTION_OCCURRENCE__TEMPLATE_BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
@@ -44660,7 +44399,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__OWNED_TEMPLATE_SIGNATURE = FINAL_NODE__OWNED_TEMPLATE_SIGNATURE;
+	int PART_DECOMPOSITION__OWNED_TEMPLATE_SIGNATURE = INTERACTION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -44669,7 +44408,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__NAME = FINAL_NODE__NAME;
+	int PART_DECOMPOSITION__NAME = INTERACTION_OCCURRENCE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
@@ -44678,7 +44417,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__QUALIFIED_NAME = FINAL_NODE__QUALIFIED_NAME;
+	int PART_DECOMPOSITION__QUALIFIED_NAME = INTERACTION_OCCURRENCE__QUALIFIED_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -44687,7 +44426,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__VISIBILITY = FINAL_NODE__VISIBILITY;
+	int PART_DECOMPOSITION__VISIBILITY = INTERACTION_OCCURRENCE__VISIBILITY;
 
 	/**
 	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
@@ -44696,7 +44435,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__CLIENT_DEPENDENCY = FINAL_NODE__CLIENT_DEPENDENCY;
+	int PART_DECOMPOSITION__CLIENT_DEPENDENCY = INTERACTION_OCCURRENCE__CLIENT_DEPENDENCY;
 
 	/**
 	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
@@ -44705,106 +44444,79 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__NAME_EXPRESSION = FINAL_NODE__NAME_EXPRESSION;
+	int PART_DECOMPOSITION__NAME_EXPRESSION = INTERACTION_OCCURRENCE__NAME_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * The feature id for the '<em><b>Covered</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__REDEFINITION_CONTEXT = FINAL_NODE__REDEFINITION_CONTEXT;
+	int PART_DECOMPOSITION__COVERED = INTERACTION_OCCURRENCE__COVERED;
 
 	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * The feature id for the '<em><b>General Ordering</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__IS_LEAF = FINAL_NODE__IS_LEAF;
+	int PART_DECOMPOSITION__GENERAL_ORDERING = INTERACTION_OCCURRENCE__GENERAL_ORDERING;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * The feature id for the '<em><b>Enclosing Interaction</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__OUTGOING = FINAL_NODE__OUTGOING;
+	int PART_DECOMPOSITION__ENCLOSING_INTERACTION = INTERACTION_OCCURRENCE__ENCLOSING_INTERACTION;
 
 	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * The feature id for the '<em><b>Enclosing Operand</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__INCOMING = FINAL_NODE__INCOMING;
+	int PART_DECOMPOSITION__ENCLOSING_OPERAND = INTERACTION_OCCURRENCE__ENCLOSING_OPERAND;
 
 	/**
-	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * The feature id for the '<em><b>Refers To</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__IN_GROUP = FINAL_NODE__IN_GROUP;
+	int PART_DECOMPOSITION__REFERS_TO = INTERACTION_OCCURRENCE__REFERS_TO;
 
 	/**
-	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * The feature id for the '<em><b>Actual Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__ACTIVITY = FINAL_NODE__ACTIVITY;
+	int PART_DECOMPOSITION__ACTUAL_GATE = INTERACTION_OCCURRENCE__ACTUAL_GATE;
 
 	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * The feature id for the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__REDEFINED_ELEMENT = FINAL_NODE__REDEFINED_ELEMENT;
+	int PART_DECOMPOSITION__ARGUMENT = INTERACTION_OCCURRENCE__ARGUMENT;
 
 	/**
-	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * The number of structural features of the the '<em>Part Decomposition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_FINAL_NODE__IN_STRUCTURED_NODE = FINAL_NODE__IN_STRUCTURED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FLOW_FINAL_NODE__IN_PARTITION = FINAL_NODE__IN_PARTITION;
-
-	/**
-	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FLOW_FINAL_NODE__IN_INTERRUPTIBLE_REGION = FINAL_NODE__IN_INTERRUPTIBLE_REGION;
-
-	/**
-	 * The number of structural features of the the '<em>Flow Final Node</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FLOW_FINAL_NODE_FEATURE_COUNT = FINAL_NODE_FEATURE_COUNT + 0;
+	int PART_DECOMPOSITION_FEATURE_COUNT = INTERACTION_OCCURRENCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -44813,7 +44525,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__EANNOTATIONS = OBJECT_NODE__EANNOTATIONS;
+	int INTERACTION_OPERAND__EANNOTATIONS = NAMESPACE__EANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -44822,7 +44534,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__OWNED_ELEMENT = OBJECT_NODE__OWNED_ELEMENT;
+	int INTERACTION_OPERAND__OWNED_ELEMENT = NAMESPACE__OWNED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -44831,7 +44543,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__OWNER = OBJECT_NODE__OWNER;
+	int INTERACTION_OPERAND__OWNER = NAMESPACE__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -44840,7 +44552,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__OWNED_COMMENT = OBJECT_NODE__OWNED_COMMENT;
+	int INTERACTION_OPERAND__OWNED_COMMENT = NAMESPACE__OWNED_COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
@@ -44849,7 +44561,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__TEMPLATE_BINDING = OBJECT_NODE__TEMPLATE_BINDING;
+	int INTERACTION_OPERAND__TEMPLATE_BINDING = NAMESPACE__TEMPLATE_BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
@@ -44858,7 +44570,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__OWNED_TEMPLATE_SIGNATURE = OBJECT_NODE__OWNED_TEMPLATE_SIGNATURE;
+	int INTERACTION_OPERAND__OWNED_TEMPLATE_SIGNATURE = NAMESPACE__OWNED_TEMPLATE_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -44867,7 +44579,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__NAME = OBJECT_NODE__NAME;
+	int INTERACTION_OPERAND__NAME = NAMESPACE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
@@ -44876,7 +44588,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__QUALIFIED_NAME = OBJECT_NODE__QUALIFIED_NAME;
+	int INTERACTION_OPERAND__QUALIFIED_NAME = NAMESPACE__QUALIFIED_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -44885,7 +44597,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__VISIBILITY = OBJECT_NODE__VISIBILITY;
+	int INTERACTION_OPERAND__VISIBILITY = NAMESPACE__VISIBILITY;
 
 	/**
 	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
@@ -44894,7 +44606,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__CLIENT_DEPENDENCY = OBJECT_NODE__CLIENT_DEPENDENCY;
+	int INTERACTION_OPERAND__CLIENT_DEPENDENCY = NAMESPACE__CLIENT_DEPENDENCY;
 
 	/**
 	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
@@ -44903,151 +44615,115 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__NAME_EXPRESSION = OBJECT_NODE__NAME_EXPRESSION;
+	int INTERACTION_OPERAND__NAME_EXPRESSION = NAMESPACE__NAME_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__REDEFINITION_CONTEXT = OBJECT_NODE__REDEFINITION_CONTEXT;
+	int INTERACTION_OPERAND__MEMBER = NAMESPACE__MEMBER;
 
 	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__IS_LEAF = OBJECT_NODE__IS_LEAF;
+	int INTERACTION_OPERAND__OWNED_RULE = NAMESPACE__OWNED_RULE;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__OUTGOING = OBJECT_NODE__OUTGOING;
+	int INTERACTION_OPERAND__IMPORTED_MEMBER = NAMESPACE__IMPORTED_MEMBER;
 
 	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__INCOMING = OBJECT_NODE__INCOMING;
+	int INTERACTION_OPERAND__ELEMENT_IMPORT = NAMESPACE__ELEMENT_IMPORT;
 
 	/**
-	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__IN_GROUP = OBJECT_NODE__IN_GROUP;
+	int INTERACTION_OPERAND__PACKAGE_IMPORT = NAMESPACE__PACKAGE_IMPORT;
 
 	/**
-	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * The feature id for the '<em><b>Covered</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__ACTIVITY = OBJECT_NODE__ACTIVITY;
+	int INTERACTION_OPERAND__COVERED = NAMESPACE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * The feature id for the '<em><b>General Ordering</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__REDEFINED_ELEMENT = OBJECT_NODE__REDEFINED_ELEMENT;
+	int INTERACTION_OPERAND__GENERAL_ORDERING = NAMESPACE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * The feature id for the '<em><b>Enclosing Interaction</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__IN_STRUCTURED_NODE = OBJECT_NODE__IN_STRUCTURED_NODE;
+	int INTERACTION_OPERAND__ENCLOSING_INTERACTION = NAMESPACE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
+	 * The feature id for the '<em><b>Enclosing Operand</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__IN_PARTITION = OBJECT_NODE__IN_PARTITION;
+	int INTERACTION_OPERAND__ENCLOSING_OPERAND = NAMESPACE_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * The feature id for the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__IN_INTERRUPTIBLE_REGION = OBJECT_NODE__IN_INTERRUPTIBLE_REGION;
+	int INTERACTION_OPERAND__GUARD = NAMESPACE_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * The feature id for the '<em><b>Fragment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__TYPE = OBJECT_NODE__TYPE;
+	int INTERACTION_OPERAND__FRAGMENT = NAMESPACE_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Ordering</b></em>' attribute.
+	 * The number of structural features of the the '<em>Interaction Operand</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CENTRAL_BUFFER_NODE__ORDERING = OBJECT_NODE__ORDERING;
-
-	/**
-	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CENTRAL_BUFFER_NODE__UPPER_BOUND = OBJECT_NODE__UPPER_BOUND;
-
-	/**
-	 * The feature id for the '<em><b>In State</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CENTRAL_BUFFER_NODE__IN_STATE = OBJECT_NODE__IN_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Selection</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CENTRAL_BUFFER_NODE__SELECTION = OBJECT_NODE__SELECTION;
-
-	/**
-	 * The number of structural features of the the '<em>Central Buffer Node</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CENTRAL_BUFFER_NODE_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 0;
+	int INTERACTION_OPERAND_FEATURE_COUNT = NAMESPACE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -45056,7 +44732,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+	int INTERACTION_CONSTRAINT__EANNOTATIONS = CONSTRAINT__EANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -45065,7 +44741,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+	int INTERACTION_CONSTRAINT__OWNED_ELEMENT = CONSTRAINT__OWNED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -45074,7 +44750,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__OWNER = NAMED_ELEMENT__OWNER;
+	int INTERACTION_CONSTRAINT__OWNER = CONSTRAINT__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -45083,7 +44759,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+	int INTERACTION_CONSTRAINT__OWNED_COMMENT = CONSTRAINT__OWNED_COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
@@ -45092,7 +44768,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
+	int INTERACTION_CONSTRAINT__TEMPLATE_BINDING = CONSTRAINT__TEMPLATE_BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
@@ -45101,7 +44777,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+	int INTERACTION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE = CONSTRAINT__OWNED_TEMPLATE_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -45110,7 +44786,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__NAME = NAMED_ELEMENT__NAME;
+	int INTERACTION_CONSTRAINT__NAME = CONSTRAINT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
@@ -45119,7 +44795,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+	int INTERACTION_CONSTRAINT__QUALIFIED_NAME = CONSTRAINT__QUALIFIED_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -45128,7 +44804,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+	int INTERACTION_CONSTRAINT__VISIBILITY = CONSTRAINT__VISIBILITY;
 
 	/**
 	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
@@ -45137,7 +44813,7 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+	int INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY = CONSTRAINT__CLIENT_DEPENDENCY;
 
 	/**
 	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
@@ -45146,97 +44822,421 @@ public interface UML2Package extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+	int INTERACTION_CONSTRAINT__NAME_EXPRESSION = CONSTRAINT__NAME_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>Super Group</b></em>' reference.
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__SUPER_GROUP = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER = CONSTRAINT__TEMPLATE_PARAMETER;
 
 	/**
-	 * The feature id for the '<em><b>Activity Group activity</b></em>' container reference.
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int INTERACTION_CONSTRAINT__OWNING_PARAMETER = CONSTRAINT__OWNING_PARAMETER;
 
 	/**
-	 * The feature id for the '<em><b>Is Dimension</b></em>' attribute.
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__IS_DIMENSION = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int INTERACTION_CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY = CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY;
 
 	/**
-	 * The feature id for the '<em><b>Is External</b></em>' attribute.
+	 * The feature id for the '<em><b>Context</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__IS_EXTERNAL = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int INTERACTION_CONSTRAINT__CONTEXT = CONSTRAINT__CONTEXT;
 
 	/**
-	 * The feature id for the '<em><b>Contained Edge</b></em>' reference list.
+	 * The feature id for the '<em><b>Namespace</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__CONTAINED_EDGE = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int INTERACTION_CONSTRAINT__NAMESPACE = CONSTRAINT__NAMESPACE;
 
 	/**
-	 * The feature id for the '<em><b>Contained Node</b></em>' reference list.
+	 * The feature id for the '<em><b>Specification</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__CONTAINED_NODE = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int INTERACTION_CONSTRAINT__SPECIFICATION = CONSTRAINT__SPECIFICATION;
 
 	/**
-	 * The feature id for the '<em><b>Subgroup</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Constrained Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__SUBGROUP = NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT = CONSTRAINT__CONSTRAINED_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Super Partition</b></em>' container reference.
+	 * The feature id for the '<em><b>Minint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__SUPER_PARTITION = NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int INTERACTION_CONSTRAINT__MININT = CONSTRAINT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Represents</b></em>' reference.
+	 * The feature id for the '<em><b>Maxint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__REPRESENTS = NAMED_ELEMENT_FEATURE_COUNT + 8;
+	int INTERACTION_CONSTRAINT__MAXINT = CONSTRAINT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Activity Partition</em>' class.
+	 * The number of structural features of the the '<em>Interaction Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 9;
+	int INTERACTION_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__EANNOTATIONS = INTERACTION_FRAGMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__OWNED_ELEMENT = INTERACTION_FRAGMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__OWNER = INTERACTION_FRAGMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__OWNED_COMMENT = INTERACTION_FRAGMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__TEMPLATE_BINDING = INTERACTION_FRAGMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__OWNED_TEMPLATE_SIGNATURE = INTERACTION_FRAGMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__NAME = INTERACTION_FRAGMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__QUALIFIED_NAME = INTERACTION_FRAGMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__VISIBILITY = INTERACTION_FRAGMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__CLIENT_DEPENDENCY = INTERACTION_FRAGMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__NAME_EXPRESSION = INTERACTION_FRAGMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Covered</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__COVERED = INTERACTION_FRAGMENT__COVERED;
+
+	/**
+	 * The feature id for the '<em><b>General Ordering</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__GENERAL_ORDERING = INTERACTION_FRAGMENT__GENERAL_ORDERING;
+
+	/**
+	 * The feature id for the '<em><b>Enclosing Interaction</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__ENCLOSING_INTERACTION = INTERACTION_FRAGMENT__ENCLOSING_INTERACTION;
+
+	/**
+	 * The feature id for the '<em><b>Enclosing Operand</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__ENCLOSING_OPERAND = INTERACTION_FRAGMENT__ENCLOSING_OPERAND;
+
+	/**
+	 * The feature id for the '<em><b>Interaction Operator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__INTERACTION_OPERATOR = INTERACTION_FRAGMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Operand</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__OPERAND = INTERACTION_FRAGMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Cfragment Gate</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__CFRAGMENT_GATE = INTERACTION_FRAGMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the the '<em>Combined Fragment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT_FEATURE_COUNT = INTERACTION_FRAGMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__EANNOTATIONS = INTERACTION_FRAGMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__OWNED_ELEMENT = INTERACTION_FRAGMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__OWNER = INTERACTION_FRAGMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__OWNED_COMMENT = INTERACTION_FRAGMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__TEMPLATE_BINDING = INTERACTION_FRAGMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__OWNED_TEMPLATE_SIGNATURE = INTERACTION_FRAGMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__NAME = INTERACTION_FRAGMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__QUALIFIED_NAME = INTERACTION_FRAGMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__VISIBILITY = INTERACTION_FRAGMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__CLIENT_DEPENDENCY = INTERACTION_FRAGMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__NAME_EXPRESSION = INTERACTION_FRAGMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Covered</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__COVERED = INTERACTION_FRAGMENT__COVERED;
+
+	/**
+	 * The feature id for the '<em><b>General Ordering</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__GENERAL_ORDERING = INTERACTION_FRAGMENT__GENERAL_ORDERING;
+
+	/**
+	 * The feature id for the '<em><b>Enclosing Interaction</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__ENCLOSING_INTERACTION = INTERACTION_FRAGMENT__ENCLOSING_INTERACTION;
+
+	/**
+	 * The feature id for the '<em><b>Enclosing Operand</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__ENCLOSING_OPERAND = INTERACTION_FRAGMENT__ENCLOSING_OPERAND;
+
+	/**
+	 * The feature id for the '<em><b>Setting</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION__SETTING = INTERACTION_FRAGMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the the '<em>Continuation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUATION_FEATURE_COUNT = INTERACTION_FRAGMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ComponentImpl <em>Component</em>}' class.
@@ -45246,7 +45246,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getComponent()
 	 * @generated
 	 */
-	int COMPONENT = 200;
+	int COMPONENT = 190;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DeploymentImpl <em>Deployment</em>}' class.
@@ -45256,7 +45256,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDeployment()
 	 * @generated
 	 */
-	int DEPLOYMENT = 193;
+	int DEPLOYMENT = 207;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DeployedArtifactImpl <em>Deployed Artifact</em>}' class.
@@ -45266,7 +45266,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDeployedArtifact()
 	 * @generated
 	 */
-	int DEPLOYED_ARTIFACT = 194;
+	int DEPLOYED_ARTIFACT = 208;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DeploymentTargetImpl <em>Deployment Target</em>}' class.
@@ -45276,7 +45276,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDeploymentTarget()
 	 * @generated
 	 */
-	int DEPLOYMENT_TARGET = 195;
+	int DEPLOYMENT_TARGET = 209;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.NodeImpl <em>Node</em>}' class.
@@ -45286,7 +45286,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getNode()
 	 * @generated
 	 */
-	int NODE = 196;
+	int NODE = 210;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.DeviceImpl <em>Device</em>}' class.
@@ -45296,7 +45296,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getDevice()
 	 * @generated
 	 */
-	int DEVICE = 197;
+	int DEVICE = 211;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.ExecutionEnvironmentImpl <em>Execution Environment</em>}' class.
@@ -45306,7 +45306,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExecutionEnvironment()
 	 * @generated
 	 */
-	int EXECUTION_ENVIRONMENT = 198;
+	int EXECUTION_ENVIRONMENT = 212;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.impl.CommunicationPathImpl <em>Communication Path</em>}' class.
@@ -45316,2752 +45316,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getCommunicationPath()
 	 * @generated
 	 */
-	int COMMUNICATION_PATH = 199;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__EANNOTATIONS = CENTRAL_BUFFER_NODE__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__OWNED_ELEMENT = CENTRAL_BUFFER_NODE__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__OWNER = CENTRAL_BUFFER_NODE__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__OWNED_COMMENT = CENTRAL_BUFFER_NODE__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__TEMPLATE_BINDING = CENTRAL_BUFFER_NODE__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__OWNED_TEMPLATE_SIGNATURE = CENTRAL_BUFFER_NODE__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__NAME = CENTRAL_BUFFER_NODE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__QUALIFIED_NAME = CENTRAL_BUFFER_NODE__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__VISIBILITY = CENTRAL_BUFFER_NODE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__CLIENT_DEPENDENCY = CENTRAL_BUFFER_NODE__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__NAME_EXPRESSION = CENTRAL_BUFFER_NODE__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__REDEFINITION_CONTEXT = CENTRAL_BUFFER_NODE__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__IS_LEAF = CENTRAL_BUFFER_NODE__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__OUTGOING = CENTRAL_BUFFER_NODE__OUTGOING;
-
-	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__INCOMING = CENTRAL_BUFFER_NODE__INCOMING;
-
-	/**
-	 * The feature id for the '<em><b>In Group</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__IN_GROUP = CENTRAL_BUFFER_NODE__IN_GROUP;
-
-	/**
-	 * The feature id for the '<em><b>Activity</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__ACTIVITY = CENTRAL_BUFFER_NODE__ACTIVITY;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__REDEFINED_ELEMENT = CENTRAL_BUFFER_NODE__REDEFINED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__IN_STRUCTURED_NODE = CENTRAL_BUFFER_NODE__IN_STRUCTURED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__IN_PARTITION = CENTRAL_BUFFER_NODE__IN_PARTITION;
-
-	/**
-	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__IN_INTERRUPTIBLE_REGION = CENTRAL_BUFFER_NODE__IN_INTERRUPTIBLE_REGION;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__TYPE = CENTRAL_BUFFER_NODE__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Ordering</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__ORDERING = CENTRAL_BUFFER_NODE__ORDERING;
-
-	/**
-	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__UPPER_BOUND = CENTRAL_BUFFER_NODE__UPPER_BOUND;
-
-	/**
-	 * The feature id for the '<em><b>In State</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__IN_STATE = CENTRAL_BUFFER_NODE__IN_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Selection</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE__SELECTION = CENTRAL_BUFFER_NODE__SELECTION;
-
-	/**
-	 * The number of structural features of the the '<em>Data Store Node</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORE_NODE_FEATURE_COUNT = CENTRAL_BUFFER_NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS = ACTIVITY_GROUP__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERRUPTIBLE_ACTIVITY_REGION__OWNED_ELEMENT = ACTIVITY_GROUP__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERRUPTIBLE_ACTIVITY_REGION__OWNER = ACTIVITY_GROUP__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT = ACTIVITY_GROUP__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Super Group</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP = ACTIVITY_GROUP__SUPER_GROUP;
-
-	/**
-	 * The feature id for the '<em><b>Activity Group activity</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY = ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY;
-
-	/**
-	 * The feature id for the '<em><b>Interrupting Edge</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE = ACTIVITY_GROUP_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Contained Node</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE = ACTIVITY_GROUP_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>Interruptible Activity Region</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERRUPTIBLE_ACTIVITY_REGION_FEATURE_COUNT = ACTIVITY_GROUP_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__OWNER = NAMED_ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__PARAMETER = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Condition</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>Parameter Set</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_SET_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__EANNOTATIONS = DEPENDENCY__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__OWNED_ELEMENT = DEPENDENCY__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__OWNER = DEPENDENCY__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__OWNED_COMMENT = DEPENDENCY__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__TEMPLATE_BINDING = DEPENDENCY__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__OWNED_TEMPLATE_SIGNATURE = DEPENDENCY__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__NAME = DEPENDENCY__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__QUALIFIED_NAME = DEPENDENCY__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__VISIBILITY = DEPENDENCY__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__CLIENT_DEPENDENCY = DEPENDENCY__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__NAME_EXPRESSION = DEPENDENCY__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__TEMPLATE_PARAMETER = DEPENDENCY__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__OWNING_PARAMETER = DEPENDENCY__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__PACKAGEABLE_ELEMENT_VISIBILITY = DEPENDENCY__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__RELATED_ELEMENT = DEPENDENCY__RELATED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__SOURCE = DEPENDENCY__SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__TARGET = DEPENDENCY__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Client</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__CLIENT = DEPENDENCY__CLIENT;
-
-	/**
-	 * The feature id for the '<em><b>Supplier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__SUPPLIER = DEPENDENCY__SUPPLIER;
-
-	/**
-	 * The feature id for the '<em><b>Deployed Artifact</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__DEPLOYED_ARTIFACT = DEPENDENCY_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Location</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__LOCATION = DEPENDENCY_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT__CONFIGURATION = DEPENDENCY_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the the '<em>Deployment</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_FEATURE_COUNT = DEPENDENCY_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT__OWNER = NAMED_ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
-
-	/**
-	 * The number of structural features of the the '<em>Deployed Artifact</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYED_ARTIFACT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__OWNER = NAMED_ELEMENT__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Deployment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__DEPLOYMENT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Deployed Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET__DEPLOYED_ELEMENT = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>Deployment Target</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_TARGET_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__EANNOTATIONS = CLASS__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_ELEMENT = CLASS__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNER = CLASS__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_COMMENT = CLASS__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__TEMPLATE_BINDING = CLASS__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_TEMPLATE_SIGNATURE = CLASS__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__NAME = CLASS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__QUALIFIED_NAME = CLASS__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__VISIBILITY = CLASS__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__CLIENT_DEPENDENCY = CLASS__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__NAME_EXPRESSION = CLASS__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__MEMBER = CLASS__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_RULE = CLASS__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__IMPORTED_MEMBER = CLASS__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__ELEMENT_IMPORT = CLASS__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__PACKAGE_IMPORT = CLASS__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__TEMPLATE_PARAMETER = CLASS__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNING_PARAMETER = CLASS__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__PACKAGEABLE_ELEMENT_VISIBILITY = CLASS__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__PACKAGE = CLASS__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__REDEFINITION_CONTEXT = CLASS__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__IS_LEAF = CLASS__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__FEATURE = CLASS__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__IS_ABSTRACT = CLASS__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__INHERITED_MEMBER = CLASS__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__GENERAL = CLASS__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__GENERALIZATION = CLASS__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__ATTRIBUTE = CLASS__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__REDEFINED_CLASSIFIER = CLASS__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__SUBSTITUTION = CLASS__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__POWERTYPE_EXTENT = CLASS__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_USE_CASE = CLASS__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__USE_CASE = CLASS__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__REPRESENTATION = CLASS__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OCCURRENCE = CLASS__OCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_BEHAVIOR = CLASS__OWNED_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__CLASSIFIER_BEHAVIOR = CLASS__CLASSIFIER_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__IMPLEMENTATION = CLASS__IMPLEMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_TRIGGER = CLASS__OWNED_TRIGGER;
-
-	/**
-	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_STATE_MACHINE = CLASS__OWNED_STATE_MACHINE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_ATTRIBUTE = CLASS__OWNED_ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Part</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__PART = CLASS__PART;
-
-	/**
-	 * The feature id for the '<em><b>Role</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__ROLE = CLASS__ROLE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_CONNECTOR = CLASS__OWNED_CONNECTOR;
-
-	/**
-	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_PORT = CLASS__OWNED_PORT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_OPERATION = CLASS__OWNED_OPERATION;
-
-	/**
-	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__SUPER_CLASS = CLASS__SUPER_CLASS;
-
-	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__EXTENSION = CLASS__EXTENSION;
-
-	/**
-	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__NESTED_CLASSIFIER = CLASS__NESTED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__IS_ACTIVE = CLASS__IS_ACTIVE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_RECEPTION = CLASS__OWNED_RECEPTION;
-
-	/**
-	 * The feature id for the '<em><b>Deployment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__DEPLOYMENT = CLASS_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Deployed Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__DEPLOYED_ELEMENT = CLASS_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Nested Node</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__NESTED_NODE = CLASS_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the the '<em>Node</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE_FEATURE_COUNT = CLASS_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__EANNOTATIONS = NODE__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_ELEMENT = NODE__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNER = NODE__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_COMMENT = NODE__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__TEMPLATE_BINDING = NODE__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_TEMPLATE_SIGNATURE = NODE__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__NAME = NODE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__QUALIFIED_NAME = NODE__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__VISIBILITY = NODE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__CLIENT_DEPENDENCY = NODE__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__NAME_EXPRESSION = NODE__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__MEMBER = NODE__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_RULE = NODE__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__IMPORTED_MEMBER = NODE__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__ELEMENT_IMPORT = NODE__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__PACKAGE_IMPORT = NODE__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__TEMPLATE_PARAMETER = NODE__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNING_PARAMETER = NODE__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__PACKAGEABLE_ELEMENT_VISIBILITY = NODE__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__PACKAGE = NODE__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__REDEFINITION_CONTEXT = NODE__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__IS_LEAF = NODE__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__FEATURE = NODE__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__IS_ABSTRACT = NODE__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__INHERITED_MEMBER = NODE__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__GENERAL = NODE__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__GENERALIZATION = NODE__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__ATTRIBUTE = NODE__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__REDEFINED_CLASSIFIER = NODE__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__SUBSTITUTION = NODE__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__POWERTYPE_EXTENT = NODE__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_USE_CASE = NODE__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__USE_CASE = NODE__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__REPRESENTATION = NODE__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OCCURRENCE = NODE__OCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_BEHAVIOR = NODE__OWNED_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__CLASSIFIER_BEHAVIOR = NODE__CLASSIFIER_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__IMPLEMENTATION = NODE__IMPLEMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_TRIGGER = NODE__OWNED_TRIGGER;
-
-	/**
-	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_STATE_MACHINE = NODE__OWNED_STATE_MACHINE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_ATTRIBUTE = NODE__OWNED_ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Part</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__PART = NODE__PART;
-
-	/**
-	 * The feature id for the '<em><b>Role</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__ROLE = NODE__ROLE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_CONNECTOR = NODE__OWNED_CONNECTOR;
-
-	/**
-	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_PORT = NODE__OWNED_PORT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_OPERATION = NODE__OWNED_OPERATION;
-
-	/**
-	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__SUPER_CLASS = NODE__SUPER_CLASS;
-
-	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__EXTENSION = NODE__EXTENSION;
-
-	/**
-	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__NESTED_CLASSIFIER = NODE__NESTED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__IS_ACTIVE = NODE__IS_ACTIVE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_RECEPTION = NODE__OWNED_RECEPTION;
-
-	/**
-	 * The feature id for the '<em><b>Deployment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__DEPLOYMENT = NODE__DEPLOYMENT;
-
-	/**
-	 * The feature id for the '<em><b>Deployed Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__DEPLOYED_ELEMENT = NODE__DEPLOYED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Nested Node</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__NESTED_NODE = NODE__NESTED_NODE;
-
-	/**
-	 * The number of structural features of the the '<em>Device</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__EANNOTATIONS = NODE__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_ELEMENT = NODE__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNER = NODE__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_COMMENT = NODE__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__TEMPLATE_BINDING = NODE__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_TEMPLATE_SIGNATURE = NODE__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__NAME = NODE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__QUALIFIED_NAME = NODE__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__VISIBILITY = NODE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__CLIENT_DEPENDENCY = NODE__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__NAME_EXPRESSION = NODE__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__MEMBER = NODE__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_RULE = NODE__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__IMPORTED_MEMBER = NODE__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__ELEMENT_IMPORT = NODE__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__PACKAGE_IMPORT = NODE__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__TEMPLATE_PARAMETER = NODE__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNING_PARAMETER = NODE__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__PACKAGEABLE_ELEMENT_VISIBILITY = NODE__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__PACKAGE = NODE__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__REDEFINITION_CONTEXT = NODE__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__IS_LEAF = NODE__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__FEATURE = NODE__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__IS_ABSTRACT = NODE__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__INHERITED_MEMBER = NODE__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__GENERAL = NODE__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__GENERALIZATION = NODE__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__ATTRIBUTE = NODE__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__REDEFINED_CLASSIFIER = NODE__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__SUBSTITUTION = NODE__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__POWERTYPE_EXTENT = NODE__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_USE_CASE = NODE__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__USE_CASE = NODE__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__REPRESENTATION = NODE__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OCCURRENCE = NODE__OCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR = NODE__OWNED_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__CLASSIFIER_BEHAVIOR = NODE__CLASSIFIER_BEHAVIOR;
-
-	/**
-	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__IMPLEMENTATION = NODE__IMPLEMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_TRIGGER = NODE__OWNED_TRIGGER;
-
-	/**
-	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE = NODE__OWNED_STATE_MACHINE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE = NODE__OWNED_ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Part</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__PART = NODE__PART;
-
-	/**
-	 * The feature id for the '<em><b>Role</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__ROLE = NODE__ROLE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_CONNECTOR = NODE__OWNED_CONNECTOR;
-
-	/**
-	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_PORT = NODE__OWNED_PORT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_OPERATION = NODE__OWNED_OPERATION;
-
-	/**
-	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__SUPER_CLASS = NODE__SUPER_CLASS;
-
-	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__EXTENSION = NODE__EXTENSION;
-
-	/**
-	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__NESTED_CLASSIFIER = NODE__NESTED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__IS_ACTIVE = NODE__IS_ACTIVE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_RECEPTION = NODE__OWNED_RECEPTION;
-
-	/**
-	 * The feature id for the '<em><b>Deployment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__DEPLOYMENT = NODE__DEPLOYMENT;
-
-	/**
-	 * The feature id for the '<em><b>Deployed Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__DEPLOYED_ELEMENT = NODE__DEPLOYED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Nested Node</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__NESTED_NODE = NODE__NESTED_NODE;
-
-	/**
-	 * The number of structural features of the the '<em>Execution Environment</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__EANNOTATIONS = ASSOCIATION__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_ELEMENT = ASSOCIATION__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNER = ASSOCIATION__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_COMMENT = ASSOCIATION__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__TEMPLATE_BINDING = ASSOCIATION__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_TEMPLATE_SIGNATURE = ASSOCIATION__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__NAME = ASSOCIATION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__QUALIFIED_NAME = ASSOCIATION__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__VISIBILITY = ASSOCIATION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__CLIENT_DEPENDENCY = ASSOCIATION__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__NAME_EXPRESSION = ASSOCIATION__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__MEMBER = ASSOCIATION__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_RULE = ASSOCIATION__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__IMPORTED_MEMBER = ASSOCIATION__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__ELEMENT_IMPORT = ASSOCIATION__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__PACKAGE_IMPORT = ASSOCIATION__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__TEMPLATE_PARAMETER = ASSOCIATION__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNING_PARAMETER = ASSOCIATION__OWNING_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__PACKAGEABLE_ELEMENT_VISIBILITY = ASSOCIATION__PACKAGEABLE_ELEMENT_VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__PACKAGE = ASSOCIATION__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__REDEFINITION_CONTEXT = ASSOCIATION__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__IS_LEAF = ASSOCIATION__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__FEATURE = ASSOCIATION__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__IS_ABSTRACT = ASSOCIATION__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__INHERITED_MEMBER = ASSOCIATION__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__GENERAL = ASSOCIATION__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__GENERALIZATION = ASSOCIATION__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__ATTRIBUTE = ASSOCIATION__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__REDEFINED_CLASSIFIER = ASSOCIATION__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__SUBSTITUTION = ASSOCIATION__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__POWERTYPE_EXTENT = ASSOCIATION__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_USE_CASE = ASSOCIATION__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__USE_CASE = ASSOCIATION__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__REPRESENTATION = ASSOCIATION__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OCCURRENCE = ASSOCIATION__OCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__RELATED_ELEMENT = ASSOCIATION__RELATED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__IS_DERIVED = ASSOCIATION__IS_DERIVED;
-
-	/**
-	 * The feature id for the '<em><b>Owned End</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_END = ASSOCIATION__OWNED_END;
-
-	/**
-	 * The feature id for the '<em><b>End Type</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__END_TYPE = ASSOCIATION__END_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Member End</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__MEMBER_END = ASSOCIATION__MEMBER_END;
-
-	/**
-	 * The number of structural features of the the '<em>Communication Path</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH_FEATURE_COUNT = ASSOCIATION_FEATURE_COUNT + 0;
+	int COMMUNICATION_PATH = 213;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -48325,15 +45580,6 @@ public interface UML2Package extends EPackage{
 	int COMPONENT__REDEFINED_CLASSIFIER = CLASS__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT__SUBSTITUTION = CLASS__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48341,6 +45587,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int COMPONENT__POWERTYPE_EXTENT = CLASS__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT__SUBSTITUTION = CLASS__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -48487,15 +45742,6 @@ public interface UML2Package extends EPackage{
 	int COMPONENT__SUPER_CLASS = CLASS__SUPER_CLASS;
 
 	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT__EXTENSION = CLASS__EXTENSION;
-
-	/**
 	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48503,6 +45749,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int COMPONENT__NESTED_CLASSIFIER = CLASS__NESTED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT__EXTENSION = CLASS__EXTENSION;
 
 	/**
 	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
@@ -48928,15 +46183,6 @@ public interface UML2Package extends EPackage{
 	int PROTOCOL_STATE_MACHINE__REDEFINED_CLASSIFIER = STATE_MACHINE__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROTOCOL_STATE_MACHINE__SUBSTITUTION = STATE_MACHINE__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48944,6 +46190,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int PROTOCOL_STATE_MACHINE__POWERTYPE_EXTENT = STATE_MACHINE__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_STATE_MACHINE__SUBSTITUTION = STATE_MACHINE__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -49090,15 +46345,6 @@ public interface UML2Package extends EPackage{
 	int PROTOCOL_STATE_MACHINE__SUPER_CLASS = STATE_MACHINE__SUPER_CLASS;
 
 	/**
-	 * The feature id for the '<em><b>Extension</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROTOCOL_STATE_MACHINE__EXTENSION = STATE_MACHINE__EXTENSION;
-
-	/**
 	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49106,6 +46352,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER = STATE_MACHINE__NESTED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_STATE_MACHINE__EXTENSION = STATE_MACHINE__EXTENSION;
 
 	/**
 	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
@@ -51365,6 +48620,2751 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int DURATION_CONSTRAINT_FEATURE_COUNT = INTERVAL_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__EANNOTATIONS = CENTRAL_BUFFER_NODE__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__OWNED_ELEMENT = CENTRAL_BUFFER_NODE__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__OWNER = CENTRAL_BUFFER_NODE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__OWNED_COMMENT = CENTRAL_BUFFER_NODE__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__TEMPLATE_BINDING = CENTRAL_BUFFER_NODE__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__OWNED_TEMPLATE_SIGNATURE = CENTRAL_BUFFER_NODE__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__NAME = CENTRAL_BUFFER_NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__QUALIFIED_NAME = CENTRAL_BUFFER_NODE__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__VISIBILITY = CENTRAL_BUFFER_NODE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__CLIENT_DEPENDENCY = CENTRAL_BUFFER_NODE__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__NAME_EXPRESSION = CENTRAL_BUFFER_NODE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__REDEFINITION_CONTEXT = CENTRAL_BUFFER_NODE__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__IS_LEAF = CENTRAL_BUFFER_NODE__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__OUTGOING = CENTRAL_BUFFER_NODE__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__INCOMING = CENTRAL_BUFFER_NODE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__IN_GROUP = CENTRAL_BUFFER_NODE__IN_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__ACTIVITY = CENTRAL_BUFFER_NODE__ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__REDEFINED_ELEMENT = CENTRAL_BUFFER_NODE__REDEFINED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__IN_STRUCTURED_NODE = CENTRAL_BUFFER_NODE__IN_STRUCTURED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__IN_PARTITION = CENTRAL_BUFFER_NODE__IN_PARTITION;
+
+	/**
+	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__IN_INTERRUPTIBLE_REGION = CENTRAL_BUFFER_NODE__IN_INTERRUPTIBLE_REGION;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__TYPE = CENTRAL_BUFFER_NODE__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Ordering</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__ORDERING = CENTRAL_BUFFER_NODE__ORDERING;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__UPPER_BOUND = CENTRAL_BUFFER_NODE__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>In State</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__IN_STATE = CENTRAL_BUFFER_NODE__IN_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Selection</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE__SELECTION = CENTRAL_BUFFER_NODE__SELECTION;
+
+	/**
+	 * The number of structural features of the the '<em>Data Store Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STORE_NODE_FEATURE_COUNT = CENTRAL_BUFFER_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS = ACTIVITY_GROUP__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPTIBLE_ACTIVITY_REGION__OWNED_ELEMENT = ACTIVITY_GROUP__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPTIBLE_ACTIVITY_REGION__OWNER = ACTIVITY_GROUP__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT = ACTIVITY_GROUP__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Super Group</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP = ACTIVITY_GROUP__SUPER_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Activity Group activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY = ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Interrupting Edge</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE = ACTIVITY_GROUP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Contained Node</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE = ACTIVITY_GROUP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the the '<em>Interruptible Activity Region</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPTIBLE_ACTIVITY_REGION_FEATURE_COUNT = ACTIVITY_GROUP_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__OWNER = NAMED_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__PARAMETER = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the the '<em>Parameter Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SET_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__EANNOTATIONS = DEPENDENCY__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__OWNED_ELEMENT = DEPENDENCY__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__OWNER = DEPENDENCY__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__OWNED_COMMENT = DEPENDENCY__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__TEMPLATE_BINDING = DEPENDENCY__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__OWNED_TEMPLATE_SIGNATURE = DEPENDENCY__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__NAME = DEPENDENCY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__QUALIFIED_NAME = DEPENDENCY__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__VISIBILITY = DEPENDENCY__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__CLIENT_DEPENDENCY = DEPENDENCY__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__NAME_EXPRESSION = DEPENDENCY__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__TEMPLATE_PARAMETER = DEPENDENCY__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__OWNING_PARAMETER = DEPENDENCY__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__PACKAGEABLE_ELEMENT_VISIBILITY = DEPENDENCY__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__RELATED_ELEMENT = DEPENDENCY__RELATED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__SOURCE = DEPENDENCY__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__TARGET = DEPENDENCY__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Client</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__CLIENT = DEPENDENCY__CLIENT;
+
+	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__SUPPLIER = DEPENDENCY__SUPPLIER;
+
+	/**
+	 * The feature id for the '<em><b>Deployed Artifact</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__DEPLOYED_ARTIFACT = DEPENDENCY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__LOCATION = DEPENDENCY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__CONFIGURATION = DEPENDENCY_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the the '<em>Deployment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_FEATURE_COUNT = DEPENDENCY_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT__OWNER = NAMED_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The number of structural features of the the '<em>Deployed Artifact</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_ARTIFACT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__OWNER = NAMED_ELEMENT__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__TEMPLATE_BINDING = NAMED_ELEMENT__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__OWNED_TEMPLATE_SIGNATURE = NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Deployment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__DEPLOYMENT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Deployed Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET__DEPLOYED_ELEMENT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the the '<em>Deployment Target</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_TARGET_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__EANNOTATIONS = CLASS__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_ELEMENT = CLASS__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNER = CLASS__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_COMMENT = CLASS__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__TEMPLATE_BINDING = CLASS__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_TEMPLATE_SIGNATURE = CLASS__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__NAME = CLASS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__QUALIFIED_NAME = CLASS__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__VISIBILITY = CLASS__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__CLIENT_DEPENDENCY = CLASS__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__NAME_EXPRESSION = CLASS__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__MEMBER = CLASS__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_RULE = CLASS__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__IMPORTED_MEMBER = CLASS__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__ELEMENT_IMPORT = CLASS__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__PACKAGE_IMPORT = CLASS__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__TEMPLATE_PARAMETER = CLASS__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNING_PARAMETER = CLASS__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__PACKAGEABLE_ELEMENT_VISIBILITY = CLASS__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__PACKAGE = CLASS__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__REDEFINITION_CONTEXT = CLASS__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__IS_LEAF = CLASS__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__FEATURE = CLASS__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__IS_ABSTRACT = CLASS__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__INHERITED_MEMBER = CLASS__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__GENERAL = CLASS__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__GENERALIZATION = CLASS__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__ATTRIBUTE = CLASS__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__REDEFINED_CLASSIFIER = CLASS__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__POWERTYPE_EXTENT = CLASS__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__SUBSTITUTION = CLASS__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_USE_CASE = CLASS__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__USE_CASE = CLASS__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__REPRESENTATION = CLASS__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OCCURRENCE = CLASS__OCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_BEHAVIOR = CLASS__OWNED_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__CLASSIFIER_BEHAVIOR = CLASS__CLASSIFIER_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__IMPLEMENTATION = CLASS__IMPLEMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_TRIGGER = CLASS__OWNED_TRIGGER;
+
+	/**
+	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_STATE_MACHINE = CLASS__OWNED_STATE_MACHINE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_ATTRIBUTE = CLASS__OWNED_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Part</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__PART = CLASS__PART;
+
+	/**
+	 * The feature id for the '<em><b>Role</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__ROLE = CLASS__ROLE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_CONNECTOR = CLASS__OWNED_CONNECTOR;
+
+	/**
+	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_PORT = CLASS__OWNED_PORT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_OPERATION = CLASS__OWNED_OPERATION;
+
+	/**
+	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__SUPER_CLASS = CLASS__SUPER_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__NESTED_CLASSIFIER = CLASS__NESTED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__EXTENSION = CLASS__EXTENSION;
+
+	/**
+	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__IS_ACTIVE = CLASS__IS_ACTIVE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__OWNED_RECEPTION = CLASS__OWNED_RECEPTION;
+
+	/**
+	 * The feature id for the '<em><b>Deployment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__DEPLOYMENT = CLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Deployed Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__DEPLOYED_ELEMENT = CLASS_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Nested Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__NESTED_NODE = CLASS_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the the '<em>Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_FEATURE_COUNT = CLASS_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__EANNOTATIONS = NODE__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_ELEMENT = NODE__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNER = NODE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_COMMENT = NODE__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__TEMPLATE_BINDING = NODE__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_TEMPLATE_SIGNATURE = NODE__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__NAME = NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__QUALIFIED_NAME = NODE__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__VISIBILITY = NODE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__CLIENT_DEPENDENCY = NODE__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__NAME_EXPRESSION = NODE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__MEMBER = NODE__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_RULE = NODE__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__IMPORTED_MEMBER = NODE__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__ELEMENT_IMPORT = NODE__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__PACKAGE_IMPORT = NODE__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__TEMPLATE_PARAMETER = NODE__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNING_PARAMETER = NODE__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__PACKAGEABLE_ELEMENT_VISIBILITY = NODE__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__PACKAGE = NODE__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__REDEFINITION_CONTEXT = NODE__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__IS_LEAF = NODE__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__FEATURE = NODE__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__IS_ABSTRACT = NODE__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__INHERITED_MEMBER = NODE__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__GENERAL = NODE__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__GENERALIZATION = NODE__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__ATTRIBUTE = NODE__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__REDEFINED_CLASSIFIER = NODE__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__POWERTYPE_EXTENT = NODE__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__SUBSTITUTION = NODE__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_USE_CASE = NODE__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__USE_CASE = NODE__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__REPRESENTATION = NODE__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OCCURRENCE = NODE__OCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_BEHAVIOR = NODE__OWNED_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__CLASSIFIER_BEHAVIOR = NODE__CLASSIFIER_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__IMPLEMENTATION = NODE__IMPLEMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_TRIGGER = NODE__OWNED_TRIGGER;
+
+	/**
+	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_STATE_MACHINE = NODE__OWNED_STATE_MACHINE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_ATTRIBUTE = NODE__OWNED_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Part</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__PART = NODE__PART;
+
+	/**
+	 * The feature id for the '<em><b>Role</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__ROLE = NODE__ROLE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_CONNECTOR = NODE__OWNED_CONNECTOR;
+
+	/**
+	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_PORT = NODE__OWNED_PORT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_OPERATION = NODE__OWNED_OPERATION;
+
+	/**
+	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__SUPER_CLASS = NODE__SUPER_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__NESTED_CLASSIFIER = NODE__NESTED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__EXTENSION = NODE__EXTENSION;
+
+	/**
+	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__IS_ACTIVE = NODE__IS_ACTIVE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__OWNED_RECEPTION = NODE__OWNED_RECEPTION;
+
+	/**
+	 * The feature id for the '<em><b>Deployment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__DEPLOYMENT = NODE__DEPLOYMENT;
+
+	/**
+	 * The feature id for the '<em><b>Deployed Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__DEPLOYED_ELEMENT = NODE__DEPLOYED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Nested Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__NESTED_NODE = NODE__NESTED_NODE;
+
+	/**
+	 * The number of structural features of the the '<em>Device</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__EANNOTATIONS = NODE__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_ELEMENT = NODE__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNER = NODE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_COMMENT = NODE__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__TEMPLATE_BINDING = NODE__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_TEMPLATE_SIGNATURE = NODE__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__NAME = NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__QUALIFIED_NAME = NODE__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__VISIBILITY = NODE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__CLIENT_DEPENDENCY = NODE__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__NAME_EXPRESSION = NODE__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__MEMBER = NODE__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_RULE = NODE__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__IMPORTED_MEMBER = NODE__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__ELEMENT_IMPORT = NODE__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__PACKAGE_IMPORT = NODE__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__TEMPLATE_PARAMETER = NODE__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNING_PARAMETER = NODE__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__PACKAGEABLE_ELEMENT_VISIBILITY = NODE__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__PACKAGE = NODE__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__REDEFINITION_CONTEXT = NODE__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__IS_LEAF = NODE__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__FEATURE = NODE__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__IS_ABSTRACT = NODE__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__INHERITED_MEMBER = NODE__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__GENERAL = NODE__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__GENERALIZATION = NODE__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__ATTRIBUTE = NODE__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__REDEFINED_CLASSIFIER = NODE__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__POWERTYPE_EXTENT = NODE__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__SUBSTITUTION = NODE__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_USE_CASE = NODE__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__USE_CASE = NODE__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__REPRESENTATION = NODE__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OCCURRENCE = NODE__OCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR = NODE__OWNED_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Classifier Behavior</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__CLASSIFIER_BEHAVIOR = NODE__CLASSIFIER_BEHAVIOR;
+
+	/**
+	 * The feature id for the '<em><b>Implementation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__IMPLEMENTATION = NODE__IMPLEMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_TRIGGER = NODE__OWNED_TRIGGER;
+
+	/**
+	 * The feature id for the '<em><b>Owned State Machine</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE = NODE__OWNED_STATE_MACHINE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE = NODE__OWNED_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Part</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__PART = NODE__PART;
+
+	/**
+	 * The feature id for the '<em><b>Role</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__ROLE = NODE__ROLE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Connector</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_CONNECTOR = NODE__OWNED_CONNECTOR;
+
+	/**
+	 * The feature id for the '<em><b>Owned Port</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_PORT = NODE__OWNED_PORT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_OPERATION = NODE__OWNED_OPERATION;
+
+	/**
+	 * The feature id for the '<em><b>Super Class</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__SUPER_CLASS = NODE__SUPER_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__NESTED_CLASSIFIER = NODE__NESTED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__EXTENSION = NODE__EXTENSION;
+
+	/**
+	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__IS_ACTIVE = NODE__IS_ACTIVE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__OWNED_RECEPTION = NODE__OWNED_RECEPTION;
+
+	/**
+	 * The feature id for the '<em><b>Deployment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__DEPLOYMENT = NODE__DEPLOYMENT;
+
+	/**
+	 * The feature id for the '<em><b>Deployed Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__DEPLOYED_ELEMENT = NODE__DEPLOYED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Nested Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT__NESTED_NODE = NODE__NESTED_NODE;
+
+	/**
+	 * The number of structural features of the the '<em>Execution Environment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_ENVIRONMENT_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__EANNOTATIONS = ASSOCIATION__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_ELEMENT = ASSOCIATION__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNER = ASSOCIATION__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_COMMENT = ASSOCIATION__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__TEMPLATE_BINDING = ASSOCIATION__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_TEMPLATE_SIGNATURE = ASSOCIATION__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__NAME = ASSOCIATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__QUALIFIED_NAME = ASSOCIATION__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__VISIBILITY = ASSOCIATION__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__CLIENT_DEPENDENCY = ASSOCIATION__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__NAME_EXPRESSION = ASSOCIATION__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__MEMBER = ASSOCIATION__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_RULE = ASSOCIATION__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__IMPORTED_MEMBER = ASSOCIATION__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__ELEMENT_IMPORT = ASSOCIATION__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__PACKAGE_IMPORT = ASSOCIATION__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__TEMPLATE_PARAMETER = ASSOCIATION__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Owning Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNING_PARAMETER = ASSOCIATION__OWNING_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Packageable Element visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__PACKAGEABLE_ELEMENT_VISIBILITY = ASSOCIATION__PACKAGEABLE_ELEMENT_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__PACKAGE = ASSOCIATION__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__REDEFINITION_CONTEXT = ASSOCIATION__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__IS_LEAF = ASSOCIATION__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__FEATURE = ASSOCIATION__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__IS_ABSTRACT = ASSOCIATION__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__INHERITED_MEMBER = ASSOCIATION__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__GENERAL = ASSOCIATION__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__GENERALIZATION = ASSOCIATION__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__ATTRIBUTE = ASSOCIATION__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__REDEFINED_CLASSIFIER = ASSOCIATION__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__POWERTYPE_EXTENT = ASSOCIATION__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__SUBSTITUTION = ASSOCIATION__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_USE_CASE = ASSOCIATION__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__USE_CASE = ASSOCIATION__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__REPRESENTATION = ASSOCIATION__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OCCURRENCE = ASSOCIATION__OCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__RELATED_ELEMENT = ASSOCIATION__RELATED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__IS_DERIVED = ASSOCIATION__IS_DERIVED;
+
+	/**
+	 * The feature id for the '<em><b>Owned End</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_END = ASSOCIATION__OWNED_END;
+
+	/**
+	 * The feature id for the '<em><b>End Type</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__END_TYPE = ASSOCIATION__END_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Member End</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__MEMBER_END = ASSOCIATION__MEMBER_END;
+
+	/**
+	 * The number of structural features of the the '<em>Communication Path</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH_FEATURE_COUNT = ASSOCIATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -54824,15 +54824,6 @@ public interface UML2Package extends EPackage{
 	int DEPLOYMENT_SPECIFICATION__REDEFINED_CLASSIFIER = ARTIFACT__REDEFINED_CLASSIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_SPECIFICATION__SUBSTITUTION = ARTIFACT__SUBSTITUTION;
-
-	/**
 	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -54840,6 +54831,15 @@ public interface UML2Package extends EPackage{
 	 * @ordered
 	 */
 	int DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT = ARTIFACT__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_SPECIFICATION__SUBSTITUTION = ARTIFACT__SUBSTITUTION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -54997,7 +54997,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getExpansionKind()
 	 * @generated
 	 */
-	int EXPANSION_KIND = 234;
+	int EXPANSION_KIND = 233;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.MessageKind <em>Message Kind</em>}' enum.
@@ -55027,7 +55027,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getTransitionKind()
 	 * @generated
 	 */
-	int TRANSITION_KIND = 235;
+	int TRANSITION_KIND = 234;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.PseudostateKind <em>Pseudostate Kind</em>}' enum.
@@ -55037,7 +55037,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getPseudostateKind()
 	 * @generated
 	 */
-	int PSEUDOSTATE_KIND = 236;
+	int PSEUDOSTATE_KIND = 235;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.ObjectNodeOrderingKind <em>Object Node Ordering Kind</em>}' enum.
@@ -55047,7 +55047,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getObjectNodeOrderingKind()
 	 * @generated
 	 */
-	int OBJECT_NODE_ORDERING_KIND = 238;
+	int OBJECT_NODE_ORDERING_KIND = 239;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.InteractionOperator <em>Interaction Operator</em>}' enum.
@@ -55057,7 +55057,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getInteractionOperator()
 	 * @generated
 	 */
-	int INTERACTION_OPERATOR = 233;
+	int INTERACTION_OPERATOR = 236;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.ConnectorKind <em>Connector Kind</em>}' enum.
@@ -55067,7 +55067,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getConnectorKind()
 	 * @generated
 	 */
-	int CONNECTOR_KIND = 239;
+	int CONNECTOR_KIND = 237;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.ParameterEffectKind <em>Parameter Effect Kind</em>}' enum.
@@ -55077,7 +55077,7 @@ public interface UML2Package extends EPackage{
 	 * @see org.eclipse.uml2.impl.UML2PackageImpl#getParameterEffectKind()
 	 * @generated
 	 */
-	int PARAMETER_EFFECT_KIND = 237;
+	int PARAMETER_EFFECT_KIND = 238;
 
 	/**
 	 * The meta object id for the '<em>Integer</em>' data type.

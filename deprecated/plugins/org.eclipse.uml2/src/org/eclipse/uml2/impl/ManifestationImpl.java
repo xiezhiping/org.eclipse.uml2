@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -141,21 +141,20 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 * @generated
 	 */
 	public EList getTargets() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
+		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
+
+		if (null == target) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getTargets());
 			if (null != getUtilizedElement()) {
 				union.add(getUtilizedElement());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getDirectedRelationship_Target(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getDirectedRelationship_Target(),
-					union.size(),
-					union.toArray()));
+
+			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
+
+		return target;
 	}
 
 	/**

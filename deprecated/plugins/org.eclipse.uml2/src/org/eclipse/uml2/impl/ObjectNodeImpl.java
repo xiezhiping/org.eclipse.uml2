@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -328,21 +328,20 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		if (null == ownedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
 			if (null != getUpperBound()) {
 				union.add(getUpperBound());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
-					union.size(),
-					union.toArray()));
+
+			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		return ownedElement;
 	}
 
 	/**

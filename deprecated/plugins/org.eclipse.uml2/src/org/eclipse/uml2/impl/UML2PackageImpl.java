@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2PackageImpl.java,v 1.10 2004/05/28 05:39:37 khussey Exp $
+ * $Id: UML2PackageImpl.java,v 1.11 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -2220,7 +2220,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 	 * @generated
 	 */
 	public EReference getClass_Extension() {
-		return (EReference)classEClass.getEStructuralFeatures().get(2);
+		return (EReference)classEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2229,7 +2229,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 	 * @generated
 	 */
 	public EReference getClass_NestedClassifier() {
-		return (EReference)classEClass.getEStructuralFeatures().get(3);
+		return (EReference)classEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2697,7 +2697,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 	 * @generated
 	 */
 	public EReference getPackage_AppliedProfile() {
-		return (EReference)packageEClass.getEStructuralFeatures().get(5);
+		return (EReference)packageEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2706,7 +2706,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 	 * @generated
 	 */
 	public EReference getPackage_PackageExtension() {
-		return (EReference)packageEClass.getEStructuralFeatures().get(6);
+		return (EReference)packageEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -3210,7 +3210,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 	 * @generated
 	 */
 	public EReference getClassifier_PowertypeExtent() {
-		return (EReference)classifierEClass.getEStructuralFeatures().get(8);
+		return (EReference)classifierEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -3219,7 +3219,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 	 * @generated
 	 */
 	public EReference getClassifier_Substitution() {
-		return (EReference)classifierEClass.getEStructuralFeatures().get(7);
+		return (EReference)classifierEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -9086,6 +9086,13 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		createEReference(multiplicityElementEClass, MULTIPLICITY_ELEMENT__UPPER_VALUE);
 		createEReference(multiplicityElementEClass, MULTIPLICITY_ELEMENT__LOWER_VALUE);
 
+		directedRelationshipEClass = createEClass(DIRECTED_RELATIONSHIP);
+		createEReference(directedRelationshipEClass, DIRECTED_RELATIONSHIP__SOURCE);
+		createEReference(directedRelationshipEClass, DIRECTED_RELATIONSHIP__TARGET);
+
+		relationshipEClass = createEClass(RELATIONSHIP);
+		createEReference(relationshipEClass, RELATIONSHIP__RELATED_ELEMENT);
+
 		opaqueExpressionEClass = createEClass(OPAQUE_EXPRESSION);
 		createEAttribute(opaqueExpressionEClass, OPAQUE_EXPRESSION__BODY);
 		createEAttribute(opaqueExpressionEClass, OPAQUE_EXPRESSION__LANGUAGE);
@@ -9117,18 +9124,11 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		createEReference(namespaceEClass, NAMESPACE__ELEMENT_IMPORT);
 		createEReference(namespaceEClass, NAMESPACE__PACKAGE_IMPORT);
 
-		directedRelationshipEClass = createEClass(DIRECTED_RELATIONSHIP);
-		createEReference(directedRelationshipEClass, DIRECTED_RELATIONSHIP__SOURCE);
-		createEReference(directedRelationshipEClass, DIRECTED_RELATIONSHIP__TARGET);
-
-		relationshipEClass = createEClass(RELATIONSHIP);
-		createEReference(relationshipEClass, RELATIONSHIP__RELATED_ELEMENT);
-
 		classEClass = createEClass(CLASS);
 		createEReference(classEClass, CLASS__OWNED_OPERATION);
 		createEReference(classEClass, CLASS__SUPER_CLASS);
-		createEReference(classEClass, CLASS__EXTENSION);
 		createEReference(classEClass, CLASS__NESTED_CLASSIFIER);
+		createEReference(classEClass, CLASS__EXTENSION);
 		createEAttribute(classEClass, CLASS__IS_ACTIVE);
 		createEReference(classEClass, CLASS__OWNED_RECEPTION);
 
@@ -9181,8 +9181,8 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		createEReference(packageEClass, PACKAGE__OWNED_TYPE);
 		createEReference(packageEClass, PACKAGE__OWNED_MEMBER);
 		createEReference(packageEClass, PACKAGE__PACKAGE_MERGE);
-		createEReference(packageEClass, PACKAGE__APPLIED_PROFILE);
 		createEReference(packageEClass, PACKAGE__PACKAGE_EXTENSION);
+		createEReference(packageEClass, PACKAGE__APPLIED_PROFILE);
 
 		enumerationEClass = createEClass(ENUMERATION);
 		createEReference(enumerationEClass, ENUMERATION__OWNED_LITERAL);
@@ -9195,31 +9195,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		createEReference(enumerationLiteralEClass, ENUMERATION_LITERAL__ENUMERATION);
 
 		primitiveTypeEClass = createEClass(PRIMITIVE_TYPE);
-
-		constraintEClass = createEClass(CONSTRAINT);
-		createEReference(constraintEClass, CONSTRAINT__CONTEXT);
-		createEReference(constraintEClass, CONSTRAINT__NAMESPACE);
-		createEReference(constraintEClass, CONSTRAINT__SPECIFICATION);
-		createEReference(constraintEClass, CONSTRAINT__CONSTRAINED_ELEMENT);
-
-		classifierEClass = createEClass(CLASSIFIER);
-		createEReference(classifierEClass, CLASSIFIER__FEATURE);
-		createEAttribute(classifierEClass, CLASSIFIER__IS_ABSTRACT);
-		createEReference(classifierEClass, CLASSIFIER__INHERITED_MEMBER);
-		createEReference(classifierEClass, CLASSIFIER__GENERAL);
-		createEReference(classifierEClass, CLASSIFIER__GENERALIZATION);
-		createEReference(classifierEClass, CLASSIFIER__ATTRIBUTE);
-		createEReference(classifierEClass, CLASSIFIER__REDEFINED_CLASSIFIER);
-		createEReference(classifierEClass, CLASSIFIER__SUBSTITUTION);
-		createEReference(classifierEClass, CLASSIFIER__POWERTYPE_EXTENT);
-		createEReference(classifierEClass, CLASSIFIER__OWNED_USE_CASE);
-		createEReference(classifierEClass, CLASSIFIER__USE_CASE);
-		createEReference(classifierEClass, CLASSIFIER__REPRESENTATION);
-		createEReference(classifierEClass, CLASSIFIER__OCCURRENCE);
-
-		featureEClass = createEClass(FEATURE);
-		createEReference(featureEClass, FEATURE__FEATURING_CLASSIFIER);
-		createEAttribute(featureEClass, FEATURE__IS_STATIC);
 
 		literalBooleanEClass = createEClass(LITERAL_BOOLEAN);
 		createEAttribute(literalBooleanEClass, LITERAL_BOOLEAN__VALUE);
@@ -9237,8 +9212,30 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		literalUnlimitedNaturalEClass = createEClass(LITERAL_UNLIMITED_NATURAL);
 		createEAttribute(literalUnlimitedNaturalEClass, LITERAL_UNLIMITED_NATURAL__VALUE);
 
-		structuralFeatureEClass = createEClass(STRUCTURAL_FEATURE);
-		createEAttribute(structuralFeatureEClass, STRUCTURAL_FEATURE__IS_READ_ONLY);
+		classifierEClass = createEClass(CLASSIFIER);
+		createEReference(classifierEClass, CLASSIFIER__FEATURE);
+		createEAttribute(classifierEClass, CLASSIFIER__IS_ABSTRACT);
+		createEReference(classifierEClass, CLASSIFIER__INHERITED_MEMBER);
+		createEReference(classifierEClass, CLASSIFIER__GENERAL);
+		createEReference(classifierEClass, CLASSIFIER__GENERALIZATION);
+		createEReference(classifierEClass, CLASSIFIER__ATTRIBUTE);
+		createEReference(classifierEClass, CLASSIFIER__REDEFINED_CLASSIFIER);
+		createEReference(classifierEClass, CLASSIFIER__POWERTYPE_EXTENT);
+		createEReference(classifierEClass, CLASSIFIER__SUBSTITUTION);
+		createEReference(classifierEClass, CLASSIFIER__OWNED_USE_CASE);
+		createEReference(classifierEClass, CLASSIFIER__USE_CASE);
+		createEReference(classifierEClass, CLASSIFIER__REPRESENTATION);
+		createEReference(classifierEClass, CLASSIFIER__OCCURRENCE);
+
+		featureEClass = createEClass(FEATURE);
+		createEReference(featureEClass, FEATURE__FEATURING_CLASSIFIER);
+		createEAttribute(featureEClass, FEATURE__IS_STATIC);
+
+		constraintEClass = createEClass(CONSTRAINT);
+		createEReference(constraintEClass, CONSTRAINT__CONTEXT);
+		createEReference(constraintEClass, CONSTRAINT__NAMESPACE);
+		createEReference(constraintEClass, CONSTRAINT__SPECIFICATION);
+		createEReference(constraintEClass, CONSTRAINT__CONSTRAINED_ELEMENT);
 
 		behavioralFeatureEClass = createEClass(BEHAVIORAL_FEATURE);
 		createEReference(behavioralFeatureEClass, BEHAVIORAL_FEATURE__PARAMETER);
@@ -9248,6 +9245,13 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		createEAttribute(behavioralFeatureEClass, BEHAVIORAL_FEATURE__IS_ABSTRACT);
 		createEReference(behavioralFeatureEClass, BEHAVIORAL_FEATURE__METHOD);
 		createEAttribute(behavioralFeatureEClass, BEHAVIORAL_FEATURE__CONCURRENCY);
+
+		structuralFeatureEClass = createEClass(STRUCTURAL_FEATURE);
+		createEAttribute(structuralFeatureEClass, STRUCTURAL_FEATURE__IS_READ_ONLY);
+
+		redefinableElementEClass = createEClass(REDEFINABLE_ELEMENT);
+		createEReference(redefinableElementEClass, REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+		createEAttribute(redefinableElementEClass, REDEFINABLE_ELEMENT__IS_LEAF);
 
 		generalizationEClass = createEClass(GENERALIZATION);
 		createEReference(generalizationEClass, GENERALIZATION__SPECIFIC);
@@ -9267,10 +9271,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		instanceValueEClass = createEClass(INSTANCE_VALUE);
 		createEReference(instanceValueEClass, INSTANCE_VALUE__INSTANCE);
-
-		redefinableElementEClass = createEClass(REDEFINABLE_ELEMENT);
-		createEReference(redefinableElementEClass, REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
-		createEAttribute(redefinableElementEClass, REDEFINABLE_ELEMENT__IS_LEAF);
 
 		packageableElementEClass = createEClass(PACKAGEABLE_ELEMENT);
 		createEAttribute(packageableElementEClass, PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY);
@@ -9312,33 +9312,12 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		extensionEndEClass = createEClass(EXTENSION_END);
 
-		associationClassEClass = createEClass(ASSOCIATION_CLASS);
-
 		informationItemEClass = createEClass(INFORMATION_ITEM);
 		createEReference(informationItemEClass, INFORMATION_ITEM__REPRESENTED);
 
 		informationFlowEClass = createEClass(INFORMATION_FLOW);
 		createEReference(informationFlowEClass, INFORMATION_FLOW__REALIZATION);
 		createEReference(informationFlowEClass, INFORMATION_FLOW__CONVEYED);
-
-		permissionEClass = createEClass(PERMISSION);
-
-		dependencyEClass = createEClass(DEPENDENCY);
-		createEReference(dependencyEClass, DEPENDENCY__CLIENT);
-		createEReference(dependencyEClass, DEPENDENCY__SUPPLIER);
-
-		usageEClass = createEClass(USAGE);
-
-		abstractionEClass = createEClass(ABSTRACTION);
-		createEReference(abstractionEClass, ABSTRACTION__MAPPING);
-
-		realizationEClass = createEClass(REALIZATION);
-		createEReference(realizationEClass, REALIZATION__ABSTRACTION);
-		createEReference(realizationEClass, REALIZATION__REALIZING_CLASSIFIER);
-
-		substitutionEClass = createEClass(SUBSTITUTION);
-		createEReference(substitutionEClass, SUBSTITUTION__CONTRACT);
-		createEReference(substitutionEClass, SUBSTITUTION__SUBSTITUTING_CLASSIFIER);
 
 		behaviorEClass = createEClass(BEHAVIOR);
 		createEAttribute(behaviorEClass, BEHAVIOR__IS_REENTRANT);
@@ -9370,14 +9349,35 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		createEAttribute(activityEClass, ACTIVITY__IS_SINGLE_EXECUTION);
 		createEAttribute(activityEClass, ACTIVITY__IS_READ_ONLY);
 
-		modelEClass = createEClass(MODEL);
-		createEAttribute(modelEClass, MODEL__VIEWPOINT);
-
 		generalizationSetEClass = createEClass(GENERALIZATION_SET);
 		createEAttribute(generalizationSetEClass, GENERALIZATION_SET__IS_COVERING);
 		createEAttribute(generalizationSetEClass, GENERALIZATION_SET__IS_DISJOINT);
 		createEReference(generalizationSetEClass, GENERALIZATION_SET__POWERTYPE);
 		createEReference(generalizationSetEClass, GENERALIZATION_SET__GENERALIZATION);
+
+		modelEClass = createEClass(MODEL);
+		createEAttribute(modelEClass, MODEL__VIEWPOINT);
+
+		associationClassEClass = createEClass(ASSOCIATION_CLASS);
+
+		permissionEClass = createEClass(PERMISSION);
+
+		dependencyEClass = createEClass(DEPENDENCY);
+		createEReference(dependencyEClass, DEPENDENCY__CLIENT);
+		createEReference(dependencyEClass, DEPENDENCY__SUPPLIER);
+
+		usageEClass = createEClass(USAGE);
+
+		abstractionEClass = createEClass(ABSTRACTION);
+		createEReference(abstractionEClass, ABSTRACTION__MAPPING);
+
+		realizationEClass = createEClass(REALIZATION);
+		createEReference(realizationEClass, REALIZATION__ABSTRACTION);
+		createEReference(realizationEClass, REALIZATION__REALIZING_CLASSIFIER);
+
+		substitutionEClass = createEClass(SUBSTITUTION);
+		createEReference(substitutionEClass, SUBSTITUTION__CONTRACT);
+		createEReference(substitutionEClass, SUBSTITUTION__SUBSTITUTING_CLASSIFIER);
 
 		connectorEndEClass = createEClass(CONNECTOR_END);
 		createEReference(connectorEndEClass, CONNECTOR_END__DEFINING_END);
@@ -9399,27 +9399,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		createEReference(structuredClassifierEClass, STRUCTURED_CLASSIFIER__PART);
 		createEReference(structuredClassifierEClass, STRUCTURED_CLASSIFIER__ROLE);
 		createEReference(structuredClassifierEClass, STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
-
-		actorEClass = createEClass(ACTOR);
-
-		extendEClass = createEClass(EXTEND);
-		createEReference(extendEClass, EXTEND__EXTENDED_CASE);
-		createEReference(extendEClass, EXTEND__EXTENSION);
-		createEReference(extendEClass, EXTEND__CONDITION);
-		createEReference(extendEClass, EXTEND__EXTENSION_LOCATION);
-
-		useCaseEClass = createEClass(USE_CASE);
-		createEReference(useCaseEClass, USE_CASE__INCLUDE);
-		createEReference(useCaseEClass, USE_CASE__EXTEND);
-		createEReference(useCaseEClass, USE_CASE__EXTENSION_POINT);
-		createEReference(useCaseEClass, USE_CASE__SUBJECT);
-
-		extensionPointEClass = createEClass(EXTENSION_POINT);
-		createEReference(extensionPointEClass, EXTENSION_POINT__USE_CASE);
-
-		includeEClass = createEClass(INCLUDE);
-		createEReference(includeEClass, INCLUDE__INCLUDING_CASE);
-		createEReference(includeEClass, INCLUDE__ADDITION);
 
 		activityEdgeEClass = createEClass(ACTIVITY_EDGE);
 		createEReference(activityEdgeEClass, ACTIVITY_EDGE__ACTIVITY);
@@ -9519,12 +9498,83 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		createEReference(implementationEClass, IMPLEMENTATION__CONTRACT);
 		createEReference(implementationEClass, IMPLEMENTATION__IMPLEMENTING_CLASSIFIER);
 
-		collaborationOccurrenceEClass = createEClass(COLLABORATION_OCCURRENCE);
-		createEReference(collaborationOccurrenceEClass, COLLABORATION_OCCURRENCE__TYPE);
-		createEReference(collaborationOccurrenceEClass, COLLABORATION_OCCURRENCE__ROLE_BINDING);
+		actorEClass = createEClass(ACTOR);
+
+		extendEClass = createEClass(EXTEND);
+		createEReference(extendEClass, EXTEND__EXTENDED_CASE);
+		createEReference(extendEClass, EXTEND__EXTENSION);
+		createEReference(extendEClass, EXTEND__CONDITION);
+		createEReference(extendEClass, EXTEND__EXTENSION_LOCATION);
+
+		useCaseEClass = createEClass(USE_CASE);
+		createEReference(useCaseEClass, USE_CASE__INCLUDE);
+		createEReference(useCaseEClass, USE_CASE__EXTEND);
+		createEReference(useCaseEClass, USE_CASE__EXTENSION_POINT);
+		createEReference(useCaseEClass, USE_CASE__SUBJECT);
+
+		extensionPointEClass = createEClass(EXTENSION_POINT);
+		createEReference(extensionPointEClass, EXTENSION_POINT__USE_CASE);
+
+		includeEClass = createEClass(INCLUDE);
+		createEReference(includeEClass, INCLUDE__INCLUDING_CASE);
+		createEReference(includeEClass, INCLUDE__ADDITION);
+
+		templateSignatureEClass = createEClass(TEMPLATE_SIGNATURE);
+		createEReference(templateSignatureEClass, TEMPLATE_SIGNATURE__PARAMETER);
+		createEReference(templateSignatureEClass, TEMPLATE_SIGNATURE__OWNED_PARAMETER);
+		createEReference(templateSignatureEClass, TEMPLATE_SIGNATURE__NESTED_SIGNATURE);
+		createEReference(templateSignatureEClass, TEMPLATE_SIGNATURE__NESTING_SIGNATURE);
+		createEReference(templateSignatureEClass, TEMPLATE_SIGNATURE__TEMPLATE);
+
+		templateParameterEClass = createEClass(TEMPLATE_PARAMETER);
+		createEReference(templateParameterEClass, TEMPLATE_PARAMETER__SIGNATURE);
+		createEReference(templateParameterEClass, TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
+		createEReference(templateParameterEClass, TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
+		createEReference(templateParameterEClass, TEMPLATE_PARAMETER__DEFAULT);
+		createEReference(templateParameterEClass, TEMPLATE_PARAMETER__OWNED_DEFAULT);
+
+		templateableElementEClass = createEClass(TEMPLATEABLE_ELEMENT);
+		createEReference(templateableElementEClass, TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+		createEReference(templateableElementEClass, TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
+
+		stringExpressionEClass = createEClass(STRING_EXPRESSION);
+		createEReference(stringExpressionEClass, STRING_EXPRESSION__SUB_EXPRESSION);
+		createEReference(stringExpressionEClass, STRING_EXPRESSION__OWNING_EXPRESSION);
+
+		parameterableElementEClass = createEClass(PARAMETERABLE_ELEMENT);
+		createEReference(parameterableElementEClass, PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER);
+		createEReference(parameterableElementEClass, PARAMETERABLE_ELEMENT__OWNING_PARAMETER);
+
+		templateBindingEClass = createEClass(TEMPLATE_BINDING);
+		createEReference(templateBindingEClass, TEMPLATE_BINDING__BOUND_ELEMENT);
+		createEReference(templateBindingEClass, TEMPLATE_BINDING__SIGNATURE);
+		createEReference(templateBindingEClass, TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
+
+		templateParameterSubstitutionEClass = createEClass(TEMPLATE_PARAMETER_SUBSTITUTION);
+		createEReference(templateParameterSubstitutionEClass, TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL);
+		createEReference(templateParameterSubstitutionEClass, TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING);
+		createEReference(templateParameterSubstitutionEClass, TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL);
+		createEReference(templateParameterSubstitutionEClass, TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
 
 		collaborationEClass = createEClass(COLLABORATION);
 		createEReference(collaborationEClass, COLLABORATION__COLLABORATION_ROLE);
+
+		operationTemplateParameterEClass = createEClass(OPERATION_TEMPLATE_PARAMETER);
+
+		classifierTemplateParameterEClass = createEClass(CLASSIFIER_TEMPLATE_PARAMETER);
+		createEAttribute(classifierTemplateParameterEClass, CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE);
+
+		parameterableClassifierEClass = createEClass(PARAMETERABLE_CLASSIFIER);
+
+		redefinableTemplateSignatureEClass = createEClass(REDEFINABLE_TEMPLATE_SIGNATURE);
+
+		templateableClassifierEClass = createEClass(TEMPLATEABLE_CLASSIFIER);
+
+		connectableElementTemplateParameterEClass = createEClass(CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER);
+
+		collaborationOccurrenceEClass = createEClass(COLLABORATION_OCCURRENCE);
+		createEReference(collaborationOccurrenceEClass, COLLABORATION_OCCURRENCE__TYPE);
+		createEReference(collaborationOccurrenceEClass, COLLABORATION_OCCURRENCE__ROLE_BINDING);
 
 		portEClass = createEClass(PORT);
 		createEAttribute(portEClass, PORT__IS_BEHAVIOR);
@@ -9590,82 +9640,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		stopEClass = createEClass(STOP);
 
-		templateSignatureEClass = createEClass(TEMPLATE_SIGNATURE);
-		createEReference(templateSignatureEClass, TEMPLATE_SIGNATURE__PARAMETER);
-		createEReference(templateSignatureEClass, TEMPLATE_SIGNATURE__OWNED_PARAMETER);
-		createEReference(templateSignatureEClass, TEMPLATE_SIGNATURE__NESTED_SIGNATURE);
-		createEReference(templateSignatureEClass, TEMPLATE_SIGNATURE__NESTING_SIGNATURE);
-		createEReference(templateSignatureEClass, TEMPLATE_SIGNATURE__TEMPLATE);
-
-		templateParameterEClass = createEClass(TEMPLATE_PARAMETER);
-		createEReference(templateParameterEClass, TEMPLATE_PARAMETER__SIGNATURE);
-		createEReference(templateParameterEClass, TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
-		createEReference(templateParameterEClass, TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
-		createEReference(templateParameterEClass, TEMPLATE_PARAMETER__DEFAULT);
-		createEReference(templateParameterEClass, TEMPLATE_PARAMETER__OWNED_DEFAULT);
-
-		templateableElementEClass = createEClass(TEMPLATEABLE_ELEMENT);
-		createEReference(templateableElementEClass, TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
-		createEReference(templateableElementEClass, TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
-
-		stringExpressionEClass = createEClass(STRING_EXPRESSION);
-		createEReference(stringExpressionEClass, STRING_EXPRESSION__SUB_EXPRESSION);
-		createEReference(stringExpressionEClass, STRING_EXPRESSION__OWNING_EXPRESSION);
-
-		parameterableElementEClass = createEClass(PARAMETERABLE_ELEMENT);
-		createEReference(parameterableElementEClass, PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER);
-		createEReference(parameterableElementEClass, PARAMETERABLE_ELEMENT__OWNING_PARAMETER);
-
-		templateBindingEClass = createEClass(TEMPLATE_BINDING);
-		createEReference(templateBindingEClass, TEMPLATE_BINDING__BOUND_ELEMENT);
-		createEReference(templateBindingEClass, TEMPLATE_BINDING__SIGNATURE);
-		createEReference(templateBindingEClass, TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
-
-		templateParameterSubstitutionEClass = createEClass(TEMPLATE_PARAMETER_SUBSTITUTION);
-		createEReference(templateParameterSubstitutionEClass, TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL);
-		createEReference(templateParameterSubstitutionEClass, TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING);
-		createEReference(templateParameterSubstitutionEClass, TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL);
-		createEReference(templateParameterSubstitutionEClass, TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
-
-		operationTemplateParameterEClass = createEClass(OPERATION_TEMPLATE_PARAMETER);
-
-		classifierTemplateParameterEClass = createEClass(CLASSIFIER_TEMPLATE_PARAMETER);
-		createEAttribute(classifierTemplateParameterEClass, CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE);
-
-		parameterableClassifierEClass = createEClass(PARAMETERABLE_CLASSIFIER);
-
-		redefinableTemplateSignatureEClass = createEClass(REDEFINABLE_TEMPLATE_SIGNATURE);
-
-		templateableClassifierEClass = createEClass(TEMPLATEABLE_CLASSIFIER);
-
-		connectableElementTemplateParameterEClass = createEClass(CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER);
-
-		callTriggerEClass = createEClass(CALL_TRIGGER);
-		createEReference(callTriggerEClass, CALL_TRIGGER__OPERATION);
-
-		messageTriggerEClass = createEClass(MESSAGE_TRIGGER);
-
-		changeTriggerEClass = createEClass(CHANGE_TRIGGER);
-		createEReference(changeTriggerEClass, CHANGE_TRIGGER__CHANGE_EXPRESSION);
-
-		triggerEClass = createEClass(TRIGGER);
-		createEReference(triggerEClass, TRIGGER__PORT);
-
-		receptionEClass = createEClass(RECEPTION);
-		createEReference(receptionEClass, RECEPTION__SIGNAL);
-
-		signalEClass = createEClass(SIGNAL);
-		createEReference(signalEClass, SIGNAL__OWNED_ATTRIBUTE);
-
-		signalTriggerEClass = createEClass(SIGNAL_TRIGGER);
-		createEReference(signalTriggerEClass, SIGNAL_TRIGGER__SIGNAL);
-
-		timeTriggerEClass = createEClass(TIME_TRIGGER);
-		createEAttribute(timeTriggerEClass, TIME_TRIGGER__IS_RELATIVE);
-		createEReference(timeTriggerEClass, TIME_TRIGGER__WHEN);
-
-		anyTriggerEClass = createEClass(ANY_TRIGGER);
-
 		variableEClass = createEClass(VARIABLE);
 		createEReference(variableEClass, VARIABLE__SCOPE);
 
@@ -9699,6 +9673,66 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		createEReference(loopNodeEClass, LOOP_NODE__LOOP_VARIABLE);
 		createEReference(loopNodeEClass, LOOP_NODE__BODY_OUTPUT);
 		createEReference(loopNodeEClass, LOOP_NODE__LOOP_VARIABLE_INPUT);
+
+		callTriggerEClass = createEClass(CALL_TRIGGER);
+		createEReference(callTriggerEClass, CALL_TRIGGER__OPERATION);
+
+		messageTriggerEClass = createEClass(MESSAGE_TRIGGER);
+
+		changeTriggerEClass = createEClass(CHANGE_TRIGGER);
+		createEReference(changeTriggerEClass, CHANGE_TRIGGER__CHANGE_EXPRESSION);
+
+		triggerEClass = createEClass(TRIGGER);
+		createEReference(triggerEClass, TRIGGER__PORT);
+
+		receptionEClass = createEClass(RECEPTION);
+		createEReference(receptionEClass, RECEPTION__SIGNAL);
+
+		signalEClass = createEClass(SIGNAL);
+		createEReference(signalEClass, SIGNAL__OWNED_ATTRIBUTE);
+
+		signalTriggerEClass = createEClass(SIGNAL_TRIGGER);
+		createEReference(signalTriggerEClass, SIGNAL_TRIGGER__SIGNAL);
+
+		timeTriggerEClass = createEClass(TIME_TRIGGER);
+		createEAttribute(timeTriggerEClass, TIME_TRIGGER__IS_RELATIVE);
+		createEReference(timeTriggerEClass, TIME_TRIGGER__WHEN);
+
+		anyTriggerEClass = createEClass(ANY_TRIGGER);
+
+		expansionNodeEClass = createEClass(EXPANSION_NODE);
+		createEReference(expansionNodeEClass, EXPANSION_NODE__REGION_AS_OUTPUT);
+		createEReference(expansionNodeEClass, EXPANSION_NODE__REGION_AS_INPUT);
+
+		expansionRegionEClass = createEClass(EXPANSION_REGION);
+		createEAttribute(expansionRegionEClass, EXPANSION_REGION__MODE);
+		createEReference(expansionRegionEClass, EXPANSION_REGION__OUTPUT_ELEMENT);
+		createEReference(expansionRegionEClass, EXPANSION_REGION__INPUT_ELEMENT);
+
+		exceptionHandlerEClass = createEClass(EXCEPTION_HANDLER);
+		createEReference(exceptionHandlerEClass, EXCEPTION_HANDLER__PROTECTED_NODE);
+		createEReference(exceptionHandlerEClass, EXCEPTION_HANDLER__HANDLER_BODY);
+		createEReference(exceptionHandlerEClass, EXCEPTION_HANDLER__EXCEPTION_INPUT);
+		createEReference(exceptionHandlerEClass, EXCEPTION_HANDLER__EXCEPTION_TYPE);
+
+		forkNodeEClass = createEClass(FORK_NODE);
+
+		joinNodeEClass = createEClass(JOIN_NODE);
+		createEAttribute(joinNodeEClass, JOIN_NODE__IS_COMBINE_DUPLICATE);
+		createEReference(joinNodeEClass, JOIN_NODE__JOIN_SPEC);
+
+		flowFinalNodeEClass = createEClass(FLOW_FINAL_NODE);
+
+		centralBufferNodeEClass = createEClass(CENTRAL_BUFFER_NODE);
+
+		activityPartitionEClass = createEClass(ACTIVITY_PARTITION);
+		createEAttribute(activityPartitionEClass, ACTIVITY_PARTITION__IS_DIMENSION);
+		createEAttribute(activityPartitionEClass, ACTIVITY_PARTITION__IS_EXTERNAL);
+		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__CONTAINED_EDGE);
+		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__CONTAINED_NODE);
+		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__SUBGROUP);
+		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__SUPER_PARTITION);
+		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__REPRESENTS);
 
 		createObjectActionEClass = createEClass(CREATE_OBJECT_ACTION);
 		createEReference(createObjectActionEClass, CREATE_OBJECT_ACTION__CLASSIFIER);
@@ -9812,46 +9846,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		callBehaviorActionEClass = createEClass(CALL_BEHAVIOR_ACTION);
 		createEReference(callBehaviorActionEClass, CALL_BEHAVIOR_ACTION__BEHAVIOR);
 
-		interactionOccurrenceEClass = createEClass(INTERACTION_OCCURRENCE);
-		createEReference(interactionOccurrenceEClass, INTERACTION_OCCURRENCE__REFERS_TO);
-		createEReference(interactionOccurrenceEClass, INTERACTION_OCCURRENCE__ACTUAL_GATE);
-		createEReference(interactionOccurrenceEClass, INTERACTION_OCCURRENCE__ARGUMENT);
-
-		gateEClass = createEClass(GATE);
-
-		partDecompositionEClass = createEClass(PART_DECOMPOSITION);
-
-		interactionOperandEClass = createEClass(INTERACTION_OPERAND);
-		createEReference(interactionOperandEClass, INTERACTION_OPERAND__GUARD);
-		createEReference(interactionOperandEClass, INTERACTION_OPERAND__FRAGMENT);
-
-		interactionConstraintEClass = createEClass(INTERACTION_CONSTRAINT);
-		createEReference(interactionConstraintEClass, INTERACTION_CONSTRAINT__MININT);
-		createEReference(interactionConstraintEClass, INTERACTION_CONSTRAINT__MAXINT);
-
-		combinedFragmentEClass = createEClass(COMBINED_FRAGMENT);
-		createEAttribute(combinedFragmentEClass, COMBINED_FRAGMENT__INTERACTION_OPERATOR);
-		createEReference(combinedFragmentEClass, COMBINED_FRAGMENT__OPERAND);
-		createEReference(combinedFragmentEClass, COMBINED_FRAGMENT__CFRAGMENT_GATE);
-
-		continuationEClass = createEClass(CONTINUATION);
-		createEAttribute(continuationEClass, CONTINUATION__SETTING);
-
-		expansionNodeEClass = createEClass(EXPANSION_NODE);
-		createEReference(expansionNodeEClass, EXPANSION_NODE__REGION_AS_OUTPUT);
-		createEReference(expansionNodeEClass, EXPANSION_NODE__REGION_AS_INPUT);
-
-		expansionRegionEClass = createEClass(EXPANSION_REGION);
-		createEAttribute(expansionRegionEClass, EXPANSION_REGION__MODE);
-		createEReference(expansionRegionEClass, EXPANSION_REGION__OUTPUT_ELEMENT);
-		createEReference(expansionRegionEClass, EXPANSION_REGION__INPUT_ELEMENT);
-
-		exceptionHandlerEClass = createEClass(EXCEPTION_HANDLER);
-		createEReference(exceptionHandlerEClass, EXCEPTION_HANDLER__PROTECTED_NODE);
-		createEReference(exceptionHandlerEClass, EXCEPTION_HANDLER__HANDLER_BODY);
-		createEReference(exceptionHandlerEClass, EXCEPTION_HANDLER__EXCEPTION_INPUT);
-		createEReference(exceptionHandlerEClass, EXCEPTION_HANDLER__EXCEPTION_TYPE);
-
 		stateMachineEClass = createEClass(STATE_MACHINE);
 		createEReference(stateMachineEClass, STATE_MACHINE__REGION);
 		createEReference(stateMachineEClass, STATE_MACHINE__CONNECTION_POINT);
@@ -9904,54 +9898,30 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		finalStateEClass = createEClass(FINAL_STATE);
 
-		forkNodeEClass = createEClass(FORK_NODE);
+		interactionOccurrenceEClass = createEClass(INTERACTION_OCCURRENCE);
+		createEReference(interactionOccurrenceEClass, INTERACTION_OCCURRENCE__REFERS_TO);
+		createEReference(interactionOccurrenceEClass, INTERACTION_OCCURRENCE__ACTUAL_GATE);
+		createEReference(interactionOccurrenceEClass, INTERACTION_OCCURRENCE__ARGUMENT);
 
-		joinNodeEClass = createEClass(JOIN_NODE);
-		createEAttribute(joinNodeEClass, JOIN_NODE__IS_COMBINE_DUPLICATE);
-		createEReference(joinNodeEClass, JOIN_NODE__JOIN_SPEC);
+		gateEClass = createEClass(GATE);
 
-		flowFinalNodeEClass = createEClass(FLOW_FINAL_NODE);
+		partDecompositionEClass = createEClass(PART_DECOMPOSITION);
 
-		centralBufferNodeEClass = createEClass(CENTRAL_BUFFER_NODE);
+		interactionOperandEClass = createEClass(INTERACTION_OPERAND);
+		createEReference(interactionOperandEClass, INTERACTION_OPERAND__GUARD);
+		createEReference(interactionOperandEClass, INTERACTION_OPERAND__FRAGMENT);
 
-		activityPartitionEClass = createEClass(ACTIVITY_PARTITION);
-		createEAttribute(activityPartitionEClass, ACTIVITY_PARTITION__IS_DIMENSION);
-		createEAttribute(activityPartitionEClass, ACTIVITY_PARTITION__IS_EXTERNAL);
-		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__CONTAINED_EDGE);
-		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__CONTAINED_NODE);
-		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__SUBGROUP);
-		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__SUPER_PARTITION);
-		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__REPRESENTS);
+		interactionConstraintEClass = createEClass(INTERACTION_CONSTRAINT);
+		createEReference(interactionConstraintEClass, INTERACTION_CONSTRAINT__MININT);
+		createEReference(interactionConstraintEClass, INTERACTION_CONSTRAINT__MAXINT);
 
-		dataStoreNodeEClass = createEClass(DATA_STORE_NODE);
+		combinedFragmentEClass = createEClass(COMBINED_FRAGMENT);
+		createEAttribute(combinedFragmentEClass, COMBINED_FRAGMENT__INTERACTION_OPERATOR);
+		createEReference(combinedFragmentEClass, COMBINED_FRAGMENT__OPERAND);
+		createEReference(combinedFragmentEClass, COMBINED_FRAGMENT__CFRAGMENT_GATE);
 
-		interruptibleActivityRegionEClass = createEClass(INTERRUPTIBLE_ACTIVITY_REGION);
-		createEReference(interruptibleActivityRegionEClass, INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE);
-		createEReference(interruptibleActivityRegionEClass, INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE);
-
-		parameterSetEClass = createEClass(PARAMETER_SET);
-		createEReference(parameterSetEClass, PARAMETER_SET__PARAMETER);
-		createEReference(parameterSetEClass, PARAMETER_SET__CONDITION);
-
-		deploymentEClass = createEClass(DEPLOYMENT);
-		createEReference(deploymentEClass, DEPLOYMENT__DEPLOYED_ARTIFACT);
-		createEReference(deploymentEClass, DEPLOYMENT__LOCATION);
-		createEReference(deploymentEClass, DEPLOYMENT__CONFIGURATION);
-
-		deployedArtifactEClass = createEClass(DEPLOYED_ARTIFACT);
-
-		deploymentTargetEClass = createEClass(DEPLOYMENT_TARGET);
-		createEReference(deploymentTargetEClass, DEPLOYMENT_TARGET__DEPLOYMENT);
-		createEReference(deploymentTargetEClass, DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
-
-		nodeEClass = createEClass(NODE);
-		createEReference(nodeEClass, NODE__NESTED_NODE);
-
-		deviceEClass = createEClass(DEVICE);
-
-		executionEnvironmentEClass = createEClass(EXECUTION_ENVIRONMENT);
-
-		communicationPathEClass = createEClass(COMMUNICATION_PATH);
+		continuationEClass = createEClass(CONTINUATION);
+		createEAttribute(continuationEClass, CONTINUATION__SETTING);
 
 		componentEClass = createEClass(COMPONENT);
 		createEAttribute(componentEClass, COMPONENT__IS_INDIRECTLY_INSTANTIATED);
@@ -9999,6 +9969,36 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		createEReference(durationObservationActionEClass, DURATION_OBSERVATION_ACTION__DURATION);
 
 		durationConstraintEClass = createEClass(DURATION_CONSTRAINT);
+
+		dataStoreNodeEClass = createEClass(DATA_STORE_NODE);
+
+		interruptibleActivityRegionEClass = createEClass(INTERRUPTIBLE_ACTIVITY_REGION);
+		createEReference(interruptibleActivityRegionEClass, INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE);
+		createEReference(interruptibleActivityRegionEClass, INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE);
+
+		parameterSetEClass = createEClass(PARAMETER_SET);
+		createEReference(parameterSetEClass, PARAMETER_SET__PARAMETER);
+		createEReference(parameterSetEClass, PARAMETER_SET__CONDITION);
+
+		deploymentEClass = createEClass(DEPLOYMENT);
+		createEReference(deploymentEClass, DEPLOYMENT__DEPLOYED_ARTIFACT);
+		createEReference(deploymentEClass, DEPLOYMENT__LOCATION);
+		createEReference(deploymentEClass, DEPLOYMENT__CONFIGURATION);
+
+		deployedArtifactEClass = createEClass(DEPLOYED_ARTIFACT);
+
+		deploymentTargetEClass = createEClass(DEPLOYMENT_TARGET);
+		createEReference(deploymentTargetEClass, DEPLOYMENT_TARGET__DEPLOYMENT);
+		createEReference(deploymentTargetEClass, DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
+
+		nodeEClass = createEClass(NODE);
+		createEReference(nodeEClass, NODE__NESTED_NODE);
+
+		deviceEClass = createEClass(DEVICE);
+
+		executionEnvironmentEClass = createEClass(EXECUTION_ENVIRONMENT);
+
+		communicationPathEClass = createEClass(COMMUNICATION_PATH);
 
 		readExtentActionEClass = createEClass(READ_EXTENT_ACTION);
 		createEReference(readExtentActionEClass, READ_EXTENT_ACTION__RESULT);
@@ -10062,13 +10062,13 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		messageKindEEnum = createEEnum(MESSAGE_KIND);
 		messageSortEEnum = createEEnum(MESSAGE_SORT);
 		callConcurrencyKindEEnum = createEEnum(CALL_CONCURRENCY_KIND);
-		interactionOperatorEEnum = createEEnum(INTERACTION_OPERATOR);
 		expansionKindEEnum = createEEnum(EXPANSION_KIND);
 		transitionKindEEnum = createEEnum(TRANSITION_KIND);
 		pseudostateKindEEnum = createEEnum(PSEUDOSTATE_KIND);
+		interactionOperatorEEnum = createEEnum(INTERACTION_OPERATOR);
+		connectorKindEEnum = createEEnum(CONNECTOR_KIND);
 		parameterEffectKindEEnum = createEEnum(PARAMETER_EFFECT_KIND);
 		objectNodeOrderingKindEEnum = createEEnum(OBJECT_NODE_ORDERING_KIND);
-		connectorKindEEnum = createEEnum(CONNECTOR_KIND);
 
 		// Create data types
 		integerEDataType = createEDataType(INTEGER);
@@ -10108,6 +10108,8 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		// Add supertypes to classes
 		elementEClass.getESuperTypes().add(theEcorePackage.getEModelElement());
 		multiplicityElementEClass.getESuperTypes().add(this.getElement());
+		directedRelationshipEClass.getESuperTypes().add(this.getRelationship());
+		relationshipEClass.getESuperTypes().add(this.getElement());
 		opaqueExpressionEClass.getESuperTypes().add(this.getValueSpecification());
 		valueSpecificationEClass.getESuperTypes().add(this.getTypedElement());
 		valueSpecificationEClass.getESuperTypes().add(this.getParameterableElement());
@@ -10115,8 +10117,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		commentEClass.getESuperTypes().add(this.getTemplateableElement());
 		namedElementEClass.getESuperTypes().add(this.getTemplateableElement());
 		namespaceEClass.getESuperTypes().add(this.getNamedElement());
-		directedRelationshipEClass.getESuperTypes().add(this.getRelationship());
-		relationshipEClass.getESuperTypes().add(this.getElement());
 		classEClass.getESuperTypes().add(this.getBehavioredClassifier());
 		classEClass.getESuperTypes().add(this.getEncapsulatedClassifier());
 		typeEClass.getESuperTypes().add(this.getPackageableElement());
@@ -10137,29 +10137,29 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		dataTypeEClass.getESuperTypes().add(this.getClassifier());
 		enumerationLiteralEClass.getESuperTypes().add(this.getInstanceSpecification());
 		primitiveTypeEClass.getESuperTypes().add(this.getDataType());
-		constraintEClass.getESuperTypes().add(this.getPackageableElement());
-		classifierEClass.getESuperTypes().add(this.getNamespace());
-		classifierEClass.getESuperTypes().add(this.getType());
-		classifierEClass.getESuperTypes().add(this.getRedefinableElement());
-		featureEClass.getESuperTypes().add(this.getRedefinableElement());
 		literalBooleanEClass.getESuperTypes().add(this.getLiteralSpecification());
 		literalSpecificationEClass.getESuperTypes().add(this.getValueSpecification());
 		literalStringEClass.getESuperTypes().add(this.getLiteralSpecification());
 		literalNullEClass.getESuperTypes().add(this.getLiteralSpecification());
 		literalIntegerEClass.getESuperTypes().add(this.getLiteralSpecification());
 		literalUnlimitedNaturalEClass.getESuperTypes().add(this.getLiteralSpecification());
+		classifierEClass.getESuperTypes().add(this.getNamespace());
+		classifierEClass.getESuperTypes().add(this.getType());
+		classifierEClass.getESuperTypes().add(this.getRedefinableElement());
+		featureEClass.getESuperTypes().add(this.getRedefinableElement());
+		constraintEClass.getESuperTypes().add(this.getPackageableElement());
+		behavioralFeatureEClass.getESuperTypes().add(this.getNamespace());
+		behavioralFeatureEClass.getESuperTypes().add(this.getFeature());
 		structuralFeatureEClass.getESuperTypes().add(this.getFeature());
 		structuralFeatureEClass.getESuperTypes().add(this.getTypedElement());
 		structuralFeatureEClass.getESuperTypes().add(this.getMultiplicityElement());
-		behavioralFeatureEClass.getESuperTypes().add(this.getNamespace());
-		behavioralFeatureEClass.getESuperTypes().add(this.getFeature());
+		redefinableElementEClass.getESuperTypes().add(this.getNamedElement());
 		generalizationEClass.getESuperTypes().add(this.getDirectedRelationship());
 		instanceSpecificationEClass.getESuperTypes().add(this.getPackageableElement());
 		instanceSpecificationEClass.getESuperTypes().add(this.getDeploymentTarget());
 		instanceSpecificationEClass.getESuperTypes().add(this.getDeployedArtifact());
 		slotEClass.getESuperTypes().add(this.getElement());
 		instanceValueEClass.getESuperTypes().add(this.getValueSpecification());
-		redefinableElementEClass.getESuperTypes().add(this.getNamedElement());
 		packageableElementEClass.getESuperTypes().add(this.getNamedElement());
 		packageableElementEClass.getESuperTypes().add(this.getParameterableElement());
 		elementImportEClass.getESuperTypes().add(this.getDirectedRelationship());
@@ -10172,11 +10172,16 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		profileApplicationEClass.getESuperTypes().add(this.getPackageImport());
 		extensionEClass.getESuperTypes().add(this.getAssociation());
 		extensionEndEClass.getESuperTypes().add(this.getProperty());
-		associationClassEClass.getESuperTypes().add(this.getClass_());
-		associationClassEClass.getESuperTypes().add(this.getAssociation());
 		informationItemEClass.getESuperTypes().add(this.getClassifier());
 		informationFlowEClass.getESuperTypes().add(this.getPackageableElement());
 		informationFlowEClass.getESuperTypes().add(this.getDirectedRelationship());
+		behaviorEClass.getESuperTypes().add(this.getClass_());
+		behavioredClassifierEClass.getESuperTypes().add(this.getClassifier());
+		activityEClass.getESuperTypes().add(this.getBehavior());
+		generalizationSetEClass.getESuperTypes().add(this.getPackageableElement());
+		modelEClass.getESuperTypes().add(this.getPackage());
+		associationClassEClass.getESuperTypes().add(this.getClass_());
+		associationClassEClass.getESuperTypes().add(this.getAssociation());
 		permissionEClass.getESuperTypes().add(this.getDependency());
 		dependencyEClass.getESuperTypes().add(this.getPackageableElement());
 		dependencyEClass.getESuperTypes().add(this.getDirectedRelationship());
@@ -10184,23 +10189,11 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		abstractionEClass.getESuperTypes().add(this.getDependency());
 		realizationEClass.getESuperTypes().add(this.getAbstraction());
 		substitutionEClass.getESuperTypes().add(this.getRealization());
-		behaviorEClass.getESuperTypes().add(this.getClass_());
-		behavioredClassifierEClass.getESuperTypes().add(this.getClassifier());
-		activityEClass.getESuperTypes().add(this.getBehavior());
-		modelEClass.getESuperTypes().add(this.getPackage());
-		generalizationSetEClass.getESuperTypes().add(this.getPackageableElement());
 		connectorEndEClass.getESuperTypes().add(this.getMultiplicityElement());
 		connectableElementEClass.getESuperTypes().add(this.getNamedElement());
 		connectableElementEClass.getESuperTypes().add(this.getParameterableElement());
 		connectorEClass.getESuperTypes().add(this.getFeature());
 		structuredClassifierEClass.getESuperTypes().add(this.getClassifier());
-		actorEClass.getESuperTypes().add(this.getClassifier());
-		extendEClass.getESuperTypes().add(this.getNamedElement());
-		extendEClass.getESuperTypes().add(this.getDirectedRelationship());
-		useCaseEClass.getESuperTypes().add(this.getBehavioredClassifier());
-		extensionPointEClass.getESuperTypes().add(this.getRedefinableElement());
-		includeEClass.getESuperTypes().add(this.getNamedElement());
-		includeEClass.getESuperTypes().add(this.getDirectedRelationship());
 		activityEdgeEClass.getESuperTypes().add(this.getRedefinableElement());
 		activityGroupEClass.getESuperTypes().add(this.getElement());
 		activityNodeEClass.getESuperTypes().add(this.getRedefinableElement());
@@ -10227,9 +10220,30 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		manifestationEClass.getESuperTypes().add(this.getAbstraction());
 		interfaceEClass.getESuperTypes().add(this.getClassifier());
 		implementationEClass.getESuperTypes().add(this.getRealization());
-		collaborationOccurrenceEClass.getESuperTypes().add(this.getNamedElement());
+		actorEClass.getESuperTypes().add(this.getClassifier());
+		extendEClass.getESuperTypes().add(this.getNamedElement());
+		extendEClass.getESuperTypes().add(this.getDirectedRelationship());
+		useCaseEClass.getESuperTypes().add(this.getBehavioredClassifier());
+		extensionPointEClass.getESuperTypes().add(this.getRedefinableElement());
+		includeEClass.getESuperTypes().add(this.getNamedElement());
+		includeEClass.getESuperTypes().add(this.getDirectedRelationship());
+		templateSignatureEClass.getESuperTypes().add(this.getElement());
+		templateParameterEClass.getESuperTypes().add(this.getElement());
+		templateableElementEClass.getESuperTypes().add(this.getElement());
+		stringExpressionEClass.getESuperTypes().add(this.getTemplateableElement());
+		parameterableElementEClass.getESuperTypes().add(this.getElement());
+		templateBindingEClass.getESuperTypes().add(this.getDirectedRelationship());
+		templateParameterSubstitutionEClass.getESuperTypes().add(this.getElement());
 		collaborationEClass.getESuperTypes().add(this.getBehavioredClassifier());
 		collaborationEClass.getESuperTypes().add(this.getStructuredClassifier());
+		operationTemplateParameterEClass.getESuperTypes().add(this.getTemplateParameter());
+		classifierTemplateParameterEClass.getESuperTypes().add(this.getTemplateParameter());
+		parameterableClassifierEClass.getESuperTypes().add(this.getClassifier());
+		redefinableTemplateSignatureEClass.getESuperTypes().add(this.getRedefinableElement());
+		redefinableTemplateSignatureEClass.getESuperTypes().add(this.getTemplateSignature());
+		templateableClassifierEClass.getESuperTypes().add(this.getClassifier());
+		connectableElementTemplateParameterEClass.getESuperTypes().add(this.getTemplateParameter());
+		collaborationOccurrenceEClass.getESuperTypes().add(this.getNamedElement());
 		portEClass.getESuperTypes().add(this.getProperty());
 		encapsulatedClassifierEClass.getESuperTypes().add(this.getStructuredClassifier());
 		interactionEClass.getESuperTypes().add(this.getBehavior());
@@ -10244,29 +10258,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		executionOccurrenceEClass.getESuperTypes().add(this.getInteractionFragment());
 		stateInvariantEClass.getESuperTypes().add(this.getInteractionFragment());
 		stopEClass.getESuperTypes().add(this.getEventOccurrence());
-		templateSignatureEClass.getESuperTypes().add(this.getElement());
-		templateParameterEClass.getESuperTypes().add(this.getElement());
-		templateableElementEClass.getESuperTypes().add(this.getElement());
-		stringExpressionEClass.getESuperTypes().add(this.getTemplateableElement());
-		parameterableElementEClass.getESuperTypes().add(this.getElement());
-		templateBindingEClass.getESuperTypes().add(this.getDirectedRelationship());
-		templateParameterSubstitutionEClass.getESuperTypes().add(this.getElement());
-		operationTemplateParameterEClass.getESuperTypes().add(this.getTemplateParameter());
-		classifierTemplateParameterEClass.getESuperTypes().add(this.getTemplateParameter());
-		parameterableClassifierEClass.getESuperTypes().add(this.getClassifier());
-		redefinableTemplateSignatureEClass.getESuperTypes().add(this.getRedefinableElement());
-		redefinableTemplateSignatureEClass.getESuperTypes().add(this.getTemplateSignature());
-		templateableClassifierEClass.getESuperTypes().add(this.getClassifier());
-		connectableElementTemplateParameterEClass.getESuperTypes().add(this.getTemplateParameter());
-		callTriggerEClass.getESuperTypes().add(this.getMessageTrigger());
-		messageTriggerEClass.getESuperTypes().add(this.getTrigger());
-		changeTriggerEClass.getESuperTypes().add(this.getTrigger());
-		triggerEClass.getESuperTypes().add(this.getNamedElement());
-		receptionEClass.getESuperTypes().add(this.getBehavioralFeature());
-		signalEClass.getESuperTypes().add(this.getClassifier());
-		signalTriggerEClass.getESuperTypes().add(this.getMessageTrigger());
-		timeTriggerEClass.getESuperTypes().add(this.getTrigger());
-		anyTriggerEClass.getESuperTypes().add(this.getMessageTrigger());
 		variableEClass.getESuperTypes().add(this.getConnectableElement());
 		variableEClass.getESuperTypes().add(this.getTypedElement());
 		variableEClass.getESuperTypes().add(this.getMultiplicityElement());
@@ -10276,6 +10267,24 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		conditionalNodeEClass.getESuperTypes().add(this.getStructuredActivityNode());
 		clauseEClass.getESuperTypes().add(this.getElement());
 		loopNodeEClass.getESuperTypes().add(this.getStructuredActivityNode());
+		callTriggerEClass.getESuperTypes().add(this.getMessageTrigger());
+		messageTriggerEClass.getESuperTypes().add(this.getTrigger());
+		changeTriggerEClass.getESuperTypes().add(this.getTrigger());
+		triggerEClass.getESuperTypes().add(this.getNamedElement());
+		receptionEClass.getESuperTypes().add(this.getBehavioralFeature());
+		signalEClass.getESuperTypes().add(this.getClassifier());
+		signalTriggerEClass.getESuperTypes().add(this.getMessageTrigger());
+		timeTriggerEClass.getESuperTypes().add(this.getTrigger());
+		anyTriggerEClass.getESuperTypes().add(this.getMessageTrigger());
+		expansionNodeEClass.getESuperTypes().add(this.getObjectNode());
+		expansionRegionEClass.getESuperTypes().add(this.getStructuredActivityNode());
+		exceptionHandlerEClass.getESuperTypes().add(this.getElement());
+		forkNodeEClass.getESuperTypes().add(this.getControlNode());
+		joinNodeEClass.getESuperTypes().add(this.getControlNode());
+		flowFinalNodeEClass.getESuperTypes().add(this.getFinalNode());
+		centralBufferNodeEClass.getESuperTypes().add(this.getObjectNode());
+		activityPartitionEClass.getESuperTypes().add(this.getNamedElement());
+		activityPartitionEClass.getESuperTypes().add(this.getActivityGroup());
 		createObjectActionEClass.getESuperTypes().add(this.getAction());
 		destroyObjectActionEClass.getESuperTypes().add(this.getAction());
 		testIdentityActionEClass.getESuperTypes().add(this.getAction());
@@ -10309,17 +10318,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		sendObjectActionEClass.getESuperTypes().add(this.getInvocationAction());
 		callOperationActionEClass.getESuperTypes().add(this.getCallAction());
 		callBehaviorActionEClass.getESuperTypes().add(this.getCallAction());
-		interactionOccurrenceEClass.getESuperTypes().add(this.getInteractionFragment());
-		gateEClass.getESuperTypes().add(this.getMessageEnd());
-		partDecompositionEClass.getESuperTypes().add(this.getInteractionOccurrence());
-		interactionOperandEClass.getESuperTypes().add(this.getNamespace());
-		interactionOperandEClass.getESuperTypes().add(this.getInteractionFragment());
-		interactionConstraintEClass.getESuperTypes().add(this.getConstraint());
-		combinedFragmentEClass.getESuperTypes().add(this.getInteractionFragment());
-		continuationEClass.getESuperTypes().add(this.getInteractionFragment());
-		expansionNodeEClass.getESuperTypes().add(this.getObjectNode());
-		expansionRegionEClass.getESuperTypes().add(this.getStructuredActivityNode());
-		exceptionHandlerEClass.getESuperTypes().add(this.getElement());
 		stateMachineEClass.getESuperTypes().add(this.getBehavior());
 		regionEClass.getESuperTypes().add(this.getNamespace());
 		regionEClass.getESuperTypes().add(this.getRedefinableElement());
@@ -10331,23 +10329,14 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		connectionPointReferenceEClass.getESuperTypes().add(this.getVertex());
 		transitionEClass.getESuperTypes().add(this.getRedefinableElement());
 		finalStateEClass.getESuperTypes().add(this.getState());
-		forkNodeEClass.getESuperTypes().add(this.getControlNode());
-		joinNodeEClass.getESuperTypes().add(this.getControlNode());
-		flowFinalNodeEClass.getESuperTypes().add(this.getFinalNode());
-		centralBufferNodeEClass.getESuperTypes().add(this.getObjectNode());
-		activityPartitionEClass.getESuperTypes().add(this.getNamedElement());
-		activityPartitionEClass.getESuperTypes().add(this.getActivityGroup());
-		dataStoreNodeEClass.getESuperTypes().add(this.getCentralBufferNode());
-		interruptibleActivityRegionEClass.getESuperTypes().add(this.getActivityGroup());
-		parameterSetEClass.getESuperTypes().add(this.getNamedElement());
-		deploymentEClass.getESuperTypes().add(this.getDependency());
-		deployedArtifactEClass.getESuperTypes().add(this.getNamedElement());
-		deploymentTargetEClass.getESuperTypes().add(this.getNamedElement());
-		nodeEClass.getESuperTypes().add(this.getClass_());
-		nodeEClass.getESuperTypes().add(this.getDeploymentTarget());
-		deviceEClass.getESuperTypes().add(this.getNode());
-		executionEnvironmentEClass.getESuperTypes().add(this.getNode());
-		communicationPathEClass.getESuperTypes().add(this.getAssociation());
+		interactionOccurrenceEClass.getESuperTypes().add(this.getInteractionFragment());
+		gateEClass.getESuperTypes().add(this.getMessageEnd());
+		partDecompositionEClass.getESuperTypes().add(this.getInteractionOccurrence());
+		interactionOperandEClass.getESuperTypes().add(this.getNamespace());
+		interactionOperandEClass.getESuperTypes().add(this.getInteractionFragment());
+		interactionConstraintEClass.getESuperTypes().add(this.getConstraint());
+		combinedFragmentEClass.getESuperTypes().add(this.getInteractionFragment());
+		continuationEClass.getESuperTypes().add(this.getInteractionFragment());
 		componentEClass.getESuperTypes().add(this.getClass_());
 		protocolConformanceEClass.getESuperTypes().add(this.getDirectedRelationship());
 		protocolStateMachineEClass.getESuperTypes().add(this.getStateMachine());
@@ -10362,6 +10351,17 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		timeIntervalEClass.getESuperTypes().add(this.getInterval());
 		durationObservationActionEClass.getESuperTypes().add(this.getWriteStructuralFeatureAction());
 		durationConstraintEClass.getESuperTypes().add(this.getIntervalConstraint());
+		dataStoreNodeEClass.getESuperTypes().add(this.getCentralBufferNode());
+		interruptibleActivityRegionEClass.getESuperTypes().add(this.getActivityGroup());
+		parameterSetEClass.getESuperTypes().add(this.getNamedElement());
+		deploymentEClass.getESuperTypes().add(this.getDependency());
+		deployedArtifactEClass.getESuperTypes().add(this.getNamedElement());
+		deploymentTargetEClass.getESuperTypes().add(this.getNamedElement());
+		nodeEClass.getESuperTypes().add(this.getClass_());
+		nodeEClass.getESuperTypes().add(this.getDeploymentTarget());
+		deviceEClass.getESuperTypes().add(this.getNode());
+		executionEnvironmentEClass.getESuperTypes().add(this.getNode());
+		communicationPathEClass.getESuperTypes().add(this.getAssociation());
 		readExtentActionEClass.getESuperTypes().add(this.getAction());
 		reclassifyObjectActionEClass.getESuperTypes().add(this.getAction());
 		readIsClassifiedObjectActionEClass.getESuperTypes().add(this.getAction());
@@ -10439,6 +10439,15 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		addEOperation(multiplicityElementEClass, this.getUnlimitedNatural(), "upper"); //$NON-NLS-1$
 
 		addEOperation(multiplicityElementEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		initEClass(directedRelationshipEClass, DirectedRelationship.class, "DirectedRelationship", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getDirectedRelationship_Source(), this.getElement(), null, "source", null, 1, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getDirectedRelationship_Target(), this.getElement(), null, "target", null, 1, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(directedRelationshipEClass, ecorePackage.getEEList(), "getRelatedElements"); //$NON-NLS-1$
+
+		initEClass(relationshipEClass, Relationship.class, "Relationship", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getRelationship_RelatedElement(), this.getElement(), null, "relatedElement", null, 1, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(opaqueExpressionEClass, OpaqueExpression.class, "OpaqueExpression", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEAttribute(getOpaqueExpression_Body(), this.getString(), "body", "", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
@@ -10540,20 +10549,11 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		addEOperation(namespaceEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
 
-		initEClass(directedRelationshipEClass, DirectedRelationship.class, "DirectedRelationship", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getDirectedRelationship_Source(), this.getElement(), null, "source", null, 1, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getDirectedRelationship_Target(), this.getElement(), null, "target", null, 1, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(directedRelationshipEClass, ecorePackage.getEEList(), "getRelatedElements"); //$NON-NLS-1$
-
-		initEClass(relationshipEClass, Relationship.class, "Relationship", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getRelationship_RelatedElement(), this.getElement(), null, "relatedElement", null, 1, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
 		initEClass(classEClass, org.eclipse.uml2.Class.class, "Class", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getClass_OwnedOperation(), this.getOperation(), this.getOperation_Class_(), "ownedOperation", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getClass_SuperClass(), this.getClass_(), null, "superClass", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getClass_Extension(), this.getExtension(), this.getExtension_Metaclass(), "extension", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getClass_NestedClassifier(), this.getClassifier(), null, "nestedClassifier", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getClass_Extension(), this.getExtension(), this.getExtension_Metaclass(), "extension", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getClass_IsActive(), this.getBoolean(), "isActive", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getClass_OwnedReception(), this.getReception(), null, "ownedReception", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
@@ -10735,8 +10735,8 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getPackage_OwnedType(), this.getType(), this.getType_Package(), "ownedType", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPackage_OwnedMember(), this.getPackageableElement(), null, "ownedMember", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPackage_PackageMerge(), this.getPackageMerge(), this.getPackageMerge_MergingPackage(), "packageMerge", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPackage_AppliedProfile(), this.getProfileApplication(), null, "appliedProfile", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPackage_PackageExtension(), this.getPackageMerge(), null, "packageExtension", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getPackage_AppliedProfile(), this.getProfileApplication(), null, "appliedProfile", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
 		op = addEOperation(packageEClass, this.getBoolean(), "validateElementsPublicOrPrivate"); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
@@ -10780,17 +10780,41 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		initEClass(primitiveTypeEClass, PrimitiveType.class, "PrimitiveType", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 
-		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getConstraint_Context(), this.getNamespace(), null, "context", null, 0, 1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getConstraint_Namespace(), this.getNamespace(), this.getNamespace_OwnedRule(), "namespace", null, 0, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getConstraint_Specification(), this.getValueSpecification(), null, "specification", null, 1, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getConstraint_ConstrainedElement(), this.getElement(), null, "constrainedElement", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(literalBooleanEClass, LiteralBoolean.class, "LiteralBoolean", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getLiteralBoolean_Value(), this.getBoolean(), "value", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		op = addEOperation(constraintEClass, this.getBoolean(), "validateNotApplyToSelf"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+		addEOperation(literalBooleanEClass, this.getBoolean(), "isComputable"); //$NON-NLS-1$
 
-		addEOperation(constraintEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+		addEOperation(literalBooleanEClass, this.getBoolean(), "booleanValue"); //$NON-NLS-1$
+
+		initEClass(literalSpecificationEClass, LiteralSpecification.class, "LiteralSpecification", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(literalStringEClass, LiteralString.class, "LiteralString", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getLiteralString_Value(), this.getString(), "value", "", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+
+		addEOperation(literalStringEClass, this.getBoolean(), "isComputable"); //$NON-NLS-1$
+
+		addEOperation(literalStringEClass, this.getString(), "stringValue"); //$NON-NLS-1$
+
+		initEClass(literalNullEClass, LiteralNull.class, "LiteralNull", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		addEOperation(literalNullEClass, this.getBoolean(), "isComputable"); //$NON-NLS-1$
+
+		addEOperation(literalNullEClass, this.getBoolean(), "isNull"); //$NON-NLS-1$
+
+		initEClass(literalIntegerEClass, LiteralInteger.class, "LiteralInteger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getLiteralInteger_Value(), this.getInteger(), "value", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(literalIntegerEClass, this.getBoolean(), "isComputable"); //$NON-NLS-1$
+
+		addEOperation(literalIntegerEClass, this.getInteger(), "integerValue"); //$NON-NLS-1$
+
+		initEClass(literalUnlimitedNaturalEClass, LiteralUnlimitedNatural.class, "LiteralUnlimitedNatural", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getLiteralUnlimitedNatural_Value(), this.getUnlimitedNatural(), "value", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(literalUnlimitedNaturalEClass, this.getBoolean(), "isComputable"); //$NON-NLS-1$
+
+		addEOperation(literalUnlimitedNaturalEClass, this.getUnlimitedNatural(), "unlimitedValue"); //$NON-NLS-1$
 
 		initEClass(classifierEClass, Classifier.class, "Classifier", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getClassifier_Feature(), this.getFeature(), this.getFeature_FeaturingClassifier(), "feature", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
@@ -10800,8 +10824,8 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getClassifier_Generalization(), this.getGeneralization(), this.getGeneralization_Specific(), "generalization", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getClassifier_Attribute(), this.getProperty(), null, "attribute", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getClassifier_RedefinedClassifier(), this.getClassifier(), null, "redefinedClassifier", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getClassifier_Substitution(), this.getSubstitution(), this.getSubstitution_SubstitutingClassifier(), "substitution", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getClassifier_PowertypeExtent(), this.getGeneralizationSet(), this.getGeneralizationSet_Powertype(), "powertypeExtent", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getClassifier_Substitution(), this.getSubstitution(), this.getSubstitution_SubstitutingClassifier(), "substitution", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getClassifier_OwnedUseCase(), this.getUseCase(), null, "ownedUseCase", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getClassifier_UseCase(), this.getUseCase(), this.getUseCase_Subject(), "useCase", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getClassifier_Representation(), this.getCollaborationOccurrence(), null, "representation", null, 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -10862,44 +10886,17 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEReference(getFeature_FeaturingClassifier(), this.getClassifier(), this.getClassifier_Feature(), "featuringClassifier", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getFeature_IsStatic(), this.getBoolean(), "isStatic", "false", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
-		initEClass(literalBooleanEClass, LiteralBoolean.class, "LiteralBoolean", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getLiteralBoolean_Value(), this.getBoolean(), "value", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getConstraint_Context(), this.getNamespace(), null, "context", null, 0, 1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getConstraint_Namespace(), this.getNamespace(), this.getNamespace_OwnedRule(), "namespace", null, 0, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getConstraint_Specification(), this.getValueSpecification(), null, "specification", null, 1, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getConstraint_ConstrainedElement(), this.getElement(), null, "constrainedElement", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(literalBooleanEClass, this.getBoolean(), "isComputable"); //$NON-NLS-1$
+		op = addEOperation(constraintEClass, this.getBoolean(), "validateNotApplyToSelf"); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
 
-		addEOperation(literalBooleanEClass, this.getBoolean(), "booleanValue"); //$NON-NLS-1$
-
-		initEClass(literalSpecificationEClass, LiteralSpecification.class, "LiteralSpecification", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(literalStringEClass, LiteralString.class, "LiteralString", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getLiteralString_Value(), this.getString(), "value", "", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-
-		addEOperation(literalStringEClass, this.getBoolean(), "isComputable"); //$NON-NLS-1$
-
-		addEOperation(literalStringEClass, this.getString(), "stringValue"); //$NON-NLS-1$
-
-		initEClass(literalNullEClass, LiteralNull.class, "LiteralNull", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		addEOperation(literalNullEClass, this.getBoolean(), "isComputable"); //$NON-NLS-1$
-
-		addEOperation(literalNullEClass, this.getBoolean(), "isNull"); //$NON-NLS-1$
-
-		initEClass(literalIntegerEClass, LiteralInteger.class, "LiteralInteger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getLiteralInteger_Value(), this.getInteger(), "value", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(literalIntegerEClass, this.getBoolean(), "isComputable"); //$NON-NLS-1$
-
-		addEOperation(literalIntegerEClass, this.getInteger(), "integerValue"); //$NON-NLS-1$
-
-		initEClass(literalUnlimitedNaturalEClass, LiteralUnlimitedNatural.class, "LiteralUnlimitedNatural", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getLiteralUnlimitedNatural_Value(), this.getUnlimitedNatural(), "value", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(literalUnlimitedNaturalEClass, this.getBoolean(), "isComputable"); //$NON-NLS-1$
-
-		addEOperation(literalUnlimitedNaturalEClass, this.getUnlimitedNatural(), "unlimitedValue"); //$NON-NLS-1$
-
-		initEClass(structuralFeatureEClass, StructuralFeature.class, "StructuralFeature", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getStructuralFeature_IsReadOnly(), this.getBoolean(), "isReadOnly", "false", 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		addEOperation(constraintEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
 
 		initEClass(behavioralFeatureEClass, BehavioralFeature.class, "BehavioralFeature", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getBehavioralFeature_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -10917,6 +10914,29 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		addEOperation(behavioralFeatureEClass, ecorePackage.getEEList(), "getMembers"); //$NON-NLS-1$
 
 		addEOperation(behavioralFeatureEClass, ecorePackage.getEEList(), "getOwnedMembers"); //$NON-NLS-1$
+
+		initEClass(structuralFeatureEClass, StructuralFeature.class, "StructuralFeature", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getStructuralFeature_IsReadOnly(), this.getBoolean(), "isReadOnly", "false", 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+
+		initEClass(redefinableElementEClass, RedefinableElement.class, "RedefinableElement", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getRedefinableElement_RedefinitionContext(), this.getClassifier(), null, "redefinitionContext", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getRedefinableElement_IsLeaf(), this.getBoolean(), "isLeaf", "false", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+
+		op = addEOperation(redefinableElementEClass, this.getBoolean(), "validateRedefinitionContextValid"); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+
+		op = addEOperation(redefinableElementEClass, this.getBoolean(), "validateRedefinitionConsistent"); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
+
+		op = addEOperation(redefinableElementEClass, this.getBoolean(), "isConsistentWith"); //$NON-NLS-1$
+		addEParameter(op, this.getRedefinableElement(), "redefinee"); //$NON-NLS-1$
+
+		op = addEOperation(redefinableElementEClass, this.getBoolean(), "isRedefinitionContextValid"); //$NON-NLS-1$
+		addEParameter(op, this.getRedefinableElement(), "redefinable"); //$NON-NLS-1$
+
+		addEOperation(redefinableElementEClass, ecorePackage.getEEList(), "getRedefinedElements"); //$NON-NLS-1$
 
 		initEClass(generalizationEClass, Generalization.class, "Generalization", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getGeneralization_Specific(), this.getClassifier(), this.getClassifier_Generalization(), "specific", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -10956,26 +10976,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		initEClass(instanceValueEClass, InstanceValue.class, "InstanceValue", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getInstanceValue_Instance(), this.getInstanceSpecification(), null, "instance", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(redefinableElementEClass, RedefinableElement.class, "RedefinableElement", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getRedefinableElement_RedefinitionContext(), this.getClassifier(), null, "redefinitionContext", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getRedefinableElement_IsLeaf(), this.getBoolean(), "isLeaf", "false", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-
-		op = addEOperation(redefinableElementEClass, this.getBoolean(), "validateRedefinitionContextValid"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
-
-		op = addEOperation(redefinableElementEClass, this.getBoolean(), "validateRedefinitionConsistent"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEMap(), "context"); //$NON-NLS-1$
-
-		op = addEOperation(redefinableElementEClass, this.getBoolean(), "isConsistentWith"); //$NON-NLS-1$
-		addEParameter(op, this.getRedefinableElement(), "redefinee"); //$NON-NLS-1$
-
-		op = addEOperation(redefinableElementEClass, this.getBoolean(), "isRedefinitionContextValid"); //$NON-NLS-1$
-		addEParameter(op, this.getRedefinableElement(), "redefinable"); //$NON-NLS-1$
-
-		addEOperation(redefinableElementEClass, ecorePackage.getEEList(), "getRedefinedElements"); //$NON-NLS-1$
 
 		initEClass(packageableElementEClass, PackageableElement.class, "PackageableElement", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEAttribute(getPackageableElement_PackageableElement_visibility(), this.getVisibilityKind(), "packageableElement_visibility", null, 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -11076,53 +11076,12 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		op = addEOperation(extensionEndEClass, null, "setType"); //$NON-NLS-1$
 		addEParameter(op, this.getType(), "newType"); //$NON-NLS-1$
 
-		initEClass(associationClassEClass, AssociationClass.class, "AssociationClass", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
 		initEClass(informationItemEClass, InformationItem.class, "InformationItem", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getInformationItem_Represented(), this.getClassifier(), null, "represented", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(informationFlowEClass, InformationFlow.class, "InformationFlow", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getInformationFlow_Realization(), this.getRelationship(), null, "realization", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getInformationFlow_Conveyed(), this.getClassifier(), null, "conveyed", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(permissionEClass, Permission.class, "Permission", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(dependencyEClass, Dependency.class, "Dependency", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getDependency_Client(), this.getNamedElement(), this.getNamedElement_ClientDependency(), "client", null, 1, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getDependency_Supplier(), this.getNamedElement(), null, "supplier", null, 1, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(usageEClass, Usage.class, "Usage", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(abstractionEClass, Abstraction.class, "Abstraction", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getAbstraction_Mapping(), this.getOpaqueExpression(), null, "mapping", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(abstractionEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(realizationEClass, Realization.class, "Realization", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getRealization_Abstraction(), this.getComponent(), this.getComponent_Realization(), "abstraction", null, 0, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getRealization_RealizingClassifier(), this.getClassifier(), null, "realizingClassifier", null, 1, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(realizationEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
-
-		addEOperation(realizationEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
-
-		addEOperation(realizationEClass, ecorePackage.getEEList(), "getClients"); //$NON-NLS-1$
-
-		addEOperation(realizationEClass, ecorePackage.getEEList(), "getSuppliers"); //$NON-NLS-1$
-
-		addEOperation(realizationEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
-
-		initEClass(substitutionEClass, Substitution.class, "Substitution", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getSubstitution_Contract(), this.getClassifier(), null, "contract", null, 1, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getSubstitution_SubstitutingClassifier(), this.getClassifier(), this.getClassifier_Substitution(), "substitutingClassifier", null, 1, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(substitutionEClass, ecorePackage.getEEList(), "getSuppliers"); //$NON-NLS-1$
-
-		addEOperation(substitutionEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
-
-		addEOperation(substitutionEClass, ecorePackage.getEEList(), "getClients"); //$NON-NLS-1$
-
-		addEOperation(substitutionEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
 
 		initEClass(behaviorEClass, Behavior.class, "Behavior", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEAttribute(getBehavior_IsReentrant(), this.getBoolean(), "isReentrant", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -11168,14 +11127,55 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		addEOperation(activityEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
 
-		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getModel_Viewpoint(), this.getString(), "viewpoint", "", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-
 		initEClass(generalizationSetEClass, GeneralizationSet.class, "GeneralizationSet", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEAttribute(getGeneralizationSet_IsCovering(), this.getBoolean(), "isCovering", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getGeneralizationSet_IsDisjoint(), this.getBoolean(), "isDisjoint", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getGeneralizationSet_Powertype(), this.getClassifier(), this.getClassifier_PowertypeExtent(), "powertype", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getGeneralizationSet_Generalization(), this.getGeneralization(), this.getGeneralization_GeneralizationSet(), "generalization", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getModel_Viewpoint(), this.getString(), "viewpoint", "", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+
+		initEClass(associationClassEClass, AssociationClass.class, "AssociationClass", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(permissionEClass, Permission.class, "Permission", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(dependencyEClass, Dependency.class, "Dependency", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getDependency_Client(), this.getNamedElement(), this.getNamedElement_ClientDependency(), "client", null, 1, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getDependency_Supplier(), this.getNamedElement(), null, "supplier", null, 1, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(usageEClass, Usage.class, "Usage", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(abstractionEClass, Abstraction.class, "Abstraction", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getAbstraction_Mapping(), this.getOpaqueExpression(), null, "mapping", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(abstractionEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		initEClass(realizationEClass, Realization.class, "Realization", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getRealization_Abstraction(), this.getComponent(), this.getComponent_Realization(), "abstraction", null, 0, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getRealization_RealizingClassifier(), this.getClassifier(), null, "realizingClassifier", null, 1, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(realizationEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
+
+		addEOperation(realizationEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
+
+		addEOperation(realizationEClass, ecorePackage.getEEList(), "getClients"); //$NON-NLS-1$
+
+		addEOperation(realizationEClass, ecorePackage.getEEList(), "getSuppliers"); //$NON-NLS-1$
+
+		addEOperation(realizationEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
+
+		initEClass(substitutionEClass, Substitution.class, "Substitution", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getSubstitution_Contract(), this.getClassifier(), null, "contract", null, 1, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getSubstitution_SubstitutingClassifier(), this.getClassifier(), this.getClassifier_Substitution(), "substitutingClassifier", null, 1, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(substitutionEClass, ecorePackage.getEEList(), "getSuppliers"); //$NON-NLS-1$
+
+		addEOperation(substitutionEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
+
+		addEOperation(substitutionEClass, ecorePackage.getEEList(), "getClients"); //$NON-NLS-1$
+
+		addEOperation(substitutionEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
 
 		initEClass(connectorEndEClass, ConnectorEnd.class, "ConnectorEnd", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getConnectorEnd_DefiningEnd(), this.getProperty(), null, "definingEnd", null, 0, 1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -11209,39 +11209,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		addEOperation(structuredClassifierEClass, ecorePackage.getEEList(), "getMembers"); //$NON-NLS-1$
 
 		addEOperation(structuredClassifierEClass, ecorePackage.getEEList(), "getFeatures"); //$NON-NLS-1$
-
-		initEClass(actorEClass, Actor.class, "Actor", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(extendEClass, Extend.class, "Extend", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getExtend_ExtendedCase(), this.getUseCase(), null, "extendedCase", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getExtend_Extension(), this.getUseCase(), this.getUseCase_Extend(), "extension", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getExtend_Condition(), this.getConstraint(), null, "condition", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getExtend_ExtensionLocation(), this.getExtensionPoint(), null, "extensionLocation", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(extendEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
-
-		addEOperation(extendEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
-
-		addEOperation(extendEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(useCaseEClass, UseCase.class, "UseCase", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getUseCase_Include(), this.getInclude(), this.getInclude_IncludingCase(), "include", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getUseCase_Extend(), this.getExtend(), this.getExtend_Extension(), "extend", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getUseCase_ExtensionPoint(), this.getExtensionPoint(), this.getExtensionPoint_UseCase(), "extensionPoint", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getUseCase_Subject(), this.getClassifier(), this.getClassifier_UseCase(), "subject", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(useCaseEClass, ecorePackage.getEEList(), "getOwnedMembers"); //$NON-NLS-1$
-
-		initEClass(extensionPointEClass, ExtensionPoint.class, "ExtensionPoint", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getExtensionPoint_UseCase(), this.getUseCase(), this.getUseCase_ExtensionPoint(), "useCase", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(includeEClass, Include.class, "Include", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getInclude_IncludingCase(), this.getUseCase(), this.getUseCase_Include(), "includingCase", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getInclude_Addition(), this.getUseCase(), null, "addition", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(includeEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
-
-		addEOperation(includeEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
 
 		initEClass(activityEdgeEClass, ActivityEdge.class, "ActivityEdge", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getActivityEdge_Activity(), this.getActivity(), this.getActivity_Edge(), "activity", null, 0, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -11398,16 +11365,129 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		addEOperation(implementationEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
 
-		initEClass(collaborationOccurrenceEClass, CollaborationOccurrence.class, "CollaborationOccurrence", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getCollaborationOccurrence_Type(), this.getCollaboration(), null, "type", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCollaborationOccurrence_RoleBinding(), this.getDependency(), null, "roleBinding", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(actorEClass, Actor.class, "Actor", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 
-		addEOperation(collaborationOccurrenceEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+		initEClass(extendEClass, Extend.class, "Extend", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getExtend_ExtendedCase(), this.getUseCase(), null, "extendedCase", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getExtend_Extension(), this.getUseCase(), this.getUseCase_Extend(), "extension", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getExtend_Condition(), this.getConstraint(), null, "condition", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getExtend_ExtensionLocation(), this.getExtensionPoint(), null, "extensionLocation", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(extendEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
+
+		addEOperation(extendEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
+
+		addEOperation(extendEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		initEClass(useCaseEClass, UseCase.class, "UseCase", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getUseCase_Include(), this.getInclude(), this.getInclude_IncludingCase(), "include", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getUseCase_Extend(), this.getExtend(), this.getExtend_Extension(), "extend", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getUseCase_ExtensionPoint(), this.getExtensionPoint(), this.getExtensionPoint_UseCase(), "extensionPoint", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getUseCase_Subject(), this.getClassifier(), this.getClassifier_UseCase(), "subject", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(useCaseEClass, ecorePackage.getEEList(), "getOwnedMembers"); //$NON-NLS-1$
+
+		initEClass(extensionPointEClass, ExtensionPoint.class, "ExtensionPoint", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getExtensionPoint_UseCase(), this.getUseCase(), this.getUseCase_ExtensionPoint(), "useCase", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(includeEClass, Include.class, "Include", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getInclude_IncludingCase(), this.getUseCase(), this.getUseCase_Include(), "includingCase", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getInclude_Addition(), this.getUseCase(), null, "addition", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(includeEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
+
+		addEOperation(includeEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
+
+		initEClass(templateSignatureEClass, TemplateSignature.class, "TemplateSignature", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getTemplateSignature_Parameter(), this.getTemplateParameter(), null, "parameter", null, 1, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateSignature_OwnedParameter(), this.getTemplateParameter(), this.getTemplateParameter_Signature(), "ownedParameter", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateSignature_NestedSignature(), this.getTemplateSignature(), this.getTemplateSignature_NestingSignature(), "nestedSignature", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateSignature_NestingSignature(), this.getTemplateSignature(), this.getTemplateSignature_NestedSignature(), "nestingSignature", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateSignature_Template(), this.getTemplateableElement(), this.getTemplateableElement_OwnedTemplateSignature(), "template", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(templateSignatureEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		addEOperation(templateSignatureEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
+
+		initEClass(templateParameterEClass, TemplateParameter.class, "TemplateParameter", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getTemplateParameter_Signature(), this.getTemplateSignature(), this.getTemplateSignature_OwnedParameter(), "signature", null, 1, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateParameter_ParameteredElement(), this.getParameterableElement(), this.getParameterableElement_TemplateParameter(), "parameteredElement", null, 1, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateParameter_OwnedParameteredElement(), this.getParameterableElement(), this.getParameterableElement_OwningParameter(), "ownedParameteredElement", null, 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateParameter_Default(), this.getParameterableElement(), null, "default", null, 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateParameter_OwnedDefault(), this.getParameterableElement(), null, "ownedDefault", null, 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(templateParameterEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
+
+		addEOperation(templateParameterEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		initEClass(templateableElementEClass, TemplateableElement.class, "TemplateableElement", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getTemplateableElement_TemplateBinding(), this.getTemplateBinding(), this.getTemplateBinding_BoundElement(), "templateBinding", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateableElement_OwnedTemplateSignature(), this.getTemplateSignature(), this.getTemplateSignature_Template(), "ownedTemplateSignature", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(templateableElementEClass, this.getSet(), "parameterableElements"); //$NON-NLS-1$
+
+		addEOperation(templateableElementEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		initEClass(stringExpressionEClass, StringExpression.class, "StringExpression", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getStringExpression_SubExpression(), this.getStringExpression(), this.getStringExpression_OwningExpression(), "subExpression", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getStringExpression_OwningExpression(), this.getStringExpression(), this.getStringExpression_SubExpression(), "owningExpression", null, 0, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(stringExpressionEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		addEOperation(stringExpressionEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
+
+		initEClass(parameterableElementEClass, ParameterableElement.class, "ParameterableElement", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getParameterableElement_TemplateParameter(), this.getTemplateParameter(), this.getTemplateParameter_ParameteredElement(), "templateParameter", null, 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getParameterableElement_OwningParameter(), this.getTemplateParameter(), this.getTemplateParameter_OwnedParameteredElement(), "owningParameter", null, 0, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(parameterableElementEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
+
+		initEClass(templateBindingEClass, TemplateBinding.class, "TemplateBinding", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getTemplateBinding_BoundElement(), this.getTemplateableElement(), this.getTemplateableElement_TemplateBinding(), "boundElement", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateBinding_Signature(), this.getTemplateSignature(), null, "signature", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateBinding_ParameterSubstitution(), this.getTemplateParameterSubstitution(), this.getTemplateParameterSubstitution_TemplateBinding(), "parameterSubstitution", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(templateBindingEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
+
+		addEOperation(templateBindingEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
+
+		addEOperation(templateBindingEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
+
+		addEOperation(templateBindingEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		initEClass(templateParameterSubstitutionEClass, TemplateParameterSubstitution.class, "TemplateParameterSubstitution", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getTemplateParameterSubstitution_Formal(), this.getTemplateParameter(), null, "formal", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateParameterSubstitution_TemplateBinding(), this.getTemplateBinding(), this.getTemplateBinding_ParameterSubstitution(), "templateBinding", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateParameterSubstitution_Actual(), this.getParameterableElement(), null, "actual", null, 1, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTemplateParameterSubstitution_OwnedActual(), this.getParameterableElement(), null, "ownedActual", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(templateParameterSubstitutionEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
+
+		addEOperation(templateParameterSubstitutionEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
 
 		initEClass(collaborationEClass, Collaboration.class, "Collaboration", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getCollaboration_CollaborationRole(), this.getConnectableElement(), null, "collaborationRole", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
 		addEOperation(collaborationEClass, ecorePackage.getEEList(), "getRoles"); //$NON-NLS-1$
+
+		initEClass(operationTemplateParameterEClass, OperationTemplateParameter.class, "OperationTemplateParameter", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(classifierTemplateParameterEClass, ClassifierTemplateParameter.class, "ClassifierTemplateParameter", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getClassifierTemplateParameter_AllowSubstitutable(), this.getBoolean(), "allowSubstitutable", "true", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+
+		initEClass(parameterableClassifierEClass, ParameterableClassifier.class, "ParameterableClassifier", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(redefinableTemplateSignatureEClass, RedefinableTemplateSignature.class, "RedefinableTemplateSignature", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(templateableClassifierEClass, TemplateableClassifier.class, "TemplateableClassifier", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(connectableElementTemplateParameterEClass, ConnectableElementTemplateParameter.class, "ConnectableElementTemplateParameter", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(collaborationOccurrenceEClass, CollaborationOccurrence.class, "CollaborationOccurrence", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getCollaborationOccurrence_Type(), this.getCollaboration(), null, "type", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCollaborationOccurrence_RoleBinding(), this.getDependency(), null, "roleBinding", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(collaborationOccurrenceEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
 
 		initEClass(portEClass, Port.class, "Port", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEAttribute(getPort_IsBehavior(), this.getBoolean(), "isBehavior", "false", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
@@ -11499,120 +11579,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		initEClass(stopEClass, Stop.class, "Stop", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 
-		initEClass(templateSignatureEClass, TemplateSignature.class, "TemplateSignature", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getTemplateSignature_Parameter(), this.getTemplateParameter(), null, "parameter", null, 1, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateSignature_OwnedParameter(), this.getTemplateParameter(), this.getTemplateParameter_Signature(), "ownedParameter", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateSignature_NestedSignature(), this.getTemplateSignature(), this.getTemplateSignature_NestingSignature(), "nestedSignature", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateSignature_NestingSignature(), this.getTemplateSignature(), this.getTemplateSignature_NestedSignature(), "nestingSignature", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateSignature_Template(), this.getTemplateableElement(), this.getTemplateableElement_OwnedTemplateSignature(), "template", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(templateSignatureEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		addEOperation(templateSignatureEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
-
-		initEClass(templateParameterEClass, TemplateParameter.class, "TemplateParameter", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getTemplateParameter_Signature(), this.getTemplateSignature(), this.getTemplateSignature_OwnedParameter(), "signature", null, 1, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateParameter_ParameteredElement(), this.getParameterableElement(), this.getParameterableElement_TemplateParameter(), "parameteredElement", null, 1, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateParameter_OwnedParameteredElement(), this.getParameterableElement(), this.getParameterableElement_OwningParameter(), "ownedParameteredElement", null, 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateParameter_Default(), this.getParameterableElement(), null, "default", null, 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateParameter_OwnedDefault(), this.getParameterableElement(), null, "ownedDefault", null, 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(templateParameterEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
-
-		addEOperation(templateParameterEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(templateableElementEClass, TemplateableElement.class, "TemplateableElement", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getTemplateableElement_TemplateBinding(), this.getTemplateBinding(), this.getTemplateBinding_BoundElement(), "templateBinding", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateableElement_OwnedTemplateSignature(), this.getTemplateSignature(), this.getTemplateSignature_Template(), "ownedTemplateSignature", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(templateableElementEClass, this.getSet(), "parameterableElements"); //$NON-NLS-1$
-
-		addEOperation(templateableElementEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(stringExpressionEClass, StringExpression.class, "StringExpression", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getStringExpression_SubExpression(), this.getStringExpression(), this.getStringExpression_OwningExpression(), "subExpression", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getStringExpression_OwningExpression(), this.getStringExpression(), this.getStringExpression_SubExpression(), "owningExpression", null, 0, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(stringExpressionEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		addEOperation(stringExpressionEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
-
-		initEClass(parameterableElementEClass, ParameterableElement.class, "ParameterableElement", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getParameterableElement_TemplateParameter(), this.getTemplateParameter(), this.getTemplateParameter_ParameteredElement(), "templateParameter", null, 0, 1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getParameterableElement_OwningParameter(), this.getTemplateParameter(), this.getTemplateParameter_OwnedParameteredElement(), "owningParameter", null, 0, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(parameterableElementEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
-
-		initEClass(templateBindingEClass, TemplateBinding.class, "TemplateBinding", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getTemplateBinding_BoundElement(), this.getTemplateableElement(), this.getTemplateableElement_TemplateBinding(), "boundElement", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateBinding_Signature(), this.getTemplateSignature(), null, "signature", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateBinding_ParameterSubstitution(), this.getTemplateParameterSubstitution(), this.getTemplateParameterSubstitution_TemplateBinding(), "parameterSubstitution", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(templateBindingEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
-
-		addEOperation(templateBindingEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
-
-		addEOperation(templateBindingEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
-
-		addEOperation(templateBindingEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(templateParameterSubstitutionEClass, TemplateParameterSubstitution.class, "TemplateParameterSubstitution", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getTemplateParameterSubstitution_Formal(), this.getTemplateParameter(), null, "formal", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateParameterSubstitution_TemplateBinding(), this.getTemplateBinding(), this.getTemplateBinding_ParameterSubstitution(), "templateBinding", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateParameterSubstitution_Actual(), this.getParameterableElement(), null, "actual", null, 1, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTemplateParameterSubstitution_OwnedActual(), this.getParameterableElement(), null, "ownedActual", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(templateParameterSubstitutionEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
-
-		addEOperation(templateParameterSubstitutionEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(operationTemplateParameterEClass, OperationTemplateParameter.class, "OperationTemplateParameter", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(classifierTemplateParameterEClass, ClassifierTemplateParameter.class, "ClassifierTemplateParameter", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getClassifierTemplateParameter_AllowSubstitutable(), this.getBoolean(), "allowSubstitutable", "true", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-
-		initEClass(parameterableClassifierEClass, ParameterableClassifier.class, "ParameterableClassifier", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(redefinableTemplateSignatureEClass, RedefinableTemplateSignature.class, "RedefinableTemplateSignature", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(templateableClassifierEClass, TemplateableClassifier.class, "TemplateableClassifier", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(connectableElementTemplateParameterEClass, ConnectableElementTemplateParameter.class, "ConnectableElementTemplateParameter", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(callTriggerEClass, CallTrigger.class, "CallTrigger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getCallTrigger_Operation(), this.getOperation(), null, "operation", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(messageTriggerEClass, MessageTrigger.class, "MessageTrigger", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(changeTriggerEClass, ChangeTrigger.class, "ChangeTrigger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getChangeTrigger_ChangeExpression(), this.getValueSpecification(), null, "changeExpression", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(changeTriggerEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(triggerEClass, Trigger.class, "Trigger", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getTrigger_Port(), this.getPort(), null, "port", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(receptionEClass, Reception.class, "Reception", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getReception_Signal(), this.getSignal(), null, "signal", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(signalEClass, Signal.class, "Signal", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getSignal_OwnedAttribute(), this.getProperty(), null, "ownedAttribute", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(signalEClass, ecorePackage.getEEList(), "getAttributes"); //$NON-NLS-1$
-
-		addEOperation(signalEClass, ecorePackage.getEEList(), "getOwnedMembers"); //$NON-NLS-1$
-
-		initEClass(signalTriggerEClass, SignalTrigger.class, "SignalTrigger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getSignalTrigger_Signal(), this.getSignal(), null, "signal", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(timeTriggerEClass, TimeTrigger.class, "TimeTrigger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getTimeTrigger_IsRelative(), this.getBoolean(), "isRelative", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTimeTrigger_When(), this.getValueSpecification(), null, "when", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(timeTriggerEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(anyTriggerEClass, AnyTrigger.class, "AnyTrigger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getVariable_Scope(), this.getStructuredActivityNode(), this.getStructuredActivityNode_Variable(), "scope", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
@@ -11670,6 +11636,80 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		addEOperation(loopNodeEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
 
 		addEOperation(loopNodeEClass, ecorePackage.getEEList(), "getInputs"); //$NON-NLS-1$
+
+		initEClass(callTriggerEClass, CallTrigger.class, "CallTrigger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getCallTrigger_Operation(), this.getOperation(), null, "operation", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(messageTriggerEClass, MessageTrigger.class, "MessageTrigger", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(changeTriggerEClass, ChangeTrigger.class, "ChangeTrigger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getChangeTrigger_ChangeExpression(), this.getValueSpecification(), null, "changeExpression", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(changeTriggerEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		initEClass(triggerEClass, Trigger.class, "Trigger", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getTrigger_Port(), this.getPort(), null, "port", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(receptionEClass, Reception.class, "Reception", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getReception_Signal(), this.getSignal(), null, "signal", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(signalEClass, Signal.class, "Signal", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getSignal_OwnedAttribute(), this.getProperty(), null, "ownedAttribute", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(signalEClass, ecorePackage.getEEList(), "getAttributes"); //$NON-NLS-1$
+
+		addEOperation(signalEClass, ecorePackage.getEEList(), "getOwnedMembers"); //$NON-NLS-1$
+
+		initEClass(signalTriggerEClass, SignalTrigger.class, "SignalTrigger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getSignalTrigger_Signal(), this.getSignal(), null, "signal", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(timeTriggerEClass, TimeTrigger.class, "TimeTrigger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getTimeTrigger_IsRelative(), this.getBoolean(), "isRelative", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getTimeTrigger_When(), this.getValueSpecification(), null, "when", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(timeTriggerEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		initEClass(anyTriggerEClass, AnyTrigger.class, "AnyTrigger", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(expansionNodeEClass, ExpansionNode.class, "ExpansionNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getExpansionNode_RegionAsOutput(), this.getExpansionRegion(), this.getExpansionRegion_OutputElement(), "regionAsOutput", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getExpansionNode_RegionAsInput(), this.getExpansionRegion(), this.getExpansionRegion_InputElement(), "regionAsInput", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(expansionRegionEClass, ExpansionRegion.class, "ExpansionRegion", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getExpansionRegion_Mode(), this.getExpansionKind(), "mode", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getExpansionRegion_OutputElement(), this.getExpansionNode(), this.getExpansionNode_RegionAsOutput(), "outputElement", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getExpansionRegion_InputElement(), this.getExpansionNode(), this.getExpansionNode_RegionAsInput(), "inputElement", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(exceptionHandlerEClass, ExceptionHandler.class, "ExceptionHandler", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getExceptionHandler_ProtectedNode(), this.getExecutableNode(), this.getExecutableNode_Handler(), "protectedNode", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getExceptionHandler_HandlerBody(), this.getExecutableNode(), null, "handlerBody", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getExceptionHandler_ExceptionInput(), this.getObjectNode(), null, "exceptionInput", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getExceptionHandler_ExceptionType(), this.getClassifier(), null, "exceptionType", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(exceptionHandlerEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
+
+		initEClass(forkNodeEClass, ForkNode.class, "ForkNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(joinNodeEClass, JoinNode.class, "JoinNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getJoinNode_IsCombineDuplicate(), this.getBoolean(), "isCombineDuplicate", "true", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEReference(getJoinNode_JoinSpec(), this.getValueSpecification(), null, "joinSpec", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(joinNodeEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		initEClass(flowFinalNodeEClass, FlowFinalNode.class, "FlowFinalNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(centralBufferNodeEClass, CentralBufferNode.class, "CentralBufferNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(activityPartitionEClass, ActivityPartition.class, "ActivityPartition", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getActivityPartition_IsDimension(), this.getBoolean(), "isDimension", "false", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEAttribute(getActivityPartition_IsExternal(), this.getBoolean(), "isExternal", "false", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEReference(getActivityPartition_ContainedEdge(), this.getActivityEdge(), this.getActivityEdge_InPartition(), "containedEdge", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getActivityPartition_ContainedNode(), this.getActivityNode(), this.getActivityNode_InPartition(), "containedNode", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getActivityPartition_Subgroup(), this.getActivityPartition(), this.getActivityPartition_SuperPartition(), "subgroup", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getActivityPartition_SuperPartition(), this.getActivityPartition(), this.getActivityPartition_Subgroup(), "superPartition", null, 0, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getActivityPartition_Represents(), this.getElement(), null, "represents", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(activityPartitionEClass, this.getActivityGroup(), "getSuperGroup"); //$NON-NLS-1$
 
 		initEClass(createObjectActionEClass, CreateObjectAction.class, "CreateObjectAction", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getCreateObjectAction_Classifier(), this.getClassifier(), null, "classifier", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -11831,56 +11871,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		initEClass(callBehaviorActionEClass, CallBehaviorAction.class, "CallBehaviorAction", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getCallBehaviorAction_Behavior(), this.getBehavior(), null, "behavior", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(interactionOccurrenceEClass, InteractionOccurrence.class, "InteractionOccurrence", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getInteractionOccurrence_RefersTo(), this.getInteraction(), null, "refersTo", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getInteractionOccurrence_ActualGate(), this.getGate(), null, "actualGate", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getInteractionOccurrence_Argument(), this.getInputPin(), null, "argument", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(interactionOccurrenceEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(gateEClass, Gate.class, "Gate", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(partDecompositionEClass, PartDecomposition.class, "PartDecomposition", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(interactionOperandEClass, InteractionOperand.class, "InteractionOperand", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getInteractionOperand_Guard(), this.getInteractionConstraint(), null, "guard", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getInteractionOperand_Fragment(), this.getInteractionFragment(), this.getInteractionFragment_EnclosingOperand(), "fragment", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(interactionOperandEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(interactionConstraintEClass, InteractionConstraint.class, "InteractionConstraint", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getInteractionConstraint_Minint(), this.getValueSpecification(), null, "minint", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getInteractionConstraint_Maxint(), this.getValueSpecification(), null, "maxint", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(interactionConstraintEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(combinedFragmentEClass, CombinedFragment.class, "CombinedFragment", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getCombinedFragment_InteractionOperator(), this.getInteractionOperator(), "interactionOperator", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCombinedFragment_Operand(), this.getInteractionOperand(), null, "operand", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCombinedFragment_CfragmentGate(), this.getGate(), null, "cfragmentGate", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(combinedFragmentEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(continuationEClass, Continuation.class, "Continuation", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getContinuation_Setting(), this.getBoolean(), "setting", "True", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-
-		initEClass(expansionNodeEClass, ExpansionNode.class, "ExpansionNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getExpansionNode_RegionAsOutput(), this.getExpansionRegion(), this.getExpansionRegion_OutputElement(), "regionAsOutput", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getExpansionNode_RegionAsInput(), this.getExpansionRegion(), this.getExpansionRegion_InputElement(), "regionAsInput", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(expansionRegionEClass, ExpansionRegion.class, "ExpansionRegion", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getExpansionRegion_Mode(), this.getExpansionKind(), "mode", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getExpansionRegion_OutputElement(), this.getExpansionNode(), this.getExpansionNode_RegionAsOutput(), "outputElement", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getExpansionRegion_InputElement(), this.getExpansionNode(), this.getExpansionNode_RegionAsInput(), "inputElement", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(exceptionHandlerEClass, ExceptionHandler.class, "ExceptionHandler", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getExceptionHandler_ProtectedNode(), this.getExecutableNode(), this.getExecutableNode_Handler(), "protectedNode", null, 1, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getExceptionHandler_HandlerBody(), this.getExecutableNode(), null, "handlerBody", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getExceptionHandler_ExceptionInput(), this.getObjectNode(), null, "exceptionInput", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getExceptionHandler_ExceptionType(), this.getClassifier(), null, "exceptionType", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(exceptionHandlerEClass, this.getElement(), "getOwner"); //$NON-NLS-1$
-
 		initEClass(stateMachineEClass, StateMachine.class, "StateMachine", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getStateMachine_Region(), this.getRegion(), this.getRegion_StateMachine(), "region", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getStateMachine_ConnectionPoint(), this.getPseudostate(), null, "connectionPoint", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
@@ -11965,76 +11955,38 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		initEClass(finalStateEClass, FinalState.class, "FinalState", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 
-		initEClass(forkNodeEClass, ForkNode.class, "ForkNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEClass(interactionOccurrenceEClass, InteractionOccurrence.class, "InteractionOccurrence", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getInteractionOccurrence_RefersTo(), this.getInteraction(), null, "refersTo", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getInteractionOccurrence_ActualGate(), this.getGate(), null, "actualGate", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getInteractionOccurrence_Argument(), this.getInputPin(), null, "argument", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(joinNodeEClass, JoinNode.class, "JoinNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getJoinNode_IsCombineDuplicate(), this.getBoolean(), "isCombineDuplicate", "true", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEReference(getJoinNode_JoinSpec(), this.getValueSpecification(), null, "joinSpec", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		addEOperation(interactionOccurrenceEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
 
-		addEOperation(joinNodeEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+		initEClass(gateEClass, Gate.class, "Gate", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 
-		initEClass(flowFinalNodeEClass, FlowFinalNode.class, "FlowFinalNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEClass(partDecompositionEClass, PartDecomposition.class, "PartDecomposition", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 
-		initEClass(centralBufferNodeEClass, CentralBufferNode.class, "CentralBufferNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEClass(interactionOperandEClass, InteractionOperand.class, "InteractionOperand", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getInteractionOperand_Guard(), this.getInteractionConstraint(), null, "guard", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getInteractionOperand_Fragment(), this.getInteractionFragment(), this.getInteractionFragment_EnclosingOperand(), "fragment", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(activityPartitionEClass, ActivityPartition.class, "ActivityPartition", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEAttribute(getActivityPartition_IsDimension(), this.getBoolean(), "isDimension", "false", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(getActivityPartition_IsExternal(), this.getBoolean(), "isExternal", "false", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEReference(getActivityPartition_ContainedEdge(), this.getActivityEdge(), this.getActivityEdge_InPartition(), "containedEdge", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getActivityPartition_ContainedNode(), this.getActivityNode(), this.getActivityNode_InPartition(), "containedNode", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getActivityPartition_Subgroup(), this.getActivityPartition(), this.getActivityPartition_SuperPartition(), "subgroup", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getActivityPartition_SuperPartition(), this.getActivityPartition(), this.getActivityPartition_Subgroup(), "superPartition", null, 0, 1, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getActivityPartition_Represents(), this.getElement(), null, "represents", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		addEOperation(interactionOperandEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
 
-		addEOperation(activityPartitionEClass, this.getActivityGroup(), "getSuperGroup"); //$NON-NLS-1$
+		initEClass(interactionConstraintEClass, InteractionConstraint.class, "InteractionConstraint", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getInteractionConstraint_Minint(), this.getValueSpecification(), null, "minint", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getInteractionConstraint_Maxint(), this.getValueSpecification(), null, "maxint", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(dataStoreNodeEClass, DataStoreNode.class, "DataStoreNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		addEOperation(interactionConstraintEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
 
-		initEClass(interruptibleActivityRegionEClass, InterruptibleActivityRegion.class, "InterruptibleActivityRegion", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getInterruptibleActivityRegion_InterruptingEdge(), this.getActivityEdge(), this.getActivityEdge_Interrupts(), "interruptingEdge", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getInterruptibleActivityRegion_ContainedNode(), this.getActivityNode(), this.getActivityNode_InInterruptibleRegion(), "containedNode", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(combinedFragmentEClass, CombinedFragment.class, "CombinedFragment", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getCombinedFragment_InteractionOperator(), this.getInteractionOperator(), "interactionOperator", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCombinedFragment_Operand(), this.getInteractionOperand(), null, "operand", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCombinedFragment_CfragmentGate(), this.getGate(), null, "cfragmentGate", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(parameterSetEClass, ParameterSet.class, "ParameterSet", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getParameterSet_Parameter(), this.getParameter(), this.getParameter_ParameterSet(), "parameter", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getParameterSet_Condition(), this.getConstraint(), null, "condition", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		addEOperation(combinedFragmentEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
 
-		addEOperation(parameterSetEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(deploymentEClass, Deployment.class, "Deployment", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getDeployment_DeployedArtifact(), this.getDeployedArtifact(), null, "deployedArtifact", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getDeployment_Location(), this.getDeploymentTarget(), this.getDeploymentTarget_Deployment(), "location", null, 1, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getDeployment_Configuration(), this.getDeploymentSpecification(), null, "configuration", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(deploymentEClass, ecorePackage.getEEList(), "getSuppliers"); //$NON-NLS-1$
-
-		addEOperation(deploymentEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
-
-		addEOperation(deploymentEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
-
-		addEOperation(deploymentEClass, ecorePackage.getEEList(), "getClients"); //$NON-NLS-1$
-
-		addEOperation(deploymentEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		initEClass(deployedArtifactEClass, DeployedArtifact.class, "DeployedArtifact", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(deploymentTargetEClass, DeploymentTarget.class, "DeploymentTarget", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getDeploymentTarget_Deployment(), this.getDeployment(), this.getDeployment_Location(), "deployment", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getDeploymentTarget_DeployedElement(), this.getPackageableElement(), null, "deployedElement", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(deploymentTargetEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
-
-		addEOperation(deploymentTargetEClass, ecorePackage.getEEList(), "getClientDependencies"); //$NON-NLS-1$
-
-		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-		initEReference(getNode_NestedNode(), this.getNode(), null, "nestedNode", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(nodeEClass, ecorePackage.getEEList(), "getNestedClassifiers"); //$NON-NLS-1$
-
-		initEClass(deviceEClass, Device.class, "Device", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(executionEnvironmentEClass, ExecutionEnvironment.class, "ExecutionEnvironment", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
-
-		initEClass(communicationPathEClass, CommunicationPath.class, "CommunicationPath", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEClass(continuationEClass, Continuation.class, "Continuation", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEAttribute(getContinuation_Setting(), this.getBoolean(), "setting", "True", 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
 		initEClass(componentEClass, Component.class, "Component", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEAttribute(getComponent_IsIndirectlyInstantiated(), this.getBoolean(), "isIndirectlyInstantiated", null, 0, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -12132,6 +12084,54 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 
 		op = addEOperation(durationConstraintEClass, null, "setSpecification"); //$NON-NLS-1$
 		addEParameter(op, this.getValueSpecification(), "newSpecification"); //$NON-NLS-1$
+
+		initEClass(dataStoreNodeEClass, DataStoreNode.class, "DataStoreNode", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(interruptibleActivityRegionEClass, InterruptibleActivityRegion.class, "InterruptibleActivityRegion", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getInterruptibleActivityRegion_InterruptingEdge(), this.getActivityEdge(), this.getActivityEdge_Interrupts(), "interruptingEdge", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getInterruptibleActivityRegion_ContainedNode(), this.getActivityNode(), this.getActivityNode_InInterruptibleRegion(), "containedNode", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(parameterSetEClass, ParameterSet.class, "ParameterSet", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getParameterSet_Parameter(), this.getParameter(), this.getParameter_ParameterSet(), "parameter", null, 1, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getParameterSet_Condition(), this.getConstraint(), null, "condition", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(parameterSetEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		initEClass(deploymentEClass, Deployment.class, "Deployment", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getDeployment_DeployedArtifact(), this.getDeployedArtifact(), null, "deployedArtifact", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getDeployment_Location(), this.getDeploymentTarget(), this.getDeploymentTarget_Deployment(), "location", null, 1, 1, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getDeployment_Configuration(), this.getDeploymentSpecification(), null, "configuration", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(deploymentEClass, ecorePackage.getEEList(), "getSuppliers"); //$NON-NLS-1$
+
+		addEOperation(deploymentEClass, ecorePackage.getEEList(), "getTargets"); //$NON-NLS-1$
+
+		addEOperation(deploymentEClass, ecorePackage.getEEList(), "getSources"); //$NON-NLS-1$
+
+		addEOperation(deploymentEClass, ecorePackage.getEEList(), "getClients"); //$NON-NLS-1$
+
+		addEOperation(deploymentEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		initEClass(deployedArtifactEClass, DeployedArtifact.class, "DeployedArtifact", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(deploymentTargetEClass, DeploymentTarget.class, "DeploymentTarget", IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getDeploymentTarget_Deployment(), this.getDeployment(), this.getDeployment_Location(), "deployment", null, 0, -1, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEReference(getDeploymentTarget_DeployedElement(), this.getPackageableElement(), null, "deployedElement", null, 0, -1, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(deploymentTargetEClass, ecorePackage.getEEList(), "getOwnedElements"); //$NON-NLS-1$
+
+		addEOperation(deploymentTargetEClass, ecorePackage.getEEList(), "getClientDependencies"); //$NON-NLS-1$
+
+		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+		initEReference(getNode_NestedNode(), this.getNode(), null, "nestedNode", null, 0, -1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+
+		addEOperation(nodeEClass, ecorePackage.getEEList(), "getNestedClassifiers"); //$NON-NLS-1$
+
+		initEClass(deviceEClass, Device.class, "Device", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(executionEnvironmentEClass, ExecutionEnvironment.class, "ExecutionEnvironment", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
+
+		initEClass(communicationPathEClass, CommunicationPath.class, "CommunicationPath", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 
 		initEClass(readExtentActionEClass, ReadExtentAction.class, "ReadExtentAction", !IS_ABSTRACT, !IS_INTERFACE); //$NON-NLS-1$
 		initEReference(getReadExtentAction_Result(), this.getOutputPin(), null, "result", null, 1, 1, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -12255,20 +12255,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		addEEnumLiteral(callConcurrencyKindEEnum, CallConcurrencyKind.GUARDED_LITERAL);
 		addEEnumLiteral(callConcurrencyKindEEnum, CallConcurrencyKind.CONCURRENT_LITERAL);
 
-		initEEnum(interactionOperatorEEnum, InteractionOperator.class, "InteractionOperator"); //$NON-NLS-1$
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.SEQ_LITERAL);
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.ALT_LITERAL);
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.OPT_LITERAL);
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.BREAK_LITERAL);
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.PAR_LITERAL);
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.STRICT_LITERAL);
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.LOOP_LITERAL);
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.CRITICAL_LITERAL);
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.NEG_LITERAL);
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.ASSERT_LITERAL);
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.IGNORE_LITERAL);
-		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.CONSIDER_LITERAL);
-
 		initEEnum(expansionKindEEnum, ExpansionKind.class, "ExpansionKind"); //$NON-NLS-1$
 		addEEnumLiteral(expansionKindEEnum, ExpansionKind.PARALLEL_LITERAL);
 		addEEnumLiteral(expansionKindEEnum, ExpansionKind.ITERATIVE_LITERAL);
@@ -12291,6 +12277,24 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		addEEnumLiteral(pseudostateKindEEnum, PseudostateKind.EXIT_POINT_LITERAL);
 		addEEnumLiteral(pseudostateKindEEnum, PseudostateKind.TERMINATE_LITERAL);
 
+		initEEnum(interactionOperatorEEnum, InteractionOperator.class, "InteractionOperator"); //$NON-NLS-1$
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.SEQ_LITERAL);
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.ALT_LITERAL);
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.OPT_LITERAL);
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.BREAK_LITERAL);
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.PAR_LITERAL);
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.STRICT_LITERAL);
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.LOOP_LITERAL);
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.CRITICAL_LITERAL);
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.NEG_LITERAL);
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.ASSERT_LITERAL);
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.IGNORE_LITERAL);
+		addEEnumLiteral(interactionOperatorEEnum, InteractionOperator.CONSIDER_LITERAL);
+
+		initEEnum(connectorKindEEnum, ConnectorKind.class, "ConnectorKind"); //$NON-NLS-1$
+		addEEnumLiteral(connectorKindEEnum, ConnectorKind.ASSEMBLY_LITERAL);
+		addEEnumLiteral(connectorKindEEnum, ConnectorKind.DELEGATION_LITERAL);
+
 		initEEnum(parameterEffectKindEEnum, ParameterEffectKind.class, "ParameterEffectKind"); //$NON-NLS-1$
 		addEEnumLiteral(parameterEffectKindEEnum, ParameterEffectKind.CREATE_LITERAL);
 		addEEnumLiteral(parameterEffectKindEEnum, ParameterEffectKind.READ_LITERAL);
@@ -12302,10 +12306,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		addEEnumLiteral(objectNodeOrderingKindEEnum, ObjectNodeOrderingKind.ORDERED_LITERAL);
 		addEEnumLiteral(objectNodeOrderingKindEEnum, ObjectNodeOrderingKind.LIFO_LITERAL);
 		addEEnumLiteral(objectNodeOrderingKindEEnum, ObjectNodeOrderingKind.FIFO_LITERAL);
-
-		initEEnum(connectorKindEEnum, ConnectorKind.class, "ConnectorKind"); //$NON-NLS-1$
-		addEEnumLiteral(connectorKindEEnum, ConnectorKind.ASSEMBLY_LITERAL);
-		addEEnumLiteral(connectorKindEEnum, ConnectorKind.DELEGATION_LITERAL);
 
 		// Initialize data types
 		initEDataType(integerEDataType, int.class, "Integer", IS_SERIALIZABLE); //$NON-NLS-1$
@@ -12363,7 +12363,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)elementEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
-			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allOwnedElements\", null); //$NON-NLS-1$\r\n\tif (!getCacheAdapter().containsKey(this, method)) {\r\n\t\tgetCacheAdapter().put(this,\r\n\t\t\tmethod,\r\n\t\t\tjava.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ElementOperations.allOwnedElements(this)));\r\n\t}\r\n\treturn (Set) getCacheAdapter().get(this, method);\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ElementOperations.allOwnedElements(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allOwnedElements\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ElementOperations.allOwnedElements(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ElementOperations.allOwnedElements(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nownedElement->union(ownedElement->collect(e | e.allOwnedElements()))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
 		   });		
 		addAnnotation
@@ -12456,7 +12456,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 			 "body", "return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.upper(this);", //$NON-NLS-1$ //$NON-NLS-2$
 			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nupperBound()\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });													
 		addAnnotation
 		  ((EOperation)valueSpecificationEClass.getEOperations().get(0), 
 		   source, 
@@ -12517,7 +12517,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)namedElementEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
-			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allNamespaces\", null); //$NON-NLS-1$\r\n\tif (!getCacheAdapter().containsKey(this, method)) {\r\n\t\tgetCacheAdapter().put(this,\r\n\t\t\tmethod,\r\n\t\t\tjava.util.Collections.unmodifiableList(org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this)));\r\n\t}\r\n\treturn (List) getCacheAdapter().get(this, method);\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allNamespaces\", null); //$NON-NLS-1$\r\n\tList result = (List) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableList(org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nif self.namespace->isEmpty()\r\nthen Sequence{}\r\nelse self.namespace.allNamespaces()->prepend(self.namespace)\r\nendif\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
 		   });		
 		addAnnotation
@@ -12580,7 +12580,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)namespaceEClass.getEOperations().get(4), 
 		   source, 
 		   new String[] {
-			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"importedMember\", null); //$NON-NLS-1$\r\n\tif (!getCacheAdapter().containsKey(this, method)) {\r\n\t\tgetCacheAdapter().put(this,\r\n\t\t\tmethod,\r\n\t\t\tjava.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.NamespaceOperations.importedMember(this)));\r\n\t}\r\n\treturn (Set) getCacheAdapter().get(this, method);\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.NamespaceOperations.importedMember(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"importedMember\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.NamespaceOperations.importedMember(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.NamespaceOperations.importedMember(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nself.importedMembers(self.elementImport.importedElement.asSet()->union(self.packageImport.importedPackage->collect(p | p.visibleMembers())))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
 		   });		
 		addAnnotation
@@ -12596,7 +12596,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 			 "body", "return org.eclipse.uml2.internal.operation.NamespaceOperations.excludeCollisions(this, imps);", //$NON-NLS-1$ //$NON-NLS-2$
 			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nimps->reject(imp1 | imps.exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																			
+		   });												
 		addAnnotation
 		  ((EOperation)classEClass.getEOperations().get(0), 
 		   source, 
@@ -12678,7 +12678,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)propertyEClass.getEOperations().get(9), 
 		   source, 
 		   new String[] {
-			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"subsettingContext\", null); //$NON-NLS-1$\r\n\tif (!getCacheAdapter().containsKey(this, method)) {\r\n\t\tgetCacheAdapter().put(this,\r\n\t\t\tmethod,\r\n\t\t\tjava.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.PropertyOperations.subsettingContext(this)));\r\n\t}\r\n\treturn (Set) getCacheAdapter().get(this, method);\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.PropertyOperations.subsettingContext(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"subsettingContext\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.PropertyOperations.subsettingContext(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.PropertyOperations.subsettingContext(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nif association->notEmpty()\r\nthen association.endType-type \r\nelse if classifier->notEmpty then Set{classifier} else Set{} endif\r\nendif\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
 		   });																									
 		addAnnotation
@@ -12755,7 +12755,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)packageEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
-			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"visibleMembers\", null); //$NON-NLS-1$\r\n\tif (!getCacheAdapter().containsKey(this, method)) {\r\n\t\tgetCacheAdapter().put(this,\r\n\t\t\tmethod,\r\n\t\t\tjava.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.PackageOperations.visibleMembers(this)));\r\n\t}\r\n\treturn (Set) getCacheAdapter().get(this, method);\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.PackageOperations.visibleMembers(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"visibleMembers\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.PackageOperations.visibleMembers(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.PackageOperations.visibleMembers(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nmember->select( m | self.makesVisible(m))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
 		   });		
 		addAnnotation
@@ -12772,111 +12772,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "body", "return org.eclipse.uml2.internal.operation.DataTypeOperations.inherit(this, inhs);", //$NON-NLS-1$ //$NON-NLS-2$
 			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\ninhs->excluding(inh |\r\n\townedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
 		   });													
-		addAnnotation
-		  ((EOperation)constraintEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.ConstraintOperations.validateNotApplyToSelf(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nnot constrainedElement->includes(self)\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allFeatures\", null); //$NON-NLS-1$\r\n\tif (!getCacheAdapter().containsKey(this, method)) {\r\n\t\tgetCacheAdapter().put(this,\r\n\t\t\tmethod,\r\n\t\t\tjava.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allFeatures(this)));\r\n\t}\r\n\treturn (Set) getCacheAdapter().get(this, method);\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.allFeatures(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nmember->select(oclIsKindOf(Feature))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.validateNoCyclesInGeneralization(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nnot self.allParents()->includes(self)\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(2), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.validateSpecializeType(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nself.parents()->forAll(c | self.maySpecializeType(c))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(3), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.validateInheritedMember(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nself.inheritedMember->includesAll(self.inherit(self.parents()->collect(p | p.inheritableMembers(self)))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(4), 
-		   source, 
-		   new String[] {
-			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"inheritedMember\", null); //$NON-NLS-1$\r\n\tif (!getCacheAdapter().containsKey(this, method)) {\r\n\t\tgetCacheAdapter().put(this,\r\n\t\t\tmethod,\r\n\t\t\tjava.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.inheritedMember(this)));\r\n\t}\r\n\treturn (Set) getCacheAdapter().get(this, method);\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.inheritedMember(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nself.inherit(self.parents()->collect(p | p.inheritableMembers(self))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(5), 
-		   source, 
-		   new String[] {
-			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"parents\", null); //$NON-NLS-1$\r\n\tif (!getCacheAdapter().containsKey(this, method)) {\r\n\t\tgetCacheAdapter().put(this,\r\n\t\t\tmethod,\r\n\t\t\tjava.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.parents(this)));\r\n\t}\r\n\treturn (Set) getCacheAdapter().get(this, method);\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.parents(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\ngeneralization.general\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(6), 
-		   source, 
-		   new String[] {
-			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allParents\", null); //$NON-NLS-1$\r\n\tif (!getCacheAdapter().containsKey(this, method)) {\r\n\t\tgetCacheAdapter().put(this,\r\n\t\t\tmethod,\r\n\t\t\tjava.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allParents(this)));\r\n\t}\r\n\treturn (Set) getCacheAdapter().get(this, method);\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.allParents(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nself.parents()->union(self.parents()->collect(p | p.allParents())\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(7), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.inheritableMembers(this, c);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nmember->select(m | c.hasVisibilityOf(m))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(8), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.hasVisibilityOf(this, n);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\ntrue\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(9), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.inherit(this, inhs);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\ninhs\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(10), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.maySpecializeType(this, c);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nself.oclIsKindOf(c.oclType)\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(11), 
-		   source, 
-		   new String[] {
-			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"general\", null); //$NON-NLS-1$\r\n\tif (!getCacheAdapter().containsKey(this, method)) {\r\n\t\tgetCacheAdapter().put(this,\r\n\t\t\tmethod,\r\n\t\t\tjava.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.general(this)));\r\n\t}\r\n\treturn (Set) getCacheAdapter().get(this, method);\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.general(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nself.parents()\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(12), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.validateGeneralEqualsParents(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\ngeneral = self.parents()\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)classifierEClass.getEOperations().get(13), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.conformsTo(this, other);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\n(self=other) or (self.allParents()->includes(other))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																									
 		addAnnotation
 		  ((EOperation)literalBooleanEClass.getEOperations().get(0), 
 		   source, 
@@ -12948,26 +12843,117 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nvalue\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
 		   });		
 		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allFeatures\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allFeatures(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.allFeatures(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nmember->select(oclIsKindOf(Feature))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.validateNoCyclesInGeneralization(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nnot self.allParents()->includes(self)\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.validateSpecializeType(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nself.parents()->forAll(c | self.maySpecializeType(c))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(3), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.validateInheritedMember(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nself.inheritedMember->includesAll(self.inherit(self.parents()->collect(p | p.inheritableMembers(self)))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(4), 
+		   source, 
+		   new String[] {
+			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"inheritedMember\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.inheritedMember(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.inheritedMember(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nself.inherit(self.parents()->collect(p | p.inheritableMembers(self))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(5), 
+		   source, 
+		   new String[] {
+			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"parents\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.parents(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.parents(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\ngeneralization.general\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(6), 
+		   source, 
+		   new String[] {
+			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allParents\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allParents(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.allParents(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nself.parents()->union(self.parents()->collect(p | p.allParents())\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(7), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.inheritableMembers(this, c);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nmember->select(m | c.hasVisibilityOf(m))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(8), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.hasVisibilityOf(this, n);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\ntrue\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(9), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.inherit(this, inhs);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\ninhs\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(10), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.maySpecializeType(this, c);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nself.oclIsKindOf(c.oclType)\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(11), 
+		   source, 
+		   new String[] {
+			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"general\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.general(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.general(this);\r\n}", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nself.parents()\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(12), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.validateGeneralEqualsParents(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\ngeneral = self.parents()\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)classifierEClass.getEOperations().get(13), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.ClassifierOperations.conformsTo(this, other);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\n(self=other) or (self.allParents()->includes(other))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });																									
+		addAnnotation
+		  ((EOperation)constraintEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.ConstraintOperations.validateNotApplyToSelf(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nnot constrainedElement->includes(self)\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });									
+		addAnnotation
 		  ((EOperation)behavioralFeatureEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 			 "body", "return org.eclipse.uml2.internal.operation.BehavioralFeatureOperations.isDistinguishableFrom(this, n, ns);", //$NON-NLS-1$ //$NON-NLS-2$
 			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nif n.oclIsKindOf(BehavioralFeature)\r\nthen\r\n    if ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->notEmpty()\r\n    then Set{}->include(self)->include(n)->isUnique( bf | bf.parameter->collect(type))\r\n    else true\r\n    endif\r\nelse true\r\nendif\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
-		addAnnotation
-		  ((EOperation)instanceSpecificationEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.InstanceSpecificationOperations.validateSlotsAreDefined(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nslot->forAll(s |\r\n  classifier->exists(c | c.allFeatures()->includes(s.definingFeature))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)instanceSpecificationEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "body", "return org.eclipse.uml2.internal.operation.InstanceSpecificationOperations.validateNoDuplicateSlots(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
-			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nclassifier->forAll(c |\r\n\t(c.allFeatures()->forAll(f | slot->select(s | s.definingFeature = f)->size() <= 1)\r\n\t)\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });										
 		addAnnotation
 		  ((EOperation)redefinableElementEClass.getEOperations().get(0), 
 		   source, 
@@ -12995,7 +12981,21 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 			 "body", "return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);", //$NON-NLS-1$ //$NON-NLS-2$
 			 "documentation", "A query based on the following OCL expression:\r\n<code>\r\nself.redefinitionContext->exists(c | redefinable.redefinitionContext->exists(r | c.allParents()->includes(r)))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });													
+		addAnnotation
+		  ((EOperation)instanceSpecificationEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.InstanceSpecificationOperations.validateSlotsAreDefined(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nslot->forAll(s |\r\n  classifier->exists(c | c.allFeatures()->includes(s.definingFeature))\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)instanceSpecificationEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "body", "return org.eclipse.uml2.internal.operation.InstanceSpecificationOperations.validateNoDuplicateSlots(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
+			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nclassifier->forAll(c |\r\n\t(c.allFeatures()->forAll(f | slot->select(s | s.definingFeature = f)->size() <= 1)\r\n\t)\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
+		   });																		
 		addAnnotation
 		  ((EOperation)elementImportEClass.getEOperations().get(0), 
 		   source, 
@@ -13023,7 +13023,13 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 			 "body", "return org.eclipse.uml2.internal.operation.PackageImportOperations.validatePublicOrPrivate(this, diagnostics, context);", //$NON-NLS-1$ //$NON-NLS-2$
 			 "documentation", "An invariant constraint based on the following OCL expression:\r\n<code>\r\nself.visibility = #public or self.visibility = #private\r\n</code>" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																										
+		   });																																																																																																																																																																																																																																																												
+		addAnnotation
+		  ((EOperation)templateableElementEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"parameterableElements\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.TemplateableElementOperations.parameterableElements(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.TemplateableElementOperations.parameterableElements(this);\r\n}" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		   });																																																
 		addAnnotation
 		  (interactionEClass, 
 		   source, 
@@ -13041,13 +13047,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "documentation", "A Lifelineis the concept behind a lifeline in a Sequence \r\nDiagram. A Participant may be a Part or it may be a parameter representing a part. Its qualification is a Classifier which in turn may be an Interface (or ClassifierRole?)" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																					
-		addAnnotation
-		  ((EOperation)templateableElementEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "body", "try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"parameterableElements\", null); //$NON-NLS-1$\r\n\tif (!getCacheAdapter().containsKey(this, method)) {\r\n\t\tgetCacheAdapter().put(this,\r\n\t\t\tmethod,\r\n\t\t\tjava.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.TemplateableElementOperations.parameterableElements(this)));\r\n\t}\r\n\treturn (Set) getCacheAdapter().get(this, method);\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.TemplateableElementOperations.parameterableElements(this);\r\n}" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		   });																																																																																																																																																			
+		   });																																																																																																																																																																																																							
 		addAnnotation
 		  (interactionOccurrenceEClass, 
 		   source, 
@@ -13077,7 +13077,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "documentation", "An interaction fragment that decomposes into a set of other interaction fragments under some operator.\r\nIn principle the whole sequence diagram is an combined interaction. Syntactically, however, we will have special notation for combineations such that operands may be easily distinguished.\r\nCombined interactions consist of operands and an implicit or explicit operator" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																					
+		   });																																																																																																																																				
 	}
 
 	/**
@@ -13122,7 +13122,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)multiplicityElementEClass.getEOperations().get(9), 
 		   source, 
 		   new String[] {
-		   });																					
+		   });																												
 		addAnnotation
 		  ((EOperation)namedElementEClass.getEOperations().get(0), 
 		   source, 
@@ -13147,7 +13147,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)namespaceEClass.getEOperations().get(3), 
 		   source, 
 		   new String[] {
-		   });																																															
+		   });																																								
 		addAnnotation
 		  ((EOperation)propertyEClass.getEOperations().get(0), 
 		   source, 
@@ -13197,12 +13197,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)packageEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });																																		
-		addAnnotation
-		  ((EOperation)constraintEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });										
+		   });																																													
 		addAnnotation
 		  ((EOperation)classifierEClass.getEOperations().get(1), 
 		   source, 
@@ -13222,17 +13217,12 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)classifierEClass.getEOperations().get(12), 
 		   source, 
 		   new String[] {
-		   });																																																						
+		   });																											
 		addAnnotation
-		  ((EOperation)instanceSpecificationEClass.getEOperations().get(0), 
+		  ((EOperation)constraintEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });			
-		addAnnotation
-		  ((EOperation)instanceSpecificationEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });													
+		   });																		
 		addAnnotation
 		  ((EOperation)redefinableElementEClass.getEOperations().get(0), 
 		   source, 
@@ -13242,7 +13232,17 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)redefinableElementEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-		   });													
+		   });																
+		addAnnotation
+		  ((EOperation)instanceSpecificationEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  ((EOperation)instanceSpecificationEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });																		
 		addAnnotation
 		  ((EOperation)elementImportEClass.getEOperations().get(0), 
 		   source, 
@@ -13282,7 +13282,27 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)multiplicityElementEClass.getEOperations().get(12), 
 		   source, 
 		   new String[] {
-		   });											
+		   });					
+		addAnnotation
+		  ((EOperation)directedRelationshipEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getDirectedRelationship_Source(), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  (getDirectedRelationship_Target(), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  (getRelationship_RelatedElement(), 
+		   source, 
+		   new String[] {
+		   });									
 		addAnnotation
 		  ((EOperation)expressionEClass.getEOperations().get(0), 
 		   source, 
@@ -13322,27 +13342,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  (getNamespace_Member(), 
 		   source, 
 		   new String[] {
-		   });							
-		addAnnotation
-		  ((EOperation)directedRelationshipEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });		
-		addAnnotation
-		  (getDirectedRelationship_Source(), 
-		   source, 
-		   new String[] {
-		   });			
-		addAnnotation
-		  (getDirectedRelationship_Target(), 
-		   source, 
-		   new String[] {
-		   });			
-		addAnnotation
-		  (getRelationship_RelatedElement(), 
-		   source, 
-		   new String[] {
-		   });													
+		   });																	
 		addAnnotation
 		  ((EOperation)classEClass.getEOperations().get(5), 
 		   source, 
@@ -13457,17 +13457,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)enumerationLiteralEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });						
-		addAnnotation
-		  ((EOperation)constraintEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });		
-		addAnnotation
-		  (getConstraint_Context(), 
-		   source, 
-		   new String[] {
-		   });																								
+		   });																																
 		addAnnotation
 		  ((EOperation)classifierEClass.getEOperations().get(14), 
 		   source, 
@@ -13502,7 +13492,17 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  (getFeature_FeaturingClassifier(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });					
+		addAnnotation
+		  ((EOperation)constraintEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getConstraint_Context(), 
+		   source, 
+		   new String[] {
+		   });							
 		addAnnotation
 		  ((EOperation)behavioralFeatureEClass.getEOperations().get(1), 
 		   source, 
@@ -13517,7 +13517,17 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  (getBehavioralFeature_Parameter(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });												
+		addAnnotation
+		  ((EOperation)redefinableElementEClass.getEOperations().get(4), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getRedefinableElement_RedefinitionContext(), 
+		   source, 
+		   new String[] {
+		   });			
 		addAnnotation
 		  ((EOperation)generalizationEClass.getEOperations().get(0), 
 		   source, 
@@ -13547,17 +13557,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)slotEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-		   });											
-		addAnnotation
-		  ((EOperation)redefinableElementEClass.getEOperations().get(4), 
-		   source, 
-		   new String[] {
-		   });		
-		addAnnotation
-		  (getRedefinableElement_RedefinitionContext(), 
-		   source, 
-		   new String[] {
-		   });													
+		   });															
 		addAnnotation
 		  ((EOperation)elementImportEClass.getEOperations().get(3), 
 		   source, 
@@ -13624,6 +13624,31 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 		   });																					
 		addAnnotation
+		  ((EOperation)behaviorEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  ((EOperation)behaviorEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });									
+		addAnnotation
+		  ((EOperation)behavioredClassifierEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  ((EOperation)behavioredClassifierEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });											
+		addAnnotation
+		  ((EOperation)activityEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });										
+		addAnnotation
 		  ((EOperation)abstractionEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
@@ -13653,31 +13678,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 		   });					
-		addAnnotation
-		  ((EOperation)behaviorEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });			
-		addAnnotation
-		  ((EOperation)behaviorEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });									
-		addAnnotation
-		  ((EOperation)behavioredClassifierEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });			
-		addAnnotation
-		  ((EOperation)behavioredClassifierEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });											
-		addAnnotation
-		  ((EOperation)activityEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });										
 		addAnnotation
 		  ((EOperation)connectorEClass.getEOperations().get(0), 
 		   source, 
@@ -13710,36 +13710,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   });			
 		addAnnotation
 		  (getStructuredClassifier_Role(), 
-		   source, 
-		   new String[] {
-		   });					
-		addAnnotation
-		  ((EOperation)extendEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });			
-		addAnnotation
-		  ((EOperation)extendEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });			
-		addAnnotation
-		  ((EOperation)extendEClass.getEOperations().get(2), 
-		   source, 
-		   new String[] {
-		   });						
-		addAnnotation
-		  ((EOperation)useCaseEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });						
-		addAnnotation
-		  ((EOperation)includeEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });			
-		addAnnotation
-		  ((EOperation)includeEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
 		   });					
@@ -13869,70 +13839,35 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 		   });					
 		addAnnotation
-		  ((EOperation)collaborationOccurrenceEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });				
-		addAnnotation
-		  ((EOperation)collaborationEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });				
-		addAnnotation
-		  ((EOperation)portEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });				
-		addAnnotation
-		  ((EOperation)encapsulatedClassifierEClass.getEOperations().get(0), 
+		  ((EOperation)extendEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });			
 		addAnnotation
-		  ((EOperation)encapsulatedClassifierEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });					
-		addAnnotation
-		  ((EOperation)interactionEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });							
-		addAnnotation
-		  ((EOperation)interactionFragmentEClass.getEOperations().get(0), 
+		  ((EOperation)extendEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
 		   });			
 		addAnnotation
-		  ((EOperation)interactionFragmentEClass.getEOperations().get(1), 
+		  ((EOperation)extendEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
 		   });						
 		addAnnotation
-		  ((EOperation)lifelineEClass.getEOperations().get(0), 
+		  ((EOperation)useCaseEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });						
+		addAnnotation
+		  ((EOperation)includeEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });			
 		addAnnotation
-		  ((EOperation)lifelineEClass.getEOperations().get(1), 
+		  ((EOperation)includeEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
 		   });					
-		addAnnotation
-		  ((EOperation)messageEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });			
-		addAnnotation
-		  ((EOperation)messageEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });									
-		addAnnotation
-		  ((EOperation)stateInvariantEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });				
 		addAnnotation
 		  ((EOperation)templateSignatureEClass.getEOperations().get(0), 
 		   source, 
@@ -14004,22 +13939,67 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 		   });						
 		addAnnotation
-		  ((EOperation)changeTriggerEClass.getEOperations().get(0), 
+		  ((EOperation)collaborationEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });				
 		addAnnotation
-		  ((EOperation)signalEClass.getEOperations().get(0), 
+		  ((EOperation)collaborationOccurrenceEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  ((EOperation)portEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  ((EOperation)encapsulatedClassifierEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });			
 		addAnnotation
-		  ((EOperation)signalEClass.getEOperations().get(1), 
+		  ((EOperation)encapsulatedClassifierEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 		addAnnotation
-		  ((EOperation)timeTriggerEClass.getEOperations().get(0), 
+		  ((EOperation)interactionEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });							
+		addAnnotation
+		  ((EOperation)interactionFragmentEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  ((EOperation)interactionFragmentEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });						
+		addAnnotation
+		  ((EOperation)lifelineEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  ((EOperation)lifelineEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });					
+		addAnnotation
+		  ((EOperation)messageEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  ((EOperation)messageEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });									
+		addAnnotation
+		  ((EOperation)stateInvariantEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
 		   });				
@@ -14058,6 +14038,41 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 		   });						
+		addAnnotation
+		  ((EOperation)changeTriggerEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  ((EOperation)signalEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  ((EOperation)signalEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  ((EOperation)timeTriggerEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  ((EOperation)exceptionHandlerEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  ((EOperation)joinNodeEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  ((EOperation)activityPartitionEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });							
 		addAnnotation
 		  ((EOperation)createObjectActionEClass.getEOperations().get(0), 
 		   source, 
@@ -14162,31 +14177,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)callOperationActionEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });					
-		addAnnotation
-		  ((EOperation)interactionOccurrenceEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });							
-		addAnnotation
-		  ((EOperation)interactionOperandEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });				
-		addAnnotation
-		  ((EOperation)interactionConstraintEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });						
-		addAnnotation
-		  ((EOperation)combinedFragmentEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });					
-		addAnnotation
-		  ((EOperation)exceptionHandlerEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
 		   });								
 		addAnnotation
 		  ((EOperation)stateMachineEClass.getEOperations().get(2), 
@@ -14222,42 +14212,27 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)transitionEClass.getEOperations().get(3), 
 		   source, 
 		   new String[] {
+		   });								
+		addAnnotation
+		  ((EOperation)interactionOccurrenceEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
 		   });							
 		addAnnotation
-		  ((EOperation)joinNodeEClass.getEOperations().get(0), 
+		  ((EOperation)interactionOperandEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });				
 		addAnnotation
-		  ((EOperation)activityPartitionEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });								
-		addAnnotation
-		  ((EOperation)parameterSetEClass.getEOperations().get(0), 
+		  ((EOperation)interactionConstraintEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });						
 		addAnnotation
-		  ((EOperation)deploymentEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });			
-		addAnnotation
-		  ((EOperation)deploymentEClass.getEOperations().get(2), 
+		  ((EOperation)combinedFragmentEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });					
-		addAnnotation
-		  ((EOperation)deploymentEClass.getEOperations().get(4), 
-		   source, 
-		   new String[] {
-		   });						
-		addAnnotation
-		  ((EOperation)deploymentTargetEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });									
 		addAnnotation
 		  ((EOperation)componentEClass.getEOperations().get(0), 
 		   source, 
@@ -14287,7 +14262,32 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)protocolTransitionEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });																																							
+		   });																																								
+		addAnnotation
+		  ((EOperation)parameterSetEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });						
+		addAnnotation
+		  ((EOperation)deploymentEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  ((EOperation)deploymentEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+		   });					
+		addAnnotation
+		  ((EOperation)deploymentEClass.getEOperations().get(4), 
+		   source, 
+		   new String[] {
+		   });						
+		addAnnotation
+		  ((EOperation)deploymentTargetEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });									
 		addAnnotation
 		  ((EOperation)readExtentActionEClass.getEOperations().get(0), 
 		   source, 
@@ -14385,7 +14385,19 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });					
+		addAnnotation
+		  (getDirectedRelationship_Source(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Relationship#getRelatedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (getDirectedRelationship_Target(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Relationship#getRelatedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });											
 		addAnnotation
 		  (getExpression_Operand(), 
 		   source, 
@@ -14440,19 +14452,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  (getDirectedRelationship_Source(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Relationship#getRelatedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  (getDirectedRelationship_Target(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Relationship#getRelatedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });									
 		addAnnotation
 		  ((EOperation)classEClass.getEOperations().get(3), 
 		   source, 
@@ -14612,16 +14612,16 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });		
 		addAnnotation
-		  (getPackage_AppliedProfile(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Namespace#getPackageImports", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
 		  (getPackage_PackageExtension(), 
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getPackage_AppliedProfile(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Namespace#getPackageImports", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
 		  (getEnumeration_OwnedLiteral(), 
@@ -14648,19 +14648,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.NamedElement#getNamespace", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
-		addAnnotation
-		  (getConstraint_Namespace(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Constraint#getContext", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  (getConstraint_Specification(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																															
+		   });																																									
 		addAnnotation
 		  (getClassifier_Feature(), 
 		   source, 
@@ -14715,7 +14703,19 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });									
+		addAnnotation
+		  (getConstraint_Namespace(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Constraint#getContext", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (getConstraint_Specification(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });								
 		addAnnotation
 		  (getBehavioralFeature_Parameter(), 
 		   source, 
@@ -14735,7 +14735,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 			 "org.eclipse.uml2.BehavioralFeature#getParameters", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });																	
 		addAnnotation
 		  (getGeneralization_Specific(), 
 		   source, 
@@ -14772,7 +14772,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																											
+		   });																		
 		addAnnotation
 		  (getElementImport_ImportedElement(), 
 		   source, 
@@ -14855,42 +14855,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.PackageImport#getImportedPackage", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
-		addAnnotation
-		  (getAbstraction_Mapping(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
-		addAnnotation
-		  (getRealization_Abstraction(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.DirectedRelationship#getSources", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "org.eclipse.uml2.Element#getOwner", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "org.eclipse.uml2.Dependency#getClients", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getRealization_RealizingClassifier(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Dependency#getSuppliers", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "org.eclipse.uml2.DirectedRelationship#getTargets", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
-		addAnnotation
-		  (getSubstitution_Contract(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Dependency#getSuppliers", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "org.eclipse.uml2.DirectedRelationship#getTargets", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getSubstitution_SubstitutingClassifier(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Dependency#getClients", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "org.eclipse.uml2.DirectedRelationship#getSources", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });														
 		addAnnotation
 		  (getBehavior_RedefinedBehavior(), 
 		   source, 
@@ -14970,7 +14935,42 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 			 "org.eclipse.uml2.Activity#getNodes", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "org.eclipse.uml2.Activity#getGroups", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });					
+		addAnnotation
+		  (getAbstraction_Mapping(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });												
+		addAnnotation
+		  (getRealization_Abstraction(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.DirectedRelationship#getSources", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.Element#getOwner", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.Dependency#getClients", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getRealization_RealizingClassifier(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Dependency#getSuppliers", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.DirectedRelationship#getTargets", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });										
+		addAnnotation
+		  (getSubstitution_Contract(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Dependency#getSuppliers", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.DirectedRelationship#getTargets", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getSubstitution_SubstitutingClassifier(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Dependency#getClients", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.DirectedRelationship#getSources", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });						
 		addAnnotation
 		  (getConnector_RedefinedConnector(), 
 		   source, 
@@ -15003,54 +15003,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 			 "org.eclipse.uml2.Classifier#getFeatures", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
-		addAnnotation
-		  (getExtend_ExtendedCase(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.DirectedRelationship#getTargets", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getExtend_Extension(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.DirectedRelationship#getSources", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getExtend_Condition(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getUseCase_Include(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getUseCase_Extend(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getUseCase_ExtensionPoint(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
-		addAnnotation
-		  (getInclude_IncludingCase(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.DirectedRelationship#getSources", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getInclude_Addition(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.DirectedRelationship#getTargets", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });						
 		addAnnotation
 		  (getActivityEdge_Activity(), 
@@ -15240,91 +15192,54 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 			 "org.eclipse.uml2.Dependency#getClients", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "org.eclipse.uml2.DirectedRelationship#getSources", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getCollaborationOccurrence_RoleBinding(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getCollaboration_CollaborationRole(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.StructuredClassifier#getRoles", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getPort_RedefinedPort(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.RedefinableElement#getRedefinedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
-		addAnnotation
-		  (getEncapsulatedClassifier_OwnedPort(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Classifier#getFeatures", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  (getInteraction_Lifeline(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getInteraction_Message(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getInteraction_FormalGate(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
-		addAnnotation
-		  (getInteractionFragment_GeneralOrdering(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getInteractionFragment_EnclosingOperand(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.NamedElement#getNamespace", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
-		addAnnotation
-		  (getLifeline_Interaction(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.NamedElement#getNamespace", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getLifeline_Selector(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
-		addAnnotation
-		  (getMessage_Interaction(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.NamedElement#getNamespace", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getMessage_Argument(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });								
 		addAnnotation
-		  (getStateInvariant_Invariant(), 
+		  (getExtend_ExtendedCase(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.DirectedRelationship#getTargets", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getExtend_Extension(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.DirectedRelationship#getSources", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getExtend_Condition(), 
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getUseCase_Include(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getUseCase_Extend(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getUseCase_ExtensionPoint(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });						
+		addAnnotation
+		  (getInclude_IncludingCase(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.DirectedRelationship#getSources", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getInclude_Addition(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.DirectedRelationship#getTargets", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });							
 		addAnnotation
 		  (getTemplateSignature_OwnedParameter(), 
@@ -15423,20 +15338,86 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
-		  (getChangeTrigger_ChangeExpression(), 
+		  (getCollaboration_CollaborationRole(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.StructuredClassifier#getRoles", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getCollaborationOccurrence_RoleBinding(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getPort_RedefinedPort(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.RedefinableElement#getRedefinedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });						
+		addAnnotation
+		  (getEncapsulatedClassifier_OwnedPort(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Classifier#getFeatures", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });					
+		addAnnotation
+		  (getInteraction_Lifeline(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getInteraction_Message(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getInteraction_FormalGate(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });							
+		addAnnotation
+		  (getInteractionFragment_GeneralOrdering(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getInteractionFragment_EnclosingOperand(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.NamedElement#getNamespace", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });							
+		addAnnotation
+		  (getLifeline_Interaction(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.NamedElement#getNamespace", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getLifeline_Selector(), 
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });						
 		addAnnotation
-		  (getSignal_OwnedAttribute(), 
+		  (getMessage_Interaction(), 
 		   source, 
 		   new String[] {
-			 "org.eclipse.uml2.Classifier#getAttributes", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+			 "org.eclipse.uml2.NamedElement#getNamespace", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
 		addAnnotation
-		  (getTimeTrigger_When(), 
+		  (getMessage_Argument(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });								
+		addAnnotation
+		  (getStateInvariant_Invariant(), 
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
@@ -15482,6 +15463,43 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Action#getInputs", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getChangeTrigger_ChangeExpression(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });						
+		addAnnotation
+		  (getSignal_OwnedAttribute(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Classifier#getAttributes", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getTimeTrigger_When(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getExceptionHandler_ProtectedNode(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwner", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getJoinNode_JoinSpec(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });							
+		addAnnotation
+		  (getActivityPartition_SuperPartition(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.ActivityGroup#getSuperGroup", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
 		  (getCreateObjectAction_Result(), 
@@ -15614,48 +15632,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Action#getInputs", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  (getInteractionOccurrence_ActualGate(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
-		addAnnotation
-		  (getInteractionOperand_Guard(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getInteractionConstraint_Minint(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getInteractionConstraint_Maxint(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  (getCombinedFragment_Operand(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getCombinedFragment_CfragmentGate(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getExceptionHandler_ProtectedNode(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwner", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });								
 		addAnnotation
 		  (getStateMachine_Region(), 
@@ -15746,52 +15722,43 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });					
 		addAnnotation
-		  (getJoinNode_JoinSpec(), 
+		  (getInteractionOccurrence_ActualGate(), 
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });							
 		addAnnotation
-		  (getActivityPartition_SuperPartition(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.ActivityGroup#getSuperGroup", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  (getParameterSet_Condition(), 
+		  (getInteractionOperand_Guard(), 
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });				
 		addAnnotation
-		  (getDeployment_DeployedArtifact(), 
+		  (getInteractionConstraint_Minint(), 
 		   source, 
 		   new String[] {
-			 "org.eclipse.uml2.Dependency#getSuppliers", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "org.eclipse.uml2.DirectedRelationship#getTargets", "" //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });		
 		addAnnotation
-		  (getDeployment_Location(), 
+		  (getInteractionConstraint_Maxint(), 
 		   source, 
 		   new String[] {
-			 "org.eclipse.uml2.DirectedRelationship#getSources", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "org.eclipse.uml2.Dependency#getClients", "" //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });					
+		addAnnotation
+		  (getCombinedFragment_Operand(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });		
 		addAnnotation
-		  (getDeployment_Configuration(), 
+		  (getCombinedFragment_CfragmentGate(), 
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });						
-		addAnnotation
-		  (getDeploymentTarget_Deployment(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Element#getOwnedElements", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "org.eclipse.uml2.NamedElement#getClientDependencies", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
 		addAnnotation
 		  (getComponent_Realization(), 
 		   source, 
@@ -15829,7 +15796,40 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Transition#getGuard", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																				
+		   });																																					
+		addAnnotation
+		  (getParameterSet_Condition(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });												
+		addAnnotation
+		  (getDeployment_DeployedArtifact(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Dependency#getSuppliers", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.DirectedRelationship#getTargets", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getDeployment_Location(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.DirectedRelationship#getSources", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.Dependency#getClients", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getDeployment_Configuration(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });						
+		addAnnotation
+		  (getDeploymentTarget_Deployment(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Element#getOwnedElements", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "org.eclipse.uml2.NamedElement#getClientDependencies", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });							
 		addAnnotation
 		  (getReadExtentAction_Result(), 
 		   source, 
@@ -15942,7 +15942,16 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });					
+		addAnnotation
+		  ((EOperation)directedRelationshipEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "relatedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });														
 		addAnnotation
 		  ((EOperation)expressionEClass.getEOperations().get(0), 
 		   source, 
@@ -16033,15 +16042,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
-		addAnnotation
-		  ((EOperation)directedRelationshipEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "relatedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
 		   });									
 		addAnnotation
 		  ((EOperation)classEClass.getEOperations().get(1), 
@@ -16473,20 +16473,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.upperBound", "-1" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
-		addAnnotation
-		  ((EOperation)constraintEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																									
+		   });																																
 		addAnnotation
 		  ((EOperation)classifierEClass.getEOperations().get(14), 
 		   source, 
@@ -16543,7 +16530,20 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																											
+		   });																		
+		addAnnotation
+		  ((EOperation)constraintEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });								
 		addAnnotation
 		  ((EOperation)behavioralFeatureEClass.getEOperations().get(1), 
 		   source, 
@@ -16565,7 +16565,16 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });													
+		addAnnotation
+		  ((EOperation)redefinableElementEClass.getEOperations().get(4), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "redefinedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.RedefinableElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
 		addAnnotation
 		  ((EOperation)generalizationEClass.getEOperations().get(0), 
 		   source, 
@@ -16635,16 +16644,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
-		addAnnotation
-		  ((EOperation)redefinableElementEClass.getEOperations().get(4), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "redefinedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.RedefinableElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });					
 		addAnnotation
 		  ((EOperation)packageableElementEClass.getEOperations().get(0), 
 		   source, 
@@ -16861,6 +16861,93 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
 		   });			
 		addAnnotation
+		  ((EOperation)behaviorEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "redefinedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.RedefinableElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)behaviorEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)behaviorEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedRule", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Constraint", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });							
+		addAnnotation
+		  ((EOperation)behavioredClassifierEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)behavioredClassifierEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)behavioredClassifierEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "client", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "-1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "1" //$NON-NLS-1$ //$NON-NLS-2$
+		   });									
+		addAnnotation
+		  ((EOperation)activityEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });										
+		addAnnotation
 		  ((EOperation)abstractionEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
@@ -16967,93 +17054,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
 		   });					
 		addAnnotation
-		  ((EOperation)behaviorEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "redefinedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.RedefinableElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)behaviorEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)behaviorEClass.getEOperations().get(2), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedRule", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Constraint", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
-		addAnnotation
-		  ((EOperation)behavioredClassifierEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)behavioredClassifierEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)behavioredClassifierEClass.getEOperations().get(2), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "client", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "-1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "1" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
-		addAnnotation
-		  ((EOperation)activityEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
-		addAnnotation
 		  ((EOperation)connectorEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
@@ -17119,68 +17119,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eType", "org.eclipse.uml2.Feature", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
 		   });							
-		addAnnotation
-		  ((EOperation)extendEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "target", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)extendEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "source", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)extendEClass.getEOperations().get(2), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
-		addAnnotation
-		  ((EOperation)useCaseEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
-		addAnnotation
-		  ((EOperation)includeEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "source", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)includeEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "target", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
 		addAnnotation
 		  ((EOperation)activityEdgeEClass.getEOperations().get(0), 
 		   source, 
@@ -17514,7 +17452,25 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
 		   });					
 		addAnnotation
-		  ((EOperation)collaborationOccurrenceEClass.getEOperations().get(0), 
+		  ((EOperation)extendEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "target", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)extendEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "source", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)extendEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
 			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
@@ -17525,173 +17481,38 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  ((EOperation)collaborationEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "role", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.ConnectableElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  ((EOperation)portEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "redefinedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.RedefinableElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  ((EOperation)encapsulatedClassifierEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "feature", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "featuringClassifier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "-1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Feature", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)encapsulatedClassifierEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  ((EOperation)interactionEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
-		addAnnotation
-		  ((EOperation)interactionFragmentEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)interactionFragmentEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "-1" //$NON-NLS-1$ //$NON-NLS-2$
 		   });						
 		addAnnotation
-		  ((EOperation)lifelineEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "-1" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)lifelineEClass.getEOperations().get(1), 
+		  ((EOperation)useCaseEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
 			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
 			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });						
 		addAnnotation
-		  ((EOperation)messageEClass.getEOperations().get(0), 
+		  ((EOperation)includeEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Namespace", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "-1" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)messageEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "source", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  ((EOperation)eventOccurrenceEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "covered", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Lifeline", //$NON-NLS-1$ //$NON-NLS-2$
 			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
 		   });			
 		addAnnotation
-		  ((EOperation)stateInvariantEClass.getEOperations().get(0), 
+		  ((EOperation)includeEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "covered", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Lifeline", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)stateInvariantEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
 			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "target", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });					
 		addAnnotation
 		  ((EOperation)templateSignatureEClass.getEOperations().get(0), 
 		   source, 
@@ -17867,7 +17688,16 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
 		   });						
 		addAnnotation
-		  ((EOperation)changeTriggerEClass.getEOperations().get(0), 
+		  ((EOperation)collaborationEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "role", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.ConnectableElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  ((EOperation)collaborationOccurrenceEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
@@ -17880,16 +17710,29 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
-		  ((EOperation)signalEClass.getEOperations().get(0), 
+		  ((EOperation)portEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "attribute", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Property", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "redefinedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.RedefinableElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  ((EOperation)encapsulatedClassifierEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "feature", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "featuringClassifier", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "-1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Feature", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
 		   });			
 		addAnnotation
-		  ((EOperation)signalEClass.getEOperations().get(1), 
+		  ((EOperation)encapsulatedClassifierEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
 			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
@@ -17900,9 +17743,118 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });					
 		addAnnotation
-		  ((EOperation)timeTriggerEClass.getEOperations().get(0), 
+		  ((EOperation)interactionEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });							
+		addAnnotation
+		  ((EOperation)interactionFragmentEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)interactionFragmentEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "-1" //$NON-NLS-1$ //$NON-NLS-2$
+		   });						
+		addAnnotation
+		  ((EOperation)lifelineEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "-1" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)lifelineEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });					
+		addAnnotation
+		  ((EOperation)messageEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "-1" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)messageEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });					
+		addAnnotation
+		  ((EOperation)eventOccurrenceEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "covered", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Lifeline", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)stateInvariantEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "covered", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Lifeline", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)stateInvariantEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
 			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
@@ -18045,6 +17997,93 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eType", "org.eclipse.uml2.InputPin", //$NON-NLS-1$ //$NON-NLS-2$
 			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
 		   });						
+		addAnnotation
+		  ((EOperation)changeTriggerEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  ((EOperation)signalEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "attribute", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Property", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)signalEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedMember", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "namespace", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  ((EOperation)timeTriggerEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  ((EOperation)exceptionHandlerEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "-1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  ((EOperation)joinNodeEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  ((EOperation)activityPartitionEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "superGroup", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.ActivityGroup", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "subgroup", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "-1" //$NON-NLS-1$ //$NON-NLS-2$
+		   });							
 		addAnnotation
 		  ((EOperation)createObjectActionEClass.getEOperations().get(0), 
 		   source, 
@@ -18260,71 +18299,6 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "name", "input", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.InputPin", //$NON-NLS-1$ //$NON-NLS-2$
 			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  ((EOperation)interactionOccurrenceEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
-		addAnnotation
-		  ((EOperation)interactionOperandEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  ((EOperation)interactionConstraintEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
-		addAnnotation
-		  ((EOperation)combinedFragmentEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  ((EOperation)exceptionHandlerEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "-1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
 		  ((EOperation)stateMachineEClass.getEOperations().get(0), 
@@ -18501,35 +18475,22 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
-		addAnnotation
-		  ((EOperation)joinNodeEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  ((EOperation)activityPartitionEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "superGroup", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.ActivityGroup", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "subgroup", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "-1" //$NON-NLS-1$ //$NON-NLS-2$
 		   });								
 		addAnnotation
-		  ((EOperation)parameterSetEClass.getEOperations().get(0), 
+		  ((EOperation)interactionOccurrenceEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });							
+		addAnnotation
+		  ((EOperation)interactionOperandEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
@@ -18542,47 +18503,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
-		  ((EOperation)deploymentEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)deploymentEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "target", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)deploymentEClass.getEOperations().get(2), 
-		   source, 
-		   new String[] {
-			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "source", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)deploymentEClass.getEOperations().get(3), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "client", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "-1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)deploymentEClass.getEOperations().get(4), 
+		  ((EOperation)interactionConstraintEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
@@ -18595,7 +18516,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
 		   });						
 		addAnnotation
-		  ((EOperation)deploymentTargetEClass.getEOperations().get(0), 
+		  ((EOperation)combinedFragmentEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
@@ -18606,29 +18527,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  ((EOperation)deploymentTargetEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite", "client", //$NON-NLS-1$ //$NON-NLS-2$
-			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.upperBound", "-1", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Dependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eOpposite.lowerBound", "1" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  ((EOperation)nodeEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "name", "nestedClassifier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "eType", "org.eclipse.uml2.Classifier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "containment", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });					
 		addAnnotation
 		  ((EOperation)componentEClass.getEOperations().get(0), 
 		   source, 
@@ -18846,7 +18745,108 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "name", "specification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.DurationInterval", //$NON-NLS-1$ //$NON-NLS-2$
 			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  ((EOperation)parameterSetEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  ((EOperation)deploymentEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
 		   });			
+		addAnnotation
+		  ((EOperation)deploymentEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "target", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)deploymentEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "source", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)deploymentEClass.getEOperations().get(3), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "client", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "-1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)deploymentEClass.getEOperations().get(4), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });						
+		addAnnotation
+		  ((EOperation)deploymentTargetEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "ownedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "owner", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  ((EOperation)deploymentTargetEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite", "client", //$NON-NLS-1$ //$NON-NLS-2$
+			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.upperBound", "-1", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eOpposite.lowerBound", "1" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  ((EOperation)nodeEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "derived", "false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "name", "nestedClassifier", //$NON-NLS-1$ //$NON-NLS-2$
+			 "eType", "org.eclipse.uml2.Classifier", //$NON-NLS-1$ //$NON-NLS-2$
+			 "containment", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
 		addAnnotation
 		  ((EOperation)readExtentActionEClass.getEOperations().get(0), 
 		   source, 
@@ -19091,13 +19091,13 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Namespace#getOwnedMembers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																										
+		   });																																																																													
 		addAnnotation
 		  (getConstraint_Namespace(), 
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.NamedElement#getNamespace", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																		
+		   });																																															
 		addAnnotation
 		  (getPackageableElement_PackageableElement_visibility(), 
 		   source, 
@@ -19121,13 +19121,13 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.TypedElement#getType", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																
+		   });																							
 		addAnnotation
 		  (getBehavioredClassifier_OwnedStateMachine(), 
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																									
+		   });																																																														
 		addAnnotation
 		  (getActivityEdge_RedefinedElement(), 
 		   source, 
@@ -19145,7 +19145,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.RedefinableElement#getRedefinedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																						
+		   });																																																																																																																																																																											
 		addAnnotation
 		  ((EOperation)eventOccurrenceEClass.getEOperations().get(0), 
 		   source, 
@@ -19157,7 +19157,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.InteractionFragment#getCovereds", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																					
+		   });									
 		addAnnotation
 		  ((EOperation)structuredActivityNodeEClass.getEOperations().get(0), 
 		   source, 
@@ -19183,7 +19183,25 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.ActivityGroup#getContainedEdges", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																	
+		   });																																				
+		addAnnotation
+		  (getActivityPartition_ContainedEdge(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.ActivityGroup#getContainedEdges", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getActivityPartition_ContainedNode(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.ActivityGroup#getContainedNodes", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getActivityPartition_Subgroup(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.ActivityGroup#getSubgroups", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });																																			
 		addAnnotation
 		  ((EOperation)linkEndCreationDataEClass.getEOperations().get(0), 
 		   source, 
@@ -19201,7 +19219,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.InvocationAction#getArguments", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																			
+		   });													
 		addAnnotation
 		  (getStateMachine_ExtendedStateMachine(), 
 		   source, 
@@ -19255,37 +19273,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.RedefinableElement#getRedefinedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
-		addAnnotation
-		  (getActivityPartition_ContainedEdge(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.ActivityGroup#getContainedEdges", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getActivityPartition_ContainedNode(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.ActivityGroup#getContainedNodes", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
-		addAnnotation
-		  (getActivityPartition_Subgroup(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.ActivityGroup#getSubgroups", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  (getInterruptibleActivityRegion_ContainedNode(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.ActivityGroup#getContainedNodes", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																									
-		addAnnotation
-		  (getNode_NestedNode(), 
-		   source, 
-		   new String[] {
-			 "org.eclipse.uml2.Class#getNestedClassifiers", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });																												
 		addAnnotation
 		  (getComponent_OwnedMember(), 
 		   source, 
@@ -19367,6 +19355,18 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   new String[] {
 			 "org.eclipse.uml2.Constraint#getSpecification", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "org.eclipse.uml2.IntervalConstraint#getSpecification", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (getInterruptibleActivityRegion_ContainedNode(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.ActivityGroup#getContainedNodes", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });																									
+		addAnnotation
+		  (getNode_NestedNode(), 
+		   source, 
+		   new String[] {
+			 "org.eclipse.uml2.Class#getNestedClassifiers", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });																														
 		addAnnotation
 		  ((EOperation)createLinkObjectActionEClass.getEOperations().get(0), 
@@ -19414,7 +19414,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)packageableElementEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-		   });																																																																																																																					
+		   });																																																																																												
 		addAnnotation
 		  (getActivity_StructuredNode(), 
 		   source, 
@@ -19423,7 +19423,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.upperBound", "1" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																														
+		   });																																																			
 		addAnnotation
 		  (getActivityEdge_InGroup(), 
 		   source, 
@@ -19460,7 +19460,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.containment", "false", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.upperBound", "-1" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																		
+		   });																																																																																																																																																																																											
 		addAnnotation
 		  ((EOperation)structuredActivityNodeEClass.getEOperations().get(2), 
 		   source, 
@@ -19470,12 +19470,12 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)structuredActivityNodeEClass.getEOperations().get(3), 
 		   source, 
 		   new String[] {
-		   });																																																																																					
+		   });																																																																																																												
 		addAnnotation
 		  ((EOperation)sendObjectActionEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });																																
+		   });										
 		addAnnotation
 		  ((EOperation)stateMachineEClass.getEOperations().get(0), 
 		   source, 
@@ -19505,12 +19505,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)transitionEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-		   });																																										
-		addAnnotation
-		  ((EOperation)nodeEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });																											
+		   });																																																					
 		addAnnotation
 		  ((EOperation)timeObservationActionEClass.getEOperations().get(0), 
 		   source, 
@@ -19544,7 +19539,12 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)durationObservationActionEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-		   });																																									
+		   });																														
+		addAnnotation
+		  ((EOperation)nodeEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });																																					
 		addAnnotation
 		  (getAcceptEventAction_Trigger(), 
 		   source, 
@@ -19576,7 +19576,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)packageEClass.getEOperations().get(6), 
 		   source, 
 		   new String[] {
-		   });																																																									
+		   });																																																											
 		addAnnotation
 		  ((EOperation)classifierEClass.getEOperations().get(17), 
 		   source, 
@@ -19586,7 +19586,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  (getClassifier_Occurrence(), 
 		   source, 
 		   new String[] {
-		   });																																																																																												
+		   });																																																																																										
 		addAnnotation
 		  (getAssociation_MemberEnd(), 
 		   source, 
@@ -19606,27 +19606,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)profileApplicationEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });																	
-		addAnnotation
-		  ((EOperation)realizationEClass.getEOperations().get(2), 
-		   source, 
-		   new String[] {
-		   });			
-		addAnnotation
-		  ((EOperation)realizationEClass.getEOperations().get(3), 
-		   source, 
-		   new String[] {
-		   });							
-		addAnnotation
-		  ((EOperation)substitutionEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });					
-		addAnnotation
-		  ((EOperation)substitutionEClass.getEOperations().get(2), 
-		   source, 
-		   new String[] {
-		   });											
+		   });														
 		addAnnotation
 		  ((EOperation)behaviorEClass.getEOperations().get(2), 
 		   source, 
@@ -19646,7 +19626,27 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  (getActivity_Node(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																			
+		   });													
+		addAnnotation
+		  ((EOperation)realizationEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  ((EOperation)realizationEClass.getEOperations().get(3), 
+		   source, 
+		   new String[] {
+		   });							
+		addAnnotation
+		  ((EOperation)substitutionEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });					
+		addAnnotation
+		  ((EOperation)substitutionEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+		   });																																																																																
 		addAnnotation
 		  ((EOperation)artifactEClass.getEOperations().get(1), 
 		   source, 
@@ -19666,7 +19666,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)implementationEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
-		   });																																																									
+		   });																														
 		addAnnotation
 		  (getTemplateSignature_Parameter(), 
 		   source, 
@@ -19691,7 +19691,17 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  (getTemplateParameterSubstitution_Actual(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																																																													
+		   });																																																																																																																																																																																																																																																										
+		addAnnotation
+		  ((EOperation)componentEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });																		
+		addAnnotation
+		  ((EOperation)protocolTransitionEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });																																									
 		addAnnotation
 		  ((EOperation)deploymentEClass.getEOperations().get(0), 
 		   source, 
@@ -19706,17 +19716,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)deploymentTargetEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-		   });									
-		addAnnotation
-		  ((EOperation)componentEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });																		
-		addAnnotation
-		  ((EOperation)protocolTransitionEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });																																																																																		
+		   });																																																				
 	}
 
 } //UML2PackageImpl

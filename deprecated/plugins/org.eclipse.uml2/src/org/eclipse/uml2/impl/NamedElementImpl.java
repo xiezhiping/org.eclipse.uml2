@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.8 2004/06/01 20:05:27 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.9 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -316,12 +316,14 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	public List allNamespaces() {
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("allNamespaces", null); //$NON-NLS-1$
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this,
-					method,
-					java.util.Collections.unmodifiableList(org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this)));
+			List result = (List) getCacheAdapter().get(this, method);
+		
+			if (null == result) {
+				result = java.util.Collections.unmodifiableList(org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this));
+				getCacheAdapter().put(this, method, result);
 			}
-			return (List) getCacheAdapter().get(this, method);
+		
+			return result;
 		} catch (Exception e) {
 			return org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this);
 		}
@@ -394,21 +396,20 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		if (null == ownedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
 			if (null != getNameExpression()) {
 				union.add(getNameExpression());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
-					union.size(),
-					union.toArray()));
+
+			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		return ownedElement;
 	}
 
 	/**

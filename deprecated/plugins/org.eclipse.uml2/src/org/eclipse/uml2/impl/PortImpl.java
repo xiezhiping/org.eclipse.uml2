@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PortImpl.java,v 1.4 2004/06/01 21:08:22 khussey Exp $
+ * $Id: PortImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -416,16 +416,18 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getPort().getEAllOperations().get(69))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getPort().getEAllOperations().get(69));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinedElements());
 			union.addAll(getRedefinedPorts());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getPort().getEAllOperations().get(69),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getPort().getEAllOperations().get(69), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getPort().getEAllOperations().get(69));
+
+		return result;
 	}
 
 	/**

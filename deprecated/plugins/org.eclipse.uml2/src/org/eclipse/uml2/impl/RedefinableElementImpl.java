@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.5 2004/05/20 03:20:03 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.6 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -141,17 +141,16 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext())) {
+		EList redefinitionContext = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
+
+		if (null == redefinitionContext) {
 			Set union = new LinkedHashSet();
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
-					union.size(),
-					union.toArray()));
+
+			redefinitionContext = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
+
+		return redefinitionContext;
 	}
 
     /**
@@ -195,14 +194,16 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRedefinableElement().getEAllOperations().get(35))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement().getEAllOperations().get(35));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getRedefinableElement().getEAllOperations().get(35),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRedefinableElement().getEAllOperations().get(35), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement().getEAllOperations().get(35));
+
+		return result;
 	}
 
 	/**

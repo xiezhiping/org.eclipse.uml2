@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.9 2004/06/01 20:05:27 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.10 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -271,19 +271,18 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 * @generated
 	 */
 	public EList getFeatures() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
+		EList feature = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		if (null == feature) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
 			union.addAll(getOwnedEnds());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier_Feature(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getClassifier_Feature(),
-					union.size(),
-					union.toArray()));
+
+			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		return feature;
 	}
 
 	/**
@@ -292,16 +291,18 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAssociation().getEAllOperations().get(70))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAssociation().getEAllOperations().get(70));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getOwnedEnds());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getAssociation().getEAllOperations().get(70),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAssociation().getEAllOperations().get(70), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAssociation().getEAllOperations().get(70));
+
+		return result;
 	}
 
 	/**
@@ -310,18 +311,17 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRelationship_RelatedElement())) {
+		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+
+		if (null == relatedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(getEndTypes());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getRelationship_RelatedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getRelationship_RelatedElement(),
-					union.size(),
-					union.toArray()));
+
+			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+
+		return relatedElement;
 	}
 
 	/**
@@ -330,19 +330,18 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 * @generated
 	 */
 	public EList getMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
+		EList member = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
+
+		if (null == member) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getMembers());
 			union.addAll(getMemberEnds());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getNamespace_Member(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getNamespace_Member(),
-					union.size(),
-					union.toArray()));
+
+			member = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getNamespace_Member(), member);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
+
+		return member;
 	}
 
 	/**
@@ -379,10 +378,10 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 					return eBasicSetContainer(otherEnd, UML2Package.ASSOCIATION__OWNING_PARAMETER, msgs);
 				case UML2Package.ASSOCIATION__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ASSOCIATION__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.ASSOCIATION__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__OWNED_END:
@@ -430,10 +429,10 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 					return eBasicSetContainer(null, UML2Package.ASSOCIATION__OWNING_PARAMETER, msgs);
 				case UML2Package.ASSOCIATION__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ASSOCIATION__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.ASSOCIATION__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__USE_CASE:
@@ -536,10 +535,10 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 				return getAttributes();
 			case UML2Package.ASSOCIATION__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.ASSOCIATION__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.ASSOCIATION__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.ASSOCIATION__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.ASSOCIATION__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.ASSOCIATION__USE_CASE:
@@ -632,13 +631,13 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.ASSOCIATION__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.ASSOCIATION__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.ASSOCIATION__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.ASSOCIATION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -731,11 +730,11 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			case UML2Package.ASSOCIATION__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.ASSOCIATION__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.ASSOCIATION__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.ASSOCIATION__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.ASSOCIATION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -827,10 +826,10 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 				return !getAttributes().isEmpty();
 			case UML2Package.ASSOCIATION__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.ASSOCIATION__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.ASSOCIATION__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.ASSOCIATION__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.ASSOCIATION__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.ASSOCIATION__USE_CASE:

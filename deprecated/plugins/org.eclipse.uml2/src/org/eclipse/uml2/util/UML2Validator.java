@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Validator.java,v 1.6 2004/05/28 05:39:38 khussey Exp $
+ * $Id: UML2Validator.java,v 1.7 2004/06/02 05:02:27 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -464,7 +464,7 @@ public class UML2Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__NO_CYCLES_IN_GENERALIZATION = 24;
+	public static final int CLASSIFIER__NO_CYCLES_IN_GENERALIZATION = 23;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Specialize Type' of 'Classifier'.
@@ -472,7 +472,7 @@ public class UML2Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__SPECIALIZE_TYPE = 25;
+	public static final int CLASSIFIER__SPECIALIZE_TYPE = 24;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Inherited Member' of 'Classifier'.
@@ -480,7 +480,7 @@ public class UML2Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__INHERITED_MEMBER = 26;
+	public static final int CLASSIFIER__INHERITED_MEMBER = 25;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate General Equals Parents' of 'Classifier'.
@@ -488,7 +488,7 @@ public class UML2Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__GENERAL_EQUALS_PARENTS = 27;
+	public static final int CLASSIFIER__GENERAL_EQUALS_PARENTS = 26;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Not Apply To Self' of 'Constraint'.
@@ -496,7 +496,7 @@ public class UML2Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSTRAINT__NOT_APPLY_TO_SELF = 23;
+	public static final int CONSTRAINT__NOT_APPLY_TO_SELF = 27;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Slots Are Defined' of 'Instance Specification'.
@@ -504,7 +504,7 @@ public class UML2Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INSTANCE_SPECIFICATION__SLOTS_ARE_DEFINED = 28;
+	public static final int INSTANCE_SPECIFICATION__SLOTS_ARE_DEFINED = 30;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate No Duplicate Slots' of 'Instance Specification'.
@@ -512,7 +512,7 @@ public class UML2Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INSTANCE_SPECIFICATION__NO_DUPLICATE_SLOTS = 29;
+	public static final int INSTANCE_SPECIFICATION__NO_DUPLICATE_SLOTS = 31;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Redefinition Context Valid' of 'Redefinable Element'.
@@ -520,7 +520,7 @@ public class UML2Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID = 30;
+	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID = 28;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Redefinition Consistent' of 'Redefinable Element'.
@@ -528,7 +528,7 @@ public class UML2Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT = 31;
+	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT = 29;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Visibility Public Or Private' of 'Element Import'.
@@ -593,6 +593,10 @@ public class UML2Validator extends EObjectValidator {
 				return validateElement((Element)value, diagnostics, context);
 			case UML2Package.MULTIPLICITY_ELEMENT:
 				return validateMultiplicityElement((MultiplicityElement)value, diagnostics, context);
+			case UML2Package.DIRECTED_RELATIONSHIP:
+				return validateDirectedRelationship((DirectedRelationship)value, diagnostics, context);
+			case UML2Package.RELATIONSHIP:
+				return validateRelationship((Relationship)value, diagnostics, context);
 			case UML2Package.OPAQUE_EXPRESSION:
 				return validateOpaqueExpression((OpaqueExpression)value, diagnostics, context);
 			case UML2Package.VALUE_SPECIFICATION:
@@ -605,10 +609,6 @@ public class UML2Validator extends EObjectValidator {
 				return validateNamedElement((NamedElement)value, diagnostics, context);
 			case UML2Package.NAMESPACE:
 				return validateNamespace((Namespace)value, diagnostics, context);
-			case UML2Package.DIRECTED_RELATIONSHIP:
-				return validateDirectedRelationship((DirectedRelationship)value, diagnostics, context);
-			case UML2Package.RELATIONSHIP:
-				return validateRelationship((Relationship)value, diagnostics, context);
 			case UML2Package.CLASS:
 				return validateClass((org.eclipse.uml2.Class)value, diagnostics, context);
 			case UML2Package.TYPE:
@@ -631,12 +631,6 @@ public class UML2Validator extends EObjectValidator {
 				return validateEnumerationLiteral((EnumerationLiteral)value, diagnostics, context);
 			case UML2Package.PRIMITIVE_TYPE:
 				return validatePrimitiveType((PrimitiveType)value, diagnostics, context);
-			case UML2Package.CONSTRAINT:
-				return validateConstraint((Constraint)value, diagnostics, context);
-			case UML2Package.CLASSIFIER:
-				return validateClassifier((Classifier)value, diagnostics, context);
-			case UML2Package.FEATURE:
-				return validateFeature((Feature)value, diagnostics, context);
 			case UML2Package.LITERAL_BOOLEAN:
 				return validateLiteralBoolean((LiteralBoolean)value, diagnostics, context);
 			case UML2Package.LITERAL_SPECIFICATION:
@@ -649,10 +643,18 @@ public class UML2Validator extends EObjectValidator {
 				return validateLiteralInteger((LiteralInteger)value, diagnostics, context);
 			case UML2Package.LITERAL_UNLIMITED_NATURAL:
 				return validateLiteralUnlimitedNatural((LiteralUnlimitedNatural)value, diagnostics, context);
-			case UML2Package.STRUCTURAL_FEATURE:
-				return validateStructuralFeature((StructuralFeature)value, diagnostics, context);
+			case UML2Package.CLASSIFIER:
+				return validateClassifier((Classifier)value, diagnostics, context);
+			case UML2Package.FEATURE:
+				return validateFeature((Feature)value, diagnostics, context);
+			case UML2Package.CONSTRAINT:
+				return validateConstraint((Constraint)value, diagnostics, context);
 			case UML2Package.BEHAVIORAL_FEATURE:
 				return validateBehavioralFeature((BehavioralFeature)value, diagnostics, context);
+			case UML2Package.STRUCTURAL_FEATURE:
+				return validateStructuralFeature((StructuralFeature)value, diagnostics, context);
+			case UML2Package.REDEFINABLE_ELEMENT:
+				return validateRedefinableElement((RedefinableElement)value, diagnostics, context);
 			case UML2Package.GENERALIZATION:
 				return validateGeneralization((Generalization)value, diagnostics, context);
 			case UML2Package.INSTANCE_SPECIFICATION:
@@ -661,8 +663,6 @@ public class UML2Validator extends EObjectValidator {
 				return validateSlot((Slot)value, diagnostics, context);
 			case UML2Package.INSTANCE_VALUE:
 				return validateInstanceValue((InstanceValue)value, diagnostics, context);
-			case UML2Package.REDEFINABLE_ELEMENT:
-				return validateRedefinableElement((RedefinableElement)value, diagnostics, context);
 			case UML2Package.PACKAGEABLE_ELEMENT:
 				return validatePackageableElement((PackageableElement)value, diagnostics, context);
 			case UML2Package.ELEMENT_IMPORT:
@@ -683,12 +683,22 @@ public class UML2Validator extends EObjectValidator {
 				return validateExtension((Extension)value, diagnostics, context);
 			case UML2Package.EXTENSION_END:
 				return validateExtensionEnd((ExtensionEnd)value, diagnostics, context);
-			case UML2Package.ASSOCIATION_CLASS:
-				return validateAssociationClass((AssociationClass)value, diagnostics, context);
 			case UML2Package.INFORMATION_ITEM:
 				return validateInformationItem((InformationItem)value, diagnostics, context);
 			case UML2Package.INFORMATION_FLOW:
 				return validateInformationFlow((InformationFlow)value, diagnostics, context);
+			case UML2Package.BEHAVIOR:
+				return validateBehavior((Behavior)value, diagnostics, context);
+			case UML2Package.BEHAVIORED_CLASSIFIER:
+				return validateBehavioredClassifier((BehavioredClassifier)value, diagnostics, context);
+			case UML2Package.ACTIVITY:
+				return validateActivity((Activity)value, diagnostics, context);
+			case UML2Package.GENERALIZATION_SET:
+				return validateGeneralizationSet((GeneralizationSet)value, diagnostics, context);
+			case UML2Package.MODEL:
+				return validateModel((Model)value, diagnostics, context);
+			case UML2Package.ASSOCIATION_CLASS:
+				return validateAssociationClass((AssociationClass)value, diagnostics, context);
 			case UML2Package.PERMISSION:
 				return validatePermission((Permission)value, diagnostics, context);
 			case UML2Package.DEPENDENCY:
@@ -701,16 +711,6 @@ public class UML2Validator extends EObjectValidator {
 				return validateRealization((Realization)value, diagnostics, context);
 			case UML2Package.SUBSTITUTION:
 				return validateSubstitution((Substitution)value, diagnostics, context);
-			case UML2Package.BEHAVIOR:
-				return validateBehavior((Behavior)value, diagnostics, context);
-			case UML2Package.BEHAVIORED_CLASSIFIER:
-				return validateBehavioredClassifier((BehavioredClassifier)value, diagnostics, context);
-			case UML2Package.ACTIVITY:
-				return validateActivity((Activity)value, diagnostics, context);
-			case UML2Package.MODEL:
-				return validateModel((Model)value, diagnostics, context);
-			case UML2Package.GENERALIZATION_SET:
-				return validateGeneralizationSet((GeneralizationSet)value, diagnostics, context);
 			case UML2Package.CONNECTOR_END:
 				return validateConnectorEnd((ConnectorEnd)value, diagnostics, context);
 			case UML2Package.CONNECTABLE_ELEMENT:
@@ -719,16 +719,6 @@ public class UML2Validator extends EObjectValidator {
 				return validateConnector((Connector)value, diagnostics, context);
 			case UML2Package.STRUCTURED_CLASSIFIER:
 				return validateStructuredClassifier((StructuredClassifier)value, diagnostics, context);
-			case UML2Package.ACTOR:
-				return validateActor((Actor)value, diagnostics, context);
-			case UML2Package.EXTEND:
-				return validateExtend((Extend)value, diagnostics, context);
-			case UML2Package.USE_CASE:
-				return validateUseCase((UseCase)value, diagnostics, context);
-			case UML2Package.EXTENSION_POINT:
-				return validateExtensionPoint((ExtensionPoint)value, diagnostics, context);
-			case UML2Package.INCLUDE:
-				return validateInclude((Include)value, diagnostics, context);
 			case UML2Package.ACTIVITY_EDGE:
 				return validateActivityEdge((ActivityEdge)value, diagnostics, context);
 			case UML2Package.ACTIVITY_GROUP:
@@ -775,10 +765,46 @@ public class UML2Validator extends EObjectValidator {
 				return validateInterface((Interface)value, diagnostics, context);
 			case UML2Package.IMPLEMENTATION:
 				return validateImplementation((Implementation)value, diagnostics, context);
-			case UML2Package.COLLABORATION_OCCURRENCE:
-				return validateCollaborationOccurrence((CollaborationOccurrence)value, diagnostics, context);
+			case UML2Package.ACTOR:
+				return validateActor((Actor)value, diagnostics, context);
+			case UML2Package.EXTEND:
+				return validateExtend((Extend)value, diagnostics, context);
+			case UML2Package.USE_CASE:
+				return validateUseCase((UseCase)value, diagnostics, context);
+			case UML2Package.EXTENSION_POINT:
+				return validateExtensionPoint((ExtensionPoint)value, diagnostics, context);
+			case UML2Package.INCLUDE:
+				return validateInclude((Include)value, diagnostics, context);
+			case UML2Package.TEMPLATE_SIGNATURE:
+				return validateTemplateSignature((TemplateSignature)value, diagnostics, context);
+			case UML2Package.TEMPLATE_PARAMETER:
+				return validateTemplateParameter((TemplateParameter)value, diagnostics, context);
+			case UML2Package.TEMPLATEABLE_ELEMENT:
+				return validateTemplateableElement((TemplateableElement)value, diagnostics, context);
+			case UML2Package.STRING_EXPRESSION:
+				return validateStringExpression((StringExpression)value, diagnostics, context);
+			case UML2Package.PARAMETERABLE_ELEMENT:
+				return validateParameterableElement((ParameterableElement)value, diagnostics, context);
+			case UML2Package.TEMPLATE_BINDING:
+				return validateTemplateBinding((TemplateBinding)value, diagnostics, context);
+			case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION:
+				return validateTemplateParameterSubstitution((TemplateParameterSubstitution)value, diagnostics, context);
 			case UML2Package.COLLABORATION:
 				return validateCollaboration((Collaboration)value, diagnostics, context);
+			case UML2Package.OPERATION_TEMPLATE_PARAMETER:
+				return validateOperationTemplateParameter((OperationTemplateParameter)value, diagnostics, context);
+			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER:
+				return validateClassifierTemplateParameter((ClassifierTemplateParameter)value, diagnostics, context);
+			case UML2Package.PARAMETERABLE_CLASSIFIER:
+				return validateParameterableClassifier((ParameterableClassifier)value, diagnostics, context);
+			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE:
+				return validateRedefinableTemplateSignature((RedefinableTemplateSignature)value, diagnostics, context);
+			case UML2Package.TEMPLATEABLE_CLASSIFIER:
+				return validateTemplateableClassifier((TemplateableClassifier)value, diagnostics, context);
+			case UML2Package.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER:
+				return validateConnectableElementTemplateParameter((ConnectableElementTemplateParameter)value, diagnostics, context);
+			case UML2Package.COLLABORATION_OCCURRENCE:
+				return validateCollaborationOccurrence((CollaborationOccurrence)value, diagnostics, context);
 			case UML2Package.PORT:
 				return validatePort((Port)value, diagnostics, context);
 			case UML2Package.ENCAPSULATED_CLASSIFIER:
@@ -803,32 +829,16 @@ public class UML2Validator extends EObjectValidator {
 				return validateStateInvariant((StateInvariant)value, diagnostics, context);
 			case UML2Package.STOP:
 				return validateStop((Stop)value, diagnostics, context);
-			case UML2Package.TEMPLATE_SIGNATURE:
-				return validateTemplateSignature((TemplateSignature)value, diagnostics, context);
-			case UML2Package.TEMPLATE_PARAMETER:
-				return validateTemplateParameter((TemplateParameter)value, diagnostics, context);
-			case UML2Package.TEMPLATEABLE_ELEMENT:
-				return validateTemplateableElement((TemplateableElement)value, diagnostics, context);
-			case UML2Package.STRING_EXPRESSION:
-				return validateStringExpression((StringExpression)value, diagnostics, context);
-			case UML2Package.PARAMETERABLE_ELEMENT:
-				return validateParameterableElement((ParameterableElement)value, diagnostics, context);
-			case UML2Package.TEMPLATE_BINDING:
-				return validateTemplateBinding((TemplateBinding)value, diagnostics, context);
-			case UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION:
-				return validateTemplateParameterSubstitution((TemplateParameterSubstitution)value, diagnostics, context);
-			case UML2Package.OPERATION_TEMPLATE_PARAMETER:
-				return validateOperationTemplateParameter((OperationTemplateParameter)value, diagnostics, context);
-			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER:
-				return validateClassifierTemplateParameter((ClassifierTemplateParameter)value, diagnostics, context);
-			case UML2Package.PARAMETERABLE_CLASSIFIER:
-				return validateParameterableClassifier((ParameterableClassifier)value, diagnostics, context);
-			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE:
-				return validateRedefinableTemplateSignature((RedefinableTemplateSignature)value, diagnostics, context);
-			case UML2Package.TEMPLATEABLE_CLASSIFIER:
-				return validateTemplateableClassifier((TemplateableClassifier)value, diagnostics, context);
-			case UML2Package.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER:
-				return validateConnectableElementTemplateParameter((ConnectableElementTemplateParameter)value, diagnostics, context);
+			case UML2Package.VARIABLE:
+				return validateVariable((Variable)value, diagnostics, context);
+			case UML2Package.STRUCTURED_ACTIVITY_NODE:
+				return validateStructuredActivityNode((StructuredActivityNode)value, diagnostics, context);
+			case UML2Package.CONDITIONAL_NODE:
+				return validateConditionalNode((ConditionalNode)value, diagnostics, context);
+			case UML2Package.CLAUSE:
+				return validateClause((Clause)value, diagnostics, context);
+			case UML2Package.LOOP_NODE:
+				return validateLoopNode((LoopNode)value, diagnostics, context);
 			case UML2Package.CALL_TRIGGER:
 				return validateCallTrigger((CallTrigger)value, diagnostics, context);
 			case UML2Package.MESSAGE_TRIGGER:
@@ -847,16 +857,22 @@ public class UML2Validator extends EObjectValidator {
 				return validateTimeTrigger((TimeTrigger)value, diagnostics, context);
 			case UML2Package.ANY_TRIGGER:
 				return validateAnyTrigger((AnyTrigger)value, diagnostics, context);
-			case UML2Package.VARIABLE:
-				return validateVariable((Variable)value, diagnostics, context);
-			case UML2Package.STRUCTURED_ACTIVITY_NODE:
-				return validateStructuredActivityNode((StructuredActivityNode)value, diagnostics, context);
-			case UML2Package.CONDITIONAL_NODE:
-				return validateConditionalNode((ConditionalNode)value, diagnostics, context);
-			case UML2Package.CLAUSE:
-				return validateClause((Clause)value, diagnostics, context);
-			case UML2Package.LOOP_NODE:
-				return validateLoopNode((LoopNode)value, diagnostics, context);
+			case UML2Package.EXPANSION_NODE:
+				return validateExpansionNode((ExpansionNode)value, diagnostics, context);
+			case UML2Package.EXPANSION_REGION:
+				return validateExpansionRegion((ExpansionRegion)value, diagnostics, context);
+			case UML2Package.EXCEPTION_HANDLER:
+				return validateExceptionHandler((ExceptionHandler)value, diagnostics, context);
+			case UML2Package.FORK_NODE:
+				return validateForkNode((ForkNode)value, diagnostics, context);
+			case UML2Package.JOIN_NODE:
+				return validateJoinNode((JoinNode)value, diagnostics, context);
+			case UML2Package.FLOW_FINAL_NODE:
+				return validateFlowFinalNode((FlowFinalNode)value, diagnostics, context);
+			case UML2Package.CENTRAL_BUFFER_NODE:
+				return validateCentralBufferNode((CentralBufferNode)value, diagnostics, context);
+			case UML2Package.ACTIVITY_PARTITION:
+				return validateActivityPartition((ActivityPartition)value, diagnostics, context);
 			case UML2Package.CREATE_OBJECT_ACTION:
 				return validateCreateObjectAction((CreateObjectAction)value, diagnostics, context);
 			case UML2Package.DESTROY_OBJECT_ACTION:
@@ -923,26 +939,6 @@ public class UML2Validator extends EObjectValidator {
 				return validateCallOperationAction((CallOperationAction)value, diagnostics, context);
 			case UML2Package.CALL_BEHAVIOR_ACTION:
 				return validateCallBehaviorAction((CallBehaviorAction)value, diagnostics, context);
-			case UML2Package.INTERACTION_OCCURRENCE:
-				return validateInteractionOccurrence((InteractionOccurrence)value, diagnostics, context);
-			case UML2Package.GATE:
-				return validateGate((Gate)value, diagnostics, context);
-			case UML2Package.PART_DECOMPOSITION:
-				return validatePartDecomposition((PartDecomposition)value, diagnostics, context);
-			case UML2Package.INTERACTION_OPERAND:
-				return validateInteractionOperand((InteractionOperand)value, diagnostics, context);
-			case UML2Package.INTERACTION_CONSTRAINT:
-				return validateInteractionConstraint((InteractionConstraint)value, diagnostics, context);
-			case UML2Package.COMBINED_FRAGMENT:
-				return validateCombinedFragment((CombinedFragment)value, diagnostics, context);
-			case UML2Package.CONTINUATION:
-				return validateContinuation((Continuation)value, diagnostics, context);
-			case UML2Package.EXPANSION_NODE:
-				return validateExpansionNode((ExpansionNode)value, diagnostics, context);
-			case UML2Package.EXPANSION_REGION:
-				return validateExpansionRegion((ExpansionRegion)value, diagnostics, context);
-			case UML2Package.EXCEPTION_HANDLER:
-				return validateExceptionHandler((ExceptionHandler)value, diagnostics, context);
 			case UML2Package.STATE_MACHINE:
 				return validateStateMachine((StateMachine)value, diagnostics, context);
 			case UML2Package.REGION:
@@ -959,36 +955,20 @@ public class UML2Validator extends EObjectValidator {
 				return validateTransition((Transition)value, diagnostics, context);
 			case UML2Package.FINAL_STATE:
 				return validateFinalState((FinalState)value, diagnostics, context);
-			case UML2Package.FORK_NODE:
-				return validateForkNode((ForkNode)value, diagnostics, context);
-			case UML2Package.JOIN_NODE:
-				return validateJoinNode((JoinNode)value, diagnostics, context);
-			case UML2Package.FLOW_FINAL_NODE:
-				return validateFlowFinalNode((FlowFinalNode)value, diagnostics, context);
-			case UML2Package.CENTRAL_BUFFER_NODE:
-				return validateCentralBufferNode((CentralBufferNode)value, diagnostics, context);
-			case UML2Package.ACTIVITY_PARTITION:
-				return validateActivityPartition((ActivityPartition)value, diagnostics, context);
-			case UML2Package.DATA_STORE_NODE:
-				return validateDataStoreNode((DataStoreNode)value, diagnostics, context);
-			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION:
-				return validateInterruptibleActivityRegion((InterruptibleActivityRegion)value, diagnostics, context);
-			case UML2Package.PARAMETER_SET:
-				return validateParameterSet((ParameterSet)value, diagnostics, context);
-			case UML2Package.DEPLOYMENT:
-				return validateDeployment((Deployment)value, diagnostics, context);
-			case UML2Package.DEPLOYED_ARTIFACT:
-				return validateDeployedArtifact((DeployedArtifact)value, diagnostics, context);
-			case UML2Package.DEPLOYMENT_TARGET:
-				return validateDeploymentTarget((DeploymentTarget)value, diagnostics, context);
-			case UML2Package.NODE:
-				return validateNode((Node)value, diagnostics, context);
-			case UML2Package.DEVICE:
-				return validateDevice((Device)value, diagnostics, context);
-			case UML2Package.EXECUTION_ENVIRONMENT:
-				return validateExecutionEnvironment((ExecutionEnvironment)value, diagnostics, context);
-			case UML2Package.COMMUNICATION_PATH:
-				return validateCommunicationPath((CommunicationPath)value, diagnostics, context);
+			case UML2Package.INTERACTION_OCCURRENCE:
+				return validateInteractionOccurrence((InteractionOccurrence)value, diagnostics, context);
+			case UML2Package.GATE:
+				return validateGate((Gate)value, diagnostics, context);
+			case UML2Package.PART_DECOMPOSITION:
+				return validatePartDecomposition((PartDecomposition)value, diagnostics, context);
+			case UML2Package.INTERACTION_OPERAND:
+				return validateInteractionOperand((InteractionOperand)value, diagnostics, context);
+			case UML2Package.INTERACTION_CONSTRAINT:
+				return validateInteractionConstraint((InteractionConstraint)value, diagnostics, context);
+			case UML2Package.COMBINED_FRAGMENT:
+				return validateCombinedFragment((CombinedFragment)value, diagnostics, context);
+			case UML2Package.CONTINUATION:
+				return validateContinuation((Continuation)value, diagnostics, context);
 			case UML2Package.COMPONENT:
 				return validateComponent((Component)value, diagnostics, context);
 			case UML2Package.PROTOCOL_CONFORMANCE:
@@ -1017,6 +997,26 @@ public class UML2Validator extends EObjectValidator {
 				return validateDurationObservationAction((DurationObservationAction)value, diagnostics, context);
 			case UML2Package.DURATION_CONSTRAINT:
 				return validateDurationConstraint((DurationConstraint)value, diagnostics, context);
+			case UML2Package.DATA_STORE_NODE:
+				return validateDataStoreNode((DataStoreNode)value, diagnostics, context);
+			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION:
+				return validateInterruptibleActivityRegion((InterruptibleActivityRegion)value, diagnostics, context);
+			case UML2Package.PARAMETER_SET:
+				return validateParameterSet((ParameterSet)value, diagnostics, context);
+			case UML2Package.DEPLOYMENT:
+				return validateDeployment((Deployment)value, diagnostics, context);
+			case UML2Package.DEPLOYED_ARTIFACT:
+				return validateDeployedArtifact((DeployedArtifact)value, diagnostics, context);
+			case UML2Package.DEPLOYMENT_TARGET:
+				return validateDeploymentTarget((DeploymentTarget)value, diagnostics, context);
+			case UML2Package.NODE:
+				return validateNode((Node)value, diagnostics, context);
+			case UML2Package.DEVICE:
+				return validateDevice((Device)value, diagnostics, context);
+			case UML2Package.EXECUTION_ENVIRONMENT:
+				return validateExecutionEnvironment((ExecutionEnvironment)value, diagnostics, context);
+			case UML2Package.COMMUNICATION_PATH:
+				return validateCommunicationPath((CommunicationPath)value, diagnostics, context);
 			case UML2Package.READ_EXTENT_ACTION:
 				return validateReadExtentAction((ReadExtentAction)value, diagnostics, context);
 			case UML2Package.RECLASSIFY_OBJECT_ACTION:
@@ -1055,20 +1055,20 @@ public class UML2Validator extends EObjectValidator {
 				return validateMessageSort((Object)value, diagnostics, context);
 			case UML2Package.CALL_CONCURRENCY_KIND:
 				return validateCallConcurrencyKind((Object)value, diagnostics, context);
-			case UML2Package.INTERACTION_OPERATOR:
-				return validateInteractionOperator((Object)value, diagnostics, context);
 			case UML2Package.EXPANSION_KIND:
 				return validateExpansionKind((Object)value, diagnostics, context);
 			case UML2Package.TRANSITION_KIND:
 				return validateTransitionKind((Object)value, diagnostics, context);
 			case UML2Package.PSEUDOSTATE_KIND:
 				return validatePseudostateKind((Object)value, diagnostics, context);
+			case UML2Package.INTERACTION_OPERATOR:
+				return validateInteractionOperator((Object)value, diagnostics, context);
+			case UML2Package.CONNECTOR_KIND:
+				return validateConnectorKind((Object)value, diagnostics, context);
 			case UML2Package.PARAMETER_EFFECT_KIND:
 				return validateParameterEffectKind((Object)value, diagnostics, context);
 			case UML2Package.OBJECT_NODE_ORDERING_KIND:
 				return validateObjectNodeOrderingKind((Object)value, diagnostics, context);
-			case UML2Package.CONNECTOR_KIND:
-				return validateConnectorKind((Object)value, diagnostics, context);
 			case UML2Package.INTEGER:
 				return validateInteger(((Integer)value).intValue(), diagnostics, context);
 			case UML2Package.BOOLEAN:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.8 2004/06/01 20:05:27 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.9 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -389,22 +389,21 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		if (null == ownedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
 			union.addAll(getSlots());
 			if (null != getSpecification()) {
 				union.add(getSpecification());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
-					union.size(),
-					union.toArray()));
+
+			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		return ownedElement;
 	}
 
 	/**

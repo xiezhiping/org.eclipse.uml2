@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.4 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -158,19 +158,18 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	 * @generated
 	 */
 	public EList getOutputs() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
+		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
+
+		if (null == output) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOutputs());
 			union.addAll(getResults());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getAction_Output(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getAction_Output(),
-					union.size(),
-					union.toArray()));
+
+			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
+
+		return output;
 	}
 
 	/**

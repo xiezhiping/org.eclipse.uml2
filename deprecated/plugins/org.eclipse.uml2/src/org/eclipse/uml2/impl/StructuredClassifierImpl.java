@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.9 2004/06/01 21:08:22 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.10 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -201,18 +201,17 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public EList getRoles() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier_Role())) {
+		EList role = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredClassifier_Role());
+
+		if (null == role) {
 			Set union = new LinkedHashSet();
 			union.addAll(getOwnedAttributes());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getStructuredClassifier_Role(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getStructuredClassifier_Role(),
-					union.size(),
-					union.toArray()));
+
+			role = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), role);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredClassifier_Role());
+
+		return role;
 	}
 
     /**
@@ -281,19 +280,18 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public EList getAttributes() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Attribute())) {
+		EList attribute = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
+
+		if (null == attribute) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getAttributes());
 			union.addAll(getOwnedAttributes());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier_Attribute(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getClassifier_Attribute(),
-					union.size(),
-					union.toArray()));
+
+			attribute = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Attribute(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Attribute(), attribute);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
+
+		return attribute;
 	}
 
 	/**
@@ -302,17 +300,19 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier().getEAllOperations().get(70))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredClassifier().getEAllOperations().get(70));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getOwnedAttributes());
 			union.addAll(getOwnedConnectors());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getStructuredClassifier().getEAllOperations().get(70),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredClassifier().getEAllOperations().get(70), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredClassifier().getEAllOperations().get(70));
+
+		return result;
 	}
 
 	/**
@@ -321,19 +321,18 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public EList getMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
+		EList member = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
+
+		if (null == member) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getMembers());
 			union.addAll(getRoles());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getNamespace_Member(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getNamespace_Member(),
-					union.size(),
-					union.toArray()));
+
+			member = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getNamespace_Member(), member);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
+
+		return member;
 	}
 
 	/**
@@ -342,19 +341,18 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public EList getFeatures() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
+		EList feature = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		if (null == feature) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
 			union.addAll(getOwnedConnectors());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier_Feature(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getClassifier_Feature(),
-					union.size(),
-					union.toArray()));
+
+			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		return feature;
 	}
 
 	/**
@@ -391,10 +389,10 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 					return eBasicSetContainer(otherEnd, UML2Package.STRUCTURED_CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.STRUCTURED_CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.STRUCTURED_CLASSIFIER__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
@@ -438,10 +436,10 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 					return eBasicSetContainer(null, UML2Package.STRUCTURED_CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.STRUCTURED_CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.STRUCTURED_CLASSIFIER__USE_CASE:
@@ -544,10 +542,10 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 				return getAttributes();
 			case UML2Package.STRUCTURED_CLASSIFIER__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.STRUCTURED_CLASSIFIER__USE_CASE:
@@ -638,13 +636,13 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -734,11 +732,11 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -827,10 +825,10 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 				return !getAttributes().isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__USE_CASE:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.12 2004/06/01 21:08:22 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.13 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,8 +84,8 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getGeneralizations <em>Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPowertypeExtents <em>Powertype Extent</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOwnedUseCases <em>Owned Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getUseCases <em>Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRepresentation <em>Representation</em>}</li>
@@ -194,16 +194,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	protected EList redefinedClassifier = null;
 
 	/**
-	 * The cached value of the '{@link #getSubstitutions() <em>Substitution</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubstitutions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList substitution = null;
-
-	/**
 	 * The cached value of the '{@link #getPowertypeExtents() <em>Powertype Extent</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,6 +202,16 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @ordered
 	 */
 	protected EList powertypeExtent = null;
+
+	/**
+	 * The cached value of the '{@link #getSubstitutions() <em>Substitution</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubstitutions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList substitution = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedUseCases() <em>Owned Use Case</em>}' containment reference list.
@@ -453,17 +453,16 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext())) {
+		EList redefinitionContext = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
+
+		if (null == redefinitionContext) {
 			Set union = new LinkedHashSet();
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
-					union.size(),
-					union.toArray()));
+
+			redefinitionContext = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
+
+		return redefinitionContext;
 	}
 
     /**
@@ -512,18 +511,17 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public EList getFeatures() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
+		EList feature = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		if (null == feature) {
 			Set union = new LinkedHashSet();
 			union.addAll(getAttributes());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier_Feature(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getClassifier_Feature(),
-					union.size(),
-					union.toArray()));
+
+			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		return feature;
 	}
 
     /**
@@ -654,17 +652,16 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public EList getAttributes() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Attribute())) {
+		EList attribute = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
+
+		if (null == attribute) {
 			Set union = new LinkedHashSet();
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier_Attribute(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getClassifier_Attribute(),
-					union.size(),
-					union.toArray()));
+
+			attribute = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Attribute(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Attribute(), attribute);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
+
+		return attribute;
 	}
 
     /**
@@ -1028,12 +1025,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public Set allFeatures() {
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("allFeatures", null); //$NON-NLS-1$
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this,
-					method,
-					java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allFeatures(this)));
+			Set result = (Set) getCacheAdapter().get(this, method);
+		
+			if (null == result) {
+				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allFeatures(this));
+				getCacheAdapter().put(this, method, result);
 			}
-			return (Set) getCacheAdapter().get(this, method);
+		
+			return result;
 		} catch (Exception e) {
 			return org.eclipse.uml2.internal.operation.ClassifierOperations.allFeatures(this);
 		}
@@ -1074,12 +1073,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public Set inheritedMember() {
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("inheritedMember", null); //$NON-NLS-1$
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this,
-					method,
-					java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.inheritedMember(this)));
+			Set result = (Set) getCacheAdapter().get(this, method);
+		
+			if (null == result) {
+				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.inheritedMember(this));
+				getCacheAdapter().put(this, method, result);
 			}
-			return (Set) getCacheAdapter().get(this, method);
+		
+			return result;
 		} catch (Exception e) {
 			return org.eclipse.uml2.internal.operation.ClassifierOperations.inheritedMember(this);
 		}
@@ -1093,12 +1094,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public Set parents() {
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("parents", null); //$NON-NLS-1$
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this,
-					method,
-					java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.parents(this)));
+			Set result = (Set) getCacheAdapter().get(this, method);
+		
+			if (null == result) {
+				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.parents(this));
+				getCacheAdapter().put(this, method, result);
 			}
-			return (Set) getCacheAdapter().get(this, method);
+		
+			return result;
 		} catch (Exception e) {
 			return org.eclipse.uml2.internal.operation.ClassifierOperations.parents(this);
 		}
@@ -1112,12 +1115,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public Set allParents() {
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("allParents", null); //$NON-NLS-1$
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this,
-					method,
-					java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allParents(this)));
+			Set result = (Set) getCacheAdapter().get(this, method);
+		
+			if (null == result) {
+				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allParents(this));
+				getCacheAdapter().put(this, method, result);
 			}
-			return (Set) getCacheAdapter().get(this, method);
+		
+			return result;
 		} catch (Exception e) {
 			return org.eclipse.uml2.internal.operation.ClassifierOperations.allParents(this);
 		}
@@ -1167,12 +1172,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public Set general() {
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("general", null); //$NON-NLS-1$
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this,
-					method,
-					java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.general(this)));
+			Set result = (Set) getCacheAdapter().get(this, method);
+		
+			if (null == result) {
+				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.general(this));
+				getCacheAdapter().put(this, method, result);
 			}
-			return (Set) getCacheAdapter().get(this, method);
+		
+			return result;
 		} catch (Exception e) {
 			return org.eclipse.uml2.internal.operation.ClassifierOperations.general(this);
 		}
@@ -1202,20 +1209,19 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public EList getMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
+		EList member = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
+
+		if (null == member) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getMembers());
 			union.addAll(getFeatures());
 			union.addAll(getInheritedMembers());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getNamespace_Member(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getNamespace_Member(),
-					union.size(),
-					union.toArray()));
+
+			member = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getNamespace_Member(), member);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
+
+		return member;
 	}
 
 	/**
@@ -1224,21 +1230,20 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		if (null == ownedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
 			union.addAll(getGeneralizations());
 			union.addAll(getSubstitutions());
 			union.addAll(getOccurrences());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
-					union.size(),
-					union.toArray()));
+
+			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		return ownedElement;
 	}
 
 	/**
@@ -1247,15 +1252,17 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(66))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(66));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(getRedefinedClassifiers());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(66),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(66), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(66));
+
+		return result;
 	}
 
 	/**
@@ -1277,16 +1284,18 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(68))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(68));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getOwnedUseCases());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(68),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(68), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(68));
+
+		return result;
 	}
 
 	/**
@@ -1323,10 +1332,10 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 					return eBasicSetContainer(otherEnd, UML2Package.CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CLASSIFIER__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.CLASSIFIER__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
@@ -1370,10 +1379,10 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 					return eBasicSetContainer(null, UML2Package.CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLASSIFIER__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.CLASSIFIER__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__USE_CASE:
@@ -1472,10 +1481,10 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				return getAttributes();
 			case UML2Package.CLASSIFIER__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.CLASSIFIER__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.CLASSIFIER__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.CLASSIFIER__USE_CASE:
@@ -1558,13 +1567,13 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.CLASSIFIER__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.CLASSIFIER__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1646,11 +1655,11 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.CLASSIFIER__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.CLASSIFIER__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1733,10 +1742,10 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				return !getAttributes().isEmpty();
 			case UML2Package.CLASSIFIER__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.CLASSIFIER__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.CLASSIFIER__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.CLASSIFIER__USE_CASE:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.4 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -137,14 +137,16 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated
 	 */
 	public EList getSubgroups() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getActivityGroup().getEAllOperations().get(19))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getActivityGroup().getEAllOperations().get(19));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getActivityGroup().getEAllOperations().get(19),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getActivityGroup().getEAllOperations().get(19), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getActivityGroup().getEAllOperations().get(19));
+
+		return result;
 	}
 
 	/**
@@ -191,19 +193,18 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		if (null == ownedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
 			union.addAll(getSubgroups());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
-					union.size(),
-					union.toArray()));
+
+			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		return ownedElement;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.9 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -135,19 +135,18 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	 * @generated
 	 */
 	public EList getFeatures() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
+		EList feature = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		if (null == feature) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
 			union.addAll(getOwnedPorts());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier_Feature(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getClassifier_Feature(),
-					union.size(),
-					union.toArray()));
+
+			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		return feature;
 	}
 
 	/**
@@ -156,16 +155,18 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getEncapsulatedClassifier().getEAllOperations().get(74))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getEncapsulatedClassifier().getEAllOperations().get(74));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getOwnedPorts());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getEncapsulatedClassifier().getEAllOperations().get(74),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getEncapsulatedClassifier().getEAllOperations().get(74), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getEncapsulatedClassifier().getEAllOperations().get(74));
+
+		return result;
 	}
 
 	/**
@@ -202,10 +203,10 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 					return eBasicSetContainer(otherEnd, UML2Package.ENCAPSULATED_CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.ENCAPSULATED_CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENCAPSULATED_CLASSIFIER__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
@@ -249,10 +250,10 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 					return eBasicSetContainer(null, UML2Package.ENCAPSULATED_CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.ENCAPSULATED_CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENCAPSULATED_CLASSIFIER__USE_CASE:
@@ -357,10 +358,10 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 				return getAttributes();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__USE_CASE:
@@ -453,13 +454,13 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -553,11 +554,11 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 			case UML2Package.ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -649,10 +650,10 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 				return !getAttributes().isEmpty();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.ENCAPSULATED_CLASSIFIER__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__USE_CASE:

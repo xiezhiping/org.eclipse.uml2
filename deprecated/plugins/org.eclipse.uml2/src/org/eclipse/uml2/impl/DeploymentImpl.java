@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.5 2004/05/20 03:20:02 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.6 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -238,19 +238,18 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 * @generated
 	 */
 	public EList getTargets() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
+		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
+
+		if (null == target) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getTargets());
 			union.addAll(getDeployedArtifacts());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getDirectedRelationship_Target(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getDirectedRelationship_Target(),
-					union.size(),
-					union.toArray()));
+
+			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
+
+		return target;
 	}
 
 	/**
@@ -259,21 +258,20 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 * @generated
 	 */
 	public EList getSources() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Source())) {
+		EList source = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
+
+		if (null == source) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getSources());
 			if (null != getLocation()) {
 				union.add(getLocation());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getDirectedRelationship_Source(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getDirectedRelationship_Source(),
-					union.size(),
-					union.toArray()));
+
+			source = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
+
+		return source;
 	}
 
 	/**
@@ -295,19 +293,18 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		if (null == ownedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
 			union.addAll(getConfigurations());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
-					union.size(),
-					union.toArray()));
+
+			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		return ownedElement;
 	}
 
 	/**

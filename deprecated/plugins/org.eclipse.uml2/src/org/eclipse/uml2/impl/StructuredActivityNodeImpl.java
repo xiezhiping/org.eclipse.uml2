@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.9 2004/06/01 21:08:22 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.10 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -186,19 +186,18 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public EList getMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
+		EList member = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
+
+		if (null == member) {
 			Set union = new LinkedHashSet();
 			union.addAll(getOwnedMembers());
 			union.addAll(getImportedMembers());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getNamespace_Member(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getNamespace_Member(),
-					union.size(),
-					union.toArray()));
+
+			member = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getNamespace_Member(), member);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
+
+		return member;
 	}
 
     /**
@@ -566,12 +565,14 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public Set importedMember() {
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("importedMember", null); //$NON-NLS-1$
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this,
-					method,
-					java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.NamespaceOperations.importedMember(this)));
+			Set result = (Set) getCacheAdapter().get(this, method);
+		
+			if (null == result) {
+				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.NamespaceOperations.importedMember(this));
+				getCacheAdapter().put(this, method, result);
 			}
-			return (Set) getCacheAdapter().get(this, method);
+		
+			return result;
 		} catch (Exception e) {
 			return org.eclipse.uml2.internal.operation.NamespaceOperations.importedMember(this);
 		}
@@ -601,21 +602,20 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		if (null == ownedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
 			union.addAll(getOwnedMembers());
 			union.addAll(getElementImports());
 			union.addAll(getPackageImports());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
-					union.size(),
-					union.toArray()));
+
+			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		return ownedElement;
 	}
 
 	/**
@@ -624,14 +624,16 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public EList getSubgroups() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(48))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(48));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(48),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(48), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(48));
+
+		return result;
 	}
 
 	/**
@@ -696,15 +698,17 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(59))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(59));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(getVariables());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(59),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(59), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(59));
+
+		return result;
 	}
 
 	/**

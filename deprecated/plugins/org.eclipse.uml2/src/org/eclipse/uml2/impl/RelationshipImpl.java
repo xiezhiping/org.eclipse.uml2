@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.4 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -71,17 +71,16 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRelationship_RelatedElement())) {
+		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+
+		if (null == relatedElement) {
 			Set union = new LinkedHashSet();
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getRelationship_RelatedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getRelationship_RelatedElement(),
-					union.size(),
-					union.toArray()));
+
+			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+
+		return relatedElement;
 	}
 
 	/**

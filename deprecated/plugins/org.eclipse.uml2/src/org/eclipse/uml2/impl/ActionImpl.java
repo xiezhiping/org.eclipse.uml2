@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
+ * $Id: ActionImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -150,17 +150,16 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public EList getOutputs() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
+		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
+
+		if (null == output) {
 			Set union = new LinkedHashSet();
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getAction_Output(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getAction_Output(),
-					union.size(),
-					union.toArray()));
+
+			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
+
+		return output;
 	}
 
     /**
@@ -186,17 +185,16 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public EList getInputs() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Input())) {
+		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
+
+		if (null == input) {
 			Set union = new LinkedHashSet();
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getAction_Input(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getAction_Input(),
-					union.size(),
-					union.toArray()));
+
+			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
+
+		return input;
 	}
 
     /**
@@ -328,22 +326,21 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		if (null == ownedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
 			union.addAll(getOutputs());
 			union.addAll(getInputs());
 			union.addAll(getLocalPreconditions());
 			union.addAll(getLocalPostconditions());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
-					union.size(),
-					union.toArray()));
+
+			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		return ownedElement;
 	}
 
 	/**

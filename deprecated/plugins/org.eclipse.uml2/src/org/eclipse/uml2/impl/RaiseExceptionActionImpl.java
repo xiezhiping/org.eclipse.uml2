@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: RaiseExceptionActionImpl.java,v 1.4 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -127,21 +127,20 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 	 * @generated
 	 */
 	public EList getInputs() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Input())) {
+		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
+
+		if (null == input) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getInputs());
 			if (null != getException()) {
 				union.add(getException());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getAction_Input(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getAction_Input(),
-					union.size(),
-					union.toArray()));
+
+			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
+
+		return input;
 	}
 
 	/**

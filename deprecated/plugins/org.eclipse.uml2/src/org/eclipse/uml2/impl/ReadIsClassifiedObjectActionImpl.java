@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -307,21 +307,20 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 * @generated
 	 */
 	public EList getOutputs() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
+		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
+
+		if (null == output) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOutputs());
 			if (null != getResult()) {
 				union.add(getResult());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getAction_Output(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getAction_Output(),
-					union.size(),
-					union.toArray()));
+
+			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
+
+		return output;
 	}
 
 	/**
@@ -330,21 +329,20 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 * @generated
 	 */
 	public EList getInputs() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Input())) {
+		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
+
+		if (null == input) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getInputs());
 			if (null != getObject()) {
 				union.add(getObject());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getAction_Input(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getAction_Input(),
-					union.size(),
-					union.toArray()));
+
+			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
+
+		return input;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.10 2004/05/28 05:39:37 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.11 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -302,17 +302,19 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStateMachine().getEAllOperations().get(91))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStateMachine().getEAllOperations().get(91));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getRegions());
 			union.addAll(getConnectionPoints());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getStateMachine().getEAllOperations().get(91),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getStateMachine().getEAllOperations().get(91), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStateMachine().getEAllOperations().get(91));
+
+		return result;
 	}
 
 	/**
@@ -349,10 +351,10 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 					return eBasicSetContainer(otherEnd, UML2Package.STATE_MACHINE__OWNING_PARAMETER, msgs);
 				case UML2Package.STATE_MACHINE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.STATE_MACHINE__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
@@ -418,10 +420,10 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 					return eBasicSetContainer(null, UML2Package.STATE_MACHINE__OWNING_PARAMETER, msgs);
 				case UML2Package.STATE_MACHINE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.STATE_MACHINE__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__USE_CASE:
@@ -558,10 +560,10 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return getAttributes();
 			case UML2Package.STATE_MACHINE__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.STATE_MACHINE__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.STATE_MACHINE__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.STATE_MACHINE__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.STATE_MACHINE__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.STATE_MACHINE__USE_CASE:
@@ -594,10 +596,10 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return getOwnedOperations();
 			case UML2Package.STATE_MACHINE__SUPER_CLASS:
 				return getSuperClasses();
-			case UML2Package.STATE_MACHINE__EXTENSION:
-				return getExtensions();
 			case UML2Package.STATE_MACHINE__NESTED_CLASSIFIER:
 				return getNestedClassifiers();
+			case UML2Package.STATE_MACHINE__EXTENSION:
+				return getExtensions();
 			case UML2Package.STATE_MACHINE__IS_ACTIVE:
 				return isActive() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.STATE_MACHINE__OWNED_RECEPTION:
@@ -706,13 +708,13 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.STATE_MACHINE__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.STATE_MACHINE__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.STATE_MACHINE__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.STATE_MACHINE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -883,11 +885,11 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.STATE_MACHINE__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.STATE_MACHINE__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.STATE_MACHINE__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.STATE_MACHINE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1042,10 +1044,10 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return !getAttributes().isEmpty();
 			case UML2Package.STATE_MACHINE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.STATE_MACHINE__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.STATE_MACHINE__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.STATE_MACHINE__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.STATE_MACHINE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.STATE_MACHINE__USE_CASE:
@@ -1078,10 +1080,10 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.STATE_MACHINE__SUPER_CLASS:
 				return !getSuperClasses().isEmpty();
-			case UML2Package.STATE_MACHINE__EXTENSION:
-				return !getExtensions().isEmpty();
 			case UML2Package.STATE_MACHINE__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UML2Package.STATE_MACHINE__EXTENSION:
+				return !getExtensions().isEmpty();
 			case UML2Package.STATE_MACHINE__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.STATE_MACHINE__OWNED_RECEPTION:

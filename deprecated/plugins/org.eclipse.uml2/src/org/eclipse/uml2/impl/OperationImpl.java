@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.7 2004/05/20 03:20:02 khussey Exp $
+ * $Id: OperationImpl.java,v 1.8 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -767,7 +767,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		if (null == ownedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
 			if (null != getUpperValue()) {
@@ -776,15 +778,12 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			if (null != getLowerValue()) {
 				union.add(getLowerValue());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
-					union.size(),
-					union.toArray()));
+
+			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		return ownedElement;
 	}
 
 	/**
@@ -984,7 +983,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext())) {
+		EList redefinitionContext = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
+
+		if (null == redefinitionContext) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinitionContexts());
 			if (null != getClass_()) {
@@ -993,15 +994,12 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			if (null != getDatatype()) {
 				union.add(getDatatype());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
-					union.size(),
-					union.toArray()));
+
+			redefinitionContext = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
+
+		return redefinitionContext;
 	}
 
 	/**
@@ -1025,7 +1023,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier())) {
+		EList featuringClassifier = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
+
+		if (null == featuringClassifier) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeaturingClassifiers());
 			if (null != getClass_()) {
@@ -1034,15 +1034,12 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			if (null != getDatatype()) {
 				union.add(getDatatype());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getFeature_FeaturingClassifier(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getFeature_FeaturingClassifier(),
-					union.size(),
-					union.toArray()));
+
+			featuringClassifier = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), featuringClassifier);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
+
+		return featuringClassifier;
 	}
 
 	/**
@@ -1051,7 +1048,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(81))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(81));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getPreconditions());
@@ -1059,12 +1058,12 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			if (null != getBodyCondition()) {
 				union.add(getBodyCondition());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getOperation().getEAllOperations().get(81),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(81), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(81));
+
+		return result;
 	}
 
 	/**
@@ -1086,16 +1085,18 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(83))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(83));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinedElements());
 			union.addAll(getRedefinedOperations());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getOperation().getEAllOperations().get(83),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(83), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(83));
+
+		return result;
 	}
 
 	/**

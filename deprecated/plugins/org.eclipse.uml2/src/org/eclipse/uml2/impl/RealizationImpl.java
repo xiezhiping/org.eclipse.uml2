@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -176,21 +176,20 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 * @generated
 	 */
 	public EList getSources() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Source())) {
+		EList source = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
+
+		if (null == source) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getSources());
 			if (null != getAbstraction()) {
 				union.add(getAbstraction());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getDirectedRelationship_Source(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getDirectedRelationship_Source(),
-					union.size(),
-					union.toArray()));
+
+			source = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
+
+		return source;
 	}
 
 	/**
@@ -237,21 +236,20 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 * @generated
 	 */
 	public EList getTargets() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
+		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
+
+		if (null == target) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getTargets());
 			if (null != getRealizingClassifier()) {
 				union.add(getRealizingClassifier());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getDirectedRelationship_Target(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getDirectedRelationship_Target(),
-					union.size(),
-					union.toArray()));
+
+			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
+
+		return target;
 	}
 
 	/**

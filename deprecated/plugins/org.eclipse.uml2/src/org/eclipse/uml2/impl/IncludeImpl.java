@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.4 2004/06/01 21:08:22 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -95,17 +95,16 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public EList getRelatedElementsGen() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRelationship_RelatedElement())) {
+		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+
+		if (null == relatedElement) {
 			Set union = new LinkedHashSet();
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getRelationship_RelatedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getRelationship_RelatedElement(),
-					union.size(),
-					union.toArray()));
+
+			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+
+		return relatedElement;
 	}
 
 	public EList getRelatedElements() {
@@ -203,20 +202,19 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public EList getSources() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Source())) {
+		EList source = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
+
+		if (null == source) {
 			Set union = new LinkedHashSet();
 			if (null != getIncludingCase()) {
 				union.add(getIncludingCase());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getDirectedRelationship_Source(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getDirectedRelationship_Source(),
-					union.size(),
-					union.toArray()));
+
+			source = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
+
+		return source;
 	}
 
 	/**
@@ -225,20 +223,19 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public EList getTargets() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
+		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
+
+		if (null == target) {
 			Set union = new LinkedHashSet();
 			if (null != getAddition()) {
 				union.add(getAddition());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getDirectedRelationship_Target(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getDirectedRelationship_Target(),
-					union.size(),
-					union.toArray()));
+
+			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
+
+		return target;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2AdapterFactory.java,v 1.10 2004/05/28 05:39:38 khussey Exp $
+ * $Id: UML2AdapterFactory.java,v 1.11 2004/06/02 05:02:27 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -313,6 +313,12 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			public Object caseMultiplicityElement(MultiplicityElement object) {
 				return createMultiplicityElementAdapter();
 			}
+			public Object caseDirectedRelationship(DirectedRelationship object) {
+				return createDirectedRelationshipAdapter();
+			}
+			public Object caseRelationship(Relationship object) {
+				return createRelationshipAdapter();
+			}
 			public Object caseOpaqueExpression(OpaqueExpression object) {
 				return createOpaqueExpressionAdapter();
 			}
@@ -330,12 +336,6 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseNamespace(Namespace object) {
 				return createNamespaceAdapter();
-			}
-			public Object caseDirectedRelationship(DirectedRelationship object) {
-				return createDirectedRelationshipAdapter();
-			}
-			public Object caseRelationship(Relationship object) {
-				return createRelationshipAdapter();
 			}
 			public Object caseClass(org.eclipse.uml2.Class object) {
 				return createClassAdapter();
@@ -370,15 +370,6 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			public Object casePrimitiveType(PrimitiveType object) {
 				return createPrimitiveTypeAdapter();
 			}
-			public Object caseConstraint(Constraint object) {
-				return createConstraintAdapter();
-			}
-			public Object caseClassifier(Classifier object) {
-				return createClassifierAdapter();
-			}
-			public Object caseFeature(Feature object) {
-				return createFeatureAdapter();
-			}
 			public Object caseLiteralBoolean(LiteralBoolean object) {
 				return createLiteralBooleanAdapter();
 			}
@@ -397,11 +388,23 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			public Object caseLiteralUnlimitedNatural(LiteralUnlimitedNatural object) {
 				return createLiteralUnlimitedNaturalAdapter();
 			}
-			public Object caseStructuralFeature(StructuralFeature object) {
-				return createStructuralFeatureAdapter();
+			public Object caseClassifier(Classifier object) {
+				return createClassifierAdapter();
+			}
+			public Object caseFeature(Feature object) {
+				return createFeatureAdapter();
+			}
+			public Object caseConstraint(Constraint object) {
+				return createConstraintAdapter();
 			}
 			public Object caseBehavioralFeature(BehavioralFeature object) {
 				return createBehavioralFeatureAdapter();
+			}
+			public Object caseStructuralFeature(StructuralFeature object) {
+				return createStructuralFeatureAdapter();
+			}
+			public Object caseRedefinableElement(RedefinableElement object) {
+				return createRedefinableElementAdapter();
 			}
 			public Object caseGeneralization(Generalization object) {
 				return createGeneralizationAdapter();
@@ -414,9 +417,6 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseInstanceValue(InstanceValue object) {
 				return createInstanceValueAdapter();
-			}
-			public Object caseRedefinableElement(RedefinableElement object) {
-				return createRedefinableElementAdapter();
 			}
 			public Object casePackageableElement(PackageableElement object) {
 				return createPackageableElementAdapter();
@@ -448,14 +448,29 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			public Object caseExtensionEnd(ExtensionEnd object) {
 				return createExtensionEndAdapter();
 			}
-			public Object caseAssociationClass(AssociationClass object) {
-				return createAssociationClassAdapter();
-			}
 			public Object caseInformationItem(InformationItem object) {
 				return createInformationItemAdapter();
 			}
 			public Object caseInformationFlow(InformationFlow object) {
 				return createInformationFlowAdapter();
+			}
+			public Object caseBehavior(Behavior object) {
+				return createBehaviorAdapter();
+			}
+			public Object caseBehavioredClassifier(BehavioredClassifier object) {
+				return createBehavioredClassifierAdapter();
+			}
+			public Object caseActivity(Activity object) {
+				return createActivityAdapter();
+			}
+			public Object caseGeneralizationSet(GeneralizationSet object) {
+				return createGeneralizationSetAdapter();
+			}
+			public Object caseModel(Model object) {
+				return createModelAdapter();
+			}
+			public Object caseAssociationClass(AssociationClass object) {
+				return createAssociationClassAdapter();
 			}
 			public Object casePermission(Permission object) {
 				return createPermissionAdapter();
@@ -475,21 +490,6 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			public Object caseSubstitution(Substitution object) {
 				return createSubstitutionAdapter();
 			}
-			public Object caseBehavior(Behavior object) {
-				return createBehaviorAdapter();
-			}
-			public Object caseBehavioredClassifier(BehavioredClassifier object) {
-				return createBehavioredClassifierAdapter();
-			}
-			public Object caseActivity(Activity object) {
-				return createActivityAdapter();
-			}
-			public Object caseModel(Model object) {
-				return createModelAdapter();
-			}
-			public Object caseGeneralizationSet(GeneralizationSet object) {
-				return createGeneralizationSetAdapter();
-			}
 			public Object caseConnectorEnd(ConnectorEnd object) {
 				return createConnectorEndAdapter();
 			}
@@ -501,21 +501,6 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseStructuredClassifier(StructuredClassifier object) {
 				return createStructuredClassifierAdapter();
-			}
-			public Object caseActor(Actor object) {
-				return createActorAdapter();
-			}
-			public Object caseExtend(Extend object) {
-				return createExtendAdapter();
-			}
-			public Object caseUseCase(UseCase object) {
-				return createUseCaseAdapter();
-			}
-			public Object caseExtensionPoint(ExtensionPoint object) {
-				return createExtensionPointAdapter();
-			}
-			public Object caseInclude(Include object) {
-				return createIncludeAdapter();
 			}
 			public Object caseActivityEdge(ActivityEdge object) {
 				return createActivityEdgeAdapter();
@@ -586,11 +571,65 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			public Object caseImplementation(Implementation object) {
 				return createImplementationAdapter();
 			}
-			public Object caseCollaborationOccurrence(CollaborationOccurrence object) {
-				return createCollaborationOccurrenceAdapter();
+			public Object caseActor(Actor object) {
+				return createActorAdapter();
+			}
+			public Object caseExtend(Extend object) {
+				return createExtendAdapter();
+			}
+			public Object caseUseCase(UseCase object) {
+				return createUseCaseAdapter();
+			}
+			public Object caseExtensionPoint(ExtensionPoint object) {
+				return createExtensionPointAdapter();
+			}
+			public Object caseInclude(Include object) {
+				return createIncludeAdapter();
+			}
+			public Object caseTemplateSignature(TemplateSignature object) {
+				return createTemplateSignatureAdapter();
+			}
+			public Object caseTemplateParameter(TemplateParameter object) {
+				return createTemplateParameterAdapter();
+			}
+			public Object caseTemplateableElement(TemplateableElement object) {
+				return createTemplateableElementAdapter();
+			}
+			public Object caseStringExpression(StringExpression object) {
+				return createStringExpressionAdapter();
+			}
+			public Object caseParameterableElement(ParameterableElement object) {
+				return createParameterableElementAdapter();
+			}
+			public Object caseTemplateBinding(TemplateBinding object) {
+				return createTemplateBindingAdapter();
+			}
+			public Object caseTemplateParameterSubstitution(TemplateParameterSubstitution object) {
+				return createTemplateParameterSubstitutionAdapter();
 			}
 			public Object caseCollaboration(Collaboration object) {
 				return createCollaborationAdapter();
+			}
+			public Object caseOperationTemplateParameter(OperationTemplateParameter object) {
+				return createOperationTemplateParameterAdapter();
+			}
+			public Object caseClassifierTemplateParameter(ClassifierTemplateParameter object) {
+				return createClassifierTemplateParameterAdapter();
+			}
+			public Object caseParameterableClassifier(ParameterableClassifier object) {
+				return createParameterableClassifierAdapter();
+			}
+			public Object caseRedefinableTemplateSignature(RedefinableTemplateSignature object) {
+				return createRedefinableTemplateSignatureAdapter();
+			}
+			public Object caseTemplateableClassifier(TemplateableClassifier object) {
+				return createTemplateableClassifierAdapter();
+			}
+			public Object caseConnectableElementTemplateParameter(ConnectableElementTemplateParameter object) {
+				return createConnectableElementTemplateParameterAdapter();
+			}
+			public Object caseCollaborationOccurrence(CollaborationOccurrence object) {
+				return createCollaborationOccurrenceAdapter();
 			}
 			public Object casePort(Port object) {
 				return createPortAdapter();
@@ -628,44 +667,20 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			public Object caseStop(Stop object) {
 				return createStopAdapter();
 			}
-			public Object caseTemplateSignature(TemplateSignature object) {
-				return createTemplateSignatureAdapter();
+			public Object caseVariable(Variable object) {
+				return createVariableAdapter();
 			}
-			public Object caseTemplateParameter(TemplateParameter object) {
-				return createTemplateParameterAdapter();
+			public Object caseStructuredActivityNode(StructuredActivityNode object) {
+				return createStructuredActivityNodeAdapter();
 			}
-			public Object caseTemplateableElement(TemplateableElement object) {
-				return createTemplateableElementAdapter();
+			public Object caseConditionalNode(ConditionalNode object) {
+				return createConditionalNodeAdapter();
 			}
-			public Object caseStringExpression(StringExpression object) {
-				return createStringExpressionAdapter();
+			public Object caseClause(Clause object) {
+				return createClauseAdapter();
 			}
-			public Object caseParameterableElement(ParameterableElement object) {
-				return createParameterableElementAdapter();
-			}
-			public Object caseTemplateBinding(TemplateBinding object) {
-				return createTemplateBindingAdapter();
-			}
-			public Object caseTemplateParameterSubstitution(TemplateParameterSubstitution object) {
-				return createTemplateParameterSubstitutionAdapter();
-			}
-			public Object caseOperationTemplateParameter(OperationTemplateParameter object) {
-				return createOperationTemplateParameterAdapter();
-			}
-			public Object caseClassifierTemplateParameter(ClassifierTemplateParameter object) {
-				return createClassifierTemplateParameterAdapter();
-			}
-			public Object caseParameterableClassifier(ParameterableClassifier object) {
-				return createParameterableClassifierAdapter();
-			}
-			public Object caseRedefinableTemplateSignature(RedefinableTemplateSignature object) {
-				return createRedefinableTemplateSignatureAdapter();
-			}
-			public Object caseTemplateableClassifier(TemplateableClassifier object) {
-				return createTemplateableClassifierAdapter();
-			}
-			public Object caseConnectableElementTemplateParameter(ConnectableElementTemplateParameter object) {
-				return createConnectableElementTemplateParameterAdapter();
+			public Object caseLoopNode(LoopNode object) {
+				return createLoopNodeAdapter();
 			}
 			public Object caseCallTrigger(CallTrigger object) {
 				return createCallTriggerAdapter();
@@ -694,20 +709,29 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			public Object caseAnyTrigger(AnyTrigger object) {
 				return createAnyTriggerAdapter();
 			}
-			public Object caseVariable(Variable object) {
-				return createVariableAdapter();
+			public Object caseExpansionNode(ExpansionNode object) {
+				return createExpansionNodeAdapter();
 			}
-			public Object caseStructuredActivityNode(StructuredActivityNode object) {
-				return createStructuredActivityNodeAdapter();
+			public Object caseExpansionRegion(ExpansionRegion object) {
+				return createExpansionRegionAdapter();
 			}
-			public Object caseConditionalNode(ConditionalNode object) {
-				return createConditionalNodeAdapter();
+			public Object caseExceptionHandler(ExceptionHandler object) {
+				return createExceptionHandlerAdapter();
 			}
-			public Object caseClause(Clause object) {
-				return createClauseAdapter();
+			public Object caseForkNode(ForkNode object) {
+				return createForkNodeAdapter();
 			}
-			public Object caseLoopNode(LoopNode object) {
-				return createLoopNodeAdapter();
+			public Object caseJoinNode(JoinNode object) {
+				return createJoinNodeAdapter();
+			}
+			public Object caseFlowFinalNode(FlowFinalNode object) {
+				return createFlowFinalNodeAdapter();
+			}
+			public Object caseCentralBufferNode(CentralBufferNode object) {
+				return createCentralBufferNodeAdapter();
+			}
+			public Object caseActivityPartition(ActivityPartition object) {
+				return createActivityPartitionAdapter();
 			}
 			public Object caseCreateObjectAction(CreateObjectAction object) {
 				return createCreateObjectActionAdapter();
@@ -808,36 +832,6 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			public Object caseCallBehaviorAction(CallBehaviorAction object) {
 				return createCallBehaviorActionAdapter();
 			}
-			public Object caseInteractionOccurrence(InteractionOccurrence object) {
-				return createInteractionOccurrenceAdapter();
-			}
-			public Object caseGate(Gate object) {
-				return createGateAdapter();
-			}
-			public Object casePartDecomposition(PartDecomposition object) {
-				return createPartDecompositionAdapter();
-			}
-			public Object caseInteractionOperand(InteractionOperand object) {
-				return createInteractionOperandAdapter();
-			}
-			public Object caseInteractionConstraint(InteractionConstraint object) {
-				return createInteractionConstraintAdapter();
-			}
-			public Object caseCombinedFragment(CombinedFragment object) {
-				return createCombinedFragmentAdapter();
-			}
-			public Object caseContinuation(Continuation object) {
-				return createContinuationAdapter();
-			}
-			public Object caseExpansionNode(ExpansionNode object) {
-				return createExpansionNodeAdapter();
-			}
-			public Object caseExpansionRegion(ExpansionRegion object) {
-				return createExpansionRegionAdapter();
-			}
-			public Object caseExceptionHandler(ExceptionHandler object) {
-				return createExceptionHandlerAdapter();
-			}
 			public Object caseStateMachine(StateMachine object) {
 				return createStateMachineAdapter();
 			}
@@ -862,50 +856,26 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			public Object caseFinalState(FinalState object) {
 				return createFinalStateAdapter();
 			}
-			public Object caseForkNode(ForkNode object) {
-				return createForkNodeAdapter();
+			public Object caseInteractionOccurrence(InteractionOccurrence object) {
+				return createInteractionOccurrenceAdapter();
 			}
-			public Object caseJoinNode(JoinNode object) {
-				return createJoinNodeAdapter();
+			public Object caseGate(Gate object) {
+				return createGateAdapter();
 			}
-			public Object caseFlowFinalNode(FlowFinalNode object) {
-				return createFlowFinalNodeAdapter();
+			public Object casePartDecomposition(PartDecomposition object) {
+				return createPartDecompositionAdapter();
 			}
-			public Object caseCentralBufferNode(CentralBufferNode object) {
-				return createCentralBufferNodeAdapter();
+			public Object caseInteractionOperand(InteractionOperand object) {
+				return createInteractionOperandAdapter();
 			}
-			public Object caseActivityPartition(ActivityPartition object) {
-				return createActivityPartitionAdapter();
+			public Object caseInteractionConstraint(InteractionConstraint object) {
+				return createInteractionConstraintAdapter();
 			}
-			public Object caseDataStoreNode(DataStoreNode object) {
-				return createDataStoreNodeAdapter();
+			public Object caseCombinedFragment(CombinedFragment object) {
+				return createCombinedFragmentAdapter();
 			}
-			public Object caseInterruptibleActivityRegion(InterruptibleActivityRegion object) {
-				return createInterruptibleActivityRegionAdapter();
-			}
-			public Object caseParameterSet(ParameterSet object) {
-				return createParameterSetAdapter();
-			}
-			public Object caseDeployment(Deployment object) {
-				return createDeploymentAdapter();
-			}
-			public Object caseDeployedArtifact(DeployedArtifact object) {
-				return createDeployedArtifactAdapter();
-			}
-			public Object caseDeploymentTarget(DeploymentTarget object) {
-				return createDeploymentTargetAdapter();
-			}
-			public Object caseNode(Node object) {
-				return createNodeAdapter();
-			}
-			public Object caseDevice(Device object) {
-				return createDeviceAdapter();
-			}
-			public Object caseExecutionEnvironment(ExecutionEnvironment object) {
-				return createExecutionEnvironmentAdapter();
-			}
-			public Object caseCommunicationPath(CommunicationPath object) {
-				return createCommunicationPathAdapter();
+			public Object caseContinuation(Continuation object) {
+				return createContinuationAdapter();
 			}
 			public Object caseComponent(Component object) {
 				return createComponentAdapter();
@@ -948,6 +918,36 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseDurationConstraint(DurationConstraint object) {
 				return createDurationConstraintAdapter();
+			}
+			public Object caseDataStoreNode(DataStoreNode object) {
+				return createDataStoreNodeAdapter();
+			}
+			public Object caseInterruptibleActivityRegion(InterruptibleActivityRegion object) {
+				return createInterruptibleActivityRegionAdapter();
+			}
+			public Object caseParameterSet(ParameterSet object) {
+				return createParameterSetAdapter();
+			}
+			public Object caseDeployment(Deployment object) {
+				return createDeploymentAdapter();
+			}
+			public Object caseDeployedArtifact(DeployedArtifact object) {
+				return createDeployedArtifactAdapter();
+			}
+			public Object caseDeploymentTarget(DeploymentTarget object) {
+				return createDeploymentTargetAdapter();
+			}
+			public Object caseNode(Node object) {
+				return createNodeAdapter();
+			}
+			public Object caseDevice(Device object) {
+				return createDeviceAdapter();
+			}
+			public Object caseExecutionEnvironment(ExecutionEnvironment object) {
+				return createExecutionEnvironmentAdapter();
+			}
+			public Object caseCommunicationPath(CommunicationPath object) {
+				return createCommunicationPathAdapter();
 			}
 			public Object caseReadExtentAction(ReadExtentAction object) {
 				return createReadExtentActionAdapter();

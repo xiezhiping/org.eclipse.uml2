@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
+ * $Id: ReadStructuralFeatureActionImpl.java,v 1.5 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -148,21 +148,20 @@ public class ReadStructuralFeatureActionImpl extends StructuralFeatureActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
+		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
+
+		if (null == output) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOutputs());
 			if (null != getResult()) {
 				union.add(getResult());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getAction_Output(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getAction_Output(),
-					union.size(),
-					union.toArray()));
+
+			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
+
+		return output;
 	}
 
 	/**

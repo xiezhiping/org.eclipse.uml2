@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.12 2004/06/01 21:08:23 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.13 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -581,16 +581,18 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(86))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(86));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinedElements());
 			union.addAll(getRedefinedBehaviors());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(86),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(86), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(86));
+
+		return result;
 	}
 
 	/**
@@ -599,16 +601,18 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(87))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(87));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getParameters());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(87),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(87), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(87));
+
+		return result;
 	}
 
 	/**
@@ -658,10 +662,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 					return eBasicSetContainer(otherEnd, UML2Package.BEHAVIOR__OWNING_PARAMETER, msgs);
 				case UML2Package.BEHAVIOR__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.BEHAVIOR__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.BEHAVIOR__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
@@ -721,10 +725,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 					return eBasicSetContainer(null, UML2Package.BEHAVIOR__OWNING_PARAMETER, msgs);
 				case UML2Package.BEHAVIOR__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.BEHAVIOR__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.BEHAVIOR__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__USE_CASE:
@@ -853,10 +857,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return getAttributes();
 			case UML2Package.BEHAVIOR__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.BEHAVIOR__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.BEHAVIOR__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.BEHAVIOR__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.BEHAVIOR__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.BEHAVIOR__USE_CASE:
@@ -889,10 +893,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return getOwnedOperations();
 			case UML2Package.BEHAVIOR__SUPER_CLASS:
 				return getSuperClasses();
-			case UML2Package.BEHAVIOR__EXTENSION:
-				return getExtensions();
 			case UML2Package.BEHAVIOR__NESTED_CLASSIFIER:
 				return getNestedClassifiers();
+			case UML2Package.BEHAVIOR__EXTENSION:
+				return getExtensions();
 			case UML2Package.BEHAVIOR__IS_ACTIVE:
 				return isActive() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.BEHAVIOR__OWNED_RECEPTION:
@@ -992,13 +996,13 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.BEHAVIOR__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.BEHAVIOR__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.BEHAVIOR__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.BEHAVIOR__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1155,11 +1159,11 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.BEHAVIOR__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.BEHAVIOR__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.BEHAVIOR__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.BEHAVIOR__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1302,10 +1306,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return !getAttributes().isEmpty();
 			case UML2Package.BEHAVIOR__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.BEHAVIOR__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.BEHAVIOR__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.BEHAVIOR__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.BEHAVIOR__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.BEHAVIOR__USE_CASE:
@@ -1338,10 +1342,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.BEHAVIOR__SUPER_CLASS:
 				return !getSuperClasses().isEmpty();
-			case UML2Package.BEHAVIOR__EXTENSION:
-				return !getExtensions().isEmpty();
 			case UML2Package.BEHAVIOR__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UML2Package.BEHAVIOR__EXTENSION:
+				return !getExtensions().isEmpty();
 			case UML2Package.BEHAVIOR__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.BEHAVIOR__OWNED_RECEPTION:

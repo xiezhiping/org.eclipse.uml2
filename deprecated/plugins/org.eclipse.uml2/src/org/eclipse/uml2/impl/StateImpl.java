@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateImpl.java,v 1.5 2004/05/20 03:20:02 khussey Exp $
+ * $Id: StateImpl.java,v 1.6 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -890,7 +890,9 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		if (null == ownedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
 			union.addAll(getConnections());
@@ -906,15 +908,12 @@ public class StateImpl extends NamespaceImpl implements State {
 			if (null != getStateInvariant()) {
 				union.add(getStateInvariant());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
-					union.size(),
-					union.toArray()));
+
+			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		return ownedElement;
 	}
 
 	/**
@@ -923,16 +922,18 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getState().getEAllOperations().get(49))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getState().getEAllOperations().get(49));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getRegions());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getState().getEAllOperations().get(49),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getState().getEAllOperations().get(49), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getState().getEAllOperations().get(49));
+
+		return result;
 	}
 
 	/**

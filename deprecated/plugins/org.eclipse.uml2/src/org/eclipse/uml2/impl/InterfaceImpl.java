@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.9 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -410,19 +410,18 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public EList getAttributes() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Attribute())) {
+		EList attribute = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
+
+		if (null == attribute) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getAttributes());
 			union.addAll(getOwnedAttributes());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier_Attribute(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getClassifier_Attribute(),
-					union.size(),
-					union.toArray()));
+
+			attribute = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Attribute(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Attribute(), attribute);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
+
+		return attribute;
 	}
 
 	/**
@@ -431,7 +430,9 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(70))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(70));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getOwnedAttributes());
@@ -441,12 +442,12 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			if (null != getProtocol()) {
 				union.add(getProtocol());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getInterface().getEAllOperations().get(70),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(70), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(70));
+
+		return result;
 	}
 
 	/**
@@ -455,20 +456,19 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public EList getFeatures() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
+		EList feature = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		if (null == feature) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
 			union.addAll(getOwnedOperations());
 			union.addAll(getOwnedReceptions());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier_Feature(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getClassifier_Feature(),
-					union.size(),
-					union.toArray()));
+
+			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		return feature;
 	}
 
 	/**
@@ -477,16 +477,18 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(72))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(72));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinedElements());
 			union.addAll(getRedefinedInterfaces());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getInterface().getEAllOperations().get(72),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(72), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(72));
+
+		return result;
 	}
 
 	/**
@@ -523,10 +525,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 					return eBasicSetContainer(otherEnd, UML2Package.INTERFACE__OWNING_PARAMETER, msgs);
 				case UML2Package.INTERFACE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.INTERFACE__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERFACE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.INTERFACE__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERFACE__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
@@ -570,10 +572,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 					return eBasicSetContainer(null, UML2Package.INTERFACE__OWNING_PARAMETER, msgs);
 				case UML2Package.INTERFACE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERFACE__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERFACE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.INTERFACE__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERFACE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERFACE__USE_CASE:
@@ -682,10 +684,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 				return getAttributes();
 			case UML2Package.INTERFACE__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.INTERFACE__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.INTERFACE__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.INTERFACE__USE_CASE:
@@ -780,13 +782,13 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.INTERFACE__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.INTERFACE__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -891,11 +893,11 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.INTERFACE__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.INTERFACE__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -996,10 +998,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 				return !getAttributes().isEmpty();
 			case UML2Package.INTERFACE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.INTERFACE__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.INTERFACE__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.INTERFACE__USE_CASE:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.9 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -199,17 +199,19 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDataType().getEAllOperations().get(70))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDataType().getEAllOperations().get(70));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getOwnedAttributes());
 			union.addAll(getOwnedOperations());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getDataType().getEAllOperations().get(70),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDataType().getEAllOperations().get(70), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDataType().getEAllOperations().get(70));
+
+		return result;
 	}
 
 	/**
@@ -218,19 +220,18 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 * @generated
 	 */
 	public EList getAttributes() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Attribute())) {
+		EList attribute = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
+
+		if (null == attribute) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getAttributes());
 			union.addAll(getOwnedAttributes());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier_Attribute(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getClassifier_Attribute(),
-					union.size(),
-					union.toArray()));
+
+			attribute = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Attribute(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Attribute(), attribute);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
+
+		return attribute;
 	}
 
 	/**
@@ -239,19 +240,18 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 * @generated
 	 */
 	public EList getFeatures() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
+		EList feature = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		if (null == feature) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
 			union.addAll(getOwnedOperations());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getClassifier_Feature(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getClassifier_Feature(),
-					union.size(),
-					union.toArray()));
+
+			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
+
+		return feature;
 	}
 
 	/**
@@ -288,10 +288,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 					return eBasicSetContainer(otherEnd, UML2Package.DATA_TYPE__OWNING_PARAMETER, msgs);
 				case UML2Package.DATA_TYPE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.DATA_TYPE__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.DATA_TYPE__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__USE_CASE:
 					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__OWNED_ATTRIBUTE:
@@ -339,10 +339,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 					return eBasicSetContainer(null, UML2Package.DATA_TYPE__OWNING_PARAMETER, msgs);
 				case UML2Package.DATA_TYPE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.DATA_TYPE__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.DATA_TYPE__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__USE_CASE:
@@ -445,10 +445,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 				return getAttributes();
 			case UML2Package.DATA_TYPE__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.DATA_TYPE__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.DATA_TYPE__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.DATA_TYPE__USE_CASE:
@@ -535,13 +535,13 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.DATA_TYPE__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.DATA_TYPE__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -631,11 +631,11 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 			case UML2Package.DATA_TYPE__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.DATA_TYPE__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.DATA_TYPE__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -724,10 +724,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 				return !getAttributes().isEmpty();
 			case UML2Package.DATA_TYPE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.DATA_TYPE__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.DATA_TYPE__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.DATA_TYPE__USE_CASE:

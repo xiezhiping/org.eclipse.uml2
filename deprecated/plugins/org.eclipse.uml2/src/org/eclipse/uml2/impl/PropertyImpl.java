@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.9 2004/06/01 20:05:27 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.10 2004/06/02 05:02:25 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1030,12 +1030,14 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public Set subsettingContext() {
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("subsettingContext", null); //$NON-NLS-1$
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this,
-					method,
-					java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.PropertyOperations.subsettingContext(this)));
+			Set result = (Set) getCacheAdapter().get(this, method);
+		
+			if (null == result) {
+				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.PropertyOperations.subsettingContext(this));
+				getCacheAdapter().put(this, method, result);
 			}
-			return (Set) getCacheAdapter().get(this, method);
+		
+			return result;
 		} catch (Exception e) {
 			return org.eclipse.uml2.internal.operation.PropertyOperations.subsettingContext(this);
 		}
@@ -1088,7 +1090,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier())) {
+		EList featuringClassifier = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
+
+		if (null == featuringClassifier) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeaturingClassifiers());
 			if (null != getClass_()) {
@@ -1100,15 +1104,12 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			if (null != getDatatype()) {
 				union.add(getDatatype());
 			}
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getFeature_FeaturingClassifier(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getFeature_FeaturingClassifier(),
-					union.size(),
-					union.toArray()));
+
+			featuringClassifier = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), featuringClassifier);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
+
+		return featuringClassifier;
 	}
 
 	/**
@@ -1117,16 +1118,18 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getProperty().getEAllOperations().get(66))) {
+		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getProperty().getEAllOperations().get(66));
+
+		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinedElements());
 			union.addAll(getRedefinedProperties());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getProperty().getEAllOperations().get(66),
-				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+
+			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getProperty().getEAllOperations().get(66), result);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getProperty().getEAllOperations().get(66));
+
+		return result;
 	}
 
 	/**
@@ -1135,22 +1138,21 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		if (null == ownedElement) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
 			if (null != getDefaultValue()) {
 				union.add(getDefaultValue());
 			}
 			union.addAll(getQualifiers());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
-					union.size(),
-					union.toArray()));
+
+			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
+
+		return ownedElement;
 	}
 
 	/**

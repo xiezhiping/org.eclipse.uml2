@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.4 2004/06/02 05:02:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -201,22 +201,21 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getInGroups() {
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getActivityNode_InGroup())) {
+		EList inGroup = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getActivityNode_InGroup());
+
+		if (null == inGroup) {
 			Set union = new LinkedHashSet();
 			if (null != getInStructuredNode()) {
 				union.add(getInStructuredNode());
 			}
 			union.addAll(getInPartitions());
 			union.addAll(getInInterruptibleRegions());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE.getActivityNode_InGroup(),
-				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getActivityNode_InGroup(),
-					union.size(),
-					union.toArray()));
+
+			inGroup = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getActivityNode_InGroup(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getActivityNode_InGroup(), inGroup);
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getActivityNode_InGroup());
+
+		return inGroup;
 	}
 
 	/**
