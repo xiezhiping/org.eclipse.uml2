@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Profile.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Profile.java,v 1.4 2004/12/02 16:12:32 khussey Exp $
  */
 package org.eclipse.uml2;
 
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -175,6 +176,20 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 *                                     the metamodel.
 	 */
 	public void referenceMetamodel(Model model);
+
+	/**
+	 * Creates and returns an instance of (the Ecore representation of) the
+	 * specified classifier defined in this profile.
+	 * 
+	 * @param classifier
+	 *            The classifier whose Ecore representation is to be
+	 *            instantiated.
+	 * @return An (Ecore) instance of the classifier.
+	 * @exception IllegalArgumentException
+	 *                If the classifier is not defined in this profile or cannot
+	 *                be instantiated.
+	 */
+	public EObject create(Classifier classifier);
 
 	// <!-- end-custom-operations -->
 

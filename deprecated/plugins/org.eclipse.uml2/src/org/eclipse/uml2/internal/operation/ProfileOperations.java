@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.12 2004/11/18 18:07:06 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.13 2004/12/02 16:12:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -77,7 +77,7 @@ import org.eclipse.uml2.util.UML2Switch;
  * A static utility class that provides operations related to profiles.
  */
 public final class ProfileOperations
-	extends UML2Operations {
+		extends UML2Operations {
 
 	/**
 	 * The source for the attributes annotation on profiles.
@@ -1370,6 +1370,50 @@ public final class ProfileOperations
 	 */
 	protected static ResourceBundle getResourceBundle(Profile profile) {
 		return getResourceBundle(profile, Locale.getDefault());
+	}
+
+	/**
+	 * Creates and returns an instance of (the Ecore representation of) the
+	 * specified classifier defined in the specified profile.
+	 * 
+	 * @param profile
+	 *            The profile in which the classifier is defined.
+	 * @param classifier
+	 *            The classifier whose Ecore representation is to be
+	 *            instantiated.
+	 * @return An (Ecore) instance of the classifier.
+	 * @exception IllegalArgumentException
+	 *                If the classifier is not defined in the profile or cannot
+	 *                be instantiated.
+	 */
+	public static EObject create(Profile profile, Classifier classifier) {
+
+		if (null == profile) {
+			throw new IllegalArgumentException(String.valueOf(profile));
+		}
+
+		if (null == classifier || !profile.getOwnedTypes().contains(classifier)) {
+			throw new IllegalArgumentException(String.valueOf(classifier));
+		}
+
+		EPackage ePackage = getEPackage(profile, profile.getVersion());
+
+		if (null == ePackage) {
+			throw new IllegalArgumentException(String.valueOf(profile));
+		} else {
+			EClassifier eClassifier = ePackage
+				.getEClassifier(getEClassifierName(classifier));
+
+			if (EClass.class.isInstance(eClassifier)) {
+				EClass eClass = (EClass) eClassifier;
+
+				if (!eClass.isAbstract() && !eClass.isInterface()) {
+					return ePackage.getEFactoryInstance().create(eClass);
+				}
+			}
+
+			throw new IllegalArgumentException(String.valueOf(classifier));
+		}
 	}
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.14 2004/06/18 17:44:12 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.15 2004/12/02 16:12:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,10 +21,12 @@ import java.util.Set;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.NamedElement;
@@ -711,6 +713,15 @@ public class ProfileImpl extends PackageImpl implements Profile {
 		ProfileOperations.referenceMetamodel(this, model);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Profile#create(org.eclipse.uml2.Classifier)
+	 */
+	public EObject create(Classifier classifier) {
+		return ProfileOperations.create(this, classifier);
+	}
+	
 	// <!-- end-custom-operations -->
 
 } //ProfileImpl

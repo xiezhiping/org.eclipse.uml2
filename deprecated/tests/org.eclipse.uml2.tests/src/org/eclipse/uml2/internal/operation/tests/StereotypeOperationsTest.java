@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperationsTest.java,v 1.1 2004/04/29 14:56:55 khussey Exp $
+ * $Id: StereotypeOperationsTest.java,v 1.2 2004/12/02 16:15:58 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.Association;
@@ -50,7 +51,7 @@ import org.eclipse.uml2.internal.operation.StereotypeOperations;
  * A test case for the '<em><b>Stereotype Operations</b></em>' utility.
  */
 public class StereotypeOperationsTest
-	extends UML2OperationsTest {
+		extends UML2OperationsTest {
 
 	/**
 	 * The enumeration for this Stereotype Operations test case.
@@ -95,7 +96,7 @@ public class StereotypeOperationsTest
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp()
-		throws Exception {
+			throws Exception {
 
 		Profile profile = UML2Factory.eINSTANCE.createProfile();
 		profile.setName(getName());
@@ -117,15 +118,17 @@ public class StereotypeOperationsTest
 
 		ExtensionEnd extensionEnd = (ExtensionEnd) extension
 			.createOwnedEnd(UML2Package.eINSTANCE.getExtensionEnd());
-		extensionEnd.setName(StereotypeOperations.STEREOTYPE_EXTENSION_ROLE_PREFIX
-			+ getElement().getName());
+		extensionEnd
+			.setName(StereotypeOperations.STEREOTYPE_EXTENSION_ROLE_PREFIX
+				+ getElement().getName());
 		extensionEnd.setType(getElement());
 
 		Property stereotypeEnd = getElement().createOwnedAttribute(
 			UML2Package.eINSTANCE.getProperty());
 		stereotypeEnd.setAssociation(extension);
-		stereotypeEnd.setName(StereotypeOperations.METACLASS_EXTENSION_ROLE_PREFIX
-			+ UML2Package.eINSTANCE.getClass_().getName());
+		stereotypeEnd
+			.setName(StereotypeOperations.METACLASS_EXTENSION_ROLE_PREFIX
+				+ UML2Package.eINSTANCE.getClass_().getName());
 		stereotypeEnd.setType(metamodel.getOwnedType(UML2Package.eINSTANCE
 			.getClass_().getName()));
 
@@ -345,7 +348,8 @@ public class StereotypeOperationsTest
 			if (Extension.class.isInstance(ownedAttribute.getAssociation())) {
 				((ExtensionEnd) ownedAttribute.getAssociation().getOwnedEnds()
 					.get(0)).setLowerBound(required
-					? 1 : 0);
+					? 1
+					: 0);
 			}
 		}
 	}
@@ -3515,26 +3519,19 @@ public class StereotypeOperationsTest
 			// pass
 		}
 
+		EPackage profileEPackage = (EPackage) getElement().getProfile()
+			.getEAnnotation(ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES)
+			.getContents().get(0);
+
+		EClass timestampEClass = (EClass) profileEPackage
+			.getEClassifier(getName() + "__Timestamp"); //$NON-NLS-1$
+
+		EObject timestampEObject = (EObject) profileEPackage
+			.getEFactoryInstance().create(timestampEClass);
+
 		try {
 			StereotypeOperations.setValue(getElement(), class_, "timestamp", //$NON-NLS-1$
-				null);
-			fail();
-		} catch (IllegalArgumentException iae) {
-			// pass
-		}
-
-		try {
-			StereotypeOperations.setValue(getElement(), class_, "timestamp" //$NON-NLS-1$
-				+ NamedElement.SEPARATOR + "time", null); //$NON-NLS-1$
-			fail();
-		} catch (IllegalArgumentException iae) {
-			// pass
-		}
-
-		try {
-			StereotypeOperations.setValue(getElement(), class_, "timestamp" //$NON-NLS-1$
-				+ NamedElement.SEPARATOR + "time" + NamedElement.SEPARATOR //$NON-NLS-1$
-				+ "milliseconds", new Integer(Integer.MAX_VALUE)); //$NON-NLS-1$
+				timestampEObject);
 		} catch (IllegalArgumentException iae) {
 			fail();
 		}
@@ -3548,14 +3545,63 @@ public class StereotypeOperationsTest
 		EObject stereotypeEObject = (EObject) appliedStereotypesAnnotation
 			.getContents().get(0);
 
-		EObject timestampEObject = (EObject) stereotypeEObject
-			.eGet(stereotypeEObject.eClass().getEStructuralFeature("timestamp")); //$NON-NLS-1$
+		assertEquals(timestampEObject, stereotypeEObject.eGet(stereotypeEObject
+			.eClass().getEStructuralFeature("timestamp"))); //$NON-NLS-1$
 
-		EObject timeEObject = (EObject) timestampEObject.eGet(timestampEObject
-			.eClass().getEStructuralFeature("time")); //$NON-NLS-1$
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "timestamp", //$NON-NLS-1$
+				null);
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertNull(stereotypeEObject.eGet(stereotypeEObject.eClass()
+			.getEStructuralFeature("timestamp"))); //$NON-NLS-1$
+
+		EClass timeEClass = (EClass) profileEPackage.getEClassifier(getName()
+			+ "__Time"); //$NON-NLS-1$
+
+		EObject timeEObject = (EObject) profileEPackage.getEFactoryInstance()
+			.create(timeEClass);
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "timestamp" //$NON-NLS-1$
+				+ NamedElement.SEPARATOR + "time", timeEObject); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		timestampEObject = (EObject) stereotypeEObject.eGet(stereotypeEObject
+			.eClass().getEStructuralFeature("timestamp"));
+
+		assertNotNull(timestampEObject);
+
+		assertEquals(timeEObject, timestampEObject.eGet(timestampEClass
+			.getEStructuralFeature("time"))); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "timestamp" //$NON-NLS-1$
+				+ NamedElement.SEPARATOR + "time", null); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertNull(timestampEObject.eGet(timestampEClass
+			.getEStructuralFeature("time"))); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "timestamp" //$NON-NLS-1$
+				+ NamedElement.SEPARATOR + "time" + NamedElement.SEPARATOR //$NON-NLS-1$
+				+ "milliseconds", new Integer(Integer.MAX_VALUE)); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		timeEObject = (EObject) timestampEObject.eGet(timestampEClass
+			.getEStructuralFeature("time")); //$NON-NLS-1$
 
 		assertEquals(new Integer(Integer.MAX_VALUE), timeEObject
-			.eGet(timeEObject.eClass().getEStructuralFeature("milliseconds"))); //$NON-NLS-1$
+			.eGet(timeEClass.getEStructuralFeature("milliseconds"))); //$NON-NLS-1$
 
 		try {
 			StereotypeOperations.setValue(getElement(), class_, "timestamp" //$NON-NLS-1$
@@ -3565,7 +3611,7 @@ public class StereotypeOperationsTest
 			fail();
 		}
 
-		assertEquals(new Integer(0), timeEObject.eGet(timeEObject.eClass()
+		assertEquals(new Integer(0), timeEObject.eGet(timeEClass
 			.getEStructuralFeature("milliseconds"))); //$NON-NLS-1$
 	}
 
@@ -3664,9 +3710,8 @@ public class StereotypeOperationsTest
 		try {
 			StereotypeOperations.setValue(getElement(), class_, "timestamps[1]" //$NON-NLS-1$
 				+ NamedElement.SEPARATOR + "time", null); //$NON-NLS-1$
-			fail();
 		} catch (IllegalArgumentException iae) {
-			// pass
+			fail();
 		}
 
 		try {
@@ -3719,13 +3764,35 @@ public class StereotypeOperationsTest
 			// pass
 		}
 
+		EPackage profileEPackage = (EPackage) getElement().getProfile()
+			.getEAnnotation(ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES)
+			.getContents().get(0);
+
+		EClass timeEClass = (EClass) profileEPackage.getEClassifier(getName()
+			+ "__Time"); //$NON-NLS-1$
+
+		timeEObject = (EObject) profileEPackage.getEFactoryInstance().create(
+			timeEClass);
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "timestamps[0]" //$NON-NLS-1$
+				+ NamedElement.SEPARATOR + "time", timeEObject); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(timeEObject, timestampEObject.eGet(timestampEObject
+			.eClass().getEStructuralFeature("time"))); //$NON-NLS-1$
+
 		try {
 			StereotypeOperations.setValue(getElement(), class_, "timestamps[0]" //$NON-NLS-1$
 				+ NamedElement.SEPARATOR + "time", null); //$NON-NLS-1$
-			fail();
 		} catch (IllegalArgumentException iae) {
-			// pass
+			fail();
 		}
+
+		assertNull(timestampEObject.eGet(timestampEObject.eClass()
+			.getEStructuralFeature("time"))); //$NON-NLS-1$
 
 		try {
 			StereotypeOperations.setValue(getElement(), class_, "timestamps[0]" //$NON-NLS-1$

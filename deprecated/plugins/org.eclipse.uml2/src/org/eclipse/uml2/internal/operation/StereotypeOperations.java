@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.12 2004/11/02 15:30:10 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.13 2004/12/02 16:12:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -48,7 +48,7 @@ import org.eclipse.uml2.UML2Package;
  * A static utility class that provides operations related to stereotypes.
  */
 public final class StereotypeOperations
-	extends UML2Operations {
+		extends UML2Operations {
 
 	/**
 	 * The source for the appliedStereotypes annotation on elements.
@@ -852,14 +852,16 @@ public final class StereotypeOperations
 				throw new IllegalArgumentException(String.valueOf(propertyName));
 			}
 
+			EClassifier eType = eStructuralFeature.getEType();
+
 			if (i + 1 < length) {
 
-				if (!EClass.class.isInstance(eStructuralFeature.getEType())) {
+				if (!EClass.class.isInstance(eType)) {
 					throw new IllegalArgumentException(String
 						.valueOf(propertyName));
 				}
 
-				eClass = (EClass) eStructuralFeature.getEType();
+				eClass = (EClass) eType;
 
 				if (eStructuralFeature.isMany()) {
 					List list = (List) eObject.eGet(eStructuralFeature);
@@ -881,19 +883,22 @@ public final class StereotypeOperations
 				}
 			} else {
 
-				if (EClass.class.isInstance(eStructuralFeature.getEType())) {
-					throw new IllegalArgumentException(String
-						.valueOf(propertyName));
-				}
+				if (null != value) {
 
-				if (EcorePackage.eINSTANCE.getEEnum().isInstance(
-					eStructuralFeature.getEType())
-					&& EnumerationLiteral.class.isInstance(value)) {
+					if (EcorePackage.eINSTANCE.getEClass().isInstance(eType)
+						&& !((EClass) eType).isInstance(value)) {
 
-					value = ((EEnum) eStructuralFeature.getEType())
-						.getEEnumLiteral(
+						throw new IllegalArgumentException(String
+							.valueOf(value));
+					}
+
+					if (EcorePackage.eINSTANCE.getEEnum().isInstance(eType)
+						&& EnumerationLiteral.class.isInstance(value)) {
+
+						value = ((EEnum) eType).getEEnumLiteral(
 							getValidIdentifier(((EnumerationLiteral) value)
 								.getName())).getInstance();
+					}
 				}
 
 				if (null == value) {

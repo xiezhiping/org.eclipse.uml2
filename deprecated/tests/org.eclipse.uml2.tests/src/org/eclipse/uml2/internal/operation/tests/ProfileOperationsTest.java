@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperationsTest.java,v 1.1 2004/04/29 14:56:55 khussey Exp $
+ * $Id: ProfileOperationsTest.java,v 1.2 2004/12/02 16:15:57 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -51,7 +51,7 @@ import org.eclipse.uml2.internal.operation.StereotypeOperations;
  * A test case for the '<em><b>Profile Operations</b></em>' utility.
  */
 public class ProfileOperationsTest
-	extends UML2OperationsTest {
+		extends UML2OperationsTest {
 
 	public static void main(String[] args) {
 		TestRunner.run(ProfileOperationsTest.class);
@@ -77,7 +77,7 @@ public class ProfileOperationsTest
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp()
-		throws Exception {
+			throws Exception {
 
 		super.setUp();
 
@@ -101,15 +101,17 @@ public class ProfileOperationsTest
 
 		ExtensionEnd extensionEnd = (ExtensionEnd) extension
 			.createOwnedEnd(UML2Package.eINSTANCE.getExtensionEnd());
-		extensionEnd.setName(StereotypeOperations.STEREOTYPE_EXTENSION_ROLE_PREFIX
-			+ stereotype.getName());
+		extensionEnd
+			.setName(StereotypeOperations.STEREOTYPE_EXTENSION_ROLE_PREFIX
+				+ stereotype.getName());
 		extensionEnd.setType(stereotype);
 
 		Property stereotypeEnd = stereotype
 			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
 		stereotypeEnd.setAssociation(extension);
-		stereotypeEnd.setName(StereotypeOperations.METACLASS_EXTENSION_ROLE_PREFIX
-			+ UML2Package.eINSTANCE.getClass_().getName());
+		stereotypeEnd
+			.setName(StereotypeOperations.METACLASS_EXTENSION_ROLE_PREFIX
+				+ UML2Package.eINSTANCE.getClass_().getName());
 		stereotypeEnd.setType(metamodel.getOwnedType(UML2Package.eINSTANCE
 			.getClass_().getName()));
 
@@ -299,10 +301,11 @@ public class ProfileOperationsTest
 
 	/**
 	 * Tests the '
-	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#apply() <em>Apply</em>}'
+	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#apply(org.eclipse.uml2.Profile, org.eclipse.uml2.Package) <em>Apply</em>}'
 	 * method.
 	 * 
-	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#apply()
+	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#apply(org.eclipse.uml2.Profile,
+	 *      org.eclipse.uml2.Package)
 	 */
 	public void testApply() {
 
@@ -516,10 +519,10 @@ public class ProfileOperationsTest
 
 	/**
 	 * Tests the '
-	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#define() <em>Define</em>}'
+	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#define(org.eclipse.uml2.Profile) <em>Define</em>}'
 	 * method.
 	 * 
-	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#define()
+	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#define(org.eclipse.uml2.Profile)
 	 */
 	public void testDefine() {
 
@@ -685,10 +688,10 @@ public class ProfileOperationsTest
 
 	/**
 	 * Tests the '
-	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#getAllAppliedProfiles() <em>Get All Applied Profiles</em>}'
+	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#getAllAppliedProfiles(org.eclipse.uml2.Package) <em>Get All Applied Profiles</em>}'
 	 * method.
 	 * 
-	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#getAllAppliedProfiles()
+	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#getAllAppliedProfiles(org.eclipse.uml2.Package)
 	 */
 	public void testGetAllAppliedProfiles() {
 
@@ -740,10 +743,11 @@ public class ProfileOperationsTest
 
 	/**
 	 * Tests the '
-	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#isApplied() <em>Is Applied</em>}'
+	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#isApplied(org.eclipse.uml2.Profile, org.eclipse.uml2.Package) <em>Is Applied</em>}'
 	 * method.
 	 * 
-	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#isApplied()
+	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#isApplied(org.eclipse.uml2.Profile,
+	 *      org.eclipse.uml2.Package)
 	 */
 	public void testIsApplied() {
 
@@ -782,10 +786,10 @@ public class ProfileOperationsTest
 
 	/**
 	 * Tests the '
-	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#isDefined() <em>Is Defined</em>}'
+	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#isDefined(org.eclipse.uml2.Profile) <em>Is Defined</em>}'
 	 * method.
 	 * 
-	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#isDefined()
+	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#isDefined(org.eclipse.uml2.Profile)
 	 */
 	public void testIsDefined() {
 
@@ -809,10 +813,11 @@ public class ProfileOperationsTest
 
 	/**
 	 * Tests the '
-	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#unapply() <em>Unapply</em>}'
+	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#unapply(org.eclipse.uml2.Profile, org.eclipse.uml2.Package) <em>Unapply</em>}'
 	 * method.
 	 * 
-	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#unapply()
+	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#unapply(org.eclipse.uml2.Profile,
+	 *      org.eclipse.uml2.Package)
 	 */
 	public void testUnapply() {
 
@@ -884,10 +889,10 @@ public class ProfileOperationsTest
 
 	/**
 	 * Tests the '
-	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#getReferencedMetaclasses() <em>Get Referenced Metaclasses</em>}'
+	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#getReferencedMetaclasses(org.eclipse.uml2.Profile) <em>Get Referenced Metaclasses</em>}'
 	 * method.
 	 * 
-	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#getReferencedMetaclasses()
+	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#getReferencedMetaclasses(org.eclipse.uml2.Profile)
 	 */
 	public void testGetReferencedMetaclasses() {
 
@@ -914,10 +919,11 @@ public class ProfileOperationsTest
 
 	/**
 	 * Tests the '
-	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#referenceMetaclass() <em>Reference Metaclass</em>}'
+	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#referenceMetaclass(org.eclipse.uml2.Profile, org.eclipse.uml2.Class) <em>Reference Metaclass</em>}'
 	 * method.
 	 * 
-	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#referenceMetaclass()
+	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#referenceMetaclass(org.eclipse.uml2.Profile,
+	 *      org.eclipse.uml2.Class)
 	 */
 	public void testReferenceMetaclass() {
 
@@ -962,10 +968,10 @@ public class ProfileOperationsTest
 
 	/**
 	 * Tests the '
-	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#getReferencedMetamodels() <em>Get Referenced Metamodels</em>}'
+	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#getReferencedMetamodels(org.eclipse.uml2.Profile) <em>Get Referenced Metamodels</em>}'
 	 * method.
 	 * 
-	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#getReferencedMetamodels()
+	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#getReferencedMetamodels(org.eclipse.uml2.Profile)
 	 */
 	public void testGetReferencedMetamodels() {
 
@@ -992,10 +998,11 @@ public class ProfileOperationsTest
 
 	/**
 	 * Tests the '
-	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#referenceMetamodel() <em>Reference Metamodel</em>}'
+	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#referenceMetamodel(org.eclipse.uml2.Profile, org.eclipse.uml2.Model) <em>Reference Metamodel</em>}'
 	 * method.
 	 * 
-	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#referenceMetamodel()
+	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#referenceMetamodel(org.eclipse.uml2.Profile,
+	 *      org.eclipse.uml2.Model)
 	 */
 	public void testReferenceMetamodel() {
 
@@ -1036,6 +1043,72 @@ public class ProfileOperationsTest
 		} catch (IllegalArgumentException iae) {
 			// pass
 		}
+	}
+
+	/**
+	 * Tests the '
+	 * {@link org.eclipse.uml2.internal.operation.ProfileOperations#create(org.eclipse.uml2.Profile, org.eclipse.uml2.Classifier) <em>Create</em>}'
+	 * method.
+	 * 
+	 * @see org.eclipse.uml2.internal.operation.ProfileOperations#create(org.eclipse.uml2.Profile,
+	 *      org.eclipse.uml2.Classifier)
+	 */
+	public void testCreate() {
+		EObject instance = null;
+
+		try {
+			instance = ProfileOperations.create(null, null);
+			fail();
+		} catch (IllegalArgumentException iae) {
+			// pass
+		}
+
+		try {
+			ProfileOperations.create(getElement(), null);
+			fail();
+		} catch (IllegalArgumentException iae) {
+			// pass
+		}
+
+		getElement().createEAnnotation(
+			ProfileOperations.ANNOTATION_SOURCE__ATTRIBUTES).getDetails().put(
+			ProfileOperations.ANNOTATION_DETAILS_KEY__VERSION,
+			String.valueOf(0));
+		getElement().createEAnnotation(
+			ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES).getContents().add(
+			0, ProfileOperations.createEPackage(getElement()));
+
+		try {
+			ProfileOperations.create(getElement(), null);
+			fail();
+		} catch (IllegalArgumentException iae) {
+			// pass
+		}
+
+		org.eclipse.uml2.Class class_ = UML2Factory.eINSTANCE.createClass();
+
+		try {
+			ProfileOperations.create(getElement(), class_);
+			fail();
+		} catch (IllegalArgumentException iae) {
+			// pass
+		}
+
+		class_ = (org.eclipse.uml2.Class) getElement().getOwnedType("Date"); //$NON-NLS-1$
+
+		try {
+			instance = ProfileOperations.create(getElement(), class_);
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		EAnnotation ePackagesAnnotation = getElement().getEAnnotation(
+			ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES);
+		EPackage ePackage = (EPackage) ePackagesAnnotation.getContents().get(0);
+		EClass dateEClass = (EClass) ePackage.getEClassifier(getName()
+			+ "__" + class_.getName()); //$NON-NLS-1$
+
+		assertTrue(dateEClass.isInstance(instance));
 	}
 
 }
