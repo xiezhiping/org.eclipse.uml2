@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Handler.java,v 1.2 2004/04/10 04:09:51 khussey Exp $
+ * $Id: UML2Handler.java,v 1.3 2004/06/10 13:06:34 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -27,39 +27,43 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.SAXXMIHandler;
 
 /**
- *
+ *  
  */
 public class UML2Handler
 	extends SAXXMIHandler {
 
-	public UML2Handler(XMLResource xmiResource, XMLHelper helper,
-			Map options) {
+	public UML2Handler(XMLResource xmiResource, XMLHelper helper, Map options) {
 		super(xmiResource, helper, options);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.ecore.xmi.impl.XMLHandler#getPackageForURI(java.lang.String)
 	 */
 	protected EPackage getPackageForURI(String uriString) {
 
-		if (uriString == null) {
+		if (null == uriString) {
 			return null;
 		}
 
-		EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(uriString);
+		EPackage ePackage = null == extendedMetaData
+			? packageRegistry.getEPackage(uriString)
+			: extendedMetaData.getPackage(uriString);
 
-		if (ePackage == null) {
+		if (null == ePackage) {
 			URI uri = URI.createURI(uriString);
 
-			if (uri.scheme() == null) {
+			if (null == uri.scheme()) {
 
-				for (Iterator entries = EPackage.Registry.INSTANCE.entrySet()
-					.iterator(); entries.hasNext();) {
+				for (Iterator entries = packageRegistry.entrySet().iterator(); entries
+					.hasNext();) {
 
 					Map.Entry entry = (Map.Entry) entries.next();
 					String nsURI = (String) entry.getKey();
 
-					if (nsURI.endsWith(uriString)
+					if (null != nsURI
+						&& nsURI.endsWith(uriString)
 						&& nsURI
 							.charAt(nsURI.length() - uriString.length() - 1) == '/') {
 
@@ -69,22 +73,21 @@ public class UML2Handler
 				}
 			}
 
-			if (urisToLocations != null) {
+			if (null != urisToLocations) {
 				URI locationURI = (URI) urisToLocations.get(uriString);
 
-				if (locationURI != null) {
+				if (null != locationURI) {
 					uri = locationURI;
 				}
 			}
 
-			String fragment = uri.fragment();
 			Resource resource = null;
 
-			if (resourceSet != null) {
+			if (null != resourceSet) {
 				URI trimmedURI = uri.trimFragment();
 				resource = resourceSet.getResource(trimmedURI, false);
 
-				if (resource == null) {
+				if (null == resource) {
 
 					try {
 						InputStream inputStream = new UML2URIConverterImpl(
@@ -92,23 +95,23 @@ public class UML2Handler
 							.createInputStream(trimmedURI);
 						resource = resourceSet.createResource(trimmedURI);
 
-						if (resource == null) {
+						if (null == resource) {
 							inputStream.close();
 						} else {
 							resource.load(inputStream, resourceSet
 								.getLoadOptions());
 						}
-					} catch (IOException exception) {
+					} catch (IOException ioe) {
 						// ignore
 					}
 				}
 			}
 
-			if (resource != null) {
+			if (null != resource) {
 				Object content = null;
 
-				if (fragment != null) {
-					content = resource.getEObject(fragment);
+				if (null != uri.fragment()) {
+					content = resource.getEObject(uri.fragment());
 				} else {
 					List contents = resource.getContents();
 
@@ -119,11 +122,19 @@ public class UML2Handler
 
 				if (content instanceof EPackage) {
 					ePackage = (EPackage) content;
+
+					if (null != extendedMetaData) {
+						extendedMetaData.putPackage(extendedMetaData
+							.getNamespace(ePackage), ePackage);
+					} else {
+						resourceSet.getPackageRegistry().put(
+							ePackage.getNsURI(), ePackage);
+					}
 				}
 			}
 		}
 
-		if (ePackage == null) {
+		if (null == ePackage) {
 			error(new PackageNotFoundException(uriString, getLocation(),
 				getLineNumber(), getColumnNumber()));
 		}
