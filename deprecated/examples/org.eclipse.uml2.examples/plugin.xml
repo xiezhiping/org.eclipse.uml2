@@ -12,13 +12,13 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.8 2004/11/02 15:31:00 khussey Exp $
+ * $Id: plugin.xml,v 1.9 2004/11/08 16:57:07 khussey Exp $
  */
 -->
 
 <plugin
    id="org.eclipse.uml2.examples"
-   version="1.0.2"
+   version="1.1.0"
    name="%pluginName"
    provider-name="%providerName"
    class="org.eclipse.uml2.examples.ExamplesPlugin">
@@ -32,7 +32,6 @@
    <runtime>
       <library name="uml2.examples.jar">
          <export name="*"/>
-         <packages prefixes="org.eclipse.uml2.examples"/>
       </library>
    </runtime>
 

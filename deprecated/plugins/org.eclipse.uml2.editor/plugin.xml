@@ -12,13 +12,13 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.12 2004/11/02 15:30:29 khussey Exp $
+ * $Id: plugin.xml,v 1.13 2004/11/08 16:57:23 khussey Exp $
  */
 -->
 
 <plugin
    id = "org.eclipse.uml2.editor"
-   version = "1.0.2"
+   version = "1.1.0"
    name = "%pluginName"
    provider-name = "%providerName"
    class = "org.eclipse.uml2.presentation.UML2EditorPlugin$Implementation">
@@ -34,7 +34,6 @@
    <runtime>
       <library name="uml2.editor.jar">
         <export name="*"/>
-        <packages prefixes="org.eclipse.uml2.editor,org.eclipse.uml2.presentation"/>
       </library>
    </runtime>
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ChangeCommand.java,v 1.5 2004/06/23 17:12:19 khussey Exp $
+ * $Id: ChangeCommand.java,v 1.6 2004/11/08 16:57:27 khussey Exp $
  */
 package org.eclipse.uml2.edit.util;
 
@@ -221,14 +221,7 @@ public class ChangeCommand
 	public void undo() {
 
 		synchronized (CHANGE_RECORDER) {
-			CHANGE_RECORDER.beginRecording(Collections
-				.singleton(getEditingDomain().getResourceSet()));
-
-			try {
-				getChangeDescription().apply();
-			} finally {
-				setChangeDescription(CHANGE_RECORDER.endRecording());
-			}
+			getChangeDescription().applyAndReverse();
 		}
 	}
 
@@ -240,14 +233,7 @@ public class ChangeCommand
 	public void redo() {
 
 		synchronized (CHANGE_RECORDER) {
-			CHANGE_RECORDER.beginRecording(Collections
-				.singleton(getEditingDomain().getResourceSet()));
-
-			try {
-				getChangeDescription().apply();
-			} finally {
-				setChangeDescription(CHANGE_RECORDER.endRecording());
-			}
+			getChangeDescription().applyAndReverse();
 		}
 	}
 
