@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2FactoryImpl.java,v 1.6 2004/05/11 15:23:59 khussey Exp $
+ * $Id: UML2FactoryImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -244,6 +244,9 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 	 */
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case UML2Package.COMMENT: return createComment();
+			case UML2Package.OPAQUE_EXPRESSION: return createOpaqueExpression();
+			case UML2Package.EXPRESSION: return createExpression();
 			case UML2Package.CLASS: return createClass();
 			case UML2Package.PROPERTY: return createProperty();
 			case UML2Package.OPERATION: return createOperation();
@@ -253,19 +256,16 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 			case UML2Package.DATA_TYPE: return createDataType();
 			case UML2Package.ENUMERATION_LITERAL: return createEnumerationLiteral();
 			case UML2Package.PRIMITIVE_TYPE: return createPrimitiveType();
-			case UML2Package.OPAQUE_EXPRESSION: return createOpaqueExpression();
-			case UML2Package.EXPRESSION: return createExpression();
-			case UML2Package.COMMENT: return createComment();
 			case UML2Package.LITERAL_BOOLEAN: return createLiteralBoolean();
 			case UML2Package.LITERAL_STRING: return createLiteralString();
 			case UML2Package.LITERAL_NULL: return createLiteralNull();
 			case UML2Package.LITERAL_INTEGER: return createLiteralInteger();
 			case UML2Package.LITERAL_UNLIMITED_NATURAL: return createLiteralUnlimitedNatural();
 			case UML2Package.CONSTRAINT: return createConstraint();
-			case UML2Package.GENERALIZATION: return createGeneralization();
 			case UML2Package.INSTANCE_SPECIFICATION: return createInstanceSpecification();
 			case UML2Package.SLOT: return createSlot();
 			case UML2Package.INSTANCE_VALUE: return createInstanceValue();
+			case UML2Package.GENERALIZATION: return createGeneralization();
 			case UML2Package.ELEMENT_IMPORT: return createElementImport();
 			case UML2Package.PACKAGE_IMPORT: return createPackageImport();
 			case UML2Package.ASSOCIATION: return createAssociation();
@@ -275,23 +275,20 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 			case UML2Package.PROFILE_APPLICATION: return createProfileApplication();
 			case UML2Package.EXTENSION: return createExtension();
 			case UML2Package.EXTENSION_END: return createExtensionEnd();
-			case UML2Package.MODEL: return createModel();
-			case UML2Package.ASSOCIATION_CLASS: return createAssociationClass();
-			case UML2Package.GENERALIZATION_SET: return createGeneralizationSet();
 			case UML2Package.ACTIVITY: return createActivity();
+			case UML2Package.ASSOCIATION_CLASS: return createAssociationClass();
 			case UML2Package.PERMISSION: return createPermission();
 			case UML2Package.DEPENDENCY: return createDependency();
 			case UML2Package.USAGE: return createUsage();
 			case UML2Package.ABSTRACTION: return createAbstraction();
 			case UML2Package.REALIZATION: return createRealization();
 			case UML2Package.SUBSTITUTION: return createSubstitution();
+			case UML2Package.GENERALIZATION_SET: return createGeneralizationSet();
+			case UML2Package.MODEL: return createModel();
 			case UML2Package.INFORMATION_ITEM: return createInformationItem();
 			case UML2Package.INFORMATION_FLOW: return createInformationFlow();
-			case UML2Package.ACTOR: return createActor();
-			case UML2Package.EXTEND: return createExtend();
-			case UML2Package.USE_CASE: return createUseCase();
-			case UML2Package.EXTENSION_POINT: return createExtensionPoint();
-			case UML2Package.INCLUDE: return createInclude();
+			case UML2Package.INTERFACE: return createInterface();
+			case UML2Package.IMPLEMENTATION: return createImplementation();
 			case UML2Package.ACTION: return createAction();
 			case UML2Package.CONTROL_FLOW: return createControlFlow();
 			case UML2Package.OBJECT_FLOW: return createObjectFlow();
@@ -303,33 +300,15 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 			case UML2Package.INPUT_PIN: return createInputPin();
 			case UML2Package.ACTIVITY_PARAMETER_NODE: return createActivityParameterNode();
 			case UML2Package.VALUE_PIN: return createValuePin();
-			case UML2Package.INTERFACE: return createInterface();
-			case UML2Package.IMPLEMENTATION: return createImplementation();
 			case UML2Package.ARTIFACT: return createArtifact();
 			case UML2Package.MANIFESTATION: return createManifestation();
+			case UML2Package.ACTOR: return createActor();
+			case UML2Package.EXTEND: return createExtend();
+			case UML2Package.USE_CASE: return createUseCase();
+			case UML2Package.EXTENSION_POINT: return createExtensionPoint();
+			case UML2Package.INCLUDE: return createInclude();
 			case UML2Package.CONNECTOR_END: return createConnectorEnd();
 			case UML2Package.CONNECTOR: return createConnector();
-			case UML2Package.CALL_TRIGGER: return createCallTrigger();
-			case UML2Package.CHANGE_TRIGGER: return createChangeTrigger();
-			case UML2Package.RECEPTION: return createReception();
-			case UML2Package.SIGNAL: return createSignal();
-			case UML2Package.SIGNAL_TRIGGER: return createSignalTrigger();
-			case UML2Package.TIME_TRIGGER: return createTimeTrigger();
-			case UML2Package.ANY_TRIGGER: return createAnyTrigger();
-			case UML2Package.PORT: return createPort();
-			case UML2Package.INTERACTION: return createInteraction();
-			case UML2Package.LIFELINE: return createLifeline();
-			case UML2Package.MESSAGE: return createMessage();
-			case UML2Package.GENERAL_ORDERING: return createGeneralOrdering();
-			case UML2Package.EVENT_OCCURRENCE: return createEventOccurrence();
-			case UML2Package.EXECUTION_OCCURRENCE: return createExecutionOccurrence();
-			case UML2Package.STATE_INVARIANT: return createStateInvariant();
-			case UML2Package.STOP: return createStop();
-			case UML2Package.VARIABLE: return createVariable();
-			case UML2Package.STRUCTURED_ACTIVITY_NODE: return createStructuredActivityNode();
-			case UML2Package.CONDITIONAL_NODE: return createConditionalNode();
-			case UML2Package.CLAUSE: return createClause();
-			case UML2Package.LOOP_NODE: return createLoopNode();
 			case UML2Package.TEMPLATE_SIGNATURE: return createTemplateSignature();
 			case UML2Package.TEMPLATE_PARAMETER: return createTemplateParameter();
 			case UML2Package.STRING_EXPRESSION: return createStringExpression();
@@ -340,7 +319,28 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER: return createClassifierTemplateParameter();
 			case UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE: return createRedefinableTemplateSignature();
 			case UML2Package.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER: return createConnectableElementTemplateParameter();
+			case UML2Package.VARIABLE: return createVariable();
+			case UML2Package.STRUCTURED_ACTIVITY_NODE: return createStructuredActivityNode();
+			case UML2Package.CONDITIONAL_NODE: return createConditionalNode();
+			case UML2Package.CLAUSE: return createClause();
+			case UML2Package.LOOP_NODE: return createLoopNode();
+			case UML2Package.CALL_TRIGGER: return createCallTrigger();
+			case UML2Package.CHANGE_TRIGGER: return createChangeTrigger();
+			case UML2Package.RECEPTION: return createReception();
+			case UML2Package.SIGNAL: return createSignal();
+			case UML2Package.SIGNAL_TRIGGER: return createSignalTrigger();
+			case UML2Package.TIME_TRIGGER: return createTimeTrigger();
+			case UML2Package.ANY_TRIGGER: return createAnyTrigger();
 			case UML2Package.COLLABORATION_OCCURRENCE: return createCollaborationOccurrence();
+			case UML2Package.INTERACTION: return createInteraction();
+			case UML2Package.LIFELINE: return createLifeline();
+			case UML2Package.MESSAGE: return createMessage();
+			case UML2Package.GENERAL_ORDERING: return createGeneralOrdering();
+			case UML2Package.EVENT_OCCURRENCE: return createEventOccurrence();
+			case UML2Package.EXECUTION_OCCURRENCE: return createExecutionOccurrence();
+			case UML2Package.STATE_INVARIANT: return createStateInvariant();
+			case UML2Package.STOP: return createStop();
+			case UML2Package.PORT: return createPort();
 			case UML2Package.INTERACTION_OCCURRENCE: return createInteractionOccurrence();
 			case UML2Package.GATE: return createGate();
 			case UML2Package.PART_DECOMPOSITION: return createPartDecomposition();
@@ -348,6 +348,21 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 			case UML2Package.INTERACTION_CONSTRAINT: return createInteractionConstraint();
 			case UML2Package.COMBINED_FRAGMENT: return createCombinedFragment();
 			case UML2Package.CONTINUATION: return createContinuation();
+			case UML2Package.STATE_MACHINE: return createStateMachine();
+			case UML2Package.REGION: return createRegion();
+			case UML2Package.PSEUDOSTATE: return createPseudostate();
+			case UML2Package.STATE: return createState();
+			case UML2Package.CONNECTION_POINT_REFERENCE: return createConnectionPointReference();
+			case UML2Package.TRANSITION: return createTransition();
+			case UML2Package.FINAL_STATE: return createFinalState();
+			case UML2Package.FORK_NODE: return createForkNode();
+			case UML2Package.JOIN_NODE: return createJoinNode();
+			case UML2Package.FLOW_FINAL_NODE: return createFlowFinalNode();
+			case UML2Package.CENTRAL_BUFFER_NODE: return createCentralBufferNode();
+			case UML2Package.ACTIVITY_PARTITION: return createActivityPartition();
+			case UML2Package.EXPANSION_NODE: return createExpansionNode();
+			case UML2Package.EXPANSION_REGION: return createExpansionRegion();
+			case UML2Package.EXCEPTION_HANDLER: return createExceptionHandler();
 			case UML2Package.CREATE_OBJECT_ACTION: return createCreateObjectAction();
 			case UML2Package.DESTROY_OBJECT_ACTION: return createDestroyObjectAction();
 			case UML2Package.TEST_IDENTITY_ACTION: return createTestIdentityAction();
@@ -373,26 +388,6 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 			case UML2Package.SEND_OBJECT_ACTION: return createSendObjectAction();
 			case UML2Package.CALL_OPERATION_ACTION: return createCallOperationAction();
 			case UML2Package.CALL_BEHAVIOR_ACTION: return createCallBehaviorAction();
-			case UML2Package.FORK_NODE: return createForkNode();
-			case UML2Package.JOIN_NODE: return createJoinNode();
-			case UML2Package.FLOW_FINAL_NODE: return createFlowFinalNode();
-			case UML2Package.CENTRAL_BUFFER_NODE: return createCentralBufferNode();
-			case UML2Package.ACTIVITY_PARTITION: return createActivityPartition();
-			case UML2Package.STATE_MACHINE: return createStateMachine();
-			case UML2Package.REGION: return createRegion();
-			case UML2Package.PSEUDOSTATE: return createPseudostate();
-			case UML2Package.STATE: return createState();
-			case UML2Package.CONNECTION_POINT_REFERENCE: return createConnectionPointReference();
-			case UML2Package.TRANSITION: return createTransition();
-			case UML2Package.FINAL_STATE: return createFinalState();
-			case UML2Package.EXPANSION_NODE: return createExpansionNode();
-			case UML2Package.EXPANSION_REGION: return createExpansionRegion();
-			case UML2Package.EXCEPTION_HANDLER: return createExceptionHandler();
-			case UML2Package.DEPLOYMENT: return createDeployment();
-			case UML2Package.NODE: return createNode();
-			case UML2Package.DEVICE: return createDevice();
-			case UML2Package.EXECUTION_ENVIRONMENT: return createExecutionEnvironment();
-			case UML2Package.COMMUNICATION_PATH: return createCommunicationPath();
 			case UML2Package.TIME_EXPRESSION: return createTimeExpression();
 			case UML2Package.DURATION: return createDuration();
 			case UML2Package.TIME_OBSERVATION_ACTION: return createTimeObservationAction();
@@ -403,10 +398,11 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 			case UML2Package.TIME_INTERVAL: return createTimeInterval();
 			case UML2Package.DURATION_OBSERVATION_ACTION: return createDurationObservationAction();
 			case UML2Package.DURATION_CONSTRAINT: return createDurationConstraint();
-			case UML2Package.COMPONENT: return createComponent();
-			case UML2Package.DATA_STORE_NODE: return createDataStoreNode();
-			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION: return createInterruptibleActivityRegion();
-			case UML2Package.PARAMETER_SET: return createParameterSet();
+			case UML2Package.DEPLOYMENT: return createDeployment();
+			case UML2Package.NODE: return createNode();
+			case UML2Package.DEVICE: return createDevice();
+			case UML2Package.EXECUTION_ENVIRONMENT: return createExecutionEnvironment();
+			case UML2Package.COMMUNICATION_PATH: return createCommunicationPath();
 			case UML2Package.PROTOCOL_CONFORMANCE: return createProtocolConformance();
 			case UML2Package.PROTOCOL_STATE_MACHINE: return createProtocolStateMachine();
 			case UML2Package.PROTOCOL_TRANSITION: return createProtocolTransition();
@@ -422,6 +418,10 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 			case UML2Package.ACCEPT_CALL_ACTION: return createAcceptCallAction();
 			case UML2Package.REPLY_ACTION: return createReplyAction();
 			case UML2Package.RAISE_EXCEPTION_ACTION: return createRaiseExceptionAction();
+			case UML2Package.COMPONENT: return createComponent();
+			case UML2Package.DATA_STORE_NODE: return createDataStoreNode();
+			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION: return createInterruptibleActivityRegion();
+			case UML2Package.PARAMETER_SET: return createParameterSet();
 			case UML2Package.DEPLOYMENT_SPECIFICATION: return createDeploymentSpecification();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$

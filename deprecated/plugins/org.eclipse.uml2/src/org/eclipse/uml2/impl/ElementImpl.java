@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.5 2004/05/12 22:21:59 khussey Exp $
+ * $Id: ElementImpl.java,v 1.6 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,7 +18,6 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
@@ -182,7 +181,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	public Comment createOwnedComment(EClass eClass) {
 		Comment newOwnedComment = (Comment) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ELEMENT__OWNED_COMMENT, null, newOwnedComment));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ELEMENT__OWNED_COMMENT, null, newOwnedComment));
 		}
 		getOwnedComments().add(newOwnedComment);
 		return newOwnedComment;
@@ -369,7 +368,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE,
+			eNotify(new ENotificationImpl(this, 0,
 					EcorePackage.EMODEL_ELEMENT__EANNOTATIONS, null,
 					eAnnotation));
 		}

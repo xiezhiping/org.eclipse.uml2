@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -200,7 +200,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	public GeneralOrdering createGeneralOrdering(EClass eClass) {
 		GeneralOrdering newGeneralOrdering = (GeneralOrdering) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING, null, newGeneralOrdering));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING, null, newGeneralOrdering));
 		}
 		getGeneralOrderings().add(newGeneralOrdering);
 		return newGeneralOrdering;
@@ -334,7 +334,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	public InteractionConstraint createGuard(EClass eClass) {
 		InteractionConstraint newGuard = (InteractionConstraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION_OPERAND__GUARD, null, newGuard));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OPERAND__GUARD, null, newGuard));
 		}
         setGuard(newGuard);
 		return newGuard;
@@ -378,7 +378,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	public InteractionFragment createFragment(EClass eClass) {
 		InteractionFragment newFragment = (InteractionFragment) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION_OPERAND__FRAGMENT, null, newFragment));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OPERAND__FRAGMENT, null, newFragment));
 		}
 		getFragments().add(newFragment);
 		return newFragment;

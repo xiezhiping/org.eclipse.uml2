@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.5 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,7 +19,6 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -201,7 +200,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	public Constraint createOwnedRule(EClass eClass) {
 		Constraint newOwnedRule = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.NAMESPACE__OWNED_RULE, null, newOwnedRule));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NAMESPACE__OWNED_RULE, null, newOwnedRule));
 		}
 		getOwnedRules().add(newOwnedRule);
 		return newOwnedRule;
@@ -285,7 +284,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	public ElementImport createElementImport(EClass eClass) {
 		ElementImport newElementImport = (ElementImport) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.NAMESPACE__ELEMENT_IMPORT, null, newElementImport));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NAMESPACE__ELEMENT_IMPORT, null, newElementImport));
 		}
 		getElementImports().add(newElementImport);
 		return newElementImport;
@@ -318,7 +317,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	public PackageImport createPackageImport(EClass eClass) {
 		PackageImport newPackageImport = (PackageImport) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.NAMESPACE__PACKAGE_IMPORT, null, newPackageImport));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NAMESPACE__PACKAGE_IMPORT, null, newPackageImport));
 		}
 		getPackageImports().add(newPackageImport);
 		return newPackageImport;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -306,7 +306,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	public Constraint createLocalPrecondition(EClass eClass) {
 		Constraint newLocalPrecondition = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ACTION__LOCAL_PRECONDITION, null, newLocalPrecondition));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTION__LOCAL_PRECONDITION, null, newLocalPrecondition));
 		}
 		getLocalPreconditions().add(newLocalPrecondition);
 		return newLocalPrecondition;
@@ -356,7 +356,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	public Constraint createLocalPostcondition(EClass eClass) {
 		Constraint newLocalPostcondition = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ACTION__LOCAL_POSTCONDITION, null, newLocalPostcondition));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTION__LOCAL_POSTCONDITION, null, newLocalPostcondition));
 		}
 		getLocalPostconditions().add(newLocalPostcondition);
 		return newLocalPostcondition;

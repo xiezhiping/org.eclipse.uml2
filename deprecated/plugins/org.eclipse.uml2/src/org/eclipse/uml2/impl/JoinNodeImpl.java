@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -184,7 +184,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	public ValueSpecification createJoinSpec(EClass eClass) {
 		ValueSpecification newJoinSpec = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.JOIN_NODE__JOIN_SPEC, null, newJoinSpec));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.JOIN_NODE__JOIN_SPEC, null, newJoinSpec));
 		}
         setJoinSpec(newJoinSpec);
 		return newJoinSpec;

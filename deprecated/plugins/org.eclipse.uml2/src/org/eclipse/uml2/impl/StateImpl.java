@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateImpl.java,v 1.3 2004/05/11 15:23:59 khussey Exp $
+ * $Id: StateImpl.java,v 1.4 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -527,7 +527,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	public ConnectionPointReference createConnection(EClass eClass) {
 		ConnectionPointReference newConnection = (ConnectionPointReference) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STATE__CONNECTION, null, newConnection));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STATE__CONNECTION, null, newConnection));
 		}
 		getConnections().add(newConnection);
 		return newConnection;
@@ -659,7 +659,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	public Region createRegion(EClass eClass) {
 		Region newRegion = (Region) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STATE__REGION, null, newRegion));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STATE__REGION, null, newRegion));
 		}
 		getRegions().add(newRegion);
 		return newRegion;
@@ -723,7 +723,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	public Activity createEntry(EClass eClass) {
 		Activity newEntry = (Activity) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STATE__ENTRY, null, newEntry));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STATE__ENTRY, null, newEntry));
 		}
         setEntry(newEntry);
 		return newEntry;
@@ -787,7 +787,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	public Activity createExit(EClass eClass) {
 		Activity newExit = (Activity) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STATE__EXIT, null, newExit));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STATE__EXIT, null, newExit));
 		}
         setExit(newExit);
 		return newExit;
@@ -851,7 +851,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	public Activity createDoActivity(EClass eClass) {
 		Activity newDoActivity = (Activity) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STATE__DO_ACTIVITY, null, newDoActivity));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STATE__DO_ACTIVITY, null, newDoActivity));
 		}
         setDoActivity(newDoActivity);
 		return newDoActivity;
@@ -915,7 +915,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	public Constraint createStateInvariant(EClass eClass) {
 		Constraint newStateInvariant = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STATE__STATE_INVARIANT, null, newStateInvariant));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STATE__STATE_INVARIANT, null, newStateInvariant));
 		}
         setStateInvariant(newStateInvariant);
 		return newStateInvariant;

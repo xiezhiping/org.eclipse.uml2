@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadLinkObjectEndActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ReadLinkObjectEndActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -165,7 +165,7 @@ public class ReadLinkObjectEndActionImpl extends ActionImpl implements ReadLinkO
 	public InputPin createObject(EClass eClass) {
 		InputPin newObject = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.READ_LINK_OBJECT_END_ACTION__OBJECT, null, newObject));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.READ_LINK_OBJECT_END_ACTION__OBJECT, null, newObject));
 		}
         setObject(newObject);
 		return newObject;
@@ -269,7 +269,7 @@ public class ReadLinkObjectEndActionImpl extends ActionImpl implements ReadLinkO
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.READ_LINK_OBJECT_END_ACTION__RESULT, null, newResult));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.READ_LINK_OBJECT_END_ACTION__RESULT, null, newResult));
 		}
         setResult(newResult);
 		return newResult;

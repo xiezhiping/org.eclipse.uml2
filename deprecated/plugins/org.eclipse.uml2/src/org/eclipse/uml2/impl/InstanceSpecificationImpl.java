@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.5 2004/05/11 15:24:00 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.6 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -180,7 +180,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	public Deployment createDeployment(EClass eClass) {
 		Deployment newDeployment = (Deployment) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, null, newDeployment));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, null, newDeployment));
 		}
 		getDeployments().add(newDeployment);
 		return newDeployment;
@@ -271,7 +271,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	public Slot createSlot(EClass eClass) {
 		Slot newSlot = (Slot) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INSTANCE_SPECIFICATION__SLOT, null, newSlot));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INSTANCE_SPECIFICATION__SLOT, null, newSlot));
 		}
 		getSlots().add(newSlot);
 		return newSlot;
@@ -365,7 +365,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	public ValueSpecification createSpecification(EClass eClass) {
 		ValueSpecification newSpecification = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION, null, newSpecification));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION, null, newSpecification));
 		}
         setSpecification(newSpecification);
 		return newSpecification;

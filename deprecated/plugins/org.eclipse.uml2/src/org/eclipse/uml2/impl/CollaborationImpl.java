@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.6 2004/05/11 15:24:00 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,7 +19,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -164,7 +163,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.COLLABORATION__OWNED_ATTRIBUTE, null, newOwnedAttribute));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COLLABORATION__OWNED_ATTRIBUTE, null, newOwnedAttribute));
 		}
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
@@ -276,7 +275,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	public Connector createOwnedConnector(EClass eClass) {
 		Connector newOwnedConnector = (Connector) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.COLLABORATION__OWNED_CONNECTOR, null, newOwnedConnector));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COLLABORATION__OWNED_CONNECTOR, null, newOwnedConnector));
 		}
 		getOwnedConnectors().add(newOwnedConnector);
 		return newOwnedConnector;
@@ -471,10 +470,10 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 					return eBasicSetContainer(otherEnd, UML2Package.COLLABORATION__OWNING_PARAMETER, msgs);
 				case UML2Package.COLLABORATION__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.COLLABORATION__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.COLLABORATION__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.COLLABORATION__IMPLEMENTATION:
@@ -522,10 +521,10 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 					return eBasicSetContainer(null, UML2Package.COLLABORATION__OWNING_PARAMETER, msgs);
 				case UML2Package.COLLABORATION__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.COLLABORATION__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.COLLABORATION__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.COLLABORATION__OCCURRENCE:
@@ -632,10 +631,10 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				return getAttributes();
 			case UML2Package.COLLABORATION__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.COLLABORATION__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.COLLABORATION__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.COLLABORATION__REPRESENTATION:
@@ -734,13 +733,13 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.COLLABORATION__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.COLLABORATION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -845,11 +844,11 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 			case UML2Package.COLLABORATION__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.COLLABORATION__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.COLLABORATION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -950,10 +949,10 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				return !getAttributes().isEmpty();
 			case UML2Package.COLLABORATION__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.COLLABORATION__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.COLLABORATION__REPRESENTATION:

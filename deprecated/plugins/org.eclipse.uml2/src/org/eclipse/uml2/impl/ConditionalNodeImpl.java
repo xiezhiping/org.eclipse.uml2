@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -210,7 +210,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	public Clause createClause(EClass eClass) {
 		Clause newClause = (Clause) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CONDITIONAL_NODE__CLAUSE, null, newClause));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CONDITIONAL_NODE__CLAUSE, null, newClause));
 		}
 		getClauses().add(newClause);
 		return newClause;
@@ -260,7 +260,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CONDITIONAL_NODE__RESULT, null, newResult));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CONDITIONAL_NODE__RESULT, null, newResult));
 		}
 		getResults().add(newResult);
 		return newResult;

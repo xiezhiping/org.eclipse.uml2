@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.5 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -244,7 +244,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	public ValueSpecification createSpecification(EClass eClass) {
 		ValueSpecification newSpecification = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CONSTRAINT__SPECIFICATION, null, newSpecification));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CONSTRAINT__SPECIFICATION, null, newSpecification));
 		}
         setSpecification(newSpecification);
 		return newSpecification;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.3 2004/05/11 15:23:59 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.4 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -238,7 +238,7 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	public DeploymentSpecification createConfiguration(EClass eClass) {
 		DeploymentSpecification newConfiguration = (DeploymentSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.DEPLOYMENT__CONFIGURATION, null, newConfiguration));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.DEPLOYMENT__CONFIGURATION, null, newConfiguration));
 		}
 		getConfigurations().add(newConfiguration);
 		return newConfiguration;

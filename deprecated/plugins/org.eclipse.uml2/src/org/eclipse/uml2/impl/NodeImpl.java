@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.6 2004/05/11 15:23:59 khussey Exp $
+ * $Id: NodeImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,7 +18,6 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -155,7 +154,7 @@ public class NodeImpl extends ClassImpl implements Node {
 	public Deployment createDeployment(EClass eClass) {
 		Deployment newDeployment = (Deployment) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.NODE__DEPLOYMENT, null, newDeployment));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NODE__DEPLOYMENT, null, newDeployment));
 		}
 		getDeployments().add(newDeployment);
 		return newDeployment;
@@ -263,7 +262,7 @@ public class NodeImpl extends ClassImpl implements Node {
 	public Node createNestedNode(EClass eClass) {
 		Node newNestedNode = (Node) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.NODE__NESTED_NODE, null, newNestedNode));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NODE__NESTED_NODE, null, newNestedNode));
 		}
 		getNestedNodes().add(newNestedNode);
 		return newNestedNode;
@@ -357,10 +356,10 @@ public class NodeImpl extends ClassImpl implements Node {
 					return eBasicSetContainer(otherEnd, UML2Package.NODE__OWNING_PARAMETER, msgs);
 				case UML2Package.NODE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.NODE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.NODE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__IMPLEMENTATION:
@@ -412,10 +411,10 @@ public class NodeImpl extends ClassImpl implements Node {
 					return eBasicSetContainer(null, UML2Package.NODE__OWNING_PARAMETER, msgs);
 				case UML2Package.NODE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.NODE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.NODE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__OCCURRENCE:
@@ -534,10 +533,10 @@ public class NodeImpl extends ClassImpl implements Node {
 				return getAttributes();
 			case UML2Package.NODE__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.NODE__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.NODE__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.NODE__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.NODE__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.NODE__REPRESENTATION:
@@ -654,13 +653,13 @@ public class NodeImpl extends ClassImpl implements Node {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.NODE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.NODE__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.NODE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.NODE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -788,11 +787,11 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.NODE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.NODE__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.NODE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.NODE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -911,10 +910,10 @@ public class NodeImpl extends ClassImpl implements Node {
 				return !getAttributes().isEmpty();
 			case UML2Package.NODE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.NODE__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.NODE__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.NODE__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.NODE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.NODE__REPRESENTATION:

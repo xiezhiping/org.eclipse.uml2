@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
+ * $Id: PackageImpl.java,v 1.5 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -522,7 +522,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	public PackageableElement createOwnedMember(EClass eClass) {
 		PackageableElement newOwnedMember = (PackageableElement) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.PACKAGE__OWNED_MEMBER, null, newOwnedMember));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PACKAGE__OWNED_MEMBER, null, newOwnedMember));
 		}
 		getOwnedMembers().add(newOwnedMember);
 		return newOwnedMember;
@@ -555,7 +555,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	public PackageMerge createPackageMerge(EClass eClass) {
 		PackageMerge newPackageMerge = (PackageMerge) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.PACKAGE__PACKAGE_MERGE, null, newPackageMerge));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PACKAGE__PACKAGE_MERGE, null, newPackageMerge));
 		}
 		getPackageMerges().add(newPackageMerge);
 		return newPackageMerge;
@@ -609,7 +609,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	public PackageMerge createPackageExtension(EClass eClass) {
 		PackageMerge newPackageExtension = (PackageMerge) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.PACKAGE__PACKAGE_EXTENSION, null, newPackageExtension));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PACKAGE__PACKAGE_EXTENSION, null, newPackageExtension));
 		}
 		getPackageExtensions().add(newPackageExtension);
 		return newPackageExtension;

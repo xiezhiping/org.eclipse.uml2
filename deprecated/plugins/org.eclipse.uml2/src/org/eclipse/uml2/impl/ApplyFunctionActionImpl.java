@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ApplyFunctionActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ApplyFunctionActionImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -193,7 +193,7 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	public InputPin createArgument(EClass eClass) {
 		InputPin newArgument = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.APPLY_FUNCTION_ACTION__ARGUMENT, null, newArgument));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.APPLY_FUNCTION_ACTION__ARGUMENT, null, newArgument));
 		}
 		getArguments().add(newArgument);
 		return newArgument;
@@ -243,7 +243,7 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.APPLY_FUNCTION_ACTION__RESULT, null, newResult));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.APPLY_FUNCTION_ACTION__RESULT, null, newResult));
 		}
 		getResults().add(newResult);
 		return newResult;

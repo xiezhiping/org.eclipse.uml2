@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.5 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -291,7 +291,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	public StringExpression createNameExpression(EClass eClass) {
 		StringExpression newNameExpression = (StringExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.NAMED_ELEMENT__NAME_EXPRESSION, null, newNameExpression));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NAMED_ELEMENT__NAME_EXPRESSION, null, newNameExpression));
 		}
         setNameExpression(newNameExpression);
 		return newNameExpression;

@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -103,7 +102,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	public LinkEndData createEndData(EClass eClass) {
 		LinkEndData newEndData = (LinkEndData) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.LINK_ACTION__END_DATA, null, newEndData));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.LINK_ACTION__END_DATA, null, newEndData));
 		}
 		getEndData().add(newEndData);
 		return newEndData;

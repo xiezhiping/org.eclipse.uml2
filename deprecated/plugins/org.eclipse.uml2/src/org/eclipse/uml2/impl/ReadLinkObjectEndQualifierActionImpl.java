@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -165,7 +165,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	public InputPin createObject(EClass eClass) {
 		InputPin newObject = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT, null, newObject));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT, null, newObject));
 		}
         setObject(newObject);
 		return newObject;
@@ -229,7 +229,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT, null, newResult));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT, null, newResult));
 		}
         setResult(newResult);
 		return newResult;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.3 2004/05/11 15:21:35 khussey Exp $
+ * $Id: UML2Editor.java,v 1.4 2004/05/14 14:12:09 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -378,7 +378,7 @@ public class UML2Editor
 					IResourceDelta delta = event.getDelta();
 					try {
 						class ResourceDeltaVisitor implements IResourceDeltaVisitor {
-							protected ResourceSet resourceSet =	editingDomain.getResourceSet();
+							protected ResourceSet resourceSet = editingDomain.getResourceSet();
 							protected Collection changedResources = new ArrayList();
 							protected Collection removedResources = new ArrayList();
 
@@ -417,10 +417,10 @@ public class UML2Editor
 						if (!visitor.getRemovedResources().isEmpty() && !isDirty()) {
 							getSite().getShell().getDisplay().asyncExec
 								(new Runnable() {
-								 	public void run() {
+									public void run() {
 										getSite().getPage().closeEditor(UML2Editor.this, false);
 										UML2Editor.this.dispose();
-								 	}
+									}
 								 });
 						}
 
@@ -588,7 +588,7 @@ public class UML2Editor
 
 	/**
 	 * This returns the editing domain as required by the {@link IEditingDomainProvider} interface.
-	 * This is important for implementing the static methods of {@link AdapterFactoryEditingDomain}	
+	 * This is important for implementing the static methods of {@link AdapterFactoryEditingDomain}
 	 * and for supporting {@link org.eclipse.emf.edit.ui.action.CommandAction}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -713,7 +713,7 @@ public class UML2Editor
 			setSelection(currentViewer == null ? StructuredSelection.EMPTY : currentViewer.getSelection());
 		}
 	}
-	
+
 	/**
 	 * This returns the viewer as required by the {@link IViewerProvider} interface.
 	 * <!-- begin-user-doc -->
@@ -1223,7 +1223,7 @@ public class UML2Editor
 			control.setVisible(true);
 			control.setFocus();
 		}
-		
+
 		handleContentOutlineSelection(contentOutlinePage.getSelection());
 	}
 
@@ -1572,7 +1572,7 @@ public class UML2Editor
 		if (editorInput instanceof IFileEditorInput) {
 			setSite(site);
 			setInput(editorInput);
-			setTitle(((IFileEditorInput)editorInput).getFile().getName());	
+			setTitle(((IFileEditorInput)editorInput).getFile().getName());
 			site.setSelectionProvider(this);
 			site.getPage().addPartListener(partListener);
 			ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
@@ -1740,7 +1740,9 @@ public class UML2Editor
 
 		adapterFactory.dispose();
 
-		getActionBarContributor().setActiveEditor(null);
+		if (getActionBarContributor().getActiveEditor() == this) {
+			getActionBarContributor().setActiveEditor(null);
+		}
 
 		if (propertySheetPage != null) {
 			propertySheetPage.dispose();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -194,7 +194,7 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 	public InputPin createTarget(EClass eClass) {
 		InputPin newTarget = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CALL_OPERATION_ACTION__TARGET, null, newTarget));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CALL_OPERATION_ACTION__TARGET, null, newTarget));
 		}
         setTarget(newTarget);
 		return newTarget;

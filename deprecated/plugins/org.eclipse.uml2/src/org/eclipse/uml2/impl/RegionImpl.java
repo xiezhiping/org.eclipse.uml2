@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.3 2004/05/11 15:23:59 khussey Exp $
+ * $Id: RegionImpl.java,v 1.4 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -245,7 +245,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	public Vertex createSubvertex(EClass eClass) {
 		Vertex newSubvertex = (Vertex) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.REGION__SUBVERTEX, null, newSubvertex));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.REGION__SUBVERTEX, null, newSubvertex));
 		}
 		getSubvertices().add(newSubvertex);
 		return newSubvertex;
@@ -295,7 +295,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	public Transition createTransition(EClass eClass) {
 		Transition newTransition = (Transition) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.REGION__TRANSITION, null, newTransition));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.REGION__TRANSITION, null, newTransition));
 		}
 		getTransitions().add(newTransition);
 		return newTransition;

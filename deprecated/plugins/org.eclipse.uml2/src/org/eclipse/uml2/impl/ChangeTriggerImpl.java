@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ChangeTriggerImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: ChangeTriggerImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -141,7 +141,7 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 	public ValueSpecification createChangeExpression(EClass eClass) {
 		ValueSpecification newChangeExpression = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION, null, newChangeExpression));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION, null, newChangeExpression));
 		}
         setChangeExpression(newChangeExpression);
 		return newChangeExpression;

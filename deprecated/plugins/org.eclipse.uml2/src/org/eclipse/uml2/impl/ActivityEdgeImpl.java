@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -411,7 +411,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	public ValueSpecification createGuard(EClass eClass) {
 		ValueSpecification newGuard = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ACTIVITY_EDGE__GUARD, null, newGuard));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTIVITY_EDGE__GUARD, null, newGuard));
 		}
         setGuard(newGuard);
 		return newGuard;
@@ -585,7 +585,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	public ValueSpecification createWeight(EClass eClass) {
 		ValueSpecification newWeight = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ACTIVITY_EDGE__WEIGHT, null, newWeight));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTIVITY_EDGE__WEIGHT, null, newWeight));
 		}
         setWeight(newWeight);
 		return newWeight;

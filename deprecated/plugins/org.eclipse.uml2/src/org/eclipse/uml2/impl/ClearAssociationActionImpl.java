@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClearAssociationActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ClearAssociationActionImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -153,7 +153,7 @@ public class ClearAssociationActionImpl extends ActionImpl implements ClearAssoc
 	public InputPin createObject(EClass eClass) {
 		InputPin newObject = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CLEAR_ASSOCIATION_ACTION__OBJECT, null, newObject));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLEAR_ASSOCIATION_ACTION__OBJECT, null, newObject));
 		}
         setObject(newObject);
 		return newObject;

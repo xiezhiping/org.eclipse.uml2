@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: MessageImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -485,7 +485,7 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	public ValueSpecification createArgument(EClass eClass) {
 		ValueSpecification newArgument = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.MESSAGE__ARGUMENT, null, newArgument));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.MESSAGE__ARGUMENT, null, newArgument));
 		}
 		getArguments().add(newArgument);
 		return newArgument;

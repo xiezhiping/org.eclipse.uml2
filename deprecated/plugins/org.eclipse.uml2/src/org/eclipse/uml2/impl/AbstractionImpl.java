@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -140,7 +140,7 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	public OpaqueExpression createMapping(EClass eClass) {
 		OpaqueExpression newMapping = (OpaqueExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ABSTRACTION__MAPPING, null, newMapping));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ABSTRACTION__MAPPING, null, newMapping));
 		}
         setMapping(newMapping);
 		return newMapping;

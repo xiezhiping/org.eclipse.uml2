@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.7 2004/05/13 03:16:20 khussey Exp $
+ * $Id: ClassImpl.java,v 1.8 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -236,7 +236,7 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	public Behavior createOwnedBehavior(EClass eClass) {
 		Behavior newOwnedBehavior = (Behavior) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CLASS__OWNED_BEHAVIOR, null, newOwnedBehavior));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_BEHAVIOR, null, newOwnedBehavior));
 		}
 		getOwnedBehaviors().add(newOwnedBehavior);
 		return newOwnedBehavior;
@@ -323,7 +323,7 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	public Implementation createImplementation(EClass eClass) {
 		Implementation newImplementation = (Implementation) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CLASS__IMPLEMENTATION, null, newImplementation));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__IMPLEMENTATION, null, newImplementation));
 		}
 		getImplementations().add(newImplementation);
 		return newImplementation;
@@ -373,7 +373,7 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	public StateMachine createOwnedStateMachine(EClass eClass) {
 		StateMachine newOwnedStateMachine = (StateMachine) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CLASS__OWNED_STATE_MACHINE, null, newOwnedStateMachine));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_STATE_MACHINE, null, newOwnedStateMachine));
 		}
 		getOwnedStateMachines().add(newOwnedStateMachine);
 		return newOwnedStateMachine;
@@ -446,7 +446,7 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	public Operation createOwnedOperation(EClass eClass) {
 		Operation newOwnedOperation = (Operation) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CLASS__OWNED_OPERATION, null, newOwnedOperation));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_OPERATION, null, newOwnedOperation));
 		}
 		getOwnedOperations().add(newOwnedOperation);
 		return newOwnedOperation;
@@ -585,7 +585,7 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	public Classifier createNestedClassifier(EClass eClass) {
 		Classifier newNestedClassifier = (Classifier) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CLASS__NESTED_CLASSIFIER, null, newNestedClassifier));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__NESTED_CLASSIFIER, null, newNestedClassifier));
 		}
 		getNestedClassifiers().add(newNestedClassifier);
 		return newNestedClassifier;
@@ -636,7 +636,7 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	public Reception createOwnedReception(EClass eClass) {
 		Reception newOwnedReception = (Reception) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CLASS__OWNED_RECEPTION, null, newOwnedReception));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_RECEPTION, null, newOwnedReception));
 		}
 		getOwnedReceptions().add(newOwnedReception);
 		return newOwnedReception;
@@ -895,10 +895,10 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 					return eBasicSetContainer(otherEnd, UML2Package.CLASS__OWNING_PARAMETER, msgs);
 				case UML2Package.CLASS__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CLASS__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASS__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.CLASS__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASS__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASS__IMPLEMENTATION:
@@ -948,10 +948,10 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 					return eBasicSetContainer(null, UML2Package.CLASS__OWNING_PARAMETER, msgs);
 				case UML2Package.CLASS__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLASS__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASS__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.CLASS__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASS__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASS__OCCURRENCE:
@@ -1066,10 +1066,10 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 				return getAttributes();
 			case UML2Package.CLASS__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.CLASS__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.CLASS__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.CLASS__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.CLASS__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.CLASS__REPRESENTATION:
@@ -1180,13 +1180,13 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.CLASS__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.CLASS__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.CLASS__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.CLASS__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1306,11 +1306,11 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 			case UML2Package.CLASS__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.CLASS__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.CLASS__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.CLASS__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.CLASS__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1423,10 +1423,10 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 				return !getAttributes().isEmpty();
 			case UML2Package.CLASS__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.CLASS__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.CLASS__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.CLASS__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.CLASS__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.CLASS__REPRESENTATION:

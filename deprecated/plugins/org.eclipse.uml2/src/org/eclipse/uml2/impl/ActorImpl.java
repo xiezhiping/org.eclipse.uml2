@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActorImpl.java,v 1.6 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ActorImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -96,10 +96,10 @@ public class ActorImpl extends ClassifierImpl implements Actor {
 					return eBasicSetContainer(otherEnd, UML2Package.ACTOR__OWNING_PARAMETER, msgs);
 				case UML2Package.ACTOR__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTOR__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTOR__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.ACTOR__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -141,10 +141,10 @@ public class ActorImpl extends ClassifierImpl implements Actor {
 					return eBasicSetContainer(null, UML2Package.ACTOR__OWNING_PARAMETER, msgs);
 				case UML2Package.ACTOR__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTOR__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTOR__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.ACTOR__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTOR__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTOR__OCCURRENCE:
@@ -241,10 +241,10 @@ public class ActorImpl extends ClassifierImpl implements Actor {
 				return getAttributes();
 			case UML2Package.ACTOR__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.ACTOR__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.ACTOR__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.ACTOR__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.ACTOR__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.ACTOR__REPRESENTATION:
@@ -325,13 +325,13 @@ public class ActorImpl extends ClassifierImpl implements Actor {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.ACTOR__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.ACTOR__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.ACTOR__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.ACTOR__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -409,11 +409,11 @@ public class ActorImpl extends ClassifierImpl implements Actor {
 			case UML2Package.ACTOR__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.ACTOR__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.ACTOR__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.ACTOR__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.ACTOR__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -493,10 +493,10 @@ public class ActorImpl extends ClassifierImpl implements Actor {
 				return !getAttributes().isEmpty();
 			case UML2Package.ACTOR__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.ACTOR__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ACTOR__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.ACTOR__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ACTOR__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.ACTOR__REPRESENTATION:

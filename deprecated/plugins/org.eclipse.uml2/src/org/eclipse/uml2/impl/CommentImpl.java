@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: CommentImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -206,7 +206,7 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	public StringExpression createBodyExpression(EClass eClass) {
 		StringExpression newBodyExpression = (StringExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.COMMENT__BODY_EXPRESSION, null, newBodyExpression));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COMMENT__BODY_EXPRESSION, null, newBodyExpression));
 		}
         setBodyExpression(newBodyExpression);
 		return newBodyExpression;

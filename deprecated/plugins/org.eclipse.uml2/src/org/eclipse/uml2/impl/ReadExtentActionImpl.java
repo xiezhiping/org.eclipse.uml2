@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadExtentActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ReadExtentActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -153,7 +153,7 @@ public class ReadExtentActionImpl extends ActionImpl implements ReadExtentAction
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.READ_EXTENT_ACTION__RESULT, null, newResult));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.READ_EXTENT_ACTION__RESULT, null, newResult));
 		}
         setResult(newResult);
 		return newResult;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.4 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -294,7 +294,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	public ParameterableElement createOwnedParameteredElement(EClass eClass) {
 		ParameterableElement newOwnedParameteredElement = (ParameterableElement) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, null, newOwnedParameteredElement));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, null, newOwnedParameteredElement));
 		}
         setOwnedParameteredElement(newOwnedParameteredElement);
 		return newOwnedParameteredElement;
@@ -408,7 +408,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	public ParameterableElement createOwnedDefault(EClass eClass) {
 		ParameterableElement newOwnedDefault = (ParameterableElement) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT, null, newOwnedDefault));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT, null, newOwnedDefault));
 		}
         setOwnedDefault(newOwnedDefault);
 		return newOwnedDefault;

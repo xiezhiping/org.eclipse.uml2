@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -201,7 +201,7 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	public QualifierValue createQualifier(EClass eClass) {
 		QualifierValue newQualifier = (QualifierValue) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.LINK_END_DATA__QUALIFIER, null, newQualifier));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.LINK_END_DATA__QUALIFIER, null, newQualifier));
 		}
 		getQualifiers().add(newQualifier);
 		return newQualifier;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.5 2004/05/11 15:23:59 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.6 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -438,7 +438,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public Deployment createDeployment(EClass eClass) {
 		Deployment newDeployment = (Deployment) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.PROPERTY__DEPLOYMENT, null, newDeployment));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PROPERTY__DEPLOYMENT, null, newDeployment));
 		}
 		getDeployments().add(newDeployment);
 		return newDeployment;
@@ -953,7 +953,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public ValueSpecification createDefaultValue(EClass eClass) {
 		ValueSpecification newDefaultValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.PROPERTY__DEFAULT_VALUE, null, newDefaultValue));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PROPERTY__DEFAULT_VALUE, null, newDefaultValue));
 		}
         setDefaultValue(newDefaultValue);
 		return newDefaultValue;
@@ -1003,7 +1003,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public Property createQualifier(EClass eClass) {
 		Property newQualifier = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.PROPERTY__QUALIFIER, null, newQualifier));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PROPERTY__QUALIFIER, null, newQualifier));
 		}
 		getQualifiers().add(newQualifier);
 		return newQualifier;

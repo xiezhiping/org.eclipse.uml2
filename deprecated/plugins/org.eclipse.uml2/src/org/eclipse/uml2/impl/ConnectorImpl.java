@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -267,7 +267,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	public ConnectorEnd createEnd(EClass eClass) {
 		ConnectorEnd newEnd = (ConnectorEnd) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CONNECTOR__END, null, newEnd));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CONNECTOR__END, null, newEnd));
 		}
 		getEnds().add(newEnd);
 		return newEnd;

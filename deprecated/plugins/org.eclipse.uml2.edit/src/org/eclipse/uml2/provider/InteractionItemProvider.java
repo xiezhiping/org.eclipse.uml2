@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionItemProvider.java,v 1.6 2004/05/11 15:21:50 khussey Exp $
+ * $Id: InteractionItemProvider.java,v 1.7 2004/05/14 14:12:18 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -360,9 +360,9 @@ public class InteractionItemProvider
 		boolean qualify =
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
 			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
 			feature == UML2Package.eINSTANCE.getInteraction_Fragment();
 		return getString(

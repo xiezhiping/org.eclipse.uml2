@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.5 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -277,7 +277,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	public ValueSpecification createUpperValue(EClass eClass) {
 		ValueSpecification newUpperValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE, null, newUpperValue));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE, null, newUpperValue));
 		}
         setUpperValue(newUpperValue);
 		return newUpperValue;
@@ -341,7 +341,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	public ValueSpecification createLowerValue(EClass eClass) {
 		ValueSpecification newLowerValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE, null, newLowerValue));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE, null, newLowerValue));
 		}
         setLowerValue(newLowerValue);
 		return newLowerValue;

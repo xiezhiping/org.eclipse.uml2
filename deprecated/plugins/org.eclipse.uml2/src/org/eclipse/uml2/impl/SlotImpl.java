@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: SlotImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -178,7 +178,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 	public ValueSpecification createValue(EClass eClass) {
 		ValueSpecification newValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.SLOT__VALUE, null, newValue));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.SLOT__VALUE, null, newValue));
 		}
 		getValues().add(newValue);
 		return newValue;

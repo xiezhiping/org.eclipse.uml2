@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeTriggerImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: TimeTriggerImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -184,7 +184,7 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	public ValueSpecification createWhen(EClass eClass) {
 		ValueSpecification newWhen = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TIME_TRIGGER__WHEN, null, newWhen));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TIME_TRIGGER__WHEN, null, newWhen));
 		}
         setWhen(newWhen);
 		return newWhen;

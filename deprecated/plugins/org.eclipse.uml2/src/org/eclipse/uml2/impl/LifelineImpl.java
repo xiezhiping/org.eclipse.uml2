@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.3 2004/04/23 02:31:47 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.4 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -289,7 +289,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	public OpaqueExpression createSelector(EClass eClass) {
 		OpaqueExpression newSelector = (OpaqueExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.LIFELINE__SELECTOR, null, newSelector));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.LIFELINE__SELECTOR, null, newSelector));
 		}
         setSelector(newSelector);
 		return newSelector;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionOccurrenceImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: InteractionOccurrenceImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -192,7 +192,7 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	public Gate createActualGate(EClass eClass) {
 		Gate newActualGate = (Gate) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE, null, newActualGate));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE, null, newActualGate));
 		}
 		getActualGates().add(newActualGate);
 		return newActualGate;
@@ -236,7 +236,7 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	public InputPin createArgument(EClass eClass) {
 		InputPin newArgument = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION_OCCURRENCE__ARGUMENT, null, newArgument));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OCCURRENCE__ARGUMENT, null, newArgument));
 		}
 		getArguments().add(newArgument);
 		return newArgument;

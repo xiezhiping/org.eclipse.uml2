@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -184,7 +184,7 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	public InteractionOperand createOperand(EClass eClass) {
 		InteractionOperand newOperand = (InteractionOperand) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.COMBINED_FRAGMENT__OPERAND, null, newOperand));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COMBINED_FRAGMENT__OPERAND, null, newOperand));
 		}
 		getOperands().add(newOperand);
 		return newOperand;
@@ -234,7 +234,7 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	public Gate createCfragmentGate(EClass eClass) {
 		Gate newCfragmentGate = (Gate) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE, null, newCfragmentGate));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE, null, newCfragmentGate));
 		}
 		getCfragmentGates().add(newCfragmentGate);
 		return newCfragmentGate;

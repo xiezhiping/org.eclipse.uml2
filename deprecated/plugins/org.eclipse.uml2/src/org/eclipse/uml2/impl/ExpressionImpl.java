@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -173,7 +173,7 @@ public class ExpressionImpl extends OpaqueExpressionImpl implements Expression {
 	public ValueSpecification createOperand(EClass eClass) {
 		ValueSpecification newOperand = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.EXPRESSION__OPERAND, null, newOperand));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.EXPRESSION__OPERAND, null, newOperand));
 		}
 		getOperands().add(newOperand);
 		return newOperand;

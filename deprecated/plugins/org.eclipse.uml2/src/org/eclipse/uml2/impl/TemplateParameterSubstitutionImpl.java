@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.4 2004/05/11 15:24:00 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.5 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -231,7 +231,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	public ParameterableElement createOwnedActual(EClass eClass) {
 		ParameterableElement newOwnedActual = (ParameterableElement) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL, null, newOwnedActual));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL, null, newOwnedActual));
 		}
 		getOwnedActuals().add(newOwnedActual);
 		return newOwnedActual;

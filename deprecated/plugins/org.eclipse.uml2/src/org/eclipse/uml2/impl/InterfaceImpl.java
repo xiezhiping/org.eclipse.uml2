@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.6 2004/05/11 15:23:59 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -191,7 +191,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERFACE__OWNED_ATTRIBUTE, null, newOwnedAttribute));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__OWNED_ATTRIBUTE, null, newOwnedAttribute));
 		}
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
@@ -242,7 +242,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	public Operation createOwnedOperation(EClass eClass) {
 		Operation newOwnedOperation = (Operation) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERFACE__OWNED_OPERATION, null, newOwnedOperation));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__OWNED_OPERATION, null, newOwnedOperation));
 		}
 		getOwnedOperations().add(newOwnedOperation);
 		return newOwnedOperation;
@@ -328,7 +328,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	public Classifier createNestedClassifier(EClass eClass) {
 		Classifier newNestedClassifier = (Classifier) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERFACE__NESTED_CLASSIFIER, null, newNestedClassifier));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__NESTED_CLASSIFIER, null, newNestedClassifier));
 		}
 		getNestedClassifiers().add(newNestedClassifier);
 		return newNestedClassifier;
@@ -379,7 +379,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	public Reception createOwnedReception(EClass eClass) {
 		Reception newOwnedReception = (Reception) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERFACE__OWNED_RECEPTION, null, newOwnedReception));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__OWNED_RECEPTION, null, newOwnedReception));
 		}
 		getOwnedReceptions().add(newOwnedReception);
 		return newOwnedReception;
@@ -443,7 +443,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	public ProtocolStateMachine createProtocol(EClass eClass) {
 		ProtocolStateMachine newProtocol = (ProtocolStateMachine) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERFACE__PROTOCOL, null, newProtocol));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__PROTOCOL, null, newProtocol));
 		}
         setProtocol(newProtocol);
 		return newProtocol;
@@ -582,10 +582,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 					return eBasicSetContainer(otherEnd, UML2Package.INTERFACE__OWNING_PARAMETER, msgs);
 				case UML2Package.INTERFACE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.INTERFACE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERFACE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.INTERFACE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -627,10 +627,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 					return eBasicSetContainer(null, UML2Package.INTERFACE__OWNING_PARAMETER, msgs);
 				case UML2Package.INTERFACE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERFACE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERFACE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.INTERFACE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERFACE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERFACE__OCCURRENCE:
@@ -737,10 +737,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 				return getAttributes();
 			case UML2Package.INTERFACE__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.INTERFACE__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.INTERFACE__REPRESENTATION:
@@ -833,13 +833,13 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.INTERFACE__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -940,11 +940,11 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.INTERFACE__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1042,10 +1042,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 				return !getAttributes().isEmpty();
 			case UML2Package.INTERFACE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.INTERFACE__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.INTERFACE__REPRESENTATION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ActionBarContributor.java,v 1.6 2004/05/11 15:21:35 khussey Exp $
+ * $Id: UML2ActionBarContributor.java,v 1.7 2004/05/14 14:12:09 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -211,7 +211,6 @@ public class UML2ActionBarContributor
 					 menuManager.updateAll(true);
 				 }
 			 });
-
 
 		addGlobalActions(submenuManager);
 	}

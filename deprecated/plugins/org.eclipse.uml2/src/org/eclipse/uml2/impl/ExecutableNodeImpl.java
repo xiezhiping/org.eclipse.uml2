@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -112,7 +111,7 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	public ExceptionHandler createHandler(EClass eClass) {
 		ExceptionHandler newHandler = (ExceptionHandler) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.EXECUTABLE_NODE__HANDLER, null, newHandler));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.EXECUTABLE_NODE__HANDLER, null, newHandler));
 		}
 		getHandlers().add(newHandler);
 		return newHandler;

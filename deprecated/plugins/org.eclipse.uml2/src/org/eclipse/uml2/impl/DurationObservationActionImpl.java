@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.emf.common.notify.Notification;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -133,7 +132,7 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	public Duration createDuration(EClass eClass) {
 		Duration newDuration = (Duration) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.DURATION_OBSERVATION_ACTION__DURATION, null, newDuration));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.DURATION_OBSERVATION_ACTION__DURATION, null, newDuration));
 		}
 		getDurations().add(newDuration);
 		return newDuration;

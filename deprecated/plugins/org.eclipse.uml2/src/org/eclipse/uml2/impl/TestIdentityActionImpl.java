@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -164,7 +164,7 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	public InputPin createFirst(EClass eClass) {
 		InputPin newFirst = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TEST_IDENTITY_ACTION__FIRST, null, newFirst));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEST_IDENTITY_ACTION__FIRST, null, newFirst));
 		}
         setFirst(newFirst);
 		return newFirst;
@@ -228,7 +228,7 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	public InputPin createSecond(EClass eClass) {
 		InputPin newSecond = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TEST_IDENTITY_ACTION__SECOND, null, newSecond));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEST_IDENTITY_ACTION__SECOND, null, newSecond));
 		}
         setSecond(newSecond);
 		return newSecond;
@@ -292,7 +292,7 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TEST_IDENTITY_ACTION__RESULT, null, newResult));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEST_IDENTITY_ACTION__RESULT, null, newResult));
 		}
         setResult(newResult);
 		return newResult;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -166,7 +166,7 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	public TemplateParameter createOwnedParameter(EClass eClass) {
 		TemplateParameter newOwnedParameter = (TemplateParameter) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER, null, newOwnedParameter));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER, null, newOwnedParameter));
 		}
 		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -293,7 +293,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	public Constraint createCondition(EClass eClass) {
 		Constraint newCondition = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.EXTEND__CONDITION, null, newCondition));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.EXTEND__CONDITION, null, newCondition));
 		}
         setCondition(newCondition);
 		return newCondition;

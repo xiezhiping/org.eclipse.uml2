@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.5 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -491,7 +491,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	public Parameter createFormalParameter(EClass eClass) {
 		Parameter newFormalParameter = (Parameter) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER, null, newFormalParameter));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER, null, newFormalParameter));
 		}
 		getFormalParameters().add(newFormalParameter);
 		return newFormalParameter;
@@ -542,7 +542,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	public Parameter createReturnResult(EClass eClass) {
 		Parameter newReturnResult = (Parameter) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT, null, newReturnResult));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT, null, newReturnResult));
 		}
 		getReturnResults().add(newReturnResult);
 		return newReturnResult;

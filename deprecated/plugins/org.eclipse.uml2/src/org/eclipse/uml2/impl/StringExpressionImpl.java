@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -109,7 +109,7 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	public StringExpression createSubExpression(EClass eClass) {
 		StringExpression newSubExpression = (StringExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION, null, newSubExpression));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION, null, newSubExpression));
 		}
 		getSubExpressions().add(newSubExpression);
 		return newSubExpression;

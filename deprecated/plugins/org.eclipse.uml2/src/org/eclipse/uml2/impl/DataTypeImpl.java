@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.6 2004/05/11 15:24:00 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -17,7 +17,6 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -144,7 +143,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.DATA_TYPE__OWNED_ATTRIBUTE, null, newOwnedAttribute));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.DATA_TYPE__OWNED_ATTRIBUTE, null, newOwnedAttribute));
 		}
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
@@ -195,7 +194,7 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	public Operation createOwnedOperation(EClass eClass) {
 		Operation newOwnedOperation = (Operation) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.DATA_TYPE__OWNED_OPERATION, null, newOwnedOperation));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.DATA_TYPE__OWNED_OPERATION, null, newOwnedOperation));
 		}
 		getOwnedOperations().add(newOwnedOperation);
 		return newOwnedOperation;
@@ -317,10 +316,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 					return eBasicSetContainer(otherEnd, UML2Package.DATA_TYPE__OWNING_PARAMETER, msgs);
 				case UML2Package.DATA_TYPE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicAdd(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__OWNED_OPERATION:
@@ -366,10 +365,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 					return eBasicSetContainer(null, UML2Package.DATA_TYPE__OWNING_PARAMETER, msgs);
 				case UML2Package.DATA_TYPE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__OCCURRENCE:
@@ -470,10 +469,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 				return getAttributes();
 			case UML2Package.DATA_TYPE__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.DATA_TYPE__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.DATA_TYPE__REPRESENTATION:
@@ -558,13 +557,13 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.DATA_TYPE__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -650,11 +649,11 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 			case UML2Package.DATA_TYPE__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.DATA_TYPE__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -740,10 +739,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 				return !getAttributes().isEmpty();
 			case UML2Package.DATA_TYPE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.DATA_TYPE__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.DATA_TYPE__REPRESENTATION:

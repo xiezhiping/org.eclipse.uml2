@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.6 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -205,7 +205,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	public Artifact createNestedArtifact(EClass eClass) {
 		Artifact newNestedArtifact = (Artifact) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ARTIFACT__NESTED_ARTIFACT, null, newNestedArtifact));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ARTIFACT__NESTED_ARTIFACT, null, newNestedArtifact));
 		}
 		getNestedArtifacts().add(newNestedArtifact);
 		return newNestedArtifact;
@@ -258,7 +258,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	public Manifestation createManifestation(EClass eClass) {
 		Manifestation newManifestation = (Manifestation) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ARTIFACT__MANIFESTATION, null, newManifestation));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ARTIFACT__MANIFESTATION, null, newManifestation));
 		}
 		getManifestations().add(newManifestation);
 		return newManifestation;
@@ -309,7 +309,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	public Operation createOwnedOperation(EClass eClass) {
 		Operation newOwnedOperation = (Operation) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ARTIFACT__OWNED_OPERATION, null, newOwnedOperation));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ARTIFACT__OWNED_OPERATION, null, newOwnedOperation));
 		}
 		getOwnedOperations().add(newOwnedOperation);
 		return newOwnedOperation;
@@ -360,7 +360,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ARTIFACT__OWNED_ATTRIBUTE, null, newOwnedAttribute));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ARTIFACT__OWNED_ATTRIBUTE, null, newOwnedAttribute));
 		}
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
@@ -514,10 +514,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 					return eBasicSetContainer(otherEnd, UML2Package.ARTIFACT__OWNING_PARAMETER, msgs);
 				case UML2Package.ARTIFACT__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.ARTIFACT__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -559,10 +559,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 					return eBasicSetContainer(null, UML2Package.ARTIFACT__OWNING_PARAMETER, msgs);
 				case UML2Package.ARTIFACT__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ARTIFACT__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ARTIFACT__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ARTIFACT__OCCURRENCE:
@@ -667,10 +667,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 				return getAttributes();
 			case UML2Package.ARTIFACT__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.ARTIFACT__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.ARTIFACT__REPRESENTATION:
@@ -761,13 +761,13 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.ARTIFACT__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -864,11 +864,11 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			case UML2Package.ARTIFACT__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.ARTIFACT__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -963,10 +963,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 				return !getAttributes().isEmpty();
 			case UML2Package.ARTIFACT__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ARTIFACT__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.ARTIFACT__REPRESENTATION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.5 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -264,7 +264,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public Constraint createOwnedRule(EClass eClass) {
 		Constraint newOwnedRule = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_RULE, null, newOwnedRule));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_RULE, null, newOwnedRule));
 		}
 		getOwnedRules().add(newOwnedRule);
 		return newOwnedRule;
@@ -348,7 +348,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public ElementImport createElementImport(EClass eClass) {
 		ElementImport newElementImport = (ElementImport) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT, null, newElementImport));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT, null, newElementImport));
 		}
 		getElementImports().add(newElementImport);
 		return newElementImport;
@@ -381,7 +381,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public PackageImport createPackageImport(EClass eClass) {
 		PackageImport newPackageImport = (PackageImport) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT, null, newPackageImport));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT, null, newPackageImport));
 		}
 		getPackageImports().add(newPackageImport);
 		return newPackageImport;
@@ -497,7 +497,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public Variable createVariable(EClass eClass) {
 		Variable newVariable = (Variable) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE, null, newVariable));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE, null, newVariable));
 		}
 		getVariables().add(newVariable);
 		return newVariable;
@@ -547,7 +547,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
     public ActivityNode createContainedNode(EClass eClass) {
 		ActivityNode newContainedNode = (ActivityNode) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE, null, newContainedNode));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE, null, newContainedNode));
 		}
 		getContainedNodes().add(newContainedNode);
 		return newContainedNode;
@@ -597,7 +597,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public ActivityEdge createContainedEdge(EClass eClass) {
 		ActivityEdge newContainedEdge = (ActivityEdge) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE, null, newContainedEdge));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE, null, newContainedEdge));
 		}
 		getContainedEdges().add(newContainedEdge);
 		return newContainedEdge;

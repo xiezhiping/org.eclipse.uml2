@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -152,7 +152,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	public ValueSpecification createMinint(EClass eClass) {
 		ValueSpecification newMinint = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION_CONSTRAINT__MININT, null, newMinint));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_CONSTRAINT__MININT, null, newMinint));
 		}
         setMinint(newMinint);
 		return newMinint;
@@ -216,7 +216,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	public ValueSpecification createMaxint(EClass eClass) {
 		ValueSpecification newMaxint = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION_CONSTRAINT__MAXINT, null, newMaxint));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_CONSTRAINT__MAXINT, null, newMaxint));
 		}
         setMaxint(newMaxint);
 		return newMaxint;

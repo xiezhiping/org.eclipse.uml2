@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -142,7 +142,7 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 	public InputPin createValue(EClass eClass) {
 		InputPin newValue = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE, null, newValue));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE, null, newValue));
 		}
         setValue(newValue);
 		return newValue;

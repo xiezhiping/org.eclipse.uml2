@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -502,7 +502,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	public Constraint createGuard(EClass eClass) {
 		Constraint newGuard = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TRANSITION__GUARD, null, newGuard));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TRANSITION__GUARD, null, newGuard));
 		}
         setGuard(newGuard);
 		return newGuard;
@@ -566,7 +566,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	public Activity createEffect(EClass eClass) {
 		Activity newEffect = (Activity) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TRANSITION__EFFECT, null, newEffect));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TRANSITION__EFFECT, null, newEffect));
 		}
         setEffect(newEffect);
 		return newEffect;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: ReadStructuralFeatureActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -143,7 +143,7 @@ public class ReadStructuralFeatureActionImpl extends StructuralFeatureActionImpl
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.READ_STRUCTURAL_FEATURE_ACTION__RESULT, null, newResult));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.READ_STRUCTURAL_FEATURE_ACTION__RESULT, null, newResult));
 		}
         setResult(newResult);
 		return newResult;

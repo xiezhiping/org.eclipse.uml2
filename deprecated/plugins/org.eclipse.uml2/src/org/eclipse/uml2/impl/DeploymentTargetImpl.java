@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.3 2004/05/11 15:23:59 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.4 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,7 +18,6 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -139,7 +138,7 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	public Deployment createDeployment(EClass eClass) {
 		Deployment newDeployment = (Deployment) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT, null, newDeployment));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT, null, newDeployment));
 		}
 		getDeployments().add(newDeployment);
 		return newDeployment;

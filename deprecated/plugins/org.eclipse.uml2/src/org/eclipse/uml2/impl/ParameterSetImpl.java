@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,7 +19,6 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -173,7 +172,7 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 	public Constraint createCondition(EClass eClass) {
 		Constraint newCondition = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.PARAMETER_SET__CONDITION, null, newCondition));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PARAMETER_SET__CONDITION, null, newCondition));
 		}
 		getConditions().add(newCondition);
 		return newCondition;

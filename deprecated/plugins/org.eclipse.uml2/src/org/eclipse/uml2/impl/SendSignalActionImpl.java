@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SendSignalActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: SendSignalActionImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -154,7 +154,7 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 	public InputPin createTarget(EClass eClass) {
 		InputPin newTarget = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.SEND_SIGNAL_ACTION__TARGET, null, newTarget));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.SEND_SIGNAL_ACTION__TARGET, null, newTarget));
 		}
         setTarget(newTarget);
 		return newTarget;

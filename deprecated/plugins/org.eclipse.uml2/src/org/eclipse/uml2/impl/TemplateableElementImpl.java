@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -118,7 +118,7 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	public TemplateBinding createTemplateBinding(EClass eClass) {
 		TemplateBinding newTemplateBinding = (TemplateBinding) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, null, newTemplateBinding));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, null, newTemplateBinding));
 		}
 		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
@@ -182,7 +182,7 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
 		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, null, newOwnedTemplateSignature));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, null, newOwnedTemplateSignature));
 		}
         setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;

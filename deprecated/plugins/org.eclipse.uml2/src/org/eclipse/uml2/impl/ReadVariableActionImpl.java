@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadVariableActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ReadVariableActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -142,7 +142,7 @@ public class ReadVariableActionImpl extends VariableActionImpl implements ReadVa
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.READ_VARIABLE_ACTION__RESULT, null, newResult));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.READ_VARIABLE_ACTION__RESULT, null, newResult));
 		}
         setResult(newResult);
 		return newResult;

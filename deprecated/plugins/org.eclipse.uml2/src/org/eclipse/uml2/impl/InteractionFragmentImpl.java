@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -176,7 +176,7 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	public GeneralOrdering createGeneralOrdering(EClass eClass) {
 		GeneralOrdering newGeneralOrdering = (GeneralOrdering) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION_FRAGMENT__GENERAL_ORDERING, null, newGeneralOrdering));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_FRAGMENT__GENERAL_ORDERING, null, newGeneralOrdering));
 		}
 		getGeneralOrderings().add(newGeneralOrdering);
 		return newGeneralOrdering;

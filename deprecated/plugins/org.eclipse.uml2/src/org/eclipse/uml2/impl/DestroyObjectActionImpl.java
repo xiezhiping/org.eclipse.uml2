@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.3 2004/05/11 15:23:59 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.4 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -227,7 +227,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	public InputPin createTarget(EClass eClass) {
 		InputPin newTarget = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.DESTROY_OBJECT_ACTION__TARGET, null, newTarget));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.DESTROY_OBJECT_ACTION__TARGET, null, newTarget));
 		}
         setTarget(newTarget);
 		return newTarget;

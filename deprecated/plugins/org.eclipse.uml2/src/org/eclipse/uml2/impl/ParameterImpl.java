@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.5 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -447,7 +447,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	public ValueSpecification createUpperValue(EClass eClass) {
 		ValueSpecification newUpperValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.PARAMETER__UPPER_VALUE, null, newUpperValue));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PARAMETER__UPPER_VALUE, null, newUpperValue));
 		}
         setUpperValue(newUpperValue);
 		return newUpperValue;
@@ -511,7 +511,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	public ValueSpecification createLowerValue(EClass eClass) {
 		ValueSpecification newLowerValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.PARAMETER__LOWER_VALUE, null, newLowerValue));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PARAMETER__LOWER_VALUE, null, newLowerValue));
 		}
         setLowerValue(newLowerValue);
 		return newLowerValue;
@@ -718,7 +718,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	public ValueSpecification createDefaultValue(EClass eClass) {
 		ValueSpecification newDefaultValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.PARAMETER__DEFAULT_VALUE, null, newDefaultValue));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PARAMETER__DEFAULT_VALUE, null, newDefaultValue));
 		}
         setDefaultValue(newDefaultValue);
 		return newDefaultValue;

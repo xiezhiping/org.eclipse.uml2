@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -173,7 +173,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.CALL_ACTION__RESULT, null, newResult));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CALL_ACTION__RESULT, null, newResult));
 		}
 		getResults().add(newResult);
 		return newResult;

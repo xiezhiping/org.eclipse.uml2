@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.5 2004/05/11 15:23:59 khussey Exp $
+ * $Id: OperationImpl.java,v 1.6 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -268,7 +268,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public ValueSpecification createUpperValue(EClass eClass) {
 		ValueSpecification newUpperValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.OPERATION__UPPER_VALUE, null, newUpperValue));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.OPERATION__UPPER_VALUE, null, newUpperValue));
 		}
         setUpperValue(newUpperValue);
 		return newUpperValue;
@@ -332,7 +332,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public ValueSpecification createLowerValue(EClass eClass) {
 		ValueSpecification newLowerValue = (ValueSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.OPERATION__LOWER_VALUE, null, newLowerValue));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.OPERATION__LOWER_VALUE, null, newLowerValue));
 		}
         setLowerValue(newLowerValue);
 		return newLowerValue;
@@ -514,7 +514,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public Parameter createOwnedParameter(EClass eClass) {
 		Parameter newOwnedParameter = (Parameter) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.OPERATION__OWNED_PARAMETER, null, newOwnedParameter));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.OPERATION__OWNED_PARAMETER, null, newOwnedParameter));
 		}
 		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;
@@ -644,7 +644,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public Constraint createPrecondition(EClass eClass) {
 		Constraint newPrecondition = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.OPERATION__PRECONDITION, null, newPrecondition));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.OPERATION__PRECONDITION, null, newPrecondition));
 		}
 		getPreconditions().add(newPrecondition);
 		return newPrecondition;
@@ -694,7 +694,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public Constraint createPostcondition(EClass eClass) {
 		Constraint newPostcondition = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.OPERATION__POSTCONDITION, null, newPostcondition));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.OPERATION__POSTCONDITION, null, newPostcondition));
 		}
 		getPostconditions().add(newPostcondition);
 		return newPostcondition;
@@ -794,7 +794,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public Constraint createBodyCondition(EClass eClass) {
 		Constraint newBodyCondition = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.OPERATION__BODY_CONDITION, null, newBodyCondition));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.OPERATION__BODY_CONDITION, null, newBodyCondition));
 		}
         setBodyCondition(newBodyCondition);
 		return newBodyCondition;

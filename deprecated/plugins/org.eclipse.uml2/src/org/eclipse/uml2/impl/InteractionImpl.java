@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.6 2004/05/11 15:24:00 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -230,7 +230,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	public GeneralOrdering createGeneralOrdering(EClass eClass) {
 		GeneralOrdering newGeneralOrdering = (GeneralOrdering) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION__GENERAL_ORDERING, null, newGeneralOrdering));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION__GENERAL_ORDERING, null, newGeneralOrdering));
 		}
 		getGeneralOrderings().add(newGeneralOrdering);
 		return newGeneralOrdering;
@@ -350,7 +350,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	public Lifeline createLifeline(EClass eClass) {
 		Lifeline newLifeline = (Lifeline) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION__LIFELINE, null, newLifeline));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION__LIFELINE, null, newLifeline));
 		}
 		getLifelines().add(newLifeline);
 		return newLifeline;
@@ -400,7 +400,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	public Message createMessage(EClass eClass) {
 		Message newMessage = (Message) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION__MESSAGE, null, newMessage));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION__MESSAGE, null, newMessage));
 		}
 		getMessages().add(newMessage);
 		return newMessage;
@@ -465,7 +465,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	public InteractionFragment createFragment(EClass eClass) {
 		InteractionFragment newFragment = (InteractionFragment) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION__FRAGMENT, null, newFragment));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION__FRAGMENT, null, newFragment));
 		}
 		getFragments().add(newFragment);
 		return newFragment;
@@ -515,7 +515,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	public Gate createFormalGate(EClass eClass) {
 		Gate newFormalGate = (Gate) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.INTERACTION__FORMAL_GATE, null, newFormalGate));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION__FORMAL_GATE, null, newFormalGate));
 		}
 		getFormalGates().add(newFormalGate);
 		return newFormalGate;
@@ -619,10 +619,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 					return eBasicSetContainer(otherEnd, UML2Package.INTERACTION__OWNING_PARAMETER, msgs);
 				case UML2Package.INTERACTION__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.INTERACTION__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERACTION__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.INTERACTION__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERACTION__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERACTION__IMPLEMENTATION:
@@ -696,10 +696,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 					return eBasicSetContainer(null, UML2Package.INTERACTION__OWNING_PARAMETER, msgs);
 				case UML2Package.INTERACTION__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.INTERACTION__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__OCCURRENCE:
@@ -842,10 +842,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return getAttributes();
 			case UML2Package.INTERACTION__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.INTERACTION__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.INTERACTION__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.INTERACTION__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.INTERACTION__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.INTERACTION__REPRESENTATION:
@@ -991,13 +991,13 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.INTERACTION__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.INTERACTION__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.INTERACTION__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.INTERACTION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1172,11 +1172,11 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.INTERACTION__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.INTERACTION__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.INTERACTION__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.INTERACTION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1334,10 +1334,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return !getAttributes().isEmpty();
 			case UML2Package.INTERACTION__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.INTERACTION__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.INTERACTION__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.INTERACTION__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.INTERACTION__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.INTERACTION__REPRESENTATION:

@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeObservationActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: TimeObservationActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.emf.common.notify.Notification;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -133,7 +132,7 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 	public TimeExpression createNow(EClass eClass) {
 		TimeExpression newNow = (TimeExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.TIME_OBSERVATION_ACTION__NOW, null, newNow));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TIME_OBSERVATION_ACTION__NOW, null, newNow));
 		}
 		getNows().add(newNow);
 		return newNow;

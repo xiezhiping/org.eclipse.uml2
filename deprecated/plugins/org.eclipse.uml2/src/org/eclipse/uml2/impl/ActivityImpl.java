@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.6 2004/05/11 15:23:59 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -346,7 +346,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	public ActivityEdge createEdge(EClass eClass) {
 		ActivityEdge newEdge = (ActivityEdge) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ACTIVITY__EDGE, null, newEdge));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTIVITY__EDGE, null, newEdge));
 		}
 		getEdges().add(newEdge);
 		return newEdge;
@@ -405,7 +405,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	public ActivityGroup createGroup(EClass eClass) {
 		ActivityGroup newGroup = (ActivityGroup) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ACTIVITY__GROUP, null, newGroup));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTIVITY__GROUP, null, newGroup));
 		}
 		getGroups().add(newGroup);
 		return newGroup;
@@ -457,7 +457,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	public ActivityNode createNode(EClass eClass) {
 		ActivityNode newNode = (ActivityNode) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.ACTIVITY__NODE, null, newNode));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTIVITY__NODE, null, newNode));
 		}
 		getNodes().add(newNode);
 		return newNode;
@@ -630,10 +630,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 					return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY__OWNING_PARAMETER, msgs);
 				case UML2Package.ACTIVITY__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__IMPLEMENTATION:
@@ -709,10 +709,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 					return eBasicSetContainer(null, UML2Package.ACTIVITY__OWNING_PARAMETER, msgs);
 				case UML2Package.ACTIVITY__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OCCURRENCE:
@@ -853,10 +853,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return getAttributes();
 			case UML2Package.ACTIVITY__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.ACTIVITY__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.ACTIVITY__REPRESENTATION:
@@ -1004,13 +1004,13 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.ACTIVITY__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1183,11 +1183,11 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.ACTIVITY__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1345,10 +1345,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return !getAttributes().isEmpty();
 			case UML2Package.ACTIVITY__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ACTIVITY__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.ACTIVITY__REPRESENTATION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.6 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -353,7 +353,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	public Realization createRealization(EClass eClass) {
 		Realization newRealization = (Realization) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.COMPONENT__REALIZATION, null, newRealization));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COMPONENT__REALIZATION, null, newRealization));
 		}
 		getRealizations().add(newRealization);
 		return newRealization;
@@ -403,7 +403,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	public PackageableElement createOwnedMember(EClass eClass) {
 		PackageableElement newOwnedMember = (PackageableElement) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.COMPONENT__OWNED_MEMBER, null, newOwnedMember));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COMPONENT__OWNED_MEMBER, null, newOwnedMember));
 		}
 		getOwnedMembers().add(newOwnedMember);
 		return newOwnedMember;
@@ -485,10 +485,10 @@ public class ComponentImpl extends ClassImpl implements Component {
 					return eBasicSetContainer(otherEnd, UML2Package.COMPONENT__OWNING_PARAMETER, msgs);
 				case UML2Package.COMPONENT__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.COMPONENT__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.COMPONENT__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__IMPLEMENTATION:
@@ -540,10 +540,10 @@ public class ComponentImpl extends ClassImpl implements Component {
 					return eBasicSetContainer(null, UML2Package.COMPONENT__OWNING_PARAMETER, msgs);
 				case UML2Package.COMPONENT__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMPONENT__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMPONENT__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.COMPONENT__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMPONENT__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMPONENT__OCCURRENCE:
@@ -662,10 +662,10 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return getAttributes();
 			case UML2Package.COMPONENT__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.COMPONENT__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.COMPONENT__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.COMPONENT__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.COMPONENT__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.COMPONENT__REPRESENTATION:
@@ -786,13 +786,13 @@ public class ComponentImpl extends ClassImpl implements Component {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.COMPONENT__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.COMPONENT__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.COMPONENT__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.COMPONENT__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -923,11 +923,11 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.COMPONENT__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.COMPONENT__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.COMPONENT__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.COMPONENT__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1049,10 +1049,10 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return !getAttributes().isEmpty();
 			case UML2Package.COMPONENT__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.COMPONENT__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.COMPONENT__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.COMPONENT__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.COMPONENT__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.COMPONENT__REPRESENTATION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -382,7 +382,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.LOOP_NODE__RESULT, null, newResult));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.LOOP_NODE__RESULT, null, newResult));
 		}
 		getResults().add(newResult);
 		return newResult;
@@ -432,7 +432,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	public OutputPin createLoopVariable(EClass eClass) {
 		OutputPin newLoopVariable = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.LOOP_NODE__LOOP_VARIABLE, null, newLoopVariable));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.LOOP_NODE__LOOP_VARIABLE, null, newLoopVariable));
 		}
 		getLoopVariables().add(newLoopVariable);
 		return newLoopVariable;
@@ -512,7 +512,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	public InputPin createLoopVariableInput(EClass eClass) {
 		InputPin newLoopVariableInput = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.LOOP_NODE__LOOP_VARIABLE_INPUT, null, newLoopVariableInput));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.LOOP_NODE__LOOP_VARIABLE_INPUT, null, newLoopVariableInput));
 		}
 		getLoopVariableInputs().add(newLoopVariableInput);
 		return newLoopVariableInput;
