@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2004, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceImpl.java,v 1.3 2005/03/15 18:54:19 khussey Exp $
+ * $Id: EMOF2EcoreResourceImpl.java,v 1.4 2005/03/15 20:28:16 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore.internal;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
@@ -29,7 +25,7 @@ public class EMOF2EcoreResourceImpl
 		extends XMIResourceImpl
 		implements EMOF2EcoreResource {
 
-	public static final String copyright = "Copyright (c) 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2004, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Creates an instance of the resource.
@@ -39,25 +35,6 @@ public class EMOF2EcoreResourceImpl
 	 */
 	public EMOF2EcoreResourceImpl(URI uri) {
 		super(uri);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#doLoad(java.io.InputStream,
-	 *      java.util.Map)
-	 */
-	public void doLoad(InputStream inputStream, Map options)
-			throws IOException {
-
-		super.doLoad(inputStream, options);
-
-		PostProcessor postProcessor = (PostProcessor) options
-			.get(OPTION_POST_PROCESSOR);
-
-		if (null != postProcessor) {
-			postProcessor.postLoad(this, options);
-		}
 	}
 
 } // EMOF2EcoreResourceImpl

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2004, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcorePostProcessor.java,v 1.4 2005/03/15 18:54:19 khussey Exp $
+ * $Id: EMOF2EcoreResourceHandler.java,v 1.1 2005/03/15 20:28:16 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore;
 
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -36,31 +37,30 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
-import org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResource.PostProcessor;
 
 /**
  * 
  */
-public class EMOF2EcorePostProcessor
-		extends PostProcessor {
+public class EMOF2EcoreResourceHandler
+		extends BasicResourceHandler {
 
-	public static final String copyright = "Copyright (c) 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2004, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	protected static final boolean DEBUG = false;
 
-	protected AnyType getExtension(EMOF2EcoreResource resource, EObject eObject) {
+	protected AnyType getExtension(XMLResource resource, EObject eObject) {
 		return (AnyType) resource.getEObjectToExtensionMap().get(eObject);
 	}
 
-	protected AnyType putExtension(EMOF2EcoreResource resource,
-			EObject eObject, AnyType extension) {
+	protected AnyType putExtension(XMLResource resource, EObject eObject,
+			AnyType extension) {
 		return (AnyType) resource.getEObjectToExtensionMap().put(eObject,
 			extension);
 	}
 
-	protected AnyType removeExtension(EMOF2EcoreResource resource,
-			EObject eObject) {
+	protected AnyType removeExtension(XMLResource resource, EObject eObject) {
 		return (AnyType) resource.getEObjectToExtensionMap().remove(eObject);
 	}
 
@@ -77,8 +77,8 @@ public class EMOF2EcorePostProcessor
 		return null;
 	}
 
-	protected Object getEcoreExtension(EMOF2EcoreResource resource,
-			EObject eObject, String name) {
+	protected Object getEcoreExtension(XMLResource resource, EObject eObject,
+			String name) {
 
 		AnyType extension = getExtension(resource, eObject);
 
@@ -99,8 +99,7 @@ public class EMOF2EcorePostProcessor
 		return null;
 	}
 
-	protected EStructuralFeature processProperty(
-			final EMOF2EcoreResource resource,
+	protected EStructuralFeature processProperty(final XMLResource resource,
 			EStructuralFeature eStructuralFeature) {
 
 		EcoreUtil.Copier copier = new EcoreUtil.Copier() {
@@ -184,10 +183,11 @@ public class EMOF2EcorePostProcessor
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResource.PostProcessor#postLoad(org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResource,
-	 *      java.util.Map)
+	 * @see org.eclipse.emf.ecore.xmi.XMLResource.ResourceHandler#postLoad(org.eclipse.emf.ecore.xmi.XMLResource,
+	 *      java.io.InputStream, java.util.Map)
 	 */
-	public void postLoad(final EMOF2EcoreResource resource, Map options) {
+	public void postLoad(final XMLResource resource, InputStream inputStream,
+			Map options) {
 		final ExtendedMetaData extendedMetaData = (ExtendedMetaData) options
 			.get(XMLResource.OPTION_EXTENDED_META_DATA);
 

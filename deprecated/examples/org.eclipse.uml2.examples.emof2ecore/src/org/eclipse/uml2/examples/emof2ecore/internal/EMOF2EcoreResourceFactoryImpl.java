@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2004, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.3 2005/03/15 18:54:19 khussey Exp $
+ * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.4 2005/03/15 20:28:16 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore.internal;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.uml2.examples.emof2ecore.EMOF2EcorePostProcessor;
+import org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResourceHandler;
 import org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResource;
 import org.eclipse.uml2.mapping.ecore2xml.Ecore2XMLPackage;
 import org.eclipse.uml2.mapping.ecore2xml.Ecore2XMLRegistry;
@@ -37,7 +37,7 @@ public class EMOF2EcoreResourceFactoryImpl
 		extends ResourceFactoryImpl
 		implements EMOF2EcoreResource.Factory {
 
-	public static final String copyright = "Copyright (c) 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2004, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Creates an instance of the resource factory.
@@ -85,8 +85,8 @@ public class EMOF2EcoreResourceFactoryImpl
 			XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
 
 		resource.getDefaultLoadOptions().put(
-			EMOF2EcoreResource.OPTION_POST_PROCESSOR,
-			new EMOF2EcorePostProcessor());
+			XMLResource.OPTION_RESOURCE_HANDLER,
+			new EMOF2EcoreResourceHandler());
 
 		return resource;
 	}
