@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReferenceMetaclassAction.java,v 1.2 2004/05/04 19:16:52 khussey Exp $
+ * $Id: ReferenceMetaclassAction.java,v 1.3 2004/05/13 03:16:06 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Profile;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.edit.util.ChangeCommand;
@@ -86,9 +85,7 @@ public class ReferenceMetaclassAction
 					Object object = contents.next();
 
 					if (org.eclipse.uml2.Class.class.isInstance(object)
-						&& null != ((org.eclipse.uml2.Class) object)
-							.getAppliedStereotype("Basic" //$NON-NLS-1$
-								+ NamedElement.SEPARATOR + "Metaclass") //$NON-NLS-1$
+						&& ((org.eclipse.uml2.Class) object).isMetaclass()
 						&& !profile.getReferencedMetaclasses().contains(object)) {
 
 						choiceOfValues.add(object);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ClassOperations.java,v 1.3 2004/05/13 03:16:20 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -56,6 +56,19 @@ public final class ClassOperations
 		}
 
 		return inherit;
+	}
+
+	/**
+	 * Determines whether the specified class is a metaclass.
+	 * 
+	 * @param class_
+	 *            The class in question.
+	 * @return <code>true</code> if the specified class is stereotyped as a
+	 *         metaclass; <code>false</code> otherwise.
+	 */
+	public static boolean isMetaclass(org.eclipse.uml2.Class class_) {
+		return null != class_.getAppliedStereotype("Basic" //$NON-NLS-1$
+			+ NamedElement.SEPARATOR + "Metaclass"); //$NON-NLS-1$
 	}
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Class.java,v 1.3 2004/05/11 15:24:01 khussey Exp $
+ * $Id: Class.java,v 1.4 2004/05/13 03:16:20 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -314,5 +314,17 @@ public interface Class extends EncapsulatedClassifier, BehavioredClassifier{
 	 * @generated
 	 */
 	EList getFeatures();
+
+	// <!-- begin-custom-operations -->
+
+	/**
+	 * Determines whether this class is a metaclass.
+	 * 
+	 * @return <code>true</code> if this class is stereotyped as a metaclass;
+	 *         <code>false</code> otherwise.
+	 */
+	public boolean isMetaclass();
+
+	// <!-- end-custom-operations -->
 
 } // Class

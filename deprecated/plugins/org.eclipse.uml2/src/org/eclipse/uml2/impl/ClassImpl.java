@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.6 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ClassImpl.java,v 1.7 2004/05/13 03:16:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -47,6 +47,7 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.ClassOperations;
 import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
@@ -1516,5 +1517,18 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 		result.append(')');
 		return result.toString();
 	}
+
+	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Class#isMetaclass()
+	 */
+	public boolean isMetaclass() {
+		return ClassOperations.isMetaclass(this);
+	}
+
+	// <!-- end-custom-operations -->
 
 } //ClassImpl

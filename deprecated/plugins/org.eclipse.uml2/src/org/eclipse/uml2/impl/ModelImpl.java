@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ModelImpl.java,v 1.3 2004/05/13 03:16:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.ModelOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -506,5 +507,27 @@ public class ModelImpl extends PackageImpl implements Model {
 		result.append(')');
 		return result.toString();
 	}
+
+	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Model#isLibrary()
+	 */
+	public boolean isLibrary() {
+		return ModelOperations.isLibrary(this);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Model#isMetamodel()
+	 */
+	public boolean isMetamodel() {
+		return ModelOperations.isMetamodel(this);
+	}
+
+	// <!-- end-custom-operations -->
 
 } //ModelImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Model.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Model.java,v 1.3 2004/05/13 03:16:20 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -63,5 +63,25 @@ public interface Model extends org.eclipse.uml2.Package{
 	 * @generated
 	 */
 	void setViewpoint(String value);
+
+	// <!-- begin-custom-operations -->
+
+	/**
+	 * Determines whether this model is a library.
+	 * 
+	 * @return <code>true</code> if this model is stereotyped as a model
+	 *         library; <code>false</code> otherwise.
+	 */
+	public boolean isLibrary();
+
+	/**
+	 * Determines whether this model is a metamodel.
+	 * 
+	 * @return <code>true</code> if this model is stereotyped as a metamodel;
+	 *         <code>false</code> otherwise.
+	 */
+	public boolean isMetamodel();
+
+	// <!-- end-custom-operations -->
 
 } // Model
