@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
+ * $Id: ActionImpl.java,v 1.6 2004/06/17 01:09:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Action;
 import org.eclipse.uml2.Activity;
+import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.InputPin;
@@ -230,8 +231,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated NOT
 	 */
 	public Classifier basicGetContext() {
-		// TODO: implement this derived basic getter to return the 'Context' reference
-		return null;
+		return Behavior.class.isInstance(eContainer)
+			? ((Behavior) eContainer).getContext()
+			: null;
 	}
 
 	/**

@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.4 2004/06/17 01:09:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -21,7 +22,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.uml2.Association;
 import org.eclipse.uml2.ConnectableElement;
+import org.eclipse.uml2.Connector;
 import org.eclipse.uml2.ConnectorEnd;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.UML2Package;
@@ -104,13 +107,27 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * @generated NOT
 	 */
 	public Property basicGetDefiningEnd() {
-		// TODO: implement this derived basic getter to return the 'Defining End' reference
+
+		if (Connector.class.isInstance(eContainer)) {
+			Connector connector = (Connector) eContainer;
+			Association type = connector.getType();
+
+			if (null != type) {
+				List ends = connector.getEnds();
+				List memberEnds = type.getMemberEnds();
+
+				if (ends.size() == memberEnds.size()) {
+					return (Property) memberEnds.get(ends.indexOf(this));
+				}
+			}
+		}
+
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConnectableElement getRole() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.5 2004/06/02 19:52:53 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.6 2004/06/17 01:09:03 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -20,7 +20,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -44,29 +43,30 @@ public class CacheAdapter
 	public void notifyChanged(Notification msg) {
 		super.notifyChanged(msg);
 
-		if (EcorePackage.eINSTANCE.getEModelElement_EAnnotations() == msg
-			.getFeature()) {
+		Object feature = msg.getFeature();
+
+		if (EcorePackage.eINSTANCE.getEModelElement_EAnnotations() == feature
+			|| EcorePackage.eINSTANCE.getEAnnotation_Details() == feature) {
 
 			switch (msg.getEventType()) {
 				case Notification.ADD :
-					((EAnnotation) msg.getNewValue()).eAdapters().add(this);
+					((EObject) msg.getNewValue()).eAdapters().add(this);
 					break;
 				case Notification.ADD_MANY :
 					for (Iterator newValues = ((List) msg.getNewValue())
 						.iterator(); newValues.hasNext();) {
 
-						((EAnnotation) newValues.next()).eAdapters().add(this);
+						((EObject) newValues.next()).eAdapters().add(this);
 					}
 					break;
 				case Notification.REMOVE :
-					((EAnnotation) msg.getOldValue()).eAdapters().remove(this);
+					((EObject) msg.getOldValue()).eAdapters().remove(this);
 					break;
 				case Notification.REMOVE_MANY :
 					for (Iterator oldValues = ((List) msg.getOldValue())
 						.iterator(); oldValues.hasNext();) {
 
-						((EAnnotation) oldValues.next()).eAdapters().remove(
-							this);
+						((EObject) oldValues.next()).eAdapters().remove(this);
 					}
 					break;
 			}

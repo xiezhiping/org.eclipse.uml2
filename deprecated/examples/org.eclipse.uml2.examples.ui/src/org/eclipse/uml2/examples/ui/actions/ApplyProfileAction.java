@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.2 2004/05/04 19:16:52 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.3 2004/06/17 01:08:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
@@ -76,6 +77,8 @@ public class ApplyProfileAction
 			final org.eclipse.uml2.Package package_ = (org.eclipse.uml2.Package) collection
 				.toArray()[0];
 
+			ResourceSet resourceSet = package_.eResource().getResourceSet();
+
 			List choiceOfValues = new ArrayList();
 
 			IEditorReference[] editorReferences = editorPart.getSite()
@@ -84,22 +87,26 @@ public class ApplyProfileAction
 			for (int i = 0; i < editorReferences.length; i++) {
 
 				if ("org.eclipse.uml2.presentation.UML2EditorID" //$NON-NLS-1$
-				.equals(editorReferences[i].getId())) {
+					.equals(editorReferences[i].getId())) {
 
 					Resource resource = (Resource) ((UML2Editor) editorReferences[i]
 						.getEditor(true)).getEditingDomain().getResourceSet()
 						.getResources().get(0);
 
-					if (package_.eResource().getResourceSet() != resource
-						.getResourceSet()) {
+					if (resourceSet != resource.getResourceSet()) {
+
+						resource = resourceSet.getResource(resource.getURI(),
+							true);
 
 						Profile profile = (Profile) (null == resource
-							? null : EcoreUtil.getObjectByType(resource
-								.getContents(), UML2Package.eINSTANCE
-								.getProfile()));
+							? null
+							: EcoreUtil.getObjectByType(resource.getContents(),
+								UML2Package.eINSTANCE.getProfile()));
 
-						if (null != profile && profile.isDefined()
-							&& !package_.isApplied(profile)) {
+						if (null != profile
+							&& profile.isDefined()
+							&& package_.getAppliedVersion(profile) != profile
+								.getVersion()) {
 
 							choiceOfValues.add(profile);
 						}
@@ -107,7 +114,7 @@ public class ApplyProfileAction
 				}
 			}
 
-			String[] uris = new String[] {UML2Resource.BASIC_PROFILE_URI,
+			String[] uris = new String[]{UML2Resource.BASIC_PROFILE_URI,
 				UML2Resource.INTERMEDIATE_PROFILE_URI,
 				UML2Resource.COMPLETE_PROFILE_URI,
 				"pathmap://UML2_PROFILES/Ecore.profile.uml2"}; //$NON-NLS-1$
@@ -115,15 +122,18 @@ public class ApplyProfileAction
 			for (int i = 0; i < uris.length; i++) {
 
 				try {
-					Resource resource = package_.eResource().getResourceSet()
-						.getResource(URI.createURI(uris[i]), true);
+					Resource resource = resourceSet.getResource(URI
+						.createURI(uris[i]), true);
 
 					Profile profile = (Profile) (null == resource
-						? null : EcoreUtil.getObjectByType(resource
-							.getContents(), UML2Package.eINSTANCE.getProfile()));
+						? null
+						: EcoreUtil.getObjectByType(resource.getContents(),
+							UML2Package.eINSTANCE.getProfile()));
 
-					if (null != profile && profile.isDefined()
-						&& !package_.isApplied(profile)) {
+					if (null != profile
+						&& profile.isDefined()
+						&& package_.getAppliedVersion(profile) != profile
+							.getVersion()) {
 
 						choiceOfValues.add(profile);
 					}
@@ -144,9 +154,9 @@ public class ApplyProfileAction
 				"_UI_ApplyProfileActionCommand_label"); //$NON-NLS-1$
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
-					editorPart.getSite().getShell(), getLabelProvider(),
-					package_, UML2Package.eINSTANCE.getProfile(),
-					Collections.EMPTY_LIST, label, choiceOfValues);
+				editorPart.getSite().getShell(), getLabelProvider(), package_,
+				UML2Package.eINSTANCE.getProfile(), Collections.EMPTY_LIST,
+				label, choiceOfValues);
 			dialog.open();
 
 			if (FeatureEditorDialog.OK == dialog.getReturnCode()) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.4 2004/06/02 05:02:26 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.5 2004/06/17 01:09:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -155,7 +155,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated NOT
 	 */
 	public EList getContainedEdges() {
-		// TODO: implement this method
 		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
 	}
 
@@ -165,7 +164,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated NOT
 	 */
 	public EList getContainedNodes() {
-		// TODO: implement this method
 		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
 	}
 

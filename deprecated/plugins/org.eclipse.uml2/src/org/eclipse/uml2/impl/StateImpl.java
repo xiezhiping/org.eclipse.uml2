@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateImpl.java,v 1.6 2004/06/02 05:02:25 khussey Exp $
+ * $Id: StateImpl.java,v 1.7 2004/06/17 01:09:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,6 +26,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -871,8 +873,41 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated NOT
 	 */
 	public EList getRedefinitionContexts() {
-		// TODO: implement this derived redefinition getter
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), 0, Collections.EMPTY_LIST.toArray());
+		EList result = (EList) getCacheAdapter().get(this,
+			UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
+
+		if (null == result) {
+			EObject container = eContainer;
+
+			while (null != container
+				&& !StateMachine.class.isInstance(container)) {
+
+				container = container.eContainer();
+			}
+
+			List redefinitionContexts = Collections.EMPTY_LIST;
+
+			if (null != container) {
+				StateMachine containingStateMachine = (StateMachine) container;
+
+				redefinitionContexts = Collections
+					.singletonList(null != containingStateMachine.getContext()
+						&& containingStateMachine.general().isEmpty()
+						? containingStateMachine.getContext()
+						: containingStateMachine);
+			}
+
+			result = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE
+					.getRedefinableElement_RedefinitionContext(),
+				redefinitionContexts.size(), redefinitionContexts.toArray());
+			getCacheAdapter().put(
+				this,
+				UML2Package.eINSTANCE
+					.getRedefinableElement_RedefinitionContext(), result);
+		}
+
+		return result;
 	}
 
 	/**

@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.17 2004/06/16 22:32:13 khussey Exp $
+ * $Id: ClassImpl.java,v 1.18 2004/06/17 01:09:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -26,13 +25,17 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.uml2.Association;
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.CollaborationOccurrence;
@@ -496,15 +499,59 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated NOT
 	 */
 	public EList getExtensions() {
-		// TODO: implement this derived getter to return the 'Extension' reference list
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClass_Extension(), 0, Collections.EMPTY_LIST.toArray());
+		EList result = (EList) getCacheAdapter().get(this,
+			UML2Package.eINSTANCE.getClass_Extension());
+
+		if (null == result) {
+			List extensions = new ArrayList();
+
+			if (isMetaclass()) {
+
+				ResourceSet resourceSet = null == eResource()
+					? null
+					: eResource().getResourceSet();
+
+				if (null != resourceSet) {
+
+					for (Iterator settings = EcoreUtil.UsageCrossReferencer
+						.find(this, resourceSet).iterator(); settings.hasNext();) {
+
+						EStructuralFeature.Setting setting = (EStructuralFeature.Setting) settings
+							.next();
+
+						if (UML2Package.eINSTANCE.getTypedElement_Type() == setting
+							.getEStructuralFeature()) {
+
+							EObject eObject = setting.getEObject();
+
+							if (Property.class.isInstance(eObject)) {
+								Association association = ((Property) eObject)
+									.getAssociation();
+
+								if (Extension.class.isInstance(association)) {
+									extensions.add(association);
+								}
+							}
+						}
+					}
+				}
+			}
+
+			result = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getClass_Extension(), extensions.size(),
+				extensions.toArray());
+			getCacheAdapter().put(this,
+				UML2Package.eINSTANCE.getClass_Extension(), result);
+		}
+
+		return result;
 	}
 
     /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
-     */
+	 */
     public Extension getExtension(String unqualifiedName) {
     	for (Iterator i = getExtensions().iterator(); i.hasNext(); ) {
     		Extension namedExtension = (Extension) i.next();

@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.4 2004/06/17 01:09:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -181,7 +182,16 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 * @generated NOT
 	 */
 	public Parameter basicGetResult() {
-		// TODO: implement this derived basic getter to return the 'Result' reference
+		Behavior behavior = getBehavior();
+
+		if (null != behavior) {
+			List returnResults = behavior.getReturnResults();
+
+			if (1 == returnResults.size()) {
+				return (Parameter) returnResults.get(0);
+			}
+		}
+
 		return null;
 	}
 
