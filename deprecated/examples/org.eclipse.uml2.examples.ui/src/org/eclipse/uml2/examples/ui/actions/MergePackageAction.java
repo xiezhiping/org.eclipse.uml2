@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MergePackageAction.java,v 1.3 2005/01/27 02:31:25 khussey Exp $
+ * $Id: MergePackageAction.java,v 1.4 2005/02/11 23:08:10 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -29,10 +29,13 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.edit.util.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
+import org.eclipse.uml2.examples.ui.dialogs.OptionsDialog;
+import org.eclipse.uml2.examples.ui.dialogs.PackageMergerOptionsDialog;
 import org.eclipse.uml2.util.UML2Util;
 import org.eclipse.uml2.util.UML2Validator;
 
@@ -76,105 +79,93 @@ public class MergePackageAction
 			final org.eclipse.uml2.Package package_ = (org.eclipse.uml2.Package) collection
 				.toArray()[0];
 
-			editingDomain.getCommandStack().execute(
-				new ChangeCommand(editingDomain, new Runnable() {
+			final Shell shell = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getShell();
 
-					public void run() {
+			final Map options = new HashMap();
 
-						final Shell shell = PlatformUI.getWorkbench()
-							.getActiveWorkbenchWindow().getShell();
+			OptionsDialog optionsDialog = new PackageMergerOptionsDialog(shell,
+				ExamplesUIPlugin.getDefault().getString(
+					"_UI_MergePackageActionCommand_label",
+					new Object[]{getLabelProvider().getText(package_)}),
+				ExamplesUIPlugin.getDefault().getString(
+					"_UI_OptionsDialog_message"), options);
 
-						IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+			if (Window.OK == optionsDialog.open()) {
+				editingDomain.getCommandStack().execute(
+					new ChangeCommand(editingDomain, new Runnable() {
 
-							public void run(
-									final IProgressMonitor progressMonitor)
-									throws InvocationTargetException,
-									InterruptedException {
+						public void run() {
 
-								try {
-									Map options = new HashMap();
+							IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
-									options
-										.put(
-											UML2Util.PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS,
-											UML2Util.OPTION__DISCARD);
-									options
-										.put(
-											UML2Util.PackageMerger.OPTION__IMPLICIT_REDEFINITIONS,
-											UML2Util.OPTION__PROCESS);
-									options
-										.put(
-											UML2Util.PackageMerger.OPTION__INVALID_REDEFINITIONS,
-											UML2Util.OPTION__DISCARD);
-									options
-										.put(
-											UML2Util.PackageMerger.OPTION__INVALID_SUBSETS,
-											UML2Util.OPTION__DISCARD);
-									options
-										.put(
-											UML2Util.PackageMerger.OPTION__EMPTY_UNIONS,
-											UML2Util.OPTION__PROCESS);
+								public void run(
+										final IProgressMonitor progressMonitor)
+										throws InvocationTargetException,
+										InterruptedException {
 
-									final BasicDiagnostic diagnostics = new BasicDiagnostic(
-										UML2Validator.DIAGNOSTIC_SOURCE,
-										0,
-										EcorePlugin.INSTANCE
-											.getString(
-												"_UI_DiagnosticRoot_diagnostic",
-												new Object[]{substitutionLabelProvider
-													.getObjectLabel(package_)}),
-										new Object[]{package_});
+									try {
+										final BasicDiagnostic diagnostics = new BasicDiagnostic(
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											0,
+											EcorePlugin.INSTANCE
+												.getString(
+													"_UI_DiagnosticRoot_diagnostic",
+													new Object[]{substitutionLabelProvider
+														.getObjectLabel(package_)}),
+											new Object[]{package_});
 
-									Map context = new HashMap();
-									context
-										.put(
-											EValidator.SubstitutionLabelProvider.class,
-											substitutionLabelProvider);
+										Map context = new HashMap();
+										context
+											.put(
+												EValidator.SubstitutionLabelProvider.class,
+												substitutionLabelProvider);
 
-									progressMonitor
-										.beginTask(
+										progressMonitor
+											.beginTask(
+												ExamplesUIPlugin
+													.getDefault()
+													.getString(
+														"_UI_MergingPackage_message",
+														new Object[]{substitutionLabelProvider
+															.getObjectLabel(package_)}),
+												IProgressMonitor.UNKNOWN);
+
+										UML2Util.merge(package_, options,
+											diagnostics, context);
+
+										handleDiagnostic(
+											progressMonitor.isCanceled()
+												? Diagnostic.CANCEL_INSTANCE
+												: diagnostics,
 											ExamplesUIPlugin
 												.getDefault()
 												.getString(
-													"_UI_MergingPackage_message",
-													new Object[]{substitutionLabelProvider
-														.getObjectLabel(package_)}),
-											IProgressMonitor.UNKNOWN);
-
-									UML2Util.merge(package_, options,
-										diagnostics, context);
-
-									handleDiagnostic(
-										progressMonitor.isCanceled()
-											? Diagnostic.CANCEL_INSTANCE
-											: diagnostics,
-										ExamplesUIPlugin
-											.getDefault()
-											.getString(
-												"_UI_MergePackageActionCommand_label",
-												new Object[]{getLabelProvider()
-													.getText(package_)}));
-								} finally {
-									progressMonitor.done();
+													"_UI_MergePackageActionCommand_label",
+													new Object[]{getLabelProvider()
+														.getText(package_)}));
+									} finally {
+										progressMonitor.done();
+									}
 								}
+							};
+
+							if (eclipseResourcesUtil != null) {
+								runnableWithProgress = eclipseResourcesUtil
+									.getWorkspaceModifyOperation(runnableWithProgress);
 							}
-						};
 
-						if (eclipseResourcesUtil != null) {
-							runnableWithProgress = eclipseResourcesUtil
-								.getWorkspaceModifyOperation(runnableWithProgress);
+							try {
+								new ProgressMonitorDialog(shell).run(false,
+									true, runnableWithProgress);
+							} catch (Exception exception) {
+								ExamplesUIPlugin.getDefault().log(exception);
+							}
 						}
-
-						try {
-							new ProgressMonitorDialog(shell).run(false, true,
-								runnableWithProgress);
-						} catch (Exception exception) {
-							ExamplesUIPlugin.getDefault().log(exception);
-						}
-					}
-				}, ExamplesUIPlugin.getDefault().getString(
-					"_UI_MergePackageActionCommand_label", //$NON-NLS-1$
-					new Object[]{getLabelProvider().getText(package_)})));
+					}, ExamplesUIPlugin.getDefault().getString(
+						"_UI_MergePackageActionCommand_label", //$NON-NLS-1$
+						new Object[]{getLabelProvider().getText(package_)})));
+			}
 		}
 	}
 

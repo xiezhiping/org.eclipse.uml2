@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Util.java,v 1.4 2005/01/27 02:30:11 khussey Exp $
+ * $Id: UML2Util.java,v 1.5 2005/02/11 23:07:29 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -530,6 +530,8 @@ public class UML2Util {
 				if (null == eType) {
 					eType = (EClassifier) doSwitch(type);
 				}
+			} else {
+				eType = EcorePackage.eINSTANCE.getEObject();
 			}
 
 			return eType;
@@ -1340,8 +1342,8 @@ public class UML2Util {
 							}
 						}
 
-						if (OPTION__PROCESS == options
-							.get(OPTION__REDEFINING_PROPERTIES)) {
+						if (OPTION__PROCESS.equals(options
+							.get(OPTION__REDEFINING_PROPERTIES))) {
 
 							if (null != diagnostics) {
 								diagnostics
@@ -1376,8 +1378,8 @@ public class UML2Util {
 											.get(redefinedProperty));
 								}
 							}
-						} else if (OPTION__REPORT == options
-							.get(OPTION__REDEFINING_PROPERTIES)
+						} else if (OPTION__REPORT.equals(options
+							.get(OPTION__REDEFINING_PROPERTIES))
 							&& null != diagnostics) {
 
 							diagnostics
@@ -1432,8 +1434,8 @@ public class UML2Util {
 							}
 						}
 
-						if (OPTION__PROCESS == options
-							.get(OPTION__SUBSETTING_PROPERTIES)) {
+						if (OPTION__PROCESS.equals(options
+							.get(OPTION__SUBSETTING_PROPERTIES))) {
 
 							if (null != diagnostics) {
 								diagnostics
@@ -1467,8 +1469,8 @@ public class UML2Util {
 											.get(subsettedProperty));
 								}
 							}
-						} else if (OPTION__REPORT == options
-							.get(OPTION__SUBSETTING_PROPERTIES)
+						} else if (OPTION__REPORT.equals(options
+							.get(OPTION__SUBSETTING_PROPERTIES))
 							&& null != diagnostics) {
 
 							diagnostics
@@ -1505,8 +1507,8 @@ public class UML2Util {
 							+ " is a union");
 					}
 
-					if (OPTION__PROCESS == options
-						.get(OPTION__UNION_PROPERTIES)) {
+					if (OPTION__PROCESS.equals(options
+						.get(OPTION__UNION_PROPERTIES))) {
 
 						if (null != diagnostics) {
 							diagnostics
@@ -1527,8 +1529,8 @@ public class UML2Util {
 
 						((EStructuralFeature) eModelElement)
 							.setChangeable(false);
-					} else if (OPTION__REPORT == options
-						.get(OPTION__UNION_PROPERTIES)
+					} else if (OPTION__REPORT.equals(options
+						.get(OPTION__UNION_PROPERTIES))
 						&& null != diagnostics) {
 
 						diagnostics
@@ -1563,8 +1565,8 @@ public class UML2Util {
 						&& !(eStructuralFeature.isTransient() && eStructuralFeature
 							.isVolatile())) {
 
-						if (OPTION__PROCESS == options
-							.get(OPTION__DERIVED_FEATURES)) {
+						if (OPTION__PROCESS.equals(options
+							.get(OPTION__DERIVED_FEATURES))) {
 
 							if (null != diagnostics) {
 								diagnostics
@@ -1582,8 +1584,8 @@ public class UML2Util {
 
 							eStructuralFeature.setTransient(true);
 							eStructuralFeature.setVolatile(true);
-						} else if (OPTION__REPORT == options
-							.get(OPTION__DERIVED_FEATURES)
+						} else if (OPTION__REPORT.equals(options
+							.get(OPTION__DERIVED_FEATURES))
 							&& null != diagnostics) {
 
 							diagnostics
@@ -1764,8 +1766,8 @@ public class UML2Util {
 							} else if (new SignatureMatcher(eOperation)
 								.matches(eAllOperation)) {
 
-								if (OPTION__PROCESS == options
-									.get(OPTION__DUPLICATE_OPERATIONS)) {
+								if (OPTION__PROCESS.equals(options
+									.get(OPTION__DUPLICATE_OPERATIONS))) {
 
 									if (null != diagnostics) {
 										diagnostics
@@ -1785,8 +1787,8 @@ public class UML2Util {
 									}
 
 									ensureConformity(eOperation, eAllOperation);
-								} else if (OPTION__DISCARD == options
-									.get(OPTION__DUPLICATE_OPERATIONS)) {
+								} else if (OPTION__DISCARD.equals(options
+									.get(OPTION__DUPLICATE_OPERATIONS))) {
 
 									if (null != diagnostics) {
 										diagnostics
@@ -1807,8 +1809,8 @@ public class UML2Util {
 
 									eOperations.remove();
 									break;
-								} else if (OPTION__REPORT == options
-									.get(OPTION__DUPLICATE_OPERATIONS)
+								} else if (OPTION__REPORT.equals(options
+									.get(OPTION__DUPLICATE_OPERATIONS))
 									&& null != diagnostics) {
 
 									diagnostics
@@ -1872,8 +1874,9 @@ public class UML2Util {
 									} else if (new SignatureMatcher(
 										mixinEOperation).matches(eOperation)) {
 
-										if (OPTION__PROCESS == options
-											.get(OPTION__DUPLICATE_OPERATION_INHERITANCE)) {
+										if (OPTION__PROCESS
+											.equals(options
+												.get(OPTION__DUPLICATE_OPERATION_INHERITANCE))) {
 
 											if (null != diagnostics) {
 												diagnostics
@@ -1895,8 +1898,9 @@ public class UML2Util {
 											}
 
 											qualifyName(mixinEOperation);
-										} else if (OPTION__DISCARD == options
-											.get(OPTION__DUPLICATE_OPERATION_INHERITANCE)) {
+										} else if (OPTION__DISCARD
+											.equals(options
+												.get(OPTION__DUPLICATE_OPERATION_INHERITANCE))) {
 
 											if (null != diagnostics) {
 												diagnostics
@@ -1919,8 +1923,9 @@ public class UML2Util {
 
 											eSuperTypes.remove();
 											break mixinEOperationsLoop;
-										} else if (OPTION__REPORT == options
-											.get(OPTION__DUPLICATE_OPERATION_INHERITANCE)
+										} else if (OPTION__REPORT
+											.equals(options
+												.get(OPTION__DUPLICATE_OPERATION_INHERITANCE))
 											&& null != diagnostics) {
 
 											diagnostics
@@ -1983,8 +1988,8 @@ public class UML2Util {
 							} else if (new NameMatcher(eStructuralFeature)
 								.matches(eAllStructuralFeature)) {
 
-								if (OPTION__PROCESS == options
-									.get(OPTION__DUPLICATE_FEATURES)) {
+								if (OPTION__PROCESS.equals(options
+									.get(OPTION__DUPLICATE_FEATURES))) {
 
 									if (null != diagnostics) {
 										diagnostics
@@ -2048,8 +2053,8 @@ public class UML2Util {
 											}
 										}
 									}
-								} else if (OPTION__DISCARD == options
-									.get(OPTION__DUPLICATE_FEATURES)) {
+								} else if (OPTION__DISCARD.equals(options
+									.get(OPTION__DUPLICATE_FEATURES))) {
 
 									if (null != diagnostics) {
 										diagnostics
@@ -2079,8 +2084,8 @@ public class UML2Util {
 
 									eStructuralFeatures.remove();
 									break;
-								} else if (OPTION__REPORT == options
-									.get(OPTION__DUPLICATE_FEATURES)
+								} else if (OPTION__REPORT.equals(options
+									.get(OPTION__DUPLICATE_FEATURES))
 									&& null != diagnostics) {
 
 									diagnostics
@@ -2166,8 +2171,9 @@ public class UML2Util {
 										mixinEStructuralFeature)
 										.matches(eStructuralFeature)) {
 
-										if (OPTION__PROCESS == options
-											.get(OPTION__DUPLICATE_FEATURE_INHERITANCE)
+										if (OPTION__PROCESS
+											.equals(options
+												.get(OPTION__DUPLICATE_FEATURE_INHERITANCE))
 											&& !isObsolete(eStructuralFeature)
 											&& !isObsolete(mixinEStructuralFeature)) {
 
@@ -2191,8 +2197,9 @@ public class UML2Util {
 											}
 
 											qualifyName(mixinEStructuralFeature);
-										} else if (OPTION__DISCARD == options
-											.get(OPTION__DUPLICATE_FEATURE_INHERITANCE)) {
+										} else if (OPTION__DISCARD
+											.equals(options
+												.get(OPTION__DUPLICATE_FEATURE_INHERITANCE))) {
 
 											if (null != diagnostics) {
 												diagnostics
@@ -2215,8 +2222,9 @@ public class UML2Util {
 
 											eSuperTypes.remove();
 											break mixinEStructuralFeaturesLoop;
-										} else if (OPTION__REPORT == options
-											.get(OPTION__DUPLICATE_FEATURE_INHERITANCE)
+										} else if (OPTION__REPORT
+											.equals(options
+												.get(OPTION__DUPLICATE_FEATURE_INHERITANCE))
 											&& null != diagnostics) {
 
 											diagnostics
@@ -2266,8 +2274,8 @@ public class UML2Util {
 
 						if (isObsolete(eStructuralFeature)) {
 
-							if (OPTION__PROCESS == options
-								.get(OPTION__OBSOLETE_FEATURES)) {
+							if (OPTION__PROCESS.equals(options
+								.get(OPTION__OBSOLETE_FEATURES))) {
 
 								if (null != diagnostics) {
 									diagnostics
@@ -2306,8 +2314,8 @@ public class UML2Util {
 								getEAnnotation(eOperation,
 									ANNOTATION_SOURCE__FEATURE, true)
 									.getContents().add(eStructuralFeature);
-							} else if (OPTION__DISCARD == options
-								.get(OPTION__OBSOLETE_FEATURES)) {
+							} else if (OPTION__DISCARD.equals(options
+								.get(OPTION__OBSOLETE_FEATURES))) {
 
 								if (null != diagnostics) {
 									diagnostics
@@ -2325,8 +2333,8 @@ public class UML2Util {
 								}
 
 								eStructuralFeatures.remove();
-							} else if (OPTION__REPORT == options
-								.get(OPTION__OBSOLETE_FEATURES)
+							} else if (OPTION__REPORT.equals(options
+								.get(OPTION__OBSOLETE_FEATURES))
 								&& null != diagnostics) {
 
 								diagnostics
@@ -2350,45 +2358,48 @@ public class UML2Util {
 		protected void processOptions(Map options, DiagnosticChain diagnostics,
 				Map context) {
 
-			if (OPTION__IGNORE != options.get(OPTION__REDEFINING_PROPERTIES)) {
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__REDEFINING_PROPERTIES))) {
 				processRedefiningProperties(options, diagnostics, context);
 			}
 
-			if (OPTION__IGNORE != options.get(OPTION__SUBSETTING_PROPERTIES)) {
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__SUBSETTING_PROPERTIES))) {
 				processSubsettingProperties(options, diagnostics, context);
 			}
 
-			if (OPTION__IGNORE != options.get(OPTION__UNION_PROPERTIES)) {
+			if (!OPTION__IGNORE.equals(options.get(OPTION__UNION_PROPERTIES))) {
 				processUnionProperties(options, diagnostics, context);
 			}
 
-			if (OPTION__IGNORE != options.get(OPTION__DERIVED_FEATURES)) {
+			if (!OPTION__IGNORE.equals(options.get(OPTION__DERIVED_FEATURES))) {
 				processDerivedFeatures(options, diagnostics, context);
 			}
 
-			if (OPTION__IGNORE != options.get(OPTION__DUPLICATE_OPERATIONS)) {
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__DUPLICATE_OPERATIONS))) {
 				processDuplicateOperations(options, diagnostics, context);
 			}
 
-			if (OPTION__IGNORE != options
-				.get(OPTION__DUPLICATE_OPERATION_INHERITANCE)) {
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__DUPLICATE_OPERATION_INHERITANCE))) {
 
 				processDuplicateOperationInheritance(options, diagnostics,
 					context);
 			}
 
-			if (OPTION__IGNORE != options.get(OPTION__DUPLICATE_FEATURES)) {
+			if (!OPTION__IGNORE.equals(options.get(OPTION__DUPLICATE_FEATURES))) {
 				processDuplicateFeatures(options, diagnostics, context);
 			}
 
-			if (OPTION__IGNORE != options
-				.get(OPTION__DUPLICATE_FEATURE_INHERITANCE)) {
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__DUPLICATE_FEATURE_INHERITANCE))) {
 
 				processDuplicateFeatureInheritance(options, diagnostics,
 					context);
 			}
 
-			if (OPTION__IGNORE != options.get(OPTION__OBSOLETE_FEATURES)) {
+			if (!OPTION__IGNORE.equals(options.get(OPTION__OBSOLETE_FEATURES))) {
 				processObsoleteFeatures(options, diagnostics, context);
 			}
 		}
@@ -3164,6 +3175,11 @@ public class UML2Util {
 
 			mergedEObjects.add(eObject);
 
+			if (DEBUG) {
+				System.out.println(getQualifiedText(eObject) + "->"
+					+ getQualifiedText(copyEObject));
+			}
+
 			return copyEObject;
 		}
 
@@ -3213,8 +3229,8 @@ public class UML2Util {
 						Property mergedProperty = (Property) mergedProperties
 							.next();
 
-						if (OPTION__REPORT == options
-							.get(OPTION__DIFFERENT_PROPERTY_STATICITY)
+						if (OPTION__REPORT.equals(options
+							.get(OPTION__DIFFERENT_PROPERTY_STATICITY))
 							&& null != diagnostics) {
 
 							if (property.isStatic() != mergedProperty
@@ -3257,8 +3273,8 @@ public class UML2Util {
 						Property mergedProperty = (Property) mergedProperties
 							.next();
 
-						if (OPTION__REPORT == options
-							.get(OPTION__DIFFERENT_PROPERTY_UNIQUENESS)
+						if (OPTION__REPORT.equals(options
+							.get(OPTION__DIFFERENT_PROPERTY_UNIQUENESS))
 							&& null != diagnostics) {
 
 							if (property.isUnique() != mergedProperty
@@ -3338,8 +3354,8 @@ public class UML2Util {
 									.getRedefinedProperties().contains(
 										redefinedProperty)) {
 
-									if (OPTION__PROCESS == options
-										.get(OPTION__IMPLICIT_REDEFINITIONS)) {
+									if (OPTION__PROCESS.equals(options
+										.get(OPTION__IMPLICIT_REDEFINITIONS))) {
 
 										if (null != diagnostics) {
 											diagnostics
@@ -3362,8 +3378,8 @@ public class UML2Util {
 										redefiningProperty
 											.getRedefinedProperties().add(
 												redefinedProperty);
-									} else if (OPTION__REPORT == options
-										.get(OPTION__IMPLICIT_REDEFINITIONS)
+									} else if (OPTION__REPORT.equals(options
+										.get(OPTION__IMPLICIT_REDEFINITIONS))
 										&& null != diagnostics) {
 
 										diagnostics
@@ -3420,8 +3436,8 @@ public class UML2Util {
 						if (!isRedefinitionValid(redefiningProperty,
 							redefinedProperty)) {
 
-							if (OPTION__DISCARD == options
-								.get(OPTION__INVALID_REDEFINITIONS)) {
+							if (OPTION__DISCARD.equals(options
+								.get(OPTION__INVALID_REDEFINITIONS))) {
 
 								if (null != diagnostics) {
 									diagnostics
@@ -3441,8 +3457,8 @@ public class UML2Util {
 								}
 
 								redefinedProperties.remove();
-							} else if (OPTION__REPORT == options
-								.get(OPTION__INVALID_REDEFINITIONS)
+							} else if (OPTION__REPORT.equals(options
+								.get(OPTION__INVALID_REDEFINITIONS))
 								&& null != diagnostics) {
 
 								diagnostics
@@ -3517,8 +3533,8 @@ public class UML2Util {
 						if (!isSubsetValid(subsettingProperty,
 							subsettedProperty)) {
 
-							if (OPTION__DISCARD == options
-								.get(OPTION__INVALID_SUBSETS)) {
+							if (OPTION__DISCARD.equals(options
+								.get(OPTION__INVALID_SUBSETS))) {
 
 								if (null != diagnostics) {
 									diagnostics
@@ -3538,8 +3554,8 @@ public class UML2Util {
 								}
 
 								subsettedProperties.remove();
-							} else if (OPTION__REPORT == options
-								.get(OPTION__INVALID_SUBSETS)
+							} else if (OPTION__REPORT.equals(options
+								.get(OPTION__INVALID_SUBSETS))
 								&& null != diagnostics) {
 
 								diagnostics
@@ -3614,7 +3630,8 @@ public class UML2Util {
 				if (((Set) entry.getValue()).isEmpty()) {
 					Property unionProperty = (Property) entry.getKey();
 
-					if (OPTION__PROCESS == options.get(OPTION__EMPTY_UNIONS)) {
+					if (OPTION__PROCESS.equals(options
+						.get(OPTION__EMPTY_UNIONS))) {
 
 						if (null != diagnostics) {
 							diagnostics
@@ -3631,8 +3648,8 @@ public class UML2Util {
 						}
 
 						unionProperty.setIsDerivedUnion(false);
-					} else if (OPTION__REPORT == options
-						.get(OPTION__EMPTY_UNIONS)
+					} else if (OPTION__REPORT.equals(options
+						.get(OPTION__EMPTY_UNIONS))
 						&& null != diagnostics) {
 
 						diagnostics
@@ -3681,8 +3698,8 @@ public class UML2Util {
 							if (general != null && general != otherGeneral
 								&& general.allParents().contains(otherGeneral)) {
 
-								if (OPTION__DISCARD == options
-									.get(OPTION__REDUNDANT_GENERALIZATIONS)) {
+								if (OPTION__DISCARD.equals(options
+									.get(OPTION__REDUNDANT_GENERALIZATIONS))) {
 
 									if (null != diagnostics) {
 										diagnostics
@@ -3703,8 +3720,8 @@ public class UML2Util {
 									}
 
 									otherGeneralizations.remove();
-								} else if (OPTION__REPORT == options
-									.get(OPTION__REDUNDANT_GENERALIZATIONS)
+								} else if (OPTION__REPORT.equals(options
+									.get(OPTION__REDUNDANT_GENERALIZATIONS))
 									&& null != diagnostics) {
 
 									diagnostics
@@ -3733,38 +3750,40 @@ public class UML2Util {
 		protected void processOptions(Map options, DiagnosticChain diagnostics,
 				Map context) {
 
-			if (OPTION__IGNORE != options
-				.get(OPTION__DIFFERENT_PROPERTY_STATICITY)) {
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__DIFFERENT_PROPERTY_STATICITY))) {
 
 				processDifferentPropertyStaticity(options, diagnostics, context);
 			}
 
-			if (OPTION__IGNORE != options
-				.get(OPTION__DIFFERENT_PROPERTY_UNIQUENESS)) {
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__DIFFERENT_PROPERTY_UNIQUENESS))) {
 
 				processDifferentPropertyUniqueness(options, diagnostics,
 					context);
 			}
 
-			if (OPTION__IGNORE != options
-				.get(OPTION__REDUNDANT_GENERALIZATIONS)) {
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__REDUNDANT_GENERALIZATIONS))) {
 
 				processRedundantGeneralizations(options, diagnostics, context);
 			}
 
-			if (OPTION__IGNORE != options.get(OPTION__IMPLICIT_REDEFINITIONS)) {
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__IMPLICIT_REDEFINITIONS))) {
 				processImplicitRedefinitions(options, diagnostics, context);
 			}
 
-			if (OPTION__IGNORE != options.get(OPTION__INVALID_REDEFINITIONS)) {
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__INVALID_REDEFINITIONS))) {
 				processInvalidRedefinitions(options, diagnostics, context);
 			}
 
-			if (OPTION__IGNORE != options.get(OPTION__INVALID_SUBSETS)) {
+			if (!OPTION__IGNORE.equals(options.get(OPTION__INVALID_SUBSETS))) {
 				processInvalidSubsets(options, diagnostics, context);
 			}
 
-			if (OPTION__IGNORE != options.get(OPTION__EMPTY_UNIONS)) {
+			if (!OPTION__IGNORE.equals(options.get(OPTION__EMPTY_UNIONS))) {
 				processEmptyUnions(options, diagnostics, context);
 			}
 		}

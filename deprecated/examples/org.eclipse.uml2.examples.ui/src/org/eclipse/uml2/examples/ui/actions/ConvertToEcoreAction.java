@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConvertToEcoreAction.java,v 1.3 2005/01/27 02:31:25 khussey Exp $
+ * $Id: ConvertToEcoreAction.java,v 1.4 2005/02/11 23:08:10 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -35,10 +35,11 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.uml2.edit.util.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
+import org.eclipse.uml2.examples.ui.dialogs.UML22EcoreConverterOptionsDialog;
 import org.eclipse.uml2.util.UML2Util;
 import org.eclipse.uml2.util.UML2Validator;
 
@@ -84,155 +85,104 @@ public class ConvertToEcoreAction
 			final org.eclipse.uml2.Package package_ = (org.eclipse.uml2.Package) collection
 				.toArray()[0];
 
-			editingDomain.getCommandStack().execute(
-				new ChangeCommand(editingDomain, new Runnable() {
+			final Shell shell = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getShell();
 
-					public void run() {
+			final Map options = new HashMap();
 
-						final Shell shell = PlatformUI.getWorkbench()
-							.getActiveWorkbenchWindow().getShell();
+			UML22EcoreConverterOptionsDialog optionsDialog = new UML22EcoreConverterOptionsDialog(
+				shell, ExamplesUIPlugin.getDefault().getString(
+					"_UI_ConvertToEcoreActionCommand_label",
+					new Object[]{getLabelProvider().getText(package_)}),
+				ExamplesUIPlugin.getDefault().getString(
+					"_UI_OptionsDialog_message"), options);
 
-						IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+			if (Window.OK == optionsDialog.open()) {
+				IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
-							public void run(
-									final IProgressMonitor progressMonitor)
-									throws InvocationTargetException,
-									InterruptedException {
-
-								try {
-									Map options = new HashMap();
-
-									options
-										.put(
-											UML2Util.UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES,
-											UML2Util.OPTION__PROCESS);
-									options
-										.put(
-											UML2Util.UML22EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
-											UML2Util.OPTION__PROCESS);
-									options
-										.put(
-											UML2Util.UML22EcoreConverter.OPTION__UNION_PROPERTIES,
-											UML2Util.OPTION__PROCESS);
-									options
-										.put(
-											UML2Util.UML22EcoreConverter.OPTION__DERIVED_FEATURES,
-											UML2Util.OPTION__PROCESS);
-									options
-										.put(
-											UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
-											UML2Util.OPTION__PROCESS);
-									options
-										.put(
-											UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
-											UML2Util.OPTION__PROCESS);
-									options
-										.put(
-											UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_FEATURES,
-											UML2Util.OPTION__PROCESS);
-									options
-										.put(
-											UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
-											UML2Util.OPTION__PROCESS);
-									options
-										.put(
-											UML2Util.UML22EcoreConverter.OPTION__OBSOLETE_FEATURES,
-											UML2Util.OPTION__PROCESS);
-
-									final BasicDiagnostic diagnostics = new BasicDiagnostic(
-										UML2Validator.DIAGNOSTIC_SOURCE,
-										0,
-										EcorePlugin.INSTANCE
-											.getString(
-												"_UI_DiagnosticRoot_diagnostic",
-												new Object[]{substitutionLabelProvider
-													.getObjectLabel(package_)}),
-										new Object[]{package_});
-
-									Map context = new HashMap();
-									context.put(
-										UML2Util.QualifiedTextProvider.class,
-										qualifiedTextProvider);
-
-									progressMonitor
-										.beginTask(
-											ExamplesUIPlugin
-												.getDefault()
-												.getString(
-													"_UI_ConvertingToEcore_message",
-													new Object[]{substitutionLabelProvider
-														.getObjectLabel(package_)}),
-											IProgressMonitor.UNKNOWN);
-
-									Resource resource = package_.eResource();
-									ResourceSet resourceSet = resource
-										.getResourceSet();
-									URI uri = resourceSet.getURIConverter()
-										.normalize(resource.getURI())
-										.trimFileExtension().trimSegments(1);
-
-									List resources = new ArrayList();
-
-									for (Iterator ePackages = UML2Util
-										.convertToEcore(package_, options,
-											diagnostics, context).iterator(); ePackages
-										.hasNext();) {
-
-										EPackage ePackage = (EPackage) ePackages
-											.next();
-
-										resources.add(resource = resourceSet
-											.createResource(uri.appendSegment(
-												ePackage.getName())
-												.appendFileExtension(
-													ECORE_FILE_EXTENSION)));
-
-										resource.getContents().add(ePackage);
-
-									}
-
-									for (Iterator i = resources.iterator(); i
-										.hasNext();) {
-
-										try {
-											((Resource) i.next()).save(null);
-										} catch (Exception e) {
-											ExamplesUIPlugin.getDefault()
-												.log(e);
-										}
-									}
-
-									handleDiagnostic(
-										progressMonitor.isCanceled()
-											? Diagnostic.CANCEL_INSTANCE
-											: diagnostics,
-										ExamplesUIPlugin
-											.getDefault()
-											.getString(
-												"_UI_ConvertToEcoreActionCommand_label",
-												new Object[]{getLabelProvider()
-													.getText(package_)}));
-								} finally {
-									progressMonitor.done();
-								}
-							}
-						};
-
-						if (eclipseResourcesUtil != null) {
-							runnableWithProgress = eclipseResourcesUtil
-								.getWorkspaceModifyOperation(runnableWithProgress);
-						}
+					public void run(final IProgressMonitor progressMonitor)
+							throws InvocationTargetException,
+							InterruptedException {
 
 						try {
-							new ProgressMonitorDialog(shell).run(false, true,
-								runnableWithProgress);
-						} catch (Exception exception) {
-							ExamplesUIPlugin.getDefault().log(exception);
+							final BasicDiagnostic diagnostics = new BasicDiagnostic(
+								UML2Validator.DIAGNOSTIC_SOURCE, 0,
+								EcorePlugin.INSTANCE.getString(
+									"_UI_DiagnosticRoot_diagnostic",
+									new Object[]{substitutionLabelProvider
+										.getObjectLabel(package_)}),
+								new Object[]{package_});
+
+							Map context = new HashMap();
+							context.put(UML2Util.QualifiedTextProvider.class,
+								qualifiedTextProvider);
+
+							progressMonitor.beginTask(ExamplesUIPlugin
+								.getDefault().getString(
+									"_UI_ConvertingToEcore_message",
+									new Object[]{substitutionLabelProvider
+										.getObjectLabel(package_)}),
+								IProgressMonitor.UNKNOWN);
+
+							Resource resource = package_.eResource();
+							ResourceSet resourceSet = resource.getResourceSet();
+							URI uri = resourceSet.getURIConverter().normalize(
+								resource.getURI()).trimFileExtension()
+								.trimSegments(1);
+
+							List resources = new ArrayList();
+
+							for (Iterator ePackages = UML2Util.convertToEcore(
+								package_, options, diagnostics, context)
+								.iterator(); ePackages.hasNext();) {
+
+								EPackage ePackage = (EPackage) ePackages.next();
+
+								resources.add(resource = resourceSet
+									.createResource(uri.appendSegment(
+										ePackage.getName())
+										.appendFileExtension(
+											ECORE_FILE_EXTENSION)));
+
+								resource.getContents().add(ePackage);
+
+							}
+
+							for (Iterator i = resources.iterator(); i.hasNext();) {
+
+								try {
+									((Resource) i.next()).save(null);
+								} catch (Exception e) {
+									ExamplesUIPlugin.getDefault().log(e);
+								}
+							}
+
+							handleDiagnostic(progressMonitor.isCanceled()
+								? Diagnostic.CANCEL_INSTANCE
+								: diagnostics, ExamplesUIPlugin.getDefault()
+								.getString(
+									"_UI_ConvertToEcoreActionCommand_label",
+									new Object[]{getLabelProvider().getText(
+										package_)}));
+
+						} finally {
+							progressMonitor.done();
 						}
 					}
-				}, ExamplesUIPlugin.getDefault().getString(
-					"_UI_ConvertToEcoreActionCommand_label", //$NON-NLS-1$
-					new Object[]{getLabelProvider().getText(package_)})));
+				};
+
+				if (eclipseResourcesUtil != null) {
+					runnableWithProgress = eclipseResourcesUtil
+						.getWorkspaceModifyOperation(runnableWithProgress);
+				}
+
+				try {
+					new ProgressMonitorDialog(shell).run(false, true,
+						runnableWithProgress);
+				} catch (Exception exception) {
+					ExamplesUIPlugin.getDefault().log(exception);
+				}
+			}
 		}
 	}
 }
