@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2003, 2004 IBM Corporation and others."
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2005 IBM Corporation and others."
     modelDirectory="/org.eclipse.uml2/src" editDirectory="/org.eclipse.uml2.edit/src"
     editorDirectory="/org.eclipse.uml2.editor/src" modelPluginID="org.eclipse.uml2"
     runtimeJar="true" modelName="UML2" modelPluginClass="org.eclipse.uml2.UML2Plugin"

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Util.java,v 1.2 2005/01/12 22:52:52 khussey Exp $
+ * $Id: UML2Util.java,v 1.3 2005/01/19 22:55:30 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -43,6 +43,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -94,7 +95,7 @@ public class UML2Util {
 		super();
 	}
 
-	protected static class QualifiedTextProvider {
+	public static class QualifiedTextProvider {
 
 		public String getText(EObject eObject) {
 
@@ -126,7 +127,7 @@ public class UML2Util {
 
 	}
 
-	public static class Ecore2UML2Converter
+	protected static class Ecore2UML2Converter
 			extends EcoreSwitch
 			implements Converter {
 
@@ -302,9 +303,117 @@ public class UML2Util {
 		}
 	}
 
-	protected static class UML22EcoreConverter
+	public static class UML22EcoreConverter
 			extends UML2Switch
 			implements Converter {
+
+		protected class NameMatcher
+				extends EClassMatcher {
+
+			protected NameMatcher(ENamedElement eNamedElement) {
+				super(eNamedElement);
+			}
+
+			public boolean matches(EObject otherEObject) {
+
+				return super.matches(otherEObject)
+					&& ((null == eObject && null == otherEObject) || ((ENamedElement) eObject)
+						.getName().equalsIgnoreCase(
+							((ENamedElement) otherEObject).getName()));
+			}
+		}
+
+		protected class ETypeMatcher
+				extends NameMatcher {
+
+			protected ETypeMatcher(ETypedElement eTypedElement) {
+				super(eTypedElement);
+			}
+
+			public boolean matches(EObject otherEObject) {
+
+				return super.matches(otherEObject)
+					&& ((null == eObject && null == otherEObject) || safeEquals(
+						((ETypedElement) eObject).getEType(),
+						((ETypedElement) otherEObject).getEType()));
+			}
+		}
+
+		protected class SignatureMatcher
+				extends ETypeMatcher {
+
+			protected SignatureMatcher(EOperation eOperation) {
+				super(eOperation);
+			}
+
+			public boolean matches(EObject otherEObject) {
+
+				if (super.matches(otherEObject)) {
+					List eParameters = ((EOperation) eObject).getEParameters();
+					List otherEParameters = ((EOperation) otherEObject)
+						.getEParameters();
+
+					if (eParameters.size() == otherEParameters.size()) {
+
+						for (int i = 0; i < eParameters.size(); i++) {
+
+							if (!new ETypeMatcher((ETypedElement) eParameters
+								.get(i)).matches((EObject) otherEParameters
+								.get(i))) {
+
+								return false;
+							}
+						}
+
+						return true;
+					}
+				}
+
+				return false;
+			}
+		}
+
+		public static final String OPTION__DERIVED_FEATURES = "DERIVED_FEATURES"; //$NON-NLS-1$
+
+		public static final String OPTION__DERIVED_UNION_PROPERTIES = "DERIVED_UNION_PROPERTIES"; //$NON-NLS-1$
+
+		public static final String OPTION__REDEFINING_PROPERTIES = "REDEFINING_PROPERTIES"; //$NON-NLS-1$
+
+		public static final String OPTION__SUBSETTING_PROPERTIES = "SUBSETTING_PROPERTIES"; //$NON-NLS-1$
+
+		public static final String OPTION__DUPLICATE_OPERATIONS = "DUPLICATE_OPERATIONS"; //$NON-NLS-1$
+
+		public static final String OPTION__DUPLICATE_OPERATION_INHERITANCE = "DUPLICATE_OPERATION_INHERITANCE"; //$NON-NLS-1$
+
+		public static final String OPTION__DUPLICATE_FEATURES = "DUPLICATE_FEATURES"; //$NON-NLS-1$
+
+		public static final String OPTION__DUPLICATE_FEATURE_INHERITANCE = "DUPLICATE_FEATURE_INHERITANCE"; //$NON-NLS-1$
+
+		public static final String OPTION__OBSOLETE_FEATURES = "OBSOLETE_FEATURES"; //$NON-NLS-1$
+
+		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
+
+		public static final int DERIVED_FEATURE = DIAGNOSTIC_CODE_OFFSET + 1;
+
+		public static final int DERIVED_UNION_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 2;
+
+		public static final int REDEFINING_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 3;
+
+		public static final int SUBSETTING_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 4;
+
+		public static final int DUPLICATE_OPERATION = DIAGNOSTIC_CODE_OFFSET + 5;
+
+		public static final int DUPLICATE_OPERATION_INHERITANCE = DIAGNOSTIC_CODE_OFFSET + 6;
+
+		public static final int DUPLICATE_FEATURE = DIAGNOSTIC_CODE_OFFSET + 7;
+
+		public static final int DUPLICATE_FEATURE_INHERITANCE = DIAGNOSTIC_CODE_OFFSET + 8;
+
+		public static final int OBSOLETE_FEATURE = DIAGNOSTIC_CODE_OFFSET + 9;
+
+		protected static final String ANNOTATION_SOURCE__FEATURE = "feature"; //$NON-NLS-1$
+
+		protected static final String ANNOTATION_SOURCE__OBSOLETE = "obsolete"; //$NON-NLS-1$
 
 		protected static final String ANNOTATION_SOURCE__REDEFINES = "redefines"; //$NON-NLS-1$
 
@@ -312,9 +421,21 @@ public class UML2Util {
 
 		protected static final String ANNOTATION_SOURCE__UNION = "union"; //$NON-NLS-1$
 
-		protected final Map eModelElementMap = new HashMap();
+		protected final Map elementToEModelElementMap = new HashMap();
 
 		protected Collection packages = null;
+
+		protected static boolean isFeature(EOperation eOperation) {
+			return null != getEAnnotation(eOperation,
+				ANNOTATION_SOURCE__FEATURE, false);
+		}
+
+		protected static boolean isObsolete(
+				EStructuralFeature eStructuralFeature) {
+
+			return null != getEAnnotation(eStructuralFeature,
+				ANNOTATION_SOURCE__OBSOLETE, false);
+		}
 
 		protected void setName(ENamedElement eNamedElement, String name) {
 			eNamedElement.setName(getValidIdentifier(name));
@@ -715,7 +836,7 @@ public class UML2Util {
 		 */
 		public Object caseClass(org.eclipse.uml2.Class class_) {
 			EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-			eModelElementMap.put(class_, eClass);
+			elementToEModelElementMap.put(class_, eClass);
 
 			EPackage ePackage = (EPackage) doSwitch(class_.getPackage());
 			ePackage.getEClassifiers().add(eClass);
@@ -792,7 +913,7 @@ public class UML2Util {
 		 */
 		public Object caseEnumeration(Enumeration enumeration) {
 			EEnum eEnum = EcoreFactory.eINSTANCE.createEEnum();
-			eModelElementMap.put(enumeration, eEnum);
+			elementToEModelElementMap.put(enumeration, eEnum);
 
 			EPackage ePackage = (EPackage) doSwitch(enumeration.getPackage());
 			ePackage.getEClassifiers().add(eEnum);
@@ -816,7 +937,7 @@ public class UML2Util {
 
 			EEnumLiteral eEnumLiteral = EcoreFactory.eINSTANCE
 				.createEEnumLiteral();
-			eModelElementMap.put(enumerationLiteral, eEnumLiteral);
+			elementToEModelElementMap.put(enumerationLiteral, eEnumLiteral);
 
 			EEnum eEnum = (EEnum) doSwitch(enumerationLiteral.getEnumeration());
 			eEnum.getELiterals().add(eEnumLiteral);
@@ -885,7 +1006,7 @@ public class UML2Util {
 		 */
 		public Object caseInterface(Interface interface_) {
 			EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-			eModelElementMap.put(interface_, eClass);
+			elementToEModelElementMap.put(interface_, eClass);
 
 			EPackage ePackage = (EPackage) doSwitch(interface_.getPackage());
 			ePackage.getEClassifiers().add(eClass);
@@ -915,7 +1036,7 @@ public class UML2Util {
 			} else {
 				EOperation eOperation = EcoreFactory.eINSTANCE
 					.createEOperation();
-				eModelElementMap.put(operation, eOperation);
+				elementToEModelElementMap.put(operation, eOperation);
 
 				EClass eClass = (EClass) doSwitch(class_);
 				eClass.getEOperations().add(eOperation);
@@ -951,7 +1072,7 @@ public class UML2Util {
 		 */
 		public Object casePackage(org.eclipse.uml2.Package package_) {
 			EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
-			eModelElementMap.put(package_, ePackage);
+			elementToEModelElementMap.put(package_, ePackage);
 
 			if (!packages.contains(package_)) {
 				org.eclipse.uml2.Package nestingPackage = package_
@@ -998,7 +1119,7 @@ public class UML2Util {
 			} else {
 				EParameter eParameter = EcoreFactory.eINSTANCE
 					.createEParameter();
-				eModelElementMap.put(parameter, eParameter);
+				elementToEModelElementMap.put(parameter, eParameter);
 
 				EOperation eOperation = (EOperation) doSwitch(operation);
 				eOperation.getEParameters().add(eParameter);
@@ -1022,7 +1143,7 @@ public class UML2Util {
 		 */
 		public Object casePrimitiveType(PrimitiveType primitiveType) {
 			EDataType eDataType = EcoreFactory.eINSTANCE.createEDataType();
-			eModelElementMap.put(primitiveType, eDataType);
+			elementToEModelElementMap.put(primitiveType, eDataType);
 
 			EPackage ePackage = (EPackage) doSwitch(primitiveType.getPackage());
 			ePackage.getEClassifiers().add(eDataType);
@@ -1054,7 +1175,7 @@ public class UML2Util {
 				if (DataType.class.isInstance(property.getType())) {
 					eStructuralFeature = EcoreFactory.eINSTANCE
 						.createEAttribute();
-					eModelElementMap.put(property, eStructuralFeature);
+					elementToEModelElementMap.put(property, eStructuralFeature);
 
 					String default_ = property.getDefault();
 
@@ -1072,7 +1193,7 @@ public class UML2Util {
 				} else {
 					eStructuralFeature = EcoreFactory.eINSTANCE
 						.createEReference();
-					eModelElementMap.put(property, eStructuralFeature);
+					elementToEModelElementMap.put(property, eStructuralFeature);
 
 					((EReference) eStructuralFeature).setContainment(property
 						.isComposite());
@@ -1090,7 +1211,19 @@ public class UML2Util {
 				setName(eStructuralFeature, property);
 
 				eStructuralFeature.setChangeable(!property.isReadOnly());
-				eStructuralFeature.setDerived(property.isDerived());
+
+				if (property.isDerived()) {
+					eStructuralFeature.setDerived(true);
+
+					if (eStructuralFeature instanceof EReference) {
+						EReference eOpposite = ((EReference) eStructuralFeature)
+							.getEOpposite();
+
+						if (null != eOpposite && !eOpposite.isDerived()) {
+							eOpposite.setDerived(true);
+						}
+					}
+				}
 
 				if (property.getUpper() != eStructuralFeature.getUpperBound()) {
 					eStructuralFeature.setUpperBound(property.getUpper());
@@ -1103,47 +1236,6 @@ public class UML2Util {
 				eStructuralFeature.setUnique(property.isUnique());
 
 				eStructuralFeature.setEType(getEType(property));
-
-				if (property.isDerivedUnion()) {
-					getEAnnotation(eStructuralFeature,
-						ANNOTATION_SOURCE__UNION, true);
-				}
-
-				if (!property.getSubsettedProperties().isEmpty()) {
-					EAnnotation subsetsAnnotation = getEAnnotation(
-						eStructuralFeature, ANNOTATION_SOURCE__SUBSETS, true);
-
-					for (Iterator subsettedProperties = property
-						.getSubsettedProperties().iterator(); subsettedProperties
-						.hasNext();) {
-
-						Property subsettedProperty = (Property) subsettedProperties
-							.next();
-
-						if (subsettedProperty.isNavigable()) {
-							subsetsAnnotation.getReferences().add(
-								doSwitch(subsettedProperty));
-						}
-					}
-				}
-
-				if (!property.getRedefinedProperties().isEmpty()) {
-					EAnnotation redefinesAnnotation = getEAnnotation(
-						eStructuralFeature, ANNOTATION_SOURCE__REDEFINES, true);
-
-					for (Iterator redefinedProperties = property
-						.getRedefinedProperties().iterator(); redefinedProperties
-						.hasNext();) {
-
-						Property redefinedProperty = (Property) redefinedProperties
-							.next();
-
-						if (redefinedProperty.isNavigable()) {
-							redefinesAnnotation.getReferences().add(
-								doSwitch(redefinedProperty));
-						}
-					}
-				}
 
 				convertTaggedValues(property, eStructuralFeature);
 
@@ -1175,35 +1267,980 @@ public class UML2Util {
 		 * @see org.eclipse.uml2.util.UML2Switch#doSwitch(org.eclipse.emf.ecore.EObject)
 		 */
 		public Object doSwitch(EObject eObject) {
-			Object eModelElement = eModelElementMap.get(eObject);
+			Object eModelElement = elementToEModelElementMap.get(eObject);
 
 			return null == eModelElement
 				? super.doSwitch(eObject)
 				: eModelElement;
 		}
 
-		protected void processOptions(org.eclipse.uml2.Package package_,
-				final Map options, final DiagnosticChain diagnostics,
-				final Map context) {
+		protected void processDerivedFeatures(Map options,
+				DiagnosticChain diagnostics, Map context) {
 
-			new UML2Switch() {
+			for (Iterator eModelElements = elementToEModelElementMap.values()
+				.iterator(); eModelElements.hasNext();) {
 
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.uml2.util.UML2Switch#defaultCase(org.eclipse.emf.ecore.EObject)
-				 */
-				public Object defaultCase(EObject eObject) {
+				EModelElement eModelElement = (EModelElement) eModelElements
+					.next();
 
-					for (Iterator eContents = eObject.eContents().iterator(); eContents
-						.hasNext();) {
+				if (eModelElement instanceof EStructuralFeature) {
+					EStructuralFeature eStructuralFeature = (EStructuralFeature) eModelElement;
 
-						doSwitch((EObject) eContents.next());
+					if (eStructuralFeature.isDerived()
+						&& !(eStructuralFeature.isTransient() && eStructuralFeature
+							.isVolatile())) {
+
+						if (OPTION__PROCESS == options
+							.get(OPTION__DERIVED_FEATURES)) {
+
+							if (null != diagnostics) {
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.INFO,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										DERIVED_FEATURE,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_UML22EcoreConverter_ProcessDerivedFeature_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, eStructuralFeature)),
+										new Object[]{eStructuralFeature}));
+							}
+
+							eStructuralFeature.setTransient(true);
+							eStructuralFeature.setVolatile(true);
+						} else if (OPTION__REPORT == options
+							.get(OPTION__DERIVED_FEATURES)
+							&& null != diagnostics) {
+
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UML2Validator.DIAGNOSTIC_SOURCE,
+									DERIVED_FEATURE,
+									UML2Plugin.INSTANCE
+										.getString(
+											"_UI_UML22EcoreConverter_ReportDerivedFeature_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												eStructuralFeature)),
+									new Object[]{eStructuralFeature}));
+						}
+					}
+				}
+			}
+		}
+
+		protected void processDerivedUnionProperties(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator entries = elementToEModelElementMap.entrySet()
+				.iterator(); entries.hasNext();) {
+
+				Map.Entry entry = (Map.Entry) entries.next();
+				EModelElement eModelElement = (EModelElement) entry.getValue();
+
+				if (eModelElement instanceof EStructuralFeature
+					&& ((Property) entry.getKey()).isDerivedUnion()) {
+
+					if (OPTION__PROCESS == options
+						.get(OPTION__DERIVED_UNION_PROPERTIES)) {
+
+						if (null != diagnostics) {
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.INFO,
+									UML2Validator.DIAGNOSTIC_SOURCE,
+									DERIVED_UNION_PROPERTY,
+									UML2Plugin.INSTANCE
+										.getString(
+											"_UI_UML22EcoreConverter_ProcessDerivedUnionProperty_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												eModelElement)),
+									new Object[]{eModelElement}));
+						}
+
+						getEAnnotation(eModelElement, ANNOTATION_SOURCE__UNION,
+							true);
+					} else if (OPTION__REPORT == options
+						.get(OPTION__DERIVED_UNION_PROPERTIES)
+						&& null != diagnostics) {
+
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UML2Validator.DIAGNOSTIC_SOURCE,
+								DERIVED_UNION_PROPERTY,
+								UML2Plugin.INSTANCE
+									.getString(
+										"_UI_UML22EcoreConverter_ReportDerivedUnionProperty_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eModelElement)),
+								new Object[]{eModelElement}));
+					}
+				}
+			}
+		}
+
+		protected void processRedefiningProperties(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator entries = elementToEModelElementMap.entrySet()
+				.iterator(); entries.hasNext();) {
+
+				Map.Entry entry = (Map.Entry) entries.next();
+				EModelElement eModelElement = (EModelElement) entry.getValue();
+
+				if (eModelElement instanceof EStructuralFeature) {
+					Property property = (Property) entry.getKey();
+
+					if (!property.getRedefinedProperties().isEmpty()) {
+
+						if (OPTION__PROCESS == options
+							.get(OPTION__REDEFINING_PROPERTIES)) {
+
+							if (null != diagnostics) {
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.INFO,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										REDEFINING_PROPERTY,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_UML22EcoreConverter_ProcessRedefiningProperty_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, eModelElement)),
+										new Object[]{eModelElement}));
+							}
+
+							EAnnotation redefinesAnnotation = getEAnnotation(
+								eModelElement, ANNOTATION_SOURCE__REDEFINES,
+								true);
+
+							for (Iterator redefinedProperties = property
+								.getRedefinedProperties().iterator(); redefinedProperties
+								.hasNext();) {
+
+								Property redefinedProperty = (Property) redefinedProperties
+									.next();
+
+								if (null == redefinedProperty.getAssociation()
+									|| redefinedProperty.isNavigable()) {
+
+									redefinesAnnotation.getReferences().add(
+										elementToEModelElementMap
+											.get(redefinedProperty));
+								}
+							}
+						} else if (OPTION__REPORT == options
+							.get(OPTION__REDEFINING_PROPERTIES)
+							&& null != diagnostics) {
+
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UML2Validator.DIAGNOSTIC_SOURCE,
+									REDEFINING_PROPERTY,
+									UML2Plugin.INSTANCE
+										.getString(
+											"_UI_UML22EcoreConverter_ReportRedefiningProperty_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												eModelElement)),
+									new Object[]{eModelElement}));
+						}
+					}
+				}
+			}
+		}
+
+		protected void processSubsettingProperties(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator entries = elementToEModelElementMap.entrySet()
+				.iterator(); entries.hasNext();) {
+
+				Map.Entry entry = (Map.Entry) entries.next();
+				EModelElement eModelElement = (EModelElement) entry.getValue();
+
+				if (eModelElement instanceof EStructuralFeature) {
+					Property property = (Property) entry.getKey();
+
+					if (!property.getSubsettedProperties().isEmpty()) {
+
+						if (OPTION__PROCESS == options
+							.get(OPTION__SUBSETTING_PROPERTIES)) {
+
+							if (null != diagnostics) {
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.INFO,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										SUBSETTING_PROPERTY,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_UML22EcoreConverter_ProcessSubsettingProperty_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, eModelElement)),
+										new Object[]{eModelElement}));
+							}
+
+							EAnnotation subsetsAnnotation = getEAnnotation(
+								eModelElement, ANNOTATION_SOURCE__SUBSETS, true);
+
+							for (Iterator subsettedProperties = property
+								.getSubsettedProperties().iterator(); subsettedProperties
+								.hasNext();) {
+
+								Property subsettedProperty = (Property) subsettedProperties
+									.next();
+
+								if (null == subsettedProperty.getAssociation()
+									|| subsettedProperty.isNavigable()) {
+
+									subsetsAnnotation.getReferences().add(
+										elementToEModelElementMap
+											.get(subsettedProperty));
+								}
+							}
+						} else if (OPTION__REPORT == options
+							.get(OPTION__SUBSETTING_PROPERTIES)
+							&& null != diagnostics) {
+
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UML2Validator.DIAGNOSTIC_SOURCE,
+									SUBSETTING_PROPERTY,
+									UML2Plugin.INSTANCE
+										.getString(
+											"_UI_UML22EcoreConverter_ReportSubsettingProperty_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												eModelElement)),
+									new Object[]{eModelElement}));
+						}
+					}
+				}
+			}
+		}
+
+		protected void ensureConformity(ETypedElement duplicateETypedElement,
+				ETypedElement originalETypedElement) {
+
+			if (!duplicateETypedElement.eIsSet(EcorePackage.eINSTANCE
+				.getENamedElement_Name())) {
+
+				duplicateETypedElement.setName(originalETypedElement.getName());
+			}
+
+			if (duplicateETypedElement.eIsSet(EcorePackage.eINSTANCE
+				.getETypedElement_EType())) {
+
+				EClassifier commonEType = getCommonEType(originalETypedElement
+					.getEType(), duplicateETypedElement.getEType());
+
+				if (commonEType != originalETypedElement.getEType()) {
+					originalETypedElement.setEType(commonEType);
+				}
+
+				if (commonEType != duplicateETypedElement) {
+					duplicateETypedElement.setEType(commonEType);
+				}
+			} else {
+				duplicateETypedElement.setEType(originalETypedElement
+					.getEType());
+			}
+
+			if (duplicateETypedElement.eIsSet(EcorePackage.eINSTANCE
+				.getETypedElement_LowerBound())) {
+
+				int lesserLowerBound = getLesserLowerBound(
+					originalETypedElement.getLowerBound(),
+					duplicateETypedElement.getLowerBound());
+
+				if (lesserLowerBound != originalETypedElement.getLowerBound()) {
+					originalETypedElement.setLowerBound(lesserLowerBound);
+				}
+
+				if (lesserLowerBound != duplicateETypedElement.getLowerBound()) {
+					duplicateETypedElement.setLowerBound(lesserLowerBound);
+				}
+			} else {
+				duplicateETypedElement.setLowerBound(originalETypedElement
+					.getLowerBound());
+			}
+
+			if (duplicateETypedElement.eIsSet(EcorePackage.eINSTANCE
+				.getETypedElement_UpperBound())) {
+
+				int greaterUpperBound = getGreaterUpperBound(
+					originalETypedElement.getUpperBound(),
+					duplicateETypedElement.getUpperBound());
+
+				if (greaterUpperBound != originalETypedElement.getUpperBound()) {
+					originalETypedElement.setUpperBound(greaterUpperBound);
+				}
+
+				if (greaterUpperBound != duplicateETypedElement.getUpperBound()) {
+					duplicateETypedElement.setUpperBound(greaterUpperBound);
+				}
+			} else {
+				duplicateETypedElement.setUpperBound(originalETypedElement
+					.getUpperBound());
+			}
+
+			duplicateETypedElement
+				.setOrdered(originalETypedElement.isOrdered());
+
+			duplicateETypedElement.setUnique(originalETypedElement.isUnique());
+		}
+
+		protected void qualifyName(ENamedElement eNamedElement) {
+			EObject eContainer = eNamedElement.eContainer();
+
+			if (eContainer instanceof ENamedElement) {
+				eNamedElement.setName(((ENamedElement) eContainer).getName()
+					+ '_' + eNamedElement.getName());
+			}
+		}
+
+		protected void processDuplicateOperations(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator eModelElements = elementToEModelElementMap.values()
+				.iterator(); eModelElements.hasNext();) {
+
+				EModelElement eModelElement = (EModelElement) eModelElements
+					.next();
+
+				if (eModelElement instanceof EClass) {
+					EClass eClass = (EClass) eModelElement;
+
+					for (Iterator eOperations = eClass.getEOperations()
+						.iterator(); eOperations.hasNext();) {
+
+						EOperation eOperation = (EOperation) eOperations.next();
+
+						for (Iterator eAllOperations = eClass
+							.getEAllOperations().iterator(); eAllOperations
+							.hasNext();) {
+
+							EOperation eAllOperation = (EOperation) eAllOperations
+								.next();
+
+							if (eOperation == eAllOperation) {
+								break;
+							} else if (new SignatureMatcher(eOperation)
+								.matches(eAllOperation)) {
+
+								if (OPTION__PROCESS == options
+									.get(OPTION__DUPLICATE_OPERATIONS)) {
+
+									if (null != diagnostics) {
+										diagnostics
+											.add(new BasicDiagnostic(
+												Diagnostic.INFO,
+												UML2Validator.DIAGNOSTIC_SOURCE,
+												DUPLICATE_OPERATION,
+												UML2Plugin.INSTANCE
+													.getString(
+														"_UI_UML22EcoreConverter_ProcessDuplicateOperation_diagnostic", //$NON-NLS-1$
+														getMessageSubstitutions(
+															context,
+															eOperation,
+															eAllOperation)),
+												new Object[]{eClass,
+													eAllOperation}));
+									}
+
+									ensureConformity(eOperation, eAllOperation);
+								} else if (OPTION__DISCARD == options
+									.get(OPTION__DUPLICATE_OPERATIONS)) {
+
+									if (null != diagnostics) {
+										diagnostics
+											.add(new BasicDiagnostic(
+												Diagnostic.WARNING,
+												UML2Validator.DIAGNOSTIC_SOURCE,
+												DUPLICATE_OPERATION,
+												UML2Plugin.INSTANCE
+													.getString(
+														"_UI_UML22EcoreConverter_DiscardDuplicateOperation_diagnostic", //$NON-NLS-1$
+														getMessageSubstitutions(
+															context,
+															eOperation,
+															eAllOperation)),
+												new Object[]{eClass,
+													eAllOperation}));
+									}
+
+									eOperations.remove();
+									break;
+								} else if (OPTION__REPORT == options
+									.get(OPTION__DUPLICATE_OPERATIONS)
+									&& null != diagnostics) {
+
+									diagnostics
+										.add(new BasicDiagnostic(
+											Diagnostic.WARNING,
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											DUPLICATE_OPERATION,
+											UML2Plugin.INSTANCE
+												.getString(
+													"_UI_UML22EcoreConverter_ReportDuplicateOperation_diagnostic", //$NON-NLS-1$
+													getMessageSubstitutions(
+														context, eOperation,
+														eAllOperation)),
+											new Object[]{eOperation,
+												eAllOperation}));
+								}
+							}
+						}
 					}
 
-					return super.defaultCase(eObject);
 				}
-			}.doSwitch(package_);
+			}
+		}
+
+		protected void processDuplicateOperationInheritance(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator eModelElements = elementToEModelElementMap.values()
+				.iterator(); eModelElements.hasNext();) {
+
+				EModelElement eModelElement = (EModelElement) eModelElements
+					.next();
+
+				if (eModelElement instanceof EClass) {
+					EClass eClass = (EClass) eModelElement;
+
+					if (eClass.getESuperTypes().size() > 1) {
+						Iterator eSuperTypes = eClass.getESuperTypes()
+							.iterator();
+						eSuperTypes.next();
+
+						while (eSuperTypes.hasNext()) {
+							EClass mixinEClass = (EClass) eSuperTypes.next();
+
+							mixinEOperationsLoop : for (Iterator mixinEOperations = mixinEClass
+								.getEAllOperations().iterator(); mixinEOperations
+								.hasNext();) {
+
+								EOperation mixinEOperation = (EOperation) mixinEOperations
+									.next();
+
+								for (Iterator eOperations = eClass
+									.getEAllOperations().iterator(); eOperations
+									.hasNext();) {
+
+									EOperation eOperation = (EOperation) eOperations
+										.next();
+
+									if (mixinEOperation == eOperation) {
+										break;
+									} else if (new SignatureMatcher(
+										mixinEOperation).matches(eOperation)) {
+
+										if (OPTION__PROCESS == options
+											.get(OPTION__DUPLICATE_OPERATION_INHERITANCE)) {
+
+											if (null != diagnostics) {
+												diagnostics
+													.add(new BasicDiagnostic(
+														Diagnostic.INFO,
+														UML2Validator.DIAGNOSTIC_SOURCE,
+														DUPLICATE_OPERATION_INHERITANCE,
+														UML2Plugin.INSTANCE
+															.getString(
+																"_UI_UML22EcoreConverter_ProcessDuplicateOperationInheritance_diagnostic", //$NON-NLS-1$
+																getMessageSubstitutions(
+																	context,
+																	eClass,
+																	eOperation,
+																	mixinEOperation)),
+														new Object[]{eClass,
+															eOperation,
+															mixinEOperation}));
+											}
+
+											qualifyName(mixinEOperation);
+										} else if (OPTION__DISCARD == options
+											.get(OPTION__DUPLICATE_OPERATION_INHERITANCE)) {
+
+											if (null != diagnostics) {
+												diagnostics
+													.add(new BasicDiagnostic(
+														Diagnostic.WARNING,
+														UML2Validator.DIAGNOSTIC_SOURCE,
+														DUPLICATE_OPERATION_INHERITANCE,
+														UML2Plugin.INSTANCE
+															.getString(
+																"_UI_UML22EcoreConverter_DiscardDuplicateOperationInheritance_diagnostic", //$NON-NLS-1$
+																getMessageSubstitutions(
+																	context,
+																	eClass,
+																	eOperation,
+																	mixinEOperation)),
+														new Object[]{eClass,
+															eOperation,
+															mixinEOperation}));
+											}
+
+											eSuperTypes.remove();
+											break mixinEOperationsLoop;
+										} else if (OPTION__REPORT == options
+											.get(OPTION__DUPLICATE_OPERATION_INHERITANCE)
+											&& null != diagnostics) {
+
+											diagnostics
+												.add(new BasicDiagnostic(
+													Diagnostic.ERROR,
+													UML2Validator.DIAGNOSTIC_SOURCE,
+													DUPLICATE_OPERATION_INHERITANCE,
+													UML2Plugin.INSTANCE
+														.getString(
+															"_UI_UML22EcoreConverter_ReportDuplicateOperationInheritance_diagnostic", //$NON-NLS-1$
+															getMessageSubstitutions(
+																context,
+																eClass,
+																eOperation,
+																mixinEOperation)),
+													new Object[]{eClass,
+														eOperation,
+														mixinEOperation}));
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		protected void processDuplicateFeatures(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			List eOppositesToRemove = new ArrayList();
+
+			for (Iterator eModelElements = elementToEModelElementMap.values()
+				.iterator(); eModelElements.hasNext();) {
+
+				EModelElement eModelElement = (EModelElement) eModelElements
+					.next();
+
+				if (eModelElement instanceof EClass) {
+					EClass eClass = (EClass) eModelElement;
+
+					for (Iterator eStructuralFeatures = eClass
+						.getEStructuralFeatures().iterator(); eStructuralFeatures
+						.hasNext();) {
+
+						EStructuralFeature eStructuralFeature = (EStructuralFeature) eStructuralFeatures
+							.next();
+
+						for (Iterator eAllStructuralFeatures = eClass
+							.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
+							.hasNext();) {
+
+							EStructuralFeature eAllStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
+								.next();
+
+							if (eStructuralFeature == eAllStructuralFeature) {
+								break;
+							} else if (new NameMatcher(eStructuralFeature)
+								.matches(eAllStructuralFeature)) {
+
+								if (OPTION__PROCESS == options
+									.get(OPTION__DUPLICATE_FEATURES)) {
+
+									if (null != diagnostics) {
+										diagnostics
+											.add(new BasicDiagnostic(
+												Diagnostic.INFO,
+												UML2Validator.DIAGNOSTIC_SOURCE,
+												DUPLICATE_FEATURE,
+												UML2Plugin.INSTANCE
+													.getString(
+														"_UI_UML22EcoreConverter_ProcessDuplicateFeature_diagnostic", //$NON-NLS-1$
+														getMessageSubstitutions(
+															context,
+															eStructuralFeature,
+															eAllStructuralFeature)),
+												new Object[]{
+													eStructuralFeature,
+													eAllStructuralFeature}));
+									}
+
+									if (!isObsolete(eStructuralFeature)
+										&& !isObsolete(eAllStructuralFeature)) {
+
+										EStructuralFeature obsoleteEStructuralFeature = eAllStructuralFeature
+											.isDerived()
+											&& !eStructuralFeature.isDerived()
+											? eAllStructuralFeature
+											: eStructuralFeature;
+
+										getEAnnotation(
+											obsoleteEStructuralFeature,
+											ANNOTATION_SOURCE__OBSOLETE, true)
+											.getReferences()
+											.add(
+												obsoleteEStructuralFeature == eStructuralFeature
+													? eAllStructuralFeature
+													: eStructuralFeature);
+
+										if (obsoleteEStructuralFeature instanceof EReference) {
+											EReference eOpposite = ((EReference) obsoleteEStructuralFeature)
+												.getEOpposite();
+
+											if (null != eOpposite) {
+												getEAnnotation(
+													eOpposite,
+													ANNOTATION_SOURCE__OBSOLETE,
+													true);
+											}
+										}
+									}
+
+									getEAnnotation(eStructuralFeature,
+										ANNOTATION_SOURCE__REDEFINES, true)
+										.getReferences().add(
+											eAllStructuralFeature);
+								} else if (OPTION__DISCARD == options
+									.get(OPTION__DUPLICATE_FEATURES)) {
+
+									if (null != diagnostics) {
+										diagnostics
+											.add(new BasicDiagnostic(
+												Diagnostic.WARNING,
+												UML2Validator.DIAGNOSTIC_SOURCE,
+												DUPLICATE_FEATURE,
+												UML2Plugin.INSTANCE
+													.getString(
+														"_UI_UML22EcoreConverter_DiscardDuplicateFeature_diagnostic", //$NON-NLS-1$
+														getMessageSubstitutions(
+															context,
+															eStructuralFeature,
+															eAllStructuralFeature)),
+												new Object[]{eClass,
+													eAllStructuralFeature}));
+									}
+
+									if (eStructuralFeature instanceof EReference) {
+										EReference eOpposite = ((EReference) eStructuralFeature)
+											.getEOpposite();
+
+										if (null != eOpposite) {
+											eOppositesToRemove.add(eOpposite);
+										}
+									}
+
+									eStructuralFeatures.remove();
+									break;
+								} else if (OPTION__REPORT == options
+									.get(OPTION__DUPLICATE_FEATURES)
+									&& null != diagnostics) {
+
+									diagnostics
+										.add(new BasicDiagnostic(
+											Diagnostic.ERROR,
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											DUPLICATE_FEATURE,
+											UML2Plugin.INSTANCE
+												.getString(
+													"_UI_UML22EcoreConverter_ReportDuplicateFeature_diagnostic", //$NON-NLS-1$
+													getMessageSubstitutions(
+														context,
+														eStructuralFeature,
+														eAllStructuralFeature)),
+											new Object[]{eStructuralFeature,
+												eAllStructuralFeature}));
+								}
+							}
+						}
+					}
+				}
+			}
+
+			for (Iterator eStructuralFeatures = eOppositesToRemove.iterator(); eStructuralFeatures
+				.hasNext();) {
+
+				EStructuralFeature eStructuralFeature = (EStructuralFeature) eStructuralFeatures
+					.next();
+				EClass eContainingClass = eStructuralFeature
+					.getEContainingClass();
+
+				if (null != eContainingClass) {
+					eContainingClass.getEStructuralFeatures().remove(
+						eStructuralFeature);
+				}
+			}
+		}
+
+		protected void processDuplicateFeatureInheritance(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator eModelElements = elementToEModelElementMap.values()
+				.iterator(); eModelElements.hasNext();) {
+
+				EModelElement eModelElement = (EModelElement) eModelElements
+					.next();
+
+				if (eModelElement instanceof EClass) {
+					EClass eClass = (EClass) eModelElement;
+
+					if (eClass.getESuperTypes().size() > 1) {
+						Iterator eSuperTypes = eClass.getESuperTypes()
+							.iterator();
+						eSuperTypes.next();
+
+						while (eSuperTypes.hasNext()) {
+							EClass mixinEClass = (EClass) eSuperTypes.next();
+
+							mixinEStructuralFeaturesLoop : for (Iterator mixinEStructuralFeatures = mixinEClass
+								.getEAllStructuralFeatures().iterator(); mixinEStructuralFeatures
+								.hasNext();) {
+
+								EStructuralFeature mixinEStructuralFeature = (EStructuralFeature) mixinEStructuralFeatures
+									.next();
+
+								for (Iterator eStructuralFeatures = eClass
+									.getEAllStructuralFeatures().iterator(); eStructuralFeatures
+									.hasNext();) {
+
+									EStructuralFeature eStructuralFeature = (EStructuralFeature) eStructuralFeatures
+										.next();
+
+									if (mixinEStructuralFeature == eStructuralFeature) {
+										break;
+									} else if (new NameMatcher(
+										mixinEStructuralFeature)
+										.matches(eStructuralFeature)) {
+
+										if (OPTION__PROCESS == options
+											.get(OPTION__DUPLICATE_FEATURE_INHERITANCE)
+											&& !isObsolete(eStructuralFeature)
+											&& !isObsolete(mixinEStructuralFeature)) {
+
+											if (null != diagnostics) {
+												diagnostics
+													.add(new BasicDiagnostic(
+														Diagnostic.INFO,
+														UML2Validator.DIAGNOSTIC_SOURCE,
+														DUPLICATE_FEATURE_INHERITANCE,
+														UML2Plugin.INSTANCE
+															.getString(
+																"_UI_UML22EcoreConverter_ProcessDuplicateFeatureInheritance_diagnostic", //$NON-NLS-1$
+																getMessageSubstitutions(
+																	context,
+																	eClass,
+																	eStructuralFeature,
+																	mixinEStructuralFeature)),
+														new Object[]{eClass,
+															eStructuralFeature,
+															mixinEStructuralFeature}));
+											}
+
+											qualifyName(mixinEStructuralFeature);
+										} else if (OPTION__DISCARD == options
+											.get(OPTION__DUPLICATE_FEATURE_INHERITANCE)) {
+
+											if (null != diagnostics) {
+												diagnostics
+													.add(new BasicDiagnostic(
+														Diagnostic.WARNING,
+														UML2Validator.DIAGNOSTIC_SOURCE,
+														DUPLICATE_FEATURE_INHERITANCE,
+														UML2Plugin.INSTANCE
+															.getString(
+																"_UI_UML22EcoreConverter_DiscardDuplicateFeatureInheritance_diagnostic", //$NON-NLS-1$
+																getMessageSubstitutions(
+																	context,
+																	eClass,
+																	eStructuralFeature,
+																	mixinEStructuralFeature)),
+														new Object[]{eClass,
+															eStructuralFeature,
+															mixinEStructuralFeature}));
+											}
+
+											eSuperTypes.remove();
+											break mixinEStructuralFeaturesLoop;
+										} else if (OPTION__REPORT == options
+											.get(OPTION__DUPLICATE_FEATURE_INHERITANCE)
+											&& null != diagnostics) {
+
+											diagnostics
+												.add(new BasicDiagnostic(
+													Diagnostic.ERROR,
+													UML2Validator.DIAGNOSTIC_SOURCE,
+													DUPLICATE_FEATURE_INHERITANCE,
+													UML2Plugin.INSTANCE
+														.getString(
+															"_UI_UML22EcoreConverter_ReportDuplicateFeatureInheritance_diagnostic", //$NON-NLS-1$
+															getMessageSubstitutions(
+																context,
+																eClass,
+																eStructuralFeature,
+																mixinEStructuralFeature)),
+													new Object[]{eClass,
+														eStructuralFeature,
+														mixinEStructuralFeature}));
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		protected void processObsoleteFeatures(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator eModelElements = elementToEModelElementMap.values()
+				.iterator(); eModelElements.hasNext();) {
+
+				EModelElement eModelElement = (EModelElement) eModelElements
+					.next();
+
+				if (eModelElement instanceof EClass) {
+					EClass eClass = (EClass) eModelElement;
+
+					for (Iterator eStructuralFeatures = eClass
+						.getEStructuralFeatures().iterator(); eStructuralFeatures
+						.hasNext();) {
+
+						EStructuralFeature eStructuralFeature = (EStructuralFeature) eStructuralFeatures
+							.next();
+
+						if (isObsolete(eStructuralFeature)) {
+
+							if (OPTION__PROCESS == options
+								.get(OPTION__OBSOLETE_FEATURES)) {
+
+								if (null != diagnostics) {
+									diagnostics
+										.add(new BasicDiagnostic(
+											Diagnostic.INFO,
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											OBSOLETE_FEATURE,
+											UML2Plugin.INSTANCE
+												.getString(
+													"_UI_UML22EcoreConverter_ProcessObsoleteFeature_diagnostic", //$NON-NLS-1$
+													getMessageSubstitutions(
+														context,
+														eStructuralFeature)),
+											new Object[]{eStructuralFeature}));
+								}
+
+								eStructuralFeatures.remove();
+
+								EOperation eOperation = EcoreFactory.eINSTANCE
+									.createEOperation();
+
+								ensureConformity(eOperation, eStructuralFeature);
+
+								for (Iterator references = getEAnnotation(
+									eStructuralFeature,
+									ANNOTATION_SOURCE__OBSOLETE, false)
+									.getReferences().iterator(); references
+									.hasNext();) {
+
+									ensureConformity(eOperation,
+										(EStructuralFeature) references.next());
+								}
+
+								eClass.getEOperations().add(eOperation);
+
+								getEAnnotation(eOperation,
+									ANNOTATION_SOURCE__FEATURE, true)
+									.getContents().add(eStructuralFeature);
+							} else if (OPTION__DISCARD == options
+								.get(OPTION__OBSOLETE_FEATURES)) {
+
+								if (null != diagnostics) {
+									diagnostics
+										.add(new BasicDiagnostic(
+											Diagnostic.WARNING,
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											OBSOLETE_FEATURE,
+											UML2Plugin.INSTANCE
+												.getString(
+													"_UI_UML22EcoreConverter_DiscardObsoleteFeature_diagnostic", //$NON-NLS-1$
+													getMessageSubstitutions(
+														context,
+														eStructuralFeature)),
+											new Object[]{eClass}));
+								}
+
+								eStructuralFeatures.remove();
+							} else if (OPTION__REPORT == options
+								.get(OPTION__OBSOLETE_FEATURES)
+								&& null != diagnostics) {
+
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.ERROR,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										OBSOLETE_FEATURE,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_UML22EcoreConverter_ReportObsoleteFeature_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, eStructuralFeature)),
+										new Object[]{eStructuralFeature}));
+							}
+						}
+					}
+				}
+			}
+		}
+
+		protected void processOptions(Map options, DiagnosticChain diagnostics,
+				Map context) {
+
+			if (OPTION__IGNORE != options.get(OPTION__DERIVED_FEATURES)) {
+				processDerivedFeatures(options, diagnostics, context);
+			}
+
+			if (OPTION__IGNORE != options.get(OPTION__DERIVED_UNION_PROPERTIES)) {
+				processDerivedUnionProperties(options, diagnostics, context);
+			}
+
+			if (OPTION__IGNORE != options.get(OPTION__REDEFINING_PROPERTIES)) {
+				processRedefiningProperties(options, diagnostics, context);
+			}
+
+			if (OPTION__IGNORE != options.get(OPTION__SUBSETTING_PROPERTIES)) {
+				processSubsettingProperties(options, diagnostics, context);
+			}
+
+			if (OPTION__IGNORE != options.get(OPTION__DUPLICATE_OPERATIONS)) {
+				processDuplicateOperations(options, diagnostics, context);
+			}
+
+			if (OPTION__IGNORE != options
+				.get(OPTION__DUPLICATE_OPERATION_INHERITANCE)) {
+
+				processDuplicateOperationInheritance(options, diagnostics,
+					context);
+			}
+
+			if (OPTION__IGNORE != options.get(OPTION__DUPLICATE_FEATURES)) {
+				processDuplicateFeatures(options, diagnostics, context);
+			}
+
+			if (OPTION__IGNORE != options
+				.get(OPTION__DUPLICATE_FEATURE_INHERITANCE)) {
+
+				processDuplicateFeatureInheritance(options, diagnostics,
+					context);
+			}
+
+			if (OPTION__IGNORE != options.get(OPTION__OBSOLETE_FEATURES)) {
+				processObsoleteFeatures(options, diagnostics, context);
+			}
 		}
 
 		/*
@@ -1218,19 +2255,16 @@ public class UML2Util {
 				UML2Package.eINSTANCE.getPackage());
 
 			for (Iterator i = packages.iterator(); i.hasNext();) {
-				org.eclipse.uml2.Package package_ = (org.eclipse.uml2.Package) i
-					.next();
-
-				doSwitch(package_);
-
-				if (null != options) {
-					processOptions(package_, options, diagnostics, context);
-				}
+				doSwitch((org.eclipse.uml2.Package) i.next());
 			}
 
-			return getRootContainers(EcoreUtil
-				.getObjectsByType(eModelElementMap.values(),
-					EcorePackage.eINSTANCE.getEPackage()));
+			if (null != options) {
+				processOptions(options, diagnostics, context);
+			}
+
+			return getRootContainers(EcoreUtil.getObjectsByType(
+				elementToEModelElementMap.values(), EcorePackage.eINSTANCE
+					.getEPackage()));
 		}
 
 	}
@@ -1241,27 +2275,27 @@ public class UML2Util {
 
 	}
 
+	protected static class EClassMatcher
+			implements EObjectMatcher {
+
+		protected final EObject eObject;
+
+		protected EClassMatcher(EObject eObject) {
+			super();
+
+			this.eObject = eObject;
+		}
+
+		public boolean matches(EObject otherEObject) {
+
+			return null == eObject || null == otherEObject
+				? null == eObject && null == otherEObject
+				: eObject.eClass() == otherEObject.eClass();
+		}
+	}
+
 	public static class PackageMerger
 			extends EcoreUtil.Copier {
-
-		protected class EClassMatcher
-				implements EObjectMatcher {
-
-			protected final EObject eObject;
-
-			protected EClassMatcher(EObject eObject) {
-				super();
-
-				this.eObject = eObject;
-			}
-
-			public boolean matches(EObject otherEObject) {
-
-				return null == eObject || null == otherEObject
-					? null == eObject && null == otherEObject
-					: eObject.eClass() == otherEObject.eClass();
-			}
-		}
 
 		protected class BodyMatcher
 				extends EClassMatcher {
@@ -1377,7 +2411,11 @@ public class UML2Util {
 
 		public static final String OPTION__DIFFERENT_PROPERTY_UNIQUENESS = "DIFFERENT_PROPERTY_UNIQUENESS"; //$NON-NLS-1$
 
-		public static final String OPTION__REDUNDANT_GENERALIZATION = "REDUNDANT_GENERALIZATION"; //$NON-NLS-1$
+		public static final String OPTION__REDUNDANT_GENERALIZATIONS = "REDUNDANT_GENERALIZATIONS"; //$NON-NLS-1$
+
+		public static final String OPTION__INVALID_REDEFINITIONS = "INVALID_REDEFINITIONS"; //$NON-NLS-1$
+
+		public static final String OPTION__INVALID_SUBSETS = "INVALID_SUBSETS"; //$NON-NLS-1$
 
 		private static final int DIAGNOSTIC_CODE_OFFSET = 1000;
 
@@ -1386,6 +2424,10 @@ public class UML2Util {
 		public static final int DIFFERENT_PROPERTY_UNIQUENESS = DIAGNOSTIC_CODE_OFFSET + 2;
 
 		public static final int REDUNDANT_GENERALIZATION = DIAGNOSTIC_CODE_OFFSET + 3;
+
+		public static final int INVALID_REDEFINITION = DIAGNOSTIC_CODE_OFFSET + 4;
+
+		public static final int INVALID_SUBSET = DIAGNOSTIC_CODE_OFFSET + 5;
 
 		protected org.eclipse.uml2.Package receivingPackage = null;
 
@@ -1461,22 +2503,18 @@ public class UML2Util {
 				LiteralInteger receivingLiteralInteger,
 				LiteralInteger mergedLiteralInteger) {
 
-			receivingLiteralInteger.setValue(Math.min(receivingLiteralInteger
-				.getValue(), mergedLiteralInteger.getValue()));
+			receivingLiteralInteger.setValue(getLesserLowerBound(
+				receivingLiteralInteger.getValue(), mergedLiteralInteger
+					.getValue()));
 		}
 
 		protected void mergeLiteralUnlimitedNatural_Value(
 				LiteralUnlimitedNatural receivingLiteralUnlimitedNatural,
 				LiteralUnlimitedNatural mergedLiteralUnlimitedNatural) {
 
-			receivingLiteralUnlimitedNatural
-				.setValue(MultiplicityElement.UNLIMITED_UPPER_BOUND == receivingLiteralUnlimitedNatural
-					.getValue()
-					|| MultiplicityElement.UNLIMITED_UPPER_BOUND == mergedLiteralUnlimitedNatural
-						.getValue()
-					? MultiplicityElement.UNLIMITED_UPPER_BOUND
-					: Math.max(receivingLiteralUnlimitedNatural.getValue(),
-						mergedLiteralUnlimitedNatural.getValue()));
+			receivingLiteralUnlimitedNatural.setValue(getGreaterUpperBound(
+				receivingLiteralUnlimitedNatural.getValue(),
+				mergedLiteralUnlimitedNatural.getValue()));
 		}
 
 		protected void mergeMultiplicityElement_IsOrdered(
@@ -1667,7 +2705,9 @@ public class UML2Util {
 								targetList.addUnique(index++,
 									copyReferencedEObject);
 							} else if (index != position) {
-								targetList.move(index++, copyReferencedEObject);
+								targetList.move(index < targetList.size()
+									? index++
+									: --index, copyReferencedEObject);
 							}
 						} else if (!targetList.contains(copyReferencedEObject)) {
 							targetList.add(index++, copyReferencedEObject);
@@ -1979,168 +3019,375 @@ public class UML2Util {
 			}
 		}
 
-		protected void processOptions(org.eclipse.uml2.Package package_,
-				final Map options, final DiagnosticChain diagnostics,
-				final Map context) {
+		protected void processDifferentPropertyStaticity(Map options,
+				DiagnosticChain diagnostics, Map context) {
 
-			new UML2Switch() {
+			for (Iterator entries = resultingToMergedEObjectMap.entrySet()
+				.iterator(); entries.hasNext();) {
 
-				public Object caseClassifier(Classifier classifier) {
+				Map.Entry entry = (Map.Entry) entries.next();
+				Object key = entry.getKey();
 
-					if (OPTION__IGNORE != options
-						.get(OPTION__REDUNDANT_GENERALIZATION)) {
+				if (key instanceof Property) {
+					Property property = (Property) key;
 
-						for (Iterator generalizations = new ArrayList(
-							classifier.getGeneralizations()).iterator(); generalizations
+					for (Iterator mergedProperties = ((List) entry.getValue())
+						.iterator(); mergedProperties.hasNext();) {
+
+						Property mergedProperty = (Property) mergedProperties
+							.next();
+
+						if (OPTION__REPORT == options
+							.get(OPTION__DIFFERENT_PROPERTY_STATICITY)
+							&& null != diagnostics) {
+
+							if (property.isStatic() != mergedProperty
+								.isStatic()) {
+
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.ERROR,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										DIFFERENT_PROPERTY_STATICITY,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_PackageMerger_ReportDifferentPropertyStaticity_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, property,
+													mergedProperty)),
+										new Object[]{property, mergedProperty}));
+							}
+						}
+					}
+				}
+			}
+		}
+
+		protected void processDifferentPropertyUniqueness(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator entries = resultingToMergedEObjectMap.entrySet()
+				.iterator(); entries.hasNext();) {
+
+				Map.Entry entry = (Map.Entry) entries.next();
+				Object key = entry.getKey();
+
+				if (key instanceof Property) {
+					Property property = (Property) key;
+
+					for (Iterator mergedProperties = ((List) entry.getValue())
+						.iterator(); mergedProperties.hasNext();) {
+
+						Property mergedProperty = (Property) mergedProperties
+							.next();
+
+						if (OPTION__REPORT == options
+							.get(OPTION__DIFFERENT_PROPERTY_UNIQUENESS)
+							&& null != diagnostics) {
+
+							if (property.isUnique() != mergedProperty
+								.isUnique()) {
+
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.ERROR,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										DIFFERENT_PROPERTY_UNIQUENESS,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_PackageMerger_ReportDifferentPropertyUniqueness_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, property,
+													mergedProperty)),
+										new Object[]{property, mergedProperty}));
+							}
+						}
+					}
+				}
+			}
+		}
+
+		protected boolean isRedefinitionValid(Property redefiningProperty,
+				Property redefinedProperty) {
+
+			return (redefinedProperty.isNavigable()
+				? redefiningProperty.isNavigable()
+				: true)
+				&& redefinedProperty.isConsistentWith(redefiningProperty);
+		}
+
+		protected void processInvalidRedefinitions(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator resultingEObjects = resultingToMergedEObjectMap
+				.keySet().iterator(); resultingEObjects.hasNext();) {
+
+				EObject resultingEObject = (EObject) resultingEObjects.next();
+
+				if (resultingEObject instanceof Property) {
+					Property redefiningProperty = (Property) resultingEObject;
+
+					for (Iterator redefinedProperties = redefiningProperty
+						.getRedefinedProperties().iterator(); redefinedProperties
+						.hasNext();) {
+
+						Property redefinedProperty = (Property) redefinedProperties
+							.next();
+
+						if (!isRedefinitionValid(redefiningProperty,
+							redefinedProperty)) {
+
+							if (OPTION__DISCARD == options
+								.get(OPTION__INVALID_REDEFINITIONS)) {
+
+								if (null != diagnostics) {
+									diagnostics
+										.add(new BasicDiagnostic(
+											Diagnostic.INFO,
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											INVALID_REDEFINITION,
+											UML2Plugin.INSTANCE
+												.getString(
+													"_UI_PackageMerger_DiscardInvalidRedefinition_diagnostic", //$NON-NLS-1$
+													getMessageSubstitutions(
+														context,
+														redefiningProperty,
+														redefinedProperty)),
+											new Object[]{redefiningProperty,
+												redefinedProperty}));
+								}
+
+								redefinedProperties.remove();
+							} else if (OPTION__REPORT == options
+								.get(OPTION__INVALID_REDEFINITIONS)
+								&& null != diagnostics) {
+
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.WARNING,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										INVALID_REDEFINITION,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_PackageMerger_ReportInvalidRedefinition_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context,
+													redefiningProperty,
+													redefinedProperty)),
+										new Object[]{redefiningProperty,
+											redefinedProperty}));
+							}
+						}
+					}
+				}
+			}
+		}
+
+		protected boolean isSubsetValid(Property subsettingProperty,
+				Property subsettedProperty) {
+
+			if (subsettedProperty.isNavigable()
+				&& !subsettingProperty.isNavigable()) {
+
+				return false;
+			}
+
+			for (Iterator subsettingContexts = subsettingProperty
+				.subsettingContext().iterator(); subsettingContexts.hasNext();) {
+
+				Classifier subsettingContext = (Classifier) subsettingContexts
+					.next();
+
+				for (Iterator subsettedContexts = subsettedProperty
+					.subsettingContext().iterator(); subsettedContexts
+					.hasNext();) {
+
+					if (!subsettingContext
+						.conformsTo((Classifier) subsettedContexts.next())) {
+
+						return false;
+					}
+				}
+			}
+
+			return true;
+		}
+
+		protected void processInvalidSubsets(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator resultingEObjects = resultingToMergedEObjectMap
+				.keySet().iterator(); resultingEObjects.hasNext();) {
+
+				EObject resultingEObject = (EObject) resultingEObjects.next();
+
+				if (resultingEObject instanceof Property) {
+					Property subsettingProperty = (Property) resultingEObject;
+
+					for (Iterator subsettedProperties = subsettingProperty
+						.getSubsettedProperties().iterator(); subsettedProperties
+						.hasNext();) {
+
+						Property subsettedProperty = (Property) subsettedProperties
+							.next();
+
+						if (!isSubsetValid(subsettingProperty,
+							subsettedProperty)) {
+
+							if (OPTION__DISCARD == options
+								.get(OPTION__INVALID_SUBSETS)) {
+
+								if (null != diagnostics) {
+									diagnostics
+										.add(new BasicDiagnostic(
+											Diagnostic.INFO,
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											INVALID_SUBSET,
+											UML2Plugin.INSTANCE
+												.getString(
+													"_UI_PackageMerger_DiscardInvalidSubset_diagnostic", //$NON-NLS-1$
+													getMessageSubstitutions(
+														context,
+														subsettingProperty,
+														subsettedProperty)),
+											new Object[]{subsettingProperty,
+												subsettedProperty}));
+								}
+
+								subsettedProperties.remove();
+							} else if (OPTION__REPORT == options
+								.get(OPTION__INVALID_SUBSETS)
+								&& null != diagnostics) {
+
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.WARNING,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										INVALID_SUBSET,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_PackageMerger_ReportInvalidSubset_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context,
+													subsettingProperty,
+													subsettedProperty)),
+										new Object[]{subsettingProperty,
+											subsettedProperty}));
+							}
+						}
+					}
+				}
+			}
+		}
+
+		protected void processRedundantGeneralizations(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator resultingEObjects = resultingToMergedEObjectMap
+				.keySet().iterator(); resultingEObjects.hasNext();) {
+
+				EObject resultingEObject = (EObject) resultingEObjects.next();
+
+				if (resultingEObject instanceof Classifier) {
+					Classifier classifier = (Classifier) resultingEObject;
+
+					for (Iterator generalizations = new ArrayList(classifier
+						.getGeneralizations()).iterator(); generalizations
+						.hasNext();) {
+
+						Classifier general = ((Generalization) generalizations
+							.next()).getGeneral();
+
+						for (Iterator otherGeneralizations = classifier
+							.getGeneralizations().iterator(); otherGeneralizations
 							.hasNext();) {
 
-							Classifier general = ((Generalization) generalizations
-								.next()).getGeneral();
+							Generalization otherGeneralization = (Generalization) otherGeneralizations
+								.next();
+							Classifier otherGeneral = otherGeneralization
+								.getGeneral();
 
-							for (Iterator otherGeneralizations = classifier
-								.getGeneralizations().iterator(); otherGeneralizations
-								.hasNext();) {
+							if (general != null && general != otherGeneral
+								&& general.allParents().contains(otherGeneral)) {
 
-								Classifier otherGeneral = ((Generalization) otherGeneralizations
-									.next()).getGeneral();
+								if (OPTION__DISCARD == options
+									.get(OPTION__REDUNDANT_GENERALIZATIONS)) {
 
-								if (general != null
-									&& general != otherGeneral
-									&& general.allParents().contains(
-										otherGeneral)) {
-
-									if (OPTION__DISCARD == options
-										.get(OPTION__REDUNDANT_GENERALIZATION)) {
-
-										if (null != diagnostics) {
-											diagnostics
-												.add(new BasicDiagnostic(
-													Diagnostic.INFO,
-													UML2Validator.DIAGNOSTIC_SOURCE,
-													REDUNDANT_GENERALIZATION,
-													UML2Plugin.INSTANCE
-														.getString(
-															"_UI_PackageMerger_DiscardRedundantGeneralization_diagnostic", //$NON-NLS-1$
-															getMessageSubstitutions(
-																context,
-																classifier,
-																otherGeneral)),
-													new Object[]{classifier,
-														otherGeneral}));
-										}
-
-										otherGeneralizations.remove();
-									} else if (OPTION__REPORT == options
-										.get(OPTION__REDUNDANT_GENERALIZATION)
-										&& null != diagnostics) {
-
+									if (null != diagnostics) {
 										diagnostics
 											.add(new BasicDiagnostic(
-												Diagnostic.WARNING,
+												Diagnostic.INFO,
 												UML2Validator.DIAGNOSTIC_SOURCE,
 												REDUNDANT_GENERALIZATION,
 												UML2Plugin.INSTANCE
 													.getString(
-														"_UI_PackageMerger_ReportRedundantGeneralization_diagnostic", //$NON-NLS-1$
+														"_UI_PackageMerger_DiscardRedundantGeneralization_diagnostic", //$NON-NLS-1$
 														getMessageSubstitutions(
 															context,
 															classifier,
-															general,
-															otherGeneral)),
+															otherGeneral,
+															general)),
 												new Object[]{classifier,
-													general, otherGeneral}));
+													otherGeneral}));
 									}
 
-									break;
+									otherGeneralizations.remove();
+								} else if (OPTION__REPORT == options
+									.get(OPTION__REDUNDANT_GENERALIZATIONS)
+									&& null != diagnostics) {
+
+									diagnostics
+										.add(new BasicDiagnostic(
+											Diagnostic.WARNING,
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											REDUNDANT_GENERALIZATION,
+											UML2Plugin.INSTANCE
+												.getString(
+													"_UI_PackageMerger_ReportRedundantGeneralization_diagnostic", //$NON-NLS-1$
+													getMessageSubstitutions(
+														context, classifier,
+														otherGeneral, general)),
+											new Object[]{classifier,
+												otherGeneral}));
 								}
+
+								break;
 							}
 						}
 					}
-
-					return classifier;
 				}
+			}
+		}
 
-				public Object caseProperty(Property property) {
+		protected void processOptions(Map options, DiagnosticChain diagnostics,
+				Map context) {
 
-					if (OPTION__IGNORE != options
-						.get(OPTION__DIFFERENT_PROPERTY_STATICITY)
-						&& OPTION__IGNORE != options
-							.get(OPTION__DIFFERENT_PROPERTY_UNIQUENESS)) {
-					}
+			if (OPTION__IGNORE != options
+				.get(OPTION__DIFFERENT_PROPERTY_STATICITY)) {
 
-					if (resultingToMergedEObjectMap.containsKey(property)) {
+				processDifferentPropertyStaticity(options, diagnostics, context);
+			}
 
-						for (Iterator mergedProperties = ((List) resultingToMergedEObjectMap
-							.get(property)).iterator(); mergedProperties
-							.hasNext();) {
-							Property mergedProperty = (Property) mergedProperties
-								.next();
+			if (OPTION__IGNORE != options
+				.get(OPTION__DIFFERENT_PROPERTY_UNIQUENESS)) {
 
-							if (OPTION__REPORT == options
-								.get(OPTION__DIFFERENT_PROPERTY_STATICITY)
-								&& null != diagnostics) {
+				processDifferentPropertyUniqueness(options, diagnostics,
+					context);
+			}
 
-								if (property.isStatic() != mergedProperty
-									.isStatic()) {
-									diagnostics
-										.add(new BasicDiagnostic(
-											Diagnostic.ERROR,
-											UML2Validator.DIAGNOSTIC_SOURCE,
-											DIFFERENT_PROPERTY_STATICITY,
-											UML2Plugin.INSTANCE
-												.getString(
-													"_UI_PackageMerger_ReportDifferentPropertyStaticity_diagnostic", //$NON-NLS-1$
-													getMessageSubstitutions(
-														context, property,
-														mergedProperty)),
-											new Object[]{property,
-												mergedProperty}));
-								}
-							}
+			if (OPTION__IGNORE != options
+				.get(OPTION__REDUNDANT_GENERALIZATIONS)) {
 
-							if (OPTION__REPORT == options
-								.get(OPTION__DIFFERENT_PROPERTY_UNIQUENESS)
-								&& null != diagnostics) {
+				processRedundantGeneralizations(options, diagnostics, context);
+			}
 
-								if (property.isUnique() != mergedProperty
-									.isUnique()) {
-									diagnostics
-										.add(new BasicDiagnostic(
-											Diagnostic.ERROR,
-											UML2Validator.DIAGNOSTIC_SOURCE,
-											DIFFERENT_PROPERTY_UNIQUENESS,
-											UML2Plugin.INSTANCE
-												.getString(
-													"_UI_PackageMerger_ReportDifferentPropertyUniqueness_diagnostic", //$NON-NLS-1$
-													getMessageSubstitutions(
-														context, property,
-														mergedProperty)),
-											new Object[]{property,
-												mergedProperty}));
-								}
-							}
-						}
-					}
+			if (OPTION__IGNORE != options.get(OPTION__INVALID_REDEFINITIONS)) {
+				processInvalidRedefinitions(options, diagnostics, context);
+			}
 
-					return property;
-				}
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.uml2.util.UML2Switch#defaultCase(org.eclipse.emf.ecore.EObject)
-				 */
-				public Object defaultCase(EObject eObject) {
-
-					for (Iterator eContents = eObject.eContents().iterator(); eContents
-						.hasNext();) {
-
-						doSwitch((EObject) eContents.next());
-					}
-
-					return super.defaultCase(eObject);
-				}
-			}.doSwitch(package_);
+			if (OPTION__IGNORE != options.get(OPTION__INVALID_SUBSETS)) {
+				processInvalidSubsets(options, diagnostics, context);
+			}
 		}
 
 		public void merge(org.eclipse.uml2.Package package_, Map options,
@@ -2155,13 +3402,16 @@ public class UML2Util {
 			receivingPackage.getPackageMerges().clear();
 
 			if (null != options) {
-				processOptions(package_, options, diagnostics, context);
+				processOptions(options, diagnostics, context);
 			}
 		}
 	}
 
 	protected static boolean DEBUG = false;
 
+	/**
+	 * The empty string.
+	 */
 	protected static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
 	protected static final String LINE_SEPARATOR = System.getProperties()
@@ -2174,6 +3424,12 @@ public class UML2Util {
 	public static final String OPTION__PROCESS = "PROCESS"; //$NON-NLS-1$
 
 	public static final String OPTION__REPORT = "REPORT"; //$NON-NLS-1$
+
+	protected static boolean safeEquals(Object thisObject, Object thatObject) {
+		return null == thisObject
+			? null == thatObject
+			: thisObject.equals(thatObject);
+	}
 
 	protected static boolean isEmpty(String string) {
 		return null == string || 0 == string.length();
@@ -2191,6 +3447,90 @@ public class UML2Util {
 		}
 
 		return null;
+	}
+
+	protected static EClassifier getCommonEType(EClassifier eType,
+			final EClassifier otherEType) {
+
+		if (eType.equals(otherEType)) {
+			return eType;
+		} else {
+			return (EClassifier) new EcoreSwitch() {
+
+				public Object caseEClassifier(EClassifier eClassifier) {
+
+					return EcorePackage.eINSTANCE.getEObject();
+				}
+
+				public Object caseEClass(EClass eClass) {
+
+					if (otherEType instanceof EClass) {
+						EClass otherEClass = (EClass) otherEType;
+
+						if (eClass.isSuperTypeOf(otherEClass)) {
+							return eClass;
+						} else if (otherEClass.isSuperTypeOf(eClass)) {
+
+							return otherEClass;
+						}
+
+						for (Iterator eAllSuperTypes = eClass
+							.getEAllSuperTypes().iterator(); eAllSuperTypes
+							.hasNext();) {
+
+							EClass eSuperType = (EClass) eAllSuperTypes.next();
+
+							if (eSuperType.isSuperTypeOf(otherEClass)) {
+
+								return eSuperType;
+							}
+						}
+
+						for (Iterator otherEAllSuperTypes = otherEClass
+							.getEAllSuperTypes().iterator(); otherEAllSuperTypes
+							.hasNext();) {
+
+							EClass otherESuperType = (EClass) otherEAllSuperTypes
+								.next();
+
+							if (otherESuperType.isSuperTypeOf(eClass)) {
+
+								return otherESuperType;
+							}
+						}
+					}
+
+					return super.caseEClass(eClass);
+				}
+
+				public Object caseEDataType(EDataType eDataType) {
+					return otherEType instanceof EDataType
+						&& eDataType.getInstanceClass().equals(
+							((EDataType) otherEType).getInstanceClass())
+						? eDataType
+						: EcorePackage.eINSTANCE.getEJavaObject();
+				}
+
+				public Object caseEEnum(EEnum eEnum) {
+					return otherEType instanceof EEnum
+						? EcorePackage.eINSTANCE.getEEnumerator()
+						: EcorePackage.eINSTANCE.getEJavaObject();
+				}
+			}.doSwitch(eType);
+		}
+	}
+
+	protected static int getLesserLowerBound(int lowerBound, int otherLowerBound) {
+		return Math.min(lowerBound, otherLowerBound);
+	}
+
+	protected static int getGreaterUpperBound(int upperBound,
+			int otherUpperBound) {
+
+		return ETypedElement.UNBOUNDED_MULTIPLICITY == upperBound
+			|| ETypedElement.UNBOUNDED_MULTIPLICITY == otherUpperBound
+			? ETypedElement.UNBOUNDED_MULTIPLICITY
+			: Math.max(upperBound, otherUpperBound);
 	}
 
 	protected static Object getTaggedValue(Element element,
@@ -2222,10 +3562,28 @@ public class UML2Util {
 		element.setValue(stereotype, propertyName, value);
 	}
 
+	/**
+	 * Obtains a valid (Java) identifier based on the specified name.
+	 * 
+	 * @param name
+	 *            The name from which to obtain a valid identifier.
+	 * @return A valid (Java) identifier or the empty string.
+	 */
 	protected static String getValidIdentifier(String name) {
 		return appendValidIdentifier(new StringBuffer(), name).toString();
 	}
 
+	/**
+	 * Appends a valid (Java) identifier based on the specified name to the
+	 * specified buffer.
+	 * 
+	 * @param validIdentifier
+	 *            The buffer to which to append the valid identifier.
+	 * @param name
+	 *            The name from which to obtain the valid identifier.
+	 * 
+	 * @return The buffer.
+	 */
 	protected static StringBuffer appendValidIdentifier(
 			StringBuffer validIdentifier, String name) {
 
@@ -2254,11 +3612,11 @@ public class UML2Util {
 		return validIdentifier;
 	}
 
-	protected static String getQualifiedText(EObject eObject) {
+	public static String getQualifiedText(EObject eObject) {
 		return getQualifiedText(eObject, new QualifiedTextProvider());
 	}
 
-	protected static String getQualifiedText(EObject eObject,
+	public static String getQualifiedText(EObject eObject,
 			QualifiedTextProvider qualifiedTextProvider) {
 
 		return appendQualifiedText(new StringBuffer(), eObject,
@@ -2322,7 +3680,7 @@ public class UML2Util {
 		return qualifiedText;
 	}
 
-	protected static NamedElement findNamedElement(ResourceSet resourceSet,
+	private static NamedElement findNamedElement(ResourceSet resourceSet,
 			String qualifiedName) {
 
 		String[] names = qualifiedName.split(NamedElement.SEPARATOR);
@@ -2477,7 +3835,7 @@ public class UML2Util {
 		return rootContainers;
 	}
 
-	protected static org.eclipse.uml2.Package load(ResourceSet resourceSet,
+	private static org.eclipse.uml2.Package load(ResourceSet resourceSet,
 			URI uri) {
 		org.eclipse.uml2.Package package_ = null;
 
@@ -2519,6 +3877,68 @@ public class UML2Util {
 			options = new HashMap();
 		}
 
+		if (!options.containsKey(UML22EcoreConverter.OPTION__DERIVED_FEATURES)) {
+
+			options.put(UML22EcoreConverter.OPTION__DERIVED_FEATURES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__DERIVED_UNION_PROPERTIES)) {
+
+			options.put(UML22EcoreConverter.OPTION__DERIVED_UNION_PROPERTIES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES)) {
+
+			options.put(UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__SUBSETTING_PROPERTIES)) {
+
+			options.put(UML22EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__DUPLICATE_OPERATIONS)) {
+
+			options.put(UML22EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE)) {
+
+			options.put(
+				UML22EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__DUPLICATE_FEATURES)) {
+
+			options.put(UML22EcoreConverter.OPTION__DUPLICATE_FEATURES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE)) {
+
+			options.put(
+				UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
+				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(UML22EcoreConverter.OPTION__OBSOLETE_FEATURES)) {
+			options.put(UML22EcoreConverter.OPTION__OBSOLETE_FEATURES,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(package_, options, null, null);
 	}
 
@@ -2527,6 +3947,68 @@ public class UML2Util {
 
 		if (null == options) {
 			options = new HashMap();
+		}
+
+		if (!options.containsKey(UML22EcoreConverter.OPTION__DERIVED_FEATURES)) {
+
+			options.put(UML22EcoreConverter.OPTION__DERIVED_FEATURES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__DERIVED_UNION_PROPERTIES)) {
+
+			options.put(UML22EcoreConverter.OPTION__DERIVED_UNION_PROPERTIES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES)) {
+
+			options.put(UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__SUBSETTING_PROPERTIES)) {
+
+			options.put(UML22EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__DUPLICATE_OPERATIONS)) {
+
+			options.put(UML22EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE)) {
+
+			options.put(
+				UML22EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__DUPLICATE_FEATURES)) {
+
+			options.put(UML22EcoreConverter.OPTION__DUPLICATE_FEATURES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE)) {
+
+			options.put(
+				UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML22EcoreConverter.OPTION__OBSOLETE_FEATURES)) {
+			options.put(UML22EcoreConverter.OPTION__OBSOLETE_FEATURES,
+				OPTION__REPORT);
 		}
 
 		return (Collection) new UML22EcoreConverter().convert(Collections
@@ -2554,10 +4036,19 @@ public class UML2Util {
 		}
 
 		if (!options
-			.containsKey(PackageMerger.OPTION__REDUNDANT_GENERALIZATION)) {
+			.containsKey(PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS)) {
 
-			options.put(PackageMerger.OPTION__REDUNDANT_GENERALIZATION,
+			options.put(PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS,
 				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(PackageMerger.OPTION__INVALID_REDEFINITIONS)) {
+			options.put(PackageMerger.OPTION__INVALID_REDEFINITIONS,
+				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(PackageMerger.OPTION__INVALID_SUBSETS)) {
+			options.put(PackageMerger.OPTION__INVALID_SUBSETS, OPTION__IGNORE);
 		}
 
 		merge(package_, options, null, null);
@@ -2585,10 +4076,19 @@ public class UML2Util {
 		}
 
 		if (!options
-			.containsKey(PackageMerger.OPTION__REDUNDANT_GENERALIZATION)) {
+			.containsKey(PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS)) {
 
-			options.put(PackageMerger.OPTION__REDUNDANT_GENERALIZATION,
+			options.put(PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS,
 				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(PackageMerger.OPTION__INVALID_REDEFINITIONS)) {
+			options.put(PackageMerger.OPTION__INVALID_REDEFINITIONS,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(PackageMerger.OPTION__INVALID_SUBSETS)) {
+			options.put(PackageMerger.OPTION__INVALID_SUBSETS, OPTION__REPORT);
 		}
 
 		new PackageMerger().merge(package_, options, diagnostics, context);

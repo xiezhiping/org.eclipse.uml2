@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConvertToEcoreAction.java,v 1.1 2005/01/12 22:04:08 khussey Exp $
+ * $Id: ConvertToEcoreAction.java,v 1.2 2005/01/19 22:57:35 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -28,7 +28,6 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -103,6 +102,43 @@ public class ConvertToEcoreAction
 								try {
 									Map options = new HashMap();
 
+									options
+										.put(
+											UML2Util.UML22EcoreConverter.OPTION__DERIVED_FEATURES,
+											UML2Util.OPTION__PROCESS);
+									options
+										.put(
+											UML2Util.UML22EcoreConverter.OPTION__DERIVED_UNION_PROPERTIES,
+											UML2Util.OPTION__PROCESS);
+									options
+										.put(
+											UML2Util.UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES,
+											UML2Util.OPTION__PROCESS);
+									options
+										.put(
+											UML2Util.UML22EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
+											UML2Util.OPTION__PROCESS);
+									options
+										.put(
+											UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
+											UML2Util.OPTION__PROCESS);
+									options
+										.put(
+											UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
+											UML2Util.OPTION__PROCESS);
+									options
+										.put(
+											UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_FEATURES,
+											UML2Util.OPTION__PROCESS);
+									options
+										.put(
+											UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
+											UML2Util.OPTION__PROCESS);
+									options
+										.put(
+											UML2Util.UML22EcoreConverter.OPTION__OBSOLETE_FEATURES,
+											UML2Util.OPTION__PROCESS);
+
 									final BasicDiagnostic diagnostics = new BasicDiagnostic(
 										UML2Validator.DIAGNOSTIC_SOURCE,
 										0,
@@ -114,10 +150,9 @@ public class ConvertToEcoreAction
 										new Object[]{package_});
 
 									Map context = new HashMap();
-									context
-										.put(
-											EValidator.SubstitutionLabelProvider.class,
-											substitutionLabelProvider);
+									context.put(
+										UML2Util.QualifiedTextProvider.class,
+										qualifiedTextProvider);
 
 									progressMonitor
 										.beginTask(
@@ -167,25 +202,16 @@ public class ConvertToEcoreAction
 										}
 									}
 
-									shell.getDisplay().asyncExec(
-										new Runnable() {
-
-											public void run() {
-
-												handleDiagnostic(
-													progressMonitor
-														.isCanceled()
-														? Diagnostic.CANCEL_INSTANCE
-														: diagnostics,
-													ExamplesUIPlugin
-														.getDefault()
-														.getString(
-															"_UI_ConvertToEcoreActionCommand_label",
-															new Object[]{getLabelProvider()
-																.getText(
-																	package_)}));
-											}
-										});
+									handleDiagnostic(
+										progressMonitor.isCanceled()
+											? Diagnostic.CANCEL_INSTANCE
+											: diagnostics,
+										ExamplesUIPlugin
+											.getDefault()
+											.getString(
+												"_UI_ConvertToEcoreActionCommand_label",
+												new Object[]{getLabelProvider()
+													.getText(package_)}));
 								} finally {
 									progressMonitor.done();
 								}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.15 2004/12/03 22:32:52 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.16 2005/01/19 22:55:30 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -113,9 +113,9 @@ public final class StereotypeOperations
 	 */
 	public static EObject getEObject(Stereotype stereotype, Element element) {
 
-		for (Iterator contents = getEAnnotation(
-			ANNOTATION_SOURCE__APPLIED_STEREOTYPES, element).getContents()
-			.iterator(); contents.hasNext();) {
+		for (Iterator contents = safeGetEAnnotation(element,
+			ANNOTATION_SOURCE__APPLIED_STEREOTYPES).getContents().iterator(); contents
+			.hasNext();) {
 
 			EObject eObject = (EObject) contents.next();
 
@@ -150,8 +150,8 @@ public final class StereotypeOperations
 	 * @return The stereotype represented by the Ecore class.
 	 */
 	protected static Stereotype getStereotype(EClass eClass) {
-		EAnnotation stereotypeEAnnotation = getEAnnotation(
-			ANNOTATION_SOURCE__STEREOTYPE, eClass);
+		EAnnotation stereotypeEAnnotation = safeGetEAnnotation(eClass,
+			ANNOTATION_SOURCE__STEREOTYPE);
 
 		return stereotypeEAnnotation.getReferences().isEmpty()
 			? null
@@ -169,8 +169,8 @@ public final class StereotypeOperations
 	 */
 	public static EnumerationLiteral getEnumerationLiteral(
 			EEnumLiteral eEnumLiteral) {
-		EAnnotation enumerationLiteralEAnnotation = getEAnnotation(
-			ANNOTATION_SOURCE__ENUMERATION_LITERAL, eEnumLiteral);
+		EAnnotation enumerationLiteralEAnnotation = safeGetEAnnotation(
+			eEnumLiteral, ANNOTATION_SOURCE__ENUMERATION_LITERAL);
 
 		return enumerationLiteralEAnnotation.getReferences().isEmpty()
 			? null
@@ -306,7 +306,7 @@ public final class StereotypeOperations
 			.getAppliedVersion(stereotype.getProfile(), element
 				.getNearestPackage()));
 
-		getOrCreateEAnnotation(ANNOTATION_SOURCE__APPLIED_STEREOTYPES, element)
+		getEAnnotation(element, ANNOTATION_SOURCE__APPLIED_STEREOTYPES, true)
 			.getContents().add(
 				eClass.getEPackage().getEFactoryInstance().create(eClass));
 	}
@@ -927,8 +927,8 @@ public final class StereotypeOperations
 				}
 
 				if (null == getEObject(stereotype, element)) {
-					getOrCreateEAnnotation(
-						ANNOTATION_SOURCE__APPLIED_STEREOTYPES, element)
+					getEAnnotation(element,
+						ANNOTATION_SOURCE__APPLIED_STEREOTYPES, true)
 						.getContents().add(stereotypeEObject);
 				}
 			}
@@ -954,8 +954,8 @@ public final class StereotypeOperations
 			throw new IllegalArgumentException(String.valueOf(stereotype));
 		}
 
-		EAnnotation appliedStereotypesEAnnotation = getEAnnotation(
-			ANNOTATION_SOURCE__APPLIED_STEREOTYPES, element);
+		EAnnotation appliedStereotypesEAnnotation = safeGetEAnnotation(element,
+			ANNOTATION_SOURCE__APPLIED_STEREOTYPES);
 
 		for (Iterator contents = appliedStereotypesEAnnotation.getContents()
 			.iterator(); contents.hasNext();) {

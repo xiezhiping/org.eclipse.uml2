@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML22Ecore.java,v 1.6 2004/11/18 18:07:54 khussey Exp $
+ * $Id: UML22Ecore.java,v 1.7 2005/01/19 22:57:34 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml22ecore;
 
@@ -63,7 +63,7 @@ import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Switch;
 
 /**
- * 
+ * @deprecated Use UML2Util.UML22EcoreConverter instead.
  */
 public class UML22Ecore
 		extends UML2Switch
@@ -668,9 +668,11 @@ public class UML22Ecore
 			eClass = (EClass) doSwitch(object.eContainer());
 			eClass.getEStructuralFeatures().add(eStructuralFeature);
 
+			EDataType eDataType = (EDataType) getEClassifier(object);
+
 			try {
-				EcorePackage.eINSTANCE.getEFactoryInstance().createFromString(
-					(EDataType) getEClassifier(object), object.getDefault());
+				eDataType.getEPackage().getEFactoryInstance().createFromString(
+					eDataType, object.getDefault());
 				eStructuralFeature.setDefaultValueLiteral(object.getDefault());
 			} catch (Exception e) {
 				// ignore

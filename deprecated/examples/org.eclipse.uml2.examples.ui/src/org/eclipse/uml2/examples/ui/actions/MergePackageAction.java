@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MergePackageAction.java,v 1.1 2005/01/12 22:04:08 khussey Exp $
+ * $Id: MergePackageAction.java,v 1.2 2005/01/19 22:57:35 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -23,12 +23,8 @@ import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -100,7 +96,15 @@ public class MergePackageAction
 
 									options
 										.put(
-											UML2Util.PackageMerger.OPTION__REDUNDANT_GENERALIZATION,
+											UML2Util.PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS,
+											UML2Util.OPTION__DISCARD);
+									options
+										.put(
+											UML2Util.PackageMerger.OPTION__INVALID_REDEFINITIONS,
+											UML2Util.OPTION__DISCARD);
+									options
+										.put(
+											UML2Util.PackageMerger.OPTION__INVALID_SUBSETS,
 											UML2Util.OPTION__DISCARD);
 
 									final BasicDiagnostic diagnostics = new BasicDiagnostic(
@@ -132,25 +136,16 @@ public class MergePackageAction
 									UML2Util.merge(package_, options,
 										diagnostics, context);
 
-									shell.getDisplay().asyncExec(
-										new Runnable() {
-
-											public void run() {
-
-												handleDiagnostic(
-													progressMonitor
-														.isCanceled()
-														? Diagnostic.CANCEL_INSTANCE
-														: diagnostics,
-													ExamplesUIPlugin
-														.getDefault()
-														.getString(
-															"_UI_MergePackageActionCommand_label",
-															new Object[]{getLabelProvider()
-																.getText(
-																	package_)}));
-											}
-										});
+									handleDiagnostic(
+										progressMonitor.isCanceled()
+											? Diagnostic.CANCEL_INSTANCE
+											: diagnostics,
+										ExamplesUIPlugin
+											.getDefault()
+											.getString(
+												"_UI_MergePackageActionCommand_label",
+												new Object[]{getLabelProvider()
+													.getText(package_)}));
 								} finally {
 									progressMonitor.done();
 								}

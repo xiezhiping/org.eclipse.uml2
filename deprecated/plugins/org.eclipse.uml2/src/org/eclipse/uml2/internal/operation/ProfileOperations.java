@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.15 2004/12/03 22:32:52 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.16 2005/01/19 22:55:30 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -156,8 +156,9 @@ public final class ProfileOperations
 	 */
 	public static EPackage getEPackage(Profile profile, String version) {
 
-		for (Iterator ePackages = getEAnnotation(ANNOTATION_SOURCE__E_PACKAGES,
-			profile).getContents().iterator(); ePackages.hasNext();) {
+		for (Iterator ePackages = safeGetEAnnotation(profile,
+			ANNOTATION_SOURCE__E_PACKAGES).getContents().iterator(); ePackages
+			.hasNext();) {
 
 			EPackage ePackage = (EPackage) ePackages.next();
 
@@ -180,6 +181,8 @@ public final class ProfileOperations
 	 * @param type
 	 *            The type for which to retrieve the Ecore classifier.
 	 * @return The Ecore classifier representing the type.
+	 * 
+	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	public static EClassifier getEClassifier(EPackage ePackage, Type type) {
 		EClassifier eClassifier = ePackage.getEClassifier(type.getName());
@@ -234,6 +237,8 @@ public final class ProfileOperations
 	 * @param profile
 	 *            The profile for which to create an Ecore package.
 	 * @return The new Ecore package.
+	 * 
+	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	public static EPackage createEPackage(Profile profile) {
 		EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
@@ -262,6 +267,8 @@ public final class ProfileOperations
 	 * @param type
 	 *            The type for which to create an Ecore classifier.
 	 * @return The (new) Ecore classifier.
+	 * 
+	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	protected static EClassifier createEClassifier(final EPackage ePackage,
 			Type type) {
@@ -296,6 +303,8 @@ public final class ProfileOperations
 	 * @param stereotype
 	 *            The stereotype for which to create an Ecore class.
 	 * @return The (new) Ecore class.
+	 * 
+	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	public static EClass createEClass(EPackage ePackage, Stereotype stereotype) {
 		EClass eClass = (EClass) ePackage
@@ -304,8 +313,8 @@ public final class ProfileOperations
 		if (null == eClass) {
 			eClass = EcoreFactory.eINSTANCE.createEClass();
 
-			createEAnnotation(
-				StereotypeOperations.ANNOTATION_SOURCE__STEREOTYPE, eClass)
+			createEAnnotation(eClass,
+				StereotypeOperations.ANNOTATION_SOURCE__STEREOTYPE)
 				.getReferences().add(stereotype);
 
 			eClass.setName(getEClassifierName(stereotype));
@@ -355,6 +364,8 @@ public final class ProfileOperations
 	 * @param class_
 	 *            The class for which to create an Ecore class.
 	 * @return The (new) Ecore class.
+	 * 
+	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	public static EClass createEClass(EPackage ePackage,
 			org.eclipse.uml2.Class class_) {
@@ -424,6 +435,8 @@ public final class ProfileOperations
 	 * @param interface_
 	 *            The interface for which to create an Ecore class.
 	 * @return The (new) Ecore class.
+	 * 
+	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	public static EClass createEClass(EPackage ePackage, Interface interface_) {
 		EClass eClass = (EClass) ePackage
@@ -479,6 +492,8 @@ public final class ProfileOperations
 	 * @param enumeration
 	 *            The enumeration for which to create an Ecore enum.
 	 * @return The (new) Ecore enum.
+	 * 
+	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	public static EEnum createEEnum(EPackage ePackage, Enumeration enumeration) {
 		EEnum eEnum = (EEnum) ePackage
@@ -498,9 +513,9 @@ public final class ProfileOperations
 				EEnumLiteral eEnumLiteral = EcoreFactory.eINSTANCE
 					.createEEnumLiteral();
 
-				createEAnnotation(
-					StereotypeOperations.ANNOTATION_SOURCE__ENUMERATION_LITERAL,
-					eEnumLiteral).getReferences().add(enumerationLiteral);
+				createEAnnotation(eEnumLiteral,
+					StereotypeOperations.ANNOTATION_SOURCE__ENUMERATION_LITERAL)
+					.getReferences().add(enumerationLiteral);
 
 				eEnumLiteral.setName(getValidIdentifier(enumerationLiteral
 					.getName()));
@@ -523,6 +538,8 @@ public final class ProfileOperations
 	 * @param property
 	 *            The property for which to create an Ecore attribute.
 	 * @return The (new) Ecore attribute.
+	 * 
+	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	public static EAttribute createEAttribute(EClass eClass, Property property) {
 		EAttribute eAttribute = (EAttribute) eClass
@@ -575,6 +592,8 @@ public final class ProfileOperations
 	 * @param property
 	 *            The property for which to create an Ecore reference.
 	 * @return The (new) Ecore reference.
+	 * 
+	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	public static EReference createEReference(EClass eClass, Property property) {
 		EReference eReference = (EReference) eClass
@@ -683,9 +702,9 @@ public final class ProfileOperations
 
 				if (Element.class.isInstance(eObject)) {
 					Element element = (Element) eObject;
-					EAnnotation appliedStereotypesEAnnotation = getEAnnotation(
-						StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES,
-						element);
+					EAnnotation appliedStereotypesEAnnotation = safeGetEAnnotation(
+						element,
+						StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES);
 					List appliedStereotypes = appliedStereotypesEAnnotation
 						.getContents();
 
@@ -730,11 +749,14 @@ public final class ProfileOperations
 			}
 		}
 
-		getOrCreateEAnnotation(ANNOTATION_SOURCE__ATTRIBUTES,
-			profileApplication).getDetails().put(
-			ANNOTATION_DETAILS_KEY__VERSION, profile.getVersion());
+		getEAnnotation(profileApplication, ANNOTATION_SOURCE__ATTRIBUTES, true)
+			.getDetails().put(ANNOTATION_DETAILS_KEY__VERSION,
+				profile.getVersion());
 	}
 
+	/**
+	 * @deprecated Use EcoreUtil.Copier instead.
+	 */
 	protected static void copyValues(EObject sourceEObject,
 			EObject targetEObject) {
 
@@ -782,6 +804,9 @@ public final class ProfileOperations
 		}
 	}
 
+	/**
+	 * @deprecated Use EcoreUtil.Copier instead.
+	 */
 	protected static void copyEClassValue(EObject sourceEObject,
 			EStructuralFeature sourceEStructuralFeature, EObject targetEObject,
 			EStructuralFeature targetEStructuralFeature) {
@@ -818,6 +843,9 @@ public final class ProfileOperations
 		}
 	}
 
+	/**
+	 * @deprecated Use EcoreUtil.Copier instead.
+	 */
 	protected static void copyEDataTypeValue(EObject sourceEObject,
 			EStructuralFeature sourceEStructuralFeature, EObject targetEObject,
 			EStructuralFeature targetEStructuralFeature) {
@@ -859,6 +887,9 @@ public final class ProfileOperations
 		}
 	}
 
+	/**
+	 * @deprecated Use EcoreUtil.Copier instead.
+	 */
 	protected static void copyEEnumValue(EObject sourceEObject,
 			EStructuralFeature sourceEStructuralFeature, EObject targetEObject,
 			EStructuralFeature targetEStructuralFeature) {
@@ -907,12 +938,12 @@ public final class ProfileOperations
 		}
 
 		String version = getVersion(profile);
-		getOrCreateEAnnotation(ANNOTATION_SOURCE__ATTRIBUTES, profile)
+		getEAnnotation(profile, ANNOTATION_SOURCE__ATTRIBUTES, true)
 			.getDetails().put(ANNOTATION_DETAILS_KEY__VERSION, null == version
 				? String.valueOf(0)
 				: String.valueOf(new Integer(Integer.parseInt(version) + 1)));
 
-		getOrCreateEAnnotation(ANNOTATION_SOURCE__E_PACKAGES, profile)
+		getEAnnotation(profile, ANNOTATION_SOURCE__E_PACKAGES, true)
 			.getContents().add(0, createEPackage(profile));
 	}
 
@@ -991,8 +1022,9 @@ public final class ProfileOperations
 			return null;
 		}
 
-		return (String) getEAnnotation(ANNOTATION_SOURCE__ATTRIBUTES, profile)
-			.getDetails().get(ANNOTATION_DETAILS_KEY__VERSION);
+		return (String) safeGetEAnnotation(profile,
+			ANNOTATION_SOURCE__ATTRIBUTES).getDetails().get(
+			ANNOTATION_DETAILS_KEY__VERSION);
 	}
 
 	/**
@@ -1031,8 +1063,8 @@ public final class ProfileOperations
 	}
 
 	protected static String getVersion(ProfileApplication profileApplication) {
-		return (String) getEAnnotation(ANNOTATION_SOURCE__ATTRIBUTES,
-			profileApplication).getDetails().get(
+		return (String) safeGetEAnnotation(profileApplication,
+			ANNOTATION_SOURCE__ATTRIBUTES).getDetails().get(
 			ANNOTATION_DETAILS_KEY__VERSION);
 	}
 
@@ -1057,12 +1089,12 @@ public final class ProfileOperations
 			Element element) {
 		Set stereotypeApplications = new HashSet();
 
-		List ePackages = getEAnnotation(ANNOTATION_SOURCE__E_PACKAGES, profile)
-			.getContents();
+		List ePackages = safeGetEAnnotation(profile,
+			ANNOTATION_SOURCE__E_PACKAGES).getContents();
 
-		for (Iterator appliedStereotypes = getEAnnotation(
-			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES,
-			element).getContents().iterator(); appliedStereotypes.hasNext();) {
+		for (Iterator appliedStereotypes = safeGetEAnnotation(element,
+			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES)
+			.getContents().iterator(); appliedStereotypes.hasNext();) {
 
 			EObject stereotypeApplication = (EObject) appliedStereotypes.next();
 
@@ -1112,7 +1144,7 @@ public final class ProfileOperations
 	public static boolean isDefined(Profile profile) {
 		return null == profile
 			? false
-			: getEAnnotation(ANNOTATION_SOURCE__E_PACKAGES, profile)
+			: safeGetEAnnotation(profile, ANNOTATION_SOURCE__E_PACKAGES)
 				.getContents().size() > 0;
 	}
 
@@ -1148,9 +1180,9 @@ public final class ProfileOperations
 			if (Element.class.isInstance(eObject)) {
 				Element element = (Element) eObject;
 
-				EAnnotation appliedStereotypesEAnnotation = getEAnnotation(
-					StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES,
-					element);
+				EAnnotation appliedStereotypesEAnnotation = safeGetEAnnotation(
+					element,
+					StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES);
 
 				appliedStereotypesEAnnotation.getContents().removeAll(
 					getStereotypeApplications(profile, element));

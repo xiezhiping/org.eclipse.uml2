@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.9 2004/10/01 19:36:29 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.10 2005/01/19 22:55:30 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -21,6 +21,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.Association;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.LiteralBoolean;
@@ -39,7 +40,7 @@ import org.eclipse.uml2.util.UML2Validator;
  * A static utility class that provides operations related to properties.
  */
 public final class PropertyOperations
-	extends UML2Operations {
+		extends UML2Operations {
 
 	/**
 	 * Constructs a new Property Operations. This constructor should never be
@@ -103,13 +104,29 @@ public final class PropertyOperations
 	public static Set subsettingContext(Property property) {
 		Set subsettingContext = new HashSet();
 
-		if (null == property.getAssociation()) {
+		Association association = property.getAssociation();
 
-			if (null != property.getType()) {
-				subsettingContext.add(property.getType());
+		if (null == association) {
+			EObject eContainer = property.eContainer();
+
+			if (Classifier.class.isInstance(eContainer)) {
+				subsettingContext.add(eContainer);
 			}
 		} else {
-			subsettingContext.addAll(property.getAssociation().getEndTypes());
+
+			for (Iterator memberEnds = association.getMemberEnds().iterator(); memberEnds
+				.hasNext();) {
+
+				Property memberEnd = (Property) memberEnds.next();
+
+				if (property != memberEnd) {
+					Type type = memberEnd.getType();
+
+					if (null != type) {
+						subsettingContext.add(type);
+					}
+				}
+			}
 		}
 
 		return subsettingContext;
@@ -275,7 +292,7 @@ public final class PropertyOperations
 	 * If this property is owned by a class, associated with a binary
 	 * association, and the other end of the association is also owned by a
 	 * class, then opposite gives the other end.
-	 *  
+	 * 
 	 */
 	public static boolean validateOppositeIsOtherEnd(Property property,
 			DiagnosticChain diagnostics, Map context) {
@@ -312,7 +329,7 @@ public final class PropertyOperations
 	/**
 	 * A multiplicity of a composite aggregation must not have an upper bound
 	 * greater than 1.
-	 *  
+	 * 
 	 */
 	public static boolean validateMultiplicityOfComposite(Property property,
 			DiagnosticChain diagnostics, Map context) {
@@ -352,7 +369,7 @@ public final class PropertyOperations
 	/**
 	 * Subsetting may only occur when the context of the subsetting property
 	 * conforms to the context of the subsetted property.
-	 *  
+	 * 
 	 */
 	public static boolean validateSubsettingContext(Property property,
 			DiagnosticChain diagnostics, Map context) {
@@ -399,7 +416,7 @@ public final class PropertyOperations
 	/**
 	 * A navigable property (one that is owned by a class) can only be redefined
 	 * or subsetted by a navigable property.
-	 *  
+	 * 
 	 */
 	public static boolean validateNavigablePropertyRedefinition(
 			Property property, DiagnosticChain diagnostics, Map context) {
@@ -463,7 +480,7 @@ public final class PropertyOperations
 	/**
 	 * A subsetting property may strengthen the type of the subsetted property,
 	 * and its upper bound may be less.
-	 *  
+	 * 
 	 */
 	public static boolean validateSubsettingRules(Property property,
 			DiagnosticChain diagnostics, Map context) {
@@ -501,7 +518,7 @@ public final class PropertyOperations
 
 	/**
 	 * Only a navigable property can be marked as read-only.
-	 *  
+	 * 
 	 */
 	public static boolean validateNavigableReadonly(Property property,
 			DiagnosticChain diagnostics, Map context) {
@@ -528,7 +545,7 @@ public final class PropertyOperations
 
 	/**
 	 * A derived union is derived.
-	 *  
+	 * 
 	 */
 	public static boolean validateDerivedUnionIsDerived(Property property,
 			DiagnosticChain diagnostics, Map context) {

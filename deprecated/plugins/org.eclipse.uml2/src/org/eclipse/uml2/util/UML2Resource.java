@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2004, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Resource.java,v 1.4 2004/12/21 21:25:37 khussey Exp $
+ * $Id: UML2Resource.java,v 1.5 2005/01/19 22:55:30 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -24,7 +24,7 @@ import org.eclipse.uml2.internal.util.UML2ResourceFactoryImpl;
 public interface UML2Resource
 		extends XMIResource {
 
-	public static final String copyright = "Copyright (c) 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2004, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	public interface Factory
 			extends Resource.Factory {
@@ -48,6 +48,16 @@ public interface UML2Resource
 		}
 
 	}
+
+	/**
+	 * The scheme for platform URIs.
+	 */
+	public static final String URI_SCHEME_PLATFORM = "platform"; //$NON-NLS-1$
+
+	/**
+	 * The first segment for platform plugin URIs.
+	 */
+	public static final String URI_SEGMENT_PLUGIN = "plugin"; //$NON-NLS-1$
 
 	public static final String UML2_NS_URI = "http://www.eclipse.org/uml2/1.0.0/UML"; //$NON-NLS-1$
 

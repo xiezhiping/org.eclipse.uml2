@@ -8,12 +8,15 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DiagnosticAction.java,v 1.1 2005/01/12 22:04:08 khussey Exp $
+ * $Id: DiagnosticAction.java,v 1.2 2005/01/19 22:57:35 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -34,15 +37,14 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.action.ValidateAction;
 import org.eclipse.emf.edit.ui.action.ValidateAction.EclipseResourcesUtil;
-import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ISetSelectionTarget;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
+import org.eclipse.uml2.util.UML2Util;
 import org.osgi.framework.Bundle;
 
 /**
@@ -78,6 +80,19 @@ public class DiagnosticAction
 
 	};
 
+	protected final UML2Util.QualifiedTextProvider qualifiedTextProvider = new UML2Util.QualifiedTextProvider() {
+
+		public String getFeatureText(EStructuralFeature eStructuralFeature) {
+			return getLabelProvider().getText(eStructuralFeature);
+		}
+
+		public String getClassText(EObject eObject) {
+			return getLabelProvider().getText(eObject.eClass());
+		}
+	};
+
+	protected final Map resourceToFileMap = new HashMap();
+
 	protected DiagnosticAction() {
 		super();
 	}
@@ -100,15 +115,25 @@ public class DiagnosticAction
 						.toIStatus(diagnostic));
 				break;
 			default :
-				final int result = ErrorDialog.openError(PlatformUI
-					.getWorkbench().getActiveWorkbenchWindow().getShell(),
-					dialogTitle, ExamplesUIPlugin.getDefault().getString(
+				ErrorDialog.openError(PlatformUI.getWorkbench()
+					.getActiveWorkbenchWindow().getShell(), dialogTitle,
+					ExamplesUIPlugin.getDefault().getString(
 						"_UI_DiagnosticProblems_message"), BasicDiagnostic
 						.toIStatus(diagnostic));
+		}
 
-				if (null != resourcesBundle) {
-					IFile file = getFile();
+		if (null != resourcesBundle) {
+			Map fileToDiagnosticMap = new HashMap();
 
+			for (Iterator children = diagnostic.getChildren().iterator(); children
+				.hasNext();) {
+
+				Diagnostic child = (Diagnostic) children.next();
+				IFile file = getFile(child);
+
+				List diagnostics = (List) fileToDiagnosticMap.get(file);
+
+				if (null == diagnostics) {
 					try {
 						file.deleteMarkers(EValidator.MARKER, true,
 							IResource.DEPTH_ZERO);
@@ -116,76 +141,99 @@ public class DiagnosticAction
 						ExamplesUIPlugin.getDefault().log(exception);
 					}
 
-					if (result == Dialog.OK) {
+					fileToDiagnosticMap
+						.put(file, diagnostics = new ArrayList());
+				}
 
-						if (!diagnostic.getChildren().isEmpty()) {
+				diagnostics.add(child);
+			}
 
-							List data = ((Diagnostic) diagnostic.getChildren()
-								.get(0)).getData();
+			if (Diagnostic.INFO < diagnostic.getSeverity()) {
 
-							if (!data.isEmpty()
-								&& data.get(0) instanceof EObject) {
-								IWorkbenchPart activePart = PlatformUI
-									.getWorkbench().getActiveWorkbenchWindow()
-									.getActivePage().getActivePart();
+				for (Iterator entries = fileToDiagnosticMap.entrySet()
+					.iterator(); entries.hasNext();) {
 
-								if (activePart instanceof ISetSelectionTarget) {
-									((ISetSelectionTarget) activePart)
-										.selectReveal(new StructuredSelection(
-											data.get(0)));
-								} else if (activePart instanceof IViewerProvider) {
-									Viewer viewer = ((IViewerProvider) activePart)
-										.getViewer();
+					Map.Entry entry = (Map.Entry) entries.next();
+					IFile file = (IFile) entry.getKey();
 
-									if (null != viewer) {
-										viewer
-											.setSelection(
-												new StructuredSelection(data
-													.get(0)), true);
-									}
-								}
+					for (Iterator diagnostics = ((List) entry.getValue())
+						.iterator(); diagnostics.hasNext();) {
+
+						createMarkers(file, (Diagnostic) diagnostics.next());
+					}
+				}
+
+				if (!diagnostic.getChildren().isEmpty()) {
+					List data = ((Diagnostic) diagnostic.getChildren().get(0))
+						.getData();
+
+					if (!data.isEmpty() && data.get(0) instanceof EObject) {
+
+						if (editorPart instanceof ISetSelectionTarget) {
+							((ISetSelectionTarget) editorPart)
+								.selectReveal(new StructuredSelection(data
+									.get(0)));
+						} else if (editorPart instanceof IViewerProvider) {
+							Viewer viewer = ((IViewerProvider) editorPart)
+								.getViewer();
+
+							if (null != viewer) {
+								viewer.setSelection(new StructuredSelection(
+									data.get(0)), true);
 							}
-						}
-
-						for (Iterator i = diagnostic.getChildren().iterator(); i
-							.hasNext();) {
-
-							createMarkers(file, (Diagnostic) i.next());
 						}
 					}
 				}
 
+			}
 		}
+	}
+
+	protected Resource getResource(Diagnostic diagnostic) {
+		List data = diagnostic.getData();
+
+		return !data.isEmpty() && data.get(0) instanceof EObject
+			? ((EObject) data.get(0)).eResource()
+			: (Resource) editingDomain.getResourceSet().getResources().get(0);
 	}
 
 	protected void createMarkers(IFile file, Diagnostic diagnostic) {
-		eclipseResourcesUtil.createMarkers(file, diagnostic);
+
+		if (Diagnostic.INFO < diagnostic.getSeverity()) {
+			eclipseResourcesUtil.createMarkers(file, diagnostic);
+		}
 	}
 
-	protected IFile getFile() {
-		ResourceSet resourceSet = editingDomain.getResourceSet();
-		Resource resource = (Resource) resourceSet.getResources().get(0);
+	protected IFile getFile(Diagnostic diagnostic) {
+		Resource resource = getResource(diagnostic);
 
-		if (null != resource) {
-			URI uri = resourceSet.getURIConverter()
-				.normalize(resource.getURI());
+		IFile file = (IFile) resourceToFileMap.get(resource);
 
-			if (URI_SCHEME_PLATFORM.equals(uri.scheme())
-				&& uri.segmentCount() > 1
-				&& URI_SEGMENT_RESOURCE.equals(uri.segment(0))) {
+		if (null == file) {
+			ResourceSet resourceSet = resource.getResourceSet();
 
-				StringBuffer platformResourcePath = new StringBuffer();
+			if (null != resource) {
+				URI uri = resourceSet.getURIConverter().normalize(
+					resource.getURI());
 
-				for (int i = 1, size = uri.segmentCount(); i < size; i++) {
-					platformResourcePath.append('/');
-					platformResourcePath.append(uri.segment(i));
+				if (URI_SCHEME_PLATFORM.equals(uri.scheme())
+					&& uri.segmentCount() > 1
+					&& URI_SEGMENT_RESOURCE.equals(uri.segment(0))) {
+
+					StringBuffer platformResourcePath = new StringBuffer();
+
+					for (int i = 1, size = uri.segmentCount(); i < size; i++) {
+						platformResourcePath.append('/');
+						platformResourcePath.append(uri.segment(i));
+					}
+
+					resourceToFileMap.put(resource, file = ResourcesPlugin
+						.getWorkspace().getRoot().getFile(
+							new Path(platformResourcePath.toString())));
 				}
-
-				return ResourcesPlugin.getWorkspace().getRoot().getFile(
-					new Path(platformResourcePath.toString()));
 			}
 		}
 
-		return null;
+		return file;
 	}
 }

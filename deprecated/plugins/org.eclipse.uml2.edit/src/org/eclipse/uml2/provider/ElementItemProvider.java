@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.10 2004/11/02 15:00:13 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.11 2005/01/19 22:55:31 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -17,7 +17,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EObject;
@@ -33,11 +32,11 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.Element;
-import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
 import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
+import org.eclipse.uml2.util.UML2Util;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Element} object.
@@ -247,58 +246,17 @@ public class ElementItemProvider
 	 * @see org.eclipse.uml2.edit.util.IItemQualifiedLabelProvider#getQualifiedText(java.lang.Object)
 	 */
 	public String getQualifiedText(Object object) {
-		StringBuffer text = new StringBuffer();
+		return UML2Util.getQualifiedText((EObject) object, new UML2Util.QualifiedTextProvider() {
 
-		for (EObject eObject = (EObject) object; null != eObject; eObject = eObject
-			.eContainer()) {
-
-			text.insert(0, getQualifiedTextSegment(eObject));
-
-			if (null != eObject.eContainer()) {
-				text.insert(0, NamedElement.SEPARATOR);
-			}
-		}
-
-		return text.toString();
-	}
-
-	private String getQualifiedTextSegment(EObject eObject) {
-
-		if (NamedElement.class.isInstance(eObject)) {
-			String name = ((NamedElement) eObject).getName();
-
-			if (null != name && 0 != name.length()) {
-				return name;
-			}
-		}
-
-		StringBuffer segment = new StringBuffer();
-
-		segment.append('{');
-
-		EStructuralFeature eContainingFeature = eObject.eContainingFeature();
-
-		if (null != eContainingFeature) {
-			segment.append(getFeatureText(eContainingFeature));
-
-			if (eContainingFeature.isMany()) {
-				segment.append(' ');
-
-				EList eList = (EList) eObject.eContainer().eGet(
-					eContainingFeature, false);
-
-				segment.append('[');
-				segment.append(eList.indexOf(eObject));
-				segment.append(']');
+			public String getFeatureText(EStructuralFeature eStructuralFeature) {
+				return ElementItemProvider.this.getFeatureText(eStructuralFeature);
 			}
 
-			segment.append(' ');
-		}
+			public String getClassText(EObject eObject) {
+				return getTypeText(eObject);
+			}
 
-		segment.append(getTypeText(eObject));
-		segment.append('}');
-
-		return segment.toString();
+		});
 	}
 
 }

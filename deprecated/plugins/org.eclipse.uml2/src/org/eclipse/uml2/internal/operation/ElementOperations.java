@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.9 2004/06/22 19:54:04 khussey Exp $
+ * $Id: ElementOperations.java,v 1.10 2005/01/19 22:55:30 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -38,7 +38,7 @@ import org.eclipse.uml2.util.UML2Validator;
  * A static utility class that provides operations related to elements.
  */
 public final class ElementOperations
-	extends UML2Operations {
+		extends UML2Operations {
 
 	/**
 	 * The source for the keywords annotation on elements.
@@ -187,8 +187,8 @@ public final class ElementOperations
 			return Collections.EMPTY_SET;
 		}
 
-		return Collections.unmodifiableSet(getEAnnotation(
-			ANNOTATION_SOURCE__KEYWORDS, element).getDetails().keySet());
+		return Collections.unmodifiableSet(safeGetEAnnotation(element,
+			ANNOTATION_SOURCE__KEYWORDS).getDetails().keySet());
 	}
 
 	/**
@@ -211,7 +211,7 @@ public final class ElementOperations
 			return false;
 		}
 
-		return getEAnnotation(ANNOTATION_SOURCE__KEYWORDS, element)
+		return safeGetEAnnotation(element, ANNOTATION_SOURCE__KEYWORDS)
 			.getDetails().containsKey(keyword);
 	}
 
@@ -235,8 +235,8 @@ public final class ElementOperations
 			throw new IllegalArgumentException(String.valueOf(keyword));
 		}
 
-		getOrCreateEAnnotation(ANNOTATION_SOURCE__KEYWORDS, element)
-			.getDetails().put(keyword, null);
+		getEAnnotation(element, ANNOTATION_SOURCE__KEYWORDS, true).getDetails()
+			.put(keyword, null);
 	}
 
 	/**
@@ -259,13 +259,13 @@ public final class ElementOperations
 			throw new IllegalArgumentException(String.valueOf(keyword));
 		}
 
-		getEAnnotation(ANNOTATION_SOURCE__KEYWORDS, element).getDetails()
+		safeGetEAnnotation(element, ANNOTATION_SOURCE__KEYWORDS).getDetails()
 			.removeKey(keyword);
 	}
 
 	/**
 	 * An element may not directly or indirectly own itself.
-	 *  
+	 * 
 	 */
 	public static boolean validateNotOwnSelf(Element element,
 			DiagnosticChain diagnostics, Map context) {
@@ -289,7 +289,7 @@ public final class ElementOperations
 
 	/**
 	 * Elements that must be owned must have an owner.
-	 *  
+	 * 
 	 */
 	public static boolean validateHasOwner(Element element,
 			DiagnosticChain diagnostics, Map context) {
