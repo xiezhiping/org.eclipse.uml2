@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperationsTest.java,v 1.3 2005/03/15 18:51:32 khussey Exp $
+ * $Id: StereotypeOperationsTest.java,v 1.4 2005/03/30 13:56:49 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -2400,6 +2400,26 @@ public class StereotypeOperationsTest
 
 		assertEquals(Boolean.TRUE, stereotypeEObject.eGet(stereotypeEObject
 			.eClass().getEStructuralFeature("boolean"))); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "boolean", //$NON-NLS-1$
+				String.valueOf(Boolean.FALSE));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(Boolean.FALSE, stereotypeEObject.eGet(stereotypeEObject
+			.eClass().getEStructuralFeature("boolean"))); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "boolean", //$NON-NLS-1$
+				String.valueOf(Boolean.TRUE));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(Boolean.TRUE, stereotypeEObject.eGet(stereotypeEObject
+			.eClass().getEStructuralFeature("boolean"))); //$NON-NLS-1$
 	}
 
 	/**
@@ -2530,6 +2550,28 @@ public class StereotypeOperationsTest
 		assertEquals(Boolean.FALSE,
 			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
 				.getEStructuralFeature("booleans"))).get(1)); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "booleans[1]", //$NON-NLS-1$
+				String.valueOf(Boolean.TRUE));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(Boolean.TRUE,
+			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
+				.getEStructuralFeature("booleans"))).get(1)); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "booleans[1]", //$NON-NLS-1$
+				String.valueOf(Boolean.FALSE));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(Boolean.FALSE,
+			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
+				.getEStructuralFeature("booleans"))).get(1)); //$NON-NLS-1$
 	}
 
 	/**
@@ -2624,6 +2666,26 @@ public class StereotypeOperationsTest
 		try {
 			StereotypeOperations.setValue(getElement(), class_, "integer", //$NON-NLS-1$
 				new Integer(Integer.MIN_VALUE));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(new Integer(Integer.MIN_VALUE), stereotypeEObject
+			.eGet(stereotypeEObject.eClass().getEStructuralFeature("integer"))); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "integer", //$NON-NLS-1$
+				String.valueOf(0));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(new Integer(0), stereotypeEObject.eGet(stereotypeEObject
+			.eClass().getEStructuralFeature("integer"))); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "integer", //$NON-NLS-1$
+				String.valueOf(Integer.MIN_VALUE));
 		} catch (IllegalArgumentException iae) {
 			fail();
 		}
@@ -2760,6 +2822,28 @@ public class StereotypeOperationsTest
 		assertEquals(new Integer(0),
 			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
 				.getEStructuralFeature("integers"))).get(1)); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "integers[1]", //$NON-NLS-1$
+				String.valueOf(Integer.MIN_VALUE));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(new Integer(Integer.MIN_VALUE),
+			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
+				.getEStructuralFeature("integers"))).get(1)); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "integers[1]", //$NON-NLS-1$
+				String.valueOf(0));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(new Integer(0),
+			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
+				.getEStructuralFeature("integers"))).get(1)); //$NON-NLS-1$
 	}
 
 	/**
@@ -2858,6 +2942,29 @@ public class StereotypeOperationsTest
 			StereotypeOperations.setValue(getElement(), class_,
 				"unlimitedNatural", //$NON-NLS-1$
 				new Integer(Integer.MAX_VALUE));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(new Integer(Integer.MAX_VALUE), stereotypeEObject
+			.eGet(stereotypeEObject.eClass().getEStructuralFeature(
+				"unlimitedNatural"))); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_,
+				"unlimitedNatural", //$NON-NLS-1$
+				String.valueOf(0));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(new Integer(0), stereotypeEObject.eGet(stereotypeEObject
+			.eClass().getEStructuralFeature("unlimitedNatural"))); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_,
+				"unlimitedNatural", //$NON-NLS-1$
+				String.valueOf(Integer.MAX_VALUE));
 		} catch (IllegalArgumentException iae) {
 			fail();
 		}
@@ -2994,6 +3101,30 @@ public class StereotypeOperationsTest
 			StereotypeOperations.setValue(getElement(), class_,
 				"unlimitedNaturals[1]", //$NON-NLS-1$
 				new Integer(0));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(new Integer(0), ((List) stereotypeEObject
+			.eGet(stereotypeEObject.eClass().getEStructuralFeature(
+				"unlimitedNaturals"))).get(1)); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_,
+				"unlimitedNaturals[1]", //$NON-NLS-1$
+				String.valueOf(Integer.MAX_VALUE));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(new Integer(Integer.MAX_VALUE), ((List) stereotypeEObject
+			.eGet(stereotypeEObject.eClass().getEStructuralFeature(
+				"unlimitedNaturals"))).get(1)); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_,
+				"unlimitedNaturals[1]", //$NON-NLS-1$
+				String.valueOf(0));
 		} catch (IllegalArgumentException iae) {
 			fail();
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.18 2005/03/18 04:00:53 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.19 2005/03/30 13:56:54 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -21,6 +21,7 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
@@ -889,14 +890,26 @@ public final class StereotypeOperations
 
 						throw new IllegalArgumentException(String
 							.valueOf(value));
-					}
-
-					if (EcorePackage.eINSTANCE.getEEnum().isInstance(eType)
+					} else if (EcorePackage.eINSTANCE.getEEnum().isInstance(
+						eType)
 						&& EnumerationLiteral.class.isInstance(value)) {
 
 						value = ((EEnum) eType).getEEnumLiteral(
 							getValidIdentifier(((EnumerationLiteral) value)
 								.getName())).getInstance();
+					} else if (EcorePackage.eINSTANCE.getEDataType()
+						.isInstance(eType)
+						&& String.class.isInstance(value)) {
+
+						EDataType eDataType = (EDataType) eType;
+
+						try {
+							value = eDataType.getEPackage()
+								.getEFactoryInstance().createFromString(
+									eDataType, (String) value);
+						} catch (Exception e) {
+							// ignore
+						}
 					}
 				}
 
