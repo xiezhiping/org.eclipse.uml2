@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.8 2005/03/17 19:37:33 khussey Exp $
+ * $Id: UML2Util.java,v 1.9 2005/03/17 19:43:31 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -4188,6 +4188,34 @@ public class UML2Util {
 		}
 
 		return namedElements;
+	}
+
+	public static int getInstanceCount(ResourceSet resourceSet,
+			EClassifier eClassifier) {
+		return getInstanceCount(resourceSet.getAllContents(), eClassifier);
+	}
+
+	public static int getInstanceCount(Resource resource,
+			EClassifier eClassifier) {
+		return getInstanceCount(resource.getAllContents(), eClassifier);
+	}
+
+	public static int getInstanceCount(EObject eObject, EClassifier eClassifier) {
+		return getInstanceCount(eObject.eAllContents(), eClassifier);
+	}
+
+	public static int getInstanceCount(Iterator iterator,
+			EClassifier eClassifier) {
+		int count = 0;
+
+		while (iterator.hasNext()) {
+
+			if (eClassifier.isInstance(iterator.next())) {
+				count++;
+			}
+		}
+
+		return count;
 	}
 
 	protected static EAnnotation createEAnnotation(EModelElement eModelElement,
