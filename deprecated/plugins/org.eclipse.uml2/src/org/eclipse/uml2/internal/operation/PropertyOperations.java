@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.6 2004/05/04 19:17:48 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -49,6 +49,21 @@ public final class PropertyOperations
 		super();
 	}
 
+	protected static Property getOtherEnd(Property property) {
+		Association association = property.getAssociation();
+
+		if (null != association) {
+			List memberEnds = association.getMemberEnds();
+
+			if (2 == memberEnds.size()) {
+				return (Property) memberEnds.get(Math.abs(memberEnds
+					.indexOf(property) - 1));
+			}
+		}
+
+		return null;
+	}
+
 	public static boolean isConsistentWith(Property property,
 			RedefinableElement redefinee) {
 
@@ -72,20 +87,11 @@ public final class PropertyOperations
 
 	public static Property opposite(Property property) {
 
-		if (null == property.getOwningAssociation()
-			&& null != property.getAssociation()
-			&& 2 == property.getAssociation().getMemberEnds().size()) {
+		if (null == property.getOwningAssociation()) {
+			Property otherEnd = getOtherEnd(property);
 
-			for (Iterator memberEnds = property.getAssociation()
-				.getMemberEnds().iterator(); memberEnds.hasNext();) {
-
-				Property memberEnd = (Property) memberEnds.next();
-
-				if (property != memberEnd
-					&& null == memberEnd.getOwningAssociation()) {
-
-					return memberEnd;
-				}
+			if (null != otherEnd && null == otherEnd.getOwningAssociation()) {
+				return otherEnd;
 			}
 		}
 
@@ -270,26 +276,17 @@ public final class PropertyOperations
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
-		Property otherEnd = null;
+		Property opposite = null;
 
-		if (null == property.getOwningAssociation()
-			&& null != property.getAssociation()
-			&& 2 == property.getAssociation().getMemberEnds().size()) {
+		if (null == property.getOwningAssociation()) {
+			Property otherEnd = getOtherEnd(property);
 
-			for (Iterator memberEnds = property.getAssociation()
-				.getMemberEnds().iterator(); memberEnds.hasNext();) {
-
-				Property memberEnd = (Property) memberEnds.next();
-
-				if (property != memberEnd
-					&& null == memberEnd.getOwningAssociation()) {
-
-					otherEnd = memberEnd;
-				}
+			if (null != otherEnd && null == otherEnd.getOwningAssociation()) {
+				opposite = otherEnd;
 			}
 		}
 
-		if (!safeEquals(property.getOpposite(), otherEnd)) {
+		if (!safeEquals(property.getOpposite(), opposite)) {
 			result = false;
 
 			if (null != diagnostics) {
@@ -301,7 +298,7 @@ public final class PropertyOperations
 							UML2Plugin.INSTANCE.getString(
 								"_UI_Property_OppositeIsOtherEnd_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context, property)),
-							new Object[] {otherEnd}));
+							new Object[] {opposite}));
 
 			}
 		}
@@ -310,7 +307,7 @@ public final class PropertyOperations
 	}
 
 	/**
-	 * A multiplicity of a composite aggregation must have an upper bound
+	 * A multiplicity of a composite aggregation must not have an upper bound
 	 * greater than 1.
 	 *  
 	 */
@@ -318,26 +315,32 @@ public final class PropertyOperations
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
-		int upperBound = property.upperBound();
+		if (property.isComposite()) {
+			Property otherEnd = getOtherEnd(property);
 
-		if (property.isComposite()
-			&& MultiplicityElement.UNLIMITED_UPPER_BOUND != upperBound
-			&& 2 > upperBound) {
+			if (null != otherEnd) {
+				int upperBound = otherEnd.upperBound();
 
-			result = false;
+				if (MultiplicityElement.UNLIMITED_UPPER_BOUND == upperBound
+					|| 1 < upperBound) {
 
-			if (null != diagnostics) {
-				diagnostics
-					.add(new BasicDiagnostic(
-							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.PROPERTY__MULTIPLICITY_OF_COMPOSITE,
-							UML2Plugin.INSTANCE
-								.getString(
-									"_UI_Property_MultiplicityOfComposite_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context, property)),
-							new Object[] {new Integer(upperBound)}));
+					result = false;
 
+					if (null != diagnostics) {
+						diagnostics
+							.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UML2DiagnosticConstants.PLUGIN_ID,
+									UML2DiagnosticConstants.PROPERTY__MULTIPLICITY_OF_COMPOSITE,
+									UML2Plugin.INSTANCE
+										.getString(
+											"_UI_Property_MultiplicityOfComposite_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												property)),
+									new Object[] {new Integer(upperBound)}));
+
+					}
+				}
 			}
 		}
 
@@ -495,14 +498,16 @@ public final class PropertyOperations
 	}
 
 	/**
-	 * Only a navigable property can be marked as readOnly.
+	 * Only a navigable property can be marked as read-only.
 	 *  
 	 */
 	public static boolean validateNavigableReadonly(Property property,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
-		if (property.isReadOnly() && !property.isNavigable()) {
+		if (property.isReadOnly() && null != property.getAssociation()
+			&& !property.isNavigable()) {
+
 			result = false;
 
 			if (null != diagnostics) {

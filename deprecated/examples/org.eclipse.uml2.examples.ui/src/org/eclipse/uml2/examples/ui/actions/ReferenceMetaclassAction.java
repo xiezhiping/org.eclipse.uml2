@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReferenceMetaclassAction.java,v 1.1 2004/04/29 15:31:13 khussey Exp $
+ * $Id: ReferenceMetaclassAction.java,v 1.2 2004/05/04 19:16:52 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -32,6 +32,7 @@ import org.eclipse.uml2.Profile;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.edit.util.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
+import org.eclipse.uml2.util.UML2Resource;
 
 /**
  *  
@@ -75,13 +76,9 @@ public class ReferenceMetaclassAction
 			List choiceOfValues = new ArrayList();
 
 			try {
-				Resource resource = profile
-					.eResource()
-					.getResourceSet()
+				Resource resource = profile.eResource().getResourceSet()
 					.getResource(
-						URI
-							.createURI("pathmap://UML2_METAMODELS/UML2.metamodel.uml2"), //$NON-NLS-1$
-						true);
+						URI.createURI(UML2Resource.UML2_METAMODEL_URI), true);
 
 				for (Iterator contents = resource.getAllContents(); contents
 					.hasNext();) {
@@ -113,9 +110,9 @@ public class ReferenceMetaclassAction
 				"_UI_ReferenceMetaclassActionCommand_label"); //$NON-NLS-1$
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
-				editorPart.getSite().getShell(), getLabelProvider(), profile,
-				UML2Package.eINSTANCE.getClass_(), Collections.EMPTY_LIST,
-				label, choiceOfValues);
+					editorPart.getSite().getShell(), getLabelProvider(),
+					profile, UML2Package.eINSTANCE.getClass_(),
+					Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 
 			if (FeatureEditorDialog.OK == dialog.getReturnCode()) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.1 2004/04/29 15:31:13 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.2 2004/05/04 19:16:52 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -34,6 +34,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.edit.util.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 import org.eclipse.uml2.presentation.UML2Editor;
+import org.eclipse.uml2.util.UML2Resource;
 
 /**
  *  
@@ -83,7 +84,7 @@ public class ApplyProfileAction
 			for (int i = 0; i < editorReferences.length; i++) {
 
 				if ("org.eclipse.uml2.presentation.UML2EditorID" //$NON-NLS-1$
-					.equals(editorReferences[i].getId())) {
+				.equals(editorReferences[i].getId())) {
 
 					Resource resource = (Resource) ((UML2Editor) editorReferences[i]
 						.getEditor(true)).getEditingDomain().getResourceSet()
@@ -106,10 +107,9 @@ public class ApplyProfileAction
 				}
 			}
 
-			String[] uris = new String[] {
-				"pathmap://UML2_PROFILES/Basic.profile.uml2", //$NON-NLS-1$
-				"pathmap://UML2_PROFILES/Intermediate.profile.uml2", //$NON-NLS-1$
-				"pathmap://UML2_PROFILES/Complete.profile.uml2", //$NON-NLS-1$
+			String[] uris = new String[] {UML2Resource.BASIC_PROFILE_URI,
+				UML2Resource.INTERMEDIATE_PROFILE_URI,
+				UML2Resource.COMPLETE_PROFILE_URI,
 				"pathmap://UML2_PROFILES/Ecore.profile.uml2"}; //$NON-NLS-1$
 
 			for (int i = 0; i < uris.length; i++) {
@@ -144,9 +144,9 @@ public class ApplyProfileAction
 				"_UI_ApplyProfileActionCommand_label"); //$NON-NLS-1$
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
-				editorPart.getSite().getShell(), getLabelProvider(), package_,
-				UML2Package.eINSTANCE.getProfile(), Collections.EMPTY_LIST,
-				label, choiceOfValues);
+					editorPart.getSite().getShell(), getLabelProvider(),
+					package_, UML2Package.eINSTANCE.getProfile(),
+					Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 
 			if (FeatureEditorDialog.OK == dialog.getReturnCode()) {

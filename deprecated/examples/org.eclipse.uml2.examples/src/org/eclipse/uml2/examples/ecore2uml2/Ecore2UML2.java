@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Ecore2UML2.java,v 1.1 2004/04/29 15:14:39 khussey Exp $
+ * $Id: Ecore2UML2.java,v 1.2 2004/05/04 19:16:40 khussey Exp $
  */
 package org.eclipse.uml2.examples.ecore2uml2;
 
@@ -62,6 +62,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.examples.Converter;
+import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Switch;
 
 /**
@@ -70,6 +71,14 @@ import org.eclipse.uml2.util.UML2Switch;
 public class Ecore2UML2
 	extends EcoreSwitch
 	implements Converter {
+
+	protected static final String ANNOTATION_SOURCE__DERIVED = "derived"; //$NON-NLS-1$
+
+	protected static final String ANNOTATION_SOURCE__REDEFINES = "redefines"; //$NON-NLS-1$
+
+	protected static final String ANNOTATION_SOURCE__SUBSETS = "subsets"; //$NON-NLS-1$
+
+	protected static final String ANNOTATION_SOURCE__UNION = "union"; //$NON-NLS-1$
 
 	protected final Map modelMap = new HashMap();
 
@@ -82,7 +91,10 @@ public class Ecore2UML2
 	}
 
 	protected boolean isDerived(EStructuralFeature structuralFeature) {
-		return null != structuralFeature.getEAnnotation("derived"); //$NON-NLS-1$
+		return null != structuralFeature
+			.getEAnnotation(ANNOTATION_SOURCE__DERIVED)
+			|| null != structuralFeature
+				.getEAnnotation(ANNOTATION_SOURCE__UNION);
 	}
 
 	protected PrimitiveType getEcorePrimitiveType(String name) {
@@ -95,7 +107,7 @@ public class Ecore2UML2
 						new ResourceSetImpl()
 							.getResource(
 								URI
-									.createURI("pathmap://UML2_LIBRARIES/EcorePrimitiveTypes.library.uml2"), //$NON-NLS-1$
+									.createURI(UML2Resource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI),
 								true).getContents(), UML2Package.eINSTANCE
 							.getModel());
 			} catch (Exception e) {
@@ -317,11 +329,11 @@ public class Ecore2UML2
 				Property property = (Property) doSwitch(object
 					.getEModelElement());
 
-				if ("union".equals(object.getSource())) { //$NON-NLS-1$
+				if (ANNOTATION_SOURCE__UNION.equals(object.getSource())) {
 					property.setIsDerivedUnion(true);
 				}
 
-				if ("redefines".equals(object.getSource())) { //$NON-NLS-1$
+				if (ANNOTATION_SOURCE__REDEFINES.equals(object.getSource())) {
 
 					for (Iterator references = object.getReferences()
 						.iterator(); references.hasNext();) {
@@ -338,7 +350,7 @@ public class Ecore2UML2
 					}
 				}
 
-				if ("subsets".equals(object.getSource())) { //$NON-NLS-1$
+				if (ANNOTATION_SOURCE__SUBSETS.equals(object.getSource())) {
 
 					for (Iterator references = object.getReferences()
 						.iterator(); references.hasNext();) {
@@ -360,7 +372,7 @@ public class Ecore2UML2
 				Operation operation = (Operation) doSwitch(object
 					.getEModelElement());
 
-				if ("redefines".equals(object.getSource())) { //$NON-NLS-1$
+				if (ANNOTATION_SOURCE__REDEFINES.equals(object.getSource())) {
 
 					for (Iterator references = object.getReferences()
 						.iterator(); references.hasNext();) {

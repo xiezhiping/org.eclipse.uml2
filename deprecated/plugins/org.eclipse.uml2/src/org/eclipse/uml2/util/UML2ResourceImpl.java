@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ResourceImpl.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: UML2ResourceImpl.java,v 1.3 2004/05/04 19:17:48 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -25,7 +25,7 @@ import org.eclipse.uml2.internal.util.*;
  * @see org.eclipse.uml2.util.UML2ResourceFactoryImpl
  * @generated
  */
-public class UML2ResourceImpl extends XMIResourceImpl {
+public class UML2ResourceImpl extends XMIResourceImpl implements UML2Resource {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,6 +44,7 @@ public class UML2ResourceImpl extends XMIResourceImpl {
 	public UML2ResourceImpl(URI uri) {
 		super(uri);
 	}
+
 	/* (non-Javadoc)
 	 * @see org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl#useIDAttributes()
 	 */

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ImportPrimitiveTypeAction.java,v 1.1 2004/04/29 15:31:14 khussey Exp $
+ * $Id: ImportPrimitiveTypeAction.java,v 1.2 2004/05/04 19:16:52 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -32,6 +32,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.edit.util.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
+import org.eclipse.uml2.util.UML2Resource;
 
 /**
  *  
@@ -81,7 +82,7 @@ public class ImportPrimitiveTypeAction
 					.getResourceSet()
 					.getResource(
 						URI
-							.createURI("pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2"), //$NON-NLS-1$
+							.createURI(UML2Resource.UML2_PRIMITIVE_TYPES_LIBRARY_URI),
 						true);
 
 				for (Iterator contents = resource.getAllContents(); contents
@@ -105,7 +106,7 @@ public class ImportPrimitiveTypeAction
 					.getResourceSet()
 					.getResource(
 						URI
-							.createURI("pathmap://UML2_LIBRARIES/JavaPrimitiveTypes.library.uml2"), //$NON-NLS-1$
+							.createURI(UML2Resource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI),
 						true);
 
 				for (Iterator contents = resource.getAllContents(); contents
@@ -129,7 +130,7 @@ public class ImportPrimitiveTypeAction
 					.getResourceSet()
 					.getResource(
 						URI
-							.createURI("pathmap://UML2_LIBRARIES/EcorePrimitiveTypes.library.uml2"), //$NON-NLS-1$
+							.createURI(UML2Resource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI),
 						true);
 
 				for (Iterator contents = resource.getAllContents(); contents
@@ -159,9 +160,9 @@ public class ImportPrimitiveTypeAction
 				"_UI_ImportPrimitiveTypeActionCommand_label"); //$NON-NLS-1$
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
-				editorPart.getSite().getShell(), getLabelProvider(), package_,
-				UML2Package.eINSTANCE.getPackageableElement(),
-				Collections.EMPTY_LIST, label, choiceOfValues);
+					editorPart.getSite().getShell(), getLabelProvider(),
+					package_, UML2Package.eINSTANCE.getPackageableElement(),
+					Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 
 			if (FeatureEditorDialog.OK == dialog.getReturnCode()) {
