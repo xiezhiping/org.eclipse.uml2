@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.8 2004/06/18 04:24:45 khussey Exp $
+ * $Id: UML2Editor.java,v 1.9 2004/06/22 19:32:13 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -45,7 +45,6 @@ import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.ecore.EObject;
@@ -149,7 +148,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-import org.eclipse.uml2.editor.internal.presentation.*;
+import org.eclipse.uml2.editor.internal.presentation.UML2AdapterFactoryContentProvider;
 import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
 import java.util.HashMap;
 
@@ -618,33 +617,8 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public class ReverseAdapterFactoryContentProvider extends AdapterFactoryContentProvider {
+	public class ReverseAdapterFactoryContentProvider extends UML2AdapterFactoryContentProvider {
 		public ReverseAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
-			super(adapterFactory);
-		}
-
-		public Object [] getElements(Object object) {
-			Object parent = super.getParent(object);
-			return (parent == null ? Collections.EMPTY_SET : Collections.singleton(parent)).toArray();
-		}
-
-		public Object [] getChildren(Object object) {
-			Object parent = super.getParent(object);
-			return (parent == null ? Collections.EMPTY_SET : Collections.singleton(parent)).toArray();
-		}
-
-		public boolean hasChildren(Object object) {
-			Object parent = super.getParent(object);
-			return parent != null;
-		}
-
-		public Object getParent(Object object) {
-			return null;
-		}
-	}
-
-	protected class UML2ReverseAdapterFactoryContentProvider extends UML2AdapterFactoryContentProvider {
-		public UML2ReverseAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
 			super(adapterFactory);
 		}
 
@@ -788,229 +762,10 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void createPagesGen() {
+	public void createPages() {
 		// Creates the model from the editor input
 		//
 		createModel();
-
-		// Create a page for the selection tree view.
-		//
-		{
-			ViewerPane viewerPane =
-				new ViewerPane(getSite().getPage(), UML2Editor.this) {
-					public Viewer createViewer(Composite composite) {
-						Tree tree = new Tree(composite, SWT.MULTI);
-						TreeViewer newTreeViewer = new TreeViewer(tree);
-						return newTreeViewer;
-					}
-					public void requestActivation() {
-						super.requestActivation();
-						setCurrentViewerPane(this);
-					}
-				};
-			viewerPane.createControl(getContainer());
-
-			selectionViewer = (TreeViewer)viewerPane.getViewer();
-			selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-
-			selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-			selectionViewer.setInput(editingDomain.getResourceSet());
-			viewerPane.setTitle(editingDomain.getResourceSet());
-
-			new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
-
-			createContextMenuFor(selectionViewer);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
-		}
-
-		// Create a page for the parent tree view.
-		//
-		{
-			ViewerPane viewerPane =
-				new ViewerPane(getSite().getPage(), UML2Editor.this) {
-					public Viewer createViewer(Composite composite) {
-						Tree tree = new Tree(composite, SWT.MULTI);
-						TreeViewer newTreeViewer = new TreeViewer(tree);
-						return newTreeViewer;
-					}
-					public void requestActivation() {
-						super.requestActivation();
-						setCurrentViewerPane(this);
-					}
-				};
-			viewerPane.createControl(getContainer());
-
-			parentViewer = (TreeViewer)viewerPane.getViewer();
-			parentViewer.setAutoExpandLevel(30);
-			parentViewer.setContentProvider(new ReverseAdapterFactoryContentProvider(adapterFactory));
-			parentViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-			createContextMenuFor(parentViewer);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_ParentPage_label")); //$NON-NLS-1$
-		}
-
-		// This is the page for the list viewer
-		//
-		{
-			ViewerPane viewerPane =
-				new ViewerPane(getSite().getPage(), UML2Editor.this) {
-					public Viewer createViewer(Composite composite) {
-						return new ListViewer(composite);
-					}
-					public void requestActivation() {
-						super.requestActivation();
-						setCurrentViewerPane(this);
-					}
-				};
-			viewerPane.createControl(getContainer());
-			listViewer = (ListViewer)viewerPane.getViewer();
-			listViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-			listViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-			createContextMenuFor(listViewer);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_ListPage_label")); //$NON-NLS-1$
-		}
-
-		// This is the page for the tree viewer
-		//
-		{
-			ViewerPane viewerPane =
-				new ViewerPane(getSite().getPage(), UML2Editor.this) {
-					public Viewer createViewer(Composite composite) {
-						return new TreeViewer(composite);
-					}
-					public void requestActivation() {
-						super.requestActivation();
-						setCurrentViewerPane(this);
-					}
-				};
-			viewerPane.createControl(getContainer());
-			treeViewer = (TreeViewer)viewerPane.getViewer();
-			treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-			treeViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-			new AdapterFactoryTreeEditor(treeViewer.getTree(), adapterFactory);
-
-			createContextMenuFor(treeViewer);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_TreePage_label")); //$NON-NLS-1$
-		}
-
-		// This is the page for the table viewer.
-		//
-		{
-			ViewerPane viewerPane =
-				new ViewerPane(getSite().getPage(), UML2Editor.this) {
-					public Viewer createViewer(Composite composite) {
-						return new TableViewer(composite);
-					}
-					public void requestActivation() {
-						super.requestActivation();
-						setCurrentViewerPane(this);
-					}
-				};
-			viewerPane.createControl(getContainer());
-			tableViewer = (TableViewer)viewerPane.getViewer();
-
-			Table table = tableViewer.getTable();
-			TableLayout layout = new TableLayout();
-			table.setLayout(layout);
-			table.setHeaderVisible(true);
-			table.setLinesVisible(true);
-
-			TableColumn objectColumn = new TableColumn(table, SWT.NONE);
-			layout.addColumnData(new ColumnWeightData(3, 100, true));
-			objectColumn.setText(getString("_UI_ObjectColumn_label")); //$NON-NLS-1$
-			objectColumn.setResizable(true);
-
-			TableColumn selfColumn = new TableColumn(table, SWT.NONE);
-			layout.addColumnData(new ColumnWeightData(2, 100, true));
-			selfColumn.setText(getString("_UI_SelfColumn_label")); //$NON-NLS-1$
-			selfColumn.setResizable(true);
-
-			tableViewer.setColumnProperties(new String [] {"a", "b"}); //$NON-NLS-1$ //$NON-NLS-2$
-			tableViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-			tableViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-			createContextMenuFor(tableViewer);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_TablePage_label")); //$NON-NLS-1$
-		}
-
-		// This is the page for the table tree viewer.
-		//
-		{
-			ViewerPane viewerPane =
-				new ViewerPane(getSite().getPage(), UML2Editor.this) {
-					public Viewer createViewer(Composite composite) {
-						return new TableTreeViewer(composite);
-					}
-					public void requestActivation() {
-						super.requestActivation();
-						setCurrentViewerPane(this);
-					}
-				};
-			viewerPane.createControl(getContainer());
-
-			tableTreeViewer = (TableTreeViewer)viewerPane.getViewer();
-
-			TableTree tableTree = tableTreeViewer.getTableTree();
-			TableLayout layout = new TableLayout();
-			tableTree.getTable().setLayout(layout);
-			tableTree.getTable().setHeaderVisible(true);
-			tableTree.getTable().setLinesVisible(true);
-
-			TableColumn objectColumn = new TableColumn(tableTree.getTable(), SWT.NONE);
-			layout.addColumnData(new ColumnWeightData(3, 100, true));
-			objectColumn.setText(getString("_UI_ObjectColumn_label")); //$NON-NLS-1$
-			objectColumn.setResizable(true);
-
-			TableColumn selfColumn = new TableColumn(tableTree.getTable(), SWT.NONE);
-			layout.addColumnData(new ColumnWeightData(2, 100, true));
-			selfColumn.setText(getString("_UI_SelfColumn_label")); //$NON-NLS-1$
-			selfColumn.setResizable(true);
-
-			tableTreeViewer.setColumnProperties(new String [] {"a", "b"}); //$NON-NLS-1$ //$NON-NLS-2$
-			tableTreeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-			tableTreeViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-			createContextMenuFor(tableTreeViewer);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_TableTreePage_label")); //$NON-NLS-1$
-		}
-
-		setActivePage(0);
-
-		getContainer().addControlListener
-			(new ControlAdapter() {
-				boolean guard = false;
-				public void controlResized(ControlEvent event) {
-					if (!guard) {
-						guard = true;
-						hideTabs();
-						guard = false;
-					}
-				}
-			 });
-	}
-
-	public void createPages() {
-		// I assume that the input is a file object.
-		//
-		IFileEditorInput modelFile = (IFileEditorInput)getEditorInput();
-
-		try {
-			// Load the resource through the editing domain.
-			//
-			editingDomain.loadResource
-					(URI.createPlatformResourceURI(modelFile.getFile().getFullPath().toString()).toString());
-		}
-		catch (Exception exception) {
-			UML2EditorPlugin.INSTANCE.log(exception);
-		}
 
 		// Create a page for the selection tree view.
 		//
@@ -1062,7 +817,7 @@ public class UML2Editor
 
 			parentViewer = (TreeViewer)viewerPane.getViewer();
 			parentViewer.setAutoExpandLevel(30);
-			parentViewer.setContentProvider(new UML2ReverseAdapterFactoryContentProvider(adapterFactory));
+			parentViewer.setContentProvider(new ReverseAdapterFactoryContentProvider(adapterFactory));
 			parentViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 			createContextMenuFor(parentViewer);
@@ -1283,63 +1038,6 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IContentOutlinePage getContentOutlinePageGen() {
-		if (contentOutlinePage == null) {
-			// The content outline is just a tree.
-			//
-			class MyContentOutlinePage extends ContentOutlinePage {
-				public void createControl(Composite parent) {
-					super.createControl(parent);
-					contentOutlineViewer = getTreeViewer();
-					contentOutlineViewer.addSelectionChangedListener(this);
-
-					// Set up the tree viewer.
-					//
-					contentOutlineViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-					contentOutlineViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-					contentOutlineViewer.setInput(editingDomain.getResourceSet());
-
-					// Make sure our popups work.
-					//
-					createContextMenuFor(contentOutlineViewer);
-
-					if (!editingDomain.getResourceSet().getResources().isEmpty()) {
-					  // Select the root object in the view.
-					  //
-					  ArrayList selection = new ArrayList();
-					  selection.add(editingDomain.getResourceSet().getResources().get(0));
-					  contentOutlineViewer.setSelection(new StructuredSelection(selection), true);
-					}
-				}
-
-				public void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager, IStatusLineManager statusLineManager) {
-					super.makeContributions(menuManager, toolBarManager, statusLineManager);
-					contentOutlineStatusLineManager = statusLineManager;
-				}
-
-				public void setActionBars(IActionBars actionBars) {
-					super.setActionBars(actionBars);
-					getActionBarContributor().shareGlobalActions(this, actionBars);
-				}
-			}
-
-			contentOutlinePage = new MyContentOutlinePage();
-
-			// Listen to selection so that we can handle it is a special way.
-			//
-			contentOutlinePage.addSelectionChangedListener
-				(new ISelectionChangedListener() {
-					 // This ensures that we handle selections correctly.
-					 //
-					 public void selectionChanged(SelectionChangedEvent event) {
-						 handleContentOutlineSelection(event.getSelection());
-					 }
-				 });
-		}
-
-		return contentOutlinePage;
-	}
-
 	public IContentOutlinePage getContentOutlinePage() {
 		if (contentOutlinePage == null) {
 			// The content outline is just a tree.
@@ -1403,25 +1101,6 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IPropertySheetPage getPropertySheetPageGen() {
-		if (propertySheetPage == null) {
-			propertySheetPage =
-				new PropertySheetPage() {
-					public void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager, IStatusLineManager statusLineManager) {
-						super.makeContributions(menuManager, toolBarManager, statusLineManager);
-					}
-
-					public void setActionBars(IActionBars actionBars) {
-						super.setActionBars(actionBars);
-						getActionBarContributor().shareGlobalActions(this, actionBars);
-					}
-				};
-			propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
-		}
-
-		return propertySheetPage;
-	}
-
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null) {
 			propertySheetPage =
