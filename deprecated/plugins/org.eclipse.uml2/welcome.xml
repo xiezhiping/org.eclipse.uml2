@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<welcomePage 
+	title="Unified Modeling Language 2.0">
+
+  <intro>
+    UML2 is an EMF-based implementation of the UML 2.0 metamodel for the Eclipse
+    platform.
+  </intro>
+
+  <item><b>Please Note</b>
+    The UML2 API and associated XMI schema are subject to (significant) change
+    until the UML 2.0 Specification is finalized.
+  </item>
+
+  <item><b>Learn More</b>
+    More information on UML2 is available at <topic href="http://www.eclipse.org/uml2">http://www.eclipse.org/uml2</topic>.
+  </item>
+
+</welcomePage>
