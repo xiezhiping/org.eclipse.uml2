@@ -12,57 +12,60 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.3 2004/05/04 19:16:45 khussey Exp $
+ * $Id: plugin.xml,v 1.4 2004/05/20 19:22:05 khussey Exp $
  */
 -->
 
 <plugin
-    id = "org.eclipse.uml2.editor"
-    version = "1.0.0"
-    name = "%pluginName"
-    provider-name = "%providerName"
-    class = "org.eclipse.uml2.presentation.UML2EditorPlugin$Implementation">
+   id = "org.eclipse.uml2.editor"
+   version = "1.0.0"
+   name = "%pluginName"
+   provider-name = "%providerName"
+   class = "org.eclipse.uml2.presentation.UML2EditorPlugin$Implementation">
 
-  <requires>
-    <import plugin="org.eclipse.core.runtime.compatibility"/>
-    <import plugin="org.eclipse.emf.ecore.edit"/>
-    <import plugin="org.eclipse.emf.edit.ui"/>
-    <import plugin="org.eclipse.uml2.edit" export="true"/>
-  </requires>
+   <requires>
+      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.emf.ecore.edit"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.uml2.edit" export="true"/>
+   </requires>
 
-  <runtime>
-    <library name="uml2.editor.jar">
-      <export name="*"/>
-      <packages prefixes="org.eclipse.uml2.presentation"/>
-    </library>
-  </runtime>
+   <runtime>
+      <library name="uml2.editor.jar">
+        <export name="*"/>
+        <packages prefixes="org.eclipse.uml2.presentation"/>
+      </library>
+   </runtime>
 
-  <extension
-    point = "org.eclipse.ui.newWizards">
-    <category
-       id = "org.eclipse.emf.ecore.Wizard.category.ID"
-       name="%_UI_Wizard_category">
-    </category>
-    <wizard
-        id = "org.eclipse.uml2.presentation.UML2ModelWizardID"
-        name = "%_UI_UML2ModelWizard_label"
-        class = "org.eclipse.uml2.presentation.UML2ModelWizard"
-        category = "org.eclipse.emf.ecore.Wizard.category.ID"
-        icon = "icons/full/ctool16/NewUML2.gif">
-      <description>%_UI_UML2ModelWizard_description</description>
-      <selection class = "org.eclipse.core.resources.IResource" />
-    </wizard>
-  </extension>
+   <extension
+      point = "org.eclipse.ui.newWizards">
+      <category
+         id = "org.eclipse.emf.ecore.Wizard.category.ID"
+         name="%_UI_Wizard_category">
+      </category>
+      <wizard
+         id = "org.eclipse.uml2.presentation.UML2ModelWizardID"
+         name = "%_UI_UML2ModelWizard_label"
+         class = "org.eclipse.uml2.presentation.UML2ModelWizard"
+         category = "org.eclipse.emf.ecore.Wizard.category.ID"
+         icon = "icons/full/ctool16/NewUML2.gif">
+         <description>%_UI_UML2ModelWizard_description</description>
+         <selection class = "org.eclipse.core.resources.IResource" />
+      </wizard>
+   </extension>
 
-  <extension point = "org.eclipse.ui.editors">
-    <editor
-        id = "org.eclipse.uml2.presentation.UML2EditorID"
-        name = "%_UI_UML2Editor_label"
-        icon = "icons/full/obj16/UML2ModelFile.gif"
-        extensions = "uml2"
-        class = "org.eclipse.uml2.presentation.UML2Editor" 
-        contributorClass="org.eclipse.uml2.presentation.UML2ActionBarContributor" >
-    </editor>
-  </extension>
+   <extension point = "org.eclipse.ui.editors">
+      <editor
+         id = "org.eclipse.uml2.presentation.UML2EditorID"
+         name = "%_UI_UML2Editor_label"
+         icon = "icons/full/obj16/UML2ModelFile.gif"
+         extensions = "uml2"
+         class = "org.eclipse.uml2.presentation.UML2Editor" 
+         contributorClass="org.eclipse.uml2.presentation.UML2ActionBarContributor" >
+      </editor>
+   </extension>
 
 </plugin>
