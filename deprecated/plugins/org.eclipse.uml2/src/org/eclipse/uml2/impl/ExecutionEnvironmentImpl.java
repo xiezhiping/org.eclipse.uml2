@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2003, 2004 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
+ * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - Initial API and implementation
+ *   IBM - initial API and implementation
  *
- * $Id: ExecutionEnvironmentImpl.java,v 1.18 2004/11/02 15:00:29 khussey Exp $
+ * $Id: ExecutionEnvironmentImpl.java,v 1.19 2005/03/15 18:44:33 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 

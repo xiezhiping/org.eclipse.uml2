@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2003, 2004 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
+ * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - Initial API and implementation
+ *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.7 2004/12/03 22:32:52 khussey Exp $
+ * $Id: NamedElement.java,v 1.8 2005/03/15 18:44:42 khussey Exp $
  */
 package org.eclipse.uml2;
 

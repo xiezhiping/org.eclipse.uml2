@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2003, 2004 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
+ * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - Initial API and implementation
+ *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.4 2004/06/02 05:02:25 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.5 2005/03/15 18:44:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 

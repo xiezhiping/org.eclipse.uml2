@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2003, 2004 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
+ * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - Initial API and implementation
+ *   IBM - initial API and implementation
  *
- * $Id: UML2Package.java,v 1.15 2004/06/16 03:38:09 khussey Exp $
+ * $Id: UML2Package.java,v 1.16 2005/03/15 18:44:44 khussey Exp $
  */
 package org.eclipse.uml2;
 

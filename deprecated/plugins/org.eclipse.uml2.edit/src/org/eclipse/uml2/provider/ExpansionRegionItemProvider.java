@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
+ * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - Initial API and implementation
+ *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionItemProvider.java,v 1.8 2005/02/11 20:30:56 khussey Exp $
+ * $Id: ExpansionRegionItemProvider.java,v 1.9 2005/03/15 18:48:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
