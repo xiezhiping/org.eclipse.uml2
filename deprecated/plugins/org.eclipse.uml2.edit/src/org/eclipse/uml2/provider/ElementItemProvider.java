@@ -8,15 +8,17 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.14 2005/02/25 00:54:10 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.15 2005/02/25 02:18:57 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EObject;
@@ -249,4 +251,34 @@ public class ElementItemProvider
 		});
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#dispose()
+	 */
+	public void dispose() {
+		Notifier oldTarget = target;
+		target = null;
+
+		List oldTargets = targets;
+		targets = null;
+
+		if (oldTarget != null) {
+			oldTarget.eAdapters().remove(this);
+			oldTarget = null;
+		}
+
+		if (oldTargets != null) {
+			for (Iterator i = oldTargets.iterator(); i.hasNext();) {
+				Notifier otherTarget = (Notifier) i.next();
+				otherTarget.eAdapters().remove(this);
+			}
+			oldTargets = null;
+		}
+
+		// Dispose the child wrappers.
+		//
+		if (wrappers != null) {
+			wrappers.dispose();
+		}
+	}
+	
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProviderTest.java,v 1.5 2005/02/25 00:54:08 khussey Exp $
+ * $Id: ElementItemProviderTest.java,v 1.6 2005/02/25 02:18:55 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
-//import org.eclipse.emf.edit.provider.IDisposable;
+import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.UML2Package;
@@ -263,35 +263,35 @@ public abstract class ElementItemProviderTest
 		}
 	}
 
-//	public void testDispose() {
-//		ReferenceQueue referenceQueue = new ReferenceQueue();
-//		Reference reference = new PhantomReference(getModelObject(),
-//			referenceQueue);
-//
-//		Adapter adapter = adapterFactory.adapt(getModelObject(),
-//			IEditingDomainItemProvider.class);
-//		adapter.setTarget(null);
-//
-//		((IDisposable) adapter).dispose();
-//		setModelObject(null);
-//
-//		System.gc();
-//
-//		if (!reference.isEnqueued()) {
-//			System.runFinalization();
-//		}
-//
-//		assertTrue(reference.isEnqueued());
-//
-//		try {
-//			reference = referenceQueue.remove();
-//
-//			if (null != reference) {
-//				reference.clear();
-//			}
-//		} catch (InterruptedException ie) {
-//			// do nothing
-//		}
-//	}
+	public void testDispose() {
+		ReferenceQueue referenceQueue = new ReferenceQueue();
+		Reference reference = new PhantomReference(getModelObject(),
+			referenceQueue);
+
+		Adapter adapter = adapterFactory.adapt(getModelObject(),
+			IEditingDomainItemProvider.class);
+		adapter.setTarget(null);
+
+		((IDisposable) adapter).dispose();
+		setModelObject(null);
+
+		System.gc();
+
+		if (!reference.isEnqueued()) {
+			System.runFinalization();
+		}
+
+		assertTrue(reference.isEnqueued());
+
+		try {
+			reference = referenceQueue.remove();
+
+			if (null != reference) {
+				reference.clear();
+			}
+		} catch (InterruptedException ie) {
+			// do nothing
+		}
+	}
 
 } //ElementItemProviderTest
