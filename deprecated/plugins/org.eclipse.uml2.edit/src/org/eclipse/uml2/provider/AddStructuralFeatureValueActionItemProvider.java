@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionItemProvider.java,v 1.8 2004/06/16 03:57:17 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionItemProvider.java,v 1.9 2004/06/16 04:12:07 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -205,11 +205,11 @@ public class AddStructuralFeatureValueActionItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
+			feature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
+			feature == UML2Package.eINSTANCE.getAction_LocalPostcondition() ||
 			feature == UML2Package.eINSTANCE.getStructuralFeatureAction_Object() ||
 			feature == UML2Package.eINSTANCE.getWriteStructuralFeatureAction_Value() ||
-			feature == UML2Package.eINSTANCE.getAddStructuralFeatureValueAction_InsertAt() ||
-			feature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			feature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			feature == UML2Package.eINSTANCE.getAddStructuralFeatureValueAction_InsertAt();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
