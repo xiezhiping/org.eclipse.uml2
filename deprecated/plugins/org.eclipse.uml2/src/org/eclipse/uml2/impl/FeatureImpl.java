@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.4 2004/06/02 05:02:26 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.5 2004/06/17 03:20:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -119,11 +119,28 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList getFeaturingClassifiersGen() {
+		EList featuringClassifier = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
+
+		if (null == featuringClassifier) {
+			Set union = new LinkedHashSet();
+
+			featuringClassifier = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), featuringClassifier);
+		}
+
+		return featuringClassifier;
+	}
+
 	public EList getFeaturingClassifiers() {
 		EList featuringClassifier = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
 
 		if (null == featuringClassifier) {
 			Set union = new LinkedHashSet();
+
+			if (Classifier.class.isInstance(eContainer)) {
+				union.add(eContainer);
+			}
 
 			featuringClassifier = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), featuringClassifier);

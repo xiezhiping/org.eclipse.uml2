@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.7 2004/06/17 03:20:09 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -87,7 +87,7 @@ public final class RedefinableElementOperations
 			RedefinableElement redefinedElement = (RedefinableElement) redefinedElements
 				.next();
 
-			if (!redefinableElement.isConsistentWith(redefinedElement)) {
+			if (!redefinedElement.isConsistentWith(redefinableElement)) {
 				result = false;
 
 				if (null == diagnostics) {

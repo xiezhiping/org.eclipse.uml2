@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.6 2004/06/02 05:02:25 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.7 2004/06/17 03:20:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -140,11 +140,28 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList getRedefinitionContextsGen() {
+		EList redefinitionContext = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
+
+		if (null == redefinitionContext) {
+			Set union = new LinkedHashSet();
+
+			redefinitionContext = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext);
+		}
+
+		return redefinitionContext;
+	}
+
 	public EList getRedefinitionContexts() {
 		EList redefinitionContext = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
 
 		if (null == redefinitionContext) {
 			Set union = new LinkedHashSet();
+
+			if (Classifier.class.isInstance(eContainer)) {
+				union.add(eContainer);
+			}
 
 			redefinitionContext = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext);
