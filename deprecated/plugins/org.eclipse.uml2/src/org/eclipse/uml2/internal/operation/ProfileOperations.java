@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.4 2004/04/27 13:56:09 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.5 2004/05/05 17:16:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -96,7 +96,8 @@ public final class ProfileOperations
 	 */
 	public static String getEPackageName(Profile profile) {
 		return (isEmpty(profile.getQualifiedName())
-			? profile.getName() : profile.getQualifiedName().replace(':', '_'))
+			? profile.getName() : profile.getQualifiedName().replace(':', '_')
+				.replace(' ', '_'))
 			+ '_' + getVersion(profile);
 	}
 
@@ -111,7 +112,7 @@ public final class ProfileOperations
 	public static String getEClassifierName(Classifier classifier) {
 		return isEmpty(classifier.getQualifiedName())
 			? classifier.getName() : classifier.getQualifiedName().replace(':',
-				'_');
+				'_').replace(' ', '_');
 	}
 
 	/**

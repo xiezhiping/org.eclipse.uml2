@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Basic_0="http:///Basic_0.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Basic_0.profile.uml2 pathmap://UML2_PROFILES/Basic.profile.uml2#_Wv32sIKZEdihC9hGDszZng" xmi:id="_FkgTsIKVEdiFpp01w6WBkA" name="UML2" appliedProfile="_FpZogIKaEdiQZY6ayxtRxA">
-  <eAnnotations xmi:id="_Fsc8gIKaEdiQZY6ayxtRxA" source="appliedStereotypes">
-    <contents xsi:type="Basic_0:Basic__ModelLibrary" xmi:id="_FsjDIIKaEdiQZY6ayxtRxA"/>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Basic_0="http:///Basic_0.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Basic_0.profile.uml2 pathmap://UML2_PROFILES/Basic.profile.uml2#_i2TIoJ4GEdi-h6zTMn5cgg" xmi:id="_fvqZwJ4EEdim0unU9itKRg" name="UML2" appliedProfile="_9UqBUJ4HEdiwo51KPV5kJA">
+  <eAnnotations xmi:id="_9Xy04J4HEdiwo51KPV5kJA" source="appliedStereotypes">
+    <contents xsi:type="Basic_0:Basic__ModelLibrary" xmi:id="_9X47gJ4HEdiwo51KPV5kJA"/>
   </eAnnotations>
-  <packageImport xsi:type="uml:ProfileApplication" xmi:id="_FpZogIKaEdiQZY6ayxtRxA">
-    <eAnnotations xmi:id="_FpZogYKaEdiQZY6ayxtRxA" source="attributes">
-      <details xmi:id="_FpZogoKaEdiQZY6ayxtRxA" key="version" value="0"/>
+  <packageImport xsi:type="uml:ProfileApplication" xmi:id="_9UqBUJ4HEdiwo51KPV5kJA">
+    <eAnnotations xmi:id="_9UwH8J4HEdiwo51KPV5kJA" source="attributes">
+      <details xmi:id="_9UwH8Z4HEdiwo51KPV5kJA" key="version" value="0"/>
     </eAnnotations>
-    <importedPackage href="pathmap://UML2_PROFILES/Basic.profile.uml2#_Rj5hEIKZEdihC9hGDszZng"/>
-    <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_Rj5hEIKZEdihC9hGDszZng"/>
+    <importedPackage href="pathmap://UML2_PROFILES/Basic.profile.uml2#_UBnzYJ4GEdi-h6zTMn5cgg"/>
+    <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_UBnzYJ4GEdi-h6zTMn5cgg"/>
   </packageImport>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HTSwwIKVEdiFpp01w6WBkA" name="Boolean"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HTSwwYKVEdiFpp01w6WBkA" name="Integer"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HTY3YIKVEdiFpp01w6WBkA" name="String"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HTe-AIKVEdiFpp01w6WBkA" name="UnlimitedNatural"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_5l9CUJ4EEdijJJZSMuU0GQ" name="Boolean"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_5mDI8J4EEdijJJZSMuU0GQ" name="Integer"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_5mDI8Z4EEdijJJZSMuU0GQ" name="String"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_5mDI8p4EEdijJJZSMuU0GQ" name="UnlimitedNatural"/>
 </uml:Model>
