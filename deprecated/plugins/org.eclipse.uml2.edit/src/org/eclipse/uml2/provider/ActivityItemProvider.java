@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityItemProvider.java,v 1.12 2004/06/15 20:59:09 khussey Exp $
+ * $Id: ActivityItemProvider.java,v 1.13 2004/06/16 03:32:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -373,12 +373,12 @@ public class ActivityItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getActivity_Group(),
-				 UML2Factory.eINSTANCE.createExpansionRegion()));
+				 UML2Factory.eINSTANCE.createActivityPartition()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getActivity_Group(),
-				 UML2Factory.eINSTANCE.createActivityPartition()));
+				 UML2Factory.eINSTANCE.createExpansionRegion()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -448,16 +448,6 @@ public class ActivityItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getActivity_Node(),
-				 UML2Factory.eINSTANCE.createExpansionNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getActivity_Node(),
-				 UML2Factory.eINSTANCE.createExpansionRegion()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getActivity_Node(),
 				 UML2Factory.eINSTANCE.createForkNode()));
 
 		newChildDescriptors.add
@@ -474,6 +464,16 @@ public class ActivityItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getActivity_Node(),
 				 UML2Factory.eINSTANCE.createCentralBufferNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getActivity_Node(),
+				 UML2Factory.eINSTANCE.createExpansionNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getActivity_Node(),
+				 UML2Factory.eINSTANCE.createExpansionRegion()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -588,6 +588,21 @@ public class ActivityItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getActivity_Node(),
+				 UML2Factory.eINSTANCE.createTimeObservationAction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getActivity_Node(),
+				 UML2Factory.eINSTANCE.createDurationObservationAction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getActivity_Node(),
+				 UML2Factory.eINSTANCE.createDataStoreNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getActivity_Node(),
 				 UML2Factory.eINSTANCE.createReadExtentAction()));
 
 		newChildDescriptors.add
@@ -639,21 +654,6 @@ public class ActivityItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getActivity_Node(),
 				 UML2Factory.eINSTANCE.createRaiseExceptionAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getActivity_Node(),
-				 UML2Factory.eINSTANCE.createDataStoreNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getActivity_Node(),
-				 UML2Factory.eINSTANCE.createTimeObservationAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getActivity_Node(),
-				 UML2Factory.eINSTANCE.createDurationObservationAction()));
 	}
 
 	/**
@@ -664,13 +664,13 @@ public class ActivityItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
 			feature == UML2Package.eINSTANCE.getActivity_Group() ||
 			feature == UML2Package.eINSTANCE.getActivity_Node() ||
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
+			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
 			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$

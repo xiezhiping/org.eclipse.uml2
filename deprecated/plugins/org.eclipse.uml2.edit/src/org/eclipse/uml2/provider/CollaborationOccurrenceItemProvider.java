@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CollaborationOccurrenceItemProvider.java,v 1.7 2004/06/06 01:25:31 khussey Exp $
+ * $Id: CollaborationOccurrenceItemProvider.java,v 1.8 2004/06/16 03:32:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -215,12 +215,12 @@ public class CollaborationOccurrenceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
-				 UML2Factory.eINSTANCE.createManifestation()));
+				 UML2Factory.eINSTANCE.createImplementation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
-				 UML2Factory.eINSTANCE.createImplementation()));
+				 UML2Factory.eINSTANCE.createManifestation()));
 
 		newChildDescriptors.add
 			(createChildParameter

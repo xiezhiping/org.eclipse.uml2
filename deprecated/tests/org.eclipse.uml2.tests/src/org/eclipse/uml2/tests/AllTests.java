@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AllTests.java,v 1.9 2004/06/15 20:59:01 khussey Exp $
+ * $Id: AllTests.java,v 1.10 2004/06/16 03:31:54 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -243,6 +243,8 @@ public class AllTests extends TestSuite {
 	 */
 	public static Test suiteGen() {
 		TestSuite suite = new AllTests("UML2 Tests"); //$NON-NLS-1$
+		suite.addTestSuite(OpaqueExpressionImplTest.class);
+		suite.addTestSuite(ExpressionImplTest.class);
 		suite.addTestSuite(CommentImplTest.class);
 		suite.addTestSuite(ClassImplTest.class);
 		suite.addTestSuite(PropertyImplTest.class);
@@ -253,14 +255,12 @@ public class AllTests extends TestSuite {
 		suite.addTestSuite(DataTypeImplTest.class);
 		suite.addTestSuite(EnumerationLiteralImplTest.class);
 		suite.addTestSuite(PrimitiveTypeImplTest.class);
-		suite.addTestSuite(OpaqueExpressionImplTest.class);
-		suite.addTestSuite(ExpressionImplTest.class);
+		suite.addTestSuite(ConstraintImplTest.class);
 		suite.addTestSuite(LiteralBooleanImplTest.class);
 		suite.addTestSuite(LiteralStringImplTest.class);
 		suite.addTestSuite(LiteralNullImplTest.class);
 		suite.addTestSuite(LiteralIntegerImplTest.class);
 		suite.addTestSuite(LiteralUnlimitedNaturalImplTest.class);
-		suite.addTestSuite(ConstraintImplTest.class);
 		suite.addTestSuite(InstanceSpecificationImplTest.class);
 		suite.addTestSuite(SlotImplTest.class);
 		suite.addTestSuite(InstanceValueImplTest.class);
@@ -274,25 +274,20 @@ public class AllTests extends TestSuite {
 		suite.addTestSuite(ProfileApplicationImplTest.class);
 		suite.addTestSuite(ExtensionImplTest.class);
 		suite.addTestSuite(ExtensionEndImplTest.class);
+		suite.addTestSuite(ActivityImplTest.class);
 		suite.addTestSuite(PermissionImplTest.class);
 		suite.addTestSuite(DependencyImplTest.class);
 		suite.addTestSuite(UsageImplTest.class);
 		suite.addTestSuite(AbstractionImplTest.class);
 		suite.addTestSuite(RealizationImplTest.class);
 		suite.addTestSuite(SubstitutionImplTest.class);
+		suite.addTestSuite(GeneralizationSetImplTest.class);
+		suite.addTestSuite(AssociationClassImplTest.class);
 		suite.addTestSuite(InformationItemImplTest.class);
 		suite.addTestSuite(InformationFlowImplTest.class);
-		suite.addTestSuite(AssociationClassImplTest.class);
-		suite.addTestSuite(GeneralizationSetImplTest.class);
 		suite.addTestSuite(ModelImplTest.class);
-		suite.addTestSuite(ActivityImplTest.class);
-		suite.addTestSuite(ActorImplTest.class);
-		suite.addTestSuite(ExtendImplTest.class);
-		suite.addTestSuite(UseCaseImplTest.class);
-		suite.addTestSuite(ExtensionPointImplTest.class);
-		suite.addTestSuite(IncludeImplTest.class);
-		suite.addTestSuite(ArtifactImplTest.class);
-		suite.addTestSuite(ManifestationImplTest.class);
+		suite.addTestSuite(ConnectorEndImplTest.class);
+		suite.addTestSuite(ConnectorImplTest.class);
 		suite.addTestSuite(ActionImplTest.class);
 		suite.addTestSuite(ControlFlowImplTest.class);
 		suite.addTestSuite(ObjectFlowImplTest.class);
@@ -304,18 +299,17 @@ public class AllTests extends TestSuite {
 		suite.addTestSuite(InputPinImplTest.class);
 		suite.addTestSuite(ActivityParameterNodeImplTest.class);
 		suite.addTestSuite(ValuePinImplTest.class);
-		suite.addTestSuite(ConnectorEndImplTest.class);
-		suite.addTestSuite(ConnectorImplTest.class);
 		suite.addTestSuite(InterfaceImplTest.class);
 		suite.addTestSuite(ImplementationImplTest.class);
-		suite.addTestSuite(InteractionImplTest.class);
-		suite.addTestSuite(LifelineImplTest.class);
-		suite.addTestSuite(MessageImplTest.class);
-		suite.addTestSuite(GeneralOrderingImplTest.class);
-		suite.addTestSuite(EventOccurrenceImplTest.class);
-		suite.addTestSuite(ExecutionOccurrenceImplTest.class);
-		suite.addTestSuite(StateInvariantImplTest.class);
-		suite.addTestSuite(StopImplTest.class);
+		suite.addTestSuite(ArtifactImplTest.class);
+		suite.addTestSuite(ManifestationImplTest.class);
+		suite.addTestSuite(ActorImplTest.class);
+		suite.addTestSuite(ExtendImplTest.class);
+		suite.addTestSuite(UseCaseImplTest.class);
+		suite.addTestSuite(ExtensionPointImplTest.class);
+		suite.addTestSuite(IncludeImplTest.class);
+		suite.addTestSuite(CollaborationOccurrenceImplTest.class);
+		suite.addTestSuite(CollaborationImplTest.class);
 		suite.addTestSuite(PortImplTest.class);
 		suite.addTestSuite(CallTriggerImplTest.class);
 		suite.addTestSuite(ChangeTriggerImplTest.class);
@@ -324,13 +318,19 @@ public class AllTests extends TestSuite {
 		suite.addTestSuite(SignalTriggerImplTest.class);
 		suite.addTestSuite(TimeTriggerImplTest.class);
 		suite.addTestSuite(AnyTriggerImplTest.class);
-		suite.addTestSuite(CollaborationOccurrenceImplTest.class);
-		suite.addTestSuite(CollaborationImplTest.class);
 		suite.addTestSuite(VariableImplTest.class);
 		suite.addTestSuite(StructuredActivityNodeImplTest.class);
 		suite.addTestSuite(ConditionalNodeImplTest.class);
 		suite.addTestSuite(ClauseImplTest.class);
 		suite.addTestSuite(LoopNodeImplTest.class);
+		suite.addTestSuite(InteractionImplTest.class);
+		suite.addTestSuite(LifelineImplTest.class);
+		suite.addTestSuite(MessageImplTest.class);
+		suite.addTestSuite(GeneralOrderingImplTest.class);
+		suite.addTestSuite(EventOccurrenceImplTest.class);
+		suite.addTestSuite(ExecutionOccurrenceImplTest.class);
+		suite.addTestSuite(StateInvariantImplTest.class);
+		suite.addTestSuite(StopImplTest.class);
 		suite.addTestSuite(TemplateSignatureImplTest.class);
 		suite.addTestSuite(TemplateParameterImplTest.class);
 		suite.addTestSuite(StringExpressionImplTest.class);
@@ -340,6 +340,11 @@ public class AllTests extends TestSuite {
 		suite.addTestSuite(ClassifierTemplateParameterImplTest.class);
 		suite.addTestSuite(RedefinableTemplateSignatureImplTest.class);
 		suite.addTestSuite(ConnectableElementTemplateParameterImplTest.class);
+		suite.addTestSuite(ForkNodeImplTest.class);
+		suite.addTestSuite(JoinNodeImplTest.class);
+		suite.addTestSuite(FlowFinalNodeImplTest.class);
+		suite.addTestSuite(CentralBufferNodeImplTest.class);
+		suite.addTestSuite(ActivityPartitionImplTest.class);
 		suite.addTestSuite(ExpansionNodeImplTest.class);
 		suite.addTestSuite(ExpansionRegionImplTest.class);
 		suite.addTestSuite(ExceptionHandlerImplTest.class);
@@ -357,11 +362,6 @@ public class AllTests extends TestSuite {
 		suite.addTestSuite(ConnectionPointReferenceImplTest.class);
 		suite.addTestSuite(TransitionImplTest.class);
 		suite.addTestSuite(FinalStateImplTest.class);
-		suite.addTestSuite(ForkNodeImplTest.class);
-		suite.addTestSuite(JoinNodeImplTest.class);
-		suite.addTestSuite(FlowFinalNodeImplTest.class);
-		suite.addTestSuite(CentralBufferNodeImplTest.class);
-		suite.addTestSuite(ActivityPartitionImplTest.class);
 		suite.addTestSuite(CreateObjectActionImplTest.class);
 		suite.addTestSuite(DestroyObjectActionImplTest.class);
 		suite.addTestSuite(TestIdentityActionImplTest.class);
@@ -387,6 +387,28 @@ public class AllTests extends TestSuite {
 		suite.addTestSuite(SendObjectActionImplTest.class);
 		suite.addTestSuite(CallOperationActionImplTest.class);
 		suite.addTestSuite(CallBehaviorActionImplTest.class);
+		suite.addTestSuite(TimeExpressionImplTest.class);
+		suite.addTestSuite(DurationImplTest.class);
+		suite.addTestSuite(TimeObservationActionImplTest.class);
+		suite.addTestSuite(DurationIntervalImplTest.class);
+		suite.addTestSuite(IntervalImplTest.class);
+		suite.addTestSuite(TimeConstraintImplTest.class);
+		suite.addTestSuite(IntervalConstraintImplTest.class);
+		suite.addTestSuite(TimeIntervalImplTest.class);
+		suite.addTestSuite(DurationObservationActionImplTest.class);
+		suite.addTestSuite(DurationConstraintImplTest.class);
+		suite.addTestSuite(DataStoreNodeImplTest.class);
+		suite.addTestSuite(InterruptibleActivityRegionImplTest.class);
+		suite.addTestSuite(ParameterSetImplTest.class);
+		suite.addTestSuite(ComponentImplTest.class);
+		suite.addTestSuite(DeploymentImplTest.class);
+		suite.addTestSuite(NodeImplTest.class);
+		suite.addTestSuite(DeviceImplTest.class);
+		suite.addTestSuite(ExecutionEnvironmentImplTest.class);
+		suite.addTestSuite(CommunicationPathImplTest.class);
+		suite.addTestSuite(ProtocolConformanceImplTest.class);
+		suite.addTestSuite(ProtocolStateMachineImplTest.class);
+		suite.addTestSuite(ProtocolTransitionImplTest.class);
 		suite.addTestSuite(ReadExtentActionImplTest.class);
 		suite.addTestSuite(ReclassifyObjectActionImplTest.class);
 		suite.addTestSuite(ReadIsClassifiedObjectActionImplTest.class);
@@ -399,28 +421,6 @@ public class AllTests extends TestSuite {
 		suite.addTestSuite(AcceptCallActionImplTest.class);
 		suite.addTestSuite(ReplyActionImplTest.class);
 		suite.addTestSuite(RaiseExceptionActionImplTest.class);
-		suite.addTestSuite(ComponentImplTest.class);
-		suite.addTestSuite(DataStoreNodeImplTest.class);
-		suite.addTestSuite(InterruptibleActivityRegionImplTest.class);
-		suite.addTestSuite(ParameterSetImplTest.class);
-		suite.addTestSuite(ProtocolConformanceImplTest.class);
-		suite.addTestSuite(ProtocolStateMachineImplTest.class);
-		suite.addTestSuite(ProtocolTransitionImplTest.class);
-		suite.addTestSuite(TimeExpressionImplTest.class);
-		suite.addTestSuite(DurationImplTest.class);
-		suite.addTestSuite(TimeObservationActionImplTest.class);
-		suite.addTestSuite(DurationIntervalImplTest.class);
-		suite.addTestSuite(IntervalImplTest.class);
-		suite.addTestSuite(TimeConstraintImplTest.class);
-		suite.addTestSuite(IntervalConstraintImplTest.class);
-		suite.addTestSuite(TimeIntervalImplTest.class);
-		suite.addTestSuite(DurationObservationActionImplTest.class);
-		suite.addTestSuite(DurationConstraintImplTest.class);
-		suite.addTestSuite(DeploymentImplTest.class);
-		suite.addTestSuite(NodeImplTest.class);
-		suite.addTestSuite(DeviceImplTest.class);
-		suite.addTestSuite(ExecutionEnvironmentImplTest.class);
-		suite.addTestSuite(CommunicationPathImplTest.class);
 		suite.addTestSuite(DeploymentSpecificationImplTest.class);
 		return suite;
 	}

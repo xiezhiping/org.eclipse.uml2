@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExecutionEnvironmentItemProvider.java,v 1.12 2004/06/15 20:59:09 khussey Exp $
+ * $Id: ExecutionEnvironmentItemProvider.java,v 1.13 2004/06/16 03:32:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -126,11 +126,11 @@ public class ExecutionEnvironmentItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			feature == UML2Package.eINSTANCE.getNode_NestedNode() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
+			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
 			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
+			feature == UML2Package.eINSTANCE.getNode_NestedNode() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
 		return getString(

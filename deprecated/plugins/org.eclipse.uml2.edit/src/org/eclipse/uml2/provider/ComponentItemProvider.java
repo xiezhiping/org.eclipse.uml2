@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentItemProvider.java,v 1.12 2004/06/15 20:59:09 khussey Exp $
+ * $Id: ComponentItemProvider.java,v 1.13 2004/06/16 03:32:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -341,6 +341,11 @@ public class ComponentItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
+				 UML2Factory.eINSTANCE.createActivity()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
 				 UML2Factory.eINSTANCE.createDependency()));
 
 		newChildDescriptors.add
@@ -371,6 +376,16 @@ public class ComponentItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
+				 UML2Factory.eINSTANCE.createGeneralizationSet()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
+				 UML2Factory.eINSTANCE.createAssociationClass()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
 				 UML2Factory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add
@@ -381,42 +396,7 @@ public class ComponentItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
-				 UML2Factory.eINSTANCE.createAssociationClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
-				 UML2Factory.eINSTANCE.createGeneralizationSet()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
 				 UML2Factory.eINSTANCE.createModel()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
-				 UML2Factory.eINSTANCE.createActivity()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
-				 UML2Factory.eINSTANCE.createActor()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
-				 UML2Factory.eINSTANCE.createUseCase()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
-				 UML2Factory.eINSTANCE.createArtifact()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
-				 UML2Factory.eINSTANCE.createManifestation()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -431,7 +411,27 @@ public class ComponentItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
-				 UML2Factory.eINSTANCE.createInteraction()));
+				 UML2Factory.eINSTANCE.createArtifact()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
+				 UML2Factory.eINSTANCE.createManifestation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
+				 UML2Factory.eINSTANCE.createActor()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
+				 UML2Factory.eINSTANCE.createUseCase()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
+				 UML2Factory.eINSTANCE.createCollaboration()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -441,7 +441,7 @@ public class ComponentItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
-				 UML2Factory.eINSTANCE.createCollaboration()));
+				 UML2Factory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -461,16 +461,6 @@ public class ComponentItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
-				 UML2Factory.eINSTANCE.createComponent()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
-				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
 				 UML2Factory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add
@@ -482,6 +472,11 @@ public class ComponentItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
 				 UML2Factory.eINSTANCE.createDurationConstraint()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
+				 UML2Factory.eINSTANCE.createComponent()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -511,6 +506,11 @@ public class ComponentItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
+				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getComponent_OwnedMember(),
 				 UML2Factory.eINSTANCE.createDeploymentSpecification()));
 	}
 
@@ -526,10 +526,10 @@ public class ComponentItemProvider
 			feature == UML2Package.eINSTANCE.getComponent_OwnedMember() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
+			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
+			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_Implementation() ||
 			feature == UML2Package.eINSTANCE.getComponent_Realization() ||
-			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
 			feature == UML2Package.eINSTANCE.getClassifier_Substitution() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
