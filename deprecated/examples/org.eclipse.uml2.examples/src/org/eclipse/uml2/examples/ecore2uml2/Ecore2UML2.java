@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Ecore2UML2.java,v 1.2 2004/05/04 19:16:40 khussey Exp $
+ * $Id: Ecore2UML2.java,v 1.3 2004/05/26 18:12:15 khussey Exp $
  */
 package org.eclipse.uml2.examples.ecore2uml2;
 
@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -72,8 +71,6 @@ public class Ecore2UML2
 	extends EcoreSwitch
 	implements Converter {
 
-	protected static final String ANNOTATION_SOURCE__DERIVED = "derived"; //$NON-NLS-1$
-
 	protected static final String ANNOTATION_SOURCE__REDEFINES = "redefines"; //$NON-NLS-1$
 
 	protected static final String ANNOTATION_SOURCE__SUBSETS = "subsets"; //$NON-NLS-1$
@@ -88,13 +85,6 @@ public class Ecore2UML2
 
 	public Ecore2UML2() {
 		super();
-	}
-
-	protected boolean isDerived(EStructuralFeature structuralFeature) {
-		return null != structuralFeature
-			.getEAnnotation(ANNOTATION_SOURCE__DERIVED)
-			|| null != structuralFeature
-				.getEAnnotation(ANNOTATION_SOURCE__UNION);
 	}
 
 	protected PrimitiveType getEcorePrimitiveType(String name) {
@@ -202,7 +192,7 @@ public class Ecore2UML2
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.ibm.uml2.example.Converter#convert(org.eclipse.emf.ecore.resource.ResourceSet,
+	 * @see org.eclipse.uml2.examples.Converter#convert(org.eclipse.emf.ecore.resource.ResourceSet,
 	 *      org.eclipse.core.resources.IContainer, java.lang.String)
 	 */
 	public void convert(ResourceSet ecoreResourceSet, IContainer container,
@@ -240,7 +230,7 @@ public class Ecore2UML2
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.ibm.uml2.example.Converter#getModel(org.eclipse.emf.ecore.resource.Resource)
+	 * @see org.eclipse.uml2.examples.Converter#getModel(org.eclipse.emf.ecore.resource.Resource)
 	 */
 	public EObject getModel(Resource resource) {
 
@@ -324,8 +314,8 @@ public class Ecore2UML2
 	public Object caseEAnnotation(EAnnotation object) {
 
 		switch (object.getEModelElement().eClass().getClassifierID()) {
-			case EcorePackage.EATTRIBUTE:
-			case EcorePackage.EREFERENCE:
+			case EcorePackage.EATTRIBUTE :
+			case EcorePackage.EREFERENCE :
 				Property property = (Property) doSwitch(object
 					.getEModelElement());
 
@@ -368,7 +358,7 @@ public class Ecore2UML2
 				}
 
 				break;
-			case EcorePackage.EOPERATION:
+			case EcorePackage.EOPERATION :
 				Operation operation = (Operation) doSwitch(object
 					.getEModelElement());
 
@@ -409,7 +399,7 @@ public class Ecore2UML2
 
 		property.setName(object.getName());
 		property.setIsReadOnly(!object.isChangeable());
-		property.setIsDerived(isDerived(object));
+		property.setIsDerived(object.isDerived());
 		property.setType(getType(object));
 		property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
 
@@ -653,7 +643,7 @@ public class Ecore2UML2
 		end1Property.setAggregation(end1.isContainment()
 			? AggregationKind.COMPOSITE_LITERAL : AggregationKind.NONE_LITERAL);
 		end1Property.setAssociation(association);
-		end1Property.setIsDerived(isDerived(end1));
+		end1Property.setIsDerived(end1.isDerived());
 		end1Property.setIsOrdered(true);
 		end1Property.setIsReadOnly(!end1.isChangeable());
 
@@ -682,7 +672,7 @@ public class Ecore2UML2
 
 			end2Property.setName(end2.getName());
 			end2Property.setAssociation(association);
-			end2Property.setIsDerived(isDerived(end2));
+			end2Property.setIsDerived(end2.isDerived());
 			end2Property.setIsOrdered(true);
 			end2Property.setIsReadOnly(!end2.isChangeable());
 

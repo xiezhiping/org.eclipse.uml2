@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2URIConverterImpl.java,v 1.4 2004/05/25 21:58:19 khussey Exp $
+ * $Id: UML2URIConverterImpl.java,v 1.5 2004/05/26 18:12:19 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -33,36 +33,37 @@ public class UML2URIConverterImpl
 
 	// ECLIPSE-DEPEND-BEGIN
 
-    public static class WorkbenchHelper {
+	public static class WorkbenchHelper {
 
 		public static InputStream createPlatformPluginInputStream(
 				String platformPluginPath)
 			throws IOException {
 
-            int segmentIndex = platformPluginPath.indexOf('/', 1);
-            int versionIndex = platformPluginPath.substring(0, segmentIndex)
-                .lastIndexOf('_');
+			int segmentIndex = platformPluginPath.indexOf('/', 1);
+			int versionIndex = platformPluginPath.substring(0, segmentIndex)
+				.lastIndexOf('_');
 
-            String pluginId = platformPluginPath.substring(1,
-                -1 == versionIndex ? segmentIndex : versionIndex);
+			String pluginId = platformPluginPath.substring(1,
+				-1 == versionIndex
+					? segmentIndex : versionIndex);
 
-            Bundle[] bundles = Platform.getBundles(pluginId,
-                -1 == versionIndex ? null : platformPluginPath.substring(
-                    versionIndex + 1, segmentIndex));
+			Bundle[] bundles = Platform.getBundles(pluginId, -1 == versionIndex
+				? null : platformPluginPath.substring(versionIndex + 1,
+					segmentIndex));
 
-            URL url = null;
+			URL url = null;
 
-            if (null != bundles) {
-                url = Platform.find(bundles[0], new Path(platformPluginPath
-                    .substring(segmentIndex + 1)));
-            }
+			if (null != bundles) {
+				url = Platform.find(bundles[0], new Path(platformPluginPath
+					.substring(segmentIndex + 1)));
+			}
 
-            if (null == url) {
-                throw new IOException();
-            }
+			if (null == url) {
+				throw new IOException();
+			}
 
-            return url.openConnection().getInputStream();
-        }
+			return url.openConnection().getInputStream();
+		}
 	}
 
 	// ECLIPSE-DEPEND-END

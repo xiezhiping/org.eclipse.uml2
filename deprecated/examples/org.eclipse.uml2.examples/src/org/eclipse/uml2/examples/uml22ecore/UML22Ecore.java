@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML22Ecore.java,v 1.2 2004/05/12 22:20:08 khussey Exp $
+ * $Id: UML22Ecore.java,v 1.3 2004/05/26 18:12:15 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml22ecore;
 
@@ -16,16 +16,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -37,7 +41,10 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.uml2.Class;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
+import org.eclipse.uml2.Classifier;
+import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Enumeration;
@@ -46,7 +53,6 @@ import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Operation;
-import org.eclipse.uml2.Package;
 import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.Property;
@@ -120,10 +126,57 @@ public class UML22Ecore
 		return eClassifier;
 	}
 
+	protected void setAnnotations(Element element, EModelElement eModelElement) {
+
+		for (Iterator annotations = element.getEAnnotations().iterator(); annotations
+			.hasNext();) {
+
+			EAnnotation annotation = (EAnnotation) annotations.next();
+
+			if (!annotation.getDetails().isEmpty()) {
+				EAnnotation eAnnotation = EcoreFactory.eINSTANCE
+					.createEAnnotation();
+				eAnnotation.setSource(annotation.getSource());
+				eAnnotation.getDetails().putAll(annotation.getDetails().map());
+
+				eModelElement.getEAnnotations().add(eAnnotation);
+			}
+		}
+	}
+
+	protected void setName(Classifier classifier, Stereotype stereotype,
+			EClass eClass) {
+		String className = (String) classifier
+			.getValue(stereotype, "className"); //$NON-NLS-1$
+
+		if (null != className && 0 != className.length()) {
+			eClass.setName(className);
+		}
+	}
+
+	protected void setInstanceClassName(Classifier classifier,
+			Stereotype stereotype, EClassifier eClassifier) {
+		String instanceClassName = (String) classifier.getValue(stereotype,
+			"instanceClassName"); //$NON-NLS-1$
+
+		if (null != instanceClassName && 0 != instanceClassName.length()) {
+			eClassifier.setInstanceClassName(instanceClassName);
+		}
+	}
+
+	protected void setXMLName(NamedElement namedElement, Stereotype stereotype,
+			ENamedElement eNamedElement) {
+		String xmlName = (String) namedElement.getValue(stereotype, "xmlName"); //$NON-NLS-1$
+
+		if (null != xmlName && 0 != xmlName.length()) {
+			ExtendedMetaData.INSTANCE.setName(eNamedElement, xmlName);
+		}
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.ibm.uml2.example.Converter#convert(org.eclipse.emf.ecore.resource.ResourceSet,
+	 * @see org.eclipse.uml2.examples.Converter#convert(org.eclipse.emf.ecore.resource.ResourceSet,
 	 *      org.eclipse.core.resources.IContainer, java.lang.String)
 	 */
 	public void convert(ResourceSet uml2ResourceSet, IContainer container,
@@ -160,7 +213,7 @@ public class UML22Ecore
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.ibm.uml2.example.Converter#getModel(org.eclipse.emf.ecore.resource.Resource)
+	 * @see org.eclipse.uml2.examples.Converter#getModel(org.eclipse.emf.ecore.resource.Resource)
 	 */
 	public EObject getModel(Resource resource) {
 		return (EObject) modelMap.get(resource);
@@ -188,7 +241,8 @@ public class UML22Ecore
 
 	public Object caseResource(Resource object) {
 
-		if (object.getURI().lastSegment().endsWith(UML2Resource.PROFILE_FILE_EXTENSION)) {
+		if (object.getURI().lastSegment().endsWith(
+			UML2Resource.PROFILE_FILE_EXTENSION)) {
 			return this;
 		}
 
@@ -230,7 +284,7 @@ public class UML22Ecore
 	 * 
 	 * @see org.eclipse.uml2.util.UML2Switch#caseClass(org.eclipse.uml2.Class)
 	 */
-	public Object caseClass(Class object) {
+	public Object caseClass(org.eclipse.uml2.Class object) {
 		EClass eClass = EcoreFactory.eINSTANCE.createEClass();
 		elementMap.put(object, eClass);
 
@@ -244,11 +298,18 @@ public class UML22Ecore
 			+ NamedElement.SEPARATOR + "EClass"); //$NON-NLS-1$
 
 		if (null != eClassStereotype) {
-			String className = (String) object.getValue(eClassStereotype,
-				"className"); //$NON-NLS-1$
+			setName(object, eClassStereotype, eClass);
+			
+			setXMLName(object, eClassStereotype, eClass);
 
-			if (null != className && 0 != className.length()) {
-				eClass.setName(className);
+			EnumerationLiteral xmlContentKind = (EnumerationLiteral) object
+				.getValue(eClassStereotype, "xmlContentKind"); //$NON-NLS-1$
+
+			int contentKind = xmlContentKind.getEnumeration()
+				.getOwnedLiterals().indexOf(xmlContentKind);
+
+			if (0 != contentKind) {
+				ExtendedMetaData.INSTANCE.setContentKind(eClass, contentKind);
 			}
 		}
 
@@ -263,11 +324,13 @@ public class UML22Ecore
 
 				eClass.getESuperTypes().add(
 					null == object.getAppliedStereotype("Ecore" //$NON-NLS-1$
-						+ NamedElement.SEPARATOR + "Extend")//$NON-NLS-1$
+						+ NamedElement.SEPARATOR + "Extend") //$NON-NLS-1$
 						? eClass.getESuperTypes().size() : 0,
 					doSwitch(generalization.getGeneral()));
 			}
 		}
+
+		setAnnotations(object, eClass);
 
 		defaultCase(object);
 
@@ -307,7 +370,11 @@ public class UML22Ecore
 			if (null != enumName && 0 != enumName.length()) {
 				eEnum.setName(enumName);
 			}
+
+			setXMLName(object, eEnumStereotype, eEnum);
 		}
+
+		setAnnotations(object, eEnum);
 
 		defaultCase(object);
 
@@ -340,7 +407,11 @@ public class UML22Ecore
 			if (null != enumLiteralName && 0 != enumLiteralName.length()) {
 				eEnumLiteral.setName(enumLiteralName);
 			}
+
+			setXMLName(object, eEnumLiteralStereotype, eEnumLiteral);
 		}
+
+		setAnnotations(object, eEnumLiteral);
 
 		defaultCase(object);
 
@@ -366,19 +437,11 @@ public class UML22Ecore
 			+ NamedElement.SEPARATOR + "EClass"); //$NON-NLS-1$
 
 		if (null != eClassStereotype) {
-			String className = (String) object.getValue(eClassStereotype,
-				"className"); //$NON-NLS-1$
+			setName(object, eClassStereotype, eClass);
 
-			if (null != className && 0 != className.length()) {
-				eClass.setName(className);
-			}
+			setInstanceClassName(object, eClassStereotype, eClass);
 
-			String instanceClassName = (String) object.getValue(
-				eClassStereotype, "instanceClassName"); //$NON-NLS-1$
-
-			if (null != instanceClassName && 0 != instanceClassName.length()) {
-				eClass.setInstanceClassName(instanceClassName);
-			}
+			setXMLName(object, eClassStereotype, eClass);
 		}
 
 		for (Iterator generalizations = object.getGeneralizations().iterator(); generalizations
@@ -392,6 +455,8 @@ public class UML22Ecore
 					doSwitch(generalization.getGeneral()));
 			}
 		}
+
+		setAnnotations(object, eClass);
 
 		defaultCase(object);
 
@@ -425,6 +490,8 @@ public class UML22Ecore
 			}
 		}
 
+		setAnnotations(object, eOperation);
+
 		defaultCase(object);
 
 		return eOperation;
@@ -435,7 +502,7 @@ public class UML22Ecore
 	 * 
 	 * @see org.eclipse.uml2.util.UML2Switch#casePackage(org.eclipse.uml2.Package)
 	 */
-	public Object casePackage(Package object) {
+	public Object casePackage(org.eclipse.uml2.Package object) {
 		EPackage ePackage = null == object.getNestingPackage()
 			? (EPackage) doSwitch(object.eResource()) : EcoreFactory.eINSTANCE
 				.createEPackage();
@@ -486,6 +553,8 @@ public class UML22Ecore
 
 		ePackage.setNsURI(nsURI);
 
+		setAnnotations(object, ePackage);
+
 		defaultCase(object);
 
 		return ePackage;
@@ -523,6 +592,8 @@ public class UML22Ecore
 			}
 		}
 
+		setAnnotations(object, eParameter);
+
 		defaultCase(object);
 
 		return eParameter;
@@ -554,13 +625,14 @@ public class UML22Ecore
 				eDataType.setName(dataTypeName);
 			}
 
-			String instanceClassName = (String) object.getValue(
-				eDataTypeStereotype, "instanceClassName"); //$NON-NLS-1$
+			setInstanceClassName(object, eDataTypeStereotype, eDataType);
 
-			if (null != instanceClassName && 0 != instanceClassName.length()) {
-				eDataType.setInstanceClassName(instanceClassName);
-			}
+			setXMLName(object, eDataTypeStereotype, eDataType);
 		}
+
+		setAnnotations(object, eDataType);
+
+		defaultCase(object);
 
 		return eDataType;
 	}
@@ -573,6 +645,8 @@ public class UML22Ecore
 	public Object caseProperty(Property object) {
 		EStructuralFeature eStructuralFeature = null;
 		EClass eClass = null;
+
+		Stereotype eStructuralFeatureStereotype = null;
 
 		if (DataType.class.isInstance(object.getType())) {
 			eStructuralFeature = EcoreFactory.eINSTANCE.createEAttribute();
@@ -589,27 +663,21 @@ public class UML22Ecore
 				// ignore
 			}
 
-			Stereotype eAttributeStereotype = object
+			eStructuralFeatureStereotype = object
 				.getAppliedStereotype("Ecore" + NamedElement.SEPARATOR //$NON-NLS-1$
 					+ "EAttribute"); //$NON-NLS-1$
 
-			if (null != eAttributeStereotype) {
+			if (null != eStructuralFeatureStereotype) {
 				String attributeName = (String) object.getValue(
-					eAttributeStereotype, "attributeName"); //$NON-NLS-1$
+					eStructuralFeatureStereotype, "attributeName"); //$NON-NLS-1$
 
 				if (null != attributeName && 0 != attributeName.length()) {
 					eStructuralFeature.setName(attributeName);
 				}
 
 				((EAttribute) eStructuralFeature).setID(Boolean.TRUE
-					.equals(object.getValue(eAttributeStereotype, "isID"))); //$NON-NLS-1$
-
-				eStructuralFeature.setTransient(Boolean.TRUE.equals(object
-					.getValue(eAttributeStereotype, "isTransient"))); //$NON-NLS-1$
-				eStructuralFeature.setUnsettable(Boolean.TRUE.equals(object
-					.getValue(eAttributeStereotype, "isUnsettable"))); //$NON-NLS-1$
-				eStructuralFeature.setVolatile(Boolean.TRUE.equals(object
-					.getValue(eAttributeStereotype, "isVolatile"))); //$NON-NLS-1$
+					.equals(object.getValue(eStructuralFeatureStereotype,
+						"isID"))); //$NON-NLS-1$
 			}
 		} else {
 			eStructuralFeature = EcoreFactory.eINSTANCE.createEReference();
@@ -623,13 +691,13 @@ public class UML22Ecore
 					.setEOpposite((EReference) doSwitch(object.getOpposite()));
 			}
 
-			Stereotype eReferenceStereotype = object
+			eStructuralFeatureStereotype = object
 				.getAppliedStereotype("Ecore" + NamedElement.SEPARATOR //$NON-NLS-1$
 					+ "EReference"); //$NON-NLS-1$
 
-			if (null != eReferenceStereotype) {
+			if (null != eStructuralFeatureStereotype) {
 				String referenceName = (String) object.getValue(
-					eReferenceStereotype, "referenceName"); //$NON-NLS-1$
+					eStructuralFeatureStereotype, "referenceName"); //$NON-NLS-1$
 
 				if (null != referenceName && 0 != referenceName.length()) {
 					eStructuralFeature.setName(referenceName);
@@ -637,20 +705,15 @@ public class UML22Ecore
 
 				((EReference) eStructuralFeature)
 					.setResolveProxies(Boolean.TRUE.equals(object.getValue(
-						eReferenceStereotype, "isResolveProxies"))); //$NON-NLS-1$
-
-				eStructuralFeature.setTransient(Boolean.TRUE.equals(object
-					.getValue(eReferenceStereotype, "isTransient"))); //$NON-NLS-1$
-				eStructuralFeature.setUnsettable(Boolean.TRUE.equals(object
-					.getValue(eReferenceStereotype, "isUnsettable"))); //$NON-NLS-1$
-				eStructuralFeature.setVolatile(Boolean.TRUE.equals(object
-					.getValue(eReferenceStereotype, "isVolatile"))); //$NON-NLS-1$
+						eStructuralFeatureStereotype, "isResolveProxies"))); //$NON-NLS-1$
 			}
 		}
 
 		eStructuralFeature.setName(null == eStructuralFeature.getName()
 			? object.getName() : eStructuralFeature.getName());
+
 		eStructuralFeature.setChangeable(!object.isReadOnly());
+		eStructuralFeature.setDerived(object.isDerived());
 
 		if (object.getUpper() != eStructuralFeature.getUpperBound()) {
 			eStructuralFeature.setUpperBound(object.getUpper());
@@ -665,7 +728,69 @@ public class UML22Ecore
 		eStructuralFeature.setEType(null == object.getType()
 			? EcorePackage.eINSTANCE.getEObject() : getEClassifier(object));
 
+		if (null != eStructuralFeatureStereotype) {
+			eStructuralFeature.setTransient(Boolean.TRUE.equals(object
+				.getValue(eStructuralFeatureStereotype, "isTransient"))); //$NON-NLS-1$
+
+			eStructuralFeature.setVolatile(Boolean.TRUE.equals(object.getValue(
+				eStructuralFeatureStereotype, "isVolatile"))); //$NON-NLS-1$
+
+			eStructuralFeature.setUnsettable(Boolean.TRUE.equals(object
+				.getValue(eStructuralFeatureStereotype, "isUnsettable"))); //$NON-NLS-1$
+
+			setXMLName(object, eStructuralFeatureStereotype, eStructuralFeature);
+
+			String xmlNamespace = (String) object.getValue(
+				eStructuralFeatureStereotype, "xmlNamespace"); //$NON-NLS-1$
+
+			if (null != xmlNamespace && 0 != xmlNamespace.length()) {
+				ExtendedMetaData.INSTANCE.setNamespace(eStructuralFeature,
+					xmlNamespace);
+			}
+
+			EnumerationLiteral xmlFeatureKind = (EnumerationLiteral) object
+				.getValue(eStructuralFeatureStereotype, "xmlFeatureKind"); //$NON-NLS-1$
+
+			int featureKind = xmlFeatureKind.getEnumeration()
+				.getOwnedLiterals().indexOf(xmlFeatureKind);
+
+			if (0 != featureKind) {
+				ExtendedMetaData.INSTANCE.setFeatureKind(eStructuralFeature,
+					featureKind);
+			}
+		}
+
+		setAnnotations(object, eStructuralFeature);
+
+		defaultCase(object);
+
 		return eStructuralFeature;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.util.UML2Switch#caseConstraint(org.eclipse.uml2.Constraint)
+	 */
+	public Object caseConstraint(Constraint object) {
+
+		for (Iterator constrainedElements = object.getConstrainedElements()
+			.iterator(); constrainedElements.hasNext();) {
+
+			Object constrainedElement = doSwitch((Element) constrainedElements
+				.next());
+
+			if (EModelElement.class.isInstance(constrainedElement)) {
+				EModelElement eModelElement = (EModelElement) constrainedElement;
+
+				List constraints = new ArrayList(EcoreUtil
+					.getConstraints(eModelElement));
+				constraints.add(object.getName());
+
+				EcoreUtil.setConstraints(eModelElement, constraints);
+			}
+		}
+
+		return this;
+	}
 }

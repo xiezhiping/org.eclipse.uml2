@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Basic_0="http:///Basic_0.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Basic_0.profile.uml2 pathmap://UML2_PROFILES/Basic.profile.uml2#_VSovIKoWEdiNzO9YjNFQAA" xmi:id="_I4f_IKoVEdiWzIKzKXflIw" name="Java" appliedProfile="_k5t8QKoXEdiaq_4OeOtsBw">
-  <eAnnotations xmi:id="_k-AmYKoXEdiaq_4OeOtsBw" source="appliedStereotypes">
-    <contents xsi:type="Basic_0:Basic__ModelLibrary" xmi:id="_k-AmYaoXEdiaq_4OeOtsBw"/>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Basic_0="http:///Basic_0.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Basic_0.profile.uml2 pathmap://UML2_PROFILES/Basic.profile.uml2#__LeIQK86Edih9-GG5afQ0g" xmi:id="_RjmyoK86EdieaYgxtVWN8Q" name="Java" appliedProfile="_ZNwI8K88EdizLvaujP1w9Q">
+  <eAnnotations xmi:id="_ZSCzEK88EdizLvaujP1w9Q" source="appliedStereotypes">
+    <contents xsi:type="Basic_0:Basic__ModelLibrary" xmi:id="_ZSCzEa88EdizLvaujP1w9Q"/>
   </eAnnotations>
-  <packageImport xsi:type="uml:ProfileApplication" xmi:id="_k5t8QKoXEdiaq_4OeOtsBw">
-    <eAnnotations xmi:id="_k5t8QaoXEdiaq_4OeOtsBw" source="attributes">
-      <details xmi:id="_k5t8QqoXEdiaq_4OeOtsBw" key="version" value="0"/>
+  <packageImport xsi:type="uml:ProfileApplication" xmi:id="_ZNwI8K88EdizLvaujP1w9Q">
+    <eAnnotations xmi:id="_ZNwI8a88EdizLvaujP1w9Q" source="attributes">
+      <details xmi:id="_ZNwI8q88EdizLvaujP1w9Q" key="version" value="0"/>
     </eAnnotations>
-    <importedPackage href="pathmap://UML2_PROFILES/Basic.profile.uml2#_yZipUKoVEdiPDOUXUSJvZQ"/>
-    <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_yZipUKoVEdiPDOUXUSJvZQ"/>
+    <importedPackage href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
+    <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
   </packageImport>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_LCOEsKoVEdiWzIKzKXflIw" name="boolean"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_LCOEsaoVEdiWzIKzKXflIw" name="byte"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_LCOEsqoVEdiWzIKzKXflIw" name="char"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_LCOEs6oVEdiWzIKzKXflIw" name="double"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_LCOEtKoVEdiWzIKzKXflIw" name="float"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_LCOEtaoVEdiWzIKzKXflIw" name="int"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_LCULUKoVEdiWzIKzKXflIw" name="long"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_LCULUaoVEdiWzIKzKXflIw" name="short"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_TBfF4K86EdieaYgxtVWN8Q" name="boolean"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_TBfF4a86EdieaYgxtVWN8Q" name="byte"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_TBlMgK86EdieaYgxtVWN8Q" name="char"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_TBlMga86EdieaYgxtVWN8Q" name="double"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_TBlMgq86EdieaYgxtVWN8Q" name="float"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_TBlMg686EdieaYgxtVWN8Q" name="int"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_TBrTIK86EdieaYgxtVWN8Q" name="long"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_TBrTIa86EdieaYgxtVWN8Q" name="short"/>
 </uml:Model>
