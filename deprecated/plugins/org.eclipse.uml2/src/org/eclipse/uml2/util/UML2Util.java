@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.7 2005/03/15 18:44:47 khussey Exp $
+ * $Id: UML2Util.java,v 1.8 2005/03/17 19:37:33 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -4085,39 +4086,108 @@ public class UML2Util {
 		return qualifiedText;
 	}
 
-	private static NamedElement findNamedElement(ResourceSet resourceSet,
+	public static Set findNamedElements(ResourceSet resourceSet,
 			String qualifiedName) {
+		return findNamedElements(resourceSet, qualifiedName, false);
+	}
 
-		String[] names = qualifiedName.split(NamedElement.SEPARATOR);
+	public static Set findNamedElements(ResourceSet resourceSet,
+			String qualifiedName, boolean ignoreCase) {
+		Set namedElements = new LinkedHashSet();
 
 		for (Iterator resources = resourceSet.getResources().iterator(); resources
 			.hasNext();) {
 
-			Namespace namespace = (Namespace) EcoreUtil.getObjectByType(
-				((Resource) resources.next()).getContents(),
-				UML2Package.eINSTANCE.getNamespace());
+			findNamedElements(((Resource) resources.next()).getContents(),
+				qualifiedName, ignoreCase, UML2Package.eINSTANCE
+					.getNamedElement(), namedElements);
+		}
 
-			if (null != namespace) {
-				int index = 0;
-				NamedElement namedElement = namespace.getName().equals(
-					names[index++])
-					? namespace
-					: null;
+		return namedElements;
+	}
 
-				while (index < names.length
-					&& namedElement instanceof Namespace) {
+	public static Set findNamedElements(ResourceSet resourceSet,
+			String qualifiedName, boolean ignoreCase, EClass eClass) {
+		Set namedElements = new LinkedHashSet();
 
-					namedElement = ((Namespace) namedElement)
-						.getMember(names[index++]);
+		if (UML2Package.eINSTANCE.getNamedElement().isSuperTypeOf(eClass)) {
+
+			for (Iterator resources = resourceSet.getResources().iterator(); resources
+				.hasNext();) {
+
+				findNamedElements(((Resource) resources.next()).getContents(),
+					qualifiedName, ignoreCase, eClass, new LinkedHashSet());
+			}
+		}
+
+		return namedElements;
+	}
+
+	public static Set findNamedElements(Resource resource, String qualifiedName) {
+		return findNamedElements(resource, qualifiedName, false);
+	}
+
+	public static Set findNamedElements(Resource resource,
+			String qualifiedName, boolean ignoreCase) {
+		return findNamedElements(resource.getContents(), qualifiedName,
+			ignoreCase, UML2Package.eINSTANCE.getNamedElement(),
+			new LinkedHashSet());
+	}
+
+	public static Set findNamedElements(Resource resource,
+			String qualifiedName, boolean ignoreCase, EClass eClass) {
+		Set namedElements = new LinkedHashSet();
+
+		if (UML2Package.eINSTANCE.getNamedElement().isSuperTypeOf(eClass)) {
+			findNamedElements(resource.getContents(), qualifiedName,
+				ignoreCase, eClass, new LinkedHashSet());
+		}
+
+		return namedElements;
+	}
+
+	protected static Set findNamedElements(Collection eObjects,
+			String qualifiedName, boolean ignoreCase, EClass eClass,
+			Set namedElements) {
+		int index = qualifiedName.indexOf(NamedElement.SEPARATOR);
+
+		if (-1 == index) {
+
+			for (Iterator members = EcoreUtil
+				.getObjectsByType(eObjects, eClass).iterator(); members
+				.hasNext();) {
+
+				NamedElement member = (NamedElement) members.next();
+
+				if (ignoreCase
+					? member.getName().equalsIgnoreCase(qualifiedName)
+					: member.getName().equals(qualifiedName)) {
+
+					namedElements.add(member);
 				}
+			}
+		} else {
+			String name = qualifiedName.substring(0, index);
+			qualifiedName = qualifiedName.substring(index
+				+ NamedElement.SEPARATOR.length());
 
-				if (null != namedElement && index == names.length) {
-					return namedElement;
+			for (Iterator namespaces = EcoreUtil.getObjectsByType(eObjects,
+				UML2Package.eINSTANCE.getNamespace()).iterator(); namespaces
+				.hasNext();) {
+
+				Namespace namespace = (Namespace) namespaces.next();
+
+				if (ignoreCase
+					? namespace.getName().equalsIgnoreCase(name)
+					: namespace.getName().equals(name)) {
+
+					findNamedElements(namespace.getMembers(), qualifiedName,
+						ignoreCase, eClass, namedElements);
 				}
 			}
 		}
 
-		return null;
+		return namedElements;
 	}
 
 	protected static EAnnotation createEAnnotation(EModelElement eModelElement,
