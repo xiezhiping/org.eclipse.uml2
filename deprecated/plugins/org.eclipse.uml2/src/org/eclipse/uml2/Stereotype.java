@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Stereotype.java,v 1.6 2004/06/02 19:52:53 khussey Exp $
+ * $Id: Stereotype.java,v 1.7 2004/12/02 16:14:25 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,11 +41,14 @@ public interface Stereotype extends org.eclipse.uml2.Class{
 	 * Creates a(n) (required) extension of the specified Ecore class with this
 	 * stereotype.
 	 * 
-	 * @param eClass The Ecore class to be extended.
-	 * @param required Whether the extension should be required.
+	 * @param eClass
+	 *            The Ecore class to be extended.
+	 * @param required
+	 *            Whether the extension should be required.
 	 * @return The new extension.
-	 * @throws IllegalArgumentException If this stereotype already extends the
-	 *                                  Ecore class.
+	 * @throws IllegalArgumentException
+	 *             If this stereotype already extends (a subclass of) the Ecore
+	 *             class.
 	 */
 	public Extension createExtension(EClass eClass, boolean required);
 

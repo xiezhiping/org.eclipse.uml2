@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.13 2004/12/02 16:12:32 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.14 2004/12/02 16:14:25 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -325,7 +325,8 @@ public final class StereotypeOperations
 	 *            Whether the extension should be required.
 	 * @return The new extension.
 	 * @throws IllegalArgumentException
-	 *             If the stereotype already extends the Ecore class.
+	 *             If the stereotype already extends (a subclass of) the Ecore
+	 *             class.
 	 */
 	public static Extension createExtension(Stereotype stereotype,
 			EClass eClass, boolean required) {
