@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameter.java,v 1.6 2005/03/15 18:44:43 khussey Exp $
+ * $Id: ClassifierTemplateParameter.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -30,7 +30,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getClassifierTemplateParameter()
- * @model 
+ * @model
  * @generated
  */
 public interface ClassifierTemplateParameter extends TemplateParameter{
@@ -39,7 +39,7 @@ public interface ClassifierTemplateParameter extends TemplateParameter{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Allow Substitutable</b></em>' attribute.
@@ -56,7 +56,7 @@ public interface ClassifierTemplateParameter extends TemplateParameter{
 	 * @return the value of the '<em>Allow Substitutable</em>' attribute.
 	 * @see #setAllowSubstitutable(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getClassifierTemplateParameter_AllowSubstitutable()
-	 * @model default="true" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="true" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isAllowSubstitutable();

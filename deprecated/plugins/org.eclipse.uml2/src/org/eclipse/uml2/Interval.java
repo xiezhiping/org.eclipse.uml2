@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interval.java,v 1.5 2005/03/15 18:44:45 khussey Exp $
+ * $Id: Interval.java,v 1.6 2005/04/04 20:11:16 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getInterval()
- * @model 
+ * @model
  * @generated
  */
 public interface Interval extends ValueSpecification{
@@ -41,7 +41,7 @@ public interface Interval extends ValueSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Min</b></em>' reference list.
@@ -58,6 +58,7 @@ public interface Interval extends ValueSpecification{
 	 * @return the value of the '<em>Min</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterval_Min()
 	 * @model type="org.eclipse.uml2.ValueSpecification" volatile="true"
+	 *        annotation="redefined lowerBound='1' upperBound='1'"
 	 * @generated
 	 */
 	EList getMins();
@@ -88,6 +89,7 @@ public interface Interval extends ValueSpecification{
 	 * @return the value of the '<em>Max</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterval_Max()
 	 * @model type="org.eclipse.uml2.ValueSpecification" volatile="true"
+	 *        annotation="redefined lowerBound='1' upperBound='1'"
 	 * @generated
 	 */
 	EList getMaxes();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNode.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: ObjectNode.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Ordering</b></em>' attribute.
@@ -88,6 +88,7 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 * @see #setUpperBound(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getObjectNode_UpperBound()
 	 * @model containment="true" required="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getUpperBound();
@@ -154,7 +155,7 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 * @return the value of the '<em>Selection</em>' reference.
 	 * @see #setSelection(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getObjectNode_Selection()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	Behavior getSelection();
@@ -173,6 +174,7 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.6 2005/03/15 18:44:36 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.7 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
@@ -61,14 +61,14 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	protected static final boolean VALUE_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The flag representing the value of the '{@link #isValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int VALUE_EFLAG = Integer.MIN_VALUE >>> 0;
+	protected static final int VALUE_EFLAG = 1 << 8;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,7 +77,6 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	 */
 	protected LiteralBooleanImpl() {
 		super();
-		eFlags &= ~VALUE_EFLAG;
 	}
 
 	/**
@@ -95,7 +94,7 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	 * @generated
 	 */
 	public boolean isValue() {
-		return 0 != (eFlags & VALUE_EFLAG);
+		return (eFlags & VALUE_EFLAG) != 0;
 	}
 
 	/**
@@ -104,15 +103,10 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	 * @generated
 	 */
 	public void setValue(boolean newValue) {
-		boolean oldValue = 0 != (eFlags & VALUE_EFLAG);
-		if (newValue) {
-			eFlags |= VALUE_EFLAG;
-		} else {
-			eFlags &= ~VALUE_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldValue = (eFlags & VALUE_EFLAG) != 0;
+		if (newValue) eFlags |= VALUE_EFLAG; else eFlags &= ~VALUE_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LITERAL_BOOLEAN__VALUE, oldValue, newValue));
-		}
 	}
 
 	/**
@@ -394,9 +388,24 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 			case UML2Package.LITERAL_BOOLEAN__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.LITERAL_BOOLEAN__VALUE:
-				return isValue() != VALUE_EDEFAULT;
+				return ((eFlags & VALUE_EFLAG) != 0) != VALUE_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (value: "); //$NON-NLS-1$
+		result.append((eFlags & VALUE_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 	/**

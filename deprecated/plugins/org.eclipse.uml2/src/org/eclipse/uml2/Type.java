@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Type.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ public interface Type extends PackageableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Package</b></em>' reference.
@@ -56,6 +56,7 @@ public interface Type extends PackageableElement{
 	 * @see org.eclipse.uml2.UML2Package#getType_Package()
 	 * @see org.eclipse.uml2.Package#getOwnedTypes
 	 * @model opposite="ownedType" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	org.eclipse.uml2.Package getPackage();
@@ -69,7 +70,8 @@ public interface Type extends PackageableElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.TypeOperations.conformsTo(this, other);'" 
 	 * @generated
 	 */
 	boolean conformsTo(Type other);
@@ -78,6 +80,7 @@ public interface Type extends PackageableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
 	 * @generated
 	 */
 	Namespace getNamespace();

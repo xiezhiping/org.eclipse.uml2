@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.3 2005/03/15 18:44:42 khussey Exp $
+ * $Id: ProfileApplication.java,v 1.4 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -26,7 +26,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getProfileApplication()
- * @model 
+ * @model
  * @generated
  */
 public interface ProfileApplication extends PackageImport{
@@ -35,7 +35,7 @@ public interface ProfileApplication extends PackageImport{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Imported Profile</b></em>' reference.
@@ -49,6 +49,7 @@ public interface ProfileApplication extends PackageImport{
 	 * @see #setImportedProfile(Profile)
 	 * @see org.eclipse.uml2.UML2Package#getProfileApplication_ImportedProfile()
 	 * @model required="true" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.PackageImport#getImportedPackage=''"
 	 * @generated
 	 */
 	Profile getImportedProfile();
@@ -66,7 +67,7 @@ public interface ProfileApplication extends PackageImport{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model 
+	 * @model annotation="feature derived='false' name='importedPackage' eType='org.eclipse.uml2.Package' containment='false'" 
 	 * @generated
 	 */
 	void setImportedPackage(org.eclipse.uml2.Package value);

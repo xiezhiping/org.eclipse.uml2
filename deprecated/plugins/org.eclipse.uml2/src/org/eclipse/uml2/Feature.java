@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Feature.java,v 1.7 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Feature.java,v 1.8 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface Feature extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Static</b></em>' attribute.
@@ -58,7 +58,7 @@ public interface Feature extends RedefinableElement{
 	 * @return the value of the '<em>Is Static</em>' attribute.
 	 * @see #setIsStatic(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getFeature_IsStatic()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isStatic();

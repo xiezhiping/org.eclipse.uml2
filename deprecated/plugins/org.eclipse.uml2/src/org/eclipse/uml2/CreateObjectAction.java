@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectAction.java,v 1.4 2005/03/15 18:44:41 khussey Exp $
+ * $Id: CreateObjectAction.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getCreateObjectAction()
- * @model 
+ * @model
  * @generated
  */
 public interface CreateObjectAction extends Action{
@@ -43,7 +43,7 @@ public interface CreateObjectAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Classifier</b></em>' reference.
@@ -89,6 +89,7 @@ public interface CreateObjectAction extends Action{
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getCreateObjectAction_Result()
 	 * @model containment="true" required="true"
+	 *        annotation="subsets org.eclipse.uml2.Action#getOutputs=''"
 	 * @generated
 	 */
 	OutputPin getResult();
@@ -118,6 +119,7 @@ public interface CreateObjectAction extends Action{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='output' eType='org.eclipse.uml2.OutputPin' containment='false'" 
 	 * @generated
 	 */
 	EList getOutputs();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.10 2005/03/15 18:44:31 khussey Exp $
+ * $Id: StateImpl.java,v 1.11 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -90,7 +90,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
@@ -103,14 +103,14 @@ public class StateImpl extends NamespaceImpl implements State {
 	protected static final boolean IS_LEAF_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
+	 * The flag representing the value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isLeaf()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = Integer.MIN_VALUE >>> 0;
+	protected static final int IS_LEAF_EFLAG = 1 << 8;
 
 	/**
 	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
@@ -269,7 +269,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	 */
 	protected StateImpl() {
 		super();
-		eFlags &= ~IS_LEAF_EFLAG;
 	}
 
 	/**
@@ -304,7 +303,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public boolean isLeaf() {
-		return 0 != (eFlags & IS_LEAF_EFLAG);
+		return (eFlags & IS_LEAF_EFLAG) != 0;
 	}
 
 	/**
@@ -313,15 +312,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-		boolean oldIsLeaf = 0 != (eFlags & IS_LEAF_EFLAG);
-		if (newIsLeaf) {
-			eFlags |= IS_LEAF_EFLAG;
-		} else {
-			eFlags &= ~IS_LEAF_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
+		if (newIsLeaf) eFlags |= IS_LEAF_EFLAG; else eFlags &= ~IS_LEAF_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STATE__IS_LEAF, oldIsLeaf, newIsLeaf));
-		}
 	}
 
 	/**
@@ -1430,7 +1424,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.STATE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.STATE__CONTAINER:
 				return getContainer() != null;
 			case UML2Package.STATE__OUTGOING:
@@ -1513,6 +1507,21 @@ public class StateImpl extends NamespaceImpl implements State {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isLeaf: "); //$NON-NLS-1$
+		result.append((eFlags & IS_LEAF_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //StateImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.7 2005/03/15 18:44:32 khussey Exp $
+ * $Id: MessageImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,7 +68,7 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getMessageKind() <em>Message Kind</em>}' attribute.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerImpl.java,v 1.5 2005/03/15 18:44:36 khussey Exp $
+ * $Id: TriggerImpl.java,v 1.6 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,7 +50,7 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getPorts() <em>Port</em>}' reference list.

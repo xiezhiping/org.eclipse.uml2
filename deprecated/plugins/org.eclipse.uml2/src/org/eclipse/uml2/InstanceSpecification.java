@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.7 2005/03/15 18:44:43 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getInstanceSpecification()
- * @model 
+ * @model
  * @generated
  */
 public interface InstanceSpecification extends PackageableElement, DeploymentTarget, DeployedArtifact{
@@ -47,7 +47,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Slot</b></em>' containment reference list.
@@ -66,6 +66,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * @see org.eclipse.uml2.UML2Package#getInstanceSpecification_Slot()
 	 * @see org.eclipse.uml2.Slot#getOwningInstance
 	 * @model type="org.eclipse.uml2.Slot" opposite="owningInstance" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getSlots();
@@ -126,6 +127,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * @see #setSpecification(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getInstanceSpecification_Specification()
 	 * @model containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getSpecification();
@@ -161,7 +163,8 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 *   classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.InstanceSpecificationOperations.validateSlotsAreDefined(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateSlotsAreDefined(DiagnosticChain diagnostics, Map context);
@@ -177,7 +180,8 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * 	)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.InstanceSpecificationOperations.validateNoDuplicateSlots(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateNoDuplicateSlots(DiagnosticChain diagnostics, Map context);
@@ -186,6 +190,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

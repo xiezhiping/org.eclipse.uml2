@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.9 2005/03/18 04:00:53 khussey Exp $
+ * $Id: NamedElement.java,v 1.10 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,7 +50,7 @@ public interface NamedElement extends TemplateableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -117,7 +117,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @see org.eclipse.uml2.VisibilityKind
 	 * @see #setVisibility(VisibilityKind)
 	 * @see org.eclipse.uml2.UML2Package#getNamedElement_Visibility()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	VisibilityKind getVisibility();
@@ -177,6 +177,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @see #setNameExpression(StringExpression)
 	 * @see org.eclipse.uml2.UML2Package#getNamedElement_NameExpression()
 	 * @model containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	StringExpression getNameExpression();
@@ -212,7 +213,8 @@ public interface NamedElement extends TemplateableElement{
 	 * 	implies self.qualifiedName->isEmpty()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.validateNoName(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateNoName(DiagnosticChain diagnostics, Map context);
@@ -229,7 +231,8 @@ public interface NamedElement extends TemplateableElement{
 	 * 		ns.name->union(self.separator())->union(result))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.validateQualifiedName(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateQualifiedName(DiagnosticChain diagnostics, Map context);
@@ -246,7 +249,8 @@ public interface NamedElement extends TemplateableElement{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Sequence" 
+	 * @model dataType="org.eclipse.uml2.Sequence"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allNamespaces\", null); //$NON-NLS-1$\r\n\tList result = (List) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableList(org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this);\r\n}'" 
 	 * @generated
 	 */
 	List allNamespaces();
@@ -263,7 +267,8 @@ public interface NamedElement extends TemplateableElement{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.isDistinguishableFrom(this, n, ns);'" 
 	 * @generated
 	 */
 	boolean isDistinguishableFrom(NamedElement n, Namespace ns);
@@ -277,7 +282,8 @@ public interface NamedElement extends TemplateableElement{
 	 * '::'
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.String" 
+	 * @model dataType="org.eclipse.uml2.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.separator(this);'" 
 	 * @generated
 	 */
 	String separator();
@@ -296,7 +302,8 @@ public interface NamedElement extends TemplateableElement{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.String" 
+	 * @model dataType="org.eclipse.uml2.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.qualifiedName(this);'" 
 	 * @generated
 	 */
 	String qualifiedName();
@@ -310,7 +317,8 @@ public interface NamedElement extends TemplateableElement{
 	 * namespace->isEmpty() implies visibility->isEmpty()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.validateVisibilityNeedsOwnership(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics, Map context);
@@ -319,6 +327,8 @@ public interface NamedElement extends TemplateableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''" 
 	 * @generated
 	 */
 	Namespace getNamespace();
@@ -327,6 +337,7 @@ public interface NamedElement extends TemplateableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	Element getOwner();
@@ -335,6 +346,7 @@ public interface NamedElement extends TemplateableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentAction.java,v 1.4 2005/03/15 18:44:41 khussey Exp $
+ * $Id: ReadExtentAction.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getReadExtentAction()
- * @model 
+ * @model
  * @generated
  */
 public interface ReadExtentAction extends Action{
@@ -43,7 +43,7 @@ public interface ReadExtentAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' containment reference.
@@ -60,6 +60,7 @@ public interface ReadExtentAction extends Action{
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReadExtentAction_Result()
 	 * @model containment="true" required="true"
+	 *        annotation="subsets org.eclipse.uml2.Action#getOutputs=''"
 	 * @generated
 	 */
 	OutputPin getResult();
@@ -118,6 +119,7 @@ public interface ReadExtentAction extends Action{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='output' eType='org.eclipse.uml2.OutputPin' containment='false'" 
 	 * @generated
 	 */
 	EList getOutputs();

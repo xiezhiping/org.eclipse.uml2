@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.8 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Behavior.java,v 1.9 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -51,7 +51,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Reentrant</b></em>' attribute.
@@ -67,7 +67,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @return the value of the '<em>Is Reentrant</em>' attribute.
 	 * @see #setIsReentrant(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_IsReentrant()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isReentrant();
@@ -125,6 +125,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @return the value of the '<em>Redefined Behavior</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_RedefinedBehavior()
 	 * @model type="org.eclipse.uml2.Behavior" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedBehaviors();
@@ -186,6 +187,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @return the value of the '<em>Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Parameter()
 	 * @model type="org.eclipse.uml2.Parameter" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getParameters();
@@ -278,6 +280,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @return the value of the '<em>Precondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Precondition()
 	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedRules=''"
 	 * @generated
 	 */
 	EList getPreconditions();
@@ -305,6 +308,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @return the value of the '<em>Postcondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Postcondition()
 	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedRules=''"
 	 * @generated
 	 */
 	EList getPostconditions();
@@ -362,6 +366,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
 	 * @generated
 	 */
 	EList getRedefinedElements();
@@ -370,6 +375,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();
@@ -378,6 +384,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='true' name='ownedRule' eOpposite='namespace' derived='false' eOpposite.upperBound='1' eType='org.eclipse.uml2.Constraint' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedRules();

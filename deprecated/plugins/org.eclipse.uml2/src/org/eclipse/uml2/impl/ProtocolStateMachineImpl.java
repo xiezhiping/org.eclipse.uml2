@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.19 2005/03/15 18:44:40 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.20 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -58,7 +58,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getConformances() <em>Conformance</em>}' containment reference list.
@@ -859,7 +859,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_ABSTRACT:
@@ -915,11 +915,11 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_ACTIVE:
-				return isActive() != IS_ACTIVE_EDEFAULT;
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_REENTRANT:
-				return isReentrant() != IS_REENTRANT_EDEFAULT;
+				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__CONTEXT:
 				return getContext() != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR:

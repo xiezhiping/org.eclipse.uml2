@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearStructuralFeatureAction.java,v 1.4 2005/03/15 18:44:43 khussey Exp $
+ * $Id: ClearStructuralFeatureAction.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -24,7 +24,7 @@ package org.eclipse.uml2;
  *
  *
  * @see org.eclipse.uml2.UML2Package#getClearStructuralFeatureAction()
- * @model 
+ * @model
  * @generated
  */
 public interface ClearStructuralFeatureAction extends StructuralFeatureAction{
@@ -33,6 +33,6 @@ public interface ClearStructuralFeatureAction extends StructuralFeatureAction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 } // ClearStructuralFeatureAction

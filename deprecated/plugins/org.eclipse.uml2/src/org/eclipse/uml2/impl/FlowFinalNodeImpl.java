@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FlowFinalNodeImpl.java,v 1.5 2005/03/15 18:44:38 khussey Exp $
+ * $Id: FlowFinalNodeImpl.java,v 1.6 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -42,7 +42,7 @@ public class FlowFinalNodeImpl extends FinalNodeImpl implements FlowFinalNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -376,7 +376,7 @@ public class FlowFinalNodeImpl extends FinalNodeImpl implements FlowFinalNode {
 			case UML2Package.FLOW_FINAL_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.FLOW_FINAL_NODE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.FLOW_FINAL_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.FLOW_FINAL_NODE__INCOMING:

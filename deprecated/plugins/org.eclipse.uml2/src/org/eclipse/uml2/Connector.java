@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Connector.java,v 1.6 2005/03/15 18:44:43 khussey Exp $
+ * $Id: Connector.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getConnector()
- * @model 
+ * @model
  * @generated
  */
 public interface Connector extends Feature{
@@ -46,7 +46,7 @@ public interface Connector extends Feature{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
@@ -61,7 +61,7 @@ public interface Connector extends Feature{
 	 * @see org.eclipse.uml2.ConnectorKind
 	 * @see #setKind(ConnectorKind)
 	 * @see org.eclipse.uml2.UML2Package#getConnector_Kind()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	ConnectorKind getKind();
@@ -91,7 +91,7 @@ public interface Connector extends Feature{
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(Association)
 	 * @see org.eclipse.uml2.UML2Package#getConnector_Type()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	Association getType();
@@ -121,6 +121,7 @@ public interface Connector extends Feature{
 	 * @return the value of the '<em>Redefined Connector</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConnector_RedefinedConnector()
 	 * @model type="org.eclipse.uml2.Connector" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedConnectors();
@@ -151,6 +152,7 @@ public interface Connector extends Feature{
 	 * @return the value of the '<em>End</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConnector_End()
 	 * @model type="org.eclipse.uml2.ConnectorEnd" containment="true" lower="2"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getEnds();
@@ -197,6 +199,7 @@ public interface Connector extends Feature{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
 	 * @generated
 	 */
 	EList getRedefinedElements();
@@ -205,6 +208,7 @@ public interface Connector extends Feature{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

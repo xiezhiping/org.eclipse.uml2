@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.24 2005/03/15 18:44:37 khussey Exp $
+ * $Id: ClassImpl.java,v 1.25 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -80,7 +80,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOwnedConnectors() <em>Owned Connector</em>}' containment reference list.
@@ -133,14 +133,14 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	protected static final boolean IS_ACTIVE_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isActive() <em>Is Active</em>}' attribute.
+	 * The flag representing the value of the '{@link #isActive() <em>Is Active</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isActive()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ACTIVE_EFLAG = Integer.MIN_VALUE >>> 2;
+	protected static final int IS_ACTIVE_EFLAG = 1 << 10;
 
 	/**
 	 * The cached value of the '{@link #getOwnedReceptions() <em>Owned Reception</em>}' containment reference list.
@@ -165,7 +165,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 */
 	protected ClassImpl() {
 		super();
-		eFlags &= ~IS_ACTIVE_EFLAG;
 	}
 
 	/**
@@ -385,7 +384,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public boolean isActive() {
-		return 0 != (eFlags & IS_ACTIVE_EFLAG);
+		return (eFlags & IS_ACTIVE_EFLAG) != 0;
 	}
 
 	/**
@@ -394,15 +393,10 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public void setIsActive(boolean newIsActive) {
-		boolean oldIsActive = 0 != (eFlags & IS_ACTIVE_EFLAG);
-		if (newIsActive) {
-			eFlags |= IS_ACTIVE_EFLAG;
-		} else {
-			eFlags &= ~IS_ACTIVE_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsActive = (eFlags & IS_ACTIVE_EFLAG) != 0;
+		if (newIsActive) eFlags |= IS_ACTIVE_EFLAG; else eFlags &= ~IS_ACTIVE_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASS__IS_ACTIVE, oldIsActive, newIsActive));
-		}
 	}
 
 	/**
@@ -1328,7 +1322,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CLASS__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CLASS__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.CLASS__IS_ABSTRACT:
@@ -1384,7 +1378,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.CLASS__IS_ACTIVE:
-				return isActive() != IS_ACTIVE_EDEFAULT;
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.CLASS__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 		}
@@ -1437,6 +1431,21 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isActive: "); //$NON-NLS-1$
+		result.append((eFlags & IS_ACTIVE_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 	// <!-- begin-custom-operations -->

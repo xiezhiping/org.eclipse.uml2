@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrence.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: EventOccurrence.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getEventOccurrence()
- * @model 
+ * @model
  * @generated
  */
 public interface EventOccurrence extends InteractionFragment, MessageEnd{
@@ -43,7 +43,7 @@ public interface EventOccurrence extends InteractionFragment, MessageEnd{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Start Exec</b></em>' reference list.
@@ -165,6 +165,8 @@ public interface EventOccurrence extends InteractionFragment, MessageEnd{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='covered' eType='org.eclipse.uml2.Lifeline' containment='false'"
+	 *        annotation="redefines org.eclipse.uml2.InteractionFragment#getCovereds=''" 
 	 * @generated
 	 */
 	EList getCovereds();

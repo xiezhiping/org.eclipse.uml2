@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.5 2005/03/15 18:44:36 khussey Exp $
+ * $Id: VertexImpl.java,v 1.6 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,7 +56,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.

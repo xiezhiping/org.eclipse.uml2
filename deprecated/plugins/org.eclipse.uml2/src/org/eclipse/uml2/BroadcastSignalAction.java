@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalAction.java,v 1.4 2005/03/15 18:44:45 khussey Exp $
+ * $Id: BroadcastSignalAction.java,v 1.5 2005/04/04 20:11:16 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -30,7 +30,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getBroadcastSignalAction()
- * @model 
+ * @model
  * @generated
  */
 public interface BroadcastSignalAction extends InvocationAction{
@@ -39,7 +39,7 @@ public interface BroadcastSignalAction extends InvocationAction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Signal</b></em>' reference.

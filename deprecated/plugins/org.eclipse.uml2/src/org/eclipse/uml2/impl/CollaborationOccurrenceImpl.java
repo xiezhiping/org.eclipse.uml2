@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationOccurrenceImpl.java,v 1.7 2005/03/15 18:44:31 khussey Exp $
+ * $Id: CollaborationOccurrenceImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -55,7 +55,7 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImport.java,v 1.6 2005/03/15 18:44:43 khussey Exp $
+ * $Id: ElementImport.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -37,7 +37,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getElementImport()
- * @model 
+ * @model
  * @generated
  */
 public interface ElementImport extends DirectedRelationship{
@@ -46,7 +46,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
@@ -64,7 +64,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * @see org.eclipse.uml2.VisibilityKind
 	 * @see #setVisibility(VisibilityKind)
 	 * @see org.eclipse.uml2.UML2Package#getElementImport_Visibility()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	VisibilityKind getVisibility();
@@ -125,6 +125,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * @see #setImportedElement(PackageableElement)
 	 * @see org.eclipse.uml2.UML2Package#getElementImport_ImportedElement()
 	 * @model required="true"
+	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getTargets=''"
 	 * @generated
 	 */
 	PackageableElement getImportedElement();
@@ -156,6 +157,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * @see org.eclipse.uml2.UML2Package#getElementImport_ImportingNamespace()
 	 * @see org.eclipse.uml2.Namespace#getElementImports
 	 * @model opposite="elementImport" required="true" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getSources='' org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	Namespace getImportingNamespace();
@@ -179,7 +181,8 @@ public interface ElementImport extends DirectedRelationship{
 	 * self.visibility = #public or self.visibility = #private
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ElementImportOperations.validateVisibilityPublicOrPrivate(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateVisibilityPublicOrPrivate(DiagnosticChain diagnostics, Map context);
@@ -193,7 +196,8 @@ public interface ElementImport extends DirectedRelationship{
 	 * self.importedElement.visibility.notEmpty() implies self.importedElement.visibility = #public
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ElementImportOperations.validateImportedElementIsPublic(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateImportedElementIsPublic(DiagnosticChain diagnostics, Map context);
@@ -212,6 +216,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * </code>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.String" parameters=""
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ElementImportOperations.getName(this);'" 
 	 * @generated
 	 */
 	String getName();
@@ -220,6 +225,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
 	 * @generated
 	 */
 	EList getTargets();
@@ -228,6 +234,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
 	 * @generated
 	 */
 	EList getSources();
@@ -236,6 +243,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	Element getOwner();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.4 2005/03/15 18:44:42 khussey Exp $
+ * $Id: Region.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,16 +33,16 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getRegion()
- * @model 
+ * @model
  * @generated
  */
-public interface Region extends Namespace, RedefinableElement {
+public interface Region extends Namespace, RedefinableElement{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Subvertex</b></em>' containment reference list.
@@ -58,6 +58,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * @see org.eclipse.uml2.UML2Package#getRegion_Subvertex()
 	 * @see org.eclipse.uml2.Vertex#getContainer
 	 * @model type="org.eclipse.uml2.Vertex" opposite="container" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getSubvertices();
@@ -98,6 +99,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * @see org.eclipse.uml2.UML2Package#getRegion_Transition()
 	 * @see org.eclipse.uml2.Transition#getContainer
 	 * @model type="org.eclipse.uml2.Transition" opposite="container" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getTransitions();
@@ -138,6 +140,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * @see org.eclipse.uml2.UML2Package#getRegion_StateMachine()
 	 * @see org.eclipse.uml2.StateMachine#getRegions
 	 * @model opposite="region"
+	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	StateMachine getStateMachine();
@@ -166,6 +169,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * @see org.eclipse.uml2.UML2Package#getRegion_State()
 	 * @see org.eclipse.uml2.State#getRegions
 	 * @model opposite="region"
+	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	State getState();
@@ -191,7 +195,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * @return the value of the '<em>Extended Region</em>' reference.
 	 * @see #setExtendedRegion(Region)
 	 * @see org.eclipse.uml2.UML2Package#getRegion_ExtendedRegion()
-	 * @model 
+	 * @model annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	Region getExtendedRegion();
@@ -210,6 +214,8 @@ public interface Region extends Namespace, RedefinableElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinitionContext' eType='org.eclipse.uml2.Classifier' containment='false'"
+	 *        annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinitionContexts=''" 
 	 * @generated
 	 */
 	EList getRedefinitionContexts();
@@ -218,6 +224,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
 	 * @generated
 	 */
 	EList getRedefinedElements();
@@ -226,6 +233,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -234,6 +242,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
 	 * @generated
 	 */
 	Namespace getNamespace();

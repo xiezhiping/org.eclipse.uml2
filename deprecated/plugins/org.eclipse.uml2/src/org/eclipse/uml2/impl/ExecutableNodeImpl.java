@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.8 2005/03/15 18:44:40 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.9 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -54,7 +54,7 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getHandlers() <em>Handler</em>}' containment reference list.
@@ -457,7 +457,7 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 			case UML2Package.EXECUTABLE_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.EXECUTABLE_NODE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.EXECUTABLE_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__INCOMING:

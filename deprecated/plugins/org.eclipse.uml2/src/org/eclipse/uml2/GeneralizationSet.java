@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSet.java,v 1.7 2005/03/15 18:44:43 khussey Exp $
+ * $Id: GeneralizationSet.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getGeneralizationSet()
- * @model 
+ * @model
  * @generated
  */
 public interface GeneralizationSet extends PackageableElement{
@@ -43,7 +43,7 @@ public interface GeneralizationSet extends PackageableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Covering</b></em>' attribute.
@@ -59,7 +59,7 @@ public interface GeneralizationSet extends PackageableElement{
 	 * @return the value of the '<em>Is Covering</em>' attribute.
 	 * @see #setIsCovering(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getGeneralizationSet_IsCovering()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isCovering();
@@ -88,7 +88,7 @@ public interface GeneralizationSet extends PackageableElement{
 	 * @return the value of the '<em>Is Disjoint</em>' attribute.
 	 * @see #setIsDisjoint(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getGeneralizationSet_IsDisjoint()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isDisjoint();

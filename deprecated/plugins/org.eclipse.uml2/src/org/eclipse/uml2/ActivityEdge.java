@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.5 2005/03/15 18:44:42 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -47,7 +47,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Activity</b></em>' container reference.
@@ -63,6 +63,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Activity()
 	 * @see org.eclipse.uml2.Activity#getEdges
 	 * @model opposite="edge"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	Activity getActivity();
@@ -145,6 +146,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InGroup()
 	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="redefined eOpposite='containedEdge' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'"
 	 * @generated
 	 */
 	EList getInGroups();
@@ -161,6 +163,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see #setGuard(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Guard()
 	 * @model containment="true" required="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getGuard();
@@ -198,6 +201,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @return the value of the '<em>Redefined Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_RedefinedElement()
 	 * @model type="org.eclipse.uml2.ActivityEdge" ordered="false"
+	 *        annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedElements();
@@ -230,6 +234,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InStructuredNode()
 	 * @see org.eclipse.uml2.StructuredActivityNode#getContainedEdges
 	 * @model opposite="containedEdge"
+	 *        annotation="subsets org.eclipse.uml2.ActivityEdge#getInGroups=''"
 	 * @generated
 	 */
 	StructuredActivityNode getInStructuredNode();
@@ -258,6 +263,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InPartition()
 	 * @see org.eclipse.uml2.ActivityPartition#getContainedEdges
 	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="containedEdge" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.ActivityEdge#getInGroups=''"
 	 * @generated
 	 */
 	EList getInPartitions();
@@ -285,6 +291,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see #setWeight(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Weight()
 	 * @model containment="true" required="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getWeight();
@@ -342,6 +349,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	Element getOwner();
@@ -350,6 +358,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

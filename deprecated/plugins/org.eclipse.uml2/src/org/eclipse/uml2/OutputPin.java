@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OutputPin.java,v 1.4 2005/03/15 18:44:41 khussey Exp $
+ * $Id: OutputPin.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -24,7 +24,7 @@ package org.eclipse.uml2;
  *
  *
  * @see org.eclipse.uml2.UML2Package#getOutputPin()
- * @model 
+ * @model
  * @generated
  */
 public interface OutputPin extends Pin{
@@ -33,6 +33,6 @@ public interface OutputPin extends Pin{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 } // OutputPin

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.9 2005/03/18 04:00:53 khussey Exp $
+ * $Id: Stereotype.java,v 1.10 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  *
  * @see org.eclipse.uml2.UML2Package#getStereotype()
- * @model 
+ * @model
  * @generated
  */
 public interface Stereotype extends org.eclipse.uml2.Class{
@@ -33,7 +33,7 @@ public interface Stereotype extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	// <!-- begin-custom-operations -->
 

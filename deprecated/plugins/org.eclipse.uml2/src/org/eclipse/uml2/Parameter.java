@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.7 2005/03/15 18:44:43 khussey Exp $
+ * $Id: Parameter.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getParameter()
- * @model 
+ * @model
  * @generated
  */
 public interface Parameter extends ConnectableElement, TypedElement, MultiplicityElement{
@@ -49,7 +49,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Default</b></em>' attribute.
@@ -112,7 +112,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @return the value of the '<em>Is Exception</em>' attribute.
 	 * @see #setIsException(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getParameter_IsException()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isException();
@@ -139,7 +139,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @return the value of the '<em>Is Stream</em>' attribute.
 	 * @see #setIsStream(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getParameter_IsStream()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isStream();
@@ -167,7 +167,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @see org.eclipse.uml2.ParameterEffectKind
 	 * @see #setEffect(ParameterEffectKind)
 	 * @see org.eclipse.uml2.UML2Package#getParameter_Effect()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	ParameterEffectKind getEffect();
@@ -200,6 +200,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @see org.eclipse.uml2.UML2Package#getParameter_Operation()
 	 * @see org.eclipse.uml2.Operation#getOwnedParameters
 	 * @model opposite="ownedParameter"
+	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	Operation getOperation();
@@ -229,6 +230,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getParameter_DefaultValue()
 	 * @model containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getDefaultValue();
@@ -287,6 +289,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
 	 * @generated
 	 */
 	Namespace getNamespace();
@@ -295,6 +298,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

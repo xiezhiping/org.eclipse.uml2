@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.21 2005/03/15 18:44:38 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.22 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -102,7 +102,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
@@ -145,14 +145,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	protected static final boolean IS_LEAF_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
+	 * The flag representing the value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isLeaf()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = Integer.MIN_VALUE >>> 0;
+	protected static final int IS_LEAF_EFLAG = 1 << 8;
 
 	/**
 	 * The default value of the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
@@ -165,14 +165,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	protected static final boolean IS_ABSTRACT_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
+	 * The flag representing the value of the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isAbstract()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ABSTRACT_EFLAG = Integer.MIN_VALUE >>> 1;
+	protected static final int IS_ABSTRACT_EFLAG = 1 << 9;
 
 	/**
 	 * The cached value of the '{@link #getGeneralizations() <em>Generalization</em>}' containment reference list.
@@ -261,8 +261,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	protected ClassifierImpl() {
 		super();
-		eFlags &= ~IS_LEAF_EFLAG;
-		eFlags &= ~IS_ABSTRACT_EFLAG;
 	}
 
 	/**
@@ -403,9 +401,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		VisibilityKind oldPackageableElement_visibility = packageableElement_visibility;
 		packageableElement_visibility = null == newPackageableElement_visibility ? PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT : newPackageableElement_visibility;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY, oldPackageableElement_visibility, packageableElement_visibility));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY, oldPackageableElement_visibility, newPackageableElement_visibility));
 		}
-
 	}
 
 	/**
@@ -442,7 +439,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean isLeaf() {
-		return 0 != (eFlags & IS_LEAF_EFLAG);
+		return (eFlags & IS_LEAF_EFLAG) != 0;
 	}
 
 	/**
@@ -451,15 +448,10 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-		boolean oldIsLeaf = 0 != (eFlags & IS_LEAF_EFLAG);
-		if (newIsLeaf) {
-			eFlags |= IS_LEAF_EFLAG;
-		} else {
-			eFlags &= ~IS_LEAF_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
+		if (newIsLeaf) eFlags |= IS_LEAF_EFLAG; else eFlags &= ~IS_LEAF_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__IS_LEAF, oldIsLeaf, newIsLeaf));
-		}
 	}
 
 	/**
@@ -520,7 +512,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean isAbstract() {
-		return 0 != (eFlags & IS_ABSTRACT_EFLAG);
+		return (eFlags & IS_ABSTRACT_EFLAG) != 0;
 	}
 
 	/**
@@ -529,12 +521,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public void setIsAbstract(boolean newIsAbstract) {
-		boolean oldIsAbstract = 0 != (eFlags & IS_ABSTRACT_EFLAG);
-		if (newIsAbstract) {
-			eFlags |= IS_ABSTRACT_EFLAG;
-		} else {
-			eFlags &= ~IS_ABSTRACT_EFLAG;
-		}
+		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
+		if (newIsAbstract) eFlags |= IS_ABSTRACT_EFLAG; else eFlags &= ~IS_ABSTRACT_EFLAG;
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__IS_ABSTRACT, oldIsAbstract, newIsAbstract));
 		}
@@ -911,9 +899,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		CollaborationOccurrence oldRepresentation = representation;
 		representation = newRepresentation;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__REPRESENTATION, oldRepresentation, representation));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__REPRESENTATION, oldRepresentation, newRepresentation));
 		}
-
 	}
 
 	/**
@@ -1762,11 +1749,11 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CLASSIFIER__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CLASSIFIER__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.CLASSIFIER__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.CLASSIFIER__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.CLASSIFIER__GENERAL:
@@ -1861,6 +1848,21 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isLeaf: "); //$NON-NLS-1$
+		result.append((eFlags & IS_LEAF_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 	// <!-- begin-custom-operations -->

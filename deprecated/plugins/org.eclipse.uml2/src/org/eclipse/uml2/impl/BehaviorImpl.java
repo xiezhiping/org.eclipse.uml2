@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.21 2005/03/15 18:44:31 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.22 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,7 +76,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isReentrant() <em>Is Reentrant</em>}' attribute.
@@ -89,14 +89,14 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	protected static final boolean IS_REENTRANT_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isReentrant() <em>Is Reentrant</em>}' attribute.
+	 * The flag representing the value of the '{@link #isReentrant() <em>Is Reentrant</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isReentrant()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_REENTRANT_EFLAG = Integer.MIN_VALUE >>> 3;
+	protected static final int IS_REENTRANT_EFLAG = 1 << 11;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedBehaviors() <em>Redefined Behavior</em>}' reference list.
@@ -165,7 +165,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 */
 	protected BehaviorImpl() {
 		super();
-		eFlags &= ~IS_REENTRANT_EFLAG;
 	}
 
 	/**
@@ -183,7 +182,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated
 	 */
 	public boolean isReentrant() {
-		return 0 != (eFlags & IS_REENTRANT_EFLAG);
+		return (eFlags & IS_REENTRANT_EFLAG) != 0;
 	}
 
 	/**
@@ -192,15 +191,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated
 	 */
 	public void setIsReentrant(boolean newIsReentrant) {
-		boolean oldIsReentrant = 0 != (eFlags & IS_REENTRANT_EFLAG);
-		if (newIsReentrant) {
-			eFlags |= IS_REENTRANT_EFLAG;
-		} else {
-			eFlags &= ~IS_REENTRANT_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsReentrant = (eFlags & IS_REENTRANT_EFLAG) != 0;
+		if (newIsReentrant) eFlags |= IS_REENTRANT_EFLAG; else eFlags &= ~IS_REENTRANT_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.BEHAVIOR__IS_REENTRANT, oldIsReentrant, newIsReentrant));
-		}
 	}
 
 	/**
@@ -1297,7 +1291,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.BEHAVIOR__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.BEHAVIOR__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.BEHAVIOR__IS_ABSTRACT:
@@ -1353,11 +1347,11 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.BEHAVIOR__IS_ACTIVE:
-				return isActive() != IS_ACTIVE_EDEFAULT;
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.BEHAVIOR__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.BEHAVIOR__IS_REENTRANT:
-				return isReentrant() != IS_REENTRANT_EDEFAULT;
+				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UML2Package.BEHAVIOR__CONTEXT:
 				return getContext() != null;
 			case UML2Package.BEHAVIOR__REDEFINED_BEHAVIOR:
@@ -1378,6 +1372,21 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isReentrant: "); //$NON-NLS-1$
+		result.append((eFlags & IS_REENTRANT_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //BehaviorImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNode.java,v 1.6 2005/03/15 18:44:41 khussey Exp $
+ * $Id: ConditionalNode.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getConditionalNode()
- * @model 
+ * @model
  * @generated
  */
 public interface ConditionalNode extends StructuredActivityNode{
@@ -41,7 +41,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Determinate</b></em>' attribute.
@@ -54,7 +54,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * @return the value of the '<em>Is Determinate</em>' attribute.
 	 * @see #setIsDeterminate(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getConditionalNode_IsDeterminate()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isDeterminate();
@@ -80,7 +80,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * @return the value of the '<em>Is Assured</em>' attribute.
 	 * @see #setIsAssured(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getConditionalNode_IsAssured()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isAssured();
@@ -107,6 +107,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * @return the value of the '<em>Clause</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConditionalNode_Clause()
 	 * @model type="org.eclipse.uml2.Clause" containment="true" required="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getClauses();
@@ -137,6 +138,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConditionalNode_Result()
 	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Action#getOutputs=''"
 	 * @generated
 	 */
 	EList getResults();
@@ -167,6 +169,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -175,6 +178,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='output' eType='org.eclipse.uml2.OutputPin' containment='false'" 
 	 * @generated
 	 */
 	EList getOutputs();

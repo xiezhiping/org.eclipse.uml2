@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.18 2005/03/15 18:44:36 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.19 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -77,14 +77,14 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	protected static final boolean IS_DERIVED_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isDerived() <em>Is Derived</em>}' attribute.
+	 * The flag representing the value of the '{@link #isDerived() <em>Is Derived</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDerived()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DERIVED_EFLAG = Integer.MIN_VALUE >>> 2;
+	protected static final int IS_DERIVED_EFLAG = 1 << 10;
 
 	/**
 	 * The cached value of the '{@link #getOwnedEnds() <em>Owned End</em>}' containment reference list.
@@ -113,7 +113,6 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 */
 	protected AssociationImpl() {
 		super();
-		eFlags &= ~IS_DERIVED_EFLAG;
 	}
 
 	/**
@@ -131,7 +130,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 * @generated
 	 */
 	public boolean isDerived() {
-		return 0 != (eFlags & IS_DERIVED_EFLAG);
+		return (eFlags & IS_DERIVED_EFLAG) != 0;
 	}
 
 	/**
@@ -140,15 +139,10 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 * @generated
 	 */
 	public void setIsDerived(boolean newIsDerived) {
-		boolean oldIsDerived = 0 != (eFlags & IS_DERIVED_EFLAG);
-		if (newIsDerived) {
-			eFlags |= IS_DERIVED_EFLAG;
-		} else {
-			eFlags &= ~IS_DERIVED_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsDerived = (eFlags & IS_DERIVED_EFLAG) != 0;
+		if (newIsDerived) eFlags |= IS_DERIVED_EFLAG; else eFlags &= ~IS_DERIVED_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ASSOCIATION__IS_DERIVED, oldIsDerived, newIsDerived));
-		}
 	}
 
 	/**
@@ -810,11 +804,11 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			case UML2Package.ASSOCIATION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.ASSOCIATION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ASSOCIATION__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.ASSOCIATION__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.ASSOCIATION__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.ASSOCIATION__GENERAL:
@@ -840,7 +834,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			case UML2Package.ASSOCIATION__RELATED_ELEMENT:
 				return !getRelatedElements().isEmpty();
 			case UML2Package.ASSOCIATION__IS_DERIVED:
-				return isDerived() != IS_DERIVED_EDEFAULT;
+				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UML2Package.ASSOCIATION__OWNED_END:
 				return ownedEnd != null && !ownedEnd.isEmpty();
 			case UML2Package.ASSOCIATION__END_TYPE:
@@ -879,6 +873,21 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isDerived: "); //$NON-NLS-1$
+		result.append((eFlags & IS_DERIVED_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 	// <!-- begin-custom-operations -->

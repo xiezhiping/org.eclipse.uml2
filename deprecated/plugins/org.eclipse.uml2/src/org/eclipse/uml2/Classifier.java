@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.14 2005/03/15 18:44:42 khussey Exp $
+ * $Id: Classifier.java,v 1.15 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,7 +58,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
@@ -104,6 +104,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Feature()
 	 * @see org.eclipse.uml2.Feature#getFeaturingClassifiers
 	 * @model type="org.eclipse.uml2.Feature" opposite="featuringClassifier" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getMembers=''"
 	 * @generated
 	 */
 	EList getFeatures();
@@ -131,6 +132,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return the value of the '<em>Inherited Member</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_InheritedMember()
 	 * @model type="org.eclipse.uml2.NamedElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getMembers=''"
 	 * @generated
 	 */
 	EList getInheritedMembers();
@@ -187,6 +189,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Generalization()
 	 * @see org.eclipse.uml2.Generalization#getSpecific
 	 * @model type="org.eclipse.uml2.Generalization" opposite="specific" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getGeneralizations();
@@ -214,6 +217,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return the value of the '<em>Attribute</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Attribute()
 	 * @model type="org.eclipse.uml2.Property" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures=''"
 	 * @generated
 	 */
 	EList getAttributes();
@@ -241,6 +245,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return the value of the '<em>Redefined Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_RedefinedClassifier()
 	 * @model type="org.eclipse.uml2.Classifier" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedClassifiers();
@@ -270,6 +275,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Substitution()
 	 * @see org.eclipse.uml2.Substitution#getSubstitutingClassifier
 	 * @model type="org.eclipse.uml2.Substitution" opposite="substitutingClassifier" containment="true" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements='' org.eclipse.uml2.NamedElement#getClientDependencies=''"
 	 * @generated
 	 */
 	EList getSubstitutions();
@@ -337,6 +343,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return the value of the '<em>Owned Use Case</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_OwnedUseCase()
 	 * @model type="org.eclipse.uml2.UseCase" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedUseCases();
@@ -407,6 +414,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @see #setRepresentation(CollaborationOccurrence)
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Representation()
 	 * @model resolveProxies="false" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.Classifier#getOccurrences=''"
 	 * @generated
 	 */
 	CollaborationOccurrence getRepresentation();
@@ -436,6 +444,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return the value of the '<em>Occurrence</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Occurrence()
 	 * @model type="org.eclipse.uml2.CollaborationOccurrence" containment="true" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getOccurrences();
@@ -471,7 +480,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * member->select(oclIsKindOf(Feature))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allFeatures\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allFeatures(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.allFeatures(this);\r\n}'" 
 	 * @generated
 	 */
 	Set allFeatures();
@@ -485,7 +495,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * not self.allParents()->includes(self)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ClassifierOperations.validateNoCyclesInGeneralization(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateNoCyclesInGeneralization(DiagnosticChain diagnostics, Map context);
@@ -499,7 +510,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.parents()->forAll(c | self.maySpecializeType(c))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ClassifierOperations.validateSpecializeType(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateSpecializeType(DiagnosticChain diagnostics, Map context);
@@ -513,7 +525,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.inheritedMember->includesAll(self.inherit(self.parents()->collect(p | p.inheritableMembers(self)))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ClassifierOperations.validateInheritedMember(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateInheritedMember(DiagnosticChain diagnostics, Map context);
@@ -527,7 +540,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.inherit(self.parents()->collect(p | p.inheritableMembers(self))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"inheritedMember\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.inheritedMember(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.inheritedMember(this);\r\n}'" 
 	 * @generated
 	 */
 	Set inheritedMember();
@@ -541,7 +555,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * generalization.general
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"parents\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.parents(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.parents(this);\r\n}'" 
 	 * @generated
 	 */
 	Set parents();
@@ -555,7 +570,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.parents()->union(self.parents()->collect(p | p.allParents())
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allParents\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allParents(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.allParents(this);\r\n}'" 
 	 * @generated
 	 */
 	Set allParents();
@@ -569,7 +585,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * member->select(m | c.hasVisibilityOf(m))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ClassifierOperations.inheritableMembers(this, c);'" 
 	 * @generated
 	 */
 	Set inheritableMembers(Classifier c);
@@ -583,7 +600,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * true
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ClassifierOperations.hasVisibilityOf(this, n);'" 
 	 * @generated
 	 */
 	boolean hasVisibilityOf(NamedElement n);
@@ -598,6 +616,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * </code>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.Set" parameters="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ClassifierOperations.inherit(this, inhs);'" 
 	 * @generated
 	 */
 	Set inherit(Set inhs);
@@ -611,7 +630,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.oclIsKindOf(c.oclType)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ClassifierOperations.maySpecializeType(this, c);'" 
 	 * @generated
 	 */
 	boolean maySpecializeType(Classifier c);
@@ -625,7 +645,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.parents()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"general\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.general(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ClassifierOperations.general(this);\r\n}'" 
 	 * @generated
 	 */
 	Set general();
@@ -639,7 +660,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * general = self.parents()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ClassifierOperations.validateGeneralEqualsParents(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateGeneralEqualsParents(DiagnosticChain diagnostics, Map context);
@@ -653,7 +675,8 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * (self=other) or (self.allParents()->includes(other))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ClassifierOperations.conformsTo(this, other);'" 
 	 * @generated
 	 */
 	boolean conformsTo(Classifier other);
@@ -662,6 +685,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='member' eType='org.eclipse.uml2.NamedElement' containment='false'" 
 	 * @generated
 	 */
 	EList getMembers();
@@ -670,6 +694,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -678,6 +703,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
 	 * @generated
 	 */
 	EList getRedefinedElements();
@@ -686,6 +712,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='clientDependency' eOpposite='client' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Dependency' eOpposite.lowerBound='1'" 
 	 * @generated
 	 */
 	EList getClientDependencies();
@@ -694,6 +721,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperand.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: InteractionOperand.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getInteractionOperand()
- * @model 
+ * @model
  * @generated
  */
 public interface InteractionOperand extends Namespace, InteractionFragment{
@@ -43,7 +43,7 @@ public interface InteractionOperand extends Namespace, InteractionFragment{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
@@ -60,6 +60,7 @@ public interface InteractionOperand extends Namespace, InteractionFragment{
 	 * @see #setGuard(InteractionConstraint)
 	 * @see org.eclipse.uml2.UML2Package#getInteractionOperand_Guard()
 	 * @model containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	InteractionConstraint getGuard();
@@ -132,6 +133,7 @@ public interface InteractionOperand extends Namespace, InteractionFragment{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

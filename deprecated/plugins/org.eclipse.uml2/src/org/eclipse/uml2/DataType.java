@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataType.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: DataType.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getDataType()
- * @model 
+ * @model
  * @generated
  */
 public interface DataType extends Classifier{
@@ -45,7 +45,7 @@ public interface DataType extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -64,6 +64,7 @@ public interface DataType extends Classifier{
 	 * @see org.eclipse.uml2.UML2Package#getDataType_OwnedAttribute()
 	 * @see org.eclipse.uml2.Property#getDatatype
 	 * @model type="org.eclipse.uml2.Property" opposite="datatype" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers='' org.eclipse.uml2.Classifier#getAttributes=''"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -107,6 +108,7 @@ public interface DataType extends Classifier{
 	 * @see org.eclipse.uml2.UML2Package#getDataType_OwnedOperation()
 	 * @see org.eclipse.uml2.Operation#getDatatype
 	 * @model type="org.eclipse.uml2.Operation" opposite="datatype" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers='' org.eclipse.uml2.Classifier#getFeatures=''"
 	 * @generated
 	 */
 	EList getOwnedOperations();
@@ -144,6 +146,7 @@ public interface DataType extends Classifier{
 	 * </code>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.Set" parameters="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.DataTypeOperations.inherit(this, inhs);'" 
 	 * @generated
 	 */
 	Set inherit(Set inhs);
@@ -152,6 +155,7 @@ public interface DataType extends Classifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();
@@ -160,6 +164,7 @@ public interface DataType extends Classifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='attribute' eType='org.eclipse.uml2.Property' containment='false'" 
 	 * @generated
 	 */
 	EList getAttributes();
@@ -168,6 +173,7 @@ public interface DataType extends Classifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getFeatures();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.8 2005/03/15 18:44:39 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -57,7 +57,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isSynchronous() <em>Is Synchronous</em>}' attribute.
@@ -70,14 +70,14 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	protected static final boolean IS_SYNCHRONOUS_EDEFAULT = true;
 
 	/**
-	 * The flag for the '{@link #isSynchronous() <em>Is Synchronous</em>}' attribute.
+	 * The flag representing the value of the '{@link #isSynchronous() <em>Is Synchronous</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isSynchronous()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_SYNCHRONOUS_EFLAG = Integer.MIN_VALUE >>> 1;
+	protected static final int IS_SYNCHRONOUS_EFLAG = 1 << 9;
 
 	/**
 	 * The cached value of the '{@link #getResults() <em>Result</em>}' containment reference list.
@@ -114,7 +114,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * @generated
 	 */
 	public boolean isSynchronous() {
-		return 0 != (eFlags & IS_SYNCHRONOUS_EFLAG);
+		return (eFlags & IS_SYNCHRONOUS_EFLAG) != 0;
 	}
 
 	/**
@@ -123,15 +123,10 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * @generated
 	 */
 	public void setIsSynchronous(boolean newIsSynchronous) {
-		boolean oldIsSynchronous = 0 != (eFlags & IS_SYNCHRONOUS_EFLAG);
-		if (newIsSynchronous) {
-			eFlags |= IS_SYNCHRONOUS_EFLAG;
-		} else {
-			eFlags &= ~IS_SYNCHRONOUS_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsSynchronous = (eFlags & IS_SYNCHRONOUS_EFLAG) != 0;
+		if (newIsSynchronous) eFlags |= IS_SYNCHRONOUS_EFLAG; else eFlags &= ~IS_SYNCHRONOUS_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CALL_ACTION__IS_SYNCHRONOUS, oldIsSynchronous, newIsSynchronous));
-		}
 	}
 
 	/**
@@ -600,7 +595,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 			case UML2Package.CALL_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CALL_ACTION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CALL_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.CALL_ACTION__INCOMING:
@@ -636,11 +631,26 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 			case UML2Package.CALL_ACTION__ON_PORT:
 				return onPort != null;
 			case UML2Package.CALL_ACTION__IS_SYNCHRONOUS:
-				return isSynchronous() != IS_SYNCHRONOUS_EDEFAULT;
+				return ((eFlags & IS_SYNCHRONOUS_EFLAG) != 0) != IS_SYNCHRONOUS_EDEFAULT;
 			case UML2Package.CALL_ACTION__RESULT:
 				return result != null && !result.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isSynchronous: "); //$NON-NLS-1$
+		result.append((eFlags & IS_SYNCHRONOUS_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //CallActionImpl

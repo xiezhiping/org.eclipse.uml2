@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.7 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Namespace.java,v 1.8 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,7 +50,7 @@ public interface Namespace extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Member</b></em>' reference list.
@@ -99,6 +99,7 @@ public interface Namespace extends NamedElement{
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_OwnedRule()
 	 * @see org.eclipse.uml2.Constraint#getNamespace
 	 * @model type="org.eclipse.uml2.Constraint" opposite="namespace" containment="true" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedRules();
@@ -140,6 +141,7 @@ public interface Namespace extends NamedElement{
 	 * @return the value of the '<em>Imported Member</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_ImportedMember()
 	 * @model type="org.eclipse.uml2.PackageableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getMembers=''"
 	 * @generated
 	 */
 	EList getImportedMembers();
@@ -172,6 +174,7 @@ public interface Namespace extends NamedElement{
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_ElementImport()
 	 * @see org.eclipse.uml2.ElementImport#getImportingNamespace
 	 * @model type="org.eclipse.uml2.ElementImport" opposite="importingNamespace" containment="true" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getElementImports();
@@ -204,6 +207,7 @@ public interface Namespace extends NamedElement{
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_PackageImport()
 	 * @see org.eclipse.uml2.PackageImport#getImportingNamespace
 	 * @model type="org.eclipse.uml2.PackageImport" opposite="importingNamespace" containment="true" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getPackageImports();
@@ -228,7 +232,8 @@ public interface Namespace extends NamedElement{
 	 * membersAreDistinguishable()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamespaceOperations.validateMembersAreDistinguishable(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateMembersAreDistinguishable(DiagnosticChain diagnostics, Map context);
@@ -250,7 +255,8 @@ public interface Namespace extends NamedElement{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamespaceOperations.getNamesOfMember(this, element);'" 
 	 * @generated
 	 */
 	Set getNamesOfMember(NamedElement element);
@@ -266,7 +272,8 @@ public interface Namespace extends NamedElement{
 	 * 		memb.isDistinguishableFrom(other, self)))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamespaceOperations.membersAreDistinguishable(this);'" 
 	 * @generated
 	 */
 	boolean membersAreDistinguishable();
@@ -280,7 +287,8 @@ public interface Namespace extends NamedElement{
 	 * self.importedMember->includesAll(self.importedMembers(self.elementImport.importedElement.asSet()->union(self.packageImport.importedPackage->collect(p | p.visibleMembers()))))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamespaceOperations.validateImportedMemberDerived(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateImportedMemberDerived(DiagnosticChain diagnostics, Map context);
@@ -294,7 +302,8 @@ public interface Namespace extends NamedElement{
 	 * self.importedMembers(self.elementImport.importedElement.asSet()->union(self.packageImport.importedPackage->collect(p | p.visibleMembers())))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"importedMember\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.NamespaceOperations.importedMember(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.NamespaceOperations.importedMember(this);\r\n}'" 
 	 * @generated
 	 */
 	Set importedMember();
@@ -309,6 +318,7 @@ public interface Namespace extends NamedElement{
 	 * </code>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.Set" parameters="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamespaceOperations.importMembers(this, imps);'" 
 	 * @generated
 	 */
 	Set importMembers(Set imps);
@@ -323,6 +333,7 @@ public interface Namespace extends NamedElement{
 	 * </code>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.Set" parameters="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamespaceOperations.excludeCollisions(this, imps);'" 
 	 * @generated
 	 */
 	Set excludeCollisions(Set imps);
@@ -331,6 +342,8 @@ public interface Namespace extends NamedElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements='' org.eclipse.uml2.Namespace#getMembers=''" 
 	 * @generated
 	 */
 	EList getOwnedMembers();
@@ -339,6 +352,7 @@ public interface Namespace extends NamedElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

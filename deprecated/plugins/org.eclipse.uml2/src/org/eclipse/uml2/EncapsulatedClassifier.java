@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifier.java,v 1.6 2005/03/15 18:44:42 khussey Exp $
+ * $Id: EncapsulatedClassifier.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface EncapsulatedClassifier extends StructuredClassifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Port</b></em>' containment reference list.
@@ -59,6 +59,7 @@ public interface EncapsulatedClassifier extends StructuredClassifier{
 	 * @return the value of the '<em>Owned Port</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getEncapsulatedClassifier_OwnedPort()
 	 * @model type="org.eclipse.uml2.Port" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedPorts();
@@ -89,6 +90,7 @@ public interface EncapsulatedClassifier extends StructuredClassifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getFeatures();
@@ -97,6 +99,7 @@ public interface EncapsulatedClassifier extends StructuredClassifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();

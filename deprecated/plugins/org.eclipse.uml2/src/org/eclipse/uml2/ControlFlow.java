@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ControlFlow.java,v 1.4 2005/03/15 18:44:42 khussey Exp $
+ * $Id: ControlFlow.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -24,7 +24,7 @@ package org.eclipse.uml2;
  *
  *
  * @see org.eclipse.uml2.UML2Package#getControlFlow()
- * @model 
+ * @model
  * @generated
  */
 public interface ControlFlow extends ActivityEdge{
@@ -33,6 +33,6 @@ public interface ControlFlow extends ActivityEdge{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 } // ControlFlow

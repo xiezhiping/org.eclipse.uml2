@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.7 2005/03/15 18:44:36 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.8 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -51,7 +51,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getRole() <em>Role</em>}' reference.
@@ -400,9 +400,9 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 			case UML2Package.CONNECTOR_END__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONNECTOR_END__IS_ORDERED:
-				return isOrdered() != IS_ORDERED_EDEFAULT;
+				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.CONNECTOR_END__IS_UNIQUE:
-				return isUnique() != IS_UNIQUE_EDEFAULT;
+				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UML2Package.CONNECTOR_END__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.CONNECTOR_END__UPPER:

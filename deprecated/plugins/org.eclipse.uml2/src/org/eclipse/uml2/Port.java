@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Port.java,v 1.7 2005/03/15 18:44:42 khussey Exp $
+ * $Id: Port.java,v 1.8 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -36,7 +36,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getPort()
- * @model 
+ * @model
  * @generated
  */
 public interface Port extends Property{
@@ -45,7 +45,7 @@ public interface Port extends Property{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Behavior</b></em>' attribute.
@@ -62,7 +62,7 @@ public interface Port extends Property{
 	 * @return the value of the '<em>Is Behavior</em>' attribute.
 	 * @see #setIsBehavior(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getPort_IsBehavior()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isBehavior();
@@ -92,7 +92,7 @@ public interface Port extends Property{
 	 * @return the value of the '<em>Is Service</em>' attribute.
 	 * @see #setIsService(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getPort_IsService()
-	 * @model default="true" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="true" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isService();
@@ -152,6 +152,7 @@ public interface Port extends Property{
 	 * @return the value of the '<em>Redefined Port</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPort_RedefinedPort()
 	 * @model type="org.eclipse.uml2.Port" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedPorts();
@@ -211,7 +212,7 @@ public interface Port extends Property{
 	 * @return the value of the '<em>Protocol</em>' reference.
 	 * @see #setProtocol(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getPort_Protocol()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	ProtocolStateMachine getProtocol();
@@ -230,6 +231,7 @@ public interface Port extends Property{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
 	 * @generated
 	 */
 	EList getRedefinedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Manifestation.java,v 1.4 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Manifestation.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getManifestation()
- * @model 
+ * @model
  * @generated
  */
 public interface Manifestation extends Abstraction{
@@ -40,7 +40,7 @@ public interface Manifestation extends Abstraction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Utilized Element</b></em>' reference.
@@ -57,6 +57,7 @@ public interface Manifestation extends Abstraction{
 	 * @see #setUtilizedElement(PackageableElement)
 	 * @see org.eclipse.uml2.UML2Package#getManifestation_UtilizedElement()
 	 * @model required="true" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.Dependency#getSuppliers='' org.eclipse.uml2.DirectedRelationship#getTargets=''"
 	 * @generated
 	 */
 	PackageableElement getUtilizedElement();
@@ -75,6 +76,7 @@ public interface Manifestation extends Abstraction{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='supplier' eType='org.eclipse.uml2.NamedElement' containment='false'" 
 	 * @generated
 	 */
 	EList getSuppliers();
@@ -83,6 +85,7 @@ public interface Manifestation extends Abstraction{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
 	 * @generated
 	 */
 	EList getTargets();

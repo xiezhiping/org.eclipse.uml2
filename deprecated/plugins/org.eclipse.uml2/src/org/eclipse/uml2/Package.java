@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.11 2005/03/15 18:44:45 khussey Exp $
+ * $Id: Package.java,v 1.12 2005/04/04 20:11:16 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getPackage()
- * @model 
+ * @model
  * @generated
  */
 public interface Package extends Namespace, PackageableElement{
@@ -53,7 +53,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Nested Package</b></em>' reference list.
@@ -72,6 +72,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @see org.eclipse.uml2.UML2Package#getPackage_NestedPackage()
 	 * @see org.eclipse.uml2.Package#getNestingPackage
 	 * @model type="org.eclipse.uml2.Package" opposite="nestingPackage" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Package#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getNestedPackages();
@@ -100,6 +101,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @see org.eclipse.uml2.UML2Package#getPackage_NestingPackage()
 	 * @see org.eclipse.uml2.Package#getNestedPackages
 	 * @model opposite="nestedPackage" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	Package getNestingPackage();
@@ -121,6 +123,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @see org.eclipse.uml2.UML2Package#getPackage_OwnedType()
 	 * @see org.eclipse.uml2.Type#getPackage
 	 * @model type="org.eclipse.uml2.Type" opposite="package" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Package#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedTypes();
@@ -151,6 +154,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @return the value of the '<em>Owned Member</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_OwnedMember()
 	 * @model type="org.eclipse.uml2.PackageableElement" containment="true" volatile="true" ordered="false"
+	 *        annotation="redefines org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedMembers();
@@ -191,6 +195,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @see org.eclipse.uml2.UML2Package#getPackage_PackageMerge()
 	 * @see org.eclipse.uml2.PackageMerge#getMergingPackage
 	 * @model type="org.eclipse.uml2.PackageMerge" opposite="mergingPackage" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getPackageMerges();
@@ -218,6 +223,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @return the value of the '<em>Applied Profile</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_AppliedProfile()
 	 * @model type="org.eclipse.uml2.ProfileApplication" resolveProxies="false" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getPackageImports=''"
 	 * @generated
 	 */
 	EList getAppliedProfiles();
@@ -231,7 +237,8 @@ public interface Package extends Namespace, PackageableElement{
 	 * self.ownedElements->forAll(e | e.visibility->notEmpty() implies e.visbility = #public or e.visibility = #private)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PackageOperations.validateElementsPublicOrPrivate(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics, Map context);
@@ -248,6 +255,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @return the value of the '<em>Package Extension</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_PackageExtension()
 	 * @model type="org.eclipse.uml2.PackageMerge" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getPackageExtensions();
@@ -272,7 +280,8 @@ public interface Package extends Namespace, PackageableElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PackageOperations.mustBeOwned(this);'" 
 	 * @generated
 	 */
 	boolean mustBeOwned();
@@ -286,7 +295,8 @@ public interface Package extends Namespace, PackageableElement{
 	 * member->select( m | self.makesVisible(m))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"visibleMembers\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.PackageOperations.visibleMembers(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.PackageOperations.visibleMembers(this);\r\n}'" 
 	 * @generated
 	 */
 	Set visibleMembers();
@@ -300,7 +310,8 @@ public interface Package extends Namespace, PackageableElement{
 	 * el.visibility->isEmpty() or el.visibility = #public
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PackageOperations.makesVisible(this, el);'" 
 	 * @generated
 	 */
 	boolean makesVisible(NamedElement el);
@@ -309,6 +320,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
 	 * @generated
 	 */
 	Namespace getNamespace();
@@ -317,6 +329,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -325,6 +338,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='true' name='packageImport' eOpposite='importingNamespace' derived='false' eOpposite.upperBound='1' eType='org.eclipse.uml2.PackageImport' eOpposite.lowerBound='1'" 
 	 * @generated
 	 */
 	EList getPackageImports();

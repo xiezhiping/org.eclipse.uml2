@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Vertex.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Vertex.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ public interface Vertex extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Container</b></em>' container reference.
@@ -57,6 +57,7 @@ public interface Vertex extends NamedElement{
 	 * @see org.eclipse.uml2.UML2Package#getVertex_Container()
 	 * @see org.eclipse.uml2.Region#getSubvertices
 	 * @model opposite="subvertex"
+	 *        annotation="redefines org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	Region getContainer();
@@ -139,6 +140,7 @@ public interface Vertex extends NamedElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	Element getOwner();

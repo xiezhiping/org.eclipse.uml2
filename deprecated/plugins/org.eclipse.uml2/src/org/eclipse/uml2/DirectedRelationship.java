@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationship.java,v 1.6 2005/03/15 18:44:43 khussey Exp $
+ * $Id: DirectedRelationship.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface DirectedRelationship extends Relationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference list.
@@ -58,6 +58,7 @@ public interface DirectedRelationship extends Relationship{
 	 * @return the value of the '<em>Source</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDirectedRelationship_Source()
 	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Relationship#getRelatedElements=''"
 	 * @generated
 	 */
 	EList getSources();
@@ -77,6 +78,7 @@ public interface DirectedRelationship extends Relationship{
 	 * @return the value of the '<em>Target</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDirectedRelationship_Target()
 	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Relationship#getRelatedElements=''"
 	 * @generated
 	 */
 	EList getTargets();
@@ -85,6 +87,7 @@ public interface DirectedRelationship extends Relationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='relatedElement' eType='org.eclipse.uml2.Element' containment='false'" 
 	 * @generated
 	 */
 	EList getRelatedElements();

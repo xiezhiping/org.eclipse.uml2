@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeTrigger.java,v 1.6 2005/03/15 18:44:42 khussey Exp $
+ * $Id: TimeTrigger.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getTimeTrigger()
- * @model 
+ * @model
  * @generated
  */
 public interface TimeTrigger extends Trigger{
@@ -43,7 +43,7 @@ public interface TimeTrigger extends Trigger{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Relative</b></em>' attribute.
@@ -59,7 +59,7 @@ public interface TimeTrigger extends Trigger{
 	 * @return the value of the '<em>Is Relative</em>' attribute.
 	 * @see #setIsRelative(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getTimeTrigger_IsRelative()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isRelative();
@@ -89,6 +89,7 @@ public interface TimeTrigger extends Trigger{
 	 * @see #setWhen(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getTimeTrigger_When()
 	 * @model containment="true" required="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getWhen();
@@ -118,6 +119,7 @@ public interface TimeTrigger extends Trigger{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndData.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: LinkEndData.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getLinkEndData()
- * @model 
+ * @model
  * @generated
  */
 public interface LinkEndData extends Element{
@@ -40,7 +40,7 @@ public interface LinkEndData extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' reference.
@@ -56,7 +56,7 @@ public interface LinkEndData extends Element{
 	 * @return the value of the '<em>Value</em>' reference.
 	 * @see #setValue(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getLinkEndData_Value()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	InputPin getValue();

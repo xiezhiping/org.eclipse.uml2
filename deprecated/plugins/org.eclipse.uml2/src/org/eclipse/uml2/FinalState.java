@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalState.java,v 1.3 2005/03/15 18:44:41 khussey Exp $
+ * $Id: FinalState.java,v 1.4 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,7 +20,7 @@ package org.eclipse.uml2;
  *
  *
  * @see org.eclipse.uml2.UML2Package#getFinalState()
- * @model 
+ * @model
  * @generated
  */
 public interface FinalState extends State{
@@ -29,6 +29,6 @@ public interface FinalState extends State{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 } // FinalState

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.9 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Association.java,v 1.10 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getAssociation()
- * @model 
+ * @model
  * @generated
  */
 public interface Association extends Classifier, Relationship{
@@ -62,7 +62,7 @@ public interface Association extends Classifier, Relationship{
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_IsDerived()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isDerived();
@@ -94,6 +94,7 @@ public interface Association extends Classifier, Relationship{
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_OwnedEnd()
 	 * @see org.eclipse.uml2.Property#getOwningAssociation
 	 * @model type="org.eclipse.uml2.Property" opposite="owningAssociation" containment="true" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.Association#getMemberEnds='' org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedEnds();
@@ -135,6 +136,7 @@ public interface Association extends Classifier, Relationship{
 	 * @return the value of the '<em>End Type</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_EndType()
 	 * @model type="org.eclipse.uml2.Type" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Relationship#getRelatedElements=''"
 	 * @generated
 	 */
 	EList getEndTypes();
@@ -167,6 +169,7 @@ public interface Association extends Classifier, Relationship{
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_MemberEnd()
 	 * @see org.eclipse.uml2.Property#getAssociation
 	 * @model type="org.eclipse.uml2.Property" opposite="association" lower="2" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getMembers=''"
 	 * @generated
 	 */
 	EList getMemberEnds();
@@ -186,6 +189,7 @@ public interface Association extends Classifier, Relationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getFeatures();
@@ -194,6 +198,7 @@ public interface Association extends Classifier, Relationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();
@@ -202,6 +207,7 @@ public interface Association extends Classifier, Relationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='relatedElement' eType='org.eclipse.uml2.Element' containment='false'" 
 	 * @generated
 	 */
 	EList getRelatedElements();
@@ -210,6 +216,7 @@ public interface Association extends Classifier, Relationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='member' eType='org.eclipse.uml2.NamedElement' containment='false'" 
 	 * @generated
 	 */
 	EList getMembers();

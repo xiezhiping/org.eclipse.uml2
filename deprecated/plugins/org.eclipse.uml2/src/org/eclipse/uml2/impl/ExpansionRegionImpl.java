@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.7 2005/03/15 18:44:37 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.8 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,7 +56,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getMode() <em>Mode</em>}' attribute.
@@ -698,7 +698,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.EXPANSION_REGION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.EXPANSION_REGION__INCOMING:
@@ -750,7 +750,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__CONTAINED_EDGE:
 				return containedEdge != null && !containedEdge.isEmpty();
 			case UML2Package.EXPANSION_REGION__MUST_ISOLATE:
-				return isMustIsolate() != MUST_ISOLATE_EDEFAULT;
+				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__MODE:
 				return mode != MODE_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT:

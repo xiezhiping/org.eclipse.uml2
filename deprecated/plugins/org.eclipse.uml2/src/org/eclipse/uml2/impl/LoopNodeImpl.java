@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.9 2005/03/15 18:44:33 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.10 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,7 +66,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isTestedFirst() <em>Is Tested First</em>}' attribute.
@@ -79,14 +79,14 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	protected static final boolean IS_TESTED_FIRST_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isTestedFirst() <em>Is Tested First</em>}' attribute.
+	 * The flag representing the value of the '{@link #isTestedFirst() <em>Is Tested First</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isTestedFirst()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_TESTED_FIRST_EFLAG = Integer.MIN_VALUE >>> 2;
+	protected static final int IS_TESTED_FIRST_EFLAG = 1 << 10;
 
 	/**
 	 * The cached value of the '{@link #getBodyParts() <em>Body Part</em>}' reference list.
@@ -175,7 +175,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 */
 	protected LoopNodeImpl() {
 		super();
-		eFlags &= ~IS_TESTED_FIRST_EFLAG;
 	}
 
 	/**
@@ -193,7 +192,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * @generated
 	 */
 	public boolean isTestedFirst() {
-		return 0 != (eFlags & IS_TESTED_FIRST_EFLAG);
+		return (eFlags & IS_TESTED_FIRST_EFLAG) != 0;
 	}
 
 	/**
@@ -202,15 +201,10 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * @generated
 	 */
 	public void setIsTestedFirst(boolean newIsTestedFirst) {
-		boolean oldIsTestedFirst = 0 != (eFlags & IS_TESTED_FIRST_EFLAG);
-		if (newIsTestedFirst) {
-			eFlags |= IS_TESTED_FIRST_EFLAG;
-		} else {
-			eFlags &= ~IS_TESTED_FIRST_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsTestedFirst = (eFlags & IS_TESTED_FIRST_EFLAG) != 0;
+		if (newIsTestedFirst) eFlags |= IS_TESTED_FIRST_EFLAG; else eFlags &= ~IS_TESTED_FIRST_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LOOP_NODE__IS_TESTED_FIRST, oldIsTestedFirst, newIsTestedFirst));
-		}
 	}
 
 	/**
@@ -1111,7 +1105,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 			case UML2Package.LOOP_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.LOOP_NODE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.LOOP_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.LOOP_NODE__INCOMING:
@@ -1163,9 +1157,9 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 			case UML2Package.LOOP_NODE__CONTAINED_EDGE:
 				return containedEdge != null && !containedEdge.isEmpty();
 			case UML2Package.LOOP_NODE__MUST_ISOLATE:
-				return isMustIsolate() != MUST_ISOLATE_EDEFAULT;
+				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UML2Package.LOOP_NODE__IS_TESTED_FIRST:
-				return isTestedFirst() != IS_TESTED_FIRST_EDEFAULT;
+				return ((eFlags & IS_TESTED_FIRST_EFLAG) != 0) != IS_TESTED_FIRST_EDEFAULT;
 			case UML2Package.LOOP_NODE__BODY_PART:
 				return bodyPart != null && !bodyPart.isEmpty();
 			case UML2Package.LOOP_NODE__SETUP_PART:
@@ -1184,6 +1178,21 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 				return loopVariableInput != null && !loopVariableInput.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isTestedFirst: "); //$NON-NLS-1$
+		result.append((eFlags & IS_TESTED_FIRST_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //LoopNodeImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReference.java,v 1.6 2005/03/15 18:44:42 khussey Exp $
+ * $Id: ConnectionPointReference.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getConnectionPointReference()
- * @model 
+ * @model
  * @generated
  */
 public interface ConnectionPointReference extends Vertex{
@@ -41,7 +41,7 @@ public interface ConnectionPointReference extends Vertex{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Entry</b></em>' reference list.

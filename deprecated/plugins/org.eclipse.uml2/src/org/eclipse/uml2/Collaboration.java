@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Collaboration.java,v 1.6 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Collaboration.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getCollaboration()
- * @model 
+ * @model
  * @generated
  */
 public interface Collaboration extends BehavioredClassifier, StructuredClassifier{
@@ -40,7 +40,7 @@ public interface Collaboration extends BehavioredClassifier, StructuredClassifie
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Collaboration Role</b></em>' reference list.
@@ -54,6 +54,7 @@ public interface Collaboration extends BehavioredClassifier, StructuredClassifie
 	 * @return the value of the '<em>Collaboration Role</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getCollaboration_CollaborationRole()
 	 * @model type="org.eclipse.uml2.ConnectableElement" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.StructuredClassifier#getRoles=''"
 	 * @generated
 	 */
 	EList getCollaborationRoles();
@@ -73,6 +74,7 @@ public interface Collaboration extends BehavioredClassifier, StructuredClassifie
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='role' eType='org.eclipse.uml2.ConnectableElement' containment='false'" 
 	 * @generated
 	 */
 	EList getRoles();

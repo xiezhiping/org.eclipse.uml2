@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Include.java,v 1.4 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Include.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getInclude()
- * @model 
+ * @model
  * @generated
  */
 public interface Include extends NamedElement, DirectedRelationship{
@@ -41,7 +41,7 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Including Case</b></em>' container reference.
@@ -60,6 +60,7 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * @see org.eclipse.uml2.UML2Package#getInclude_IncludingCase()
 	 * @see org.eclipse.uml2.UseCase#getIncludes
 	 * @model opposite="include" required="true"
+	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getSources=''"
 	 * @generated
 	 */
 	UseCase getIncludingCase();
@@ -89,6 +90,7 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * @see #setAddition(UseCase)
 	 * @see org.eclipse.uml2.UML2Package#getInclude_Addition()
 	 * @model required="true"
+	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getTargets=''"
 	 * @generated
 	 */
 	UseCase getAddition();
@@ -107,6 +109,7 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
 	 * @generated
 	 */
 	EList getSources();
@@ -115,6 +118,7 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
 	 * @generated
 	 */
 	EList getTargets();

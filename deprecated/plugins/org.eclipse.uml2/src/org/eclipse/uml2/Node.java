@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Node.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Node.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getNode()
- * @model 
+ * @model
  * @generated
  */
 public interface Node extends org.eclipse.uml2.Class, DeploymentTarget{
@@ -42,7 +42,7 @@ public interface Node extends org.eclipse.uml2.Class, DeploymentTarget{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Nested Node</b></em>' containment reference list.
@@ -56,6 +56,7 @@ public interface Node extends org.eclipse.uml2.Class, DeploymentTarget{
 	 * @return the value of the '<em>Nested Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNode_NestedNode()
 	 * @model type="org.eclipse.uml2.Node" containment="true" ordered="false"
+	 *        annotation="redefines org.eclipse.uml2.Class#getNestedClassifiers=''"
 	 * @generated
 	 */
 	EList getNestedNodes();
@@ -86,6 +87,7 @@ public interface Node extends org.eclipse.uml2.Class, DeploymentTarget{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='nestedClassifier' eType='org.eclipse.uml2.Classifier' containment='true'" 
 	 * @generated
 	 */
 	EList getNestedClassifiers();

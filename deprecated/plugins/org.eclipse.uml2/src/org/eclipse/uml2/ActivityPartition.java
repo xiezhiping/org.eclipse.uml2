@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.6 2005/03/15 18:44:41 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getActivityPartition()
- * @model 
+ * @model
  * @generated
  */
 public interface ActivityPartition extends NamedElement, ActivityGroup{
@@ -48,7 +48,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Dimension</b></em>' attribute.
@@ -65,7 +65,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @return the value of the '<em>Is Dimension</em>' attribute.
 	 * @see #setIsDimension(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_IsDimension()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isDimension();
@@ -95,7 +95,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @return the value of the '<em>Is External</em>' attribute.
 	 * @see #setIsExternal(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_IsExternal()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isExternal();
@@ -124,6 +124,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_ContainedEdge()
 	 * @see org.eclipse.uml2.ActivityEdge#getInPartitions
 	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="inPartition"
+	 *        annotation="redefines org.eclipse.uml2.ActivityGroup#getContainedEdges=''"
 	 * @generated
 	 */
 	EList getContainedEdges();
@@ -153,6 +154,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_ContainedNode()
 	 * @see org.eclipse.uml2.ActivityNode#getInPartitions
 	 * @model type="org.eclipse.uml2.ActivityNode" opposite="inPartition"
+	 *        annotation="redefines org.eclipse.uml2.ActivityGroup#getContainedNodes=''"
 	 * @generated
 	 */
 	EList getContainedNodes();
@@ -182,6 +184,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_Subgroup()
 	 * @see org.eclipse.uml2.ActivityPartition#getSuperPartition
 	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="superPartition" containment="true" ordered="false"
+	 *        annotation="redefines org.eclipse.uml2.ActivityGroup#getSubgroups=''"
 	 * @generated
 	 */
 	EList getSubgroups();
@@ -222,6 +225,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_SuperPartition()
 	 * @see org.eclipse.uml2.ActivityPartition#getSubgroups
 	 * @model opposite="subgroup"
+	 *        annotation="subsets org.eclipse.uml2.ActivityGroup#getSuperGroup=''"
 	 * @generated
 	 */
 	ActivityPartition getSuperPartition();
@@ -250,7 +254,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @return the value of the '<em>Represents</em>' reference.
 	 * @see #setRepresents(Element)
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_Represents()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	Element getRepresents();
@@ -269,6 +273,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='superGroup' eType='org.eclipse.uml2.ActivityGroup' containment='false' eOpposite='subgroup' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
 	 * @generated
 	 */
 	ActivityGroup getSuperGroup();

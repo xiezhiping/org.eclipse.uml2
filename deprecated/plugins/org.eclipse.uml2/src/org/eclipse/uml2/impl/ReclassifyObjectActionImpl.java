@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.8 2005/03/15 18:44:36 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -59,7 +59,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isReplaceAll() <em>Is Replace All</em>}' attribute.
@@ -72,14 +72,14 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 	protected static final boolean IS_REPLACE_ALL_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isReplaceAll() <em>Is Replace All</em>}' attribute.
+	 * The flag representing the value of the '{@link #isReplaceAll() <em>Is Replace All</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isReplaceAll()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_REPLACE_ALL_EFLAG = Integer.MIN_VALUE >>> 1;
+	protected static final int IS_REPLACE_ALL_EFLAG = 1 << 9;
 
 	/**
 	 * The cached value of the '{@link #getOldClassifiers() <em>Old Classifier</em>}' reference list.
@@ -118,7 +118,6 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 	 */
 	protected ReclassifyObjectActionImpl() {
 		super();
-		eFlags &= ~IS_REPLACE_ALL_EFLAG;
 	}
 
 	/**
@@ -136,7 +135,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 	 * @generated
 	 */
 	public boolean isReplaceAll() {
-		return 0 != (eFlags & IS_REPLACE_ALL_EFLAG);
+		return (eFlags & IS_REPLACE_ALL_EFLAG) != 0;
 	}
 
 	/**
@@ -145,15 +144,10 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 	 * @generated
 	 */
 	public void setIsReplaceAll(boolean newIsReplaceAll) {
-		boolean oldIsReplaceAll = 0 != (eFlags & IS_REPLACE_ALL_EFLAG);
-		if (newIsReplaceAll) {
-			eFlags |= IS_REPLACE_ALL_EFLAG;
-		} else {
-			eFlags &= ~IS_REPLACE_ALL_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsReplaceAll = (eFlags & IS_REPLACE_ALL_EFLAG) != 0;
+		if (newIsReplaceAll) eFlags |= IS_REPLACE_ALL_EFLAG; else eFlags &= ~IS_REPLACE_ALL_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL, oldIsReplaceAll, newIsReplaceAll));
-		}
 	}
 
 	/**
@@ -693,7 +687,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__INCOMING:
@@ -725,7 +719,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL:
-				return isReplaceAll() != IS_REPLACE_ALL_EDEFAULT;
+				return ((eFlags & IS_REPLACE_ALL_EFLAG) != 0) != IS_REPLACE_ALL_EDEFAULT;
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER:
 				return oldClassifier != null && !oldClassifier.isEmpty();
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER:
@@ -734,6 +728,21 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 				return object != null;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isReplaceAll: "); //$NON-NLS-1$
+		result.append((eFlags & IS_REPLACE_ALL_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ReclassifyObjectActionImpl

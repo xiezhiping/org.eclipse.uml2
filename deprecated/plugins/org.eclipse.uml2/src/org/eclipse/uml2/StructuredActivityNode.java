@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode()
- * @model 
+ * @model
  * @generated
  */
 public interface StructuredActivityNode extends Action, Namespace, ActivityGroup{
@@ -41,7 +41,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Must Isolate</b></em>' attribute.
@@ -54,7 +54,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @return the value of the '<em>Must Isolate</em>' attribute.
 	 * @see #setMustIsolate(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_MustIsolate()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isMustIsolate();
@@ -83,6 +83,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_Variable()
 	 * @see org.eclipse.uml2.Variable#getScope
 	 * @model type="org.eclipse.uml2.Variable" opposite="scope" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getVariables();
@@ -123,6 +124,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_ContainedNode()
 	 * @see org.eclipse.uml2.ActivityNode#getInStructuredNode
 	 * @model type="org.eclipse.uml2.ActivityNode" opposite="inStructuredNode" containment="true"
+	 *        annotation="redefines org.eclipse.uml2.ActivityGroup#getContainedNodes=''"
 	 * @generated
 	 */
 	EList getContainedNodes();
@@ -163,6 +165,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_ContainedEdge()
 	 * @see org.eclipse.uml2.ActivityEdge#getInStructuredNode
 	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="inStructuredNode" containment="true"
+	 *        annotation="redefines org.eclipse.uml2.ActivityGroup#getContainedEdges=''"
 	 * @generated
 	 */
 	EList getContainedEdges();
@@ -193,6 +196,8 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='activity' eOpposite='structuredNode' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Activity' eOpposite.lowerBound='0'"
+	 *        annotation="redefines org.eclipse.uml2.ActivityNode#getActivity='' org.eclipse.uml2.ActivityGroup#getActivityGroup_activity=''" 
 	 * @generated
 	 */
 	Activity getActivity();
@@ -200,7 +205,8 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model 
+	 * @model annotation="feature eOpposite.containment='false' containment='false' name='activity' eOpposite='structuredNode' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Activity' eOpposite.lowerBound='0'"
+	 *        annotation="redefines org.eclipse.uml2.ActivityNode#getActivity='' org.eclipse.uml2.ActivityGroup#getActivityGroup_activity=''" 
 	 * @generated
 	 */
 	void setActivity(Activity value);
@@ -209,6 +215,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='true' containment='false' name='activityGroup_activity' eOpposite='group' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Activity' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	Activity getActivityGroup_activity();
@@ -216,7 +223,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model 
+	 * @model annotation="feature eOpposite.containment='true' containment='false' name='activityGroup_activity' eOpposite='group' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Activity' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	void setActivityGroup_activity(Activity value);
@@ -225,6 +232,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();

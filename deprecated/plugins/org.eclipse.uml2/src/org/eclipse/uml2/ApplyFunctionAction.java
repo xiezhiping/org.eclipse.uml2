@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionAction.java,v 1.5 2005/03/15 18:44:42 khussey Exp $
+ * $Id: ApplyFunctionAction.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getApplyFunctionAction()
- * @model 
+ * @model
  * @generated
  */
 public interface ApplyFunctionAction extends Action{
@@ -44,7 +44,7 @@ public interface ApplyFunctionAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Function</b></em>' reference.
@@ -90,6 +90,7 @@ public interface ApplyFunctionAction extends Action{
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getApplyFunctionAction_Argument()
 	 * @model type="org.eclipse.uml2.InputPin" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Action#getInputs=''"
 	 * @generated
 	 */
 	EList getArguments();
@@ -131,6 +132,7 @@ public interface ApplyFunctionAction extends Action{
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getApplyFunctionAction_Result()
 	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Action#getOutputs=''"
 	 * @generated
 	 */
 	EList getResults();
@@ -161,6 +163,7 @@ public interface ApplyFunctionAction extends Action{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='input' eType='org.eclipse.uml2.InputPin' containment='false'" 
 	 * @generated
 	 */
 	EList getInputs();
@@ -169,6 +172,7 @@ public interface ApplyFunctionAction extends Action{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='output' eType='org.eclipse.uml2.OutputPin' containment='false'" 
 	 * @generated
 	 */
 	EList getOutputs();

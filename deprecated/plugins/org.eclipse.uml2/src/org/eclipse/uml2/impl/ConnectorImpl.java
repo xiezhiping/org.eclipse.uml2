@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.8 2005/03/15 18:44:31 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -62,7 +62,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -585,11 +585,11 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 			case UML2Package.CONNECTOR__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CONNECTOR__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CONNECTOR__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.CONNECTOR__IS_STATIC:
-				return isStatic() != IS_STATIC_EDEFAULT;
+				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.CONNECTOR__TYPE:
 				return type != null;
 			case UML2Package.CONNECTOR__REDEFINED_CONNECTOR:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.12 2005/03/15 18:44:36 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.13 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -82,7 +82,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -105,14 +105,14 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	protected static final boolean IS_ORDERED_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
+	 * The flag representing the value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isOrdered()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = Integer.MIN_VALUE >>> 0;
+	protected static final int IS_ORDERED_EFLAG = 1 << 8;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -125,14 +125,14 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	protected static final boolean IS_UNIQUE_EDEFAULT = true;
 
 	/**
-	 * The flag for the '{@link #isUnique() <em>Is Unique</em>}' attribute.
+	 * The flag representing the value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isUnique()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = Integer.MIN_VALUE >>> 1;
+	protected static final int IS_UNIQUE_EFLAG = 1 << 9;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -225,14 +225,14 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	protected static final boolean IS_EXCEPTION_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isException() <em>Is Exception</em>}' attribute.
+	 * The flag representing the value of the '{@link #isException() <em>Is Exception</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isException()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_EXCEPTION_EFLAG = Integer.MIN_VALUE >>> 2;
+	protected static final int IS_EXCEPTION_EFLAG = 1 << 10;
 
 	/**
 	 * The default value of the '{@link #isStream() <em>Is Stream</em>}' attribute.
@@ -245,14 +245,14 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	protected static final boolean IS_STREAM_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isStream() <em>Is Stream</em>}' attribute.
+	 * The flag representing the value of the '{@link #isStream() <em>Is Stream</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isStream()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_STREAM_EFLAG = Integer.MIN_VALUE >>> 3;
+	protected static final int IS_STREAM_EFLAG = 1 << 11;
 
 	/**
 	 * The default value of the '{@link #getEffect() <em>Effect</em>}' attribute.
@@ -291,10 +291,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 */
 	protected ParameterImpl() {
 		super();
-		eFlags &= ~IS_ORDERED_EFLAG;
 		eFlags |= IS_UNIQUE_EFLAG;
-		eFlags &= ~IS_EXCEPTION_EFLAG;
-		eFlags &= ~IS_STREAM_EFLAG;
 	}
 
 	/**
@@ -341,9 +338,8 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		Type oldType = type;
 		type = newType;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__TYPE, oldType, newType));
 		}
-
 	}
 
 	/**
@@ -352,7 +348,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean isOrdered() {
-		return 0 != (eFlags & IS_ORDERED_EFLAG);
+		return (eFlags & IS_ORDERED_EFLAG) != 0;
 	}
 
 	/**
@@ -361,12 +357,8 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-		boolean oldIsOrdered = 0 != (eFlags & IS_ORDERED_EFLAG);
-		if (newIsOrdered) {
-			eFlags |= IS_ORDERED_EFLAG;
-		} else {
-			eFlags &= ~IS_ORDERED_EFLAG;
-		}
+		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
+		if (newIsOrdered) eFlags |= IS_ORDERED_EFLAG; else eFlags &= ~IS_ORDERED_EFLAG;
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__IS_ORDERED, oldIsOrdered, newIsOrdered));
 		}
@@ -378,7 +370,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean isUnique() {
-		return 0 != (eFlags & IS_UNIQUE_EFLAG);
+		return (eFlags & IS_UNIQUE_EFLAG) != 0;
 	}
 
 	/**
@@ -387,12 +379,8 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
-		boolean oldIsUnique = 0 != (eFlags & IS_UNIQUE_EFLAG);
-		if (newIsUnique) {
-			eFlags |= IS_UNIQUE_EFLAG;
-		} else {
-			eFlags &= ~IS_UNIQUE_EFLAG;
-		}
+		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
+		if (newIsUnique) eFlags |= IS_UNIQUE_EFLAG; else eFlags &= ~IS_UNIQUE_EFLAG;
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__IS_UNIQUE, oldIsUnique, newIsUnique));
 		}
@@ -566,7 +554,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean isException() {
-		return 0 != (eFlags & IS_EXCEPTION_EFLAG);
+		return (eFlags & IS_EXCEPTION_EFLAG) != 0;
 	}
 
 	/**
@@ -575,15 +563,10 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public void setIsException(boolean newIsException) {
-		boolean oldIsException = 0 != (eFlags & IS_EXCEPTION_EFLAG);
-		if (newIsException) {
-			eFlags |= IS_EXCEPTION_EFLAG;
-		} else {
-			eFlags &= ~IS_EXCEPTION_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsException = (eFlags & IS_EXCEPTION_EFLAG) != 0;
+		if (newIsException) eFlags |= IS_EXCEPTION_EFLAG; else eFlags &= ~IS_EXCEPTION_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__IS_EXCEPTION, oldIsException, newIsException));
-		}
 	}
 
 	/**
@@ -592,7 +575,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean isStream() {
-		return 0 != (eFlags & IS_STREAM_EFLAG);
+		return (eFlags & IS_STREAM_EFLAG) != 0;
 	}
 
 	/**
@@ -601,15 +584,10 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public void setIsStream(boolean newIsStream) {
-		boolean oldIsStream = 0 != (eFlags & IS_STREAM_EFLAG);
-		if (newIsStream) {
-			eFlags |= IS_STREAM_EFLAG;
-		} else {
-			eFlags &= ~IS_STREAM_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsStream = (eFlags & IS_STREAM_EFLAG) != 0;
+		if (newIsStream) eFlags |= IS_STREAM_EFLAG; else eFlags &= ~IS_STREAM_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__IS_STREAM, oldIsStream, newIsStream));
-		}
 	}
 
 	/**
@@ -1279,9 +1257,9 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__TYPE:
 				return type != null;
 			case UML2Package.PARAMETER__IS_ORDERED:
-				return isOrdered() != IS_ORDERED_EDEFAULT;
+				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.PARAMETER__IS_UNIQUE:
-				return isUnique() != IS_UNIQUE_EDEFAULT;
+				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UML2Package.PARAMETER__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.PARAMETER__UPPER:
@@ -1299,9 +1277,9 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__DEFAULT_VALUE:
 				return defaultValue != null;
 			case UML2Package.PARAMETER__IS_EXCEPTION:
-				return isException() != IS_EXCEPTION_EDEFAULT;
+				return ((eFlags & IS_EXCEPTION_EFLAG) != 0) != IS_EXCEPTION_EDEFAULT;
 			case UML2Package.PARAMETER__IS_STREAM:
-				return isStream() != IS_STREAM_EDEFAULT;
+				return ((eFlags & IS_STREAM_EFLAG) != 0) != IS_STREAM_EDEFAULT;
 			case UML2Package.PARAMETER__EFFECT:
 				return effect != EFFECT_EDEFAULT;
 			case UML2Package.PARAMETER__PARAMETER_SET:
@@ -1373,6 +1351,10 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (direction: "); //$NON-NLS-1$
 		result.append(direction);
+		result.append(", isException: "); //$NON-NLS-1$
+		result.append((eFlags & IS_EXCEPTION_EFLAG) != 0);
+		result.append(", isStream: "); //$NON-NLS-1$
+		result.append((eFlags & IS_STREAM_EFLAG) != 0);
 		result.append(", effect: "); //$NON-NLS-1$
 		result.append(effect);
 		result.append(')');

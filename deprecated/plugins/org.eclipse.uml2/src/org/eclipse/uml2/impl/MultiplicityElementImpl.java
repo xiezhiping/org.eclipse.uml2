@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.10 2005/03/15 18:44:36 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.11 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -57,7 +57,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -70,14 +70,14 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	protected static final boolean IS_ORDERED_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
+	 * The flag representing the value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isOrdered()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = Integer.MIN_VALUE >>> 0;
+	protected static final int IS_ORDERED_EFLAG = 1 << 8;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -90,14 +90,14 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	protected static final boolean IS_UNIQUE_EDEFAULT = true;
 
 	/**
-	 * The flag for the '{@link #isUnique() <em>Is Unique</em>}' attribute.
+	 * The flag representing the value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isUnique()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = Integer.MIN_VALUE >>> 1;
+	protected static final int IS_UNIQUE_EFLAG = 1 << 9;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -146,7 +146,6 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 */
 	protected MultiplicityElementImpl() {
 		super();
-		eFlags &= ~IS_ORDERED_EFLAG;
 		eFlags |= IS_UNIQUE_EFLAG;
 	}
 
@@ -165,7 +164,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public boolean isOrdered() {
-		return 0 != (eFlags & IS_ORDERED_EFLAG);
+		return (eFlags & IS_ORDERED_EFLAG) != 0;
 	}
 
 	/**
@@ -174,12 +173,8 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-		boolean oldIsOrdered = 0 != (eFlags & IS_ORDERED_EFLAG);
-		if (newIsOrdered) {
-			eFlags |= IS_ORDERED_EFLAG;
-		} else {
-			eFlags &= ~IS_ORDERED_EFLAG;
-		}
+		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
+		if (newIsOrdered) eFlags |= IS_ORDERED_EFLAG; else eFlags &= ~IS_ORDERED_EFLAG;
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MULTIPLICITY_ELEMENT__IS_ORDERED, oldIsOrdered, newIsOrdered));
 		}
@@ -191,7 +186,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public boolean isUnique() {
-		return 0 != (eFlags & IS_UNIQUE_EFLAG);
+		return (eFlags & IS_UNIQUE_EFLAG) != 0;
 	}
 
 	/**
@@ -200,12 +195,8 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
-		boolean oldIsUnique = 0 != (eFlags & IS_UNIQUE_EFLAG);
-		if (newIsUnique) {
-			eFlags |= IS_UNIQUE_EFLAG;
-		} else {
-			eFlags &= ~IS_UNIQUE_EFLAG;
-		}
+		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
+		if (newIsUnique) eFlags |= IS_UNIQUE_EFLAG; else eFlags &= ~IS_UNIQUE_EFLAG;
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MULTIPLICITY_ELEMENT__IS_UNIQUE, oldIsUnique, newIsUnique));
 		}
@@ -626,9 +617,9 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 			case UML2Package.MULTIPLICITY_ELEMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.MULTIPLICITY_ELEMENT__IS_ORDERED:
-				return isOrdered() != IS_ORDERED_EDEFAULT;
+				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.MULTIPLICITY_ELEMENT__IS_UNIQUE:
-				return isUnique() != IS_UNIQUE_EDEFAULT;
+				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UML2Package.MULTIPLICITY_ELEMENT__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.MULTIPLICITY_ELEMENT__UPPER:

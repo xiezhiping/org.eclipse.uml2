@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.6 2005/03/15 18:44:36 khussey Exp $
+ * $Id: DurationImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -54,7 +54,7 @@ public class DurationImpl extends ValueSpecificationImpl implements Duration {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isFirstTime() <em>First Time</em>}' attribute.
@@ -67,14 +67,14 @@ public class DurationImpl extends ValueSpecificationImpl implements Duration {
 	protected static final boolean FIRST_TIME_EDEFAULT = true;
 
 	/**
-	 * The flag for the '{@link #isFirstTime() <em>First Time</em>}' attribute.
+	 * The flag representing the value of the '{@link #isFirstTime() <em>First Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isFirstTime()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int FIRST_TIME_EFLAG = Integer.MIN_VALUE >>> 0;
+	protected static final int FIRST_TIME_EFLAG = 1 << 8;
 
 	/**
 	 * The cached value of the '{@link #getEvents() <em>Event</em>}' reference list.
@@ -111,7 +111,7 @@ public class DurationImpl extends ValueSpecificationImpl implements Duration {
 	 * @generated
 	 */
 	public boolean isFirstTime() {
-		return 0 != (eFlags & FIRST_TIME_EFLAG);
+		return (eFlags & FIRST_TIME_EFLAG) != 0;
 	}
 
 	/**
@@ -120,15 +120,10 @@ public class DurationImpl extends ValueSpecificationImpl implements Duration {
 	 * @generated
 	 */
 	public void setFirstTime(boolean newFirstTime) {
-		boolean oldFirstTime = 0 != (eFlags & FIRST_TIME_EFLAG);
-		if (newFirstTime) {
-			eFlags |= FIRST_TIME_EFLAG;
-		} else {
-			eFlags &= ~FIRST_TIME_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldFirstTime = (eFlags & FIRST_TIME_EFLAG) != 0;
+		if (newFirstTime) eFlags |= FIRST_TIME_EFLAG; else eFlags &= ~FIRST_TIME_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DURATION__FIRST_TIME, oldFirstTime, newFirstTime));
-		}
 	}
 
 	/**
@@ -430,11 +425,26 @@ public class DurationImpl extends ValueSpecificationImpl implements Duration {
 			case UML2Package.DURATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.DURATION__FIRST_TIME:
-				return isFirstTime() != FIRST_TIME_EDEFAULT;
+				return ((eFlags & FIRST_TIME_EFLAG) != 0) != FIRST_TIME_EDEFAULT;
 			case UML2Package.DURATION__EVENT:
 				return event != null && !event.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (firstTime: "); //$NON-NLS-1$
+		result.append((eFlags & FIRST_TIME_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //DurationImpl

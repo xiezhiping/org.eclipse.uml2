@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.8 2005/03/15 18:44:41 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.9 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -48,7 +48,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Behavior</b></em>' containment reference list.
@@ -67,6 +67,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedBehavior()
 	 * @see org.eclipse.uml2.Behavior#getContext
 	 * @model type="org.eclipse.uml2.Behavior" opposite="context" containment="true" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedBehaviors();
@@ -108,6 +109,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @see #setClassifierBehavior(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_ClassifierBehavior()
 	 * @model resolveProxies="false" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors=''"
 	 * @generated
 	 */
 	Behavior getClassifierBehavior();
@@ -139,6 +141,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_Implementation()
 	 * @see org.eclipse.uml2.Implementation#getImplementingClassifier
 	 * @model type="org.eclipse.uml2.Implementation" opposite="implementingClassifier" containment="true" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements='' org.eclipse.uml2.NamedElement#getClientDependencies=''"
 	 * @generated
 	 */
 	EList getImplementations();
@@ -177,6 +180,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @return the value of the '<em>Owned Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedTrigger()
 	 * @model type="org.eclipse.uml2.Trigger" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedTriggers();
@@ -217,6 +221,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedStateMachine()
 	 * @see org.eclipse.uml2.StateMachine#getStateMachine_redefinitionContext
 	 * @model type="org.eclipse.uml2.StateMachine" opposite="stateMachine_redefinitionContext" containment="true" volatile="true" ordered="false"
+	 *        annotation="redefines org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors=''"
 	 * @generated
 	 */
 	EList getOwnedStateMachines();
@@ -247,6 +252,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();
@@ -255,6 +261,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -263,6 +270,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='clientDependency' eOpposite='client' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Dependency' eOpposite.lowerBound='1'" 
 	 * @generated
 	 */
 	EList getClientDependencies();

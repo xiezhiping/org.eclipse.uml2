@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNatural.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: LiteralUnlimitedNatural.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -30,7 +30,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getLiteralUnlimitedNatural()
- * @model 
+ * @model
  * @generated
  */
 public interface LiteralUnlimitedNatural extends LiteralSpecification{
@@ -39,7 +39,7 @@ public interface LiteralUnlimitedNatural extends LiteralSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
@@ -79,7 +79,8 @@ public interface LiteralUnlimitedNatural extends LiteralSpecification{
 	 * true
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.LiteralUnlimitedNaturalOperations.isComputable(this);'" 
 	 * @generated
 	 */
 	boolean isComputable();
@@ -93,7 +94,8 @@ public interface LiteralUnlimitedNatural extends LiteralSpecification{
 	 * value
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.UnlimitedNatural" 
+	 * @model dataType="org.eclipse.uml2.UnlimitedNatural"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.LiteralUnlimitedNaturalOperations.unlimitedValue(this);'" 
 	 * @generated
 	 */
 	int unlimitedValue();

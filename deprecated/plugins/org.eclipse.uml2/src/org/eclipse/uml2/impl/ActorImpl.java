@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActorImpl.java,v 1.15 2005/03/15 18:44:38 khussey Exp $
+ * $Id: ActorImpl.java,v 1.16 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -42,7 +42,7 @@ public class ActorImpl extends ClassifierImpl implements Actor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -491,11 +491,11 @@ public class ActorImpl extends ClassifierImpl implements Actor {
 			case UML2Package.ACTOR__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.ACTOR__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ACTOR__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.ACTOR__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.ACTOR__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.ACTOR__GENERAL:

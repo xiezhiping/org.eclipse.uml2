@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Action.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getAction()
- * @model 
+ * @model
  * @generated
  */
 public interface Action extends ExecutableNode{
@@ -43,7 +43,7 @@ public interface Action extends ExecutableNode{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Effect</b></em>' attribute.
@@ -84,6 +84,7 @@ public interface Action extends ExecutableNode{
 	 * @return the value of the '<em>Output</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_Output()
 	 * @model type="org.eclipse.uml2.OutputPin" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getOutputs();
@@ -111,6 +112,7 @@ public interface Action extends ExecutableNode{
 	 * @return the value of the '<em>Input</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_Input()
 	 * @model type="org.eclipse.uml2.InputPin" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getInputs();
@@ -156,6 +158,7 @@ public interface Action extends ExecutableNode{
 	 * @return the value of the '<em>Local Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_LocalPrecondition()
 	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getLocalPreconditions();
@@ -197,6 +200,7 @@ public interface Action extends ExecutableNode{
 	 * @return the value of the '<em>Local Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_LocalPostcondition()
 	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getLocalPostconditions();
@@ -227,6 +231,7 @@ public interface Action extends ExecutableNode{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

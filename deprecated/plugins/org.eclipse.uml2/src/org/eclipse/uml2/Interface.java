@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.6 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Interface.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getInterface()
- * @model 
+ * @model
  * @generated
  */
 public interface Interface extends Classifier{
@@ -47,7 +47,7 @@ public interface Interface extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -64,6 +64,7 @@ public interface Interface extends Classifier{
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedAttribute()
 	 * @model type="org.eclipse.uml2.Property" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Classifier#getAttributes='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -105,6 +106,7 @@ public interface Interface extends Classifier{
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedOperation()
 	 * @model type="org.eclipse.uml2.Operation" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedOperations();
@@ -146,6 +148,7 @@ public interface Interface extends Classifier{
 	 * @return the value of the '<em>Redefined Interface</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_RedefinedInterface()
 	 * @model type="org.eclipse.uml2.Interface" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedInterfaces();
@@ -173,6 +176,7 @@ public interface Interface extends Classifier{
 	 * @return the value of the '<em>Nested Classifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_NestedClassifier()
 	 * @model type="org.eclipse.uml2.Classifier" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getNestedClassifiers();
@@ -214,6 +218,7 @@ public interface Interface extends Classifier{
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedReception()
 	 * @model type="org.eclipse.uml2.Reception" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedReceptions();
@@ -255,6 +260,7 @@ public interface Interface extends Classifier{
 	 * @see #setProtocol(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getInterface_Protocol()
 	 * @model containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	ProtocolStateMachine getProtocol();
@@ -284,6 +290,7 @@ public interface Interface extends Classifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='attribute' eType='org.eclipse.uml2.Property' containment='false'" 
 	 * @generated
 	 */
 	EList getAttributes();
@@ -292,6 +299,7 @@ public interface Interface extends Classifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();
@@ -300,6 +308,7 @@ public interface Interface extends Classifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getFeatures();
@@ -308,6 +317,7 @@ public interface Interface extends Classifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
 	 * @generated
 	 */
 	EList getRedefinedElements();

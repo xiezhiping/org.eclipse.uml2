@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.6 2005/03/15 18:44:38 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.7 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getSignal() <em>Signal</em>}' reference.
@@ -454,11 +454,11 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 			case UML2Package.RECEPTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.RECEPTION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.RECEPTION__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.RECEPTION__IS_STATIC:
-				return isStatic() != IS_STATIC_EDEFAULT;
+				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.RECEPTION__PARAMETER:
 				return !getParameters().isEmpty();
 			case UML2Package.RECEPTION__FORMAL_PARAMETER:
@@ -468,7 +468,7 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 			case UML2Package.RECEPTION__RAISED_EXCEPTION:
 				return raisedException != null && !raisedException.isEmpty();
 			case UML2Package.RECEPTION__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.RECEPTION__METHOD:
 				return method != null && !method.isEmpty();
 			case UML2Package.RECEPTION__CONCURRENCY:

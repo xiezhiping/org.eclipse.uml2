@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueAction.java,v 1.5 2005/03/15 18:44:44 khussey Exp $
+ * $Id: AddVariableValueAction.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getAddVariableValueAction()
- * @model 
+ * @model
  * @generated
  */
 public interface AddVariableValueAction extends WriteVariableAction{
@@ -43,7 +43,7 @@ public interface AddVariableValueAction extends WriteVariableAction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Replace All</b></em>' attribute.
@@ -60,7 +60,7 @@ public interface AddVariableValueAction extends WriteVariableAction{
 	 * @return the value of the '<em>Is Replace All</em>' attribute.
 	 * @see #setIsReplaceAll(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getAddVariableValueAction_IsReplaceAll()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isReplaceAll();
@@ -90,6 +90,7 @@ public interface AddVariableValueAction extends WriteVariableAction{
 	 * @see #setInsertAt(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getAddVariableValueAction_InsertAt()
 	 * @model containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Action#getInputs=''"
 	 * @generated
 	 */
 	InputPin getInsertAt();
@@ -119,6 +120,7 @@ public interface AddVariableValueAction extends WriteVariableAction{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='input' eType='org.eclipse.uml2.InputPin' containment='false'" 
 	 * @generated
 	 */
 	EList getInputs();

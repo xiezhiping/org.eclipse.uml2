@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Generalization.java,v 1.7 2005/03/15 18:44:43 khussey Exp $
+ * $Id: Generalization.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getGeneralization()
- * @model 
+ * @model
  * @generated
  */
 public interface Generalization extends DirectedRelationship{
@@ -43,7 +43,7 @@ public interface Generalization extends DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Substitutable</b></em>' attribute.
@@ -59,7 +59,7 @@ public interface Generalization extends DirectedRelationship{
 	 * @return the value of the '<em>Is Substitutable</em>' attribute.
 	 * @see #setIsSubstitutable(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getGeneralization_IsSubstitutable()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isSubstitutable();
@@ -91,6 +91,7 @@ public interface Generalization extends DirectedRelationship{
 	 * @see org.eclipse.uml2.UML2Package#getGeneralization_Specific()
 	 * @see org.eclipse.uml2.Classifier#getGeneralizations
 	 * @model opposite="generalization" required="true"
+	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getSources='' org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	Classifier getSpecific();
@@ -120,6 +121,7 @@ public interface Generalization extends DirectedRelationship{
 	 * @see #setGeneral(Classifier)
 	 * @see org.eclipse.uml2.UML2Package#getGeneralization_General()
 	 * @model required="true"
+	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getTargets=''"
 	 * @generated
 	 */
 	Classifier getGeneral();
@@ -167,6 +169,7 @@ public interface Generalization extends DirectedRelationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
 	 * @generated
 	 */
 	EList getSources();
@@ -175,6 +178,7 @@ public interface Generalization extends DirectedRelationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	Element getOwner();
@@ -183,6 +187,7 @@ public interface Generalization extends DirectedRelationship{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
 	 * @generated
 	 */
 	EList getTargets();

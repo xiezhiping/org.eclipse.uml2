@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralNull.java,v 1.4 2005/03/15 18:44:42 khussey Exp $
+ * $Id: LiteralNull.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -24,7 +24,7 @@ package org.eclipse.uml2;
  *
  *
  * @see org.eclipse.uml2.UML2Package#getLiteralNull()
- * @model 
+ * @model
  * @generated
  */
 public interface LiteralNull extends LiteralSpecification{
@@ -33,7 +33,7 @@ public interface LiteralNull extends LiteralSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,7 +44,8 @@ public interface LiteralNull extends LiteralSpecification{
 	 * true
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.LiteralNullOperations.isComputable(this);'" 
 	 * @generated
 	 */
 	boolean isComputable();
@@ -58,7 +59,8 @@ public interface LiteralNull extends LiteralSpecification{
 	 * true
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.LiteralNullOperations.isNull(this);'" 
 	 * @generated
 	 */
 	boolean isNull();

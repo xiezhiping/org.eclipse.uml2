@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectAction.java,v 1.4 2005/03/15 18:44:42 khussey Exp $
+ * $Id: SendObjectAction.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getSendObjectAction()
- * @model 
+ * @model
  * @generated
  */
 public interface SendObjectAction extends InvocationAction{
@@ -43,7 +43,7 @@ public interface SendObjectAction extends InvocationAction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' containment reference.
@@ -57,6 +57,7 @@ public interface SendObjectAction extends InvocationAction{
 	 * @see #setTarget(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getSendObjectAction_Target()
 	 * @model containment="true" required="true"
+	 *        annotation="subsets org.eclipse.uml2.Action#getInputs=''"
 	 * @generated
 	 */
 	InputPin getTarget();
@@ -94,6 +95,7 @@ public interface SendObjectAction extends InvocationAction{
 	 * @see #setRequest(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getSendObjectAction_Request()
 	 * @model containment="true" required="true"
+	 *        annotation="redefines org.eclipse.uml2.InvocationAction#getArguments=''"
 	 * @generated
 	 */
 	InputPin getRequest();
@@ -123,6 +125,7 @@ public interface SendObjectAction extends InvocationAction{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='argument' eType='org.eclipse.uml2.InputPin' containment='true'" 
 	 * @generated
 	 */
 	EList getArguments();
@@ -131,6 +134,7 @@ public interface SendObjectAction extends InvocationAction{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='input' eType='org.eclipse.uml2.InputPin' containment='false'" 
 	 * @generated
 	 */
 	EList getInputs();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionAction.java,v 1.4 2005/03/15 18:44:43 khussey Exp $
+ * $Id: RaiseExceptionAction.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getRaiseExceptionAction()
- * @model 
+ * @model
  * @generated
  */
 public interface RaiseExceptionAction extends Action{
@@ -40,7 +40,7 @@ public interface RaiseExceptionAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Exception</b></em>' reference.
@@ -57,6 +57,7 @@ public interface RaiseExceptionAction extends Action{
 	 * @see #setException(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getRaiseExceptionAction_Exception()
 	 * @model required="true"
+	 *        annotation="subsets org.eclipse.uml2.Action#getInputs=''"
 	 * @generated
 	 */
 	InputPin getException();
@@ -75,6 +76,7 @@ public interface RaiseExceptionAction extends Action{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='input' eType='org.eclipse.uml2.InputPin' containment='false'" 
 	 * @generated
 	 */
 	EList getInputs();

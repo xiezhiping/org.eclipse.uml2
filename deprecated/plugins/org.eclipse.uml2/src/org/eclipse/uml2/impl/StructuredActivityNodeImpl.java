@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.18 2005/03/15 18:44:36 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.19 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -80,7 +80,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
@@ -153,14 +153,14 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	protected static final boolean MUST_ISOLATE_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isMustIsolate() <em>Must Isolate</em>}' attribute.
+	 * The flag representing the value of the '{@link #isMustIsolate() <em>Must Isolate</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isMustIsolate()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MUST_ISOLATE_EFLAG = Integer.MIN_VALUE >>> 1;
+	protected static final int MUST_ISOLATE_EFLAG = 1 << 9;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,7 +169,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 */
 	protected StructuredActivityNodeImpl() {
 		super();
-		eFlags &= ~MUST_ISOLATE_EFLAG;
 	}
 
 	/**
@@ -378,7 +377,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public boolean isMustIsolate() {
-		return 0 != (eFlags & MUST_ISOLATE_EFLAG);
+		return (eFlags & MUST_ISOLATE_EFLAG) != 0;
 	}
 
 	/**
@@ -387,15 +386,10 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public void setMustIsolate(boolean newMustIsolate) {
-		boolean oldMustIsolate = 0 != (eFlags & MUST_ISOLATE_EFLAG);
-		if (newMustIsolate) {
-			eFlags |= MUST_ISOLATE_EFLAG;
-		} else {
-			eFlags &= ~MUST_ISOLATE_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldMustIsolate = (eFlags & MUST_ISOLATE_EFLAG) != 0;
+		if (newMustIsolate) eFlags |= MUST_ISOLATE_EFLAG; else eFlags &= ~MUST_ISOLATE_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE, oldMustIsolate, newMustIsolate));
-		}
 	}
 
 	/**
@@ -1206,7 +1200,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__INCOMING:
@@ -1258,7 +1252,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE:
 				return containedEdge != null && !containedEdge.isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE:
-				return isMustIsolate() != MUST_ISOLATE_EDEFAULT;
+				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -1313,6 +1307,21 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (mustIsolate: "); //$NON-NLS-1$
+		result.append((eFlags & MUST_ISOLATE_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 	// <!-- begin-custom-operations -->

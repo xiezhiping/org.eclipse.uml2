@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.13 2005/03/15 18:44:45 khussey Exp $
+ * $Id: Class.java,v 1.14 2005/04/04 20:11:16 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getClass_()
- * @model 
+ * @model
  * @generated
  */
 public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
@@ -49,7 +49,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Active</b></em>' attribute.
@@ -65,7 +65,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @return the value of the '<em>Is Active</em>' attribute.
 	 * @see #setIsActive(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getClass_IsActive()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isActive();
@@ -97,6 +97,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @see org.eclipse.uml2.UML2Package#getClass_OwnedOperation()
 	 * @see org.eclipse.uml2.Operation#getClass_
 	 * @model type="org.eclipse.uml2.Operation" opposite="class_" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedOperations();
@@ -138,6 +139,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @return the value of the '<em>Super Class</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_SuperClass()
 	 * @model type="org.eclipse.uml2.Class" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="redefines org.eclipse.uml2.Classifier#getGenerals=''"
 	 * @generated
 	 */
 	EList getSuperClasses();
@@ -197,6 +199,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @return the value of the '<em>Nested Classifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_NestedClassifier()
 	 * @model type="org.eclipse.uml2.Classifier" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getNestedClassifiers();
@@ -238,6 +241,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_OwnedReception()
 	 * @model type="org.eclipse.uml2.Reception" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedReceptions();
@@ -274,6 +278,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * </code>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.Set" parameters="org.eclipse.uml2.Set"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ClassOperations.inherit(this, inhs);'" 
 	 * @generated
 	 */
 	Set inherit(Set inhs);
@@ -281,7 +286,9 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="feature derived='false' defaultValueLiteral='false' name='isAbstract' eType='org.eclipse.uml2.Boolean'"
+	 *        annotation="redefines org.eclipse.uml2.Classifier#isAbstract=''" 
 	 * @generated
 	 */
 	boolean isAbstract();
@@ -290,6 +297,8 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters="org.eclipse.uml2.Boolean"
+	 *        annotation="feature derived='false' defaultValueLiteral='false' name='isAbstract' eType='org.eclipse.uml2.Boolean'"
+	 *        annotation="redefines org.eclipse.uml2.Classifier#isAbstract=''" 
 	 * @generated
 	 */
 	void setIsAbstract(boolean value);
@@ -298,6 +307,9 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='true' name='ownedAttribute' eOpposite='class_' derived='false' eOpposite.upperBound='1' eType='org.eclipse.uml2.Property' eOpposite.lowerBound='0'"
+	 *        annotation="redefines org.eclipse.uml2.StructuredClassifier#getOwnedAttributes=''"
+	 *        annotation="subsets org.eclipse.uml2.Classifier#getAttributes='' org.eclipse.uml2.Namespace#getOwnedMembers=''" 
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -306,6 +318,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='general' eType='org.eclipse.uml2.Classifier' containment='false'" 
 	 * @generated
 	 */
 	EList getGenerals();
@@ -314,6 +327,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='attribute' eType='org.eclipse.uml2.Property' containment='false'" 
 	 * @generated
 	 */
 	EList getAttributes();
@@ -322,6 +336,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();
@@ -330,6 +345,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getFeatures();

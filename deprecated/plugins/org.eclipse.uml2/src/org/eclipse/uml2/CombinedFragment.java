@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragment.java,v 1.5 2005/03/15 18:44:42 khussey Exp $
+ * $Id: CombinedFragment.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getCombinedFragment()
- * @model 
+ * @model
  * @generated
  */
 public interface CombinedFragment extends InteractionFragment{
@@ -44,7 +44,7 @@ public interface CombinedFragment extends InteractionFragment{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Interaction Operator</b></em>' attribute.
@@ -62,7 +62,7 @@ public interface CombinedFragment extends InteractionFragment{
 	 * @see org.eclipse.uml2.InteractionOperator
 	 * @see #setInteractionOperator(InteractionOperator)
 	 * @see org.eclipse.uml2.UML2Package#getCombinedFragment_InteractionOperator()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	InteractionOperator getInteractionOperator();
@@ -93,6 +93,7 @@ public interface CombinedFragment extends InteractionFragment{
 	 * @return the value of the '<em>Operand</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getCombinedFragment_Operand()
 	 * @model type="org.eclipse.uml2.InteractionOperand" containment="true" required="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getOperands();
@@ -134,6 +135,7 @@ public interface CombinedFragment extends InteractionFragment{
 	 * @return the value of the '<em>Cfragment Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getCombinedFragment_CfragmentGate()
 	 * @model type="org.eclipse.uml2.Gate" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getCfragmentGates();
@@ -164,6 +166,7 @@ public interface CombinedFragment extends InteractionFragment{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

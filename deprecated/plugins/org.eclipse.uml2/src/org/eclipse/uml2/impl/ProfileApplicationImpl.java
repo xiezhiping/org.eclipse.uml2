@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.7 2005/03/15 18:44:32 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -46,7 +46,7 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getImportedProfile() <em>Imported Profile</em>}' reference.
@@ -111,9 +111,8 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 		Profile oldImportedProfile = importedProfile;
 		importedProfile = newImportedProfile;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE, oldImportedProfile, importedProfile));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE, oldImportedProfile, newImportedProfile));
 		}
-
 		if (null != newImportedProfile || oldImportedProfile == importedPackage) {
 			setImportedPackage(newImportedProfile);
 		}
@@ -128,9 +127,8 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 		org.eclipse.uml2.Package oldImportedPackage = importedPackage;
 		importedPackage = newImportedPackage;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE, oldImportedPackage, importedPackage));
-		}
-		if (null != importedProfile && newImportedPackage != importedProfile) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE, oldImportedPackage, newImportedPackage));
+		}		if (null != importedProfile && newImportedPackage != importedProfile) {
 			setImportedProfile(null);
 		}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.10 2005/03/15 18:44:40 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.11 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,7 +56,7 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getUtilizedElement() <em>Utilized Element</em>}' reference.
@@ -124,9 +124,8 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 		PackageableElement oldUtilizedElement = utilizedElement;
 		utilizedElement = newUtilizedElement;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MANIFESTATION__UTILIZED_ELEMENT, oldUtilizedElement, utilizedElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MANIFESTATION__UTILIZED_ELEMENT, oldUtilizedElement, newUtilizedElement));
 		}
-
 	}
 
 	/**

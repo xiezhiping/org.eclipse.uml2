@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkObjectAction.java,v 1.4 2005/03/15 18:44:41 khussey Exp $
+ * $Id: CreateLinkObjectAction.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getCreateLinkObjectAction()
- * @model 
+ * @model
  * @generated
  */
 public interface CreateLinkObjectAction extends CreateLinkAction{
@@ -42,7 +42,7 @@ public interface CreateLinkObjectAction extends CreateLinkAction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' containment reference.
@@ -56,6 +56,7 @@ public interface CreateLinkObjectAction extends CreateLinkAction{
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getCreateLinkObjectAction_Result()
 	 * @model containment="true" required="true"
+	 *        annotation="subsets org.eclipse.uml2.Action#getOutputs=''"
 	 * @generated
 	 */
 	OutputPin getResult();
@@ -85,6 +86,8 @@ public interface CreateLinkObjectAction extends CreateLinkAction{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='endData' eType='org.eclipse.uml2.LinkEndCreationData' containment='true'"
+	 *        annotation="redefines org.eclipse.uml2.LinkAction#getEndData='' org.eclipse.uml2.CreateLinkAction#getEndData=''" 
 	 * @generated
 	 */
 	EList getEndData();
@@ -93,6 +96,7 @@ public interface CreateLinkObjectAction extends CreateLinkAction{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='output' eType='org.eclipse.uml2.OutputPin' containment='false'" 
 	 * @generated
 	 */
 	EList getOutputs();

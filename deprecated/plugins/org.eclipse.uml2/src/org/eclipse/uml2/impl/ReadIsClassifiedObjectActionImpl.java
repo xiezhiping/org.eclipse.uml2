@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.8 2005/03/15 18:44:36 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -58,7 +58,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isDirect() <em>Is Direct</em>}' attribute.
@@ -71,14 +71,14 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	protected static final boolean IS_DIRECT_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isDirect() <em>Is Direct</em>}' attribute.
+	 * The flag representing the value of the '{@link #isDirect() <em>Is Direct</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDirect()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DIRECT_EFLAG = Integer.MIN_VALUE >>> 1;
+	protected static final int IS_DIRECT_EFLAG = 1 << 9;
 
 	/**
 	 * The cached value of the '{@link #getClassifier() <em>Classifier</em>}' reference.
@@ -117,7 +117,6 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 */
 	protected ReadIsClassifiedObjectActionImpl() {
 		super();
-		eFlags &= ~IS_DIRECT_EFLAG;
 	}
 
 	/**
@@ -135,7 +134,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 * @generated
 	 */
 	public boolean isDirect() {
-		return 0 != (eFlags & IS_DIRECT_EFLAG);
+		return (eFlags & IS_DIRECT_EFLAG) != 0;
 	}
 
 	/**
@@ -144,15 +143,10 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 * @generated
 	 */
 	public void setIsDirect(boolean newIsDirect) {
-		boolean oldIsDirect = 0 != (eFlags & IS_DIRECT_EFLAG);
-		if (newIsDirect) {
-			eFlags |= IS_DIRECT_EFLAG;
-		} else {
-			eFlags &= ~IS_DIRECT_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsDirect = (eFlags & IS_DIRECT_EFLAG) != 0;
+		if (newIsDirect) eFlags |= IS_DIRECT_EFLAG; else eFlags &= ~IS_DIRECT_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_DIRECT, oldIsDirect, newIsDirect));
-		}
 	}
 
 	/**
@@ -752,7 +746,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__INCOMING:
@@ -784,7 +778,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_DIRECT:
-				return isDirect() != IS_DIRECT_EDEFAULT;
+				return ((eFlags & IS_DIRECT_EFLAG) != 0) != IS_DIRECT_EDEFAULT;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__CLASSIFIER:
 				return classifier != null;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT:
@@ -793,6 +787,21 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 				return object != null;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isDirect: "); //$NON-NLS-1$
+		result.append((eFlags & IS_DIRECT_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ReadIsClassifiedObjectActionImpl

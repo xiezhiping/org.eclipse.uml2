@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Substitution.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: Substitution.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getSubstitution()
- * @model 
+ * @model
  * @generated
  */
 public interface Substitution extends Realization{
@@ -41,7 +41,7 @@ public interface Substitution extends Realization{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Contract</b></em>' reference.
@@ -58,6 +58,7 @@ public interface Substitution extends Realization{
 	 * @see #setContract(Classifier)
 	 * @see org.eclipse.uml2.UML2Package#getSubstitution_Contract()
 	 * @model required="true" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.Dependency#getSuppliers='' org.eclipse.uml2.DirectedRelationship#getTargets=''"
 	 * @generated
 	 */
 	Classifier getContract();
@@ -89,6 +90,7 @@ public interface Substitution extends Realization{
 	 * @see org.eclipse.uml2.UML2Package#getSubstitution_SubstitutingClassifier()
 	 * @see org.eclipse.uml2.Classifier#getSubstitutions
 	 * @model opposite="substitution" required="true" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.Dependency#getClients='' org.eclipse.uml2.DirectedRelationship#getSources=''"
 	 * @generated
 	 */
 	Classifier getSubstitutingClassifier();
@@ -107,6 +109,7 @@ public interface Substitution extends Realization{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='supplier' eType='org.eclipse.uml2.NamedElement' containment='false'" 
 	 * @generated
 	 */
 	EList getSuppliers();
@@ -115,6 +118,7 @@ public interface Substitution extends Realization{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
 	 * @generated
 	 */
 	EList getTargets();
@@ -123,6 +127,7 @@ public interface Substitution extends Realization{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='client' eOpposite='clientDependency' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getClients();
@@ -131,6 +136,7 @@ public interface Substitution extends Realization{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
 	 * @generated
 	 */
 	EList getSources();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Pseudostate.java,v 1.3 2005/03/15 18:44:43 khussey Exp $
+ * $Id: Pseudostate.java,v 1.4 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -26,7 +26,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getPseudostate()
- * @model 
+ * @model
  * @generated
  */
 public interface Pseudostate extends Vertex{
@@ -35,7 +35,7 @@ public interface Pseudostate extends Vertex{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
@@ -50,7 +50,7 @@ public interface Pseudostate extends Vertex{
 	 * @see org.eclipse.uml2.PseudostateKind
 	 * @see #setKind(PseudostateKind)
 	 * @see org.eclipse.uml2.UML2Package#getPseudostate_Kind()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	PseudostateKind getKind();

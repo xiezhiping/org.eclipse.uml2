@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureAction.java,v 1.4 2005/03/15 18:44:41 khussey Exp $
+ * $Id: WriteStructuralFeatureAction.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface WriteStructuralFeatureAction extends StructuralFeatureAction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
@@ -59,6 +59,7 @@ public interface WriteStructuralFeatureAction extends StructuralFeatureAction{
 	 * @see #setValue(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getWriteStructuralFeatureAction_Value()
 	 * @model containment="true" required="true"
+	 *        annotation="subsets org.eclipse.uml2.Action#getInputs=''"
 	 * @generated
 	 */
 	InputPin getValue();
@@ -88,6 +89,7 @@ public interface WriteStructuralFeatureAction extends StructuralFeatureAction{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='input' eType='org.eclipse.uml2.InputPin' containment='false'" 
 	 * @generated
 	 */
 	EList getInputs();

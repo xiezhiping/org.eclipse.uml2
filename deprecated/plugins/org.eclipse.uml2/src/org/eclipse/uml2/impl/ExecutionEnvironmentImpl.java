@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionEnvironmentImpl.java,v 1.19 2005/03/15 18:44:33 khussey Exp $
+ * $Id: ExecutionEnvironmentImpl.java,v 1.20 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -43,7 +43,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -660,7 +660,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 			case UML2Package.EXECUTION_ENVIRONMENT__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.EXECUTION_ENVIRONMENT__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__IS_ABSTRACT:
@@ -716,7 +716,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 			case UML2Package.EXECUTION_ENVIRONMENT__NESTED_CLASSIFIER:
 				return false;
 			case UML2Package.EXECUTION_ENVIRONMENT__IS_ACTIVE:
-				return isActive() != IS_ACTIVE_EDEFAULT;
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__DEPLOYMENT:

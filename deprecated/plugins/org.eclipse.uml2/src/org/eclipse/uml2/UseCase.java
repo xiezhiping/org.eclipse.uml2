@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCase.java,v 1.7 2005/03/15 18:44:42 khussey Exp $
+ * $Id: UseCase.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getUseCase()
- * @model 
+ * @model
  * @generated
  */
 public interface UseCase extends BehavioredClassifier{
@@ -45,7 +45,7 @@ public interface UseCase extends BehavioredClassifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Include</b></em>' containment reference list.
@@ -61,6 +61,7 @@ public interface UseCase extends BehavioredClassifier{
 	 * @see org.eclipse.uml2.UML2Package#getUseCase_Include()
 	 * @see org.eclipse.uml2.Include#getIncludingCase
 	 * @model type="org.eclipse.uml2.Include" opposite="includingCase" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getIncludes();
@@ -101,6 +102,7 @@ public interface UseCase extends BehavioredClassifier{
 	 * @see org.eclipse.uml2.UML2Package#getUseCase_Extend()
 	 * @see org.eclipse.uml2.Extend#getExtension
 	 * @model type="org.eclipse.uml2.Extend" opposite="extension" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getExtends();
@@ -141,6 +143,7 @@ public interface UseCase extends BehavioredClassifier{
 	 * @see org.eclipse.uml2.UML2Package#getUseCase_ExtensionPoint()
 	 * @see org.eclipse.uml2.ExtensionPoint#getUseCase
 	 * @model type="org.eclipse.uml2.ExtensionPoint" opposite="useCase" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getExtensionPoints();
@@ -200,6 +203,7 @@ public interface UseCase extends BehavioredClassifier{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();

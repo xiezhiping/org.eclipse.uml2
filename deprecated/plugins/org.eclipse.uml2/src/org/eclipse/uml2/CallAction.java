@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallAction.java,v 1.5 2005/03/15 18:44:42 khussey Exp $
+ * $Id: CallAction.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -43,7 +43,7 @@ public interface CallAction extends InvocationAction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Synchronous</b></em>' attribute.
@@ -60,7 +60,7 @@ public interface CallAction extends InvocationAction{
 	 * @return the value of the '<em>Is Synchronous</em>' attribute.
 	 * @see #setIsSynchronous(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getCallAction_IsSynchronous()
-	 * @model default="true" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="true" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isSynchronous();
@@ -90,6 +90,7 @@ public interface CallAction extends InvocationAction{
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getCallAction_Result()
 	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Action#getOutputs=''"
 	 * @generated
 	 */
 	EList getResults();
@@ -120,6 +121,7 @@ public interface CallAction extends InvocationAction{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='output' eType='org.eclipse.uml2.OutputPin' containment='false'" 
 	 * @generated
 	 */
 	EList getOutputs();

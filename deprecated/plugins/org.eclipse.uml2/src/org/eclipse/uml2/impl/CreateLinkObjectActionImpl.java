@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkObjectActionImpl.java,v 1.9 2005/03/15 18:44:38 khussey Exp $
+ * $Id: CreateLinkObjectActionImpl.java,v 1.10 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -55,7 +55,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
@@ -557,7 +557,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.CREATE_LINK_OBJECT_ACTION__INCOMING:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralString.java,v 1.5 2005/03/15 18:44:42 khussey Exp $
+ * $Id: LiteralString.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -30,7 +30,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getLiteralString()
- * @model 
+ * @model
  * @generated
  */
 public interface LiteralString extends LiteralSpecification{
@@ -39,7 +39,7 @@ public interface LiteralString extends LiteralSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
@@ -80,7 +80,8 @@ public interface LiteralString extends LiteralSpecification{
 	 * true
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.LiteralStringOperations.isComputable(this);'" 
 	 * @generated
 	 */
 	boolean isComputable();
@@ -94,7 +95,8 @@ public interface LiteralString extends LiteralSpecification{
 	 * value
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.String" 
+	 * @model dataType="org.eclipse.uml2.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.LiteralStringOperations.stringValue(this);'" 
 	 * @generated
 	 */
 	String stringValue();

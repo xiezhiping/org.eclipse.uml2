@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.9 2005/03/15 18:44:41 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.10 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -63,7 +63,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getPostCondition() <em>Post Condition</em>}' containment reference.
@@ -228,9 +228,8 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 		Constraint oldPreCondition = preCondition;
 		preCondition = newPreCondition;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION, oldPreCondition, preCondition));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION, oldPreCondition, newPreCondition));
 		}
-
 		if (null != newPreCondition || oldPreCondition == guard) {
 			setGuard(newPreCondition);
 		}
@@ -608,7 +607,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			case UML2Package.PROTOCOL_TRANSITION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__KIND:
 				return kind != KIND_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__CONTAINER:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTarget.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: DeploymentTarget.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -43,7 +43,7 @@ public interface DeploymentTarget extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Deployment</b></em>' containment reference list.
@@ -59,6 +59,7 @@ public interface DeploymentTarget extends NamedElement{
 	 * @see org.eclipse.uml2.UML2Package#getDeploymentTarget_Deployment()
 	 * @see org.eclipse.uml2.Deployment#getLocation
 	 * @model type="org.eclipse.uml2.Deployment" opposite="location" containment="true" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements='' org.eclipse.uml2.NamedElement#getClientDependencies=''"
 	 * @generated
 	 */
 	EList getDeployments();
@@ -116,6 +117,7 @@ public interface DeploymentTarget extends NamedElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -124,6 +126,7 @@ public interface DeploymentTarget extends NamedElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='clientDependency' eOpposite='client' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Dependency' eOpposite.lowerBound='1'" 
 	 * @generated
 	 */
 	EList getClientDependencies();

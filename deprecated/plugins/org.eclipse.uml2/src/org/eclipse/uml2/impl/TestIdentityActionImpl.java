@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.8 2005/03/15 18:44:37 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,7 +56,7 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getFirst() <em>First</em>}' containment reference.
@@ -718,7 +718,7 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 			case UML2Package.TEST_IDENTITY_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.TEST_IDENTITY_ACTION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.TEST_IDENTITY_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.TEST_IDENTITY_ACTION__INCOMING:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CentralBufferNodeImpl.java,v 1.5 2005/03/15 18:44:32 khussey Exp $
+ * $Id: CentralBufferNodeImpl.java,v 1.6 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -46,7 +46,7 @@ public class CentralBufferNodeImpl extends ObjectNodeImpl implements CentralBuff
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -425,7 +425,7 @@ public class CentralBufferNodeImpl extends ObjectNodeImpl implements CentralBuff
 			case UML2Package.CENTRAL_BUFFER_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CENTRAL_BUFFER_NODE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CENTRAL_BUFFER_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.CENTRAL_BUFFER_NODE__INCOMING:

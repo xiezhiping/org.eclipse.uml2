@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Enumeration.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Enumeration.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getEnumeration()
- * @model 
+ * @model
  * @generated
  */
 public interface Enumeration extends DataType{
@@ -42,7 +42,7 @@ public interface Enumeration extends DataType{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Literal</b></em>' containment reference list.
@@ -61,6 +61,7 @@ public interface Enumeration extends DataType{
 	 * @see org.eclipse.uml2.UML2Package#getEnumeration_OwnedLiteral()
 	 * @see org.eclipse.uml2.EnumerationLiteral#getEnumeration
 	 * @model type="org.eclipse.uml2.EnumerationLiteral" opposite="enumeration" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedLiterals();
@@ -91,6 +92,7 @@ public interface Enumeration extends DataType{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();

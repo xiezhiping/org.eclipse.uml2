@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interaction.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Interaction.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getInteraction()
- * @model 
+ * @model
  * @generated
  */
 public interface Interaction extends Behavior, InteractionFragment{
@@ -45,7 +45,7 @@ public interface Interaction extends Behavior, InteractionFragment{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Lifeline</b></em>' containment reference list.
@@ -61,6 +61,7 @@ public interface Interaction extends Behavior, InteractionFragment{
 	 * @see org.eclipse.uml2.UML2Package#getInteraction_Lifeline()
 	 * @see org.eclipse.uml2.Lifeline#getInteraction
 	 * @model type="org.eclipse.uml2.Lifeline" opposite="interaction" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getLifelines();
@@ -101,6 +102,7 @@ public interface Interaction extends Behavior, InteractionFragment{
 	 * @see org.eclipse.uml2.UML2Package#getInteraction_Message()
 	 * @see org.eclipse.uml2.Message#getInteraction
 	 * @model type="org.eclipse.uml2.Message" opposite="interaction" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getMessages();
@@ -182,6 +184,7 @@ public interface Interaction extends Behavior, InteractionFragment{
 	 * @return the value of the '<em>Formal Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteraction_FormalGate()
 	 * @model type="org.eclipse.uml2.Gate" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getFormalGates();
@@ -212,6 +215,7 @@ public interface Interaction extends Behavior, InteractionFragment{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();

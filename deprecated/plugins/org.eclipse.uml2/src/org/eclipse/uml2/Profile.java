@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Profile.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getProfile()
- * @model 
+ * @model
  * @generated
  */
 public interface Profile extends org.eclipse.uml2.Package{
@@ -41,7 +41,7 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Stereotype</b></em>' reference list.
@@ -55,6 +55,7 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * @return the value of the '<em>Owned Stereotype</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProfile_OwnedStereotype()
 	 * @model type="org.eclipse.uml2.Stereotype" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Package#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedStereotypes();
@@ -82,6 +83,7 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * @return the value of the '<em>Metaclass Reference</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProfile_MetaclassReference()
 	 * @model type="org.eclipse.uml2.ElementImport" resolveProxies="false" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getElementImports=''"
 	 * @generated
 	 */
 	EList getMetaclassReferences();
@@ -98,6 +100,7 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * @return the value of the '<em>Metamodel Reference</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProfile_MetamodelReference()
 	 * @model type="org.eclipse.uml2.PackageImport" resolveProxies="false" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getPackageImports=''"
 	 * @generated
 	 */
 	EList getMetamodelReferences();
@@ -106,6 +109,7 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='true' name='elementImport' eOpposite='importingNamespace' derived='false' eOpposite.upperBound='1' eType='org.eclipse.uml2.ElementImport' eOpposite.lowerBound='1'" 
 	 * @generated
 	 */
 	EList getElementImports();
@@ -114,6 +118,7 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='true' name='packageImport' eOpposite='importingNamespace' derived='false' eOpposite.upperBound='1' eType='org.eclipse.uml2.PackageImport' eOpposite.lowerBound='1'" 
 	 * @generated
 	 */
 	EList getPackageImports();

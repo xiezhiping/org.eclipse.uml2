@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Continuation.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: Continuation.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -30,7 +30,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getContinuation()
- * @model 
+ * @model
  * @generated
  */
 public interface Continuation extends InteractionFragment{
@@ -39,7 +39,7 @@ public interface Continuation extends InteractionFragment{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Setting</b></em>' attribute.
@@ -56,7 +56,7 @@ public interface Continuation extends InteractionFragment{
 	 * @return the value of the '<em>Setting</em>' attribute.
 	 * @see #setSetting(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getContinuation_Setting()
-	 * @model default="True" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="True" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isSetting();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.11 2005/03/15 18:44:37 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.12 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -64,7 +64,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -87,14 +87,14 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	protected static final boolean IS_ORDERED_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
+	 * The flag representing the value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isOrdered()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = Integer.MIN_VALUE >>> 2;
+	protected static final int IS_ORDERED_EFLAG = 1 << 10;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -107,14 +107,14 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	protected static final boolean IS_UNIQUE_EDEFAULT = true;
 
 	/**
-	 * The flag for the '{@link #isUnique() <em>Is Unique</em>}' attribute.
+	 * The flag representing the value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isUnique()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = Integer.MIN_VALUE >>> 3;
+	protected static final int IS_UNIQUE_EFLAG = 1 << 11;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -167,14 +167,14 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	protected static final boolean IS_READ_ONLY_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.
+	 * The flag representing the value of the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isReadOnly()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_READ_ONLY_EFLAG = Integer.MIN_VALUE >>> 4;
+	protected static final int IS_READ_ONLY_EFLAG = 1 << 12;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -183,9 +183,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 */
 	protected StructuralFeatureImpl() {
 		super();
-		eFlags &= ~IS_ORDERED_EFLAG;
 		eFlags |= IS_UNIQUE_EFLAG;
-		eFlags &= ~IS_READ_ONLY_EFLAG;
 	}
 
 	/**
@@ -232,9 +230,8 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 		Type oldType = type;
 		type = newType;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STRUCTURAL_FEATURE__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STRUCTURAL_FEATURE__TYPE, oldType, newType));
 		}
-
 	}
 
 	/**
@@ -243,7 +240,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public boolean isOrdered() {
-		return 0 != (eFlags & IS_ORDERED_EFLAG);
+		return (eFlags & IS_ORDERED_EFLAG) != 0;
 	}
 
 	/**
@@ -252,12 +249,8 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-		boolean oldIsOrdered = 0 != (eFlags & IS_ORDERED_EFLAG);
-		if (newIsOrdered) {
-			eFlags |= IS_ORDERED_EFLAG;
-		} else {
-			eFlags &= ~IS_ORDERED_EFLAG;
-		}
+		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
+		if (newIsOrdered) eFlags |= IS_ORDERED_EFLAG; else eFlags &= ~IS_ORDERED_EFLAG;
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STRUCTURAL_FEATURE__IS_ORDERED, oldIsOrdered, newIsOrdered));
 		}
@@ -269,7 +262,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public boolean isUnique() {
-		return 0 != (eFlags & IS_UNIQUE_EFLAG);
+		return (eFlags & IS_UNIQUE_EFLAG) != 0;
 	}
 
 	/**
@@ -278,12 +271,8 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
-		boolean oldIsUnique = 0 != (eFlags & IS_UNIQUE_EFLAG);
-		if (newIsUnique) {
-			eFlags |= IS_UNIQUE_EFLAG;
-		} else {
-			eFlags &= ~IS_UNIQUE_EFLAG;
-		}
+		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
+		if (newIsUnique) eFlags |= IS_UNIQUE_EFLAG; else eFlags &= ~IS_UNIQUE_EFLAG;
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STRUCTURAL_FEATURE__IS_UNIQUE, oldIsUnique, newIsUnique));
 		}
@@ -427,7 +416,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public boolean isReadOnly() {
-		return 0 != (eFlags & IS_READ_ONLY_EFLAG);
+		return (eFlags & IS_READ_ONLY_EFLAG) != 0;
 	}
 
 	/**
@@ -436,12 +425,8 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public void setIsReadOnly(boolean newIsReadOnly) {
-		boolean oldIsReadOnly = 0 != (eFlags & IS_READ_ONLY_EFLAG);
-		if (newIsReadOnly) {
-			eFlags |= IS_READ_ONLY_EFLAG;
-		} else {
-			eFlags &= ~IS_READ_ONLY_EFLAG;
-		}
+		boolean oldIsReadOnly = (eFlags & IS_READ_ONLY_EFLAG) != 0;
+		if (newIsReadOnly) eFlags |= IS_READ_ONLY_EFLAG; else eFlags &= ~IS_READ_ONLY_EFLAG;
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STRUCTURAL_FEATURE__IS_READ_ONLY, oldIsReadOnly, newIsReadOnly));
 		}
@@ -851,17 +836,17 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 			case UML2Package.STRUCTURAL_FEATURE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.STRUCTURAL_FEATURE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.STRUCTURAL_FEATURE__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.STRUCTURAL_FEATURE__IS_STATIC:
-				return isStatic() != IS_STATIC_EDEFAULT;
+				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.STRUCTURAL_FEATURE__TYPE:
 				return type != null;
 			case UML2Package.STRUCTURAL_FEATURE__IS_ORDERED:
-				return isOrdered() != IS_ORDERED_EDEFAULT;
+				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.STRUCTURAL_FEATURE__IS_UNIQUE:
-				return isUnique() != IS_UNIQUE_EDEFAULT;
+				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UML2Package.STRUCTURAL_FEATURE__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.STRUCTURAL_FEATURE__UPPER:
@@ -871,7 +856,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 			case UML2Package.STRUCTURAL_FEATURE__LOWER_VALUE:
 				return lowerValue != null;
 			case UML2Package.STRUCTURAL_FEATURE__IS_READ_ONLY:
-				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
+				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
 	}

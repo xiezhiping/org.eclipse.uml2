@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.10 2005/03/15 18:44:32 khussey Exp $
+ * $Id: RegionImpl.java,v 1.11 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -72,7 +72,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
@@ -85,14 +85,14 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	protected static final boolean IS_LEAF_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
+	 * The flag representing the value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isLeaf()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = Integer.MIN_VALUE >>> 0;
+	protected static final int IS_LEAF_EFLAG = 1 << 8;
 
 	/**
 	 * The cached value of the '{@link #getSubvertices() <em>Subvertex</em>}' containment reference list.
@@ -131,7 +131,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 */
 	protected RegionImpl() {
 		super();
-		eFlags &= ~IS_LEAF_EFLAG;
 	}
 
 	/**
@@ -166,7 +165,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public boolean isLeaf() {
-		return 0 != (eFlags & IS_LEAF_EFLAG);
+		return (eFlags & IS_LEAF_EFLAG) != 0;
 	}
 
 	/**
@@ -175,15 +174,10 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-		boolean oldIsLeaf = 0 != (eFlags & IS_LEAF_EFLAG);
-		if (newIsLeaf) {
-			eFlags |= IS_LEAF_EFLAG;
-		} else {
-			eFlags &= ~IS_LEAF_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
+		if (newIsLeaf) eFlags |= IS_LEAF_EFLAG; else eFlags &= ~IS_LEAF_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__IS_LEAF, oldIsLeaf, newIsLeaf));
-		}
 	}
 
 	/**
@@ -835,7 +829,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			case UML2Package.REGION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.REGION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.REGION__SUBVERTEX:
 				return subvertex != null && !subvertex.isEmpty();
 			case UML2Package.REGION__TRANSITION:
@@ -880,6 +874,21 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isLeaf: "); //$NON-NLS-1$
+		result.append((eFlags & IS_LEAF_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //RegionImpl

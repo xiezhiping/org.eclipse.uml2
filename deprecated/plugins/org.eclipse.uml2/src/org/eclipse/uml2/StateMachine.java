@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.4 2005/03/15 18:44:43 khussey Exp $
+ * $Id: StateMachine.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getStateMachine()
- * @model 
+ * @model
  * @generated
  */
 public interface StateMachine extends Behavior{
@@ -41,7 +41,7 @@ public interface StateMachine extends Behavior{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Region</b></em>' containment reference list.
@@ -57,6 +57,7 @@ public interface StateMachine extends Behavior{
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_Region()
 	 * @see org.eclipse.uml2.Region#getStateMachine
 	 * @model type="org.eclipse.uml2.Region" opposite="stateMachine" containment="true" required="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getRegions();
@@ -95,6 +96,7 @@ public interface StateMachine extends Behavior{
 	 * @return the value of the '<em>Connection Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_ConnectionPoint()
 	 * @model type="org.eclipse.uml2.Pseudostate" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getConnectionPoints();
@@ -132,7 +134,7 @@ public interface StateMachine extends Behavior{
 	 * @return the value of the '<em>Extended State Machine</em>' reference.
 	 * @see #setExtendedStateMachine(StateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_ExtendedStateMachine()
-	 * @model 
+	 * @model annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	StateMachine getExtendedStateMachine();
@@ -161,6 +163,7 @@ public interface StateMachine extends Behavior{
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_StateMachine_redefinitionContext()
 	 * @see org.eclipse.uml2.BehavioredClassifier#getOwnedStateMachines
 	 * @model opposite="ownedStateMachine" volatile="true"
+	 *        annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinitionContexts=''"
 	 * @generated
 	 */
 	BehavioredClassifier getStateMachine_redefinitionContext();
@@ -179,6 +182,7 @@ public interface StateMachine extends Behavior{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
 	 * @generated
 	 */
 	EList getRedefinedElements();
@@ -187,6 +191,7 @@ public interface StateMachine extends Behavior{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinitionContext' eType='org.eclipse.uml2.Classifier' containment='false'" 
 	 * @generated
 	 */
 	EList getRedefinitionContexts();
@@ -195,6 +200,7 @@ public interface StateMachine extends Behavior{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();

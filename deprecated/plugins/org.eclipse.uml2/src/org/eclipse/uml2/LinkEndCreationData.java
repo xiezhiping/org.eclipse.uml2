@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationData.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: LinkEndCreationData.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getLinkEndCreationData()
- * @model 
+ * @model
  * @generated
  */
 public interface LinkEndCreationData extends LinkEndData{
@@ -37,7 +37,7 @@ public interface LinkEndCreationData extends LinkEndData{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Replace All</b></em>' attribute.
@@ -54,7 +54,7 @@ public interface LinkEndCreationData extends LinkEndData{
 	 * @return the value of the '<em>Is Replace All</em>' attribute.
 	 * @see #setIsReplaceAll(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getLinkEndCreationData_IsReplaceAll()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isReplaceAll();
@@ -83,7 +83,7 @@ public interface LinkEndCreationData extends LinkEndData{
 	 * @return the value of the '<em>Insert At</em>' reference.
 	 * @see #setInsertAt(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getLinkEndCreationData_InsertAt()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	InputPin getInsertAt();
@@ -102,6 +102,8 @@ public interface LinkEndCreationData extends LinkEndData{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='qualifier' eType='org.eclipse.uml2.QualifierValue' containment='false'"
+	 *        annotation="redefines org.eclipse.uml2.LinkEndData#getQualifiers=''" 
 	 * @generated
 	 */
 	EList getQualifiers();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpression.java,v 1.6 2005/03/15 18:44:41 khussey Exp $
+ * $Id: TimeExpression.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -31,7 +31,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getTimeExpression()
- * @model 
+ * @model
  * @generated
  */
 public interface TimeExpression extends ValueSpecification{
@@ -40,7 +40,7 @@ public interface TimeExpression extends ValueSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>First Time</b></em>' attribute.
@@ -57,7 +57,7 @@ public interface TimeExpression extends ValueSpecification{
 	 * @return the value of the '<em>First Time</em>' attribute.
 	 * @see #setFirstTime(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getTimeExpression_FirstTime()
-	 * @model default="True" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="True" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isFirstTime();
@@ -86,7 +86,7 @@ public interface TimeExpression extends ValueSpecification{
 	 * @return the value of the '<em>Event</em>' reference.
 	 * @see #setEvent(NamedElement)
 	 * @see org.eclipse.uml2.UML2Package#getTimeExpression_Event()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	NamedElement getEvent();

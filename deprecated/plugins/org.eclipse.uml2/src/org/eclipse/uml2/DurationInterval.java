@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationInterval.java,v 1.4 2005/03/15 18:44:42 khussey Exp $
+ * $Id: DurationInterval.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  *
  *
  * @see org.eclipse.uml2.UML2Package#getDurationInterval()
- * @model 
+ * @model
  * @generated
  */
 public interface DurationInterval extends Interval{
@@ -34,12 +34,14 @@ public interface DurationInterval extends Interval{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='min' eType='org.eclipse.uml2.Duration' containment='false'"
+	 *        annotation="redefines org.eclipse.uml2.Interval#getMins=''" 
 	 * @generated
 	 */
 	EList getMins();
@@ -48,6 +50,8 @@ public interface DurationInterval extends Interval{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='max' eType='org.eclipse.uml2.Duration' containment='false'"
+	 *        annotation="redefines org.eclipse.uml2.Interval#getMaxes=''" 
 	 * @generated
 	 */
 	EList getMaxes();

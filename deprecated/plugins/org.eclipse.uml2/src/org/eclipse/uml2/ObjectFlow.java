@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlow.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: ObjectFlow.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -29,7 +29,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getObjectFlow()
- * @model 
+ * @model
  * @generated
  */
 public interface ObjectFlow extends ActivityEdge{
@@ -38,7 +38,7 @@ public interface ObjectFlow extends ActivityEdge{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Multicast</b></em>' attribute.
@@ -52,7 +52,7 @@ public interface ObjectFlow extends ActivityEdge{
 	 * @return the value of the '<em>Is Multicast</em>' attribute.
 	 * @see #setIsMulticast(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getObjectFlow_IsMulticast()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isMulticast();
@@ -79,7 +79,7 @@ public interface ObjectFlow extends ActivityEdge{
 	 * @return the value of the '<em>Is Multireceive</em>' attribute.
 	 * @see #setIsMultireceive(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getObjectFlow_IsMultireceive()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isMultireceive();
@@ -108,7 +108,7 @@ public interface ObjectFlow extends ActivityEdge{
 	 * @return the value of the '<em>Transformation</em>' reference.
 	 * @see #setTransformation(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getObjectFlow_Transformation()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	Behavior getTransformation();
@@ -137,7 +137,7 @@ public interface ObjectFlow extends ActivityEdge{
 	 * @return the value of the '<em>Selection</em>' reference.
 	 * @see #setSelection(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getObjectFlow_Selection()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	Behavior getSelection();

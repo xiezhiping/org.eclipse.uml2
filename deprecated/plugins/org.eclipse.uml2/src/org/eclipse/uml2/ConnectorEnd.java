@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEnd.java,v 1.5 2005/03/15 18:44:42 khussey Exp $
+ * $Id: ConnectorEnd.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,7 +32,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getConnectorEnd()
- * @model 
+ * @model
  * @generated
  */
 public interface ConnectorEnd extends MultiplicityElement{
@@ -41,7 +41,7 @@ public interface ConnectorEnd extends MultiplicityElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Defining End</b></em>' reference.
@@ -100,7 +100,7 @@ public interface ConnectorEnd extends MultiplicityElement{
 	 * @return the value of the '<em>Part With Port</em>' reference.
 	 * @see #setPartWithPort(Property)
 	 * @see org.eclipse.uml2.UML2Package#getConnectorEnd_PartWithPort()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	Property getPartWithPort();

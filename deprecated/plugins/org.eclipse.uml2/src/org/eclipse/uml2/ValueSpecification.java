@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecification.java,v 1.4 2005/03/15 18:44:43 khussey Exp $
+ * $Id: ValueSpecification.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,7 +33,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,7 +44,8 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.isComputable(this);'" 
 	 * @generated
 	 */
 	boolean isComputable();
@@ -58,7 +59,8 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * Set{}
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Integer" 
+	 * @model dataType="org.eclipse.uml2.Integer"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.integerValue(this);'" 
 	 * @generated
 	 */
 	int integerValue();
@@ -72,7 +74,8 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * Set{}
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.booleanValue(this);'" 
 	 * @generated
 	 */
 	boolean booleanValue();
@@ -86,7 +89,8 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * Set{}
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.String" 
+	 * @model dataType="org.eclipse.uml2.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.stringValue(this);'" 
 	 * @generated
 	 */
 	String stringValue();
@@ -100,7 +104,8 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * Set{}
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.UnlimitedNatural" 
+	 * @model dataType="org.eclipse.uml2.UnlimitedNatural"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.unlimitedValue(this);'" 
 	 * @generated
 	 */
 	int unlimitedValue();
@@ -114,7 +119,8 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.isNull(this);'" 
 	 * @generated
 	 */
 	boolean isNull();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.6 2005/03/15 18:44:43 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getProtocolTransition()
- * @model 
+ * @model
  * @generated
  */
 public interface ProtocolTransition extends Transition{
@@ -44,7 +44,7 @@ public interface ProtocolTransition extends Transition{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Post Condition</b></em>' containment reference.
@@ -61,6 +61,7 @@ public interface ProtocolTransition extends Transition{
 	 * @see #setPostCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getProtocolTransition_PostCondition()
 	 * @model containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Constraint getPostCondition();
@@ -128,6 +129,7 @@ public interface ProtocolTransition extends Transition{
 	 * @see #setPreCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getProtocolTransition_PreCondition()
 	 * @model resolveProxies="false" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.Transition#getGuard=''"
 	 * @generated
 	 */
 	Constraint getPreCondition();
@@ -146,6 +148,7 @@ public interface ProtocolTransition extends Transition{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -153,7 +156,7 @@ public interface ProtocolTransition extends Transition{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model 
+	 * @model annotation="feature derived='false' name='guard' eType='org.eclipse.uml2.Constraint' containment='true'" 
 	 * @generated
 	 */
 	void setGuard(Constraint value);

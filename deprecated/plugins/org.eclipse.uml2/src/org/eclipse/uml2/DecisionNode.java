@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNode.java,v 1.4 2005/03/15 18:44:42 khussey Exp $
+ * $Id: DecisionNode.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -30,7 +30,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getDecisionNode()
- * @model 
+ * @model
  * @generated
  */
 public interface DecisionNode extends ControlNode{
@@ -39,7 +39,7 @@ public interface DecisionNode extends ControlNode{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Decision Input</b></em>' reference.
@@ -55,7 +55,7 @@ public interface DecisionNode extends ControlNode{
 	 * @return the value of the '<em>Decision Input</em>' reference.
 	 * @see #setDecisionInput(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getDecisionNode_DecisionInput()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	Behavior getDecisionInput();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBoolean.java,v 1.6 2005/03/15 18:44:41 khussey Exp $
+ * $Id: LiteralBoolean.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -30,7 +30,7 @@ package org.eclipse.uml2;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getLiteralBoolean()
- * @model 
+ * @model
  * @generated
  */
 public interface LiteralBoolean extends LiteralSpecification{
@@ -39,7 +39,7 @@ public interface LiteralBoolean extends LiteralSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
@@ -55,7 +55,7 @@ public interface LiteralBoolean extends LiteralSpecification{
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getLiteralBoolean_Value()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isValue();
@@ -79,7 +79,8 @@ public interface LiteralBoolean extends LiteralSpecification{
 	 * true
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.LiteralBooleanOperations.isComputable(this);'" 
 	 * @generated
 	 */
 	boolean isComputable();
@@ -93,7 +94,8 @@ public interface LiteralBoolean extends LiteralSpecification{
 	 * value
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.LiteralBooleanOperations.booleanValue(this);'" 
 	 * @generated
 	 */
 	boolean booleanValue();

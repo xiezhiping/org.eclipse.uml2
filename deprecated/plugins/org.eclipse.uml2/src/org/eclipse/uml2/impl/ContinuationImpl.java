@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.6 2005/03/15 18:44:31 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isSetting() <em>Setting</em>}' attribute.
@@ -61,14 +61,14 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	protected static final boolean SETTING_EDEFAULT = true;
 
 	/**
-	 * The flag for the '{@link #isSetting() <em>Setting</em>}' attribute.
+	 * The flag representing the value of the '{@link #isSetting() <em>Setting</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isSetting()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SETTING_EFLAG = Integer.MIN_VALUE >>> 0;
+	protected static final int SETTING_EFLAG = 1 << 8;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,7 +95,7 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	 * @generated
 	 */
 	public boolean isSetting() {
-		return 0 != (eFlags & SETTING_EFLAG);
+		return (eFlags & SETTING_EFLAG) != 0;
 	}
 
 	/**
@@ -104,15 +104,10 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	 * @generated
 	 */
 	public void setSetting(boolean newSetting) {
-		boolean oldSetting = 0 != (eFlags & SETTING_EFLAG);
-		if (newSetting) {
-			eFlags |= SETTING_EFLAG;
-		} else {
-			eFlags &= ~SETTING_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldSetting = (eFlags & SETTING_EFLAG) != 0;
+		if (newSetting) eFlags |= SETTING_EFLAG; else eFlags &= ~SETTING_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONTINUATION__SETTING, oldSetting, newSetting));
-		}
 	}
 
 	/**
@@ -394,9 +389,24 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 			case UML2Package.CONTINUATION__ENCLOSING_OPERAND:
 				return getEnclosingOperand() != null;
 			case UML2Package.CONTINUATION__SETTING:
-				return isSetting() != SETTING_EDEFAULT;
+				return ((eFlags & SETTING_EFLAG) != 0) != SETTING_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (setting: "); //$NON-NLS-1$
+		result.append((eFlags & SETTING_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ContinuationImpl

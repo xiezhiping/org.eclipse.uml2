@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNode.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: JoinNode.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getJoinNode()
- * @model 
+ * @model
  * @generated
  */
 public interface JoinNode extends ControlNode{
@@ -39,7 +39,7 @@ public interface JoinNode extends ControlNode{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Combine Duplicate</b></em>' attribute.
@@ -56,7 +56,7 @@ public interface JoinNode extends ControlNode{
 	 * @return the value of the '<em>Is Combine Duplicate</em>' attribute.
 	 * @see #setIsCombineDuplicate(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getJoinNode_IsCombineDuplicate()
-	 * @model default="true" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="true" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isCombineDuplicate();
@@ -86,6 +86,7 @@ public interface JoinNode extends ControlNode{
 	 * @see #setJoinSpec(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getJoinNode_JoinSpec()
 	 * @model containment="true" required="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getJoinSpec();
@@ -115,6 +116,7 @@ public interface JoinNode extends ControlNode{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

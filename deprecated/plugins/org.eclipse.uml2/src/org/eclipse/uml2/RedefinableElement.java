@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.8 2005/03/15 18:44:41 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.9 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -44,7 +44,7 @@ public interface RedefinableElement extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Leaf</b></em>' attribute.
@@ -61,7 +61,7 @@ public interface RedefinableElement extends NamedElement{
 	 * @return the value of the '<em>Is Leaf</em>' attribute.
 	 * @see #setIsLeaf(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_IsLeaf()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isLeaf();
@@ -85,7 +85,8 @@ public interface RedefinableElement extends NamedElement{
 	 * self.redefinedElement->forAll(e | self.isRedefinitionContextValid(e))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context);
@@ -99,7 +100,8 @@ public interface RedefinableElement extends NamedElement{
 	 * self.redefinedElement->forAll(re | re.isConsistentWith(self))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);'" 
 	 * @generated
 	 */
 	boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context);
@@ -143,7 +145,8 @@ public interface RedefinableElement extends NamedElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isConsistentWith(this, redefinee);'" 
 	 * @generated
 	 */
 	boolean isConsistentWith(RedefinableElement redefinee);
@@ -157,7 +160,8 @@ public interface RedefinableElement extends NamedElement{
 	 * self.redefinitionContext->exists(c | redefinable.redefinitionContext->exists(r | c.allParents()->includes(r)))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);'" 
 	 * @generated
 	 */
 	boolean isRedefinitionContextValid(RedefinableElement redefinable);
@@ -166,6 +170,7 @@ public interface RedefinableElement extends NamedElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
 	 * @generated
 	 */
 	EList getRedefinedElements();

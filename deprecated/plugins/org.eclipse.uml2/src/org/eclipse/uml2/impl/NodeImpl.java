@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.20 2005/03/15 18:44:31 khussey Exp $
+ * $Id: NodeImpl.java,v 1.21 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -67,7 +67,7 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
@@ -896,7 +896,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.NODE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.NODE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.NODE__IS_ABSTRACT:
@@ -952,7 +952,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__NESTED_CLASSIFIER:
 				return false;
 			case UML2Package.NODE__IS_ACTIVE:
-				return isActive() != IS_ACTIVE_EDEFAULT;
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.NODE__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.NODE__DEPLOYMENT:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.17 2005/03/15 18:44:40 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.18 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -67,7 +67,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
@@ -921,11 +921,11 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 			case UML2Package.COLLABORATION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.COLLABORATION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.COLLABORATION__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.COLLABORATION__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.COLLABORATION__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.COLLABORATION__GENERAL:

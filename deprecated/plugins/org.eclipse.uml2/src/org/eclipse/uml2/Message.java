@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Message.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: Message.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getMessage()
- * @model 
+ * @model
  * @generated
  */
 public interface Message extends NamedElement{
@@ -49,7 +49,7 @@ public interface Message extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Message Kind</b></em>' attribute.
@@ -84,7 +84,7 @@ public interface Message extends NamedElement{
 	 * @see org.eclipse.uml2.MessageSort
 	 * @see #setMessageSort(MessageSort)
 	 * @see org.eclipse.uml2.UML2Package#getMessage_MessageSort()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	MessageSort getMessageSort();
@@ -176,7 +176,7 @@ public interface Message extends NamedElement{
 	 * @return the value of the '<em>Connector</em>' reference.
 	 * @see #setConnector(Connector)
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Connector()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	Connector getConnector();
@@ -208,6 +208,7 @@ public interface Message extends NamedElement{
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Interaction()
 	 * @see org.eclipse.uml2.Interaction#getMessages
 	 * @model opposite="message" required="true"
+	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	Interaction getInteraction();
@@ -236,7 +237,7 @@ public interface Message extends NamedElement{
 	 * @return the value of the '<em>Signature</em>' reference.
 	 * @see #setSignature(NamedElement)
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Signature()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	NamedElement getSignature();
@@ -266,6 +267,7 @@ public interface Message extends NamedElement{
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Argument()
 	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getArguments();
@@ -296,6 +298,7 @@ public interface Message extends NamedElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
 	 * @generated
 	 */
 	Namespace getNamespace();
@@ -304,6 +307,7 @@ public interface Message extends NamedElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.7 2005/03/15 18:44:43 khussey Exp $
+ * $Id: Activity.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getActivity()
- * @model 
+ * @model
  * @generated
  */
 public interface Activity extends Behavior{
@@ -50,7 +50,7 @@ public interface Activity extends Behavior{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Body</b></em>' attribute.
@@ -124,7 +124,7 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Is Read Only</em>' attribute.
 	 * @see #setIsReadOnly(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getActivity_IsReadOnly()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isReadOnly();
@@ -150,7 +150,7 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Is Single Execution</em>' attribute.
 	 * @see #setIsSingleExecution(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getActivity_IsSingleExecution()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isSingleExecution();
@@ -179,6 +179,7 @@ public interface Activity extends Behavior{
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Edge()
 	 * @see org.eclipse.uml2.ActivityEdge#getActivity
 	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="activity" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getEdges();
@@ -219,6 +220,7 @@ public interface Activity extends Behavior{
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Group()
 	 * @see org.eclipse.uml2.ActivityGroup#getActivityGroup_activity
 	 * @model type="org.eclipse.uml2.ActivityGroup" opposite="activityGroup_activity" containment="true" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getGroups();
@@ -248,6 +250,7 @@ public interface Activity extends Behavior{
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Node()
 	 * @see org.eclipse.uml2.ActivityNode#getActivity
 	 * @model type="org.eclipse.uml2.ActivityNode" opposite="activity" containment="true" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getNodes();
@@ -286,6 +289,7 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Action</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Action()
 	 * @model type="org.eclipse.uml2.Action" resolveProxies="false" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.Activity#getNodes=''"
 	 * @generated
 	 */
 	EList getActions();
@@ -313,6 +317,8 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Structured Node</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_StructuredNode()
 	 * @model type="org.eclipse.uml2.StructuredActivityNode" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Activity#getNodes='' org.eclipse.uml2.Activity#getGroups=''"
+	 *        annotation="redefined eOpposite='activity' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='1'"
 	 * @generated
 	 */
 	EList getStructuredNodes();
@@ -332,6 +338,7 @@ public interface Activity extends Behavior{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationAction.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: TimeObservationAction.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getTimeObservationAction()
- * @model 
+ * @model
  * @generated
  */
 public interface TimeObservationAction extends WriteStructuralFeatureAction{
@@ -42,7 +42,7 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Now</b></em>' containment reference list.
@@ -59,6 +59,7 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
 	 * @return the value of the '<em>Now</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTimeObservationAction_Now()
 	 * @model type="org.eclipse.uml2.TimeExpression" containment="true"
+	 *        annotation="redefines org.eclipse.uml2.WriteStructuralFeatureAction#getValue=''"
 	 * @generated
 	 */
 	EList getNows();
@@ -89,6 +90,7 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='value' eType='org.eclipse.uml2.InputPin' containment='true'" 
 	 * @generated
 	 */
 	InputPin getValue();
@@ -96,7 +98,7 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model 
+	 * @model annotation="feature derived='false' name='value' eType='org.eclipse.uml2.InputPin' containment='true'" 
 	 * @generated
 	 */
 	void setValue(InputPin value);

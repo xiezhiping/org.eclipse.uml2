@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.11 2005/03/15 18:44:31 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.12 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,7 +76,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
@@ -89,14 +89,14 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	protected static final boolean IS_LEAF_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
+	 * The flag representing the value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isLeaf()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = Integer.MIN_VALUE >>> 0;
+	protected static final int IS_LEAF_EFLAG = 1 << 8;
 
 	/**
 	 * The default value of the '{@link #isStatic() <em>Is Static</em>}' attribute.
@@ -109,14 +109,14 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	protected static final boolean IS_STATIC_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isStatic() <em>Is Static</em>}' attribute.
+	 * The flag representing the value of the '{@link #isStatic() <em>Is Static</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isStatic()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_STATIC_EFLAG = Integer.MIN_VALUE >>> 1;
+	protected static final int IS_STATIC_EFLAG = 1 << 9;
 
 	/**
 	 * The cached value of the '{@link #getFormalParameters() <em>Formal Parameter</em>}' containment reference list.
@@ -159,14 +159,14 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	protected static final boolean IS_ABSTRACT_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
+	 * The flag representing the value of the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isAbstract()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ABSTRACT_EFLAG = Integer.MIN_VALUE >>> 2;
+	protected static final int IS_ABSTRACT_EFLAG = 1 << 10;
 
 	/**
 	 * The cached value of the '{@link #getMethods() <em>Method</em>}' reference list.
@@ -205,9 +205,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 */
 	protected BehavioralFeatureImpl() {
 		super();
-		eFlags &= ~IS_LEAF_EFLAG;
-		eFlags &= ~IS_STATIC_EFLAG;
-		eFlags &= ~IS_ABSTRACT_EFLAG;
 	}
 
 	/**
@@ -225,7 +222,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public boolean isLeaf() {
-		return 0 != (eFlags & IS_LEAF_EFLAG);
+		return (eFlags & IS_LEAF_EFLAG) != 0;
 	}
 
 	/**
@@ -234,15 +231,10 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-		boolean oldIsLeaf = 0 != (eFlags & IS_LEAF_EFLAG);
-		if (newIsLeaf) {
-			eFlags |= IS_LEAF_EFLAG;
-		} else {
-			eFlags &= ~IS_LEAF_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
+		if (newIsLeaf) eFlags |= IS_LEAF_EFLAG; else eFlags &= ~IS_LEAF_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.BEHAVIORAL_FEATURE__IS_LEAF, oldIsLeaf, newIsLeaf));
-		}
 	}
 
 	/**
@@ -303,7 +295,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public boolean isStatic() {
-		return 0 != (eFlags & IS_STATIC_EFLAG);
+		return (eFlags & IS_STATIC_EFLAG) != 0;
 	}
 
 	/**
@@ -312,15 +304,10 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public void setIsStatic(boolean newIsStatic) {
-		boolean oldIsStatic = 0 != (eFlags & IS_STATIC_EFLAG);
-		if (newIsStatic) {
-			eFlags |= IS_STATIC_EFLAG;
-		} else {
-			eFlags &= ~IS_STATIC_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsStatic = (eFlags & IS_STATIC_EFLAG) != 0;
+		if (newIsStatic) eFlags |= IS_STATIC_EFLAG; else eFlags &= ~IS_STATIC_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.BEHAVIORAL_FEATURE__IS_STATIC, oldIsStatic, newIsStatic));
-		}
 	}
 
 	/**
@@ -381,7 +368,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public boolean isAbstract() {
-		return 0 != (eFlags & IS_ABSTRACT_EFLAG);
+		return (eFlags & IS_ABSTRACT_EFLAG) != 0;
 	}
 
 	/**
@@ -390,15 +377,10 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public void setIsAbstract(boolean newIsAbstract) {
-		boolean oldIsAbstract = 0 != (eFlags & IS_ABSTRACT_EFLAG);
-		if (newIsAbstract) {
-			eFlags |= IS_ABSTRACT_EFLAG;
-		} else {
-			eFlags &= ~IS_ABSTRACT_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
+		if (newIsAbstract) eFlags |= IS_ABSTRACT_EFLAG; else eFlags &= ~IS_ABSTRACT_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.BEHAVIORAL_FEATURE__IS_ABSTRACT, oldIsAbstract, newIsAbstract));
-		}
 	}
 
 	/**
@@ -1036,11 +1018,11 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			case UML2Package.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__IS_STATIC:
-				return isStatic() != IS_STATIC_EDEFAULT;
+				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.BEHAVIORAL_FEATURE__PARAMETER:
 				return !getParameters().isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER:
@@ -1050,7 +1032,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			case UML2Package.BEHAVIORAL_FEATURE__RAISED_EXCEPTION:
 				return raisedException != null && !raisedException.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__IS_ABSTRACT:
-				return isAbstract() != IS_ABSTRACT_EDEFAULT;
+				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.BEHAVIORAL_FEATURE__METHOD:
 				return method != null && !method.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__CONCURRENCY:
@@ -1114,7 +1096,13 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (concurrency: "); //$NON-NLS-1$
+		result.append(" (isLeaf: "); //$NON-NLS-1$
+		result.append((eFlags & IS_LEAF_EFLAG) != 0);
+		result.append(", isStatic: "); //$NON-NLS-1$
+		result.append((eFlags & IS_STATIC_EFLAG) != 0);
+		result.append(", isAbstract: "); //$NON-NLS-1$
+		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
+		result.append(", concurrency: "); //$NON-NLS-1$
 		result.append(concurrency);
 		result.append(')');
 		return result.toString();

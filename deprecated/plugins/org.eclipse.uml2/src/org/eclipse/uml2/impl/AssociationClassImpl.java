@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.24 2005/03/15 18:44:40 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.25 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,14 +79,14 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	protected static final boolean IS_DERIVED_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isDerived() <em>Is Derived</em>}' attribute.
+	 * The flag representing the value of the '{@link #isDerived() <em>Is Derived</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDerived()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DERIVED_EFLAG = Integer.MIN_VALUE >>> 3;
+	protected static final int IS_DERIVED_EFLAG = 1 << 11;
 
 	/**
 	 * The cached value of the '{@link #getOwnedEnds() <em>Owned End</em>}' containment reference list.
@@ -115,7 +115,6 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 */
 	protected AssociationClassImpl() {
 		super();
-		eFlags &= ~IS_DERIVED_EFLAG;
 	}
 
 	/**
@@ -152,7 +151,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * @generated
 	 */
 	public boolean isDerived() {
-		return 0 != (eFlags & IS_DERIVED_EFLAG);
+		return (eFlags & IS_DERIVED_EFLAG) != 0;
 	}
 
 	/**
@@ -161,15 +160,10 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * @generated
 	 */
 	public void setIsDerived(boolean newIsDerived) {
-		boolean oldIsDerived = 0 != (eFlags & IS_DERIVED_EFLAG);
-		if (newIsDerived) {
-			eFlags |= IS_DERIVED_EFLAG;
-		} else {
-			eFlags &= ~IS_DERIVED_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsDerived = (eFlags & IS_DERIVED_EFLAG) != 0;
+		if (newIsDerived) eFlags |= IS_DERIVED_EFLAG; else eFlags &= ~IS_DERIVED_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ASSOCIATION_CLASS__IS_DERIVED, oldIsDerived, newIsDerived));
-		}
 	}
 
 	/**
@@ -954,7 +948,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ASSOCIATION_CLASS__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__IS_ABSTRACT:
@@ -1010,13 +1004,13 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__IS_ACTIVE:
-				return isActive() != IS_ACTIVE_EDEFAULT;
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__RELATED_ELEMENT:
 				return !getRelatedElements().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__IS_DERIVED:
-				return isDerived() != IS_DERIVED_EDEFAULT;
+				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_END:
 				return ownedEnd != null && !ownedEnd.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__END_TYPE:
@@ -1073,6 +1067,21 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isDerived: "); //$NON-NLS-1$
+		result.append((eFlags & IS_DERIVED_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 	// <!-- begin-custom-operations -->

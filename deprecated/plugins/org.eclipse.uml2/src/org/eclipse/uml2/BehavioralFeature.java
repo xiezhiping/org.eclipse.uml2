@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.7 2005/03/15 18:44:41 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.8 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -48,7 +48,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
@@ -64,7 +64,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
 	 * @see #setIsAbstract(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_IsAbstract()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isAbstract();
@@ -92,7 +92,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * @see org.eclipse.uml2.CallConcurrencyKind
 	 * @see #setConcurrency(CallConcurrencyKind)
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_Concurrency()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	CallConcurrencyKind getConcurrency();
@@ -123,6 +123,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * @return the value of the '<em>Parameter</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_Parameter()
 	 * @model type="org.eclipse.uml2.Parameter" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getMembers=''"
 	 * @generated
 	 */
 	EList getParameters();
@@ -153,6 +154,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * @return the value of the '<em>Formal Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_FormalParameter()
 	 * @model type="org.eclipse.uml2.Parameter" containment="true" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.BehavioralFeature#getParameters='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getFormalParameters();
@@ -194,6 +196,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * @return the value of the '<em>Return Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_ReturnResult()
 	 * @model type="org.eclipse.uml2.Parameter" containment="true"
+	 *        annotation="subsets org.eclipse.uml2.BehavioralFeature#getParameters='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getReturnResults();
@@ -298,7 +301,8 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.BehavioralFeatureOperations.isDistinguishableFrom(this, n, ns);'" 
 	 * @generated
 	 */
 	boolean isDistinguishableFrom(NamedElement n, Namespace ns);
@@ -307,6 +311,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='member' eType='org.eclipse.uml2.NamedElement' containment='false'" 
 	 * @generated
 	 */
 	EList getMembers();
@@ -315,6 +320,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.5 2005/03/15 18:44:41 khussey Exp $
+ * $Id: ActivityNode.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -43,7 +43,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
@@ -115,6 +115,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InGroup()
 	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="redefined eOpposite='containedNode' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'"
 	 * @generated
 	 */
 	EList getInGroups();
@@ -133,6 +134,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_Activity()
 	 * @see org.eclipse.uml2.Activity#getNodes
 	 * @model opposite="node" volatile="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	Activity getActivity();
@@ -159,6 +161,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @return the value of the '<em>Redefined Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_RedefinedElement()
 	 * @model type="org.eclipse.uml2.ActivityNode" ordered="false"
+	 *        annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedElements();
@@ -191,6 +194,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InStructuredNode()
 	 * @see org.eclipse.uml2.StructuredActivityNode#getContainedNodes
 	 * @model opposite="containedNode"
+	 *        annotation="subsets org.eclipse.uml2.ActivityNode#getInGroups=''"
 	 * @generated
 	 */
 	StructuredActivityNode getInStructuredNode();
@@ -219,6 +223,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InPartition()
 	 * @see org.eclipse.uml2.ActivityPartition#getContainedNodes
 	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="containedNode" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.ActivityNode#getInGroups=''"
 	 * @generated
 	 */
 	EList getInPartitions();
@@ -248,6 +253,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InInterruptibleRegion()
 	 * @see org.eclipse.uml2.InterruptibleActivityRegion#getContainedNodes
 	 * @model type="org.eclipse.uml2.InterruptibleActivityRegion" opposite="containedNode" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.ActivityNode#getInGroups=''"
 	 * @generated
 	 */
 	EList getInInterruptibleRegions();
@@ -256,6 +262,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	Element getOwner();

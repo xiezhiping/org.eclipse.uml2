@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.7 2005/03/15 18:44:36 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,7 +49,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -575,17 +575,17 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.EXTENSION_END__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.EXTENSION_END__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.EXTENSION_END__IS_STATIC:
-				return isStatic() != IS_STATIC_EDEFAULT;
+				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.EXTENSION_END__TYPE:
 				return basicGetType() != null;
 			case UML2Package.EXTENSION_END__IS_ORDERED:
-				return isOrdered() != IS_ORDERED_EDEFAULT;
+				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.EXTENSION_END__IS_UNIQUE:
-				return isUnique() != IS_UNIQUE_EDEFAULT;
+				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UML2Package.EXTENSION_END__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.EXTENSION_END__UPPER:
@@ -611,13 +611,13 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__IS_COMPOSITE:
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UML2Package.EXTENSION_END__IS_DERIVED:
-				return isDerived() != IS_DERIVED_EDEFAULT;
+				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UML2Package.EXTENSION_END__CLASS_:
 				return basicGetClass_() != null;
 			case UML2Package.EXTENSION_END__OPPOSITE:
 				return basicGetOpposite() != null;
 			case UML2Package.EXTENSION_END__IS_DERIVED_UNION:
-				return isDerivedUnion() != IS_DERIVED_UNION_EDEFAULT;
+				return ((eFlags & IS_DERIVED_UNION_EFLAG) != 0) != IS_DERIVED_UNION_EDEFAULT;
 			case UML2Package.EXTENSION_END__OWNING_ASSOCIATION:
 				return getOwningAssociation() != null;
 			case UML2Package.EXTENSION_END__REDEFINED_PROPERTY:

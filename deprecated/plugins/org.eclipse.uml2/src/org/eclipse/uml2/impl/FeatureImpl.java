@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.8 2005/03/15 18:44:38 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -53,7 +53,7 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isStatic() <em>Is Static</em>}' attribute.
@@ -66,14 +66,14 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	protected static final boolean IS_STATIC_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isStatic() <em>Is Static</em>}' attribute.
+	 * The flag representing the value of the '{@link #isStatic() <em>Is Static</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isStatic()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_STATIC_EFLAG = Integer.MIN_VALUE >>> 1;
+	protected static final int IS_STATIC_EFLAG = 1 << 9;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,7 +82,6 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	 */
 	protected FeatureImpl() {
 		super();
-		eFlags &= ~IS_STATIC_EFLAG;
 	}
 
 	/**
@@ -100,7 +99,7 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	 * @generated
 	 */
 	public boolean isStatic() {
-		return 0 != (eFlags & IS_STATIC_EFLAG);
+		return (eFlags & IS_STATIC_EFLAG) != 0;
 	}
 
 	/**
@@ -109,15 +108,10 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	 * @generated
 	 */
 	public void setIsStatic(boolean newIsStatic) {
-		boolean oldIsStatic = 0 != (eFlags & IS_STATIC_EFLAG);
-		if (newIsStatic) {
-			eFlags |= IS_STATIC_EFLAG;
-		} else {
-			eFlags &= ~IS_STATIC_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsStatic = (eFlags & IS_STATIC_EFLAG) != 0;
+		if (newIsStatic) eFlags |= IS_STATIC_EFLAG; else eFlags &= ~IS_STATIC_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.FEATURE__IS_STATIC, oldIsStatic, newIsStatic));
-		}
 	}
 
 	/**
@@ -386,13 +380,28 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 			case UML2Package.FEATURE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.FEATURE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.FEATURE__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.FEATURE__IS_STATIC:
-				return isStatic() != IS_STATIC_EDEFAULT;
+				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isStatic: "); //$NON-NLS-1$
+		result.append((eFlags & IS_STATIC_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //FeatureImpl

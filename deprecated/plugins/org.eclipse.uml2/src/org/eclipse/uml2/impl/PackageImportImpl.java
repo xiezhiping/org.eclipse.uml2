@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.9 2005/03/15 18:44:38 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.10 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -55,7 +55,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
@@ -161,9 +161,8 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 		org.eclipse.uml2.Package oldImportedPackage = importedPackage;
 		importedPackage = newImportedPackage;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGE_IMPORT__IMPORTED_PACKAGE, oldImportedPackage, importedPackage));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGE_IMPORT__IMPORTED_PACKAGE, oldImportedPackage, newImportedPackage));
 		}
-
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.5 2005/03/15 18:44:43 khussey Exp $
+ * $Id: State.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getState()
- * @model 
+ * @model
  * @generated
  */
 public interface State extends Namespace, RedefinableElement, Vertex{
@@ -50,7 +50,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Composite</b></em>' attribute.
@@ -123,7 +123,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @return the value of the '<em>Submachine</em>' reference.
 	 * @see #setSubmachine(StateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getState_Submachine()
-	 * @model 
+	 * @model
 	 * @generated
 	 */
 	StateMachine getSubmachine();
@@ -150,6 +150,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @return the value of the '<em>Connection</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getState_Connection()
 	 * @model type="org.eclipse.uml2.ConnectionPointReference" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getConnections();
@@ -187,7 +188,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @return the value of the '<em>Redefined State</em>' reference.
 	 * @see #setRedefinedState(State)
 	 * @see org.eclipse.uml2.UML2Package#getState_RedefinedState()
-	 * @model 
+	 * @model annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	State getRedefinedState();
@@ -243,6 +244,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @see org.eclipse.uml2.UML2Package#getState_Region()
 	 * @see org.eclipse.uml2.Region#getState
 	 * @model type="org.eclipse.uml2.Region" opposite="state" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getRegions();
@@ -281,6 +283,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @see #setEntry(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getState_Entry()
 	 * @model containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Activity getEntry();
@@ -318,6 +321,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @see #setExit(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getState_Exit()
 	 * @model containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Activity getExit();
@@ -355,6 +359,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @see #setDoActivity(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getState_DoActivity()
 	 * @model containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Activity getDoActivity();
@@ -392,6 +397,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @see #setStateInvariant(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getState_StateInvariant()
 	 * @model containment="true"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Constraint getStateInvariant();
@@ -421,6 +427,8 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinitionContext' eType='org.eclipse.uml2.Classifier' containment='false'"
+	 *        annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinitionContexts=''" 
 	 * @generated
 	 */
 	EList getRedefinitionContexts();
@@ -429,6 +437,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
 	 * @generated
 	 */
 	EList getRedefinedElements();
@@ -437,6 +446,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -445,6 +455,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedMembers();

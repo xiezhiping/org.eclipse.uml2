@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.6 2005/03/15 18:44:36 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,7 +56,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getGeneral() <em>General</em>}' reference.
@@ -79,14 +79,14 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	protected static final boolean IS_SUBSTITUTABLE_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isSubstitutable() <em>Is Substitutable</em>}' attribute.
+	 * The flag representing the value of the '{@link #isSubstitutable() <em>Is Substitutable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isSubstitutable()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_SUBSTITUTABLE_EFLAG = Integer.MIN_VALUE >>> 0;
+	protected static final int IS_SUBSTITUTABLE_EFLAG = 1 << 8;
 
 	/**
 	 * The cached value of the '{@link #getGeneralizationSets() <em>Generalization Set</em>}' reference list.
@@ -105,7 +105,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 */
 	protected GeneralizationImpl() {
 		super();
-		eFlags &= ~IS_SUBSTITUTABLE_EFLAG;
 	}
 
 	/**
@@ -123,7 +122,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @generated
 	 */
 	public boolean isSubstitutable() {
-		return 0 != (eFlags & IS_SUBSTITUTABLE_EFLAG);
+		return (eFlags & IS_SUBSTITUTABLE_EFLAG) != 0;
 	}
 
 	/**
@@ -132,15 +131,10 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @generated
 	 */
 	public void setIsSubstitutable(boolean newIsSubstitutable) {
-		boolean oldIsSubstitutable = 0 != (eFlags & IS_SUBSTITUTABLE_EFLAG);
-		if (newIsSubstitutable) {
-			eFlags |= IS_SUBSTITUTABLE_EFLAG;
-		} else {
-			eFlags &= ~IS_SUBSTITUTABLE_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsSubstitutable = (eFlags & IS_SUBSTITUTABLE_EFLAG) != 0;
+		if (newIsSubstitutable) eFlags |= IS_SUBSTITUTABLE_EFLAG; else eFlags &= ~IS_SUBSTITUTABLE_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION__IS_SUBSTITUTABLE, oldIsSubstitutable, newIsSubstitutable));
-		}
 	}
 
 	/**
@@ -484,11 +478,26 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 			case UML2Package.GENERALIZATION__GENERAL:
 				return general != null;
 			case UML2Package.GENERALIZATION__IS_SUBSTITUTABLE:
-				return isSubstitutable() != IS_SUBSTITUTABLE_EDEFAULT;
+				return ((eFlags & IS_SUBSTITUTABLE_EFLAG) != 0) != IS_SUBSTITUTABLE_EDEFAULT;
 			case UML2Package.GENERALIZATION__GENERALIZATION_SET:
 				return generalizationSet != null && !generalizationSet.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isSubstitutable: "); //$NON-NLS-1$
+		result.append((eFlags & IS_SUBSTITUTABLE_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //GeneralizationImpl

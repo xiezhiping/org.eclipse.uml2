@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEnd.java,v 1.3 2005/03/15 18:44:43 khussey Exp $
+ * $Id: ExtensionEnd.java,v 1.4 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,7 +20,7 @@ package org.eclipse.uml2;
  *
  *
  * @see org.eclipse.uml2.UML2Package#getExtensionEnd()
- * @model 
+ * @model
  * @generated
  */
 public interface ExtensionEnd extends Property{
@@ -29,12 +29,14 @@ public interface ExtensionEnd extends Property{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='type' eType='org.eclipse.uml2.Stereotype' containment='false'"
+	 *        annotation="redefines org.eclipse.uml2.TypedElement#getType=''" 
 	 * @generated
 	 */
 	Type getType();
@@ -42,7 +44,8 @@ public interface ExtensionEnd extends Property{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model 
+	 * @model annotation="feature derived='false' name='type' eType='org.eclipse.uml2.Stereotype' containment='false'"
+	 *        annotation="redefines org.eclipse.uml2.TypedElement#getType=''" 
 	 * @generated
 	 */
 	void setType(Type value);

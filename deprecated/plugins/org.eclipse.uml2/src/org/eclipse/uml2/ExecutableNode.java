@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNode.java,v 1.5 2005/03/15 18:44:42 khussey Exp $
+ * $Id: ExecutableNode.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ public interface ExecutableNode extends ActivityNode{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Handler</b></em>' containment reference list.
@@ -57,6 +57,7 @@ public interface ExecutableNode extends ActivityNode{
 	 * @see org.eclipse.uml2.UML2Package#getExecutableNode_Handler()
 	 * @see org.eclipse.uml2.ExceptionHandler#getProtectedNode
 	 * @model type="org.eclipse.uml2.ExceptionHandler" opposite="protectedNode" containment="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getHandlers();
@@ -76,6 +77,7 @@ public interface ExecutableNode extends ActivityNode{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();

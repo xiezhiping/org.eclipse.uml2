@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalStateImpl.java,v 1.6 2005/03/15 18:44:36 khussey Exp $
+ * $Id: FinalStateImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -45,7 +45,7 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -478,7 +478,7 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 			case UML2Package.FINAL_STATE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.FINAL_STATE__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.FINAL_STATE__CONTAINER:
 				return getContainer() != null;
 			case UML2Package.FINAL_STATE__OUTGOING:

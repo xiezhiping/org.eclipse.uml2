@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.9 2005/03/15 18:44:37 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.10 2005/04/04 20:11:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -55,7 +55,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isDestroyLinks() <em>Is Destroy Links</em>}' attribute.
@@ -68,14 +68,14 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	protected static final boolean IS_DESTROY_LINKS_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isDestroyLinks() <em>Is Destroy Links</em>}' attribute.
+	 * The flag representing the value of the '{@link #isDestroyLinks() <em>Is Destroy Links</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDestroyLinks()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DESTROY_LINKS_EFLAG = Integer.MIN_VALUE >>> 1;
+	protected static final int IS_DESTROY_LINKS_EFLAG = 1 << 9;
 
 	/**
 	 * The default value of the '{@link #isDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}' attribute.
@@ -88,14 +88,14 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	protected static final boolean IS_DESTROY_OWNED_OBJECTS_EDEFAULT = false;
 
 	/**
-	 * The flag for the '{@link #isDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}' attribute.
+	 * The flag representing the value of the '{@link #isDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDestroyOwnedObjects()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DESTROY_OWNED_OBJECTS_EFLAG = Integer.MIN_VALUE >>> 2;
+	protected static final int IS_DESTROY_OWNED_OBJECTS_EFLAG = 1 << 10;
 
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
@@ -114,8 +114,6 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 */
 	protected DestroyObjectActionImpl() {
 		super();
-		eFlags &= ~IS_DESTROY_LINKS_EFLAG;
-		eFlags &= ~IS_DESTROY_OWNED_OBJECTS_EFLAG;
 	}
 
 	/**
@@ -133,7 +131,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * @generated
 	 */
 	public boolean isDestroyLinks() {
-		return 0 != (eFlags & IS_DESTROY_LINKS_EFLAG);
+		return (eFlags & IS_DESTROY_LINKS_EFLAG) != 0;
 	}
 
 	/**
@@ -142,15 +140,10 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * @generated
 	 */
 	public void setIsDestroyLinks(boolean newIsDestroyLinks) {
-		boolean oldIsDestroyLinks = 0 != (eFlags & IS_DESTROY_LINKS_EFLAG);
-		if (newIsDestroyLinks) {
-			eFlags |= IS_DESTROY_LINKS_EFLAG;
-		} else {
-			eFlags &= ~IS_DESTROY_LINKS_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsDestroyLinks = (eFlags & IS_DESTROY_LINKS_EFLAG) != 0;
+		if (newIsDestroyLinks) eFlags |= IS_DESTROY_LINKS_EFLAG; else eFlags &= ~IS_DESTROY_LINKS_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS, oldIsDestroyLinks, newIsDestroyLinks));
-		}
 	}
 
 	/**
@@ -159,7 +152,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * @generated
 	 */
 	public boolean isDestroyOwnedObjects() {
-		return 0 != (eFlags & IS_DESTROY_OWNED_OBJECTS_EFLAG);
+		return (eFlags & IS_DESTROY_OWNED_OBJECTS_EFLAG) != 0;
 	}
 
 	/**
@@ -168,15 +161,10 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * @generated
 	 */
 	public void setIsDestroyOwnedObjects(boolean newIsDestroyOwnedObjects) {
-		boolean oldIsDestroyOwnedObjects = 0 != (eFlags & IS_DESTROY_OWNED_OBJECTS_EFLAG);
-		if (newIsDestroyOwnedObjects) {
-			eFlags |= IS_DESTROY_OWNED_OBJECTS_EFLAG;
-		} else {
-			eFlags &= ~IS_DESTROY_OWNED_OBJECTS_EFLAG;
-		}
-		if (eNotificationRequired()) {
+		boolean oldIsDestroyOwnedObjects = (eFlags & IS_DESTROY_OWNED_OBJECTS_EFLAG) != 0;
+		if (newIsDestroyOwnedObjects) eFlags |= IS_DESTROY_OWNED_OBJECTS_EFLAG; else eFlags &= ~IS_DESTROY_OWNED_OBJECTS_EFLAG;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS, oldIsDestroyOwnedObjects, newIsDestroyOwnedObjects));
-		}
 	}
 
 	/**
@@ -648,7 +636,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 			case UML2Package.DESTROY_OBJECT_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.DESTROY_OBJECT_ACTION__IS_LEAF:
-				return isLeaf() != IS_LEAF_EDEFAULT;
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.DESTROY_OBJECT_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.DESTROY_OBJECT_ACTION__INCOMING:
@@ -680,13 +668,30 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 			case UML2Package.DESTROY_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS:
-				return isDestroyLinks() != IS_DESTROY_LINKS_EDEFAULT;
+				return ((eFlags & IS_DESTROY_LINKS_EFLAG) != 0) != IS_DESTROY_LINKS_EDEFAULT;
 			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS:
-				return isDestroyOwnedObjects() != IS_DESTROY_OWNED_OBJECTS_EDEFAULT;
+				return ((eFlags & IS_DESTROY_OWNED_OBJECTS_EFLAG) != 0) != IS_DESTROY_OWNED_OBJECTS_EDEFAULT;
 			case UML2Package.DESTROY_OBJECT_ACTION__TARGET:
 				return target != null;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isDestroyLinks: "); //$NON-NLS-1$
+		result.append((eFlags & IS_DESTROY_LINKS_EFLAG) != 0);
+		result.append(", isDestroyOwnedObjects: "); //$NON-NLS-1$
+		result.append((eFlags & IS_DESTROY_OWNED_OBJECTS_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 } //DestroyObjectActionImpl

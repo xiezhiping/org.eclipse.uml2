@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extension.java,v 1.3 2005/03/15 18:44:43 khussey Exp $
+ * $Id: Extension.java,v 1.4 2005/04/04 20:11:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getExtension()
- * @model 
+ * @model
  * @generated
  */
 public interface Extension extends Association{
@@ -37,7 +37,7 @@ public interface Extension extends Association{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Required</b></em>' attribute.
@@ -75,6 +75,8 @@ public interface Extension extends Association{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature derived='false' name='ownedEnd' eType='org.eclipse.uml2.ExtensionEnd' containment='true'"
+	 *        annotation="redefines org.eclipse.uml2.Association#getOwnedEnds=''" 
 	 * @generated
 	 */
 	EList getOwnedEnds();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.6 2005/03/15 18:44:41 khussey Exp $
+ * $Id: Component.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.UML2Package#getComponent()
- * @model 
+ * @model
  * @generated
  */
 public interface Component extends org.eclipse.uml2.Class{
@@ -42,7 +42,7 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Indirectly Instantiated</b></em>' attribute.
@@ -58,7 +58,7 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * @return the value of the '<em>Is Indirectly Instantiated</em>' attribute.
 	 * @see #setIsIndirectlyInstantiated(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getComponent_IsIndirectlyInstantiated()
-	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isIndirectlyInstantiated();
@@ -141,6 +141,7 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * @see org.eclipse.uml2.UML2Package#getComponent_Realization()
 	 * @see org.eclipse.uml2.Realization#getAbstraction
 	 * @model type="org.eclipse.uml2.Realization" opposite="abstraction" containment="true" volatile="true" ordered="false"
+	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements='' org.eclipse.uml2.NamedElement#getClientDependencies=''"
 	 * @generated
 	 */
 	EList getRealizations();
@@ -179,6 +180,7 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * @return the value of the '<em>Owned Member</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getComponent_OwnedMember()
 	 * @model type="org.eclipse.uml2.PackageableElement" containment="true" ordered="false"
+	 *        annotation="redefines org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedMembers();
@@ -209,6 +211,7 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -217,6 +220,7 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model parameters=""
+	 *        annotation="feature eOpposite.containment='false' containment='false' name='clientDependency' eOpposite='client' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Dependency' eOpposite.lowerBound='1'" 
 	 * @generated
 	 */
 	EList getClientDependencies();
