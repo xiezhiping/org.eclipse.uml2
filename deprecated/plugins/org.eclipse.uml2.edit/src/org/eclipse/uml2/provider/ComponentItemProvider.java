@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentItemProvider.java,v 1.13 2004/06/16 03:32:38 khussey Exp $
+ * $Id: ComponentItemProvider.java,v 1.14 2004/06/16 03:57:17 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -522,17 +522,17 @@ public class ComponentItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			feature == UML2Package.eINSTANCE.getComponent_OwnedMember() ||
+			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
+			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
+			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
+			feature == UML2Package.eINSTANCE.getComponent_OwnedMember() ||
 			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_Implementation() ||
 			feature == UML2Package.eINSTANCE.getComponent_Realization() ||
 			feature == UML2Package.eINSTANCE.getClassifier_Substitution() ||
-			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
-			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
+			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
