@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.16 2004/10/01 19:36:27 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.17 2005/02/10 18:09:50 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1353,7 +1353,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 *      org.eclipse.uml2.PackageableElement)
 	 */
 	public void importElement(VisibilityKind visibility, PackageableElement element) {
-		NamespaceOperations.importElement(this, this.visibility, element);
+		NamespaceOperations.importElement(this, visibility, element);
 	}
 
 	/* (non-Javadoc)

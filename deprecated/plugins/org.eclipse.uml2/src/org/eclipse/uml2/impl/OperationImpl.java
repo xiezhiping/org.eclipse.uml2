@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.15 2004/10/01 19:36:27 khussey Exp $
+ * $Id: OperationImpl.java,v 1.16 2005/02/10 18:09:50 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1725,6 +1725,12 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.OPERATION__FORMAL_PARAMETER:
 				return false;
+			case UML2Package.OPERATION__TYPE:
+				return null != returnResult
+					&& 1 == returnResult.size()
+					&& ((Parameter) returnResult.get(0))
+							.eIsSet(UML2Package.eINSTANCE
+									.getTypedElement_Type());
 		}
 		return eIsSetGen(eFeature);
 	}
