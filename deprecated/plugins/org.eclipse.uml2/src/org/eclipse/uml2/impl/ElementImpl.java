@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.10 2004/05/28 05:13:45 khussey Exp $
+ * $Id: ElementImpl.java,v 1.11 2004/05/28 05:39:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -199,7 +199,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 */
 	public Set allOwnedElements() {
 		try {
-			java.lang.reflect.Method method = getClass().getMethod("allOwnedElements", new Class[] {}); //$NON-NLS-1$
+			java.lang.reflect.Method method = getClass().getMethod("allOwnedElements", null); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this,
 					method,

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.5 2004/05/28 05:39:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -181,7 +181,7 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	 */
 	public Set parameterableElements() {
 		try {
-			java.lang.reflect.Method method = getClass().getMethod("parameterableElements", new Class[] {}); //$NON-NLS-1$
+			java.lang.reflect.Method method = getClass().getMethod("parameterableElements", null); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this,
 					method,

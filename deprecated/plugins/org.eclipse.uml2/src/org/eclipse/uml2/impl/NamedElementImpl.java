@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.6 2004/05/20 03:20:03 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.7 2004/05/28 05:39:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -304,7 +304,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 */
 	public List allNamespaces() {
 		try {
-			java.lang.reflect.Method method = getClass().getMethod("allNamespaces", new Class[] {}); //$NON-NLS-1$
+			java.lang.reflect.Method method = getClass().getMethod("allNamespaces", null); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this,
 					method,

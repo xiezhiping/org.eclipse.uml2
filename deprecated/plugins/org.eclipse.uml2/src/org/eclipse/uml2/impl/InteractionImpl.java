@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.9 2004/05/25 20:05:05 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.10 2004/05/28 05:39:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -815,10 +815,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return getOwnedOperations();
 			case UML2Package.INTERACTION__SUPER_CLASS:
 				return getSuperClasses();
-			case UML2Package.INTERACTION__NESTED_CLASSIFIER:
-				return getNestedClassifiers();
 			case UML2Package.INTERACTION__EXTENSION:
 				return getExtensions();
+			case UML2Package.INTERACTION__NESTED_CLASSIFIER:
+				return getNestedClassifiers();
 			case UML2Package.INTERACTION__IS_ACTIVE:
 				return isActive() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.INTERACTION__OWNED_RECEPTION:
@@ -1334,10 +1334,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.INTERACTION__SUPER_CLASS:
 				return !getSuperClasses().isEmpty();
-			case UML2Package.INTERACTION__NESTED_CLASSIFIER:
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.INTERACTION__EXTENSION:
 				return !getExtensions().isEmpty();
+			case UML2Package.INTERACTION__NESTED_CLASSIFIER:
+				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.INTERACTION__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.INTERACTION__OWNED_RECEPTION:

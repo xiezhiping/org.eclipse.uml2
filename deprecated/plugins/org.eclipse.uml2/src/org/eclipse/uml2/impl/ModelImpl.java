@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.5 2004/05/25 20:05:05 khussey Exp $
+ * $Id: ModelImpl.java,v 1.6 2004/05/28 05:39:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -270,10 +270,10 @@ public class ModelImpl extends PackageImpl implements Model {
 				return getOwnedMembers();
 			case UML2Package.MODEL__PACKAGE_MERGE:
 				return getPackageMerges();
-			case UML2Package.MODEL__PACKAGE_EXTENSION:
-				return getPackageExtensions();
 			case UML2Package.MODEL__APPLIED_PROFILE:
 				return getAppliedProfiles();
+			case UML2Package.MODEL__PACKAGE_EXTENSION:
+				return getPackageExtensions();
 			case UML2Package.MODEL__VIEWPOINT:
 				return getViewpoint();
 		}
@@ -344,13 +344,13 @@ public class ModelImpl extends PackageImpl implements Model {
 				getPackageMerges().clear();
 				getPackageMerges().addAll((Collection)newValue);
 				return;
-			case UML2Package.MODEL__PACKAGE_EXTENSION:
-				getPackageExtensions().clear();
-				getPackageExtensions().addAll((Collection)newValue);
-				return;
 			case UML2Package.MODEL__APPLIED_PROFILE:
 				getAppliedProfiles().clear();
 				getAppliedProfiles().addAll((Collection)newValue);
+				return;
+			case UML2Package.MODEL__PACKAGE_EXTENSION:
+				getPackageExtensions().clear();
+				getPackageExtensions().addAll((Collection)newValue);
 				return;
 			case UML2Package.MODEL__VIEWPOINT:
 				setViewpoint((String)newValue);
@@ -414,11 +414,11 @@ public class ModelImpl extends PackageImpl implements Model {
 			case UML2Package.MODEL__PACKAGE_MERGE:
 				getPackageMerges().clear();
 				return;
-			case UML2Package.MODEL__PACKAGE_EXTENSION:
-				getPackageExtensions().clear();
-				return;
 			case UML2Package.MODEL__APPLIED_PROFILE:
 				getAppliedProfiles().clear();
+				return;
+			case UML2Package.MODEL__PACKAGE_EXTENSION:
+				getPackageExtensions().clear();
 				return;
 			case UML2Package.MODEL__VIEWPOINT:
 				setViewpoint(VIEWPOINT_EDEFAULT);
@@ -482,10 +482,10 @@ public class ModelImpl extends PackageImpl implements Model {
 				return ownedMember != null && !ownedMember.isEmpty();
 			case UML2Package.MODEL__PACKAGE_MERGE:
 				return packageMerge != null && !packageMerge.isEmpty();
-			case UML2Package.MODEL__PACKAGE_EXTENSION:
-				return packageExtension != null && !packageExtension.isEmpty();
 			case UML2Package.MODEL__APPLIED_PROFILE:
 				return appliedProfile != null && !appliedProfile.isEmpty();
+			case UML2Package.MODEL__PACKAGE_EXTENSION:
+				return packageExtension != null && !packageExtension.isEmpty();
 			case UML2Package.MODEL__VIEWPOINT:
 				return VIEWPOINT_EDEFAULT == null ? viewpoint != null : !VIEWPOINT_EDEFAULT.equals(viewpoint);
 		}

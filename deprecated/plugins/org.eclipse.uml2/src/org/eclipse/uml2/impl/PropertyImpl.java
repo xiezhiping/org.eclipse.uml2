@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.7 2004/05/20 03:20:02 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.8 2004/05/28 05:39:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1016,7 +1016,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	public Set subsettingContext() {
 		try {
-			java.lang.reflect.Method method = getClass().getMethod("subsettingContext", new Class[] {}); //$NON-NLS-1$
+			java.lang.reflect.Method method = getClass().getMethod("subsettingContext", null); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this,
 					method,

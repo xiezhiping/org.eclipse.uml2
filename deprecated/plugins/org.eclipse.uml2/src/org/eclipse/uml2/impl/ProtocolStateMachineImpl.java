@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.9 2004/05/25 20:05:05 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.10 2004/05/28 05:39:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -418,10 +418,10 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				return getOwnedOperations();
 			case UML2Package.PROTOCOL_STATE_MACHINE__SUPER_CLASS:
 				return getSuperClasses();
-			case UML2Package.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER:
-				return getNestedClassifiers();
 			case UML2Package.PROTOCOL_STATE_MACHINE__EXTENSION:
 				return getExtensions();
+			case UML2Package.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER:
+				return getNestedClassifiers();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_ACTIVE:
 				return isActive() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION:
@@ -911,10 +911,10 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__SUPER_CLASS:
 				return !getSuperClasses().isEmpty();
-			case UML2Package.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER:
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__EXTENSION:
 				return !getExtensions().isEmpty();
+			case UML2Package.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER:
+				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION:

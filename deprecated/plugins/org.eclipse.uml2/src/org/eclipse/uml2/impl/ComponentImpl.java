@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.9 2004/05/25 20:05:05 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.10 2004/05/28 05:39:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -665,10 +665,10 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return getOwnedOperations();
 			case UML2Package.COMPONENT__SUPER_CLASS:
 				return getSuperClasses();
-			case UML2Package.COMPONENT__NESTED_CLASSIFIER:
-				return getNestedClassifiers();
 			case UML2Package.COMPONENT__EXTENSION:
 				return getExtensions();
+			case UML2Package.COMPONENT__NESTED_CLASSIFIER:
+				return getNestedClassifiers();
 			case UML2Package.COMPONENT__IS_ACTIVE:
 				return isActive() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.COMPONENT__OWNED_RECEPTION:
@@ -1070,10 +1070,10 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.COMPONENT__SUPER_CLASS:
 				return !getSuperClasses().isEmpty();
-			case UML2Package.COMPONENT__NESTED_CLASSIFIER:
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.COMPONENT__EXTENSION:
 				return !getExtensions().isEmpty();
+			case UML2Package.COMPONENT__NESTED_CLASSIFIER:
+				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.COMPONENT__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.COMPONENT__OWNED_RECEPTION:

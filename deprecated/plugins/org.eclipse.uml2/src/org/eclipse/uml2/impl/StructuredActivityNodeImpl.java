@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.7 2004/05/28 05:13:45 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.8 2004/05/28 05:39:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -563,7 +563,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 */
 	public Set importedMember() {
 		try {
-			java.lang.reflect.Method method = getClass().getMethod("importedMember", new Class[] {}); //$NON-NLS-1$
+			java.lang.reflect.Method method = getClass().getMethod("importedMember", null); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this,
 					method,

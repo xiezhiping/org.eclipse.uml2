@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.9 2004/05/20 03:20:03 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.10 2004/05/28 05:39:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1019,7 +1019,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public Set allFeatures() {
 		try {
-			java.lang.reflect.Method method = getClass().getMethod("allFeatures", new Class[] {}); //$NON-NLS-1$
+			java.lang.reflect.Method method = getClass().getMethod("allFeatures", null); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this,
 					method,
@@ -1065,7 +1065,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public Set inheritedMember() {
 		try {
-			java.lang.reflect.Method method = getClass().getMethod("inheritedMember", new Class[] {}); //$NON-NLS-1$
+			java.lang.reflect.Method method = getClass().getMethod("inheritedMember", null); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this,
 					method,
@@ -1084,7 +1084,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public Set parents() {
 		try {
-			java.lang.reflect.Method method = getClass().getMethod("parents", new Class[] {}); //$NON-NLS-1$
+			java.lang.reflect.Method method = getClass().getMethod("parents", null); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this,
 					method,
@@ -1103,7 +1103,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public Set allParents() {
 		try {
-			java.lang.reflect.Method method = getClass().getMethod("allParents", new Class[] {}); //$NON-NLS-1$
+			java.lang.reflect.Method method = getClass().getMethod("allParents", null); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this,
 					method,
@@ -1158,7 +1158,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public Set general() {
 		try {
-			java.lang.reflect.Method method = getClass().getMethod("general", new Class[] {}); //$NON-NLS-1$
+			java.lang.reflect.Method method = getClass().getMethod("general", null); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
 				getCacheAdapter().put(this,
 					method,
