@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProviderTest.java,v 1.2 2004/10/01 19:28:45 khussey Exp $
+ * $Id: ElementItemProviderTest.java,v 1.3 2005/02/24 21:43:36 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -36,57 +36,58 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
 
 /**
- * <!-- begin-user-doc --> A test case for the '<em><b>Element</b></em>'
- * item provider adapter. <!-- end-user-doc -->
- * 
+ * <!-- begin-user-doc -->
+ * A test case for the '<em><b>Element</b></em>' item provider adapter.
+ * <!-- end-user-doc -->
  * @generated
  */
 public abstract class ElementItemProviderTest
 	extends TestCase {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The adapter factory for this Element item provider adapter test case.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private AdapterFactory adapterFactory = null;
 
 	/**
-	 * The command stack for this Element item provider adapter test case. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The command stack for this Element item provider adapter test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private CommandStack commandStack = null;
 
 	/**
-	 * The editing domain for this Element item provider adapter test case. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The editing domain for this Element item provider adapter test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EditingDomain editingDomain = null;
 
 	/**
-	 * The model object for this Element item provider adapter test case. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The model object for this Element item provider adapter test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected Element modelObject = null;
 
 	/**
 	 * Constructs a new Element item provider adapter test case with the given
-	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ElementItemProviderTest(String name) {
@@ -95,8 +96,9 @@ public abstract class ElementItemProviderTest
 
 	/**
 	 * Sets the adapter factory for this Element item provider adapter test
-	 * case. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void setAdapterFactory(AdapterFactory adapterFactory) {
@@ -105,8 +107,9 @@ public abstract class ElementItemProviderTest
 
 	/**
 	 * Returns the adapter factory for this Element item provider adapter test
-	 * case. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected AdapterFactory getAdapterFactory() {
@@ -115,8 +118,8 @@ public abstract class ElementItemProviderTest
 
 	/**
 	 * Sets the command stack for this Element item provider adapter test case.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void setCommandStack(CommandStack commandStack) {
@@ -125,8 +128,9 @@ public abstract class ElementItemProviderTest
 
 	/**
 	 * Returns the command stack for this Element item provider adapter test
-	 * case. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected CommandStack getCommandStack() {
@@ -135,8 +139,8 @@ public abstract class ElementItemProviderTest
 
 	/**
 	 * Sets the editing domain for this Element item provider adapter test case.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void setEditingDomain(EditingDomain editingDomain) {
@@ -145,8 +149,9 @@ public abstract class ElementItemProviderTest
 
 	/**
 	 * Returns the editing domain for this Element item provider adapter test
-	 * case. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected EditingDomain getEditingDomain() {
@@ -155,8 +160,8 @@ public abstract class ElementItemProviderTest
 
 	/**
 	 * Sets the model object for this Element item provider adapter test case.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void setModelObject(Element modelObject) {
@@ -164,9 +169,11 @@ public abstract class ElementItemProviderTest
 	}
 
 	/*
-	 * (non-Javadoc) <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see junit.framework.TestCase#setUp() @generated
+	 * (non-Javadoc)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
 	 */
 	protected void setUp()
 		throws Exception {
@@ -178,9 +185,11 @@ public abstract class ElementItemProviderTest
 	}
 
 	/*
-	 * (non-Javadoc) <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see junit.framework.TestCase#tearDown() @generated
+	 * (non-Javadoc)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
 	 */
 	protected void tearDown()
 		throws Exception {
@@ -191,8 +200,8 @@ public abstract class ElementItemProviderTest
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected List getEAllSubClasses(EClass eClass) {
@@ -214,74 +223,75 @@ public abstract class ElementItemProviderTest
 
 	/**
 	 * Returns the model object for this Element item provider adapter test
-	 * case. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private Element getModelObject() {
 		return modelObject;
 	}
 
-	public void testSetTarget() {
-		ReferenceQueue referenceQueue = new ReferenceQueue();
-		Reference reference = new PhantomReference(getModelObject(),
-			referenceQueue);
-
-		Adapter adapter = adapterFactory.adapt(getModelObject(),
-			IEditingDomainItemProvider.class);
-		adapter.setTarget(null);
-
-		getModelObject().eAdapters().clear();
-		setModelObject(null);
-
-		System.gc();
-
-		if (!reference.isEnqueued()) {
-			System.runFinalization();
-		}
-
-		assertTrue(reference.isEnqueued());
-
-		try {
-			reference = referenceQueue.remove();
-
-			if (null != reference) {
-				reference.clear();
-			}
-		} catch (InterruptedException ie) {
-			// do nothing
-		}
-	}
-
-	public void testDispose() {
-		ReferenceQueue referenceQueue = new ReferenceQueue();
-		Reference reference = new PhantomReference(getModelObject(),
-			referenceQueue);
-
-		Adapter adapter = adapterFactory.adapt(getModelObject(),
-			IEditingDomainItemProvider.class);
-		adapter.setTarget(null);
-
-		((IDisposable) adapter).dispose();
-		setModelObject(null);
-
-		System.gc();
-
-		if (!reference.isEnqueued()) {
-			System.runFinalization();
-		}
-
-		assertTrue(reference.isEnqueued());
-
-		try {
-			reference = referenceQueue.remove();
-
-			if (null != reference) {
-				reference.clear();
-			}
-		} catch (InterruptedException ie) {
-			// do nothing
-		}
-	}
+//	public void testSetTarget() {
+//		ReferenceQueue referenceQueue = new ReferenceQueue();
+//		Reference reference = new PhantomReference(getModelObject(),
+//			referenceQueue);
+//
+//		Adapter adapter = adapterFactory.adapt(getModelObject(),
+//			IEditingDomainItemProvider.class);
+//		adapter.setTarget(null);
+//
+//		getModelObject().eAdapters().clear();
+//		setModelObject(null);
+//
+//		System.gc();
+//
+//		if (!reference.isEnqueued()) {
+//			System.runFinalization();
+//		}
+//
+//		assertTrue(reference.isEnqueued());
+//
+//		try {
+//			reference = referenceQueue.remove();
+//
+//			if (null != reference) {
+//				reference.clear();
+//			}
+//		} catch (InterruptedException ie) {
+//			// do nothing
+//		}
+//	}
+//
+//	public void testDispose() {
+//		ReferenceQueue referenceQueue = new ReferenceQueue();
+//		Reference reference = new PhantomReference(getModelObject(),
+//			referenceQueue);
+//
+//		Adapter adapter = adapterFactory.adapt(getModelObject(),
+//			IEditingDomainItemProvider.class);
+//		adapter.setTarget(null);
+//
+//		((IDisposable) adapter).dispose();
+//		setModelObject(null);
+//
+//		System.gc();
+//
+//		if (!reference.isEnqueued()) {
+//			System.runFinalization();
+//		}
+//
+//		assertTrue(reference.isEnqueued());
+//
+//		try {
+//			reference = referenceQueue.remove();
+//
+//			if (null != reference) {
+//				reference.clear();
+//			}
+//		} catch (InterruptedException ie) {
+//			// do nothing
+//		}
+//	}
 
 } //ElementItemProviderTest
