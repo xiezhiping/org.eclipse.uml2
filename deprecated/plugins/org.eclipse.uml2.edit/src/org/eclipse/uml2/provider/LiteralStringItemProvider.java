@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralStringItemProvider.java,v 1.7 2004/06/19 01:42:38 khussey Exp $
+ * $Id: LiteralStringItemProvider.java,v 1.8 2005/02/11 20:30:56 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -114,7 +114,7 @@ public class LiteralStringItemProvider
 	 * @generated
 	 */
 	public String getText(Object object) {
-		String label = ((LiteralString)object).getName();
+		String label = ((LiteralString)object).getValue();
 		return label == null || label.length() == 0 ?
 			getString("_UI_LiteralString_type") : //$NON-NLS-1$
 			getString("_UI_LiteralString_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$

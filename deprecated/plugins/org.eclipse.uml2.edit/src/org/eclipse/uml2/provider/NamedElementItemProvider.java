@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementItemProvider.java,v 1.8 2004/10/01 19:38:53 khussey Exp $
+ * $Id: NamedElementItemProvider.java,v 1.9 2005/02/11 20:30:56 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -188,16 +188,6 @@ public class NamedElementItemProvider
 			childrenFeatures.add(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 		}
 		return childrenFeatures;
-	}
-
-	/**
-	 * This returns NamedElement.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/NamedElement"); //$NON-NLS-1$
 	}
 
 	/**

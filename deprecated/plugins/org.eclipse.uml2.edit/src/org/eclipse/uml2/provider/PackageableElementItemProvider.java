@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageableElementItemProvider.java,v 1.7 2004/06/19 01:42:37 khussey Exp $
+ * $Id: PackageableElementItemProvider.java,v 1.8 2005/02/11 20:30:56 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -143,16 +143,6 @@ public class PackageableElementItemProvider
 				 UML2Package.eINSTANCE.getPackageableElement_PackageableElement_visibility(),
 				 true,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE));
-	}
-
-	/**
-	 * This returns PackageableElement.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/PackageableElement"); //$NON-NLS-1$
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentItemProvider.java,v 1.16 2004/06/19 01:42:36 khussey Exp $
+ * $Id: ComponentItemProvider.java,v 1.17 2005/02/11 20:30:56 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -527,21 +527,28 @@ public class ComponentItemProvider
 	 * @generated
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			feature == UML2Package.eINSTANCE.getComponent_OwnedMember() ||
-			feature == UML2Package.eINSTANCE.getClassifier_Substitution() ||
-			feature == UML2Package.eINSTANCE.getComponent_Realization() ||
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
-			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_Implementation() ||
-			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
-			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
-		return getString(
-			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
-			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
+			childFeature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
+			childFeature == UML2Package.eINSTANCE.getComponent_OwnedMember() ||
+			childFeature == UML2Package.eINSTANCE.getClassifier_Substitution() ||
+			childFeature == UML2Package.eINSTANCE.getComponent_Realization() ||
+			childFeature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
+			childFeature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
+			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
+			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
+			childFeature == UML2Package.eINSTANCE.getBehavioredClassifier_Implementation() ||
+			childFeature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
+			childFeature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2", //$NON-NLS-1$
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralBooleanItemProvider.java,v 1.7 2004/06/19 01:42:36 khussey Exp $
+ * $Id: LiteralBooleanItemProvider.java,v 1.8 2005/02/11 20:30:56 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -114,10 +114,8 @@ public class LiteralBooleanItemProvider
 	 * @generated
 	 */
 	public String getText(Object object) {
-		String label = ((LiteralBoolean)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_LiteralBoolean_type") : //$NON-NLS-1$
-			getString("_UI_LiteralBoolean_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		LiteralBoolean literalBoolean = (LiteralBoolean)object;
+		return getString("_UI_LiteralBoolean_type") + " " + literalBoolean.isValue(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

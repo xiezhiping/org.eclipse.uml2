@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TriggerItemProvider.java,v 1.8 2004/06/19 01:42:38 khussey Exp $
+ * $Id: TriggerItemProvider.java,v 1.9 2005/02/11 20:30:56 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,16 +91,6 @@ public class TriggerItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_port_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getTrigger_Port(),
 				 true));
-	}
-
-	/**
-	 * This returns Trigger.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/Trigger"); //$NON-NLS-1$
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.11 2005/01/19 22:55:31 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.12 2005/02/11 20:30:56 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -159,16 +159,6 @@ public class ElementItemProvider
 			childrenFeatures.add(UML2Package.eINSTANCE.getElement_OwnedComment());
 		}
 		return childrenFeatures;
-	}
-
-	/**
-	 * This returns Element.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/Element"); //$NON-NLS-1$
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkActionItemProvider.java,v 1.7 2004/06/19 01:42:37 khussey Exp $
+ * $Id: LinkActionItemProvider.java,v 1.8 2005/02/11 20:30:56 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -115,16 +115,6 @@ public class LinkActionItemProvider
 	}
 
 	/**
-	 * This returns LinkAction.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/LinkAction"); //$NON-NLS-1$
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -183,12 +173,19 @@ public class LinkActionItemProvider
 	 * @generated
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			feature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
-		return getString(
-			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
-			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
+			childFeature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
+			childFeature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2", //$NON-NLS-1$
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**
