@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -88,13 +88,6 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Invariant</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Constraint getInvariant() {
@@ -152,40 +145,24 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Covered</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.InteractionFragment#getCovereds}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getCoveredsGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getCovereds() {
-		// TODO: test this redefinition getter
-		if (covered == null) {
+
+		if (null == covered) {
 			covered =
 				new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.STATE_INVARIANT__COVERED, UML2Package.LIFELINE__COVERED_BY);
 		}
+
 		return covered;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

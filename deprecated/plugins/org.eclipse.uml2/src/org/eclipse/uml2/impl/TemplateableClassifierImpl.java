@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateableClassifierImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
+ * $Id: TemplateableClassifierImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -100,6 +100,8 @@ public abstract class TemplateableClassifierImpl extends ClassifierImpl implemen
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.TEMPLATEABLE_CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.TEMPLATEABLE_CLASSIFIER__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -147,6 +149,8 @@ public abstract class TemplateableClassifierImpl extends ClassifierImpl implemen
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.TEMPLATEABLE_CLASSIFIER__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.TEMPLATEABLE_CLASSIFIER__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.TEMPLATEABLE_CLASSIFIER__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				default:
@@ -247,6 +251,8 @@ public abstract class TemplateableClassifierImpl extends ClassifierImpl implemen
 				return getPowertypeExtents();
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.TEMPLATEABLE_CLASSIFIER__USE_CASE:
+				return getUseCases();
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__OCCURRENCE:
@@ -337,6 +343,10 @@ public abstract class TemplateableClassifierImpl extends ClassifierImpl implemen
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.TEMPLATEABLE_CLASSIFIER__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -417,6 +427,9 @@ public abstract class TemplateableClassifierImpl extends ClassifierImpl implemen
 				return;
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
+				return;
+			case UML2Package.TEMPLATEABLE_CLASSIFIER__USE_CASE:
+				getUseCases().clear();
 				return;
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
@@ -499,6 +512,8 @@ public abstract class TemplateableClassifierImpl extends ClassifierImpl implemen
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.TEMPLATEABLE_CLASSIFIER__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__REPRESENTATION:
 				return representation != null;
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__OCCURRENCE:

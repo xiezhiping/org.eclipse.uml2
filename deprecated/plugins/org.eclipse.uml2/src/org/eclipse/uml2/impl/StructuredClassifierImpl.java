@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -106,15 +106,6 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getAttributes}</li>
-	 *   <li>{@link org.eclipse.uml2.StructuredClassifier#getRoles}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
@@ -158,17 +149,10 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Part</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getPartsGen() {
-		// TODO: implement this derived getter to return the 'Part' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getParts() {
-		// TODO: test this derived getter
+
         if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier_Part())) {
             List part = new ArrayList();
 
@@ -207,17 +191,9 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Role</b></em>' reference list, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRoles() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier_Role())) {
 			Set union = new LinkedHashSet();
 			union.addAll(getOwnedAttributes());
@@ -252,14 +228,6 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Connector</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getFeatures}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedConnectors() {
@@ -303,12 +271,9 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Attribute</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Property}.
 	 * @generated
 	 */
 	public EList getAttributes() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Attribute())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getAttributes());
@@ -327,13 +292,9 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier().getEAllOperations().get(70))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -350,12 +311,9 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
 	 * @generated
 	 */
 	public EList getMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getMembers());
@@ -374,13 +332,9 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Feature</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Feature}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Feature#getFeaturingClassifiers <em>Featuring Classifier</em>}'.
 	 * @generated
 	 */
 	public EList getFeatures() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
@@ -434,6 +388,8 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.STRUCTURED_CLASSIFIER__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -481,6 +437,8 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.STRUCTURED_CLASSIFIER__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.STRUCTURED_CLASSIFIER__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE:
@@ -585,6 +543,8 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 				return getPowertypeExtents();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.STRUCTURED_CLASSIFIER__USE_CASE:
+				return getUseCases();
 			case UML2Package.STRUCTURED_CLASSIFIER__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.STRUCTURED_CLASSIFIER__OCCURRENCE:
@@ -683,6 +643,10 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.STRUCTURED_CLASSIFIER__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.STRUCTURED_CLASSIFIER__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -772,6 +736,9 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.STRUCTURED_CLASSIFIER__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.STRUCTURED_CLASSIFIER__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -859,6 +826,8 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.STRUCTURED_CLASSIFIER__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__REPRESENTATION:
 				return representation != null;
 			case UML2Package.STRUCTURED_CLASSIFIER__OCCURRENCE:

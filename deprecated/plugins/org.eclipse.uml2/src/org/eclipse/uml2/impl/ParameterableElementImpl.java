@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -81,7 +81,6 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
@@ -92,7 +91,6 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
@@ -105,7 +103,6 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplateParameter(TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		// TODO: test this superset basic setter
 		TemplateParameter oldTemplateParameter = templateParameter;
 		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
@@ -146,14 +143,6 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ParameterableElement#getTemplateParameter}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public TemplateParameter getOwningParameter() {
@@ -169,7 +158,6 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	 * @generated
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
-		// TODO: test this subset setter
 		EObject oldOwningParameter = eContainer;
 		if (eContainer != newOwningParameter || (eContainerFeatureID != UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER && null != newOwningParameter)) {
 			if (EcoreUtil.isAncestor(this, newOwningParameter)) {
@@ -197,12 +185,9 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getOwningParameter()) {
 			return (Element) getOwningParameter();
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionOccurrenceImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: InteractionOccurrenceImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -111,7 +111,6 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Refers To</b></em>' reference.
 	 * @generated
 	 */
 	public Interaction getRefersTo() {
@@ -129,7 +128,6 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Refers To</b></em>' reference.
 	 * @generated
 	 */
 	public Interaction basicGetRefersTo() {
@@ -151,13 +149,6 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Actual Gate</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getActualGates() {
@@ -201,7 +192,6 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Argument</b></em>' containment reference list.
 	 * @generated
 	 */
 	public EList getArguments() {
@@ -245,13 +235,9 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

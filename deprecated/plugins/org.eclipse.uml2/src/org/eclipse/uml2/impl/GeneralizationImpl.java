@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -119,7 +119,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Substitutable</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isSubstitutable() {
@@ -141,14 +140,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Specific</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Classifier getSpecific() {
@@ -180,13 +171,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>General</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Classifier getGeneral() {
@@ -204,13 +188,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>General</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Classifier basicGetGeneral() {
@@ -232,7 +209,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Generalization Set</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getGeneralizationSets() {
@@ -262,12 +238,9 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getSources() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Source())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getSources());
@@ -288,12 +261,9 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getSpecific()) {
 			return (Element) getSpecific();
 		}
@@ -303,12 +273,9 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getTargets() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getTargets());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: VariableActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: VariableActionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -82,7 +82,6 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Variable</b></em>' reference.
 	 * @generated
 	 */
 	public Variable getVariable() {
@@ -100,7 +99,6 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Variable</b></em>' reference.
 	 * @generated
 	 */
 	public Variable basicGetVariable() {

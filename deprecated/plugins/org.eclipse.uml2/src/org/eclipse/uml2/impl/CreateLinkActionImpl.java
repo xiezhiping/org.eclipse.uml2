@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,7 +66,7 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 	}
 
 	public EList getEndData() {
-		// TODO: test this redefinition getter
+
 		if (endData == null) {
 			endData = new EObjectContainmentEList(LinkEndCreationData.class, this, UML2Package.CREATE_LINK_ACTION__END_DATA);
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: VertexImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -99,13 +99,6 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Container</b></em>' container reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Region getContainer() {
@@ -137,7 +130,6 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getOutgoings() {
@@ -167,7 +159,6 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Incoming</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getIncomings() {
@@ -197,12 +188,9 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Owner</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this redefined basic getter
 		return (Element) getContainer();
 	}
 

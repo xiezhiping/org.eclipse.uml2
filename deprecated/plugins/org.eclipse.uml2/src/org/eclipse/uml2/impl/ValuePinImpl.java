@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -85,7 +85,6 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
 	 * @generated
 	 */
 	public ValueSpecification getValue() {
@@ -217,6 +216,10 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 					return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
 				case UML2Package.VALUE_PIN__UPPER_BOUND:
 					return basicSetUpperBound(null, msgs);
+				case UML2Package.VALUE_PIN__UPPER_VALUE:
+					return basicSetUpperValue(null, msgs);
+				case UML2Package.VALUE_PIN__LOWER_VALUE:
+					return basicSetLowerValue(null, msgs);
 				case UML2Package.VALUE_PIN__VALUE:
 					return basicSetValue(null, msgs);
 				default:
@@ -307,6 +310,18 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			case UML2Package.VALUE_PIN__SELECTION:
 				if (resolve) return getSelection();
 				return basicGetSelection();
+			case UML2Package.VALUE_PIN__IS_ORDERED:
+				return isOrdered() ? Boolean.TRUE : Boolean.FALSE;
+			case UML2Package.VALUE_PIN__IS_UNIQUE:
+				return isUnique() ? Boolean.TRUE : Boolean.FALSE;
+			case UML2Package.VALUE_PIN__LOWER:
+				return new Integer(getLower());
+			case UML2Package.VALUE_PIN__UPPER:
+				return new Integer(getUpper());
+			case UML2Package.VALUE_PIN__UPPER_VALUE:
+				return getUpperValue();
+			case UML2Package.VALUE_PIN__LOWER_VALUE:
+				return getLowerValue();
 			case UML2Package.VALUE_PIN__VALUE:
 				return getValue();
 		}
@@ -393,6 +408,18 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			case UML2Package.VALUE_PIN__SELECTION:
 				setSelection((Behavior)newValue);
 				return;
+			case UML2Package.VALUE_PIN__IS_ORDERED:
+				setIsOrdered(((Boolean)newValue).booleanValue());
+				return;
+			case UML2Package.VALUE_PIN__IS_UNIQUE:
+				setIsUnique(((Boolean)newValue).booleanValue());
+				return;
+			case UML2Package.VALUE_PIN__UPPER_VALUE:
+				setUpperValue((ValueSpecification)newValue);
+				return;
+			case UML2Package.VALUE_PIN__LOWER_VALUE:
+				setLowerValue((ValueSpecification)newValue);
+				return;
 			case UML2Package.VALUE_PIN__VALUE:
 				setValue((ValueSpecification)newValue);
 				return;
@@ -470,6 +497,18 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			case UML2Package.VALUE_PIN__SELECTION:
 				setSelection((Behavior)null);
 				return;
+			case UML2Package.VALUE_PIN__IS_ORDERED:
+				setIsOrdered(IS_ORDERED_EDEFAULT);
+				return;
+			case UML2Package.VALUE_PIN__IS_UNIQUE:
+				setIsUnique(IS_UNIQUE_EDEFAULT);
+				return;
+			case UML2Package.VALUE_PIN__UPPER_VALUE:
+				setUpperValue((ValueSpecification)null);
+				return;
+			case UML2Package.VALUE_PIN__LOWER_VALUE:
+				setLowerValue((ValueSpecification)null);
+				return;
 			case UML2Package.VALUE_PIN__VALUE:
 				setValue((ValueSpecification)null);
 				return;
@@ -536,6 +575,18 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 				return inState != null && !inState.isEmpty();
 			case UML2Package.VALUE_PIN__SELECTION:
 				return selection != null;
+			case UML2Package.VALUE_PIN__IS_ORDERED:
+				return isOrdered != IS_ORDERED_EDEFAULT;
+			case UML2Package.VALUE_PIN__IS_UNIQUE:
+				return isUnique != IS_UNIQUE_EDEFAULT;
+			case UML2Package.VALUE_PIN__LOWER:
+				return getLower() != 1;
+			case UML2Package.VALUE_PIN__UPPER:
+				return getUpper() != 1;
+			case UML2Package.VALUE_PIN__UPPER_VALUE:
+				return upperValue != null;
+			case UML2Package.VALUE_PIN__LOWER_VALUE:
+				return lowerValue != null;
 			case UML2Package.VALUE_PIN__VALUE:
 				return value != null;
 		}

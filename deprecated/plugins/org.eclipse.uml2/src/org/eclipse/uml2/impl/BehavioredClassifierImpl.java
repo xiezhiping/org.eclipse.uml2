@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -37,6 +38,7 @@ import org.eclipse.uml2.StateMachine;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.Trigger;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
@@ -53,6 +55,7 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  *   <li>{@link org.eclipse.uml2.impl.BehavioredClassifierImpl#getOwnedBehaviors <em>Owned Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioredClassifierImpl#getClassifierBehavior <em>Classifier Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioredClassifierImpl#getImplementations <em>Implementation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioredClassifierImpl#getOwnedTriggers <em>Owned Trigger</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioredClassifierImpl#getOwnedStateMachines <em>Owned State Machine</em>}</li>
  * </ul>
  * </p>
@@ -98,6 +101,16 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	protected EList implementation = null;
 
 	/**
+	 * The cached value of the '{@link #getOwnedTriggers() <em>Owned Trigger</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTriggers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedTrigger = null;
+
+	/**
 	 * The cached value of the '{@link #getOwnedStateMachines() <em>Owned State Machine</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,17 +141,9 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Behavior</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedBehaviors() {
-		// TODO: test this superset getter
 		if (ownedBehavior == null) {
 			ownedBehavior = new SupersetEObjectContainmentWithInverseEList(Behavior.class, this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, new int[] {UML2Package.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR}, UML2Package.BEHAVIOR__CONTEXT);
 		}
@@ -180,13 +185,6 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Classifier Behavior</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Behavior getClassifierBehavior() {
@@ -199,7 +197,6 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public void setClassifierBehavior(Behavior newClassifierBehavior) {
-		// TODO: test this subset setter
 		if (null != newClassifierBehavior && !getOwnedBehaviors().contains(newClassifierBehavior)) {
 			getOwnedBehaviors().add(newClassifierBehavior);
 		}
@@ -214,18 +211,9 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Implementation</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getImplementations() {
-		// TODO: test this subset getter
 		if (implementation == null) {
 			implementation = new SubsetEObjectContainmentWithInverseEList(Implementation.class, this, UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, new int[] {UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY}, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER);
 		}
@@ -267,13 +255,49 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned State Machine</b></em>' containment reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors}</li>
-	 * </ul>
-	 * </p>
+	 * @generated
+	 */
+	public EList getOwnedTriggers() {
+		if (ownedTrigger == null) {
+			ownedTrigger = new EObjectContainmentEList(Trigger.class, this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER);
+		}
+		return ownedTrigger;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+     */
+    public Trigger getOwnedTrigger(String unqualifiedName) {
+    	for (Iterator i = getOwnedTriggers().iterator(); i.hasNext(); ) {
+    		Trigger namedOwnedTrigger = (Trigger) i.next();
+    		
+    		if (unqualifiedName.equals(namedOwnedTrigger.getName())) {
+    			return namedOwnedTrigger;
+    		}
+    	}
+    	
+    	return null;
+    }
+      
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Trigger createOwnedTrigger(EClass eClass) {
+		Trigger newOwnedTrigger = (Trigger) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER, null, newOwnedTrigger));
+		}
+		getOwnedTriggers().add(newOwnedTrigger);
+		return newOwnedTrigger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getOwnedStateMachines() {
@@ -317,17 +341,14 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavioredClassifier().getEAllOperations().get(69))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getOwnedBehaviors());
+			union.addAll(getOwnedTriggers());
 			getCacheAdapter().put(
 				this,
 				UML2Package.eINSTANCE.getBehavioredClassifier().getEAllOperations().get(69),
@@ -339,13 +360,9 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -364,13 +381,9 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client Dependency</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Dependency}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Dependency#getClients <em>Client</em>}'.
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		// TODO: test this superset getter
 		if (clientDependency == null) {
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY, new int[] {UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION, UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION}, UML2Package.DEPENDENCY__CLIENT);
 		}
@@ -416,6 +429,8 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.BEHAVIORED_CLASSIFIER__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION:
@@ -469,12 +484,16 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.BEHAVIORED_CLASSIFIER__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE:
 					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				default:
@@ -575,6 +594,8 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 				return getPowertypeExtents();
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.BEHAVIORED_CLASSIFIER__USE_CASE:
+				return getUseCases();
 			case UML2Package.BEHAVIORED_CLASSIFIER__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.BEHAVIORED_CLASSIFIER__OCCURRENCE:
@@ -585,6 +606,8 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 				return getClassifierBehavior();
 			case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION:
 				return getImplementations();
+			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER:
+				return getOwnedTriggers();
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE:
 				return getOwnedStateMachines();
 		}
@@ -673,6 +696,10 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.BEHAVIORED_CLASSIFIER__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.BEHAVIORED_CLASSIFIER__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -690,6 +717,10 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION:
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
+				return;
+			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
 				return;
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
@@ -769,6 +800,9 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.BEHAVIORED_CLASSIFIER__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.BEHAVIORED_CLASSIFIER__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -783,6 +817,9 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 				return;
 			case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION:
 				getImplementations().clear();
+				return;
+			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
 				return;
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
@@ -862,6 +899,8 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.BEHAVIORED_CLASSIFIER__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__REPRESENTATION:
 				return representation != null;
 			case UML2Package.BEHAVIORED_CLASSIFIER__OCCURRENCE:
@@ -872,6 +911,8 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 				return classifierBehavior != null;
 			case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION:
 				return implementation != null && !implementation.isEmpty();
+			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE:
 				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -103,11 +103,9 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Related Element</b></em>' reference list, a derived union.
 	 * @generated
 	 */
 	public EList getRelatedElementsGen() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRelationship_RelatedElement())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -131,17 +129,9 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference list, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Relationship#getRelatedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getSourcesGen() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Source())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -156,7 +146,6 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	}
 
 	public EList getSources() {
-		// TODO: test this union getter
 		Set union = new HashSet();
 		union.addAll(getClients());
 		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
@@ -165,17 +154,9 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference list, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Relationship#getRelatedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getTargetsGen() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -190,7 +171,6 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	}
 
 	public EList getTargets() {
-		// TODO: test this union getter
 		Set union = new HashSet();
 		union.addAll(getSuppliers());
 		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
@@ -199,7 +179,6 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getClients() {
@@ -229,7 +208,6 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Supplier</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getSuppliers() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -107,7 +107,6 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Combine Duplicate</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isCombineDuplicate() {
@@ -129,13 +128,6 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Join Spec</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getJoinSpec() {
@@ -193,13 +185,9 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

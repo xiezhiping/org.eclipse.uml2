@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: IntervalImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: IntervalImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -88,18 +88,11 @@ public class IntervalImpl extends ValueSpecificationImpl implements Interval {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Min</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getMinsGen() {
-		// TODO: implement this redefined getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getMins() {
-		// TODO: test this redefined getter
-		if (_min == null) {
+
+		if (null == _min) {
 			_min = new EObjectResolvingEList(ValueSpecification.class, this, UML2Package.INTERVAL__MIN);
 		}
 		return _min;
@@ -125,18 +118,11 @@ public class IntervalImpl extends ValueSpecificationImpl implements Interval {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Max</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getMaxesGen() {
-		// TODO: implement this redefined getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getMaxes() {
-		// TODO: test this redefined getter
-		if (_max == null) {
+
+		if (null == _max) {
 			_max = new EObjectResolvingEList(ValueSpecification.class, this, UML2Package.INTERVAL__MAX);
 		}
 		return _max;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -143,12 +143,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	protected InterruptibleActivityRegion interrupts = null;
 
 	/**
-	 * The cached value of the '{@link #getInStructuredNode() <em>In Structured Node</em>}' reference.
-	 * @see #getInStructuredNode()
-	 */
-	protected StructuredActivityNode _inStructuredNode = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -169,13 +163,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Activity</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Activity getActivity() {
@@ -207,7 +194,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * @generated
 	 */
 	public ActivityNode getSource() {
@@ -225,7 +211,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * @generated
 	 */
 	public ActivityNode basicGetSource() {
@@ -269,7 +254,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
 	 * @generated
 	 */
 	public ActivityNode getTarget() {
@@ -287,7 +271,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
 	 * @generated
 	 */
 	public ActivityNode basicGetTarget() {
@@ -331,11 +314,9 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>In Group</b></em>' reference list, a derived union.
 	 * @generated
 	 */
 	public EList getInGroups() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getActivityEdge_InGroup())) {
 			Set union = new LinkedHashSet();
 			if (null != getInStructuredNode()) {
@@ -356,13 +337,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getGuard() {
@@ -420,13 +394,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
@@ -456,13 +423,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>In Structured Node</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityEdge#getInGroups}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public StructuredActivityNode getInStructuredNode() {
@@ -494,13 +454,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>In Partition</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityEdge#getInGroups}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getInPartitions() {
@@ -530,13 +483,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Weight</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getWeight() {
@@ -594,7 +540,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Interrupts</b></em>' reference.
 	 * @generated
 	 */
 	public InterruptibleActivityRegion getInterrupts() {
@@ -612,7 +557,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Interrupts</b></em>' reference.
 	 * @generated
 	 */
 	public InterruptibleActivityRegion basicGetInterrupts() {
@@ -656,12 +600,9 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getActivity()) {
 			return (Element) getActivity();
 		}
@@ -671,13 +612,9 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

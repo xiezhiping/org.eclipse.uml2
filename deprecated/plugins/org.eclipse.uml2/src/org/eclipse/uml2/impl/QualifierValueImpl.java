@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -89,7 +89,6 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Qualifier</b></em>' reference.
 	 * @generated
 	 */
 	public Property getQualifier() {
@@ -107,7 +106,6 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Qualifier</b></em>' reference.
 	 * @generated
 	 */
 	public Property basicGetQualifier() {
@@ -129,7 +127,6 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Value</b></em>' reference.
 	 * @generated
 	 */
 	public InputPin getValue() {
@@ -147,7 +144,6 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Value</b></em>' reference.
 	 * @generated
 	 */
 	public InputPin basicGetValue() {

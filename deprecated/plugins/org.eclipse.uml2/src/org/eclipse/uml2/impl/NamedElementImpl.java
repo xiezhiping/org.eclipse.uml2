@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.5 2004/05/14 14:14:19 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.6 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -145,7 +145,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * @generated
 	 */
 	public String getName() {
@@ -167,24 +166,15 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Qualified Name</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public String getQualifiedNameGen() {
-		// TODO: implement this derived getter to return the 'Qualified Name' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public String getQualifiedName() {
-		// TODO: test this derived getter
 		return qualifiedName();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
@@ -206,7 +196,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client Dependency</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getClientDependencies() {
@@ -236,13 +225,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Name Expression</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public StringExpression getNameExpression() {
@@ -303,7 +285,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public boolean validateNoName(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.NamedElementOperations.validateNoName(this, diagnostics, context);
 	}
 
@@ -313,7 +294,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public boolean validateQualifiedName(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.NamedElementOperations.validateQualifiedName(this, diagnostics, context);
 	}
 
@@ -323,7 +303,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public List allNamespaces() {
-		// TODO: test this OCL operation
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("allNamespaces", new Class[] {}); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
@@ -343,7 +322,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public boolean isDistinguishableFrom(NamedElement n, Namespace ns) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.NamedElementOperations.isDistinguishableFrom(this, n, ns);
 	}
 
@@ -353,7 +331,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public String separator() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.NamedElementOperations.separator(this);
 	}
 
@@ -363,7 +340,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public String qualifiedName() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.NamedElementOperations.qualifiedName(this);
 	}
 
@@ -373,25 +349,15 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.NamedElementOperations.validateVisibilityNeedsOwnership(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Namespace getNamespaceGen() {
-		// TODO: test this union getter
 		return null;
 	}
 
@@ -402,12 +368,9 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getNamespace()) {
 			return (Element) getNamespace();
 		}
@@ -417,13 +380,9 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

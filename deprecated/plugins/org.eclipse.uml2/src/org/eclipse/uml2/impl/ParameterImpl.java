@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.5 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.6 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -275,7 +275,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
 	 * @generated
 	 */
 	public Type getType() {
@@ -286,7 +285,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
 	 * @generated
 	 */
 	public Type basicGetType() {
@@ -310,7 +308,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Ordered</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isOrdered() {
@@ -334,7 +331,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Unique</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isUnique() {
@@ -358,47 +354,24 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Lower</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public int getLowerGen() {
-		// TODO: implement this derived getter to return the 'Lower' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public int getLower() {
-		// TODO: test this derived getter
 		return lower();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Upper</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public int getUpperGen() {
-		// TODO: implement this derived getter to return the 'Upper' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public int getUpper() {
-		// TODO: test this derived getter
 		return upper();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Upper Value</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
@@ -456,13 +429,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Lower Value</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
@@ -520,24 +486,15 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Default</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public String getDefaultGen() {
-		// TODO: implement this derived getter to return the 'Default' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public String getDefault() {
-		// TODO: test this derived getter
 		return org.eclipse.uml2.internal.operation.ParameterOperations.getDefault(this);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Direction</b></em>' attribute.
 	 * @generated
 	 */
 	public ParameterDirectionKind getDirection() {
@@ -559,7 +516,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Exception</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isException() {
@@ -581,7 +537,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Stream</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isStream() {
@@ -603,7 +558,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Effect</b></em>' attribute.
 	 * @generated
 	 */
 	public ParameterEffectKind getEffect() {
@@ -625,13 +579,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Operation</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Operation getOperation() {
@@ -663,13 +610,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getDefaultValue() {
@@ -727,7 +667,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Parameter Set</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getParameterSets() {
@@ -760,7 +699,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public int lowerBound() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.lowerBound(this);
 	}
 
@@ -770,7 +708,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public int upperBound() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.upperBound(this);
 	}
 
@@ -780,7 +717,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean isMultivalued() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.isMultivalued(this);
 	}
 
@@ -790,7 +726,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean includesCardinality(int C) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.includesCardinality(this, C);
 	}
 
@@ -800,7 +735,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean includesMultiplicity(MultiplicityElement M) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.includesMultiplicity(this, M);
 	}
 
@@ -810,7 +744,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGt0(this, diagnostics, context);
 	}
 
@@ -820,7 +753,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean validateLowerGe0(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerGe0(this, diagnostics, context);
 	}
 
@@ -830,7 +762,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, context);
 	}
 
@@ -840,7 +771,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, context);
 	}
 
@@ -850,7 +780,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, context);
 	}
 
@@ -860,7 +789,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public int lower() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.lower(this);
 	}
 
@@ -870,19 +798,15 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public int upper() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.upper(this);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * @generated
 	 */
 	public Namespace getNamespace() {
-		// TODO: test this union getter
 		if (null != getOperation()) {
 			return (Namespace) getOperation();
 		}
@@ -892,13 +816,9 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

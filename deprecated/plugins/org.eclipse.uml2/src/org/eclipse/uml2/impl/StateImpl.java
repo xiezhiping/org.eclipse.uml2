@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateImpl.java,v 1.4 2004/05/14 14:14:20 khussey Exp $
+ * $Id: StateImpl.java,v 1.5 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -258,7 +258,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Leaf</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isLeaf() {
@@ -280,13 +279,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Container</b></em>' container reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Region getContainer() {
@@ -318,7 +310,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getOutgoings() {
@@ -348,7 +339,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Incoming</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getIncomings() {
@@ -378,75 +368,42 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Is Composite</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public boolean isCompositeGen() {
-		// TODO: implement this derived getter to return the 'Is Composite' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public boolean isComposite() {
-		// TODO: test this derived getter
 		return getRegions().size() > 0;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Is Orthogonal</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public boolean isOrthogonalGen() {
-		// TODO: implement this derived getter to return the 'Is Orthogonal' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public boolean isOrthogonal() {
-		// TODO: test this derived getter
 		return getRegions().size() > 1;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Is Simple</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public boolean isSimpleGen() {
-		// TODO: implement this derived getter to return the 'Is Simple' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public boolean isSimple() {
-		// TODO: test this derived getter
 		return getRegions().isEmpty();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Is Submachine State</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public boolean isSubmachineStateGen() {
-		// TODO: implement this derived getter to return the 'Is Submachine State' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public boolean isSubmachineState() {
-		// TODO: test this derived getter
 		return null != getSubmachine();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Submachine</b></em>' reference.
 	 * @generated
 	 */
 	public StateMachine getSubmachine() {
@@ -464,7 +421,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Submachine</b></em>' reference.
 	 * @generated
 	 */
 	public StateMachine basicGetSubmachine() {
@@ -486,13 +442,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Connection</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getConnections() {
@@ -536,13 +485,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined State</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public State getRedefinedState() {
@@ -560,13 +502,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined State</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public State basicGetRedefinedState() {
@@ -588,7 +523,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Deferrable Trigger</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getDeferrableTriggers() {
@@ -618,13 +552,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Region</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRegions() {
@@ -668,13 +595,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Entry</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Activity getEntry() {
@@ -732,13 +652,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Exit</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Activity getExit() {
@@ -796,13 +709,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Do Activity</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Activity getDoActivity() {
@@ -860,13 +766,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>State Invariant</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Constraint getStateInvariant() {
@@ -927,7 +826,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
@@ -937,7 +835,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
 	}
 
@@ -947,7 +844,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
 
@@ -957,40 +853,23 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Owner</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this redefined basic getter
 		return (Element) getContainer();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Redefinition Context</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinitionContexts}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getRedefinitionContextsGen() {
-		// TODO: implement this derived redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getRedefinitionContexts() {
 		// TODO: implement this derived redefinition getter
 		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), 0, Collections.EMPTY_LIST.toArray());
@@ -999,25 +878,18 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Redefined Element</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		// TODO: test this redefined getter
 		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -1048,13 +920,9 @@ public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getState().getEAllOperations().get(49))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());

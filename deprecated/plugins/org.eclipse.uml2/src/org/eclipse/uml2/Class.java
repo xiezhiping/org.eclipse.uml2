@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Class.java,v 1.4 2004/05/13 03:16:20 khussey Exp $
+ * $Id: Class.java,v 1.5 2004/05/20 03:20:08 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model 
  * @generated
  */
-public interface Class extends EncapsulatedClassifier, BehavioredClassifier{
+public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

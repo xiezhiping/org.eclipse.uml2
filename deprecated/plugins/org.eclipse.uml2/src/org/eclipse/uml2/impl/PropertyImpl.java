@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.6 2004/05/14 14:14:19 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.7 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -59,7 +59,6 @@ import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
 import org.eclipse.uml2.internal.operation.PropertyOperations;
 import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
@@ -265,7 +264,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
@@ -276,7 +274,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
@@ -289,7 +286,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplateParameter(TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		// TODO: test this superset basic setter
 		TemplateParameter oldTemplateParameter = templateParameter;
 		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
@@ -330,14 +326,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ParameterableElement#getTemplateParameter}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public TemplateParameter getOwningParameter() {
@@ -353,7 +341,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
-		// TODO: test this subset setter
 		EObject oldOwningParameter = eContainer;
 		if (eContainer != newOwningParameter || (eContainerFeatureID != UML2Package.PROPERTY__OWNING_PARAMETER && null != newOwningParameter)) {
 			if (EcoreUtil.isAncestor(this, newOwningParameter)) {
@@ -381,7 +368,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>End</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getEnds() {
@@ -394,18 +380,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Deployment</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getDeployments() {
-		// TODO: test this subset getter
 		if (deployment == null) {
 			deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.PROPERTY__DEPLOYMENT, new int[] {UML2Package.PROPERTY__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION);
 		}
@@ -447,17 +424,10 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Deployed Element</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getDeployedElementsGen() {
-		// TODO: implement this derived getter to return the 'Deployed Element' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getDeployedElements() {
-		// TODO: test this derived getter
+
 	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement())) {
 	        Set deployedElement = new HashSet();
 	        
@@ -505,41 +475,24 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Default</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public String getDefaultGen() {
-		// TODO: implement this derived getter to return the 'Default' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public String getDefault() {
-		// TODO: test this derived getter
 		return org.eclipse.uml2.internal.operation.PropertyOperations.getDefault(this);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Is Composite</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public boolean isCompositeGen() {
-		// TODO: implement this derived getter to return the 'Is Composite' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public boolean isComposite() {
-		// TODO: test this derived getter
 		return AggregationKind.COMPOSITE_LITERAL.equals(getAggregation());
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isDerived() {
@@ -561,7 +514,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Derived Union</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isDerivedUnion() {
@@ -583,7 +535,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Aggregation</b></em>' attribute.
 	 * @generated
 	 */
 	public AggregationKind getAggregation() {
@@ -605,14 +556,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Class </b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public org.eclipse.uml2.Class getClass_() {
@@ -623,31 +566,15 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Class </b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public org.eclipse.uml2.Class basicGetClass_Gen() {
-		// TODO: implement this redefined basic getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public org.eclipse.uml2.Class basicGetClass_() {
-		// TODO: test this redefined basic getter
 		return org.eclipse.uml2.Class.class.isInstance(eContainer) ? (org.eclipse.uml2.Class) eContainer : null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Opposite</b></em>' reference.
 	 * @generated
 	 */
 	public Property getOpposite() {
@@ -658,33 +585,15 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Opposite</b></em>' reference.
-	 * @generated
+	 * @generated NOT
 	 */
-	public Property basicGetOppositeGen() {
-		// TODO: implement this derived basic getter to return the 'Opposite' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public Property basicGetOpposite() {
-		// TODO: test this derived basic getter
 		return opposite();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owning Association</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
-	 *   <li>{@link org.eclipse.uml2.Property#getAssociation}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Association getOwningAssociation() {
@@ -700,7 +609,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setOwningAssociation(Association newOwningAssociation) {
-		// TODO: test this subset setter
 		EObject oldOwningAssociation = eContainer;
 		if (eContainer != newOwningAssociation || (eContainerFeatureID != UML2Package.PROPERTY__OWNING_ASSOCIATION && null != newOwningAssociation)) {
 			if (EcoreUtil.isAncestor(this, newOwningAssociation)) {
@@ -728,13 +636,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Property</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRedefinedProperties() {
@@ -764,7 +665,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Subsetted Property</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getSubsettedProperties() {
@@ -794,14 +694,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Datatype</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public DataType getDatatype() {
@@ -833,7 +725,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Association</b></em>' reference.
 	 * @generated
 	 */
 	public Association getAssociation() {
@@ -844,7 +735,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Association</b></em>' reference.
 	 * @generated
 	 */
 	public Association basicGetAssociation() {
@@ -857,7 +747,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public NotificationChain basicSetAssociation(Association newAssociation, NotificationChain msgs) {
-		// TODO: test this superset basic setter
 		Association oldAssociation = association;
 		association = newAssociation;
 		if (eNotificationRequired()) {
@@ -898,13 +787,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getDefaultValue() {
@@ -962,13 +844,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Qualifier</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getQualifiers() {
@@ -1012,13 +887,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Association End</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Property getAssociationEnd() {
@@ -1050,13 +918,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client Dependency</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Dependency}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Dependency#getClients <em>Client</em>}'.
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		// TODO: test this superset getter
 		if (clientDependency == null) {
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.PROPERTY__CLIENT_DEPENDENCY, new int[] {UML2Package.PROPERTY__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT);
 		}
@@ -1070,7 +934,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.PropertyOperations.validateOppositeIsOtherEnd(this, diagnostics, context);
 	}
 
@@ -1080,7 +943,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public Property opposite() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.PropertyOperations.opposite(this);
 	}
 
@@ -1090,7 +952,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.PropertyOperations.validateMultiplicityOfComposite(this, diagnostics, context);
 	}
 
@@ -1100,7 +961,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateSubsettingContext(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.PropertyOperations.validateSubsettingContext(this, diagnostics, context);
 	}
 
@@ -1110,7 +970,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.PropertyOperations.validateNavigablePropertyRedefinition(this, diagnostics, context);
 	}
 
@@ -1120,7 +979,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateSubsettingRules(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.PropertyOperations.validateSubsettingRules(this, diagnostics, context);
 	}
 
@@ -1130,7 +988,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateNavigableReadonly(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.PropertyOperations.validateNavigableReadonly(this, diagnostics, context);
 	}
 
@@ -1140,7 +997,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.PropertyOperations.validateDerivedUnionIsDerived(this, diagnostics, context);
 	}
 
@@ -1150,7 +1006,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.PropertyOperations.isConsistentWith(this, redefinee);
 	}
 
@@ -1160,7 +1015,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public Set subsettingContext() {
-		// TODO: test this OCL operation
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("subsettingContext", new Class[] {}); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
@@ -1177,55 +1031,32 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Read Only</b></em>' attribute.
-	 * The default value is <code>false</code>.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.StructuralFeature#isReadOnly}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public boolean isReadOnlyGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public boolean isReadOnly() {
-		// TODO: test this redefinition getter
 		return isReadOnly;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public void setIsReadOnlyGen(boolean newIsReadOnly) {
-		// TODO: implement this redefinition setter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public void setIsReadOnly(boolean newIsReadOnly) {
-		// TODO: test this redefinition getter
 		boolean oldIsReadOnly = isReadOnly;
 		isReadOnly = newIsReadOnly;
-		if (eNotificationRequired())
+
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__IS_READ_ONLY, oldIsReadOnly, isReadOnly));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * @generated
 	 */
 	public Namespace getNamespace() {
-		// TODO: test this union getter
 		if (null != getClass_()) {
 			return (Namespace) getClass_();
 		}
@@ -1241,13 +1072,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Featuring Classifier</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Classifier#getFeatures <em>Feature</em>}'.
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeaturingClassifiers());
@@ -1274,12 +1101,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getProperty().getEAllOperations().get(66))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinedElements());
@@ -1295,13 +1119,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -1323,12 +1143,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getAssociationEnd()) {
 			return (Element) getAssociationEnd();
 		}
@@ -2028,24 +1845,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		PropertyOperations.setUnlimitedNaturalDefault(this, value);
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.uml2.MultiplicityElement#setLowerBound(int)
-	 */
-	public void setLowerBound(int value) {
-		MultiplicityElementOperations.setLowerBound(this, value);
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.uml2.MultiplicityElement#setUpperBound(int)
-	 */
-	public void setUpperBound(int value) {
-		MultiplicityElementOperations.setUpperBound(this, value);
-	}
-
 	// <!-- end-custom-operations -->
 
 } //PropertyImpl

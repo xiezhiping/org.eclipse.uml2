@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -103,7 +103,6 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Replace All</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isReplaceAll() {
@@ -125,7 +124,6 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Insert At</b></em>' reference.
 	 * @generated
 	 */
 	public InputPin getInsertAt() {
@@ -143,7 +141,6 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Insert At</b></em>' reference.
 	 * @generated
 	 */
 	public InputPin basicGetInsertAt() {
@@ -165,27 +162,14 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Qualifier</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.QualifierValue}.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.LinkEndData#getQualifiers}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getQualifiersGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getQualifiers() {
-		// TODO: test this redefinition getter
-		if (qualifier == null) {
+
+		if (null == qualifier) {
 			qualifier = new EObjectContainmentEList(QualifierValue.class, this, UML2Package.LINK_END_CREATION_DATA__QUALIFIER);
 		}
+
 		return qualifier;
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StartOwnedBehaviorActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: StartOwnedBehaviorActionImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -86,13 +86,6 @@ public class StartOwnedBehaviorActionImpl extends ActionImpl implements StartOwn
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Object</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getInputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public InputPin getObject() {
@@ -150,12 +143,9 @@ public class StartOwnedBehaviorActionImpl extends ActionImpl implements StartOwn
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Input</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.InputPin}.
 	 * @generated
 	 */
 	public EList getInputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Input())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getInputs());

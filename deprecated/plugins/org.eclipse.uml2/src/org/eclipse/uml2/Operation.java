@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Operation.java,v 1.4 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Operation.java,v 1.5 2004/05/20 03:20:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -174,7 +174,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	void setDatatype(DataType value);
 
 	/**
-	 * Returns the value of the '<em><b>Precondition</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Precondition</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Constraint}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -182,15 +182,15 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Precondition</em>' containment reference list.
+	 * @return the value of the '<em>Precondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Precondition()
-	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getPreconditions();
 
     /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified name from the '<em><b>Precondition</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified name from the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Constraint} to retrieve.
@@ -200,19 +200,8 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
      */
     Constraint getPrecondition(String unqualifiedName);
       
-    /**
-     * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Precondition</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Constraint} to create.
-	 * @return The new {@link org.eclipse.uml2.Constraint}.
-	 * @see #getPreconditions()
-	 * @generated
-     */
-    Constraint createPrecondition(EClass eClass);
-
 	/**
-	 * Returns the value of the '<em><b>Postcondition</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Postcondition</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Constraint}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -220,15 +209,15 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Postcondition</em>' containment reference list.
+	 * @return the value of the '<em>Postcondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Postcondition()
-	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getPostconditions();
 
     /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified name from the '<em><b>Postcondition</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified name from the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Constraint} to retrieve.
@@ -238,17 +227,6 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
      */
     Constraint getPostcondition(String unqualifiedName);
       
-    /**
-     * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Postcondition</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Constraint} to create.
-	 * @return The new {@link org.eclipse.uml2.Constraint}.
-	 * @see #getPostconditions()
-	 * @generated
-     */
-    Constraint createPostcondition(EClass eClass);
-
 	/**
 	 * Returns the value of the '<em><b>Redefined Operation</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Operation}.
@@ -277,42 +255,31 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
     Operation getRedefinedOperation(String unqualifiedName);
       
 	/**
-	 * Returns the value of the '<em><b>Body Condition</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Body Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Body Condition</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Body Condition</em>' containment reference.
+	 * @return the value of the '<em>Body Condition</em>' reference.
 	 * @see #setBodyCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getOperation_BodyCondition()
-	 * @model containment="true"
+	 * @model resolveProxies="false" volatile="true"
 	 * @generated
 	 */
 	Constraint getBodyCondition();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.Operation#getBodyCondition <em>Body Condition</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.Operation#getBodyCondition <em>Body Condition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Body Condition</em>' containment reference.
+	 * @param value the new value of the '<em>Body Condition</em>' reference.
 	 * @see #getBodyCondition()
 	 * @generated
 	 */
 	void setBodyCondition(Constraint value);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Body Condition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Constraint} to create.
-	 * @return The new {@link org.eclipse.uml2.Constraint}.
-	 * @see #getBodyCondition()
-	 * @generated
-     */
-    Constraint createBodyCondition(EClass eClass);
-     
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -531,6 +498,14 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @generated
 	 */
 	EList getOwnedMembers();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model parameters=""
+	 * @generated
+	 */
+	EList getOwnedRules();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -81,7 +81,6 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Signal</b></em>' reference.
 	 * @generated
 	 */
 	public Signal getSignal() {
@@ -99,7 +98,6 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Signal</b></em>' reference.
 	 * @generated
 	 */
 	public Signal basicGetSignal() {

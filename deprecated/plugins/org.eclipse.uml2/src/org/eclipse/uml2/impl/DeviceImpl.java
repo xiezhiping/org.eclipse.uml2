@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeviceImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
+ * $Id: DeviceImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -101,6 +101,8 @@ public class DeviceImpl extends NodeImpl implements Device {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.DEVICE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.DEVICE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.DEVICE__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.DEVICE__IMPLEMENTATION:
@@ -158,20 +160,24 @@ public class DeviceImpl extends NodeImpl implements Device {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.DEVICE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.DEVICE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.DEVICE__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+				case UML2Package.DEVICE__OWNED_BEHAVIOR:
+					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+				case UML2Package.DEVICE__IMPLEMENTATION:
+					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.DEVICE__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+				case UML2Package.DEVICE__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.DEVICE__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				case UML2Package.DEVICE__OWNED_CONNECTOR:
 					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
 				case UML2Package.DEVICE__OWNED_PORT:
 					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.DEVICE__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.DEVICE__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.DEVICE__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.DEVICE__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
 				case UML2Package.DEVICE__NESTED_CLASSIFIER:
@@ -280,10 +286,22 @@ public class DeviceImpl extends NodeImpl implements Device {
 				return getPowertypeExtents();
 			case UML2Package.DEVICE__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.DEVICE__USE_CASE:
+				return getUseCases();
 			case UML2Package.DEVICE__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.DEVICE__OCCURRENCE:
 				return getOccurrences();
+			case UML2Package.DEVICE__OWNED_BEHAVIOR:
+				return getOwnedBehaviors();
+			case UML2Package.DEVICE__CLASSIFIER_BEHAVIOR:
+				return getClassifierBehavior();
+			case UML2Package.DEVICE__IMPLEMENTATION:
+				return getImplementations();
+			case UML2Package.DEVICE__OWNED_TRIGGER:
+				return getOwnedTriggers();
+			case UML2Package.DEVICE__OWNED_STATE_MACHINE:
+				return getOwnedStateMachines();
 			case UML2Package.DEVICE__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 			case UML2Package.DEVICE__PART:
@@ -294,14 +312,6 @@ public class DeviceImpl extends NodeImpl implements Device {
 				return getOwnedConnectors();
 			case UML2Package.DEVICE__OWNED_PORT:
 				return getOwnedPorts();
-			case UML2Package.DEVICE__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.DEVICE__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.DEVICE__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.DEVICE__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.DEVICE__OWNED_OPERATION:
 				return getOwnedOperations();
 			case UML2Package.DEVICE__SUPER_CLASS:
@@ -406,24 +416,16 @@ public class DeviceImpl extends NodeImpl implements Device {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.DEVICE__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.DEVICE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
 			case UML2Package.DEVICE__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.DEVICE__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection)newValue);
-				return;
-			case UML2Package.DEVICE__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection)newValue);
-				return;
-			case UML2Package.DEVICE__OWNED_PORT:
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.DEVICE__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -436,9 +438,25 @@ public class DeviceImpl extends NodeImpl implements Device {
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
 				return;
+			case UML2Package.DEVICE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
+				return;
 			case UML2Package.DEVICE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
 				getOwnedStateMachines().addAll((Collection)newValue);
+				return;
+			case UML2Package.DEVICE__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				getOwnedAttributes().addAll((Collection)newValue);
+				return;
+			case UML2Package.DEVICE__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				getOwnedConnectors().addAll((Collection)newValue);
+				return;
+			case UML2Package.DEVICE__OWNED_PORT:
+				getOwnedPorts().clear();
+				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.DEVICE__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -537,20 +555,14 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.DEVICE__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.DEVICE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
 			case UML2Package.DEVICE__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.DEVICE__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				return;
-			case UML2Package.DEVICE__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				return;
-			case UML2Package.DEVICE__OWNED_PORT:
-				getOwnedPorts().clear();
 				return;
 			case UML2Package.DEVICE__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -561,8 +573,20 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__IMPLEMENTATION:
 				getImplementations().clear();
 				return;
+			case UML2Package.DEVICE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				return;
 			case UML2Package.DEVICE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
+				return;
+			case UML2Package.DEVICE__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				return;
+			case UML2Package.DEVICE__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				return;
+			case UML2Package.DEVICE__OWNED_PORT:
+				getOwnedPorts().clear();
 				return;
 			case UML2Package.DEVICE__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -657,12 +681,24 @@ public class DeviceImpl extends NodeImpl implements Device {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.DEVICE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.DEVICE__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.DEVICE__REPRESENTATION:
 				return representation != null;
 			case UML2Package.DEVICE__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
+			case UML2Package.DEVICE__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.DEVICE__CLASSIFIER_BEHAVIOR:
+				return classifierBehavior != null;
+			case UML2Package.DEVICE__IMPLEMENTATION:
+				return implementation != null && !implementation.isEmpty();
+			case UML2Package.DEVICE__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
+			case UML2Package.DEVICE__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.DEVICE__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return !getOwnedAttributes().isEmpty();
 			case UML2Package.DEVICE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.DEVICE__ROLE:
@@ -671,14 +707,6 @@ public class DeviceImpl extends NodeImpl implements Device {
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.DEVICE__OWNED_PORT:
 				return ownedPort != null && !ownedPort.isEmpty();
-			case UML2Package.DEVICE__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.DEVICE__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.DEVICE__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.DEVICE__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.DEVICE__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.DEVICE__SUPER_CLASS:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.4 2004/05/14 14:14:20 khussey Exp $
+ * $Id: RegionImpl.java,v 1.5 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -25,7 +25,6 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -161,7 +160,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Leaf</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isLeaf() {
@@ -183,39 +181,11 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Subvertex</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
-	public EList getSubverticesGen() {
-		if (subvertex == null) {
-			subvertex = new EObjectContainmentWithInverseEList(Vertex.class, this, UML2Package.REGION__SUBVERTEX, UML2Package.VERTEX__CONTAINER);
-		}
-		return subvertex;
-	}
-
 	public EList getSubvertices() {
 		if (subvertex == null) {
-			subvertex = new EObjectContainmentWithInverseEList(Vertex.class, this, UML2Package.REGION__SUBVERTEX, UML2Package.VERTEX__CONTAINER) {
-				public boolean contains(Object object) {
-					if (isEObject() && size > 4 && isContainment() && object instanceof EObject) {
-						InternalEObject eObject = (InternalEObject) object;
-						int baseContainerFeatureID = eObject.eBaseStructuralFeatureID(eObject.eContainerFeatureID(), getFeatureType().getInstanceClass());
-
-						return eObject.eContainer() == owner
-							&& (hasNavigableInverse()
-								? baseContainerFeatureID == getInverseFeatureID()
-								: InternalEObject.EOPPOSITE_FEATURE_BASE - baseContainerFeatureID == getFeatureID());
-					} else {
-						return super.contains(object);
-					}
-				}
-			};
+			subvertex = new EObjectContainmentWithInverseEList(Vertex.class, this, UML2Package.REGION__SUBVERTEX, UML2Package.VERTEX__CONTAINER);
 		}
 		return subvertex;
 	}
@@ -254,13 +224,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Transition</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getTransitions() {
@@ -304,13 +267,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>State Machine</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public StateMachine getStateMachine() {
@@ -342,13 +298,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>State</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public State getState() {
@@ -380,13 +329,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Extended Region</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Region getExtendedRegion() {
@@ -404,13 +346,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Extended Region</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Region basicGetExtendedRegion() {
@@ -435,7 +370,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
@@ -445,7 +379,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
 	}
 
@@ -455,7 +388,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
 
@@ -465,28 +397,14 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Redefinition Context</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinitionContexts}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getRedefinitionContextsGen() {
-		// TODO: implement this derived redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getRedefinitionContexts() {
 		// TODO: implement this derived redefinition getter
 		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), 0, Collections.EMPTY_LIST.toArray());
@@ -495,25 +413,18 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Redefined Element</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		// TODO: test this redefined getter
 		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -533,12 +444,9 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * @generated
 	 */
 	public Namespace getNamespace() {
-		// TODO: test this union getter
 		if (null != getStateMachine()) {
 			return (Namespace) getStateMachine();
 		}

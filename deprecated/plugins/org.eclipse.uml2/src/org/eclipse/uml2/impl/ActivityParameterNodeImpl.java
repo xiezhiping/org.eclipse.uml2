@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -86,7 +86,6 @@ public class ActivityParameterNodeImpl extends ObjectNodeImpl implements Activit
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public Parameter getParameter() {
@@ -104,7 +103,6 @@ public class ActivityParameterNodeImpl extends ObjectNodeImpl implements Activit
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public Parameter basicGetParameter() {

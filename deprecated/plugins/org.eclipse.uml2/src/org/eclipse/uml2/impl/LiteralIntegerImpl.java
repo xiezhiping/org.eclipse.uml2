@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralIntegerImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: LiteralIntegerImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -91,7 +91,6 @@ public class LiteralIntegerImpl extends LiteralSpecificationImpl implements Lite
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * @generated
 	 */
 	public int getValue() {
@@ -116,7 +115,6 @@ public class LiteralIntegerImpl extends LiteralSpecificationImpl implements Lite
 	 * @generated
 	 */
 	public boolean isComputable() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.LiteralIntegerOperations.isComputable(this);
 	}
 
@@ -126,7 +124,6 @@ public class LiteralIntegerImpl extends LiteralSpecificationImpl implements Lite
 	 * @generated
 	 */
 	public int integerValue() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.LiteralIntegerOperations.integerValue(this);
 	}
 

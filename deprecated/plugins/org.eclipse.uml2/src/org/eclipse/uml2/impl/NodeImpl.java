@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
+ * $Id: NodeImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -110,18 +110,9 @@ public class NodeImpl extends ClassImpl implements Node {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Deployment</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getDeployments() {
-		// TODO: test this subset getter
 		if (deployment == null) {
 			deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.NODE__DEPLOYMENT, new int[] {UML2Package.NODE__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION);
 		}
@@ -163,17 +154,10 @@ public class NodeImpl extends ClassImpl implements Node {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Deployed Element</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getDeployedElementsGen() {
-		// TODO: implement this derived getter to return the 'Deployed Element' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getDeployedElements() {
-		// TODO: test this derived getter
+
 	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement())) {
 	        Set deployedElement = new HashSet();
 	        
@@ -221,13 +205,6 @@ public class NodeImpl extends ClassImpl implements Node {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Nested Node</b></em>' containment reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Class#getNestedClassifiers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getNestedNodes() {
@@ -271,13 +248,9 @@ public class NodeImpl extends ClassImpl implements Node {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -296,13 +269,9 @@ public class NodeImpl extends ClassImpl implements Node {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client Dependency</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Dependency}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Dependency#getClients <em>Client</em>}'.
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		// TODO: test this superset getter
 		if (clientDependency == null) {
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.NODE__CLIENT_DEPENDENCY, new int[] {UML2Package.NODE__SUBSTITUTION, UML2Package.NODE__IMPLEMENTATION, UML2Package.NODE__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT);
 		}
@@ -313,12 +282,9 @@ public class NodeImpl extends ClassImpl implements Node {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Nested Classifier</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
 	 * @generated
 	 */
 	public EList getNestedClassifiers() {
-		// TODO: test this redefined getter
 		return getNestedNodes();
 	}
 
@@ -360,6 +326,8 @@ public class NodeImpl extends ClassImpl implements Node {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.NODE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__IMPLEMENTATION:
@@ -417,20 +385,24 @@ public class NodeImpl extends ClassImpl implements Node {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.NODE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+				case UML2Package.NODE__OWNED_BEHAVIOR:
+					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+				case UML2Package.NODE__IMPLEMENTATION:
+					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.NODE__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+				case UML2Package.NODE__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_CONNECTOR:
 					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_PORT:
 					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.NODE__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.NODE__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.NODE__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
 				case UML2Package.NODE__NESTED_CLASSIFIER:
@@ -539,10 +511,22 @@ public class NodeImpl extends ClassImpl implements Node {
 				return getPowertypeExtents();
 			case UML2Package.NODE__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.NODE__USE_CASE:
+				return getUseCases();
 			case UML2Package.NODE__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.NODE__OCCURRENCE:
 				return getOccurrences();
+			case UML2Package.NODE__OWNED_BEHAVIOR:
+				return getOwnedBehaviors();
+			case UML2Package.NODE__CLASSIFIER_BEHAVIOR:
+				return getClassifierBehavior();
+			case UML2Package.NODE__IMPLEMENTATION:
+				return getImplementations();
+			case UML2Package.NODE__OWNED_TRIGGER:
+				return getOwnedTriggers();
+			case UML2Package.NODE__OWNED_STATE_MACHINE:
+				return getOwnedStateMachines();
 			case UML2Package.NODE__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 			case UML2Package.NODE__PART:
@@ -553,14 +537,6 @@ public class NodeImpl extends ClassImpl implements Node {
 				return getOwnedConnectors();
 			case UML2Package.NODE__OWNED_PORT:
 				return getOwnedPorts();
-			case UML2Package.NODE__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.NODE__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.NODE__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.NODE__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.NODE__OWNED_OPERATION:
 				return getOwnedOperations();
 			case UML2Package.NODE__SUPER_CLASS:
@@ -665,24 +641,16 @@ public class NodeImpl extends ClassImpl implements Node {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.NODE__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.NODE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
 			case UML2Package.NODE__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.NODE__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection)newValue);
-				return;
-			case UML2Package.NODE__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection)newValue);
-				return;
-			case UML2Package.NODE__OWNED_PORT:
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.NODE__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -695,9 +663,25 @@ public class NodeImpl extends ClassImpl implements Node {
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
 				return;
+			case UML2Package.NODE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
+				return;
 			case UML2Package.NODE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
 				getOwnedStateMachines().addAll((Collection)newValue);
+				return;
+			case UML2Package.NODE__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				getOwnedAttributes().addAll((Collection)newValue);
+				return;
+			case UML2Package.NODE__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				getOwnedConnectors().addAll((Collection)newValue);
+				return;
+			case UML2Package.NODE__OWNED_PORT:
+				getOwnedPorts().clear();
+				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.NODE__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -796,20 +780,14 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.NODE__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.NODE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
 			case UML2Package.NODE__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.NODE__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				return;
-			case UML2Package.NODE__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				return;
-			case UML2Package.NODE__OWNED_PORT:
-				getOwnedPorts().clear();
 				return;
 			case UML2Package.NODE__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -820,8 +798,20 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__IMPLEMENTATION:
 				getImplementations().clear();
 				return;
+			case UML2Package.NODE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				return;
 			case UML2Package.NODE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
+				return;
+			case UML2Package.NODE__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				return;
+			case UML2Package.NODE__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				return;
+			case UML2Package.NODE__OWNED_PORT:
+				getOwnedPorts().clear();
 				return;
 			case UML2Package.NODE__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -916,12 +906,24 @@ public class NodeImpl extends ClassImpl implements Node {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.NODE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.NODE__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.NODE__REPRESENTATION:
 				return representation != null;
 			case UML2Package.NODE__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
+			case UML2Package.NODE__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.NODE__CLASSIFIER_BEHAVIOR:
+				return classifierBehavior != null;
+			case UML2Package.NODE__IMPLEMENTATION:
+				return implementation != null && !implementation.isEmpty();
+			case UML2Package.NODE__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
+			case UML2Package.NODE__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.NODE__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return !getOwnedAttributes().isEmpty();
 			case UML2Package.NODE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.NODE__ROLE:
@@ -930,14 +932,6 @@ public class NodeImpl extends ClassImpl implements Node {
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.NODE__OWNED_PORT:
 				return ownedPort != null && !ownedPort.isEmpty();
-			case UML2Package.NODE__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.NODE__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.NODE__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.NODE__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.NODE__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.NODE__SUPER_CLASS:

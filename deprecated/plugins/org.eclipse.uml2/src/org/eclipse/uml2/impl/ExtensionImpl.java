@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -75,17 +75,9 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Is Required</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public boolean isRequiredGen() {
-		// TODO: implement this derived getter to return the 'Is Required' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public boolean isRequired() {
-		// TODO: test this derived getter
 		ExtensionEnd ownedEnd = 0 < getOwnedEnds().size() ? (ExtensionEnd) getOwnedEnds().get(0) : null;
 		return null != ownedEnd && 1 == ownedEnd.getLower();
 	}
@@ -93,7 +85,6 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Metaclass</b></em>' reference.
 	 * @generated
 	 */
 	public org.eclipse.uml2.Class getMetaclass() {
@@ -104,18 +95,10 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Metaclass</b></em>' reference.
-	 * @generated
+	 * @generated NOT
 	 */
-	public org.eclipse.uml2.Class basicGetMetaclassGen() {
-		// TODO: implement this derived basic getter to return the 'Metaclass' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public org.eclipse.uml2.Class basicGetMetaclass() {
-		// TODO: test this derived basic getter
+
 		for (Iterator memberEnds = getMemberEnds().iterator(); memberEnds.hasNext();) {
 			Property memberEnd = (Property) memberEnds.next();
 
@@ -133,31 +116,17 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * @generated
 	 */
 	public NotificationChain basicSetMetaclass(org.eclipse.uml2.Class newMetaclass, NotificationChain msgs) {
-		// TODO: test this derived basic setter
 		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned End</b></em>' containment reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Association#getOwnedEnds}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getOwnedEndsGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getOwnedEnds() {
-		// TODO: test this redefinition getter
-		if (ownedEnd == null) {
+
+		if (null == ownedEnd) {
 			ownedEnd =
 				new SubsetEObjectContainmentWithInverseEList(
 					ExtensionEnd.class,
@@ -166,6 +135,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 					new int[] { UML2Package.EXTENSION__MEMBER_END },
 					UML2Package.EXTENSION_END__OWNING_ASSOCIATION);
 		}
+
 		return ownedEnd;
 	}
 
@@ -207,6 +177,8 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXTENSION__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.EXTENSION__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXTENSION__OWNED_END:
 					return ((InternalEList)getOwnedEnds()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXTENSION__MEMBER_END:
@@ -258,6 +230,8 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXTENSION__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.EXTENSION__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXTENSION__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXTENSION__OWNED_END:
@@ -362,6 +336,8 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 				return getPowertypeExtents();
 			case UML2Package.EXTENSION__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.EXTENSION__USE_CASE:
+				return getUseCases();
 			case UML2Package.EXTENSION__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.EXTENSION__OCCURRENCE:
@@ -467,6 +443,10 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.EXTENSION__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.EXTENSION__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -559,6 +539,9 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.EXTENSION__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.EXTENSION__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -649,6 +632,8 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.EXTENSION__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.EXTENSION__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.EXTENSION__REPRESENTATION:
 				return representation != null;
 			case UML2Package.EXTENSION__OCCURRENCE:

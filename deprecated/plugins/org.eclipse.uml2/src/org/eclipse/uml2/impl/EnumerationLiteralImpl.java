@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -74,13 +74,6 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Enumeration</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Enumeration getEnumeration() {
@@ -112,12 +105,9 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * @generated
 	 */
 	public Namespace getNamespace() {
-		// TODO: test this union getter
 		if (null != getEnumeration()) {
 			return (Namespace) getEnumeration();
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -89,13 +89,6 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Return Information</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getOutputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public OutputPin getReturnInformation() {
@@ -113,13 +106,6 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Return Information</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getOutputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public OutputPin basicGetReturnInformation() {
@@ -141,39 +127,23 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Trigger</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.CallTrigger}.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.AcceptEventAction#getTriggers}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getTriggersGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getTriggers() {
-		// TODO: test this redefinition getter
-		if (_trigger == null) {
+
+		if (null == _trigger) {
 			_trigger = new EObjectResolvingEList(CallTrigger.class, this, UML2Package.ACCEPT_CALL_ACTION__TRIGGER);
 		}
+
 		return _trigger;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Output</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
 	 * @generated
 	 */
 	public EList getOutputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOutputs());

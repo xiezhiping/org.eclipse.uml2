@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -128,7 +128,6 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isDerived() {
@@ -150,19 +149,9 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned End</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getFeatures}</li>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 *   <li>{@link org.eclipse.uml2.Association#getMemberEnds}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedEnds() {
-		// TODO: test this subset getter
 		if (ownedEnd == null) {
 			ownedEnd = new SubsetEObjectContainmentWithInverseEList(Property.class, this, UML2Package.ASSOCIATION__OWNED_END, new int[] {UML2Package.ASSOCIATION__MEMBER_END}, UML2Package.PROPERTY__OWNING_ASSOCIATION);
 		}
@@ -204,23 +193,10 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>End Type</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Relationship#getRelatedElements}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getEndTypesGen() {
-		// TODO: implement this derived getter to return the 'End Type' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getEndTypes() {
-		// TODO: test this derived getter
+
         if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAssociation_EndType())) {
             List endType = new ArrayList();
 
@@ -255,17 +231,9 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Member End</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getMemberEnds() {
-		// TODO: test this superset getter
 		if (memberEnd == null) {
 			memberEnd = new SupersetEObjectWithInverseResolvingEList(Property.class, this, UML2Package.ASSOCIATION__MEMBER_END, new int[] {UML2Package.ASSOCIATION__OWNED_END}, UML2Package.PROPERTY__ASSOCIATION);
 		}
@@ -293,13 +261,9 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Feature</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Feature}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Feature#getFeaturingClassifiers <em>Featuring Classifier</em>}'.
 	 * @generated
 	 */
 	public EList getFeatures() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
@@ -318,13 +282,9 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAssociation().getEAllOperations().get(70))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -340,12 +300,9 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Related Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRelationship_RelatedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(getEndTypes());
@@ -363,12 +320,9 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
 	 * @generated
 	 */
 	public EList getMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getMembers());
@@ -422,6 +376,8 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.ASSOCIATION__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__OWNED_END:
 					return ((InternalEList)getOwnedEnds()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__MEMBER_END:
@@ -473,6 +429,8 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.ASSOCIATION__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION__OWNED_END:
@@ -577,6 +535,8 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 				return getPowertypeExtents();
 			case UML2Package.ASSOCIATION__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.ASSOCIATION__USE_CASE:
+				return getUseCases();
 			case UML2Package.ASSOCIATION__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.ASSOCIATION__OCCURRENCE:
@@ -677,6 +637,10 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.ASSOCIATION__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.ASSOCIATION__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -769,6 +733,9 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			case UML2Package.ASSOCIATION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.ASSOCIATION__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.ASSOCIATION__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -859,6 +826,8 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ASSOCIATION__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.ASSOCIATION__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.ASSOCIATION__REPRESENTATION:
 				return representation != null;
 			case UML2Package.ASSOCIATION__OCCURRENCE:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.5 2004/05/14 14:14:19 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.6 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -104,7 +104,6 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Context</b></em>' reference, a derived union.
 	 * @generated
 	 */
 	public Namespace getContext() {
@@ -115,11 +114,9 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Context</b></em>' reference, a derived union.
 	 * @generated
 	 */
 	public Namespace basicGetContext() {
-		// TODO: test this union basic getter
 		if (null != getNamespace()) {
 			return getNamespace();
 		}
@@ -129,19 +126,6 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' container reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Constraint#getContext}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Namespace getNamespace() {
@@ -180,13 +164,6 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Specification</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
@@ -253,7 +230,6 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Constrained Element</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getConstrainedElements() {
@@ -269,20 +245,15 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 * @generated
 	 */
 	public boolean validateNotApplyToSelf(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.ConstraintOperations.validateNotApplyToSelf(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -109,13 +109,6 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>First</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getInputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public InputPin getFirst() {
@@ -173,13 +166,6 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Second</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getInputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public InputPin getSecond() {
@@ -237,13 +223,6 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Result</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getOutputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public OutputPin getResult() {
@@ -301,12 +280,9 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Input</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.InputPin}.
 	 * @generated
 	 */
 	public EList getInputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Input())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getInputs());
@@ -330,12 +306,9 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Output</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
 	 * @generated
 	 */
 	public EList getOutputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOutputs());

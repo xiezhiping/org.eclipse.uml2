@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -119,13 +119,6 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Region</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRegions() {
@@ -169,13 +162,6 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Connection Point</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getConnectionPoints() {
@@ -219,13 +205,6 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Extended State Machine</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public StateMachine getExtendedStateMachine() {
@@ -243,13 +222,6 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Extended State Machine</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public StateMachine basicGetExtendedStateMachine() {
@@ -271,13 +243,6 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>State Machine redefinition Context</b></em>' container reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinitionContexts}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public BehavioredClassifier getStateMachine_redefinitionContext() {
@@ -316,37 +281,27 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Redefined Element</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		// TODO: test this redefined getter
 		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Redefinition Context</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		// TODO: test this redefined getter
 		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), 0, Collections.EMPTY_LIST.toArray());
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStateMachine().getEAllOperations().get(91))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -398,6 +353,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__IMPLEMENTATION:
@@ -467,20 +424,24 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
+					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__IMPLEMENTATION:
+					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__OWNED_CONNECTOR:
 					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__OWNED_PORT:
 					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.STATE_MACHINE__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__NESTED_CLASSIFIER:
@@ -493,6 +454,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 					return basicSetSpecification(null, msgs);
 				case UML2Package.STATE_MACHINE__PARAMETER:
 					return ((InternalEList)getParameters()).basicRemove(otherEnd, msgs);
+				case UML2Package.STATE_MACHINE__OWNED_PARAMETER_SET:
+					return ((InternalEList)getOwnedParameterSets()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__REGION:
 					return ((InternalEList)getRegions()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE_MACHINE__CONNECTION_POINT:
@@ -601,10 +564,22 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return getPowertypeExtents();
 			case UML2Package.STATE_MACHINE__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.STATE_MACHINE__USE_CASE:
+				return getUseCases();
 			case UML2Package.STATE_MACHINE__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.STATE_MACHINE__OCCURRENCE:
 				return getOccurrences();
+			case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
+				return getOwnedBehaviors();
+			case UML2Package.STATE_MACHINE__CLASSIFIER_BEHAVIOR:
+				return getClassifierBehavior();
+			case UML2Package.STATE_MACHINE__IMPLEMENTATION:
+				return getImplementations();
+			case UML2Package.STATE_MACHINE__OWNED_TRIGGER:
+				return getOwnedTriggers();
+			case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
+				return getOwnedStateMachines();
 			case UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 			case UML2Package.STATE_MACHINE__PART:
@@ -615,14 +590,6 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return getOwnedConnectors();
 			case UML2Package.STATE_MACHINE__OWNED_PORT:
 				return getOwnedPorts();
-			case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.STATE_MACHINE__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.STATE_MACHINE__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.STATE_MACHINE__OWNED_OPERATION:
 				return getOwnedOperations();
 			case UML2Package.STATE_MACHINE__SUPER_CLASS:
@@ -654,6 +621,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return getPreconditions();
 			case UML2Package.STATE_MACHINE__POSTCONDITION:
 				return getPostconditions();
+			case UML2Package.STATE_MACHINE__OWNED_PARAMETER_SET:
+				return getOwnedParameterSets();
 			case UML2Package.STATE_MACHINE__REGION:
 				return getRegions();
 			case UML2Package.STATE_MACHINE__CONNECTION_POINT:
@@ -749,24 +718,16 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.STATE_MACHINE__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.STATE_MACHINE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
 			case UML2Package.STATE_MACHINE__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection)newValue);
-				return;
-			case UML2Package.STATE_MACHINE__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection)newValue);
-				return;
-			case UML2Package.STATE_MACHINE__OWNED_PORT:
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -779,9 +740,25 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
 				return;
+			case UML2Package.STATE_MACHINE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
+				return;
 			case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
 				getOwnedStateMachines().addAll((Collection)newValue);
+				return;
+			case UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				getOwnedAttributes().addAll((Collection)newValue);
+				return;
+			case UML2Package.STATE_MACHINE__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				getOwnedConnectors().addAll((Collection)newValue);
+				return;
+			case UML2Package.STATE_MACHINE__OWNED_PORT:
+				getOwnedPorts().clear();
+				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.STATE_MACHINE__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -822,6 +799,10 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__POSTCONDITION:
 				getPostconditions().clear();
 				getPostconditions().addAll((Collection)newValue);
+				return;
+			case UML2Package.STATE_MACHINE__OWNED_PARAMETER_SET:
+				getOwnedParameterSets().clear();
+				getOwnedParameterSets().addAll((Collection)newValue);
 				return;
 			case UML2Package.STATE_MACHINE__REGION:
 				getRegions().clear();
@@ -911,20 +892,14 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.STATE_MACHINE__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.STATE_MACHINE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
 			case UML2Package.STATE_MACHINE__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				return;
-			case UML2Package.STATE_MACHINE__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				return;
-			case UML2Package.STATE_MACHINE__OWNED_PORT:
-				getOwnedPorts().clear();
 				return;
 			case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -935,8 +910,20 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__IMPLEMENTATION:
 				getImplementations().clear();
 				return;
+			case UML2Package.STATE_MACHINE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				return;
 			case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
+				return;
+			case UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				return;
+			case UML2Package.STATE_MACHINE__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				return;
+			case UML2Package.STATE_MACHINE__OWNED_PORT:
+				getOwnedPorts().clear();
 				return;
 			case UML2Package.STATE_MACHINE__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -970,6 +957,9 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return;
 			case UML2Package.STATE_MACHINE__POSTCONDITION:
 				getPostconditions().clear();
+				return;
+			case UML2Package.STATE_MACHINE__OWNED_PARAMETER_SET:
+				getOwnedParameterSets().clear();
 				return;
 			case UML2Package.STATE_MACHINE__REGION:
 				getRegions().clear();
@@ -1058,12 +1048,24 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.STATE_MACHINE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.STATE_MACHINE__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.STATE_MACHINE__REPRESENTATION:
 				return representation != null;
 			case UML2Package.STATE_MACHINE__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
+			case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.STATE_MACHINE__CLASSIFIER_BEHAVIOR:
+				return classifierBehavior != null;
+			case UML2Package.STATE_MACHINE__IMPLEMENTATION:
+				return implementation != null && !implementation.isEmpty();
+			case UML2Package.STATE_MACHINE__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
+			case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return !getOwnedAttributes().isEmpty();
 			case UML2Package.STATE_MACHINE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.STATE_MACHINE__ROLE:
@@ -1072,14 +1074,6 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.STATE_MACHINE__OWNED_PORT:
 				return ownedPort != null && !ownedPort.isEmpty();
-			case UML2Package.STATE_MACHINE__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.STATE_MACHINE__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.STATE_MACHINE__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.STATE_MACHINE__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.STATE_MACHINE__SUPER_CLASS:
@@ -1110,6 +1104,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return precondition != null && !precondition.isEmpty();
 			case UML2Package.STATE_MACHINE__POSTCONDITION:
 				return postcondition != null && !postcondition.isEmpty();
+			case UML2Package.STATE_MACHINE__OWNED_PARAMETER_SET:
+				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
 			case UML2Package.STATE_MACHINE__REGION:
 				return region != null && !region.isEmpty();
 			case UML2Package.STATE_MACHINE__CONNECTION_POINT:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.4 2004/05/14 14:14:19 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.5 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -118,13 +118,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Signature</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public TemplateSignature getSignature() {
@@ -163,7 +156,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Parametered Element</b></em>' reference.
 	 * @generated
 	 */
 	public ParameterableElement getParameteredElement() {
@@ -174,7 +166,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Parametered Element</b></em>' reference.
 	 * @generated
 	 */
 	public ParameterableElement basicGetParameteredElement() {
@@ -187,7 +178,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public NotificationChain basicSetParameteredElement(ParameterableElement newParameteredElement, NotificationChain msgs) {
-		// TODO: test this superset basic setter
 		ParameterableElement oldParameteredElement = parameteredElement;
 		parameteredElement = newParameteredElement;
 		if (eNotificationRequired()) {
@@ -228,14 +218,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Parametered Element</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.TemplateParameter#getParameteredElement}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ParameterableElement getOwnedParameteredElement() {
@@ -248,7 +230,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public NotificationChain basicSetOwnedParameteredElement(ParameterableElement newOwnedParameteredElement, NotificationChain msgs) {
-		// TODO: test this subset basic setter
 		ParameterableElement oldOwnedParameteredElement = ownedParameteredElement;
 		ownedParameteredElement = newOwnedParameteredElement;
 		if (eNotificationRequired()) {
@@ -303,7 +284,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Default</b></em>' reference.
 	 * @generated
 	 */
 	public ParameterableElement getDefault() {
@@ -314,7 +294,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Default</b></em>' reference.
 	 * @generated
 	 */
 	public ParameterableElement basicGetDefault() {
@@ -327,7 +306,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public void setDefault(ParameterableElement newDefault) {
-		// TODO: test this superset setter
 		ParameterableElement oldDefault = default_;
 		default_ = newDefault;
 		if (eNotificationRequired()) {
@@ -342,14 +320,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Default</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 *   <li>{@link org.eclipse.uml2.TemplateParameter#getDefault}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ParameterableElement getOwnedDefault() {
@@ -362,7 +332,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public NotificationChain basicSetOwnedDefault(ParameterableElement newOwnedDefault, NotificationChain msgs) {
-		// TODO: test this subset basic setter
 		ParameterableElement oldOwnedDefault = ownedDefault;
 		ownedDefault = newOwnedDefault;
 		if (eNotificationRequired()) {
@@ -417,12 +386,9 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getSignature()) {
 			return (Element) getSignature();
 		}
@@ -432,13 +398,9 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeExpressionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: TimeExpressionImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -103,7 +103,6 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>First Time</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isFirstTime() {
@@ -125,7 +124,6 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Event</b></em>' reference.
 	 * @generated
 	 */
 	public NamedElement getEvent() {
@@ -143,7 +141,6 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Event</b></em>' reference.
 	 * @generated
 	 */
 	public NamedElement basicGetEvent() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,13 +79,6 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Imported Profile</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.PackageImport#getImportedPackage}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Profile getImportedProfile() {
@@ -96,13 +89,6 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Imported Profile</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.PackageImport#getImportedPackage}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Profile basicGetImportedProfile() {
@@ -115,7 +101,6 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	 * @generated
 	 */
 	public void setImportedProfile(Profile newImportedProfile) {
-		// TODO: test this subset setter
 		Profile oldImportedProfile = importedProfile;
 		importedProfile = newImportedProfile;
 		if (eNotificationRequired()) {
@@ -133,7 +118,6 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	 * @generated
 	 */
 	public void setImportedPackage(org.eclipse.uml2.Package newImportedPackage) {
-		// TODO: test this superset setter
 		org.eclipse.uml2.Package oldImportedPackage = importedPackage;
 		importedPackage = newImportedPackage;
 		if (eNotificationRequired()) {

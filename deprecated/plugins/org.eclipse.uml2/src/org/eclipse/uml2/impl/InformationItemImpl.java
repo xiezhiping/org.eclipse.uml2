@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,7 +84,6 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Represented</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getRepresenteds() {
@@ -149,6 +148,8 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.INFORMATION_ITEM__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.INFORMATION_ITEM__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -196,6 +197,8 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.INFORMATION_ITEM__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.INFORMATION_ITEM__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.INFORMATION_ITEM__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				default:
@@ -296,6 +299,8 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 				return getPowertypeExtents();
 			case UML2Package.INFORMATION_ITEM__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.INFORMATION_ITEM__USE_CASE:
+				return getUseCases();
 			case UML2Package.INFORMATION_ITEM__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.INFORMATION_ITEM__OCCURRENCE:
@@ -388,6 +393,10 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.INFORMATION_ITEM__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.INFORMATION_ITEM__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -473,6 +482,9 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 			case UML2Package.INFORMATION_ITEM__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.INFORMATION_ITEM__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.INFORMATION_ITEM__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -557,6 +569,8 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.INFORMATION_ITEM__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.INFORMATION_ITEM__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.INFORMATION_ITEM__REPRESENTATION:
 				return representation != null;
 			case UML2Package.INFORMATION_ITEM__OCCURRENCE:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExecutionOccurrenceImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ExecutionOccurrenceImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -109,7 +109,6 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Start</b></em>' reference.
 	 * @generated
 	 */
 	public EventOccurrence getStart() {
@@ -127,7 +126,6 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Start</b></em>' reference.
 	 * @generated
 	 */
 	public EventOccurrence basicGetStart() {
@@ -171,7 +169,6 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Finish</b></em>' reference.
 	 * @generated
 	 */
 	public EventOccurrence getFinish() {
@@ -189,7 +186,6 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Finish</b></em>' reference.
 	 * @generated
 	 */
 	public EventOccurrence basicGetFinish() {
@@ -233,7 +229,6 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Behavior</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getBehaviors() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ApplyFunctionActionImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
+ * $Id: ApplyFunctionActionImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -112,7 +112,6 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Function</b></em>' reference.
 	 * @generated
 	 */
 	public PrimitiveFunction getFunction() {
@@ -130,7 +129,6 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Function</b></em>' reference.
 	 * @generated
 	 */
 	public PrimitiveFunction basicGetFunction() {
@@ -152,13 +150,6 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Argument</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getInputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getArguments() {
@@ -202,13 +193,6 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getOutputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getResults() {
@@ -252,12 +236,9 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Input</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.InputPin}.
 	 * @generated
 	 */
 	public EList getInputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Input())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getInputs());
@@ -276,12 +257,9 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Output</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
 	 * @generated
 	 */
 	public EList getOutputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOutputs());

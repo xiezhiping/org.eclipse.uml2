@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -105,7 +105,6 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Covered</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getCovereds() {
@@ -135,13 +134,6 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>General Ordering</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getGeneralOrderings() {
@@ -185,7 +177,6 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Enclosing Interaction</b></em>' container reference.
 	 * @generated
 	 */
 	public Interaction getEnclosingInteraction() {
@@ -217,13 +208,6 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Enclosing Operand</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public InteractionOperand getEnclosingOperand() {
@@ -255,13 +239,9 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -280,12 +260,9 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * @generated
 	 */
 	public Namespace getNamespace() {
-		// TODO: test this union getter
 		if (null != getEnclosingOperand()) {
 			return (Namespace) getEnclosingOperand();
 		}

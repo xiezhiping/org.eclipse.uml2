@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.5 2004/05/14 14:14:19 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.6 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -219,7 +219,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Leaf</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isLeaf() {
@@ -241,11 +240,9 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefinition Context</b></em>' reference list, a derived union.
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -279,7 +276,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Static</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isStatic() {
@@ -301,11 +297,9 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Featuring Classifier</b></em>' reference list, a derived union.
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -339,7 +333,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isAbstract() {
@@ -361,7 +354,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Concurrency</b></em>' attribute.
 	 * @generated
 	 */
 	public CallConcurrencyKind getConcurrency() {
@@ -386,7 +378,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
@@ -396,24 +387,15 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Parameter</b></em>' reference list, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getParameters() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavioralFeature_Parameter())) {
 			Set union = new LinkedHashSet();
 			union.addAll(getFormalParameters());
@@ -449,14 +431,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Formal Parameter</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.BehavioralFeature#getParameters}</li>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getFormalParameters() {
@@ -500,14 +474,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Return Result</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.BehavioralFeature#getParameters}</li>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getReturnResults() {
@@ -551,7 +517,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Raised Exception</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getRaisedExceptions() {
@@ -581,7 +546,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Method</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getMethods() {
@@ -614,7 +578,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
 
@@ -624,19 +587,15 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavioralFeature().getEAllOperations().get(44))) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -653,19 +612,15 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	public boolean isDistinguishableFrom(NamedElement n, Namespace ns) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.BehavioralFeatureOperations.isDistinguishableFrom(this, n, ns);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
 	 * @generated
 	 */
 	public EList getMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getMembers());
@@ -684,13 +639,9 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavioralFeature().getEAllOperations().get(47))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -159,7 +158,6 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Covered</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getCovereds() {
@@ -189,13 +187,6 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>General Ordering</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getGeneralOrderings() {
@@ -239,7 +230,6 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Enclosing Interaction</b></em>' container reference.
 	 * @generated
 	 */
 	public Interaction getEnclosingInteraction() {
@@ -271,13 +261,6 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Enclosing Operand</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public InteractionOperand getEnclosingOperand() {
@@ -309,13 +292,6 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Lifeline</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getLifelines() {
@@ -359,13 +335,6 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Message</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getMessages() {
@@ -409,33 +378,11 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Fragment</b></em>' containment reference list.
 	 * @generated
 	 */
-	public EList getFragmentsGen() {
-		if (fragment == null) {
-			fragment = new EObjectContainmentWithInverseEList(InteractionFragment.class, this, UML2Package.INTERACTION__FRAGMENT, UML2Package.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION);
-		}
-		return fragment;
-	}
-
 	public EList getFragments() {
 		if (fragment == null) {
-			fragment = new EObjectContainmentWithInverseEList(InteractionFragment.class, this, UML2Package.INTERACTION__FRAGMENT, UML2Package.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION) {
-			public boolean contains(Object object) {
-				if (isEObject() && size > 4 && isContainment() && object instanceof EObject) {
-					InternalEObject eObject = (InternalEObject) object;
-					int baseContainerFeatureID = eObject.eBaseStructuralFeatureID(eObject.eContainerFeatureID(), getFeatureType().getInstanceClass());
-
-					return eObject.eContainer() == owner
-						&& (hasNavigableInverse()
-							? baseContainerFeatureID == getInverseFeatureID()
-							: InternalEObject.EOPPOSITE_FEATURE_BASE - baseContainerFeatureID == getFeatureID());
-				} else {
-					return super.contains(object);
-				}
-			}
-		};
+			fragment = new EObjectContainmentWithInverseEList(InteractionFragment.class, this, UML2Package.INTERACTION__FRAGMENT, UML2Package.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION);
 		}
 		return fragment;
 	}
@@ -474,13 +421,6 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Formal Gate</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getFormalGates() {
@@ -524,13 +464,9 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -549,12 +485,9 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * @generated
 	 */
 	public Namespace getNamespace() {
-		// TODO: test this union getter
 		if (null != getEnclosingOperand()) {
 			return (Namespace) getEnclosingOperand();
 		}
@@ -564,13 +497,9 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getInteraction().getEAllOperations().get(91))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -623,6 +552,8 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERACTION__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.INTERACTION__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERACTION__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERACTION__IMPLEMENTATION:
@@ -702,20 +633,24 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.INTERACTION__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+				case UML2Package.INTERACTION__OWNED_BEHAVIOR:
+					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+				case UML2Package.INTERACTION__IMPLEMENTATION:
+					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.INTERACTION__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+				case UML2Package.INTERACTION__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__OWNED_CONNECTOR:
 					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__OWNED_PORT:
 					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERACTION__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__NESTED_CLASSIFIER:
@@ -728,6 +663,8 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 					return basicSetSpecification(null, msgs);
 				case UML2Package.INTERACTION__PARAMETER:
 					return ((InternalEList)getParameters()).basicRemove(otherEnd, msgs);
+				case UML2Package.INTERACTION__OWNED_PARAMETER_SET:
+					return ((InternalEList)getOwnedParameterSets()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__COVERED:
 					return ((InternalEList)getCovereds()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERACTION__GENERAL_ORDERING:
@@ -848,10 +785,22 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return getPowertypeExtents();
 			case UML2Package.INTERACTION__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.INTERACTION__USE_CASE:
+				return getUseCases();
 			case UML2Package.INTERACTION__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.INTERACTION__OCCURRENCE:
 				return getOccurrences();
+			case UML2Package.INTERACTION__OWNED_BEHAVIOR:
+				return getOwnedBehaviors();
+			case UML2Package.INTERACTION__CLASSIFIER_BEHAVIOR:
+				return getClassifierBehavior();
+			case UML2Package.INTERACTION__IMPLEMENTATION:
+				return getImplementations();
+			case UML2Package.INTERACTION__OWNED_TRIGGER:
+				return getOwnedTriggers();
+			case UML2Package.INTERACTION__OWNED_STATE_MACHINE:
+				return getOwnedStateMachines();
 			case UML2Package.INTERACTION__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 			case UML2Package.INTERACTION__PART:
@@ -862,14 +811,6 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return getOwnedConnectors();
 			case UML2Package.INTERACTION__OWNED_PORT:
 				return getOwnedPorts();
-			case UML2Package.INTERACTION__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.INTERACTION__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.INTERACTION__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.INTERACTION__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.INTERACTION__OWNED_OPERATION:
 				return getOwnedOperations();
 			case UML2Package.INTERACTION__SUPER_CLASS:
@@ -901,6 +842,8 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return getPreconditions();
 			case UML2Package.INTERACTION__POSTCONDITION:
 				return getPostconditions();
+			case UML2Package.INTERACTION__OWNED_PARAMETER_SET:
+				return getOwnedParameterSets();
 			case UML2Package.INTERACTION__COVERED:
 				return getCovereds();
 			case UML2Package.INTERACTION__GENERAL_ORDERING:
@@ -1003,24 +946,16 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.INTERACTION__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.INTERACTION__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
 			case UML2Package.INTERACTION__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.INTERACTION__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection)newValue);
-				return;
-			case UML2Package.INTERACTION__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection)newValue);
-				return;
-			case UML2Package.INTERACTION__OWNED_PORT:
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.INTERACTION__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -1033,9 +968,25 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
 				return;
+			case UML2Package.INTERACTION__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
+				return;
 			case UML2Package.INTERACTION__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
 				getOwnedStateMachines().addAll((Collection)newValue);
+				return;
+			case UML2Package.INTERACTION__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				getOwnedAttributes().addAll((Collection)newValue);
+				return;
+			case UML2Package.INTERACTION__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				getOwnedConnectors().addAll((Collection)newValue);
+				return;
+			case UML2Package.INTERACTION__OWNED_PORT:
+				getOwnedPorts().clear();
+				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.INTERACTION__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -1076,6 +1027,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__POSTCONDITION:
 				getPostconditions().clear();
 				getPostconditions().addAll((Collection)newValue);
+				return;
+			case UML2Package.INTERACTION__OWNED_PARAMETER_SET:
+				getOwnedParameterSets().clear();
+				getOwnedParameterSets().addAll((Collection)newValue);
 				return;
 			case UML2Package.INTERACTION__COVERED:
 				getCovereds().clear();
@@ -1181,20 +1136,14 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.INTERACTION__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.INTERACTION__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
 			case UML2Package.INTERACTION__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.INTERACTION__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				return;
-			case UML2Package.INTERACTION__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				return;
-			case UML2Package.INTERACTION__OWNED_PORT:
-				getOwnedPorts().clear();
 				return;
 			case UML2Package.INTERACTION__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -1205,8 +1154,20 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__IMPLEMENTATION:
 				getImplementations().clear();
 				return;
+			case UML2Package.INTERACTION__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				return;
 			case UML2Package.INTERACTION__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
+				return;
+			case UML2Package.INTERACTION__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				return;
+			case UML2Package.INTERACTION__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				return;
+			case UML2Package.INTERACTION__OWNED_PORT:
+				getOwnedPorts().clear();
 				return;
 			case UML2Package.INTERACTION__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -1240,6 +1201,9 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return;
 			case UML2Package.INTERACTION__POSTCONDITION:
 				getPostconditions().clear();
+				return;
+			case UML2Package.INTERACTION__OWNED_PARAMETER_SET:
+				getOwnedParameterSets().clear();
 				return;
 			case UML2Package.INTERACTION__COVERED:
 				getCovereds().clear();
@@ -1340,12 +1304,24 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.INTERACTION__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.INTERACTION__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.INTERACTION__REPRESENTATION:
 				return representation != null;
 			case UML2Package.INTERACTION__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
+			case UML2Package.INTERACTION__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.INTERACTION__CLASSIFIER_BEHAVIOR:
+				return classifierBehavior != null;
+			case UML2Package.INTERACTION__IMPLEMENTATION:
+				return implementation != null && !implementation.isEmpty();
+			case UML2Package.INTERACTION__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
+			case UML2Package.INTERACTION__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.INTERACTION__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return !getOwnedAttributes().isEmpty();
 			case UML2Package.INTERACTION__PART:
 				return !getParts().isEmpty();
 			case UML2Package.INTERACTION__ROLE:
@@ -1354,14 +1330,6 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.INTERACTION__OWNED_PORT:
 				return ownedPort != null && !ownedPort.isEmpty();
-			case UML2Package.INTERACTION__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.INTERACTION__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.INTERACTION__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.INTERACTION__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.INTERACTION__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.INTERACTION__SUPER_CLASS:
@@ -1392,6 +1360,8 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return precondition != null && !precondition.isEmpty();
 			case UML2Package.INTERACTION__POSTCONDITION:
 				return postcondition != null && !postcondition.isEmpty();
+			case UML2Package.INTERACTION__OWNED_PARAMETER_SET:
+				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
 			case UML2Package.INTERACTION__COVERED:
 				return covered != null && !covered.isEmpty();
 			case UML2Package.INTERACTION__GENERAL_ORDERING:

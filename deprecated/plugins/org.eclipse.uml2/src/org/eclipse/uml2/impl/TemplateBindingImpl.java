@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.4 2004/05/14 14:14:19 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.5 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -98,14 +98,6 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Bound Element</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public TemplateableElement getBoundElement() {
@@ -137,13 +129,6 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Signature</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public TemplateSignature getSignature() {
@@ -161,13 +146,6 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Signature</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public TemplateSignature basicGetSignature() {
@@ -189,13 +167,6 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Parameter Substitution</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getParameterSubstitutions() {
@@ -222,12 +193,9 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getBoundElement()) {
 			return (Element) getBoundElement();
 		}
@@ -237,12 +205,9 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getSources() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Source())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getSources());
@@ -263,12 +228,9 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getTargets() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getTargets());
@@ -289,13 +251,9 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExecutionEnvironmentImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ExecutionEnvironmentImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -101,6 +101,8 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.EXECUTION_ENVIRONMENT__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__IMPLEMENTATION:
@@ -158,20 +160,24 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.EXECUTION_ENVIRONMENT__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
+					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+				case UML2Package.EXECUTION_ENVIRONMENT__IMPLEMENTATION:
+					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_CONNECTOR:
 					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_PORT:
 					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXECUTION_ENVIRONMENT__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__NESTED_CLASSIFIER:
@@ -280,10 +286,22 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 				return getPowertypeExtents();
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.EXECUTION_ENVIRONMENT__USE_CASE:
+				return getUseCases();
 			case UML2Package.EXECUTION_ENVIRONMENT__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.EXECUTION_ENVIRONMENT__OCCURRENCE:
 				return getOccurrences();
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
+				return getOwnedBehaviors();
+			case UML2Package.EXECUTION_ENVIRONMENT__CLASSIFIER_BEHAVIOR:
+				return getClassifierBehavior();
+			case UML2Package.EXECUTION_ENVIRONMENT__IMPLEMENTATION:
+				return getImplementations();
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_TRIGGER:
+				return getOwnedTriggers();
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
+				return getOwnedStateMachines();
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 			case UML2Package.EXECUTION_ENVIRONMENT__PART:
@@ -294,14 +312,6 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 				return getOwnedConnectors();
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_PORT:
 				return getOwnedPorts();
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.EXECUTION_ENVIRONMENT__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.EXECUTION_ENVIRONMENT__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_OPERATION:
 				return getOwnedOperations();
 			case UML2Package.EXECUTION_ENVIRONMENT__SUPER_CLASS:
@@ -406,24 +416,16 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.EXECUTION_ENVIRONMENT__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.EXECUTION_ENVIRONMENT__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
 			case UML2Package.EXECUTION_ENVIRONMENT__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection)newValue);
-				return;
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_PORT:
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -436,9 +438,25 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
 				return;
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
+				return;
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
 				getOwnedStateMachines().addAll((Collection)newValue);
+				return;
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				getOwnedAttributes().addAll((Collection)newValue);
+				return;
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				getOwnedConnectors().addAll((Collection)newValue);
+				return;
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_PORT:
+				getOwnedPorts().clear();
+				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -537,20 +555,14 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.EXECUTION_ENVIRONMENT__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.EXECUTION_ENVIRONMENT__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
 			case UML2Package.EXECUTION_ENVIRONMENT__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				return;
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				return;
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_PORT:
-				getOwnedPorts().clear();
 				return;
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -561,8 +573,20 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 			case UML2Package.EXECUTION_ENVIRONMENT__IMPLEMENTATION:
 				getImplementations().clear();
 				return;
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				return;
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
+				return;
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				return;
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				return;
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_PORT:
+				getOwnedPorts().clear();
 				return;
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -657,12 +681,24 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.EXECUTION_ENVIRONMENT__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__REPRESENTATION:
 				return representation != null;
 			case UML2Package.EXECUTION_ENVIRONMENT__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.EXECUTION_ENVIRONMENT__CLASSIFIER_BEHAVIOR:
+				return classifierBehavior != null;
+			case UML2Package.EXECUTION_ENVIRONMENT__IMPLEMENTATION:
+				return implementation != null && !implementation.isEmpty();
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return !getOwnedAttributes().isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__PART:
 				return !getParts().isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__ROLE:
@@ -671,14 +707,6 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_PORT:
 				return ownedPort != null && !ownedPort.isEmpty();
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.EXECUTION_ENVIRONMENT__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.EXECUTION_ENVIRONMENT__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__SUPER_CLASS:

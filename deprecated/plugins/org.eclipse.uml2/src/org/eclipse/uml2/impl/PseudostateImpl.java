@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -91,7 +91,6 @@ public class PseudostateImpl extends VertexImpl implements Pseudostate {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
 	 * @generated
 	 */
 	public PseudostateKind getKind() {

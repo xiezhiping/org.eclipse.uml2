@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -105,23 +105,10 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Owned Stereotype</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Package#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getOwnedStereotypesGen() {
-		// TODO: implement this derived getter to return the 'Owned Stereotype' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getOwnedStereotypes() {
-		// TODO: test this derived getter
+
 	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getProfile_OwnedStereotype())) {
 	        Set ownedStereotype = new HashSet();
 	        
@@ -163,17 +150,9 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Metaclass Reference</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getElementImports}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getMetaclassReferences() {
-		// TODO: test this subset getter
 		if (metaclassReference == null) {
 			metaclassReference = new SubsetEObjectEList(ElementImport.class, this, UML2Package.PROFILE__METACLASS_REFERENCE, new int[] {UML2Package.PROFILE__ELEMENT_IMPORT});
 		}
@@ -184,17 +163,9 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Metamodel Reference</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getPackageImports}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getMetamodelReferences() {
-		// TODO: test this subset getter
 		if (metamodelReference == null) {
 			metamodelReference = new SubsetEObjectEList(PackageImport.class, this, UML2Package.PROFILE__METAMODEL_REFERENCE, new int[] {UML2Package.PROFILE__PACKAGE_IMPORT});
 		}
@@ -205,13 +176,9 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Element Import</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.ElementImport}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ElementImport#getImportingNamespace <em>Importing Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getElementImports() {
-		// TODO: test this superset getter
 		if (elementImport == null) {
 			elementImport = new SupersetEObjectContainmentWithInverseEList(ElementImport.class, this, UML2Package.PROFILE__ELEMENT_IMPORT, new int[] {UML2Package.PROFILE__METACLASS_REFERENCE}, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 		}
@@ -222,13 +189,9 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Package Import</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.PackageImport}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.PackageImport#getImportingNamespace <em>Importing Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getPackageImports() {
-		// TODO: test this superset getter
 		if (packageImport == null) {
 			packageImport = new SupersetEObjectContainmentWithInverseEList(PackageImport.class, this, UML2Package.PROFILE__PACKAGE_IMPORT, new int[] {UML2Package.PROFILE__APPLIED_PROFILE, UML2Package.PROFILE__METAMODEL_REFERENCE}, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -97,7 +97,6 @@ public class ExpansionNodeImpl extends ObjectNodeImpl implements ExpansionNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Region As Output</b></em>' reference.
 	 * @generated
 	 */
 	public ExpansionRegion getRegionAsOutput() {
@@ -115,7 +114,6 @@ public class ExpansionNodeImpl extends ObjectNodeImpl implements ExpansionNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Region As Output</b></em>' reference.
 	 * @generated
 	 */
 	public ExpansionRegion basicGetRegionAsOutput() {
@@ -159,7 +157,6 @@ public class ExpansionNodeImpl extends ObjectNodeImpl implements ExpansionNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Region As Input</b></em>' reference.
 	 * @generated
 	 */
 	public ExpansionRegion getRegionAsInput() {
@@ -177,7 +174,6 @@ public class ExpansionNodeImpl extends ObjectNodeImpl implements ExpansionNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Region As Input</b></em>' reference.
 	 * @generated
 	 */
 	public ExpansionRegion basicGetRegionAsInput() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -72,47 +72,23 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.TypedElement#getType}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public Type basicGetTypeGen() {
-		// TODO: implement this redefinition basic getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public Type basicGetType() {
-		// TODO: test this redefinition basic getter
 		return type;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public void setTypeGen(Type newType) {
-		// TODO: implement this redefinition setter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public void setType(Type newType) {
-		// TODO: test this redefinition setter
+
 		if (null != newType && !Stereotype.class.isInstance(newType)) {
 			throw new IllegalArgumentException(String.valueOf(newType));
 		}
-//		Type oldType = type;
-//		type = newType;
-//		if (eNotificationRequired()) {
-//			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXTENSION__END_TYPE, oldType, type));
-//		}
+
 		super.setType(newType);
 	}
 

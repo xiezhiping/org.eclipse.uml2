@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CallTriggerImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: CallTriggerImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.CallTrigger;
 import org.eclipse.uml2.Operation;
 import org.eclipse.uml2.StringExpression;
-import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
+
 import org.eclipse.uml2.VisibilityKind;
 
 /**
@@ -81,7 +81,6 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Operation</b></em>' reference.
 	 * @generated
 	 */
 	public Operation getOperation() {
@@ -99,7 +98,6 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Operation</b></em>' reference.
 	 * @generated
 	 */
 	public Operation basicGetOperation() {
@@ -136,14 +134,6 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.CALL_TRIGGER__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.CALL_TRIGGER__TEMPLATE_PARAMETER:
-					if (templateParameter != null)
-						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
-				case UML2Package.CALL_TRIGGER__OWNING_PARAMETER:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.CALL_TRIGGER__OWNING_PARAMETER, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -173,32 +163,11 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
 				case UML2Package.CALL_TRIGGER__NAME_EXPRESSION:
 					return basicSetNameExpression(null, msgs);
-				case UML2Package.CALL_TRIGGER__TEMPLATE_PARAMETER:
-					return basicSetTemplateParameter(null, msgs);
-				case UML2Package.CALL_TRIGGER__OWNING_PARAMETER:
-					return eBasicSetContainer(null, UML2Package.CALL_TRIGGER__OWNING_PARAMETER, msgs);
 				default:
 					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.CALL_TRIGGER__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -231,13 +200,6 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 				return getClientDependencies();
 			case UML2Package.CALL_TRIGGER__NAME_EXPRESSION:
 				return getNameExpression();
-			case UML2Package.CALL_TRIGGER__TEMPLATE_PARAMETER:
-				if (resolve) return getTemplateParameter();
-				return basicGetTemplateParameter();
-			case UML2Package.CALL_TRIGGER__OWNING_PARAMETER:
-				return getOwningParameter();
-			case UML2Package.CALL_TRIGGER__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility();
 			case UML2Package.CALL_TRIGGER__PORT:
 				return getPorts();
 			case UML2Package.CALL_TRIGGER__OPERATION:
@@ -282,15 +244,6 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 			case UML2Package.CALL_TRIGGER__NAME_EXPRESSION:
 				setNameExpression((StringExpression)newValue);
 				return;
-			case UML2Package.CALL_TRIGGER__TEMPLATE_PARAMETER:
-				setTemplateParameter((TemplateParameter)newValue);
-				return;
-			case UML2Package.CALL_TRIGGER__OWNING_PARAMETER:
-				setOwningParameter((TemplateParameter)newValue);
-				return;
-			case UML2Package.CALL_TRIGGER__PACKAGEABLE_ELEMENT_VISIBILITY:
-				setPackageableElement_visibility((VisibilityKind)newValue);
-				return;
 			case UML2Package.CALL_TRIGGER__PORT:
 				getPorts().clear();
 				getPorts().addAll((Collection)newValue);
@@ -333,15 +286,6 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 			case UML2Package.CALL_TRIGGER__NAME_EXPRESSION:
 				setNameExpression((StringExpression)null);
 				return;
-			case UML2Package.CALL_TRIGGER__TEMPLATE_PARAMETER:
-				setTemplateParameter((TemplateParameter)null);
-				return;
-			case UML2Package.CALL_TRIGGER__OWNING_PARAMETER:
-				setOwningParameter(null);
-				return;
-			case UML2Package.CALL_TRIGGER__PACKAGEABLE_ELEMENT_VISIBILITY:
-				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
-				return;
 			case UML2Package.CALL_TRIGGER__PORT:
 				getPorts().clear();
 				return;
@@ -381,12 +325,6 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CALL_TRIGGER__NAME_EXPRESSION:
 				return nameExpression != null;
-			case UML2Package.CALL_TRIGGER__TEMPLATE_PARAMETER:
-				return templateParameter != null;
-			case UML2Package.CALL_TRIGGER__OWNING_PARAMETER:
-				return getOwningParameter() != null;
-			case UML2Package.CALL_TRIGGER__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.CALL_TRIGGER__PORT:
 				return port != null && !port.isEmpty();
 			case UML2Package.CALL_TRIGGER__OPERATION:

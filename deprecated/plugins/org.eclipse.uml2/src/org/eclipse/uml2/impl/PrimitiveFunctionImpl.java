@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PrimitiveFunctionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: PrimitiveFunctionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -22,7 +22,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.PrimitiveFunction;
+import org.eclipse.uml2.StringExpression;
+import org.eclipse.uml2.TemplateParameter;
+import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.VisibilityKind;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +43,7 @@ import org.eclipse.uml2.UML2Package;
  *
  * @generated
  */
-public class PrimitiveFunctionImpl extends ElementImpl implements PrimitiveFunction {
+public class PrimitiveFunctionImpl extends PackageableElementImpl implements PrimitiveFunction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -107,7 +112,6 @@ public class PrimitiveFunctionImpl extends ElementImpl implements PrimitiveFunct
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Body</b></em>' attribute.
 	 * @generated
 	 */
 	public String getBody() {
@@ -129,7 +133,6 @@ public class PrimitiveFunctionImpl extends ElementImpl implements PrimitiveFunct
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Language</b></em>' attribute.
 	 * @generated
 	 */
 	public String getLanguage() {
@@ -158,6 +161,22 @@ public class PrimitiveFunctionImpl extends ElementImpl implements PrimitiveFunct
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
 				case UML2Package.PRIMITIVE_FUNCTION__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
+				case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_BINDING:
+					return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
+				case UML2Package.PRIMITIVE_FUNCTION__OWNED_TEMPLATE_SIGNATURE:
+					if (ownedTemplateSignature != null)
+						msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.PRIMITIVE_FUNCTION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
+					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
+				case UML2Package.PRIMITIVE_FUNCTION__CLIENT_DEPENDENCY:
+					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
+				case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_PARAMETER:
+					if (templateParameter != null)
+						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
+				case UML2Package.PRIMITIVE_FUNCTION__OWNING_PARAMETER:
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd, UML2Package.PRIMITIVE_FUNCTION__OWNING_PARAMETER, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -179,11 +198,40 @@ public class PrimitiveFunctionImpl extends ElementImpl implements PrimitiveFunct
 					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_FUNCTION__OWNED_COMMENT:
 					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
+				case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_BINDING:
+					return ((InternalEList)getTemplateBindings()).basicRemove(otherEnd, msgs);
+				case UML2Package.PRIMITIVE_FUNCTION__OWNED_TEMPLATE_SIGNATURE:
+					return basicSetOwnedTemplateSignature(null, msgs);
+				case UML2Package.PRIMITIVE_FUNCTION__CLIENT_DEPENDENCY:
+					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
+				case UML2Package.PRIMITIVE_FUNCTION__NAME_EXPRESSION:
+					return basicSetNameExpression(null, msgs);
+				case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_PARAMETER:
+					return basicSetTemplateParameter(null, msgs);
+				case UML2Package.PRIMITIVE_FUNCTION__OWNING_PARAMETER:
+					return eBasicSetContainer(null, UML2Package.PRIMITIVE_FUNCTION__OWNING_PARAMETER, msgs);
 				default:
 					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
+		if (eContainerFeatureID >= 0) {
+			switch (eContainerFeatureID) {
+				case UML2Package.PRIMITIVE_FUNCTION__OWNING_PARAMETER:
+					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+				default:
+					return eDynamicBasicRemoveFromContainer(msgs);
+			}
+		}
+		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -202,6 +250,27 @@ public class PrimitiveFunctionImpl extends ElementImpl implements PrimitiveFunct
 				return basicGetOwner();
 			case UML2Package.PRIMITIVE_FUNCTION__OWNED_COMMENT:
 				return getOwnedComments();
+			case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_BINDING:
+				return getTemplateBindings();
+			case UML2Package.PRIMITIVE_FUNCTION__OWNED_TEMPLATE_SIGNATURE:
+				return getOwnedTemplateSignature();
+			case UML2Package.PRIMITIVE_FUNCTION__NAME:
+				return getName();
+			case UML2Package.PRIMITIVE_FUNCTION__QUALIFIED_NAME:
+				return getQualifiedName();
+			case UML2Package.PRIMITIVE_FUNCTION__VISIBILITY:
+				return getVisibility();
+			case UML2Package.PRIMITIVE_FUNCTION__CLIENT_DEPENDENCY:
+				return getClientDependencies();
+			case UML2Package.PRIMITIVE_FUNCTION__NAME_EXPRESSION:
+				return getNameExpression();
+			case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_PARAMETER:
+				if (resolve) return getTemplateParameter();
+				return basicGetTemplateParameter();
+			case UML2Package.PRIMITIVE_FUNCTION__OWNING_PARAMETER:
+				return getOwningParameter();
+			case UML2Package.PRIMITIVE_FUNCTION__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return getPackageableElement_visibility();
 			case UML2Package.PRIMITIVE_FUNCTION__BODY:
 				return getBody();
 			case UML2Package.PRIMITIVE_FUNCTION__LANGUAGE:
@@ -225,6 +294,35 @@ public class PrimitiveFunctionImpl extends ElementImpl implements PrimitiveFunct
 				getOwnedComments().clear();
 				getOwnedComments().addAll((Collection)newValue);
 				return;
+			case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_BINDING:
+				getTemplateBindings().clear();
+				getTemplateBindings().addAll((Collection)newValue);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__OWNED_TEMPLATE_SIGNATURE:
+				setOwnedTemplateSignature((TemplateSignature)newValue);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__NAME:
+				setName((String)newValue);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__VISIBILITY:
+				setVisibility((VisibilityKind)newValue);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__CLIENT_DEPENDENCY:
+				getClientDependencies().clear();
+				getClientDependencies().addAll((Collection)newValue);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__NAME_EXPRESSION:
+				setNameExpression((StringExpression)newValue);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_PARAMETER:
+				setTemplateParameter((TemplateParameter)newValue);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__OWNING_PARAMETER:
+				setOwningParameter((TemplateParameter)newValue);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__PACKAGEABLE_ELEMENT_VISIBILITY:
+				setPackageableElement_visibility((VisibilityKind)newValue);
+				return;
 			case UML2Package.PRIMITIVE_FUNCTION__BODY:
 				setBody((String)newValue);
 				return;
@@ -247,6 +345,33 @@ public class PrimitiveFunctionImpl extends ElementImpl implements PrimitiveFunct
 				return;
 			case UML2Package.PRIMITIVE_FUNCTION__OWNED_COMMENT:
 				getOwnedComments().clear();
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_BINDING:
+				getTemplateBindings().clear();
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__OWNED_TEMPLATE_SIGNATURE:
+				setOwnedTemplateSignature((TemplateSignature)null);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__VISIBILITY:
+				setVisibility(VISIBILITY_EDEFAULT);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__CLIENT_DEPENDENCY:
+				getClientDependencies().clear();
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__NAME_EXPRESSION:
+				setNameExpression((StringExpression)null);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_PARAMETER:
+				setTemplateParameter((TemplateParameter)null);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__OWNING_PARAMETER:
+				setOwningParameter(null);
+				return;
+			case UML2Package.PRIMITIVE_FUNCTION__PACKAGEABLE_ELEMENT_VISIBILITY:
+				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
 				return;
 			case UML2Package.PRIMITIVE_FUNCTION__BODY:
 				setBody(BODY_EDEFAULT);
@@ -273,6 +398,26 @@ public class PrimitiveFunctionImpl extends ElementImpl implements PrimitiveFunct
 				return basicGetOwner() != null;
 			case UML2Package.PRIMITIVE_FUNCTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
+			case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_BINDING:
+				return templateBinding != null && !templateBinding.isEmpty();
+			case UML2Package.PRIMITIVE_FUNCTION__OWNED_TEMPLATE_SIGNATURE:
+				return ownedTemplateSignature != null;
+			case UML2Package.PRIMITIVE_FUNCTION__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case UML2Package.PRIMITIVE_FUNCTION__QUALIFIED_NAME:
+				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+			case UML2Package.PRIMITIVE_FUNCTION__VISIBILITY:
+				return visibility != VISIBILITY_EDEFAULT;
+			case UML2Package.PRIMITIVE_FUNCTION__CLIENT_DEPENDENCY:
+				return clientDependency != null && !clientDependency.isEmpty();
+			case UML2Package.PRIMITIVE_FUNCTION__NAME_EXPRESSION:
+				return nameExpression != null;
+			case UML2Package.PRIMITIVE_FUNCTION__TEMPLATE_PARAMETER:
+				return templateParameter != null;
+			case UML2Package.PRIMITIVE_FUNCTION__OWNING_PARAMETER:
+				return getOwningParameter() != null;
+			case UML2Package.PRIMITIVE_FUNCTION__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.PRIMITIVE_FUNCTION__BODY:
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 			case UML2Package.PRIMITIVE_FUNCTION__LANGUAGE:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DurationIntervalImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: DurationIntervalImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,54 +68,28 @@ public class DurationIntervalImpl extends IntervalImpl implements DurationInterv
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Min</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Duration}.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Interval#getMins}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getMinsGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getMins() {
-		// TODO: test this redefinition getter
-		if (_min == null) {
+
+		if (null == _min) {
 			_min = new EObjectResolvingEList(Duration.class, this, UML2Package.DURATION_INTERVAL__MIN);
 		}
+
 		return _min;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Max</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Duration}.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Interval#getMaxes}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getMaxesGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getMaxes() {
-		// TODO: test this redefinition getter
-		if (_max == null) {
+
+		if (null == _max) {
 			_max = new EObjectResolvingEList(Duration.class, this, UML2Package.DURATION_INTERVAL__MAX);
 		}
+
 		return _max;
 	}
 

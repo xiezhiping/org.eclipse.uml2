@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -124,11 +124,9 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Parameter</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getParameters() {
-		// TODO: test this superset getter
 		if (parameter == null) {
 			parameter = new SupersetEObjectResolvingEList(TemplateParameter.class, this, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER, new int[] {UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER});
 		}
@@ -139,18 +137,9 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Parameter</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 *   <li>{@link org.eclipse.uml2.TemplateSignature#getParameters}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedParameters() {
-		// TODO: test this subset getter
 		if (ownedParameter == null) {
 			ownedParameter = new SubsetEObjectContainmentWithInverseEList(TemplateParameter.class, this, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER, new int[] {UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER}, UML2Package.TEMPLATE_PARAMETER__SIGNATURE);
 		}
@@ -175,7 +164,6 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Nested Signature</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getNestedSignatures() {
@@ -188,7 +176,6 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Nesting Signature</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateSignature getNestingSignature() {
@@ -206,7 +193,6 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Nesting Signature</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateSignature basicGetNestingSignature() {
@@ -250,13 +236,6 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public TemplateableElement getTemplate() {
@@ -288,13 +267,9 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -313,12 +288,9 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getTemplate()) {
 			return (Element) getTemplate();
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,7 +84,6 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>End Data</b></em>' containment reference list.
 	 * @generated
 	 */
 	public EList getEndData() {

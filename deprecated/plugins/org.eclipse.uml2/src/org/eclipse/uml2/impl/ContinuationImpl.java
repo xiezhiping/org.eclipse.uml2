@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -91,7 +91,6 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Setting</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isSetting() {

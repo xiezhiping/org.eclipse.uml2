@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ActionImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -126,7 +126,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Effect</b></em>' attribute.
 	 * @generated
 	 */
 	public String getEffect() {
@@ -148,17 +147,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Output</b></em>' reference list, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOutputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -192,17 +183,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Input</b></em>' reference list, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getInputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Input())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -236,7 +219,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Context</b></em>' reference.
 	 * @generated
 	 */
 	public Classifier getContext() {
@@ -247,16 +229,8 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Context</b></em>' reference.
-	 * @generated
+	 * @generated NOT
 	 */
-	public Classifier basicGetContextGen() {
-		// TODO: implement this derived basic getter to return the 'Context' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public Classifier basicGetContext() {
 		// TODO: implement this derived basic getter to return the 'Context' reference
 		return null;
@@ -265,13 +239,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Local Precondition</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getLocalPreconditions() {
@@ -315,13 +282,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Local Postcondition</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getLocalPostconditions() {
@@ -365,13 +325,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

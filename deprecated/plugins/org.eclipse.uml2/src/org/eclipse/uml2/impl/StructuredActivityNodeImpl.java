@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.5 2004/05/14 14:14:19 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.6 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -183,11 +183,9 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Member</b></em>' reference list, a derived union.
 	 * @generated
 	 */
 	public EList getMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
 			Set union = new LinkedHashSet();
 			union.addAll(getOwnedMembers());
@@ -223,13 +221,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedRules() {
@@ -273,23 +264,10 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Imported Member</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getMembers}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getImportedMembersGen() {
-		// TODO: implement this derived getter to return the 'Imported Member' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getImportedMembers() {
-		// TODO: test this derived getter
+
         if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_ImportedMember())) {
             Set importedMember = importedMember();
 
@@ -324,13 +302,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Element Import</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getElementImports() {
@@ -357,13 +328,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Package Import</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getPackageImports() {
@@ -390,13 +354,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Super Group</b></em>' reference, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ActivityGroup getSuperGroup() {
@@ -407,24 +364,15 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Super Group</b></em>' reference, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ActivityGroup basicGetSuperGroup() {
-		// TODO: test this union basic getter
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Must Isolate</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isMustIsolate() {
@@ -449,20 +397,12 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public boolean validateMembersAreDistinguishable(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.NamespaceOperations.validateMembersAreDistinguishable(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Variable</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getVariables() {
@@ -506,13 +446,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Contained Node</b></em>' containment reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityGroup#getContainedNodes}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getContainedNodes() {
@@ -556,13 +489,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Contained Edge</b></em>' containment reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityGroup#getContainedEdges}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getContainedEdges() {
@@ -609,7 +535,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public Set getNamesOfMember(NamedElement element) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.NamespaceOperations.getNamesOfMember(this, element);
 	}
 
@@ -619,7 +544,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public boolean membersAreDistinguishable() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.NamespaceOperations.membersAreDistinguishable(this);
 	}
 
@@ -629,7 +553,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public boolean validateImportedMemberDerived(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.NamespaceOperations.validateImportedMemberDerived(this, diagnostics, context);
 	}
 
@@ -639,7 +562,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public Set importedMember() {
-		// TODO: test this OCL operation
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("importedMember", new Class[] {}); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
@@ -659,7 +581,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public Set importMembers(Set imps) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.NamespaceOperations.importMembers(this, imps);
 	}
 
@@ -669,20 +590,15 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public Set excludeCollisions(Set imps) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.NamespaceOperations.excludeCollisions(this, imps);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -703,19 +619,9 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Subgroup</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.ActivityGroup}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ActivityGroup#getSuperGroup <em>Super Group</em>}'.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getSubgroups() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(48))) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -729,12 +635,9 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getSuperGroup()) {
 			return (Element) getSuperGroup();
 		}
@@ -747,27 +650,14 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Activity</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Activity#getStructuredNodes <em>Structured Node</em>}'.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityNode#getActivity}</li>
-	 *   <li>{@link org.eclipse.uml2.ActivityGroup#getActivityGroup_activity}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public Activity getActivityGen() {
-		// TODO: implement this derived redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public Activity getActivity() {
-		// TODO: test this derived redefinition getter
-		if (eContainerFeatureID != UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY && eContainerFeatureID != UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY)
+
+		if (eContainerFeatureID != UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY && eContainerFeatureID != UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY) {
 			return null;
+		}
+
 		return (Activity) eContainer;
 	}
 
@@ -777,19 +667,15 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-		// TODO: test this derived redefinition setter
 		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Activity Group activity</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Activity#getGroups <em>Group</em>}'.
 	 * @generated
 	 */
 	public Activity getActivityGroup_activity() {
-		// TODO: test this redefined getter
 		return getActivity();
 	}
 
@@ -799,20 +685,15 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public void setActivityGroup_activity(Activity newActivityGroup_activity) {
-		// TODO: test this redefined setter
 		setActivity(newActivityGroup_activity);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(59))) {
 			Set union = new LinkedHashSet();
 			union.addAll(getVariables());

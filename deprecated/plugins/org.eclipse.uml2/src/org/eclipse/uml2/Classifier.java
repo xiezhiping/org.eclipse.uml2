@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Classifier.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: Classifier.java,v 1.8 2004/05/20 03:20:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.Classifier#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getPowertypeExtents <em>Powertype Extent</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getOwnedUseCases <em>Owned Use Case</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#getUseCases <em>Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getRepresentation <em>Representation</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getOccurrences <em>Occurrence</em>}</li>
  * </ul>
@@ -355,6 +356,35 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
      */
     UseCase createOwnedUseCase(EClass eClass);
 
+	/**
+	 * Returns the value of the '<em><b>Use Case</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.UseCase}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.UseCase#getSubjects <em>Subject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Use Case</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Use Case</em>' reference list.
+	 * @see org.eclipse.uml2.UML2Package#getClassifier_UseCase()
+	 * @see org.eclipse.uml2.UseCase#getSubjects
+	 * @model type="org.eclipse.uml2.UseCase" opposite="subject" ordered="false"
+	 * @generated
+	 */
+	EList getUseCases();
+
+    /**
+     * Retrieves the {@link org.eclipse.uml2.UseCase} with the specified name from the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.UseCase} to retrieve.
+	 * @return The {@link org.eclipse.uml2.UseCase} with the specified name, or <code>null</code>.
+	 * @see #getUseCases()
+	 * @generated
+     */
+    UseCase getUseCase(String unqualifiedName);
+      
 	/**
 	 * Returns the value of the '<em><b>Representation</b></em>' reference.
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,90 +68,37 @@ public class DurationConstraintImpl extends IntervalConstraintImpl implements Du
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Specification</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Constraint#getSpecification}</li>
-	 *   <li>{@link org.eclipse.uml2.IntervalConstraint#getSpecification}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public ValueSpecification getSpecificationGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public ValueSpecification getSpecification() {
-		// TODO: test this redefinition getter
 		return specification;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public NotificationChain basicSetSpecificationGen(ValueSpecification newSpecification, NotificationChain msgs) {
-		// TODO: implement this redefinition basic setter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public NotificationChain basicSetSpecification(ValueSpecification newSpecification, NotificationChain msgs) {
-		// TODO: test this redefinition basic setter
+
 		if (null != newSpecification && !DurationInterval.class.isInstance(newSpecification)) {
 			throw new IllegalArgumentException(String.valueOf(newSpecification));
 		}
-//		ValueSpecification oldSpecification = specification;
-//		specification = newSpecification;
-//		if (eNotificationRequired()) {
-//			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.DURATION_CONSTRAINT__SPECIFICATION, oldSpecification, newSpecification);
-//			if (null == msgs) {
-//				msgs = notification;
-//			} else {
-//				msgs.add(notification);
-//			}
-//		}
-//		return msgs;
+
 		return super.basicSetSpecification(newSpecification, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public void setSpecificationGen(ValueSpecification newSpecification) {
-		// TODO: implement this redefinition setter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public void setSpecification(ValueSpecification newSpecification) {
-		// TODO: test this redefinition setter
+
 		if (null != newSpecification && !DurationInterval.class.isInstance(newSpecification)) {
 			throw new IllegalArgumentException(String.valueOf(newSpecification));
 		}
-//		if (newSpecification != specification) {
-//			NotificationChain msgs = null;
-//			if (null != specification) {
-//				msgs =
-//					((InternalEObject) specification).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.DURATION_CONSTRAINT__SPECIFICATION, null, msgs);
-//			}
-//			if (null != newSpecification) {
-//				msgs =
-//					((InternalEObject) newSpecification).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UML2Package.DURATION_CONSTRAINT__SPECIFICATION, null, msgs);
-//			}
-//			msgs = basicSetSpecification(newSpecification, msgs);
-//			if (null != msgs) {
-//				msgs.dispatch();
-//			}
-//		} else if (eNotificationRequired()) {
-//			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DURATION_CONSTRAINT__SPECIFICATION, newSpecification, newSpecification));
-//		}
+
 		super.setSpecification(newSpecification);
 	}
 

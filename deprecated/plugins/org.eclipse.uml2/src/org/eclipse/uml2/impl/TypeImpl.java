@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: TypeImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -72,13 +72,6 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Package</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public org.eclipse.uml2.Package getPackage() {
@@ -89,24 +82,9 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Package</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public org.eclipse.uml2.Package basicGetPackageGen() {
-		// TODO: implement this derived basic getter to return the 'Package' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public org.eclipse.uml2.Package basicGetPackage() {
-		// TODO: test this redefined basic getter
 		return org.eclipse.uml2.Package.class.isInstance(eContainer) ? (org.eclipse.uml2.Package) eContainer : null;
 	}
 
@@ -116,7 +94,6 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	 * @generated
 	 */
 	public NotificationChain basicSetPackage(org.eclipse.uml2.Package newPackage, NotificationChain msgs) {
-		// TODO: test this derived basic setter
 		throw new UnsupportedOperationException();
 	}
 
@@ -126,19 +103,15 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	 * @generated
 	 */
 	public boolean conformsTo(Type other) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.TypeOperations.conformsTo(this, other);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * @generated
 	 */
 	public Namespace getNamespace() {
-		// TODO: test this union getter
 		if (null != getPackage()) {
 			return (Namespace) getPackage();
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -142,7 +142,6 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Determinate</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isDeterminate() {
@@ -164,7 +163,6 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Assured</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isAssured() {
@@ -186,13 +184,6 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Clause</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getClauses() {
@@ -219,13 +210,6 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getOutputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getResults() {
@@ -269,13 +253,9 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -294,12 +274,9 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Output</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
 	 * @generated
 	 */
 	public EList getOutputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOutputs());

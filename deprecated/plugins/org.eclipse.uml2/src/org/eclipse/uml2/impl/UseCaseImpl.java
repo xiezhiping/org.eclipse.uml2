@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.Classifier;
@@ -126,13 +126,6 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Include</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getIncludes() {
@@ -176,13 +169,6 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Extend</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getExtends() {
@@ -226,13 +212,6 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Extension Point</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getExtensionPoints() {
@@ -276,12 +255,11 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Subject</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getSubjects() {
 		if (subject == null) {
-			subject = new EObjectResolvingEList(Classifier.class, this, UML2Package.USE_CASE__SUBJECT);
+			subject = new EObjectWithInverseResolvingEList.ManyInverse(Classifier.class, this, UML2Package.USE_CASE__SUBJECT, UML2Package.CLASSIFIER__USE_CASE);
 		}
 		return subject;
 	}
@@ -306,13 +284,9 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getUseCase().getEAllOperations().get(72))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -365,6 +339,8 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.USE_CASE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__IMPLEMENTATION:
@@ -377,6 +353,8 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 					return ((InternalEList)getExtends()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__EXTENSION_POINT:
 					return ((InternalEList)getExtensionPoints()).basicAdd(otherEnd, msgs);
+				case UML2Package.USE_CASE__SUBJECT:
+					return ((InternalEList)getSubjects()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -424,12 +402,16 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.USE_CASE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.USE_CASE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.USE_CASE__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.USE_CASE__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
 				case UML2Package.USE_CASE__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.USE_CASE__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
 				case UML2Package.USE_CASE__OWNED_STATE_MACHINE:
 					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.USE_CASE__INCLUDE:
@@ -438,6 +420,8 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 					return ((InternalEList)getExtends()).basicRemove(otherEnd, msgs);
 				case UML2Package.USE_CASE__EXTENSION_POINT:
 					return ((InternalEList)getExtensionPoints()).basicRemove(otherEnd, msgs);
+				case UML2Package.USE_CASE__SUBJECT:
+					return ((InternalEList)getSubjects()).basicRemove(otherEnd, msgs);
 				default:
 					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
 			}
@@ -536,6 +520,8 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				return getPowertypeExtents();
 			case UML2Package.USE_CASE__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.USE_CASE__USE_CASE:
+				return getUseCases();
 			case UML2Package.USE_CASE__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.USE_CASE__OCCURRENCE:
@@ -546,6 +532,8 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				return getClassifierBehavior();
 			case UML2Package.USE_CASE__IMPLEMENTATION:
 				return getImplementations();
+			case UML2Package.USE_CASE__OWNED_TRIGGER:
+				return getOwnedTriggers();
 			case UML2Package.USE_CASE__OWNED_STATE_MACHINE:
 				return getOwnedStateMachines();
 			case UML2Package.USE_CASE__INCLUDE:
@@ -642,6 +630,10 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.USE_CASE__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.USE_CASE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -659,6 +651,10 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__IMPLEMENTATION:
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
+				return;
+			case UML2Package.USE_CASE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
 				return;
 			case UML2Package.USE_CASE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
@@ -754,6 +750,9 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.USE_CASE__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.USE_CASE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -768,6 +767,9 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				return;
 			case UML2Package.USE_CASE__IMPLEMENTATION:
 				getImplementations().clear();
+				return;
+			case UML2Package.USE_CASE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
 				return;
 			case UML2Package.USE_CASE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
@@ -859,6 +861,8 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.USE_CASE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.USE_CASE__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.USE_CASE__REPRESENTATION:
 				return representation != null;
 			case UML2Package.USE_CASE__OCCURRENCE:
@@ -869,6 +873,8 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				return classifierBehavior != null;
 			case UML2Package.USE_CASE__IMPLEMENTATION:
 				return implementation != null && !implementation.isEmpty();
+			case UML2Package.USE_CASE__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.USE_CASE__OWNED_STATE_MACHINE:
 				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.USE_CASE__INCLUDE:

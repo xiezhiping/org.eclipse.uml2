@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -77,13 +77,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Super Group</b></em>' reference, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ActivityGroup getSuperGroup() {
@@ -94,36 +87,15 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Super Group</b></em>' reference, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ActivityGroup basicGetSuperGroup() {
-		// TODO: test this union basic getter
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Activity Group activity</b></em>' container reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityNode#getActivity}</li>
-	 * </ul>
-	 * </p>
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Activity getActivityGroup_activity() {
@@ -162,19 +134,9 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Subgroup</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.ActivityGroup}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ActivityGroup#getSuperGroup <em>Super Group</em>}'.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getSubgroups() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getActivityGroup().getEAllOperations().get(19))) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -188,50 +150,29 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Contained Edge</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.ActivityEdge}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ActivityEdge#getInGroups <em>In Group</em>}'.
-	 * @generated
+	 * @generated NOT
 	 */
-    public EList getContainedEdgesGen() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getContainedEdges() {
-		// TODO: test this method
-		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Contained Node</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.ActivityNode}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ActivityNode#getInGroups <em>In Group</em>}'.
-	 * @generated
-	 */
-	public EList getContainedNodesGen() {
 		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	public EList getContainedNodes() {
-		// TODO: test this method
 		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Activity</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Activity#getNodes <em>Node</em>}'.
+	 * @generated NOT
+	 */
+	public EList getContainedNodes() {
+		// TODO: implement this method
+		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Activity getActivity() {
-		// TODO: test this redefined getter
 		return getActivityGroup_activity();
 	}
 
@@ -241,20 +182,15 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-		// TODO: test this redefined setter
 		setActivityGroup_activity(newActivity);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -273,12 +209,9 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getSuperGroup()) {
 			return (Element) getSuperGroup();
 		}

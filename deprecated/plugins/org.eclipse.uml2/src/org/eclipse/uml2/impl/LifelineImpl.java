@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.4 2004/05/14 14:14:19 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.5 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -126,7 +126,6 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Covered By</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getCoveredBys() {
@@ -156,7 +155,6 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Represents</b></em>' reference.
 	 * @generated
 	 */
 	public ConnectableElement getRepresents() {
@@ -174,7 +172,6 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Represents</b></em>' reference.
 	 * @generated
 	 */
 	public ConnectableElement basicGetRepresents() {
@@ -196,13 +193,6 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Interaction</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Interaction getInteraction() {
@@ -234,13 +224,6 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Selector</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public OpaqueExpression getSelector() {
@@ -298,7 +281,6 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Decomposed As</b></em>' reference.
 	 * @generated
 	 */
 	public PartDecomposition getDecomposedAs() {
@@ -316,7 +298,6 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Decomposed As</b></em>' reference.
 	 * @generated
 	 */
 	public PartDecomposition basicGetDecomposedAs() {
@@ -338,12 +319,9 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * @generated
 	 */
 	public Namespace getNamespace() {
-		// TODO: test this union getter
 		if (null != getInteraction()) {
 			return (Namespace) getInteraction();
 		}
@@ -353,13 +331,9 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

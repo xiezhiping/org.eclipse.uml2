@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CreateLinkObjectActionImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
+ * $Id: CreateLinkObjectActionImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -88,13 +88,6 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Result</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getOutputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public OutputPin getResult() {
@@ -152,12 +145,9 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Output</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
 	 * @generated
 	 */
 	public EList getOutputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOutputs());
@@ -176,7 +166,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	}
 
 	public EList getEndData() {
-		// TODO: test this redefinition getter
+
 		if (endData == null) {
 			endData = new EObjectContainmentEList(LinkEndCreationData.class, this, UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA);
 		}

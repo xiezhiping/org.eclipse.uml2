@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -91,7 +91,6 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Before</b></em>' reference.
 	 * @generated
 	 */
 	public EventOccurrence getBefore() {
@@ -109,7 +108,6 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Before</b></em>' reference.
 	 * @generated
 	 */
 	public EventOccurrence basicGetBefore() {
@@ -153,7 +151,6 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>After</b></em>' reference.
 	 * @generated
 	 */
 	public EventOccurrence getAfter() {
@@ -171,7 +168,6 @@ public class GeneralOrderingImpl extends NamedElementImpl implements GeneralOrde
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>After</b></em>' reference.
 	 * @generated
 	 */
 	public EventOccurrence basicGetAfter() {

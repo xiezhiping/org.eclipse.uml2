@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -119,11 +119,9 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Related Element</b></em>' reference list, a derived union.
 	 * @generated
 	 */
 	public EList getRelatedElementsGen() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRelationship_RelatedElement())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -138,7 +136,6 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	}
 
 	public EList getRelatedElements() {
-		// TODO: test this union getter
 		Set union = new HashSet();
 		union.addAll(getSources());
 		union.addAll(getTargets());
@@ -148,13 +145,6 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Extended Case</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public UseCase getExtendedCase() {
@@ -172,13 +162,6 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Extended Case</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public UseCase basicGetExtendedCase() {
@@ -200,13 +183,6 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Extension</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public UseCase getExtension() {
@@ -238,13 +214,6 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Condition</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Constraint getCondition() {
@@ -302,7 +271,6 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Extension Location</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getExtensionLocations() {
@@ -332,12 +300,9 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getTargets() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
 			Set union = new LinkedHashSet();
 			if (null != getExtendedCase()) {
@@ -357,12 +322,9 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getSources() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Source())) {
 			Set union = new LinkedHashSet();
 			if (null != getExtension()) {
@@ -382,13 +344,9 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

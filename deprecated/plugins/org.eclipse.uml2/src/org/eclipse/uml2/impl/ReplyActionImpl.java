@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -111,7 +111,6 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Reply To Call</b></em>' reference.
 	 * @generated
 	 */
 	public CallTrigger getReplyToCall() {
@@ -129,7 +128,6 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Reply To Call</b></em>' reference.
 	 * @generated
 	 */
 	public CallTrigger basicGetReplyToCall() {
@@ -151,13 +149,6 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Reply Value</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getInputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getReplyValues() {
@@ -187,13 +178,6 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Return Information</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getInputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public InputPin getReturnInformation() {
@@ -211,13 +195,6 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Return Information</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getInputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public InputPin basicGetReturnInformation() {
@@ -239,12 +216,9 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Input</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.InputPin}.
 	 * @generated
 	 */
 	public EList getInputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Input())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getInputs());

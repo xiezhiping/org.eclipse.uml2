@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -71,7 +71,6 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Use Case</b></em>' container reference.
 	 * @generated
 	 */
 	public UseCase getUseCase() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -91,13 +91,6 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Duration</b></em>' containment reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.WriteStructuralFeatureAction#getValue}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getDurations() {
@@ -141,11 +134,9 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
 	 * @generated
 	 */
 	public InputPin getValue() {
-		// TODO: test this redefined getter
 		return null;
 	}
 
@@ -155,7 +146,6 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	 * @generated
 	 */
 	public NotificationChain basicSetValue(InputPin newValue, NotificationChain msgs) {
-		// TODO: test this redefined basic setter
 		throw new UnsupportedOperationException();
 	}
 

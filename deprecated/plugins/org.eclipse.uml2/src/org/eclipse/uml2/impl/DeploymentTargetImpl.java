@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.4 2004/05/14 14:14:20 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.5 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -94,18 +94,9 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Deployment</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getDeployments() {
-		// TODO: test this subset getter
 		if (deployment == null) {
 			deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT, new int[] {UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION);
 		}
@@ -147,17 +138,10 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Deployed Element</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getDeployedElementsGen() {
-		// TODO: implement this derived getter to return the 'Deployed Element' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getDeployedElements() {
-		// TODO: test this derived getter
+
 	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement())) {
 	        Set deployedElement = new HashSet();
 	        
@@ -205,13 +189,9 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -230,13 +210,9 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client Dependency</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Dependency}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Dependency#getClients <em>Client</em>}'.
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		// TODO: test this superset getter
 		if (clientDependency == null) {
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY, new int[] {UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT);
 		}

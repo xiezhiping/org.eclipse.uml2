@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InformationFlow.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: InformationFlow.java,v 1.4 2004/05/20 03:20:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  * @model 
  * @generated
  */
-public interface InformationFlow extends DirectedRelationship{
+public interface InformationFlow extends PackageableElement, DirectedRelationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

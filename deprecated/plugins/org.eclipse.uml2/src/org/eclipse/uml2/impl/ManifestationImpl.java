@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -89,14 +89,6 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Utilized Element</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Dependency#getSuppliers}</li>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public PackageableElement getUtilizedElement() {
@@ -107,14 +99,6 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Utilized Element</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Dependency#getSuppliers}</li>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public PackageableElement basicGetUtilizedElement() {
@@ -127,7 +111,6 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 * @generated
 	 */
 	public void setUtilizedElement(PackageableElement newUtilizedElement) {
-		// TODO: test this subset setter
 		if (null != newUtilizedElement && !getSuppliers().contains(newUtilizedElement)) {
 			getSuppliers().add(newUtilizedElement);
 		}
@@ -142,12 +125,9 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Supplier</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
 	 * @generated
 	 */
 	public EList getSuppliers() {
-		// TODO: test this superset getter
 		if (supplier == null) {
 			supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.MANIFESTATION__SUPPLIER, new int[] {UML2Package.MANIFESTATION__UTILIZED_ELEMENT});
 		}
@@ -158,12 +138,9 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getTargets() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getTargets());

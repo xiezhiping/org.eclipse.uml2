@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ValueSpecificationImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ValueSpecificationImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -86,7 +86,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
@@ -97,7 +96,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
@@ -110,7 +108,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplateParameter(TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		// TODO: test this superset basic setter
 		TemplateParameter oldTemplateParameter = templateParameter;
 		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
@@ -151,14 +148,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ParameterableElement#getTemplateParameter}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public TemplateParameter getOwningParameter() {
@@ -174,7 +163,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
-		// TODO: test this subset setter
 		EObject oldOwningParameter = eContainer;
 		if (eContainer != newOwningParameter || (eContainerFeatureID != UML2Package.VALUE_SPECIFICATION__OWNING_PARAMETER && null != newOwningParameter)) {
 			if (EcoreUtil.isAncestor(this, newOwningParameter)) {
@@ -202,12 +190,9 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getOwningParameter()) {
 			return (Element) getOwningParameter();
 		}
@@ -220,7 +205,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public boolean isComputable() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.isComputable(this);
 	}
 
@@ -230,7 +214,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public int integerValue() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.integerValue(this);
 	}
 
@@ -240,7 +223,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public boolean booleanValue() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.booleanValue(this);
 	}
 
@@ -250,7 +232,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public String stringValue() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.stringValue(this);
 	}
 
@@ -260,7 +241,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public int unlimitedValue() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.unlimitedValue(this);
 	}
 
@@ -270,7 +250,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 * @generated
 	 */
 	public boolean isNull() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ValueSpecificationOperations.isNull(this);
 	}
 

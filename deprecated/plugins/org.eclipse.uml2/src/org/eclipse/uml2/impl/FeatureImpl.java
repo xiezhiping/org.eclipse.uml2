@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -96,7 +96,6 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Static</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isStatic() {
@@ -118,11 +117,9 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Featuring Classifier</b></em>' reference list, a derived union.
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.5 2004/05/14 14:14:20 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.6 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -111,7 +111,6 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Formal</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter getFormal() {
@@ -129,7 +128,6 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Formal</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter basicGetFormal() {
@@ -151,13 +149,6 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template Binding</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public TemplateBinding getTemplateBinding() {
@@ -189,11 +180,9 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Actual</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getActuals() {
-		// TODO: test this superset getter
 		if (actual == null) {
 			actual = new SupersetEObjectResolvingEList(ParameterableElement.class, this, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL, new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL});
 		}
@@ -204,18 +193,9 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Actual</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.TemplateParameterSubstitution#getActuals}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedActuals() {
-		// TODO: test this subset getter
 		if (ownedActual == null) {
 			ownedActual = new SubsetEObjectContainmentEList(ParameterableElement.class, this, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL, new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL});
 		}
@@ -240,12 +220,9 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getTemplateBinding()) {
 			return (Element) getTemplateBinding();
 		}
@@ -255,13 +232,9 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PrimitiveTypeImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: PrimitiveTypeImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -100,6 +100,8 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.PRIMITIVE_TYPE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicAdd(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__OWNED_OPERATION:
@@ -151,6 +153,8 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.PRIMITIVE_TYPE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__OWNED_ATTRIBUTE:
@@ -255,6 +259,8 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 				return getPowertypeExtents();
 			case UML2Package.PRIMITIVE_TYPE__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.PRIMITIVE_TYPE__USE_CASE:
+				return getUseCases();
 			case UML2Package.PRIMITIVE_TYPE__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.PRIMITIVE_TYPE__OCCURRENCE:
@@ -349,6 +355,10 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.PRIMITIVE_TYPE__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.PRIMITIVE_TYPE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -438,6 +448,9 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 			case UML2Package.PRIMITIVE_TYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.PRIMITIVE_TYPE__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.PRIMITIVE_TYPE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -525,6 +538,8 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.PRIMITIVE_TYPE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.PRIMITIVE_TYPE__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.PRIMITIVE_TYPE__REPRESENTATION:
 				return representation != null;
 			case UML2Package.PRIMITIVE_TYPE__OCCURRENCE:

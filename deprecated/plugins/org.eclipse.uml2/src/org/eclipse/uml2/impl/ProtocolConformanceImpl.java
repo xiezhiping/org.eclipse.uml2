@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,14 +84,6 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Specific Machine</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ProtocolStateMachine getSpecificMachine() {
@@ -123,13 +115,6 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>General Machine</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ProtocolStateMachine getGeneralMachine() {
@@ -147,13 +132,6 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>General Machine</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ProtocolStateMachine basicGetGeneralMachine() {
@@ -175,12 +153,9 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getSources() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Source())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getSources());
@@ -201,12 +176,9 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getSpecificMachine()) {
 			return (Element) getSpecificMachine();
 		}
@@ -216,12 +188,9 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getTargets() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getTargets());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -93,14 +93,6 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Contract</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Dependency#getSuppliers}</li>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Classifier getContract() {
@@ -111,14 +103,6 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Contract</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Dependency#getSuppliers}</li>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Classifier basicGetContract() {
@@ -131,7 +115,6 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * @generated
 	 */
 	public void setContract(Classifier newContract) {
-		// TODO: test this subset setter
 		if (null != newContract && !getSuppliers().contains(newContract)) {
 			getSuppliers().add(newContract);
 		}
@@ -146,14 +129,6 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Substituting Classifier</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Dependency#getClients}</li>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Classifier getSubstitutingClassifier() {
@@ -169,7 +144,6 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * @generated
 	 */
 	public void setSubstitutingClassifier(Classifier newSubstitutingClassifier) {
-		// TODO: test this subset setter
 		if (null != newSubstitutingClassifier && !getClients().contains(newSubstitutingClassifier)) {
 			getClients().add(newSubstitutingClassifier);
 		}
@@ -197,12 +171,9 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Supplier</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
 	 * @generated
 	 */
 	public EList getSuppliers() {
-		// TODO: test this superset getter
 		if (supplier == null) {
 			supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.SUBSTITUTION__SUPPLIER, new int[] {UML2Package.SUBSTITUTION__REALIZING_CLASSIFIER, UML2Package.SUBSTITUTION__CONTRACT});
 		}
@@ -213,12 +184,9 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getTargets() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getTargets());
@@ -239,13 +207,9 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getClientDependencies <em>Client Dependency</em>}'.
 	 * @generated
 	 */
 	public EList getClients() {
-		// TODO: test this superset getter
 		if (client == null) {
 			client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.SUBSTITUTION__CLIENT, new int[] {UML2Package.SUBSTITUTION__ABSTRACTION, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
@@ -256,12 +220,9 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getSources() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Source())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getSources());

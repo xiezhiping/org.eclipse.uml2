@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CallBehaviorActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: CallBehaviorActionImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -83,7 +83,6 @@ public class CallBehaviorActionImpl extends CallActionImpl implements CallBehavi
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Behavior</b></em>' reference.
 	 * @generated
 	 */
 	public Behavior getBehavior() {
@@ -101,7 +100,6 @@ public class CallBehaviorActionImpl extends CallActionImpl implements CallBehavi
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Behavior</b></em>' reference.
 	 * @generated
 	 */
 	public Behavior basicGetBehavior() {

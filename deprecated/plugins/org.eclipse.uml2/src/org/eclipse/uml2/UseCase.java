@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UseCase.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: UseCase.java,v 1.4 2004/05/20 03:20:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -166,6 +166,7 @@ public interface UseCase extends BehavioredClassifier{
 	/**
 	 * Returns the value of the '<em><b>Subject</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Classifier#getUseCases <em>Use Case</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Subject</em>' reference list isn't clear,
@@ -174,7 +175,8 @@ public interface UseCase extends BehavioredClassifier{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subject</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getUseCase_Subject()
-	 * @model type="org.eclipse.uml2.Classifier" ordered="false"
+	 * @see org.eclipse.uml2.Classifier#getUseCases
+	 * @model type="org.eclipse.uml2.Classifier" opposite="useCase" ordered="false"
 	 * @generated
 	 */
 	EList getSubjects();

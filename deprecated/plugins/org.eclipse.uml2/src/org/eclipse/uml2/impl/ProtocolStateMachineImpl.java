@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -91,13 +91,6 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Conformance</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getConformances() {
@@ -124,13 +117,9 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -184,6 +173,8 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.PROTOCOL_STATE_MACHINE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__IMPLEMENTATION:
@@ -255,20 +246,24 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.PROTOCOL_STATE_MACHINE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR:
+					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+				case UML2Package.PROTOCOL_STATE_MACHINE__IMPLEMENTATION:
+					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_CONNECTOR:
 					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PORT:
 					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.PROTOCOL_STATE_MACHINE__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER:
@@ -281,6 +276,8 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 					return basicSetSpecification(null, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__PARAMETER:
 					return ((InternalEList)getParameters()).basicRemove(otherEnd, msgs);
+				case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET:
+					return ((InternalEList)getOwnedParameterSets()).basicRemove(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__REGION:
 					return ((InternalEList)getRegions()).basicRemove(otherEnd, msgs);
 				case UML2Package.PROTOCOL_STATE_MACHINE__CONNECTION_POINT:
@@ -391,10 +388,22 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				return getPowertypeExtents();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.PROTOCOL_STATE_MACHINE__USE_CASE:
+				return getUseCases();
 			case UML2Package.PROTOCOL_STATE_MACHINE__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OCCURRENCE:
 				return getOccurrences();
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR:
+				return getOwnedBehaviors();
+			case UML2Package.PROTOCOL_STATE_MACHINE__CLASSIFIER_BEHAVIOR:
+				return getClassifierBehavior();
+			case UML2Package.PROTOCOL_STATE_MACHINE__IMPLEMENTATION:
+				return getImplementations();
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER:
+				return getOwnedTriggers();
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
+				return getOwnedStateMachines();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 			case UML2Package.PROTOCOL_STATE_MACHINE__PART:
@@ -405,14 +414,6 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				return getOwnedConnectors();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PORT:
 				return getOwnedPorts();
-			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.PROTOCOL_STATE_MACHINE__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.PROTOCOL_STATE_MACHINE__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_OPERATION:
 				return getOwnedOperations();
 			case UML2Package.PROTOCOL_STATE_MACHINE__SUPER_CLASS:
@@ -444,6 +445,8 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				return getPreconditions();
 			case UML2Package.PROTOCOL_STATE_MACHINE__POSTCONDITION:
 				return getPostconditions();
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET:
+				return getOwnedParameterSets();
 			case UML2Package.PROTOCOL_STATE_MACHINE__REGION:
 				return getRegions();
 			case UML2Package.PROTOCOL_STATE_MACHINE__CONNECTION_POINT:
@@ -541,24 +544,16 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection)newValue);
-				return;
-			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection)newValue);
-				return;
-			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PORT:
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -571,9 +566,25 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
 				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
+				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
 				getOwnedStateMachines().addAll((Collection)newValue);
+				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				getOwnedAttributes().addAll((Collection)newValue);
+				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				getOwnedConnectors().addAll((Collection)newValue);
+				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PORT:
+				getOwnedPorts().clear();
+				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -614,6 +625,10 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__POSTCONDITION:
 				getPostconditions().clear();
 				getPostconditions().addAll((Collection)newValue);
+				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET:
+				getOwnedParameterSets().clear();
+				getOwnedParameterSets().addAll((Collection)newValue);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__REGION:
 				getRegions().clear();
@@ -707,20 +722,14 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				return;
-			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				return;
-			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PORT:
-				getOwnedPorts().clear();
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -731,8 +740,20 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__IMPLEMENTATION:
 				getImplementations().clear();
 				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
+				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PORT:
+				getOwnedPorts().clear();
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -766,6 +787,9 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__POSTCONDITION:
 				getPostconditions().clear();
+				return;
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET:
+				getOwnedParameterSets().clear();
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__REGION:
 				getRegions().clear();
@@ -857,12 +881,24 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.PROTOCOL_STATE_MACHINE__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__REPRESENTATION:
 				return representation != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.PROTOCOL_STATE_MACHINE__CLASSIFIER_BEHAVIOR:
+				return classifierBehavior != null;
+			case UML2Package.PROTOCOL_STATE_MACHINE__IMPLEMENTATION:
+				return implementation != null && !implementation.isEmpty();
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return !getOwnedAttributes().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__ROLE:
@@ -871,14 +907,6 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PORT:
 				return ownedPort != null && !ownedPort.isEmpty();
-			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.PROTOCOL_STATE_MACHINE__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.PROTOCOL_STATE_MACHINE__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__SUPER_CLASS:
@@ -909,6 +937,8 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				return precondition != null && !precondition.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__POSTCONDITION:
 				return postcondition != null && !postcondition.isEmpty();
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET:
+				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__REGION:
 				return region != null && !region.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__CONNECTION_POINT:

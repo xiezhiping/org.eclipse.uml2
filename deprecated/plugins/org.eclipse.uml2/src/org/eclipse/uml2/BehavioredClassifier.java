@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.4 2004/05/20 03:20:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors <em>Owned Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getClassifierBehavior <em>Classifier Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getImplementations <em>Implementation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getOwnedTriggers <em>Owned Trigger</em>}</li>
  *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getOwnedStateMachines <em>Owned State Machine</em>}</li>
  * </ul>
  * </p>
@@ -148,6 +149,44 @@ public interface BehavioredClassifier extends Classifier{
 	 * @generated
      */
     Implementation createImplementation(EClass eClass);
+
+	/**
+	 * Returns the value of the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.Trigger}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Trigger</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Trigger</em>' containment reference list.
+	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedTrigger()
+	 * @model type="org.eclipse.uml2.Trigger" containment="true" ordered="false"
+	 * @generated
+	 */
+	EList getOwnedTriggers();
+
+    /**
+     * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified name from the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Trigger} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Trigger} with the specified name, or <code>null</code>.
+	 * @see #getOwnedTriggers()
+	 * @generated
+     */
+    Trigger getOwnedTrigger(String unqualifiedName);
+      
+    /**
+     * Creates a {@link org.eclipse.uml2.Trigger} and appends it to the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Trigger} to create.
+	 * @return The new {@link org.eclipse.uml2.Trigger}.
+	 * @see #getOwnedTriggers()
+	 * @generated
+     */
+    Trigger createOwnedTrigger(EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Owned State Machine</b></em>' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.6 2004/05/14 14:14:19 khussey Exp $
+ * $Id: OperationImpl.java,v 1.7 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
@@ -53,6 +52,9 @@ import org.eclipse.uml2.TypedElement;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.util.SubsetEObjectEList;
+import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList;
+
 import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
 
 /**
@@ -153,7 +155,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	protected boolean isQuery = IS_QUERY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' containment reference list.
+	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPreconditions()
@@ -163,7 +165,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	protected EList precondition = null;
 
 	/**
-	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' containment reference list.
+	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPostconditions()
@@ -183,7 +185,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	protected EList redefinedOperation = null;
 
 	/**
-	 * The cached value of the '{@link #getBodyCondition() <em>Body Condition</em>}' containment reference.
+	 * The cached value of the '{@link #getBodyCondition() <em>Body Condition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBodyCondition()
@@ -213,13 +215,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Upper Value</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
@@ -277,13 +272,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Lower Value</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
@@ -341,7 +329,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
@@ -352,7 +339,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
@@ -365,7 +351,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplateParameter(TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		// TODO: test this superset basic setter
 		TemplateParameter oldTemplateParameter = templateParameter;
 		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
@@ -406,14 +391,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ParameterableElement#getTemplateParameter}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public TemplateParameter getOwningParameter() {
@@ -429,7 +406,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
-		// TODO: test this subset setter
 		EObject oldOwningParameter = eContainer;
 		if (eContainer != newOwningParameter || (eContainerFeatureID != UML2Package.OPERATION__OWNING_PARAMETER && null != newOwningParameter)) {
 			if (EcoreUtil.isAncestor(this, newOwningParameter)) {
@@ -457,7 +433,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Query</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isQuery() {
@@ -479,7 +454,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Parameter</b></em>' containment reference list.
 	 * @generated
 	 */
 	public EList getOwnedParameters() {
@@ -523,15 +497,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Class </b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinitionContexts}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public org.eclipse.uml2.Class getClass_() {
@@ -563,15 +528,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Datatype</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinitionContexts}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public DataType getDatatype() {
@@ -603,20 +559,14 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Precondition</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getPreconditions() {
 		if (precondition == null) {
-			precondition = new EObjectContainmentEList(Constraint.class, this, UML2Package.OPERATION__PRECONDITION);
+			precondition = new SubsetEObjectEList(Constraint.class, this, UML2Package.OPERATION__PRECONDITION, new int[] {UML2Package.OPERATION__OWNED_RULE});
 		}
 		return precondition;
+
 	}
 
     /**
@@ -641,32 +591,12 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createPrecondition(EClass eClass) {
-		Constraint newPrecondition = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, 0, UML2Package.OPERATION__PRECONDITION, null, newPrecondition));
-		}
-		getPreconditions().add(newPrecondition);
-		return newPrecondition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Postcondition</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
-	 */
 	public EList getPostconditions() {
 		if (postcondition == null) {
-			postcondition = new EObjectContainmentEList(Constraint.class, this, UML2Package.OPERATION__POSTCONDITION);
+			postcondition = new SubsetEObjectEList(Constraint.class, this, UML2Package.OPERATION__POSTCONDITION, new int[] {UML2Package.OPERATION__OWNED_RULE});
 		}
 		return postcondition;
+
 	}
 
     /**
@@ -689,27 +619,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint createPostcondition(EClass eClass) {
-		Constraint newPostcondition = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, 0, UML2Package.OPERATION__POSTCONDITION, null, newPostcondition));
-		}
-		getPostconditions().add(newPostcondition);
-		return newPostcondition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Operation</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRedefinedOperations() {
@@ -739,13 +648,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Body Condition</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Constraint getBodyCondition() {
@@ -757,47 +659,16 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetBodyCondition(Constraint newBodyCondition, NotificationChain msgs) {
+	public void setBodyCondition(Constraint newBodyCondition) {
+		if (null != newBodyCondition && !getOwnedRules().contains(newBodyCondition)) {
+			getOwnedRules().add(newBodyCondition);
+		}
 		Constraint oldBodyCondition = bodyCondition;
 		bodyCondition = newBodyCondition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__BODY_CONDITION, oldBodyCondition, newBodyCondition);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__BODY_CONDITION, oldBodyCondition, bodyCondition));
 		}
-		return msgs;
-	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBodyCondition(Constraint newBodyCondition) {
-		if (newBodyCondition != bodyCondition) {
-			NotificationChain msgs = null;
-			if (bodyCondition != null)
-				msgs = ((InternalEObject)bodyCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.OPERATION__BODY_CONDITION, null, msgs);
-			if (newBodyCondition != null)
-				msgs = ((InternalEObject)newBodyCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UML2Package.OPERATION__BODY_CONDITION, null, msgs);
-			msgs = basicSetBodyCondition(newBodyCondition, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__BODY_CONDITION, newBodyCondition, newBodyCondition));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint createBodyCondition(EClass eClass) {
-		Constraint newBodyCondition = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, 0, UML2Package.OPERATION__BODY_CONDITION, null, newBodyCondition));
-		}
-        setBodyCondition(newBodyCondition);
-		return newBodyCondition;
 	}
 
 	/**
@@ -806,7 +677,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public int lowerBound() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.lowerBound(this);
 	}
 
@@ -816,7 +686,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public int upperBound() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.upperBound(this);
 	}
 
@@ -826,7 +695,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean isMultivalued() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.isMultivalued(this);
 	}
 
@@ -836,7 +704,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean includesCardinality(int C) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.includesCardinality(this, C);
 	}
 
@@ -846,7 +713,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean includesMultiplicity(MultiplicityElement M) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.includesMultiplicity(this, M);
 	}
 
@@ -856,7 +722,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGt0(this, diagnostics, context);
 	}
 
@@ -866,7 +731,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean validateLowerGe0(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerGe0(this, diagnostics, context);
 	}
 
@@ -876,7 +740,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, context);
 	}
 
@@ -886,7 +749,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, context);
 	}
 
@@ -896,20 +758,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -933,12 +790,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getOwningParameter()) {
 			return (Element) getOwningParameter();
 		}
@@ -951,7 +805,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean validateTypeOfResult(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.OperationOperations.validateTypeOfResult(this, diagnostics, context);
 	}
 
@@ -961,7 +814,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean isOrdered() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.OperationOperations.isOrdered(this);
 	}
 
@@ -971,7 +823,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean isUnique() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.OperationOperations.isUnique(this);
 	}
 
@@ -981,7 +832,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public int lower() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.OperationOperations.lower(this);
 	}
 
@@ -991,7 +841,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public int upper() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.OperationOperations.upper(this);
 	}
 
@@ -1001,7 +850,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public Classifier type() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.OperationOperations.type(this);
 	}
 
@@ -1011,7 +859,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean validateOnlyBodyForQuery(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.OperationOperations.validateOnlyBodyForQuery(this, diagnostics, context);
 	}
 
@@ -1021,7 +868,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.OperationOperations.isConsistentWith(this, redefinee);
 	}
 
@@ -1031,7 +877,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setIsOrderedGen(boolean newIsOrdered) {
-		// TODO: test this derived redefinition setter
+
 	}
 
 	public void setIsOrdered(boolean newIsOrdered) {
@@ -1047,7 +893,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setIsUniqueGen(boolean newIsUnique) {
-		// TODO: test this derived redefinition setter
+
 	}
 
 	public void setIsUnique(boolean newIsUnique) {
@@ -1060,144 +906,59 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Lower</b></em>' attribute.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.MultiplicityElement#getLower}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public int getLowerGen() {
-		// TODO: implement this derived redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public int getLower() {
-		// TODO: test this derived redefinition getter
 		return lower();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Upper</b></em>' attribute.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.MultiplicityElement#getUpper}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public int getUpperGen() {
-		// TODO: implement this derived redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public int getUpper() {
-		// TODO: test this derived redefinition getter
 		return upper();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Raised Exception</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Type}.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.BehavioralFeature#getRaisedExceptions}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getRaisedExceptionsGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getRaisedExceptions() {
-		// TODO: test this redefinition getter
-		if (raisedException == null) {
+
+		if (null == raisedException) {
 			raisedException = new EObjectResolvingEList(Type.class, this, UML2Package.OPERATION__RAISED_EXCEPTION);
 		}
+
 		return raisedException;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Formal Parameter</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Parameter}.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Operation#getOwnedParameters}</li>
-	 *   <li>{@link org.eclipse.uml2.BehavioralFeature#getFormalParameters}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getFormalParametersGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getFormalParameters() {
-		// TODO: test this redefinition getter
 		return getOwnedParameters();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Type</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.TypedElement#getType}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public Type basicGetTypeGen() {
-		// TODO: implement this derived redefinition basic getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public Type basicGetType() {
-		// TODO: test this derived redefinition basic getter
 		return type();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Type</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.TypedElement#getType}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public Type getTypeGen() {
-		// TODO: implement this derived redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public Type getType() {
-		// TODO: test this derived redefinition getter
 		return type();
 	}
 
@@ -1207,7 +968,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setTypeGen(Type newType) {
-		// TODO: test this derived redefinition setter
+
 	}
 
 	public void setType(Type newType) {
@@ -1220,12 +981,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefinition Context</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinitionContexts());
@@ -1249,12 +1007,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * @generated
 	 */
 	public Namespace getNamespace() {
-		// TODO: test this union getter
 		if (null != getClass_()) {
 			return (Namespace) getClass_();
 		}
@@ -1267,13 +1022,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Featuring Classifier</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Classifier#getFeatures <em>Feature</em>}'.
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeaturingClassifiers());
@@ -1297,13 +1048,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(81))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -1323,22 +1070,32 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
+	 * @generated
+	 */
+	public EList getOwnedRules() {
+		if (ownedRule == null) {
+			ownedRule = new SupersetEObjectContainmentWithInverseEList(Constraint.class, this, UML2Package.OPERATION__OWNED_RULE, new int[] {UML2Package.OPERATION__PRECONDITION, UML2Package.OPERATION__POSTCONDITION, UML2Package.OPERATION__BODY_CONDITION}, UML2Package.CONSTRAINT__NAMESPACE);
+		}
+		return ownedRule;
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		// TODO: test this union getter
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(82))) {
+		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(83))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinedElements());
 			union.addAll(getRedefinedOperations());
 			getCacheAdapter().put(
 				this,
-				UML2Package.eINSTANCE.getOperation().getEAllOperations().get(82),
+				UML2Package.eINSTANCE.getOperation().getEAllOperations().get(83),
 				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(82));
+		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getOperation().getEAllOperations().get(83));
 	}
 
 	/**
@@ -1440,12 +1197,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 					return eBasicSetContainer(null, UML2Package.OPERATION__CLASS_, msgs);
 				case UML2Package.OPERATION__DATATYPE:
 					return eBasicSetContainer(null, UML2Package.OPERATION__DATATYPE, msgs);
-				case UML2Package.OPERATION__PRECONDITION:
-					return ((InternalEList)getPreconditions()).basicRemove(otherEnd, msgs);
-				case UML2Package.OPERATION__POSTCONDITION:
-					return ((InternalEList)getPostconditions()).basicRemove(otherEnd, msgs);
-				case UML2Package.OPERATION__BODY_CONDITION:
-					return basicSetBodyCondition(null, msgs);
 				default:
 					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
 			}

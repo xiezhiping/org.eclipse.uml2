@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EventOccurrenceImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: EventOccurrenceImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -145,7 +145,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Receive Message</b></em>' reference.
 	 * @generated
 	 */
 	public Message getReceiveMessage() {
@@ -163,7 +162,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Receive Message</b></em>' reference.
 	 * @generated
 	 */
 	public Message basicGetReceiveMessage() {
@@ -207,7 +205,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Send Message</b></em>' reference.
 	 * @generated
 	 */
 	public Message getSendMessage() {
@@ -225,7 +222,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Send Message</b></em>' reference.
 	 * @generated
 	 */
 	public Message basicGetSendMessage() {
@@ -269,7 +265,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Start Exec</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getStartExecs() {
@@ -299,7 +294,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Finish Exec</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getFinishExecs() {
@@ -329,7 +323,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>To After</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getToAfters() {
@@ -359,7 +352,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>To Before</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getToBefores() {
@@ -389,27 +381,15 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Covered</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.InteractionFragment#getCovereds}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getCoveredsGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getCovereds() {
-		// TODO: test this redefinition getter
-		if (covered == null) {
+
+		if (null == covered) {
 			covered =
 				new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.EVENT_OCCURRENCE__COVERED, UML2Package.LIFELINE__COVERED_BY);
 		}
+
 		return covered;
 	}
 

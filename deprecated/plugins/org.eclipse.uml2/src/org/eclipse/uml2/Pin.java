@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Pin.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Pin.java,v 1.3 2004/05/20 03:20:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -23,7 +23,7 @@ package org.eclipse.uml2;
  * @model abstract="true"
  * @generated
  */
-public interface Pin extends ObjectNode{
+public interface Pin extends ObjectNode, MultiplicityElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

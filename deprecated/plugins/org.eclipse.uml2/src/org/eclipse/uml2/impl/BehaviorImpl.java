@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -38,6 +38,7 @@ import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.Parameter;
+import org.eclipse.uml2.ParameterSet;
 import org.eclipse.uml2.ParameterDirectionKind;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
@@ -63,6 +64,7 @@ import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList
  *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#getReturnResults <em>Return Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#getPreconditions <em>Precondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#getPostconditions <em>Postcondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#getOwnedParameterSets <em>Owned Parameter Set</em>}</li>
  * </ul>
  * </p>
  *
@@ -147,6 +149,16 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	protected EList postcondition = null;
 
 	/**
+	 * The cached value of the '{@link #getOwnedParameterSets() <em>Owned Parameter Set</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameterSets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedParameterSet = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -167,7 +179,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Reentrant</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isReentrant() {
@@ -189,7 +200,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Context</b></em>' container reference.
 	 * @generated
 	 */
 	public BehavioredClassifier getContext() {
@@ -228,13 +238,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Behavior</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRedefinedBehaviors() {
@@ -264,7 +267,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Specification</b></em>' reference.
 	 * @generated
 	 */
 	public BehavioralFeature getSpecification() {
@@ -282,7 +284,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Specification</b></em>' reference.
 	 * @generated
 	 */
 	public BehavioralFeature basicGetSpecification() {
@@ -326,13 +327,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Parameter</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getParameters() {
@@ -376,17 +370,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Formal Parameter</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getFormalParametersGen() {
-		// TODO: implement this derived getter to return the 'Formal Parameter' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getFormalParameters() {
-		// TODO: test this derived getter
+
 	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavior_FormalParameter())) {
 	        List formalParameter = new ArrayList();
 	        
@@ -428,17 +415,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Return Result</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getReturnResultsGen() {
-		// TODO: implement this derived getter to return the 'Return Result' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getReturnResults() {
-		// TODO: test this derived getter
+
 	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavior_ReturnResult())) {
 	        List returnResult = new ArrayList();
 	        
@@ -477,17 +457,9 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Precondition</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedRules}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getPreconditions() {
-		// TODO: test this subset getter
 		if (precondition == null) {
 			precondition = new SubsetEObjectEList(Constraint.class, this, UML2Package.BEHAVIOR__PRECONDITION, new int[] {UML2Package.BEHAVIOR__OWNED_RULE});
 		}
@@ -515,17 +487,9 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Postcondition</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedRules}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getPostconditions() {
-		// TODO: test this subset getter
 		if (postcondition == null) {
 			postcondition = new SubsetEObjectEList(Constraint.class, this, UML2Package.BEHAVIOR__POSTCONDITION, new int[] {UML2Package.BEHAVIOR__OWNED_RULE});
 		}
@@ -553,12 +517,52 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
+	 * @generated
+	 */
+	public EList getOwnedParameterSets() {
+		if (ownedParameterSet == null) {
+			ownedParameterSet = new EObjectContainmentEList(ParameterSet.class, this, UML2Package.BEHAVIOR__OWNED_PARAMETER_SET);
+		}
+		return ownedParameterSet;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+     */
+    public ParameterSet getOwnedParameterSet(String unqualifiedName) {
+    	for (Iterator i = getOwnedParameterSets().iterator(); i.hasNext(); ) {
+    		ParameterSet namedOwnedParameterSet = (ParameterSet) i.next();
+    		
+    		if (unqualifiedName.equals(namedOwnedParameterSet.getName())) {
+    			return namedOwnedParameterSet;
+    		}
+    	}
+    	
+    	return null;
+    }
+      
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterSet createOwnedParameterSet(EClass eClass) {
+		ParameterSet newOwnedParameterSet = (ParameterSet) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.BEHAVIOR__OWNED_PARAMETER_SET, null, newOwnedParameterSet));
+		}
+		getOwnedParameterSets().add(newOwnedParameterSet);
+		return newOwnedParameterSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(86))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinedElements());
@@ -574,13 +578,9 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavior().getEAllOperations().get(87))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -596,13 +596,9 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Constraint}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Constraint#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedRules() {
-		// TODO: test this superset getter
 		if (ownedRule == null) {
 			ownedRule = new SupersetEObjectContainmentWithInverseEList(Constraint.class, this, UML2Package.BEHAVIOR__OWNED_RULE, new int[] {UML2Package.BEHAVIOR__PRECONDITION, UML2Package.BEHAVIOR__POSTCONDITION}, UML2Package.CONSTRAINT__NAMESPACE);
 		}
@@ -648,6 +644,8 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.BEHAVIOR__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__IMPLEMENTATION:
@@ -711,20 +709,24 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.BEHAVIOR__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+				case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
+					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+				case UML2Package.BEHAVIOR__IMPLEMENTATION:
+					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.BEHAVIOR__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+				case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__OWNED_CONNECTOR:
 					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__OWNED_PORT:
 					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.BEHAVIOR__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIOR__NESTED_CLASSIFIER:
@@ -737,6 +739,8 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 					return basicSetSpecification(null, msgs);
 				case UML2Package.BEHAVIOR__PARAMETER:
 					return ((InternalEList)getParameters()).basicRemove(otherEnd, msgs);
+				case UML2Package.BEHAVIOR__OWNED_PARAMETER_SET:
+					return ((InternalEList)getOwnedParameterSets()).basicRemove(otherEnd, msgs);
 				default:
 					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
 			}
@@ -837,10 +841,22 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return getPowertypeExtents();
 			case UML2Package.BEHAVIOR__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.BEHAVIOR__USE_CASE:
+				return getUseCases();
 			case UML2Package.BEHAVIOR__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.BEHAVIOR__OCCURRENCE:
 				return getOccurrences();
+			case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
+				return getOwnedBehaviors();
+			case UML2Package.BEHAVIOR__CLASSIFIER_BEHAVIOR:
+				return getClassifierBehavior();
+			case UML2Package.BEHAVIOR__IMPLEMENTATION:
+				return getImplementations();
+			case UML2Package.BEHAVIOR__OWNED_TRIGGER:
+				return getOwnedTriggers();
+			case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
+				return getOwnedStateMachines();
 			case UML2Package.BEHAVIOR__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 			case UML2Package.BEHAVIOR__PART:
@@ -851,14 +867,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return getOwnedConnectors();
 			case UML2Package.BEHAVIOR__OWNED_PORT:
 				return getOwnedPorts();
-			case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.BEHAVIOR__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.BEHAVIOR__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.BEHAVIOR__OWNED_OPERATION:
 				return getOwnedOperations();
 			case UML2Package.BEHAVIOR__SUPER_CLASS:
@@ -890,6 +898,8 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return getPreconditions();
 			case UML2Package.BEHAVIOR__POSTCONDITION:
 				return getPostconditions();
+			case UML2Package.BEHAVIOR__OWNED_PARAMETER_SET:
+				return getOwnedParameterSets();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -976,24 +986,16 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.BEHAVIOR__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.BEHAVIOR__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
 			case UML2Package.BEHAVIOR__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.BEHAVIOR__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection)newValue);
-				return;
-			case UML2Package.BEHAVIOR__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection)newValue);
-				return;
-			case UML2Package.BEHAVIOR__OWNED_PORT:
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -1006,9 +1008,25 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
 				return;
+			case UML2Package.BEHAVIOR__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
+				return;
 			case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
 				getOwnedStateMachines().addAll((Collection)newValue);
+				return;
+			case UML2Package.BEHAVIOR__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				getOwnedAttributes().addAll((Collection)newValue);
+				return;
+			case UML2Package.BEHAVIOR__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				getOwnedConnectors().addAll((Collection)newValue);
+				return;
+			case UML2Package.BEHAVIOR__OWNED_PORT:
+				getOwnedPorts().clear();
+				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.BEHAVIOR__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -1049,6 +1067,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__POSTCONDITION:
 				getPostconditions().clear();
 				getPostconditions().addAll((Collection)newValue);
+				return;
+			case UML2Package.BEHAVIOR__OWNED_PARAMETER_SET:
+				getOwnedParameterSets().clear();
+				getOwnedParameterSets().addAll((Collection)newValue);
 				return;
 		}
 		eDynamicSet(eFeature, newValue);
@@ -1124,20 +1146,14 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.BEHAVIOR__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.BEHAVIOR__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
 			case UML2Package.BEHAVIOR__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.BEHAVIOR__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				return;
-			case UML2Package.BEHAVIOR__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				return;
-			case UML2Package.BEHAVIOR__OWNED_PORT:
-				getOwnedPorts().clear();
 				return;
 			case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -1148,8 +1164,20 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__IMPLEMENTATION:
 				getImplementations().clear();
 				return;
+			case UML2Package.BEHAVIOR__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				return;
 			case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
+				return;
+			case UML2Package.BEHAVIOR__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				return;
+			case UML2Package.BEHAVIOR__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				return;
+			case UML2Package.BEHAVIOR__OWNED_PORT:
+				getOwnedPorts().clear();
 				return;
 			case UML2Package.BEHAVIOR__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -1183,6 +1211,9 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return;
 			case UML2Package.BEHAVIOR__POSTCONDITION:
 				getPostconditions().clear();
+				return;
+			case UML2Package.BEHAVIOR__OWNED_PARAMETER_SET:
+				getOwnedParameterSets().clear();
 				return;
 		}
 		eDynamicUnset(eFeature);
@@ -1259,12 +1290,24 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.BEHAVIOR__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.BEHAVIOR__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.BEHAVIOR__REPRESENTATION:
 				return representation != null;
 			case UML2Package.BEHAVIOR__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
+			case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.BEHAVIOR__CLASSIFIER_BEHAVIOR:
+				return classifierBehavior != null;
+			case UML2Package.BEHAVIOR__IMPLEMENTATION:
+				return implementation != null && !implementation.isEmpty();
+			case UML2Package.BEHAVIOR__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
+			case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.BEHAVIOR__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return !getOwnedAttributes().isEmpty();
 			case UML2Package.BEHAVIOR__PART:
 				return !getParts().isEmpty();
 			case UML2Package.BEHAVIOR__ROLE:
@@ -1273,14 +1316,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.BEHAVIOR__OWNED_PORT:
 				return ownedPort != null && !ownedPort.isEmpty();
-			case UML2Package.BEHAVIOR__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.BEHAVIOR__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.BEHAVIOR__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.BEHAVIOR__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.BEHAVIOR__SUPER_CLASS:
@@ -1311,6 +1346,8 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return precondition != null && !precondition.isEmpty();
 			case UML2Package.BEHAVIOR__POSTCONDITION:
 				return postcondition != null && !postcondition.isEmpty();
+			case UML2Package.BEHAVIOR__OWNED_PARAMETER_SET:
+				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
 	}

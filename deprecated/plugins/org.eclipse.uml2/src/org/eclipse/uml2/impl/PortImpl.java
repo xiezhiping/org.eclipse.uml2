@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PortImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: PortImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -157,7 +157,6 @@ public class PortImpl extends PropertyImpl implements Port {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Behavior</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isBehavior() {
@@ -179,7 +178,6 @@ public class PortImpl extends PropertyImpl implements Port {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Service</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isService() {
@@ -201,17 +199,10 @@ public class PortImpl extends PropertyImpl implements Port {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Required</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getRequiredsGen() {
-		// TODO: implement this derived getter to return the 'Required' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getRequireds() {
-		// TODO: test this derived getter
+
 	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getPort_Required())) {
 	        Set requireds = new HashSet();
 	        
@@ -279,13 +270,6 @@ public class PortImpl extends PropertyImpl implements Port {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Port</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRedefinedPorts() {
@@ -315,17 +299,10 @@ public class PortImpl extends PropertyImpl implements Port {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Provided</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getProvidedsGen() {
-		// TODO: implement this derived getter to return the 'Provided' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getProvideds() {
-		// TODO: test this derived getter
+
 	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getPort_Provided())) {
 	        Set provideds = new HashSet();
 	        
@@ -369,7 +346,6 @@ public class PortImpl extends PropertyImpl implements Port {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Protocol</b></em>' reference.
 	 * @generated
 	 */
 	public ProtocolStateMachine getProtocol() {
@@ -387,7 +363,6 @@ public class PortImpl extends PropertyImpl implements Port {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Protocol</b></em>' reference.
 	 * @generated
 	 */
 	public ProtocolStateMachine basicGetProtocol() {
@@ -409,12 +384,9 @@ public class PortImpl extends PropertyImpl implements Port {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getPort().getEAllOperations().get(69))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinedElements());

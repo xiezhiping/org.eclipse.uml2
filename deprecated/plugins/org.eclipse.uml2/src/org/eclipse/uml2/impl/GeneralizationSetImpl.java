@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -137,7 +137,6 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Covering</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isCovering() {
@@ -159,7 +158,6 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Disjoint</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isDisjoint() {
@@ -181,7 +179,6 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Powertype</b></em>' reference.
 	 * @generated
 	 */
 	public Classifier getPowertype() {
@@ -199,7 +196,6 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Powertype</b></em>' reference.
 	 * @generated
 	 */
 	public Classifier basicGetPowertype() {
@@ -243,7 +239,6 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Generalization</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getGeneralizations() {

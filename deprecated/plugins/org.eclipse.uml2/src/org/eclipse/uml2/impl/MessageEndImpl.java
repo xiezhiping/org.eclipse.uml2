@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MessageEndImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: MessageEndImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -91,7 +91,6 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Receive Message</b></em>' reference.
 	 * @generated
 	 */
 	public Message getReceiveMessage() {
@@ -109,7 +108,6 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Receive Message</b></em>' reference.
 	 * @generated
 	 */
 	public Message basicGetReceiveMessage() {
@@ -153,7 +151,6 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Send Message</b></em>' reference.
 	 * @generated
 	 */
 	public Message getSendMessage() {
@@ -171,7 +168,6 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Send Message</b></em>' reference.
 	 * @generated
 	 */
 	public Message basicGetSendMessage() {

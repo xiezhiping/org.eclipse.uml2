@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Behavior.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: Behavior.java,v 1.4 2004/05/20 03:20:04 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.Behavior#getReturnResults <em>Return Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.Behavior#getPreconditions <em>Precondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.Behavior#getPostconditions <em>Postcondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Behavior#getOwnedParameterSets <em>Owned Parameter Set</em>}</li>
  * </ul>
  * </p>
  *
@@ -303,6 +304,44 @@ public interface Behavior extends org.eclipse.uml2.Class{
      */
     Constraint getPostcondition(String unqualifiedName);
       
+	/**
+	 * Returns the value of the '<em><b>Owned Parameter Set</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.ParameterSet}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Parameter Set</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Parameter Set</em>' containment reference list.
+	 * @see org.eclipse.uml2.UML2Package#getBehavior_OwnedParameterSet()
+	 * @model type="org.eclipse.uml2.ParameterSet" containment="true" ordered="false"
+	 * @generated
+	 */
+	EList getOwnedParameterSets();
+
+    /**
+     * Retrieves the {@link org.eclipse.uml2.ParameterSet} with the specified name from the '<em><b>Owned Parameter Set</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ParameterSet} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ParameterSet} with the specified name, or <code>null</code>.
+	 * @see #getOwnedParameterSets()
+	 * @generated
+     */
+    ParameterSet getOwnedParameterSet(String unqualifiedName);
+      
+    /**
+     * Creates a {@link org.eclipse.uml2.ParameterSet} and appends it to the '<em><b>Owned Parameter Set</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ParameterSet} to create.
+	 * @return The new {@link org.eclipse.uml2.ParameterSet}.
+	 * @see #getOwnedParameterSets()
+	 * @generated
+     */
+    ParameterSet createOwnedParameterSet(EClass eClass);
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

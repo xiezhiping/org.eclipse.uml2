@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.5 2004/05/14 14:14:20 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.6 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -36,6 +36,7 @@ import org.eclipse.uml2.TypedElement;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -176,7 +177,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
 	 * @generated
 	 */
 	public Type getType() {
@@ -187,7 +187,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
 	 * @generated
 	 */
 	public Type basicGetType() {
@@ -211,7 +210,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Ordered</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isOrdered() {
@@ -235,7 +233,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Unique</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isUnique() {
@@ -259,47 +256,24 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Lower</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public int getLowerGen() {
-		// TODO: implement this derived getter to return the 'Lower' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public int getLower() {
-		// TODO: test this derived getter
 		return lower();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Upper</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public int getUpperGen() {
-		// TODO: implement this derived getter to return the 'Upper' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public int getUpper() {
-		// TODO: test this derived getter
 		return upper();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Upper Value</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
@@ -357,13 +331,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Lower Value</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
@@ -421,7 +388,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Read Only</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isReadOnly() {
@@ -448,7 +414,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public int lowerBound() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.lowerBound(this);
 	}
 
@@ -458,7 +423,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public int upperBound() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.upperBound(this);
 	}
 
@@ -468,7 +432,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public boolean isMultivalued() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.isMultivalued(this);
 	}
 
@@ -478,7 +441,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public boolean includesCardinality(int C) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.includesCardinality(this, C);
 	}
 
@@ -488,7 +450,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public boolean includesMultiplicity(MultiplicityElement M) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.includesMultiplicity(this, M);
 	}
 
@@ -498,7 +459,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGt0(this, diagnostics, context);
 	}
 
@@ -508,7 +468,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public boolean validateLowerGe0(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerGe0(this, diagnostics, context);
 	}
 
@@ -518,7 +477,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, context);
 	}
 
@@ -528,7 +486,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, context);
 	}
 
@@ -538,7 +495,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, context);
 	}
 
@@ -548,7 +504,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public int lower() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.lower(this);
 	}
 
@@ -558,20 +513,15 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 */
 	public int upper() {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.upper(this);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -939,5 +889,27 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
+
+	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.MultiplicityElement#setLowerBound(int)
+	 */
+	public void setLowerBound(int value) {
+		MultiplicityElementOperations.setLowerBound(this, value);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.MultiplicityElement#setUpperBound(int)
+	 */
+	public void setUpperBound(int value) {
+		MultiplicityElementOperations.setUpperBound(this, value);
+	}
+
+	// <!-- end-custom-operations -->
 
 } //StructuralFeatureImpl

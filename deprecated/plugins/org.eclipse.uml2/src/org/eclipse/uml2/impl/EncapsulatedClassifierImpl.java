@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -89,14 +89,6 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Port</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getFeatures}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedPorts() {
@@ -140,13 +132,9 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Feature</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Feature}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Feature#getFeaturingClassifiers <em>Featuring Classifier</em>}'.
 	 * @generated
 	 */
 	public EList getFeatures() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
@@ -165,13 +153,9 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getEncapsulatedClassifier().getEAllOperations().get(74))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -222,6 +206,8 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.ENCAPSULATED_CLASSIFIER__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -269,6 +255,8 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.ENCAPSULATED_CLASSIFIER__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENCAPSULATED_CLASSIFIER__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE:
@@ -375,6 +363,8 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 				return getPowertypeExtents();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.ENCAPSULATED_CLASSIFIER__USE_CASE:
+				return getUseCases();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__OCCURRENCE:
@@ -475,6 +465,10 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.ENCAPSULATED_CLASSIFIER__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.ENCAPSULATED_CLASSIFIER__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -568,6 +562,9 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 			case UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.ENCAPSULATED_CLASSIFIER__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.ENCAPSULATED_CLASSIFIER__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -658,6 +655,8 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.ENCAPSULATED_CLASSIFIER__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__REPRESENTATION:
 				return representation != null;
 			case UML2Package.ENCAPSULATED_CLASSIFIER__OCCURRENCE:

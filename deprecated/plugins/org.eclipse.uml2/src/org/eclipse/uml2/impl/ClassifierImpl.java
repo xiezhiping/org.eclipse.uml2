@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.8 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.9 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -87,6 +87,7 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPowertypeExtents <em>Powertype Extent</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOwnedUseCases <em>Owned Use Case</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getUseCases <em>Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRepresentation <em>Representation</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOccurrences <em>Occurrence</em>}</li>
  * </ul>
@@ -223,6 +224,16 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	protected EList ownedUseCase = null;
 
 	/**
+	 * The cached value of the '{@link #getUseCases() <em>Use Case</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUseCases()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList useCase = null;
+
+	/**
 	 * The cached value of the '{@link #getRepresentation() <em>Representation</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -263,7 +274,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
@@ -274,7 +284,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Template Parameter</b></em>' reference.
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
@@ -287,7 +296,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplateParameter(TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		// TODO: test this superset basic setter
 		TemplateParameter oldTemplateParameter = templateParameter;
 		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
@@ -328,14 +336,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owning Parameter</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ParameterableElement#getTemplateParameter}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public TemplateParameter getOwningParameter() {
@@ -351,7 +351,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
-		// TODO: test this subset setter
 		EObject oldOwningParameter = eContainer;
 		if (eContainer != newOwningParameter || (eContainerFeatureID != UML2Package.CLASSIFIER__OWNING_PARAMETER && null != newOwningParameter)) {
 			if (EcoreUtil.isAncestor(this, newOwningParameter)) {
@@ -379,13 +378,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Packageable Element visibility</b></em>' attribute.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getVisibility}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public VisibilityKind getPackageableElement_visibility() {
@@ -409,13 +401,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Package</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public org.eclipse.uml2.Package getPackage() {
@@ -426,24 +411,9 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Package</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public org.eclipse.uml2.Package basicGetPackageGen() {
-		// TODO: implement this derived basic getter to return the 'Package' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-public org.eclipse.uml2.Package basicGetPackage() {
-		// TODO: test this derived basic getter
+	public org.eclipse.uml2.Package basicGetPackage() {
 		return org.eclipse.uml2.Package.class.isInstance(eContainer) ? (org.eclipse.uml2.Package) eContainer : null;
 	}
 
@@ -453,14 +423,12 @@ public org.eclipse.uml2.Package basicGetPackage() {
 	 * @generated
 	 */
 	public NotificationChain basicSetPackage(org.eclipse.uml2.Package newPackage, NotificationChain msgs) {
-		// TODO: test this derived basic setter
 		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Leaf</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isLeaf() {
@@ -482,11 +450,9 @@ public org.eclipse.uml2.Package basicGetPackage() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefinition Context</b></em>' reference list, a derived union.
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -520,7 +486,6 @@ public org.eclipse.uml2.Package basicGetPackage() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isAbstract() {
@@ -544,17 +509,9 @@ public org.eclipse.uml2.Package basicGetPackage() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Feature</b></em>' reference list, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getFeatures() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
 			Set union = new LinkedHashSet();
 			union.addAll(getAttributes());
@@ -589,23 +546,10 @@ public org.eclipse.uml2.Package basicGetPackage() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Inherited Member</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getMembers}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getInheritedMembersGen() {
-		// TODO: implement this derived getter to return the 'Inherited Member' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
+	public EList getInheritedMembers() {
 
-public EList getInheritedMembers() {
-		// TODO: test this derived getter
         if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_InheritedMember())) {
             Set inheritedMember = inheritedMember();
             getCacheAdapter().put(
@@ -638,17 +582,10 @@ public EList getInheritedMembers() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>General</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getGeneralsGen() {
-		// TODO: implement this derived getter to return the 'General' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
+	public EList getGenerals() {
 
-public EList getGenerals() {
-		// TODO: test this derived getter
         if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_General())) {
     		Set generals = general();
             getCacheAdapter().put(
@@ -680,13 +617,6 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Generalization</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getGeneralizations() {
@@ -713,17 +643,9 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Attribute</b></em>' reference list, a derived union.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getFeatures}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getAttributes() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Attribute())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(
@@ -757,13 +679,6 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRedefinedClassifiers() {
@@ -793,18 +708,9 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Substitution</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getSubstitutions() {
-		// TODO: test this subset getter
 		if (substitution == null) {
 			substitution = new SubsetEObjectContainmentWithInverseEList(Substitution.class, this, UML2Package.CLASSIFIER__SUBSTITUTION, new int[] {UML2Package.CLASSIFIER__CLIENT_DEPENDENCY}, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER);
 		}
@@ -846,7 +752,6 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Powertype Extent</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getPowertypeExtents() {
@@ -876,13 +781,6 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedUseCases() {
@@ -926,13 +824,35 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Representation</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getOccurrences}</li>
-	 * </ul>
-	 * </p>
+	 * @generated
+	 */
+	public EList getUseCases() {
+		if (useCase == null) {
+			useCase = new EObjectWithInverseResolvingEList.ManyInverse(UseCase.class, this, UML2Package.CLASSIFIER__USE_CASE, UML2Package.USE_CASE__SUBJECT);
+		}
+		return useCase;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+     */
+    public UseCase getUseCase(String unqualifiedName) {
+    	for (Iterator i = getUseCases().iterator(); i.hasNext(); ) {
+    		UseCase namedUseCase = (UseCase) i.next();
+    		
+    		if (unqualifiedName.equals(namedUseCase.getName())) {
+    			return namedUseCase;
+    		}
+    	}
+    	
+    	return null;
+    }
+      
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public CollaborationOccurrence getRepresentation() {
@@ -945,7 +865,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public void setRepresentation(CollaborationOccurrence newRepresentation) {
-		// TODO: test this subset setter
 		if (null != newRepresentation && !getOccurrences().contains(newRepresentation)) {
 			getOccurrences().add(newRepresentation);
 		}
@@ -960,17 +879,9 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Occurrence</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOccurrences() {
-		// TODO: test this superset getter
 		if (occurrence == null) {
 			occurrence = new SupersetEObjectContainmentEList(CollaborationOccurrence.class, this, UML2Package.CLASSIFIER__OCCURRENCE, new int[] {UML2Package.CLASSIFIER__REPRESENTATION});
 		}
@@ -1012,12 +923,9 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getOwningParameter()) {
 			return (Element) getOwningParameter();
 		}
@@ -1027,11 +935,9 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		// TODO: test this redefined getter
 		return getPackageableElement_visibility();
 	}
 
@@ -1041,7 +947,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		// TODO: test this redefined setter
 		setPackageableElement_visibility(newVisibility);
 	}
 
@@ -1051,7 +956,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean conformsToGen(Type other) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.TypeOperations.conformsTo(this, other);
 	}
 
@@ -1063,12 +967,9 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * @generated
 	 */
 	public Namespace getNamespace() {
-		// TODO: test this union getter
 		if (null != getPackage()) {
 			return (Namespace) getPackage();
 		}
@@ -1081,7 +982,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
@@ -1091,7 +991,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
 	}
 
@@ -1101,7 +1000,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
 
@@ -1111,7 +1009,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
 	}
 
@@ -1121,7 +1018,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public Set allFeatures() {
-		// TODO: test this OCL operation
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("allFeatures", new Class[] {}); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
@@ -1141,7 +1037,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean validateNoCyclesInGeneralization(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.ClassifierOperations.validateNoCyclesInGeneralization(this, diagnostics, context);
 	}
 
@@ -1151,7 +1046,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean validateSpecializeType(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.ClassifierOperations.validateSpecializeType(this, diagnostics, context);
 	}
 
@@ -1161,7 +1055,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean validateInheritedMember(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.ClassifierOperations.validateInheritedMember(this, diagnostics, context);
 	}
 
@@ -1171,7 +1064,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public Set inheritedMember() {
-		// TODO: test this OCL operation
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("inheritedMember", new Class[] {}); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
@@ -1191,7 +1083,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public Set parents() {
-		// TODO: test this OCL operation
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("parents", new Class[] {}); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
@@ -1211,7 +1102,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public Set allParents() {
-		// TODO: test this OCL operation
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("allParents", new Class[] {}); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
@@ -1231,7 +1121,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public Set inheritableMembers(Classifier c) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ClassifierOperations.inheritableMembers(this, c);
 	}
 
@@ -1241,7 +1130,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean hasVisibilityOf(NamedElement n) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ClassifierOperations.hasVisibilityOf(this, n);
 	}
 
@@ -1251,7 +1139,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public Set inherit(Set inhs) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ClassifierOperations.inherit(this, inhs);
 	}
 
@@ -1261,7 +1148,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean maySpecializeType(Classifier c) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ClassifierOperations.maySpecializeType(this, c);
 	}
 
@@ -1271,7 +1157,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public Set general() {
-		// TODO: test this OCL operation
 		try {
 			java.lang.reflect.Method method = getClass().getMethod("general", new Class[] {}); //$NON-NLS-1$
 			if (!getCacheAdapter().containsKey(this, method)) {
@@ -1291,7 +1176,6 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean validateGeneralEqualsParents(DiagnosticChain diagnostics, Map context) {
-		// TODO: test this OCL constraint
 		return org.eclipse.uml2.internal.operation.ClassifierOperations.validateGeneralEqualsParents(this, diagnostics, context);
 	}
 
@@ -1301,19 +1185,15 @@ public EList getGenerals() {
 	 * @generated
 	 */
 	public boolean conformsTo(Classifier other) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ClassifierOperations.conformsTo(this, other);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
 	 * @generated
 	 */
 	public EList getMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getMembers());
@@ -1333,13 +1213,9 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -1360,12 +1236,9 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(66))) {
 			Set union = new LinkedHashSet();
 			union.addAll(getRedefinedClassifiers());
@@ -1380,13 +1253,9 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client Dependency</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Dependency}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Dependency#getClients <em>Client</em>}'.
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		// TODO: test this superset getter
 		if (clientDependency == null) {
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.CLASSIFIER__CLIENT_DEPENDENCY, new int[] {UML2Package.CLASSIFIER__SUBSTITUTION}, UML2Package.DEPENDENCY__CLIENT);
 		}
@@ -1397,13 +1266,9 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(68))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -1454,6 +1319,8 @@ public EList getGenerals() {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.CLASSIFIER__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -1501,6 +1368,8 @@ public EList getGenerals() {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.CLASSIFIER__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				default:
@@ -1601,6 +1470,8 @@ public EList getGenerals() {
 				return getPowertypeExtents();
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.CLASSIFIER__USE_CASE:
+				return getUseCases();
 			case UML2Package.CLASSIFIER__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.CLASSIFIER__OCCURRENCE:
@@ -1691,6 +1562,10 @@ public EList getGenerals() {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.CLASSIFIER__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.CLASSIFIER__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -1771,6 +1646,9 @@ public EList getGenerals() {
 				return;
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
+				return;
+			case UML2Package.CLASSIFIER__USE_CASE:
+				getUseCases().clear();
 				return;
 			case UML2Package.CLASSIFIER__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
@@ -1853,6 +1731,8 @@ public EList getGenerals() {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.CLASSIFIER__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.CLASSIFIER__REPRESENTATION:
 				return representation != null;
 			case UML2Package.CLASSIFIER__OCCURRENCE:

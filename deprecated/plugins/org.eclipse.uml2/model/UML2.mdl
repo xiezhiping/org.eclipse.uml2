@@ -113,7 +113,7 @@
 	    (object Class_Category "UML"
 		is_unit    	TRUE
 		is_loaded  	FALSE
-		file_name  	"$VABASE_PLUGINS_PATH\\org.eclipse.uml2\\model\\U2P-UML-Super-v2-040505.cat"
+		file_name  	"$VABASE_PLUGINS_PATH\\org.eclipse.uml2\\model\\U2P-UML-Super-v2-040516.cat"
 		quid       	"3C9FD9A40147")
 	    (object Class_Category "ecore"
 		is_unit    	TRUE
@@ -10736,6 +10736,10 @@
 		    (object Attribute
 			tool       	"Ecore"
 			name       	"annotation"
+			value      	"")
+		    (object Attribute
+			tool       	"Ecore"
+			name       	"constraints"
 			value      	"")))
 	    (object Attribute
 		tool       	"Ecore"

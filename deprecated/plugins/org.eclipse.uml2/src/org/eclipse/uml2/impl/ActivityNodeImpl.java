@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -140,7 +140,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getOutgoings() {
@@ -170,7 +169,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Incoming</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getIncomings() {
@@ -200,11 +198,9 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>In Group</b></em>' reference list, a derived union.
 	 * @generated
 	 */
 	public EList getInGroups() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getActivityNode_InGroup())) {
 			Set union = new LinkedHashSet();
 			if (null != getInStructuredNode()) {
@@ -226,13 +222,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Activity</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Activity getActivity() {
@@ -271,13 +260,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
@@ -307,13 +289,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>In Structured Node</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityNode#getInGroups}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public StructuredActivityNode getInStructuredNode() {
@@ -345,13 +320,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>In Partition</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityNode#getInGroups}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getInPartitions() {
@@ -381,13 +349,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>In Interruptible Region</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityNode#getInGroups}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getInInterruptibleRegions() {
@@ -400,12 +361,9 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getActivity()) {
 			return (Element) getActivity();
 		}

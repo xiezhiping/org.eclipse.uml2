@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -95,14 +95,6 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Contract</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Dependency#getSuppliers}</li>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Interface getContract() {
@@ -113,14 +105,6 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Contract</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Dependency#getSuppliers}</li>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Interface basicGetContract() {
@@ -133,7 +117,6 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	public void setContract(Interface newContract) {
-		// TODO: test this subset setter
 		if (null != newContract && !getSuppliers().contains(newContract)) {
 			getSuppliers().add(newContract);
 		}
@@ -148,14 +131,6 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Implementing Classifier</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Dependency#getClients}</li>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public BehavioredClassifier getImplementingClassifier() {
@@ -171,7 +146,6 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	public void setImplementingClassifier(BehavioredClassifier newImplementingClassifier) {
-		// TODO: test this subset setter
 		if (null != newImplementingClassifier && !getClients().contains(newImplementingClassifier)) {
 			getClients().add(newImplementingClassifier);
 		}
@@ -199,12 +173,9 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Supplier</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
 	 * @generated
 	 */
 	public EList getSuppliers() {
-		// TODO: test this superset getter
 		if (supplier == null) {
 			supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.IMPLEMENTATION__SUPPLIER, new int[] {UML2Package.IMPLEMENTATION__REALIZING_CLASSIFIER, UML2Package.IMPLEMENTATION__CONTRACT});
 		}
@@ -215,12 +186,9 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getTargets() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getTargets());
@@ -241,13 +209,9 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getClientDependencies <em>Client Dependency</em>}'.
 	 * @generated
 	 */
 	public EList getClients() {
-		// TODO: test this superset getter
 		if (client == null) {
 			client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.IMPLEMENTATION__CLIENT, new int[] {UML2Package.IMPLEMENTATION__ABSTRACTION, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
@@ -258,12 +222,9 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getSources() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Source())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getSources());

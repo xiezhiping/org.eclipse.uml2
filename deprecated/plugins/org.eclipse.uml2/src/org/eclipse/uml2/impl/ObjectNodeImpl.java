@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -147,7 +147,6 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
 	 * @generated
 	 */
 	public Type getType() {
@@ -158,7 +157,6 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
 	 * @generated
 	 */
 	public Type basicGetType() {
@@ -182,7 +180,6 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Ordering</b></em>' attribute.
 	 * @generated
 	 */
 	public ObjectNodeOrderingKind getOrdering() {
@@ -204,13 +201,6 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Upper Bound</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getUpperBound() {
@@ -268,7 +258,6 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>In State</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getInStates() {
@@ -298,7 +287,6 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Selection</b></em>' reference.
 	 * @generated
 	 */
 	public Behavior getSelection() {
@@ -316,7 +304,6 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Selection</b></em>' reference.
 	 * @generated
 	 */
 	public Behavior basicGetSelection() {
@@ -338,13 +325,9 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

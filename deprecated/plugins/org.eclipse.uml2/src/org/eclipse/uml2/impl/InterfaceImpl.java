@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -149,14 +149,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getAttributes}</li>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
@@ -200,14 +192,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getFeatures}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedOperations() {
@@ -251,13 +235,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Interface</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRedefinedInterfaces() {
@@ -287,13 +264,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Nested Classifier</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getNestedClassifiers() {
@@ -337,14 +307,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Reception</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getFeatures}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedReceptions() {
@@ -388,13 +350,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Protocol</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ProtocolStateMachine getProtocol() {
@@ -452,12 +407,9 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Attribute</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Property}.
 	 * @generated
 	 */
 	public EList getAttributes() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Attribute())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getAttributes());
@@ -476,13 +428,9 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(70))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -504,13 +452,9 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Feature</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Feature}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Feature#getFeaturingClassifiers <em>Featuring Classifier</em>}'.
 	 * @generated
 	 */
 	public EList getFeatures() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
@@ -530,12 +474,9 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(72))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getRedefinedElements());
@@ -586,6 +527,8 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERFACE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.INTERFACE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -633,6 +576,8 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERFACE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.INTERFACE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERFACE__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERFACE__OWNED_ATTRIBUTE:
@@ -743,6 +688,8 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 				return getPowertypeExtents();
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.INTERFACE__USE_CASE:
+				return getUseCases();
 			case UML2Package.INTERFACE__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.INTERFACE__OCCURRENCE:
@@ -844,6 +791,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
+				return;
+			case UML2Package.INTERFACE__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
 				return;
 			case UML2Package.INTERFACE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
@@ -949,6 +900,9 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.INTERFACE__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.INTERFACE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -1048,6 +1002,8 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.INTERFACE__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.INTERFACE__REPRESENTATION:
 				return representation != null;
 			case UML2Package.INTERFACE__OCCURRENCE:

@@ -8,15 +8,17 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.8 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ClassImpl.java,v 1.9 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -32,25 +34,23 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Behavior;
-import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.CollaborationOccurrence;
-import org.eclipse.uml2.Dependency;
+import org.eclipse.uml2.ConnectableElement;
+import org.eclipse.uml2.Connector;
+import org.eclipse.uml2.EncapsulatedClassifier;
 import org.eclipse.uml2.Extension;
-import org.eclipse.uml2.Implementation;
 import org.eclipse.uml2.Operation;
+import org.eclipse.uml2.Port;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.Reception;
-import org.eclipse.uml2.StateMachine;
 import org.eclipse.uml2.StringExpression;
+import org.eclipse.uml2.StructuredClassifier;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.internal.operation.ClassOperations;
-import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,10 +59,11 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedBehaviors <em>Owned Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getClassifierBehavior <em>Classifier Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getImplementations <em>Implementation</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedStateMachines <em>Owned State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getParts <em>Part</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getRoles <em>Role</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedConnectors <em>Owned Connector</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedPorts <em>Owned Port</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getSuperClasses <em>Super Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getExtensions <em>Extension</em>}</li>
@@ -74,7 +75,7 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  *
  * @generated
  */
-public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse.uml2.Class {
+public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.uml2.Class {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,44 +84,24 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getOwnedBehaviors() <em>Owned Behavior</em>}' containment reference list.
+	 * The cached value of the '{@link #getOwnedConnectors() <em>Owned Connector</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedBehaviors()
+	 * @see #getOwnedConnectors()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList ownedBehavior = null;
+	protected EList ownedConnector = null;
 
 	/**
-	 * The cached value of the '{@link #getClassifierBehavior() <em>Classifier Behavior</em>}' reference.
+	 * The cached value of the '{@link #getOwnedPorts() <em>Owned Port</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getClassifierBehavior()
+	 * @see #getOwnedPorts()
 	 * @generated
 	 * @ordered
 	 */
-	protected Behavior classifierBehavior = null;
-
-	/**
-	 * The cached value of the '{@link #getImplementations() <em>Implementation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImplementations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList implementation = null;
-
-	/**
-	 * The cached value of the '{@link #getOwnedStateMachines() <em>Owned State Machine</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedStateMachines()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList ownedStateMachine = null;
+	protected EList ownedPort = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
@@ -173,6 +154,12 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	protected EList ownedReception = null;
 
 	/**
+	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
+	 * @see #getOwnedAttributes()
+	 */
+	protected EList _ownedAttribute = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -190,38 +177,17 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 		return UML2Package.eINSTANCE.getClass_();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Behavior</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
-	 */
-	public EList getOwnedBehaviors() {
-		// TODO: test this superset getter
-		if (ownedBehavior == null) {
-			ownedBehavior = new SupersetEObjectContainmentWithInverseEList(Behavior.class, this, UML2Package.CLASS__OWNED_BEHAVIOR, new int[] {UML2Package.CLASS__CLASSIFIER_BEHAVIOR}, UML2Package.BEHAVIOR__CONTEXT);
-		}
-		return ownedBehavior;
-
-	}
-
     /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
      */
-    public Behavior getOwnedBehavior(String unqualifiedName) {
-    	for (Iterator i = getOwnedBehaviors().iterator(); i.hasNext(); ) {
-    		Behavior namedOwnedBehavior = (Behavior) i.next();
+    public Property getOwnedAttribute(String unqualifiedName) {
+    	for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
+    		Property namedOwnedAttribute = (Property) i.next();
     		
-    		if (unqualifiedName.equals(namedOwnedBehavior.getName())) {
-    			return namedOwnedBehavior;
+    		if (unqualifiedName.equals(namedOwnedAttribute.getName())) {
+    			return namedOwnedAttribute;
     		}
     	}
     	
@@ -233,69 +199,38 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Behavior createOwnedBehavior(EClass eClass) {
-		Behavior newOwnedBehavior = (Behavior) eClass.getEPackage().getEFactoryInstance().create(eClass);
+	public Property createOwnedAttribute(EClass eClass) {
+		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_BEHAVIOR, null, newOwnedBehavior));
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_ATTRIBUTE, null, newOwnedAttribute));
 		}
-		getOwnedBehaviors().add(newOwnedBehavior);
-		return newOwnedBehavior;
+		getOwnedAttributes().add(newOwnedAttribute);
+		return newOwnedAttribute;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Classifier Behavior</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public Behavior getClassifierBehavior() {
-		return classifierBehavior;
-	}
+	public EList getParts() {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setClassifierBehavior(Behavior newClassifierBehavior) {
-		// TODO: test this subset setter
-		if (null != newClassifierBehavior && !getOwnedBehaviors().contains(newClassifierBehavior)) {
-			getOwnedBehaviors().add(newClassifierBehavior);
-		}
-		Behavior oldClassifierBehavior = classifierBehavior;
-		classifierBehavior = newClassifierBehavior;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASS__CLASSIFIER_BEHAVIOR, oldClassifierBehavior, classifierBehavior));
-		}
+        if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier_Part())) {
+            List part = new ArrayList();
 
-	}
+            for (Iterator ownedAttributes = getOwnedAttributes().iterator(); ownedAttributes.hasNext();) {
+                Property ownedAttribute = (Property) ownedAttributes.next();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Implementation</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
-	 */
-	public EList getImplementations() {
-		// TODO: test this subset getter
-		if (implementation == null) {
-			implementation = new SubsetEObjectContainmentWithInverseEList(Implementation.class, this, UML2Package.CLASS__IMPLEMENTATION, new int[] {UML2Package.CLASS__CLIENT_DEPENDENCY}, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER);
-		}
-		return implementation;
+                if (ownedAttribute.isComposite()) {
+                    part.add(ownedAttribute);
+                }
+            }
 
+            getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredClassifier_Part(),
+                    new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Part(), part.size(), part.toArray()));
+        }
+
+        return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredClassifier_Part());
 	}
 
     /**
@@ -303,12 +238,12 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	 * <!-- end-user-doc -->
 	 * @generated
      */
-    public Implementation getImplementation(String unqualifiedName) {
-    	for (Iterator i = getImplementations().iterator(); i.hasNext(); ) {
-    		Implementation namedImplementation = (Implementation) i.next();
+    public Property getPart(String unqualifiedName) {
+    	for (Iterator i = getParts().iterator(); i.hasNext(); ) {
+    		Property namedPart = (Property) i.next();
     		
-    		if (unqualifiedName.equals(namedImplementation.getName())) {
-    			return namedImplementation;
+    		if (unqualifiedName.equals(namedPart.getName())) {
+    			return namedPart;
     		}
     	}
     	
@@ -320,32 +255,19 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Implementation createImplementation(EClass eClass) {
-		Implementation newImplementation = (Implementation) eClass.getEPackage().getEFactoryInstance().create(eClass);
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__IMPLEMENTATION, null, newImplementation));
+	public EList getRoles() {
+		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier_Role())) {
+			Set union = new LinkedHashSet();
+			union.addAll(getOwnedAttributes());
+			getCacheAdapter().put(
+				this,
+				UML2Package.eINSTANCE.getStructuredClassifier_Role(),
+				new EcoreEList.UnmodifiableEList(this, 
+					UML2Package.eINSTANCE.getStructuredClassifier_Role(),
+					union.size(),
+					union.toArray()));
 		}
-		getImplementations().add(newImplementation);
-		return newImplementation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned State Machine</b></em>' containment reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
-	 */
-	public EList getOwnedStateMachines() {
-		if (null == ownedStateMachine) {
-			ownedStateMachine = new EObjectContainmentWithInverseEList(StateMachine.class, this, UML2Package.CLASS__OWNED_STATE_MACHINE, UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT);
-		}
-		return ownedStateMachine;
+		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredClassifier_Role());
 	}
 
     /**
@@ -353,12 +275,12 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	 * <!-- end-user-doc -->
 	 * @generated
      */
-    public StateMachine getOwnedStateMachine(String unqualifiedName) {
-    	for (Iterator i = getOwnedStateMachines().iterator(); i.hasNext(); ) {
-    		StateMachine namedOwnedStateMachine = (StateMachine) i.next();
+    public ConnectableElement getRole(String unqualifiedName) {
+    	for (Iterator i = getRoles().iterator(); i.hasNext(); ) {
+    		ConnectableElement namedRole = (ConnectableElement) i.next();
     		
-    		if (unqualifiedName.equals(namedOwnedStateMachine.getName())) {
-    			return namedOwnedStateMachine;
+    		if (unqualifiedName.equals(namedRole.getName())) {
+    			return namedRole;
     		}
     	}
     	
@@ -370,19 +292,90 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StateMachine createOwnedStateMachine(EClass eClass) {
-		StateMachine newOwnedStateMachine = (StateMachine) eClass.getEPackage().getEFactoryInstance().create(eClass);
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_STATE_MACHINE, null, newOwnedStateMachine));
+	public EList getOwnedConnectors() {
+		if (ownedConnector == null) {
+			ownedConnector = new EObjectContainmentEList(Connector.class, this, UML2Package.CLASS__OWNED_CONNECTOR);
 		}
-		getOwnedStateMachines().add(newOwnedStateMachine);
-		return newOwnedStateMachine;
+		return ownedConnector;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+     */
+    public Connector getOwnedConnector(String unqualifiedName) {
+    	for (Iterator i = getOwnedConnectors().iterator(); i.hasNext(); ) {
+    		Connector namedOwnedConnector = (Connector) i.next();
+    		
+    		if (unqualifiedName.equals(namedOwnedConnector.getName())) {
+    			return namedOwnedConnector;
+    		}
+    	}
+    	
+    	return null;
+    }
+      
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Connector createOwnedConnector(EClass eClass) {
+		Connector newOwnedConnector = (Connector) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_CONNECTOR, null, newOwnedConnector));
+		}
+		getOwnedConnectors().add(newOwnedConnector);
+		return newOwnedConnector;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Active</b></em>' attribute.
+	 * @generated
+	 */
+	public EList getOwnedPorts() {
+		if (ownedPort == null) {
+			ownedPort = new EObjectContainmentEList(Port.class, this, UML2Package.CLASS__OWNED_PORT);
+		}
+		return ownedPort;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+     */
+    public Port getOwnedPort(String unqualifiedName) {
+    	for (Iterator i = getOwnedPorts().iterator(); i.hasNext(); ) {
+    		Port namedOwnedPort = (Port) i.next();
+    		
+    		if (unqualifiedName.equals(namedOwnedPort.getName())) {
+    			return namedOwnedPort;
+    		}
+    	}
+    	
+    	return null;
+    }
+      
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port createOwnedPort(EClass eClass) {
+		Port newOwnedPort = (Port) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_PORT, null, newOwnedPort));
+		}
+		getOwnedPorts().add(newOwnedPort);
+		return newOwnedPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isActive() {
@@ -404,14 +397,6 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getFeatures}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedOperations() {
@@ -455,23 +440,10 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Super Class</b></em>' reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getGenerals}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getSuperClassesGen() {
-		// TODO: implement this derived getter to return the 'Super Class' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getSuperClasses() {
-		// TODO: test this derived getter
+
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClass_SuperClass())) {
 			Set superClass = new HashSet();
 			
@@ -510,15 +482,8 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Extension</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getExtensionsGen() {
-		// TODO: implement this derived getter to return the 'Extension' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getExtensions() {
 		// TODO: implement this derived getter to return the 'Extension' reference list
 		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClass_Extension(), 0, Collections.EMPTY_LIST.toArray());
@@ -544,13 +509,6 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Nested Classifier</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getNestedClassifiers() {
@@ -594,14 +552,6 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Reception</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getFeatures}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedReceptions() {
@@ -645,43 +595,22 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		// TODO: test this union getter
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
+	public EList getMembers() {
+		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
 			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getImplementations());
+			union.addAll(super.getMembers());
+			union.addAll(getRoles());
 			getCacheAdapter().put(
 				this,
-				UML2Package.eINSTANCE.getElement_OwnedElement(),
+				UML2Package.eINSTANCE.getNamespace_Member(),
 				new EcoreEList.UnmodifiableEList(this, 
-					UML2Package.eINSTANCE.getElement_OwnedElement(),
+					UML2Package.eINSTANCE.getNamespace_Member(),
 					union.size(),
 					union.toArray()));
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client Dependency</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Dependency}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Dependency#getClients <em>Client</em>}'.
-	 * @generated
-	 */
-	public EList getClientDependencies() {
-		// TODO: test this superset getter
-		if (clientDependency == null) {
-			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.CLASS__CLIENT_DEPENDENCY, new int[] {UML2Package.CLASS__SUBSTITUTION, UML2Package.CLASS__IMPLEMENTATION}, UML2Package.DEPENDENCY__CLIENT);
-		}
-		return clientDependency;
-
+		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
 	}
 
 	/**
@@ -690,111 +619,55 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	 * @generated
 	 */
 	public Set inherit(Set inhs) {
-		// TODO: test this OCL operation
 		return org.eclipse.uml2.internal.operation.ClassOperations.inherit(this, inhs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
-	 * The default value is <code>false</code>.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Classifier#isAbstract}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public boolean isAbstractGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public boolean isAbstract() {
-		// TODO: test this redefinition getter
 		return isAbstract;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public void setIsAbstractGen(boolean newIsAbstract) {
-		// TODO: implement this redefinition setter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public void setIsAbstract(boolean newIsAbstract) {
-		// TODO: test this redefinition setter
-//		boolean oldIsAbstract = isAbstract;
-//		isAbstract = newIsAbstract;
-//		if (eNotificationRequired()) {
-//			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASS__IS_ABSTRACT, oldIsAbstract, isAbstract));
-//		}
 		super.setIsAbstract(newIsAbstract);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Property}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Property#getClass_ <em>Class </em>}'.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.StructuredClassifier#getOwnedAttributes}</li>
-	 * </ul>
-	 * </p>
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getAttributes}</li>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getOwnedAttributesGen() {
-		// TODO: implement this redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getOwnedAttributes() {
-		// TODO: test this redefinition getter
-		if (ownedAttribute == null) {
-			ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.CLASS__OWNED_ATTRIBUTE);
+
+		if (null == _ownedAttribute) {
+			_ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.CLASS__OWNED_ATTRIBUTE);
 		}
-		return ownedAttribute;
+		return _ownedAttribute;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>General</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
 	 * @generated
 	 */
 	public EList getGenerals() {
-		// TODO: test this redefined getter
 		return getSuperClasses();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Attribute</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Property}.
 	 * @generated
 	 */
 	public EList getAttributes() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Attribute())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getAttributes());
@@ -813,13 +686,9 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClass_().getEAllOperations().get(84))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -838,13 +707,9 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Feature</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Feature}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Feature#getFeaturingClassifiers <em>Featuring Classifier</em>}'.
 	 * @generated
 	 */
 	public EList getFeatures() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
@@ -899,6 +764,8 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASS__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.CLASS__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASS__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASS__IMPLEMENTATION:
@@ -954,20 +821,24 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASS__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.CLASS__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASS__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+				case UML2Package.CLASS__OWNED_BEHAVIOR:
+					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+				case UML2Package.CLASS__IMPLEMENTATION:
+					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.CLASS__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+				case UML2Package.CLASS__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASS__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASS__OWNED_CONNECTOR:
 					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASS__OWNED_PORT:
 					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLASS__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLASS__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLASS__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASS__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASS__NESTED_CLASSIFIER:
@@ -1072,10 +943,22 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 				return getPowertypeExtents();
 			case UML2Package.CLASS__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.CLASS__USE_CASE:
+				return getUseCases();
 			case UML2Package.CLASS__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.CLASS__OCCURRENCE:
 				return getOccurrences();
+			case UML2Package.CLASS__OWNED_BEHAVIOR:
+				return getOwnedBehaviors();
+			case UML2Package.CLASS__CLASSIFIER_BEHAVIOR:
+				return getClassifierBehavior();
+			case UML2Package.CLASS__IMPLEMENTATION:
+				return getImplementations();
+			case UML2Package.CLASS__OWNED_TRIGGER:
+				return getOwnedTriggers();
+			case UML2Package.CLASS__OWNED_STATE_MACHINE:
+				return getOwnedStateMachines();
 			case UML2Package.CLASS__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 			case UML2Package.CLASS__PART:
@@ -1086,14 +969,6 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 				return getOwnedConnectors();
 			case UML2Package.CLASS__OWNED_PORT:
 				return getOwnedPorts();
-			case UML2Package.CLASS__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.CLASS__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.CLASS__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.CLASS__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.CLASS__OWNED_OPERATION:
 				return getOwnedOperations();
 			case UML2Package.CLASS__SUPER_CLASS:
@@ -1192,24 +1067,16 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.CLASS__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.CLASS__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
 			case UML2Package.CLASS__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.CLASS__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection)newValue);
-				return;
-			case UML2Package.CLASS__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection)newValue);
-				return;
-			case UML2Package.CLASS__OWNED_PORT:
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.CLASS__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -1222,9 +1089,25 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
 				return;
+			case UML2Package.CLASS__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
+				return;
 			case UML2Package.CLASS__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
 				getOwnedStateMachines().addAll((Collection)newValue);
+				return;
+			case UML2Package.CLASS__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				getOwnedAttributes().addAll((Collection)newValue);
+				return;
+			case UML2Package.CLASS__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				getOwnedConnectors().addAll((Collection)newValue);
+				return;
+			case UML2Package.CLASS__OWNED_PORT:
+				getOwnedPorts().clear();
+				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.CLASS__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -1315,20 +1198,14 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 			case UML2Package.CLASS__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.CLASS__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.CLASS__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
 			case UML2Package.CLASS__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.CLASS__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				return;
-			case UML2Package.CLASS__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				return;
-			case UML2Package.CLASS__OWNED_PORT:
-				getOwnedPorts().clear();
 				return;
 			case UML2Package.CLASS__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -1339,8 +1216,20 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 			case UML2Package.CLASS__IMPLEMENTATION:
 				getImplementations().clear();
 				return;
+			case UML2Package.CLASS__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				return;
 			case UML2Package.CLASS__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
+				return;
+			case UML2Package.CLASS__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				return;
+			case UML2Package.CLASS__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				return;
+			case UML2Package.CLASS__OWNED_PORT:
+				getOwnedPorts().clear();
 				return;
 			case UML2Package.CLASS__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -1429,12 +1318,24 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.CLASS__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.CLASS__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.CLASS__REPRESENTATION:
 				return representation != null;
 			case UML2Package.CLASS__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
+			case UML2Package.CLASS__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.CLASS__CLASSIFIER_BEHAVIOR:
+				return classifierBehavior != null;
+			case UML2Package.CLASS__IMPLEMENTATION:
+				return implementation != null && !implementation.isEmpty();
+			case UML2Package.CLASS__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
+			case UML2Package.CLASS__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.CLASS__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return !getOwnedAttributes().isEmpty();
 			case UML2Package.CLASS__PART:
 				return !getParts().isEmpty();
 			case UML2Package.CLASS__ROLE:
@@ -1443,14 +1344,6 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.CLASS__OWNED_PORT:
 				return ownedPort != null && !ownedPort.isEmpty();
-			case UML2Package.CLASS__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.CLASS__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.CLASS__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.CLASS__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.CLASS__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.CLASS__SUPER_CLASS:
@@ -1473,12 +1366,18 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	 * @generated
 	 */
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
-		if (baseClass == BehavioredClassifier.class) {
+		if (baseClass == StructuredClassifier.class) {
 			switch (derivedFeatureID) {
-				case UML2Package.CLASS__OWNED_BEHAVIOR: return UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
-				case UML2Package.CLASS__CLASSIFIER_BEHAVIOR: return UML2Package.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR;
-				case UML2Package.CLASS__IMPLEMENTATION: return UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION;
-				case UML2Package.CLASS__OWNED_STATE_MACHINE: return UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE;
+				case UML2Package.CLASS__OWNED_ATTRIBUTE: return UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE;
+				case UML2Package.CLASS__PART: return UML2Package.STRUCTURED_CLASSIFIER__PART;
+				case UML2Package.CLASS__ROLE: return UML2Package.STRUCTURED_CLASSIFIER__ROLE;
+				case UML2Package.CLASS__OWNED_CONNECTOR: return UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR;
+				default: return -1;
+			}
+		}
+		if (baseClass == EncapsulatedClassifier.class) {
+			switch (derivedFeatureID) {
+				case UML2Package.CLASS__OWNED_PORT: return UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_PORT;
 				default: return -1;
 			}
 		}
@@ -1491,12 +1390,18 @@ public class ClassImpl extends EncapsulatedClassifierImpl implements org.eclipse
 	 * @generated
 	 */
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
-		if (baseClass == BehavioredClassifier.class) {
+		if (baseClass == StructuredClassifier.class) {
 			switch (baseFeatureID) {
-				case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR: return UML2Package.CLASS__OWNED_BEHAVIOR;
-				case UML2Package.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR: return UML2Package.CLASS__CLASSIFIER_BEHAVIOR;
-				case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION: return UML2Package.CLASS__IMPLEMENTATION;
-				case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE: return UML2Package.CLASS__OWNED_STATE_MACHINE;
+				case UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE: return UML2Package.CLASS__OWNED_ATTRIBUTE;
+				case UML2Package.STRUCTURED_CLASSIFIER__PART: return UML2Package.CLASS__PART;
+				case UML2Package.STRUCTURED_CLASSIFIER__ROLE: return UML2Package.CLASS__ROLE;
+				case UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR: return UML2Package.CLASS__OWNED_CONNECTOR;
+				default: return -1;
+			}
+		}
+		if (baseClass == EncapsulatedClassifier.class) {
+			switch (baseFeatureID) {
+				case UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_PORT: return UML2Package.CLASS__OWNED_PORT;
 				default: return -1;
 			}
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -148,7 +148,6 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>File Name</b></em>' attribute.
 	 * @generated
 	 */
 	public String getFileName() {
@@ -170,7 +169,6 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Nested Artifact</b></em>' containment reference list.
 	 * @generated
 	 */
 	public EList getNestedArtifacts() {
@@ -214,18 +212,9 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Manifestation</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getManifestations() {
-		// TODO: test this subset getter
 		if (manifestation == null) {
 			manifestation = new SubsetEObjectContainmentEList(Manifestation.class, this, UML2Package.ARTIFACT__MANIFESTATION, new int[] {UML2Package.ARTIFACT__CLIENT_DEPENDENCY});
 		}
@@ -267,14 +256,6 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getFeatures}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedOperations() {
@@ -318,14 +299,6 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getAttributes}</li>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
@@ -369,13 +342,9 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Feature</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Feature}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Feature#getFeaturingClassifiers <em>Featuring Classifier</em>}'.
 	 * @generated
 	 */
 	public EList getFeatures() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
@@ -394,13 +363,9 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getArtifact().getEAllOperations().get(72))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -417,12 +382,9 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Attribute</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Property}.
 	 * @generated
 	 */
 	public EList getAttributes() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Attribute())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getAttributes());
@@ -441,13 +403,9 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -466,13 +424,9 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client Dependency</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Dependency}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Dependency#getClients <em>Client</em>}'.
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		// TODO: test this superset getter
 		if (clientDependency == null) {
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.ARTIFACT__CLIENT_DEPENDENCY, new int[] {UML2Package.ARTIFACT__SUBSTITUTION, UML2Package.ARTIFACT__MANIFESTATION}, UML2Package.DEPENDENCY__CLIENT);
 		}
@@ -518,6 +472,8 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.ARTIFACT__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -565,6 +521,8 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ARTIFACT__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.ARTIFACT__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ARTIFACT__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.ARTIFACT__NESTED_ARTIFACT:
@@ -673,6 +631,8 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 				return getPowertypeExtents();
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.ARTIFACT__USE_CASE:
+				return getUseCases();
 			case UML2Package.ARTIFACT__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.ARTIFACT__OCCURRENCE:
@@ -772,6 +732,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
+				return;
+			case UML2Package.ARTIFACT__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
 				return;
 			case UML2Package.ARTIFACT__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
@@ -873,6 +837,9 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.ARTIFACT__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.ARTIFACT__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -969,6 +936,8 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.ARTIFACT__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.ARTIFACT__REPRESENTATION:
 				return representation != null;
 			case UML2Package.ARTIFACT__OCCURRENCE:

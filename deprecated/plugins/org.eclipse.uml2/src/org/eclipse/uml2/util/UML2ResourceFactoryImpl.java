@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ResourceFactoryImpl.java,v 1.6 2004/05/12 22:21:59 khussey Exp $
+ * $Id: UML2ResourceFactoryImpl.java,v 1.7 2004/05/20 03:20:08 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -54,7 +54,6 @@ public class UML2ResourceFactoryImpl extends ResourceFactoryImpl {
 		Resource result = new UML2ResourceImpl(uri);
 		return result;
 	}
-
 	public Resource createResource(URI uri) {
 		XMIResource resource = (XMIResource) createResourceGen(uri);
 

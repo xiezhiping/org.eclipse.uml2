@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -95,15 +95,6 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Abstraction</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 *   <li>{@link org.eclipse.uml2.Dependency#getClients}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Component getAbstraction() {
@@ -119,7 +110,6 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 * @generated
 	 */
 	public void setAbstraction(Component newAbstraction) {
-		// TODO: test this subset setter
 		if (null != newAbstraction && !getClients().contains(newAbstraction)) {
 			getClients().add(newAbstraction);
 		}
@@ -147,14 +137,6 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Realizing Classifier</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Dependency#getSuppliers}</li>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Classifier getRealizingClassifier() {
@@ -165,14 +147,6 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Realizing Classifier</b></em>' reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Dependency#getSuppliers}</li>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Classifier basicGetRealizingClassifier() {
@@ -185,7 +159,6 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 * @generated
 	 */
 	public void setRealizingClassifier(Classifier newRealizingClassifier) {
-		// TODO: test this subset setter
 		if (null != newRealizingClassifier && !getSuppliers().contains(newRealizingClassifier)) {
 			getSuppliers().add(newRealizingClassifier);
 		}
@@ -200,12 +173,9 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getSources() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Source())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getSources());
@@ -226,12 +196,9 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getAbstraction()) {
 			return (Element) getAbstraction();
 		}
@@ -241,13 +208,9 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getClientDependencies <em>Client Dependency</em>}'.
 	 * @generated
 	 */
 	public EList getClients() {
-		// TODO: test this superset getter
 		if (client == null) {
 			client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.REALIZATION__CLIENT, new int[] {UML2Package.REALIZATION__ABSTRACTION}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
@@ -258,12 +221,9 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Supplier</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
 	 * @generated
 	 */
 	public EList getSuppliers() {
-		// TODO: test this superset getter
 		if (supplier == null) {
 			supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.REALIZATION__SUPPLIER, new int[] {UML2Package.REALIZATION__REALIZING_CLASSIFIER});
 		}
@@ -274,12 +234,9 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
 	 * @generated
 	 */
 	public EList getTargets() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getDirectedRelationship_Target())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getTargets());

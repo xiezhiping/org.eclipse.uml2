@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.3 2004/05/13 03:16:20 khussey Exp $
+ * $Id: ModelImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -91,7 +91,6 @@ public class ModelImpl extends PackageImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Viewpoint</b></em>' attribute.
 	 * @generated
 	 */
 	public String getViewpoint() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: MessageImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -161,17 +161,10 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Message Kind</b></em>' attribute.
-	 * @generated
+	 * @generated NOT
 	 */
-	public MessageKind getMessageKindGen() {
-		// TODO: implement this derived getter to return the 'Message Kind' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public MessageKind getMessageKind() {
-		// TODO: test this derived getter
+
 		return null == getSendEvent()
 			? (null == getReceiveEvent() ? MessageKind.UNKNOWN_LITERAL : MessageKind.FOUND_LITERAL)
 			: (null == getReceiveEvent() ? MessageKind.LOST_LITERAL : MessageKind.COMPLETE_LITERAL);
@@ -180,7 +173,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Message Sort</b></em>' attribute.
 	 * @generated
 	 */
 	public MessageSort getMessageSort() {
@@ -202,7 +194,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Receive Event</b></em>' reference.
 	 * @generated
 	 */
 	public MessageEnd getReceiveEvent() {
@@ -220,7 +211,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Receive Event</b></em>' reference.
 	 * @generated
 	 */
 	public MessageEnd basicGetReceiveEvent() {
@@ -264,7 +254,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Send Event</b></em>' reference.
 	 * @generated
 	 */
 	public MessageEnd getSendEvent() {
@@ -282,7 +271,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Send Event</b></em>' reference.
 	 * @generated
 	 */
 	public MessageEnd basicGetSendEvent() {
@@ -326,7 +314,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Connector</b></em>' reference.
 	 * @generated
 	 */
 	public Connector getConnector() {
@@ -344,7 +331,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Connector</b></em>' reference.
 	 * @generated
 	 */
 	public Connector basicGetConnector() {
@@ -366,13 +352,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Interaction</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Interaction getInteraction() {
@@ -404,7 +383,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Signature</b></em>' reference.
 	 * @generated
 	 */
 	public NamedElement getSignature() {
@@ -422,7 +400,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Signature</b></em>' reference.
 	 * @generated
 	 */
 	public NamedElement basicGetSignature() {
@@ -444,13 +421,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Argument</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getArguments() {
@@ -494,12 +464,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * @generated
 	 */
 	public Namespace getNamespace() {
-		// TODO: test this union getter
 		if (null != getInteraction()) {
 			return (Namespace) getInteraction();
 		}
@@ -509,13 +476,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

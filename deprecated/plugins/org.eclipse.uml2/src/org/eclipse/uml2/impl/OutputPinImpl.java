@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OutputPinImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: OutputPinImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -143,6 +143,10 @@ public class OutputPinImpl extends PinImpl implements OutputPin {
 					return ((InternalEList)getInInterruptibleRegions()).basicRemove(otherEnd, msgs);
 				case UML2Package.OUTPUT_PIN__UPPER_BOUND:
 					return basicSetUpperBound(null, msgs);
+				case UML2Package.OUTPUT_PIN__UPPER_VALUE:
+					return basicSetUpperValue(null, msgs);
+				case UML2Package.OUTPUT_PIN__LOWER_VALUE:
+					return basicSetLowerValue(null, msgs);
 				default:
 					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
 			}
@@ -231,6 +235,18 @@ public class OutputPinImpl extends PinImpl implements OutputPin {
 			case UML2Package.OUTPUT_PIN__SELECTION:
 				if (resolve) return getSelection();
 				return basicGetSelection();
+			case UML2Package.OUTPUT_PIN__IS_ORDERED:
+				return isOrdered() ? Boolean.TRUE : Boolean.FALSE;
+			case UML2Package.OUTPUT_PIN__IS_UNIQUE:
+				return isUnique() ? Boolean.TRUE : Boolean.FALSE;
+			case UML2Package.OUTPUT_PIN__LOWER:
+				return new Integer(getLower());
+			case UML2Package.OUTPUT_PIN__UPPER:
+				return new Integer(getUpper());
+			case UML2Package.OUTPUT_PIN__UPPER_VALUE:
+				return getUpperValue();
+			case UML2Package.OUTPUT_PIN__LOWER_VALUE:
+				return getLowerValue();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -315,6 +331,18 @@ public class OutputPinImpl extends PinImpl implements OutputPin {
 			case UML2Package.OUTPUT_PIN__SELECTION:
 				setSelection((Behavior)newValue);
 				return;
+			case UML2Package.OUTPUT_PIN__IS_ORDERED:
+				setIsOrdered(((Boolean)newValue).booleanValue());
+				return;
+			case UML2Package.OUTPUT_PIN__IS_UNIQUE:
+				setIsUnique(((Boolean)newValue).booleanValue());
+				return;
+			case UML2Package.OUTPUT_PIN__UPPER_VALUE:
+				setUpperValue((ValueSpecification)newValue);
+				return;
+			case UML2Package.OUTPUT_PIN__LOWER_VALUE:
+				setLowerValue((ValueSpecification)newValue);
+				return;
 		}
 		eDynamicSet(eFeature, newValue);
 	}
@@ -389,6 +417,18 @@ public class OutputPinImpl extends PinImpl implements OutputPin {
 			case UML2Package.OUTPUT_PIN__SELECTION:
 				setSelection((Behavior)null);
 				return;
+			case UML2Package.OUTPUT_PIN__IS_ORDERED:
+				setIsOrdered(IS_ORDERED_EDEFAULT);
+				return;
+			case UML2Package.OUTPUT_PIN__IS_UNIQUE:
+				setIsUnique(IS_UNIQUE_EDEFAULT);
+				return;
+			case UML2Package.OUTPUT_PIN__UPPER_VALUE:
+				setUpperValue((ValueSpecification)null);
+				return;
+			case UML2Package.OUTPUT_PIN__LOWER_VALUE:
+				setLowerValue((ValueSpecification)null);
+				return;
 		}
 		eDynamicUnset(eFeature);
 	}
@@ -452,6 +492,18 @@ public class OutputPinImpl extends PinImpl implements OutputPin {
 				return inState != null && !inState.isEmpty();
 			case UML2Package.OUTPUT_PIN__SELECTION:
 				return selection != null;
+			case UML2Package.OUTPUT_PIN__IS_ORDERED:
+				return isOrdered != IS_ORDERED_EDEFAULT;
+			case UML2Package.OUTPUT_PIN__IS_UNIQUE:
+				return isUnique != IS_UNIQUE_EDEFAULT;
+			case UML2Package.OUTPUT_PIN__LOWER:
+				return getLower() != 1;
+			case UML2Package.OUTPUT_PIN__UPPER:
+				return getUpper() != 1;
+			case UML2Package.OUTPUT_PIN__UPPER_VALUE:
+				return upperValue != null;
+			case UML2Package.OUTPUT_PIN__LOWER_VALUE:
+				return lowerValue != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

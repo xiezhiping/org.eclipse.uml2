@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -138,7 +138,6 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Test</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getTests() {
@@ -168,7 +167,6 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Body</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getBodies() {
@@ -198,7 +196,6 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Predecessor Clause</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getPredecessorClauses() {
@@ -211,7 +208,6 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Successor Clause</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getSuccessorClauses() {
@@ -224,7 +220,6 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Decider</b></em>' reference.
 	 * @generated
 	 */
 	public OutputPin getDecider() {
@@ -242,7 +237,6 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Decider</b></em>' reference.
 	 * @generated
 	 */
 	public OutputPin basicGetDecider() {
@@ -264,7 +258,6 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Body Output</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getBodyOutputs() {

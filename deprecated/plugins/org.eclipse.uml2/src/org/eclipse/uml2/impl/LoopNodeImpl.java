@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -189,7 +189,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Tested First</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isTestedFirst() {
@@ -211,7 +210,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Body Part</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getBodyParts() {
@@ -241,7 +239,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Setup Part</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getSetupParts() {
@@ -271,7 +268,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Decider</b></em>' reference.
 	 * @generated
 	 */
 	public OutputPin getDecider() {
@@ -289,7 +285,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Decider</b></em>' reference.
 	 * @generated
 	 */
 	public OutputPin basicGetDecider() {
@@ -311,7 +306,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Test</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getTests() {
@@ -341,13 +335,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getOutputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getResults() {
@@ -391,13 +378,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Loop Variable</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getLoopVariables() {
@@ -441,7 +421,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Body Output</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getBodyOutputs() {
@@ -471,13 +450,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Loop Variable Input</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getInputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getLoopVariableInputs() {
@@ -521,12 +493,9 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Output</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
 	 * @generated
 	 */
 	public EList getOutputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOutputs());
@@ -545,13 +514,9 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -570,12 +535,9 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Input</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.InputPin}.
 	 * @generated
 	 */
 	public EList getInputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Input())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getInputs());

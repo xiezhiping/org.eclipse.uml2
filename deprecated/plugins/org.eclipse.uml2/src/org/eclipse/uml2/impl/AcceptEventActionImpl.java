@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -95,20 +95,14 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Trigger</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getTriggersGen() {
-		// TODO: implement this redefined getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getTriggers() {
-		// TODO: test this redefined getter
-		if (_trigger == null) {
+
+		if (null == _trigger) {
 			_trigger = new EObjectResolvingEList(Trigger.class, this, UML2Package.ACCEPT_CALL_ACTION__TRIGGER);
 		}
+
 		return _trigger;
 	}
 
@@ -132,13 +126,6 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Result</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Action#getOutputs}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getResults() {
@@ -168,12 +155,9 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Output</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
 	 * @generated
 	 */
 	public EList getOutputs() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getAction_Output())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOutputs());

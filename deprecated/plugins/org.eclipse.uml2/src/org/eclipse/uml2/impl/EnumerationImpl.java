@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -88,13 +88,6 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Literal</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedLiterals() {
@@ -138,13 +131,9 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getEnumeration().getEAllOperations().get(73))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -195,6 +184,8 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.ENUMERATION__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENUMERATION__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENUMERATION__OWNED_OPERATION:
@@ -248,6 +239,8 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENUMERATION__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.ENUMERATION__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENUMERATION__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENUMERATION__OWNED_ATTRIBUTE:
@@ -354,6 +347,8 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 				return getPowertypeExtents();
 			case UML2Package.ENUMERATION__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.ENUMERATION__USE_CASE:
+				return getUseCases();
 			case UML2Package.ENUMERATION__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.ENUMERATION__OCCURRENCE:
@@ -450,6 +445,10 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.ENUMERATION__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.ENUMERATION__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -543,6 +542,9 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.ENUMERATION__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.ENUMERATION__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -633,6 +635,8 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ENUMERATION__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.ENUMERATION__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.ENUMERATION__REPRESENTATION:
 				return representation != null;
 			case UML2Package.ENUMERATION__OCCURRENCE:

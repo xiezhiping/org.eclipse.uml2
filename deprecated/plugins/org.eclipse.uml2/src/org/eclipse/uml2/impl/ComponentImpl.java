@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -135,7 +135,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Indirectly Instantiated</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isIndirectlyInstantiated() {
@@ -157,17 +156,10 @@ public class ComponentImpl extends ClassImpl implements Component {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Required</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getRequiredsGen() {
-		// TODO: implement this derived getter to return the 'Required' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getRequireds() {
-		// TODO: test this derived getter
+
 	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getComponent_Required())) {
 	        Set requireds = new HashSet();
 	        
@@ -239,17 +231,10 @@ public class ComponentImpl extends ClassImpl implements Component {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Provided</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getProvidedsGen() {
-		// TODO: implement this derived getter to return the 'Provided' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getProvideds() {
-		// TODO: test this derived getter
+
         if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getComponent_Provided())) {
             Set provideds = new HashSet();
 
@@ -309,18 +294,9 @@ public class ComponentImpl extends ClassImpl implements Component {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Realization</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getRealizations() {
-		// TODO: test this subset getter
 		if (realization == null) {
 			realization = new SubsetEObjectContainmentWithInverseEList(Realization.class, this, UML2Package.COMPONENT__REALIZATION, new int[] {UML2Package.COMPONENT__CLIENT_DEPENDENCY}, UML2Package.REALIZATION__ABSTRACTION);
 		}
@@ -362,13 +338,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' containment reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
@@ -412,13 +381,9 @@ public class ComponentImpl extends ClassImpl implements Component {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -437,13 +402,9 @@ public class ComponentImpl extends ClassImpl implements Component {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Client Dependency</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.Dependency}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Dependency#getClients <em>Client</em>}'.
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		// TODO: test this superset getter
 		if (clientDependency == null) {
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.COMPONENT__CLIENT_DEPENDENCY, new int[] {UML2Package.COMPONENT__SUBSTITUTION, UML2Package.COMPONENT__IMPLEMENTATION, UML2Package.COMPONENT__REALIZATION}, UML2Package.DEPENDENCY__CLIENT);
 		}
@@ -489,6 +450,8 @@ public class ComponentImpl extends ClassImpl implements Component {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.COMPONENT__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__IMPLEMENTATION:
@@ -546,20 +509,24 @@ public class ComponentImpl extends ClassImpl implements Component {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMPONENT__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.COMPONENT__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMPONENT__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+				case UML2Package.COMPONENT__OWNED_BEHAVIOR:
+					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+				case UML2Package.COMPONENT__IMPLEMENTATION:
+					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.COMPONENT__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+				case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMPONENT__OWNED_CONNECTOR:
 					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMPONENT__OWNED_PORT:
 					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMPONENT__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMPONENT__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMPONENT__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMPONENT__NESTED_CLASSIFIER:
@@ -668,10 +635,22 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return getPowertypeExtents();
 			case UML2Package.COMPONENT__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.COMPONENT__USE_CASE:
+				return getUseCases();
 			case UML2Package.COMPONENT__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.COMPONENT__OCCURRENCE:
 				return getOccurrences();
+			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
+				return getOwnedBehaviors();
+			case UML2Package.COMPONENT__CLASSIFIER_BEHAVIOR:
+				return getClassifierBehavior();
+			case UML2Package.COMPONENT__IMPLEMENTATION:
+				return getImplementations();
+			case UML2Package.COMPONENT__OWNED_TRIGGER:
+				return getOwnedTriggers();
+			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
+				return getOwnedStateMachines();
 			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 			case UML2Package.COMPONENT__PART:
@@ -682,14 +661,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return getOwnedConnectors();
 			case UML2Package.COMPONENT__OWNED_PORT:
 				return getOwnedPorts();
-			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.COMPONENT__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.COMPONENT__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.COMPONENT__OWNED_OPERATION:
 				return getOwnedOperations();
 			case UML2Package.COMPONENT__SUPER_CLASS:
@@ -798,24 +769,16 @@ public class ComponentImpl extends ClassImpl implements Component {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.COMPONENT__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.COMPONENT__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
 			case UML2Package.COMPONENT__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection)newValue);
-				return;
-			case UML2Package.COMPONENT__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection)newValue);
-				return;
-			case UML2Package.COMPONENT__OWNED_PORT:
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -828,9 +791,25 @@ public class ComponentImpl extends ClassImpl implements Component {
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
 				return;
+			case UML2Package.COMPONENT__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
+				return;
 			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
 				getOwnedStateMachines().addAll((Collection)newValue);
+				return;
+			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				getOwnedAttributes().addAll((Collection)newValue);
+				return;
+			case UML2Package.COMPONENT__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				getOwnedConnectors().addAll((Collection)newValue);
+				return;
+			case UML2Package.COMPONENT__OWNED_PORT:
+				getOwnedPorts().clear();
+				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.COMPONENT__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -932,20 +911,14 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.COMPONENT__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.COMPONENT__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
 			case UML2Package.COMPONENT__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				return;
-			case UML2Package.COMPONENT__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				return;
-			case UML2Package.COMPONENT__OWNED_PORT:
-				getOwnedPorts().clear();
 				return;
 			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -956,8 +929,20 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__IMPLEMENTATION:
 				getImplementations().clear();
 				return;
+			case UML2Package.COMPONENT__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				return;
 			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
+				return;
+			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				return;
+			case UML2Package.COMPONENT__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				return;
+			case UML2Package.COMPONENT__OWNED_PORT:
+				getOwnedPorts().clear();
 				return;
 			case UML2Package.COMPONENT__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -1055,12 +1040,24 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.COMPONENT__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.COMPONENT__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.COMPONENT__REPRESENTATION:
 				return representation != null;
 			case UML2Package.COMPONENT__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
+			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.COMPONENT__CLASSIFIER_BEHAVIOR:
+				return classifierBehavior != null;
+			case UML2Package.COMPONENT__IMPLEMENTATION:
+				return implementation != null && !implementation.isEmpty();
+			case UML2Package.COMPONENT__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
+			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return !getOwnedAttributes().isEmpty();
 			case UML2Package.COMPONENT__PART:
 				return !getParts().isEmpty();
 			case UML2Package.COMPONENT__ROLE:
@@ -1069,14 +1066,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.COMPONENT__OWNED_PORT:
 				return ownedPort != null && !ownedPort.isEmpty();
-			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.COMPONENT__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.COMPONENT__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.COMPONENT__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.COMPONENT__SUPER_CLASS:

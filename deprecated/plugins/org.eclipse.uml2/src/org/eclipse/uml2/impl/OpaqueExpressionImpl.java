@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -126,7 +126,6 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Body</b></em>' attribute.
 	 * @generated
 	 */
 	public String getBody() {
@@ -148,7 +147,6 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Language</b></em>' attribute.
 	 * @generated
 	 */
 	public String getLanguage() {
@@ -170,7 +168,6 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Result</b></em>' reference.
 	 * @generated
 	 */
 	public Parameter getResult() {
@@ -181,16 +178,8 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Result</b></em>' reference.
-	 * @generated
+	 * @generated NOT
 	 */
-	public Parameter basicGetResultGen() {
-		// TODO: implement this derived basic getter to return the 'Result' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public Parameter basicGetResult() {
 		// TODO: implement this derived basic getter to return the 'Result' reference
 		return null;
@@ -199,7 +188,6 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Behavior</b></em>' reference.
 	 * @generated
 	 */
 	public Behavior getBehavior() {
@@ -217,7 +205,6 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Behavior</b></em>' reference.
 	 * @generated
 	 */
 	public Behavior basicGetBehavior() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -142,7 +142,6 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Multicast</b></em>' attribute.
 	 * @generated
 	 */
     public boolean isMulticast() {
@@ -164,7 +163,6 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Multireceive</b></em>' attribute.
 	 * @generated
 	 */
     public boolean isMultireceive() {
@@ -186,7 +184,6 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Transformation</b></em>' reference.
 	 * @generated
 	 */
     public Behavior getTransformation() {
@@ -204,7 +201,6 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Transformation</b></em>' reference.
 	 * @generated
 	 */
     public Behavior basicGetTransformation() {
@@ -226,7 +222,6 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Selection</b></em>' reference.
 	 * @generated
 	 */
     public Behavior getSelection() {
@@ -244,7 +239,6 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Selection</b></em>' reference.
 	 * @generated
 	 */
     public Behavior basicGetSelection() {

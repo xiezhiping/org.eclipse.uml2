@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -103,7 +103,6 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Value</b></em>' reference.
 	 * @generated
 	 */
 	public InputPin getValue() {
@@ -121,7 +120,6 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Value</b></em>' reference.
 	 * @generated
 	 */
 	public InputPin basicGetValue() {
@@ -143,7 +141,6 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>End</b></em>' reference.
 	 * @generated
 	 */
 	public Property getEnd() {
@@ -161,7 +158,6 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>End</b></em>' reference.
 	 * @generated
 	 */
 	public Property basicGetEnd() {
@@ -183,7 +179,6 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Qualifier</b></em>' containment reference list.
 	 * @generated
 	 */
 	public EList getQualifiers() {

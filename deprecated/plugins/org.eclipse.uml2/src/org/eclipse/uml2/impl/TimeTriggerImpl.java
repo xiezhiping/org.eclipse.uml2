@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeTriggerImpl.java,v 1.3 2004/05/14 14:14:19 khussey Exp $
+ * $Id: TimeTriggerImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.StringExpression;
-import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.TimeTrigger;
 import org.eclipse.uml2.UML2Package;
@@ -107,7 +106,6 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Relative</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isRelative() {
@@ -129,13 +127,6 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>When</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ValueSpecification getWhen() {
@@ -193,13 +184,9 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -235,14 +222,6 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.TIME_TRIGGER__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.TIME_TRIGGER__TEMPLATE_PARAMETER:
-					if (templateParameter != null)
-						msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-					return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
-				case UML2Package.TIME_TRIGGER__OWNING_PARAMETER:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.TIME_TRIGGER__OWNING_PARAMETER, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -272,10 +251,6 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
 				case UML2Package.TIME_TRIGGER__NAME_EXPRESSION:
 					return basicSetNameExpression(null, msgs);
-				case UML2Package.TIME_TRIGGER__TEMPLATE_PARAMETER:
-					return basicSetTemplateParameter(null, msgs);
-				case UML2Package.TIME_TRIGGER__OWNING_PARAMETER:
-					return eBasicSetContainer(null, UML2Package.TIME_TRIGGER__OWNING_PARAMETER, msgs);
 				case UML2Package.TIME_TRIGGER__WHEN:
 					return basicSetWhen(null, msgs);
 				default:
@@ -283,23 +258,6 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case UML2Package.TIME_TRIGGER__OWNING_PARAMETER:
-					return eContainer.eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -332,13 +290,6 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 				return getClientDependencies();
 			case UML2Package.TIME_TRIGGER__NAME_EXPRESSION:
 				return getNameExpression();
-			case UML2Package.TIME_TRIGGER__TEMPLATE_PARAMETER:
-				if (resolve) return getTemplateParameter();
-				return basicGetTemplateParameter();
-			case UML2Package.TIME_TRIGGER__OWNING_PARAMETER:
-				return getOwningParameter();
-			case UML2Package.TIME_TRIGGER__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return getPackageableElement_visibility();
 			case UML2Package.TIME_TRIGGER__PORT:
 				return getPorts();
 			case UML2Package.TIME_TRIGGER__IS_RELATIVE:
@@ -383,15 +334,6 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 				return;
 			case UML2Package.TIME_TRIGGER__NAME_EXPRESSION:
 				setNameExpression((StringExpression)newValue);
-				return;
-			case UML2Package.TIME_TRIGGER__TEMPLATE_PARAMETER:
-				setTemplateParameter((TemplateParameter)newValue);
-				return;
-			case UML2Package.TIME_TRIGGER__OWNING_PARAMETER:
-				setOwningParameter((TemplateParameter)newValue);
-				return;
-			case UML2Package.TIME_TRIGGER__PACKAGEABLE_ELEMENT_VISIBILITY:
-				setPackageableElement_visibility((VisibilityKind)newValue);
 				return;
 			case UML2Package.TIME_TRIGGER__PORT:
 				getPorts().clear();
@@ -438,15 +380,6 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 			case UML2Package.TIME_TRIGGER__NAME_EXPRESSION:
 				setNameExpression((StringExpression)null);
 				return;
-			case UML2Package.TIME_TRIGGER__TEMPLATE_PARAMETER:
-				setTemplateParameter((TemplateParameter)null);
-				return;
-			case UML2Package.TIME_TRIGGER__OWNING_PARAMETER:
-				setOwningParameter(null);
-				return;
-			case UML2Package.TIME_TRIGGER__PACKAGEABLE_ELEMENT_VISIBILITY:
-				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
-				return;
 			case UML2Package.TIME_TRIGGER__PORT:
 				getPorts().clear();
 				return;
@@ -489,12 +422,6 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.TIME_TRIGGER__NAME_EXPRESSION:
 				return nameExpression != null;
-			case UML2Package.TIME_TRIGGER__TEMPLATE_PARAMETER:
-				return templateParameter != null;
-			case UML2Package.TIME_TRIGGER__OWNING_PARAMETER:
-				return getOwningParameter() != null;
-			case UML2Package.TIME_TRIGGER__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.TIME_TRIGGER__PORT:
 				return port != null && !port.isEmpty();
 			case UML2Package.TIME_TRIGGER__IS_RELATIVE:

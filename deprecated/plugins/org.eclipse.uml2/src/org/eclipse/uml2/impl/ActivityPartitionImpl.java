@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -170,19 +170,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Activity Group activity</b></em>' container reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityNode#getActivity}</li>
-	 * </ul>
-	 * </p>
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Activity getActivityGroup_activity() {
@@ -221,7 +208,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Dimension</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isDimension() {
@@ -243,7 +229,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is External</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isExternal() {
@@ -265,13 +250,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Contained Edge</b></em>' reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityGroup#getContainedEdges}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getContainedEdges() {
@@ -301,13 +279,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Contained Node</b></em>' reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityGroup#getContainedNodes}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getContainedNodes() {
@@ -337,13 +308,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Subgroup</b></em>' containment reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityGroup#getSubgroups}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getSubgroups() {
@@ -387,13 +351,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Super Partition</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityGroup#getSuperGroup}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public ActivityPartition getSuperPartition() {
@@ -425,7 +382,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Represents</b></em>' reference.
 	 * @generated
 	 */
 	public Element getRepresents() {
@@ -443,7 +399,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Represents</b></em>' reference.
 	 * @generated
 	 */
 	public Element basicGetRepresents() {
@@ -465,12 +420,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Activity</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Activity#getNodes <em>Node</em>}'.
 	 * @generated
 	 */
 	public Activity getActivity() {
-		// TODO: test this redefined getter
 		return getActivityGroup_activity();
 	}
 
@@ -480,20 +432,15 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-		// TODO: test this redefined setter
 		setActivityGroup_activity(newActivity);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -512,12 +459,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getSuperGroup()) {
 			return (Element) getSuperGroup();
 		}
@@ -530,12 +474,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Super Group</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ActivityGroup#getSubgroups <em>Subgroup</em>}'.
 	 * @generated
 	 */
 	public ActivityGroup basicGetSuperGroup() {
-		// TODO: test this union basic getter
 		if (null != getSuperPartition()) {
 			return (ActivityGroup) getSuperPartition();
 		}
@@ -545,12 +486,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Super Group</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ActivityGroup#getSubgroups <em>Subgroup</em>}'.
 	 * @generated
 	 */
 	public ActivityGroup getSuperGroup() {
-		// TODO: test this union getter
 		if (null != getSuperPartition()) {
 			return (ActivityGroup) getSuperPartition();
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -94,7 +94,6 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Entry</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getEntries() {
@@ -124,7 +123,6 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Exit</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getExits() {

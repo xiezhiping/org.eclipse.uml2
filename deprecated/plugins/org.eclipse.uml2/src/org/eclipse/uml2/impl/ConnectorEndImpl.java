@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -91,7 +91,6 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Defining End</b></em>' reference.
 	 * @generated
 	 */
 	public Property getDefiningEnd() {
@@ -102,16 +101,8 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Defining End</b></em>' reference.
-	 * @generated
+	 * @generated NOT
 	 */
-	public Property basicGetDefiningEndGen() {
-		// TODO: implement this derived basic getter to return the 'Defining End' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public Property basicGetDefiningEnd() {
 		// TODO: implement this derived basic getter to return the 'Defining End' reference
 		return null;
@@ -120,7 +111,6 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Role</b></em>' reference.
 	 * @generated
 	 */
 	public ConnectableElement getRole() {
@@ -138,7 +128,6 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Role</b></em>' reference.
 	 * @generated
 	 */
 	public ConnectableElement basicGetRole() {
@@ -182,7 +171,6 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Part With Port</b></em>' reference.
 	 * @generated
 	 */
 	public Property getPartWithPort() {
@@ -200,7 +188,6 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Part With Port</b></em>' reference.
 	 * @generated
 	 */
 	public Property basicGetPartWithPort() {

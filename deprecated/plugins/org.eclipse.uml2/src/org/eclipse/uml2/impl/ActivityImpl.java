@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -217,7 +216,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Body</b></em>' attribute.
 	 * @generated
 	 */
 	public String getBody() {
@@ -239,7 +237,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Language</b></em>' attribute.
 	 * @generated
 	 */
 	public String getLanguage() {
@@ -261,7 +258,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Read Only</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isReadOnly() {
@@ -283,7 +279,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Is Single Execution</b></em>' attribute.
 	 * @generated
 	 */
 	public boolean isSingleExecution() {
@@ -305,13 +300,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Edge</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getEdges() {
@@ -355,44 +343,11 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Group</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
-	public EList getGroupsGen() {
-		if (null == group) {
-			group = new EObjectContainmentWithInverseEList(ActivityGroup.class, this, UML2Package.ACTIVITY__GROUP, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY);
-		}
-		return group;
-	}
-
 	public EList getGroups() {
 		if (null == group) {
-			group =
-				new EObjectContainmentWithInverseEList(
-					ActivityGroup.class,
-					this,
-					UML2Package.ACTIVITY__GROUP,
-					UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY) {
-				public boolean contains(Object object) {
-					if (isEObject() && size > 4 && isContainment() && object instanceof EObject) {
-						InternalEObject eObject = (InternalEObject) object;
-						int baseContainerFeatureID = eObject.eBaseStructuralFeatureID(eObject.eContainerFeatureID(), getFeatureType().getInstanceClass());
-
-						return eObject.eContainer() == owner
-							&& (hasNavigableInverse()
-								? baseContainerFeatureID == getInverseFeatureID()
-								: InternalEObject.EOPPOSITE_FEATURE_BASE - baseContainerFeatureID == getFeatureID());
-					} else {
-						return super.contains(object);
-					}
-				}
-			};
+			group = new EObjectContainmentWithInverseEList(ActivityGroup.class, this, UML2Package.ACTIVITY__GROUP, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY);
 		}
 		return group;
 	}
@@ -414,17 +369,9 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Node</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getNodes() {
-		// TODO: test this superset getter
 		if (node == null) {
 			node = new SupersetEObjectContainmentWithInverseEList(ActivityNode.class, this, UML2Package.ACTIVITY__NODE, new int[] {UML2Package.ACTIVITY__ACTION}, UML2Package.ACTIVITY_NODE__ACTIVITY);
 		}
@@ -466,17 +413,9 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Action</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Activity#getNodes}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getActions() {
-		// TODO: test this subset getter
 		if (action == null) {
 			action = new SubsetEObjectEList(Action.class, this, UML2Package.ACTIVITY__ACTION, new int[] {UML2Package.ACTIVITY__NODE});
 		}
@@ -504,24 +443,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Structured Node</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Activity#getNodes}</li>
-	 *   <li>{@link org.eclipse.uml2.Activity#getGroups}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getStructuredNodesGen() {
-		// TODO: implement this derived redefined getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getStructuredNodes() {
-		// TODO: test this derived redefined getter
+
 	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getActivity_StructuredNode())) {
 	        Set structuredNode = new HashSet();
 	        
@@ -572,13 +497,9 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
@@ -634,6 +555,8 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.ACTIVITY__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__IMPLEMENTATION:
@@ -715,20 +638,24 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.ACTIVITY__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+				case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
+					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+				case UML2Package.ACTIVITY__IMPLEMENTATION:
+					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.ACTIVITY__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+				case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_CONNECTOR:
 					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_PORT:
 					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__NESTED_CLASSIFIER:
@@ -741,6 +668,8 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 					return basicSetSpecification(null, msgs);
 				case UML2Package.ACTIVITY__PARAMETER:
 					return ((InternalEList)getParameters()).basicRemove(otherEnd, msgs);
+				case UML2Package.ACTIVITY__OWNED_PARAMETER_SET:
+					return ((InternalEList)getOwnedParameterSets()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__EDGE:
 					return ((InternalEList)getEdges()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY__GROUP:
@@ -859,10 +788,22 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return getPowertypeExtents();
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.ACTIVITY__USE_CASE:
+				return getUseCases();
 			case UML2Package.ACTIVITY__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.ACTIVITY__OCCURRENCE:
 				return getOccurrences();
+			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
+				return getOwnedBehaviors();
+			case UML2Package.ACTIVITY__CLASSIFIER_BEHAVIOR:
+				return getClassifierBehavior();
+			case UML2Package.ACTIVITY__IMPLEMENTATION:
+				return getImplementations();
+			case UML2Package.ACTIVITY__OWNED_TRIGGER:
+				return getOwnedTriggers();
+			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
+				return getOwnedStateMachines();
 			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 			case UML2Package.ACTIVITY__PART:
@@ -873,14 +814,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return getOwnedConnectors();
 			case UML2Package.ACTIVITY__OWNED_PORT:
 				return getOwnedPorts();
-			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.ACTIVITY__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.ACTIVITY__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.ACTIVITY__OWNED_OPERATION:
 				return getOwnedOperations();
 			case UML2Package.ACTIVITY__SUPER_CLASS:
@@ -912,6 +845,8 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return getPreconditions();
 			case UML2Package.ACTIVITY__POSTCONDITION:
 				return getPostconditions();
+			case UML2Package.ACTIVITY__OWNED_PARAMETER_SET:
+				return getOwnedParameterSets();
 			case UML2Package.ACTIVITY__BODY:
 				return getBody();
 			case UML2Package.ACTIVITY__LANGUAGE:
@@ -1016,24 +951,16 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.ACTIVITY__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.ACTIVITY__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
 			case UML2Package.ACTIVITY__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection)newValue);
-				return;
-			case UML2Package.ACTIVITY__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection)newValue);
-				return;
-			case UML2Package.ACTIVITY__OWNED_PORT:
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -1046,9 +973,25 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
 				return;
+			case UML2Package.ACTIVITY__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
+				return;
 			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
 				getOwnedStateMachines().addAll((Collection)newValue);
+				return;
+			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				getOwnedAttributes().addAll((Collection)newValue);
+				return;
+			case UML2Package.ACTIVITY__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				getOwnedConnectors().addAll((Collection)newValue);
+				return;
+			case UML2Package.ACTIVITY__OWNED_PORT:
+				getOwnedPorts().clear();
+				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.ACTIVITY__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -1089,6 +1032,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__POSTCONDITION:
 				getPostconditions().clear();
 				getPostconditions().addAll((Collection)newValue);
+				return;
+			case UML2Package.ACTIVITY__OWNED_PARAMETER_SET:
+				getOwnedParameterSets().clear();
+				getOwnedParameterSets().addAll((Collection)newValue);
 				return;
 			case UML2Package.ACTIVITY__BODY:
 				setBody((String)newValue);
@@ -1192,20 +1139,14 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.ACTIVITY__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.ACTIVITY__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
 			case UML2Package.ACTIVITY__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				return;
-			case UML2Package.ACTIVITY__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				return;
-			case UML2Package.ACTIVITY__OWNED_PORT:
-				getOwnedPorts().clear();
 				return;
 			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -1216,8 +1157,20 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__IMPLEMENTATION:
 				getImplementations().clear();
 				return;
+			case UML2Package.ACTIVITY__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				return;
 			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
+				return;
+			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				return;
+			case UML2Package.ACTIVITY__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				return;
+			case UML2Package.ACTIVITY__OWNED_PORT:
+				getOwnedPorts().clear();
 				return;
 			case UML2Package.ACTIVITY__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -1251,6 +1204,9 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return;
 			case UML2Package.ACTIVITY__POSTCONDITION:
 				getPostconditions().clear();
+				return;
+			case UML2Package.ACTIVITY__OWNED_PARAMETER_SET:
+				getOwnedParameterSets().clear();
 				return;
 			case UML2Package.ACTIVITY__BODY:
 				setBody(BODY_EDEFAULT);
@@ -1351,12 +1307,24 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.ACTIVITY__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.ACTIVITY__REPRESENTATION:
 				return representation != null;
 			case UML2Package.ACTIVITY__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
+			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.ACTIVITY__CLASSIFIER_BEHAVIOR:
+				return classifierBehavior != null;
+			case UML2Package.ACTIVITY__IMPLEMENTATION:
+				return implementation != null && !implementation.isEmpty();
+			case UML2Package.ACTIVITY__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
+			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return !getOwnedAttributes().isEmpty();
 			case UML2Package.ACTIVITY__PART:
 				return !getParts().isEmpty();
 			case UML2Package.ACTIVITY__ROLE:
@@ -1365,14 +1333,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_PORT:
 				return ownedPort != null && !ownedPort.isEmpty();
-			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.ACTIVITY__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.ACTIVITY__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.ACTIVITY__SUPER_CLASS:
@@ -1403,6 +1363,8 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return precondition != null && !precondition.isEmpty();
 			case UML2Package.ACTIVITY__POSTCONDITION:
 				return postcondition != null && !postcondition.isEmpty();
+			case UML2Package.ACTIVITY__OWNED_PARAMETER_SET:
+				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
 			case UML2Package.ACTIVITY__BODY:
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 			case UML2Package.ACTIVITY__LANGUAGE:

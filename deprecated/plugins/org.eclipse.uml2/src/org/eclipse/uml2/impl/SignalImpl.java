@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.7 2004/05/14 14:14:19 khussey Exp $
+ * $Id: SignalImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -89,14 +89,6 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getAttributes}</li>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
@@ -140,12 +132,9 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Attribute</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Property}.
 	 * @generated
 	 */
 	public EList getAttributes() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Attribute())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getAttributes());
@@ -164,13 +153,9 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getSignal().getEAllOperations().get(70))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -221,6 +206,8 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.SIGNAL__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.SIGNAL__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -268,6 +255,8 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.SIGNAL__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.SIGNAL__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.SIGNAL__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.SIGNAL__OWNED_ATTRIBUTE:
@@ -370,6 +359,8 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 				return getPowertypeExtents();
 			case UML2Package.SIGNAL__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.SIGNAL__USE_CASE:
+				return getUseCases();
 			case UML2Package.SIGNAL__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.SIGNAL__OCCURRENCE:
@@ -462,6 +453,10 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.SIGNAL__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.SIGNAL__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -547,6 +542,9 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.SIGNAL__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.SIGNAL__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -631,6 +629,8 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.SIGNAL__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.SIGNAL__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.SIGNAL__REPRESENTATION:
 				return representation != null;
 			case UML2Package.SIGNAL__OCCURRENCE:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.3 2004/05/14 14:14:20 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.4 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -172,7 +172,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
 	 * @generated
 	 */
 	public TransitionKind getKind() {
@@ -194,13 +193,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Container</b></em>' container reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwner}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Region getContainer() {
@@ -232,7 +224,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * @generated
 	 */
 	public Vertex getSource() {
@@ -250,7 +241,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * @generated
 	 */
 	public Vertex basicGetSource() {
@@ -294,7 +284,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
 	 * @generated
 	 */
 	public Vertex getTarget() {
@@ -312,7 +301,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
 	 * @generated
 	 */
 	public Vertex basicGetTarget() {
@@ -356,13 +344,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Transition</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Transition getRedefinedTransition() {
@@ -380,13 +361,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Redefined Transition</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Transition basicGetRedefinedTransition() {
@@ -408,7 +382,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Trigger</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getTriggers() {
@@ -438,13 +411,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Constraint getGuard() {
@@ -511,13 +477,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Effect</b></em>' containment reference.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public Activity getEffect() {
@@ -575,21 +534,8 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Redefinition Context</b></em>' reference.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinitionContexts}</li>
-	 * </ul>
-	 * </p>
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getRedefinitionContextsGen() {
-		// TODO: implement this derived redefinition getter
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getRedefinitionContexts() {
 		// TODO: implement this derived redefinition getter
 		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), 0, Collections.EMPTY_LIST.toArray());
@@ -598,12 +544,9 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owner</b></em>' reference, a derived union.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		// TODO: test this union basic getter
 		if (null != getContainer()) {
 			return (Element) getContainer();
 		}
@@ -613,25 +556,18 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Redefined Element</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		// TODO: test this redefined getter
 		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Element}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwner <em>Owner</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());

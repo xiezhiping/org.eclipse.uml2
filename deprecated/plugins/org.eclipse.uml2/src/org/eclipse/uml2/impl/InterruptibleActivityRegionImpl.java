@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -92,7 +92,6 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Interrupting Edge</b></em>' reference list.
 	 * @generated
 	 */
 	public EList getInterruptingEdges() {
@@ -122,13 +121,6 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Contained Node</b></em>' reference list.
-	 * <p>
-	 * Redefines the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.ActivityGroup#getContainedNodes}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getContainedNodes() {

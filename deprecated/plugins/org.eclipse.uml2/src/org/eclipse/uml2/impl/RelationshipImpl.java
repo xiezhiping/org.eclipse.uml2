@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,11 +68,9 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Related Element</b></em>' reference list, a derived union.
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getRelationship_RelatedElement())) {
 			Set union = new LinkedHashSet();
 			getCacheAdapter().put(

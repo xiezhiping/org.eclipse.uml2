@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.7 2004/05/14 14:14:20 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -120,15 +120,6 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getAttributes}</li>
-	 *   <li>{@link org.eclipse.uml2.StructuredClassifier#getRoles}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
@@ -172,28 +163,26 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the derived value of the '<em><b>Part</b></em>' reference list.
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getPartsGen() {
-		// TODO: implement this derived getter to return the 'Part' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	public EList getParts() {
-		// TODO: test this derived getter
-		List part = new ArrayList();
 
-		for (Iterator ownedAttributes = getOwnedAttributes().iterator(); ownedAttributes.hasNext();) {
-			Property ownedAttribute = (Property) ownedAttributes.next();
+		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier_Part())) {
+			List part = new ArrayList();
+			
+			for (Iterator ownedAttributes = getOwnedAttributes().iterator(); ownedAttributes.hasNext();) {
+				Property ownedAttribute = (Property) ownedAttributes.next();
 
-			if (ownedAttribute.isComposite()) {
-				part.add(ownedAttribute);
+				if (ownedAttribute.isComposite()) {
+					part.add(ownedAttribute);
+				}
 			}
+			
+			getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredClassifier_Part(),
+				new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Part(), part.size(), part.toArray()));
 		}
-
-		return new BasicEList.UnmodifiableEList(part.size(), part.toArray());
+		
+		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredClassifier_Part());
 	}
 
     /**
@@ -233,14 +222,6 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Connector</b></em>' containment reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
-	 *   <li>{@link org.eclipse.uml2.Classifier#getFeatures}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getOwnedConnectors() {
@@ -284,13 +265,6 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Collaboration Role</b></em>' reference list.
-	 * <p>
-	 * Subsets the following features:
-	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.StructuredClassifier#getRoles}</li>
-	 * </ul>
-	 * </p>
 	 * @generated
 	 */
 	public EList getCollaborationRoles() {
@@ -320,12 +294,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Attribute</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Property}.
 	 * @generated
 	 */
 	public EList getAttributes() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Attribute())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getAttributes());
@@ -344,13 +315,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getCollaboration().getEAllOperations().get(73))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
@@ -367,12 +334,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Member</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
 	 * @generated
 	 */
 	public EList getMembers() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_Member())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getMembers());
@@ -391,13 +355,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Feature</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.Feature}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Feature#getFeaturingClassifiers <em>Featuring Classifier</em>}'.
 	 * @generated
 	 */
 	public EList getFeatures() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_Feature())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getFeatures());
@@ -416,12 +376,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Role</b></em>' reference list, a derived union.
-	 * The list contents are of type {@link org.eclipse.uml2.ConnectableElement}.
 	 * @generated
 	 */
 	public EList getRoles() {
-		// TODO: test this union getter
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier_Role())) {
 			Set union = new LinkedHashSet();
 			union.addAll(getCollaborationRoles());
@@ -474,6 +431,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.COLLABORATION__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.COLLABORATION__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.COLLABORATION__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.COLLABORATION__IMPLEMENTATION:
@@ -527,12 +486,16 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.COLLABORATION__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.COLLABORATION__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.COLLABORATION__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
 				case UML2Package.COLLABORATION__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
 				case UML2Package.COLLABORATION__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.COLLABORATION__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
 				case UML2Package.COLLABORATION__OWNED_STATE_MACHINE:
 					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.COLLABORATION__OWNED_ATTRIBUTE:
@@ -637,6 +600,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				return getPowertypeExtents();
 			case UML2Package.COLLABORATION__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.COLLABORATION__USE_CASE:
+				return getUseCases();
 			case UML2Package.COLLABORATION__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.COLLABORATION__OCCURRENCE:
@@ -647,6 +612,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				return getClassifierBehavior();
 			case UML2Package.COLLABORATION__IMPLEMENTATION:
 				return getImplementations();
+			case UML2Package.COLLABORATION__OWNED_TRIGGER:
+				return getOwnedTriggers();
 			case UML2Package.COLLABORATION__OWNED_STATE_MACHINE:
 				return getOwnedStateMachines();
 			case UML2Package.COLLABORATION__OWNED_ATTRIBUTE:
@@ -745,6 +712,10 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.COLLABORATION__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.COLLABORATION__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
@@ -762,6 +733,10 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 			case UML2Package.COLLABORATION__IMPLEMENTATION:
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
+				return;
+			case UML2Package.COLLABORATION__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
 				return;
 			case UML2Package.COLLABORATION__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
@@ -853,6 +828,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 			case UML2Package.COLLABORATION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.COLLABORATION__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.COLLABORATION__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
@@ -867,6 +845,9 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				return;
 			case UML2Package.COLLABORATION__IMPLEMENTATION:
 				getImplementations().clear();
+				return;
+			case UML2Package.COLLABORATION__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
 				return;
 			case UML2Package.COLLABORATION__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
@@ -955,6 +936,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.COLLABORATION__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.COLLABORATION__REPRESENTATION:
 				return representation != null;
 			case UML2Package.COLLABORATION__OCCURRENCE:
@@ -965,6 +948,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 				return classifierBehavior != null;
 			case UML2Package.COLLABORATION__IMPLEMENTATION:
 				return implementation != null && !implementation.isEmpty();
+			case UML2Package.COLLABORATION__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_STATE_MACHINE:
 				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.COLLABORATION__OWNED_ATTRIBUTE:
