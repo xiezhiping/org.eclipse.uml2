@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.10 2004/06/02 05:02:25 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.11 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -267,8 +267,15 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
-		TemplateParameter templateParameter = basicGetTemplateParameter();
-		return templateParameter == null ? null : (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+		if (templateParameter != null && templateParameter.eIsProxy()) {
+			TemplateParameter oldTemplateParameter = templateParameter;
+			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+			if (templateParameter != oldTemplateParameter) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PROPERTY__TEMPLATE_PARAMETER, oldTemplateParameter, templateParameter));
+			}
+		}
+		return templateParameter;
 	}
 
 	/**
@@ -741,8 +748,15 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public Association getAssociation() {
-		Association association = basicGetAssociation();
-		return association == null ? null : (Association)eResolveProxy((InternalEObject)association);
+		if (association != null && association.eIsProxy()) {
+			Association oldAssociation = association;
+			association = (Association)eResolveProxy((InternalEObject)association);
+			if (association != oldAssociation) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PROPERTY__ASSOCIATION, oldAssociation, association));
+			}
+		}
+		return association;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.6 2004/06/02 05:02:25 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.7 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -159,8 +159,15 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public ParameterableElement getParameteredElement() {
-		ParameterableElement parameteredElement = basicGetParameteredElement();
-		return parameteredElement == null ? null : (ParameterableElement)eResolveProxy((InternalEObject)parameteredElement);
+		if (parameteredElement != null && parameteredElement.eIsProxy()) {
+			ParameterableElement oldParameteredElement = parameteredElement;
+			parameteredElement = (ParameterableElement)eResolveProxy((InternalEObject)parameteredElement);
+			if (parameteredElement != oldParameteredElement) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, oldParameteredElement, parameteredElement));
+			}
+		}
+		return parameteredElement;
 	}
 
 	/**
@@ -287,8 +294,15 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public ParameterableElement getDefault() {
-		ParameterableElement default_ = basicGetDefault();
-		return default_ == null ? null : (ParameterableElement)eResolveProxy((InternalEObject)default_);
+		if (default_ != null && default_.eIsProxy()) {
+			ParameterableElement oldDefault = default_;
+			default_ = (ParameterableElement)eResolveProxy((InternalEObject)default_);
+			if (default_ != oldDefault) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.TEMPLATE_PARAMETER__DEFAULT, oldDefault, default_));
+			}
+		}
+		return default_;
 	}
 
 	/**

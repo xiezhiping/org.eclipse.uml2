@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.6 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -140,8 +140,15 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 * @generated
 	 */
 	public Classifier getRealizingClassifier() {
-		Classifier realizingClassifier = basicGetRealizingClassifier();
-		return realizingClassifier == null ? null : (Classifier)eResolveProxy((InternalEObject)realizingClassifier);
+		if (realizingClassifier != null && realizingClassifier.eIsProxy()) {
+			Classifier oldRealizingClassifier = realizingClassifier;
+			realizingClassifier = (Classifier)eResolveProxy((InternalEObject)realizingClassifier);
+			if (realizingClassifier != oldRealizingClassifier) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.REALIZATION__REALIZING_CLASSIFIER, oldRealizingClassifier, realizingClassifier));
+			}
+		}
+		return realizingClassifier;
 	}
 
 	/**

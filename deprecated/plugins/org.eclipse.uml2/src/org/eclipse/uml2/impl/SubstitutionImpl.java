@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.6 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -96,8 +96,15 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * @generated
 	 */
 	public Classifier getContract() {
-		Classifier contract = basicGetContract();
-		return contract == null ? null : (Classifier)eResolveProxy((InternalEObject)contract);
+		if (contract != null && contract.eIsProxy()) {
+			Classifier oldContract = contract;
+			contract = (Classifier)eResolveProxy((InternalEObject)contract);
+			if (contract != oldContract) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.SUBSTITUTION__CONTRACT, oldContract, contract));
+			}
+		}
+		return contract;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TypedElementImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: TypedElementImpl.java,v 1.4 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -83,8 +83,15 @@ public abstract class TypedElementImpl extends NamedElementImpl implements Typed
 	 * @generated
 	 */
 	public Type getType() {
-		Type type = basicGetType();
-		return type == null ? null : (Type)eResolveProxy((InternalEObject)type);
+		if (type != null && type.eIsProxy()) {
+			Type oldType = type;
+			type = (Type)eResolveProxy((InternalEObject)type);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.TYPED_ELEMENT__TYPE, oldType, type));
+			}
+		}
+		return type;
 	}
 
 	/**

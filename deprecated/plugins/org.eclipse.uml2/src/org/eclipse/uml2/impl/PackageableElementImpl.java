@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.4 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -109,8 +109,15 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
-		TemplateParameter templateParameter = basicGetTemplateParameter();
-		return templateParameter == null ? null : (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+		if (templateParameter != null && templateParameter.eIsProxy()) {
+			TemplateParameter oldTemplateParameter = templateParameter;
+			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+			if (templateParameter != oldTemplateParameter) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER, oldTemplateParameter, templateParameter));
+			}
+		}
+		return templateParameter;
 	}
 
 	/**

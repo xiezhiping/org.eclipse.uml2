@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.12 2004/06/02 05:02:25 khussey Exp $
+ * $Id: PackageImpl.java,v 1.13 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -177,8 +177,15 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
-		TemplateParameter templateParameter = basicGetTemplateParameter();
-		return templateParameter == null ? null : (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+		if (templateParameter != null && templateParameter.eIsProxy()) {
+			TemplateParameter oldTemplateParameter = templateParameter;
+			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+			if (templateParameter != oldTemplateParameter) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PACKAGE__TEMPLATE_PARAMETER, oldTemplateParameter, templateParameter));
+			}
+		}
+		return templateParameter;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.5 2004/06/02 05:02:25 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.6 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -98,8 +98,15 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	public Interface getContract() {
-		Interface contract = basicGetContract();
-		return contract == null ? null : (Interface)eResolveProxy((InternalEObject)contract);
+		if (contract != null && contract.eIsProxy()) {
+			Interface oldContract = contract;
+			contract = (Interface)eResolveProxy((InternalEObject)contract);
+			if (contract != oldContract) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.IMPLEMENTATION__CONTRACT, oldContract, contract));
+			}
+		}
+		return contract;
 	}
 
 	/**

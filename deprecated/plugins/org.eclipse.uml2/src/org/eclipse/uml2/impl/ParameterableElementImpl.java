@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.4 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,8 +84,15 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
-		TemplateParameter templateParameter = basicGetTemplateParameter();
-		return templateParameter == null ? null : (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+		if (templateParameter != null && templateParameter.eIsProxy()) {
+			TemplateParameter oldTemplateParameter = templateParameter;
+			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+			if (templateParameter != oldTemplateParameter) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER, oldTemplateParameter, templateParameter));
+			}
+		}
+		return templateParameter;
 	}
 
 	/**

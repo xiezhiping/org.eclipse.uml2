@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.6 2004/06/02 05:02:26 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.7 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -132,8 +132,15 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 * @generated
 	 */
 	public org.eclipse.uml2.Package getImportedPackage() {
-		org.eclipse.uml2.Package importedPackage = basicGetImportedPackage();
-		return importedPackage == null ? null : (org.eclipse.uml2.Package)eResolveProxy((InternalEObject)importedPackage);
+		if (importedPackage != null && importedPackage.eIsProxy()) {
+			org.eclipse.uml2.Package oldImportedPackage = importedPackage;
+			importedPackage = (org.eclipse.uml2.Package)eResolveProxy((InternalEObject)importedPackage);
+			if (importedPackage != oldImportedPackage) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PACKAGE_IMPORT__IMPORTED_PACKAGE, oldImportedPackage, importedPackage));
+			}
+		}
+		return importedPackage;
 	}
 
 	/**

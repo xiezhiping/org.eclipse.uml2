@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.13 2004/06/02 05:02:26 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.14 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -277,8 +277,15 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
-		TemplateParameter templateParameter = basicGetTemplateParameter();
-		return templateParameter == null ? null : (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+		if (templateParameter != null && templateParameter.eIsProxy()) {
+			TemplateParameter oldTemplateParameter = templateParameter;
+			templateParameter = (TemplateParameter)eResolveProxy((InternalEObject)templateParameter);
+			if (templateParameter != oldTemplateParameter) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.CLASSIFIER__TEMPLATE_PARAMETER, oldTemplateParameter, templateParameter));
+			}
+		}
+		return templateParameter;
 	}
 
 	/**

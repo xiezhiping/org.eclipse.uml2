@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.4 2004/06/02 05:02:25 khussey Exp $
+ * $Id: VariableImpl.java,v 1.5 2004/06/02 16:01:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -166,8 +166,15 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public Type getType() {
-		Type type = basicGetType();
-		return type == null ? null : (Type)eResolveProxy((InternalEObject)type);
+		if (type != null && type.eIsProxy()) {
+			Type oldType = type;
+			type = (Type)eResolveProxy((InternalEObject)type);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.VARIABLE__TYPE, oldType, type));
+			}
+		}
+		return type;
 	}
 
 	/**
