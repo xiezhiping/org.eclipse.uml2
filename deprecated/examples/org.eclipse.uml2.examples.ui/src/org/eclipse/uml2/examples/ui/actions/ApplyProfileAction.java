@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.4 2004/10/01 19:28:50 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.5 2005/03/14 16:32:50 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -29,19 +29,17 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.ui.IEditorReference;
 import org.eclipse.uml2.Profile;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.edit.util.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
-import org.eclipse.uml2.presentation.UML2Editor;
 import org.eclipse.uml2.util.UML2Resource;
 
 /**
- *  
+ * 
  */
 public class ApplyProfileAction
-	extends UML2CommandAction {
+		extends UML2CommandAction {
 
 	public ApplyProfileAction() {
 		super();
@@ -77,68 +75,37 @@ public class ApplyProfileAction
 			final org.eclipse.uml2.Package package_ = (org.eclipse.uml2.Package) collection
 				.toArray()[0];
 
-			ResourceSet resourceSet = package_.eResource().getResourceSet();
-
 			List choiceOfValues = new ArrayList();
 
-			IEditorReference[] editorReferences = editorPart.getSite()
-				.getPage().getEditorReferences();
+			ResourceSet resourceSet = package_.eResource().getResourceSet();
 
-			for (int i = 0; i < editorReferences.length; i++) {
+			resourceSet.getResource(URI
+				.createURI(UML2Resource.BASIC_PROFILE_URI), true);
+			resourceSet.getResource(URI
+				.createURI(UML2Resource.INTERMEDIATE_PROFILE_URI), true);
+			resourceSet.getResource(URI
+				.createURI(UML2Resource.COMPLETE_PROFILE_URI), true);
 
-				if ("org.eclipse.uml2.presentation.UML2EditorID" //$NON-NLS-1$
-					.equals(editorReferences[i].getId())) {
+			resourceSet.getResource(URI
+				.createURI(UML2Resource.ECORE_PROFILE_URI), true);
 
-					Resource resource = (Resource) ((UML2Editor) editorReferences[i]
-						.getEditor(true)).getEditingDomain().getResourceSet()
-						.getResources().get(0);
+			Iterator resources = resourceSet.getResources().iterator();
+			resources.next();
 
-					if (resourceSet != resource.getResourceSet()) {
+			while (resources.hasNext()) {
+				Resource resource = (Resource) resources.next();
 
-						resource = resourceSet.getResource(resource.getURI(),
-							true);
+				Profile profile = (Profile) (null == resource
+					? null
+					: EcoreUtil.getObjectByType(resource.getContents(),
+						UML2Package.eINSTANCE.getProfile()));
 
-						Profile profile = (Profile) (null == resource
-							? null
-							: EcoreUtil.getObjectByType(resource.getContents(),
-								UML2Package.eINSTANCE.getProfile()));
+				if (null != profile
+					&& profile.isDefined()
+					&& package_.getAppliedVersion(profile) != profile
+						.getVersion()) {
 
-						if (null != profile
-							&& profile.isDefined()
-							&& package_.getAppliedVersion(profile) != profile
-								.getVersion()) {
-
-							choiceOfValues.add(profile);
-						}
-					}
-				}
-			}
-
-			String[] uris = new String[]{UML2Resource.BASIC_PROFILE_URI,
-				UML2Resource.INTERMEDIATE_PROFILE_URI,
-				UML2Resource.COMPLETE_PROFILE_URI,
-				UML2Resource.ECORE_PROFILE_URI};
-
-			for (int i = 0; i < uris.length; i++) {
-
-				try {
-					Resource resource = resourceSet.getResource(URI
-						.createURI(uris[i]), true);
-
-					Profile profile = (Profile) (null == resource
-						? null
-						: EcoreUtil.getObjectByType(resource.getContents(),
-							UML2Package.eINSTANCE.getProfile()));
-
-					if (null != profile
-						&& profile.isDefined()
-						&& package_.getAppliedVersion(profile) != profile
-							.getVersion()) {
-
-						choiceOfValues.add(profile);
-					}
-				} catch (Exception e) {
-					// ignore
+					choiceOfValues.add(profile);
 				}
 			}
 
