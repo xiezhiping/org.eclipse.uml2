@@ -3,7 +3,7 @@
 
 <!--
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.11 2004/11/08 16:57:31 khussey Exp $
+ * $Id: plugin.xml,v 1.12 2005/01/12 22:04:08 khussey Exp $
  */
 -->
 
@@ -127,6 +127,30 @@
                menubarPath="org.eclipse.uml2MenuID/org.eclipse.uml2.examples.ui.PackageMenuID/additions"
                enablesFor="1"
                id="org.eclipse.uml2.examples.ui.ImportPrimitiveTypeAction">
+            <enablement>
+               <objectClass
+                     name="org.eclipse.uml2.Package">
+               </objectClass>
+            </enablement>
+         </action>
+         <action
+               label="%_UI_MergePackageAction_label"
+               class="org.eclipse.uml2.examples.ui.actions.MergePackageAction"
+               menubarPath="org.eclipse.uml2MenuID/org.eclipse.uml2.examples.ui.PackageMenuID/additions"
+               enablesFor="1"
+               id="org.eclipse.uml2.examples.ui.MergePackageAction">
+            <enablement>
+               <objectClass
+                     name="org.eclipse.uml2.Package">
+               </objectClass>
+            </enablement>
+         </action>
+         <action
+               label="%_UI_ConvertToEcoreAction_label"
+               class="org.eclipse.uml2.examples.ui.actions.ConvertToEcoreAction"
+               menubarPath="org.eclipse.uml2MenuID/org.eclipse.uml2.examples.ui.PackageMenuID/additions"
+               enablesFor="1"
+               id="org.eclipse.uml2.examples.ui.ConvertToEcoreAction">
             <enablement>
                <objectClass
                      name="org.eclipse.uml2.Package">
