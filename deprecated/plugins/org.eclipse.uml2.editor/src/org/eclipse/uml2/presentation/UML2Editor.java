@@ -5,11 +5,10 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
- * $Id: UML2Editor.java,v 1.14 2005/04/04 20:01:46 khussey Exp $
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.14 2005/04/04 20:01:46 khussey Exp $
+ * $Id: UML2Editor.java,v 1.15 2005/04/05 13:08:04 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
