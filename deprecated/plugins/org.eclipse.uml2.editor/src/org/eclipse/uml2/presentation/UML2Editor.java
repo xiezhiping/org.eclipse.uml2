@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.10 2004/10/01 19:38:41 khussey Exp $
+ * $Id: UML2Editor.java,v 1.11 2005/01/21 19:16:38 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -100,6 +100,7 @@ import org.eclipse.jface.viewers.TableTreeViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.window.Window;
 
 import org.eclipse.swt.SWT;
 
@@ -1467,6 +1468,15 @@ public class UML2Editor
 		}
 
 		super.dispose();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.ui.part.WorkbenchPart#getOrientation()
+	 */
+	public int getOrientation() {
+		return Window.getDefaultOrientation();
 	}
 
 }
