@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.12 2004/06/15 16:13:32 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.13 2004/06/16 22:32:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1161,6 +1161,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 				union.add(getDefaultValue());
 			}
 			union.addAll(getQualifiers());
+			union.addAll(getDeployments());
 
 			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
@@ -1177,6 +1178,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public Element basicGetOwner() {
 		if (null != getAssociationEnd()) {
 			return (Element) getAssociationEnd();
+		}
+		if (null != getOwningParameter()) {
+			return (Element) getOwningParameter();
 		}
 		return super.basicGetOwner();
 	}

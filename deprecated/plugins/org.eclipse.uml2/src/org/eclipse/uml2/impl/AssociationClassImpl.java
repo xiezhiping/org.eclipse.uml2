@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.16 2004/06/16 03:38:11 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.17 2004/06/16 22:32:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -132,36 +132,18 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelatedElementsGen() {
+	public EList getRelatedElements() {
 		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
 
 		if (null == relatedElement) {
 			Set union = new LinkedHashSet();
+			union.addAll(getEndTypes());
 
 			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
 		}
 
 		return relatedElement;
-	}
-
-	public EList getRelatedElements() {
-		EList relatedElements = (EList) getCacheAdapter().get(this,
-			UML2Package.eINSTANCE.getRelationship_RelatedElement());
-
-		if (null == relatedElements) {
-			Set union = new LinkedHashSet();
-			union.addAll(getEndTypes());
-
-			relatedElements = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getRelationship_RelatedElement(), union
-					.size(), union.toArray());
-			getCacheAdapter().put(this,
-				UML2Package.eINSTANCE.getRelationship_RelatedElement(),
-				relatedElements);
-		}
-
-		return relatedElements;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.10 2004/06/15 16:13:32 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.11 2004/06/16 22:32:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -398,6 +398,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			if (null != getSpecification()) {
 				union.add(getSpecification());
 			}
+			union.addAll(getDeployments());
 
 			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);

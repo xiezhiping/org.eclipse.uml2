@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.12 2004/06/03 02:59:18 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.13 2004/06/16 22:32:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -610,6 +610,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			union.addAll(getOwnedMembers());
 			union.addAll(getElementImports());
 			union.addAll(getPackageImports());
+			union.addAll(getSubgroups());
 
 			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
@@ -703,6 +704,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		if (null == result) {
 			Set union = new LinkedHashSet();
 			union.addAll(getVariables());
+			union.addAll(getOwnedRules());
 
 			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredActivityNode().getEAllOperations().get(59), result);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.16 2004/06/16 03:38:11 khussey Exp $
+ * $Id: ClassImpl.java,v 1.17 2004/06/16 22:32:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -707,6 +707,8 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			union.addAll(getOwnedOperations());
 			union.addAll(getNestedClassifiers());
 			union.addAll(getOwnedReceptions());
+			union.addAll(getOwnedConnectors());
+			union.addAll(getOwnedPorts());
 
 			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClass_().getEAllOperations().get(84), result);
@@ -728,6 +730,8 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			union.addAll(super.getFeatures());
 			union.addAll(getOwnedOperations());
 			union.addAll(getOwnedReceptions());
+			union.addAll(getOwnedConnectors());
+			union.addAll(getOwnedPorts());
 
 			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);

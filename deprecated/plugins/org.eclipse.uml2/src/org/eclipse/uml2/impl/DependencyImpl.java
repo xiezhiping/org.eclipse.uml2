@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.6 2004/06/15 16:13:32 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.7 2004/06/16 22:32:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -104,37 +104,19 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelatedElementsGen() {
+	public EList getRelatedElements() {
 		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
 
 		if (null == relatedElement) {
 			Set union = new LinkedHashSet();
+			union.addAll(getSources());
+			union.addAll(getTargets());
 
 			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
 		}
 
 		return relatedElement;
-	}
-
-	public EList getRelatedElements() {
-		EList relatedElements = (EList) getCacheAdapter().get(eResource(),
-			this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
-
-		if (null == relatedElements) {
-			Set union = new LinkedHashSet();
-			union.addAll(getSources());
-			union.addAll(getTargets());
-
-			relatedElements = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getRelationship_RelatedElement(), union
-					.size(), union.toArray());
-			getCacheAdapter().put(eResource(), this,
-				UML2Package.eINSTANCE.getRelationship_RelatedElement(),
-				relatedElements);
-		}
-
-		return relatedElements;
 	}
 
 	/**

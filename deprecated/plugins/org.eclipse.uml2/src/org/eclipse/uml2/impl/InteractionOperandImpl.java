@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.6 2004/06/16 22:32:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -386,6 +386,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 			if (null != getGuard()) {
 				union.add(getGuard());
 			}
+			union.addAll(getGeneralOrderings());
 
 			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.5 2004/06/15 16:13:32 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.6 2004/06/16 22:32:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -111,6 +111,8 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 
 		if (null == relatedElement) {
 			Set union = new LinkedHashSet();
+			union.addAll(getSources());
+			union.addAll(getTargets());
 
 			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);

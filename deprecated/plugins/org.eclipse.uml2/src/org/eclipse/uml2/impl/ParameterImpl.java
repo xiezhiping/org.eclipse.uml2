@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.8 2004/06/02 16:01:35 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.9 2004/06/16 22:32:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -833,6 +833,12 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			union.addAll(super.getOwnedElements());
 			if (null != getDefaultValue()) {
 				union.add(getDefaultValue());
+			}
+			if (null != getUpperValue()) {
+				union.add(getUpperValue());
+			}
+			if (null != getLowerValue()) {
+				union.add(getLowerValue());
 			}
 
 			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());

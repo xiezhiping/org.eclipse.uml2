@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.6 2004/06/16 22:32:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -94,37 +94,19 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelatedElementsGen() {
+	public EList getRelatedElements() {
 		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
 
 		if (null == relatedElement) {
 			Set union = new LinkedHashSet();
+			union.addAll(getSources());
+			union.addAll(getTargets());
 
 			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
 		}
 
 		return relatedElement;
-	}
-
-	public EList getRelatedElements() {
-		EList relatedElements = (EList) getCacheAdapter().get(eResource(),
-			this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
-
-		if (null == relatedElements) {
-			Set union = new LinkedHashSet();
-			union.addAll(getSources());
-			union.addAll(getTargets());
-
-			relatedElements = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getRelationship_RelatedElement(), union
-					.size(), union.toArray());
-			getCacheAdapter().put(eResource(), this,
-				UML2Package.eINSTANCE.getRelationship_RelatedElement(),
-				relatedElements);
-		}
-
-		return relatedElements;
 	}
 
 	/**

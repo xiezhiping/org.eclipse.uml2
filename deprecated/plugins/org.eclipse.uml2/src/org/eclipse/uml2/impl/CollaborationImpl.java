@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.12 2004/06/15 21:01:03 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.13 2004/06/16 22:32:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -390,6 +390,7 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 		if (null == role) {
 			Set union = new LinkedHashSet();
 			union.addAll(getCollaborationRoles());
+			union.addAll(getOwnedAttributes());
 
 			role = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), role);
