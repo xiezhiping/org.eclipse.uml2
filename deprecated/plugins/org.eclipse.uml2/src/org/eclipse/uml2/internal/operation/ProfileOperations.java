@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.10 2004/11/02 15:30:10 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.11 2004/11/11 17:52:45 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -56,6 +56,7 @@ import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.EnumerationLiteral;
 import org.eclipse.uml2.Extension;
 import org.eclipse.uml2.Generalization;
+import org.eclipse.uml2.Implementation;
 import org.eclipse.uml2.InstanceValue;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.Model;
@@ -71,6 +72,7 @@ import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.util.UML2Resource;
+import org.eclipse.uml2.util.UML2Switch;
 
 /**
  * A static utility class that provides operations related to profiles.
@@ -214,19 +216,6 @@ public final class ProfileOperations
 
 		if (null == eClassifier) {
 
-			if (org.eclipse.uml2.Class.class.isInstance(type)) {
-				eClassifier = createEClass(ePackage,
-					(org.eclipse.uml2.Class) type);
-			}
-
-			if (Interface.class.isInstance(type)) {
-				eClassifier = createEClass(ePackage, (Interface) type);
-			}
-
-			if (Enumeration.class.isInstance(type)) {
-				eClassifier = createEEnum(ePackage, (Enumeration) type);
-			}
-
 			if (PrimitiveType.class.isInstance(type)) {
 
 				if ("Boolean".equals(type.getName())) { //$NON-NLS-1$
@@ -261,6 +250,8 @@ public final class ProfileOperations
 				} else {
 					eClassifier = EcorePackage.eINSTANCE.getEString();
 				}
+			} else {
+				eClassifier = createEClassifier(ePackage, type);
 			}
 		}
 
@@ -282,13 +273,47 @@ public final class ProfileOperations
 		ePackage.setNsURI("http:///" + EcoreUtil.generateUUID() + "." //$NON-NLS-1$ //$NON-NLS-2$
 			+ UML2Resource.PROFILE_FILE_EXTENSION);
 
-		for (Iterator ownedStereotypes = profile.getOwnedStereotypes()
-			.iterator(); ownedStereotypes.hasNext();) {
+		for (Iterator ownedTypes = profile.getOwnedTypes().iterator(); ownedTypes
+			.hasNext();) {
 
-			createEClass(ePackage, (Stereotype) ownedStereotypes.next());
+			createEClassifier(ePackage, (Type) ownedTypes.next());
 		}
 
 		return ePackage;
+	}
+
+	/**
+	 * Creates an Ecore classifier in the specified Ecore package to represent
+	 * the specified type; if such an Ecore classifier already exists, it is
+	 * returned.
+	 * 
+	 * @param ePackage
+	 *            The Ecore package in which to create the Ecore classifier.
+	 * @param type
+	 *            The type for which to create an Ecore classifier.
+	 * @return The (new) Ecore classifier.
+	 */
+	protected static EClassifier createEClassifier(final EPackage ePackage,
+			Type type) {
+
+		return (EClassifier) new UML2Switch() {
+
+			public Object caseClass(org.eclipse.uml2.Class class_) {
+				return createEClass(ePackage, class_);
+			}
+
+			public Object caseEnumeration(Enumeration enumeration) {
+				return createEEnum(ePackage, enumeration);
+			}
+
+			public Object caseInterface(Interface interface_) {
+				return createEClass(ePackage, interface_);
+			}
+
+			public Object caseStereotype(Stereotype stereotype) {
+				return createEClass(ePackage, stereotype);
+			}
+		}.doSwitch(type);
 	}
 
 	/**
@@ -338,13 +363,12 @@ public final class ProfileOperations
 			for (Iterator generalizations = stereotype.getGeneralizations()
 				.iterator(); generalizations.hasNext();) {
 
-				Generalization generalization = (Generalization) generalizations
-					.next();
+				Classifier general = ((Generalization) generalizations.next())
+					.getGeneral();
 
-				if (Stereotype.class.isInstance(generalization.getGeneral())) {
+				if (Stereotype.class.isInstance(general)) {
 					eClass.getESuperTypes().add(
-						createEClass(ePackage, (Stereotype) generalization
-							.getGeneral()));
+						createEClass(ePackage, (Stereotype) general));
 				}
 			}
 		}
@@ -393,16 +417,26 @@ public final class ProfileOperations
 			for (Iterator generalizations = class_.getGeneralizations()
 				.iterator(); generalizations.hasNext();) {
 
-				Generalization generalization = (Generalization) generalizations
-					.next();
+				Classifier general = ((Generalization) generalizations.next())
+					.getGeneral();
 
-				if (org.eclipse.uml2.Class.class.isInstance(generalization
-					.getGeneral())) {
+				if (org.eclipse.uml2.Class.class.isInstance(general)) {
+					eClass.getESuperTypes()
+						.add(
+							createEClass(ePackage,
+								(org.eclipse.uml2.Class) general));
+				}
+			}
 
+			for (Iterator implementations = class_.getImplementations()
+				.iterator(); implementations.hasNext();) {
+
+				Interface contract = ((Implementation) implementations.next())
+					.getContract();
+
+				if (null != contract) {
 					eClass.getESuperTypes().add(
-						createEClass(ePackage,
-							(org.eclipse.uml2.Class) generalization
-								.getGeneral()));
+						createEClass(ePackage, contract));
 				}
 			}
 		}
@@ -429,6 +463,7 @@ public final class ProfileOperations
 			eClass = EcoreFactory.eINSTANCE.createEClass();
 
 			eClass.setName(getEClassifierName(interface_));
+			eClass.setAbstract(true);
 			eClass.setInterface(true);
 
 			ePackage.getEClassifiers().add(eClass);
@@ -451,13 +486,12 @@ public final class ProfileOperations
 			for (Iterator generalizations = interface_.getGeneralizations()
 				.iterator(); generalizations.hasNext();) {
 
-				Generalization generalization = (Generalization) generalizations
-					.next();
+				Classifier general = ((Generalization) generalizations.next())
+					.getGeneral();
 
-				if (Interface.class.isInstance(generalization.getGeneral())) {
+				if (Interface.class.isInstance(general)) {
 					eClass.getESuperTypes().add(
-						createEClass(ePackage, (Interface) generalization
-							.getGeneral()));
+						createEClass(ePackage, (Interface) general));
 				}
 			}
 		}
