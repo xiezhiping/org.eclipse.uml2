@@ -1,8 +1,14 @@
 /*
- * Created on Jun 18, 2004
+ * Copyright (c) 2004 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Common Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/cpl-v10.html
  *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * Contributors:
+ *   IBM - Initial API and implementation
+ *
+ * $Id: UML2ItemPropertyDescriptor.java,v 1.2 2004/06/18 20:30:23 khussey Exp $
  */
 package org.eclipse.uml2.edit.internal.provider;
 
@@ -31,7 +37,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 /**
  *  
  */
-class UML2ItemPropertyDescriptor
+public class UML2ItemPropertyDescriptor
 	extends ItemPropertyDescriptor {
 
 	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
@@ -194,7 +200,7 @@ class UML2ItemPropertyDescriptor
 			parentReferences, isSettable, category, filterFlags);
 	}
 
-	protected void collectReferenceableObjectsOfType(Collection visited,
+	public static void collectReferenceableObjectsOfType(Collection visited,
 			Collection result, EObject object, EClassifier type) {
 
 		if (visited.add(object)) {
@@ -236,7 +242,7 @@ class UML2ItemPropertyDescriptor
 		}
 	}
 
-	private Collection getReferenceableObjectsOfType(EObject object,
+	public static Collection getReferenceableObjectsOfType(EObject object,
 			EClassifier type) {
 		Collection visited = new HashSet();
 		Collection result = new ArrayList();
