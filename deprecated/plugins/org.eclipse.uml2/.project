@@ -3,7 +3,6 @@
 	<name>org.eclipse.uml2</name>
 	<comment></comment>
 	<projects>
-		<project>org.eclipse.emf.ecore_2.0.0</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
