@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeatureItemProvider.java,v 1.6 2004/06/06 01:25:31 khussey Exp $
+ * $Id: BehavioralFeatureItemProvider.java,v 1.7 2004/06/19 01:42:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -33,6 +33,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.BehavioralFeature;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.BehavioralFeature} object.
@@ -98,7 +100,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addIsLeafPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
@@ -116,13 +118,15 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addRedefinitionContextPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
-				 false));
+				 false,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
@@ -133,7 +137,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addIsStaticPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Feature_isStatic_feature"), //$NON-NLS-1$
@@ -151,13 +155,15 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addFeaturingClassifierPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Feature_featuringClassifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Feature_featuringClassifier_feature", "_UI_Feature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getFeature_FeaturingClassifier(),
-				 false));
+				 false,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
@@ -168,7 +174,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addIsAbstractPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_isAbstract_feature"), //$NON-NLS-1$
@@ -186,7 +192,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addConcurrencyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_concurrency_feature"), //$NON-NLS-1$
@@ -233,13 +239,15 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_parameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_parameter_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getBehavioralFeature_Parameter(),
-				 false));
+				 false,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
@@ -250,7 +258,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addFormalParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_formalParameter_feature"), //$NON-NLS-1$
@@ -269,7 +277,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addReturnResultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_returnResult_feature"), //$NON-NLS-1$
@@ -288,7 +296,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addRaisedExceptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_raisedException_feature"), //$NON-NLS-1$
@@ -305,7 +313,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addMethodPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_method_feature"), //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SendObjectActionItemProvider.java,v 1.9 2004/06/16 04:12:07 khussey Exp $
+ * $Id: SendObjectActionItemProvider.java,v 1.10 2004/06/19 01:42:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -27,13 +27,13 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.SendObjectAction;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.SendObjectAction} object.
@@ -90,7 +90,7 @@ public class SendObjectActionItemProvider
 	 */
 	protected void addTargetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_SendObjectAction_target_feature"), //$NON-NLS-1$
@@ -109,7 +109,7 @@ public class SendObjectActionItemProvider
 	 */
 	protected void addRequestPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_SendObjectAction_request_feature"), //$NON-NLS-1$

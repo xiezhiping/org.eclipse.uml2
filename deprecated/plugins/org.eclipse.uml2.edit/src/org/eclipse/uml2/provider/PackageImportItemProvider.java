@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImportItemProvider.java,v 1.6 2004/06/06 01:25:31 khussey Exp $
+ * $Id: PackageImportItemProvider.java,v 1.7 2004/06/19 01:42:37 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -31,6 +31,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.PackageImport} object.
@@ -75,6 +77,7 @@ public class PackageImportItemProvider
 
 			addVisibilityPropertyDescriptor(object);
 			addImportedPackagePropertyDescriptor(object);
+			addImportingNamespacePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,7 +90,7 @@ public class PackageImportItemProvider
 	 */
 	protected void addVisibilityPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_PackageImport_visibility_feature"), //$NON-NLS-1$
@@ -105,13 +108,32 @@ public class PackageImportItemProvider
 	 */
 	protected void addImportedPackagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_PackageImport_importedPackage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_PackageImport_importedPackage_feature", "_UI_PackageImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getPackageImport_ImportedPackage(),
 				 true));
+	}
+
+	/**
+	 * This adds a property descriptor for the Importing Namespace feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addImportingNamespacePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new UML2ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PackageImport_importingNamespace_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_PackageImport_importingNamespace_feature", "_UI_PackageImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getPackageImport_ImportingNamespace(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**

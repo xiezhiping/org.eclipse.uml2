@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ModelItemProvider.java,v 1.12 2004/06/16 03:32:38 khussey Exp $
+ * $Id: ModelItemProvider.java,v 1.13 2004/06/19 01:42:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -30,6 +30,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Model} object.
@@ -85,7 +87,7 @@ public class ModelItemProvider
 	 */
 	protected void addViewpointPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Model_viewpoint_feature"), //$NON-NLS-1$

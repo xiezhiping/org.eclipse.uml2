@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentItemProvider.java,v 1.15 2004/06/16 04:12:07 khussey Exp $
+ * $Id: ComponentItemProvider.java,v 1.16 2004/06/19 01:42:36 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -38,6 +38,8 @@ import org.eclipse.uml2.edit.internal.command.SubsetAddCommand;
 import org.eclipse.uml2.edit.internal.command.SubsetReplaceCommand;
 import org.eclipse.uml2.edit.internal.command.SupersetRemoveCommand;
 import org.eclipse.uml2.edit.internal.command.SupersetReplaceCommand;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Component} object.
@@ -97,7 +99,7 @@ public class ComponentItemProvider
 	 */
 	protected void addIsIndirectlyInstantiatedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Component_isIndirectlyInstantiated_feature"), //$NON-NLS-1$
@@ -115,13 +117,15 @@ public class ComponentItemProvider
 	 */
 	protected void addRequiredPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Component_required_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Component_required_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getComponent_Required(),
-				 false));
+				 false,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
@@ -132,13 +136,15 @@ public class ComponentItemProvider
 	 */
 	protected void addProvidedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Component_provided_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Component_provided_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getComponent_Provided(),
-				 false));
+				 false,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
@@ -149,7 +155,7 @@ public class ComponentItemProvider
 	 */
 	protected void addRealizationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Component_realization_feature"), //$NON-NLS-1$
@@ -168,7 +174,7 @@ public class ComponentItemProvider
 	 */
 	protected void addOwnedMemberPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Component_ownedMember_feature"), //$NON-NLS-1$

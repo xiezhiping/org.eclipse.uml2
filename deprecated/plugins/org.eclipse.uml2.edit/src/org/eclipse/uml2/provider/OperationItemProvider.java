@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.11 2004/06/16 04:12:07 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.12 2004/06/19 01:42:37 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -45,6 +45,8 @@ import org.eclipse.uml2.edit.internal.command.SubsetSetCommand;
 import org.eclipse.uml2.edit.internal.command.SupersetRemoveCommand;
 import org.eclipse.uml2.edit.internal.command.SupersetReplaceCommand;
 import org.eclipse.uml2.edit.internal.command.SupersetSetCommand;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Operation} object.
@@ -95,8 +97,11 @@ public class OperationItemProvider
 			addUpperValuePropertyDescriptor(object);
 			addLowerValuePropertyDescriptor(object);
 			addTemplateParameterPropertyDescriptor(object);
+			addOwningParameterPropertyDescriptor(object);
 			addOwnedParameterPropertyDescriptor(object);
+			addClass_PropertyDescriptor(object);
 			addIsQueryPropertyDescriptor(object);
+			addDatatypePropertyDescriptor(object);
 			addPreconditionPropertyDescriptor(object);
 			addPostconditionPropertyDescriptor(object);
 			addRedefinedOperationPropertyDescriptor(object);
@@ -113,7 +118,7 @@ public class OperationItemProvider
 	 */
 	protected void addTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TypedElement_type_feature"), //$NON-NLS-1$
@@ -130,7 +135,7 @@ public class OperationItemProvider
 	 */
 	protected void addIsOrderedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_isOrdered_feature"), //$NON-NLS-1$
@@ -148,7 +153,7 @@ public class OperationItemProvider
 	 */
 	protected void addIsUniquePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_isUnique_feature"), //$NON-NLS-1$
@@ -166,7 +171,7 @@ public class OperationItemProvider
 	 */
 	protected void addLowerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_lower_feature"), //$NON-NLS-1$
@@ -184,7 +189,7 @@ public class OperationItemProvider
 	 */
 	protected void addUpperPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_upper_feature"), //$NON-NLS-1$
@@ -202,7 +207,7 @@ public class OperationItemProvider
 	 */
 	protected void addUpperValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_upperValue_feature"), //$NON-NLS-1$
@@ -221,7 +226,7 @@ public class OperationItemProvider
 	 */
 	protected void addLowerValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_lowerValue_feature"), //$NON-NLS-1$
@@ -240,13 +245,32 @@ public class OperationItemProvider
 	 */
 	protected void addTemplateParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_templateParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getParameterableElement_TemplateParameter(),
 				 true));
+	}
+
+	/**
+	 * This adds a property descriptor for the Owning Parameter feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOwningParameterPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new UML2ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ParameterableElement_owningParameter_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getParameterableElement_OwningParameter(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
@@ -257,12 +281,31 @@ public class OperationItemProvider
 	 */
 	protected void addOwnedParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Operation_ownedParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_ownedParameter_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getOperation_OwnedParameter(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+	}
+
+	/**
+	 * This adds a property descriptor for the Class  feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClass_PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new UML2ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Operation_class__feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_class__feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getOperation_Class_(),
 				 true,
 				 null,
 				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
@@ -276,7 +319,7 @@ public class OperationItemProvider
 	 */
 	protected void addIsQueryPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Operation_isQuery_feature"), //$NON-NLS-1$
@@ -287,6 +330,25 @@ public class OperationItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Datatype feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDatatypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new UML2ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Operation_datatype_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_datatype_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getOperation_Datatype(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+	}
+
+	/**
 	 * This adds a property descriptor for the Precondition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -294,7 +356,7 @@ public class OperationItemProvider
 	 */
 	protected void addPreconditionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Operation_precondition_feature"), //$NON-NLS-1$
@@ -311,7 +373,7 @@ public class OperationItemProvider
 	 */
 	protected void addPostconditionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Operation_postcondition_feature"), //$NON-NLS-1$
@@ -328,7 +390,7 @@ public class OperationItemProvider
 	 */
 	protected void addRedefinedOperationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Operation_redefinedOperation_feature"), //$NON-NLS-1$
@@ -345,7 +407,7 @@ public class OperationItemProvider
 	 */
 	protected void addBodyConditionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Operation_bodyCondition_feature"), //$NON-NLS-1$

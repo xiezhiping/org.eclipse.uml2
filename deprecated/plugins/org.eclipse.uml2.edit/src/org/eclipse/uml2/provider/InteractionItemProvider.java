@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionItemProvider.java,v 1.14 2004/06/16 04:12:07 khussey Exp $
+ * $Id: InteractionItemProvider.java,v 1.15 2004/06/19 01:42:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -27,12 +27,13 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.Interaction;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Interaction} object.
@@ -77,6 +78,8 @@ public class InteractionItemProvider
 
 			addCoveredPropertyDescriptor(object);
 			addGeneralOrderingPropertyDescriptor(object);
+			addEnclosingInteractionPropertyDescriptor(object);
+			addEnclosingOperandPropertyDescriptor(object);
 			addLifelinePropertyDescriptor(object);
 			addMessagePropertyDescriptor(object);
 			addFragmentPropertyDescriptor(object);
@@ -93,7 +96,7 @@ public class InteractionItemProvider
 	 */
 	protected void addCoveredPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_covered_feature"), //$NON-NLS-1$
@@ -110,12 +113,50 @@ public class InteractionItemProvider
 	 */
 	protected void addGeneralOrderingPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_generalOrdering_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_generalOrdering_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+	}
+
+	/**
+	 * This adds a property descriptor for the Enclosing Interaction feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnclosingInteractionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new UML2ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InteractionFragment_enclosingInteraction_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingInteraction_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getInteractionFragment_EnclosingInteraction(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+	}
+
+	/**
+	 * This adds a property descriptor for the Enclosing Operand feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnclosingOperandPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new UML2ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InteractionFragment_enclosingOperand_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingOperand_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand(),
 				 true,
 				 null,
 				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
@@ -129,7 +170,7 @@ public class InteractionItemProvider
 	 */
 	protected void addLifelinePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interaction_lifeline_feature"), //$NON-NLS-1$
@@ -148,7 +189,7 @@ public class InteractionItemProvider
 	 */
 	protected void addMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interaction_message_feature"), //$NON-NLS-1$
@@ -167,7 +208,7 @@ public class InteractionItemProvider
 	 */
 	protected void addFragmentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interaction_fragment_feature"), //$NON-NLS-1$
@@ -186,7 +227,7 @@ public class InteractionItemProvider
 	 */
 	protected void addFormalGatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interaction_formalGate_feature"), //$NON-NLS-1$

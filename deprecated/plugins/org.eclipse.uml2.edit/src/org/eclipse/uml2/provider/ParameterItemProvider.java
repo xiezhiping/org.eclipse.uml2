@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterItemProvider.java,v 1.6 2004/06/06 01:25:31 khussey Exp $
+ * $Id: ParameterItemProvider.java,v 1.7 2004/06/19 01:42:37 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -33,6 +33,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Parameter} object.
@@ -82,6 +84,7 @@ public class ParameterItemProvider
 			addUpperPropertyDescriptor(object);
 			addUpperValuePropertyDescriptor(object);
 			addLowerValuePropertyDescriptor(object);
+			addOperationPropertyDescriptor(object);
 			addDefaultPropertyDescriptor(object);
 			addDirectionPropertyDescriptor(object);
 			addDefaultValuePropertyDescriptor(object);
@@ -101,7 +104,7 @@ public class ParameterItemProvider
 	 */
 	protected void addTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TypedElement_type_feature"), //$NON-NLS-1$
@@ -118,7 +121,7 @@ public class ParameterItemProvider
 	 */
 	protected void addIsOrderedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_isOrdered_feature"), //$NON-NLS-1$
@@ -136,7 +139,7 @@ public class ParameterItemProvider
 	 */
 	protected void addIsUniquePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_isUnique_feature"), //$NON-NLS-1$
@@ -154,7 +157,7 @@ public class ParameterItemProvider
 	 */
 	protected void addLowerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_lower_feature"), //$NON-NLS-1$
@@ -172,7 +175,7 @@ public class ParameterItemProvider
 	 */
 	protected void addUpperPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_upper_feature"), //$NON-NLS-1$
@@ -190,7 +193,7 @@ public class ParameterItemProvider
 	 */
 	protected void addUpperValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_upperValue_feature"), //$NON-NLS-1$
@@ -209,12 +212,31 @@ public class ParameterItemProvider
 	 */
 	protected void addLowerValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MultiplicityElement_lowerValue_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lowerValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getMultiplicityElement_LowerValue(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+	}
+
+	/**
+	 * This adds a property descriptor for the Operation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOperationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new UML2ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Parameter_operation_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_operation_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getParameter_Operation(),
 				 true,
 				 null,
 				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
@@ -228,7 +250,7 @@ public class ParameterItemProvider
 	 */
 	protected void addDefaultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Parameter_default_feature"), //$NON-NLS-1$
@@ -246,7 +268,7 @@ public class ParameterItemProvider
 	 */
 	protected void addDirectionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Parameter_direction_feature"), //$NON-NLS-1$
@@ -264,7 +286,7 @@ public class ParameterItemProvider
 	 */
 	protected void addDefaultValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Parameter_defaultValue_feature"), //$NON-NLS-1$
@@ -283,7 +305,7 @@ public class ParameterItemProvider
 	 */
 	protected void addIsExceptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Parameter_isException_feature"), //$NON-NLS-1$
@@ -301,7 +323,7 @@ public class ParameterItemProvider
 	 */
 	protected void addIsStreamPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Parameter_isStream_feature"), //$NON-NLS-1$
@@ -319,7 +341,7 @@ public class ParameterItemProvider
 	 */
 	protected void addEffectPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Parameter_effect_feature"), //$NON-NLS-1$
@@ -337,7 +359,7 @@ public class ParameterItemProvider
 	 */
 	protected void addParameterSetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Parameter_parameterSet_feature"), //$NON-NLS-1$

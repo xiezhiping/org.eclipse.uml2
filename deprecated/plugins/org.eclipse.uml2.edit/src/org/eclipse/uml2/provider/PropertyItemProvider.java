@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.6 2004/06/06 01:25:31 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.7 2004/06/19 01:42:37 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -46,6 +46,8 @@ import org.eclipse.uml2.edit.internal.command.SupersetRemoveCommand;
 import org.eclipse.uml2.edit.internal.command.SupersetReplaceCommand;
 
 import org.eclipse.uml2.edit.internal.command.SupersetSetCommand;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Property} object.
@@ -89,6 +91,7 @@ public class PropertyItemProvider
 			super.getPropertyDescriptors(object);
 
 			addTemplateParameterPropertyDescriptor(object);
+			addOwningParameterPropertyDescriptor(object);
 			addEndPropertyDescriptor(object);
 			addDeploymentPropertyDescriptor(object);
 			addDeployedElementPropertyDescriptor(object);
@@ -98,12 +101,15 @@ public class PropertyItemProvider
 			addClass_PropertyDescriptor(object);
 			addOppositePropertyDescriptor(object);
 			addIsDerivedUnionPropertyDescriptor(object);
+			addOwningAssociationPropertyDescriptor(object);
 			addRedefinedPropertyPropertyDescriptor(object);
 			addSubsettedPropertyPropertyDescriptor(object);
+			addDatatypePropertyDescriptor(object);
 			addAssociationPropertyDescriptor(object);
 			addAggregationPropertyDescriptor(object);
 			addDefaultValuePropertyDescriptor(object);
 			addQualifierPropertyDescriptor(object);
+			addAssociationEndPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -116,13 +122,32 @@ public class PropertyItemProvider
 	 */
 	protected void addTemplateParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ParameterableElement_templateParameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getParameterableElement_TemplateParameter(),
 				 true));
+	}
+
+	/**
+	 * This adds a property descriptor for the Owning Parameter feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOwningParameterPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new UML2ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ParameterableElement_owningParameter_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getParameterableElement_OwningParameter(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
@@ -133,7 +158,7 @@ public class PropertyItemProvider
 	 */
 	protected void addEndPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ConnectableElement_end_feature"), //$NON-NLS-1$
@@ -150,7 +175,7 @@ public class PropertyItemProvider
 	 */
 	protected void addDeploymentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
@@ -169,13 +194,15 @@ public class PropertyItemProvider
 	 */
 	protected void addDeployedElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployedElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployedElement_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
-				 false));
+				 false,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
@@ -186,7 +213,7 @@ public class PropertyItemProvider
 	 */
 	protected void addDefaultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_default_feature"), //$NON-NLS-1$
@@ -204,7 +231,7 @@ public class PropertyItemProvider
 	 */
 	protected void addIsCompositePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_isComposite_feature"), //$NON-NLS-1$
@@ -222,7 +249,7 @@ public class PropertyItemProvider
 	 */
 	protected void addIsDerivedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_isDerived_feature"), //$NON-NLS-1$
@@ -240,7 +267,7 @@ public class PropertyItemProvider
 	 */
 	protected void addIsDerivedUnionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_isDerivedUnion_feature"), //$NON-NLS-1$
@@ -251,6 +278,25 @@ public class PropertyItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Owning Association feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOwningAssociationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new UML2ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Property_owningAssociation_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Property_owningAssociation_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getProperty_OwningAssociation(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+	}
+
+	/**
 	 * This adds a property descriptor for the Aggregation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -258,7 +304,7 @@ public class PropertyItemProvider
 	 */
 	protected void addAggregationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_aggregation_feature"), //$NON-NLS-1$
@@ -276,7 +322,7 @@ public class PropertyItemProvider
 	 */
 	protected void addDefaultValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_defaultValue_feature"), //$NON-NLS-1$
@@ -295,12 +341,31 @@ public class PropertyItemProvider
 	 */
 	protected void addQualifierPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_qualifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_qualifier_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getProperty_Qualifier(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+	}
+
+	/**
+	 * This adds a property descriptor for the Association End feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAssociationEndPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new UML2ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Property_associationEnd_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Property_associationEnd_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getProperty_AssociationEnd(),
 				 true,
 				 null,
 				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
@@ -344,7 +409,7 @@ public class PropertyItemProvider
 	 */
 	protected void addClass_PropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_class__feature"), //$NON-NLS-1$
@@ -361,13 +426,15 @@ public class PropertyItemProvider
 	 */
 	protected void addOppositePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_opposite_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_opposite_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getProperty_Opposite(),
-				 false));
+				 false,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
@@ -378,7 +445,7 @@ public class PropertyItemProvider
 	 */
 	protected void addRedefinedPropertyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_redefinedProperty_feature"), //$NON-NLS-1$
@@ -395,13 +462,32 @@ public class PropertyItemProvider
 	 */
 	protected void addSubsettedPropertyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_subsettedProperty_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_subsettedProperty_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getProperty_SubsettedProperty(),
 				 true));
+	}
+
+	/**
+	 * This adds a property descriptor for the Datatype feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDatatypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new UML2ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Property_datatype_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Property_datatype_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getProperty_Datatype(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
@@ -412,7 +498,7 @@ public class PropertyItemProvider
 	 */
 	protected void addAssociationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Property_association_feature"), //$NON-NLS-1$

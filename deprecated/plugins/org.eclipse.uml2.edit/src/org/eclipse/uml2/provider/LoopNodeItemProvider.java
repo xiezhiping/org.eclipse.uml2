@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LoopNodeItemProvider.java,v 1.12 2004/06/16 04:12:07 khussey Exp $
+ * $Id: LoopNodeItemProvider.java,v 1.13 2004/06/19 01:42:37 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -33,6 +33,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.LoopNode;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.LoopNode} object.
@@ -96,7 +98,7 @@ public class LoopNodeItemProvider
 	 */
 	protected void addIsTestedFirstPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LoopNode_isTestedFirst_feature"), //$NON-NLS-1$
@@ -114,7 +116,7 @@ public class LoopNodeItemProvider
 	 */
 	protected void addBodyPartPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LoopNode_bodyPart_feature"), //$NON-NLS-1$
@@ -131,7 +133,7 @@ public class LoopNodeItemProvider
 	 */
 	protected void addSetupPartPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LoopNode_setupPart_feature"), //$NON-NLS-1$
@@ -148,7 +150,7 @@ public class LoopNodeItemProvider
 	 */
 	protected void addDeciderPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LoopNode_decider_feature"), //$NON-NLS-1$
@@ -165,7 +167,7 @@ public class LoopNodeItemProvider
 	 */
 	protected void addTestPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LoopNode_test_feature"), //$NON-NLS-1$
@@ -182,7 +184,7 @@ public class LoopNodeItemProvider
 	 */
 	protected void addResultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LoopNode_result_feature"), //$NON-NLS-1$
@@ -201,7 +203,7 @@ public class LoopNodeItemProvider
 	 */
 	protected void addLoopVariablePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LoopNode_loopVariable_feature"), //$NON-NLS-1$
@@ -220,7 +222,7 @@ public class LoopNodeItemProvider
 	 */
 	protected void addBodyOutputPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LoopNode_bodyOutput_feature"), //$NON-NLS-1$
@@ -237,7 +239,7 @@ public class LoopNodeItemProvider
 	 */
 	protected void addLoopVariableInputPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LoopNode_loopVariableInput_feature"), //$NON-NLS-1$

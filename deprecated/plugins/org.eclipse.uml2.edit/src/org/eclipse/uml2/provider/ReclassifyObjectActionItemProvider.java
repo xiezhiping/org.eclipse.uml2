@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReclassifyObjectActionItemProvider.java,v 1.6 2004/06/06 01:25:31 khussey Exp $
+ * $Id: ReclassifyObjectActionItemProvider.java,v 1.7 2004/06/19 01:42:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -31,6 +31,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.ReclassifyObjectAction;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.ReclassifyObjectAction} object.
@@ -89,7 +91,7 @@ public class ReclassifyObjectActionItemProvider
 	 */
 	protected void addIsReplaceAllPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ReclassifyObjectAction_isReplaceAll_feature"), //$NON-NLS-1$
@@ -107,7 +109,7 @@ public class ReclassifyObjectActionItemProvider
 	 */
 	protected void addOldClassifierPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ReclassifyObjectAction_oldClassifier_feature"), //$NON-NLS-1$
@@ -124,7 +126,7 @@ public class ReclassifyObjectActionItemProvider
 	 */
 	protected void addNewClassifierPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ReclassifyObjectAction_newClassifier_feature"), //$NON-NLS-1$
@@ -141,7 +143,7 @@ public class ReclassifyObjectActionItemProvider
 	 */
 	protected void addObjectPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ReclassifyObjectAction_object_feature"), //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EventOccurrenceItemProvider.java,v 1.6 2004/06/06 01:25:31 khussey Exp $
+ * $Id: EventOccurrenceItemProvider.java,v 1.7 2004/06/19 01:42:37 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -25,9 +25,10 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.uml2.EventOccurrence;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.EventOccurrence} object.
@@ -88,7 +89,7 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addReceiveMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MessageEnd_receiveMessage_feature"), //$NON-NLS-1$
@@ -105,7 +106,7 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addSendMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MessageEnd_sendMessage_feature"), //$NON-NLS-1$
@@ -122,7 +123,7 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addStartExecPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_startExec_feature"), //$NON-NLS-1$
@@ -139,7 +140,7 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addFinishExecPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_finishExec_feature"), //$NON-NLS-1$
@@ -156,7 +157,7 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addToAfterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_toAfter_feature"), //$NON-NLS-1$
@@ -173,7 +174,7 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addToBeforePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_toBefore_feature"), //$NON-NLS-1$

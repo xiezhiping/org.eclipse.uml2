@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifierItemProvider.java,v 1.7 2004/06/06 01:25:31 khussey Exp $
+ * $Id: BehavioredClassifierItemProvider.java,v 1.8 2004/06/19 01:42:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -28,7 +28,6 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.BehavioredClassifier;
@@ -39,6 +38,8 @@ import org.eclipse.uml2.edit.internal.command.SubsetReplaceCommand;
 import org.eclipse.uml2.edit.internal.command.SubsetSetCommand;
 import org.eclipse.uml2.edit.internal.command.SupersetRemoveCommand;
 import org.eclipse.uml2.edit.internal.command.SupersetReplaceCommand;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.BehavioredClassifier} object.
@@ -98,7 +99,7 @@ public class BehavioredClassifierItemProvider
 	 */
 	protected void addOwnedBehaviorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_ownedBehavior_feature"), //$NON-NLS-1$
@@ -117,7 +118,7 @@ public class BehavioredClassifierItemProvider
 	 */
 	protected void addClassifierBehaviorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_classifierBehavior_feature"), //$NON-NLS-1$
@@ -134,7 +135,7 @@ public class BehavioredClassifierItemProvider
 	 */
 	protected void addImplementationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_implementation_feature"), //$NON-NLS-1$
@@ -153,7 +154,7 @@ public class BehavioredClassifierItemProvider
 	 */
 	protected void addOwnedTriggerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_ownedTrigger_feature"), //$NON-NLS-1$
@@ -172,7 +173,7 @@ public class BehavioredClassifierItemProvider
 	 */
 	protected void addOwnedStateMachinePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_ownedStateMachine_feature"), //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConditionalNodeItemProvider.java,v 1.9 2004/06/06 01:25:31 khussey Exp $
+ * $Id: ConditionalNodeItemProvider.java,v 1.10 2004/06/19 01:42:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -33,6 +33,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.ConditionalNode;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.ConditionalNode} object.
@@ -91,7 +93,7 @@ public class ConditionalNodeItemProvider
 	 */
 	protected void addIsDeterminatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ConditionalNode_isDeterminate_feature"), //$NON-NLS-1$
@@ -109,7 +111,7 @@ public class ConditionalNodeItemProvider
 	 */
 	protected void addIsAssuredPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ConditionalNode_isAssured_feature"), //$NON-NLS-1$
@@ -127,7 +129,7 @@ public class ConditionalNodeItemProvider
 	 */
 	protected void addClausePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ConditionalNode_clause_feature"), //$NON-NLS-1$
@@ -146,7 +148,7 @@ public class ConditionalNodeItemProvider
 	 */
 	protected void addResultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ConditionalNode_result_feature"), //$NON-NLS-1$

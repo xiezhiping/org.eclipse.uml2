@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionOccurrenceItemProvider.java,v 1.6 2004/06/06 01:25:31 khussey Exp $
+ * $Id: InteractionOccurrenceItemProvider.java,v 1.7 2004/06/19 01:42:36 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -27,12 +27,13 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.InteractionOccurrence;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.InteractionOccurrence} object.
@@ -90,7 +91,7 @@ public class InteractionOccurrenceItemProvider
 	 */
 	protected void addRefersToPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionOccurrence_refersTo_feature"), //$NON-NLS-1$
@@ -107,7 +108,7 @@ public class InteractionOccurrenceItemProvider
 	 */
 	protected void addActualGatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionOccurrence_actualGate_feature"), //$NON-NLS-1$
@@ -126,7 +127,7 @@ public class InteractionOccurrenceItemProvider
 	 */
 	protected void addArgumentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionOccurrence_argument_feature"), //$NON-NLS-1$

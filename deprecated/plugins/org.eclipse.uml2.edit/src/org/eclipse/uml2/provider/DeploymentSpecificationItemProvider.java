@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentSpecificationItemProvider.java,v 1.6 2004/06/06 01:25:31 khussey Exp $
+ * $Id: DeploymentSpecificationItemProvider.java,v 1.7 2004/06/19 01:42:38 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -30,6 +30,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.DeploymentSpecification;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.DeploymentSpecification} object.
@@ -86,7 +88,7 @@ public class DeploymentSpecificationItemProvider
 	 */
 	protected void addDeploymentLocationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DeploymentSpecification_deploymentLocation_feature"), //$NON-NLS-1$
@@ -104,7 +106,7 @@ public class DeploymentSpecificationItemProvider
 	 */
 	protected void addExecutionLocationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
+			(new UML2ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DeploymentSpecification_executionLocation_feature"), //$NON-NLS-1$
