@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.14 2005/01/20 14:51:41 khussey Exp $
+ * $Id: UML2Operations.java,v 1.15 2005/03/14 16:44:30 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -460,8 +461,12 @@ class UML2Operations
 				for (Iterator i = resourceBundleURIs.iterator(); i.hasNext();) {
 
 					try {
-						resourceBundle = new PropertyResourceBundle(
-							uriConverter.createInputStream((URI) i.next()));
+						InputStream inputStream = uriConverter.createInputStream((URI) i.next());
+						try {
+							resourceBundle = new PropertyResourceBundle(inputStream);							
+						} finally {
+							inputStream.close();
+						}
 						locale = resourceBundle.getLocale();
 						break;
 					} catch (IOException ioe) {
