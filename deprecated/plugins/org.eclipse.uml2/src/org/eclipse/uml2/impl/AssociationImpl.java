@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.15 2004/10/01 19:36:28 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.16 2005/02/16 20:55:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -39,6 +37,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.AssociationOperations;
 import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
 
@@ -206,13 +205,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 			UML2Package.eINSTANCE.getAssociation_EndType());
 
 		if (null == endTypes) {
-			List endType = new ArrayList();
-
-			for (Iterator memberEnds = getMemberEnds().iterator(); memberEnds
-				.hasNext();) {
-
-				endType.add(((Property) memberEnds.next()).getType());
-			}
+			Set endType = AssociationOperations.endType(this);
 
 			endTypes = new EcoreEList.UnmodifiableEList(this,
 				UML2Package.eINSTANCE.getAssociation_EndType(), endType.size(),
@@ -227,13 +220,13 @@ public class AssociationImpl extends ClassifierImpl implements Association {
     /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
      */
     public Type getEndType(String unqualifiedName) {
     	for (Iterator i = getEndTypes().iterator(); i.hasNext(); ) {
     		Type namedEndType = (Type) i.next();
     		
-    		if (null != namedEndType && unqualifiedName.equals(namedEndType.getName())) {
+    		if (unqualifiedName.equals(namedEndType.getName())) {
     			return namedEndType;
     		}
     	}
@@ -321,14 +314,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 
 		if (null == relatedElement) {
 			Set union = new LinkedHashSet();
-			
-			for (Iterator endTypes = getEndTypes().iterator(); endTypes.hasNext();) {
-				Type endType = (Type) endTypes.next();
-				
-				if (null != endType) {
-					union.add(endType);
-				}
-			}
+			union.addAll(getEndTypes());
 
 			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
@@ -894,5 +880,18 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
+
+	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Association#isBinary()
+	 */
+	public boolean isBinary() {
+		return AssociationOperations.isBinary(this);
+	}
+	
+	// <!-- end-custom-operations -->
 
 } //AssociationImpl

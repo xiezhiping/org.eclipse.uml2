@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Association.java,v 1.6 2004/10/01 19:36:29 khussey Exp $
+ * $Id: Association.java,v 1.7 2005/02/16 20:55:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -213,5 +213,18 @@ public interface Association extends Classifier, Relationship{
 	 * @generated
 	 */
 	EList getMembers();
+
+	// <!-- begin-custom-operations -->
+
+	/**
+	 * Determines whether this association is a binary association, i.e. whether
+	 * it has exactly two member ends.
+	 * 
+	 * @return <code>true</code> if this association is binary;
+	 *         <code>false</code> otherwise.
+	 */
+	public boolean isBinary();
+	
+	// <!-- end-custom-operations -->
 
 } // Association

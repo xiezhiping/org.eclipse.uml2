@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.10 2005/01/19 22:55:30 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.11 2005/02/16 20:55:15 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -31,7 +31,6 @@ import org.eclipse.uml2.LiteralUnlimitedNatural;
 import org.eclipse.uml2.MultiplicityElement;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.RedefinableElement;
-import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.util.UML2Validator;
@@ -53,13 +52,11 @@ public final class PropertyOperations
 	protected static Property getOtherEnd(Property property) {
 		Association association = property.getAssociation();
 
-		if (null != association) {
+		if (null != association && association.isBinary()) {
 			List memberEnds = association.getMemberEnds();
 
-			if (2 == memberEnds.size()) {
-				return (Property) memberEnds.get(Math.abs(memberEnds
-					.indexOf(property) - 1));
-			}
+			return (Property) memberEnds.get(Math.abs(memberEnds
+				.indexOf(property) - 1));
 		}
 
 		return null;
@@ -113,20 +110,7 @@ public final class PropertyOperations
 				subsettingContext.add(eContainer);
 			}
 		} else {
-
-			for (Iterator memberEnds = association.getMemberEnds().iterator(); memberEnds
-				.hasNext();) {
-
-				Property memberEnd = (Property) memberEnds.next();
-
-				if (property != memberEnd) {
-					Type type = memberEnd.getType();
-
-					if (null != type) {
-						subsettingContext.add(type);
-					}
-				}
-			}
+			subsettingContext.addAll(association.getEndTypes());
 		}
 
 		return subsettingContext;
@@ -170,18 +154,15 @@ public final class PropertyOperations
 
 		Association association = property.getAssociation();
 
-		if (null == association || 2 != association.getEndTypes().size()) {
+		if (null == association || !association.isBinary()) {
 			throw new IllegalArgumentException(String.valueOf(property));
 		}
 
 		if (navigable != isNavigable(property)) {
 
 			if (navigable) {
-				List ownedAttributes = getOwnedAttributes((Type) association
-					.getEndTypes()
-					.get(
-						Math
-							.abs(association.getMemberEnds().indexOf(property) - 1)));
+				List ownedAttributes = getOwnedAttributes(getOtherEnd(property)
+					.getType());
 
 				if (null == ownedAttributes) {
 					throw new IllegalArgumentException(String
