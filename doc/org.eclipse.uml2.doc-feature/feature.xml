@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+/*
+ * Copyright (c) 2004 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Common Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/cpl-v10.html
+ * 
+ * Contributors: 
+ *   IBM - Initial API and implementation
+ *
+ * $Id: feature.xml,v 1.1 2004/04/29 16:09:13 khussey Exp $
+ */
+-->
+
+<feature
+   id="org.eclipse.uml2.doc"
+   label="%feature-label"
+   version="1.0.0"
+   provider-name="%feature.provider-name"
+   image="eclipse_update_120.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%update.label" url="http://update.eclipse.org/updates"/>
+   </url>
+
+   <plugin
+      id="org.eclipse.uml2.doc"
+      download-size="0"
+      install-size="0"   		
+      version="1.0.0"/>
+
+</feature>

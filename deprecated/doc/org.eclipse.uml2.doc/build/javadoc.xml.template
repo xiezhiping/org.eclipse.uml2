@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Plugin Javadoc" default="javadoc">
+	<property name="destDir" value="doc"/>
+	<property name="classpath" value="bin"/>
+	<property name="overview" value="build/overview.html"/>
+	
+	<target name="javadoc">
+		<javadoc 
+			destdir="${destDir}" 
+			classpath="${classpath}"
+			overview="${overview}"
+
+			windowtitle="Unified Modeling Language 2.0 Javadoc"
+			footer="Copyright 2003, 2004 IBM Corporation and others.&lt;br&gt; All Rights Reserved."
+
+			docencoding="UTF-8"
+			charset="UTF-8"
+			breakiterator="true"
+			access="protected" 
+			use="true" 
+			notree="false" 
+			nonavbar="false" 
+			noindex="false" 
+			splitindex="true" 
+			author="true" 
+			version="true" 
+			nodeprecatedlist="false" 
+			nodeprecated="false">
+				<arg value="-J-Xmx180m"/>
+				<link href="http://java.sun.com/j2se/1.4.2/docs/api"/>
+				
+				<tag name="ignore" description="ignore" enabled="false"/>
+				<tag name="generated" description="ignore" enabled="false"/>
+				<tag name="model" description="ignore" enabled="false"/>
+				<tag name="modifiable" description="ignore" enabled="false"/>
+				<tag name="extends" description="ignore" enabled="false"/>
+				<tag name="implements" description="ignore" enabled="false"/>
+				<tag name="ordered" description="ignore" enabled="false"/>
+
+				<group title="UML2 API" packages="org.eclipse.uml2"/>
+				<group title="UML2 Utilities" packages="org.eclipse.uml2.util"/>
+				<group title="UML2 Edit" packages="org.eclipse.uml2.provider"/>
+				<group title="UML2 Editor" packages="org.eclipse.uml2.presentation"/>
+
+@packagesets@
+				
+		</javadoc>
+	</target>
+</project>
