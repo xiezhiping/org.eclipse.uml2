@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.24 2004/10/01 19:36:28 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.25 2004/11/02 15:00:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -595,7 +595,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.STEREOTYPE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -701,14 +701,6 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				return ownedReception != null && !ownedReception.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.STEREOTYPE__EXTENSION:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	// <!-- begin-custom-operations -->

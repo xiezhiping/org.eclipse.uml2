@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExecutionEnvironmentImpl.java,v 1.17 2004/10/01 19:36:28 khussey Exp $
+ * $Id: ExecutionEnvironmentImpl.java,v 1.18 2004/11/02 15:00:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -615,7 +615,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.EXECUTION_ENVIRONMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -727,14 +727,6 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 				return nestedNode != null && !nestedNode.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.EXECUTION_ENVIRONMENT__EXTENSION:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 } //ExecutionEnvironmentImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.17 2004/10/01 19:36:27 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.18 2004/11/02 15:00:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -984,7 +984,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.STATE_MACHINE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1118,14 +1118,6 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return getStateMachine_redefinitionContext() != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.STATE_MACHINE__EXTENSION:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 } //StateMachineImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.20 2004/10/01 19:36:28 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.21 2004/11/02 15:00:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -923,7 +923,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSetGen(EStructuralFeature eFeature) {
+	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ASSOCIATION_CLASS__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1039,14 +1039,6 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				return memberEnd != null && !memberEnd.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case UML2Package.ASSOCIATION_CLASS__EXTENSION:
-				return false;
-		}
-		return eIsSetGen(eFeature);
 	}
 
 	/**
