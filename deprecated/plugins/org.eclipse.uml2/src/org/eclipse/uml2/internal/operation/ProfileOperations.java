@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.3 2004/04/21 14:52:19 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -521,7 +521,7 @@ public final class ProfileOperations
 			eReference = EcoreFactory.eINSTANCE.createEReference();
 
 			eReference.setName(property.getName());
-			eReference.setChangeable(!property.isReadOnly());
+			eReference.setChangeable(true);
 			eReference.setContainment(true);
 			eReference.setUpperBound(property.getUpper());
 			eReference.setLowerBound(property.getLower());
