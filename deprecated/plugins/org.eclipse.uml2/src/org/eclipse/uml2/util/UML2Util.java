@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Util.java,v 1.5 2005/02/11 23:07:29 khussey Exp $
+ * $Id: UML2Util.java,v 1.6 2005/02/15 19:21:52 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -1562,7 +1562,9 @@ public class UML2Util {
 					EStructuralFeature eStructuralFeature = (EStructuralFeature) eModelElement;
 
 					if (eStructuralFeature.isDerived()
-						&& !(eStructuralFeature.isTransient() && eStructuralFeature
+						&& ((eStructuralFeature instanceof EReference && ((EReference) eStructuralFeature)
+							.isContainment())
+							|| !eStructuralFeature.isTransient() || !eStructuralFeature
 							.isVolatile())) {
 
 						if (OPTION__PROCESS.equals(options
@@ -1580,6 +1582,11 @@ public class UML2Util {
 												getMessageSubstitutions(
 													context, eStructuralFeature)),
 										new Object[]{eStructuralFeature}));
+							}
+
+							if (eStructuralFeature instanceof EReference) {
+								((EReference) eStructuralFeature)
+									.setContainment(false);
 							}
 
 							eStructuralFeature.setTransient(true);
