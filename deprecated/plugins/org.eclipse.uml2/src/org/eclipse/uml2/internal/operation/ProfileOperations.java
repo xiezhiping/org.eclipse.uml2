@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.13 2004/12/02 16:12:32 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.14 2004/12/02 21:21:18 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -1386,9 +1386,10 @@ public final class ProfileOperations
 	 *                If the classifier is not defined in the profile or cannot
 	 *                be instantiated.
 	 */
-	public static EObject create(Profile profile, Classifier classifier) {
+	public static EObject create(final Profile profile, Classifier classifier) {
+		final EPackage ePackage = getEPackage(profile, getVersion(profile));
 
-		if (null == profile) {
+		if (null == ePackage) {
 			throw new IllegalArgumentException(String.valueOf(profile));
 		}
 
@@ -1396,24 +1397,30 @@ public final class ProfileOperations
 			throw new IllegalArgumentException(String.valueOf(classifier));
 		}
 
-		EPackage ePackage = getEPackage(profile, profile.getVersion());
+		return (EObject) new UML2Switch() {
 
-		if (null == ePackage) {
-			throw new IllegalArgumentException(String.valueOf(profile));
-		} else {
-			EClassifier eClassifier = ePackage
-				.getEClassifier(getEClassifierName(classifier));
+			public Object caseClass(org.eclipse.uml2.Class class_) {
 
-			if (EClass.class.isInstance(eClassifier)) {
-				EClass eClass = (EClass) eClassifier;
+				if (!class_.isAbstract()) {
+					EClass eClass = (EClass) ePackage
+						.getEClassifier(getEClassifierName(class_));
 
-				if (!eClass.isAbstract() && !eClass.isInterface()) {
-					return ePackage.getEFactoryInstance().create(eClass);
+					if (null != eClass) {
+						return ePackage.getEFactoryInstance().create(eClass);
+					}
 				}
+
+				return null;
 			}
 
-			throw new IllegalArgumentException(String.valueOf(classifier));
-		}
+			public Object caseClassifier(Classifier classifier) {
+				throw new IllegalArgumentException(String.valueOf(classifier));
+			}
+
+			public Object caseStereotype(Stereotype stereotype) {
+				throw new IllegalArgumentException(String.valueOf(stereotype));
+			}
+		}.doSwitch(classifier);
 	}
 
 }
