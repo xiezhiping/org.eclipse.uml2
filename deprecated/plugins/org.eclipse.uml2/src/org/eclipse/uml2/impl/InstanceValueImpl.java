@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceValueImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
+ * $Id: InstanceValueImpl.java,v 1.5 2005/01/20 14:51:41 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.uml2.EnumerationLiteral;
 import org.eclipse.uml2.InstanceSpecification;
 import org.eclipse.uml2.InstanceValue;
 import org.eclipse.uml2.StringExpression;
@@ -28,6 +29,7 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
+import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
 /**
@@ -384,11 +386,25 @@ public class InstanceValueImpl extends ValueSpecificationImpl implements Instanc
 		return eDynamicIsSet(eFeature);
 	}
 
-	/**
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.ValueSpecification#stringValue()
 	 */
 	public String stringValue() {
-		return null == getInstance() || null == getInstance().getSpecification() ? super.stringValue() : getInstance().getSpecification().stringValue();
+		InstanceSpecification instance = getInstance();
+
+		if (EnumerationLiteral.class.isInstance(instance)) {
+			return ((EnumerationLiteral) instance).getName();
+		} else if (null != instance) {
+			ValueSpecification specification = instance.getSpecification();
+
+			if (null != specification) {
+				return specification.stringValue();
+			}
+		}
+
+		return super.stringValue();
 	}
 
-} //InstanceValueImpl
+} // InstanceValueImpl
