@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConstraintOperations.java,v 1.3 2004/04/29 01:38:36 khussey Exp $
+ * $Id: ConstraintOperations.java,v 1.4 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.Constraint;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Plugin;
 
 
@@ -51,12 +51,12 @@ public final class ConstraintOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.CONSTRAINT__NOT_APPLY_TO_SELF,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.CONSTRAINT__NOT_APPLY_TO_SELF,
 							UML2Plugin.INSTANCE.getString(
 								"_UI_Constraint_NotApplyToSelf_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context, constraint)),
-							null));
+							new Object[] {constraint}));
 			}
 		}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Classifier.java,v 1.5 2004/04/30 17:21:46 khussey Exp $
+ * $Id: Classifier.java,v 1.6 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -35,8 +35,8 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.Classifier#getGeneralizations <em>Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getPowertypeExtents <em>Powertype Extent</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getOwnedUseCases <em>Owned Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getRepresentation <em>Representation</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getOccurrences <em>Occurrence</em>}</li>
@@ -95,7 +95,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return the value of the '<em>Feature</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Feature()
 	 * @see org.eclipse.uml2.Feature#getFeaturingClassifiers
-	 * @model type="org.eclipse.uml2.Feature" opposite="featuringClassifier" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Feature" opposite="featuringClassifier" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getFeatures();
@@ -122,7 +122,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inherited Member</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_InheritedMember()
-	 * @model type="org.eclipse.uml2.NamedElement" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.NamedElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getInheritedMembers();
@@ -149,7 +149,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>General</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_General()
-	 * @model type="org.eclipse.uml2.Classifier" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Classifier" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getGenerals();
@@ -178,7 +178,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return the value of the '<em>Generalization</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Generalization()
 	 * @see org.eclipse.uml2.Generalization#getSpecific
-	 * @model type="org.eclipse.uml2.Generalization" opposite="specific" containment="true"
+	 * @model type="org.eclipse.uml2.Generalization" opposite="specific" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getGeneralizations();
@@ -205,7 +205,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attribute</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Attribute()
-	 * @model type="org.eclipse.uml2.Property" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Property" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getAttributes();
@@ -232,7 +232,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Redefined Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_RedefinedClassifier()
-	 * @model type="org.eclipse.uml2.Classifier"
+	 * @model type="org.eclipse.uml2.Classifier" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedClassifiers();
@@ -261,7 +261,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return the value of the '<em>Substitution</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Substitution()
 	 * @see org.eclipse.uml2.Substitution#getSubstitutingClassifier
-	 * @model type="org.eclipse.uml2.Substitution" opposite="substitutingClassifier" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.Substitution" opposite="substitutingClassifier" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getSubstitutions();
@@ -301,7 +301,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return the value of the '<em>Powertype Extent</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_PowertypeExtent()
 	 * @see org.eclipse.uml2.GeneralizationSet#getPowertype
-	 * @model type="org.eclipse.uml2.GeneralizationSet" opposite="powertype"
+	 * @model type="org.eclipse.uml2.GeneralizationSet" opposite="powertype" ordered="false"
 	 * @generated
 	 */
 	EList getPowertypeExtents();
@@ -328,7 +328,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Use Case</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_OwnedUseCase()
-	 * @model type="org.eclipse.uml2.UseCase" containment="true"
+	 * @model type="org.eclipse.uml2.UseCase" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedUseCases();
@@ -392,7 +392,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Occurrence</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClassifier_Occurrence()
-	 * @model type="org.eclipse.uml2.CollaborationOccurrence" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.CollaborationOccurrence" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getOccurrences();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.6 2004/05/04 19:17:48 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.7 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -31,7 +31,7 @@ import org.eclipse.uml2.MultiplicityElement;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.Type;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 
@@ -293,12 +293,12 @@ public final class PropertyOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.ERROR,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.PROPERTY__OPPOSITE_IS_OTHER_END,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.PROPERTY__OPPOSITE_IS_OTHER_END,
 							UML2Plugin.INSTANCE.getString(
 								"_UI_Property_OppositeIsOtherEnd_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context, property)),
-							new Object[] {opposite}));
+							new Object[] {property, opposite}));
 
 			}
 		}
@@ -330,15 +330,14 @@ public final class PropertyOperations
 						diagnostics
 							.add(new BasicDiagnostic(
 									Diagnostic.WARNING,
-									UML2DiagnosticConstants.PLUGIN_ID,
-									UML2DiagnosticConstants.PROPERTY__MULTIPLICITY_OF_COMPOSITE,
+									UML2Validator.DIAGNOSTIC_SOURCE,
+									UML2Validator.PROPERTY__MULTIPLICITY_OF_COMPOSITE,
 									UML2Plugin.INSTANCE
 										.getString(
 											"_UI_Property_MultiplicityOfComposite_diagnostic", //$NON-NLS-1$
 											getMessageSubstitutions(context,
 												property)),
-									new Object[] {new Integer(upperBound)}));
-
+									new Object[] {property, new Integer(upperBound)}));
 					}
 				}
 			}
@@ -381,13 +380,13 @@ public final class PropertyOperations
 				return result;
 			} else {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-						UML2DiagnosticConstants.PLUGIN_ID,
-						UML2DiagnosticConstants.PROPERTY__SUBSETTING_CONTEXT,
+						UML2Validator.DIAGNOSTIC_SOURCE,
+						UML2Validator.PROPERTY__SUBSETTING_CONTEXT,
 						UML2Plugin.INSTANCE.getString(
 							"_UI_Property_SubsettingContext_diagnostic", //$NON-NLS-1$
 							getMessageSubstitutions(context, property,
 								subsettedProperty)),
-						new Object[] {subsettedProperty}));
+						new Object[] {property, subsettedProperty}));
 			}
 		}
 
@@ -417,14 +416,14 @@ public final class PropertyOperations
 					diagnostics
 						.add(new BasicDiagnostic(
 								Diagnostic.WARNING,
-								UML2DiagnosticConstants.PLUGIN_ID,
-								UML2DiagnosticConstants.PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION,
+								UML2Validator.DIAGNOSTIC_SOURCE,
+								UML2Validator.PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION,
 								UML2Plugin.INSTANCE
 									.getString(
 										"_UI_Property_NavigablePropertyRedefinition_diagnostic", //$NON-NLS-1$
 										getMessageSubstitutions(context,
 											property, subsettedProperty)),
-								new Object[] {subsettedProperty}));
+								new Object[] {property, subsettedProperty}));
 				}
 			}
 		}
@@ -443,14 +442,14 @@ public final class PropertyOperations
 					diagnostics
 						.add(new BasicDiagnostic(
 								Diagnostic.WARNING,
-								UML2DiagnosticConstants.PLUGIN_ID,
-								UML2DiagnosticConstants.PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION,
+								UML2Validator.DIAGNOSTIC_SOURCE,
+								UML2Validator.PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION,
 								UML2Plugin.INSTANCE
 									.getString(
 										"_UI_Property_NavigablePropertyRedefinition_diagnostic", //$NON-NLS-1$
 										getMessageSubstitutions(context,
 											property, redefinedProperty)),
-								new Object[] {redefinedProperty}));
+								new Object[] {property, redefinedProperty}));
 				}
 			}
 		}
@@ -483,13 +482,13 @@ public final class PropertyOperations
 					return result;
 				} else {
 					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.PROPERTY__SUBSETTING_RULES,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.PROPERTY__SUBSETTING_RULES,
 							UML2Plugin.INSTANCE.getString(
 								"_UI_Property_SubsettingRules_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context, property,
 									subsettedProperty)),
-							new Object[] {subsettedProperty}));
+							new Object[] {property, subsettedProperty}));
 				}
 			}
 		}
@@ -512,11 +511,12 @@ public final class PropertyOperations
 
 			if (null != diagnostics) {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-						UML2DiagnosticConstants.PLUGIN_ID,
-						UML2DiagnosticConstants.PROPERTY__NAVIGABLE_READONLY,
+						UML2Validator.DIAGNOSTIC_SOURCE,
+						UML2Validator.PROPERTY__NAVIGABLE_READONLY,
 						UML2Plugin.INSTANCE.getString(
 							"_UI_Property_NavigableReadOnly_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, property)), null));
+							getMessageSubstitutions(context, property)),
+						new Object [] {property}));
 			}
 		}
 
@@ -538,13 +538,13 @@ public final class PropertyOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.PROPERTY__DERIVED_UNION_IS_DERIVED,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.PROPERTY__DERIVED_UNION_IS_DERIVED,
 							UML2Plugin.INSTANCE
 								.getString(
 									"_UI_Property_DerivedUnionIsDerived_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context, property)),
-							null));
+							new Object[] {property}));
 			}
 		}
 

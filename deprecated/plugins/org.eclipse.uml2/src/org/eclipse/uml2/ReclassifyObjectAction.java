@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReclassifyObjectAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ReclassifyObjectAction.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -81,7 +81,7 @@ public interface ReclassifyObjectAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Old Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getReclassifyObjectAction_OldClassifier()
-	 * @model type="org.eclipse.uml2.Classifier"
+	 * @model type="org.eclipse.uml2.Classifier" ordered="false"
 	 * @generated
 	 */
 	EList getOldClassifiers();
@@ -108,7 +108,7 @@ public interface ReclassifyObjectAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>New Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getReclassifyObjectAction_NewClassifier()
-	 * @model type="org.eclipse.uml2.Classifier"
+	 * @model type="org.eclipse.uml2.Classifier" ordered="false"
 	 * @generated
 	 */
 	EList getNewClassifiers();

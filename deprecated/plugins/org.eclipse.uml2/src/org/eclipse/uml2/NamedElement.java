@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElement.java,v 1.3 2004/04/27 16:38:54 khussey Exp $
+ * $Id: NamedElement.java,v 1.4 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -134,7 +134,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @return the value of the '<em>Client Dependency</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamedElement_ClientDependency()
 	 * @see org.eclipse.uml2.Dependency#getClients
-	 * @model type="org.eclipse.uml2.Dependency" opposite="client" volatile="true"
+	 * @model type="org.eclipse.uml2.Dependency" opposite="client" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getClientDependencies();

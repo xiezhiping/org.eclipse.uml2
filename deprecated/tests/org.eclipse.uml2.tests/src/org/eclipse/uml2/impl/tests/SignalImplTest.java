@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SignalImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: SignalImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -30,7 +30,7 @@ import org.eclipse.uml2.impl.SignalImpl;
  * </p>
  * @generated
  */
-public class SignalImplTest extends BehavioredClassifierImplTest {
+public class SignalImplTest extends ClassifierImplTest {
 
 	/**
 	 * <!-- begin-user-doc -->

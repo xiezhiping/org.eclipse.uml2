@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.3 2004/05/11 15:23:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -41,6 +41,8 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.DestroyObjectActionImpl#isDestroyLinks <em>Is Destroy Links</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DestroyObjectActionImpl#isDestroyOwnedObjects <em>Is Destroy Owned Objects</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DestroyObjectActionImpl#getTarget <em>Target</em>}</li>
  * </ul>
  * </p>
@@ -54,6 +56,46 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The default value of the '{@link #isDestroyLinks() <em>Is Destroy Links</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDestroyLinks()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_DESTROY_LINKS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDestroyLinks() <em>Is Destroy Links</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDestroyLinks()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isDestroyLinks = IS_DESTROY_LINKS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDestroyOwnedObjects()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_DESTROY_OWNED_OBJECTS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDestroyOwnedObjects()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isDestroyOwnedObjects = IS_DESTROY_OWNED_OBJECTS_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
@@ -81,6 +123,50 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getDestroyObjectAction();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * Returns the value of the '<em><b>Is Destroy Links</b></em>' attribute.
+	 * @generated
+	 */
+	public boolean isDestroyLinks() {
+		return isDestroyLinks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsDestroyLinks(boolean newIsDestroyLinks) {
+		boolean oldIsDestroyLinks = isDestroyLinks;
+		isDestroyLinks = newIsDestroyLinks;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS, oldIsDestroyLinks, isDestroyLinks));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * Returns the value of the '<em><b>Is Destroy Owned Objects</b></em>' attribute.
+	 * @generated
+	 */
+	public boolean isDestroyOwnedObjects() {
+		return isDestroyOwnedObjects;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsDestroyOwnedObjects(boolean newIsDestroyOwnedObjects) {
+		boolean oldIsDestroyOwnedObjects = isDestroyOwnedObjects;
+		isDestroyOwnedObjects = newIsDestroyOwnedObjects;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS, oldIsDestroyOwnedObjects, isDestroyOwnedObjects));
 	}
 
 	/**
@@ -349,6 +435,10 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 				return getLocalPreconditions();
 			case UML2Package.DESTROY_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return getLocalPostconditions();
+			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS:
+				return isDestroyLinks() ? Boolean.TRUE : Boolean.FALSE;
+			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS:
+				return isDestroyOwnedObjects() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.DESTROY_OBJECT_ACTION__TARGET:
 				return getTarget();
 		}
@@ -434,6 +524,12 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 				getLocalPostconditions().clear();
 				getLocalPostconditions().addAll((Collection)newValue);
 				return;
+			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS:
+				setIsDestroyLinks(((Boolean)newValue).booleanValue());
+				return;
+			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS:
+				setIsDestroyOwnedObjects(((Boolean)newValue).booleanValue());
+				return;
 			case UML2Package.DESTROY_OBJECT_ACTION__TARGET:
 				setTarget((InputPin)newValue);
 				return;
@@ -508,6 +604,12 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 			case UML2Package.DESTROY_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				getLocalPostconditions().clear();
 				return;
+			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS:
+				setIsDestroyLinks(IS_DESTROY_LINKS_EDEFAULT);
+				return;
+			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS:
+				setIsDestroyOwnedObjects(IS_DESTROY_OWNED_OBJECTS_EDEFAULT);
+				return;
 			case UML2Package.DESTROY_OBJECT_ACTION__TARGET:
 				setTarget((InputPin)null);
 				return;
@@ -578,10 +680,31 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.DESTROY_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
+			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS:
+				return isDestroyLinks != IS_DESTROY_LINKS_EDEFAULT;
+			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS:
+				return isDestroyOwnedObjects != IS_DESTROY_OWNED_OBJECTS_EDEFAULT;
 			case UML2Package.DESTROY_OBJECT_ACTION__TARGET:
 				return target != null;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isDestroyLinks: "); //$NON-NLS-1$
+		result.append(isDestroyLinks);
+		result.append(", isDestroyOwnedObjects: "); //$NON-NLS-1$
+		result.append(isDestroyOwnedObjects);
+		result.append(')');
+		return result.toString();
 	}
 
 } //DestroyObjectActionImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.2 2004/04/10 03:56:09 khussey Exp $
+ * $Id: UML2Editor.java,v 1.3 2004/05/11 15:21:35 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -47,6 +47,9 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -133,6 +136,8 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import org.eclipse.ui.dialogs.SaveAsDialog;
 
+import org.eclipse.ui.ide.IGotoMarker;
+
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 
@@ -145,10 +150,6 @@ import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
-
-
-
-
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 
 
@@ -160,7 +161,7 @@ import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
  */
 public class UML2Editor
 	extends MultiPageEditorPart
-	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider {
+	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1239,6 +1240,9 @@ public class UML2Editor
 		else if (key.equals(IPropertySheetPage.class)) {
 			return getPropertySheetPage();
 		}
+		else if (key.equals(IGotoMarker.class)) {
+			return this;
+		}
 		else {
 			return super.getAdapter(key);
 		}
@@ -1541,7 +1545,21 @@ public class UML2Editor
 	 * @generated
 	 */
 	public void gotoMarker(IMarker marker) {
-		// do nothing
+		try {
+			if (marker.getType().equals(EValidator.MARKER)) {
+				String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
+				if (uriAttribute != null) {
+					URI uri = URI.createURI(uriAttribute);
+					EObject eObject = editingDomain.getResourceSet().getEObject(uri, true);
+					if (eObject != null) {
+					  setSelectionToViewer(Collections.singleton(eObject));
+					}
+				}
+			}
+		}
+		catch (CoreException exception) {
+			UML2EditorPlugin.INSTANCE.log(exception);
+		}
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -90,7 +90,7 @@ public interface ProtocolTransition extends Transition{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Referred</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProtocolTransition_Referred()
-	 * @model type="org.eclipse.uml2.Operation" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Operation" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getReferreds();

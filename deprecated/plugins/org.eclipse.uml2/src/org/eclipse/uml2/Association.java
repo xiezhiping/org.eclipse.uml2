@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Association.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: Association.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -121,7 +121,7 @@ public interface Association extends Classifier, Relationship{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>End Type</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_EndType()
-	 * @model type="org.eclipse.uml2.Type" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Type" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getEndTypes();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Collaboration.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Collaboration.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -49,7 +49,7 @@ public interface Collaboration extends BehavioredClassifier, StructuredClassifie
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Collaboration Role</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getCollaboration_CollaborationRole()
-	 * @model type="org.eclipse.uml2.ConnectableElement"
+	 * @model type="org.eclipse.uml2.ConnectableElement" ordered="false"
 	 * @generated
 	 */
 	EList getCollaborationRoles();

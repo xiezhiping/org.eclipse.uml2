@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DestroyObjectAction.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: DestroyObjectAction.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.DestroyObjectAction#isDestroyLinks <em>Is Destroy Links</em>}</li>
+ *   <li>{@link org.eclipse.uml2.DestroyObjectAction#isDestroyOwnedObjects <em>Is Destroy Owned Objects</em>}</li>
  *   <li>{@link org.eclipse.uml2.DestroyObjectAction#getTarget <em>Target</em>}</li>
  * </ul>
  * </p>
@@ -39,6 +41,60 @@ public interface DestroyObjectAction extends Action{
 	 * @generated
 	 */
 	String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * Returns the value of the '<em><b>Is Destroy Links</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Is Destroy Links</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Destroy Links</em>' attribute.
+	 * @see #setIsDestroyLinks(boolean)
+	 * @see org.eclipse.uml2.UML2Package#getDestroyObjectAction_IsDestroyLinks()
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
+	 * @generated
+	 */
+	boolean isDestroyLinks();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.DestroyObjectAction#isDestroyLinks <em>Is Destroy Links</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Destroy Links</em>' attribute.
+	 * @see #isDestroyLinks()
+	 * @generated
+	 */
+	void setIsDestroyLinks(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Is Destroy Owned Objects</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Is Destroy Owned Objects</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Destroy Owned Objects</em>' attribute.
+	 * @see #setIsDestroyOwnedObjects(boolean)
+	 * @see org.eclipse.uml2.UML2Package#getDestroyObjectAction_IsDestroyOwnedObjects()
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
+	 * @generated
+	 */
+	boolean isDestroyOwnedObjects();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.DestroyObjectAction#isDestroyOwnedObjects <em>Is Destroy Owned Objects</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Destroy Owned Objects</em>' attribute.
+	 * @see #isDestroyOwnedObjects()
+	 * @generated
+	 */
+	void setIsDestroyOwnedObjects(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' containment reference.

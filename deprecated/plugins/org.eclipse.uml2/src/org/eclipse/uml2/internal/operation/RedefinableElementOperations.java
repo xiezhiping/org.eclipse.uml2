@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.RedefinableElement;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Plugin;
 
 /**
@@ -96,15 +96,15 @@ public final class RedefinableElementOperations
 					diagnostics
 						.add(new BasicDiagnostic(
 								Diagnostic.WARNING,
-								UML2DiagnosticConstants.PLUGIN_ID,
-								UML2DiagnosticConstants.REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT,
+								UML2Validator.DIAGNOSTIC_SOURCE,
+								UML2Validator.REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT,
 								UML2Plugin.INSTANCE
 									.getString(
 										"_UI_RedefinableElement_RedefinitionConsistent_diagnostic", //$NON-NLS-1$
 										getMessageSubstitutions(context,
 											redefinableElement,
 											redefinedElement)),
-								new Object[] {redefinedElement}));
+								new Object[] {redefinableElement, redefinedElement}));
 				}
 			}
 		}
@@ -140,15 +140,15 @@ public final class RedefinableElementOperations
 					diagnostics
 						.add(new BasicDiagnostic(
 								Diagnostic.WARNING,
-								UML2DiagnosticConstants.PLUGIN_ID,
-								UML2DiagnosticConstants.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID,
+								UML2Validator.DIAGNOSTIC_SOURCE,
+								UML2Validator.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID,
 								UML2Plugin.INSTANCE
 									.getString(
 										"_UI_RedefinableElement_RedefinitionContextValid_diagnostic", //$NON-NLS-1$
 										getMessageSubstitutions(context,
 											redefinableElement,
 											redefinedElement)),
-								new Object[] {redefinedElement}));
+								new Object[] {redefinableElement, redefinedElement}));
 				}
 			}
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: OperationImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -51,22 +51,22 @@ import org.eclipse.uml2.impl.OperationImpl;
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#isMultivalued() <em>Is Multivalued</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#includesCardinality(Integer) <em>Includes Cardinality</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#includesMultiplicity(MultiplicityElement) <em>Includes Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateUpperGt0() <em>Validate Upper Gt0</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateLowerGe0() <em>Validate Lower Ge0</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateUpperGeLower() <em>Validate Upper Ge Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateLowerEqLowerbound() <em>Validate Lower Eq Lowerbound</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateUpperEqUpperbound() <em>Validate Upper Eq Upperbound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateUpperGt0(EDiagnosticChain, EMap) <em>Validate Upper Gt0</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateLowerGe0(EDiagnosticChain, EMap) <em>Validate Lower Ge0</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateUpperGeLower(EDiagnosticChain, EMap) <em>Validate Upper Ge Lower</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateLowerEqLowerbound(EDiagnosticChain, EMap) <em>Validate Lower Eq Lowerbound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateUpperEqUpperbound(EDiagnosticChain, EMap) <em>Validate Upper Eq Upperbound</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#lower() <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#upper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getOwnedElements() <em>Get Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getOwner() <em>Get Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateTypeOfResult() <em>Validate Type Of Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateTypeOfResult(EDiagnosticChain, EMap) <em>Validate Type Of Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#isOrdered() <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#isUnique() <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#lower() <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#upper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#type() <em>Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateOnlyBodyForQuery() <em>Validate Only Body For Query</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#validateOnlyBodyForQuery(EDiagnosticChain, EMap) <em>Validate Only Body For Query</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getRaisedExceptions() <em>Get Raised Exceptions</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#setIsOrdered(Boolean) <em>Set Is Ordered</em>}</li>
@@ -378,57 +378,57 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateUpperGt0() <em>Validate Upper Gt0</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateUpperGt0(EDiagnosticChain, EMap) <em>Validate Upper Gt0</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.OperationImpl#validateUpperGt0()
+	 * @see org.eclipse.uml2.impl.OperationImpl#validateUpperGt0(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateUpperGt0() {
+	public void testValidateUpperGt0__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateLowerGe0() <em>Validate Lower Ge0</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateLowerGe0(EDiagnosticChain, EMap) <em>Validate Lower Ge0</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.OperationImpl#validateLowerGe0()
+	 * @see org.eclipse.uml2.impl.OperationImpl#validateLowerGe0(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateLowerGe0() {
+	public void testValidateLowerGe0__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateUpperGeLower() <em>Validate Upper Ge Lower</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateUpperGeLower(EDiagnosticChain, EMap) <em>Validate Upper Ge Lower</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.OperationImpl#validateUpperGeLower()
+	 * @see org.eclipse.uml2.impl.OperationImpl#validateUpperGeLower(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateUpperGeLower() {
+	public void testValidateUpperGeLower__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateLowerEqLowerbound() <em>Validate Lower Eq Lowerbound</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateLowerEqLowerbound(EDiagnosticChain, EMap) <em>Validate Lower Eq Lowerbound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.OperationImpl#validateLowerEqLowerbound()
+	 * @see org.eclipse.uml2.impl.OperationImpl#validateLowerEqLowerbound(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateLowerEqLowerbound() {
+	public void testValidateLowerEqLowerbound__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateUpperEqUpperbound() <em>Validate Upper Eq Upperbound</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateUpperEqUpperbound(EDiagnosticChain, EMap) <em>Validate Upper Eq Upperbound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.OperationImpl#validateUpperEqUpperbound()
+	 * @see org.eclipse.uml2.impl.OperationImpl#validateUpperEqUpperbound(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateUpperEqUpperbound() {
+	public void testValidateUpperEqUpperbound__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
@@ -460,13 +460,13 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateTypeOfResult() <em>Validate Type Of Result</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateTypeOfResult(EDiagnosticChain, EMap) <em>Validate Type Of Result</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.OperationImpl#validateTypeOfResult()
+	 * @see org.eclipse.uml2.impl.OperationImpl#validateTypeOfResult(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateTypeOfResult() {
+	public void testValidateTypeOfResult__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
@@ -550,13 +550,13 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateOnlyBodyForQuery() <em>Validate Only Body For Query</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#validateOnlyBodyForQuery(EDiagnosticChain, EMap) <em>Validate Only Body For Query</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.OperationImpl#validateOnlyBodyForQuery()
+	 * @see org.eclipse.uml2.impl.OperationImpl#validateOnlyBodyForQuery(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateOnlyBodyForQuery() {
+	public void testValidateOnlyBodyForQuery__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 
@@ -123,11 +123,12 @@ public final class NamedElementOperations
 
 		if (!result && null != diagnostics) {
 			diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UML2DiagnosticConstants.PLUGIN_ID,
-					UML2DiagnosticConstants.NAMED_ELEMENT__NO_NAME,
+					UML2Validator.DIAGNOSTIC_SOURCE,
+					UML2Validator.NAMED_ELEMENT__NO_NAME,
 					UML2Plugin.INSTANCE.getString(
 						"_UI_NamedElement_NoName_diagnostic", //$NON-NLS-1$
-						getMessageSubstitutions(context, namedElement)), null));
+						getMessageSubstitutions(context, namedElement)),
+					new Object[] {namedElement}));
 		}
 
 		return result;
@@ -167,13 +168,14 @@ public final class NamedElementOperations
 					diagnostics
 						.add(new BasicDiagnostic(
 								Diagnostic.ERROR,
-								UML2DiagnosticConstants.PLUGIN_ID,
-								UML2DiagnosticConstants.NAMED_ELEMENT__NO_NAME,
+								UML2Validator.DIAGNOSTIC_SOURCE,
+								UML2Validator.NAMED_ELEMENT__NO_NAME,
 								UML2Plugin.INSTANCE
 									.getString(
 										"_UI_NamedElement_QualifiedName_diagnostic", //$NON-NLS-1$
 										getMessageSubstitutions(context,
-											namedElement)), null));
+											namedElement)),
+								new Object[] {namedElement}));
 				}
 			}
 		}
@@ -200,13 +202,14 @@ public final class NamedElementOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP,
 							UML2Plugin.INSTANCE
 								.getString(
 									"_UI_NamedElement_VisibilityNeedsOwnership_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context,
-										namedElement)), null));
+										namedElement)),
+							new Object[] {namedElement}));
 			}
 		}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -144,7 +144,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InGroup()
-	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getInGroups();
@@ -197,7 +197,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Redefined Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_RedefinedElement()
-	 * @model type="org.eclipse.uml2.ActivityEdge"
+	 * @model type="org.eclipse.uml2.ActivityEdge" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedElements();
@@ -254,7 +254,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @return the value of the '<em>In Partition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InPartition()
 	 * @see org.eclipse.uml2.ActivityPartition#getContainedEdges
-	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="containedEdge"
+	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="containedEdge" ordered="false"
 	 * @generated
 	 */
 	EList getInPartitions();

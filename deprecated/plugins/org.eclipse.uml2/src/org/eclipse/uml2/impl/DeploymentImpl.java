@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.3 2004/05/11 15:23:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -111,8 +111,8 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
 	 *   <li>{@link org.eclipse.uml2.Dependency#getSuppliers}</li>
+	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
 	 * </ul>
 	 * </p>
 	 * @generated
@@ -150,8 +150,8 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources}</li>
 	 *   <li>{@link org.eclipse.uml2.Dependency#getClients}</li>
+	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources}</li>
 	 * </ul>
 	 * </p>
 	 * @generated

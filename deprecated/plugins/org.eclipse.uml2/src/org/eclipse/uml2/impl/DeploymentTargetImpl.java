@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.3 2004/05/11 15:23:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -99,8 +99,8 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
+	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 * </ul>
 	 * </p>
 	 * @generated

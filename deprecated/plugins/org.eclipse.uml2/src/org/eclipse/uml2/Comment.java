@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Comment.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Comment.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -80,7 +80,7 @@ public interface Comment extends TemplateableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Annotated Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getComment_AnnotatedElement()
-	 * @model type="org.eclipse.uml2.Element"
+	 * @model type="org.eclipse.uml2.Element" ordered="false"
 	 * @generated
 	 */
 	EList getAnnotatedElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolTransitionItemProviderTest.java,v 1.2 2004/04/30 17:18:14 khussey Exp $
+ * $Id: ProtocolTransitionItemProviderTest.java,v 1.3 2004/05/11 15:21:07 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -82,7 +82,7 @@ public class ProtocolTransitionItemProviderTest extends TransitionItemProviderTe
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.provider.ProtocolTransitionItemProvider#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testCreateSetCommand() {
 		

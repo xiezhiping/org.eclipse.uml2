@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RegionItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: RegionItemProvider.java,v 1.5 2004/05/11 15:21:50 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -41,7 +41,7 @@ import org.eclipse.uml2.UML2Package;
  * @generated
  */
 public class RegionItemProvider
-	extends RedefinableElementItemProvider
+	extends NamespaceItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -75,11 +75,46 @@ public class RegionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addRedefinitionContextPropertyDescriptor(object);
+			addIsLeafPropertyDescriptor(object);
 			addSubvertexPropertyDescriptor(object);
 			addTransitionPropertyDescriptor(object);
 			addExtendedRegionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Redefinition Context feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRedefinitionContextPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
+				 false));
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Leaf feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsLeafPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getRedefinableElement_IsLeaf(),
+				 true,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
 	}
 
 	/**
@@ -198,6 +233,9 @@ public class RegionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Region.class)) {
+			case UML2Package.REGION__IS_LEAF:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case UML2Package.REGION__SUBVERTEX:
 			case UML2Package.REGION__TRANSITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

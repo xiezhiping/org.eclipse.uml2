@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ParameterImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -48,11 +48,11 @@ import org.eclipse.uml2.impl.ParameterImpl;
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#isMultivalued() <em>Is Multivalued</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#includesCardinality(Integer) <em>Includes Cardinality</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#includesMultiplicity(MultiplicityElement) <em>Includes Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperGt0() <em>Validate Upper Gt0</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#validateLowerGe0() <em>Validate Lower Ge0</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperGeLower() <em>Validate Upper Ge Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#validateLowerEqLowerbound() <em>Validate Lower Eq Lowerbound</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperEqUpperbound() <em>Validate Upper Eq Upperbound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperGt0(EDiagnosticChain, EMap) <em>Validate Upper Gt0</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#validateLowerGe0(EDiagnosticChain, EMap) <em>Validate Lower Ge0</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperGeLower(EDiagnosticChain, EMap) <em>Validate Upper Ge Lower</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#validateLowerEqLowerbound(EDiagnosticChain, EMap) <em>Validate Lower Eq Lowerbound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperEqUpperbound(EDiagnosticChain, EMap) <em>Validate Upper Eq Upperbound</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#lower() <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#upper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getOwnedElements() <em>Get Owned Elements</em>}</li>
@@ -446,57 +446,57 @@ public class ParameterImplTest extends ConnectableElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperGt0() <em>Validate Upper Gt0</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperGt0(EDiagnosticChain, EMap) <em>Validate Upper Gt0</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ParameterImpl#validateUpperGt0()
+	 * @see org.eclipse.uml2.impl.ParameterImpl#validateUpperGt0(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateUpperGt0() {
+	public void testValidateUpperGt0__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#validateLowerGe0() <em>Validate Lower Ge0</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#validateLowerGe0(EDiagnosticChain, EMap) <em>Validate Lower Ge0</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ParameterImpl#validateLowerGe0()
+	 * @see org.eclipse.uml2.impl.ParameterImpl#validateLowerGe0(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateLowerGe0() {
+	public void testValidateLowerGe0__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperGeLower() <em>Validate Upper Ge Lower</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperGeLower(EDiagnosticChain, EMap) <em>Validate Upper Ge Lower</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ParameterImpl#validateUpperGeLower()
+	 * @see org.eclipse.uml2.impl.ParameterImpl#validateUpperGeLower(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateUpperGeLower() {
+	public void testValidateUpperGeLower__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#validateLowerEqLowerbound() <em>Validate Lower Eq Lowerbound</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#validateLowerEqLowerbound(EDiagnosticChain, EMap) <em>Validate Lower Eq Lowerbound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ParameterImpl#validateLowerEqLowerbound()
+	 * @see org.eclipse.uml2.impl.ParameterImpl#validateLowerEqLowerbound(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateLowerEqLowerbound() {
+	public void testValidateLowerEqLowerbound__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperEqUpperbound() <em>Validate Upper Eq Upperbound</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#validateUpperEqUpperbound(EDiagnosticChain, EMap) <em>Validate Upper Eq Upperbound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ParameterImpl#validateUpperEqUpperbound()
+	 * @see org.eclipse.uml2.impl.ParameterImpl#validateUpperEqUpperbound(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateUpperEqUpperbound() {
+	public void testValidateUpperEqUpperbound__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
+ * $Id: OperationOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -22,7 +22,7 @@ import org.eclipse.uml2.Operation;
 import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.Type;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Plugin;
 
 /**
@@ -136,12 +136,12 @@ public final class OperationOperations
 			if (null != diagnostics) {
 				diagnostics
 					.add(new BasicDiagnostic(Diagnostic.ERROR,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.OPERATION__TYPE_OF_RESULT,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.OPERATION__TYPE_OF_RESULT,
 							UML2Plugin.INSTANCE.getString(
 								"_UI_Operation_TypeOfResult_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context, operation)),
-							null));
+							new Object[] {operation}));
 			}
 		}
 
@@ -163,12 +163,12 @@ public final class OperationOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.OPERATION__ONLY_BODY_FOR_QUERY,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.OPERATION__ONLY_BODY_FOR_QUERY,
 							UML2Plugin.INSTANCE.getString(
 								"_UI_Operation_OnlyBodyForQuery_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context, operation)),
-							null));
+							new Object[] {operation}));
 			}
 		}
 

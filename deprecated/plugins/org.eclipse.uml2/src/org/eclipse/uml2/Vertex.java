@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Vertex.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Vertex.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -81,7 +81,7 @@ public interface Vertex extends NamedElement{
 	 * @return the value of the '<em>Outgoing</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getVertex_Outgoing()
 	 * @see org.eclipse.uml2.Transition#getSource
-	 * @model type="org.eclipse.uml2.Transition" opposite="source"
+	 * @model type="org.eclipse.uml2.Transition" opposite="source" ordered="false"
 	 * @generated
 	 */
 	EList getOutgoings();
@@ -110,7 +110,7 @@ public interface Vertex extends NamedElement{
 	 * @return the value of the '<em>Incoming</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getVertex_Incoming()
 	 * @see org.eclipse.uml2.Transition#getTarget
-	 * @model type="org.eclipse.uml2.Transition" opposite="target"
+	 * @model type="org.eclipse.uml2.Transition" opposite="target" ordered="false"
 	 * @generated
 	 */
 	EList getIncomings();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StringExpression.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: StringExpression.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,7 +54,7 @@ public interface StringExpression extends TemplateableElement{
 	 * @return the value of the '<em>Sub Expression</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStringExpression_SubExpression()
 	 * @see org.eclipse.uml2.StringExpression#getOwningExpression
-	 * @model type="org.eclipse.uml2.StringExpression" opposite="owningExpression" containment="true"
+	 * @model type="org.eclipse.uml2.StringExpression" opposite="owningExpression" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getSubExpressions();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -232,8 +232,8 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 *   <li>{@link org.eclipse.uml2.TemplateParameter#getParameteredElement}</li>
+	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 * </ul>
 	 * </p>
 	 * @generated

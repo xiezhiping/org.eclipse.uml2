@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImportOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
+ * $Id: ElementImportOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.PackageableElement;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -64,14 +64,14 @@ public final class ElementImportOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.ELEMENT_IMPORT__VISIBILITY_PUBLIC_OR_PRIVATE,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.ELEMENT_IMPORT__VISIBILITY_PUBLIC_OR_PRIVATE,
 							UML2Plugin.INSTANCE
 								.getString(
 									"_UI_ElementImport_VisibilityPublicOrPrivate_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context,
-										elementImport)), null));
-
+										elementImport)),
+							new Object[] {elementImport}));
 			}
 		}
 
@@ -100,14 +100,14 @@ public final class ElementImportOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.ELEMENT_IMPORT__IMPORTED_ELEMENT_IS_PUBLIC,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.ELEMENT_IMPORT__IMPORTED_ELEMENT_IS_PUBLIC,
 							UML2Plugin.INSTANCE
 								.getString(
 									"_UI_ElementImport_ImportedElementIsPublic_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context,
 										importedElement)),
-							new Object[] {importedElement}));
+							new Object[] {elementImport, importedElement}));
 
 			}
 		}

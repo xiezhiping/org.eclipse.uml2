@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Component.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: Component.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -81,7 +81,7 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Required</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getComponent_Required()
-	 * @model type="org.eclipse.uml2.Interface" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRequireds();
@@ -108,7 +108,7 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Provided</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getComponent_Provided()
-	 * @model type="org.eclipse.uml2.Interface" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getProvideds();
@@ -137,7 +137,7 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * @return the value of the '<em>Realization</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getComponent_Realization()
 	 * @see org.eclipse.uml2.Realization#getAbstraction
-	 * @model type="org.eclipse.uml2.Realization" opposite="abstraction" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.Realization" opposite="abstraction" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getRealizations();
@@ -175,7 +175,7 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Member</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getComponent_OwnedMember()
-	 * @model type="org.eclipse.uml2.PackageableElement" containment="true"
+	 * @model type="org.eclipse.uml2.PackageableElement" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedMembers();

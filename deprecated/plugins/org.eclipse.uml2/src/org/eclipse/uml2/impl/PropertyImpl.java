@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.5 2004/05/11 15:23:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -398,8 +398,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
+	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 * </ul>
 	 * </p>
 	 * @generated
@@ -609,8 +609,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
 	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
+	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
 	 * </ul>
 	 * </p>
 	 * @generated
@@ -627,8 +627,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
 	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
+	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
 	 * </ul>
 	 * </p>
 	 * @generated
@@ -680,9 +680,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Property#getAssociation}</li>
-	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
 	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
+	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
+	 *   <li>{@link org.eclipse.uml2.Property#getAssociation}</li>
 	 * </ul>
 	 * </p>
 	 * @generated
@@ -798,8 +798,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
 	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
+	 *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers}</li>
 	 * </ul>
 	 * </p>
 	 * @generated

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: StateImpl.java,v 1.3 2004/05/11 15:23:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,26 +16,31 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Activity;
+import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.ConnectionPointReference;
 import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.Element;
+import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.Region;
 import org.eclipse.uml2.State;
 import org.eclipse.uml2.StateMachine;
@@ -54,6 +59,8 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#isLeaf <em>Is Leaf</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#getIncomings <em>Incoming</em>}</li>
@@ -75,13 +82,33 @@ import org.eclipse.uml2.VisibilityKind;
  *
  * @generated
  */
-public class StateImpl extends RedefinableElementImpl implements State {
+public class StateImpl extends NamespaceImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isLeaf()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_LEAF_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isLeaf()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isLeaf = IS_LEAF_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
@@ -209,6 +236,45 @@ public class StateImpl extends RedefinableElementImpl implements State {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getState();
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+     */
+    public Classifier getRedefinitionContext(String unqualifiedName) {
+    	for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
+    		Classifier namedRedefinitionContext = (Classifier) i.next();
+    		
+    		if (unqualifiedName.equals(namedRedefinitionContext.getName())) {
+    			return namedRedefinitionContext;
+    		}
+    	}
+    	
+    	return null;
+    }
+      
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * Returns the value of the '<em><b>Is Leaf</b></em>' attribute.
+	 * @generated
+	 */
+	public boolean isLeaf() {
+		return isLeaf;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsLeaf(boolean newIsLeaf) {
+		boolean oldIsLeaf = isLeaf;
+		isLeaf = newIsLeaf;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STATE__IS_LEAF, oldIsLeaf, isLeaf));
 	}
 
 	/**
@@ -553,11 +619,17 @@ public class StateImpl extends RedefinableElementImpl implements State {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * Returns the value of the '<em><b>Region</b></em>' containment reference list.
+	 * <p>
+	 * Subsets the following features:
+	 * <ul>
+	 *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers}</li>
+	 * </ul>
+	 * </p>
 	 * @generated
 	 */
 	public EList getRegions() {
 		if (region == null) {
-			region = new EObjectContainmentEList(Region.class, this, UML2Package.STATE__REGION);
+			region = new EObjectContainmentWithInverseEList(Region.class, this, UML2Package.STATE__REGION, UML2Package.REGION__STATE);
 		}
 		return region;
 	}
@@ -852,6 +924,46 @@ public class StateImpl extends RedefinableElementImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context) {
+		// TODO: test this OCL constraint
+		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
+		// TODO: test this OCL constraint
+		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isConsistentWith(RedefinableElement redefinee) {
+		// TODO: test this OCL operation
+		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isConsistentWith(this, redefinee);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
+		// TODO: test this OCL operation
+		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * Returns the derived value of the '<em><b>Owner</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Element#getOwnedElements <em>Owned Element</em>}'.
 	 * @generated
@@ -936,6 +1048,28 @@ public class StateImpl extends RedefinableElementImpl implements State {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list, a derived union.
+	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.NamedElement#getNamespace <em>Namespace</em>}'.
+	 * @generated
+	 */
+	public EList getOwnedMembers() {
+		// TODO: test this union getter
+		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getState().getEAllOperations().get(49))) {
+			Set union = new LinkedHashSet();
+			union.addAll(super.getOwnedMembers());
+			union.addAll(getRegions());
+			getCacheAdapter().put(
+				this,
+				UML2Package.eINSTANCE.getState().getEAllOperations().get(49),
+				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
+		}
+		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getState().getEAllOperations().get(49));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
@@ -951,6 +1085,12 @@ public class StateImpl extends RedefinableElementImpl implements State {
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.STATE__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
+				case UML2Package.STATE__OWNED_RULE:
+					return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
+				case UML2Package.STATE__ELEMENT_IMPORT:
+					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
+				case UML2Package.STATE__PACKAGE_IMPORT:
+					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE__CONTAINER:
 					if (eContainer != null)
 						msgs = eBasicRemoveFromContainer(msgs);
@@ -959,6 +1099,8 @@ public class StateImpl extends RedefinableElementImpl implements State {
 					return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
 				case UML2Package.STATE__INCOMING:
 					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
+				case UML2Package.STATE__REGION:
+					return ((InternalEList)getRegions()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -988,6 +1130,12 @@ public class StateImpl extends RedefinableElementImpl implements State {
 					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE__NAME_EXPRESSION:
 					return basicSetNameExpression(null, msgs);
+				case UML2Package.STATE__OWNED_RULE:
+					return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
+				case UML2Package.STATE__ELEMENT_IMPORT:
+					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
+				case UML2Package.STATE__PACKAGE_IMPORT:
+					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
 				case UML2Package.STATE__CONTAINER:
 					return eBasicSetContainer(null, UML2Package.STATE__CONTAINER, msgs);
 				case UML2Package.STATE__OUTGOING:
@@ -1060,6 +1208,16 @@ public class StateImpl extends RedefinableElementImpl implements State {
 				return getClientDependencies();
 			case UML2Package.STATE__NAME_EXPRESSION:
 				return getNameExpression();
+			case UML2Package.STATE__MEMBER:
+				return getMembers();
+			case UML2Package.STATE__OWNED_RULE:
+				return getOwnedRules();
+			case UML2Package.STATE__IMPORTED_MEMBER:
+				return getImportedMembers();
+			case UML2Package.STATE__ELEMENT_IMPORT:
+				return getElementImports();
+			case UML2Package.STATE__PACKAGE_IMPORT:
+				return getPackageImports();
 			case UML2Package.STATE__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.STATE__IS_LEAF:
@@ -1136,6 +1294,18 @@ public class StateImpl extends RedefinableElementImpl implements State {
 				return;
 			case UML2Package.STATE__NAME_EXPRESSION:
 				setNameExpression((StringExpression)newValue);
+				return;
+			case UML2Package.STATE__OWNED_RULE:
+				getOwnedRules().clear();
+				getOwnedRules().addAll((Collection)newValue);
+				return;
+			case UML2Package.STATE__ELEMENT_IMPORT:
+				getElementImports().clear();
+				getElementImports().addAll((Collection)newValue);
+				return;
+			case UML2Package.STATE__PACKAGE_IMPORT:
+				getPackageImports().clear();
+				getPackageImports().addAll((Collection)newValue);
 				return;
 			case UML2Package.STATE__IS_LEAF:
 				setIsLeaf(((Boolean)newValue).booleanValue());
@@ -1216,6 +1386,15 @@ public class StateImpl extends RedefinableElementImpl implements State {
 			case UML2Package.STATE__NAME_EXPRESSION:
 				setNameExpression((StringExpression)null);
 				return;
+			case UML2Package.STATE__OWNED_RULE:
+				getOwnedRules().clear();
+				return;
+			case UML2Package.STATE__ELEMENT_IMPORT:
+				getElementImports().clear();
+				return;
+			case UML2Package.STATE__PACKAGE_IMPORT:
+				getPackageImports().clear();
+				return;
 			case UML2Package.STATE__IS_LEAF:
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
@@ -1288,6 +1467,16 @@ public class StateImpl extends RedefinableElementImpl implements State {
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.STATE__NAME_EXPRESSION:
 				return nameExpression != null;
+			case UML2Package.STATE__MEMBER:
+				return !getMembers().isEmpty();
+			case UML2Package.STATE__OWNED_RULE:
+				return ownedRule != null && !ownedRule.isEmpty();
+			case UML2Package.STATE__IMPORTED_MEMBER:
+				return !getImportedMembers().isEmpty();
+			case UML2Package.STATE__ELEMENT_IMPORT:
+				return elementImport != null && !elementImport.isEmpty();
+			case UML2Package.STATE__PACKAGE_IMPORT:
+				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.STATE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.STATE__IS_LEAF:
@@ -1334,6 +1523,13 @@ public class StateImpl extends RedefinableElementImpl implements State {
 	 * @generated
 	 */
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+		if (baseClass == RedefinableElement.class) {
+			switch (derivedFeatureID) {
+				case UML2Package.STATE__REDEFINITION_CONTEXT: return UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT;
+				case UML2Package.STATE__IS_LEAF: return UML2Package.REDEFINABLE_ELEMENT__IS_LEAF;
+				default: return -1;
+			}
+		}
 		if (baseClass == Vertex.class) {
 			switch (derivedFeatureID) {
 				case UML2Package.STATE__CONTAINER: return UML2Package.VERTEX__CONTAINER;
@@ -1351,6 +1547,13 @@ public class StateImpl extends RedefinableElementImpl implements State {
 	 * @generated
 	 */
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+		if (baseClass == RedefinableElement.class) {
+			switch (baseFeatureID) {
+				case UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT: return UML2Package.STATE__REDEFINITION_CONTEXT;
+				case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF: return UML2Package.STATE__IS_LEAF;
+				default: return -1;
+			}
+		}
 		if (baseClass == Vertex.class) {
 			switch (baseFeatureID) {
 				case UML2Package.VERTEX__CONTAINER: return UML2Package.STATE__CONTAINER;
@@ -1360,6 +1563,21 @@ public class StateImpl extends RedefinableElementImpl implements State {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isLeaf: "); //$NON-NLS-1$
+		result.append(isLeaf);
+		result.append(')');
+		return result.toString();
 	}
 
 } //StateImpl

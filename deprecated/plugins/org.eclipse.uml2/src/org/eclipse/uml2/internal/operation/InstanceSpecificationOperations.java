@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecificationOperations.java,v 1.3 2004/04/29 01:38:36 khussey Exp $
+ * $Id: InstanceSpecificationOperations.java,v 1.4 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -24,7 +24,7 @@ import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.InstanceSpecification;
 import org.eclipse.uml2.Slot;
 import org.eclipse.uml2.StructuralFeature;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Plugin;
 
 
@@ -78,14 +78,14 @@ public final class InstanceSpecificationOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.INSTANCE_SPECIFICATION__SLOTS_ARE_DEFINED,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.INSTANCE_SPECIFICATION__SLOTS_ARE_DEFINED,
 							UML2Plugin.INSTANCE
 								.getString(
 									"_UI_InstanceSpecification_SlotsAreDefined_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context, slot,
 										instanceSpecification)),
-							new Object[] {slot}));
+							new Object[] {instanceSpecification, slot}));
 			}
 		}
 
@@ -120,15 +120,15 @@ public final class InstanceSpecificationOperations
 					diagnostics
 						.add(new BasicDiagnostic(
 								Diagnostic.WARNING,
-								UML2DiagnosticConstants.PLUGIN_ID,
-								UML2DiagnosticConstants.INSTANCE_SPECIFICATION__NO_DUPLICATE_SLOTS,
+								UML2Validator.DIAGNOSTIC_SOURCE,
+								UML2Validator.INSTANCE_SPECIFICATION__NO_DUPLICATE_SLOTS,
 								UML2Plugin.INSTANCE
 									.getString(
 										"_UI_InstanceSpecification_NoDuplicateSlots_diagnostic", //$NON-NLS-1$
 										getMessageSubstitutions(context,
 											definingFeature,
 											instanceSpecification)),
-								new Object[] {definingFeature}));
+								new Object[] {instanceSpecification, definingFeature}));
 				}
 			} else {
 				definingFeatures.add(definingFeature);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConstraintImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ConstraintImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -32,7 +32,7 @@ import org.eclipse.uml2.impl.ConstraintImpl;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#validateNotApplyToSelf() <em>Validate Not Apply To Self</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#validateNotApplyToSelf(EDiagnosticChain, EMap) <em>Validate Not Apply To Self</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#getOwnedElements() <em>Get Owned Elements</em>}</li>
  * </ul>
  * </p>
@@ -154,13 +154,13 @@ public class ConstraintImplTest extends PackageableElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ConstraintImpl#validateNotApplyToSelf() <em>Validate Not Apply To Self</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ConstraintImpl#validateNotApplyToSelf(EDiagnosticChain, EMap) <em>Validate Not Apply To Self</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ConstraintImpl#validateNotApplyToSelf()
+	 * @see org.eclipse.uml2.impl.ConstraintImpl#validateNotApplyToSelf(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateNotApplyToSelf() {
+	public void testValidateNotApplyToSelf__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

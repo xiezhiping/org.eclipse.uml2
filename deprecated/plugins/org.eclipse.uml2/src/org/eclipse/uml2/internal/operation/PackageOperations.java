@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
+ * $Id: PackageOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -25,7 +25,7 @@ import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageableElement;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -163,14 +163,14 @@ public final class PackageOperations
 						diagnostics
 							.add(new BasicDiagnostic(
 									Diagnostic.WARNING,
-									UML2DiagnosticConstants.PLUGIN_ID,
-									UML2DiagnosticConstants.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
+									UML2Validator.DIAGNOSTIC_SOURCE,
+									UML2Validator.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
 									UML2Plugin.INSTANCE
 										.getString(
 											"_UI_Package_ElementsPublicOrPrivate_diagnostic", //$NON-NLS-1$
 											getMessageSubstitutions(context,
 												ownedElement, package_)),
-									new Object[] {ownedElement}));
+									new Object[] {package_, ownedElement}));
 					}
 				}
 			}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Transition.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Transition.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -197,7 +197,7 @@ public interface Transition extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Trigger</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Trigger()
-	 * @model type="org.eclipse.uml2.Trigger"
+	 * @model type="org.eclipse.uml2.Trigger" ordered="false"
 	 * @generated
 	 */
 	EList getTriggers();

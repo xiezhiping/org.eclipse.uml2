@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: PropertyImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -56,14 +56,14 @@ import org.eclipse.uml2.impl.PropertyImpl;
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getOwner() <em>Get Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getOwnedElements() <em>Get Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getClientDependencies() <em>Get Client Dependencies</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateOppositeIsOtherEnd() <em>Validate Opposite Is Other End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateOppositeIsOtherEnd(EDiagnosticChain, EMap) <em>Validate Opposite Is Other End</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#opposite() <em>Opposite</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateMultiplicityOfComposite() <em>Validate Multiplicity Of Composite</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateSubsettingContext() <em>Validate Subsetting Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateNavigablePropertyRedefinition() <em>Validate Navigable Property Redefinition</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateSubsettingRules() <em>Validate Subsetting Rules</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateNavigableReadonly() <em>Validate Navigable Readonly</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateDerivedUnionIsDerived() <em>Validate Derived Union Is Derived</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateMultiplicityOfComposite(EDiagnosticChain, EMap) <em>Validate Multiplicity Of Composite</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateSubsettingContext(EDiagnosticChain, EMap) <em>Validate Subsetting Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateNavigablePropertyRedefinition(EDiagnosticChain, EMap) <em>Validate Navigable Property Redefinition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateSubsettingRules(EDiagnosticChain, EMap) <em>Validate Subsetting Rules</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateNavigableReadonly(EDiagnosticChain, EMap) <em>Validate Navigable Readonly</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#validateDerivedUnionIsDerived(EDiagnosticChain, EMap) <em>Validate Derived Union Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#subsettingContext() <em>Subsetting Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#isReadOnly() <em>Is Read Only</em>}</li>
@@ -351,13 +351,13 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateOppositeIsOtherEnd() <em>Validate Opposite Is Other End</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateOppositeIsOtherEnd(EDiagnosticChain, EMap) <em>Validate Opposite Is Other End</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.PropertyImpl#validateOppositeIsOtherEnd()
+	 * @see org.eclipse.uml2.impl.PropertyImpl#validateOppositeIsOtherEnd(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateOppositeIsOtherEnd() {
+	public void testValidateOppositeIsOtherEnd__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
@@ -373,68 +373,68 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateMultiplicityOfComposite() <em>Validate Multiplicity Of Composite</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateMultiplicityOfComposite(EDiagnosticChain, EMap) <em>Validate Multiplicity Of Composite</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.PropertyImpl#validateMultiplicityOfComposite()
+	 * @see org.eclipse.uml2.impl.PropertyImpl#validateMultiplicityOfComposite(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateMultiplicityOfComposite() {
+	public void testValidateMultiplicityOfComposite__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateSubsettingContext() <em>Validate Subsetting Context</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateSubsettingContext(EDiagnosticChain, EMap) <em>Validate Subsetting Context</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.PropertyImpl#validateSubsettingContext()
+	 * @see org.eclipse.uml2.impl.PropertyImpl#validateSubsettingContext(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateSubsettingContext() {
+	public void testValidateSubsettingContext__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateNavigablePropertyRedefinition() <em>Validate Navigable Property Redefinition</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateNavigablePropertyRedefinition(EDiagnosticChain, EMap) <em>Validate Navigable Property Redefinition</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.PropertyImpl#validateNavigablePropertyRedefinition()
+	 * @see org.eclipse.uml2.impl.PropertyImpl#validateNavigablePropertyRedefinition(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateNavigablePropertyRedefinition() {
+	public void testValidateNavigablePropertyRedefinition__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateSubsettingRules() <em>Validate Subsetting Rules</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateSubsettingRules(EDiagnosticChain, EMap) <em>Validate Subsetting Rules</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.PropertyImpl#validateSubsettingRules()
+	 * @see org.eclipse.uml2.impl.PropertyImpl#validateSubsettingRules(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateSubsettingRules() {
+	public void testValidateSubsettingRules__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateNavigableReadonly() <em>Validate Navigable Readonly</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateNavigableReadonly(EDiagnosticChain, EMap) <em>Validate Navigable Readonly</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.PropertyImpl#validateNavigableReadonly()
+	 * @see org.eclipse.uml2.impl.PropertyImpl#validateNavigableReadonly(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateNavigableReadonly() {
+	public void testValidateNavigableReadonly__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateDerivedUnionIsDerived() <em>Validate Derived Union Is Derived</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#validateDerivedUnionIsDerived(EDiagnosticChain, EMap) <em>Validate Derived Union Is Derived</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.PropertyImpl#validateDerivedUnionIsDerived()
+	 * @see org.eclipse.uml2.impl.PropertyImpl#validateDerivedUnionIsDerived(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateDerivedUnionIsDerived() {
+	public void testValidateDerivedUnionIsDerived__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

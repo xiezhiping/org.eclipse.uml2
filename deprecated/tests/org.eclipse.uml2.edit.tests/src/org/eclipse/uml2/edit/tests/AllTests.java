@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AllTests.java,v 1.2 2004/04/30 17:18:14 khussey Exp $
+ * $Id: AllTests.java,v 1.3 2004/05/11 15:21:07 khussey Exp $
  */
 package org.eclipse.uml2.edit.tests;
 
@@ -126,24 +126,24 @@ public class AllTests {
 	 * @generated
 	 */
 	public static Test suite() {
-		TestSuite suite = new TestSuite("UML2 Edit Tests"); //$NON-NLS-1$                                
-		suite.addTestSuite(OpaqueExpressionItemProviderTest.class);        
-		suite.addTestSuite(ExpressionItemProviderTest.class);    
+		TestSuite suite = new TestSuite("UML2 Edit Tests"); //$NON-NLS-1$            
 		suite.addTestSuite(ClassItemProviderTest.class);        
 		suite.addTestSuite(PropertyItemProviderTest.class);    
 		suite.addTestSuite(OperationItemProviderTest.class);        
-		suite.addTestSuite(ParameterItemProviderTest.class);    
+		suite.addTestSuite(ParameterItemProviderTest.class);        
 		suite.addTestSuite(PackageItemProviderTest.class);    
 		suite.addTestSuite(EnumerationItemProviderTest.class);    
 		suite.addTestSuite(DataTypeItemProviderTest.class);    
 		suite.addTestSuite(EnumerationLiteralItemProviderTest.class);    
 		suite.addTestSuite(PrimitiveTypeItemProviderTest.class);    
-		suite.addTestSuite(ConstraintItemProviderTest.class);    
+		suite.addTestSuite(OpaqueExpressionItemProviderTest.class);        
+		suite.addTestSuite(ExpressionItemProviderTest.class);                    
 		suite.addTestSuite(LiteralBooleanItemProviderTest.class);        
 		suite.addTestSuite(LiteralStringItemProviderTest.class);    
 		suite.addTestSuite(LiteralNullItemProviderTest.class);    
 		suite.addTestSuite(LiteralIntegerItemProviderTest.class);    
-		suite.addTestSuite(LiteralUnlimitedNaturalItemProviderTest.class);                            
+		suite.addTestSuite(LiteralUnlimitedNaturalItemProviderTest.class);    
+		suite.addTestSuite(ConstraintItemProviderTest.class);                            
 		suite.addTestSuite(InstanceSpecificationItemProviderTest.class);        
 		suite.addTestSuite(InstanceValueItemProviderTest.class);                
 		suite.addTestSuite(AssociationItemProviderTest.class);        
@@ -152,45 +152,47 @@ public class AllTests {
 		suite.addTestSuite(ProfileApplicationItemProviderTest.class);    
 		suite.addTestSuite(ExtensionItemProviderTest.class);    
 		suite.addTestSuite(ExtensionEndItemProviderTest.class);    
+		suite.addTestSuite(ModelItemProviderTest.class);    
+		suite.addTestSuite(AssociationClassItemProviderTest.class);    
+		suite.addTestSuite(GeneralizationSetItemProviderTest.class);            
+		suite.addTestSuite(ActivityItemProviderTest.class);    
 		suite.addTestSuite(PermissionItemProviderTest.class);    
 		suite.addTestSuite(DependencyItemProviderTest.class);    
 		suite.addTestSuite(UsageItemProviderTest.class);    
 		suite.addTestSuite(AbstractionItemProviderTest.class);    
 		suite.addTestSuite(RealizationItemProviderTest.class);    
-		suite.addTestSuite(SubstitutionItemProviderTest.class);            
-		suite.addTestSuite(ActivityItemProviderTest.class);    
-		suite.addTestSuite(AssociationClassItemProviderTest.class);    
-		suite.addTestSuite(ModelItemProviderTest.class);    
+		suite.addTestSuite(SubstitutionItemProviderTest.class);    
 		suite.addTestSuite(InformationItemItemProviderTest.class);        
-		suite.addTestSuite(GeneralizationSetItemProviderTest.class);                    
+		suite.addTestSuite(ActorItemProviderTest.class);        
+		suite.addTestSuite(UseCaseItemProviderTest.class);                                                                                        
 		suite.addTestSuite(InterfaceItemProviderTest.class);    
 		suite.addTestSuite(ImplementationItemProviderTest.class);    
-		suite.addTestSuite(ActorItemProviderTest.class);        
-		suite.addTestSuite(UseCaseItemProviderTest.class);            
 		suite.addTestSuite(ArtifactItemProviderTest.class);    
-		suite.addTestSuite(ManifestationItemProviderTest.class);                                                                                    
-		suite.addTestSuite(CollaborationItemProviderTest.class);    
-		suite.addTestSuite(InteractionItemProviderTest.class);                                        
-		suite.addTestSuite(PortItemProviderTest.class);        
+		suite.addTestSuite(ManifestationItemProviderTest.class);                    
 		suite.addTestSuite(CallTriggerItemProviderTest.class);        
 		suite.addTestSuite(ChangeTriggerItemProviderTest.class);            
 		suite.addTestSuite(SignalItemProviderTest.class);    
 		suite.addTestSuite(SignalTriggerItemProviderTest.class);    
 		suite.addTestSuite(TimeTriggerItemProviderTest.class);    
 		suite.addTestSuite(AnyTriggerItemProviderTest.class);    
+		suite.addTestSuite(PortItemProviderTest.class);        
+		suite.addTestSuite(InteractionItemProviderTest.class);                                        
 		suite.addTestSuite(VariableItemProviderTest.class);                    
 		suite.addTestSuite(TemplateSignatureItemProviderTest.class);    
 		suite.addTestSuite(TemplateParameterItemProviderTest.class);                    
 		suite.addTestSuite(TemplateParameterSubstitutionItemProviderTest.class);    
+		suite.addTestSuite(CollaborationItemProviderTest.class);    
 		suite.addTestSuite(OperationTemplateParameterItemProviderTest.class);    
 		suite.addTestSuite(ClassifierTemplateParameterItemProviderTest.class);        
 		suite.addTestSuite(RedefinableTemplateSignatureItemProviderTest.class);        
-		suite.addTestSuite(ConnectableElementTemplateParameterItemProviderTest.class);    
-		suite.addTestSuite(StateMachineItemProviderTest.class);                                                                                                                                                                                                        
-		suite.addTestSuite(InteractionConstraintItemProviderTest.class);                            
-		suite.addTestSuite(ProtocolStateMachineItemProviderTest.class);    
-		suite.addTestSuite(ProtocolTransitionItemProviderTest.class);    
-		suite.addTestSuite(ComponentItemProviderTest.class);    
+		suite.addTestSuite(ConnectableElementTemplateParameterItemProviderTest.class);                        
+		suite.addTestSuite(InteractionConstraintItemProviderTest.class);                                                                                                                                                                    
+		suite.addTestSuite(StateMachineItemProviderTest.class);                                            
+		suite.addTestSuite(DeploymentItemProviderTest.class);            
+		suite.addTestSuite(NodeItemProviderTest.class);    
+		suite.addTestSuite(DeviceItemProviderTest.class);    
+		suite.addTestSuite(ExecutionEnvironmentItemProviderTest.class);    
+		suite.addTestSuite(CommunicationPathItemProviderTest.class);    
 		suite.addTestSuite(TimeExpressionItemProviderTest.class);    
 		suite.addTestSuite(DurationItemProviderTest.class);        
 		suite.addTestSuite(DurationIntervalItemProviderTest.class);    
@@ -198,12 +200,10 @@ public class AllTests {
 		suite.addTestSuite(TimeConstraintItemProviderTest.class);    
 		suite.addTestSuite(IntervalConstraintItemProviderTest.class);    
 		suite.addTestSuite(TimeIntervalItemProviderTest.class);        
-		suite.addTestSuite(DurationConstraintItemProviderTest.class);                                                    
-		suite.addTestSuite(DeploymentItemProviderTest.class);            
-		suite.addTestSuite(NodeItemProviderTest.class);    
-		suite.addTestSuite(DeviceItemProviderTest.class);    
-		suite.addTestSuite(ExecutionEnvironmentItemProviderTest.class);    
-		suite.addTestSuite(CommunicationPathItemProviderTest.class);                
+		suite.addTestSuite(DurationConstraintItemProviderTest.class);    
+		suite.addTestSuite(ComponentItemProviderTest.class);                    
+		suite.addTestSuite(ProtocolStateMachineItemProviderTest.class);    
+		suite.addTestSuite(ProtocolTransitionItemProviderTest.class);                                                    
 		suite.addTestSuite(DeploymentSpecificationItemProviderTest.class);
 		return suite;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,7 +54,7 @@ public interface StructuredClassifier extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.Property" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.Property" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -92,7 +92,7 @@ public interface StructuredClassifier extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Part</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_Part()
-	 * @model type="org.eclipse.uml2.Property" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Property" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getParts();
@@ -119,7 +119,7 @@ public interface StructuredClassifier extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Role</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_Role()
-	 * @model type="org.eclipse.uml2.ConnectableElement" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.ConnectableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRoles();
@@ -146,7 +146,7 @@ public interface StructuredClassifier extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Connector</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_OwnedConnector()
-	 * @model type="org.eclipse.uml2.Connector" containment="true"
+	 * @model type="org.eclipse.uml2.Connector" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedConnectors();

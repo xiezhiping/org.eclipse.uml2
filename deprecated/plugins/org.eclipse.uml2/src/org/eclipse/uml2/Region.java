@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Region.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Region.java,v 1.3 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.EClass;
  * <ul>
  *   <li>{@link org.eclipse.uml2.Region#getSubvertices <em>Subvertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.Region#getTransitions <em>Transition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Region#getStateMachine <em>State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Region#getState <em>State</em>}</li>
  *   <li>{@link org.eclipse.uml2.Region#getExtendedRegion <em>Extended Region</em>}</li>
  * </ul>
  * </p>
@@ -34,7 +36,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model 
  * @generated
  */
-public interface Region extends RedefinableElement{
+public interface Region extends Namespace, RedefinableElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -55,7 +57,7 @@ public interface Region extends RedefinableElement{
 	 * @return the value of the '<em>Subvertex</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRegion_Subvertex()
 	 * @see org.eclipse.uml2.Vertex#getContainer
-	 * @model type="org.eclipse.uml2.Vertex" opposite="container" containment="true"
+	 * @model type="org.eclipse.uml2.Vertex" opposite="container" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getSubvertices();
@@ -95,7 +97,7 @@ public interface Region extends RedefinableElement{
 	 * @return the value of the '<em>Transition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRegion_Transition()
 	 * @see org.eclipse.uml2.Transition#getContainer
-	 * @model type="org.eclipse.uml2.Transition" opposite="container" containment="true"
+	 * @model type="org.eclipse.uml2.Transition" opposite="container" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getTransitions();
@@ -121,6 +123,62 @@ public interface Region extends RedefinableElement{
 	 * @generated
      */
     Transition createTransition(EClass eClass);
+
+	/**
+	 * Returns the value of the '<em><b>State Machine</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.StateMachine#getRegions <em>Region</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>State Machine</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>State Machine</em>' container reference.
+	 * @see #setStateMachine(StateMachine)
+	 * @see org.eclipse.uml2.UML2Package#getRegion_StateMachine()
+	 * @see org.eclipse.uml2.StateMachine#getRegions
+	 * @model opposite="region"
+	 * @generated
+	 */
+	StateMachine getStateMachine();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.Region#getStateMachine <em>State Machine</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>State Machine</em>' container reference.
+	 * @see #getStateMachine()
+	 * @generated
+	 */
+	void setStateMachine(StateMachine value);
+
+	/**
+	 * Returns the value of the '<em><b>State</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.State#getRegions <em>Region</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>State</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>State</em>' container reference.
+	 * @see #setState(State)
+	 * @see org.eclipse.uml2.UML2Package#getRegion_State()
+	 * @see org.eclipse.uml2.State#getRegions
+	 * @model opposite="region"
+	 * @generated
+	 */
+	State getState();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.Region#getState <em>State</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>State</em>' container reference.
+	 * @see #getState()
+	 * @generated
+	 */
+	void setState(State value);
 
 	/**
 	 * Returns the value of the '<em><b>Extended Region</b></em>' reference.
@@ -171,5 +229,13 @@ public interface Region extends RedefinableElement{
 	 * @generated
 	 */
 	EList getOwnedElements();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model parameters=""
+	 * @generated
+	 */
+	Namespace getNamespace();
 
 } // Region

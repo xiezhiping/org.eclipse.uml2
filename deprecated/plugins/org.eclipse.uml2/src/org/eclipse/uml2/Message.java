@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Message.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Message.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -240,7 +240,7 @@ public interface Message extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Argument()
-	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true"
+	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getArguments();

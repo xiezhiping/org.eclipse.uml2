@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: StateItemProvider.java,v 1.5 2004/05/11 15:21:50 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -41,7 +41,7 @@ import org.eclipse.uml2.UML2Package;
  * @generated
  */
 public class StateItemProvider
-	extends RedefinableElementItemProvider
+	extends NamespaceItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -75,6 +75,8 @@ public class StateItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addRedefinitionContextPropertyDescriptor(object);
+			addIsLeafPropertyDescriptor(object);
 			addOutgoingPropertyDescriptor(object);
 			addIncomingPropertyDescriptor(object);
 			addIsCompositePropertyDescriptor(object);
@@ -92,6 +94,39 @@ public class StateItemProvider
 			addStateInvariantPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Redefinition Context feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRedefinitionContextPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
+				 false));
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Leaf feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsLeafPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getRedefinableElement_IsLeaf(),
+				 true,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
 	}
 
 	/**
@@ -418,6 +453,7 @@ public class StateItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(State.class)) {
+			case UML2Package.STATE__IS_LEAF:
 			case UML2Package.STATE__IS_COMPOSITE:
 			case UML2Package.STATE__IS_ORTHOGONAL:
 			case UML2Package.STATE__IS_SIMPLE:
@@ -505,6 +541,8 @@ public class StateItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
+			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
+			feature == UML2Package.eINSTANCE.getState_StateInvariant() ||
 			feature == UML2Package.eINSTANCE.getState_Entry() ||
 			feature == UML2Package.eINSTANCE.getState_Exit() ||
 			feature == UML2Package.eINSTANCE.getState_DoActivity();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ElementImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -39,8 +39,8 @@ import org.eclipse.uml2.impl.ElementImpl;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ElementImpl#validateNotOwnSelf() <em>Validate Not Own Self</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ElementImpl#validateHasOwner() <em>Validate Has Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ElementImpl#validateNotOwnSelf(EDiagnosticChain, EMap) <em>Validate Not Own Self</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ElementImpl#validateHasOwner(EDiagnosticChain, EMap) <em>Validate Has Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImpl#allOwnedElements() <em>All Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImpl#mustBeOwned() <em>Must Be Owned</em>}</li>
  * </ul>
@@ -127,24 +127,24 @@ public abstract class ElementImplTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ElementImpl#validateNotOwnSelf() <em>Validate Not Own Self</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ElementImpl#validateNotOwnSelf(EDiagnosticChain, EMap) <em>Validate Not Own Self</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ElementImpl#validateNotOwnSelf()
+	 * @see org.eclipse.uml2.impl.ElementImpl#validateNotOwnSelf(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateNotOwnSelf() {
+	public void testValidateNotOwnSelf__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ElementImpl#validateHasOwner() <em>Validate Has Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ElementImpl#validateHasOwner(EDiagnosticChain, EMap) <em>Validate Has Owner</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ElementImpl#validateHasOwner()
+	 * @see org.eclipse.uml2.impl.ElementImpl#validateHasOwner(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateHasOwner() {
+	public void testValidateHasOwner__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

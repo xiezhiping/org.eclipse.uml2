@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Namespace.java,v 1.3 2004/04/27 16:38:54 khussey Exp $
+ * $Id: Namespace.java,v 1.4 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -59,7 +59,7 @@ public interface Namespace extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Member</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_Member()
-	 * @model type="org.eclipse.uml2.NamedElement" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.NamedElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getMembers();
@@ -88,7 +88,7 @@ public interface Namespace extends NamedElement{
 	 * @return the value of the '<em>Owned Rule</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_OwnedRule()
 	 * @see org.eclipse.uml2.Constraint#getNamespace
-	 * @model type="org.eclipse.uml2.Constraint" opposite="namespace" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.Constraint" opposite="namespace" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedRules();
@@ -126,7 +126,7 @@ public interface Namespace extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Imported Member</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_ImportedMember()
-	 * @model type="org.eclipse.uml2.PackageableElement" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.PackageableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getImportedMembers();
@@ -155,7 +155,7 @@ public interface Namespace extends NamedElement{
 	 * @return the value of the '<em>Element Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_ElementImport()
 	 * @see org.eclipse.uml2.ElementImport#getImportingNamespace
-	 * @model type="org.eclipse.uml2.ElementImport" opposite="importingNamespace" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.ElementImport" opposite="importingNamespace" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getElementImports();
@@ -184,7 +184,7 @@ public interface Namespace extends NamedElement{
 	 * @return the value of the '<em>Package Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamespace_PackageImport()
 	 * @see org.eclipse.uml2.PackageImport#getImportingNamespace
-	 * @model type="org.eclipse.uml2.PackageImport" opposite="importingNamespace" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.PackageImport" opposite="importingNamespace" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getPackageImports();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImportImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: PackageImportImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -36,7 +36,7 @@ import org.eclipse.uml2.impl.PackageImportImpl;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.PackageImportImpl#validatePublicOrPrivate() <em>Validate Public Or Private</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PackageImportImpl#validatePublicOrPrivate(EDiagnosticChain, EMap) <em>Validate Public Or Private</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImportImpl#getTargets() <em>Get Targets</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImportImpl#getSources() <em>Get Sources</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImportImpl#getOwner() <em>Get Owner</em>}</li>
@@ -187,13 +187,13 @@ public class PackageImportImplTest extends DirectedRelationshipImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PackageImportImpl#validatePublicOrPrivate() <em>Validate Public Or Private</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PackageImportImpl#validatePublicOrPrivate(EDiagnosticChain, EMap) <em>Validate Public Or Private</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.PackageImportImpl#validatePublicOrPrivate()
+	 * @see org.eclipse.uml2.impl.PackageImportImpl#validatePublicOrPrivate(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidatePublicOrPrivate() {
+	public void testValidatePublicOrPrivate__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

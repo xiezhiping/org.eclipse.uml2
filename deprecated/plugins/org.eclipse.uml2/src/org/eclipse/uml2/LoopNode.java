@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LoopNode.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: LoopNode.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -85,7 +85,7 @@ public interface LoopNode extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Body Part</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLoopNode_BodyPart()
-	 * @model type="org.eclipse.uml2.ActivityNode"
+	 * @model type="org.eclipse.uml2.ActivityNode" ordered="false"
 	 * @generated
 	 */
 	EList getBodyParts();
@@ -112,7 +112,7 @@ public interface LoopNode extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Setup Part</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLoopNode_SetupPart()
-	 * @model type="org.eclipse.uml2.ActivityNode"
+	 * @model type="org.eclipse.uml2.ActivityNode" ordered="false"
 	 * @generated
 	 */
 	EList getSetupParts();
@@ -165,7 +165,7 @@ public interface LoopNode extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Test</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLoopNode_Test()
-	 * @model type="org.eclipse.uml2.ActivityNode"
+	 * @model type="org.eclipse.uml2.ActivityNode" ordered="false"
 	 * @generated
 	 */
 	EList getTests();
@@ -268,7 +268,7 @@ public interface LoopNode extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Body Output</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLoopNode_BodyOutput()
-	 * @model type="org.eclipse.uml2.OutputPin"
+	 * @model type="org.eclipse.uml2.OutputPin" ordered="false"
 	 * @generated
 	 */
 	EList getBodyOutputs();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ObjectNode.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ObjectNode.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -121,7 +121,7 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>In State</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getObjectNode_InState()
-	 * @model type="org.eclipse.uml2.State"
+	 * @model type="org.eclipse.uml2.State" ordered="false"
 	 * @generated
 	 */
 	EList getInStates();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -97,8 +97,8 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
 	 *   <li>{@link org.eclipse.uml2.Dependency#getSuppliers}</li>
+	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
 	 * </ul>
 	 * </p>
 	 * @generated
@@ -115,8 +115,8 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
 	 *   <li>{@link org.eclipse.uml2.Dependency#getSuppliers}</li>
+	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets}</li>
 	 * </ul>
 	 * </p>
 	 * @generated
@@ -150,8 +150,8 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources}</li>
 	 *   <li>{@link org.eclipse.uml2.Dependency#getClients}</li>
+	 *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources}</li>
 	 * </ul>
 	 * </p>
 	 * @generated

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ActionBarContributor.java,v 1.5 2004/05/01 18:37:26 khussey Exp $
+ * $Id: UML2ActionBarContributor.java,v 1.6 2004/05/11 15:21:35 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -17,43 +17,33 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
-import org.eclipse.emf.edit.ui.action.LoadResourceAction;
-
-import org.eclipse.emf.edit.ui.action.CreateChildAction;
-import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
-
+import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-
-import org.eclipse.emf.common.ui.viewer.IViewerProvider;
-
+import org.eclipse.emf.edit.ui.action.CreateChildAction;
+import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
+import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
+import org.eclipse.emf.edit.ui.action.LoadResourceAction;
+import org.eclipse.emf.edit.ui.action.ValidateAction;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IContributionManager;
+import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.SubContributionItem;
-
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-
 import org.eclipse.jface.viewers.Viewer;
-
 import org.eclipse.ui.IEditorPart;
-
-
-
 import org.eclipse.ui.PartInitException;
-
-
 
 /**
  * This is the action bar contributor for the UML2 model editor.
@@ -172,6 +162,7 @@ public class UML2ActionBarContributor
 	 */
 	public UML2ActionBarContributor() {
 		loadResourceAction = new LoadResourceAction();
+		validateAction = new ValidateAction();
 	}
 
 	/**
@@ -211,6 +202,18 @@ public class UML2ActionBarContributor
 		//
 		createSiblingMenuManager = new MenuManager(UML2EditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
 		submenuManager.insertBefore("additions", createSiblingMenuManager); //$NON-NLS-1$
+
+		// Force an update because Eclipse hides empty menus now.
+		//
+		submenuManager.addMenuListener
+			(new IMenuListener() {
+				 public void menuAboutToShow(IMenuManager menuManager) {
+					 menuManager.updateAll(true);
+				 }
+			 });
+
+
+		addGlobalActions(submenuManager);
 	}
 
 	/**
@@ -395,11 +398,21 @@ public class UML2ActionBarContributor
 		submenuManager = new MenuManager(UML2EditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
 		populateManager(submenuManager, createSiblingActions, null);
 		menuManager.insertBefore("additions", submenuManager); //$NON-NLS-1$
+	}
 
+	/**
+	 * This inserts global actions before the "additions-end" separator.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addGlobalActions(IMenuManager menuManager) {
 		menuManager.insertAfter("additions-end", new Separator("ui-actions")); //$NON-NLS-1$ //$NON-NLS-2$
 		menuManager.insertAfter("ui-actions", showPropertiesViewAction); //$NON-NLS-1$
 
 		refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());		
 		menuManager.insertAfter("ui-actions", refreshViewerAction); //$NON-NLS-1$
+
+		super.addGlobalActions(menuManager);
 	}
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: FinalStateImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: FinalStateImpl.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -83,6 +83,12 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.FINAL_STATE__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
+				case UML2Package.FINAL_STATE__OWNED_RULE:
+					return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
+				case UML2Package.FINAL_STATE__ELEMENT_IMPORT:
+					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
+				case UML2Package.FINAL_STATE__PACKAGE_IMPORT:
+					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.FINAL_STATE__CONTAINER:
 					if (eContainer != null)
 						msgs = eBasicRemoveFromContainer(msgs);
@@ -91,6 +97,8 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 					return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
 				case UML2Package.FINAL_STATE__INCOMING:
 					return ((InternalEList)getIncomings()).basicAdd(otherEnd, msgs);
+				case UML2Package.FINAL_STATE__REGION:
+					return ((InternalEList)getRegions()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -120,6 +128,12 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
 				case UML2Package.FINAL_STATE__NAME_EXPRESSION:
 					return basicSetNameExpression(null, msgs);
+				case UML2Package.FINAL_STATE__OWNED_RULE:
+					return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
+				case UML2Package.FINAL_STATE__ELEMENT_IMPORT:
+					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
+				case UML2Package.FINAL_STATE__PACKAGE_IMPORT:
+					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
 				case UML2Package.FINAL_STATE__CONTAINER:
 					return eBasicSetContainer(null, UML2Package.FINAL_STATE__CONTAINER, msgs);
 				case UML2Package.FINAL_STATE__OUTGOING:
@@ -192,6 +206,16 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 				return getClientDependencies();
 			case UML2Package.FINAL_STATE__NAME_EXPRESSION:
 				return getNameExpression();
+			case UML2Package.FINAL_STATE__MEMBER:
+				return getMembers();
+			case UML2Package.FINAL_STATE__OWNED_RULE:
+				return getOwnedRules();
+			case UML2Package.FINAL_STATE__IMPORTED_MEMBER:
+				return getImportedMembers();
+			case UML2Package.FINAL_STATE__ELEMENT_IMPORT:
+				return getElementImports();
+			case UML2Package.FINAL_STATE__PACKAGE_IMPORT:
+				return getPackageImports();
 			case UML2Package.FINAL_STATE__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.FINAL_STATE__IS_LEAF:
@@ -268,6 +292,18 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 				return;
 			case UML2Package.FINAL_STATE__NAME_EXPRESSION:
 				setNameExpression((StringExpression)newValue);
+				return;
+			case UML2Package.FINAL_STATE__OWNED_RULE:
+				getOwnedRules().clear();
+				getOwnedRules().addAll((Collection)newValue);
+				return;
+			case UML2Package.FINAL_STATE__ELEMENT_IMPORT:
+				getElementImports().clear();
+				getElementImports().addAll((Collection)newValue);
+				return;
+			case UML2Package.FINAL_STATE__PACKAGE_IMPORT:
+				getPackageImports().clear();
+				getPackageImports().addAll((Collection)newValue);
 				return;
 			case UML2Package.FINAL_STATE__IS_LEAF:
 				setIsLeaf(((Boolean)newValue).booleanValue());
@@ -348,6 +384,15 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 			case UML2Package.FINAL_STATE__NAME_EXPRESSION:
 				setNameExpression((StringExpression)null);
 				return;
+			case UML2Package.FINAL_STATE__OWNED_RULE:
+				getOwnedRules().clear();
+				return;
+			case UML2Package.FINAL_STATE__ELEMENT_IMPORT:
+				getElementImports().clear();
+				return;
+			case UML2Package.FINAL_STATE__PACKAGE_IMPORT:
+				getPackageImports().clear();
+				return;
 			case UML2Package.FINAL_STATE__IS_LEAF:
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
@@ -420,6 +465,16 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.FINAL_STATE__NAME_EXPRESSION:
 				return nameExpression != null;
+			case UML2Package.FINAL_STATE__MEMBER:
+				return !getMembers().isEmpty();
+			case UML2Package.FINAL_STATE__OWNED_RULE:
+				return ownedRule != null && !ownedRule.isEmpty();
+			case UML2Package.FINAL_STATE__IMPORTED_MEMBER:
+				return !getImportedMembers().isEmpty();
+			case UML2Package.FINAL_STATE__ELEMENT_IMPORT:
+				return elementImport != null && !elementImport.isEmpty();
+			case UML2Package.FINAL_STATE__PACKAGE_IMPORT:
+				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.FINAL_STATE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.FINAL_STATE__IS_LEAF:

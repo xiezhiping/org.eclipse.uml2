@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SignalItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: SignalItemProvider.java,v 1.5 2004/05/11 15:21:50 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -40,7 +40,7 @@ import org.eclipse.uml2.UML2Package;
  * @generated
  */
 public class SignalItemProvider
-	extends BehavioredClassifierItemProvider
+	extends ClassifierItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -179,21 +179,6 @@ public class SignalItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getSignal_OwnedAttribute(),
 				 UML2Factory.eINSTANCE.createPort()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
-		boolean qualify =
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine();
-		return getString(
-			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
-			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
 	}
 
 	/**

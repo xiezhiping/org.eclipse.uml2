@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Artifact.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Artifact.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -82,7 +82,7 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Nested Artifact</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getArtifact_NestedArtifact()
-	 * @model type="org.eclipse.uml2.Artifact" containment="true"
+	 * @model type="org.eclipse.uml2.Artifact" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getNestedArtifacts();
@@ -120,7 +120,7 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Manifestation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getArtifact_Manifestation()
-	 * @model type="org.eclipse.uml2.Manifestation" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.Manifestation" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getManifestations();

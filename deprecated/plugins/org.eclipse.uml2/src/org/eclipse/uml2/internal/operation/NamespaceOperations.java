@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -26,7 +26,7 @@ import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageableElement;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
@@ -303,13 +303,13 @@ public final class NamespaceOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE,
 							UML2Plugin.INSTANCE
 								.getString(
 									"_UI_Namespace_MembersAreDistinguishable_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context, namespace)),
-							null));
+							new Object[] {namespace}));
 			}
 		}
 
@@ -357,13 +357,13 @@ public final class NamespaceOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.ERROR,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.NAMESPACE__IMPORTED_MEMBER_DERIVED,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.NAMESPACE__IMPORTED_MEMBER_DERIVED,
 							UML2Plugin.INSTANCE
 								.getString(
 									"_UI_Namespace_ImportedMemberDerived_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context, namespace)),
-							null));
+							new Object[] {namespace}));
 			}
 		}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -82,7 +82,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @return the value of the '<em>Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_Variable()
 	 * @see org.eclipse.uml2.Variable#getScope
-	 * @model type="org.eclipse.uml2.Variable" opposite="scope" containment="true"
+	 * @model type="org.eclipse.uml2.Variable" opposite="scope" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getVariables();

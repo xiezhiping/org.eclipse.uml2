@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Activity.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Activity.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -168,7 +168,7 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Edge</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Edge()
 	 * @see org.eclipse.uml2.ActivityEdge#getActivity
-	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="activity" containment="true"
+	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="activity" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getEdges();
@@ -208,7 +208,7 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Group</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Group()
 	 * @see org.eclipse.uml2.ActivityGroup#getActivityGroup_activity
-	 * @model type="org.eclipse.uml2.ActivityGroup" opposite="activityGroup_activity" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.ActivityGroup" opposite="activityGroup_activity" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getGroups();
@@ -237,7 +237,7 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Node()
 	 * @see org.eclipse.uml2.ActivityNode#getActivity
-	 * @model type="org.eclipse.uml2.ActivityNode" opposite="activity" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.ActivityNode" opposite="activity" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getNodes();
@@ -302,7 +302,7 @@ public interface Activity extends Behavior{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Structured Node</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_StructuredNode()
-	 * @model type="org.eclipse.uml2.StructuredActivityNode" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.StructuredActivityNode" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getStructuredNodes();

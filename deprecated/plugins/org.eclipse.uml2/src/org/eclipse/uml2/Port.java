@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Port.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Port.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -108,7 +108,7 @@ public interface Port extends Property{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Required</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPort_Required()
-	 * @model type="org.eclipse.uml2.Interface" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRequireds();
@@ -135,7 +135,7 @@ public interface Port extends Property{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Redefined Port</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPort_RedefinedPort()
-	 * @model type="org.eclipse.uml2.Port"
+	 * @model type="org.eclipse.uml2.Port" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedPorts();
@@ -162,7 +162,7 @@ public interface Port extends Property{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Provided</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPort_Provided()
-	 * @model type="org.eclipse.uml2.Interface" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getProvideds();

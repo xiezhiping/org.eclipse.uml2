@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.3 2004/04/29 01:38:36 khussey Exp $
+ * $Id: UML2Operations.java,v 1.4 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -122,6 +123,12 @@ class UML2Operations {
 					return qualifiedName;
 				}
 			}
+
+		    EValidator.SubstitutionLabelProvider substitutionLabelProvider = (EValidator.SubstitutionLabelProvider) context.get(EValidator.SubstitutionLabelProvider.class);
+
+		    if (null != substitutionLabelProvider) {
+		    	return substitutionLabelProvider.getObjectLabel(eObject);
+		    }
 
 			Resource resource = eObject.eResource();
 

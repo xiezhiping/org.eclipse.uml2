@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EventOccurrence.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: EventOccurrence.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,7 +54,7 @@ public interface EventOccurrence extends InteractionFragment, MessageEnd{
 	 * @return the value of the '<em>Start Exec</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getEventOccurrence_StartExec()
 	 * @see org.eclipse.uml2.ExecutionOccurrence#getStart
-	 * @model type="org.eclipse.uml2.ExecutionOccurrence" opposite="start"
+	 * @model type="org.eclipse.uml2.ExecutionOccurrence" opposite="start" ordered="false"
 	 * @generated
 	 */
 	EList getStartExecs();
@@ -83,7 +83,7 @@ public interface EventOccurrence extends InteractionFragment, MessageEnd{
 	 * @return the value of the '<em>Finish Exec</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getEventOccurrence_FinishExec()
 	 * @see org.eclipse.uml2.ExecutionOccurrence#getFinish
-	 * @model type="org.eclipse.uml2.ExecutionOccurrence" opposite="finish"
+	 * @model type="org.eclipse.uml2.ExecutionOccurrence" opposite="finish" ordered="false"
 	 * @generated
 	 */
 	EList getFinishExecs();
@@ -112,7 +112,7 @@ public interface EventOccurrence extends InteractionFragment, MessageEnd{
 	 * @return the value of the '<em>To After</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getEventOccurrence_ToAfter()
 	 * @see org.eclipse.uml2.GeneralOrdering#getBefore
-	 * @model type="org.eclipse.uml2.GeneralOrdering" opposite="before"
+	 * @model type="org.eclipse.uml2.GeneralOrdering" opposite="before" ordered="false"
 	 * @generated
 	 */
 	EList getToAfters();
@@ -141,7 +141,7 @@ public interface EventOccurrence extends InteractionFragment, MessageEnd{
 	 * @return the value of the '<em>To Before</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getEventOccurrence_ToBefore()
 	 * @see org.eclipse.uml2.GeneralOrdering#getAfter
-	 * @model type="org.eclipse.uml2.GeneralOrdering" opposite="after"
+	 * @model type="org.eclipse.uml2.GeneralOrdering" opposite="after" ordered="false"
 	 * @generated
 	 */
 	EList getToBefores();

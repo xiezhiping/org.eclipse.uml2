@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Feature.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Feature.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -79,7 +79,7 @@ public interface Feature extends RedefinableElement{
 	 * @return the value of the '<em>Featuring Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getFeature_FeaturingClassifier()
 	 * @see org.eclipse.uml2.Classifier#getFeatures
-	 * @model type="org.eclipse.uml2.Classifier" opposite="feature" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Classifier" opposite="feature" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getFeaturingClassifiers();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeatureImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: BehavioralFeatureImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -36,8 +36,8 @@ import org.eclipse.uml2.impl.BehavioralFeatureImpl;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionContextValid() <em>Validate Redefinition Context Valid</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionConsistent() <em>Validate Redefinition Consistent</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap) <em>Validate Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap) <em>Validate Redefinition Consistent</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#isRedefinitionContextValid(RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
@@ -148,24 +148,24 @@ public abstract class BehavioralFeatureImplTest extends NamespaceImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionContextValid() <em>Validate Redefinition Context Valid</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap) <em>Validate Redefinition Context Valid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionContextValid()
+	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateRedefinitionContextValid() {
+	public void testValidateRedefinitionContextValid__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionConsistent() <em>Validate Redefinition Consistent</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap) <em>Validate Redefinition Consistent</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionConsistent()
+	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateRedefinitionConsistent() {
+	public void testValidateRedefinitionConsistent__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Interface.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Interface.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -132,7 +132,7 @@ public interface Interface extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Redefined Interface</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_RedefinedInterface()
-	 * @model type="org.eclipse.uml2.Interface"
+	 * @model type="org.eclipse.uml2.Interface" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedInterfaces();
@@ -197,7 +197,7 @@ public interface Interface extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedReception()
-	 * @model type="org.eclipse.uml2.Reception" containment="true"
+	 * @model type="org.eclipse.uml2.Reception" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedReceptions();

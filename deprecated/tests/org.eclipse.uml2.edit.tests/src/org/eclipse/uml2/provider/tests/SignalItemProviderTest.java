@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SignalItemProviderTest.java,v 1.1 2004/04/29 14:43:45 khussey Exp $
+ * $Id: SignalItemProviderTest.java,v 1.2 2004/05/11 15:21:07 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -23,7 +23,7 @@ import org.eclipse.uml2.UML2Factory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SignalItemProviderTest extends BehavioredClassifierItemProviderTest {
+public class SignalItemProviderTest extends ClassifierItemProviderTest {
 
 	/**
 	 * <!-- begin-user-doc -->

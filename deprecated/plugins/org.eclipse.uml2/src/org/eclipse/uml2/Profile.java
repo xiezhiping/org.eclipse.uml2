@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Profile.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: Profile.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -53,7 +53,7 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Stereotype</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProfile_OwnedStereotype()
-	 * @model type="org.eclipse.uml2.Stereotype" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Stereotype" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedStereotypes();
@@ -80,7 +80,7 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Metaclass Reference</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProfile_MetaclassReference()
-	 * @model type="org.eclipse.uml2.ElementImport" resolveProxies="false" volatile="true"
+	 * @model type="org.eclipse.uml2.ElementImport" resolveProxies="false" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getMetaclassReferences();
@@ -96,7 +96,7 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Metamodel Reference</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProfile_MetamodelReference()
-	 * @model type="org.eclipse.uml2.PackageImport" resolveProxies="false" volatile="true"
+	 * @model type="org.eclipse.uml2.PackageImport" resolveProxies="false" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getMetamodelReferences();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateBinding.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: TemplateBinding.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -109,7 +109,7 @@ public interface TemplateBinding extends DirectedRelationship{
 	 * @return the value of the '<em>Parameter Substitution</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateBinding_ParameterSubstitution()
 	 * @see org.eclipse.uml2.TemplateParameterSubstitution#getTemplateBinding
-	 * @model type="org.eclipse.uml2.TemplateParameterSubstitution" opposite="templateBinding" containment="true"
+	 * @model type="org.eclipse.uml2.TemplateParameterSubstitution" opposite="templateBinding" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getParameterSubstitutions();

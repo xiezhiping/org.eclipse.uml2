@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Connector.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Connector.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -110,7 +110,7 @@ public interface Connector extends Feature{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Redefined Connector</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConnector_RedefinedConnector()
-	 * @model type="org.eclipse.uml2.Connector"
+	 * @model type="org.eclipse.uml2.Connector" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedConnectors();
@@ -164,7 +164,7 @@ public interface Connector extends Feature{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Contract</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConnector_Contract()
-	 * @model type="org.eclipse.uml2.Behavior"
+	 * @model type="org.eclipse.uml2.Behavior" ordered="false"
 	 * @generated
 	 */
 	EList getContracts();

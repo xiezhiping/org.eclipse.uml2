@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -24,7 +24,7 @@ import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Feature;
 import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.NamedElement;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
@@ -214,14 +214,13 @@ public final class ClassifierOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.CLASSIFIER__NO_CYCLES_IN_GENERALIZATION,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.CLASSIFIER__NO_CYCLES_IN_GENERALIZATION,
 							UML2Plugin.INSTANCE
 								.getString(
-									"_UI_Classifier_NoCyclesInGeneralization_diagnostic",
-									//$NON-NLS-1$
+									"_UI_Classifier_NoCyclesInGeneralization_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context, classifier)),
-							null));
+							new Object[] {classifier}));
 			}
 		}
 
@@ -250,13 +249,13 @@ public final class ClassifierOperations
 					diagnostics
 						.add(new BasicDiagnostic(
 								Diagnostic.WARNING,
-								UML2DiagnosticConstants.PLUGIN_ID,
-								UML2DiagnosticConstants.CLASSIFIER__SPECIALIZE_TYPE,
+								UML2Validator.DIAGNOSTIC_SOURCE,
+								UML2Validator.CLASSIFIER__SPECIALIZE_TYPE,
 								UML2Plugin.INSTANCE.getString(
 									"_UI_Classifier_SpecializeType_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context,
 										classifier, parent)),
-								new Object[] {parent}));
+								new Object[] {classifier, parent}));
 				}
 			}
 		}
@@ -291,12 +290,12 @@ public final class ClassifierOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.ERROR,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.CLASSIFIER__INHERITED_MEMBER,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.CLASSIFIER__INHERITED_MEMBER,
 							UML2Plugin.INSTANCE.getString(
 								"_UI_Classifier_InheritedMember_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context, classifier)),
-							null));
+							new Object[] {classifier}));
 			}
 		}
 
@@ -319,13 +318,13 @@ public final class ClassifierOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.ERROR,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.CLASSIFIER__GENERAL_EQUALS_PARENTS,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.CLASSIFIER__GENERAL_EQUALS_PARENTS,
 							UML2Plugin.INSTANCE
 								.getString(
 									"_UI_Classifier_GeneralEqualsParents_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context, classifier)),
-							null));
+							new Object[] {classifier}));
 			}
 		}
 

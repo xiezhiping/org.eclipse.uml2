@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Element.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: Element.java,v 1.5 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -60,7 +60,7 @@ public interface Element extends EModelElement{
 	 * @return the value of the '<em>Owned Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getElement_OwnedElement()
 	 * @see org.eclipse.uml2.Element#getOwner
-	 * @model type="org.eclipse.uml2.Element" opposite="owner" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Element" opposite="owner" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -93,7 +93,7 @@ public interface Element extends EModelElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Comment</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getElement_OwnedComment()
-	 * @model type="org.eclipse.uml2.Comment" containment="true"
+	 * @model type="org.eclipse.uml2.Comment" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedComments();

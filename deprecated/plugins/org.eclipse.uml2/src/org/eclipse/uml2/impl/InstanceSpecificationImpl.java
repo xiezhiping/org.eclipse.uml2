@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.5 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -140,8 +140,8 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
+	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 * </ul>
 	 * </p>
 	 * @generated

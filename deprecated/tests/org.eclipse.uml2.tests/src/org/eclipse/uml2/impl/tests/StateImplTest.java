@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: StateImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -24,6 +24,7 @@ import org.eclipse.uml2.impl.StateImpl;
  * <p>
  * The following features are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#getRedefinitionContexts() <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#isComposite() <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#isOrthogonal() <em>Is Orthogonal</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#isSimple() <em>Is Simple</em>}</li>
@@ -33,15 +34,21 @@ import org.eclipse.uml2.impl.StateImpl;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap) <em>Validate Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap) <em>Validate Redefinition Consistent</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#isRedefinitionContextValid(RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#getOwner() <em>Get Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#getRedefinitionContexts() <em>Get Redefinition Contexts</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#getOwnedElements() <em>Get Owned Elements</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#getOwnedMembers() <em>Get Owned Members</em>}</li>
  * </ul>
  * </p>
  * @generated
  */
-public class StateImplTest extends RedefinableElementImplTest {
+public class StateImplTest extends NamespaceImplTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,6 +179,50 @@ public class StateImplTest extends RedefinableElementImplTest {
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.StateImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap) <em>Validate Redefinition Context Valid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.StateImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap)
+	 * @generated
+	 */
+	public void testValidateRedefinitionContextValid__EDiagnosticChain_EMap() {
+		// TODO: implement this operation test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.StateImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap) <em>Validate Redefinition Consistent</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.StateImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap)
+	 * @generated
+	 */
+	public void testValidateRedefinitionConsistent__EDiagnosticChain_EMap() {
+		// TODO: implement this operation test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.StateImpl#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.StateImpl#isConsistentWith(RedefinableElement)
+	 * @generated
+	 */
+	public void testIsConsistentWith__RedefinableElement() {
+		// TODO: implement this operation test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.StateImpl#isRedefinitionContextValid(RedefinableElement) <em>Is Redefinition Context Valid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.StateImpl#isRedefinitionContextValid(RedefinableElement)
+	 * @generated
+	 */
+	public void testIsRedefinitionContextValid__RedefinableElement() {
+		// TODO: implement this operation test method
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.impl.StateImpl#getOwner() <em>Get Owner</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -224,20 +275,33 @@ public class StateImplTest extends RedefinableElementImplTest {
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.StateImpl#getOwnedMembers() <em>Get Owned Members</em>}' getter operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.StateImpl#getOwnedMembers()
+	 * @generated NOT
+	 */
+	public void testGetOwnedMembers() {
+		super.testGetOwnedMembers();
+		
+		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getRegions()));
+	}
+
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
-		// TODO implement setUpNamespace
+		UML2Factory.eINSTANCE.createRegion().getSubvertices().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createRegion().getSubvertices().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -254,5 +318,15 @@ public class StateImplTest extends RedefinableElementImplTest {
 
 		getFixture().setStateInvariant(UML2Factory.eINSTANCE.createConstraint());
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
+	 */
+	protected void setUpOwnedMembers() {
+		super.setUpOwnedMembers();
+		
+		getFixture().getRegions().add(UML2Factory.eINSTANCE.createRegion());
+		getFixture().getRegions().add(UML2Factory.eINSTANCE.createRegion());
+	}
+	
 } //StateImplTest

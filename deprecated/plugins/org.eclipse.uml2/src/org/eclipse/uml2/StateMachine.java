@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateMachine.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: StateMachine.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -46,6 +46,7 @@ public interface StateMachine extends Behavior{
 	/**
 	 * Returns the value of the '<em><b>Region</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Region}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Region#getStateMachine <em>State Machine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Region</em>' containment reference list isn't clear,
@@ -54,7 +55,8 @@ public interface StateMachine extends Behavior{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Region</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_Region()
-	 * @model type="org.eclipse.uml2.Region" containment="true" required="true"
+	 * @see org.eclipse.uml2.Region#getStateMachine
+	 * @model type="org.eclipse.uml2.Region" opposite="stateMachine" containment="true" required="true" ordered="false"
 	 * @generated
 	 */
 	EList getRegions();
@@ -92,7 +94,7 @@ public interface StateMachine extends Behavior{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connection Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_ConnectionPoint()
-	 * @model type="org.eclipse.uml2.Pseudostate" containment="true"
+	 * @model type="org.eclipse.uml2.Pseudostate" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getConnectionPoints();

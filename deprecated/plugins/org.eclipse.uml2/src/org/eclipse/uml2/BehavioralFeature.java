@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -215,7 +215,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Raised Exception</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_RaisedException()
-	 * @model type="org.eclipse.uml2.Type" volatile="true"
+	 * @model type="org.eclipse.uml2.Type" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getRaisedExceptions();
@@ -244,7 +244,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * @return the value of the '<em>Method</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_Method()
 	 * @see org.eclipse.uml2.Behavior#getSpecification
-	 * @model type="org.eclipse.uml2.Behavior" opposite="specification"
+	 * @model type="org.eclipse.uml2.Behavior" opposite="specification" ordered="false"
 	 * @generated
 	 */
 	EList getMethods();

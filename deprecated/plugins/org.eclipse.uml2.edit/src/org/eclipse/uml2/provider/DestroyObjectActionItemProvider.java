@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DestroyObjectActionItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: DestroyObjectActionItemProvider.java,v 1.5 2004/05/11 15:21:50 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -74,9 +74,45 @@ public class DestroyObjectActionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addIsDestroyLinksPropertyDescriptor(object);
+			addIsDestroyOwnedObjectsPropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Destroy Links feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsDestroyLinksPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_DestroyObjectAction_isDestroyLinks_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_DestroyObjectAction_isDestroyLinks_feature", "_UI_DestroyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getDestroyObjectAction_IsDestroyLinks(),
+				 true,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Destroy Owned Objects feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsDestroyOwnedObjectsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_DestroyObjectAction_isDestroyOwnedObjects_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_DestroyObjectAction_isDestroyOwnedObjects_feature", "_UI_DestroyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getDestroyObjectAction_IsDestroyOwnedObjects(),
+				 true,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
 	}
 
 	/**
@@ -148,6 +184,10 @@ public class DestroyObjectActionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DestroyObjectAction.class)) {
+			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS:
+			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case UML2Package.DESTROY_OBJECT_ACTION__TARGET:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReplyAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ReplyAction.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -77,7 +77,7 @@ public interface ReplyAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reply Value</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getReplyAction_ReplyValue()
-	 * @model type="org.eclipse.uml2.InputPin"
+	 * @model type="org.eclipse.uml2.InputPin" ordered="false"
 	 * @generated
 	 */
 	EList getReplyValues();

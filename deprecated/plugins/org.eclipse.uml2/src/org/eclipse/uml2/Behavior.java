@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Behavior.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Behavior.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -113,7 +113,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Redefined Behavior</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_RedefinedBehavior()
-	 * @model type="org.eclipse.uml2.Behavior"
+	 * @model type="org.eclipse.uml2.Behavior" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedBehaviors();
@@ -260,7 +260,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Precondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Precondition()
-	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true"
+	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getPreconditions();
@@ -287,7 +287,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Postcondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Postcondition()
-	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true"
+	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getPostconditions();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Deployment.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Deployment.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -53,7 +53,7 @@ public interface Deployment extends Dependency{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Deployed Artifact</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDeployment_DeployedArtifact()
-	 * @model type="org.eclipse.uml2.DeployedArtifact" volatile="true"
+	 * @model type="org.eclipse.uml2.DeployedArtifact" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getDeployedArtifacts();
@@ -108,7 +108,7 @@ public interface Deployment extends Dependency{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Configuration</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDeployment_Configuration()
-	 * @model type="org.eclipse.uml2.DeploymentSpecification" containment="true"
+	 * @model type="org.eclipse.uml2.DeploymentSpecification" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getConfigurations();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
+ * $Id: ElementOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Model;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Plugin;
 
 /**
@@ -324,11 +324,12 @@ public final class ElementOperations
 
 			if (null != diagnostics) {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-						UML2DiagnosticConstants.PLUGIN_ID,
-						UML2DiagnosticConstants.ELEMENT__NOT_OWN_SELF,
+						UML2Validator.DIAGNOSTIC_SOURCE,
+						UML2Validator.ELEMENT__NOT_OWN_SELF,
 						UML2Plugin.INSTANCE.getString(
 							"_UI_Element_NotOwnSelf_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, element)), null));
+							getMessageSubstitutions(context, element)),
+						new Object[] {element}));
 			}
 		}
 
@@ -348,12 +349,12 @@ public final class ElementOperations
 
 			if (null != diagnostics) {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-						UML2DiagnosticConstants.PLUGIN_ID,
-						UML2DiagnosticConstants.ELEMENT__HAS_OWNER,
+						UML2Validator.DIAGNOSTIC_SOURCE,
+						UML2Validator.ELEMENT__HAS_OWNER,
 						UML2Plugin.INSTANCE.getString(
 							"_UI_Element_HasOwner_diagnostic", //$NON-NLS-1$
 							getMessageSubstitutions(context, element)),
-						null));
+						new Object[] {element}));
 			}
 		}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: PackageImplTest.java,v 1.2 2004/05/11 15:20:50 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -52,7 +52,7 @@ import org.eclipse.uml2.impl.PackageImpl;
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getOwner() <em>Get Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getVisibility() <em>Get Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#setVisibility(VisibilityKind) <em>Set Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.PackageImpl#validateElementsPublicOrPrivate() <em>Validate Elements Public Or Private</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PackageImpl#validateElementsPublicOrPrivate(EDiagnosticChain, EMap) <em>Validate Elements Public Or Private</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#mustBeOwned() <em>Must Be Owned</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#visibleMembers() <em>Visible Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#makesVisible(NamedElement) <em>Makes Visible</em>}</li>
@@ -289,13 +289,13 @@ public class PackageImplTest extends NamespaceImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PackageImpl#validateElementsPublicOrPrivate() <em>Validate Elements Public Or Private</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PackageImpl#validateElementsPublicOrPrivate(EDiagnosticChain, EMap) <em>Validate Elements Public Or Private</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.PackageImpl#validateElementsPublicOrPrivate()
+	 * @see org.eclipse.uml2.impl.PackageImpl#validateElementsPublicOrPrivate(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateElementsPublicOrPrivate() {
+	public void testValidateElementsPublicOrPrivate__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

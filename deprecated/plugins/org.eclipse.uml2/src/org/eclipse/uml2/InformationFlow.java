@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InformationFlow.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: InformationFlow.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,7 +50,7 @@ public interface InformationFlow extends DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Realization</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInformationFlow_Realization()
-	 * @model type="org.eclipse.uml2.Relationship"
+	 * @model type="org.eclipse.uml2.Relationship" ordered="false"
 	 * @generated
 	 */
 	EList getRealizations();
@@ -66,7 +66,7 @@ public interface InformationFlow extends DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Conveyed</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInformationFlow_Conveyed()
-	 * @model type="org.eclipse.uml2.Classifier" required="true"
+	 * @model type="org.eclipse.uml2.Classifier" required="true" ordered="false"
 	 * @generated
 	 */
 	EList getConveyeds();

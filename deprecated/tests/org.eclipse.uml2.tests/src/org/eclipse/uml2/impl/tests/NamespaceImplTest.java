@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: NamespaceImplTest.java,v 1.2 2004/05/11 15:20:50 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -39,10 +39,10 @@ import org.eclipse.uml2.impl.NamespaceImpl;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#validateMembersAreDistinguishable() <em>Validate Members Are Distinguishable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#validateMembersAreDistinguishable(EDiagnosticChain, EMap) <em>Validate Members Are Distinguishable</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#getNamesOfMember(NamedElement) <em>Get Names Of Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#membersAreDistinguishable() <em>Members Are Distinguishable</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#validateImportedMemberDerived() <em>Validate Imported Member Derived</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#validateImportedMemberDerived(EDiagnosticChain, EMap) <em>Validate Imported Member Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#importedMember() <em>Imported Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#importMembers(Set) <em>Import Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#excludeCollisions(Set) <em>Exclude Collisions</em>}</li>
@@ -145,13 +145,13 @@ public abstract class NamespaceImplTest extends NamedElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.NamespaceImpl#validateMembersAreDistinguishable() <em>Validate Members Are Distinguishable</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.NamespaceImpl#validateMembersAreDistinguishable(EDiagnosticChain, EMap) <em>Validate Members Are Distinguishable</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.NamespaceImpl#validateMembersAreDistinguishable()
+	 * @see org.eclipse.uml2.impl.NamespaceImpl#validateMembersAreDistinguishable(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateMembersAreDistinguishable() {
+	public void testValidateMembersAreDistinguishable__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
@@ -178,13 +178,13 @@ public abstract class NamespaceImplTest extends NamedElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.NamespaceImpl#validateImportedMemberDerived() <em>Validate Imported Member Derived</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.NamespaceImpl#validateImportedMemberDerived(EDiagnosticChain, EMap) <em>Validate Imported Member Derived</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.NamespaceImpl#validateImportedMemberDerived()
+	 * @see org.eclipse.uml2.impl.NamespaceImpl#validateImportedMemberDerived(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateImportedMemberDerived() {
+	public void testValidateImportedMemberDerived__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

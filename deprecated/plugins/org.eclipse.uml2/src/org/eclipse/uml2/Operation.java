@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Operation.java,v 1.3 2004/04/27 16:38:54 khussey Exp $
+ * $Id: Operation.java,v 1.4 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -184,7 +184,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Precondition()
-	 * @model type="org.eclipse.uml2.Constraint" containment="true"
+	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getPreconditions();
@@ -222,7 +222,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Postcondition()
-	 * @model type="org.eclipse.uml2.Constraint" containment="true"
+	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getPostconditions();
@@ -260,7 +260,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Redefined Operation</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_RedefinedOperation()
-	 * @model type="org.eclipse.uml2.Operation"
+	 * @model type="org.eclipse.uml2.Operation" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedOperations();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElementImplTest.java,v 1.1 2004/04/29 14:56:55 khussey Exp $
+ * $Id: RedefinableElementImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -31,8 +31,8 @@ import org.eclipse.uml2.impl.RedefinableElementImpl;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionContextValid() <em>Validate Redefinition Context Valid</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionConsistent() <em>Validate Redefinition Consistent</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap) <em>Validate Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap) <em>Validate Redefinition Consistent</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#isRedefinitionContextValid(RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
@@ -85,24 +85,24 @@ public abstract class RedefinableElementImplTest extends NamedElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionContextValid() <em>Validate Redefinition Context Valid</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap) <em>Validate Redefinition Context Valid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionContextValid()
+	 * @see org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateRedefinitionContextValid() {
+	public void testValidateRedefinitionContextValid__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionConsistent() <em>Validate Redefinition Consistent</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap) <em>Validate Redefinition Consistent</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionConsistent()
+	 * @see org.eclipse.uml2.impl.RedefinableElementImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateRedefinitionConsistent() {
+	public void testValidateRedefinitionConsistent__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImportImplTest.java,v 1.1 2004/04/29 14:56:48 khussey Exp $
+ * $Id: ElementImportImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -35,8 +35,8 @@ import org.eclipse.uml2.impl.ElementImportImpl;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#validateVisibilityPublicOrPrivate() <em>Validate Visibility Public Or Private</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#validateImportedElementIsPublic() <em>Validate Imported Element Is Public</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#validateVisibilityPublicOrPrivate(EDiagnosticChain, EMap) <em>Validate Visibility Public Or Private</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#validateImportedElementIsPublic(EDiagnosticChain, EMap) <em>Validate Imported Element Is Public</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#getName() <em>Get Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#getTargets() <em>Get Targets</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#getSources() <em>Get Sources</em>}</li>
@@ -150,24 +150,24 @@ public class ElementImportImplTest extends DirectedRelationshipImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ElementImportImpl#validateVisibilityPublicOrPrivate() <em>Validate Visibility Public Or Private</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ElementImportImpl#validateVisibilityPublicOrPrivate(EDiagnosticChain, EMap) <em>Validate Visibility Public Or Private</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ElementImportImpl#validateVisibilityPublicOrPrivate()
+	 * @see org.eclipse.uml2.impl.ElementImportImpl#validateVisibilityPublicOrPrivate(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateVisibilityPublicOrPrivate() {
+	public void testValidateVisibilityPublicOrPrivate__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ElementImportImpl#validateImportedElementIsPublic() <em>Validate Imported Element Is Public</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ElementImportImpl#validateImportedElementIsPublic(EDiagnosticChain, EMap) <em>Validate Imported Element Is Public</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ElementImportImpl#validateImportedElementIsPublic()
+	 * @see org.eclipse.uml2.impl.ElementImportImpl#validateImportedElementIsPublic(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateImportedElementIsPublic() {
+	public void testValidateImportedElementIsPublic__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Parameter.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Parameter.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -254,7 +254,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @return the value of the '<em>Parameter Set</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getParameter_ParameterSet()
 	 * @see org.eclipse.uml2.ParameterSet#getParameters
-	 * @model type="org.eclipse.uml2.ParameterSet" opposite="parameter"
+	 * @model type="org.eclipse.uml2.ParameterSet" opposite="parameter" ordered="false"
 	 * @generated
 	 */
 	EList getParameterSets();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Dependency.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Dependency.java,v 1.3 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -52,7 +52,7 @@ public interface Dependency extends PackageableElement, DirectedRelationship{
 	 * @return the value of the '<em>Client</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDependency_Client()
 	 * @see org.eclipse.uml2.NamedElement#getClientDependencies
-	 * @model type="org.eclipse.uml2.NamedElement" opposite="clientDependency" required="true" volatile="true"
+	 * @model type="org.eclipse.uml2.NamedElement" opposite="clientDependency" required="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getClients();
@@ -79,7 +79,7 @@ public interface Dependency extends PackageableElement, DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Supplier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDependency_Supplier()
-	 * @model type="org.eclipse.uml2.NamedElement" required="true" volatile="true"
+	 * @model type="org.eclipse.uml2.NamedElement" required="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getSuppliers();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: RegionImpl.java,v 1.3 2004/05/11 15:23:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,11 +16,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -29,8 +31,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.uml2.Classifier;
+import org.eclipse.uml2.Namespace;
+import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.Region;
+import org.eclipse.uml2.State;
+import org.eclipse.uml2.StateMachine;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Transition;
@@ -45,21 +53,45 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RegionImpl#isLeaf <em>Is Leaf</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getSubvertices <em>Subvertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getTransitions <em>Transition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getStateMachine <em>State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getState <em>State</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getExtendedRegion <em>Extended Region</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RegionImpl extends RedefinableElementImpl implements Region {
+public class RegionImpl extends NamespaceImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isLeaf()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_LEAF_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isLeaf()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isLeaf = IS_LEAF_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSubvertices() <em>Subvertex</em>}' containment reference list.
@@ -107,6 +139,45 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getRegion();
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+     */
+    public Classifier getRedefinitionContext(String unqualifiedName) {
+    	for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
+    		Classifier namedRedefinitionContext = (Classifier) i.next();
+    		
+    		if (unqualifiedName.equals(namedRedefinitionContext.getName())) {
+    			return namedRedefinitionContext;
+    		}
+    	}
+    	
+    	return null;
+    }
+      
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * Returns the value of the '<em><b>Is Leaf</b></em>' attribute.
+	 * @generated
+	 */
+	public boolean isLeaf() {
+		return isLeaf;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsLeaf(boolean newIsLeaf) {
+		boolean oldIsLeaf = isLeaf;
+		isLeaf = newIsLeaf;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__IS_LEAF, oldIsLeaf, isLeaf));
 	}
 
 	/**
@@ -233,6 +304,82 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * Returns the value of the '<em><b>State Machine</b></em>' container reference.
+	 * <p>
+	 * Subsets the following features:
+	 * <ul>
+	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
+	 * </ul>
+	 * </p>
+	 * @generated
+	 */
+	public StateMachine getStateMachine() {
+		if (eContainerFeatureID != UML2Package.REGION__STATE_MACHINE) return null;
+		return (StateMachine)eContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStateMachine(StateMachine newStateMachine) {
+		if (newStateMachine != eContainer || (eContainerFeatureID != UML2Package.REGION__STATE_MACHINE && newStateMachine != null)) {
+			if (EcoreUtil.isAncestor(this, newStateMachine))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eContainer != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newStateMachine != null)
+				msgs = ((InternalEObject)newStateMachine).eInverseAdd(this, UML2Package.STATE_MACHINE__REGION, StateMachine.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newStateMachine, UML2Package.REGION__STATE_MACHINE, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__STATE_MACHINE, newStateMachine, newStateMachine));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * Returns the value of the '<em><b>State</b></em>' container reference.
+	 * <p>
+	 * Subsets the following features:
+	 * <ul>
+	 *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace}</li>
+	 * </ul>
+	 * </p>
+	 * @generated
+	 */
+	public State getState() {
+		if (eContainerFeatureID != UML2Package.REGION__STATE) return null;
+		return (State)eContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setState(State newState) {
+		if (newState != eContainer || (eContainerFeatureID != UML2Package.REGION__STATE && newState != null)) {
+			if (EcoreUtil.isAncestor(this, newState))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eContainer != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newState != null)
+				msgs = ((InternalEObject)newState).eInverseAdd(this, UML2Package.STATE__REGION, State.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newState, UML2Package.REGION__STATE, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__STATE, newState, newState));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * Returns the value of the '<em><b>Extended Region</b></em>' reference.
 	 * <p>
 	 * Redefines the following features:
@@ -280,6 +427,46 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 		extendedRegion = newExtendedRegion;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__EXTENDED_REGION, oldExtendedRegion, extendedRegion));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context) {
+		// TODO: test this OCL constraint
+		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
+		// TODO: test this OCL constraint
+		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isConsistentWith(RedefinableElement redefinee) {
+		// TODO: test this OCL operation
+		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isConsistentWith(this, redefinee);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
+		// TODO: test this OCL operation
+		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
 	}
 
 	/**
@@ -346,6 +533,24 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * Returns the value of the '<em><b>Namespace</b></em>' reference, a derived union.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		// TODO: test this union getter
+		if (null != getStateMachine()) {
+			return (Namespace) getStateMachine();
+		}
+		if (null != getState()) {
+			return (Namespace) getState();
+		}
+		return super.getNamespace();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
@@ -361,10 +566,24 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.REGION__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
+				case UML2Package.REGION__OWNED_RULE:
+					return ((InternalEList)getOwnedRules()).basicAdd(otherEnd, msgs);
+				case UML2Package.REGION__ELEMENT_IMPORT:
+					return ((InternalEList)getElementImports()).basicAdd(otherEnd, msgs);
+				case UML2Package.REGION__PACKAGE_IMPORT:
+					return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 				case UML2Package.REGION__SUBVERTEX:
 					return ((InternalEList)getSubvertices()).basicAdd(otherEnd, msgs);
 				case UML2Package.REGION__TRANSITION:
 					return ((InternalEList)getTransitions()).basicAdd(otherEnd, msgs);
+				case UML2Package.REGION__STATE_MACHINE:
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd, UML2Package.REGION__STATE_MACHINE, msgs);
+				case UML2Package.REGION__STATE:
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd, UML2Package.REGION__STATE, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -394,15 +613,44 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
 				case UML2Package.REGION__NAME_EXPRESSION:
 					return basicSetNameExpression(null, msgs);
+				case UML2Package.REGION__OWNED_RULE:
+					return ((InternalEList)getOwnedRules()).basicRemove(otherEnd, msgs);
+				case UML2Package.REGION__ELEMENT_IMPORT:
+					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
+				case UML2Package.REGION__PACKAGE_IMPORT:
+					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
 				case UML2Package.REGION__SUBVERTEX:
 					return ((InternalEList)getSubvertices()).basicRemove(otherEnd, msgs);
 				case UML2Package.REGION__TRANSITION:
 					return ((InternalEList)getTransitions()).basicRemove(otherEnd, msgs);
+				case UML2Package.REGION__STATE_MACHINE:
+					return eBasicSetContainer(null, UML2Package.REGION__STATE_MACHINE, msgs);
+				case UML2Package.REGION__STATE:
+					return eBasicSetContainer(null, UML2Package.REGION__STATE, msgs);
 				default:
 					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
+		if (eContainerFeatureID >= 0) {
+			switch (eContainerFeatureID) {
+				case UML2Package.REGION__STATE_MACHINE:
+					return eContainer.eInverseRemove(this, UML2Package.STATE_MACHINE__REGION, StateMachine.class, msgs);
+				case UML2Package.REGION__STATE:
+					return eContainer.eInverseRemove(this, UML2Package.STATE__REGION, State.class, msgs);
+				default:
+					return eDynamicBasicRemoveFromContainer(msgs);
+			}
+		}
+		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -435,6 +683,16 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 				return getClientDependencies();
 			case UML2Package.REGION__NAME_EXPRESSION:
 				return getNameExpression();
+			case UML2Package.REGION__MEMBER:
+				return getMembers();
+			case UML2Package.REGION__OWNED_RULE:
+				return getOwnedRules();
+			case UML2Package.REGION__IMPORTED_MEMBER:
+				return getImportedMembers();
+			case UML2Package.REGION__ELEMENT_IMPORT:
+				return getElementImports();
+			case UML2Package.REGION__PACKAGE_IMPORT:
+				return getPackageImports();
 			case UML2Package.REGION__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.REGION__IS_LEAF:
@@ -443,6 +701,10 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 				return getSubvertices();
 			case UML2Package.REGION__TRANSITION:
 				return getTransitions();
+			case UML2Package.REGION__STATE_MACHINE:
+				return getStateMachine();
+			case UML2Package.REGION__STATE:
+				return getState();
 			case UML2Package.REGION__EXTENDED_REGION:
 				if (resolve) return getExtendedRegion();
 				return basicGetExtendedRegion();
@@ -485,6 +747,18 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 			case UML2Package.REGION__NAME_EXPRESSION:
 				setNameExpression((StringExpression)newValue);
 				return;
+			case UML2Package.REGION__OWNED_RULE:
+				getOwnedRules().clear();
+				getOwnedRules().addAll((Collection)newValue);
+				return;
+			case UML2Package.REGION__ELEMENT_IMPORT:
+				getElementImports().clear();
+				getElementImports().addAll((Collection)newValue);
+				return;
+			case UML2Package.REGION__PACKAGE_IMPORT:
+				getPackageImports().clear();
+				getPackageImports().addAll((Collection)newValue);
+				return;
 			case UML2Package.REGION__IS_LEAF:
 				setIsLeaf(((Boolean)newValue).booleanValue());
 				return;
@@ -495,6 +769,12 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 			case UML2Package.REGION__TRANSITION:
 				getTransitions().clear();
 				getTransitions().addAll((Collection)newValue);
+				return;
+			case UML2Package.REGION__STATE_MACHINE:
+				setStateMachine((StateMachine)newValue);
+				return;
+			case UML2Package.REGION__STATE:
+				setState((State)newValue);
 				return;
 			case UML2Package.REGION__EXTENDED_REGION:
 				setExtendedRegion((Region)newValue);
@@ -534,6 +814,15 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 			case UML2Package.REGION__NAME_EXPRESSION:
 				setNameExpression((StringExpression)null);
 				return;
+			case UML2Package.REGION__OWNED_RULE:
+				getOwnedRules().clear();
+				return;
+			case UML2Package.REGION__ELEMENT_IMPORT:
+				getElementImports().clear();
+				return;
+			case UML2Package.REGION__PACKAGE_IMPORT:
+				getPackageImports().clear();
+				return;
 			case UML2Package.REGION__IS_LEAF:
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
@@ -542,6 +831,12 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 				return;
 			case UML2Package.REGION__TRANSITION:
 				getTransitions().clear();
+				return;
+			case UML2Package.REGION__STATE_MACHINE:
+				setStateMachine((StateMachine)null);
+				return;
+			case UML2Package.REGION__STATE:
+				setState((State)null);
 				return;
 			case UML2Package.REGION__EXTENDED_REGION:
 				setExtendedRegion((Region)null);
@@ -579,6 +874,16 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.REGION__NAME_EXPRESSION:
 				return nameExpression != null;
+			case UML2Package.REGION__MEMBER:
+				return !getMembers().isEmpty();
+			case UML2Package.REGION__OWNED_RULE:
+				return ownedRule != null && !ownedRule.isEmpty();
+			case UML2Package.REGION__IMPORTED_MEMBER:
+				return !getImportedMembers().isEmpty();
+			case UML2Package.REGION__ELEMENT_IMPORT:
+				return elementImport != null && !elementImport.isEmpty();
+			case UML2Package.REGION__PACKAGE_IMPORT:
+				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.REGION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.REGION__IS_LEAF:
@@ -587,10 +892,61 @@ public class RegionImpl extends RedefinableElementImpl implements Region {
 				return subvertex != null && !subvertex.isEmpty();
 			case UML2Package.REGION__TRANSITION:
 				return transition != null && !transition.isEmpty();
+			case UML2Package.REGION__STATE_MACHINE:
+				return getStateMachine() != null;
+			case UML2Package.REGION__STATE:
+				return getState() != null;
 			case UML2Package.REGION__EXTENDED_REGION:
 				return extendedRegion != null;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+		if (baseClass == RedefinableElement.class) {
+			switch (derivedFeatureID) {
+				case UML2Package.REGION__REDEFINITION_CONTEXT: return UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT;
+				case UML2Package.REGION__IS_LEAF: return UML2Package.REDEFINABLE_ELEMENT__IS_LEAF;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+		if (baseClass == RedefinableElement.class) {
+			switch (baseFeatureID) {
+				case UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT: return UML2Package.REGION__REDEFINITION_CONTEXT;
+				case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF: return UML2Package.REGION__IS_LEAF;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isLeaf: "); //$NON-NLS-1$
+		result.append(isLeaf);
+		result.append(')');
+		return result.toString();
 	}
 
 } //RegionImpl

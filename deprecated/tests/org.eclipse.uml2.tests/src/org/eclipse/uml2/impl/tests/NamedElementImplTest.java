@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: NamedElementImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -35,13 +35,13 @@ import org.eclipse.uml2.impl.NamedElementImpl;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#validateNoName() <em>Validate No Name</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#validateQualifiedName() <em>Validate Qualified Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#validateNoName(EDiagnosticChain, EMap) <em>Validate No Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#validateQualifiedName(EDiagnosticChain, EMap) <em>Validate Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#allNamespaces() <em>All Namespaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#isDistinguishableFrom(NamedElement, Namespace) <em>Is Distinguishable From</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#separator() <em>Separator</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#qualifiedName() <em>Qualified Name</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#validateVisibilityNeedsOwnership() <em>Validate Visibility Needs Ownership</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#validateVisibilityNeedsOwnership(EDiagnosticChain, EMap) <em>Validate Visibility Needs Ownership</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#getNamespace() <em>Get Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#getOwner() <em>Get Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#getOwnedElements() <em>Get Owned Elements</em>}</li>
@@ -127,24 +127,24 @@ public abstract class NamedElementImplTest extends TemplateableElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.NamedElementImpl#validateNoName() <em>Validate No Name</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.NamedElementImpl#validateNoName(EDiagnosticChain, EMap) <em>Validate No Name</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.NamedElementImpl#validateNoName()
+	 * @see org.eclipse.uml2.impl.NamedElementImpl#validateNoName(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateNoName() {
+	public void testValidateNoName__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.NamedElementImpl#validateQualifiedName() <em>Validate Qualified Name</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.NamedElementImpl#validateQualifiedName(EDiagnosticChain, EMap) <em>Validate Qualified Name</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.NamedElementImpl#validateQualifiedName()
+	 * @see org.eclipse.uml2.impl.NamedElementImpl#validateQualifiedName(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateQualifiedName() {
+	public void testValidateQualifiedName__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
@@ -220,13 +220,13 @@ public abstract class NamedElementImplTest extends TemplateableElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.NamedElementImpl#validateVisibilityNeedsOwnership() <em>Validate Visibility Needs Ownership</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.NamedElementImpl#validateVisibilityNeedsOwnership(EDiagnosticChain, EMap) <em>Validate Visibility Needs Ownership</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.NamedElementImpl#validateVisibilityNeedsOwnership()
+	 * @see org.eclipse.uml2.impl.NamedElementImpl#validateVisibilityNeedsOwnership(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateVisibilityNeedsOwnership() {
+	public void testValidateVisibilityNeedsOwnership__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

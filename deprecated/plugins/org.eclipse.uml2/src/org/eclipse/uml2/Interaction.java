@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Interaction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Interaction.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -60,7 +60,7 @@ public interface Interaction extends Behavior, InteractionFragment{
 	 * @return the value of the '<em>Lifeline</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteraction_Lifeline()
 	 * @see org.eclipse.uml2.Lifeline#getInteraction
-	 * @model type="org.eclipse.uml2.Lifeline" opposite="interaction" containment="true"
+	 * @model type="org.eclipse.uml2.Lifeline" opposite="interaction" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getLifelines();
@@ -100,7 +100,7 @@ public interface Interaction extends Behavior, InteractionFragment{
 	 * @return the value of the '<em>Message</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteraction_Message()
 	 * @see org.eclipse.uml2.Message#getInteraction
-	 * @model type="org.eclipse.uml2.Message" opposite="interaction" containment="true"
+	 * @model type="org.eclipse.uml2.Message" opposite="interaction" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getMessages();
@@ -178,7 +178,7 @@ public interface Interaction extends Behavior, InteractionFragment{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Formal Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteraction_FormalGate()
-	 * @model type="org.eclipse.uml2.Gate" containment="true"
+	 * @model type="org.eclipse.uml2.Gate" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getFormalGates();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentTarget.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: DeploymentTarget.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,7 +54,7 @@ public interface DeploymentTarget extends NamedElement{
 	 * @return the value of the '<em>Deployment</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDeploymentTarget_Deployment()
 	 * @see org.eclipse.uml2.Deployment#getLocation
-	 * @model type="org.eclipse.uml2.Deployment" opposite="location" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.Deployment" opposite="location" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getDeployments();
@@ -92,7 +92,7 @@ public interface DeploymentTarget extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Deployed Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDeploymentTarget_DeployedElement()
-	 * @model type="org.eclipse.uml2.PackageableElement" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.PackageableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getDeployedElements();

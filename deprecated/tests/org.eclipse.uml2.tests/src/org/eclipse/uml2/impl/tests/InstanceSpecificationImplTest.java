@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecificationImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: InstanceSpecificationImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -43,8 +43,8 @@ import org.eclipse.uml2.impl.InstanceSpecificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getOwnedElements() <em>Get Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getClientDependencies() <em>Get Client Dependencies</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#validateSlotsAreDefined() <em>Validate Slots Are Defined</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#validateNoDuplicateSlots() <em>Validate No Duplicate Slots</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#validateSlotsAreDefined(EDiagnosticChain, EMap) <em>Validate Slots Are Defined</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#validateNoDuplicateSlots(EDiagnosticChain, EMap) <em>Validate No Duplicate Slots</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getOwnedElements() <em>Get Owned Elements</em>}</li>
  * </ul>
  * </p>
@@ -166,24 +166,24 @@ public class InstanceSpecificationImplTest extends PackageableElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#validateSlotsAreDefined() <em>Validate Slots Are Defined</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#validateSlotsAreDefined(EDiagnosticChain, EMap) <em>Validate Slots Are Defined</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.InstanceSpecificationImpl#validateSlotsAreDefined()
+	 * @see org.eclipse.uml2.impl.InstanceSpecificationImpl#validateSlotsAreDefined(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateSlotsAreDefined() {
+	public void testValidateSlotsAreDefined__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#validateNoDuplicateSlots() <em>Validate No Duplicate Slots</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#validateNoDuplicateSlots(EDiagnosticChain, EMap) <em>Validate No Duplicate Slots</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.InstanceSpecificationImpl#validateNoDuplicateSlots()
+	 * @see org.eclipse.uml2.impl.InstanceSpecificationImpl#validateNoDuplicateSlots(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateNoDuplicateSlots() {
+	public void testValidateNoDuplicateSlots__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

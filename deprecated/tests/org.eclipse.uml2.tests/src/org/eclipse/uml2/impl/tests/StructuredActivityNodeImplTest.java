@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: StructuredActivityNodeImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -39,10 +39,10 @@ import org.eclipse.uml2.impl.StructuredActivityNodeImpl;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateMembersAreDistinguishable() <em>Validate Members Are Distinguishable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateMembersAreDistinguishable(EDiagnosticChain, EMap) <em>Validate Members Are Distinguishable</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getNamesOfMember(NamedElement) <em>Get Names Of Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#membersAreDistinguishable() <em>Members Are Distinguishable</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateImportedMemberDerived() <em>Validate Imported Member Derived</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateImportedMemberDerived(EDiagnosticChain, EMap) <em>Validate Imported Member Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#importedMember() <em>Imported Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#importMembers(Set) <em>Import Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#excludeCollisions(Set) <em>Exclude Collisions</em>}</li>
@@ -200,13 +200,13 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateMembersAreDistinguishable() <em>Validate Members Are Distinguishable</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateMembersAreDistinguishable(EDiagnosticChain, EMap) <em>Validate Members Are Distinguishable</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateMembersAreDistinguishable()
+	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateMembersAreDistinguishable(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateMembersAreDistinguishable() {
+	public void testValidateMembersAreDistinguishable__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
@@ -233,13 +233,13 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateImportedMemberDerived() <em>Validate Imported Member Derived</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateImportedMemberDerived(EDiagnosticChain, EMap) <em>Validate Imported Member Derived</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateImportedMemberDerived()
+	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateImportedMemberDerived(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateImportedMemberDerived() {
+	public void testValidateImportedMemberDerived__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 

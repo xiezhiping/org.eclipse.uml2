@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.LiteralInteger;
 import org.eclipse.uml2.LiteralUnlimitedNatural;
 import org.eclipse.uml2.MultiplicityElement;
-import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 
@@ -171,13 +171,13 @@ public final class MultiplicityElementOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.MULTIPLICITY_ELEMENT__UPPER_GT0,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.MULTIPLICITY_ELEMENT__UPPER_GT0,
 							UML2Plugin.INSTANCE.getString(
 								"_UI_MultiplicityElement_UpperGT0_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context,
 									multiplicityElement)),
-							new Object[] {new Integer(upperBound)}));
+							new Object[] {multiplicityElement, new Integer(upperBound)}));
 			}
 		}
 
@@ -202,13 +202,13 @@ public final class MultiplicityElementOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.MULTIPLICITY_ELEMENT__LOWER_GE0,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.MULTIPLICITY_ELEMENT__LOWER_GE0,
 							UML2Plugin.INSTANCE.getString(
 								"_UI_MultiplicityElement_LowerGE0_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context,
 									multiplicityElement)),
-							new Object[] {new Integer(lowerBound)}));
+							new Object[] {multiplicityElement, new Integer(lowerBound)}));
 			}
 		}
 
@@ -234,14 +234,14 @@ public final class MultiplicityElementOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.MULTIPLICITY_ELEMENT__UPPER_GE_LOWER,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.MULTIPLICITY_ELEMENT__UPPER_GE_LOWER,
 							UML2Plugin.INSTANCE
 								.getString(
 									"_UI_MultiplicityElement_UpperGELower_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context,
 										multiplicityElement)),
-							new Object[] {new Integer(upperBound)}));
+							new Object[] {multiplicityElement, new Integer(upperBound)}));
 			}
 		}
 
@@ -266,14 +266,14 @@ public final class MultiplicityElementOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.ERROR,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.MULTIPLICITY_ELEMENT__LOWER_EQ_LOWERBOUND,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.MULTIPLICITY_ELEMENT__LOWER_EQ_LOWERBOUND,
 							UML2Plugin.INSTANCE
 								.getString(
 									"_UI_MultiplicityElement_LowerEQLowerBound_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context,
 										multiplicityElement)),
-							new Object[] {new Integer(lower)}));
+							new Object[] {multiplicityElement, new Integer(lower)}));
 			}
 		}
 
@@ -298,14 +298,14 @@ public final class MultiplicityElementOperations
 				diagnostics
 					.add(new BasicDiagnostic(
 							Diagnostic.ERROR,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.MULTIPLICITY_ELEMENT__UPPER_EQ_UPPERBOUND,
+							UML2Validator.DIAGNOSTIC_SOURCE,
+							UML2Validator.MULTIPLICITY_ELEMENT__UPPER_EQ_UPPERBOUND,
 							UML2Plugin.INSTANCE
 								.getString(
 									"_UI_MultiplicityElement_UpperEQUpperBound_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context,
 										multiplicityElement)),
-							new Object[] {new Integer(upper)}));
+							new Object[] {multiplicityElement, new Integer(upper)}));
 			}
 		}
 

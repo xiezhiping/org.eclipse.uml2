@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: State.java,v 1.3 2004/04/23 02:31:49 khussey Exp $
+ * $Id: State.java,v 1.4 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model 
  * @generated
  */
-public interface State extends RedefinableElement, Vertex{
+public interface State extends Namespace, RedefinableElement, Vertex{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -149,7 +149,7 @@ public interface State extends RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connection</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getState_Connection()
-	 * @model type="org.eclipse.uml2.ConnectionPointReference" containment="true"
+	 * @model type="org.eclipse.uml2.ConnectionPointReference" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getConnections();
@@ -213,7 +213,7 @@ public interface State extends RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Deferrable Trigger</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getState_DeferrableTrigger()
-	 * @model type="org.eclipse.uml2.Trigger"
+	 * @model type="org.eclipse.uml2.Trigger" ordered="false"
 	 * @generated
 	 */
 	EList getDeferrableTriggers();
@@ -232,6 +232,7 @@ public interface State extends RedefinableElement, Vertex{
 	/**
 	 * Returns the value of the '<em><b>Region</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Region}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Region#getState <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Region</em>' containment reference list isn't clear,
@@ -240,7 +241,8 @@ public interface State extends RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Region</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getState_Region()
-	 * @model type="org.eclipse.uml2.Region" containment="true"
+	 * @see org.eclipse.uml2.Region#getState
+	 * @model type="org.eclipse.uml2.Region" opposite="state" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getRegions();
@@ -438,5 +440,13 @@ public interface State extends RedefinableElement, Vertex{
 	 * @generated
 	 */
 	EList getOwnedElements();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model parameters=""
+	 * @generated
+	 */
+	EList getOwnedMembers();
 
 } // State

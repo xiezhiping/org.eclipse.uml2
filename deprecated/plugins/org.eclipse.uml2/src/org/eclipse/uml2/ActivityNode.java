@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ActivityNode.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,7 +58,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @return the value of the '<em>Outgoing</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_Outgoing()
 	 * @see org.eclipse.uml2.ActivityEdge#getSource
-	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="source"
+	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="source" ordered="false"
 	 * @generated
 	 */
 	EList getOutgoings();
@@ -87,7 +87,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @return the value of the '<em>Incoming</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_Incoming()
 	 * @see org.eclipse.uml2.ActivityEdge#getTarget
-	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="target"
+	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="target" ordered="false"
 	 * @generated
 	 */
 	EList getIncomings();
@@ -114,7 +114,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InGroup()
-	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getInGroups();
@@ -158,7 +158,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Redefined Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_RedefinedElement()
-	 * @model type="org.eclipse.uml2.ActivityNode"
+	 * @model type="org.eclipse.uml2.ActivityNode" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedElements();
@@ -215,7 +215,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @return the value of the '<em>In Partition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InPartition()
 	 * @see org.eclipse.uml2.ActivityPartition#getContainedNodes
-	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="containedNode"
+	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="containedNode" ordered="false"
 	 * @generated
 	 */
 	EList getInPartitions();
@@ -244,7 +244,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @return the value of the '<em>In Interruptible Region</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InInterruptibleRegion()
 	 * @see org.eclipse.uml2.InterruptibleActivityRegion#getContainedNodes
-	 * @model type="org.eclipse.uml2.InterruptibleActivityRegion" opposite="containedNode"
+	 * @model type="org.eclipse.uml2.InterruptibleActivityRegion" opposite="containedNode" ordered="false"
 	 * @generated
 	 */
 	EList getInInterruptibleRegions();

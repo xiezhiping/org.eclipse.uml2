@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.6 2004/04/30 17:21:45 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.7 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -84,8 +84,8 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getGeneralizations <em>Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPowertypeExtents <em>Powertype Extent</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOwnedUseCases <em>Owned Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRepresentation <em>Representation</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOccurrences <em>Occurrence</em>}</li>
@@ -193,16 +193,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	protected EList redefinedClassifier = null;
 
 	/**
-	 * The cached value of the '{@link #getSubstitutions() <em>Substitution</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubstitutions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList substitution = null;
-
-	/**
 	 * The cached value of the '{@link #getPowertypeExtents() <em>Powertype Extent</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -211,6 +201,16 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @ordered
 	 */
 	protected EList powertypeExtent = null;
+
+	/**
+	 * The cached value of the '{@link #getSubstitutions() <em>Substitution</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubstitutions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList substitution = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedUseCases() <em>Owned Use Case</em>}' containment reference list.
@@ -797,8 +797,8 @@ public EList getGenerals() {
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
+	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 * </ul>
 	 * </p>
 	 * @generated
@@ -1450,10 +1450,10 @@ public EList getGenerals() {
 					return eBasicSetContainer(otherEnd, UML2Package.CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CLASSIFIER__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.CLASSIFIER__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -1495,10 +1495,10 @@ public EList getGenerals() {
 					return eBasicSetContainer(null, UML2Package.CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.CLASSIFIER__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.CLASSIFIER__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.CLASSIFIER__OCCURRENCE:
@@ -1595,10 +1595,10 @@ public EList getGenerals() {
 				return getAttributes();
 			case UML2Package.CLASSIFIER__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.CLASSIFIER__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.CLASSIFIER__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.CLASSIFIER__REPRESENTATION:
@@ -1679,13 +1679,13 @@ public EList getGenerals() {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.CLASSIFIER__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.CLASSIFIER__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1763,11 +1763,11 @@ public EList getGenerals() {
 			case UML2Package.CLASSIFIER__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.CLASSIFIER__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.CLASSIFIER__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -1847,10 +1847,10 @@ public EList getGenerals() {
 				return !getAttributes().isEmpty();
 			case UML2Package.CLASSIFIER__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.CLASSIFIER__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.CLASSIFIER__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.CLASSIFIER__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.CLASSIFIER__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.CLASSIFIER__REPRESENTATION:

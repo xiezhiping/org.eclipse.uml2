@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LoopNodeItemProvider.java,v 1.5 2004/04/30 17:20:12 khussey Exp $
+ * $Id: LoopNodeItemProvider.java,v 1.6 2004/05/11 15:21:50 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -355,11 +355,11 @@ public class LoopNodeItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
+			feature == UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode() ||
+			feature == UML2Package.eINSTANCE.getLoopNode_LoopVariableInput() ||
 			feature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
 			feature == UML2Package.eINSTANCE.getAction_LocalPostcondition() ||
 			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			feature == UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode() ||
-			feature == UML2Package.eINSTANCE.getLoopNode_LoopVariableInput() ||
 			feature == UML2Package.eINSTANCE.getLoopNode_Result() ||
 			feature == UML2Package.eINSTANCE.getLoopNode_LoopVariable();
 		return getString(

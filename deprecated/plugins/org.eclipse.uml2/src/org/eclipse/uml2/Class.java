@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Class.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Class.java,v 1.3 2004/05/11 15:24:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -124,7 +124,7 @@ public interface Class extends EncapsulatedClassifier, BehavioredClassifier{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Super Class</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_SuperClass()
-	 * @model type="org.eclipse.uml2.Class" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Class" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getSuperClasses();
@@ -153,7 +153,7 @@ public interface Class extends EncapsulatedClassifier, BehavioredClassifier{
 	 * @return the value of the '<em>Extension</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_Extension()
 	 * @see org.eclipse.uml2.Extension#getMetaclass
-	 * @model type="org.eclipse.uml2.Extension" opposite="metaclass" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model type="org.eclipse.uml2.Extension" opposite="metaclass" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getExtensions();
@@ -218,7 +218,7 @@ public interface Class extends EncapsulatedClassifier, BehavioredClassifier{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_OwnedReception()
-	 * @model type="org.eclipse.uml2.Reception" containment="true"
+	 * @model type="org.eclipse.uml2.Reception" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedReceptions();

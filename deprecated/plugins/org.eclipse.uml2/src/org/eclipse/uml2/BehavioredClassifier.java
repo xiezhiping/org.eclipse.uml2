@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @return the value of the '<em>Owned Behavior</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedBehavior()
 	 * @see org.eclipse.uml2.Behavior#getContext
-	 * @model type="org.eclipse.uml2.Behavior" opposite="context" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.Behavior" opposite="context" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedBehaviors();
@@ -122,7 +122,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @return the value of the '<em>Implementation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_Implementation()
 	 * @see org.eclipse.uml2.Implementation#getImplementingClassifier
-	 * @model type="org.eclipse.uml2.Implementation" opposite="implementingClassifier" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.Implementation" opposite="implementingClassifier" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getImplementations();
@@ -162,7 +162,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @return the value of the '<em>Owned State Machine</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedStateMachine()
 	 * @see org.eclipse.uml2.StateMachine#getStateMachine_redefinitionContext
-	 * @model type="org.eclipse.uml2.StateMachine" opposite="stateMachine_redefinitionContext" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.StateMachine" opposite="stateMachine_redefinitionContext" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedStateMachines();

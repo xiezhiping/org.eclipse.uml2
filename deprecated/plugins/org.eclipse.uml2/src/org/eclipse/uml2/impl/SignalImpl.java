@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.5 2004/04/30 17:21:45 khussey Exp $
+ * $Id: SignalImpl.java,v 1.6 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.Signal;
@@ -52,7 +51,7 @@ import org.eclipse.uml2.VisibilityKind;
  *
  * @generated
  */
-public class SignalImpl extends BehavioredClassifierImpl implements Signal {
+public class SignalImpl extends ClassifierImpl implements Signal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -173,16 +172,16 @@ public class SignalImpl extends BehavioredClassifierImpl implements Signal {
 	 */
 	public EList getOwnedMembers() {
 		// TODO: test this union getter
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getSignal().getEAllOperations().get(73))) {
+		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getSignal().getEAllOperations().get(70))) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedMembers());
 			union.addAll(getOwnedAttributes());
 			getCacheAdapter().put(
 				this,
-				UML2Package.eINSTANCE.getSignal().getEAllOperations().get(73),
+				UML2Package.eINSTANCE.getSignal().getEAllOperations().get(70),
 				new BasicEList.UnmodifiableEList(union.size(), union.toArray()));
 		}
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getSignal().getEAllOperations().get(73));
+		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getSignal().getEAllOperations().get(70));
 	}
 
 	/**
@@ -219,16 +218,10 @@ public class SignalImpl extends BehavioredClassifierImpl implements Signal {
 					return eBasicSetContainer(otherEnd, UML2Package.SIGNAL__OWNING_PARAMETER, msgs);
 				case UML2Package.SIGNAL__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.SIGNAL__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
-				case UML2Package.SIGNAL__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
+				case UML2Package.SIGNAL__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -270,20 +263,14 @@ public class SignalImpl extends BehavioredClassifierImpl implements Signal {
 					return eBasicSetContainer(null, UML2Package.SIGNAL__OWNING_PARAMETER, msgs);
 				case UML2Package.SIGNAL__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.SIGNAL__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.SIGNAL__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.SIGNAL__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.SIGNAL__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.SIGNAL__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
-				case UML2Package.SIGNAL__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.SIGNAL__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.SIGNAL__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.SIGNAL__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				default:
@@ -378,24 +365,16 @@ public class SignalImpl extends BehavioredClassifierImpl implements Signal {
 				return getAttributes();
 			case UML2Package.SIGNAL__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.SIGNAL__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.SIGNAL__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.SIGNAL__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.SIGNAL__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.SIGNAL__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.SIGNAL__OCCURRENCE:
 				return getOccurrences();
-			case UML2Package.SIGNAL__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.SIGNAL__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.SIGNAL__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.SIGNAL__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.SIGNAL__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 		}
@@ -472,13 +451,13 @@ public class SignalImpl extends BehavioredClassifierImpl implements Signal {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.SIGNAL__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.SIGNAL__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.SIGNAL__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.SIGNAL__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -490,21 +469,6 @@ public class SignalImpl extends BehavioredClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.SIGNAL__OWNED_BEHAVIOR:
-				getOwnedBehaviors().clear();
-				getOwnedBehaviors().addAll((Collection)newValue);
-				return;
-			case UML2Package.SIGNAL__CLASSIFIER_BEHAVIOR:
-				setClassifierBehavior((Behavior)newValue);
-				return;
-			case UML2Package.SIGNAL__IMPLEMENTATION:
-				getImplementations().clear();
-				getImplementations().addAll((Collection)newValue);
-				return;
-			case UML2Package.SIGNAL__OWNED_STATE_MACHINE:
-				getOwnedStateMachines().clear();
-				getOwnedStateMachines().addAll((Collection)newValue);
 				return;
 			case UML2Package.SIGNAL__OWNED_ATTRIBUTE:
 				getOwnedAttributes().clear();
@@ -575,11 +539,11 @@ public class SignalImpl extends BehavioredClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.SIGNAL__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.SIGNAL__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.SIGNAL__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.SIGNAL__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -589,18 +553,6 @@ public class SignalImpl extends BehavioredClassifierImpl implements Signal {
 				return;
 			case UML2Package.SIGNAL__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.SIGNAL__OWNED_BEHAVIOR:
-				getOwnedBehaviors().clear();
-				return;
-			case UML2Package.SIGNAL__CLASSIFIER_BEHAVIOR:
-				setClassifierBehavior((Behavior)null);
-				return;
-			case UML2Package.SIGNAL__IMPLEMENTATION:
-				getImplementations().clear();
-				return;
-			case UML2Package.SIGNAL__OWNED_STATE_MACHINE:
-				getOwnedStateMachines().clear();
 				return;
 			case UML2Package.SIGNAL__OWNED_ATTRIBUTE:
 				getOwnedAttributes().clear();
@@ -674,24 +626,16 @@ public class SignalImpl extends BehavioredClassifierImpl implements Signal {
 				return !getAttributes().isEmpty();
 			case UML2Package.SIGNAL__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.SIGNAL__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.SIGNAL__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.SIGNAL__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.SIGNAL__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.SIGNAL__REPRESENTATION:
 				return representation != null;
 			case UML2Package.SIGNAL__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
-			case UML2Package.SIGNAL__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.SIGNAL__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.SIGNAL__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.SIGNAL__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.SIGNAL__OWNED_ATTRIBUTE:
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}

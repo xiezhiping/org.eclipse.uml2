@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.5 2004/04/30 17:21:45 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.6 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -218,8 +218,8 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
-	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies}</li>
+	 *   <li>{@link org.eclipse.uml2.Element#getOwnedElements}</li>
 	 * </ul>
 	 * </p>
 	 * @generated
@@ -412,10 +412,10 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 					return eBasicSetContainer(otherEnd, UML2Package.BEHAVIORED_CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION:
@@ -463,10 +463,10 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 					return eBasicSetContainer(null, UML2Package.BEHAVIORED_CLASSIFIER__OWNING_PARAMETER, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.BEHAVIORED_CLASSIFIER__OCCURRENCE:
@@ -569,10 +569,10 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 				return getAttributes();
 			case UML2Package.BEHAVIORED_CLASSIFIER__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.BEHAVIORED_CLASSIFIER__REPRESENTATION:
@@ -661,13 +661,13 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -760,11 +760,11 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.BEHAVIORED_CLASSIFIER__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -856,10 +856,10 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 				return !getAttributes().isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__REPRESENTATION:

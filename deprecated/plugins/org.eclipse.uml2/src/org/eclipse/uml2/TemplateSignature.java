@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateSignature.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: TemplateSignature.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -55,7 +55,7 @@ public interface TemplateSignature extends Element{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateSignature_Parameter()
-	 * @model type="org.eclipse.uml2.TemplateParameter" required="true" volatile="true"
+	 * @model type="org.eclipse.uml2.TemplateParameter" required="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getParameters();
@@ -73,7 +73,7 @@ public interface TemplateSignature extends Element{
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateSignature_OwnedParameter()
 	 * @see org.eclipse.uml2.TemplateParameter#getSignature
-	 * @model type="org.eclipse.uml2.TemplateParameter" opposite="signature" containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.TemplateParameter" opposite="signature" containment="true" volatile="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedParameters();
@@ -102,7 +102,7 @@ public interface TemplateSignature extends Element{
 	 * @return the value of the '<em>Nested Signature</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateSignature_NestedSignature()
 	 * @see org.eclipse.uml2.TemplateSignature#getNestingSignature
-	 * @model type="org.eclipse.uml2.TemplateSignature" opposite="nestingSignature"
+	 * @model type="org.eclipse.uml2.TemplateSignature" opposite="nestingSignature" ordered="false"
 	 * @generated
 	 */
 	EList getNestedSignatures();

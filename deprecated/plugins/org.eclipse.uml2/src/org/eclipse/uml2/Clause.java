@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Clause.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Clause.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,7 +54,7 @@ public interface Clause extends Element{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Test</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClause_Test()
-	 * @model type="org.eclipse.uml2.ActivityNode"
+	 * @model type="org.eclipse.uml2.ActivityNode" ordered="false"
 	 * @generated
 	 */
 	EList getTests();
@@ -81,7 +81,7 @@ public interface Clause extends Element{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Body</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClause_Body()
-	 * @model type="org.eclipse.uml2.ActivityNode"
+	 * @model type="org.eclipse.uml2.ActivityNode" ordered="false"
 	 * @generated
 	 */
 	EList getBodies();
@@ -110,7 +110,7 @@ public interface Clause extends Element{
 	 * @return the value of the '<em>Predecessor Clause</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClause_PredecessorClause()
 	 * @see org.eclipse.uml2.Clause#getSuccessorClauses
-	 * @model type="org.eclipse.uml2.Clause" opposite="successorClause"
+	 * @model type="org.eclipse.uml2.Clause" opposite="successorClause" ordered="false"
 	 * @generated
 	 */
 	EList getPredecessorClauses();
@@ -128,7 +128,7 @@ public interface Clause extends Element{
 	 * @return the value of the '<em>Successor Clause</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClause_SuccessorClause()
 	 * @see org.eclipse.uml2.Clause#getPredecessorClauses
-	 * @model type="org.eclipse.uml2.Clause" opposite="predecessorClause"
+	 * @model type="org.eclipse.uml2.Clause" opposite="predecessorClause" ordered="false"
 	 * @generated
 	 */
 	EList getSuccessorClauses();
@@ -170,7 +170,7 @@ public interface Clause extends Element{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Body Output</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClause_BodyOutput()
-	 * @model type="org.eclipse.uml2.OutputPin"
+	 * @model type="org.eclipse.uml2.OutputPin" ordered="false"
 	 * @generated
 	 */
 	EList getBodyOutputs();

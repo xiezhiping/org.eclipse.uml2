@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UseCase.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: UseCase.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface UseCase extends BehavioredClassifier{
 	 * @return the value of the '<em>Include</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getUseCase_Include()
 	 * @see org.eclipse.uml2.Include#getIncludingCase
-	 * @model type="org.eclipse.uml2.Include" opposite="includingCase" containment="true"
+	 * @model type="org.eclipse.uml2.Include" opposite="includingCase" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getIncludes();
@@ -96,7 +96,7 @@ public interface UseCase extends BehavioredClassifier{
 	 * @return the value of the '<em>Extend</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getUseCase_Extend()
 	 * @see org.eclipse.uml2.Extend#getExtension
-	 * @model type="org.eclipse.uml2.Extend" opposite="extension" containment="true"
+	 * @model type="org.eclipse.uml2.Extend" opposite="extension" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getExtends();
@@ -136,7 +136,7 @@ public interface UseCase extends BehavioredClassifier{
 	 * @return the value of the '<em>Extension Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getUseCase_ExtensionPoint()
 	 * @see org.eclipse.uml2.ExtensionPoint#getUseCase
-	 * @model type="org.eclipse.uml2.ExtensionPoint" opposite="useCase" containment="true"
+	 * @model type="org.eclipse.uml2.ExtensionPoint" opposite="useCase" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getExtensionPoints();
@@ -174,7 +174,7 @@ public interface UseCase extends BehavioredClassifier{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subject</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getUseCase_Subject()
-	 * @model type="org.eclipse.uml2.Classifier"
+	 * @model type="org.eclipse.uml2.Classifier" ordered="false"
 	 * @generated
 	 */
 	EList getSubjects();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -77,7 +77,7 @@ public interface AcceptEventAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Result</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAcceptEventAction_Result()
-	 * @model type="org.eclipse.uml2.OutputPin"
+	 * @model type="org.eclipse.uml2.OutputPin" ordered="false"
 	 * @generated
 	 */
 	EList getResults();

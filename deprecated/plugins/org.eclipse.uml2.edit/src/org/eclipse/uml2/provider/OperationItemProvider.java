@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.5 2004/05/11 15:21:50 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -660,13 +660,13 @@ public class OperationItemProvider
 		boolean qualify =
 			feature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
 			feature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue() ||
+			feature == UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter() ||
+			feature == UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult() ||
+			feature == UML2Package.eINSTANCE.getOperation_OwnedParameter() ||
 			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
 			feature == UML2Package.eINSTANCE.getOperation_Precondition() ||
 			feature == UML2Package.eINSTANCE.getOperation_Postcondition() ||
-			feature == UML2Package.eINSTANCE.getOperation_BodyCondition() ||
-			feature == UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter() ||
-			feature == UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult() ||
-			feature == UML2Package.eINSTANCE.getOperation_OwnedParameter();
+			feature == UML2Package.eINSTANCE.getOperation_BodyCondition();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });

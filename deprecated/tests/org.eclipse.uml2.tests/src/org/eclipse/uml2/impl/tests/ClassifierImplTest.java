@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ClassifierImplTest.java,v 1.2 2004/05/11 15:20:50 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -54,15 +54,15 @@ import org.eclipse.uml2.impl.ClassifierImpl;
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#setVisibility(VisibilityKind) <em>Set Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#conformsTo(Type) <em>Conforms To</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getNamespace() <em>Get Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionContextValid() <em>Validate Redefinition Context Valid</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionConsistent() <em>Validate Redefinition Consistent</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap) <em>Validate Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap) <em>Validate Redefinition Consistent</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#isRedefinitionContextValid(RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#allFeatures() <em>All Features</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateNoCyclesInGeneralization() <em>Validate No Cycles In Generalization</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateSpecializeType() <em>Validate Specialize Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateInheritedMember() <em>Validate Inherited Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateNoCyclesInGeneralization(EDiagnosticChain, EMap) <em>Validate No Cycles In Generalization</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateSpecializeType(EDiagnosticChain, EMap) <em>Validate Specialize Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateInheritedMember(EDiagnosticChain, EMap) <em>Validate Inherited Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#inheritedMember() <em>Inherited Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#parents() <em>Parents</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#allParents() <em>All Parents</em>}</li>
@@ -71,7 +71,7 @@ import org.eclipse.uml2.impl.ClassifierImpl;
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#inherit(Set) <em>Inherit</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#maySpecializeType(Classifier) <em>May Specialize Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#general() <em>General</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateGeneralEqualsParents() <em>Validate General Equals Parents</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#validateGeneralEqualsParents(EDiagnosticChain, EMap) <em>Validate General Equals Parents</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#conformsTo(Classifier) <em>Conforms To</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getMembers() <em>Get Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOwnedElements() <em>Get Owned Elements</em>}</li>
@@ -400,24 +400,24 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionContextValid() <em>Validate Redefinition Context Valid</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap) <em>Validate Redefinition Context Valid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionContextValid()
+	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionContextValid(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateRedefinitionContextValid() {
+	public void testValidateRedefinitionContextValid__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionConsistent() <em>Validate Redefinition Consistent</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap) <em>Validate Redefinition Consistent</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionConsistent()
+	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateRedefinitionConsistent(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateRedefinitionConsistent() {
+	public void testValidateRedefinitionConsistent__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
@@ -467,35 +467,35 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateNoCyclesInGeneralization() <em>Validate No Cycles In Generalization</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateNoCyclesInGeneralization(EDiagnosticChain, EMap) <em>Validate No Cycles In Generalization</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateNoCyclesInGeneralization()
+	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateNoCyclesInGeneralization(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateNoCyclesInGeneralization() {
+	public void testValidateNoCyclesInGeneralization__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateSpecializeType() <em>Validate Specialize Type</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateSpecializeType(EDiagnosticChain, EMap) <em>Validate Specialize Type</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateSpecializeType()
+	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateSpecializeType(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateSpecializeType() {
+	public void testValidateSpecializeType__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateInheritedMember() <em>Validate Inherited Member</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateInheritedMember(EDiagnosticChain, EMap) <em>Validate Inherited Member</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateInheritedMember()
+	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateInheritedMember(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateInheritedMember() {
+	public void testValidateInheritedMember__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
@@ -607,13 +607,13 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateGeneralEqualsParents() <em>Validate General Equals Parents</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#validateGeneralEqualsParents(EDiagnosticChain, EMap) <em>Validate General Equals Parents</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateGeneralEqualsParents()
+	 * @see org.eclipse.uml2.impl.ClassifierImpl#validateGeneralEqualsParents(EDiagnosticChain, EMap)
 	 * @generated
 	 */
-	public void testValidateGeneralEqualsParents() {
+	public void testValidateGeneralEqualsParents__EDiagnosticChain_EMap() {
 		// TODO: implement this operation test method
 	}
 
