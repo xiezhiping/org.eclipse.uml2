@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.11 2004/06/01 20:05:27 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.12 2004/06/01 21:08:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -549,17 +549,21 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated NOT
 	 */
 	public EList getInheritedMembers() {
+		EList inheritedMembers = (EList) getCacheAdapter().get(this,
+			UML2Package.eINSTANCE.getClassifier_InheritedMember());
 
-        if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClassifier_InheritedMember())) {
-            Set inheritedMember = inheritedMember();
-            getCacheAdapter().put(
-                    this,
-                    UML2Package.eINSTANCE.getClassifier_InheritedMember(),
-                    new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_InheritedMember(), inheritedMember.size(), inheritedMember
-                            .toArray()));
-        }
+		if (null == inheritedMembers) {
+			Set inheritedMember = inheritedMember();
 
-        return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_InheritedMember());
+			inheritedMembers = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getClassifier_InheritedMember(),
+				inheritedMember.size(), inheritedMember.toArray());
+			getCacheAdapter().put(this,
+				UML2Package.eINSTANCE.getClassifier_InheritedMember(),
+				inheritedMembers);
+		}
+
+		return inheritedMembers;
 	}
 
     /**

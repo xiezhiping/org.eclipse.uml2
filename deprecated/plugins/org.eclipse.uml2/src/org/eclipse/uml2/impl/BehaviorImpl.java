@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.11 2004/06/01 20:05:27 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.12 2004/06/01 21:08:23 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -425,23 +425,34 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated NOT
 	 */
 	public EList getReturnResults() {
+		EList returnResults = (EList) getCacheAdapter().get(eResource(), this,
+			UML2Package.eINSTANCE.getBehavior_ReturnResult());
 
-	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getBehavior_ReturnResult())) {
-	        List returnResult = new ArrayList();
-	        
-	        for (Iterator parameters = getParameters().iterator(); parameters.hasNext();) {
-	            Parameter parameter = (Parameter) parameters.next();
-	            
-	            if (ParameterDirectionKind.RETURN_LITERAL.equals(parameter.getDirection())) {
-	                returnResult.add(parameter);
-	            }
-	        }
-	        
-	        getCacheAdapter().put(this, UML2Package.eINSTANCE.getBehavior_ReturnResult(),
-	                new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getBehavior_ReturnResult(), returnResult.size(), returnResult.toArray()));
-	    }
-	    
-	    return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getBehavior_ReturnResult());
+		if (null == returnResults) {
+			List returnResult = new ArrayList();
+
+			for (Iterator parameters = getParameters().iterator(); parameters
+				.hasNext();) {
+				
+				Parameter parameter = (Parameter) parameters.next();
+
+				if (ParameterDirectionKind.RETURN_LITERAL.equals(parameter
+					.getDirection())) {
+					
+					returnResult.add(parameter);
+				}
+			}
+
+			returnResults = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getBehavior_ReturnResult(), returnResult
+					.size(), returnResult.toArray());
+			getCacheAdapter()
+				.put(eResource(), this,
+					UML2Package.eINSTANCE.getBehavior_ReturnResult(),
+					returnResults);
+		}
+
+		return returnResults;
 	}
 
     /**

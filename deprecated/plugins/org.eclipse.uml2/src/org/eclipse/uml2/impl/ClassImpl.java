@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.11 2004/05/28 05:39:37 khussey Exp $
+ * $Id: ClassImpl.java,v 1.12 2004/06/01 21:08:23 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -214,23 +214,30 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated NOT
 	 */
 	public EList getParts() {
+		EList parts = (EList) getCacheAdapter().get(eResource(), this,
+			UML2Package.eINSTANCE.getStructuredClassifier_Part());
 
-        if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier_Part())) {
-            List part = new ArrayList();
+		if (null == parts) {
+			List part = new ArrayList();
 
-            for (Iterator ownedAttributes = getOwnedAttributes().iterator(); ownedAttributes.hasNext();) {
-                Property ownedAttribute = (Property) ownedAttributes.next();
+			for (Iterator ownedAttributes = getOwnedAttributes().iterator(); ownedAttributes
+				.hasNext();) {
 
-                if (ownedAttribute.isComposite()) {
-                    part.add(ownedAttribute);
-                }
-            }
+				Property ownedAttribute = (Property) ownedAttributes.next();
 
-            getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredClassifier_Part(),
-                    new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Part(), part.size(), part.toArray()));
-        }
+				if (ownedAttribute.isComposite()) {
+					part.add(ownedAttribute);
+				}
+			}
 
-        return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredClassifier_Part());
+			parts = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getStructuredClassifier_Part(), part
+					.size(), part.toArray());
+			getCacheAdapter().put(eResource(), this,
+				UML2Package.eINSTANCE.getStructuredClassifier_Part(), parts);
+		}
+
+		return parts;
 	}
 
     /**
@@ -443,23 +450,28 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated NOT
 	 */
 	public EList getSuperClasses() {
+		EList superClasses = (EList) getCacheAdapter().get(eResource(), this,
+			UML2Package.eINSTANCE.getClass_SuperClass());
 
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getClass_SuperClass())) {
+		if (null == superClasses) {
 			Set superClass = new HashSet();
-			
+
 			for (Iterator generals = general().iterator(); generals.hasNext();) {
 				Classifier general = (Classifier) generals.next();
-				
+
 				if (org.eclipse.uml2.Class.class.isInstance(general)) {
 					superClass.add(general);
 				}
 			}
-			
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClass_SuperClass(),
-				new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClass_SuperClass(), superClass.size(), superClass.toArray()));
+
+			superClasses = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getClass_SuperClass(), superClass.size(),
+				superClass.toArray());
+			getCacheAdapter().put(eResource(), this,
+				UML2Package.eINSTANCE.getClass_SuperClass(), superClasses);
 		}
-		
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClass_SuperClass());
+
+		return superClasses;
 	}
 	
     /**

@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.11 2004/06/01 20:05:27 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.12 2004/06/01 21:08:23 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -148,9 +147,22 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	}
 
 	public EList getRelatedElements() {
-		Set union = new HashSet();
-		union.addAll(getEndTypes());
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
+		EList relatedElements = (EList) getCacheAdapter().get(this,
+			UML2Package.eINSTANCE.getRelationship_RelatedElement());
+
+		if (null == relatedElements) {
+			Set union = new LinkedHashSet();
+			union.addAll(getEndTypes());
+
+			relatedElements = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getRelationship_RelatedElement(), union
+					.size(), union.toArray());
+			getCacheAdapter().put(this,
+				UML2Package.eINSTANCE.getRelationship_RelatedElement(),
+				relatedElements);
+		}
+
+		return relatedElements;
 	}
 
 	/**

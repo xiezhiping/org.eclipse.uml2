@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.10 2004/06/01 20:05:27 khussey Exp $
+ * $Id: PackageImpl.java,v 1.11 2004/06/01 21:08:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -304,23 +304,31 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated NOT
 	 */
 	public EList getNestedPackages() {
+		EList nestedPackages = (EList) getCacheAdapter().get(eResource(), this,
+			UML2Package.eINSTANCE.getPackage_NestedPackage());
 
-	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getPackage_NestedPackage())) {
-	        Set nestedPackage = new HashSet();
-	        
-	        for (Iterator ownedMembers = getOwnedMembers().iterator(); ownedMembers.hasNext();) {
-	            NamedElement ownedMember = (NamedElement) ownedMembers.next();
-	            
-	            if (org.eclipse.uml2.Package.class.isInstance(ownedMember)) {
-	                nestedPackage.add(ownedMember);
-	            }
-	        }
-	        
-	        getCacheAdapter().put(this, UML2Package.eINSTANCE.getPackage_NestedPackage(),
-	                new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getPackage_NestedPackage(), nestedPackage.size(), nestedPackage.toArray()));
-	    }
-	    
-	    return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getPackage_NestedPackage());
+		if (null == nestedPackages) {
+			Set nestedPackage = new HashSet();
+
+			for (Iterator ownedMembers = getOwnedMembers().iterator(); ownedMembers
+				.hasNext();) {
+
+				NamedElement ownedMember = (NamedElement) ownedMembers.next();
+
+				if (org.eclipse.uml2.Package.class.isInstance(ownedMember)) {
+					nestedPackage.add(ownedMember);
+				}
+			}
+
+			nestedPackages = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getPackage_NestedPackage(), nestedPackage
+					.size(), nestedPackage.toArray());
+			getCacheAdapter().put(eResource(), this,
+				UML2Package.eINSTANCE.getPackage_NestedPackage(),
+				nestedPackages);
+		}
+
+		return nestedPackages;
 	}
 
     /**
@@ -374,23 +382,30 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated NOT
 	 */
 	public EList getOwnedTypes() {
+		EList ownedTypes = (EList) getCacheAdapter().get(eResource(), this,
+			UML2Package.eINSTANCE.getPackage_OwnedType());
 
-        if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getPackage_OwnedType())) {
-            Set ownedType = new HashSet();
+		if (null == ownedTypes) {
+			Set ownedType = new HashSet();
 
-            for (Iterator ownedMembers = getOwnedMembers().iterator(); ownedMembers.hasNext();) {
-                NamedElement ownedMember = (NamedElement) ownedMembers.next();
+			for (Iterator ownedMembers = getOwnedMembers().iterator(); ownedMembers
+				.hasNext();) {
 
-                if (Type.class.isInstance(ownedMember)) {
-                    ownedType.add(ownedMember);
-                }
-            }
+				NamedElement ownedMember = (NamedElement) ownedMembers.next();
 
-            getCacheAdapter().put(this, UML2Package.eINSTANCE.getPackage_OwnedType(),
-                    new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getPackage_OwnedType(), ownedType.size(), ownedType.toArray()));
-        }
+				if (Type.class.isInstance(ownedMember)) {
+					ownedType.add(ownedMember);
+				}
+			}
 
-        return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getPackage_OwnedType());
+			ownedTypes = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getPackage_OwnedType(), ownedType.size(),
+				ownedType.toArray());
+			getCacheAdapter().put(eResource(), this,
+				UML2Package.eINSTANCE.getPackage_OwnedType(), ownedTypes);
+		}
+
+		return ownedTypes;
 	}
 
     /**

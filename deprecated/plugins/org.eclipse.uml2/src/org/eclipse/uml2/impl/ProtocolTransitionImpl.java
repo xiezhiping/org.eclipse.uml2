@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.4 2004/05/20 03:20:03 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.5 2004/06/01 21:08:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -166,23 +166,31 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated NOT
 	 */
 	public EList getReferreds() {
+		EList referreds = (EList) getCacheAdapter().get(this,
+			UML2Package.eINSTANCE.getProtocolTransition_Referred());
 
-	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getProtocolTransition_Referred())) {
-	        Set referred = new HashSet();
-	        
-	        for (Iterator triggers = getTriggers().iterator(); triggers.hasNext();) {
-	            Trigger trigger = (Trigger) triggers.next();
-	            
-	            if (CallTrigger.class.isInstance(trigger)) {
-	                referred.add(((CallTrigger) trigger).getOperation());
-	            }
-	        }
-	        
-	        getCacheAdapter().put(this, UML2Package.eINSTANCE.getProtocolTransition_Referred(),
-	                new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getProtocolTransition_Referred(), referred.size(), referred.toArray()));
-	    }
-	    
-	    return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getProtocolTransition_Referred());
+		if (null == referreds) {
+			Set referred = new HashSet();
+
+			for (Iterator triggers = getTriggers().iterator(); triggers
+				.hasNext();) {
+
+				Trigger trigger = (Trigger) triggers.next();
+
+				if (CallTrigger.class.isInstance(trigger)) {
+					referred.add(((CallTrigger) trigger).getOperation());
+				}
+			}
+
+			referreds = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getProtocolTransition_Referred(),
+				referred.size(), referred.toArray());
+			getCacheAdapter().put(this,
+				UML2Package.eINSTANCE.getProtocolTransition_Referred(),
+				referreds);
+		}
+
+		return referreds;
 	}
 
     /**

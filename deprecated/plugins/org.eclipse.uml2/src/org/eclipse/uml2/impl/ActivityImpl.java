@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.10 2004/05/28 05:39:37 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.11 2004/06/01 21:08:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -446,35 +446,37 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated NOT
 	 */
 	public EList getStructuredNodes() {
+		EList structuredNodes = (EList) getCacheAdapter().get(this,
+			UML2Package.eINSTANCE.getActivity_StructuredNode());
 
-	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getActivity_StructuredNode())) {
-	        Set structuredNode = new HashSet();
-	        
-	        for (Iterator nodes = getNodes().iterator(); nodes.hasNext();) {
-	            ActivityNode node = (ActivityNode) nodes.next();
-	            
-	            if (StructuredActivityNode.class.isInstance(node)) {
-	                structuredNode.add(node);
-	            }
-	        }
-	        
-	        for (Iterator groups = getGroups().iterator(); groups.hasNext();) {
-	            ActivityGroup group = (ActivityGroup) groups.next();
-	            
-	            if (StructuredActivityNode.class.isInstance(group)) {
-	                structuredNode.add(group);
-	            }
-	        }
-	        
-	        getCacheAdapter()
-	        .put(
-	                this,
-	                UML2Package.eINSTANCE.getActivity_StructuredNode(),
-	                new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getActivity_StructuredNode(), structuredNode.size(), structuredNode
-	                        .toArray()));
-	    }
-	    
-	    return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getActivity_StructuredNode());
+		if (null == structuredNodes) {
+			Set structuredNode = new HashSet();
+
+			for (Iterator nodes = getNodes().iterator(); nodes.hasNext();) {
+				ActivityNode node = (ActivityNode) nodes.next();
+
+				if (StructuredActivityNode.class.isInstance(node)) {
+					structuredNode.add(node);
+				}
+			}
+
+			for (Iterator groups = getGroups().iterator(); groups.hasNext();) {
+				ActivityGroup group = (ActivityGroup) groups.next();
+
+				if (StructuredActivityNode.class.isInstance(group)) {
+					structuredNode.add(group);
+				}
+			}
+
+			structuredNodes = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getActivity_StructuredNode(),
+				structuredNode.size(), structuredNode.toArray());
+			getCacheAdapter().put(this,
+				UML2Package.eINSTANCE.getActivity_StructuredNode(),
+				structuredNodes);
+		}
+
+		return structuredNodes;
 	}
 
     /**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.8 2004/05/28 05:39:37 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.9 2004/06/01 21:08:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -267,19 +267,21 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated NOT
 	 */
 	public EList getImportedMembers() {
+		EList importedMembers = (EList) getCacheAdapter().get(this,
+			UML2Package.eINSTANCE.getNamespace_ImportedMember());
 
-        if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getNamespace_ImportedMember())) {
-            Set importedMember = importedMember();
+		if (null == importedMembers) {
+			Set importedMember = importedMember();
 
-            getCacheAdapter()
-                    .put(
-                            this,
-                            UML2Package.eINSTANCE.getNamespace_ImportedMember(),
-                            new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getNamespace_ImportedMember(), importedMember.size(), importedMember
-                                    .toArray()));
-        }
+			importedMembers = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getNamespace_ImportedMember(),
+				importedMember.size(), importedMember.toArray());
+			getCacheAdapter().put(this,
+				UML2Package.eINSTANCE.getNamespace_ImportedMember(),
+				importedMembers);
+		}
 
-        return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_ImportedMember());
+		return importedMembers;
 	}
 
     /**
@@ -1323,14 +1325,17 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 
 		try {
 			Method method = getClass().getMethod("getImportedPackages", null); //$NON-NLS-1$
+			Set importedPackages = (Set) getCacheAdapter().get(eResource(),
+				this, method);
 
-			if (!getCacheAdapter().containsKey(this, method)) {
-				getCacheAdapter().put(this, method,
-					NamespaceOperations.getImportedPackages(this));
+			if (null == importedPackages) {
+				importedPackages = NamespaceOperations
+					.getImportedPackages(this);
+				getCacheAdapter().put(eResource(), this, method,
+					importedPackages);
 			}
 
-			return (Set) getCacheAdapter().get(this, method);
-
+			return importedPackages;
 		} catch (Exception e) {
 			return NamespaceOperations.getImportedPackages(this);
 		}

@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.4 2004/06/01 21:08:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -110,10 +109,23 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	}
 
 	public EList getRelatedElements() {
-		Set union = new HashSet();
-		union.addAll(getSources());
-		union.addAll(getTargets());
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
+		EList relatedElements = (EList) getCacheAdapter().get(eResource(),
+			this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+
+		if (null == relatedElements) {
+			Set union = new LinkedHashSet();
+			union.addAll(getSources());
+			union.addAll(getTargets());
+
+			relatedElements = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getRelationship_RelatedElement(), union
+					.size(), union.toArray());
+			getCacheAdapter().put(eResource(), this,
+				UML2Package.eINSTANCE.getRelationship_RelatedElement(),
+				relatedElements);
+		}
+
+		return relatedElements;
 	}
 
 	/**

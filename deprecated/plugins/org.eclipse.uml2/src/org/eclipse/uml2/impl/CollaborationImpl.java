@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.9 2004/06/01 21:08:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -166,23 +166,30 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * @generated NOT
 	 */
 	public EList getParts() {
+		EList parts = (EList) getCacheAdapter().get(eResource(), this,
+			UML2Package.eINSTANCE.getStructuredClassifier_Part());
 
-		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier_Part())) {
+		if (null == parts) {
 			List part = new ArrayList();
-			
-			for (Iterator ownedAttributes = getOwnedAttributes().iterator(); ownedAttributes.hasNext();) {
+
+			for (Iterator ownedAttributes = getOwnedAttributes().iterator(); ownedAttributes
+				.hasNext();) {
+
 				Property ownedAttribute = (Property) ownedAttributes.next();
 
 				if (ownedAttribute.isComposite()) {
 					part.add(ownedAttribute);
 				}
 			}
-			
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredClassifier_Part(),
-				new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Part(), part.size(), part.toArray()));
+
+			parts = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getStructuredClassifier_Part(), part
+					.size(), part.toArray());
+			getCacheAdapter().put(eResource(), this,
+				UML2Package.eINSTANCE.getStructuredClassifier_Part(), parts);
 		}
-		
-		return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredClassifier_Part());
+
+		return parts;
 	}
 
     /**

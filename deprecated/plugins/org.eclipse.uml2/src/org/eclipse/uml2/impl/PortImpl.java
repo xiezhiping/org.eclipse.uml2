@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PortImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: PortImpl.java,v 1.4 2004/06/01 21:08:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -202,52 +202,73 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated NOT
 	 */
 	public EList getRequireds() {
+		EList requireds = (EList) getCacheAdapter().get(this,
+			UML2Package.eINSTANCE.getPort_Required());
 
-	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getPort_Required())) {
-	        Set requireds = new HashSet();
-	        
-	        if (Classifier.class.isInstance(getType())) {
-	            
-	            for (Iterator clientDependencies = getType().getClientDependencies().iterator(); clientDependencies.hasNext();) {
-	                Dependency clientDependency = (Dependency) clientDependencies.next();
-	                
-	                if (Usage.class.isInstance(clientDependency)) {
-	                    
-	                    for (Iterator suppliers = clientDependency.getSuppliers().iterator(); suppliers.hasNext();) {
-	                        NamedElement supplier = (NamedElement) suppliers.next();
-	                        
-	                        if (Interface.class.isInstance(supplier)) {
-	                            requireds.add(supplier);
-	                        }
-	                    }
-	                }
-	            }
-	            
-	            for (Iterator allParents = ((Classifier) getType()).allParents().iterator(); allParents.hasNext();) {
-	                Classifier allParent = (Classifier) allParents.next();
-	                
-	                for (Iterator clientDependencies = allParent.getClientDependencies().iterator(); clientDependencies.hasNext();) {
-	                    Dependency clientDependency = (Dependency) clientDependencies.next();
-	                    
-	                    if (Usage.class.isInstance(clientDependency)) {
-	                        
-	                        for (Iterator suppliers = clientDependency.getSuppliers().iterator(); suppliers.hasNext();) {
-	                            NamedElement supplier = (NamedElement) suppliers.next();
-	                            
-	                            if (Interface.class.isInstance(supplier)) {
-	                                requireds.add(supplier);
-	                            }
-	                        }
-	                    }
-	                }
-	            }
-	        }
-	        
-	        getCacheAdapter().put(this, UML2Package.eINSTANCE.getPort_Required(),
-	                new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getPort_Required(), requireds.size(), requireds.toArray()));
-	    }
-	    
-	    return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getPort_Required());
+		if (null == requireds) {
+			Set required = new HashSet();
+
+			if (Classifier.class.isInstance(getType())) {
+
+				for (Iterator clientDependencies = getType()
+					.getClientDependencies().iterator(); clientDependencies
+					.hasNext();) {
+					
+					Dependency clientDependency = (Dependency) clientDependencies
+						.next();
+
+					if (Usage.class.isInstance(clientDependency)) {
+
+						for (Iterator suppliers = clientDependency
+							.getSuppliers().iterator(); suppliers.hasNext();) {
+							
+							NamedElement supplier = (NamedElement) suppliers
+								.next();
+
+							if (Interface.class.isInstance(supplier)) {
+								required.add(supplier);
+							}
+						}
+					}
+				}
+
+				for (Iterator allParents = ((Classifier) getType())
+					.allParents().iterator(); allParents.hasNext();) {
+					
+					Classifier allParent = (Classifier) allParents.next();
+
+					for (Iterator clientDependencies = allParent
+						.getClientDependencies().iterator(); clientDependencies
+						.hasNext();) {
+						
+						Dependency clientDependency = (Dependency) clientDependencies
+							.next();
+
+						if (Usage.class.isInstance(clientDependency)) {
+
+							for (Iterator suppliers = clientDependency
+								.getSuppliers().iterator(); suppliers.hasNext();) {
+								
+								NamedElement supplier = (NamedElement) suppliers
+									.next();
+
+								if (Interface.class.isInstance(supplier)) {
+									required.add(supplier);
+								}
+							}
+						}
+					}
+				}
+			}
+
+			requireds = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getPort_Required(), required.size(),
+				required.toArray());
+			getCacheAdapter().put(this,
+				UML2Package.eINSTANCE.getPort_Required(), requireds);
+		}
+
+		return requireds;
 	}
 
     /**
@@ -302,28 +323,36 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated NOT
 	 */
 	public EList getProvideds() {
+		EList provideds = (EList) getCacheAdapter().get(this,
+			UML2Package.eINSTANCE.getPort_Provided());
 
-	    if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getPort_Provided())) {
-	        Set provideds = new HashSet();
-	        
-	        if (Interface.class.isInstance(getType())) {
-	            provideds.add(getType());
-	        } else if (BehavioredClassifier.class.isInstance(getType())) {
-	            
-	            for (Iterator implementations = ((BehavioredClassifier) getType()).getImplementations().iterator(); implementations.hasNext();) {
-	                Implementation implementation = (Implementation) implementations.next();
-	                
-	                if (null != implementation.getContract()) {
-	                    provideds.add(implementation.getContract());
-	                }
-	            }
-	        }
-	        
-	        getCacheAdapter().put(this, UML2Package.eINSTANCE.getPort_Provided(),
-	                new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getPort_Provided(), provideds.size(), provideds.toArray()));
-	    }
-	    
-	    return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getPort_Provided());
+		if (null == provideds) {
+			Set provided = new HashSet();
+
+			if (Interface.class.isInstance(getType())) {
+				provided.add(getType());
+			} else if (BehavioredClassifier.class.isInstance(getType())) {
+
+				for (Iterator implementations = ((BehavioredClassifier) getType())
+					.getImplementations().iterator(); implementations.hasNext();) {
+
+					Implementation implementation = (Implementation) implementations
+						.next();
+
+					if (null != implementation.getContract()) {
+						provided.add(implementation.getContract());
+					}
+				}
+			}
+
+			provideds = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getPort_Provided(), provided.size(),
+				provided.toArray());
+			getCacheAdapter().put(this,
+				UML2Package.eINSTANCE.getPort_Provided(), provideds);
+		}
+
+		return provideds;
 	}
 
     /**

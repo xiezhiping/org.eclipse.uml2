@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.4 2004/06/01 21:08:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -120,10 +119,23 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	}
 
 	public EList getRelatedElements() {
-		Set union = new HashSet();
-		union.addAll(getSources());
-		union.addAll(getTargets());
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
+		EList relatedElements = (EList) getCacheAdapter().get(eResource(),
+			this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+
+		if (null == relatedElements) {
+			Set union = new LinkedHashSet();
+			union.addAll(getSources());
+			union.addAll(getTargets());
+
+			relatedElements = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getRelationship_RelatedElement(), union
+					.size(), union.toArray());
+			getCacheAdapter().put(eResource(), this,
+				UML2Package.eINSTANCE.getRelationship_RelatedElement(),
+				relatedElements);
+		}
+
+		return relatedElements;
 	}
 
 	/**
@@ -146,9 +158,23 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	}
 
 	public EList getSources() {
-		Set union = new HashSet();
-		union.addAll(getClients());
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
+		EList sources = (EList) getCacheAdapter().get(eResource(), this,
+			UML2Package.eINSTANCE.getDirectedRelationship_Source());
+
+		if (null == sources) {
+			Set union = new LinkedHashSet();
+			union.addAll(getClients());
+
+			sources = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getDirectedRelationship_Source(), union
+					.size(), union.toArray());
+			getCacheAdapter()
+				.put(eResource(), this,
+					UML2Package.eINSTANCE.getDirectedRelationship_Source(),
+					sources);
+		}
+
+		return sources;
 	}
 
 	/**
@@ -171,9 +197,23 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	}
 
 	public EList getTargets() {
-		Set union = new HashSet();
-		union.addAll(getSuppliers());
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
+		EList targets = (EList) getCacheAdapter().get(eResource(), this,
+			UML2Package.eINSTANCE.getDirectedRelationship_Target());
+
+		if (null == targets) {
+			Set union = new LinkedHashSet();
+			union.addAll(getSuppliers());
+
+			targets = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getDirectedRelationship_Target(), union
+					.size(), union.toArray());
+			getCacheAdapter()
+				.put(eResource(), this,
+					UML2Package.eINSTANCE.getDirectedRelationship_Target(),
+					targets);
+		}
+
+		return targets;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.8 2004/05/20 03:20:03 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.9 2004/06/01 21:08:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -152,23 +152,30 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated NOT
 	 */
 	public EList getParts() {
+		EList parts = (EList) getCacheAdapter().get(eResource(), this,
+			UML2Package.eINSTANCE.getStructuredClassifier_Part());
 
-        if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getStructuredClassifier_Part())) {
-            List part = new ArrayList();
+		if (null == parts) {
+			List part = new ArrayList();
 
-            for (Iterator ownedAttributes = getOwnedAttributes().iterator(); ownedAttributes.hasNext();) {
-                Property ownedAttribute = (Property) ownedAttributes.next();
+			for (Iterator ownedAttributes = getOwnedAttributes().iterator(); ownedAttributes
+				.hasNext();) {
 
-                if (ownedAttribute.isComposite()) {
-                    part.add(ownedAttribute);
-                }
-            }
+				Property ownedAttribute = (Property) ownedAttributes.next();
 
-            getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredClassifier_Part(),
-                    new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Part(), part.size(), part.toArray()));
-        }
+				if (ownedAttribute.isComposite()) {
+					part.add(ownedAttribute);
+				}
+			}
 
-        return (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredClassifier_Part());
+			parts = new EcoreEList.UnmodifiableEList(this,
+				UML2Package.eINSTANCE.getStructuredClassifier_Part(), part
+					.size(), part.toArray());
+			getCacheAdapter().put(eResource(), this,
+				UML2Package.eINSTANCE.getStructuredClassifier_Part(), parts);
+		}
+
+		return parts;
 	}
 
     /**
