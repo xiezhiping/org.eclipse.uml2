@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.16 2005/01/19 22:55:30 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.17 2005/03/14 18:51:57 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -243,10 +243,12 @@ public final class ProfileOperations
 	public static EPackage createEPackage(Profile profile) {
 		EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
 
-		ePackage.setName(getEPackageName(profile));
-		ePackage.setNsPrefix(ePackage.getName());
-		ePackage.setNsURI("http:///" + EcoreUtil.generateUUID() + "." //$NON-NLS-1$ //$NON-NLS-2$
-			+ UML2Resource.PROFILE_FILE_EXTENSION);
+		String ePackageName = getEPackageName(profile);
+
+		ePackage.setName(ePackageName);
+		ePackage.setNsPrefix(ePackageName);
+		ePackage.setNsURI("http:///" + ePackageName + EcoreUtil.generateUUID() //$NON-NLS-1$
+			+ "." + UML2Resource.PROFILE_FILE_EXTENSION); //$NON-NLS-1$
 
 		for (Iterator ownedTypes = profile.getOwnedTypes().iterator(); ownedTypes
 			.hasNext();) {
