@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Ecore2UML2.java,v 1.3 2004/05/26 18:12:15 khussey Exp $
+ * $Id: Ecore2UML2.java,v 1.4 2004/11/02 15:31:00 khussey Exp $
  */
 package org.eclipse.uml2.examples.ecore2uml2;
 
@@ -112,8 +112,10 @@ public class Ecore2UML2
 
 	protected EPackage getNearestEPackage(EObject eObject) {
 		return EPackage.class.isInstance(eObject)
-			? (EPackage) eObject : (null == eObject.eContainer()
-				? null : getNearestEPackage(eObject.eContainer()));
+			? (EPackage) eObject
+			: (null == eObject.eContainer()
+				? null
+				: getNearestEPackage(eObject.eContainer()));
 	}
 
 	protected EList getOwnedAttributes(Type type) {
@@ -256,12 +258,14 @@ public class Ecore2UML2
 		}
 
 		return elementMap.containsKey(theEObject)
-			? elementMap.get(theEObject) : super.doSwitch(theEObject);
+			? elementMap.get(theEObject)
+			: super.doSwitch(theEObject);
 	}
 
 	public Object doSwitch(Resource resource) {
 		return modelMap.containsKey(resource)
-			? modelMap.get(resource) : caseResource(resource);
+			? modelMap.get(resource)
+			: caseResource(resource);
 	}
 
 	public Object caseResource(Resource object) {
@@ -403,7 +407,9 @@ public class Ecore2UML2
 		property.setType(getType(object));
 		property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
 
-		if (object.getUpperBound() != property.getUpper()) {
+		if (object.getUpperBound() != ETypedElement.UNSPECIFIED_MULTIPLICITY
+			&& object.getUpperBound() != property.getUpper()) {
+
 			property.setUpperBound(object.getUpperBound());
 		}
 
@@ -586,7 +592,8 @@ public class Ecore2UML2
 
 		org.eclipse.uml2.Package superPackage = (org.eclipse.uml2.Package) (null == object
 			.getESuperPackage()
-			? null : doSwitch(object.getESuperPackage()));
+			? null
+			: doSwitch(object.getESuperPackage()));
 
 		if (null != superPackage) {
 			superPackage.getOwnedMembers().add(package_);
@@ -626,7 +633,8 @@ public class Ecore2UML2
 	 */
 	public Object caseEReference(EReference object) {
 		EReference end1 = object.isContainer()
-			? object.getEOpposite() : object;
+			? object.getEOpposite()
+			: object;
 		EReference end2 = end1.getEOpposite();
 
 		Property end1Property = UML2Factory.eINSTANCE.createProperty();
@@ -641,13 +649,16 @@ public class Ecore2UML2
 
 		end1Property.setName(end1.getName());
 		end1Property.setAggregation(end1.isContainment()
-			? AggregationKind.COMPOSITE_LITERAL : AggregationKind.NONE_LITERAL);
+			? AggregationKind.COMPOSITE_LITERAL
+			: AggregationKind.NONE_LITERAL);
 		end1Property.setAssociation(association);
 		end1Property.setIsDerived(end1.isDerived());
 		end1Property.setIsOrdered(true);
 		end1Property.setIsReadOnly(!end1.isChangeable());
 
-		if (end1.getUpperBound() != end1Property.getUpper()) {
+		if (end1.getUpperBound() != ETypedElement.UNSPECIFIED_MULTIPLICITY
+			&& end1.getUpperBound() != end1Property.getUpper()) {
+
 			end1Property.setUpperBound(end1.getUpperBound());
 		}
 
@@ -676,7 +687,9 @@ public class Ecore2UML2
 			end2Property.setIsOrdered(true);
 			end2Property.setIsReadOnly(!end2.isChangeable());
 
-			if (end2.getUpperBound() != end2Property.getUpper()) {
+			if (end2.getUpperBound() != ETypedElement.UNSPECIFIED_MULTIPLICITY
+				&& end2.getUpperBound() != end2Property.getUpper()) {
+
 				end2Property.setUpperBound(end2.getUpperBound());
 			}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.9 2004/10/01 19:36:29 khussey Exp $
+ * $Id: UML2Operations.java,v 1.10 2004/11/02 15:30:10 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -272,11 +272,16 @@ class UML2Operations {
 
 	protected static EAnnotation getEAnnotation(String source,
 			EModelElement eModelElement) {
-		EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
 
-		return null == eAnnotation
-			? EcoreFactory.eINSTANCE.createEAnnotation()
-			: eAnnotation;
+		if (null != eModelElement) {
+			EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
+
+			if (null != eAnnotation) {
+				return eAnnotation;
+			}
+		}
+
+		return EcoreFactory.eINSTANCE.createEAnnotation();
 	}
 
 	protected static boolean safeEquals(Object thisObject, Object thatObject) {
@@ -375,6 +380,45 @@ class UML2Operations {
 	}
 
 	/**
+	 * Appends a valid (Java) identifier based on the specified name to the
+	 * specified buffer.
+	 * 
+	 * @param validIdentifier
+	 *            The buffer to which to append the valid identifier.
+	 * @param name
+	 *            The name from which to obtain the valid identifier.
+	 * 
+	 * @return The buffer.
+	 */
+	protected static StringBuffer appendValidIdentifier(
+			StringBuffer validIdentifier, String name) {
+
+		if (!isEmpty(name)) {
+			char char_0 = name.charAt(0);
+
+			if (Character.isJavaIdentifierStart(char_0)) {
+				validIdentifier.append(char_0);
+			} else {
+				validIdentifier.append('_');
+
+				if (Character.isJavaIdentifierPart(char_0)) {
+					validIdentifier.append(char_0);
+				}
+			}
+
+			for (int i = 1; i < name.length(); ++i) {
+				char char_i = name.charAt(i);
+
+				if (Character.isJavaIdentifierPart(char_i)) {
+					validIdentifier.append(char_i);
+				}
+			}
+		}
+
+		return validIdentifier;
+	}
+
+	/**
 	 * Obtains a valid (Java) identifier based on the specified name.
 	 * 
 	 * @param name
@@ -382,33 +426,7 @@ class UML2Operations {
 	 * @return A valid (Java) identifier or the empty string.
 	 */
 	protected static String getValidIdentifier(String name) {
-
-		if (isEmpty(name)) {
-			return EMPTY_STRING;
-		}
-
-		StringBuffer validIdentifier = new StringBuffer();
-		char char_0 = name.charAt(0);
-
-		if (Character.isJavaIdentifierStart(char_0)) {
-			validIdentifier.append(char_0);
-		} else {
-			validIdentifier.append('_');
-
-			if (Character.isJavaIdentifierPart(char_0)) {
-				validIdentifier.append(char_0);
-			}
-		}
-
-		for (int i = 1; i < name.length(); ++i) {
-			char char_i = name.charAt(i);
-
-			if (Character.isJavaIdentifierPart(char_i)) {
-				validIdentifier.append(char_i);
-			}
-		}
-
-		return validIdentifier.toString();
+		return appendValidIdentifier(new StringBuffer(), name).toString();
 	}
 
 	/**

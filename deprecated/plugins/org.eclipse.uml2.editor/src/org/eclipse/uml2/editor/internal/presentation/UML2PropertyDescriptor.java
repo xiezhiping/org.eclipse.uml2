@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2PropertyDescriptor.java,v 1.2 2004/10/01 19:38:41 khussey Exp $
+ * $Id: UML2PropertyDescriptor.java,v 1.3 2004/11/02 15:30:29 khussey Exp $
  */
 package org.eclipse.uml2.editor.internal.presentation;
 
@@ -41,7 +41,7 @@ import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 import org.eclipse.uml2.provider.IItemQualifiedTextProvider;
 
 /**
- * 
+ *  
  */
 public class UML2PropertyDescriptor
 	extends PropertyDescriptor {
@@ -69,8 +69,11 @@ public class UML2PropertyDescriptor
 		final ILabelProvider labelProvider = new LabelProvider() {
 
 			public String getText(Object object) {
-				IItemQualifiedTextProvider itemQualifiedTextProvider = ((UML2ItemPropertyDescriptor) itemPropertyDescriptor)
-					.getQualifiedTextProvider(object);
+				IItemQualifiedTextProvider itemQualifiedTextProvider = UML2ItemPropertyDescriptor.class
+					.isInstance(itemPropertyDescriptor)
+					? ((UML2ItemPropertyDescriptor) itemPropertyDescriptor)
+						.getQualifiedTextProvider(object)
+					: null;
 
 				return null != itemQualifiedTextProvider
 					? itemQualifiedTextProvider.getQualifiedText(object)

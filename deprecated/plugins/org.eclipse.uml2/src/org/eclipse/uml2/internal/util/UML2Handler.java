@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Handler.java,v 1.7 2004/10/01 19:36:29 khussey Exp $
+ * $Id: UML2Handler.java,v 1.8 2004/11/02 15:30:10 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.SAXXMIHandler;
+import org.eclipse.emf.ecore.xml.type.AnyType;
 
 /**
  * The SAX handler for UML2 resources.
@@ -105,7 +106,9 @@ public class UML2Handler
 	protected EObject validateCreateObjectFromFactory(EFactory factory,
 			String typeName, EObject newObject, EStructuralFeature feature) {
 
-		if (null != newObject && newObject.eIsProxy()) {
+		if (!(objects.peek() instanceof AnyType) && null != newObject
+			&& newObject.eIsProxy() && !sameDocumentProxies.contains(newObject)) {
+
 			URI proxyURI = ((InternalEObject) newObject).eProxyURI();
 
 			Map typeNamesToProxies = (Map) urisToProxies.get(proxyURI);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.9 2004/10/01 19:36:29 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.10 2004/11/02 15:30:10 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -59,6 +59,7 @@ import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.InstanceValue;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.Model;
+import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PrimitiveType;
@@ -120,6 +121,35 @@ public final class ProfileOperations
 
 	/**
 	 * Retrieves a name suitable for an Ecore representation of the specified
+	 * named element.
+	 * 
+	 * @param namedElement
+	 *            The named element for which to retrieve an Ecore name.
+	 * @return The Ecore named element name.
+	 */
+	protected static String getENamedElementName(NamedElement namedElement) {
+		String qualifiedName = namedElement.getQualifiedName();
+
+		if (!isEmpty(qualifiedName)) {
+			StringBuffer eNamedElementName = new StringBuffer();
+			String[] names = qualifiedName.split(namedElement.separator());
+
+			for (int i = 0, length = names.length; i < length; i++) {
+				appendValidIdentifier(eNamedElementName, names[i]);
+
+				if (i + 1 < length) {
+					eNamedElementName.append("__"); //$NON-NLS-1$
+				}
+			}
+
+			return eNamedElementName.toString();
+		}
+
+		return getValidIdentifier(namedElement.getName());
+	}
+
+	/**
+	 * Retrieves a name suitable for an Ecore representation of the specified
 	 * profile.
 	 * 
 	 * @param profile
@@ -127,10 +157,7 @@ public final class ProfileOperations
 	 * @return The Ecore package name.
 	 */
 	public static String getEPackageName(Profile profile) {
-		return getValidIdentifier(isEmpty(profile.getQualifiedName())
-			? profile.getName()
-			: profile.getQualifiedName().replace(':', '_')) + '_'
-			+ getVersion(profile);
+		return getENamedElementName(profile) + '_' + getVersion(profile);
 	}
 
 	/**
@@ -142,9 +169,7 @@ public final class ProfileOperations
 	 * @return The Ecore classifier name.
 	 */
 	public static String getEClassifierName(Classifier classifier) {
-		return getValidIdentifier(isEmpty(classifier.getQualifiedName())
-			? classifier.getName()
-			: classifier.getQualifiedName().replace(':', '_'));
+		return getENamedElementName(classifier);
 	}
 
 	/**
@@ -473,7 +498,8 @@ public final class ProfileOperations
 					StereotypeOperations.ANNOTATION_SOURCE__ENUMERATION_LITERAL,
 					eEnumLiteral).getReferences().add(enumerationLiteral);
 
-				eEnumLiteral.setName(enumerationLiteral.getName());
+				eEnumLiteral.setName(getValidIdentifier(enumerationLiteral
+					.getName()));
 				eEnumLiteral.setValue(index);
 
 				eEnum.getELiterals().add(eEnumLiteral);
@@ -501,7 +527,7 @@ public final class ProfileOperations
 		if (null == eAttribute) {
 			eAttribute = EcoreFactory.eINSTANCE.createEAttribute();
 
-			eAttribute.setName(property.getName());
+			eAttribute.setName(getValidIdentifier(property.getName()));
 			eAttribute.setChangeable(!property.isReadOnly());
 			eAttribute.setUpperBound(property.getUpper());
 			eAttribute.setLowerBound(property.getLower());
@@ -553,7 +579,7 @@ public final class ProfileOperations
 		if (null == eReference) {
 			eReference = EcoreFactory.eINSTANCE.createEReference();
 
-			eReference.setName(property.getName());
+			eReference.setName(getValidIdentifier(property.getName()));
 			eReference.setChangeable(true);
 			eReference.setContainment(true);
 			eReference.setUpperBound(property.getUpper());
@@ -584,7 +610,9 @@ public final class ProfileOperations
 	 */
 	public static void apply(Profile profile, org.eclipse.uml2.Package package_) {
 
-		if (null == profile || !isDefined(profile)) {
+		if (null == profile
+			|| null == getEPackage(profile, profile.getVersion())) {
+
 			throw new IllegalArgumentException(String.valueOf(profile));
 		}
 
@@ -592,15 +620,39 @@ public final class ProfileOperations
 			throw new IllegalArgumentException(String.valueOf(package_));
 		}
 
-		String appliedVersion = getAppliedVersion(profile, package_);
-
-		if (profile.getVersion().equals(appliedVersion)) {
-			throw new IllegalArgumentException(String.valueOf(profile));
-		}
-
 		ProfileApplication profileApplication = null;
 
-		if (null == appliedVersion) {
+		for (Iterator allProfileApplications = getAllProfileApplications(
+			package_).iterator(); allProfileApplications.hasNext();) {
+
+			profileApplication = (ProfileApplication) allProfileApplications
+				.next();
+
+			Profile importedProfile = profileApplication.getImportedProfile();
+
+			if (profile == importedProfile) {
+
+				if (profile.getVersion().equals(getVersion(profileApplication))) {
+					throw new IllegalArgumentException(String.valueOf(profile));
+				}
+
+				break;
+			} else {
+				EPackage importedEPackage = getEPackage(importedProfile,
+					getVersion(profileApplication));
+
+				if (null != importedEPackage
+					&& getEPackage(profile, profile.getVersion()).getNsURI()
+						.equals(importedEPackage.getNsURI())) {
+
+					throw new IllegalArgumentException(String.valueOf(profile));
+				}
+
+				profileApplication = null;
+			}
+		}
+
+		if (null == profileApplication) {
 			profileApplication = (ProfileApplication) package_
 				.createPackageImport(UML2Package.eINSTANCE
 					.getProfileApplication());
@@ -608,9 +660,8 @@ public final class ProfileOperations
 
 			package_.getAppliedProfiles().add(profileApplication);
 		} else {
-			profileApplication = getProfileApplication(profile, package_);
 
-			if (null == profileApplication) {
+			if (package_ != profileApplication.getImportingNamespace()) {
 				throw new IllegalArgumentException(String.valueOf(package_));
 			}
 
@@ -862,6 +913,29 @@ public final class ProfileOperations
 	}
 
 	/**
+	 * Retrieves the set of all profile applications on the specified package,
+	 * including profiles applications on its nesting package(s).
+	 * 
+	 * @param package_
+	 *            The package for which to retrieve the profile applications.
+	 * @return The profile applications on the package.
+	 */
+	protected static Set getAllProfileApplications(
+			org.eclipse.uml2.Package package_) {
+		Set allProfileApplications = new HashSet();
+
+		while (null != package_) {
+			allProfileApplications.addAll(package_.getAppliedProfiles());
+
+			package_ = null == package_.getNamespace()
+				? null
+				: package_.getNamespace().getNearestPackage();
+		}
+
+		return allProfileApplications;
+	}
+
+	/**
 	 * Retrieves the set of all profiles that are applied to the specified
 	 * package, including profiles applied to its nesting package(s).
 	 * 
@@ -936,9 +1010,7 @@ public final class ProfileOperations
 			package_);
 
 		if (null != profileApplication) {
-			return (String) getEAnnotation(ANNOTATION_SOURCE__ATTRIBUTES,
-				profileApplication).getDetails().get(
-				ANNOTATION_DETAILS_KEY__VERSION);
+			return getVersion(profileApplication);
 		}
 
 		Namespace namespace = package_.getNamespace();
@@ -948,6 +1020,12 @@ public final class ProfileOperations
 		}
 
 		return null;
+	}
+
+	protected static String getVersion(ProfileApplication profileApplication) {
+		return (String) getEAnnotation(ANNOTATION_SOURCE__ATTRIBUTES,
+			profileApplication).getDetails().get(
+			ANNOTATION_DETAILS_KEY__VERSION);
 	}
 
 	protected static ProfileApplication getProfileApplication(Profile profile,

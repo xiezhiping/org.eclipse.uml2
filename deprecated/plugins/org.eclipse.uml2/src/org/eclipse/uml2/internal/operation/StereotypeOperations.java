@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.11 2004/10/01 19:36:29 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.12 2004/11/02 15:30:10 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.StringTokenizer;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
@@ -177,8 +176,8 @@ public final class StereotypeOperations
 
 		return enumerationLiteralEAnnotation.getReferences().isEmpty()
 			? null
-			: (EnumerationLiteral) enumerationLiteralEAnnotation.getReferences()
-				.get(0);
+			: (EnumerationLiteral) enumerationLiteralEAnnotation
+				.getReferences().get(0);
 	}
 
 	/**
@@ -627,19 +626,21 @@ public final class StereotypeOperations
 
 		EObject eObject = getEObject(stereotype, element);
 
-		for (StringTokenizer tokens = new StringTokenizer(propertyName,
-			NamedElement.SEPARATOR); tokens.hasMoreTokens();) {
+		String[] tokens = propertyName.split(NamedElement.SEPARATOR);
 
-			String token = tokens.nextToken();
+		for (int i = 0, length = tokens.length; i < length; i++) {
+			String token = tokens[i];
 
 			EStructuralFeature eStructuralFeature = null;
 			int index = -1;
 
 			if (-1 == token.indexOf('[')) {
-				eStructuralFeature = eClass.getEStructuralFeature(token);
+				eStructuralFeature = eClass
+					.getEStructuralFeature(getValidIdentifier(token));
 			} else {
-				eStructuralFeature = eClass.getEStructuralFeature(token
-					.substring(0, token.indexOf('[')));
+				eStructuralFeature = eClass
+					.getEStructuralFeature(getValidIdentifier(token.substring(
+						0, token.indexOf('['))));
 
 				try {
 					index = Integer.parseInt(token.substring(
@@ -654,7 +655,7 @@ public final class StereotypeOperations
 				throw new IllegalArgumentException(String.valueOf(propertyName));
 			}
 
-			if (tokens.hasMoreTokens()) {
+			if (i + 1 < length) {
 
 				if (null == eObject
 					|| !EClass.class.isInstance(eStructuralFeature.getEType())) {
@@ -824,10 +825,10 @@ public final class StereotypeOperations
 
 		EObject eObject = stereotypeEObject;
 
-		for (StringTokenizer tokens = new StringTokenizer(propertyName,
-			NamedElement.SEPARATOR); tokens.hasMoreTokens();) {
+		String[] tokens = propertyName.split(NamedElement.SEPARATOR);
 
-			String token = tokens.nextToken();
+		for (int i = 0, length = tokens.length; i < length; i++) {
+			String token = tokens[i];
 
 			EStructuralFeature eStructuralFeature = null;
 			int index = -1;
@@ -851,7 +852,7 @@ public final class StereotypeOperations
 				throw new IllegalArgumentException(String.valueOf(propertyName));
 			}
 
-			if (tokens.hasMoreTokens()) {
+			if (i + 1 < length) {
 
 				if (!EClass.class.isInstance(eStructuralFeature.getEType())) {
 					throw new IllegalArgumentException(String
@@ -863,8 +864,8 @@ public final class StereotypeOperations
 				if (eStructuralFeature.isMany()) {
 					List list = (List) eObject.eGet(eStructuralFeature);
 
-					for (int i = list.size(); i <= index; i++) {
-						list.add(i, eClass.getEPackage().getEFactoryInstance()
+					for (int j = list.size(); j <= index; j++) {
+						list.add(j, eClass.getEPackage().getEFactoryInstance()
 							.create(eClass));
 					}
 
@@ -890,8 +891,9 @@ public final class StereotypeOperations
 					&& EnumerationLiteral.class.isInstance(value)) {
 
 					value = ((EEnum) eStructuralFeature.getEType())
-						.getEEnumLiteral(((EnumerationLiteral) value).getName())
-						.getInstance();
+						.getEEnumLiteral(
+							getValidIdentifier(((EnumerationLiteral) value)
+								.getName())).getInstance();
 				}
 
 				if (null == value) {
@@ -907,8 +909,8 @@ public final class StereotypeOperations
 
 					List list = (List) eObject.eGet(eStructuralFeature);
 
-					for (int i = list.size(); i < index; i++) {
-						list.add(i, eStructuralFeature.getDefaultValue());
+					for (int j = list.size(); j < index; j++) {
+						list.add(j, eStructuralFeature.getDefaultValue());
 					}
 
 					if (index == list.size()) {

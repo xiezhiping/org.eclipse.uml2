@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OpaqueExpressionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: OpaqueExpressionImplTest.java,v 1.3 2004/11/02 15:32:10 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -96,6 +96,17 @@ public class OpaqueExpressionImplTest extends ValueSpecificationImplTest {
 	 */
 	public void testGetResult() {
 		// TODO: implement this feature getter test method
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.uml2.impl.tests.ValueSpecificationImplTest#testStringValue()
+	 */
+	public void testStringValue() {
+		getFixture().setBody(getName());
+		assertEquals(getName(), getFixture().stringValue()); //$NON-NLS-1$
+
+		getFixture().setBody(null);
+		assertEquals("", getFixture().stringValue()); //$NON-NLS-1$
 	}
 
 	/* (non-Javadoc)
