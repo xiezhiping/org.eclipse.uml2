@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: feature.xml,v 1.6 2004/11/15 18:04:36 khussey Exp $
+ * $Id: feature.xml,v 1.7 2004/12/21 21:56:15 khussey Exp $
  */
 -->
 
@@ -37,22 +37,18 @@
 
    <includes
       id="org.eclipse.uml2"
-      version="1.1.0"
-      match="compatible"/> 
+      version="1.1.0"/> 
 
    <includes
       id="org.eclipse.uml2.source"
-      version="1.1.0"
-      match="compatible"/> 
+      version="1.1.0"/> 
 
    <includes
       id="org.eclipse.uml2.examples"
-      version="1.1.0"
-      match="compatible"/> 
+      version="1.1.0"/> 
 
    <includes
       id="org.eclipse.uml2.doc"
-      version="1.1.0"
-      match="compatible"/> 
+      version="1.1.0"/> 
 
 </feature>
