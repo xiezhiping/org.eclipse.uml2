@@ -104,7 +104,7 @@
     <genDataTypes ecoreDataType="UML2.ecore#//UnlimitedNatural"/>
     <genDataTypes ecoreDataType="UML2.ecore#//Sequence"/>
     <genDataTypes ecoreDataType="UML2.ecore#//Set"/>
-    <genClasses ecoreClass="UML2.ecore#//Element">
+    <genClasses image="false" ecoreClass="UML2.ecore#//Element">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Element/ownedElement"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Element/owner"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//Element/ownedComment"/>
@@ -119,7 +119,7 @@
       <genOperations ecoreOperation="UML2.ecore#//Element/allOwnedElements"/>
       <genOperations ecoreOperation="UML2.ecore#//Element/mustBeOwned"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//MultiplicityElement">
+    <genClasses image="false" ecoreClass="UML2.ecore#//MultiplicityElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//MultiplicityElement/isOrdered"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//MultiplicityElement/isUnique"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//MultiplicityElement/lower.1"/>
@@ -159,7 +159,7 @@
       <genOperations ecoreOperation="UML2.ecore#//MultiplicityElement/upper"/>
       <genOperations ecoreOperation="UML2.ecore#//MultiplicityElement/getOwnedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//NamedElement">
+    <genClasses image="false" ecoreClass="UML2.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//NamedElement/name"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//NamedElement/qualifiedName.1"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//NamedElement/visibility"/>
@@ -188,7 +188,7 @@
       <genOperations ecoreOperation="UML2.ecore#//NamedElement/getOwner"/>
       <genOperations ecoreOperation="UML2.ecore#//NamedElement/getOwnedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//Namespace">
+    <genClasses image="false" ecoreClass="UML2.ecore#//Namespace">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Namespace/member"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//Namespace/ownedRule"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Namespace/importedMember.1"/>
@@ -222,7 +222,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//OpaqueExpression/result"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//OpaqueExpression/behavior"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//ValueSpecification">
+    <genClasses image="false" ecoreClass="UML2.ecore#//ValueSpecification">
       <genOperations ecoreOperation="UML2.ecore#//ValueSpecification/isComputable"/>
       <genOperations ecoreOperation="UML2.ecore#//ValueSpecification/integerValue"/>
       <genOperations ecoreOperation="UML2.ecore#//ValueSpecification/booleanValue"/>
@@ -241,12 +241,12 @@
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//Comment/bodyExpression"/>
       <genOperations ecoreOperation="UML2.ecore#//Comment/getOwnedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//DirectedRelationship">
+    <genClasses image="false" ecoreClass="UML2.ecore#//DirectedRelationship">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//DirectedRelationship/source"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//DirectedRelationship/target"/>
       <genOperations ecoreOperation="UML2.ecore#//DirectedRelationship/getRelatedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//Relationship">
+    <genClasses image="false" ecoreClass="UML2.ecore#//Relationship">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Relationship/relatedElement"/>
     </genClasses>
     <genClasses ecoreClass="UML2.ecore#//Class">
@@ -269,7 +269,7 @@
       <genOperations ecoreOperation="UML2.ecore#//Class/getOwnedMembers"/>
       <genOperations ecoreOperation="UML2.ecore#//Class/getFeatures"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//Type">
+    <genClasses image="false" ecoreClass="UML2.ecore#//Type">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Type/package"/>
       <genOperations ecoreOperation="UML2.ecore#//Type/conformsTo">
         <genParameters ecoreParameter="UML2.ecore#//Type/conformsTo/other"/>
@@ -381,7 +381,7 @@
       <genOperations ecoreOperation="UML2.ecore#//Operation/getOwnedRules"/>
       <genOperations ecoreOperation="UML2.ecore#//Operation/getRedefinedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//TypedElement">
+    <genClasses image="false" ecoreClass="UML2.ecore#//TypedElement">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//TypedElement/type"/>
     </genClasses>
     <genClasses ecoreClass="UML2.ecore#//Parameter">
@@ -436,7 +436,7 @@
       <genOperations ecoreOperation="UML2.ecore#//EnumerationLiteral/getNamespace"/>
     </genClasses>
     <genClasses ecoreClass="UML2.ecore#//PrimitiveType"/>
-    <genClasses ecoreClass="UML2.ecore#//Classifier">
+    <genClasses image="false" ecoreClass="UML2.ecore#//Classifier">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Classifier/feature"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//Classifier/isAbstract"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Classifier/inheritedMember.1"/>
@@ -492,7 +492,7 @@
       <genOperations ecoreOperation="UML2.ecore#//Classifier/getClientDependencies"/>
       <genOperations ecoreOperation="UML2.ecore#//Classifier/getOwnedMembers"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//Feature">
+    <genClasses image="false" ecoreClass="UML2.ecore#//Feature">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Feature/featuringClassifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//Feature/isStatic"/>
     </genClasses>
@@ -507,13 +507,13 @@
       </genOperations>
       <genOperations ecoreOperation="UML2.ecore#//Constraint/getOwnedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//LiteralBoolean">
+    <genClasses ecoreClass="UML2.ecore#//LiteralBoolean" labelFeature="#//uml2/LiteralBoolean/value">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//LiteralBoolean/value"/>
       <genOperations ecoreOperation="UML2.ecore#//LiteralBoolean/isComputable"/>
       <genOperations ecoreOperation="UML2.ecore#//LiteralBoolean/booleanValue"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//LiteralSpecification"/>
-    <genClasses ecoreClass="UML2.ecore#//LiteralString">
+    <genClasses image="false" ecoreClass="UML2.ecore#//LiteralSpecification"/>
+    <genClasses ecoreClass="UML2.ecore#//LiteralString" labelFeature="#//uml2/LiteralString/value">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//LiteralString/value"/>
       <genOperations ecoreOperation="UML2.ecore#//LiteralString/isComputable"/>
       <genOperations ecoreOperation="UML2.ecore#//LiteralString/stringValue"/>
@@ -522,17 +522,17 @@
       <genOperations ecoreOperation="UML2.ecore#//LiteralNull/isComputable"/>
       <genOperations ecoreOperation="UML2.ecore#//LiteralNull/isNull"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//LiteralInteger">
+    <genClasses ecoreClass="UML2.ecore#//LiteralInteger" labelFeature="#//uml2/LiteralInteger/value">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//LiteralInteger/value"/>
       <genOperations ecoreOperation="UML2.ecore#//LiteralInteger/isComputable"/>
       <genOperations ecoreOperation="UML2.ecore#//LiteralInteger/integerValue"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//LiteralUnlimitedNatural">
+    <genClasses ecoreClass="UML2.ecore#//LiteralUnlimitedNatural" labelFeature="#//uml2/LiteralUnlimitedNatural/value">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//LiteralUnlimitedNatural/value"/>
       <genOperations ecoreOperation="UML2.ecore#//LiteralUnlimitedNatural/isComputable"/>
       <genOperations ecoreOperation="UML2.ecore#//LiteralUnlimitedNatural/unlimitedValue"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//BehavioralFeature">
+    <genClasses image="false" ecoreClass="UML2.ecore#//BehavioralFeature">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//BehavioralFeature/parameter"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//BehavioralFeature/formalParameter"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//BehavioralFeature/returnResult"/>
@@ -547,7 +547,7 @@
       <genOperations ecoreOperation="UML2.ecore#//BehavioralFeature/getMembers"/>
       <genOperations ecoreOperation="UML2.ecore#//BehavioralFeature/getOwnedMembers"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//StructuralFeature">
+    <genClasses image="false" ecoreClass="UML2.ecore#//StructuralFeature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//StructuralFeature/isReadOnly"/>
     </genClasses>
     <genClasses ecoreClass="UML2.ecore#//InstanceSpecification">
@@ -574,7 +574,7 @@
     <genClasses ecoreClass="UML2.ecore#//InstanceValue">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//InstanceValue/instance"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//RedefinableElement">
+    <genClasses image="false" ecoreClass="UML2.ecore#//RedefinableElement">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//RedefinableElement/redefinitionContext"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//RedefinableElement/isLeaf"/>
       <genOperations ecoreOperation="UML2.ecore#//RedefinableElement/validateRedefinitionContextValid">
@@ -602,7 +602,7 @@
       <genOperations ecoreOperation="UML2.ecore#//Generalization/getOwner"/>
       <genOperations ecoreOperation="UML2.ecore#//Generalization/getTargets"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//PackageableElement">
+    <genClasses image="false" ecoreClass="UML2.ecore#//PackageableElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//PackageableElement/packageableElement_visibility"/>
       <genOperations ecoreOperation="UML2.ecore#//PackageableElement/getVisibility"/>
       <genOperations ecoreOperation="UML2.ecore#//PackageableElement/setVisibility">
@@ -681,7 +681,7 @@
         <genParameters ecoreParameter="UML2.ecore#//ExtensionEnd/setType/newType"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//Behavior">
+    <genClasses image="false" ecoreClass="UML2.ecore#//Behavior">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//Behavior/isReentrant"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Behavior/context"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Behavior/redefinedBehavior"/>
@@ -696,7 +696,7 @@
       <genOperations ecoreOperation="UML2.ecore#//Behavior/getOwnedMembers"/>
       <genOperations ecoreOperation="UML2.ecore#//Behavior/getOwnedRules"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//BehavioredClassifier">
+    <genClasses image="false" ecoreClass="UML2.ecore#//BehavioredClassifier">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//BehavioredClassifier/ownedBehavior"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//BehavioredClassifier/classifierBehavior"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//BehavioredClassifier/implementation"/>
@@ -767,7 +767,7 @@
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ConnectorEnd/role"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ConnectorEnd/partWithPort"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//ConnectableElement">
+    <genClasses image="false" ecoreClass="UML2.ecore#//ConnectableElement">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ConnectableElement/end"/>
     </genClasses>
     <genClasses ecoreClass="UML2.ecore#//Connector">
@@ -779,7 +779,7 @@
       <genOperations ecoreOperation="UML2.ecore#//Connector/getRedefinedElements"/>
       <genOperations ecoreOperation="UML2.ecore#//Connector/getOwnedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//StructuredClassifier">
+    <genClasses image="false" ecoreClass="UML2.ecore#//StructuredClassifier">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//StructuredClassifier/ownedAttribute"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//StructuredClassifier/part"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//StructuredClassifier/role"/>
@@ -789,7 +789,7 @@
       <genOperations ecoreOperation="UML2.ecore#//StructuredClassifier/getMembers"/>
       <genOperations ecoreOperation="UML2.ecore#//StructuredClassifier/getFeatures"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//ActivityEdge">
+    <genClasses image="false" ecoreClass="UML2.ecore#//ActivityEdge">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ActivityEdge/activity"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ActivityEdge/source"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ActivityEdge/target"/>
@@ -803,7 +803,7 @@
       <genOperations ecoreOperation="UML2.ecore#//ActivityEdge/getOwner"/>
       <genOperations ecoreOperation="UML2.ecore#//ActivityEdge/getOwnedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//ActivityGroup">
+    <genClasses image="false" ecoreClass="UML2.ecore#//ActivityGroup">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ActivityGroup/superGroup"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ActivityGroup/activityGroup_activity"/>
       <genOperations ecoreOperation="UML2.ecore#//ActivityGroup/getSubgroups"/>
@@ -816,7 +816,7 @@
       <genOperations ecoreOperation="UML2.ecore#//ActivityGroup/getOwnedElements"/>
       <genOperations ecoreOperation="UML2.ecore#//ActivityGroup/getOwner"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//ActivityNode">
+    <genClasses image="false" ecoreClass="UML2.ecore#//ActivityNode">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ActivityNode/outgoing"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ActivityNode/incoming"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ActivityNode/inGroup"/>
@@ -836,14 +836,14 @@
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//Action/localPostcondition"/>
       <genOperations ecoreOperation="UML2.ecore#//Action/getOwnedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//ObjectNode">
+    <genClasses image="false" ecoreClass="UML2.ecore#//ObjectNode">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//ObjectNode/ordering"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//ObjectNode/upperBound"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ObjectNode/inState"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ObjectNode/selection"/>
       <genOperations ecoreOperation="UML2.ecore#//ObjectNode/getOwnedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//ControlNode"/>
+    <genClasses image="false" ecoreClass="UML2.ecore#//ControlNode"/>
     <genClasses ecoreClass="UML2.ecore#//ControlFlow"/>
     <genClasses ecoreClass="UML2.ecore#//ObjectFlow">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//ObjectFlow/isMulticast"/>
@@ -852,19 +852,19 @@
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ObjectFlow/selection"/>
     </genClasses>
     <genClasses ecoreClass="UML2.ecore#//InitialNode"/>
-    <genClasses ecoreClass="UML2.ecore#//FinalNode"/>
+    <genClasses image="false" ecoreClass="UML2.ecore#//FinalNode"/>
     <genClasses ecoreClass="UML2.ecore#//ActivityFinalNode"/>
     <genClasses ecoreClass="UML2.ecore#//DecisionNode">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//DecisionNode/decisionInput"/>
     </genClasses>
     <genClasses ecoreClass="UML2.ecore#//MergeNode"/>
-    <genClasses ecoreClass="UML2.ecore#//ExecutableNode">
+    <genClasses image="false" ecoreClass="UML2.ecore#//ExecutableNode">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//ExecutableNode/handler"/>
       <genOperations ecoreOperation="UML2.ecore#//ExecutableNode/getOwnedElements"/>
     </genClasses>
     <genClasses ecoreClass="UML2.ecore#//OutputPin"/>
     <genClasses ecoreClass="UML2.ecore#//InputPin"/>
-    <genClasses ecoreClass="UML2.ecore#//Pin"/>
+    <genClasses image="false" ecoreClass="UML2.ecore#//Pin"/>
     <genClasses ecoreClass="UML2.ecore#//ActivityParameterNode">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ActivityParameterNode/parameter"/>
     </genClasses>
@@ -952,7 +952,7 @@
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Port/protocol"/>
       <genOperations ecoreOperation="UML2.ecore#//Port/getRedefinedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//EncapsulatedClassifier">
+    <genClasses image="false" ecoreClass="UML2.ecore#//EncapsulatedClassifier">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//EncapsulatedClassifier/ownedPort"/>
       <genOperations ecoreOperation="UML2.ecore#//EncapsulatedClassifier/getFeatures"/>
       <genOperations ecoreOperation="UML2.ecore#//EncapsulatedClassifier/getOwnedMembers"/>
@@ -960,12 +960,12 @@
     <genClasses ecoreClass="UML2.ecore#//CallTrigger">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//CallTrigger/operation"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//MessageTrigger"/>
+    <genClasses image="false" ecoreClass="UML2.ecore#//MessageTrigger"/>
     <genClasses ecoreClass="UML2.ecore#//ChangeTrigger">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//ChangeTrigger/changeExpression"/>
       <genOperations ecoreOperation="UML2.ecore#//ChangeTrigger/getOwnedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//Trigger">
+    <genClasses image="false" ecoreClass="UML2.ecore#//Trigger">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Trigger/port"/>
     </genClasses>
     <genClasses ecoreClass="UML2.ecore#//Reception">
@@ -1041,7 +1041,7 @@
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//Interaction/formalGate"/>
       <genOperations ecoreOperation="UML2.ecore#//Interaction/getOwnedMembers"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//InteractionFragment">
+    <genClasses image="false" ecoreClass="UML2.ecore#//InteractionFragment">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//InteractionFragment/covered"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//InteractionFragment/generalOrdering"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//InteractionFragment/enclosingInteraction"/>
@@ -1074,7 +1074,7 @@
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//GeneralOrdering/before"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//GeneralOrdering/after"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//MessageEnd">
+    <genClasses image="false" ecoreClass="UML2.ecore#//MessageEnd">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//MessageEnd/receiveMessage"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//MessageEnd/sendMessage"/>
     </genClasses>
@@ -1114,7 +1114,7 @@
       <genOperations ecoreOperation="UML2.ecore#//TemplateParameter/getOwner"/>
       <genOperations ecoreOperation="UML2.ecore#//TemplateParameter/getOwnedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//TemplateableElement">
+    <genClasses image="false" ecoreClass="UML2.ecore#//TemplateableElement">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//TemplateableElement/templateBinding"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//TemplateableElement/ownedTemplateSignature"/>
       <genOperations ecoreOperation="UML2.ecore#//TemplateableElement/parameterableElements"/>
@@ -1126,7 +1126,7 @@
       <genOperations ecoreOperation="UML2.ecore#//StringExpression/getOwnedElements"/>
       <genOperations ecoreOperation="UML2.ecore#//StringExpression/getOwner"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//ParameterableElement">
+    <genClasses image="false" ecoreClass="UML2.ecore#//ParameterableElement">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ParameterableElement/templateParameter"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ParameterableElement/owningParameter"/>
       <genOperations ecoreOperation="UML2.ecore#//ParameterableElement/getOwner"/>
@@ -1152,9 +1152,9 @@
     <genClasses ecoreClass="UML2.ecore#//ClassifierTemplateParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//ClassifierTemplateParameter/allowSubstitutable"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//ParameterableClassifier"/>
+    <genClasses image="false" ecoreClass="UML2.ecore#//ParameterableClassifier"/>
     <genClasses ecoreClass="UML2.ecore#//RedefinableTemplateSignature"/>
-    <genClasses ecoreClass="UML2.ecore#//TemplateableClassifier"/>
+    <genClasses image="false" ecoreClass="UML2.ecore#//TemplateableClassifier"/>
     <genClasses ecoreClass="UML2.ecore#//ConnectableElementTemplateParameter"/>
     <genClasses ecoreClass="UML2.ecore#//ForkNode"/>
     <genClasses ecoreClass="UML2.ecore#//JoinNode">
@@ -1259,7 +1259,7 @@
       <genOperations ecoreOperation="UML2.ecore#//State/getOwnedElements"/>
       <genOperations ecoreOperation="UML2.ecore#//State/getOwnedMembers"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//Vertex">
+    <genClasses image="false" ecoreClass="UML2.ecore#//Vertex">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Vertex/container"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Vertex/outgoing"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Vertex/incoming"/>
@@ -1306,7 +1306,7 @@
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//ReadSelfAction/result"/>
       <genOperations ecoreOperation="UML2.ecore#//ReadSelfAction/getOutputs"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//StructuralFeatureAction">
+    <genClasses image="false" ecoreClass="UML2.ecore#//StructuralFeatureAction">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//StructuralFeatureAction/structuralFeature"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//StructuralFeatureAction/object"/>
       <genOperations ecoreOperation="UML2.ecore#//StructuralFeatureAction/getInputs"/>
@@ -1315,7 +1315,7 @@
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//ReadStructuralFeatureAction/result"/>
       <genOperations ecoreOperation="UML2.ecore#//ReadStructuralFeatureAction/getOutputs"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//WriteStructuralFeatureAction">
+    <genClasses image="false" ecoreClass="UML2.ecore#//WriteStructuralFeatureAction">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//WriteStructuralFeatureAction/value"/>
       <genOperations ecoreOperation="UML2.ecore#//WriteStructuralFeatureAction/getInputs"/>
     </genClasses>
@@ -1326,7 +1326,7 @@
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//AddStructuralFeatureValueAction/insertAt"/>
       <genOperations ecoreOperation="UML2.ecore#//AddStructuralFeatureValueAction/getInputs"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//LinkAction">
+    <genClasses image="false" ecoreClass="UML2.ecore#//LinkAction">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//LinkAction/endData"/>
     </genClasses>
     <genClasses ecoreClass="UML2.ecore#//LinkEndData">
@@ -1346,21 +1346,21 @@
     <genClasses ecoreClass="UML2.ecore#//CreateLinkAction">
       <genOperations ecoreOperation="UML2.ecore#//CreateLinkAction/getEndData"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//WriteLinkAction"/>
+    <genClasses image="false" ecoreClass="UML2.ecore#//WriteLinkAction"/>
     <genClasses ecoreClass="UML2.ecore#//DestroyLinkAction"/>
     <genClasses ecoreClass="UML2.ecore#//ClearAssociationAction">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//ClearAssociationAction/object"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ClearAssociationAction/association"/>
       <genOperations ecoreOperation="UML2.ecore#//ClearAssociationAction/getInputs"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//VariableAction">
+    <genClasses image="false" ecoreClass="UML2.ecore#//VariableAction">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//VariableAction/variable"/>
     </genClasses>
     <genClasses ecoreClass="UML2.ecore#//ReadVariableAction">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//ReadVariableAction/result"/>
       <genOperations ecoreOperation="UML2.ecore#//ReadVariableAction/getOutputs"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//WriteVariableAction">
+    <genClasses image="false" ecoreClass="UML2.ecore#//WriteVariableAction">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//WriteVariableAction/value"/>
       <genOperations ecoreOperation="UML2.ecore#//WriteVariableAction/getInputs"/>
     </genClasses>
@@ -1382,12 +1382,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//PrimitiveFunction/body"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//PrimitiveFunction/language"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//CallAction">
+    <genClasses image="false" ecoreClass="UML2.ecore#//CallAction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//CallAction/isSynchronous"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//CallAction/result"/>
       <genOperations ecoreOperation="UML2.ecore#//CallAction/getOutputs"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//InvocationAction">
+    <genClasses image="false" ecoreClass="UML2.ecore#//InvocationAction">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//InvocationAction/argument"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//InvocationAction/onPort"/>
       <genOperations ecoreOperation="UML2.ecore#//InvocationAction/getInputs"/>
@@ -1495,8 +1495,8 @@
       <genOperations ecoreOperation="UML2.ecore#//Deployment/getClients"/>
       <genOperations ecoreOperation="UML2.ecore#//Deployment/getOwnedElements"/>
     </genClasses>
-    <genClasses ecoreClass="UML2.ecore#//DeployedArtifact"/>
-    <genClasses ecoreClass="UML2.ecore#//DeploymentTarget">
+    <genClasses image="false" ecoreClass="UML2.ecore#//DeployedArtifact"/>
+    <genClasses image="false" ecoreClass="UML2.ecore#//DeploymentTarget">
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference UML2.ecore#//DeploymentTarget/deployment"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//DeploymentTarget/deployedElement"/>
       <genOperations ecoreOperation="UML2.ecore#//DeploymentTarget/getOwnedElements"/>
