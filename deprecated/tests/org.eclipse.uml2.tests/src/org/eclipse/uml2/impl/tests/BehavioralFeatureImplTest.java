@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeatureImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
+ * $Id: BehavioralFeatureImplTest.java,v 1.4 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -27,10 +27,13 @@ import org.eclipse.uml2.impl.BehavioralFeatureImpl;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getRedefinitionContexts() <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#isLeaf() <em>Is Leaf</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getFeaturingClassifiers() <em>Featuring Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#isStatic() <em>Is Static</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getParameters() <em>Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getFormalParameters() <em>Formal Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getRaisedExceptions() <em>Raised Exception</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#isAbstract() <em>Is Abstract</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -99,6 +102,28 @@ public abstract class BehavioralFeatureImplTest extends NamespaceImplTest {
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#isLeaf() <em>Is Leaf</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#isLeaf()
+	 * @generated
+	 */
+	public void testIsLeaf() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#setIsLeaf() <em>Is Leaf</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#setIsLeaf()
+	 * @generated
+	 */
+	public void testSetIsLeaf() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getFeaturingClassifiers() <em>Featuring Classifier</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,6 +142,28 @@ public abstract class BehavioralFeatureImplTest extends NamespaceImplTest {
 		for (Iterator featuringClassifiers = getFixture().getFeaturingClassifiers().iterator(); featuringClassifiers.hasNext();) {
 			assertTrue(Classifier.class.isInstance(featuringClassifiers.next()));
 		}
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#isStatic() <em>Is Static</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#isStatic()
+	 * @generated
+	 */
+	public void testIsStatic() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#setIsStatic() <em>Is Static</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#setIsStatic()
+	 * @generated
+	 */
+	public void testSetIsStatic() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**
@@ -163,6 +210,28 @@ public abstract class BehavioralFeatureImplTest extends NamespaceImplTest {
 	 */
 	public void testGetRaisedExceptions() {
 		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#isAbstract() <em>Is Abstract</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#isAbstract()
+	 * @generated
+	 */
+	public void testIsAbstract() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#setIsAbstract() <em>Is Abstract</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#setIsAbstract()
+	 * @generated
+	 */
+	public void testSetIsAbstract() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

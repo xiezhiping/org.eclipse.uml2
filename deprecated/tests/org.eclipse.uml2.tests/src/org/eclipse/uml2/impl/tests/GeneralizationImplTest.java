@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: GeneralizationImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: GeneralizationImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -21,6 +21,12 @@ import org.eclipse.uml2.impl.GeneralizationImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Generalization</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#isSubstitutable() <em>Is Substitutable</em>}</li>
+ * </ul>
+ * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -87,6 +93,28 @@ public class GeneralizationImplTest extends DirectedRelationshipImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.GeneralizationImpl#isSubstitutable() <em>Is Substitutable</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.GeneralizationImpl#isSubstitutable()
+	 * @generated
+	 */
+	public void testIsSubstitutable() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.GeneralizationImpl#setIsSubstitutable() <em>Is Substitutable</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.GeneralizationImpl#setIsSubstitutable()
+	 * @generated
+	 */
+	public void testSetIsSubstitutable() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
+ * $Id: PropertyImplTest.java,v 1.4 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -44,8 +44,10 @@ import org.eclipse.uml2.impl.PropertyImpl;
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getDeployedElements() <em>Deployed Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getDefault() <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#isComposite() <em>Is Composite</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#isDerived() <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getClass_() <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getOpposite() <em>Opposite</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#isDerivedUnion() <em>Is Derived Union</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getOwningAssociation() <em>Owning Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getAssociation() <em>Association</em>}</li>
  * </ul>
@@ -286,6 +288,28 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#isDerived() <em>Is Derived</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.PropertyImpl#isDerived()
+	 * @generated
+	 */
+	public void testIsDerived() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#setIsDerived() <em>Is Derived</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.PropertyImpl#setIsDerived()
+	 * @generated
+	 */
+	public void testSetIsDerived() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#getClass_() <em>Class </em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -316,6 +340,28 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	 */
 	public void testGetOpposite() {
 		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#isDerivedUnion() <em>Is Derived Union</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.PropertyImpl#isDerivedUnion()
+	 * @generated
+	 */
+	public void testIsDerivedUnion() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#setIsDerivedUnion() <em>Is Derived Union</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.PropertyImpl#setIsDerivedUnion()
+	 * @generated
+	 */
+	public void testSetIsDerivedUnion() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

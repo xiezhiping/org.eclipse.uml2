@@ -12,14 +12,14 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: feature.xml,v 1.4 2004/05/17 19:52:43 khussey Exp $
+ * $Id: feature.xml,v 1.5 2004/10/01 19:28:47 khussey Exp $
  */
 -->
 
 <feature
       id="org.eclipse.uml2.examples"
       label="%feature.label"
-      version="1.0.0"
+      version="1.0.1"
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg">
 
@@ -51,24 +51,17 @@
       id="org.eclipse.uml2.examples"
       download-size="0"
       install-size="0"
-      version="1.0.0"/>
+      version="1.0.1"/>
 
    <plugin
       id="org.eclipse.uml2.examples.ui"
       download-size="0"
       install-size="0"
-      version="1.0.0"/>
-
-   <plugin
-      id="org.eclipse.uml2.examples.resources"
-      download-size="0"
-      install-size="0"
-      version="1.0.0"
-      fragment="true"/>
+      version="1.0.1"/>
 
    <includes
       id="org.eclipse.uml2.examples.source"
-      version="1.0.0"
+      version="1.0.1"
       match="compatible"/> 
 
 </feature>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ObjectFlowImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: ObjectFlowImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -21,6 +21,13 @@ import org.eclipse.uml2.impl.ObjectFlowImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Object Flow</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ObjectFlowImpl#isMulticast() <em>Is Multicast</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ObjectFlowImpl#isMultireceive() <em>Is Multireceive</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class ObjectFlowImplTest extends ActivityEdgeImplTest {
@@ -79,6 +86,50 @@ public class ObjectFlowImplTest extends ActivityEdgeImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ObjectFlowImpl#isMulticast() <em>Is Multicast</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ObjectFlowImpl#isMulticast()
+	 * @generated
+	 */
+	public void testIsMulticast() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ObjectFlowImpl#setIsMulticast() <em>Is Multicast</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ObjectFlowImpl#setIsMulticast()
+	 * @generated
+	 */
+	public void testSetIsMulticast() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ObjectFlowImpl#isMultireceive() <em>Is Multireceive</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ObjectFlowImpl#isMultireceive()
+	 * @generated
+	 */
+	public void testIsMultireceive() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ObjectFlowImpl#setIsMultireceive() <em>Is Multireceive</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ObjectFlowImpl#setIsMultireceive()
+	 * @generated
+	 */
+	public void testSetIsMultireceive() {
+		// TODO: implement this feature setter test method
 	}
 
 	/* (non-Javadoc)

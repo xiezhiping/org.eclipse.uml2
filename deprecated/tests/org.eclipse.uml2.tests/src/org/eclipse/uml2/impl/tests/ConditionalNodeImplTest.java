@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConditionalNodeImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: ConditionalNodeImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -21,6 +21,13 @@ import org.eclipse.uml2.impl.ConditionalNodeImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Conditional Node</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ConditionalNodeImpl#isDeterminate() <em>Is Determinate</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ConditionalNodeImpl#isAssured() <em>Is Assured</em>}</li>
+ * </ul>
+ * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -86,6 +93,50 @@ public class ConditionalNodeImplTest extends StructuredActivityNodeImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ConditionalNodeImpl#isDeterminate() <em>Is Determinate</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ConditionalNodeImpl#isDeterminate()
+	 * @generated
+	 */
+	public void testIsDeterminate() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ConditionalNodeImpl#setIsDeterminate() <em>Is Determinate</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ConditionalNodeImpl#setIsDeterminate()
+	 * @generated
+	 */
+	public void testSetIsDeterminate() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ConditionalNodeImpl#isAssured() <em>Is Assured</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ConditionalNodeImpl#isAssured()
+	 * @generated
+	 */
+	public void testIsAssured() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ConditionalNodeImpl#setIsAssured() <em>Is Assured</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ConditionalNodeImpl#setIsAssured()
+	 * @generated
+	 */
+	public void testSetIsAssured() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

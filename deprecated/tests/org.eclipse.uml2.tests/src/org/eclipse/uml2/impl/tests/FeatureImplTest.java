@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: FeatureImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: FeatureImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -25,6 +25,7 @@ import org.eclipse.uml2.impl.FeatureImpl;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.FeatureImpl#getFeaturingClassifiers() <em>Featuring Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.FeatureImpl#isStatic() <em>Is Static</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -77,6 +78,28 @@ public abstract class FeatureImplTest extends RedefinableElementImplTest {
 		for (Iterator featuringClassifiers = getFixture().getFeaturingClassifiers().iterator(); featuringClassifiers.hasNext();) {
 			assertTrue(Classifier.class.isInstance(featuringClassifiers.next()));
 		}
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.FeatureImpl#isStatic() <em>Is Static</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.FeatureImpl#isStatic()
+	 * @generated
+	 */
+	public void testIsStatic() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.FeatureImpl#setIsStatic() <em>Is Static</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.FeatureImpl#setIsStatic()
+	 * @generated
+	 */
+	public void testSetIsStatic() {
+		// TODO: implement this feature setter test method
 	}
 
 	protected void setUpFeaturingClassifiers() {

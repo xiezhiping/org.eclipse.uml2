@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ContinuationImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: ContinuationImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -22,6 +22,12 @@ import org.eclipse.uml2.impl.ContinuationImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Continuation</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ContinuationImpl#isSetting() <em>Setting</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class ContinuationImplTest extends InteractionFragmentImplTest {
@@ -80,6 +86,28 @@ public class ContinuationImplTest extends InteractionFragmentImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ContinuationImpl#isSetting() <em>Setting</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ContinuationImpl#isSetting()
+	 * @generated
+	 */
+	public void testIsSetting() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ContinuationImpl#setSetting() <em>Setting</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ContinuationImpl#setSetting()
+	 * @generated
+	 */
+	public void testSetSetting() {
+		// TODO: implement this feature setter test method
 	}
 
 	/* (non-Javadoc)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityPartitionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: ActivityPartitionImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -33,6 +33,8 @@ import org.eclipse.uml2.impl.ActivityPartitionImpl;
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getSuperGroup() <em>Super Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getActivityGroup_activity() <em>Activity Group activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#isDimension() <em>Is Dimension</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#isExternal() <em>Is External</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -158,6 +160,50 @@ public class ActivityPartitionImplTest extends NamedElementImplTest {
 
 		assertSame(null, getFixture().getActivityGroup_activity());
 		assertFalse(activity.getGroups().contains(getFixture()));
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#isDimension() <em>Is Dimension</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ActivityPartitionImpl#isDimension()
+	 * @generated
+	 */
+	public void testIsDimension() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#setIsDimension() <em>Is Dimension</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ActivityPartitionImpl#setIsDimension()
+	 * @generated
+	 */
+	public void testSetIsDimension() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#isExternal() <em>Is External</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ActivityPartitionImpl#isExternal()
+	 * @generated
+	 */
+	public void testIsExternal() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#setIsExternal() <em>Is External</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ActivityPartitionImpl#setIsExternal()
+	 * @generated
+	 */
+	public void testSetIsExternal() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

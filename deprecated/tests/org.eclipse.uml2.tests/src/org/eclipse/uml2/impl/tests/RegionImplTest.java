@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RegionImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
+ * $Id: RegionImplTest.java,v 1.4 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -29,6 +29,7 @@ import org.eclipse.uml2.impl.RegionImpl;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getRedefinitionContexts() <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RegionImpl#isLeaf() <em>Is Leaf</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -103,6 +104,28 @@ public class RegionImplTest extends NamespaceImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.RegionImpl#isLeaf() <em>Is Leaf</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.RegionImpl#isLeaf()
+	 * @generated
+	 */
+	public void testIsLeaf() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.RegionImpl#setIsLeaf() <em>Is Leaf</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.RegionImpl#setIsLeaf()
+	 * @generated
+	 */
+	public void testSetIsLeaf() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

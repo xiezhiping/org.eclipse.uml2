@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
+ * $Id: OperationImplTest.java,v 1.4 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -41,6 +41,7 @@ import org.eclipse.uml2.impl.OperationImpl;
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getUpper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getTemplateParameter() <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getOwningParameter() <em>Owning Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#isQuery() <em>Is Query</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getPreconditions() <em>Precondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getPostconditions() <em>Postcondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getBodyCondition() <em>Body Condition</em>}</li>
@@ -188,6 +189,28 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * @generated
 	 */
 	public void testSetOwningParameter() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#isQuery() <em>Is Query</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.OperationImpl#isQuery()
+	 * @generated
+	 */
+	public void testIsQuery() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#setIsQuery() <em>Is Query</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.OperationImpl#setIsQuery()
+	 * @generated
+	 */
+	public void testSetIsQuery() {
 		// TODO: implement this feature setter test method
 	}
 

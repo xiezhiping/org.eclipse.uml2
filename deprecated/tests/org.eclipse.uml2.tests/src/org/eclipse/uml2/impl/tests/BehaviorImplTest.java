@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: BehaviorImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -24,6 +24,7 @@ import org.eclipse.uml2.impl.BehaviorImpl;
  * <p>
  * The following features are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#isReentrant() <em>Is Reentrant</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#getContext() <em>Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#getFormalParameters() <em>Formal Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#getReturnResults() <em>Return Result</em>}</li>
@@ -68,6 +69,28 @@ public abstract class BehaviorImplTest extends ClassImplTest {
 	 */
 	private BehaviorImpl getFixture() {
 		return (BehaviorImpl) fixture;
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.BehaviorImpl#isReentrant() <em>Is Reentrant</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.BehaviorImpl#isReentrant()
+	 * @generated
+	 */
+	public void testIsReentrant() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.BehaviorImpl#setIsReentrant() <em>Is Reentrant</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.BehaviorImpl#setIsReentrant()
+	 * @generated
+	 */
+	public void testSetIsReentrant() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

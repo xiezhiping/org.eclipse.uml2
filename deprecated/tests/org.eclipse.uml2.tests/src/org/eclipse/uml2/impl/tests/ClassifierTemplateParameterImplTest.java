@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: ClassifierTemplateParameterImplTest.java,v 1.2 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -22,6 +22,12 @@ import org.eclipse.uml2.impl.ClassifierTemplateParameterImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Classifier Template Parameter</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierTemplateParameterImpl#isAllowSubstitutable() <em>Allow Substitutable</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class ClassifierTemplateParameterImplTest extends TemplateParameterImplTest {
@@ -80,6 +86,28 @@ public class ClassifierTemplateParameterImplTest extends TemplateParameterImplTe
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierTemplateParameterImpl#isAllowSubstitutable() <em>Allow Substitutable</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ClassifierTemplateParameterImpl#isAllowSubstitutable()
+	 * @generated
+	 */
+	public void testIsAllowSubstitutable() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierTemplateParameterImpl#setAllowSubstitutable() <em>Allow Substitutable</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ClassifierTemplateParameterImpl#setAllowSubstitutable()
+	 * @generated
+	 */
+	public void testSetAllowSubstitutable() {
+		// TODO: implement this feature setter test method
 	}
 
 } //ClassifierTemplateParameterImplTest

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
+ * $Id: StateImplTest.java,v 1.4 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -25,6 +25,7 @@ import org.eclipse.uml2.impl.StateImpl;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#getRedefinitionContexts() <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#isLeaf() <em>Is Leaf</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#isComposite() <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#isOrthogonal() <em>Is Orthogonal</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#isSimple() <em>Is Simple</em>}</li>
@@ -104,6 +105,28 @@ public class StateImplTest extends NamespaceImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.StateImpl#isLeaf() <em>Is Leaf</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.StateImpl#isLeaf()
+	 * @generated
+	 */
+	public void testIsLeaf() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.StateImpl#setIsLeaf() <em>Is Leaf</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.StateImpl#setIsLeaf()
+	 * @generated
+	 */
+	public void testSetIsLeaf() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

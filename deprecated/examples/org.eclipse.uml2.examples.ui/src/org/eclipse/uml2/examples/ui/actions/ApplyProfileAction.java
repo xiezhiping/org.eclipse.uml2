@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.3 2004/06/17 01:08:46 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.4 2004/10/01 19:28:50 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -117,7 +117,7 @@ public class ApplyProfileAction
 			String[] uris = new String[]{UML2Resource.BASIC_PROFILE_URI,
 				UML2Resource.INTERMEDIATE_PROFILE_URI,
 				UML2Resource.COMPLETE_PROFILE_URI,
-				"pathmap://UML2_PROFILES/Ecore.profile.uml2"}; //$NON-NLS-1$
+				UML2Resource.ECORE_PROFILE_URI};
 
 			for (int i = 0; i < uris.length; i++) {
 

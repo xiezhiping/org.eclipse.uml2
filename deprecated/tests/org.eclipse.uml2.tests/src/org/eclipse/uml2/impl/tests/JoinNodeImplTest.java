@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: JoinNodeImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: JoinNodeImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -21,6 +21,12 @@ import org.eclipse.uml2.impl.JoinNodeImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Join Node</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.JoinNodeImpl#isCombineDuplicate() <em>Is Combine Duplicate</em>}</li>
+ * </ul>
+ * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -85,6 +91,28 @@ public class JoinNodeImplTest extends ControlNodeImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.JoinNodeImpl#isCombineDuplicate() <em>Is Combine Duplicate</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.JoinNodeImpl#isCombineDuplicate()
+	 * @generated
+	 */
+	public void testIsCombineDuplicate() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.JoinNodeImpl#setIsCombineDuplicate() <em>Is Combine Duplicate</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.JoinNodeImpl#setIsCombineDuplicate()
+	 * @generated
+	 */
+	public void testSetIsCombineDuplicate() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

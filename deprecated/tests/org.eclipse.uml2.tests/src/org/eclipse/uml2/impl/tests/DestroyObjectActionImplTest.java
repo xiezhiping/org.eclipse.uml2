@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DestroyObjectActionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: DestroyObjectActionImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -21,6 +21,13 @@ import org.eclipse.uml2.impl.DestroyObjectActionImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Destroy Object Action</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.DestroyObjectActionImpl#isDestroyLinks() <em>Is Destroy Links</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DestroyObjectActionImpl#isDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}</li>
+ * </ul>
+ * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -85,6 +92,50 @@ public class DestroyObjectActionImplTest extends ActionImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.DestroyObjectActionImpl#isDestroyLinks() <em>Is Destroy Links</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.DestroyObjectActionImpl#isDestroyLinks()
+	 * @generated
+	 */
+	public void testIsDestroyLinks() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.DestroyObjectActionImpl#setIsDestroyLinks() <em>Is Destroy Links</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.DestroyObjectActionImpl#setIsDestroyLinks()
+	 * @generated
+	 */
+	public void testSetIsDestroyLinks() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.DestroyObjectActionImpl#isDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.DestroyObjectActionImpl#isDestroyOwnedObjects()
+	 * @generated
+	 */
+	public void testIsDestroyOwnedObjects() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.DestroyObjectActionImpl#setIsDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.DestroyObjectActionImpl#setIsDestroyOwnedObjects()
+	 * @generated
+	 */
+	public void testSetIsDestroyOwnedObjects() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2CommandAction.java,v 1.1 2004/04/29 15:31:14 khussey Exp $
+ * $Id: UML2CommandAction.java,v 1.2 2004/10/01 19:28:50 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -17,8 +17,8 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.presentation.UML2Editor;
+import org.eclipse.uml2.provider.IItemQualifiedTextProvider;
 
 /**
  *  
@@ -46,39 +46,26 @@ public class UML2CommandAction
 		super.setActiveEditor(action, editorPart);
 
 		labelProvider = null == editorPart
-			? null : new AdapterFactoryLabelProvider(((UML2Editor) editorPart)
+			? null
+			: new AdapterFactoryLabelProvider(((UML2Editor) editorPart)
 				.getAdapterFactory()) {
 
 				public String getColumnText(Object object, int columnIndex) {
+					IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
+						.adapt(object, IItemQualifiedTextProvider.class);
 
-					if (NamedElement.class.isInstance(object)) {
-						String qualifiedName = ((NamedElement) object)
-							.getQualifiedName();
-
-						if (null != qualifiedName
-							&& 0 != qualifiedName.length()) {
-
-							return qualifiedName;
-						}
-					}
-
-					return super.getColumnText(object, columnIndex);
+					return null != itemQualifiedTextProvider
+						? itemQualifiedTextProvider.getQualifiedText(object)
+						: super.getColumnText(object, columnIndex);
 				}
 
 				public String getText(Object object) {
+					IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
+						.adapt(object, IItemQualifiedTextProvider.class);
 
-					if (NamedElement.class.isInstance(object)) {
-						String qualifiedName = ((NamedElement) object)
-							.getQualifiedName();
-
-						if (null != qualifiedName
-							&& 0 != qualifiedName.length()) {
-
-							return qualifiedName;
-						}
-					}
-
-					return super.getText(object);
+					return null != itemQualifiedTextProvider
+						? itemQualifiedTextProvider.getQualifiedText(object)
+						: super.getText(object);
 				}
 			};
 	}

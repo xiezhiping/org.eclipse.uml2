@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: ComponentImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -30,6 +30,7 @@ import org.eclipse.uml2.impl.ComponentImpl;
  * <p>
  * The following features are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#isIndirectlyInstantiated() <em>Is Indirectly Instantiated</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#getRequireds() <em>Required</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#getProvideds() <em>Provided</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#getRealizations() <em>Realization</em>}</li>
@@ -100,6 +101,28 @@ public class ComponentImplTest extends ClassImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ComponentImpl#isIndirectlyInstantiated() <em>Is Indirectly Instantiated</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ComponentImpl#isIndirectlyInstantiated()
+	 * @generated
+	 */
+	public void testIsIndirectlyInstantiated() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ComponentImpl#setIsIndirectlyInstantiated() <em>Is Indirectly Instantiated</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ComponentImpl#setIsIndirectlyInstantiated()
+	 * @generated
+	 */
+	public void testSetIsIndirectlyInstantiated() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

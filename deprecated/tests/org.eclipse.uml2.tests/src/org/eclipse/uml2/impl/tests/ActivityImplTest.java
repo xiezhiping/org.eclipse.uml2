@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: ActivityImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -33,6 +33,8 @@ import org.eclipse.uml2.impl.ActivityImpl;
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getNodes() <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getActions() <em>Action</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getStructuredNodes() <em>Structured Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#isSingleExecution() <em>Is Single Execution</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#isReadOnly() <em>Is Read Only</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -176,6 +178,50 @@ public class ActivityImplTest extends BehaviorImplTest {
 
 		assertTrue(getFixture().getStructuredNodes().contains(structuredNode1));
 		assertTrue(getFixture().getStructuredNodes().contains(structuredNode2));
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityImpl#isSingleExecution() <em>Is Single Execution</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ActivityImpl#isSingleExecution()
+	 * @generated
+	 */
+	public void testIsSingleExecution() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityImpl#setIsSingleExecution() <em>Is Single Execution</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ActivityImpl#setIsSingleExecution()
+	 * @generated
+	 */
+	public void testSetIsSingleExecution() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityImpl#isReadOnly() <em>Is Read Only</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ActivityImpl#isReadOnly()
+	 * @generated
+	 */
+	public void testIsReadOnly() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityImpl#setIsReadOnly() <em>Is Read Only</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ActivityImpl#setIsReadOnly()
+	 * @generated
+	 */
+	public void testSetIsReadOnly() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

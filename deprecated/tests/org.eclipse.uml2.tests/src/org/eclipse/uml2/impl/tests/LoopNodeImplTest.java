@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LoopNodeImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: LoopNodeImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -21,6 +21,12 @@ import org.eclipse.uml2.impl.LoopNodeImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Loop Node</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.LoopNodeImpl#isTestedFirst() <em>Is Tested First</em>}</li>
+ * </ul>
+ * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -87,6 +93,28 @@ public class LoopNodeImplTest extends StructuredActivityNodeImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.LoopNodeImpl#isTestedFirst() <em>Is Tested First</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.LoopNodeImpl#isTestedFirst()
+	 * @generated
+	 */
+	public void testIsTestedFirst() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.LoopNodeImpl#setIsTestedFirst() <em>Is Tested First</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.LoopNodeImpl#setIsTestedFirst()
+	 * @generated
+	 */
+	public void testSetIsTestedFirst() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeExpressionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: TimeExpressionImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -21,6 +21,12 @@ import org.eclipse.uml2.impl.TimeExpressionImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Time Expression</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TimeExpressionImpl#isFirstTime() <em>First Time</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class TimeExpressionImplTest extends ValueSpecificationImplTest {
@@ -79,6 +85,28 @@ public class TimeExpressionImplTest extends ValueSpecificationImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.TimeExpressionImpl#isFirstTime() <em>First Time</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.TimeExpressionImpl#isFirstTime()
+	 * @generated
+	 */
+	public void testIsFirstTime() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.TimeExpressionImpl#setFirstTime() <em>First Time</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.TimeExpressionImpl#setFirstTime()
+	 * @generated
+	 */
+	public void testSetFirstTime() {
+		// TODO: implement this feature setter test method
 	}
 
 	/* (non-Javadoc)

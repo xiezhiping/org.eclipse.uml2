@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: AssociationImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -31,6 +31,7 @@ import org.eclipse.uml2.impl.AssociationImpl;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.AssociationImpl#getRelatedElements() <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.AssociationImpl#isDerived() <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AssociationImpl#getOwnedEnds() <em>Owned End</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AssociationImpl#getEndTypes() <em>End Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AssociationImpl#getMemberEnds() <em>Member End</em>}</li>
@@ -103,6 +104,28 @@ public class AssociationImplTest extends ClassifierImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.AssociationImpl#isDerived() <em>Is Derived</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.AssociationImpl#isDerived()
+	 * @generated
+	 */
+	public void testIsDerived() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.AssociationImpl#setIsDerived() <em>Is Derived</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.AssociationImpl#setIsDerived()
+	 * @generated
+	 */
+	public void testSetIsDerived() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**
@@ -210,9 +233,15 @@ public class AssociationImplTest extends ClassifierImplTest {
 			memberEnd.setType((Type) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next()));
 
 			getFixture().getMemberEnds().add(memberEnd);
+			
+			assertTrue(getFixture().getRelatedElements().contains(memberEnd.getType()));
 		}
 
-		assertTrue(getFixture().getRelatedElements().containsAll(getFixture().getEndTypes()));
+		Property memberEnd = UML2Factory.eINSTANCE.createProperty();
+
+		getFixture().getMemberEnds().add(memberEnd);
+		
+		assertFalse(getFixture().getRelatedElements().contains(memberEnd.getType()));		
 	}
 
 	/**

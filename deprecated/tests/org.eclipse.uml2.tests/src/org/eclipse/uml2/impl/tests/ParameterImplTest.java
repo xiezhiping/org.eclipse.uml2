@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
+ * $Id: ParameterImplTest.java,v 1.4 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -38,6 +38,8 @@ import org.eclipse.uml2.impl.ParameterImpl;
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getLower() <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getUpper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getDefault() <em>Default</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#isException() <em>Is Exception</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#isStream() <em>Is Stream</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -271,6 +273,50 @@ public class ParameterImplTest extends ConnectableElementImplTest {
 
 			assertEquals(defaultValue.stringValue(), getFixture().getDefault());
 		}
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#isException() <em>Is Exception</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ParameterImpl#isException()
+	 * @generated
+	 */
+	public void testIsException() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#setIsException() <em>Is Exception</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ParameterImpl#setIsException()
+	 * @generated
+	 */
+	public void testSetIsException() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#isStream() <em>Is Stream</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ParameterImpl#isStream()
+	 * @generated
+	 */
+	public void testIsStream() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ParameterImpl#setIsStream() <em>Is Stream</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ParameterImpl#setIsStream()
+	 * @generated
+	 */
+	public void testSetIsStream() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

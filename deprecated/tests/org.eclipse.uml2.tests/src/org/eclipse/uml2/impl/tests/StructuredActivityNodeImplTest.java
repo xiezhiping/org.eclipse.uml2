@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
+ * $Id: StructuredActivityNodeImplTest.java,v 1.4 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -34,6 +34,7 @@ import org.eclipse.uml2.impl.StructuredActivityNodeImpl;
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getPackageImports() <em>Package Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getSuperGroup() <em>Super Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getActivityGroup_activity() <em>Activity Group activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#isMustIsolate() <em>Must Isolate</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -206,6 +207,28 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#isMustIsolate() <em>Must Isolate</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#isMustIsolate()
+	 * @generated
+	 */
+	public void testIsMustIsolate() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#setMustIsolate() <em>Must Isolate</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#setMustIsolate()
+	 * @generated
+	 */
+	public void testSetMustIsolate() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#validateMembersAreDistinguishable(EDiagnosticChain, EMap) <em>Validate Members Are Distinguishable</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -373,12 +396,10 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	public void testSetActivity__Activity() {
 		testSetActivity__ActivityGen();
 
-		try {
-			getFixture().setActivity(UML2Factory.eINSTANCE.createActivity());
-			fail();
-		} catch (UnsupportedOperationException uoe) {
-			// pass
-		}
+		Activity activity = UML2Factory.eINSTANCE.createActivity();
+		getFixture().setActivity(activity);
+
+		assertNotSame(activity, getFixture().getActivity());
 	}
 
 	/**
@@ -421,12 +442,10 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	public void testSetActivityGroup_activity__Activity() {
 		testSetActivityGroup_activity__ActivityGen();
 
-		try {
-			getFixture().setActivityGroup_activity(UML2Factory.eINSTANCE.createActivity());
-			fail();
-		} catch (UnsupportedOperationException uoe) {
-			// pass
-		}
+		Activity activity = UML2Factory.eINSTANCE.createActivity();
+		getFixture().setActivityGroup_activity(activity);
+
+		assertNotSame(activity, getFixture().getActivityGroup_activity());
 	}
 
 	/**

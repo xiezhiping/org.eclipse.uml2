@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralBooleanImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: LiteralBooleanImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -21,6 +21,12 @@ import org.eclipse.uml2.impl.LiteralBooleanImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Literal Boolean</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.LiteralBooleanImpl#isValue() <em>Value</em>}</li>
+ * </ul>
+ * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -86,6 +92,28 @@ public class LiteralBooleanImplTest extends LiteralSpecificationImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.LiteralBooleanImpl#isValue() <em>Value</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.LiteralBooleanImpl#isValue()
+	 * @generated
+	 */
+	public void testIsValue() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.LiteralBooleanImpl#setValue() <em>Value</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.LiteralBooleanImpl#setValue()
+	 * @generated
+	 */
+	public void testSetValue() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

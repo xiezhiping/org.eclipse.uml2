@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyOperationsTest.java,v 1.1 2004/04/29 14:56:55 khussey Exp $
+ * $Id: PropertyOperationsTest.java,v 1.2 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -143,11 +143,13 @@ public class PropertyOperationsTest
 			UML2Package.eINSTANCE.getType()).iterator(); eAllSubClasses
 			.hasNext();) {
 
-			Type type = (Type) UML2Factory.eINSTANCE
-				.create((EClass) eAllSubClasses.next());
+			EClass eClass = (EClass) eAllSubClasses.next();
+			
+			Type type0 = (Type) UML2Factory.eINSTANCE.create(eClass);
+			Type type1 = (Type) UML2Factory.eINSTANCE.create(eClass);
 
-			((Property) association.getMemberEnds().get(0)).setType(type);
-			((Property) association.getMemberEnds().get(1)).setType(type);
+			((Property) association.getMemberEnds().get(0)).setType(type0);
+			((Property) association.getMemberEnds().get(1)).setType(type1);
 
 			try {
 				PropertyOperations.setNavigable(getElement(), false);
@@ -184,7 +186,7 @@ public class PropertyOperationsTest
 				public Object defaultCase(EObject object) {
 					return Boolean.FALSE;
 				}
-			}.doSwitch(type)) {
+			}.doSwitch(type1)) {
 
 				try {
 					PropertyOperations.setNavigable(getElement(), true);
@@ -194,6 +196,8 @@ public class PropertyOperationsTest
 
 				assertSame(null, getElement().getOwningAssociation());
 				assertSame(association, getElement().getAssociation());
+
+				assertSame(type1, getElement().eContainer());
 			} else {
 
 				try {

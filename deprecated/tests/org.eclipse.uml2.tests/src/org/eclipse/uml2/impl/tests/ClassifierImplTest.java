@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
+ * $Id: ClassifierImplTest.java,v 1.4 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -36,6 +36,7 @@ import org.eclipse.uml2.impl.ClassifierImpl;
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPackageableElement_visibility() <em>Packageable Element visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPackage() <em>Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRedefinitionContexts() <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#isLeaf() <em>Is Leaf</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getFeatures() <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#isAbstract() <em>Is Abstract</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getInheritedMembers() <em>Inherited Member</em>}</li>
@@ -219,6 +220,28 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 		for (Iterator redefinitionContexts = getFixture().getRedefinitionContexts().iterator(); redefinitionContexts.hasNext();) {
 			assertTrue(Classifier.class.isInstance(redefinitionContexts.next()));
 		}
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#isLeaf() <em>Is Leaf</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ClassifierImpl#isLeaf()
+	 * @generated
+	 */
+	public void testIsLeaf() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#setIsLeaf() <em>Is Leaf</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.ClassifierImpl#setIsLeaf()
+	 * @generated
+	 */
+	public void testSetIsLeaf() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: GeneralizationSetImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: GeneralizationSetImplTest.java,v 1.3 2004/10/01 19:28:30 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -22,6 +22,13 @@ import org.eclipse.uml2.impl.GeneralizationSetImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Generalization Set</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.GeneralizationSetImpl#isCovering() <em>Is Covering</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.GeneralizationSetImpl#isDisjoint() <em>Is Disjoint</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class GeneralizationSetImplTest extends PackageableElementImplTest {
@@ -80,6 +87,50 @@ public class GeneralizationSetImplTest extends PackageableElementImplTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.GeneralizationSetImpl#isCovering() <em>Is Covering</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.GeneralizationSetImpl#isCovering()
+	 * @generated
+	 */
+	public void testIsCovering() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.GeneralizationSetImpl#setIsCovering() <em>Is Covering</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.GeneralizationSetImpl#setIsCovering()
+	 * @generated
+	 */
+	public void testSetIsCovering() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.GeneralizationSetImpl#isDisjoint() <em>Is Disjoint</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.GeneralizationSetImpl#isDisjoint()
+	 * @generated
+	 */
+	public void testIsDisjoint() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.GeneralizationSetImpl#setIsDisjoint() <em>Is Disjoint</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.GeneralizationSetImpl#setIsDisjoint()
+	 * @generated
+	 */
+	public void testSetIsDisjoint() {
+		// TODO: implement this feature setter test method
 	}
 
 	/* (non-Javadoc)
