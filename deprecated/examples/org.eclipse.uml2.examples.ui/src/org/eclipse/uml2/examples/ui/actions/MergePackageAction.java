@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MergePackageAction.java,v 1.2 2005/01/19 22:57:35 khussey Exp $
+ * $Id: MergePackageAction.java,v 1.3 2005/01/27 02:31:25 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -100,12 +100,20 @@ public class MergePackageAction
 											UML2Util.OPTION__DISCARD);
 									options
 										.put(
+											UML2Util.PackageMerger.OPTION__IMPLICIT_REDEFINITIONS,
+											UML2Util.OPTION__PROCESS);
+									options
+										.put(
 											UML2Util.PackageMerger.OPTION__INVALID_REDEFINITIONS,
 											UML2Util.OPTION__DISCARD);
 									options
 										.put(
 											UML2Util.PackageMerger.OPTION__INVALID_SUBSETS,
 											UML2Util.OPTION__DISCARD);
+									options
+										.put(
+											UML2Util.PackageMerger.OPTION__EMPTY_UNIONS,
+											UML2Util.OPTION__PROCESS);
 
 									final BasicDiagnostic diagnostics = new BasicDiagnostic(
 										UML2Validator.DIAGNOSTIC_SOURCE,

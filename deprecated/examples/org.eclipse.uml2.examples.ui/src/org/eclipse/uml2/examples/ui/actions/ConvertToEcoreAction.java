@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConvertToEcoreAction.java,v 1.2 2005/01/19 22:57:35 khussey Exp $
+ * $Id: ConvertToEcoreAction.java,v 1.3 2005/01/27 02:31:25 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -104,19 +104,19 @@ public class ConvertToEcoreAction
 
 									options
 										.put(
-											UML2Util.UML22EcoreConverter.OPTION__DERIVED_FEATURES,
-											UML2Util.OPTION__PROCESS);
-									options
-										.put(
-											UML2Util.UML22EcoreConverter.OPTION__DERIVED_UNION_PROPERTIES,
-											UML2Util.OPTION__PROCESS);
-									options
-										.put(
 											UML2Util.UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES,
 											UML2Util.OPTION__PROCESS);
 									options
 										.put(
 											UML2Util.UML22EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
+											UML2Util.OPTION__PROCESS);
+									options
+										.put(
+											UML2Util.UML22EcoreConverter.OPTION__UNION_PROPERTIES,
+											UML2Util.OPTION__PROCESS);
+									options
+										.put(
+											UML2Util.UML22EcoreConverter.OPTION__DERIVED_FEATURES,
 											UML2Util.OPTION__PROCESS);
 									options
 										.put(

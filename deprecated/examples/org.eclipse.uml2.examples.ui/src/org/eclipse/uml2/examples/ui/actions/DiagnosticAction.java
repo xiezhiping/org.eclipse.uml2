@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DiagnosticAction.java,v 1.2 2005/01/19 22:57:35 khussey Exp $
+ * $Id: DiagnosticAction.java,v 1.3 2005/01/27 02:31:25 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -131,21 +131,23 @@ public class DiagnosticAction
 				Diagnostic child = (Diagnostic) children.next();
 				IFile file = getFile(child);
 
-				List diagnostics = (List) fileToDiagnosticMap.get(file);
+				if (null != file) {
+					List diagnostics = (List) fileToDiagnosticMap.get(file);
 
-				if (null == diagnostics) {
-					try {
-						file.deleteMarkers(EValidator.MARKER, true,
-							IResource.DEPTH_ZERO);
-					} catch (CoreException exception) {
-						ExamplesUIPlugin.getDefault().log(exception);
+					if (null == diagnostics) {
+						try {
+							file.deleteMarkers(EValidator.MARKER, true,
+								IResource.DEPTH_ZERO);
+						} catch (CoreException exception) {
+							ExamplesUIPlugin.getDefault().log(exception);
+						}
+
+						fileToDiagnosticMap.put(file,
+							diagnostics = new ArrayList());
 					}
 
-					fileToDiagnosticMap
-						.put(file, diagnostics = new ArrayList());
+					diagnostics.add(child);
 				}
-
-				diagnostics.add(child);
 			}
 
 			if (Diagnostic.INFO < diagnostic.getSeverity()) {
@@ -207,33 +209,37 @@ public class DiagnosticAction
 	protected IFile getFile(Diagnostic diagnostic) {
 		Resource resource = getResource(diagnostic);
 
-		IFile file = (IFile) resourceToFileMap.get(resource);
+		if (null != resource) {
+			IFile file = (IFile) resourceToFileMap.get(resource);
 
-		if (null == file) {
-			ResourceSet resourceSet = resource.getResourceSet();
+			if (null == file) {
+				ResourceSet resourceSet = resource.getResourceSet();
 
-			if (null != resource) {
-				URI uri = resourceSet.getURIConverter().normalize(
-					resource.getURI());
+				if (null != resourceSet) {
+					URI uri = resourceSet.getURIConverter().normalize(
+						resource.getURI());
 
-				if (URI_SCHEME_PLATFORM.equals(uri.scheme())
-					&& uri.segmentCount() > 1
-					&& URI_SEGMENT_RESOURCE.equals(uri.segment(0))) {
+					if (URI_SCHEME_PLATFORM.equals(uri.scheme())
+						&& uri.segmentCount() > 1
+						&& URI_SEGMENT_RESOURCE.equals(uri.segment(0))) {
 
-					StringBuffer platformResourcePath = new StringBuffer();
+						StringBuffer platformResourcePath = new StringBuffer();
 
-					for (int i = 1, size = uri.segmentCount(); i < size; i++) {
-						platformResourcePath.append('/');
-						platformResourcePath.append(uri.segment(i));
+						for (int i = 1, size = uri.segmentCount(); i < size; i++) {
+							platformResourcePath.append('/');
+							platformResourcePath.append(uri.segment(i));
+						}
+
+						resourceToFileMap.put(resource, file = ResourcesPlugin
+							.getWorkspace().getRoot().getFile(
+								new Path(platformResourcePath.toString())));
 					}
-
-					resourceToFileMap.put(resource, file = ResourcesPlugin
-						.getWorkspace().getRoot().getFile(
-							new Path(platformResourcePath.toString())));
 				}
 			}
+
+			return file;
 		}
 
-		return file;
+		return null;
 	}
 }
