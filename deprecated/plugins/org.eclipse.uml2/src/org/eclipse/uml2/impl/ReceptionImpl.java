@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.5 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -454,11 +454,11 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 			case UML2Package.RECEPTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.RECEPTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.RECEPTION__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.RECEPTION__IS_STATIC:
-				return isStatic != IS_STATIC_EDEFAULT;
+				return isStatic() != IS_STATIC_EDEFAULT;
 			case UML2Package.RECEPTION__PARAMETER:
 				return !getParameters().isEmpty();
 			case UML2Package.RECEPTION__FORMAL_PARAMETER:
@@ -468,7 +468,7 @@ public class ReceptionImpl extends BehavioralFeatureImpl implements Reception {
 			case UML2Package.RECEPTION__RAISED_EXCEPTION:
 				return raisedException != null && !raisedException.isEmpty();
 			case UML2Package.RECEPTION__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.RECEPTION__METHOD:
 				return method != null && !method.isEmpty();
 			case UML2Package.RECEPTION__CONCURRENCY:

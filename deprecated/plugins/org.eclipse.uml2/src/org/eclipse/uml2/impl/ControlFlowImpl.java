@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ControlFlowImpl.java,v 1.3 2004/06/18 04:34:31 khussey Exp $
+ * $Id: ControlFlowImpl.java,v 1.4 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -405,7 +405,7 @@ public class ControlFlowImpl extends ActivityEdgeImpl implements ControlFlow {
 			case UML2Package.CONTROL_FLOW__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CONTROL_FLOW__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.CONTROL_FLOW__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.CONTROL_FLOW__SOURCE:

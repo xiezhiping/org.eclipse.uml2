@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.15 2004/06/18 17:44:12 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.16 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -921,11 +921,11 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 			case UML2Package.COLLABORATION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.COLLABORATION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.COLLABORATION__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.COLLABORATION__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.COLLABORATION__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.COLLABORATION__GENERAL:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.14 2004/06/18 06:50:00 khussey Exp $
+ * $Id: OperationImpl.java,v 1.15 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -185,14 +185,14 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	protected static final boolean IS_QUERY_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isQuery() <em>Is Query</em>}' attribute.
+	 * The flag for the '{@link #isQuery() <em>Is Query</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isQuery()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isQuery = IS_QUERY_EDEFAULT;
+	protected static final int IS_QUERY_EFLAG = Integer.MIN_VALUE >>> 5;
 
 	/**
 	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
@@ -241,6 +241,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	protected OperationImpl() {
 		super();
+		eFlags &= ~IS_QUERY_EFLAG;
 	}
 
 	/**
@@ -472,7 +473,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 		}
-		if (null != newOwningParameter || oldOwningParameter == basicGetTemplateParameter()) {
+		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}
@@ -483,7 +484,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean isQuery() {
-		return isQuery;
+		return 0 != (eFlags & IS_QUERY_EFLAG);
 	}
 
 	/**
@@ -492,10 +493,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setIsQuery(boolean newIsQuery) {
-		boolean oldIsQuery = isQuery;
-		isQuery = newIsQuery;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__IS_QUERY, oldIsQuery, isQuery));
+		boolean oldIsQuery = 0 != (eFlags & IS_QUERY_EFLAG);
+		if (newIsQuery) {
+			eFlags |= IS_QUERY_EFLAG;
+		} else {
+			eFlags &= ~IS_QUERY_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__IS_QUERY, oldIsQuery, newIsQuery));
+		}
 	}
 
 	/**
@@ -1658,11 +1664,11 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.OPERATION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.OPERATION__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.OPERATION__IS_STATIC:
-				return isStatic != IS_STATIC_EDEFAULT;
+				return isStatic() != IS_STATIC_EDEFAULT;
 			case UML2Package.OPERATION__PARAMETER:
 				return !getParameters().isEmpty();
 			case UML2Package.OPERATION__FORMAL_PARAMETER:
@@ -1672,7 +1678,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__RAISED_EXCEPTION:
 				return !getRaisedExceptions().isEmpty();
 			case UML2Package.OPERATION__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.OPERATION__METHOD:
 				return method != null && !method.isEmpty();
 			case UML2Package.OPERATION__CONCURRENCY:
@@ -1700,7 +1706,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__CLASS_:
 				return getClass_() != null;
 			case UML2Package.OPERATION__IS_QUERY:
-				return isQuery != IS_QUERY_EDEFAULT;
+				return isQuery() != IS_QUERY_EDEFAULT;
 			case UML2Package.OPERATION__DATATYPE:
 				return getDatatype() != null;
 			case UML2Package.OPERATION__PRECONDITION:
@@ -1787,21 +1793,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isQuery: "); //$NON-NLS-1$
-		result.append(isQuery);
-		result.append(')');
-		return result.toString();
 	}
 
 	// <!-- begin-custom-operations -->

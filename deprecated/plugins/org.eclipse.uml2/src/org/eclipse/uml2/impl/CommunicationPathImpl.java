@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CommunicationPathImpl.java,v 1.13 2004/06/18 17:44:12 khussey Exp $
+ * $Id: CommunicationPathImpl.java,v 1.14 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -529,11 +529,11 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 			case UML2Package.COMMUNICATION_PATH__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.COMMUNICATION_PATH__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.COMMUNICATION_PATH__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.COMMUNICATION_PATH__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.COMMUNICATION_PATH__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.COMMUNICATION_PATH__GENERAL:
@@ -559,7 +559,7 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 			case UML2Package.COMMUNICATION_PATH__RELATED_ELEMENT:
 				return !getRelatedElements().isEmpty();
 			case UML2Package.COMMUNICATION_PATH__IS_DERIVED:
-				return isDerived != IS_DERIVED_EDEFAULT;
+				return isDerived() != IS_DERIVED_EDEFAULT;
 			case UML2Package.COMMUNICATION_PATH__OWNED_END:
 				return ownedEnd != null && !ownedEnd.isEmpty();
 			case UML2Package.COMMUNICATION_PATH__END_TYPE:

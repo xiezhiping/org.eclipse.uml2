@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Behavior.java,v 1.6 2004/06/06 01:35:02 khussey Exp $
+ * $Id: Behavior.java,v 1.7 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -67,7 +67,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @return the value of the '<em>Is Reentrant</em>' attribute.
 	 * @see #setIsReentrant(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_IsReentrant()
-	 * @model dataType="org.eclipse.uml2.Boolean"
+	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isReentrant();

@@ -13,7 +13,7 @@
 	<property name="javacTarget" value="1.2"/>
 	<property name="compilerArg" value=""/>
 	
-	<property name="pluginVersion" value="1.0.0"/>
+	<property name="pluginVersion" value="1.0.1"/>
 
 	<target name="init" depends="properties">
 		<property name="build.result.folder" value="${basedir}"/>

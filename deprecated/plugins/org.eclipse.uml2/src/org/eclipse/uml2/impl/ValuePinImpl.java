@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.5 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.6 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -548,7 +548,7 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			case UML2Package.VALUE_PIN__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.VALUE_PIN__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.VALUE_PIN__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.VALUE_PIN__INCOMING:
@@ -576,9 +576,9 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			case UML2Package.VALUE_PIN__SELECTION:
 				return selection != null;
 			case UML2Package.VALUE_PIN__IS_ORDERED:
-				return isOrdered != IS_ORDERED_EDEFAULT;
+				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UML2Package.VALUE_PIN__IS_UNIQUE:
-				return isUnique != IS_UNIQUE_EDEFAULT;
+				return isUnique() != IS_UNIQUE_EDEFAULT;
 			case UML2Package.VALUE_PIN__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.VALUE_PIN__UPPER:

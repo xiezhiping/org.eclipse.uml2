@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.5 2004/06/18 17:44:12 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.6 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -698,7 +698,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.EXPANSION_REGION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.EXPANSION_REGION__INCOMING:
@@ -750,7 +750,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__CONTAINED_EDGE:
 				return containedEdge != null && !containedEdge.isEmpty();
 			case UML2Package.EXPANSION_REGION__MUST_ISOLATE:
-				return mustIsolate != MUST_ISOLATE_EDEFAULT;
+				return isMustIsolate() != MUST_ISOLATE_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__MODE:
 				return mode != MODE_EDEFAULT;
 			case UML2Package.EXPANSION_REGION__OUTPUT_ELEMENT:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.16 2004/06/18 17:44:12 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.17 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1239,7 +1239,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INTERACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1284,7 +1284,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.INTERACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.INTERACTION__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.INTERACTION__IS_ABSTRACT:
@@ -1340,11 +1340,11 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.INTERACTION__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.INTERACTION__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.INTERACTION__IS_REENTRANT:
-				return isReentrant != IS_REENTRANT_EDEFAULT;
+				return isReentrant() != IS_REENTRANT_EDEFAULT;
 			case UML2Package.INTERACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.INTERACTION__REDEFINED_BEHAVIOR:
@@ -1381,6 +1381,14 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return formalGate != null && !formalGate.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.INTERACTION__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**

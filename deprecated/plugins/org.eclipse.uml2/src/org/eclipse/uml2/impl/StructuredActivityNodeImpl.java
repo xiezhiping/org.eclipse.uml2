@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.15 2004/06/18 17:44:12 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.16 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -153,14 +153,14 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	protected static final boolean MUST_ISOLATE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isMustIsolate() <em>Must Isolate</em>}' attribute.
+	 * The flag for the '{@link #isMustIsolate() <em>Must Isolate</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isMustIsolate()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean mustIsolate = MUST_ISOLATE_EDEFAULT;
+	protected static final int MUST_ISOLATE_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,6 +169,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 */
 	protected StructuredActivityNodeImpl() {
 		super();
+		eFlags &= ~MUST_ISOLATE_EFLAG;
 	}
 
 	/**
@@ -377,7 +378,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public boolean isMustIsolate() {
-		return mustIsolate;
+		return 0 != (eFlags & MUST_ISOLATE_EFLAG);
 	}
 
 	/**
@@ -386,10 +387,15 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	public void setMustIsolate(boolean newMustIsolate) {
-		boolean oldMustIsolate = mustIsolate;
-		mustIsolate = newMustIsolate;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE, oldMustIsolate, mustIsolate));
+		boolean oldMustIsolate = 0 != (eFlags & MUST_ISOLATE_EFLAG);
+		if (newMustIsolate) {
+			eFlags |= MUST_ISOLATE_EFLAG;
+		} else {
+			eFlags &= ~MUST_ISOLATE_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE, oldMustIsolate, newMustIsolate));
+		}
 	}
 
 	/**
@@ -671,8 +677,12 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setActivity(Activity newActivity) {
+	public void setActivityGen(Activity newActivity) {
 		throw new UnsupportedOperationException();
+	}
+
+	public void setActivity(Activity newActivity) {
+		// do nothing
 	}
 
 	/**
@@ -1196,7 +1206,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__INCOMING:
@@ -1248,7 +1258,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE:
 				return containedEdge != null && !containedEdge.isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE:
-				return mustIsolate != MUST_ISOLATE_EDEFAULT;
+				return isMustIsolate() != MUST_ISOLATE_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -1303,21 +1313,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (mustIsolate: "); //$NON-NLS-1$
-		result.append(mustIsolate);
-		result.append(')');
-		return result.toString();
 	}
 
 	// <!-- begin-custom-operations -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.6 2004/06/17 01:09:03 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.7 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -19,7 +19,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -35,6 +37,19 @@ public class CacheAdapter
 	private static final Map values = Collections
 		.synchronizedMap(new HashMap());
 
+	public boolean adapt(Notifier notifier) {
+
+		if (null != notifier) {
+			EList eAdapters = notifier.eAdapters();
+
+			if (!eAdapters.contains(this)) {
+				return eAdapters.add(this);
+			}
+		}
+
+		return false;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -43,50 +58,59 @@ public class CacheAdapter
 	public void notifyChanged(Notification msg) {
 		super.notifyChanged(msg);
 
-		Object feature = msg.getFeature();
-
-		if (EcorePackage.eINSTANCE.getEModelElement_EAnnotations() == feature
-			|| EcorePackage.eINSTANCE.getEAnnotation_Details() == feature) {
-
-			switch (msg.getEventType()) {
-				case Notification.ADD :
-					((EObject) msg.getNewValue()).eAdapters().add(this);
-					break;
-				case Notification.ADD_MANY :
-					for (Iterator newValues = ((List) msg.getNewValue())
-						.iterator(); newValues.hasNext();) {
-
-						((EObject) newValues.next()).eAdapters().add(this);
-					}
-					break;
-				case Notification.REMOVE :
-					((EObject) msg.getOldValue()).eAdapters().remove(this);
-					break;
-				case Notification.REMOVE_MANY :
-					for (Iterator oldValues = ((List) msg.getOldValue())
-						.iterator(); oldValues.hasNext();) {
-
-						((EObject) oldValues.next()).eAdapters().remove(this);
-					}
-					break;
-			}
-		}
-
 		Object notifier = msg.getNotifier();
 
 		if (EObject.class.isInstance(notifier)) {
-			clear(((EObject) notifier).eResource());
-		}
+			Object feature = msg.getFeature();
 
-		clear();
+			if (EcorePackage.eINSTANCE.getEModelElement_EAnnotations() == feature
+				|| EcorePackage.eINSTANCE.getEAnnotation_Details() == feature) {
+
+				switch (msg.getEventType()) {
+					case Notification.ADD :
+						adapt((Notifier) msg.getNewValue());
+						break;
+					case Notification.ADD_MANY :
+						for (Iterator newValues = ((List) msg.getNewValue())
+							.iterator(); newValues.hasNext();) {
+
+							adapt((Notifier) newValues.next());
+						}
+						break;
+					case Notification.SET :
+						adapt((Notifier) msg.getNewValue());
+						break;
+				}
+			}
+
+			clear(((EObject) notifier).eResource());
+		} else if (Resource.class.isInstance(notifier)) {
+
+			if (Resource.RESOURCE__CONTENTS == msg.getFeatureID(Resource.class)) {
+				clear();
+			}
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.notify.Adapter#setTarget(org.eclipse.emf.common.notify.Notifier)
+	 */
+	public void setTarget(Notifier newTarget) {
+		// do nothing
 	}
 
 	public void clear() {
-		clear(null);
+		values.clear();
 	}
 
 	public void clear(Resource resource) {
 		values.remove(resource);
+
+		if (null != resource) {
+			values.remove(null);
+		}
 	}
 
 	public boolean containsKey(EObject eObject, Object key) {

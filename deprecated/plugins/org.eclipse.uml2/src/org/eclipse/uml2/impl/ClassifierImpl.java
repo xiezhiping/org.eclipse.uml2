@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.19 2004/06/18 17:44:12 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.20 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
+import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -144,14 +145,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	protected static final boolean IS_LEAF_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
+	 * The flag for the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isLeaf()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isLeaf = IS_LEAF_EDEFAULT;
+	protected static final int IS_LEAF_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The default value of the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
@@ -164,14 +165,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	protected static final boolean IS_ABSTRACT_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
+	 * The flag for the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isAbstract()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isAbstract = IS_ABSTRACT_EDEFAULT;
+	protected static final int IS_ABSTRACT_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getGeneralizations() <em>Generalization</em>}' containment reference list.
@@ -260,6 +261,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	protected ClassifierImpl() {
 		super();
+		eFlags &= ~IS_LEAF_EFLAG;
+		eFlags &= ~IS_ABSTRACT_EFLAG;
 	}
 
 	/**
@@ -377,7 +380,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 		}
-		if (null != newOwningParameter || oldOwningParameter == basicGetTemplateParameter()) {
+		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}
@@ -439,7 +442,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean isLeaf() {
-		return isLeaf;
+		return 0 != (eFlags & IS_LEAF_EFLAG);
 	}
 
 	/**
@@ -448,10 +451,15 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-		boolean oldIsLeaf = isLeaf;
-		isLeaf = newIsLeaf;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__IS_LEAF, oldIsLeaf, isLeaf));
+		boolean oldIsLeaf = 0 != (eFlags & IS_LEAF_EFLAG);
+		if (newIsLeaf) {
+			eFlags |= IS_LEAF_EFLAG;
+		} else {
+			eFlags &= ~IS_LEAF_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__IS_LEAF, oldIsLeaf, newIsLeaf));
+		}
 	}
 
 	/**
@@ -512,7 +520,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean isAbstract() {
-		return isAbstract;
+		return 0 != (eFlags & IS_ABSTRACT_EFLAG);
 	}
 
 	/**
@@ -521,12 +529,15 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public void setIsAbstract(boolean newIsAbstract) {
-		boolean oldIsAbstract = isAbstract;
-		isAbstract = newIsAbstract;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__IS_ABSTRACT, oldIsAbstract, isAbstract));
+		boolean oldIsAbstract = 0 != (eFlags & IS_ABSTRACT_EFLAG);
+		if (newIsAbstract) {
+			eFlags |= IS_ABSTRACT_EFLAG;
+		} else {
+			eFlags &= ~IS_ABSTRACT_EFLAG;
 		}
-
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__IS_ABSTRACT, oldIsAbstract, newIsAbstract));
+		}
 	}
 
 	/**
@@ -1751,11 +1762,11 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CLASSIFIER__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.CLASSIFIER__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.CLASSIFIER__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.CLASSIFIER__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.CLASSIFIER__GENERAL:
@@ -1852,22 +1863,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isLeaf: "); //$NON-NLS-1$
-		result.append(isLeaf);
-		result.append(')');
-		return result.toString();
-	}
-
 	// <!-- begin-custom-operations -->
+
 	 /*
 	  * (non-Javadoc)
 	  * 
@@ -1898,6 +1895,36 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return ClassifierOperations.createGeneralization(this,
 				generalClassifier);
 	}
+
+	private static Method GET_USED_INTERFACES_METHOD = null;
+
+	static {
+		try {
+			GET_USED_INTERFACES_METHOD = ClassifierImpl.class.getMethod(
+				"getUsedInterfaces", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// ignore
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Classifier#getUsedInterfaces()
+	 */
+	public Set getUsedInterfaces() {
+		Set useInterfaces = (Set) getCacheAdapter().get(this,
+			GET_USED_INTERFACES_METHOD);
+
+		if (null == useInterfaces) {
+			useInterfaces = ClassifierOperations.getUsedInterfaces(this);
+			getCacheAdapter().put(this, GET_USED_INTERFACES_METHOD,
+				useInterfaces);
+		}
+
+		return useInterfaces;
+	}
+	
 	// <!-- end-custom-operations -->
 
 } //ClassifierImpl

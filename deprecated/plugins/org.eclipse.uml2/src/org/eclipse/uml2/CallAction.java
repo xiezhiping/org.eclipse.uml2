@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CallAction.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
+ * $Id: CallAction.java,v 1.4 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -60,7 +60,7 @@ public interface CallAction extends InvocationAction{
 	 * @return the value of the '<em>Is Synchronous</em>' attribute.
 	 * @see #setIsSynchronous(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getCallAction_IsSynchronous()
-	 * @model default="true" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="true" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isSynchronous();

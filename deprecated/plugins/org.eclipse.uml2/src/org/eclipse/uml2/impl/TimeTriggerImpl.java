@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeTriggerImpl.java,v 1.6 2004/06/18 04:34:31 khussey Exp $
+ * $Id: TimeTriggerImpl.java,v 1.7 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,14 +66,14 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	protected static final boolean IS_RELATIVE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isRelative() <em>Is Relative</em>}' attribute.
+	 * The flag for the '{@link #isRelative() <em>Is Relative</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isRelative()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isRelative = IS_RELATIVE_EDEFAULT;
+	protected static final int IS_RELATIVE_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The cached value of the '{@link #getWhen() <em>When</em>}' containment reference.
@@ -92,6 +92,7 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	 */
 	protected TimeTriggerImpl() {
 		super();
+		eFlags &= ~IS_RELATIVE_EFLAG;
 	}
 
 	/**
@@ -109,7 +110,7 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	 * @generated
 	 */
 	public boolean isRelative() {
-		return isRelative;
+		return 0 != (eFlags & IS_RELATIVE_EFLAG);
 	}
 
 	/**
@@ -118,10 +119,15 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	 * @generated
 	 */
 	public void setIsRelative(boolean newIsRelative) {
-		boolean oldIsRelative = isRelative;
-		isRelative = newIsRelative;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TIME_TRIGGER__IS_RELATIVE, oldIsRelative, isRelative));
+		boolean oldIsRelative = 0 != (eFlags & IS_RELATIVE_EFLAG);
+		if (newIsRelative) {
+			eFlags |= IS_RELATIVE_EFLAG;
+		} else {
+			eFlags &= ~IS_RELATIVE_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TIME_TRIGGER__IS_RELATIVE, oldIsRelative, newIsRelative));
+		}
 	}
 
 	/**
@@ -424,26 +430,11 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 			case UML2Package.TIME_TRIGGER__PORT:
 				return port != null && !port.isEmpty();
 			case UML2Package.TIME_TRIGGER__IS_RELATIVE:
-				return isRelative != IS_RELATIVE_EDEFAULT;
+				return isRelative() != IS_RELATIVE_EDEFAULT;
 			case UML2Package.TIME_TRIGGER__WHEN:
 				return when != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isRelative: "); //$NON-NLS-1$
-		result.append(isRelative);
-		result.append(')');
-		return result.toString();
 	}
 
 } //TimeTriggerImpl

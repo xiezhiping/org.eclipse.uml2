@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.14 2004/06/18 04:34:31 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.15 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -164,14 +164,14 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	protected static final boolean IS_DERIVED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDerived() <em>Is Derived</em>}' attribute.
+	 * The flag for the '{@link #isDerived() <em>Is Derived</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDerived()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isDerived = IS_DERIVED_EDEFAULT;
+	protected static final int IS_DERIVED_EFLAG = Integer.MIN_VALUE >>> 6;
 
 	/**
 	 * The default value of the '{@link #isDerivedUnion() <em>Is Derived Union</em>}' attribute.
@@ -184,14 +184,14 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	protected static final boolean IS_DERIVED_UNION_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDerivedUnion() <em>Is Derived Union</em>}' attribute.
+	 * The flag for the '{@link #isDerivedUnion() <em>Is Derived Union</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDerivedUnion()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isDerivedUnion = IS_DERIVED_UNION_EDEFAULT;
+	protected static final int IS_DERIVED_UNION_EFLAG = Integer.MIN_VALUE >>> 7;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedProperties() <em>Redefined Property</em>}' reference list.
@@ -270,6 +270,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	protected PropertyImpl() {
 		super();
+		eFlags &= ~IS_DERIVED_EFLAG;
+		eFlags &= ~IS_DERIVED_UNION_EFLAG;
 	}
 
 	/**
@@ -387,7 +389,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 		}
-		if (null != newOwningParameter || oldOwningParameter == basicGetTemplateParameter()) {
+		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}
@@ -536,7 +538,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean isDerived() {
-		return isDerived;
+		return 0 != (eFlags & IS_DERIVED_EFLAG);
 	}
 
 	/**
@@ -545,10 +547,15 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setIsDerived(boolean newIsDerived) {
-		boolean oldIsDerived = isDerived;
-		isDerived = newIsDerived;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__IS_DERIVED, oldIsDerived, isDerived));
+		boolean oldIsDerived = 0 != (eFlags & IS_DERIVED_EFLAG);
+		if (newIsDerived) {
+			eFlags |= IS_DERIVED_EFLAG;
+		} else {
+			eFlags &= ~IS_DERIVED_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__IS_DERIVED, oldIsDerived, newIsDerived));
+		}
 	}
 
 	/**
@@ -557,7 +564,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean isDerivedUnion() {
-		return isDerivedUnion;
+		return 0 != (eFlags & IS_DERIVED_UNION_EFLAG);
 	}
 
 	/**
@@ -566,10 +573,15 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public void setIsDerivedUnion(boolean newIsDerivedUnion) {
-		boolean oldIsDerivedUnion = isDerivedUnion;
-		isDerivedUnion = newIsDerivedUnion;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__IS_DERIVED_UNION, oldIsDerivedUnion, isDerivedUnion));
+		boolean oldIsDerivedUnion = 0 != (eFlags & IS_DERIVED_UNION_EFLAG);
+		if (newIsDerivedUnion) {
+			eFlags |= IS_DERIVED_UNION_EFLAG;
+		} else {
+			eFlags &= ~IS_DERIVED_UNION_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__IS_DERIVED_UNION, oldIsDerivedUnion, newIsDerivedUnion));
+		}
 	}
 
 	/**
@@ -668,7 +680,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__OWNING_ASSOCIATION, newOwningAssociation, newOwningAssociation));
 		}
-		if (null != newOwningAssociation || oldOwningAssociation == basicGetAssociation()) {
+		if (null != newOwningAssociation || oldOwningAssociation == association) {
 			setAssociation(newOwningAssociation);
 		}
 	}
@@ -1083,7 +1095,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated NOT
 	 */
 	public boolean isReadOnly() {
-		return isReadOnly;
+		return super.isReadOnly();
 	}
 
 	/**
@@ -1092,12 +1104,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated NOT
 	 */
 	public void setIsReadOnly(boolean newIsReadOnly) {
-		boolean oldIsReadOnly = isReadOnly;
-		isReadOnly = newIsReadOnly;
-
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__IS_READ_ONLY, oldIsReadOnly, isReadOnly));
-		}
+		super.setIsReadOnly(newIsReadOnly);
 	}
 
 	/**
@@ -1700,17 +1707,17 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.PROPERTY__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.PROPERTY__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.PROPERTY__IS_STATIC:
-				return isStatic != IS_STATIC_EDEFAULT;
+				return isStatic() != IS_STATIC_EDEFAULT;
 			case UML2Package.PROPERTY__TYPE:
 				return type != null;
 			case UML2Package.PROPERTY__IS_ORDERED:
-				return isOrdered != IS_ORDERED_EDEFAULT;
+				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UML2Package.PROPERTY__IS_UNIQUE:
-				return isUnique != IS_UNIQUE_EDEFAULT;
+				return isUnique() != IS_UNIQUE_EDEFAULT;
 			case UML2Package.PROPERTY__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.PROPERTY__UPPER:
@@ -1736,13 +1743,13 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__IS_COMPOSITE:
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UML2Package.PROPERTY__IS_DERIVED:
-				return isDerived != IS_DERIVED_EDEFAULT;
+				return isDerived() != IS_DERIVED_EDEFAULT;
 			case UML2Package.PROPERTY__CLASS_:
 				return basicGetClass_() != null;
 			case UML2Package.PROPERTY__OPPOSITE:
 				return basicGetOpposite() != null;
 			case UML2Package.PROPERTY__IS_DERIVED_UNION:
-				return isDerivedUnion != IS_DERIVED_UNION_EDEFAULT;
+				return isDerivedUnion() != IS_DERIVED_UNION_EDEFAULT;
 			case UML2Package.PROPERTY__OWNING_ASSOCIATION:
 				return getOwningAssociation() != null;
 			case UML2Package.PROPERTY__REDEFINED_PROPERTY:
@@ -1832,11 +1839,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isDerived: "); //$NON-NLS-1$
-		result.append(isDerived);
-		result.append(", isDerivedUnion: "); //$NON-NLS-1$
-		result.append(isDerivedUnion);
-		result.append(", aggregation: "); //$NON-NLS-1$
+		result.append(" (aggregation: "); //$NON-NLS-1$
 		result.append(aggregation);
 		result.append(')');
 		return result.toString();

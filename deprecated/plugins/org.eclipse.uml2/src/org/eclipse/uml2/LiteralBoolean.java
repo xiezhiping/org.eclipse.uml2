@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralBoolean.java,v 1.4 2004/06/06 01:35:03 khussey Exp $
+ * $Id: LiteralBoolean.java,v 1.5 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -55,7 +55,7 @@ public interface LiteralBoolean extends LiteralSpecification{
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getLiteralBoolean_Value()
-	 * @model dataType="org.eclipse.uml2.Boolean"
+	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isValue();

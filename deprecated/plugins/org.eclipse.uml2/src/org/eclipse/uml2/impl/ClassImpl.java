@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.21 2004/06/21 19:25:06 khussey Exp $
+ * $Id: ClassImpl.java,v 1.22 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -133,14 +133,14 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	protected static final boolean IS_ACTIVE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isActive() <em>Is Active</em>}' attribute.
+	 * The flag for the '{@link #isActive() <em>Is Active</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isActive()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isActive = IS_ACTIVE_EDEFAULT;
+	protected static final int IS_ACTIVE_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The cached value of the '{@link #getOwnedReceptions() <em>Owned Reception</em>}' containment reference list.
@@ -165,6 +165,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 */
 	protected ClassImpl() {
 		super();
+		eFlags &= ~IS_ACTIVE_EFLAG;
 	}
 
 	/**
@@ -384,7 +385,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public boolean isActive() {
-		return isActive;
+		return 0 != (eFlags & IS_ACTIVE_EFLAG);
 	}
 
 	/**
@@ -393,10 +394,15 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public void setIsActive(boolean newIsActive) {
-		boolean oldIsActive = isActive;
-		isActive = newIsActive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASS__IS_ACTIVE, oldIsActive, isActive));
+		boolean oldIsActive = 0 != (eFlags & IS_ACTIVE_EFLAG);
+		if (newIsActive) {
+			eFlags |= IS_ACTIVE_EFLAG;
+		} else {
+			eFlags &= ~IS_ACTIVE_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASS__IS_ACTIVE, oldIsActive, newIsActive));
+		}
 	}
 
 	/**
@@ -649,7 +655,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated NOT
 	 */
 	public boolean isAbstract() {
-		return isAbstract;
+		return super.isAbstract();
 	}
 
 	/**
@@ -1277,7 +1283,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.CLASS__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1322,7 +1328,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CLASS__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.CLASS__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.CLASS__IS_ABSTRACT:
@@ -1378,11 +1384,19 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.CLASS__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.CLASS__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.CLASS__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -1431,21 +1445,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isActive: "); //$NON-NLS-1$
-		result.append(isActive);
-		result.append(')');
-		return result.toString();
 	}
 
 	// <!-- begin-custom-operations -->

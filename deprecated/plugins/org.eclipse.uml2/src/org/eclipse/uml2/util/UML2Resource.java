@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Resource.java,v 1.2 2004/05/21 20:20:27 khussey Exp $
+ * $Id: UML2Resource.java,v 1.3 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -72,5 +72,8 @@ public interface UML2Resource
 
 	public static final String COMPLETE_PROFILE_URI = PROFILES_PATHMAP
 		+ "Complete." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
+
+	public static final String ECORE_PROFILE_URI = PROFILES_PATHMAP
+	+ "Ecore." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.17 2004/06/18 17:44:12 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.18 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -166,14 +166,14 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	protected static final boolean IS_SINGLE_EXECUTION_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isSingleExecution() <em>Is Single Execution</em>}' attribute.
+	 * The flag for the '{@link #isSingleExecution() <em>Is Single Execution</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isSingleExecution()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isSingleExecution = IS_SINGLE_EXECUTION_EDEFAULT;
+	protected static final int IS_SINGLE_EXECUTION_EFLAG = Integer.MIN_VALUE >>> 4;
 
 	/**
 	 * The default value of the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.
@@ -186,14 +186,14 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	protected static final boolean IS_READ_ONLY_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.
+	 * The flag for the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isReadOnly()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isReadOnly = IS_READ_ONLY_EDEFAULT;
+	protected static final int IS_READ_ONLY_EFLAG = Integer.MIN_VALUE >>> 5;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -202,6 +202,8 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 */
 	protected ActivityImpl() {
 		super();
+		eFlags &= ~IS_SINGLE_EXECUTION_EFLAG;
+		eFlags &= ~IS_READ_ONLY_EFLAG;
 	}
 
 	/**
@@ -261,7 +263,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public boolean isReadOnly() {
-		return isReadOnly;
+		return 0 != (eFlags & IS_READ_ONLY_EFLAG);
 	}
 
 	/**
@@ -270,10 +272,15 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public void setIsReadOnly(boolean newIsReadOnly) {
-		boolean oldIsReadOnly = isReadOnly;
-		isReadOnly = newIsReadOnly;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__IS_READ_ONLY, oldIsReadOnly, isReadOnly));
+		boolean oldIsReadOnly = 0 != (eFlags & IS_READ_ONLY_EFLAG);
+		if (newIsReadOnly) {
+			eFlags |= IS_READ_ONLY_EFLAG;
+		} else {
+			eFlags &= ~IS_READ_ONLY_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__IS_READ_ONLY, oldIsReadOnly, newIsReadOnly));
+		}
 	}
 
 	/**
@@ -282,7 +289,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public boolean isSingleExecution() {
-		return isSingleExecution;
+		return 0 != (eFlags & IS_SINGLE_EXECUTION_EFLAG);
 	}
 
 	/**
@@ -291,10 +298,15 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public void setIsSingleExecution(boolean newIsSingleExecution) {
-		boolean oldIsSingleExecution = isSingleExecution;
-		isSingleExecution = newIsSingleExecution;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__IS_SINGLE_EXECUTION, oldIsSingleExecution, isSingleExecution));
+		boolean oldIsSingleExecution = 0 != (eFlags & IS_SINGLE_EXECUTION_EFLAG);
+		if (newIsSingleExecution) {
+			eFlags |= IS_SINGLE_EXECUTION_EFLAG;
+		} else {
+			eFlags &= ~IS_SINGLE_EXECUTION_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__IS_SINGLE_EXECUTION, oldIsSingleExecution, newIsSingleExecution));
+		}
 	}
 
 	/**
@@ -1242,7 +1254,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ACTIVITY__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1287,7 +1299,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.ACTIVITY__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.ACTIVITY__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.ACTIVITY__IS_ABSTRACT:
@@ -1343,11 +1355,11 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.ACTIVITY__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.ACTIVITY__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.ACTIVITY__IS_REENTRANT:
-				return isReentrant != IS_REENTRANT_EDEFAULT;
+				return isReentrant() != IS_REENTRANT_EDEFAULT;
 			case UML2Package.ACTIVITY__CONTEXT:
 				return getContext() != null;
 			case UML2Package.ACTIVITY__REDEFINED_BEHAVIOR:
@@ -1381,11 +1393,19 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__STRUCTURED_NODE:
 				return !getStructuredNodes().isEmpty();
 			case UML2Package.ACTIVITY__IS_SINGLE_EXECUTION:
-				return isSingleExecution != IS_SINGLE_EXECUTION_EDEFAULT;
+				return isSingleExecution() != IS_SINGLE_EXECUTION_EDEFAULT;
 			case UML2Package.ACTIVITY__IS_READ_ONLY:
-				return isReadOnly != IS_READ_ONLY_EDEFAULT;
+				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.ACTIVITY__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -1401,10 +1421,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		result.append(body);
 		result.append(", language: "); //$NON-NLS-1$
 		result.append(language);
-		result.append(", isSingleExecution: "); //$NON-NLS-1$
-		result.append(isSingleExecution);
-		result.append(", isReadOnly: "); //$NON-NLS-1$
-		result.append(isReadOnly);
 		result.append(')');
 		return result.toString();
 	}

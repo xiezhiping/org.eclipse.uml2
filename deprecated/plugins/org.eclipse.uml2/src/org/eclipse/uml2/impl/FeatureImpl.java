@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.6 2004/06/18 04:34:31 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.7 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,14 +66,14 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	protected static final boolean IS_STATIC_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isStatic() <em>Is Static</em>}' attribute.
+	 * The flag for the '{@link #isStatic() <em>Is Static</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isStatic()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isStatic = IS_STATIC_EDEFAULT;
+	protected static final int IS_STATIC_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,6 +82,7 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	 */
 	protected FeatureImpl() {
 		super();
+		eFlags &= ~IS_STATIC_EFLAG;
 	}
 
 	/**
@@ -99,7 +100,7 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	 * @generated
 	 */
 	public boolean isStatic() {
-		return isStatic;
+		return 0 != (eFlags & IS_STATIC_EFLAG);
 	}
 
 	/**
@@ -108,10 +109,15 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	 * @generated
 	 */
 	public void setIsStatic(boolean newIsStatic) {
-		boolean oldIsStatic = isStatic;
-		isStatic = newIsStatic;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.FEATURE__IS_STATIC, oldIsStatic, isStatic));
+		boolean oldIsStatic = 0 != (eFlags & IS_STATIC_EFLAG);
+		if (newIsStatic) {
+			eFlags |= IS_STATIC_EFLAG;
+		} else {
+			eFlags &= ~IS_STATIC_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.FEATURE__IS_STATIC, oldIsStatic, newIsStatic));
+		}
 	}
 
 	/**
@@ -380,28 +386,13 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 			case UML2Package.FEATURE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.FEATURE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.FEATURE__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.FEATURE__IS_STATIC:
-				return isStatic != IS_STATIC_EDEFAULT;
+				return isStatic() != IS_STATIC_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isStatic: "); //$NON-NLS-1$
-		result.append(isStatic);
-		result.append(')');
-		return result.toString();
 	}
 
 } //FeatureImpl

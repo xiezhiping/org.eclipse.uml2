@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ItemPropertyDescriptor.java,v 1.4 2004/06/21 19:25:03 khussey Exp $
+ * $Id: UML2ItemPropertyDescriptor.java,v 1.5 2004/10/01 19:38:53 khussey Exp $
  */
 package org.eclipse.uml2.edit.internal.provider;
 
@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.UniqueEList;
@@ -32,18 +33,59 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.uml2.provider.IItemQualifiedTextProvider;
 
 /**
- *  
+ * 
  */
 public class UML2ItemPropertyDescriptor
 	extends ItemPropertyDescriptor {
+
+	protected class UML2ItemDelegator
+		extends ItemDelegator
+		implements IItemQualifiedTextProvider {
+
+		public UML2ItemDelegator(AdapterFactory adapterFactory,
+				ResourceLocator resourceLocator) {
+			super(adapterFactory, resourceLocator);
+		}
+
+		public String getQualifiedText(Object object) {
+			if (EList.class.isInstance(object)) {
+				StringBuffer text = new StringBuffer();
+
+				for (Iterator i = ((List) object).iterator(); i.hasNext();) {
+					Object child = i.next();
+
+					if (0 != text.length()) {
+						text.append(", ");
+					}
+
+					text.append(getText(child));
+				}
+
+				return text.toString();
+			} else {
+				IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
+					.adapt(object, IItemQualifiedTextProvider.class);
+
+				return null != itemQualifiedTextProvider
+					? itemQualifiedTextProvider.getQualifiedText(object)
+					: null == object
+						? ""
+						: object.toString();
+			}
+		}
+	}
 
 	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
 			ResourceLocator resourceLocator, String displayName,
 			String description, EStructuralFeature feature, boolean isSettable) {
 		super(adapterFactory, resourceLocator, displayName, description,
 			feature, isSettable);
+
+		this.itemDelegator = new UML2ItemDelegator(adapterFactory,
+			resourceLocator);
 	}
 
 	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
@@ -52,6 +94,9 @@ public class UML2ItemPropertyDescriptor
 			Object staticImage) {
 		super(adapterFactory, resourceLocator, displayName, description,
 			feature, isSettable, staticImage);
+
+		this.itemDelegator = new UML2ItemDelegator(adapterFactory,
+			resourceLocator);
 	}
 
 	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
@@ -60,6 +105,9 @@ public class UML2ItemPropertyDescriptor
 			String category, String[] filterFlags) {
 		super(adapterFactory, resourceLocator, displayName, description,
 			feature, isSettable, category, filterFlags);
+
+		this.itemDelegator = new UML2ItemDelegator(adapterFactory,
+			resourceLocator);
 	}
 
 	public static void collectReferenceableObjectsOfType(Collection visited,
@@ -189,6 +237,10 @@ public class UML2ItemPropertyDescriptor
 		}
 
 		return null;
+	}
+
+	public IItemQualifiedTextProvider getQualifiedTextProvider(Object object) {
+		return (IItemQualifiedTextProvider) itemDelegator;
 	}
 
 }

@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.13 2004/06/18 17:44:12 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.14 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
+import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -41,6 +42,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Trigger;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.BehavioredClassifierOperations;
 import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
@@ -879,11 +881,11 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.BEHAVIORED_CLASSIFIER__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.BEHAVIORED_CLASSIFIER__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.BEHAVIORED_CLASSIFIER__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__GENERAL:
@@ -919,5 +921,39 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+	// <!-- begin-custom-operations -->
+
+	private static Method GET_IMPLEMENTED_INTERFACES_METHOD = null;
+
+	static {
+		try {
+			GET_IMPLEMENTED_INTERFACES_METHOD = BehavioredClassifierImpl.class
+				.getMethod("getImplementedInterfaces", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// ignore
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.BehavioredClassifier#getImplementedInterfaces()
+	 */
+	public Set getImplementedInterfaces() {
+		Set implementedInterfaces = (Set) getCacheAdapter().get(eResource(),
+			this, GET_IMPLEMENTED_INTERFACES_METHOD);
+
+		if (null == implementedInterfaces) {
+			implementedInterfaces = BehavioredClassifierOperations
+				.getImplementedInterfaces(this);
+			getCacheAdapter().put(eResource(), this,
+				GET_IMPLEMENTED_INTERFACES_METHOD, implementedInterfaces);
+		}
+
+		return implementedInterfaces;
+	}
+	
+	// <!-- end-custom-operations -->
 
 } //BehavioredClassifierImpl

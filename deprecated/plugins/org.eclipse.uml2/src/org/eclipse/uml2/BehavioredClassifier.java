@@ -8,9 +8,11 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.6 2004/06/06 01:35:02 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.7 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
+
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -264,5 +266,17 @@ public interface BehavioredClassifier extends Classifier{
 	 * @generated
 	 */
 	EList getClientDependencies();
+
+	// <!-- begin-custom-operations -->
+	
+	/**
+	 * Retrieves the interfaces on which this behaviored classifier has an
+	 * implementation dependency.
+	 * 
+	 * @return The interfaces implemented by this behaviored classifier.
+	 */
+	Set getImplementedInterfaces();
+	
+	// <!-- end-custom-operations -->
 
 } // BehavioredClassifier

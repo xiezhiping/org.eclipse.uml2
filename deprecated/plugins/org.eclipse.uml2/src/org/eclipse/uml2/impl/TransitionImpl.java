@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.7 2004/06/18 04:34:31 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.8 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -934,7 +934,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			case UML2Package.TRANSITION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.TRANSITION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.TRANSITION__KIND:
 				return kind != KIND_EDEFAULT;
 			case UML2Package.TRANSITION__CONTAINER:

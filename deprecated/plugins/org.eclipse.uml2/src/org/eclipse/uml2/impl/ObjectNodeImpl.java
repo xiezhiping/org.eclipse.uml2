@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.7 2004/06/18 04:34:31 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.8 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -710,7 +710,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 			case UML2Package.OBJECT_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.OBJECT_NODE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.OBJECT_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.OBJECT_NODE__INCOMING:

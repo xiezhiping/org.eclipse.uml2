@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SupersetEObjectResolvingEList.java,v 1.3 2004/06/23 20:34:41 khussey Exp $
+ * $Id: SupersetEObjectResolvingEList.java,v 1.4 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 /**
@@ -91,6 +92,16 @@ public class SupersetEObjectResolvingEList
 	 */
 	protected boolean hasProxies() {
 		return true;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.util.BasicEList#resolve(int,
+	 *      java.lang.Object)
+	 */
+	protected Object resolve(int index, Object object) {
+		return resolve(index, (EObject) object);
 	}
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.17 2004/06/18 17:44:12 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.18 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -34,9 +34,7 @@ import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Component;
 import org.eclipse.uml2.Dependency;
-import org.eclipse.uml2.Implementation;
 import org.eclipse.uml2.Interface;
-import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.Port;
 import org.eclipse.uml2.Realization;
@@ -44,7 +42,6 @@ import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.Usage;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
@@ -85,14 +82,14 @@ public class ComponentImpl extends ClassImpl implements Component {
 	protected static final boolean IS_INDIRECTLY_INSTANTIATED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIndirectlyInstantiated() <em>Is Indirectly Instantiated</em>}' attribute.
+	 * The flag for the '{@link #isIndirectlyInstantiated() <em>Is Indirectly Instantiated</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isIndirectlyInstantiated()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isIndirectlyInstantiated = IS_INDIRECTLY_INSTANTIATED_EDEFAULT;
+	protected static final int IS_INDIRECTLY_INSTANTIATED_EFLAG = Integer.MIN_VALUE >>> 3;
 
 	/**
 	 * The cached value of the '{@link #getRealizations() <em>Realization</em>}' containment reference list.
@@ -121,6 +118,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 */
 	protected ComponentImpl() {
 		super();
+		eFlags &= ~IS_INDIRECTLY_INSTANTIATED_EFLAG;
 	}
 
 	/**
@@ -138,7 +136,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public boolean isIndirectlyInstantiated() {
-		return isIndirectlyInstantiated;
+		return 0 != (eFlags & IS_INDIRECTLY_INSTANTIATED_EFLAG);
 	}
 
 	/**
@@ -147,10 +145,15 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public void setIsIndirectlyInstantiated(boolean newIsIndirectlyInstantiated) {
-		boolean oldIsIndirectlyInstantiated = isIndirectlyInstantiated;
-		isIndirectlyInstantiated = newIsIndirectlyInstantiated;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMPONENT__IS_INDIRECTLY_INSTANTIATED, oldIsIndirectlyInstantiated, isIndirectlyInstantiated));
+		boolean oldIsIndirectlyInstantiated = 0 != (eFlags & IS_INDIRECTLY_INSTANTIATED_EFLAG);
+		if (newIsIndirectlyInstantiated) {
+			eFlags |= IS_INDIRECTLY_INSTANTIATED_EFLAG;
+		} else {
+			eFlags &= ~IS_INDIRECTLY_INSTANTIATED_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMPONENT__IS_INDIRECTLY_INSTANTIATED, oldIsIndirectlyInstantiated, newIsIndirectlyInstantiated));
+		}
 	}
 
 	/**
@@ -165,25 +168,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 		if (null == requireds) {
 			Set required = new HashSet();
 
-			for (Iterator clientDependencies = getClientDependencies()
-				.iterator(); clientDependencies.hasNext();) {
-
-				Dependency clientDependency = (Dependency) clientDependencies
-					.next();
-
-				if (Usage.class.isInstance(clientDependency)) {
-
-					for (Iterator suppliers = clientDependency.getSuppliers()
-						.iterator(); suppliers.hasNext();) {
-
-						NamedElement supplier = (NamedElement) suppliers.next();
-
-						if (Interface.class.isInstance(supplier)) {
-							required.add(supplier);
-						}
-					}
-				}
-			}
+			required.addAll(getUsedInterfaces());
 
 			for (Iterator realizations = getRealizations().iterator(); realizations
 				.hasNext();) {
@@ -191,28 +176,8 @@ public class ComponentImpl extends ClassImpl implements Component {
 				Realization realization = (Realization) realizations.next();
 
 				if (null != realization.getRealizingClassifier()) {
-
-					for (Iterator clientDependencies = realization
-						.getRealizingClassifier().getClientDependencies()
-						.iterator(); clientDependencies.hasNext();) {
-
-						Dependency clientDependency = (Dependency) clientDependencies
-							.next();
-
-						if (Usage.class.isInstance(clientDependency)) {
-
-							for (Iterator suppliers = clientDependency
-								.getSuppliers().iterator(); suppliers.hasNext();) {
-
-								NamedElement supplier = (NamedElement) suppliers
-									.next();
-
-								if (Interface.class.isInstance(supplier)) {
-									required.add(supplier);
-								}
-							}
-						}
-					}
+					required.addAll(realization.getRealizingClassifier()
+						.getUsedInterfaces());
 				}
 			}
 
@@ -261,16 +226,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 		if (null == provideds) {
 			Set provided = new HashSet();
 
-			for (Iterator implementations = getImplementations().iterator(); implementations
-				.hasNext();) {
-
-				Implementation implementation = (Implementation) implementations
-					.next();
-
-				if (null != implementation.getContract()) {
-					provided.add(implementation.getContract());
-				}
-			}
+			provided.addAll(getImplementedInterfaces());
 
 			for (Iterator realizations = getRealizations().iterator(); realizations
 				.hasNext();) {
@@ -283,17 +239,9 @@ public class ComponentImpl extends ClassImpl implements Component {
 				} else if (BehavioredClassifier.class
 					.isInstance(realizingClassifier)) {
 
-					for (Iterator implementations = ((BehavioredClassifier) realizingClassifier)
-						.getImplementations().iterator(); implementations
-						.hasNext();) {
-
-						Implementation implementation = (Implementation) implementations
-							.next();
-
-						if (null != implementation.getContract()) {
-							provided.add(implementation.getContract());
-						}
-					}
+					provided
+						.addAll(((BehavioredClassifier) realizingClassifier)
+							.getImplementedInterfaces());
 				}
 			}
 
@@ -1012,7 +960,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.COMPONENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1057,7 +1005,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.COMPONENT__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.COMPONENT__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.COMPONENT__IS_ABSTRACT:
@@ -1113,11 +1061,11 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.COMPONENT__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.COMPONENT__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.COMPONENT__IS_INDIRECTLY_INSTANTIATED:
-				return isIndirectlyInstantiated != IS_INDIRECTLY_INSTANTIATED_EDEFAULT;
+				return isIndirectlyInstantiated() != IS_INDIRECTLY_INSTANTIATED_EDEFAULT;
 			case UML2Package.COMPONENT__REQUIRED:
 				return !getRequireds().isEmpty();
 			case UML2Package.COMPONENT__PROVIDED:
@@ -1130,19 +1078,12 @@ public class ComponentImpl extends ClassImpl implements Component {
 		return eDynamicIsSet(eFeature);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isIndirectlyInstantiated: "); //$NON-NLS-1$
-		result.append(isIndirectlyInstantiated);
-		result.append(')');
-		return result.toString();
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.COMPONENT__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //ComponentImpl

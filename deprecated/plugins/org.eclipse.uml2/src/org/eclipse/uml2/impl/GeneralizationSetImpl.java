@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.6 2004/06/18 17:44:12 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.7 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -67,14 +67,14 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	protected static final boolean IS_COVERING_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isCovering() <em>Is Covering</em>}' attribute.
+	 * The flag for the '{@link #isCovering() <em>Is Covering</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isCovering()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isCovering = IS_COVERING_EDEFAULT;
+	protected static final int IS_COVERING_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The default value of the '{@link #isDisjoint() <em>Is Disjoint</em>}' attribute.
@@ -87,14 +87,14 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	protected static final boolean IS_DISJOINT_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDisjoint() <em>Is Disjoint</em>}' attribute.
+	 * The flag for the '{@link #isDisjoint() <em>Is Disjoint</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDisjoint()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isDisjoint = IS_DISJOINT_EDEFAULT;
+	protected static final int IS_DISJOINT_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getPowertype() <em>Powertype</em>}' reference.
@@ -123,6 +123,8 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 */
 	protected GeneralizationSetImpl() {
 		super();
+		eFlags &= ~IS_COVERING_EFLAG;
+		eFlags &= ~IS_DISJOINT_EFLAG;
 	}
 
 	/**
@@ -140,7 +142,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 */
 	public boolean isCovering() {
-		return isCovering;
+		return 0 != (eFlags & IS_COVERING_EFLAG);
 	}
 
 	/**
@@ -149,10 +151,15 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 */
 	public void setIsCovering(boolean newIsCovering) {
-		boolean oldIsCovering = isCovering;
-		isCovering = newIsCovering;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION_SET__IS_COVERING, oldIsCovering, isCovering));
+		boolean oldIsCovering = 0 != (eFlags & IS_COVERING_EFLAG);
+		if (newIsCovering) {
+			eFlags |= IS_COVERING_EFLAG;
+		} else {
+			eFlags &= ~IS_COVERING_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION_SET__IS_COVERING, oldIsCovering, newIsCovering));
+		}
 	}
 
 	/**
@@ -161,7 +168,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 */
 	public boolean isDisjoint() {
-		return isDisjoint;
+		return 0 != (eFlags & IS_DISJOINT_EFLAG);
 	}
 
 	/**
@@ -170,10 +177,15 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 */
 	public void setIsDisjoint(boolean newIsDisjoint) {
-		boolean oldIsDisjoint = isDisjoint;
-		isDisjoint = newIsDisjoint;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION_SET__IS_DISJOINT, oldIsDisjoint, isDisjoint));
+		boolean oldIsDisjoint = 0 != (eFlags & IS_DISJOINT_EFLAG);
+		if (newIsDisjoint) {
+			eFlags |= IS_DISJOINT_EFLAG;
+		} else {
+			eFlags &= ~IS_DISJOINT_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION_SET__IS_DISJOINT, oldIsDisjoint, newIsDisjoint));
+		}
 	}
 
 	/**
@@ -544,32 +556,15 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 			case UML2Package.GENERALIZATION_SET__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.GENERALIZATION_SET__IS_COVERING:
-				return isCovering != IS_COVERING_EDEFAULT;
+				return isCovering() != IS_COVERING_EDEFAULT;
 			case UML2Package.GENERALIZATION_SET__IS_DISJOINT:
-				return isDisjoint != IS_DISJOINT_EDEFAULT;
+				return isDisjoint() != IS_DISJOINT_EDEFAULT;
 			case UML2Package.GENERALIZATION_SET__POWERTYPE:
 				return powertype != null;
 			case UML2Package.GENERALIZATION_SET__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isCovering: "); //$NON-NLS-1$
-		result.append(isCovering);
-		result.append(", isDisjoint: "); //$NON-NLS-1$
-		result.append(isDisjoint);
-		result.append(')');
-		return result.toString();
 	}
 
 } //GeneralizationSetImpl

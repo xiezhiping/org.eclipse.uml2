@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Validator.java,v 1.11 2004/06/16 03:38:11 khussey Exp $
+ * $Id: UML2Validator.java,v 1.12 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -1092,7 +1092,13 @@ public class UML2Validator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateElement(Element element, DiagnosticChain diagnostics, Map context) {
-		return validate_EveryDefaultConstraint(element, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms(element, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(element, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(element, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(element, diagnostics, context);
+		if (result || diagnostics != null) result &= validateElement_validateNotOwnSelf(element, diagnostics, context);
+		if (result || diagnostics != null) result &= validateElement_validateHasOwner(element, diagnostics, context);
+		return result;
 	}
 
 	/**

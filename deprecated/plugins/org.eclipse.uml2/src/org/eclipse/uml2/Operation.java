@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Operation.java,v 1.7 2004/06/06 01:35:02 khussey Exp $
+ * $Id: Operation.java,v 1.8 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -69,7 +69,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @return the value of the '<em>Is Query</em>' attribute.
 	 * @see #setIsQuery(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getOperation_IsQuery()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isQuery();

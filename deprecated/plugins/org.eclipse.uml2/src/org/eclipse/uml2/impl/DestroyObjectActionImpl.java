@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.7 2004/06/18 04:34:31 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.8 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,14 +68,14 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	protected static final boolean IS_DESTROY_LINKS_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDestroyLinks() <em>Is Destroy Links</em>}' attribute.
+	 * The flag for the '{@link #isDestroyLinks() <em>Is Destroy Links</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDestroyLinks()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isDestroyLinks = IS_DESTROY_LINKS_EDEFAULT;
+	protected static final int IS_DESTROY_LINKS_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The default value of the '{@link #isDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}' attribute.
@@ -88,14 +88,14 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	protected static final boolean IS_DESTROY_OWNED_OBJECTS_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}' attribute.
+	 * The flag for the '{@link #isDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDestroyOwnedObjects()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isDestroyOwnedObjects = IS_DESTROY_OWNED_OBJECTS_EDEFAULT;
+	protected static final int IS_DESTROY_OWNED_OBJECTS_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
@@ -114,6 +114,8 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 */
 	protected DestroyObjectActionImpl() {
 		super();
+		eFlags &= ~IS_DESTROY_LINKS_EFLAG;
+		eFlags &= ~IS_DESTROY_OWNED_OBJECTS_EFLAG;
 	}
 
 	/**
@@ -131,7 +133,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * @generated
 	 */
 	public boolean isDestroyLinks() {
-		return isDestroyLinks;
+		return 0 != (eFlags & IS_DESTROY_LINKS_EFLAG);
 	}
 
 	/**
@@ -140,10 +142,15 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * @generated
 	 */
 	public void setIsDestroyLinks(boolean newIsDestroyLinks) {
-		boolean oldIsDestroyLinks = isDestroyLinks;
-		isDestroyLinks = newIsDestroyLinks;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS, oldIsDestroyLinks, isDestroyLinks));
+		boolean oldIsDestroyLinks = 0 != (eFlags & IS_DESTROY_LINKS_EFLAG);
+		if (newIsDestroyLinks) {
+			eFlags |= IS_DESTROY_LINKS_EFLAG;
+		} else {
+			eFlags &= ~IS_DESTROY_LINKS_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS, oldIsDestroyLinks, newIsDestroyLinks));
+		}
 	}
 
 	/**
@@ -152,7 +159,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * @generated
 	 */
 	public boolean isDestroyOwnedObjects() {
-		return isDestroyOwnedObjects;
+		return 0 != (eFlags & IS_DESTROY_OWNED_OBJECTS_EFLAG);
 	}
 
 	/**
@@ -161,10 +168,15 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * @generated
 	 */
 	public void setIsDestroyOwnedObjects(boolean newIsDestroyOwnedObjects) {
-		boolean oldIsDestroyOwnedObjects = isDestroyOwnedObjects;
-		isDestroyOwnedObjects = newIsDestroyOwnedObjects;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS, oldIsDestroyOwnedObjects, isDestroyOwnedObjects));
+		boolean oldIsDestroyOwnedObjects = 0 != (eFlags & IS_DESTROY_OWNED_OBJECTS_EFLAG);
+		if (newIsDestroyOwnedObjects) {
+			eFlags |= IS_DESTROY_OWNED_OBJECTS_EFLAG;
+		} else {
+			eFlags &= ~IS_DESTROY_OWNED_OBJECTS_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS, oldIsDestroyOwnedObjects, newIsDestroyOwnedObjects));
+		}
 	}
 
 	/**
@@ -636,7 +648,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 			case UML2Package.DESTROY_OBJECT_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.DESTROY_OBJECT_ACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.DESTROY_OBJECT_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.DESTROY_OBJECT_ACTION__INCOMING:
@@ -668,30 +680,13 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 			case UML2Package.DESTROY_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS:
-				return isDestroyLinks != IS_DESTROY_LINKS_EDEFAULT;
+				return isDestroyLinks() != IS_DESTROY_LINKS_EDEFAULT;
 			case UML2Package.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS:
-				return isDestroyOwnedObjects != IS_DESTROY_OWNED_OBJECTS_EDEFAULT;
+				return isDestroyOwnedObjects() != IS_DESTROY_OWNED_OBJECTS_EDEFAULT;
 			case UML2Package.DESTROY_OBJECT_ACTION__TARGET:
 				return target != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isDestroyLinks: "); //$NON-NLS-1$
-		result.append(isDestroyLinks);
-		result.append(", isDestroyOwnedObjects: "); //$NON-NLS-1$
-		result.append(isDestroyOwnedObjects);
-		result.append(')');
-		return result.toString();
 	}
 
 } //DestroyObjectActionImpl

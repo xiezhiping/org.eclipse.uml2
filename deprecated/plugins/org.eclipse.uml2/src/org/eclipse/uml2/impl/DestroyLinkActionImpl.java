@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.3 2004/06/18 04:34:31 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.4 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -437,7 +437,7 @@ public class DestroyLinkActionImpl extends WriteLinkActionImpl implements Destro
 			case UML2Package.DESTROY_LINK_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.DESTROY_LINK_ACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.DESTROY_LINK_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.DESTROY_LINK_ACTION__INCOMING:

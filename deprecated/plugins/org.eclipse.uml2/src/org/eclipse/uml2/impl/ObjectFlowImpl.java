@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.5 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -72,14 +72,14 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
     protected static final boolean IS_MULTICAST_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isMulticast() <em>Is Multicast</em>}' attribute.
+	 * The flag for the '{@link #isMulticast() <em>Is Multicast</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #isMulticast()
 	 * @generated
 	 * @ordered
 	 */
-    protected boolean isMulticast = IS_MULTICAST_EDEFAULT;
+	protected static final int IS_MULTICAST_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The default value of the '{@link #isMultireceive() <em>Is Multireceive</em>}' attribute.
@@ -92,14 +92,14 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
     protected static final boolean IS_MULTIRECEIVE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isMultireceive() <em>Is Multireceive</em>}' attribute.
+	 * The flag for the '{@link #isMultireceive() <em>Is Multireceive</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #isMultireceive()
 	 * @generated
 	 * @ordered
 	 */
-    protected boolean isMultireceive = IS_MULTIRECEIVE_EDEFAULT;
+	protected static final int IS_MULTIRECEIVE_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The cached value of the '{@link #getTransformation() <em>Transformation</em>}' reference.
@@ -128,6 +128,8 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 */
     protected ObjectFlowImpl() {
 		super();
+		eFlags &= ~IS_MULTICAST_EFLAG;
+		eFlags &= ~IS_MULTIRECEIVE_EFLAG;
 	}
 
 	/**
@@ -145,7 +147,7 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * @generated
 	 */
     public boolean isMulticast() {
-		return isMulticast;
+		return 0 != (eFlags & IS_MULTICAST_EFLAG);
 	}
 
 	/**
@@ -154,10 +156,15 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * @generated
 	 */
     public void setIsMulticast(boolean newIsMulticast) {
-		boolean oldIsMulticast = isMulticast;
-		isMulticast = newIsMulticast;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__IS_MULTICAST, oldIsMulticast, isMulticast));
+		boolean oldIsMulticast = 0 != (eFlags & IS_MULTICAST_EFLAG);
+		if (newIsMulticast) {
+			eFlags |= IS_MULTICAST_EFLAG;
+		} else {
+			eFlags &= ~IS_MULTICAST_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__IS_MULTICAST, oldIsMulticast, newIsMulticast));
+		}
 	}
 
 	/**
@@ -166,7 +173,7 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * @generated
 	 */
     public boolean isMultireceive() {
-		return isMultireceive;
+		return 0 != (eFlags & IS_MULTIRECEIVE_EFLAG);
 	}
 
 	/**
@@ -175,10 +182,15 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * @generated
 	 */
     public void setIsMultireceive(boolean newIsMultireceive) {
-		boolean oldIsMultireceive = isMultireceive;
-		isMultireceive = newIsMultireceive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__IS_MULTIRECEIVE, oldIsMultireceive, isMultireceive));
+		boolean oldIsMultireceive = 0 != (eFlags & IS_MULTIRECEIVE_EFLAG);
+		if (newIsMultireceive) {
+			eFlags |= IS_MULTIRECEIVE_EFLAG;
+		} else {
+			eFlags &= ~IS_MULTIRECEIVE_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__IS_MULTIRECEIVE, oldIsMultireceive, newIsMultireceive));
+		}
 	}
 
 	/**
@@ -631,7 +643,7 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 			case UML2Package.OBJECT_FLOW__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.OBJECT_FLOW__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.OBJECT_FLOW__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.OBJECT_FLOW__SOURCE:
@@ -653,32 +665,15 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 			case UML2Package.OBJECT_FLOW__INTERRUPTS:
 				return interrupts != null;
 			case UML2Package.OBJECT_FLOW__IS_MULTICAST:
-				return isMulticast != IS_MULTICAST_EDEFAULT;
+				return isMulticast() != IS_MULTICAST_EDEFAULT;
 			case UML2Package.OBJECT_FLOW__IS_MULTIRECEIVE:
-				return isMultireceive != IS_MULTIRECEIVE_EDEFAULT;
+				return isMultireceive() != IS_MULTIRECEIVE_EDEFAULT;
 			case UML2Package.OBJECT_FLOW__TRANSFORMATION:
 				return transformation != null;
 			case UML2Package.OBJECT_FLOW__SELECTION:
 				return selection != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isMulticast: "); //$NON-NLS-1$
-		result.append(isMulticast);
-		result.append(", isMultireceive: "); //$NON-NLS-1$
-		result.append(isMultireceive);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ObjectFlowImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.8 2004/06/18 04:34:31 khussey Exp $
+ * $Id: RegionImpl.java,v 1.9 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -85,14 +85,14 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	protected static final boolean IS_LEAF_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
+	 * The flag for the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isLeaf()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isLeaf = IS_LEAF_EDEFAULT;
+	protected static final int IS_LEAF_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The cached value of the '{@link #getSubvertices() <em>Subvertex</em>}' containment reference list.
@@ -131,6 +131,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 */
 	protected RegionImpl() {
 		super();
+		eFlags &= ~IS_LEAF_EFLAG;
 	}
 
 	/**
@@ -165,7 +166,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public boolean isLeaf() {
-		return isLeaf;
+		return 0 != (eFlags & IS_LEAF_EFLAG);
 	}
 
 	/**
@@ -174,10 +175,15 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-		boolean oldIsLeaf = isLeaf;
-		isLeaf = newIsLeaf;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__IS_LEAF, oldIsLeaf, isLeaf));
+		boolean oldIsLeaf = 0 != (eFlags & IS_LEAF_EFLAG);
+		if (newIsLeaf) {
+			eFlags |= IS_LEAF_EFLAG;
+		} else {
+			eFlags &= ~IS_LEAF_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__IS_LEAF, oldIsLeaf, newIsLeaf));
+		}
 	}
 
 	/**
@@ -829,7 +835,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			case UML2Package.REGION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.REGION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.REGION__SUBVERTEX:
 				return subvertex != null && !subvertex.isEmpty();
 			case UML2Package.REGION__TRANSITION:
@@ -874,21 +880,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isLeaf: "); //$NON-NLS-1$
-		result.append(isLeaf);
-		result.append(')');
-		return result.toString();
 	}
 
 } //RegionImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PinImpl.java,v 1.5 2004/06/18 04:34:32 khussey Exp $
+ * $Id: PinImpl.java,v 1.6 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -81,14 +81,14 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	protected static final boolean IS_ORDERED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
+	 * The flag for the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isOrdered()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isOrdered = IS_ORDERED_EDEFAULT;
+	protected static final int IS_ORDERED_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -101,14 +101,14 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	protected static final boolean IS_UNIQUE_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
+	 * The flag for the '{@link #isUnique() <em>Is Unique</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isUnique()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isUnique = IS_UNIQUE_EDEFAULT;
+	protected static final int IS_UNIQUE_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -157,6 +157,8 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 */
 	protected PinImpl() {
 		super();
+		eFlags &= ~IS_ORDERED_EFLAG;
+		eFlags |= IS_UNIQUE_EFLAG;
 	}
 
 	/**
@@ -174,7 +176,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public boolean isOrdered() {
-		return isOrdered;
+		return 0 != (eFlags & IS_ORDERED_EFLAG);
 	}
 
 	/**
@@ -183,12 +185,15 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-		boolean oldIsOrdered = isOrdered;
-		isOrdered = newIsOrdered;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PIN__IS_ORDERED, oldIsOrdered, isOrdered));
+		boolean oldIsOrdered = 0 != (eFlags & IS_ORDERED_EFLAG);
+		if (newIsOrdered) {
+			eFlags |= IS_ORDERED_EFLAG;
+		} else {
+			eFlags &= ~IS_ORDERED_EFLAG;
 		}
-
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PIN__IS_ORDERED, oldIsOrdered, newIsOrdered));
+		}
 	}
 
 	/**
@@ -197,7 +202,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public boolean isUnique() {
-		return isUnique;
+		return 0 != (eFlags & IS_UNIQUE_EFLAG);
 	}
 
 	/**
@@ -206,12 +211,15 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
-		boolean oldIsUnique = isUnique;
-		isUnique = newIsUnique;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PIN__IS_UNIQUE, oldIsUnique, isUnique));
+		boolean oldIsUnique = 0 != (eFlags & IS_UNIQUE_EFLAG);
+		if (newIsUnique) {
+			eFlags |= IS_UNIQUE_EFLAG;
+		} else {
+			eFlags &= ~IS_UNIQUE_EFLAG;
 		}
-
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PIN__IS_UNIQUE, oldIsUnique, newIsUnique));
+		}
 	}
 
 	/**
@@ -878,7 +886,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			case UML2Package.PIN__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.PIN__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.PIN__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.PIN__INCOMING:
@@ -906,9 +914,9 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			case UML2Package.PIN__SELECTION:
 				return selection != null;
 			case UML2Package.PIN__IS_ORDERED:
-				return isOrdered != IS_ORDERED_EDEFAULT;
+				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UML2Package.PIN__IS_UNIQUE:
-				return isUnique != IS_UNIQUE_EDEFAULT;
+				return isUnique() != IS_UNIQUE_EDEFAULT;
 			case UML2Package.PIN__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.PIN__UPPER:

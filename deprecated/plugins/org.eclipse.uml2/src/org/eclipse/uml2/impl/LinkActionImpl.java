@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.5 2004/06/18 04:34:32 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.6 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -482,7 +482,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 			case UML2Package.LINK_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.LINK_ACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.LINK_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.LINK_ACTION__INCOMING:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: FinalStateImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
+ * $Id: FinalStateImpl.java,v 1.5 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -478,7 +478,7 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 			case UML2Package.FINAL_STATE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.FINAL_STATE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.FINAL_STATE__CONTAINER:
 				return getContainer() != null;
 			case UML2Package.FINAL_STATE__OUTGOING:

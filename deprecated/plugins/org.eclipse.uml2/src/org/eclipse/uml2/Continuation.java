@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Continuation.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
+ * $Id: Continuation.java,v 1.4 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface Continuation extends InteractionFragment{
 	 * @return the value of the '<em>Setting</em>' attribute.
 	 * @see #setSetting(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getContinuation_Setting()
-	 * @model default="True" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="True" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isSetting();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.6 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.7 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -80,14 +80,14 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	protected static final boolean IS_DIMENSION_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDimension() <em>Is Dimension</em>}' attribute.
+	 * The flag for the '{@link #isDimension() <em>Is Dimension</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDimension()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isDimension = IS_DIMENSION_EDEFAULT;
+	protected static final int IS_DIMENSION_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The default value of the '{@link #isExternal() <em>Is External</em>}' attribute.
@@ -100,14 +100,14 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	protected static final boolean IS_EXTERNAL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isExternal() <em>Is External</em>}' attribute.
+	 * The flag for the '{@link #isExternal() <em>Is External</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isExternal()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isExternal = IS_EXTERNAL_EDEFAULT;
+	protected static final int IS_EXTERNAL_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getContainedEdges() <em>Contained Edge</em>}' reference list.
@@ -156,6 +156,8 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 */
 	protected ActivityPartitionImpl() {
 		super();
+		eFlags &= ~IS_DIMENSION_EFLAG;
+		eFlags &= ~IS_EXTERNAL_EFLAG;
 	}
 
 	/**
@@ -211,7 +213,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public boolean isDimension() {
-		return isDimension;
+		return 0 != (eFlags & IS_DIMENSION_EFLAG);
 	}
 
 	/**
@@ -220,10 +222,15 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public void setIsDimension(boolean newIsDimension) {
-		boolean oldIsDimension = isDimension;
-		isDimension = newIsDimension;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__IS_DIMENSION, oldIsDimension, isDimension));
+		boolean oldIsDimension = 0 != (eFlags & IS_DIMENSION_EFLAG);
+		if (newIsDimension) {
+			eFlags |= IS_DIMENSION_EFLAG;
+		} else {
+			eFlags &= ~IS_DIMENSION_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__IS_DIMENSION, oldIsDimension, newIsDimension));
+		}
 	}
 
 	/**
@@ -232,7 +239,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public boolean isExternal() {
-		return isExternal;
+		return 0 != (eFlags & IS_EXTERNAL_EFLAG);
 	}
 
 	/**
@@ -241,10 +248,15 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public void setIsExternal(boolean newIsExternal) {
-		boolean oldIsExternal = isExternal;
-		isExternal = newIsExternal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__IS_EXTERNAL, oldIsExternal, isExternal));
+		boolean oldIsExternal = 0 != (eFlags & IS_EXTERNAL_EFLAG);
+		if (newIsExternal) {
+			eFlags |= IS_EXTERNAL_EFLAG;
+		} else {
+			eFlags &= ~IS_EXTERNAL_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__IS_EXTERNAL, oldIsExternal, newIsExternal));
+		}
 	}
 
 	/**
@@ -804,9 +816,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 			case UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY:
 				return getActivityGroup_activity() != null;
 			case UML2Package.ACTIVITY_PARTITION__IS_DIMENSION:
-				return isDimension != IS_DIMENSION_EDEFAULT;
+				return isDimension() != IS_DIMENSION_EDEFAULT;
 			case UML2Package.ACTIVITY_PARTITION__IS_EXTERNAL:
-				return isExternal != IS_EXTERNAL_EDEFAULT;
+				return isExternal() != IS_EXTERNAL_EDEFAULT;
 			case UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE:
 				return containedEdge != null && !containedEdge.isEmpty();
 			case UML2Package.ACTIVITY_PARTITION__CONTAINED_NODE:
@@ -851,23 +863,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isDimension: "); //$NON-NLS-1$
-		result.append(isDimension);
-		result.append(", isExternal: "); //$NON-NLS-1$
-		result.append(isExternal);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ActivityPartitionImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: JoinNode.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
+ * $Id: JoinNode.java,v 1.4 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface JoinNode extends ControlNode{
 	 * @return the value of the '<em>Is Combine Duplicate</em>' attribute.
 	 * @see #setIsCombineDuplicate(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getJoinNode_IsCombineDuplicate()
-	 * @model default="true" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="true" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isCombineDuplicate();

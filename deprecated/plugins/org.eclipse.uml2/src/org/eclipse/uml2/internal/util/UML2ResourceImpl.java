@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ResourceImpl.java,v 1.1 2004/05/21 20:20:27 khussey Exp $
+ * $Id: UML2ResourceImpl.java,v 1.2 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.uml2.util.UML2Resource;
@@ -64,13 +63,6 @@ public class UML2ResourceImpl extends XMIResourceImpl implements UML2Resource {
 	 */
 	protected XMLLoad createXMLLoad() {
 		return new UML2LoadImpl(createXMLHelper());
-	}
-
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getURIConverter()
-	 */
-	protected URIConverter getURIConverter() {
-		return new UML2URIConverterImpl(super.getURIConverter());
 	}
 
 } //UML2ResourceImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8 2004/05/28 05:13:45 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.9 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -47,6 +47,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.Element;
@@ -58,6 +59,7 @@ import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.InstanceValue;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.Model;
+import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.Profile;
@@ -67,7 +69,7 @@ import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.util.UML2URIConverterImpl;
+import org.eclipse.uml2.util.UML2Resource;
 
 /**
  * A static utility class that provides operations related to profiles.
@@ -126,8 +128,9 @@ public final class ProfileOperations
 	 */
 	public static String getEPackageName(Profile profile) {
 		return getValidIdentifier(isEmpty(profile.getQualifiedName())
-			? profile.getName() : profile.getQualifiedName().replace(':', '_'))
-			+ '_' + getVersion(profile);
+			? profile.getName()
+			: profile.getQualifiedName().replace(':', '_')) + '_'
+			+ getVersion(profile);
 	}
 
 	/**
@@ -140,8 +143,8 @@ public final class ProfileOperations
 	 */
 	public static String getEClassifierName(Classifier classifier) {
 		return getValidIdentifier(isEmpty(classifier.getQualifiedName())
-			? classifier.getName() : classifier.getQualifiedName().replace(':',
-				'_'));
+			? classifier.getName()
+			: classifier.getQualifiedName().replace(':', '_'));
 	}
 
 	/**
@@ -161,7 +164,7 @@ public final class ProfileOperations
 
 			EPackage ePackage = (EPackage) ePackages.next();
 
-			if (version.equals(ePackage.getName().substring(
+			if (safeEquals(version, ePackage.getName().substring(
 				ePackage.getName().lastIndexOf('_') + 1))) {
 
 				return ePackage;
@@ -251,8 +254,8 @@ public final class ProfileOperations
 
 		ePackage.setName(getEPackageName(profile));
 		ePackage.setNsPrefix(ePackage.getName());
-		ePackage
-			.setNsURI("http:///" + ePackage.getNsPrefix() + ".profile.uml2"); //$NON-NLS-1$ //$NON-NLS-2$
+		ePackage.setNsURI("http:///" + EcoreUtil.generateUUID() + "." //$NON-NLS-1$ //$NON-NLS-2$
+			+ UML2Resource.PROFILE_FILE_EXTENSION);
 
 		for (Iterator ownedStereotypes = profile.getOwnedStereotypes()
 			.iterator(); ownedStereotypes.hasNext();) {
@@ -618,14 +621,18 @@ public final class ProfileOperations
 				}
 			};
 
+			List eAnnotationsToRemove = new ArrayList();
+
 			while (eAllContents.hasNext()) {
 				EObject eObject = (EObject) eAllContents.next();
 
 				if (Element.class.isInstance(eObject)) {
 					Element element = (Element) eObject;
-					List appliedStereotypes = getEAnnotation(
+					EAnnotation appliedStereotypesEAnnotation = getEAnnotation(
 						StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES,
-						element).getContents();
+						element);
+					List appliedStereotypes = appliedStereotypesEAnnotation
+						.getContents();
 
 					for (Iterator stereotypeApplications = getStereotypeApplications(
 						profile, element).iterator(); stereotypeApplications
@@ -634,21 +641,37 @@ public final class ProfileOperations
 						EObject oldStereotypeApplication = (EObject) stereotypeApplications
 							.next();
 
-						EClass eClass = StereotypeOperations.getEClass(
-							StereotypeOperations
-								.getStereotype(oldStereotypeApplication),
-							profile.getVersion());
-						EObject newStereotypeApplication = eClass.getEPackage()
-							.getEFactoryInstance().create(eClass);
+						Stereotype stereotype = StereotypeOperations
+							.getStereotype(oldStereotypeApplication);
 
-						copyValues(oldStereotypeApplication,
-							newStereotypeApplication);
+						if (null == stereotype) {
+							appliedStereotypes.remove(oldStereotypeApplication);
+						} else {
+							EClass eClass = StereotypeOperations.getEClass(
+								stereotype, profile.getVersion());
+							EObject newStereotypeApplication = eClass
+								.getEPackage().getEFactoryInstance().create(
+									eClass);
 
-						appliedStereotypes.set(appliedStereotypes
-							.indexOf(oldStereotypeApplication),
-							newStereotypeApplication);
+							copyValues(oldStereotypeApplication,
+								newStereotypeApplication);
+
+							appliedStereotypes.set(appliedStereotypes
+								.indexOf(oldStereotypeApplication),
+								newStereotypeApplication);
+						}
+					}
+
+					if (appliedStereotypes.isEmpty()) {
+						eAnnotationsToRemove.add(appliedStereotypesEAnnotation);
 					}
 				}
+			}
+
+			for (Iterator eAnnotations = eAnnotationsToRemove.iterator(); eAnnotations
+				.hasNext();) {
+
+				((EAnnotation) eAnnotations.next()).setEModelElement(null);
 			}
 		}
 
@@ -734,7 +757,8 @@ public final class ProfileOperations
 			EObject targetValue = targetEClass.getEPackage()
 				.getEFactoryInstance().create(targetEClass);
 			copyValues((EObject) (sourceEStructuralFeature.isMany()
-				? ((EList) sourceValue).get(0) : sourceValue), targetValue);
+				? ((EList) sourceValue).get(0)
+				: sourceValue), targetValue);
 			targetEObject.eSet(targetEStructuralFeature, targetValue);
 		}
 	}
@@ -775,7 +799,8 @@ public final class ProfileOperations
 				.createFromString(targetEDataType, sourceEFactory
 					.convertToString(sourceEDataType, sourceEStructuralFeature
 						.isMany()
-						? ((EList) sourceValue).get(0) : sourceValue)));
+						? ((EList) sourceValue).get(0)
+						: sourceValue)));
 		}
 	}
 
@@ -806,8 +831,8 @@ public final class ProfileOperations
 			targetEObject.eSet(targetEStructuralFeature, targetEEnum
 				.getEEnumLiteral(
 					((EEnumLiteral) (sourceEStructuralFeature.isMany()
-						? ((EList) sourceValue).get(0) : sourceValue))
-						.getName()).getInstance());
+						? ((EList) sourceValue).get(0)
+						: sourceValue)).getName()).getInstance());
 		}
 	}
 
@@ -828,11 +853,9 @@ public final class ProfileOperations
 
 		String version = getVersion(profile);
 		getOrCreateEAnnotation(ANNOTATION_SOURCE__ATTRIBUTES, profile)
-			.getDetails().put(
-				ANNOTATION_DETAILS_KEY__VERSION,
-				null == version
-					? String.valueOf(0) : String.valueOf(new Integer(Integer
-						.parseInt(version) + 1)));
+			.getDetails().put(ANNOTATION_DETAILS_KEY__VERSION, null == version
+				? String.valueOf(0)
+				: String.valueOf(new Integer(Integer.parseInt(version) + 1)));
 
 		getOrCreateEAnnotation(ANNOTATION_SOURCE__E_PACKAGES, profile)
 			.getContents().add(0, createEPackage(profile));
@@ -864,9 +887,11 @@ public final class ProfileOperations
 			}
 		}
 
-		if (null != package_.getNestingPackage()) {
-			allAppliedProfiles.addAll(getAllAppliedProfiles(package_
-				.getNestingPackage()));
+		Namespace namespace = package_.getNamespace();
+
+		if (null != namespace) {
+			allAppliedProfiles.addAll(getAllAppliedProfiles(namespace
+				.getNearestPackage()));
 		}
 
 		return allAppliedProfiles;
@@ -916,8 +941,10 @@ public final class ProfileOperations
 				ANNOTATION_DETAILS_KEY__VERSION);
 		}
 
-		if (null != package_.getNestingPackage()) {
-			return getAppliedVersion(profile, package_.getNestingPackage());
+		Namespace namespace = package_.getNamespace();
+
+		if (null != namespace) {
+			return getAppliedVersion(profile, namespace.getNearestPackage());
 		}
 
 		return null;
@@ -944,14 +971,18 @@ public final class ProfileOperations
 			Element element) {
 		Set stereotypeApplications = new HashSet();
 
+		List ePackages = getEAnnotation(ANNOTATION_SOURCE__E_PACKAGES, profile)
+			.getContents();
+
 		for (Iterator appliedStereotypes = getEAnnotation(
 			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES,
 			element).getContents().iterator(); appliedStereotypes.hasNext();) {
 
 			EObject stereotypeApplication = (EObject) appliedStereotypes.next();
 
-			if (profile == StereotypeOperations.getStereotype(
-				stereotypeApplication).getProfile()) {
+			if (ePackages
+				.contains(stereotypeApplication.eClass().getEPackage())) {
+
 				stereotypeApplications.add(stereotypeApplication);
 			}
 		}
@@ -994,7 +1025,8 @@ public final class ProfileOperations
 	 */
 	public static boolean isDefined(Profile profile) {
 		return null == profile
-			? false : getEAnnotation(ANNOTATION_SOURCE__E_PACKAGES, profile)
+			? false
+			: getEAnnotation(ANNOTATION_SOURCE__E_PACKAGES, profile)
 				.getContents().size() > 0;
 	}
 
@@ -1185,9 +1217,9 @@ public final class ProfileOperations
 
 			if (null != resource) {
 				ResourceSet resourceSet = resource.getResourceSet();
-				URIConverter uriConverter = new UML2URIConverterImpl(
-					null == resourceSet
-						? DEFAULT_URI_CONVERTER : resourceSet.getURIConverter());
+				URIConverter uriConverter = null == resourceSet
+					? DEFAULT_URI_CONVERTER
+					: resourceSet.getURIConverter();
 
 				for (Iterator resourceBundleURIs = getResourceBundleURIs(
 					resource.getURI(), locale).iterator(); resourceBundleURIs

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.6 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.7 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -71,14 +71,14 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	protected static final boolean IS_DIRECT_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDirect() <em>Is Direct</em>}' attribute.
+	 * The flag for the '{@link #isDirect() <em>Is Direct</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDirect()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isDirect = IS_DIRECT_EDEFAULT;
+	protected static final int IS_DIRECT_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getClassifier() <em>Classifier</em>}' reference.
@@ -117,6 +117,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 */
 	protected ReadIsClassifiedObjectActionImpl() {
 		super();
+		eFlags &= ~IS_DIRECT_EFLAG;
 	}
 
 	/**
@@ -134,7 +135,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 * @generated
 	 */
 	public boolean isDirect() {
-		return isDirect;
+		return 0 != (eFlags & IS_DIRECT_EFLAG);
 	}
 
 	/**
@@ -143,10 +144,15 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 * @generated
 	 */
 	public void setIsDirect(boolean newIsDirect) {
-		boolean oldIsDirect = isDirect;
-		isDirect = newIsDirect;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_DIRECT, oldIsDirect, isDirect));
+		boolean oldIsDirect = 0 != (eFlags & IS_DIRECT_EFLAG);
+		if (newIsDirect) {
+			eFlags |= IS_DIRECT_EFLAG;
+		} else {
+			eFlags &= ~IS_DIRECT_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_DIRECT, oldIsDirect, newIsDirect));
+		}
 	}
 
 	/**
@@ -746,7 +752,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__INCOMING:
@@ -778,7 +784,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_DIRECT:
-				return isDirect != IS_DIRECT_EDEFAULT;
+				return isDirect() != IS_DIRECT_EDEFAULT;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__CLASSIFIER:
 				return classifier != null;
 			case UML2Package.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT:
@@ -787,21 +793,6 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 				return object != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isDirect: "); //$NON-NLS-1$
-		result.append(isDirect);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ReadIsClassifiedObjectActionImpl

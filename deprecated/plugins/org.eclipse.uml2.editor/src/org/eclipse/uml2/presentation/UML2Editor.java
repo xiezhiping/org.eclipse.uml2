@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.9 2004/06/22 19:32:13 khussey Exp $
+ * $Id: UML2Editor.java,v 1.10 2004/10/01 19:38:41 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -1357,12 +1357,10 @@ public class UML2Editor
 	 * @generated
 	 */
 	public void setStatusLineManager(ISelection selection) {
-		IStatusLineManager statusLineManager = getActionBars().getStatusLineManager();
-		if (statusLineManager != null) {
-			if (currentViewer == contentOutlineViewer) {
-				statusLineManager = contentOutlineStatusLineManager;
-			}
+		IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer ?
+			contentOutlineStatusLineManager : getActionBars().getStatusLineManager();
 	
+		if (statusLineManager != null) {
 			if (selection instanceof IStructuredSelection) {
 				Collection collection = ((IStructuredSelection)selection).toList();
 				switch (collection.size()) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.6 2004/06/18 04:34:32 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.7 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -70,14 +70,14 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	protected static final boolean IS_SYNCHRONOUS_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isSynchronous() <em>Is Synchronous</em>}' attribute.
+	 * The flag for the '{@link #isSynchronous() <em>Is Synchronous</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isSynchronous()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isSynchronous = IS_SYNCHRONOUS_EDEFAULT;
+	protected static final int IS_SYNCHRONOUS_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getResults() <em>Result</em>}' containment reference list.
@@ -96,6 +96,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 */
 	protected CallActionImpl() {
 		super();
+		eFlags |= IS_SYNCHRONOUS_EFLAG;
 	}
 
 	/**
@@ -113,7 +114,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * @generated
 	 */
 	public boolean isSynchronous() {
-		return isSynchronous;
+		return 0 != (eFlags & IS_SYNCHRONOUS_EFLAG);
 	}
 
 	/**
@@ -122,10 +123,15 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * @generated
 	 */
 	public void setIsSynchronous(boolean newIsSynchronous) {
-		boolean oldIsSynchronous = isSynchronous;
-		isSynchronous = newIsSynchronous;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CALL_ACTION__IS_SYNCHRONOUS, oldIsSynchronous, isSynchronous));
+		boolean oldIsSynchronous = 0 != (eFlags & IS_SYNCHRONOUS_EFLAG);
+		if (newIsSynchronous) {
+			eFlags |= IS_SYNCHRONOUS_EFLAG;
+		} else {
+			eFlags &= ~IS_SYNCHRONOUS_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CALL_ACTION__IS_SYNCHRONOUS, oldIsSynchronous, newIsSynchronous));
+		}
 	}
 
 	/**
@@ -594,7 +600,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 			case UML2Package.CALL_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CALL_ACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.CALL_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.CALL_ACTION__INCOMING:
@@ -630,26 +636,11 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 			case UML2Package.CALL_ACTION__ON_PORT:
 				return onPort != null;
 			case UML2Package.CALL_ACTION__IS_SYNCHRONOUS:
-				return isSynchronous != IS_SYNCHRONOUS_EDEFAULT;
+				return isSynchronous() != IS_SYNCHRONOUS_EDEFAULT;
 			case UML2Package.CALL_ACTION__RESULT:
 				return result != null && !result.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isSynchronous: "); //$NON-NLS-1$
-		result.append(isSynchronous);
-		result.append(')');
-		return result.toString();
 	}
 
 } //CallActionImpl

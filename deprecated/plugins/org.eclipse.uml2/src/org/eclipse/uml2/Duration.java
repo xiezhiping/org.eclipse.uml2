@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Duration.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
+ * $Id: Duration.java,v 1.6 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,7 +58,7 @@ public interface Duration extends ValueSpecification{
 	 * @return the value of the '<em>First Time</em>' attribute.
 	 * @see #setFirstTime(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getDuration_FirstTime()
-	 * @model default="True" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="True" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isFirstTime();

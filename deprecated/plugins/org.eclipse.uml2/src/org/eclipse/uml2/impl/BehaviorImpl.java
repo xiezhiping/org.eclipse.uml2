@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.18 2004/06/18 17:44:12 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.19 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -89,14 +89,14 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	protected static final boolean IS_REENTRANT_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isReentrant() <em>Is Reentrant</em>}' attribute.
+	 * The flag for the '{@link #isReentrant() <em>Is Reentrant</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isReentrant()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isReentrant = IS_REENTRANT_EDEFAULT;
+	protected static final int IS_REENTRANT_EFLAG = Integer.MIN_VALUE >>> 3;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedBehaviors() <em>Redefined Behavior</em>}' reference list.
@@ -165,6 +165,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 */
 	protected BehaviorImpl() {
 		super();
+		eFlags &= ~IS_REENTRANT_EFLAG;
 	}
 
 	/**
@@ -182,7 +183,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated
 	 */
 	public boolean isReentrant() {
-		return isReentrant;
+		return 0 != (eFlags & IS_REENTRANT_EFLAG);
 	}
 
 	/**
@@ -191,10 +192,15 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated
 	 */
 	public void setIsReentrant(boolean newIsReentrant) {
-		boolean oldIsReentrant = isReentrant;
-		isReentrant = newIsReentrant;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.BEHAVIOR__IS_REENTRANT, oldIsReentrant, isReentrant));
+		boolean oldIsReentrant = 0 != (eFlags & IS_REENTRANT_EFLAG);
+		if (newIsReentrant) {
+			eFlags |= IS_REENTRANT_EFLAG;
+		} else {
+			eFlags &= ~IS_REENTRANT_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.BEHAVIOR__IS_REENTRANT, oldIsReentrant, newIsReentrant));
+		}
 	}
 
 	/**
@@ -1246,7 +1252,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.BEHAVIOR__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1291,7 +1297,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.BEHAVIOR__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.BEHAVIOR__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.BEHAVIOR__IS_ABSTRACT:
@@ -1347,11 +1353,11 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.BEHAVIOR__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.BEHAVIOR__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.BEHAVIOR__IS_REENTRANT:
-				return isReentrant != IS_REENTRANT_EDEFAULT;
+				return isReentrant() != IS_REENTRANT_EDEFAULT;
 			case UML2Package.BEHAVIOR__CONTEXT:
 				return getContext() != null;
 			case UML2Package.BEHAVIOR__REDEFINED_BEHAVIOR:
@@ -1374,19 +1380,12 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 		return eDynamicIsSet(eFeature);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isReentrant: "); //$NON-NLS-1$
-		result.append(isReentrant);
-		result.append(')');
-		return result.toString();
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.BEHAVIOR__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //BehaviorImpl

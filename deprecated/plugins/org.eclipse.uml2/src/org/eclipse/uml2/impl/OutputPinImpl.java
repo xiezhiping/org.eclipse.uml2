@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OutputPinImpl.java,v 1.4 2004/06/18 04:34:31 khussey Exp $
+ * $Id: OutputPinImpl.java,v 1.5 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -465,7 +465,7 @@ public class OutputPinImpl extends PinImpl implements OutputPin {
 			case UML2Package.OUTPUT_PIN__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.OUTPUT_PIN__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.OUTPUT_PIN__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.OUTPUT_PIN__INCOMING:
@@ -493,9 +493,9 @@ public class OutputPinImpl extends PinImpl implements OutputPin {
 			case UML2Package.OUTPUT_PIN__SELECTION:
 				return selection != null;
 			case UML2Package.OUTPUT_PIN__IS_ORDERED:
-				return isOrdered != IS_ORDERED_EDEFAULT;
+				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UML2Package.OUTPUT_PIN__IS_UNIQUE:
-				return isUnique != IS_UNIQUE_EDEFAULT;
+				return isUnique() != IS_UNIQUE_EDEFAULT;
 			case UML2Package.OUTPUT_PIN__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.OUTPUT_PIN__UPPER:

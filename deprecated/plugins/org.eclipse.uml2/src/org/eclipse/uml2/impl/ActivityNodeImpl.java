@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.5 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.6 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -683,7 +683,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.ACTIVITY_NODE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.ACTIVITY_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.ACTIVITY_NODE__INCOMING:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectAction.java,v 1.3 2004/06/06 01:35:02 khussey Exp $
+ * $Id: ReadIsClassifiedObjectAction.java,v 1.4 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -62,7 +62,7 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 * @return the value of the '<em>Is Direct</em>' attribute.
 	 * @see #setIsDirect(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getReadIsClassifiedObjectAction_IsDirect()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isDirect();

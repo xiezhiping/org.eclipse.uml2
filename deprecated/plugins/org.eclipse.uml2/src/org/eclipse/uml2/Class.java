@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Class.java,v 1.11 2004/06/16 03:38:10 khussey Exp $
+ * $Id: Class.java,v 1.12 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -65,7 +65,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @return the value of the '<em>Is Active</em>' attribute.
 	 * @see #setIsActive(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getClass_IsActive()
-	 * @model dataType="org.eclipse.uml2.Boolean"
+	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isActive();

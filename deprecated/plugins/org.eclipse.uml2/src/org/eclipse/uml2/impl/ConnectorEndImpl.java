@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.5 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.6 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -400,9 +400,9 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 			case UML2Package.CONNECTOR_END__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONNECTOR_END__IS_ORDERED:
-				return isOrdered != IS_ORDERED_EDEFAULT;
+				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UML2Package.CONNECTOR_END__IS_UNIQUE:
-				return isUnique != IS_UNIQUE_EDEFAULT;
+				return isUnique() != IS_UNIQUE_EDEFAULT;
 			case UML2Package.CONNECTOR_END__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.CONNECTOR_END__UPPER:

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Basic_0="http:///Basic_0.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Basic_0.profile.uml2 pathmap://UML2_PROFILES/Basic.profile.uml2#__LeIQK86Edih9-GG5afQ0g" xmi:id="_EfRZoK86EdieaYgxtVWN8Q" name="UML2" appliedProfile="_hLdmYK88EdizLvaujP1w9Q">
   <eAnnotations xmi:id="_hPkDQK88EdizLvaujP1w9Q" source="appliedStereotypes">
-    <contents xsi:type="Basic_0:Basic__ModelLibrary" xmi:id="_hPkDQa88EdizLvaujP1w9Q"/>
+    <contents xmi:type="Basic_0:Basic__ModelLibrary" xmi:id="_hPkDQa88EdizLvaujP1w9Q"/>
   </eAnnotations>
-  <packageImport xsi:type="uml:ProfileApplication" xmi:id="_hLdmYK88EdizLvaujP1w9Q">
+  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_hLdmYK88EdizLvaujP1w9Q">
     <eAnnotations xmi:id="_hLjtAK88EdizLvaujP1w9Q" source="attributes">
       <details xmi:id="_hLjtAa88EdizLvaujP1w9Q" key="version" value="0"/>
     </eAnnotations>
-    <importedPackage href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
     <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
   </packageImport>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_IXfBUK86EdieaYgxtVWN8Q" name="Boolean"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_IXlH8K86EdieaYgxtVWN8Q" name="Integer"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_IXlH8a86EdieaYgxtVWN8Q" name="String"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_IXlH8q86EdieaYgxtVWN8Q" name="UnlimitedNatural"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_IXfBUK86EdieaYgxtVWN8Q" name="Boolean"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_IXlH8K86EdieaYgxtVWN8Q" name="Integer"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_IXlH8a86EdieaYgxtVWN8Q" name="String"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_IXlH8q86EdieaYgxtVWN8Q" name="UnlimitedNatural"/>
 </uml:Model>

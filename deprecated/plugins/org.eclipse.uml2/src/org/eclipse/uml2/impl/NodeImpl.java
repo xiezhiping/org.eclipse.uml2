@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.17 2004/06/18 17:44:12 khussey Exp $
+ * $Id: NodeImpl.java,v 1.18 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -851,7 +851,7 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -896,7 +896,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.NODE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.NODE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.NODE__IS_ABSTRACT:
@@ -952,7 +952,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__NESTED_CLASSIFIER:
 				return false;
 			case UML2Package.NODE__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.NODE__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.NODE__DEPLOYMENT:
@@ -963,6 +963,14 @@ public class NodeImpl extends ClassImpl implements Node {
 				return nestedNode != null && !nestedNode.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.NODE__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**

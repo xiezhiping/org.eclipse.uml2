@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.23 2004/06/18 17:44:12 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.24 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -595,7 +595,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.STEREOTYPE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -640,7 +640,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.STEREOTYPE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.STEREOTYPE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.STEREOTYPE__IS_ABSTRACT:
@@ -696,11 +696,19 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.STEREOTYPE__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.STEREOTYPE__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.STEREOTYPE__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	// <!-- begin-custom-operations -->

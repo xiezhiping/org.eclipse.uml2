@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Classifier.java,v 1.12 2004/06/15 21:01:05 khussey Exp $
+ * $Id: Classifier.java,v 1.13 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -712,6 +712,13 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 *                or child of the general classifier.
 	 */
 	Generalization createGeneralization(Classifier generalClassifier);
+
+	/**
+	 * Retrieves the interfaces on which this classifier has a usage dependency.
+	 * 
+	 * @return The interfaces used by this classifier.
+	 */
+	Set getUsedInterfaces();
 	
 	// <!-- end-custom-operations -->
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.8 2004/06/18 04:34:32 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.9 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -69,14 +69,14 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	protected static final boolean IS_LEAF_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
+	 * The flag for the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isLeaf()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isLeaf = IS_LEAF_EDEFAULT;
+	protected static final int IS_LEAF_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,6 +85,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 */
 	protected RedefinableElementImpl() {
 		super();
+		eFlags &= ~IS_LEAF_EFLAG;
 	}
 
 	/**
@@ -102,7 +103,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public boolean isLeaf() {
-		return isLeaf;
+		return 0 != (eFlags & IS_LEAF_EFLAG);
 	}
 
 	/**
@@ -111,10 +112,15 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-		boolean oldIsLeaf = isLeaf;
-		isLeaf = newIsLeaf;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REDEFINABLE_ELEMENT__IS_LEAF, oldIsLeaf, isLeaf));
+		boolean oldIsLeaf = 0 != (eFlags & IS_LEAF_EFLAG);
+		if (newIsLeaf) {
+			eFlags |= IS_LEAF_EFLAG;
+		} else {
+			eFlags &= ~IS_LEAF_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REDEFINABLE_ELEMENT__IS_LEAF, oldIsLeaf, newIsLeaf));
+		}
 	}
 
 	/**
@@ -427,24 +433,9 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 			case UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isLeaf: "); //$NON-NLS-1$
-		result.append(isLeaf);
-		result.append(')');
-		return result.toString();
 	}
 
 } //RedefinableElementImpl

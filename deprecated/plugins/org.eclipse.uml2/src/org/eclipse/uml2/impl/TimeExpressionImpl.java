@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeExpressionImpl.java,v 1.4 2004/06/18 04:34:31 khussey Exp $
+ * $Id: TimeExpressionImpl.java,v 1.5 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -63,14 +63,14 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	protected static final boolean FIRST_TIME_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isFirstTime() <em>First Time</em>}' attribute.
+	 * The flag for the '{@link #isFirstTime() <em>First Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isFirstTime()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean firstTime = FIRST_TIME_EDEFAULT;
+	protected static final int FIRST_TIME_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
@@ -89,6 +89,7 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	 */
 	protected TimeExpressionImpl() {
 		super();
+		eFlags |= FIRST_TIME_EFLAG;
 	}
 
 	/**
@@ -106,7 +107,7 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	 * @generated
 	 */
 	public boolean isFirstTime() {
-		return firstTime;
+		return 0 != (eFlags & FIRST_TIME_EFLAG);
 	}
 
 	/**
@@ -115,10 +116,15 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	 * @generated
 	 */
 	public void setFirstTime(boolean newFirstTime) {
-		boolean oldFirstTime = firstTime;
-		firstTime = newFirstTime;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TIME_EXPRESSION__FIRST_TIME, oldFirstTime, firstTime));
+		boolean oldFirstTime = 0 != (eFlags & FIRST_TIME_EFLAG);
+		if (newFirstTime) {
+			eFlags |= FIRST_TIME_EFLAG;
+		} else {
+			eFlags &= ~FIRST_TIME_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TIME_EXPRESSION__FIRST_TIME, oldFirstTime, newFirstTime));
+		}
 	}
 
 	/**
@@ -429,26 +435,11 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 			case UML2Package.TIME_EXPRESSION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.TIME_EXPRESSION__FIRST_TIME:
-				return firstTime != FIRST_TIME_EDEFAULT;
+				return isFirstTime() != FIRST_TIME_EDEFAULT;
 			case UML2Package.TIME_EXPRESSION__EVENT:
 				return event != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (firstTime: "); //$NON-NLS-1$
-		result.append(firstTime);
-		result.append(')');
-		return result.toString();
 	}
 
 } //TimeExpressionImpl

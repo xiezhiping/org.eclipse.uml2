@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.5 2004/06/18 04:34:31 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.6 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -202,7 +202,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTABLE_ELEMENT__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 		}
-		if (null != newOwningParameter || oldOwningParameter == basicGetTemplateParameter()) {
+		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.7 2004/06/18 17:44:12 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.8 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -72,14 +72,14 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	protected static final boolean IS_DETERMINATE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDeterminate() <em>Is Determinate</em>}' attribute.
+	 * The flag for the '{@link #isDeterminate() <em>Is Determinate</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDeterminate()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isDeterminate = IS_DETERMINATE_EDEFAULT;
+	protected static final int IS_DETERMINATE_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The default value of the '{@link #isAssured() <em>Is Assured</em>}' attribute.
@@ -92,14 +92,14 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	protected static final boolean IS_ASSURED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isAssured() <em>Is Assured</em>}' attribute.
+	 * The flag for the '{@link #isAssured() <em>Is Assured</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isAssured()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isAssured = IS_ASSURED_EDEFAULT;
+	protected static final int IS_ASSURED_EFLAG = Integer.MIN_VALUE >>> 3;
 
 	/**
 	 * The cached value of the '{@link #getClauses() <em>Clause</em>}' containment reference list.
@@ -128,6 +128,8 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 */
 	protected ConditionalNodeImpl() {
 		super();
+		eFlags &= ~IS_DETERMINATE_EFLAG;
+		eFlags &= ~IS_ASSURED_EFLAG;
 	}
 
 	/**
@@ -145,7 +147,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 * @generated
 	 */
 	public boolean isDeterminate() {
-		return isDeterminate;
+		return 0 != (eFlags & IS_DETERMINATE_EFLAG);
 	}
 
 	/**
@@ -154,10 +156,15 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 * @generated
 	 */
 	public void setIsDeterminate(boolean newIsDeterminate) {
-		boolean oldIsDeterminate = isDeterminate;
-		isDeterminate = newIsDeterminate;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONDITIONAL_NODE__IS_DETERMINATE, oldIsDeterminate, isDeterminate));
+		boolean oldIsDeterminate = 0 != (eFlags & IS_DETERMINATE_EFLAG);
+		if (newIsDeterminate) {
+			eFlags |= IS_DETERMINATE_EFLAG;
+		} else {
+			eFlags &= ~IS_DETERMINATE_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONDITIONAL_NODE__IS_DETERMINATE, oldIsDeterminate, newIsDeterminate));
+		}
 	}
 
 	/**
@@ -166,7 +173,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 * @generated
 	 */
 	public boolean isAssured() {
-		return isAssured;
+		return 0 != (eFlags & IS_ASSURED_EFLAG);
 	}
 
 	/**
@@ -175,10 +182,15 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 * @generated
 	 */
 	public void setIsAssured(boolean newIsAssured) {
-		boolean oldIsAssured = isAssured;
-		isAssured = newIsAssured;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONDITIONAL_NODE__IS_ASSURED, oldIsAssured, isAssured));
+		boolean oldIsAssured = 0 != (eFlags & IS_ASSURED_EFLAG);
+		if (newIsAssured) {
+			eFlags |= IS_ASSURED_EFLAG;
+		} else {
+			eFlags &= ~IS_ASSURED_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONDITIONAL_NODE__IS_ASSURED, oldIsAssured, newIsAssured));
+		}
 	}
 
 	/**
@@ -797,7 +809,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CONDITIONAL_NODE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.CONDITIONAL_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__INCOMING:
@@ -849,34 +861,17 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__CONTAINED_EDGE:
 				return containedEdge != null && !containedEdge.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__MUST_ISOLATE:
-				return mustIsolate != MUST_ISOLATE_EDEFAULT;
+				return isMustIsolate() != MUST_ISOLATE_EDEFAULT;
 			case UML2Package.CONDITIONAL_NODE__IS_DETERMINATE:
-				return isDeterminate != IS_DETERMINATE_EDEFAULT;
+				return isDeterminate() != IS_DETERMINATE_EDEFAULT;
 			case UML2Package.CONDITIONAL_NODE__IS_ASSURED:
-				return isAssured != IS_ASSURED_EDEFAULT;
+				return isAssured() != IS_ASSURED_EDEFAULT;
 			case UML2Package.CONDITIONAL_NODE__CLAUSE:
 				return clause != null && !clause.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__RESULT:
 				return result != null && !result.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isDeterminate: "); //$NON-NLS-1$
-		result.append(isDeterminate);
-		result.append(", isAssured: "); //$NON-NLS-1$
-		result.append(isAssured);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ConditionalNodeImpl

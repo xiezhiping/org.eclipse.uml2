@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementItemProvider.java,v 1.7 2004/06/19 01:42:38 khussey Exp $
+ * $Id: NamedElementItemProvider.java,v 1.8 2004/10/01 19:38:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -260,6 +260,19 @@ public class NamedElementItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.edit.util.IItemQualifiedLabelProvider#getQualifiedText(java.lang.Object)
+	 */
+	public String getQualifiedText(Object object) {
+		String label = ((NamedElement) object).getQualifiedName();
+
+		return null == label || 0 == label.length()
+			? super.getQualifiedText(object)
+			: label;
 	}
 
 }

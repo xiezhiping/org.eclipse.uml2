@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.13 2004/06/18 17:44:12 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.14 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -983,11 +983,11 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.INTERFACE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.INTERFACE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.INTERFACE__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.INTERFACE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.INTERFACE__GENERAL:

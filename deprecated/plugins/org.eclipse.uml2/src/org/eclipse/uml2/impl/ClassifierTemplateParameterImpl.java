@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.5 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -58,14 +58,14 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 	protected static final boolean ALLOW_SUBSTITUTABLE_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isAllowSubstitutable() <em>Allow Substitutable</em>}' attribute.
+	 * The flag for the '{@link #isAllowSubstitutable() <em>Allow Substitutable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isAllowSubstitutable()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean allowSubstitutable = ALLOW_SUBSTITUTABLE_EDEFAULT;
+	protected static final int ALLOW_SUBSTITUTABLE_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,6 +74,7 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 	 */
 	protected ClassifierTemplateParameterImpl() {
 		super();
+		eFlags |= ALLOW_SUBSTITUTABLE_EFLAG;
 	}
 
 	/**
@@ -91,7 +92,7 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 	 * @generated
 	 */
 	public boolean isAllowSubstitutable() {
-		return allowSubstitutable;
+		return 0 != (eFlags & ALLOW_SUBSTITUTABLE_EFLAG);
 	}
 
 	/**
@@ -100,10 +101,15 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 	 * @generated
 	 */
 	public void setAllowSubstitutable(boolean newAllowSubstitutable) {
-		boolean oldAllowSubstitutable = allowSubstitutable;
-		allowSubstitutable = newAllowSubstitutable;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE, oldAllowSubstitutable, allowSubstitutable));
+		boolean oldAllowSubstitutable = 0 != (eFlags & ALLOW_SUBSTITUTABLE_EFLAG);
+		if (newAllowSubstitutable) {
+			eFlags |= ALLOW_SUBSTITUTABLE_EFLAG;
+		} else {
+			eFlags &= ~ALLOW_SUBSTITUTABLE_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE, oldAllowSubstitutable, newAllowSubstitutable));
+		}
 	}
 
 	/**
@@ -313,24 +319,9 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT:
 				return ownedDefault != null;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE:
-				return allowSubstitutable != ALLOW_SUBSTITUTABLE_EDEFAULT;
+				return isAllowSubstitutable() != ALLOW_SUBSTITUTABLE_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (allowSubstitutable: "); //$NON-NLS-1$
-		result.append(allowSubstitutable);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ClassifierTemplateParameterImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.7 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.8 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -231,7 +231,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION, oldPreCondition, preCondition));
 		}
 
-		if (null != newPreCondition || oldPreCondition == getGuard()) {
+		if (null != newPreCondition || oldPreCondition == guard) {
 			setGuard(newPreCondition);
 		}
 	}
@@ -270,7 +270,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__GUARD, oldGuard, newGuard);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != getPreCondition() && newGuard != getPreCondition()) {
+		if (null != preCondition && newGuard != preCondition) {
 			setPreCondition(null);
 		}
 		return msgs;
@@ -608,7 +608,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			case UML2Package.PROTOCOL_TRANSITION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__KIND:
 				return kind != KIND_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__CONTAINER:

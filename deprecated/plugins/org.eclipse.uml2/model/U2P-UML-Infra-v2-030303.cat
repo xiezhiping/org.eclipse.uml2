@@ -1,7 +1,7 @@
 
 (object Petal
-    version    	47
-    _written   	"Rose 8.0.0303.1400"
+    version    	50
+    _written   	"Rose 8.2.0401.2700"
     charSet    	0)
 
 (object Class_Category "InfrastructureLibrary"
@@ -48,6 +48,11 @@
 					    quidu      	"3DF78BA701E1"))
 				    operations 	(list Operations
 					(object Operation "not_own_self"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1069E801F0"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -58,6 +63,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "has_owner"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E106A4402F7"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -68,6 +78,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "allOwnedElements"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E106A8400E6"
 					    stereotype 	"spec"
 					    result     	"Set(Logical View::InfrastructureLibrary::Core::Abstractions::Ownerships::Element)"
@@ -77,6 +92,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "mustBeOwned"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E106AD00153"
 					    stereotype 	"spec"
 					    result     	"Boolean"
@@ -387,6 +407,11 @@
 					    quidu      	"3CADCAEE0250"))
 				    operations 	(list Operations
 					(object Operation "no_name"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1063920306"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -400,6 +425,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "qualified_name"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10641200D9"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -415,6 +445,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "allNamespaces"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10644F034E"
 					    stereotype 	"spec"
 					    result     	"Sequence(Logical View::InfrastructureLibrary::Core::Abstractions::Namespaces::Namespace)"
@@ -429,6 +464,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "isDistinguishableFrom"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1064C70329"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -455,6 +495,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "separator"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10653C0010"
 					    stereotype 	"spec"
 					    result     	"String"
@@ -465,6 +510,11 @@
 					    uid        	0
 					    quidu      	"3CA010B103C3")
 					(object Operation "qualifiedName"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1065EF023E"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::String]"
@@ -504,6 +554,11 @@
 					    quidu      	"3CA0071C02FD"))
 				    operations 	(list Operations
 					(object Operation "members_are_distinguishable"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10689802AB"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -514,6 +569,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "getNamesOfMember"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1068D4021B"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -528,6 +588,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "membersAreDistinguishable"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E106939005E"
 					    stereotype 	"spec"
 					    result     	"Boolean"
@@ -1054,6 +1119,11 @@
 					    quidu      	"3CA0072700FA"))
 				    operations 	(list Operations
 					(object Operation "allFeatures"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E118E370051"
 					    stereotype 	"spec"
 					    result     	"Set(Logical View::InfrastructureLibrary::Core::Abstractions::Classifiers::Feature)"
@@ -1474,6 +1544,11 @@
 					    quidu      	"3CADCAEE0250"))
 				    operations 	(list Operations
 					(object Operation "isComputable"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1402B00031"
 					    stereotype 	"spec"
 					    result     	"Boolean"
@@ -1484,6 +1559,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "integerValue"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1402DE0204"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::Integer]"
@@ -1493,6 +1573,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "booleanValue"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E14030E0325"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::Boolean]"
@@ -1502,6 +1587,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "stringValue"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1403380299"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::String]"
@@ -1511,6 +1601,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "unlimitedValue"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E140370027C"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::UnlimitedNatural]"
@@ -1520,6 +1615,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "isNull"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1403A502BE"
 					    stereotype 	"spec"
 					    result     	"Boolean"
@@ -1943,6 +2043,11 @@
 					    quidu      	"3CADCAEE0250"))
 				    operations 	(list Operations
 					(object Operation "lower_eq_lowerbound"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E140A3102FA"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -1953,6 +2058,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "upper_eq_upperbound"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E140A6C013C"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -1963,6 +2073,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "lower"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E140A90033D"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::Integer]"
@@ -1972,6 +2087,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "upper"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E140AC401D9"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::UnlimitedNatural]"
@@ -1981,6 +2101,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "lowerBound"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E140B0801A5"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::Integer]"
@@ -1990,6 +2115,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "upperBound"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E140B58039F"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::UnlimitedNatural]"
@@ -2606,6 +2736,11 @@
 					    quidu      	"3CA0072700FA"))
 				    operations 	(list Operations
 					(object Operation "isDistinguishableFrom"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E105A8A018F"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -3066,6 +3201,11 @@
 					    quidu      	"3CA0071C02FD"))
 				    operations 	(list Operations
 					(object Operation "slots_are_defined"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E11901F0319"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -3079,6 +3219,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "no_duplicate_slots"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E11930A0223"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -4386,6 +4531,11 @@
 					    quidu      	"3CA0071C02FD"))
 				    operations 	(list Operations
 					(object Operation "redefinition_context_valid"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E106BC501F6"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -4396,6 +4546,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "redefinition_consistent"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E106BFA008A"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -4406,6 +4561,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "isConsistentWith"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E106C2C03A3"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -4424,6 +4584,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "isRedefinitionContextValid"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E106C8A007D"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -4873,6 +5038,11 @@
 					    quidu      	"3E554AF2005E"))
 				    operations 	(list Operations
 					(object Operation "general"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E105DC8003E"
 					    stereotype 	"spec"
 					    result     	"Set(Logical View::InfrastructureLibrary::Core::Abstractions::Generalizations::Classifier)"
@@ -4882,6 +5052,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "parents"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E105E6D030C"
 					    stereotype 	"spec"
 					    result     	"Set(Logical View::InfrastructureLibrary::Core::Abstractions::Generalizations::Classifier)"
@@ -4891,6 +5066,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "general_equals_parents"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E105F0103B9"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -4901,6 +5081,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "conformsTo"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10747B0198"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -6830,6 +7015,11 @@
 					    quidu      	"3CA0071C02FD"))
 				    operations 	(list Operations
 					(object Operation "not_apply_to_self"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E105CCE02CA"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -7721,6 +7911,11 @@
 				    stereotype 	"enumeration"
 				    operations 	(list Operations
 					(object Operation "bestVisibility"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E107BB80139"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -7750,6 +7945,11 @@
 					    quidu      	"3CA0071C02FD"))
 				    operations 	(list Operations
 					(object Operation "visibility_needs_ownership"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10786B02CE"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -7906,6 +8106,11 @@
 					    quidu      	"3CA00A2A018F"))
 				    operations 	(list Operations
 					(object Operation "no_cycles_in_generalization"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E106EB700F6"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -7916,6 +8121,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "specialize_type"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E106EE80092"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -7926,6 +8136,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "inherited_member"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E106F87022B"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -7936,6 +8151,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "inheritedMember"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10722C00E4"
 					    stereotype 	"spec"
 					    result     	"Set(Logical View::InfrastructureLibrary::Core::Abstractions::Namespaces::NamedElement)"
@@ -7945,6 +8165,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "parents"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1072FF02E6"
 					    stereotype 	"spec"
 					    result     	"Set(Logical View::InfrastructureLibrary::Core::Abstractions::Super::Classifier)"
@@ -7954,6 +8179,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "allParents"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10734200DA"
 					    stereotype 	"spec"
 					    result     	"Set(Logical View::InfrastructureLibrary::Core::Abstractions::Super::Classifier)"
@@ -7963,6 +8193,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "inheritableMembers"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10738400DF"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -7980,6 +8215,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "hasVisibilityOf"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10740603B7"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -7998,6 +8238,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "inherit"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1074EF0344"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -8011,6 +8256,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "maySpecializeType"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10770902B1"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -8415,6 +8665,11 @@
 					    quidu      	"3CB5A2060370"))
 				    operations 	(list Operations
 					(object Operation "isComputable"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1406E501AC"
 					    stereotype 	"spec"
 					    result     	"Boolean"
@@ -8425,6 +8680,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "booleanValue"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1407110029"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::Boolean]"
@@ -8448,6 +8708,11 @@
 					    quidu      	"3CB5A2060370"))
 				    operations 	(list Operations
 					(object Operation "isComputable"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1407FF0374"
 					    stereotype 	"spec"
 					    result     	"Boolean"
@@ -8458,6 +8723,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "stringValue"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E140821003E"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::String]"
@@ -8489,6 +8759,11 @@
 					    quidu      	"3CB5A2060370"))
 				    operations 	(list Operations
 					(object Operation "isComputable"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1407B4000F"
 					    stereotype 	"spec"
 					    result     	"Boolean"
@@ -8499,6 +8774,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "isNull"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1407D8029C"
 					    stereotype 	"spec"
 					    result     	"Boolean"
@@ -8517,6 +8797,11 @@
 					    quidu      	"3CB5A2060370"))
 				    operations 	(list Operations
 					(object Operation "isComputable"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E14074A00F3"
 					    stereotype 	"spec"
 					    result     	"Boolean"
@@ -8527,6 +8812,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "integerValue"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E14077700E4"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::Integer]"
@@ -8550,6 +8840,11 @@
 					    quidu      	"3CB5A2060370"))
 				    operations 	(list Operations
 					(object Operation "isComputable"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E140869018C"
 					    stereotype 	"spec"
 					    result     	"Boolean"
@@ -8560,6 +8855,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "unlimitedValue"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E14088F01CD"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::UnlimitedNatural]"
@@ -8745,50 +9045,7 @@
 					    width      	231
 					    height     	163
 					    annotation 	8)
-					(object InheritTreeView "" @332
-					    location   	(1363, 1450)
-					    fill_color 	16777215
-					    supplier   	@327
-					    vertices   	(list Points
-						(1363, 1450)
-						(1363, 1339)))
-					(object InheritView "" @333
-					    stereotype 	TRUE
-					    quidu      	"3CB5A2CC0144"
-					    client     	@328
-					    supplier   	@327
-					    line_style 	3
-					    origin_attachment 	(1310, 1536)
-					    terminal_attachment 	(1310, 1450)
-					    drawSupplier 	@332)
-					(object InheritView "" @334
-					    stereotype 	TRUE
-					    quidu      	"3CB5A2D101E1"
-					    client     	@329
-					    supplier   	@327
-					    line_style 	3
-					    origin_attachment 	(1682, 1533)
-					    terminal_attachment 	(1682, 1450)
-					    drawSupplier 	@332)
-					(object InheritView "" @335
-					    stereotype 	TRUE
-					    quidu      	"3CB5A32B0118"
-					    client     	@330
-					    supplier   	@327
-					    line_style 	3
-					    origin_attachment 	(2048, 1533)
-					    terminal_attachment 	(2048, 1450)
-					    drawSupplier 	@332)
-					(object InheritView "" @336
-					    stereotype 	TRUE
-					    quidu      	"3CB5A2D5010B"
-					    client     	@331
-					    supplier   	@327
-					    line_style 	3
-					    origin_attachment 	(2364, 1533)
-					    terminal_attachment 	(2364, 1450)
-					    drawSupplier 	@332)
-					(object InheritView "" @337
+					(object InheritView "" @332
 					    stereotype 	TRUE
 					    quidu      	"3CB5A2250324"
 					    client     	@327
@@ -8796,7 +9053,7 @@
 					    line_style 	3
 					    origin_attachment 	(1369, 1133)
 					    terminal_attachment 	(1369, 975))
-					(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Abstractions::Literals::LiteralUnlimitedNatural" @338
+					(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Abstractions::Literals::LiteralUnlimitedNatural" @333
 					    SuppressOperation 	TRUE
 					    IncludeAttribute 	TRUE
 					    location   	(2760, 1614)
@@ -8810,7 +9067,7 @@
 						color      	0
 						default_color 	TRUE)
 					    label      	(object ItemLabel
-						Parent_View 	@338
+						Parent_View 	@333
 						location   	(2535, 1545)
 						nlines     	1
 						max_width  	450
@@ -8821,15 +9078,58 @@
 					    quidu      	"3DF664BD01AE"
 					    width      	468
 					    height     	162)
+					(object InheritTreeView "" @334
+					    location   	(1363, 1450)
+					    fill_color 	16777215
+					    supplier   	@327
+					    vertices   	(list Points
+						(1363, 1450)
+						(1363, 1339)))
+					(object InheritView "" @335
+					    stereotype 	TRUE
+					    quidu      	"3CB5A2CC0144"
+					    client     	@328
+					    supplier   	@327
+					    line_style 	3
+					    origin_attachment 	(1310, 1536)
+					    terminal_attachment 	(1310, 1450)
+					    drawSupplier 	@334)
+					(object InheritView "" @336
+					    stereotype 	TRUE
+					    quidu      	"3CB5A2D101E1"
+					    client     	@329
+					    supplier   	@327
+					    line_style 	3
+					    origin_attachment 	(1682, 1533)
+					    terminal_attachment 	(1682, 1450)
+					    drawSupplier 	@334)
+					(object InheritView "" @337
+					    stereotype 	TRUE
+					    quidu      	"3CB5A32B0118"
+					    client     	@330
+					    supplier   	@327
+					    line_style 	3
+					    origin_attachment 	(2048, 1533)
+					    terminal_attachment 	(2048, 1450)
+					    drawSupplier 	@334)
+					(object InheritView "" @338
+					    stereotype 	TRUE
+					    quidu      	"3CB5A2D5010B"
+					    client     	@331
+					    supplier   	@327
+					    line_style 	3
+					    origin_attachment 	(2364, 1533)
+					    terminal_attachment 	(2364, 1450)
+					    drawSupplier 	@334)
 					(object InheritView "" @339
 					    stereotype 	TRUE
 					    quidu      	"3DF664D30228"
-					    client     	@338
+					    client     	@333
 					    supplier   	@327
 					    line_style 	3
 					    origin_attachment 	(2650, 1532)
 					    terminal_attachment 	(2650, 1450)
-					    drawSupplier 	@332)))))
+					    drawSupplier 	@334)))))
 			(object Class_Category "Multiplicities"
 			    quid       	"3DF65C06026F"
 			    visible_categories 	(list visibility_relationship_list
@@ -8849,6 +9149,11 @@
 					    quidu      	"3DF78BA701E1"))
 				    operations 	(list Operations
 					(object Operation "lowerBound"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E105FFF0120"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::Integer]"
@@ -8858,6 +9163,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "upperBound"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10604500E4"
 					    stereotype 	"spec"
 					    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::UnlimitedNatural]"
@@ -8867,6 +9177,11 @@
 					    opExportControl 	"Implementation"
 					    uid        	0)
 					(object Operation "isMultivalued"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1060A900DE"
 					    stereotype 	"spec"
 					    result     	"Boolean"
@@ -8879,6 +9194,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "includesCardinality"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1060D80399"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -8899,6 +9219,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "includesMultiplicity"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10616C00C0"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -8917,6 +9242,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "upper_gt_0"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E1061F301DD"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -8927,6 +9257,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "lower_ge_0"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10622B018D"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -8937,6 +9272,11 @@
 					    uid        	0
 					    quidu      	"3CA010AC0090")
 					(object Operation "upper_ge_lower"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E10625C009E"
 					    stereotype 	"inv"
 					    result     	"Boolean"
@@ -9176,6 +9516,11 @@
 					    quidu      	"3CA0071C02FD"))
 				    operations 	(list Operations
 					(object Operation "conformsTo"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Data Modeler"
+						    name       	"KeyList"
+						    value      	""))
 					    quid       	"3E554FFD0353"
 					    stereotype 	"spec"
 					    parameters 	(list Parameters
@@ -14074,6 +14419,11 @@
 				    quidu      	"3E555229003B"))
 			    operations 	(list Operations
 				(object Operation "conformsTo"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E555A26019A"
 				    stereotype 	"spec"
 				    parameters 	(list Parameters
@@ -14147,6 +14497,11 @@
 				    quidu      	"3DE6BC6B01BD"))
 			    operations 	(list Operations
 				(object Operation "importedMember_derived"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142A780306"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14157,6 +14512,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "importedMember"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142ABF004B"
 				    stereotype 	"spec"
 				    result     	"Set(Logical View::InfrastructureLibrary::Core::Constructs::PackageableElement)"
@@ -14166,6 +14526,11 @@
 				    opExportControl 	"Implementation"
 				    uid        	0)
 				(object Operation "getNamesOfMember"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142BF301A2"
 				    stereotype 	"spec"
 				    parameters 	(list Parameters
@@ -14190,6 +14555,11 @@
 				    opExportControl 	"Implementation"
 				    uid        	0)
 				(object Operation "importMembers"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142CAC03E3"
 				    stereotype 	"spec"
 				    parameters 	(list Parameters
@@ -14203,6 +14573,11 @@
 				    opExportControl 	"Implementation"
 				    uid        	0)
 				(object Operation "excludeCollisions"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142D230163"
 				    stereotype 	"spec"
 				    parameters 	(list Parameters
@@ -14327,6 +14702,11 @@
 				    quidu      	"3DE6AB400163"))
 			    operations 	(list Operations
 				(object Operation "inherit"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1420C102C4"
 				    stereotype 	"spec"
 				    parameters 	(list Parameters
@@ -14359,6 +14739,11 @@
 				    quidu      	"3DE6AB4B0001"))
 			    operations 	(list Operations
 				(object Operation "opposite_is_other_end"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E14246901E3"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14376,6 +14761,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "opposite"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1424E201BF"
 				    stereotype 	"spec"
 				    result     	"[Logical View::InfrastructureLibrary::Core::Constructs::Property]"
@@ -14391,6 +14781,11 @@
 				    opExportControl 	"Implementation"
 				    uid        	0)
 				(object Operation "multiplicity_of_composite"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142562037C"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14401,6 +14796,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "subsetting_context"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1426020322"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14416,6 +14816,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "navigable_property_redefinition"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E14266E0237"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14432,6 +14837,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "subsetting_rules"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1426C00144"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14447,6 +14857,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "navigable_readonly"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E14272601FF"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14457,6 +14872,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "derivedUnion_is_derived"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E14276C020A"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14467,6 +14887,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "isConsistentWith"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1427A80242"
 				    stereotype 	"spec"
 				    parameters 	(list Parameters
@@ -14494,6 +14919,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "subsettingContext"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1428A50264"
 				    stereotype 	"spec"
 				    result     	"Set(Logical View::InfrastructureLibrary::Core::Constructs::Classifier)"
@@ -14533,6 +14963,11 @@
 				    quidu      	"3DE6C8630317"))
 			    operations 	(list Operations
 				(object Operation "inherit"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1423CF02D2"
 				    stereotype 	"spec"
 				    parameters 	(list Parameters
@@ -14616,6 +15051,11 @@
 				    quidu      	"3DE7632A0090"))
 			    operations 	(list Operations
 				(object Operation "type_of_result"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3DEE7D38025A"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14633,6 +15073,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "isOrdered"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142EC50359"
 				    stereotype 	"spec"
 				    result     	"Boolean"
@@ -14643,6 +15088,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "isUnique"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142F090090"
 				    stereotype 	"spec"
 				    result     	"Boolean"
@@ -14653,6 +15103,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "lower"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142F3E03CB"
 				    stereotype 	"spec"
 				    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::Integer]"
@@ -14662,6 +15117,11 @@
 				    opExportControl 	"Implementation"
 				    uid        	0)
 				(object Operation "upper"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142F7500B3"
 				    stereotype 	"spec"
 				    result     	"[Logical View::InfrastructureLibrary::Core::PrimitiveTypes::UnlimitedNatural]"
@@ -14671,6 +15131,11 @@
 				    opExportControl 	"Implementation"
 				    uid        	0)
 				(object Operation "type"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142FBB01EA"
 				    stereotype 	"spec"
 				    result     	"[Logical View::InfrastructureLibrary::Core::Constructs::Classifier]"
@@ -14680,6 +15145,11 @@
 				    opExportControl 	"Implementation"
 				    uid        	0)
 				(object Operation "only_body_for_query"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1430030053"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14690,6 +15160,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "isConsistentWith"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E143033011B"
 				    stereotype 	"spec"
 				    parameters 	(list Parameters
@@ -14791,6 +15266,11 @@
 				    quidu      	"3DE6C03E0388"))
 			    operations 	(list Operations
 				(object Operation "isDistinguishableFrom"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142E0F01A9"
 				    stereotype 	"spec"
 				    parameters 	(list Parameters
@@ -14830,6 +15310,11 @@
 				    quidu      	"3DE6C82E03E4"))
 			    operations 	(list Operations
 				(object Operation "visibility_public_or_private"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1429640092"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14840,6 +15325,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "imported_element_is_public"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1429B501C5"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14850,6 +15340,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "getName"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1429E403A3"
 				    stereotype 	"spec"
 				    result     	"String"
@@ -14894,6 +15389,11 @@
 				    quidu      	"3DE6AF3E02D5"))
 			    operations 	(list Operations
 				(object Operation "elements_public_or_private"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E14310D018C"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -14904,6 +15404,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "mustBeOwned"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E14315003AF"
 				    stereotype 	"spec"
 				    result     	"Boolean"
@@ -14914,6 +15419,11 @@
 				    uid        	0
 				    quidu      	"3CA010AC0090")
 				(object Operation "visibleMembers"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E143175007D"
 				    stereotype 	"spec"
 				    result     	"Set(Logical View::InfrastructureLibrary::Core::Constructs::PackageableElement)"
@@ -14923,6 +15433,11 @@
 				    opExportControl 	"Implementation"
 				    uid        	0)
 				(object Operation "makesVisible"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E1431A90385"
 				    stereotype 	"spec"
 				    parameters 	(list Parameters
@@ -14949,6 +15464,11 @@
 				    quidu      	"3DE6C82E03E4"))
 			    operations 	(list Operations
 				(object Operation "public_or_private"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Data Modeler"
+					    name       	"KeyList"
+					    value      	""))
 				    quid       	"3E142D8E021B"
 				    stereotype 	"inv"
 				    result     	"Boolean"
@@ -26734,14 +27254,7 @@
 				    quidu      	"3DE6BC6B01BD"
 				    width      	469
 				    height     	181)
-				(object InheritTreeView "" @1091
-				    location   	(745, 846)
-				    fill_color 	16777215
-				    supplier   	@1090
-				    vertices   	(list Points
-					(745, 846)
-					(745, 705)))
-				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::PackageableElement" @1092
+				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::PackageableElement" @1091
 				    SuppressAttribute 	TRUE
 				    SuppressOperation 	TRUE
 				    IncludeAttribute 	TRUE
@@ -26756,7 +27269,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@1092
+					Parent_View 	@1091
 					location   	(2869, 1719)
 					nlines     	1
 					max_width  	382
@@ -26768,7 +27281,7 @@
 				    width      	400
 				    height     	112
 				    annotation 	8)
-				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::Package" @1093
+				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::Package" @1092
 				    SuppressAttribute 	TRUE
 				    SuppressOperation 	TRUE
 				    IncludeAttribute 	TRUE
@@ -26783,7 +27296,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@1093
+					Parent_View 	@1092
 					location   	(2865, 2230)
 					nlines     	1
 					max_width  	301
@@ -26795,7 +27308,7 @@
 				    width      	319
 				    height     	100
 				    annotation 	8)
-				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::ElementImport" @1094
+				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::ElementImport" @1093
 				    SuppressOperation 	TRUE
 				    IncludeAttribute 	TRUE
 				    location   	(2165, 1770)
@@ -26809,7 +27322,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@1094
+					Parent_View 	@1093
 					location   	(1979, 1683)
 					nlines     	1
 					max_width  	372
@@ -26820,13 +27333,13 @@
 				    quidu      	"3DE6D5E7016E"
 				    width      	390
 				    height     	194)
-				(object AssociationViewNew "$UNNAMED$96" @1095
+				(object AssociationViewNew "$UNNAMED$96" @1094
 				    location   	(2610, 1770)
 				    stereotype 	TRUE
 				    quidu      	"3DE6DF68013A"
 				    roleview_list 	(list RoleViews
-					(object RoleView "$UNNAMED$97" @1096
-					    Parent_View 	@1095
+					(object RoleView "$UNNAMED$97" @1095
+					    Parent_View 	@1094
 					    location   	(2245, 515)
 					    font       	(object Font
 						size       	8
@@ -26837,8 +27350,8 @@
 						strike     	FALSE
 						color      	0
 						default_color 	TRUE)
-					    label      	(object SegLabel @1097
-						Parent_View 	@1096
+					    label      	(object SegLabel @1096
+						Parent_View 	@1095
 						location   	(2410, 1812)
 						font       	(object Font
 						    size       	8
@@ -26861,13 +27374,13 @@
 						orientation 	0)
 					    stereotype 	TRUE
 					    quidu      	"3DE6DF6803B1"
-					    client     	@1095
-					    supplier   	@1094
+					    client     	@1094
+					    supplier   	@1093
 					    line_style 	3
 					    origin_attachment 	(2610, 1770)
 					    terminal_attachment 	(2360, 1770))
-					(object RoleView "importedElement" @1098
-					    Parent_View 	@1095
+					(object RoleView "importedElement" @1097
+					    Parent_View 	@1094
 					    location   	(2245, 515)
 					    font       	(object Font
 						size       	8
@@ -26878,8 +27391,8 @@
 						strike     	FALSE
 						color      	0
 						default_color 	TRUE)
-					    label      	(object SegLabel @1099
-						Parent_View 	@1098
+					    label      	(object SegLabel @1098
+						Parent_View 	@1097
 						location   	(2699, 1735)
 						font       	(object Font
 						    size       	8
@@ -26901,13 +27414,13 @@
 						orientation 	0)
 					    stereotype 	TRUE
 					    quidu      	"3DE6DF6803A7"
-					    client     	@1095
-					    supplier   	@1092
+					    client     	@1094
+					    supplier   	@1091
 					    line_style 	3
 					    origin_attachment 	(2610, 1770)
 					    terminal_attachment 	(2860, 1770)
-					    label      	(object SegLabel @1100
-						Parent_View 	@1098
+					    label      	(object SegLabel @1099
+						Parent_View 	@1097
 						location   	(2826, 1826)
 						font       	(object Font
 						    size       	8
@@ -26927,8 +27440,8 @@
 						pctDist    	0.864583
 						height     	56
 						orientation 	1)
-					    label      	(object SegLabel @1101
-						Parent_View 	@1098
+					    label      	(object SegLabel @1100
+						Parent_View 	@1097
 						location   	(2675, 1814)
 						font       	(object Font
 						    size       	8
@@ -26948,15 +27461,15 @@
 						pctDist    	0.263889
 						height     	44
 						orientation 	1))))
-				(object InheritView "" @1102
+				(object InheritView "" @1101
 				    stereotype 	TRUE
 				    quidu      	"3DE6DFF400E2"
-				    client     	@1094
+				    client     	@1093
 				    supplier   	@1086
 				    line_style 	3
 				    origin_attachment 	(2175, 1673)
 				    terminal_attachment 	(2175, 1563))
-				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::PackageableElement" @1103
+				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::PackageableElement" @1102
 				    SuppressOperation 	TRUE
 				    IncludeAttribute 	TRUE
 				    location   	(365, 1255)
@@ -26970,7 +27483,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@1103
+					Parent_View 	@1102
 					location   	(184, 1175)
 					nlines     	2
 					max_width  	363
@@ -26982,16 +27495,7 @@
 				    width      	381
 				    height     	181
 				    annotation 	8)
-				(object InheritView "" @1104
-				    stereotype 	TRUE
-				    quidu      	"3DE6C2130328"
-				    client     	@1103
-				    supplier   	@1090
-				    line_style 	3
-				    origin_attachment 	(361, 1165)
-				    terminal_attachment 	(361, 846)
-				    drawSupplier 	@1091)
-				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::PackageImport" @1105
+				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::PackageImport" @1103
 				    SuppressOperation 	TRUE
 				    IncludeAttribute 	TRUE
 				    location   	(2160, 2270)
@@ -27005,7 +27509,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@1105
+					Parent_View 	@1103
 					location   	(1974, 2203)
 					nlines     	1
 					max_width  	372
@@ -27016,21 +27520,21 @@
 				    quidu      	"3DE6D5E002D7"
 				    width      	390
 				    height     	154)
-				(object InheritView "" @1106
+				(object InheritView "" @1104
 				    stereotype 	TRUE
 				    quidu      	"3DE6DFFC022E"
-				    client     	@1105
+				    client     	@1103
 				    supplier   	@1088
 				    line_style 	3
 				    origin_attachment 	(2155, 2192)
 				    terminal_attachment 	(2155, 2048))
-				(object AssociationViewNew "$UNNAMED$94" @1107
+				(object AssociationViewNew "$UNNAMED$94" @1105
 				    location   	(2605, 2270)
 				    stereotype 	TRUE
 				    quidu      	"3DE6DEFE0106"
 				    roleview_list 	(list RoleViews
-					(object RoleView "$UNNAMED$95" @1108
-					    Parent_View 	@1107
+					(object RoleView "$UNNAMED$95" @1106
+					    Parent_View 	@1105
 					    location   	(125, -230)
 					    font       	(object Font
 						size       	8
@@ -27041,8 +27545,8 @@
 						strike     	FALSE
 						color      	0
 						default_color 	TRUE)
-					    label      	(object SegLabel @1109
-						Parent_View 	@1108
+					    label      	(object SegLabel @1107
+						Parent_View 	@1106
 						location   	(2405, 2312)
 						font       	(object Font
 						    size       	8
@@ -27065,13 +27569,13 @@
 						orientation 	0)
 					    stereotype 	TRUE
 					    quidu      	"3DE6DEFF0252"
-					    client     	@1107
-					    supplier   	@1105
+					    client     	@1105
+					    supplier   	@1103
 					    line_style 	3
 					    origin_attachment 	(2605, 2270)
 					    terminal_attachment 	(2355, 2270))
-					(object RoleView "importedPackage" @1110
-					    Parent_View 	@1107
+					(object RoleView "importedPackage" @1108
+					    Parent_View 	@1105
 					    location   	(125, -230)
 					    font       	(object Font
 						size       	8
@@ -27082,8 +27586,8 @@
 						strike     	FALSE
 						color      	0
 						default_color 	TRUE)
-					    label      	(object SegLabel @1111
-						Parent_View 	@1110
+					    label      	(object SegLabel @1109
+						Parent_View 	@1108
 						location   	(2695, 2231)
 						font       	(object Font
 						    size       	8
@@ -27105,13 +27609,13 @@
 						orientation 	0)
 					    stereotype 	TRUE
 					    quidu      	"3DE6DEFF023E"
-					    client     	@1107
-					    supplier   	@1093
+					    client     	@1105
+					    supplier   	@1092
 					    line_style 	3
 					    origin_attachment 	(2605, 2270)
 					    terminal_attachment 	(2856, 2270)
-					    label      	(object SegLabel @1112
-						Parent_View 	@1110
+					    label      	(object SegLabel @1110
+						Parent_View 	@1108
 						location   	(2831, 2318)
 						font       	(object Font
 						    size       	8
@@ -27131,8 +27635,8 @@
 						pctDist    	0.900398
 						height     	48
 						orientation 	1)
-					    label      	(object SegLabel @1113
-						Parent_View 	@1110
+					    label      	(object SegLabel @1111
+						Parent_View 	@1108
 						location   	(2684, 2310)
 						font       	(object Font
 						    size       	8
@@ -27152,6 +27656,22 @@
 						pctDist    	0.314741
 						height     	40
 						orientation 	1))))
+				(object InheritTreeView "" @1112
+				    location   	(745, 846)
+				    fill_color 	16777215
+				    supplier   	@1090
+				    vertices   	(list Points
+					(745, 846)
+					(745, 705)))
+				(object InheritView "" @1113
+				    stereotype 	TRUE
+				    quidu      	"3DE6C2130328"
+				    client     	@1102
+				    supplier   	@1090
+				    line_style 	3
+				    origin_attachment 	(361, 1165)
+				    terminal_attachment 	(361, 846)
+				    drawSupplier 	@1112)
 				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::NamedElement" @1114
 				    SuppressAttribute 	TRUE
 				    SuppressOperation 	TRUE
@@ -27339,7 +27859,7 @@
 					    stereotype 	TRUE
 					    quidu      	"3DE6E0040315"
 					    client     	@1117
-					    supplier   	@1094
+					    supplier   	@1093
 					    line_style 	3
 					    origin_attachment 	(1641, 1764)
 					    terminal_attachment 	(1970, 1764)
@@ -27467,7 +27987,7 @@
 					    stereotype 	TRUE
 					    quidu      	"3DEE234B0163"
 					    client     	@1126
-					    supplier   	@1103
+					    supplier   	@1102
 					    line_style 	3
 					    origin_attachment 	(746, 1254)
 					    terminal_attachment 	(555, 1254)
@@ -27639,7 +28159,7 @@
 					    stereotype 	TRUE
 					    quidu      	"3DE6E00902C3"
 					    client     	@1133
-					    supplier   	@1105
+					    supplier   	@1103
 					    line_style 	3
 					    origin_attachment 	(1638, 2240)
 					    terminal_attachment 	(1965, 2240)
@@ -27693,7 +28213,7 @@
 				    line_style 	3
 				    origin_attachment 	(1067, 1156)
 				    terminal_attachment 	(1067, 846)
-				    drawSupplier 	@1091)
+				    drawSupplier 	@1112)
 				(object AssociationViewNew "$UNNAMED$135" @1143
 				    location   	(1588, 1385)
 				    font       	(object Font

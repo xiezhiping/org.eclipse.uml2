@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.6 2004/06/18 04:34:31 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.7 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -67,14 +67,14 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	protected static final boolean IS_COMBINE_DUPLICATE_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isCombineDuplicate() <em>Is Combine Duplicate</em>}' attribute.
+	 * The flag for the '{@link #isCombineDuplicate() <em>Is Combine Duplicate</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isCombineDuplicate()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isCombineDuplicate = IS_COMBINE_DUPLICATE_EDEFAULT;
+	protected static final int IS_COMBINE_DUPLICATE_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getJoinSpec() <em>Join Spec</em>}' containment reference.
@@ -93,6 +93,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 */
 	protected JoinNodeImpl() {
 		super();
+		eFlags |= IS_COMBINE_DUPLICATE_EFLAG;
 	}
 
 	/**
@@ -110,7 +111,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * @generated
 	 */
 	public boolean isCombineDuplicate() {
-		return isCombineDuplicate;
+		return 0 != (eFlags & IS_COMBINE_DUPLICATE_EFLAG);
 	}
 
 	/**
@@ -119,10 +120,15 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * @generated
 	 */
 	public void setIsCombineDuplicate(boolean newIsCombineDuplicate) {
-		boolean oldIsCombineDuplicate = isCombineDuplicate;
-		isCombineDuplicate = newIsCombineDuplicate;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.JOIN_NODE__IS_COMBINE_DUPLICATE, oldIsCombineDuplicate, isCombineDuplicate));
+		boolean oldIsCombineDuplicate = 0 != (eFlags & IS_COMBINE_DUPLICATE_EFLAG);
+		if (newIsCombineDuplicate) {
+			eFlags |= IS_COMBINE_DUPLICATE_EFLAG;
+		} else {
+			eFlags &= ~IS_COMBINE_DUPLICATE_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.JOIN_NODE__IS_COMBINE_DUPLICATE, oldIsCombineDuplicate, newIsCombineDuplicate));
+		}
 	}
 
 	/**
@@ -536,7 +542,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 			case UML2Package.JOIN_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.JOIN_NODE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.JOIN_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.JOIN_NODE__INCOMING:
@@ -554,26 +560,11 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 			case UML2Package.JOIN_NODE__IN_INTERRUPTIBLE_REGION:
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 			case UML2Package.JOIN_NODE__IS_COMBINE_DUPLICATE:
-				return isCombineDuplicate != IS_COMBINE_DUPLICATE_EDEFAULT;
+				return isCombineDuplicate() != IS_COMBINE_DUPLICATE_EDEFAULT;
 			case UML2Package.JOIN_NODE__JOIN_SPEC:
 				return joinSpec != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isCombineDuplicate: "); //$NON-NLS-1$
-		result.append(isCombineDuplicate);
-		result.append(')');
-		return result.toString();
 	}
 
 } //JoinNodeImpl

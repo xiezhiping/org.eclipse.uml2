@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExecutionEnvironmentImpl.java,v 1.16 2004/06/18 17:44:12 khussey Exp $
+ * $Id: ExecutionEnvironmentImpl.java,v 1.17 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -615,7 +615,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.EXECUTION_ENVIRONMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -660,7 +660,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 			case UML2Package.EXECUTION_ENVIRONMENT__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.EXECUTION_ENVIRONMENT__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__IS_ABSTRACT:
@@ -716,7 +716,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 			case UML2Package.EXECUTION_ENVIRONMENT__NESTED_CLASSIFIER:
 				return false;
 			case UML2Package.EXECUTION_ENVIRONMENT__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__DEPLOYMENT:
@@ -727,6 +727,14 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 				return nestedNode != null && !nestedNode.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.EXECUTION_ENVIRONMENT__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //ExecutionEnvironmentImpl

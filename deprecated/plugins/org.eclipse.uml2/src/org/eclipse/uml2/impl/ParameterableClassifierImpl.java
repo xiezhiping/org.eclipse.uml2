@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterableClassifierImpl.java,v 1.13 2004/06/18 17:44:12 khussey Exp $
+ * $Id: ParameterableClassifierImpl.java,v 1.14 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -491,11 +491,11 @@ public abstract class ParameterableClassifierImpl extends ClassifierImpl impleme
 			case UML2Package.PARAMETERABLE_CLASSIFIER__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.PARAMETERABLE_CLASSIFIER__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.PARAMETERABLE_CLASSIFIER__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.PARAMETERABLE_CLASSIFIER__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.PARAMETERABLE_CLASSIFIER__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.PARAMETERABLE_CLASSIFIER__GENERAL:

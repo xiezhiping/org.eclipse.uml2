@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.6 2004/06/18 04:34:31 khussey Exp $
+ * $Id: VariableImpl.java,v 1.7 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -93,14 +93,14 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	protected static final boolean IS_ORDERED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
+	 * The flag for the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isOrdered()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isOrdered = IS_ORDERED_EDEFAULT;
+	protected static final int IS_ORDERED_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -113,14 +113,14 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	protected static final boolean IS_UNIQUE_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
+	 * The flag for the '{@link #isUnique() <em>Is Unique</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isUnique()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isUnique = IS_UNIQUE_EDEFAULT;
+	protected static final int IS_UNIQUE_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -169,6 +169,8 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 */
 	protected VariableImpl() {
 		super();
+		eFlags &= ~IS_ORDERED_EFLAG;
+		eFlags |= IS_UNIQUE_EFLAG;
 	}
 
 	/**
@@ -226,7 +228,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public boolean isOrdered() {
-		return isOrdered;
+		return 0 != (eFlags & IS_ORDERED_EFLAG);
 	}
 
 	/**
@@ -235,12 +237,15 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-		boolean oldIsOrdered = isOrdered;
-		isOrdered = newIsOrdered;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__IS_ORDERED, oldIsOrdered, isOrdered));
+		boolean oldIsOrdered = 0 != (eFlags & IS_ORDERED_EFLAG);
+		if (newIsOrdered) {
+			eFlags |= IS_ORDERED_EFLAG;
+		} else {
+			eFlags &= ~IS_ORDERED_EFLAG;
 		}
-
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__IS_ORDERED, oldIsOrdered, newIsOrdered));
+		}
 	}
 
 	/**
@@ -249,7 +254,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public boolean isUnique() {
-		return isUnique;
+		return 0 != (eFlags & IS_UNIQUE_EFLAG);
 	}
 
 	/**
@@ -258,12 +263,15 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
-		boolean oldIsUnique = isUnique;
-		isUnique = newIsUnique;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__IS_UNIQUE, oldIsUnique, isUnique));
+		boolean oldIsUnique = 0 != (eFlags & IS_UNIQUE_EFLAG);
+		if (newIsUnique) {
+			eFlags |= IS_UNIQUE_EFLAG;
+		} else {
+			eFlags &= ~IS_UNIQUE_EFLAG;
 		}
-
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__IS_UNIQUE, oldIsUnique, newIsUnique));
+		}
 	}
 
 	/**
@@ -898,9 +906,9 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 			case UML2Package.VARIABLE__TYPE:
 				return type != null;
 			case UML2Package.VARIABLE__IS_ORDERED:
-				return isOrdered != IS_ORDERED_EDEFAULT;
+				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UML2Package.VARIABLE__IS_UNIQUE:
-				return isUnique != IS_UNIQUE_EDEFAULT;
+				return isUnique() != IS_UNIQUE_EDEFAULT;
 			case UML2Package.VARIABLE__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.VARIABLE__UPPER:

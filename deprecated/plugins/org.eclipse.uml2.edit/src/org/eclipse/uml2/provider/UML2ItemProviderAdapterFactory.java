@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ItemProviderAdapterFactory.java,v 1.3 2004/04/29 01:38:22 khussey Exp $
+ * $Id: UML2ItemProviderAdapterFactory.java,v 1.4 2004/10/01 19:38:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -75,7 +75,7 @@ public class UML2ItemProviderAdapterFactory extends UML2AdapterFactory implement
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public UML2ItemProviderAdapterFactory() {
 		supportedTypes.add(IStructuredItemContentProvider.class);
@@ -83,6 +83,8 @@ public class UML2ItemProviderAdapterFactory extends UML2AdapterFactory implement
 		supportedTypes.add(IItemPropertySource.class);
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
+
+		supportedTypes.add(IItemQualifiedTextProvider.class);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML22Ecore.java,v 1.4 2004/06/21 19:25:02 khussey Exp $
+ * $Id: UML22Ecore.java,v 1.5 2004/10/01 19:38:34 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml22ecore;
 
@@ -698,6 +698,9 @@ public class UML22Ecore
 
 			eClass = (EClass) doSwitch(object.eContainer());
 			eClass.getEStructuralFeatures().add(eStructuralFeature);
+
+			((EReference) eStructuralFeature).setContainment(object
+				.isComposite());
 
 			if (null != object.getOpposite()) {
 				((EReference) eStructuralFeature)

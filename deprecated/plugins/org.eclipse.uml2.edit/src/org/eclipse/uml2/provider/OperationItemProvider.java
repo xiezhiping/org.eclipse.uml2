@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.12 2004/06/19 01:42:37 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.13 2004/10/01 19:38:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -424,7 +424,7 @@ public class OperationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	public Collection getChildrenFeaturesGen(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue());
@@ -433,6 +433,14 @@ public class OperationItemProvider
 			childrenFeatures.add(UML2Package.eINSTANCE.getOperation_Precondition());
 			childrenFeatures.add(UML2Package.eINSTANCE.getOperation_Postcondition());
 			childrenFeatures.add(UML2Package.eINSTANCE.getOperation_BodyCondition());
+		}
+		return childrenFeatures;
+	}
+
+	public Collection getChildrenFeatures(Object object) {
+		if (null == childrenFeatures) {
+			getChildrenFeaturesGen(object);
+			childrenFeatures.remove(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter());
 		}
 		return childrenFeatures;
 	}

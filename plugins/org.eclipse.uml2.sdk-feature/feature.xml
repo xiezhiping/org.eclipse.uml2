@@ -12,14 +12,14 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: feature.xml,v 1.1 2004/04/29 15:36:56 khussey Exp $
+ * $Id: feature.xml,v 1.2 2004/10/01 19:38:31 khussey Exp $
  */
 -->
 
 <feature
       id="org.eclipse.uml2.sdk"
       label="%feature.label"
-      version="1.0.0"
+      version="1.0.1"
       provider-name="%feature.provider-name">
 
    <description>
@@ -36,22 +36,22 @@
 
    <includes
       id="org.eclipse.uml2"
-      version="1.0.0"
+      version="1.0.1"
       match="compatible"/> 
 
    <includes
       id="org.eclipse.uml2.source"
-      version="1.0.0"
+      version="1.0.1"
       match="compatible"/> 
 
    <includes
       id="org.eclipse.uml2.examples"
-      version="1.0.0"
+      version="1.0.1"
       match="compatible"/> 
 
    <includes
       id="org.eclipse.uml2.doc"
-      version="1.0.0"
+      version="1.0.1"
       match="compatible"/> 
 
 </feature>

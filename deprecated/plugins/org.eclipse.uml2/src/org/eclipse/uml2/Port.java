@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Port.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
+ * $Id: Port.java,v 1.6 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -62,7 +62,7 @@ public interface Port extends Property{
 	 * @return the value of the '<em>Is Behavior</em>' attribute.
 	 * @see #setIsBehavior(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getPort_IsBehavior()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isBehavior();
@@ -92,7 +92,7 @@ public interface Port extends Property{
 	 * @return the value of the '<em>Is Service</em>' attribute.
 	 * @see #setIsService(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getPort_IsService()
-	 * @model default="true" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="true" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isService();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.4 2004/06/18 04:34:31 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.5 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -61,14 +61,14 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	protected static final boolean VALUE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The flag for the '{@link #isValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean value = VALUE_EDEFAULT;
+	protected static final int VALUE_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,6 +77,7 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	 */
 	protected LiteralBooleanImpl() {
 		super();
+		eFlags &= ~VALUE_EFLAG;
 	}
 
 	/**
@@ -94,7 +95,7 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	 * @generated
 	 */
 	public boolean isValue() {
-		return value;
+		return 0 != (eFlags & VALUE_EFLAG);
 	}
 
 	/**
@@ -103,10 +104,15 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	 * @generated
 	 */
 	public void setValue(boolean newValue) {
-		boolean oldValue = value;
-		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LITERAL_BOOLEAN__VALUE, oldValue, value));
+		boolean oldValue = 0 != (eFlags & VALUE_EFLAG);
+		if (newValue) {
+			eFlags |= VALUE_EFLAG;
+		} else {
+			eFlags &= ~VALUE_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LITERAL_BOOLEAN__VALUE, oldValue, newValue));
+		}
 	}
 
 	/**
@@ -388,24 +394,9 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 			case UML2Package.LITERAL_BOOLEAN__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.LITERAL_BOOLEAN__VALUE:
-				return value != VALUE_EDEFAULT;
+				return isValue() != VALUE_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: "); //$NON-NLS-1$
-		result.append(value);
-		result.append(')');
-		return result.toString();
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.8 2004/06/21 21:01:36 khussey Exp $
+ * $Id: UML2Operations.java,v 1.9 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -388,21 +388,23 @@ class UML2Operations {
 		}
 
 		StringBuffer validIdentifier = new StringBuffer();
+		char char_0 = name.charAt(0);
 
-		if (Character.isJavaIdentifierStart(name.charAt(0))) {
-			validIdentifier.append(name.charAt(0));
+		if (Character.isJavaIdentifierStart(char_0)) {
+			validIdentifier.append(char_0);
 		} else {
 			validIdentifier.append('_');
 
-			if (Character.isJavaIdentifierPart(name.charAt(0))) {
-				validIdentifier.append(name.charAt(0));
+			if (Character.isJavaIdentifierPart(char_0)) {
+				validIdentifier.append(char_0);
 			}
 		}
 
 		for (int i = 1; i < name.length(); ++i) {
+			char char_i = name.charAt(i);
 
-			if (Character.isJavaIdentifierPart(name.charAt(i))) {
-				validIdentifier.append(name.charAt(i));
+			if (Character.isJavaIdentifierPart(char_i)) {
+				validIdentifier.append(char_i);
 			}
 		}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.4 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,7 +54,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @return the value of the '<em>Must Isolate</em>' attribute.
 	 * @see #setMustIsolate(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_MustIsolate()
-	 * @model dataType="org.eclipse.uml2.Boolean"
+	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isMustIsolate();

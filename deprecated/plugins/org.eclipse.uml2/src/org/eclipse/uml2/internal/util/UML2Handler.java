@@ -8,17 +8,21 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Handler.java,v 1.6 2004/06/17 15:04:29 khussey Exp $
+ * $Id: UML2Handler.java,v 1.7 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -29,6 +33,8 @@ import org.eclipse.emf.ecore.xmi.impl.SAXXMIHandler;
  */
 public class UML2Handler
 	extends SAXXMIHandler {
+
+	protected final Map urisToProxies;
 
 	/**
 	 * Constructs a new UML2 handler for the specified resource with the
@@ -43,15 +49,8 @@ public class UML2Handler
 	 */
 	public UML2Handler(XMLResource xmiResource, XMLHelper helper, Map options) {
 		super(xmiResource, helper, options);
-	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.ecore.xmi.impl.XMLHandler#getURIConverter()
-	 */
-	protected URIConverter getURIConverter() {
-		return new UML2URIConverterImpl(super.getURIConverter());
+		urisToProxies = new HashMap();
 	}
 
 	/*
@@ -94,5 +93,38 @@ public class UML2Handler
 				}
 			}
 		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecore.xmi.impl.XMLHandler#validateCreateObjectFromFactory(org.eclipse.emf.ecore.EFactory,
+	 *      java.lang.String, org.eclipse.emf.ecore.EObject,
+	 *      org.eclipse.emf.ecore.EStructuralFeature)
+	 */
+	protected EObject validateCreateObjectFromFactory(EFactory factory,
+			String typeName, EObject newObject, EStructuralFeature feature) {
+
+		if (null != newObject && newObject.eIsProxy()) {
+			URI proxyURI = ((InternalEObject) newObject).eProxyURI();
+
+			Map typeNamesToProxies = (Map) urisToProxies.get(proxyURI);
+
+			if (null == typeNamesToProxies) {
+				urisToProxies.put(proxyURI, typeNamesToProxies = new HashMap());
+			}
+
+			EObject proxy = (EObject) typeNamesToProxies.get(typeName);
+
+			if (null == proxy) {
+				typeNamesToProxies.put(typeName, proxy = newObject);
+			}
+
+			// canonicalize proxies
+			newObject = proxy;
+		}
+
+		return super.validateCreateObjectFromFactory(factory, typeName,
+			newObject, feature);
 	}
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.10 2004/06/09 18:04:16 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.11 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -140,8 +140,25 @@ public final class StereotypeOperations
 	 *         object.
 	 */
 	public static Stereotype getStereotype(EObject eObject) {
-		return (Stereotype) getEAnnotation(ANNOTATION_SOURCE__STEREOTYPE,
-			eObject.eClass()).getReferences().get(0);
+		return null == eObject
+			? null
+			: getStereotype(eObject.eClass());
+	}
+
+	/**
+	 * Retrieves the stereotype represented by the specified Ecore class.
+	 * 
+	 * @param eClass
+	 *            The Ecore class for which to retrieve the stereotype.
+	 * @return The stereotype represented by the Ecore class.
+	 */
+	protected static Stereotype getStereotype(EClass eClass) {
+		EAnnotation stereotypeEAnnotation = getEAnnotation(
+			ANNOTATION_SOURCE__STEREOTYPE, eClass);
+
+		return stereotypeEAnnotation.getReferences().isEmpty()
+			? null
+			: (Stereotype) stereotypeEAnnotation.getReferences().get(0);
 	}
 
 	/**
@@ -155,9 +172,13 @@ public final class StereotypeOperations
 	 */
 	public static EnumerationLiteral getEnumerationLiteral(
 			EEnumLiteral eEnumLiteral) {
-		return (EnumerationLiteral) getEAnnotation(
-			ANNOTATION_SOURCE__ENUMERATION_LITERAL, eEnumLiteral)
-			.getReferences().get(0);
+		EAnnotation enumerationLiteralEAnnotation = getEAnnotation(
+			ANNOTATION_SOURCE__ENUMERATION_LITERAL, eEnumLiteral);
+
+		return enumerationLiteralEAnnotation.getReferences().isEmpty()
+			? null
+			: (EnumerationLiteral) enumerationLiteralEAnnotation.getReferences()
+				.get(0);
 	}
 
 	/**
@@ -649,11 +670,7 @@ public final class StereotypeOperations
 					: eObject.eGet(eStructuralFeature));
 			} else {
 
-				if (null == eObject
-					&& stereotype != getEAnnotation(
-						ANNOTATION_SOURCE__STEREOTYPE, eClass).getReferences()
-						.get(0)) {
-
+				if (null == eObject && stereotype != getStereotype(eClass)) {
 					throw new IllegalArgumentException(String
 						.valueOf(propertyName));
 				}

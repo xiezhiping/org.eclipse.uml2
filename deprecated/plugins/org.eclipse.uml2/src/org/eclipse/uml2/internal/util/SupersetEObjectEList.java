@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SupersetEObjectEList.java,v 1.3 2004/06/23 20:34:41 khussey Exp $
+ * $Id: SupersetEObjectEList.java,v 1.4 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -99,11 +100,8 @@ public class SupersetEObjectEList
 
 			if (subsetEStructuralFeature.isMany()) {
 				((EList) owner.eGet(subsetEStructuralFeature)).remove(object);
-			} else {
-
-				if (object.equals(owner.eGet(subsetEStructuralFeature))) {
-					owner.eSet(subsetEStructuralFeature, null);
-				}
+			} else if (object.equals(owner.eGet(subsetEStructuralFeature))) {
+				owner.eSet(subsetEStructuralFeature, null);
 			}
 		}
 	}
@@ -123,13 +121,35 @@ public class SupersetEObjectEList
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.util.BasicEList#didSet(int, java.lang.Object,
-	 *      java.lang.Object)
+	 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#basicSet(int,
+	 *      java.lang.Object, org.eclipse.emf.common.notify.NotificationChain)
 	 */
-	protected void didSet(int index, Object newObject, Object oldObject) {
-		super.didSet(index, newObject, oldObject);
+	public NotificationChain basicSet(int index, Object object,
+			NotificationChain notifications) {
+		Object oldObject = data[index];
 
-		subsetRemove(oldObject);
+		notifications = super.basicSet(index, object, notifications);
+
+		if (oldObject != object) {
+			subsetRemove(oldObject);
+		}
+
+		return notifications;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.List#set(int, java.lang.Object)
+	 */
+	public Object set(int index, Object object) {
+		Object result = super.set(index, object);
+
+		if (result != object) {
+			subsetRemove(result);
+		}
+
+		return result;
 	}
 
 }

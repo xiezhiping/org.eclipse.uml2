@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.13 2004/06/18 17:44:12 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.14 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -842,11 +842,11 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.USE_CASE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.USE_CASE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.USE_CASE__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.USE_CASE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.USE_CASE__GENERAL:

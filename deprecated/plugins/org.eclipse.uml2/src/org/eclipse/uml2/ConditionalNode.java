@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConditionalNode.java,v 1.4 2004/06/06 01:35:02 khussey Exp $
+ * $Id: ConditionalNode.java,v 1.5 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,7 +54,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * @return the value of the '<em>Is Determinate</em>' attribute.
 	 * @see #setIsDeterminate(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getConditionalNode_IsDeterminate()
-	 * @model dataType="org.eclipse.uml2.Boolean"
+	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isDeterminate();
@@ -80,7 +80,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * @return the value of the '<em>Is Assured</em>' attribute.
 	 * @see #setIsAssured(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getConditionalNode_IsAssured()
-	 * @model dataType="org.eclipse.uml2.Boolean"
+	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isAssured();

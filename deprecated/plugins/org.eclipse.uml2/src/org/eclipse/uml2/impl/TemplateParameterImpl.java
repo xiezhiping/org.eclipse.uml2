@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.8 2004/06/18 04:34:32 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.9 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -191,7 +191,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, oldParameteredElement, newParameteredElement);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != getOwnedParameteredElement() && newParameteredElement != getOwnedParameteredElement()) {
+		if (null != ownedParameteredElement && newParameteredElement != ownedParameteredElement) {
 			setOwnedParameteredElement(null);
 		}
 		return msgs;
@@ -243,7 +243,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, oldOwnedParameteredElement, newOwnedParameteredElement);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != newOwnedParameteredElement || oldOwnedParameteredElement == basicGetParameteredElement()) {
+		if (null != newOwnedParameteredElement || oldOwnedParameteredElement == parameteredElement) {
 			setParameteredElement(newOwnedParameteredElement);
 		}
 		return msgs;
@@ -325,7 +325,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__DEFAULT, oldDefault, default_));
 		}
-		if (null != getOwnedDefault() && newDefault != getOwnedDefault()) {
+		if (null != ownedDefault && newDefault != ownedDefault) {
 			setOwnedDefault(null);
 		}
 
@@ -352,7 +352,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT, oldOwnedDefault, newOwnedDefault);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != newOwnedDefault || oldOwnedDefault == basicGetDefault()) {
+		if (null != newOwnedDefault || oldOwnedDefault == default_) {
 			setDefault(newOwnedDefault);
 		}
 		return msgs;

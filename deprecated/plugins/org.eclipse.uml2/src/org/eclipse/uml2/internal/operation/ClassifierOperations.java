@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.7 2004/06/01 20:05:27 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.8 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -21,11 +21,14 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.Classifier;
+import org.eclipse.uml2.Dependency;
 import org.eclipse.uml2.Feature;
 import org.eclipse.uml2.Generalization;
+import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
+import org.eclipse.uml2.Usage;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.util.UML2Validator;
 
@@ -195,6 +198,44 @@ public final class ClassifierOperations
 		generalization.setGeneral(generalClassifier);
 
 		return generalization;
+	}
+
+	/**
+	 * Retrieves the interfaces on which the specified classifier has a usage
+	 * dependency.
+	 * 
+	 * @param classifier
+	 *            The classfier for which to retrieve the useed interfaces.
+	 * @return The interfaces used by the specified classifier.
+	 */
+	public static Set getUsedInterfaces(Classifier classifier) {
+		Set usedInterfaces = new HashSet();
+
+		if (null != classifier) {
+
+			for (Iterator clientDependencies = classifier
+				.getClientDependencies().iterator(); clientDependencies
+				.hasNext();) {
+
+				Dependency clientDependency = (Dependency) clientDependencies
+					.next();
+
+				if (Usage.class.isInstance(clientDependency)) {
+
+					for (Iterator suppliers = clientDependency.getSuppliers()
+						.iterator(); suppliers.hasNext();) {
+
+						NamedElement supplier = (NamedElement) suppliers.next();
+
+						if (Interface.class.isInstance(supplier)) {
+							usedInterfaces.add(supplier);
+						}
+					}
+				}
+			}
+		}
+
+		return usedInterfaces;
 	}
 
 	/**

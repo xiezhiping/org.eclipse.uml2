@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.15 2004/06/03 02:59:18 khussey Exp $
+ * $Id: ElementImpl.java,v 1.16 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EModelElementImpl;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.resource.Resource.Internal;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -84,7 +85,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	protected ElementImpl() {
         super();
         
-        eAdapters().add(getCacheAdapter());
+        getCacheAdapter().adapt(this);
     }
 
 	/**
@@ -343,6 +344,20 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 */
 	protected CacheAdapter getCacheAdapter() {
 		return CacheAdapter.INSTANCE;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecore.InternalEObject#eSetResource(org.eclipse.emf.ecore.resource.Resource.Internal,
+	 *      org.eclipse.emf.common.notify.NotificationChain)
+	 */
+	public NotificationChain eSetResource(Internal resource,
+			NotificationChain notifications) {
+
+		getCacheAdapter().adapt(resource);
+
+		return super.eSetResource(resource, notifications);
 	}
 
 	/*

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PortImpl.java,v 1.7 2004/06/18 04:34:31 khussey Exp $
+ * $Id: PortImpl.java,v 1.8 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -34,10 +34,7 @@ import org.eclipse.uml2.Association;
 import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.DataType;
-import org.eclipse.uml2.Dependency;
-import org.eclipse.uml2.Implementation;
 import org.eclipse.uml2.Interface;
-import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Port;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.ProtocolStateMachine;
@@ -46,7 +43,6 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.Usage;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -87,14 +83,14 @@ public class PortImpl extends PropertyImpl implements Port {
 	protected static final boolean IS_BEHAVIOR_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isBehavior() <em>Is Behavior</em>}' attribute.
+	 * The flag for the '{@link #isBehavior() <em>Is Behavior</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isBehavior()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isBehavior = IS_BEHAVIOR_EDEFAULT;
+	protected static final int IS_BEHAVIOR_EFLAG = Integer.MIN_VALUE >>> 8;
 
 	/**
 	 * The default value of the '{@link #isService() <em>Is Service</em>}' attribute.
@@ -107,14 +103,14 @@ public class PortImpl extends PropertyImpl implements Port {
 	protected static final boolean IS_SERVICE_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isService() <em>Is Service</em>}' attribute.
+	 * The flag for the '{@link #isService() <em>Is Service</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isService()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isService = IS_SERVICE_EDEFAULT;
+	protected static final int IS_SERVICE_EFLAG = Integer.MIN_VALUE >>> 9;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedPorts() <em>Redefined Port</em>}' reference list.
@@ -143,6 +139,8 @@ public class PortImpl extends PropertyImpl implements Port {
 	 */
 	protected PortImpl() {
 		super();
+		eFlags &= ~IS_BEHAVIOR_EFLAG;
+		eFlags |= IS_SERVICE_EFLAG;
 	}
 
 	/**
@@ -160,7 +158,7 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public boolean isBehavior() {
-		return isBehavior;
+		return 0 != (eFlags & IS_BEHAVIOR_EFLAG);
 	}
 
 	/**
@@ -169,10 +167,15 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public void setIsBehavior(boolean newIsBehavior) {
-		boolean oldIsBehavior = isBehavior;
-		isBehavior = newIsBehavior;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_BEHAVIOR, oldIsBehavior, isBehavior));
+		boolean oldIsBehavior = 0 != (eFlags & IS_BEHAVIOR_EFLAG);
+		if (newIsBehavior) {
+			eFlags |= IS_BEHAVIOR_EFLAG;
+		} else {
+			eFlags &= ~IS_BEHAVIOR_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_BEHAVIOR, oldIsBehavior, newIsBehavior));
+		}
 	}
 
 	/**
@@ -181,7 +184,7 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public boolean isService() {
-		return isService;
+		return 0 != (eFlags & IS_SERVICE_EFLAG);
 	}
 
 	/**
@@ -190,10 +193,15 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public void setIsService(boolean newIsService) {
-		boolean oldIsService = isService;
-		isService = newIsService;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_SERVICE, oldIsService, isService));
+		boolean oldIsService = 0 != (eFlags & IS_SERVICE_EFLAG);
+		if (newIsService) {
+			eFlags |= IS_SERVICE_EFLAG;
+		} else {
+			eFlags &= ~IS_SERVICE_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_SERVICE, oldIsService, newIsService));
+		}
 	}
 
 	/**
@@ -209,54 +217,16 @@ public class PortImpl extends PropertyImpl implements Port {
 			Set required = new HashSet();
 
 			if (Classifier.class.isInstance(getType())) {
+				Classifier classifier = (Classifier) getType();
 
-				for (Iterator clientDependencies = getType()
-					.getClientDependencies().iterator(); clientDependencies
-					.hasNext();) {
-					
-					Dependency clientDependency = (Dependency) clientDependencies
-						.next();
+				if (!Interface.class.isInstance(classifier)) {
+					required.addAll(classifier.getUsedInterfaces());
 
-					if (Usage.class.isInstance(clientDependency)) {
+					for (Iterator allParents = classifier.allParents()
+						.iterator(); allParents.hasNext();) {
 
-						for (Iterator suppliers = clientDependency
-							.getSuppliers().iterator(); suppliers.hasNext();) {
-							
-							NamedElement supplier = (NamedElement) suppliers
-								.next();
-
-							if (Interface.class.isInstance(supplier)) {
-								required.add(supplier);
-							}
-						}
-					}
-				}
-
-				for (Iterator allParents = ((Classifier) getType())
-					.allParents().iterator(); allParents.hasNext();) {
-					
-					Classifier allParent = (Classifier) allParents.next();
-
-					for (Iterator clientDependencies = allParent
-						.getClientDependencies().iterator(); clientDependencies
-						.hasNext();) {
-						
-						Dependency clientDependency = (Dependency) clientDependencies
-							.next();
-
-						if (Usage.class.isInstance(clientDependency)) {
-
-							for (Iterator suppliers = clientDependency
-								.getSuppliers().iterator(); suppliers.hasNext();) {
-								
-								NamedElement supplier = (NamedElement) suppliers
-									.next();
-
-								if (Interface.class.isInstance(supplier)) {
-									required.add(supplier);
-								}
-							}
-						}
+						required.addAll(((Classifier) allParents.next())
+							.getUsedInterfaces());
 					}
 				}
 			}
@@ -332,17 +302,8 @@ public class PortImpl extends PropertyImpl implements Port {
 			if (Interface.class.isInstance(getType())) {
 				provided.add(getType());
 			} else if (BehavioredClassifier.class.isInstance(getType())) {
-
-				for (Iterator implementations = ((BehavioredClassifier) getType())
-					.getImplementations().iterator(); implementations.hasNext();) {
-
-					Implementation implementation = (Implementation) implementations
-						.next();
-
-					if (null != implementation.getContract()) {
-						provided.add(implementation.getContract());
-					}
-				}
+				provided.addAll(((BehavioredClassifier) getType())
+					.getImplementedInterfaces());
 			}
 
 			provideds = new EcoreEList.UnmodifiableEList(this,
@@ -951,17 +912,17 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.PORT__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.PORT__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.PORT__IS_STATIC:
-				return isStatic != IS_STATIC_EDEFAULT;
+				return isStatic() != IS_STATIC_EDEFAULT;
 			case UML2Package.PORT__TYPE:
 				return type != null;
 			case UML2Package.PORT__IS_ORDERED:
-				return isOrdered != IS_ORDERED_EDEFAULT;
+				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UML2Package.PORT__IS_UNIQUE:
-				return isUnique != IS_UNIQUE_EDEFAULT;
+				return isUnique() != IS_UNIQUE_EDEFAULT;
 			case UML2Package.PORT__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.PORT__UPPER:
@@ -987,13 +948,13 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__IS_COMPOSITE:
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UML2Package.PORT__IS_DERIVED:
-				return isDerived != IS_DERIVED_EDEFAULT;
+				return isDerived() != IS_DERIVED_EDEFAULT;
 			case UML2Package.PORT__CLASS_:
 				return basicGetClass_() != null;
 			case UML2Package.PORT__OPPOSITE:
 				return basicGetOpposite() != null;
 			case UML2Package.PORT__IS_DERIVED_UNION:
-				return isDerivedUnion != IS_DERIVED_UNION_EDEFAULT;
+				return isDerivedUnion() != IS_DERIVED_UNION_EDEFAULT;
 			case UML2Package.PORT__OWNING_ASSOCIATION:
 				return getOwningAssociation() != null;
 			case UML2Package.PORT__REDEFINED_PROPERTY:
@@ -1013,9 +974,9 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__ASSOCIATION_END:
 				return getAssociationEnd() != null;
 			case UML2Package.PORT__IS_BEHAVIOR:
-				return isBehavior != IS_BEHAVIOR_EDEFAULT;
+				return isBehavior() != IS_BEHAVIOR_EDEFAULT;
 			case UML2Package.PORT__IS_SERVICE:
-				return isService != IS_SERVICE_EDEFAULT;
+				return isService() != IS_SERVICE_EDEFAULT;
 			case UML2Package.PORT__REQUIRED:
 				return !getRequireds().isEmpty();
 			case UML2Package.PORT__REDEFINED_PORT:
@@ -1026,23 +987,6 @@ public class PortImpl extends PropertyImpl implements Port {
 				return protocol != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isBehavior: "); //$NON-NLS-1$
-		result.append(isBehavior);
-		result.append(", isService: "); //$NON-NLS-1$
-		result.append(isService);
-		result.append(')');
-		return result.toString();
 	}
 
 } //PortImpl

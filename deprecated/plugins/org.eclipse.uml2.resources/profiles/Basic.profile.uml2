@@ -1,301 +1,299 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Profile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_6mFRgK86Edih9-GG5afQ0g" name="Basic" metaclassReference="_9vHfAK86Edih9-GG5afQ0g _9vsGxK86Edih9-GG5afQ0g _9vyNYa86Edih9-GG5afQ0g _9v4UBa86Edih9-GG5afQ0g _9wEhQa86Edih9-GG5afQ0g _9wW1JK86Edih9-GG5afQ0g _9w1WRK86Edih9-GG5afQ0g">
+<uml:Profile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_6mFRgK86Edih9-GG5afQ0g" name="Basic" metaclassReference="_9vHfAK86Edih9-GG5afQ0g _9vsGxK86Edih9-GG5afQ0g _9vyNYa86Edih9-GG5afQ0g _9v4UBa86Edih9-GG5afQ0g _9wEhQa86Edih9-GG5afQ0g _9wW1JK86Edih9-GG5afQ0g _9w1WRK86Edih9-GG5afQ0g">
   <eAnnotations xmi:id="__Ka_YK86Edih9-GG5afQ0g" source="attributes">
     <details xmi:id="__K_nIK86Edih9-GG5afQ0g" key="version" value="0"/>
   </eAnnotations>
   <eAnnotations xmi:id="__LL0YK86Edih9-GG5afQ0g" source="ePackages">
-    <contents xsi:type="ecore:EPackage" xmi:id="__LeIQK86Edih9-GG5afQ0g" name="Basic_0" nsURI="http:///Basic_0.profile.uml2" nsPrefix="Basic_0">
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIQa86Edih9-GG5afQ0g" name="Basic__Responsibility">
+    <contents xmi:type="ecore:EPackage" xmi:id="__LeIQK86Edih9-GG5afQ0g" name="Basic_0" nsURI="http:///Basic_0.profile.uml2" nsPrefix="Basic_0">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIQa86Edih9-GG5afQ0g" name="Basic__Responsibility">
         <eAnnotations xmi:id="__LeIQq86Edih9-GG5afQ0g" source="stereotype" references="_9wvPqa86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIQ686Edih9-GG5afQ0g" name="Basic__Auxiliary">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIQ686Edih9-GG5afQ0g" name="Basic__Auxiliary">
         <eAnnotations xmi:id="__LeIRK86Edih9-GG5afQ0g" source="stereotype" references="_9l21UK86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIRa86Edih9-GG5afQ0g" name="Basic__Script">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIRa86Edih9-GG5afQ0g" name="Basic__Script">
         <eAnnotations xmi:id="__LeIRq86Edih9-GG5afQ0g" source="stereotype" references="_9w1WQ686Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIR686Edih9-GG5afQ0g" name="Basic__Call">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIR686Edih9-GG5afQ0g" name="Basic__Call">
         <eAnnotations xmi:id="__LeISK86Edih9-GG5afQ0g" source="stereotype" references="_9v-apK86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeISa86Edih9-GG5afQ0g" name="Basic__Instantiate">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeISa86Edih9-GG5afQ0g" name="Basic__Instantiate">
         <eAnnotations xmi:id="__LeISq86Edih9-GG5afQ0g" source="stereotype" references="_9wjCZK86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIS686Edih9-GG5afQ0g" name="Basic__Trace">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIS686Edih9-GG5afQ0g" name="Basic__Trace">
         <eAnnotations xmi:id="__LeITK86Edih9-GG5afQ0g" source="stereotype" references="_9w7c5K86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeITa86Edih9-GG5afQ0g" name="Basic__Utility">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeITa86Edih9-GG5afQ0g" name="Basic__Utility">
         <eAnnotations xmi:id="__LeITq86Edih9-GG5afQ0g" source="stereotype" references="_9xBjhK86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIT686Edih9-GG5afQ0g" name="Basic__Framework">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIT686Edih9-GG5afQ0g" name="Basic__Framework">
         <eAnnotations xmi:id="__LeIUK86Edih9-GG5afQ0g" source="stereotype" references="_9wW1I686Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIUa86Edih9-GG5afQ0g" name="Basic__Type">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIUa86Edih9-GG5afQ0g" name="Basic__Type">
         <eAnnotations xmi:id="__LeIUq86Edih9-GG5afQ0g" source="stereotype" references="_9w7c6a86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIU686Edih9-GG5afQ0g" name="Basic__ModelLibrary">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIU686Edih9-GG5afQ0g" name="Basic__ModelLibrary">
         <eAnnotations xmi:id="__LeIVK86Edih9-GG5afQ0g" source="stereotype" references="_9wpJCa86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIVa86Edih9-GG5afQ0g" name="Basic__Refine">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIVa86Edih9-GG5afQ0g" name="Basic__Refine">
         <eAnnotations xmi:id="__LeIVq86Edih9-GG5afQ0g" source="stereotype" references="_9wvPpK86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIV686Edih9-GG5afQ0g" name="Basic__BuildComponent">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIV686Edih9-GG5afQ0g" name="Basic__BuildComponent">
         <eAnnotations xmi:id="__LeIWK86Edih9-GG5afQ0g" source="stereotype" references="_9vsGw686Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIWa86Edih9-GG5afQ0g" name="Basic__Create">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIWa86Edih9-GG5afQ0g" name="Basic__Create">
         <eAnnotations xmi:id="__LeIWq86Edih9-GG5afQ0g" source="stereotype" references="_9v4UBK86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIW686Edih9-GG5afQ0g" name="Basic__Send">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIW686Edih9-GG5afQ0g" name="Basic__Send">
         <eAnnotations xmi:id="__LeIXK86Edih9-GG5afQ0g" source="stereotype" references="_9w1WSa86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIXa86Edih9-GG5afQ0g" name="Basic__ImplementationClass">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIXa86Edih9-GG5afQ0g" name="Basic__ImplementationClass">
         <eAnnotations xmi:id="__LeIXq86Edih9-GG5afQ0g" source="stereotype" references="_9wc7ya86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIX686Edih9-GG5afQ0g" name="Basic__Destroy">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIX686Edih9-GG5afQ0g" name="Basic__Destroy">
         <eAnnotations xmi:id="__LeIYK86Edih9-GG5afQ0g" source="stereotype" references="_9wKn4K86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIYa86Edih9-GG5afQ0g" name="Basic__Derive">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIYa86Edih9-GG5afQ0g" name="Basic__Derive">
         <eAnnotations xmi:id="__LeIYq86Edih9-GG5afQ0g" source="stereotype" references="_9wEhQK86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIY686Edih9-GG5afQ0g" name="Basic__Focus">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIY686Edih9-GG5afQ0g" name="Basic__Focus">
         <eAnnotations xmi:id="__LeIZK86Edih9-GG5afQ0g" source="stereotype" references="_9wQuhK86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIZa86Edih9-GG5afQ0g" name="Basic__Metaclass">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIZa86Edih9-GG5afQ0g" name="Basic__Metaclass">
         <eAnnotations xmi:id="__LeIZq86Edih9-GG5afQ0g" source="stereotype" references="_9wpJBK86Edih9-GG5afQ0g"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" xmi:id="__LeIZ686Edih9-GG5afQ0g" name="Basic__Implement">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__LeIZ686Edih9-GG5afQ0g" name="Basic__Implement">
         <eAnnotations xmi:id="__LeIaK86Edih9-GG5afQ0g" source="stereotype" references="_9wc7xK86Edih9-GG5afQ0g"/>
       </eClassifiers>
     </contents>
   </eAnnotations>
   <elementImport xmi:id="_9vHfAK86Edih9-GG5afQ0g" visibility="private">
-    <importedElement xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
+    <importedElement xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
   </elementImport>
   <elementImport xmi:id="_9vsGxK86Edih9-GG5afQ0g" visibility="private">
-    <importedElement xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9VJjK86EdiEh75YJ_3n8g"/>
+    <importedElement xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9VJjK86EdiEh75YJ_3n8g"/>
   </elementImport>
   <elementImport xmi:id="_9vyNYa86Edih9-GG5afQ0g" visibility="private">
-    <importedElement xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9I8Kq86EdiEh75YJ_3n8g"/>
+    <importedElement xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9I8Kq86EdiEh75YJ_3n8g"/>
   </elementImport>
   <elementImport xmi:id="_9v4UBa86Edih9-GG5afQ0g" visibility="private">
-    <importedElement xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
+    <importedElement xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
   </elementImport>
   <elementImport xmi:id="_9wEhQa86Edih9-GG5afQ0g" visibility="private">
-    <importedElement xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2YK86EdiEh75YJ_3n8g"/>
+    <importedElement xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2YK86EdiEh75YJ_3n8g"/>
   </elementImport>
   <elementImport xmi:id="_9wW1JK86Edih9-GG5afQ0g" visibility="private">
-    <importedElement xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m82oYa86EdiEh75YJ_3n8g"/>
+    <importedElement xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m82oYa86EdiEh75YJ_3n8g"/>
   </elementImport>
   <elementImport xmi:id="_9w1WRK86Edih9-GG5afQ0g" visibility="private">
-    <importedElement xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2Oq86EdiEh75YJ_3n8g"/>
+    <importedElement xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2Oq86EdiEh75YJ_3n8g"/>
   </elementImport>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9l21UK86Edih9-GG5afQ0g" name="Auxiliary">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9l21UK86Edih9-GG5afQ0g" name="Auxiliary">
     <ownedAttribute xmi:id="_9vsGwq86Edih9-GG5afQ0g" name="base$Class" association="_9vNloK86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9vNloK86Edih9-GG5afQ0g" name="Class_Auxiliary" memberEnd="_9vsGwK86Edih9-GG5afQ0g _9vsGwq86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9vsGwK86Edih9-GG5afQ0g" name="extension$Auxiliary" type="_9l21UK86Edih9-GG5afQ0g" association="_9vNloK86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9vsGwa86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9vNloK86Edih9-GG5afQ0g" name="Class_Auxiliary" memberEnd="_9vsGwK86Edih9-GG5afQ0g _9vsGwq86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9vsGwK86Edih9-GG5afQ0g" name="extension$Auxiliary" type="_9l21UK86Edih9-GG5afQ0g" association="_9vNloK86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9vsGwa86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9vsGw686Edih9-GG5afQ0g" name="BuildComponent">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9vsGw686Edih9-GG5afQ0g" name="BuildComponent">
     <ownedAttribute xmi:id="_9vsGyK86Edih9-GG5afQ0g" name="base$Component" association="_9vsGxa86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9VJjK86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9VJjK86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9vsGxa86Edih9-GG5afQ0g" name="Component_BuildComponent" memberEnd="_9vsGxq86Edih9-GG5afQ0g _9vsGyK86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9vsGxq86Edih9-GG5afQ0g" name="extension$BuildComponent" type="_9vsGw686Edih9-GG5afQ0g" association="_9vsGxa86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9vsGx686Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9vsGxa86Edih9-GG5afQ0g" name="Component_BuildComponent" memberEnd="_9vsGxq86Edih9-GG5afQ0g _9vsGyK86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9vsGxq86Edih9-GG5afQ0g" name="extension$BuildComponent" type="_9vsGw686Edih9-GG5afQ0g" association="_9vsGxa86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9vsGx686Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9vyNYK86Edih9-GG5afQ0g" name="Create">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9v4UBK86Edih9-GG5afQ0g" name="Create">
     <ownedAttribute xmi:id="_9v4UA686Edih9-GG5afQ0g" name="base$BehavioralFeature" association="_9v4UAK86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9I8Kq86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9I8Kq86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
-  </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9v4UAK86Edih9-GG5afQ0g" name="BehavioralFeature_Create" memberEnd="_9v4UAa86Edih9-GG5afQ0g _9v4UA686Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9v4UAa86Edih9-GG5afQ0g" name="extension$Create" type="_9vyNYK86Edih9-GG5afQ0g" association="_9v4UAK86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9v4UAq86Edih9-GG5afQ0g"/>
-    </ownedEnd>
-  </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9v4UBK86Edih9-GG5afQ0g" name="Create">
     <ownedAttribute xmi:id="_9v-ao686Edih9-GG5afQ0g" name="base$Usage" association="_9v-aoK86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9v-aoK86Edih9-GG5afQ0g" name="Usage_Create" memberEnd="_9v-aoa86Edih9-GG5afQ0g _9v-ao686Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9v-aoa86Edih9-GG5afQ0g" name="extension$Create" type="_9v4UBK86Edih9-GG5afQ0g" association="_9v-aoK86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9v-aoq86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9v4UAK86Edih9-GG5afQ0g" name="BehavioralFeature_Create" memberEnd="_9v4UAa86Edih9-GG5afQ0g _9v4UA686Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9v4UAa86Edih9-GG5afQ0g" name="extension$Create" type="_9v4UBK86Edih9-GG5afQ0g" association="_9v4UAK86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9v4UAq86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9v-apK86Edih9-GG5afQ0g" name="Call">
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9v-aoK86Edih9-GG5afQ0g" name="Usage_Create" memberEnd="_9v-aoa86Edih9-GG5afQ0g _9v-ao686Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9v-aoa86Edih9-GG5afQ0g" name="extension$Create" type="_9v4UBK86Edih9-GG5afQ0g" association="_9v-aoK86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9v-aoq86Edih9-GG5afQ0g"/>
+    </ownedEnd>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9v-apK86Edih9-GG5afQ0g" name="Call">
     <ownedAttribute xmi:id="_9v-aqK86Edih9-GG5afQ0g" name="base$Usage" association="_9v-apa86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9v-apa86Edih9-GG5afQ0g" name="Usage_Call" memberEnd="_9v-apq86Edih9-GG5afQ0g _9v-aqK86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9v-apq86Edih9-GG5afQ0g" name="extension$Call" type="_9v-apK86Edih9-GG5afQ0g" association="_9v-apa86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9v-ap686Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9v-apa86Edih9-GG5afQ0g" name="Usage_Call" memberEnd="_9v-apq86Edih9-GG5afQ0g _9v-aqK86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9v-apq86Edih9-GG5afQ0g" name="extension$Call" type="_9v-apK86Edih9-GG5afQ0g" association="_9v-apa86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9v-ap686Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9wEhQK86Edih9-GG5afQ0g" name="Derive">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9wEhQK86Edih9-GG5afQ0g" name="Derive">
     <ownedAttribute xmi:id="_9wEhRa86Edih9-GG5afQ0g" name="base$Abstraction" association="_9wEhQq86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2YK86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2YK86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9wEhQq86Edih9-GG5afQ0g" name="Abstraction_Derive" memberEnd="_9wEhQ686Edih9-GG5afQ0g _9wEhRa86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9wEhQ686Edih9-GG5afQ0g" name="extension$Derive" type="_9wEhQK86Edih9-GG5afQ0g" association="_9wEhQq86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9wEhRK86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9wEhQq86Edih9-GG5afQ0g" name="Abstraction_Derive" memberEnd="_9wEhQ686Edih9-GG5afQ0g _9wEhRa86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9wEhQ686Edih9-GG5afQ0g" name="extension$Derive" type="_9wEhQK86Edih9-GG5afQ0g" association="_9wEhQq86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wEhRK86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9wKn4K86Edih9-GG5afQ0g" name="Destroy">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9wKn4K86Edih9-GG5afQ0g" name="Destroy">
     <ownedAttribute xmi:id="_9wQug686Edih9-GG5afQ0g" name="base$BehavioralFeature" association="_9wQugK86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9I8Kq86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9I8Kq86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9wQugK86Edih9-GG5afQ0g" name="BehavioralFeature_Destroy" memberEnd="_9wQuga86Edih9-GG5afQ0g _9wQug686Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9wQuga86Edih9-GG5afQ0g" name="extension$Destroy" type="_9wKn4K86Edih9-GG5afQ0g" association="_9wQugK86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9wQugq86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9wQugK86Edih9-GG5afQ0g" name="BehavioralFeature_Destroy" memberEnd="_9wQuga86Edih9-GG5afQ0g _9wQug686Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9wQuga86Edih9-GG5afQ0g" name="extension$Destroy" type="_9wKn4K86Edih9-GG5afQ0g" association="_9wQugK86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wQugq86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9wQuhK86Edih9-GG5afQ0g" name="Focus">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9wQuhK86Edih9-GG5afQ0g" name="Focus">
     <ownedAttribute xmi:id="_9wW1Iq86Edih9-GG5afQ0g" name="base$Class" association="_9wQuha86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9wQuha86Edih9-GG5afQ0g" name="Class_Focus" memberEnd="_9wW1IK86Edih9-GG5afQ0g _9wW1Iq86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9wW1IK86Edih9-GG5afQ0g" name="extension$Focus" type="_9wQuhK86Edih9-GG5afQ0g" association="_9wQuha86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9wW1Ia86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9wQuha86Edih9-GG5afQ0g" name="Class_Focus" memberEnd="_9wW1IK86Edih9-GG5afQ0g _9wW1Iq86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9wW1IK86Edih9-GG5afQ0g" name="extension$Focus" type="_9wQuhK86Edih9-GG5afQ0g" association="_9wQuha86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wW1Ia86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9wW1I686Edih9-GG5afQ0g" name="Framework">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9wW1I686Edih9-GG5afQ0g" name="Framework">
     <ownedAttribute xmi:id="_9wc7w686Edih9-GG5afQ0g" name="base$Package" association="_9wc7wK86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m82oYa86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m82oYa86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9wc7wK86Edih9-GG5afQ0g" name="Package_Framework" memberEnd="_9wc7wa86Edih9-GG5afQ0g _9wc7w686Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9wc7wa86Edih9-GG5afQ0g" name="extension$Framework" type="_9wW1I686Edih9-GG5afQ0g" association="_9wc7wK86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9wc7wq86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9wc7wK86Edih9-GG5afQ0g" name="Package_Framework" memberEnd="_9wc7wa86Edih9-GG5afQ0g _9wc7w686Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9wc7wa86Edih9-GG5afQ0g" name="extension$Framework" type="_9wW1I686Edih9-GG5afQ0g" association="_9wc7wK86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wc7wq86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9wc7xK86Edih9-GG5afQ0g" name="Implement">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9wc7xK86Edih9-GG5afQ0g" name="Implement">
     <ownedAttribute xmi:id="_9wc7yK86Edih9-GG5afQ0g" name="base$Component" association="_9wc7xa86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9VJjK86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9VJjK86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9wc7xa86Edih9-GG5afQ0g" name="Component_Implement" memberEnd="_9wc7xq86Edih9-GG5afQ0g _9wc7yK86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9wc7xq86Edih9-GG5afQ0g" name="extension$Implement" type="_9wc7xK86Edih9-GG5afQ0g" association="_9wc7xa86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9wc7x686Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9wc7xa86Edih9-GG5afQ0g" name="Component_Implement" memberEnd="_9wc7xq86Edih9-GG5afQ0g _9wc7yK86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9wc7xq86Edih9-GG5afQ0g" name="extension$Implement" type="_9wc7xK86Edih9-GG5afQ0g" association="_9wc7xa86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wc7x686Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9wc7ya86Edih9-GG5afQ0g" name="ImplementationClass">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9wc7ya86Edih9-GG5afQ0g" name="ImplementationClass">
     <ownedAttribute xmi:id="_9wjCY686Edih9-GG5afQ0g" name="base$Class" association="_9wjCYK86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9wjCYK86Edih9-GG5afQ0g" name="Class_ImplementationClass" memberEnd="_9wjCYa86Edih9-GG5afQ0g _9wjCY686Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9wjCYa86Edih9-GG5afQ0g" name="extension$ImplementationClass" type="_9wc7ya86Edih9-GG5afQ0g" association="_9wjCYK86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9wjCYq86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9wjCYK86Edih9-GG5afQ0g" name="Class_ImplementationClass" memberEnd="_9wjCYa86Edih9-GG5afQ0g _9wjCY686Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9wjCYa86Edih9-GG5afQ0g" name="extension$ImplementationClass" type="_9wc7ya86Edih9-GG5afQ0g" association="_9wjCYK86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wjCYq86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9wjCZK86Edih9-GG5afQ0g" name="Instantiate">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9wjCZK86Edih9-GG5afQ0g" name="Instantiate">
     <ownedAttribute xmi:id="_9wpJA686Edih9-GG5afQ0g" name="base$Usage" association="_9wpJAK86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9wpJAK86Edih9-GG5afQ0g" name="Usage_Instantiate" memberEnd="_9wpJAa86Edih9-GG5afQ0g _9wpJA686Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9wpJAa86Edih9-GG5afQ0g" name="extension$Instantiate" type="_9wjCZK86Edih9-GG5afQ0g" association="_9wpJAK86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9wpJAq86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9wpJAK86Edih9-GG5afQ0g" name="Usage_Instantiate" memberEnd="_9wpJAa86Edih9-GG5afQ0g _9wpJA686Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9wpJAa86Edih9-GG5afQ0g" name="extension$Instantiate" type="_9wjCZK86Edih9-GG5afQ0g" association="_9wpJAK86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wpJAq86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9wpJBK86Edih9-GG5afQ0g" name="Metaclass">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9wpJBK86Edih9-GG5afQ0g" name="Metaclass">
     <ownedAttribute xmi:id="_9wpJCK86Edih9-GG5afQ0g" name="base$Class" association="_9wpJBa86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9wpJBa86Edih9-GG5afQ0g" name="Class_Metaclass" memberEnd="_9wpJBq86Edih9-GG5afQ0g _9wpJCK86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9wpJBq86Edih9-GG5afQ0g" name="extension$Metaclass" type="_9wpJBK86Edih9-GG5afQ0g" association="_9wpJBa86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9wpJB686Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9wpJBa86Edih9-GG5afQ0g" name="Class_Metaclass" memberEnd="_9wpJBq86Edih9-GG5afQ0g _9wpJCK86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9wpJBq86Edih9-GG5afQ0g" name="extension$Metaclass" type="_9wpJBK86Edih9-GG5afQ0g" association="_9wpJBa86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wpJB686Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9wpJCa86Edih9-GG5afQ0g" name="ModelLibrary">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9wpJCa86Edih9-GG5afQ0g" name="ModelLibrary">
     <ownedAttribute xmi:id="_9wvPo686Edih9-GG5afQ0g" name="base$Package" association="_9wvPoK86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m82oYa86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m82oYa86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9wvPoK86Edih9-GG5afQ0g" name="Package_ModelLibrary" memberEnd="_9wvPoa86Edih9-GG5afQ0g _9wvPo686Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9wvPoa86Edih9-GG5afQ0g" name="extension$ModelLibrary" type="_9wpJCa86Edih9-GG5afQ0g" association="_9wvPoK86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9wvPoq86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9wvPoK86Edih9-GG5afQ0g" name="Package_ModelLibrary" memberEnd="_9wvPoa86Edih9-GG5afQ0g _9wvPo686Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9wvPoa86Edih9-GG5afQ0g" name="extension$ModelLibrary" type="_9wpJCa86Edih9-GG5afQ0g" association="_9wvPoK86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wvPoq86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9wvPpK86Edih9-GG5afQ0g" name="Refine">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9wvPpK86Edih9-GG5afQ0g" name="Refine">
     <ownedAttribute xmi:id="_9wvPqK86Edih9-GG5afQ0g" name="base$Abstraction" association="_9wvPpa86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2YK86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2YK86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9wvPpa86Edih9-GG5afQ0g" name="Abstraction_Refine" memberEnd="_9wvPpq86Edih9-GG5afQ0g _9wvPqK86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9wvPpq86Edih9-GG5afQ0g" name="extension$Refine" type="_9wvPpK86Edih9-GG5afQ0g" association="_9wvPpa86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9wvPp686Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9wvPpa86Edih9-GG5afQ0g" name="Abstraction_Refine" memberEnd="_9wvPpq86Edih9-GG5afQ0g _9wvPqK86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9wvPpq86Edih9-GG5afQ0g" name="extension$Refine" type="_9wvPpK86Edih9-GG5afQ0g" association="_9wvPpa86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wvPp686Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9wvPqa86Edih9-GG5afQ0g" name="Responsibility">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9wvPqa86Edih9-GG5afQ0g" name="Responsibility">
     <ownedAttribute xmi:id="_9w1WQq86Edih9-GG5afQ0g" name="base$Usage" association="_9wvPqq86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9wvPqq86Edih9-GG5afQ0g" name="Usage_Responsibility" memberEnd="_9w1WQK86Edih9-GG5afQ0g _9w1WQq86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9w1WQK86Edih9-GG5afQ0g" name="extension$Responsibility" type="_9wvPqa86Edih9-GG5afQ0g" association="_9wvPqq86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9w1WQa86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9wvPqq86Edih9-GG5afQ0g" name="Usage_Responsibility" memberEnd="_9w1WQK86Edih9-GG5afQ0g _9w1WQq86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9w1WQK86Edih9-GG5afQ0g" name="extension$Responsibility" type="_9wvPqa86Edih9-GG5afQ0g" association="_9wvPqq86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9w1WQa86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9w1WQ686Edih9-GG5afQ0g" name="Script">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9w1WQ686Edih9-GG5afQ0g" name="Script">
     <ownedAttribute xmi:id="_9w1WSK86Edih9-GG5afQ0g" name="base$Artifact" association="_9w1WRa86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2Oq86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2Oq86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9w1WRa86Edih9-GG5afQ0g" name="Artifact_Script" memberEnd="_9w1WRq86Edih9-GG5afQ0g _9w1WSK86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9w1WRq86Edih9-GG5afQ0g" name="extension$Script" type="_9w1WQ686Edih9-GG5afQ0g" association="_9w1WRa86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9w1WR686Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9w1WRa86Edih9-GG5afQ0g" name="Artifact_Script" memberEnd="_9w1WRq86Edih9-GG5afQ0g _9w1WSK86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9w1WRq86Edih9-GG5afQ0g" name="extension$Script" type="_9w1WQ686Edih9-GG5afQ0g" association="_9w1WRa86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9w1WR686Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9w1WSa86Edih9-GG5afQ0g" name="Send">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9w1WSa86Edih9-GG5afQ0g" name="Send">
     <ownedAttribute xmi:id="_9w7c4686Edih9-GG5afQ0g" name="base$Usage" association="_9w7c4K86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9w7c4K86Edih9-GG5afQ0g" name="Usage_Send" memberEnd="_9w7c4a86Edih9-GG5afQ0g _9w7c4686Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9w7c4a86Edih9-GG5afQ0g" name="extension$Send" type="_9w1WSa86Edih9-GG5afQ0g" association="_9w7c4K86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9w7c4q86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9w7c4K86Edih9-GG5afQ0g" name="Usage_Send" memberEnd="_9w7c4a86Edih9-GG5afQ0g _9w7c4686Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9w7c4a86Edih9-GG5afQ0g" name="extension$Send" type="_9w1WSa86Edih9-GG5afQ0g" association="_9w7c4K86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9w7c4q86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9w7c5K86Edih9-GG5afQ0g" name="Trace">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9w7c5K86Edih9-GG5afQ0g" name="Trace">
     <ownedAttribute xmi:id="_9w7c6K86Edih9-GG5afQ0g" name="base$Abstraction" association="_9w7c5a86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2YK86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9C2YK86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9w7c5a86Edih9-GG5afQ0g" name="Abstraction_Trace" memberEnd="_9w7c5q86Edih9-GG5afQ0g _9w7c6K86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9w7c5q86Edih9-GG5afQ0g" name="extension$Trace" type="_9w7c5K86Edih9-GG5afQ0g" association="_9w7c5a86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9w7c5686Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9w7c5a86Edih9-GG5afQ0g" name="Abstraction_Trace" memberEnd="_9w7c5q86Edih9-GG5afQ0g _9w7c6K86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9w7c5q86Edih9-GG5afQ0g" name="extension$Trace" type="_9w7c5K86Edih9-GG5afQ0g" association="_9w7c5a86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9w7c5686Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9w7c6a86Edih9-GG5afQ0g" name="Type">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9w7c6a86Edih9-GG5afQ0g" name="Type">
     <ownedAttribute xmi:id="_9xBjg686Edih9-GG5afQ0g" name="base$Class" association="_9xBjgK86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9xBjgK86Edih9-GG5afQ0g" name="Class_Type" memberEnd="_9xBjga86Edih9-GG5afQ0g _9xBjg686Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9xBjga86Edih9-GG5afQ0g" name="extension$Type" type="_9w7c6a86Edih9-GG5afQ0g" association="_9xBjgK86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9xBjgq86Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9xBjgK86Edih9-GG5afQ0g" name="Class_Type" memberEnd="_9xBjga86Edih9-GG5afQ0g _9xBjg686Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9xBjga86Edih9-GG5afQ0g" name="extension$Type" type="_9w7c6a86Edih9-GG5afQ0g" association="_9xBjgK86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9xBjgq86Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xsi:type="uml:Stereotype" xmi:id="_9xBjhK86Edih9-GG5afQ0g" name="Utility">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9xBjhK86Edih9-GG5afQ0g" name="Utility">
     <ownedAttribute xmi:id="_9xBjiK86Edih9-GG5afQ0g" name="base$Class" association="_9xBjha86Edih9-GG5afQ0g">
-      <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
+      <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m88uxq86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
   </ownedMember>
-  <ownedMember xsi:type="uml:Extension" xmi:id="_9xBjha86Edih9-GG5afQ0g" name="Class_Utility" memberEnd="_9xBjhq86Edih9-GG5afQ0g _9xBjiK86Edih9-GG5afQ0g">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_9xBjhq86Edih9-GG5afQ0g" name="extension$Utility" type="_9xBjhK86Edih9-GG5afQ0g" association="_9xBjha86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_9xBjh686Edih9-GG5afQ0g"/>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9xBjha86Edih9-GG5afQ0g" name="Class_Utility" memberEnd="_9xBjhq86Edih9-GG5afQ0g _9xBjiK86Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9xBjhq86Edih9-GG5afQ0g" name="extension$Utility" type="_9xBjhK86Edih9-GG5afQ0g" association="_9xBjha86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9xBjh686Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
 </uml:Profile>

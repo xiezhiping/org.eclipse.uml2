@@ -1,7 +1,7 @@
 
 (object Petal
-    version    	47
-    _written   	"Rose 8.0.0303.1400"
+    version    	50
+    _written   	"Rose 8.2.0401.2700"
     charSet    	0)
 
 (object Class_Category "UML2"
@@ -237,7 +237,7 @@
 			max_width  	1221
 			label      	
 |A Rose PATH MAP must be set to locate the subunits.
-|The variable VABASE_PLUGINS_PATH should be set to point to the root dir of the Foundation components build.
+|The variable VABASE_PLUGINS_PATH should be set to point to the root directory of the Foundation components build.
 			)
 		    line_color 	3342489
 		    fill_color 	13434879

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Property.java,v 1.6 2004/06/06 01:35:02 khussey Exp $
+ * $Id: Property.java,v 1.7 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -109,7 +109,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_IsDerived()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isDerived();
@@ -139,7 +139,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @return the value of the '<em>Is Derived Union</em>' attribute.
 	 * @see #setIsDerivedUnion(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_IsDerivedUnion()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isDerivedUnion();

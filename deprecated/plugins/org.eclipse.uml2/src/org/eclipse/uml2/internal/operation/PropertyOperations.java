@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.8 2004/06/17 03:20:09 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.9 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -161,8 +161,10 @@ public final class PropertyOperations
 
 			if (navigable) {
 				List ownedAttributes = getOwnedAttributes((Type) association
-					.getEndTypes().get(
-						association.getMemberEnds().indexOf(property)));
+					.getEndTypes()
+					.get(
+						Math
+							.abs(association.getMemberEnds().indexOf(property) - 1)));
 
 				if (null == ownedAttributes) {
 					throw new IllegalArgumentException(String

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.4 2004/06/18 04:34:31 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.5 2004/10/01 19:36:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -61,14 +61,14 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	protected static final boolean SETTING_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isSetting() <em>Setting</em>}' attribute.
+	 * The flag for the '{@link #isSetting() <em>Setting</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isSetting()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean setting = SETTING_EDEFAULT;
+	protected static final int SETTING_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,6 +77,7 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	 */
 	protected ContinuationImpl() {
 		super();
+		eFlags |= SETTING_EFLAG;
 	}
 
 	/**
@@ -94,7 +95,7 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	 * @generated
 	 */
 	public boolean isSetting() {
-		return setting;
+		return 0 != (eFlags & SETTING_EFLAG);
 	}
 
 	/**
@@ -103,10 +104,15 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	 * @generated
 	 */
 	public void setSetting(boolean newSetting) {
-		boolean oldSetting = setting;
-		setting = newSetting;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONTINUATION__SETTING, oldSetting, setting));
+		boolean oldSetting = 0 != (eFlags & SETTING_EFLAG);
+		if (newSetting) {
+			eFlags |= SETTING_EFLAG;
+		} else {
+			eFlags &= ~SETTING_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONTINUATION__SETTING, oldSetting, newSetting));
+		}
 	}
 
 	/**
@@ -388,24 +394,9 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 			case UML2Package.CONTINUATION__ENCLOSING_OPERAND:
 				return getEnclosingOperand() != null;
 			case UML2Package.CONTINUATION__SETTING:
-				return setting != SETTING_EDEFAULT;
+				return isSetting() != SETTING_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (setting: "); //$NON-NLS-1$
-		result.append(setting);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ContinuationImpl

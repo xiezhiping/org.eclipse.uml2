@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.5 2004/06/18 04:34:31 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.6 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,7 +114,7 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE, oldImportedProfile, importedProfile));
 		}
 
-		if (null != newImportedProfile || oldImportedProfile == basicGetImportedPackage()) {
+		if (null != newImportedProfile || oldImportedProfile == importedPackage) {
 			setImportedPackage(newImportedProfile);
 		}
 	}
@@ -130,7 +130,7 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE, oldImportedPackage, importedPackage));
 		}
-		if (null != basicGetImportedProfile() && newImportedPackage != basicGetImportedProfile()) {
+		if (null != importedProfile && newImportedPackage != importedProfile) {
 			setImportedProfile(null);
 		}
 

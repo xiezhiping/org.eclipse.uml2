@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.5 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.6 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -575,17 +575,17 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.EXTENSION_END__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.EXTENSION_END__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.EXTENSION_END__IS_STATIC:
-				return isStatic != IS_STATIC_EDEFAULT;
+				return isStatic() != IS_STATIC_EDEFAULT;
 			case UML2Package.EXTENSION_END__TYPE:
 				return basicGetType() != null;
 			case UML2Package.EXTENSION_END__IS_ORDERED:
-				return isOrdered != IS_ORDERED_EDEFAULT;
+				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UML2Package.EXTENSION_END__IS_UNIQUE:
-				return isUnique != IS_UNIQUE_EDEFAULT;
+				return isUnique() != IS_UNIQUE_EDEFAULT;
 			case UML2Package.EXTENSION_END__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.EXTENSION_END__UPPER:
@@ -611,13 +611,13 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__IS_COMPOSITE:
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UML2Package.EXTENSION_END__IS_DERIVED:
-				return isDerived != IS_DERIVED_EDEFAULT;
+				return isDerived() != IS_DERIVED_EDEFAULT;
 			case UML2Package.EXTENSION_END__CLASS_:
 				return basicGetClass_() != null;
 			case UML2Package.EXTENSION_END__OPPOSITE:
 				return basicGetOpposite() != null;
 			case UML2Package.EXTENSION_END__IS_DERIVED_UNION:
-				return isDerivedUnion != IS_DERIVED_UNION_EDEFAULT;
+				return isDerivedUnion() != IS_DERIVED_UNION_EDEFAULT;
 			case UML2Package.EXTENSION_END__OWNING_ASSOCIATION:
 				return getOwningAssociation() != null;
 			case UML2Package.EXTENSION_END__REDEFINED_PROPERTY:

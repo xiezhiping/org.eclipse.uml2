@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AddStructuralFeatureValueAction.java,v 1.3 2004/06/06 01:35:03 khussey Exp $
+ * $Id: AddStructuralFeatureValueAction.java,v 1.4 2004/10/01 19:36:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -60,7 +60,7 @@ public interface AddStructuralFeatureValueAction extends WriteStructuralFeatureA
 	 * @return the value of the '<em>Is Replace All</em>' attribute.
 	 * @see #setIsReplaceAll(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getAddStructuralFeatureValueAction_IsReplaceAll()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isReplaceAll();

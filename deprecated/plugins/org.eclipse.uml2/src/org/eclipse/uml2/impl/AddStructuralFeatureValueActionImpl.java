@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionImpl.java,v 1.6 2004/06/18 04:34:31 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionImpl.java,v 1.7 2004/10/01 19:36:28 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,14 +68,14 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 	protected static final boolean IS_REPLACE_ALL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isReplaceAll() <em>Is Replace All</em>}' attribute.
+	 * The flag for the '{@link #isReplaceAll() <em>Is Replace All</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isReplaceAll()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isReplaceAll = IS_REPLACE_ALL_EDEFAULT;
+	protected static final int IS_REPLACE_ALL_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getInsertAt() <em>Insert At</em>}' containment reference.
@@ -94,6 +94,7 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 	 */
 	protected AddStructuralFeatureValueActionImpl() {
 		super();
+		eFlags &= ~IS_REPLACE_ALL_EFLAG;
 	}
 
 	/**
@@ -111,7 +112,7 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 	 * @generated
 	 */
 	public boolean isReplaceAll() {
-		return isReplaceAll;
+		return 0 != (eFlags & IS_REPLACE_ALL_EFLAG);
 	}
 
 	/**
@@ -120,10 +121,15 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 	 * @generated
 	 */
 	public void setIsReplaceAll(boolean newIsReplaceAll) {
-		boolean oldIsReplaceAll = isReplaceAll;
-		isReplaceAll = newIsReplaceAll;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL, oldIsReplaceAll, isReplaceAll));
+		boolean oldIsReplaceAll = 0 != (eFlags & IS_REPLACE_ALL_EFLAG);
+		if (newIsReplaceAll) {
+			eFlags |= IS_REPLACE_ALL_EFLAG;
+		} else {
+			eFlags &= ~IS_REPLACE_ALL_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL, oldIsReplaceAll, newIsReplaceAll));
+		}
 	}
 
 	/**
@@ -616,7 +622,7 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INCOMING:
@@ -654,26 +660,11 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__VALUE:
 				return value != null;
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL:
-				return isReplaceAll != IS_REPLACE_ALL_EDEFAULT;
+				return isReplaceAll() != IS_REPLACE_ALL_EDEFAULT;
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT:
 				return insertAt != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isReplaceAll: "); //$NON-NLS-1$
-		result.append(isReplaceAll);
-		result.append(')');
-		return result.toString();
 	}
 
 } //AddStructuralFeatureValueActionImpl
