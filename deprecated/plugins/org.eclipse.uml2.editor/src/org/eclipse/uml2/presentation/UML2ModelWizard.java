@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ModelWizard.java,v 1.4 2004/06/09 18:04:40 khussey Exp $
+ * $Id: UML2ModelWizard.java,v 1.5 2004/06/18 04:24:45 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -348,9 +348,9 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	 */
 	public class UML2ModelWizardInitialObjectCreationPage extends WizardPage {
 		/**
-		 * @generated
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @generated
 		 */
 		protected String initialObjectName;
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.7 2004/06/06 01:23:38 khussey Exp $
+ * $Id: UML2Editor.java,v 1.8 2004/06/18 04:24:45 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -152,6 +152,8 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.uml2.editor.internal.presentation.*;
 import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
 import java.util.HashMap;
+
+import org.eclipse.core.runtime.NullProgressMonitor;
 
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 
@@ -310,7 +312,7 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ISelection editorSelection;
+	protected ISelection editorSelection= StructuredSelection.EMPTY;
 
 	/**
 	 * This listens for when the outline becomes active
@@ -1249,7 +1251,9 @@ public class UML2Editor
 			control.setFocus();
 		}
 
-		handleContentOutlineSelection(contentOutlinePage.getSelection());
+		if (contentOutlinePage != null) {
+			handleContentOutlineSelection(contentOutlinePage.getSelection());
+		}
 	}
 
 	/**
@@ -1515,9 +1519,8 @@ public class UML2Editor
 
 		try {
 			// This runs the options, and shows progress.
-			// (It appears to be a bad thing to fork this onto another thread.)
 			//
-			new ProgressMonitorDialog(getSite().getShell()).run(false, false, operation);
+			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
 
 			// Refresh the necessary state.
 			//
@@ -1554,14 +1557,25 @@ public class UML2Editor
 		if (path != null) {
 			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
 			if (file != null) {
-				((Resource)editingDomain.getResourceSet().getResources().get(0)).setURI
-					(URI.createPlatformResourceURI(file.getFullPath().toString()));
-				IFileEditorInput modelFile = new FileEditorInput(file);
-				setInput(modelFile);
-				setPartName(file.getName());
-				doSave(getActionBars().getStatusLineManager().getProgressMonitor());
+				doSaveAs(URI.createPlatformResourceURI(file.getFullPath().toString()), new FileEditorInput(file));
 			}
 		}
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void doSaveAs(URI uri, IEditorInput editorInput) {
+		((Resource)editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
+		setInput(editorInput);
+		setPartName(editorInput.getName());
+		IProgressMonitor progressMonitor =
+			getActionBars().getStatusLineManager() != null ?
+				getActionBars().getStatusLineManager().getProgressMonitor() :
+				new NullProgressMonitor();
+		doSave(progressMonitor);
 	}
 
 	/**
@@ -1650,6 +1664,7 @@ public class UML2Editor
 	 */
 	public void setSelection(ISelection selection) {
 		editorSelection = selection;
+
 		for (Iterator listeners = selectionChangedListeners.iterator(); listeners.hasNext(); ) {
 			ISelectionChangedListener listener = (ISelectionChangedListener)listeners.next();
 			listener.selectionChanged(new SelectionChangedEvent(this, selection));
@@ -1664,30 +1679,32 @@ public class UML2Editor
 	 */
 	public void setStatusLineManager(ISelection selection) {
 		IStatusLineManager statusLineManager = getActionBars().getStatusLineManager();
-		if (currentViewer == contentOutlineViewer) {
-			statusLineManager = contentOutlineStatusLineManager;
-		}
-
-		if (selection instanceof IStructuredSelection) {
-			Collection collection = ((IStructuredSelection)selection).toList();
-			switch (collection.size()) {
-				case 0: {
-					statusLineManager.setMessage(getString("_UI_NoObjectSelected")); //$NON-NLS-1$
-					break;
-				}
-				case 1: {
-					String text = new AdapterFactoryItemDelegator(adapterFactory).getText(collection.iterator().next());
-					statusLineManager.setMessage(getString("_UI_SingleObjectSelected", text)); //$NON-NLS-1$
-					break;
-				}
-				default: {
-					statusLineManager.setMessage(getString("_UI_MultiObjectSelected", Integer.toString(collection.size()))); //$NON-NLS-1$
-					break;
+		if (statusLineManager != null) {
+			if (currentViewer == contentOutlineViewer) {
+				statusLineManager = contentOutlineStatusLineManager;
+			}
+	
+			if (selection instanceof IStructuredSelection) {
+				Collection collection = ((IStructuredSelection)selection).toList();
+				switch (collection.size()) {
+					case 0: {
+						statusLineManager.setMessage(getString("_UI_NoObjectSelected")); //$NON-NLS-1$
+						break;
+					}
+					case 1: {
+						String text = new AdapterFactoryItemDelegator(adapterFactory).getText(collection.iterator().next());
+						statusLineManager.setMessage(getString("_UI_SingleObjectSelected", text)); //$NON-NLS-1$
+						break;
+					}
+					default: {
+						statusLineManager.setMessage(getString("_UI_MultiObjectSelected", Integer.toString(collection.size()))); //$NON-NLS-1$
+						break;
+					}
 				}
 			}
-		}
-		else {
-			statusLineManager.setMessage(""); //$NON-NLS-1$
+			else {
+				statusLineManager.setMessage(""); //$NON-NLS-1$
+			}
 		}
 	}
 
