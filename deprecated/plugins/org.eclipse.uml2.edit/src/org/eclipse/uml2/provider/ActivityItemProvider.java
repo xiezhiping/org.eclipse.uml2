@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityItemProvider.java,v 1.4 2004/04/23 02:26:00 khussey Exp $
+ * $Id: ActivityItemProvider.java,v 1.5 2004/04/30 17:20:11 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -302,8 +302,8 @@ public class ActivityItemProvider
 	}
 
 	/**
-	 * This handles model notifications by updating any cached children and by
-	 * creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -460,16 +460,6 @@ public class ActivityItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getActivity_Node(),
-				 UML2Factory.eINSTANCE.createExpansionNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getActivity_Node(),
-				 UML2Factory.eINSTANCE.createExpansionRegion()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getActivity_Node(),
 				 UML2Factory.eINSTANCE.createCreateObjectAction()));
 
 		newChildDescriptors.add
@@ -580,7 +570,22 @@ public class ActivityItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getActivity_Node(),
-				 UML2Factory.eINSTANCE.createDataStoreNode()));
+				 UML2Factory.eINSTANCE.createExpansionNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getActivity_Node(),
+				 UML2Factory.eINSTANCE.createExpansionRegion()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getActivity_Node(),
+				 UML2Factory.eINSTANCE.createTimeObservationAction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getActivity_Node(),
+				 UML2Factory.eINSTANCE.createDurationObservationAction()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -640,12 +645,7 @@ public class ActivityItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getActivity_Node(),
-				 UML2Factory.eINSTANCE.createTimeObservationAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getActivity_Node(),
-				 UML2Factory.eINSTANCE.createDurationObservationAction()));
+				 UML2Factory.eINSTANCE.createDataStoreNode()));
 	}
 
 	/**
@@ -658,10 +658,10 @@ public class ActivityItemProvider
 		boolean qualify =
 			feature == UML2Package.eINSTANCE.getActivity_Group() ||
 			feature == UML2Package.eINSTANCE.getActivity_Node() ||
-			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
-			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
+			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
+			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
 			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
 		return getString(

@@ -8,14 +8,18 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolTransitionItemProviderTest.java,v 1.1 2004/04/29 14:43:45 khussey Exp $
+ * $Id: ProtocolTransitionItemProviderTest.java,v 1.2 2004/04/30 17:18:14 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
 import junit.textui.TestRunner;
 
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.ProtocolTransition;
 import org.eclipse.uml2.UML2Factory;
+import org.eclipse.uml2.UML2Package;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,7 +85,49 @@ public class ProtocolTransitionItemProviderTest extends TransitionItemProviderTe
 	 * @generated
 	 */
 	public void testCreateSetCommand() {
-		// TODO: implement this command creation test method
+		
+		// test PROTOCOL_TRANSITION__PRE_CONDITION subset...
+		Constraint constraint = UML2Factory.eINSTANCE.createConstraint();
+		
+		Command command = SetCommand.create(getEditingDomain(), getModelObject(), UML2Package.eINSTANCE.getProtocolTransition_PreCondition(), constraint);
+		
+		getCommandStack().execute(command);
+		
+		assertSame(constraint, getModelObject().getPreCondition());
+		assertSame(getModelObject().getPreCondition(), getModelObject().getGuard());
+		
+		getCommandStack().undo();
+		
+		assertNotSame(constraint, getModelObject().getPreCondition());
+		assertSame(getModelObject().getPreCondition(), getModelObject().getGuard());
+		
+		getCommandStack().redo();
+		
+		assertSame(constraint, getModelObject().getPreCondition());
+		assertSame(getModelObject().getPreCondition(), getModelObject().getGuard());
+		
+		// test PROTOCOL_TRANSITION__GUARD superset...
+		Constraint oldConstraint = UML2Factory.eINSTANCE.createConstraint();
+		Constraint newConstraint = UML2Factory.eINSTANCE.createConstraint();
+		
+		getModelObject().setPreCondition(oldConstraint);
+		
+		command = SetCommand.create(getEditingDomain(), getModelObject(), UML2Package.eINSTANCE.getTransition_Guard(), newConstraint);
+		
+		getCommandStack().execute(command);
+		
+		assertSame(newConstraint, getModelObject().getGuard());
+		assertSame(null, getModelObject().getPreCondition());
+		
+		getCommandStack().undo();
+		
+		assertSame(oldConstraint, getModelObject().getGuard());
+		assertSame(oldConstraint, getModelObject().getPreCondition());
+		
+		getCommandStack().redo();
+		
+		assertSame(newConstraint, getModelObject().getGuard());
+		assertSame(null, getModelObject().getPreCondition());
 	}
 
 } //ProtocolTransitionItemProviderTest

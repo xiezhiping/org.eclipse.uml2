@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2DiagnosticConstants.java,v 1.2 2004/04/27 16:38:55 khussey Exp $
+ * $Id: UML2DiagnosticConstants.java,v 1.3 2004/04/30 17:21:46 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -119,7 +119,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Property#validateOppositeIsOtherEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int PROPERTY__OPPOSITE_IS_OTHER_END = 8;
+	public static final int PROPERTY__OPPOSITE_IS_OTHER_END = 13;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,7 +128,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Property#validateMultiplicityOfComposite(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int PROPERTY__MULTIPLICITY_OF_COMPOSITE = 9;
+	public static final int PROPERTY__MULTIPLICITY_OF_COMPOSITE = 14;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,7 +137,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Property#validateSubsettingContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int PROPERTY__SUBSETTING_CONTEXT = 10;
+	public static final int PROPERTY__SUBSETTING_CONTEXT = 15;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,7 +146,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Property#validateNavigablePropertyRedefinition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION = 11;
+	public static final int PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION = 16;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,7 +155,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Property#validateSubsettingRules(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int PROPERTY__SUBSETTING_RULES = 12;
+	public static final int PROPERTY__SUBSETTING_RULES = 17;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,7 +164,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Property#validateNavigableReadonly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int PROPERTY__NAVIGABLE_READONLY = 13;
+	public static final int PROPERTY__NAVIGABLE_READONLY = 18;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,7 +173,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Property#validateDerivedUnionIsDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int PROPERTY__DERIVED_UNION_IS_DERIVED = 14;
+	public static final int PROPERTY__DERIVED_UNION_IS_DERIVED = 19;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -182,7 +182,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Operation#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int OPERATION__TYPE_OF_RESULT = 15;
+	public static final int OPERATION__TYPE_OF_RESULT = 20;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -191,7 +191,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Operation#validateOnlyBodyForQuery(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int OPERATION__ONLY_BODY_FOR_QUERY = 16;
+	public static final int OPERATION__ONLY_BODY_FOR_QUERY = 21;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -200,7 +200,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.NamedElement#validateNoName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int NAMED_ELEMENT__NO_NAME = 17;
+	public static final int NAMED_ELEMENT__NO_NAME = 8;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -209,7 +209,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.NamedElement#validateQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int NAMED_ELEMENT__QUALIFIED_NAME = 18;
+	public static final int NAMED_ELEMENT__QUALIFIED_NAME = 9;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -218,7 +218,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP = 19;
+	public static final int NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP = 10;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -227,7 +227,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Package#validateElementsPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE = 20;
+	public static final int PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE = 22;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -236,7 +236,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Namespace#validateMembersAreDistinguishable(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE = 21;
+	public static final int NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE = 11;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -245,7 +245,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Namespace#validateImportedMemberDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int NAMESPACE__IMPORTED_MEMBER_DERIVED = 22;
+	public static final int NAMESPACE__IMPORTED_MEMBER_DERIVED = 12;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -299,7 +299,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.InstanceSpecification#validateSlotsAreDefined(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int INSTANCE_SPECIFICATION__SLOTS_ARE_DEFINED = 28;
+	public static final int INSTANCE_SPECIFICATION__SLOTS_ARE_DEFINED = 30;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -308,7 +308,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.InstanceSpecification#validateNoDuplicateSlots(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int INSTANCE_SPECIFICATION__NO_DUPLICATE_SLOTS = 29;
+	public static final int INSTANCE_SPECIFICATION__NO_DUPLICATE_SLOTS = 31;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -317,7 +317,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.RedefinableElement#validateRedefinitionContextValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID = 30;
+	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID = 28;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -326,7 +326,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.RedefinableElement#validateRedefinitionConsistent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT = 31;
+	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT = 29;
 
 	/**
 	 * <!-- begin-user-doc -->

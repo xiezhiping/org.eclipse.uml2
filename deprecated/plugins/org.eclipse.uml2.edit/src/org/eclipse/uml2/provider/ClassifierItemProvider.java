@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierItemProvider.java,v 1.4 2004/04/23 02:26:00 khussey Exp $
+ * $Id: ClassifierItemProvider.java,v 1.5 2004/04/30 17:20:12 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -443,8 +443,8 @@ public class ClassifierItemProvider
 	}
 
 	/**
-	 * This handles model notifications by updating any cached children and by
-	 * creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

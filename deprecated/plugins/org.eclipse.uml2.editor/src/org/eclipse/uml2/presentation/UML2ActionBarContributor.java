@@ -8,16 +8,19 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ActionBarContributor.java,v 1.3 2004/04/14 20:45:21 khussey Exp $
+ * $Id: UML2ActionBarContributor.java,v 1.4 2004/04/30 17:18:18 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
+import org.eclipse.emf.edit.ui.action.LoadResourceAction;
+
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
 
@@ -91,14 +94,14 @@ public class UML2ActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IAction showPropertiesViewAction = 
+	protected IAction showPropertiesViewAction =
 		new Action(UML2EditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
 		{
 			public void run() {
 				try {
 					getPage().showView("org.eclipse.ui.views.PropertySheet"); //$NON-NLS-1$
 				}
-				catch(PartInitException exception) {
+				catch (PartInitException exception) {
 					UML2EditorPlugin.INSTANCE.log(exception);
 				}
 			}
@@ -106,18 +109,18 @@ public class UML2ActionBarContributor
 
 	/**
 	 * This action refreshes the viewer of the current editor if the editor
-	 * implements {@link IViewerProvider}.
+	 * implements {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IAction refreshViewerAction = 
+	protected IAction refreshViewerAction =
 		new Action(UML2EditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
 		{
 			public boolean isEnabled() {
 				return activeEditorPart instanceof IViewerProvider;
 			}
-			
+
 			public void run() {
 				if (activeEditorPart instanceof IViewerProvider) {
 					Viewer viewer = ((IViewerProvider)activeEditorPart).getViewer();
@@ -129,7 +132,7 @@ public class UML2ActionBarContributor
 		};
 
 	/**
-	 * This will contain one {@link CreateChildAction} corresponding to each descriptor
+	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
 	 * generated for the current selection by the item provider.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -146,7 +149,7 @@ public class UML2ActionBarContributor
 	protected IMenuManager createChildMenuManager;
 
 	/**
-	 * This will contain one {@link CreateSiblingAction} corresponding to each descriptor
+	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding to each descriptor
 	 * generated for the current selection by the item provider.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -169,7 +172,7 @@ public class UML2ActionBarContributor
 	 * @generated
 	 */
 	public UML2ActionBarContributor() {
-		super();
+		loadResourceAction = new LoadResourceAction();
 	}
 
 	/**
@@ -212,9 +215,7 @@ public class UML2ActionBarContributor
 	}
 
 	/**
-	 * When the active editor changes,
-	 * this remembers the change,
-	 * and registers with it as a selection provider.
+	 * When the active editor changes, this remembers the change and registers with it as a selection provider.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -244,8 +245,8 @@ public class UML2ActionBarContributor
 	}
 
 	/**
-	 * This implements {@link ISelectionChangedListener},
-	 * handling {@link SelectionChangedEvent}s by querying for the children and siblings
+	 * This implements {@link org.eclipse.jface.viewers.ISelectionChangedListener},
+	 * handling {@link org.eclipse.jface.viewers.SelectionChangedEvent}s by querying for the children and siblings
 	 * that can be added to the selected object and updating the menus accordingly.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -270,8 +271,7 @@ public class UML2ActionBarContributor
 		if (selection instanceof IStructuredSelection && ((IStructuredSelection)selection).size() == 1) {
 			Object object = ((IStructuredSelection)selection).getFirstElement();
 
-			EditingDomain domain =
-				((IEditingDomainProvider) activeEditorPart).getEditingDomain();
+			EditingDomain domain = ((IEditingDomainProvider)activeEditorPart).getEditingDomain();
 
 			newChildDescriptors = domain.getNewChildDescriptors(object, null);
 			newSiblingDescriptors = domain.getNewChildDescriptors(null, object);
@@ -293,14 +293,14 @@ public class UML2ActionBarContributor
 	}
 
 	/**
-	 * This generates a {@link CreateChildAction} for each object in <code>descriptors</code>,
+	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in <code>descriptors</code>,
 	 * and returns the collection of these actions.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected Collection generateCreateChildActions(Collection descriptors, ISelection selection) {
-		Collection actions = new LinkedList();
+		Collection actions = new ArrayList();
 		if (descriptors != null) {
 			for (Iterator i = descriptors.iterator(); i.hasNext(); ) {
 				actions.add(new CreateChildAction(activeEditorPart, selection, i.next()));
@@ -310,14 +310,14 @@ public class UML2ActionBarContributor
 	}
 
 	/**
-	 * This generates a {@link CreateSiblingAction} for each object in <code>descriptors</code>,
+	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
 	 * and returns the collection of these actions.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected Collection generateCreateSiblingActions(Collection descriptors, ISelection selection) {
-		Collection actions = new LinkedList();
+		Collection actions = new ArrayList();
 		if (descriptors != null) {
 			for (Iterator i = descriptors.iterator(); i.hasNext(); ) {
 				actions.add(new CreateSiblingAction(activeEditorPart, selection, i.next()));
@@ -327,8 +327,8 @@ public class UML2ActionBarContributor
 	}
 
 	/**
-	 * This populates the specified <code>manager</code> with {@link ActionContributionItem}s
-	 * based on the {@link IAction}s contained in the <code>actions</code> collection,
+	 * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
+	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection,
 	 * by inserting them before the specified contribution item <code>contributionID</code>.
 	 * If <code>ID</code> is <code>null</code>, they are simply added.
 	 * <!-- begin-user-doc -->
@@ -338,7 +338,7 @@ public class UML2ActionBarContributor
 	protected void populateManager(IContributionManager manager, Collection actions, String contributionID) {
 		if (actions != null) {
 			for (Iterator i = actions.iterator(); i.hasNext(); ) {
-				IAction action = (IAction) i.next();
+				IAction action = (IAction)i.next();
 				if (contributionID != null) {
 					manager.insertBefore(contributionID, action);
 				}
@@ -350,8 +350,8 @@ public class UML2ActionBarContributor
 	}
 		
 	/**
-	 * This removes from the specified <code>manager</code> all {@link ActionContributionItem}s
-	 * based on the {@link IAction}s contained in the <code>actions</code> collection.
+	 * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.ActionContributionItem}s
+	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -370,7 +370,7 @@ public class UML2ActionBarContributor
 				// Delete the ActionContributionItems with matching action.
 				//
 				if (contributionItem instanceof ActionContributionItem) {
-					IAction action = ((ActionContributionItem) contributionItem).getAction();
+					IAction action = ((ActionContributionItem)contributionItem).getAction();
 					if (actions.contains(action)) {
 						manager.remove(contributionItem);
 					}
@@ -386,8 +386,6 @@ public class UML2ActionBarContributor
 	 * @generated
 	 */
 	public void menuAboutToShow(IMenuManager menuManager) {
-		refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());
-		
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
 
@@ -398,9 +396,11 @@ public class UML2ActionBarContributor
 		submenuManager = new MenuManager(UML2EditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
 		populateManager(submenuManager, createSiblingActions, null);
 		menuManager.insertBefore("additions", submenuManager); //$NON-NLS-1$
-		
-		menuManager.insertAfter("additions-end", new Separator("ui-actions")); //$NON-NLS-2$
+
+		menuManager.insertAfter("additions-end", new Separator("ui-actions")); //$NON-NLS-1$ //$NON-NLS-2$
 		menuManager.insertAfter("ui-actions", showPropertiesViewAction); //$NON-NLS-1$
+
+		refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());		
 		menuManager.insertAfter("ui-actions", refreshViewerAction); //$NON-NLS-1$
 	}
 }

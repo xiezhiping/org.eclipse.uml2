@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeItemProvider.java,v 1.4 2004/04/23 02:26:00 khussey Exp $
+ * $Id: StructuredActivityNodeItemProvider.java,v 1.5 2004/04/30 17:20:11 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -320,8 +320,8 @@ public class StructuredActivityNodeItemProvider
 	}
 
 	/**
-	 * This handles model notifications by updating any cached children and by
-	 * creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -483,16 +483,6 @@ public class StructuredActivityNodeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
-				 UML2Factory.eINSTANCE.createExpansionNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
-				 UML2Factory.eINSTANCE.createExpansionRegion()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
 				 UML2Factory.eINSTANCE.createCreateObjectAction()));
 
 		newChildDescriptors.add
@@ -603,7 +593,22 @@ public class StructuredActivityNodeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
-				 UML2Factory.eINSTANCE.createDataStoreNode()));
+				 UML2Factory.eINSTANCE.createExpansionNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
+				 UML2Factory.eINSTANCE.createExpansionRegion()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
+				 UML2Factory.eINSTANCE.createTimeObservationAction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
+				 UML2Factory.eINSTANCE.createDurationObservationAction()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -663,12 +668,7 @@ public class StructuredActivityNodeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
-				 UML2Factory.eINSTANCE.createTimeObservationAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
-				 UML2Factory.eINSTANCE.createDurationObservationAction()));
+				 UML2Factory.eINSTANCE.createDataStoreNode()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.5 2004/04/30 17:21:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -192,10 +192,10 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 					return eBasicSetContainer(otherEnd, UML2Package.ENUMERATION__OWNING_PARAMETER, msgs);
 				case UML2Package.ENUMERATION__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENUMERATION__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENUMERATION__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicAdd(otherEnd, msgs);
 				case UML2Package.ENUMERATION__OWNED_OPERATION:
@@ -243,10 +243,10 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 					return eBasicSetContainer(null, UML2Package.ENUMERATION__OWNING_PARAMETER, msgs);
 				case UML2Package.ENUMERATION__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENUMERATION__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENUMERATION__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ENUMERATION__OCCURRENCE:
@@ -349,10 +349,10 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 				return getAttributes();
 			case UML2Package.ENUMERATION__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.ENUMERATION__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.ENUMERATION__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.ENUMERATION__REPRESENTATION:
@@ -439,13 +439,13 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.ENUMERATION__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.ENUMERATION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -535,11 +535,11 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.ENUMERATION__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.ENUMERATION__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -628,10 +628,10 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 				return !getAttributes().isEmpty();
 			case UML2Package.ENUMERATION__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ENUMERATION__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ENUMERATION__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.ENUMERATION__REPRESENTATION:

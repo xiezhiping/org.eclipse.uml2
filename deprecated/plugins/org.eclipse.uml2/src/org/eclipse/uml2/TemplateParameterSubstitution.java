@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterSubstitution.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: TemplateParameterSubstitution.java,v 1.3 2004/04/30 17:21:46 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.TemplateParameterSubstitution#getFormal <em>Formal</em>}</li>
  *   <li>{@link org.eclipse.uml2.TemplateParameterSubstitution#getTemplateBinding <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.TemplateParameterSubstitution#getActuals <em>Actual</em>}</li>
- *   <li>{@link org.eclipse.uml2.TemplateParameterSubstitution#getOwnedActual <em>Owned Actual</em>}</li>
+ *   <li>{@link org.eclipse.uml2.TemplateParameterSubstitution#getOwnedActuals <em>Owned Actual</em>}</li>
  * </ul>
  * </p>
  *
@@ -114,42 +114,32 @@ public interface TemplateParameterSubstitution extends Element{
 	EList getActuals();
 
 	/**
-	 * Returns the value of the '<em><b>Owned Actual</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Owned Actual</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.ParameterableElement}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned Actual</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Owned Actual</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Actual</em>' containment reference.
-	 * @see #setOwnedActual(ParameterableElement)
+	 * @return the value of the '<em>Owned Actual</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameterSubstitution_OwnedActual()
-	 * @model containment="true" volatile="true"
+	 * @model type="org.eclipse.uml2.ParameterableElement" containment="true" volatile="true"
 	 * @generated
 	 */
-	ParameterableElement getOwnedActual();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.TemplateParameterSubstitution#getOwnedActual <em>Owned Actual</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Actual</em>' containment reference.
-	 * @see #getOwnedActual()
-	 * @generated
-	 */
-	void setOwnedActual(ParameterableElement value);
+	EList getOwnedActuals();
 
     /**
-     * Creates a {@link org.eclipse.uml2.ParameterableElement} and sets the '<em><b>Owned Actual</b></em>' containment reference.
+     * Creates a {@link org.eclipse.uml2.ParameterableElement} and appends it to the '<em><b>Owned Actual</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ParameterableElement} to create.
 	 * @return The new {@link org.eclipse.uml2.ParameterableElement}.
-	 * @see #getOwnedActual()
+	 * @see #getOwnedActuals()
 	 * @generated
      */
     ParameterableElement createOwnedActual(EClass eClass);
-     
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -48,22 +48,6 @@
 <xsd:enumeration value="concurrent"/>
 </xsd:restriction>
 </xsd:simpleType>
-<xsd:simpleType name="InteractionOperator">
-<xsd:restriction base="xsd:NCName">
-<xsd:enumeration value="seq"/>
-<xsd:enumeration value="alt"/>
-<xsd:enumeration value="opt"/>
-<xsd:enumeration value="break"/>
-<xsd:enumeration value="par"/>
-<xsd:enumeration value="strict"/>
-<xsd:enumeration value="loop"/>
-<xsd:enumeration value="critical"/>
-<xsd:enumeration value="neg"/>
-<xsd:enumeration value="assert"/>
-<xsd:enumeration value="ignore"/>
-<xsd:enumeration value="consider"/>
-</xsd:restriction>
-</xsd:simpleType>
 <xsd:simpleType name="TransitionKind">
 <xsd:restriction base="xsd:NCName">
 <xsd:enumeration value="internal"/>
@@ -83,6 +67,22 @@
 <xsd:enumeration value="entryPoint"/>
 <xsd:enumeration value="exitPoint"/>
 <xsd:enumeration value="terminate"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="InteractionOperator">
+<xsd:restriction base="xsd:NCName">
+<xsd:enumeration value="seq"/>
+<xsd:enumeration value="alt"/>
+<xsd:enumeration value="opt"/>
+<xsd:enumeration value="break"/>
+<xsd:enumeration value="par"/>
+<xsd:enumeration value="strict"/>
+<xsd:enumeration value="loop"/>
+<xsd:enumeration value="critical"/>
+<xsd:enumeration value="neg"/>
+<xsd:enumeration value="assert"/>
+<xsd:enumeration value="ignore"/>
+<xsd:enumeration value="consider"/>
 </xsd:restriction>
 </xsd:simpleType>
 <xsd:simpleType name="ExpansionKind">
@@ -137,6 +137,45 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="MultiplicityElement" type="uml:MultiplicityElement"/>
+<xsd:complexType name="NamedElement">
+<xsd:complexContent>
+<xsd:extension base="uml:TemplateableElement">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="clientDependency" type="uml:Dependency"/>
+<xsd:element name="nameExpression" type="uml:StringExpression"/>
+</xsd:choice>
+<xsd:attribute name="name" type="xsd:string"/>
+<xsd:attribute name="visibility" type="uml:VisibilityKind"/>
+<xsd:attribute name="clientDependency" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="NamedElement" type="uml:NamedElement"/>
+<xsd:complexType name="Namespace">
+<xsd:complexContent>
+<xsd:extension base="uml:NamedElement">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="ownedRule" type="uml:Constraint"/>
+<xsd:element name="elementImport" type="uml:ElementImport"/>
+<xsd:element name="packageImport" type="uml:PackageImport"/>
+</xsd:choice>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Namespace" type="uml:Namespace"/>
+<xsd:complexType name="Comment">
+<xsd:complexContent>
+<xsd:extension base="uml:TemplateableElement">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="annotatedElement" type="uml:Element"/>
+<xsd:element name="bodyExpression" type="uml:StringExpression"/>
+</xsd:choice>
+<xsd:attribute name="body" type="xsd:string"/>
+<xsd:attribute name="annotatedElement" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Comment" type="uml:Comment"/>
 <xsd:complexType name="DirectedRelationship">
 <xsd:complexContent>
 <xsd:extension base="uml:Relationship"/>
@@ -149,6 +188,41 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="Relationship" type="uml:Relationship"/>
+<xsd:complexType name="OpaqueExpression">
+<xsd:complexContent>
+<xsd:extension base="uml:ValueSpecification">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="behavior" type="uml:Behavior"/>
+</xsd:choice>
+<xsd:attribute name="body" type="xsd:string"/>
+<xsd:attribute name="language" type="xsd:string"/>
+<xsd:attribute name="behavior" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="OpaqueExpression" type="uml:OpaqueExpression"/>
+<xsd:complexType name="ValueSpecification">
+<xsd:complexContent>
+<xsd:extension base="uml:TypedElement">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="templateParameter" type="uml:TemplateParameter"/>
+</xsd:choice>
+<xsd:attribute name="templateParameter" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="ValueSpecification" type="uml:ValueSpecification"/>
+<xsd:complexType name="Expression">
+<xsd:complexContent>
+<xsd:extension base="uml:OpaqueExpression">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="operand" type="uml:ValueSpecification"/>
+</xsd:choice>
+<xsd:attribute name="symbol" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Expression" type="uml:Expression"/>
 <xsd:complexType name="Class">
 <xsd:complexContent>
 <xsd:extension base="uml:EncapsulatedClassifier">
@@ -255,20 +329,6 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="Parameter" type="uml:Parameter"/>
-<xsd:complexType name="NamedElement">
-<xsd:complexContent>
-<xsd:extension base="uml:TemplateableElement">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="clientDependency" type="uml:Dependency"/>
-<xsd:element name="nameExpression" type="uml:StringExpression"/>
-</xsd:choice>
-<xsd:attribute name="name" type="xsd:string"/>
-<xsd:attribute name="visibility" type="uml:VisibilityKind"/>
-<xsd:attribute name="clientDependency" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="NamedElement" type="uml:NamedElement"/>
 <xsd:complexType name="Package">
 <xsd:complexContent>
 <xsd:extension base="uml:Namespace">
@@ -319,98 +379,18 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="PrimitiveType" type="uml:PrimitiveType"/>
-<xsd:complexType name="Namespace">
+<xsd:complexType name="Constraint">
 <xsd:complexContent>
-<xsd:extension base="uml:NamedElement">
+<xsd:extension base="uml:PackageableElement">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="ownedRule" type="uml:Constraint"/>
-<xsd:element name="elementImport" type="uml:ElementImport"/>
-<xsd:element name="packageImport" type="uml:PackageImport"/>
+<xsd:element name="specification" type="uml:ValueSpecification"/>
+<xsd:element name="constrainedElement" type="uml:Element"/>
 </xsd:choice>
+<xsd:attribute name="constrainedElement" type="xsd:string"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="Namespace" type="uml:Namespace"/>
-<xsd:complexType name="Comment">
-<xsd:complexContent>
-<xsd:extension base="uml:TemplateableElement">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="annotatedElement" type="uml:Element"/>
-<xsd:element name="bodyExpression" type="uml:StringExpression"/>
-</xsd:choice>
-<xsd:attribute name="body" type="xsd:string"/>
-<xsd:attribute name="annotatedElement" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Comment" type="uml:Comment"/>
-<xsd:complexType name="OpaqueExpression">
-<xsd:complexContent>
-<xsd:extension base="uml:ValueSpecification">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="behavior" type="uml:Behavior"/>
-</xsd:choice>
-<xsd:attribute name="body" type="xsd:string"/>
-<xsd:attribute name="language" type="xsd:string"/>
-<xsd:attribute name="behavior" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="OpaqueExpression" type="uml:OpaqueExpression"/>
-<xsd:complexType name="ValueSpecification">
-<xsd:complexContent>
-<xsd:extension base="uml:TypedElement">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="templateParameter" type="uml:TemplateParameter"/>
-</xsd:choice>
-<xsd:attribute name="templateParameter" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="ValueSpecification" type="uml:ValueSpecification"/>
-<xsd:complexType name="Expression">
-<xsd:complexContent>
-<xsd:extension base="uml:OpaqueExpression">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="operand" type="uml:ValueSpecification"/>
-</xsd:choice>
-<xsd:attribute name="symbol" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Expression" type="uml:Expression"/>
-<xsd:complexType name="Classifier">
-<xsd:complexContent>
-<xsd:extension base="uml:Namespace">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="templateParameter" type="uml:TemplateParameter"/>
-<xsd:element name="generalization" type="uml:Generalization"/>
-<xsd:element name="redefinedClassifier" type="uml:Classifier"/>
-<xsd:element name="substitution" type="uml:Substitution"/>
-<xsd:element name="powertypeExtent" type="uml:GeneralizationSet"/>
-<xsd:element name="ownedUseCase" type="uml:UseCase"/>
-<xsd:element name="representation" type="uml:CollaborationOccurrence"/>
-<xsd:element name="occurrence" type="uml:CollaborationOccurrence"/>
-</xsd:choice>
-<xsd:attribute name="templateParameter" type="xsd:string"/>
-<xsd:attribute name="packageableElement_visibility" type="uml:VisibilityKind"/>
-<xsd:attribute name="isLeaf" type="xsd:string"/>
-<xsd:attribute name="isAbstract" type="xsd:string"/>
-<xsd:attribute name="redefinedClassifier" type="xsd:string"/>
-<xsd:attribute name="powertypeExtent" type="xsd:string"/>
-<xsd:attribute name="representation" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Classifier" type="uml:Classifier"/>
-<xsd:complexType name="Feature">
-<xsd:complexContent>
-<xsd:extension base="uml:RedefinableElement">
-<xsd:attribute name="isStatic" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Feature" type="uml:Feature"/>
+<xsd:element name="Constraint" type="uml:Constraint"/>
 <xsd:complexType name="LiteralBoolean">
 <xsd:complexContent>
 <xsd:extension base="uml:LiteralSpecification">
@@ -455,18 +435,38 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="LiteralUnlimitedNatural" type="uml:LiteralUnlimitedNatural"/>
-<xsd:complexType name="Constraint">
+<xsd:complexType name="Classifier">
 <xsd:complexContent>
-<xsd:extension base="uml:PackageableElement">
+<xsd:extension base="uml:Namespace">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="specification" type="uml:ValueSpecification"/>
-<xsd:element name="constrainedElement" type="uml:Element"/>
+<xsd:element name="templateParameter" type="uml:TemplateParameter"/>
+<xsd:element name="generalization" type="uml:Generalization"/>
+<xsd:element name="redefinedClassifier" type="uml:Classifier"/>
+<xsd:element name="substitution" type="uml:Substitution"/>
+<xsd:element name="powertypeExtent" type="uml:GeneralizationSet"/>
+<xsd:element name="ownedUseCase" type="uml:UseCase"/>
+<xsd:element name="representation" type="uml:CollaborationOccurrence"/>
+<xsd:element name="occurrence" type="uml:CollaborationOccurrence"/>
 </xsd:choice>
-<xsd:attribute name="constrainedElement" type="xsd:string"/>
+<xsd:attribute name="templateParameter" type="xsd:string"/>
+<xsd:attribute name="packageableElement_visibility" type="uml:VisibilityKind"/>
+<xsd:attribute name="isLeaf" type="xsd:string"/>
+<xsd:attribute name="isAbstract" type="xsd:string"/>
+<xsd:attribute name="redefinedClassifier" type="xsd:string"/>
+<xsd:attribute name="powertypeExtent" type="xsd:string"/>
+<xsd:attribute name="representation" type="xsd:string"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="Constraint" type="uml:Constraint"/>
+<xsd:element name="Classifier" type="uml:Classifier"/>
+<xsd:complexType name="Feature">
+<xsd:complexContent>
+<xsd:extension base="uml:RedefinableElement">
+<xsd:attribute name="isStatic" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Feature" type="uml:Feature"/>
 <xsd:complexType name="BehavioralFeature">
 <xsd:complexContent>
 <xsd:extension base="uml:Namespace">
@@ -502,6 +502,28 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="StructuralFeature" type="uml:StructuralFeature"/>
+<xsd:complexType name="Generalization">
+<xsd:complexContent>
+<xsd:extension base="uml:DirectedRelationship">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="general" type="uml:Classifier"/>
+<xsd:element name="generalizationSet" type="uml:GeneralizationSet"/>
+</xsd:choice>
+<xsd:attribute name="isSubstitutable" type="xsd:string"/>
+<xsd:attribute name="general" type="xsd:string"/>
+<xsd:attribute name="generalizationSet" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Generalization" type="uml:Generalization"/>
+<xsd:complexType name="RedefinableElement">
+<xsd:complexContent>
+<xsd:extension base="uml:NamedElement">
+<xsd:attribute name="isLeaf" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="RedefinableElement" type="uml:RedefinableElement"/>
 <xsd:complexType name="InstanceSpecification">
 <xsd:complexContent>
 <xsd:extension base="uml:PackageableElement">
@@ -539,28 +561,6 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="InstanceValue" type="uml:InstanceValue"/>
-<xsd:complexType name="RedefinableElement">
-<xsd:complexContent>
-<xsd:extension base="uml:NamedElement">
-<xsd:attribute name="isLeaf" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="RedefinableElement" type="uml:RedefinableElement"/>
-<xsd:complexType name="Generalization">
-<xsd:complexContent>
-<xsd:extension base="uml:DirectedRelationship">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="general" type="uml:Classifier"/>
-<xsd:element name="generalizationSet" type="uml:GeneralizationSet"/>
-</xsd:choice>
-<xsd:attribute name="isSubstitutable" type="xsd:string"/>
-<xsd:attribute name="general" type="xsd:string"/>
-<xsd:attribute name="generalizationSet" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Generalization" type="uml:Generalization"/>
 <xsd:complexType name="PackageableElement">
 <xsd:complexContent>
 <xsd:extension base="uml:NamedElement">
@@ -664,14 +664,6 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="ExtensionEnd" type="uml:ExtensionEnd"/>
-<xsd:complexType name="Model">
-<xsd:complexContent>
-<xsd:extension base="uml:Package">
-<xsd:attribute name="viewpoint" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Model" type="uml:Model"/>
 <xsd:complexType name="Permission">
 <xsd:complexContent>
 <xsd:extension base="uml:Dependency"/>
@@ -729,58 +721,6 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="Substitution" type="uml:Substitution"/>
-<xsd:complexType name="GeneralizationSet">
-<xsd:complexContent>
-<xsd:extension base="uml:PackageableElement">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="powertype" type="uml:Classifier"/>
-<xsd:element name="generalization" type="uml:Generalization"/>
-</xsd:choice>
-<xsd:attribute name="isCovering" type="xsd:string"/>
-<xsd:attribute name="isDisjoint" type="xsd:string"/>
-<xsd:attribute name="powertype" type="xsd:string"/>
-<xsd:attribute name="generalization" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="GeneralizationSet" type="uml:GeneralizationSet"/>
-<xsd:complexType name="InformationItem">
-<xsd:complexContent>
-<xsd:extension base="uml:Classifier">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="represented" type="uml:Classifier"/>
-</xsd:choice>
-<xsd:attribute name="represented" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="InformationItem" type="uml:InformationItem"/>
-<xsd:complexType name="InformationFlow">
-<xsd:complexContent>
-<xsd:extension base="uml:DirectedRelationship">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="realization" type="uml:Relationship"/>
-<xsd:element name="conveyed" type="uml:Classifier"/>
-</xsd:choice>
-<xsd:attribute name="realization" type="xsd:string"/>
-<xsd:attribute name="conveyed" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="InformationFlow" type="uml:InformationFlow"/>
-<xsd:complexType name="AssociationClass">
-<xsd:complexContent>
-<xsd:extension base="uml:Class">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="ownedEnd" type="uml:Property"/>
-<xsd:element name="memberEnd" type="uml:Property"/>
-</xsd:choice>
-<xsd:attribute name="isDerived" type="xsd:string"/>
-<xsd:attribute name="memberEnd" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="AssociationClass" type="uml:AssociationClass"/>
 <xsd:complexType name="Behavior">
 <xsd:complexContent>
 <xsd:extension base="uml:Class">
@@ -832,31 +772,147 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="Activity" type="uml:Activity"/>
-<xsd:complexType name="Artifact">
+<xsd:complexType name="AssociationClass">
+<xsd:complexContent>
+<xsd:extension base="uml:Class">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="ownedEnd" type="uml:Property"/>
+<xsd:element name="memberEnd" type="uml:Property"/>
+</xsd:choice>
+<xsd:attribute name="isDerived" type="xsd:string"/>
+<xsd:attribute name="memberEnd" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="AssociationClass" type="uml:AssociationClass"/>
+<xsd:complexType name="Model">
+<xsd:complexContent>
+<xsd:extension base="uml:Package">
+<xsd:attribute name="viewpoint" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Model" type="uml:Model"/>
+<xsd:complexType name="InformationItem">
 <xsd:complexContent>
 <xsd:extension base="uml:Classifier">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="nestedArtifact" type="uml:Artifact"/>
-<xsd:element name="manifestation" type="uml:Manifestation"/>
-<xsd:element name="ownedOperation" type="uml:Operation"/>
-<xsd:element name="ownedAttribute" type="uml:Property"/>
+<xsd:element name="represented" type="uml:Classifier"/>
 </xsd:choice>
-<xsd:attribute name="fileName" type="xsd:string"/>
+<xsd:attribute name="represented" type="xsd:string"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="Artifact" type="uml:Artifact"/>
-<xsd:complexType name="Manifestation">
+<xsd:element name="InformationItem" type="uml:InformationItem"/>
+<xsd:complexType name="InformationFlow">
 <xsd:complexContent>
-<xsd:extension base="uml:Abstraction">
+<xsd:extension base="uml:DirectedRelationship">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="utilizedElement" type="uml:PackageableElement"/>
+<xsd:element name="realization" type="uml:Relationship"/>
+<xsd:element name="conveyed" type="uml:Classifier"/>
 </xsd:choice>
-<xsd:attribute name="utilizedElement" type="xsd:string"/>
+<xsd:attribute name="realization" type="xsd:string"/>
+<xsd:attribute name="conveyed" type="xsd:string"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="Manifestation" type="uml:Manifestation"/>
+<xsd:element name="InformationFlow" type="uml:InformationFlow"/>
+<xsd:complexType name="GeneralizationSet">
+<xsd:complexContent>
+<xsd:extension base="uml:PackageableElement">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="powertype" type="uml:Classifier"/>
+<xsd:element name="generalization" type="uml:Generalization"/>
+</xsd:choice>
+<xsd:attribute name="isCovering" type="xsd:string"/>
+<xsd:attribute name="isDisjoint" type="xsd:string"/>
+<xsd:attribute name="powertype" type="xsd:string"/>
+<xsd:attribute name="generalization" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="GeneralizationSet" type="uml:GeneralizationSet"/>
+<xsd:complexType name="ConnectorEnd">
+<xsd:complexContent>
+<xsd:extension base="uml:MultiplicityElement">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="role" type="uml:ConnectableElement"/>
+<xsd:element name="partWithPort" type="uml:Property"/>
+</xsd:choice>
+<xsd:attribute name="role" type="xsd:string"/>
+<xsd:attribute name="partWithPort" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="ConnectorEnd" type="uml:ConnectorEnd"/>
+<xsd:complexType name="ConnectableElement">
+<xsd:complexContent>
+<xsd:extension base="uml:NamedElement">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="templateParameter" type="uml:TemplateParameter"/>
+<xsd:element name="end" type="uml:ConnectorEnd"/>
+</xsd:choice>
+<xsd:attribute name="templateParameter" type="xsd:string"/>
+<xsd:attribute name="end" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="ConnectableElement" type="uml:ConnectableElement"/>
+<xsd:complexType name="Connector">
+<xsd:complexContent>
+<xsd:extension base="uml:Feature">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="type" type="uml:Association"/>
+<xsd:element name="redefinedConnector" type="uml:Connector"/>
+<xsd:element name="end" type="uml:ConnectorEnd"/>
+<xsd:element name="contract" type="uml:Behavior"/>
+</xsd:choice>
+<xsd:attribute name="kind" type="uml:ConnectorKind"/>
+<xsd:attribute name="type" type="xsd:string"/>
+<xsd:attribute name="redefinedConnector" type="xsd:string"/>
+<xsd:attribute name="contract" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Connector" type="uml:Connector"/>
+<xsd:complexType name="StructuredClassifier">
+<xsd:complexContent>
+<xsd:extension base="uml:Classifier">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="ownedAttribute" type="uml:Property"/>
+<xsd:element name="ownedConnector" type="uml:Connector"/>
+</xsd:choice>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="StructuredClassifier" type="uml:StructuredClassifier"/>
+<xsd:complexType name="Interface">
+<xsd:complexContent>
+<xsd:extension base="uml:Classifier">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="ownedAttribute" type="uml:Property"/>
+<xsd:element name="ownedOperation" type="uml:Operation"/>
+<xsd:element name="redefinedInterface" type="uml:Interface"/>
+<xsd:element name="nestedClassifier" type="uml:Classifier"/>
+<xsd:element name="ownedReception" type="uml:Reception"/>
+<xsd:element name="protocol" type="uml:ProtocolStateMachine"/>
+</xsd:choice>
+<xsd:attribute name="redefinedInterface" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Interface" type="uml:Interface"/>
+<xsd:complexType name="Implementation">
+<xsd:complexContent>
+<xsd:extension base="uml:Realization">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="contract" type="uml:Interface"/>
+</xsd:choice>
+<xsd:attribute name="contract" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Implementation" type="uml:Implementation"/>
 <xsd:complexType name="Actor">
 <xsd:complexContent>
 <xsd:extension base="uml:Classifier"/>
@@ -908,33 +964,31 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="Include" type="uml:Include"/>
-<xsd:complexType name="Interface">
+<xsd:complexType name="Artifact">
 <xsd:complexContent>
 <xsd:extension base="uml:Classifier">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="ownedAttribute" type="uml:Property"/>
+<xsd:element name="nestedArtifact" type="uml:Artifact"/>
+<xsd:element name="manifestation" type="uml:Manifestation"/>
 <xsd:element name="ownedOperation" type="uml:Operation"/>
-<xsd:element name="redefinedInterface" type="uml:Interface"/>
-<xsd:element name="nestedClassifier" type="uml:Classifier"/>
-<xsd:element name="ownedReception" type="uml:Reception"/>
-<xsd:element name="protocol" type="uml:ProtocolStateMachine"/>
+<xsd:element name="ownedAttribute" type="uml:Property"/>
 </xsd:choice>
-<xsd:attribute name="redefinedInterface" type="xsd:string"/>
+<xsd:attribute name="fileName" type="xsd:string"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="Interface" type="uml:Interface"/>
-<xsd:complexType name="Implementation">
+<xsd:element name="Artifact" type="uml:Artifact"/>
+<xsd:complexType name="Manifestation">
 <xsd:complexContent>
-<xsd:extension base="uml:Realization">
+<xsd:extension base="uml:Abstraction">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="contract" type="uml:Interface"/>
+<xsd:element name="utilizedElement" type="uml:PackageableElement"/>
 </xsd:choice>
-<xsd:attribute name="contract" type="xsd:string"/>
+<xsd:attribute name="utilizedElement" type="xsd:string"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="Implementation" type="uml:Implementation"/>
+<xsd:element name="Manifestation" type="uml:Manifestation"/>
 <xsd:complexType name="ActivityEdge">
 <xsd:complexContent>
 <xsd:extension base="uml:RedefinableElement">
@@ -1121,60 +1175,6 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="ValuePin" type="uml:ValuePin"/>
-<xsd:complexType name="ConnectorEnd">
-<xsd:complexContent>
-<xsd:extension base="uml:MultiplicityElement">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="role" type="uml:ConnectableElement"/>
-<xsd:element name="partWithPort" type="uml:Property"/>
-</xsd:choice>
-<xsd:attribute name="role" type="xsd:string"/>
-<xsd:attribute name="partWithPort" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="ConnectorEnd" type="uml:ConnectorEnd"/>
-<xsd:complexType name="ConnectableElement">
-<xsd:complexContent>
-<xsd:extension base="uml:NamedElement">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="templateParameter" type="uml:TemplateParameter"/>
-<xsd:element name="end" type="uml:ConnectorEnd"/>
-</xsd:choice>
-<xsd:attribute name="templateParameter" type="xsd:string"/>
-<xsd:attribute name="end" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="ConnectableElement" type="uml:ConnectableElement"/>
-<xsd:complexType name="Connector">
-<xsd:complexContent>
-<xsd:extension base="uml:Feature">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="type" type="uml:Association"/>
-<xsd:element name="redefinedConnector" type="uml:Connector"/>
-<xsd:element name="end" type="uml:ConnectorEnd"/>
-<xsd:element name="contract" type="uml:Behavior"/>
-</xsd:choice>
-<xsd:attribute name="kind" type="uml:ConnectorKind"/>
-<xsd:attribute name="type" type="xsd:string"/>
-<xsd:attribute name="redefinedConnector" type="xsd:string"/>
-<xsd:attribute name="contract" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Connector" type="uml:Connector"/>
-<xsd:complexType name="StructuredClassifier">
-<xsd:complexContent>
-<xsd:extension base="uml:Classifier">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="ownedAttribute" type="uml:Property"/>
-<xsd:element name="ownedConnector" type="uml:Connector"/>
-</xsd:choice>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="StructuredClassifier" type="uml:StructuredClassifier"/>
 <xsd:complexType name="CollaborationOccurrence">
 <xsd:complexContent>
 <xsd:extension base="uml:NamedElement">
@@ -1200,115 +1200,6 @@
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="Collaboration" type="uml:Collaboration"/>
-<xsd:complexType name="Variable">
-<xsd:complexContent>
-<xsd:extension base="uml:ConnectableElement">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="type" type="uml:Type"/>
-</xsd:choice>
-<xsd:attribute name="type" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Variable" type="uml:Variable"/>
-<xsd:complexType name="StructuredActivityNode">
-<xsd:complexContent>
-<xsd:extension base="uml:Action">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="ownedRule" type="uml:Constraint"/>
-<xsd:element name="elementImport" type="uml:ElementImport"/>
-<xsd:element name="packageImport" type="uml:PackageImport"/>
-<xsd:element name="variable" type="uml:Variable"/>
-<xsd:element name="containedNode" type="uml:ActivityNode"/>
-<xsd:element name="containedEdge" type="uml:ActivityEdge"/>
-</xsd:choice>
-<xsd:attribute name="mustIsolate" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="StructuredActivityNode" type="uml:StructuredActivityNode"/>
-<xsd:complexType name="ConditionalNode">
-<xsd:complexContent>
-<xsd:extension base="uml:StructuredActivityNode">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="clause" type="uml:Clause"/>
-<xsd:element name="result" type="uml:OutputPin"/>
-</xsd:choice>
-<xsd:attribute name="isDeterminate" type="xsd:string"/>
-<xsd:attribute name="isAssured" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="ConditionalNode" type="uml:ConditionalNode"/>
-<xsd:complexType name="Clause">
-<xsd:complexContent>
-<xsd:extension base="uml:Element">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="test" type="uml:ActivityNode"/>
-<xsd:element name="body" type="uml:ActivityNode"/>
-<xsd:element name="predecessorClause" type="uml:Clause"/>
-<xsd:element name="successorClause" type="uml:Clause"/>
-<xsd:element name="decider" type="uml:OutputPin"/>
-<xsd:element name="bodyOutput" type="uml:OutputPin"/>
-</xsd:choice>
-<xsd:attribute name="test" type="xsd:string"/>
-<xsd:attribute name="body" type="xsd:string"/>
-<xsd:attribute name="predecessorClause" type="xsd:string"/>
-<xsd:attribute name="successorClause" type="xsd:string"/>
-<xsd:attribute name="decider" type="xsd:string"/>
-<xsd:attribute name="bodyOutput" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Clause" type="uml:Clause"/>
-<xsd:complexType name="LoopNode">
-<xsd:complexContent>
-<xsd:extension base="uml:StructuredActivityNode">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="bodyPart" type="uml:ActivityNode"/>
-<xsd:element name="setupPart" type="uml:ActivityNode"/>
-<xsd:element name="decider" type="uml:OutputPin"/>
-<xsd:element name="test" type="uml:ActivityNode"/>
-<xsd:element name="result" type="uml:OutputPin"/>
-<xsd:element name="loopVariable" type="uml:OutputPin"/>
-<xsd:element name="bodyOutput" type="uml:OutputPin"/>
-<xsd:element name="loopVariableInput" type="uml:InputPin"/>
-</xsd:choice>
-<xsd:attribute name="isTestedFirst" type="xsd:string"/>
-<xsd:attribute name="bodyPart" type="xsd:string"/>
-<xsd:attribute name="setupPart" type="xsd:string"/>
-<xsd:attribute name="decider" type="xsd:string"/>
-<xsd:attribute name="test" type="xsd:string"/>
-<xsd:attribute name="bodyOutput" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="LoopNode" type="uml:LoopNode"/>
-<xsd:complexType name="Port">
-<xsd:complexContent>
-<xsd:extension base="uml:Property">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="redefinedPort" type="uml:Port"/>
-<xsd:element name="protocol" type="uml:ProtocolStateMachine"/>
-</xsd:choice>
-<xsd:attribute name="isBehavior" type="xsd:string"/>
-<xsd:attribute name="isService" type="xsd:string"/>
-<xsd:attribute name="redefinedPort" type="xsd:string"/>
-<xsd:attribute name="protocol" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Port" type="uml:Port"/>
-<xsd:complexType name="EncapsulatedClassifier">
-<xsd:complexContent>
-<xsd:extension base="uml:StructuredClassifier">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="ownedPort" type="uml:Port"/>
-</xsd:choice>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="EncapsulatedClassifier" type="uml:EncapsulatedClassifier"/>
 <xsd:complexType name="Interaction">
 <xsd:annotation>
 <xsd:documentation>The point is that the InteractionConstraint "received" from StructuralArchitecture will consist of a set of such units described by sequence diagrams (or collaboration diagrams).</xsd:documentation>
@@ -1475,6 +1366,31 @@ Diagram. A Participant may be a Part or it may be a parameter representing a par
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="Stop" type="uml:Stop"/>
+<xsd:complexType name="Port">
+<xsd:complexContent>
+<xsd:extension base="uml:Property">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="redefinedPort" type="uml:Port"/>
+<xsd:element name="protocol" type="uml:ProtocolStateMachine"/>
+</xsd:choice>
+<xsd:attribute name="isBehavior" type="xsd:string"/>
+<xsd:attribute name="isService" type="xsd:string"/>
+<xsd:attribute name="redefinedPort" type="xsd:string"/>
+<xsd:attribute name="protocol" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Port" type="uml:Port"/>
+<xsd:complexType name="EncapsulatedClassifier">
+<xsd:complexContent>
+<xsd:extension base="uml:StructuredClassifier">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="ownedPort" type="uml:Port"/>
+</xsd:choice>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="EncapsulatedClassifier" type="uml:EncapsulatedClassifier"/>
 <xsd:complexType name="CallTrigger">
 <xsd:complexContent>
 <xsd:extension base="uml:MessageTrigger">
@@ -1562,6 +1478,90 @@ Diagram. A Participant may be a Part or it may be a parameter representing a par
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="AnyTrigger" type="uml:AnyTrigger"/>
+<xsd:complexType name="Variable">
+<xsd:complexContent>
+<xsd:extension base="uml:ConnectableElement">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="type" type="uml:Type"/>
+</xsd:choice>
+<xsd:attribute name="type" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Variable" type="uml:Variable"/>
+<xsd:complexType name="StructuredActivityNode">
+<xsd:complexContent>
+<xsd:extension base="uml:Action">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="ownedRule" type="uml:Constraint"/>
+<xsd:element name="elementImport" type="uml:ElementImport"/>
+<xsd:element name="packageImport" type="uml:PackageImport"/>
+<xsd:element name="variable" type="uml:Variable"/>
+<xsd:element name="containedNode" type="uml:ActivityNode"/>
+<xsd:element name="containedEdge" type="uml:ActivityEdge"/>
+</xsd:choice>
+<xsd:attribute name="mustIsolate" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="StructuredActivityNode" type="uml:StructuredActivityNode"/>
+<xsd:complexType name="ConditionalNode">
+<xsd:complexContent>
+<xsd:extension base="uml:StructuredActivityNode">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="clause" type="uml:Clause"/>
+<xsd:element name="result" type="uml:OutputPin"/>
+</xsd:choice>
+<xsd:attribute name="isDeterminate" type="xsd:string"/>
+<xsd:attribute name="isAssured" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="ConditionalNode" type="uml:ConditionalNode"/>
+<xsd:complexType name="Clause">
+<xsd:complexContent>
+<xsd:extension base="uml:Element">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="test" type="uml:ActivityNode"/>
+<xsd:element name="body" type="uml:ActivityNode"/>
+<xsd:element name="predecessorClause" type="uml:Clause"/>
+<xsd:element name="successorClause" type="uml:Clause"/>
+<xsd:element name="decider" type="uml:OutputPin"/>
+<xsd:element name="bodyOutput" type="uml:OutputPin"/>
+</xsd:choice>
+<xsd:attribute name="test" type="xsd:string"/>
+<xsd:attribute name="body" type="xsd:string"/>
+<xsd:attribute name="predecessorClause" type="xsd:string"/>
+<xsd:attribute name="successorClause" type="xsd:string"/>
+<xsd:attribute name="decider" type="xsd:string"/>
+<xsd:attribute name="bodyOutput" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Clause" type="uml:Clause"/>
+<xsd:complexType name="LoopNode">
+<xsd:complexContent>
+<xsd:extension base="uml:StructuredActivityNode">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="bodyPart" type="uml:ActivityNode"/>
+<xsd:element name="setupPart" type="uml:ActivityNode"/>
+<xsd:element name="decider" type="uml:OutputPin"/>
+<xsd:element name="test" type="uml:ActivityNode"/>
+<xsd:element name="result" type="uml:OutputPin"/>
+<xsd:element name="loopVariable" type="uml:OutputPin"/>
+<xsd:element name="bodyOutput" type="uml:OutputPin"/>
+<xsd:element name="loopVariableInput" type="uml:InputPin"/>
+</xsd:choice>
+<xsd:attribute name="isTestedFirst" type="xsd:string"/>
+<xsd:attribute name="bodyPart" type="xsd:string"/>
+<xsd:attribute name="setupPart" type="xsd:string"/>
+<xsd:attribute name="decider" type="xsd:string"/>
+<xsd:attribute name="test" type="xsd:string"/>
+<xsd:attribute name="bodyOutput" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="LoopNode" type="uml:LoopNode"/>
 <xsd:complexType name="TemplateSignature">
 <xsd:complexContent>
 <xsd:extension base="uml:Element">
@@ -1699,121 +1699,6 @@ Diagram. A Participant may be a Part or it may be a parameter representing a par
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="ConnectableElementTemplateParameter" type="uml:ConnectableElementTemplateParameter"/>
-<xsd:complexType name="InteractionOccurrence">
-<xsd:annotation>
-<xsd:documentation>A reference to an interaction with actual values. The interpretation is that the sequence diagram replaces the reference (with actual parameters substituted)</xsd:documentation>
-</xsd:annotation>
-<xsd:complexContent>
-<xsd:extension base="uml:InteractionFragment">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="refersTo" type="uml:Interaction"/>
-<xsd:element name="actualGate" type="uml:Gate"/>
-<xsd:element name="argument" type="uml:InputPin"/>
-</xsd:choice>
-<xsd:attribute name="refersTo" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="InteractionOccurrence" type="uml:InteractionOccurrence">
-<xsd:annotation>
-<xsd:documentation>A reference to an interaction with actual values. The interpretation is that the sequence diagram replaces the reference (with actual parameters substituted)</xsd:documentation>
-</xsd:annotation>
-</xsd:element>
-<xsd:complexType name="Gate">
-<xsd:annotation>
-<xsd:documentation>A gate is a connection point. When the conceptual replacement of InteractionReferences with its referred Sequence Diagram is done, the actual gates of the reference must match the formal gates of the sequence diagram.
-More implicitly the unnamed gate of the atomic fragment match adjacent fragment gates.
-Expression gates are found on the border of the expression and they serve both as formal and actual gates. (Details to be explained other place)</xsd:documentation>
-</xsd:annotation>
-<xsd:complexContent>
-<xsd:extension base="uml:MessageEnd"/>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Gate" type="uml:Gate">
-<xsd:annotation>
-<xsd:documentation>A gate is a connection point. When the conceptual replacement of InteractionReferences with its referred Sequence Diagram is done, the actual gates of the reference must match the formal gates of the sequence diagram.
-More implicitly the unnamed gate of the atomic fragment match adjacent fragment gates.
-Expression gates are found on the border of the expression and they serve both as formal and actual gates. (Details to be explained other place)</xsd:documentation>
-</xsd:annotation>
-</xsd:element>
-<xsd:complexType name="PartDecomposition">
-<xsd:annotation>
-<xsd:documentation>A part decomposition is a special InteractionReference that defines the behavior within one interacting entity (Part) in one sequence diagram.</xsd:documentation>
-</xsd:annotation>
-<xsd:complexContent>
-<xsd:extension base="uml:InteractionOccurrence"/>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="PartDecomposition" type="uml:PartDecomposition">
-<xsd:annotation>
-<xsd:documentation>A part decomposition is a special InteractionReference that defines the behavior within one interacting entity (Part) in one sequence diagram.</xsd:documentation>
-</xsd:annotation>
-</xsd:element>
-<xsd:complexType name="InteractionOperand">
-<xsd:annotation>
-<xsd:documentation>An InteractionExpressionOperand is of course an InteractionFragment such that expressions can be nested freely.
-An operand may be guarded. If the guard evaluates to true, the operand is eligible in the expression, otherwise it is ignored. (very intuitively speaking, formalization has been done in Z.120 Annex B)</xsd:documentation>
-</xsd:annotation>
-<xsd:complexContent>
-<xsd:extension base="uml:Namespace">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="covered" type="uml:Lifeline"/>
-<xsd:element name="generalOrdering" type="uml:GeneralOrdering"/>
-<xsd:element name="guard" type="uml:InteractionConstraint"/>
-<xsd:element name="fragment" type="uml:InteractionFragment"/>
-</xsd:choice>
-<xsd:attribute name="covered" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="InteractionOperand" type="uml:InteractionOperand">
-<xsd:annotation>
-<xsd:documentation>An InteractionExpressionOperand is of course an InteractionFragment such that expressions can be nested freely.
-An operand may be guarded. If the guard evaluates to true, the operand is eligible in the expression, otherwise it is ignored. (very intuitively speaking, formalization has been done in Z.120 Annex B)</xsd:documentation>
-</xsd:annotation>
-</xsd:element>
-<xsd:complexType name="InteractionConstraint">
-<xsd:complexContent>
-<xsd:extension base="uml:Constraint">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="minint" type="uml:ValueSpecification"/>
-<xsd:element name="maxint" type="uml:ValueSpecification"/>
-</xsd:choice>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="InteractionConstraint" type="uml:InteractionConstraint"/>
-<xsd:complexType name="CombinedFragment">
-<xsd:annotation>
-<xsd:documentation>An interaction fragment that decomposes into a set of other interaction fragments under some operator.
-In principle the whole sequence diagram is an combined interaction. Syntactically, however, we will have special notation for combineations such that operands may be easily distinguished.
-Combined interactions consist of operands and an implicit or explicit operator</xsd:documentation>
-</xsd:annotation>
-<xsd:complexContent>
-<xsd:extension base="uml:InteractionFragment">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="operand" type="uml:InteractionOperand"/>
-<xsd:element name="cfragmentGate" type="uml:Gate"/>
-</xsd:choice>
-<xsd:attribute name="interactionOperator" type="uml:InteractionOperator"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="CombinedFragment" type="uml:CombinedFragment">
-<xsd:annotation>
-<xsd:documentation>An interaction fragment that decomposes into a set of other interaction fragments under some operator.
-In principle the whole sequence diagram is an combined interaction. Syntactically, however, we will have special notation for combineations such that operands may be easily distinguished.
-Combined interactions consist of operands and an implicit or explicit operator</xsd:documentation>
-</xsd:annotation>
-</xsd:element>
-<xsd:complexType name="Continuation">
-<xsd:complexContent>
-<xsd:extension base="uml:InteractionFragment">
-<xsd:attribute name="setting" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Continuation" type="uml:Continuation"/>
 <xsd:complexType name="StateMachine">
 <xsd:complexContent>
 <xsd:extension base="uml:Behavior">
@@ -1972,48 +1857,6 @@ Combined interactions consist of operands and an implicit or explicit operator</
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="ActivityPartition" type="uml:ActivityPartition"/>
-<xsd:complexType name="ExpansionNode">
-<xsd:complexContent>
-<xsd:extension base="uml:ObjectNode">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="regionAsOutput" type="uml:ExpansionRegion"/>
-<xsd:element name="regionAsInput" type="uml:ExpansionRegion"/>
-</xsd:choice>
-<xsd:attribute name="regionAsOutput" type="xsd:string"/>
-<xsd:attribute name="regionAsInput" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="ExpansionNode" type="uml:ExpansionNode"/>
-<xsd:complexType name="ExpansionRegion">
-<xsd:complexContent>
-<xsd:extension base="uml:StructuredActivityNode">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="outputElement" type="uml:ExpansionNode"/>
-<xsd:element name="inputElement" type="uml:ExpansionNode"/>
-</xsd:choice>
-<xsd:attribute name="mode" type="uml:ExpansionKind"/>
-<xsd:attribute name="outputElement" type="xsd:string"/>
-<xsd:attribute name="inputElement" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="ExpansionRegion" type="uml:ExpansionRegion"/>
-<xsd:complexType name="ExceptionHandler">
-<xsd:complexContent>
-<xsd:extension base="uml:Element">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="handlerBody" type="uml:ExecutableNode"/>
-<xsd:element name="exceptionInput" type="uml:ObjectNode"/>
-<xsd:element name="exceptionType" type="uml:Classifier"/>
-</xsd:choice>
-<xsd:attribute name="handlerBody" type="xsd:string"/>
-<xsd:attribute name="exceptionInput" type="xsd:string"/>
-<xsd:attribute name="exceptionType" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="ExceptionHandler" type="uml:ExceptionHandler"/>
 <xsd:complexType name="CreateObjectAction">
 <xsd:complexContent>
 <xsd:extension base="uml:Action">
@@ -2345,75 +2188,163 @@ Combined interactions consist of operands and an implicit or explicit operator</
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="CallBehaviorAction" type="uml:CallBehaviorAction"/>
-<xsd:complexType name="Component">
+<xsd:complexType name="InteractionOccurrence">
+<xsd:annotation>
+<xsd:documentation>A reference to an interaction with actual values. The interpretation is that the sequence diagram replaces the reference (with actual parameters substituted)</xsd:documentation>
+</xsd:annotation>
 <xsd:complexContent>
-<xsd:extension base="uml:Class">
+<xsd:extension base="uml:InteractionFragment">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="realization" type="uml:Realization"/>
-<xsd:element name="ownedMember" type="uml:PackageableElement"/>
+<xsd:element name="refersTo" type="uml:Interaction"/>
+<xsd:element name="actualGate" type="uml:Gate"/>
+<xsd:element name="argument" type="uml:InputPin"/>
 </xsd:choice>
-<xsd:attribute name="isIndirectlyInstantiated" type="xsd:string"/>
+<xsd:attribute name="refersTo" type="xsd:string"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="Component" type="uml:Component"/>
-<xsd:complexType name="Deployment">
+<xsd:element name="InteractionOccurrence" type="uml:InteractionOccurrence">
+<xsd:annotation>
+<xsd:documentation>A reference to an interaction with actual values. The interpretation is that the sequence diagram replaces the reference (with actual parameters substituted)</xsd:documentation>
+</xsd:annotation>
+</xsd:element>
+<xsd:complexType name="Gate">
+<xsd:annotation>
+<xsd:documentation>A gate is a connection point. When the conceptual replacement of InteractionReferences with its referred Sequence Diagram is done, the actual gates of the reference must match the formal gates of the sequence diagram.
+More implicitly the unnamed gate of the atomic fragment match adjacent fragment gates.
+Expression gates are found on the border of the expression and they serve both as formal and actual gates. (Details to be explained other place)</xsd:documentation>
+</xsd:annotation>
 <xsd:complexContent>
-<xsd:extension base="uml:Dependency">
+<xsd:extension base="uml:MessageEnd"/>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Gate" type="uml:Gate">
+<xsd:annotation>
+<xsd:documentation>A gate is a connection point. When the conceptual replacement of InteractionReferences with its referred Sequence Diagram is done, the actual gates of the reference must match the formal gates of the sequence diagram.
+More implicitly the unnamed gate of the atomic fragment match adjacent fragment gates.
+Expression gates are found on the border of the expression and they serve both as formal and actual gates. (Details to be explained other place)</xsd:documentation>
+</xsd:annotation>
+</xsd:element>
+<xsd:complexType name="PartDecomposition">
+<xsd:annotation>
+<xsd:documentation>A part decomposition is a special InteractionReference that defines the behavior within one interacting entity (Part) in one sequence diagram.</xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="uml:InteractionOccurrence"/>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="PartDecomposition" type="uml:PartDecomposition">
+<xsd:annotation>
+<xsd:documentation>A part decomposition is a special InteractionReference that defines the behavior within one interacting entity (Part) in one sequence diagram.</xsd:documentation>
+</xsd:annotation>
+</xsd:element>
+<xsd:complexType name="InteractionOperand">
+<xsd:annotation>
+<xsd:documentation>An InteractionExpressionOperand is of course an InteractionFragment such that expressions can be nested freely.
+An operand may be guarded. If the guard evaluates to true, the operand is eligible in the expression, otherwise it is ignored. (very intuitively speaking, formalization has been done in Z.120 Annex B)</xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="uml:Namespace">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="deployedArtifact" type="uml:DeployedArtifact"/>
-<xsd:element name="configuration" type="uml:DeploymentSpecification"/>
+<xsd:element name="covered" type="uml:Lifeline"/>
+<xsd:element name="generalOrdering" type="uml:GeneralOrdering"/>
+<xsd:element name="guard" type="uml:InteractionConstraint"/>
+<xsd:element name="fragment" type="uml:InteractionFragment"/>
 </xsd:choice>
-<xsd:attribute name="deployedArtifact" type="xsd:string"/>
+<xsd:attribute name="covered" type="xsd:string"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="Deployment" type="uml:Deployment"/>
-<xsd:complexType name="DeployedArtifact">
+<xsd:element name="InteractionOperand" type="uml:InteractionOperand">
+<xsd:annotation>
+<xsd:documentation>An InteractionExpressionOperand is of course an InteractionFragment such that expressions can be nested freely.
+An operand may be guarded. If the guard evaluates to true, the operand is eligible in the expression, otherwise it is ignored. (very intuitively speaking, formalization has been done in Z.120 Annex B)</xsd:documentation>
+</xsd:annotation>
+</xsd:element>
+<xsd:complexType name="InteractionConstraint">
 <xsd:complexContent>
-<xsd:extension base="uml:NamedElement"/>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="DeployedArtifact" type="uml:DeployedArtifact"/>
-<xsd:complexType name="DeploymentTarget">
-<xsd:complexContent>
-<xsd:extension base="uml:NamedElement">
+<xsd:extension base="uml:Constraint">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="deployment" type="uml:Deployment"/>
+<xsd:element name="minint" type="uml:ValueSpecification"/>
+<xsd:element name="maxint" type="uml:ValueSpecification"/>
 </xsd:choice>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="DeploymentTarget" type="uml:DeploymentTarget"/>
-<xsd:complexType name="Node">
+<xsd:element name="InteractionConstraint" type="uml:InteractionConstraint"/>
+<xsd:complexType name="CombinedFragment">
+<xsd:annotation>
+<xsd:documentation>An interaction fragment that decomposes into a set of other interaction fragments under some operator.
+In principle the whole sequence diagram is an combined interaction. Syntactically, however, we will have special notation for combineations such that operands may be easily distinguished.
+Combined interactions consist of operands and an implicit or explicit operator</xsd:documentation>
+</xsd:annotation>
 <xsd:complexContent>
-<xsd:extension base="uml:Class">
+<xsd:extension base="uml:InteractionFragment">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="deployment" type="uml:Deployment"/>
-<xsd:element name="nestedNode" type="uml:Node"/>
+<xsd:element name="operand" type="uml:InteractionOperand"/>
+<xsd:element name="cfragmentGate" type="uml:Gate"/>
 </xsd:choice>
+<xsd:attribute name="interactionOperator" type="uml:InteractionOperator"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="Node" type="uml:Node"/>
-<xsd:complexType name="Device">
+<xsd:element name="CombinedFragment" type="uml:CombinedFragment">
+<xsd:annotation>
+<xsd:documentation>An interaction fragment that decomposes into a set of other interaction fragments under some operator.
+In principle the whole sequence diagram is an combined interaction. Syntactically, however, we will have special notation for combineations such that operands may be easily distinguished.
+Combined interactions consist of operands and an implicit or explicit operator</xsd:documentation>
+</xsd:annotation>
+</xsd:element>
+<xsd:complexType name="Continuation">
 <xsd:complexContent>
-<xsd:extension base="uml:Node"/>
+<xsd:extension base="uml:InteractionFragment">
+<xsd:attribute name="setting" type="xsd:string"/>
+</xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="Device" type="uml:Device"/>
-<xsd:complexType name="ExecutionEnvironment">
+<xsd:element name="Continuation" type="uml:Continuation"/>
+<xsd:complexType name="ExpansionNode">
 <xsd:complexContent>
-<xsd:extension base="uml:Node"/>
+<xsd:extension base="uml:ObjectNode">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="regionAsOutput" type="uml:ExpansionRegion"/>
+<xsd:element name="regionAsInput" type="uml:ExpansionRegion"/>
+</xsd:choice>
+<xsd:attribute name="regionAsOutput" type="xsd:string"/>
+<xsd:attribute name="regionAsInput" type="xsd:string"/>
+</xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="ExecutionEnvironment" type="uml:ExecutionEnvironment"/>
-<xsd:complexType name="CommunicationPath">
+<xsd:element name="ExpansionNode" type="uml:ExpansionNode"/>
+<xsd:complexType name="ExpansionRegion">
 <xsd:complexContent>
-<xsd:extension base="uml:Association"/>
+<xsd:extension base="uml:StructuredActivityNode">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="outputElement" type="uml:ExpansionNode"/>
+<xsd:element name="inputElement" type="uml:ExpansionNode"/>
+</xsd:choice>
+<xsd:attribute name="mode" type="uml:ExpansionKind"/>
+<xsd:attribute name="outputElement" type="xsd:string"/>
+<xsd:attribute name="inputElement" type="xsd:string"/>
+</xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="CommunicationPath" type="uml:CommunicationPath"/>
+<xsd:element name="ExpansionRegion" type="uml:ExpansionRegion"/>
+<xsd:complexType name="ExceptionHandler">
+<xsd:complexContent>
+<xsd:extension base="uml:Element">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="handlerBody" type="uml:ExecutableNode"/>
+<xsd:element name="exceptionInput" type="uml:ObjectNode"/>
+<xsd:element name="exceptionType" type="uml:Classifier"/>
+</xsd:choice>
+<xsd:attribute name="handlerBody" type="xsd:string"/>
+<xsd:attribute name="exceptionInput" type="xsd:string"/>
+<xsd:attribute name="exceptionType" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="ExceptionHandler" type="uml:ExceptionHandler"/>
 <xsd:complexType name="ProtocolConformance">
 <xsd:complexContent>
 <xsd:extension base="uml:DirectedRelationship">
@@ -2447,37 +2378,105 @@ Combined interactions consist of operands and an implicit or explicit operator</
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="ProtocolTransition" type="uml:ProtocolTransition"/>
-<xsd:complexType name="DataStoreNode">
+<xsd:complexType name="Component">
 <xsd:complexContent>
-<xsd:extension base="uml:CentralBufferNode"/>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="DataStoreNode" type="uml:DataStoreNode"/>
-<xsd:complexType name="InterruptibleActivityRegion">
-<xsd:complexContent>
-<xsd:extension base="uml:ActivityGroup">
+<xsd:extension base="uml:Class">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="interruptingEdge" type="uml:ActivityEdge"/>
-<xsd:element name="containedNode" type="uml:ActivityNode"/>
+<xsd:element name="realization" type="uml:Realization"/>
+<xsd:element name="ownedMember" type="uml:PackageableElement"/>
 </xsd:choice>
-<xsd:attribute name="interruptingEdge" type="xsd:string"/>
-<xsd:attribute name="containedNode" type="xsd:string"/>
+<xsd:attribute name="isIndirectlyInstantiated" type="xsd:string"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="InterruptibleActivityRegion" type="uml:InterruptibleActivityRegion"/>
-<xsd:complexType name="ParameterSet">
+<xsd:element name="Component" type="uml:Component"/>
+<xsd:complexType name="TimeExpression">
 <xsd:complexContent>
-<xsd:extension base="uml:NamedElement">
+<xsd:extension base="uml:ValueSpecification">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="parameter" type="uml:Parameter"/>
-<xsd:element name="condition" type="uml:Constraint"/>
+<xsd:element name="event" type="uml:NamedElement"/>
 </xsd:choice>
-<xsd:attribute name="parameter" type="xsd:string"/>
+<xsd:attribute name="firstTime" type="xsd:string"/>
+<xsd:attribute name="event" type="xsd:string"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="ParameterSet" type="uml:ParameterSet"/>
+<xsd:element name="TimeExpression" type="uml:TimeExpression"/>
+<xsd:complexType name="Duration">
+<xsd:complexContent>
+<xsd:extension base="uml:ValueSpecification">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="event" type="uml:NamedElement"/>
+</xsd:choice>
+<xsd:attribute name="firstTime" type="xsd:string"/>
+<xsd:attribute name="event" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Duration" type="uml:Duration"/>
+<xsd:complexType name="TimeObservationAction">
+<xsd:complexContent>
+<xsd:extension base="uml:WriteStructuralFeatureAction">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="now" type="uml:TimeExpression"/>
+</xsd:choice>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="TimeObservationAction" type="uml:TimeObservationAction"/>
+<xsd:complexType name="DurationInterval">
+<xsd:complexContent>
+<xsd:extension base="uml:Interval"/>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="DurationInterval" type="uml:DurationInterval"/>
+<xsd:complexType name="Interval">
+<xsd:complexContent>
+<xsd:extension base="uml:ValueSpecification">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="min" type="uml:ValueSpecification"/>
+<xsd:element name="max" type="uml:ValueSpecification"/>
+</xsd:choice>
+<xsd:attribute name="min" type="xsd:string"/>
+<xsd:attribute name="max" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="Interval" type="uml:Interval"/>
+<xsd:complexType name="TimeConstraint">
+<xsd:complexContent>
+<xsd:extension base="uml:IntervalConstraint"/>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="TimeConstraint" type="uml:TimeConstraint"/>
+<xsd:complexType name="IntervalConstraint">
+<xsd:complexContent>
+<xsd:extension base="uml:Constraint"/>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="IntervalConstraint" type="uml:IntervalConstraint"/>
+<xsd:complexType name="TimeInterval">
+<xsd:complexContent>
+<xsd:extension base="uml:Interval"/>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="TimeInterval" type="uml:TimeInterval"/>
+<xsd:complexType name="DurationObservationAction">
+<xsd:complexContent>
+<xsd:extension base="uml:WriteStructuralFeatureAction">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="duration" type="uml:Duration"/>
+</xsd:choice>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="DurationObservationAction" type="uml:DurationObservationAction"/>
+<xsd:complexType name="DurationConstraint">
+<xsd:complexContent>
+<xsd:extension base="uml:IntervalConstraint"/>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="DurationConstraint" type="uml:DurationConstraint"/>
 <xsd:complexType name="ReadExtentAction">
 <xsd:complexContent>
 <xsd:extension base="uml:Action">
@@ -2628,93 +2627,94 @@ Combined interactions consist of operands and an implicit or explicit operator</
 </xsd:complexContent>
 </xsd:complexType>
 <xsd:element name="RaiseExceptionAction" type="uml:RaiseExceptionAction"/>
-<xsd:complexType name="TimeExpression">
+<xsd:complexType name="Deployment">
 <xsd:complexContent>
-<xsd:extension base="uml:ValueSpecification">
+<xsd:extension base="uml:Dependency">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="event" type="uml:NamedElement"/>
+<xsd:element name="deployedArtifact" type="uml:DeployedArtifact"/>
+<xsd:element name="configuration" type="uml:DeploymentSpecification"/>
 </xsd:choice>
-<xsd:attribute name="firstTime" type="xsd:string"/>
-<xsd:attribute name="event" type="xsd:string"/>
+<xsd:attribute name="deployedArtifact" type="xsd:string"/>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="TimeExpression" type="uml:TimeExpression"/>
-<xsd:complexType name="Duration">
+<xsd:element name="Deployment" type="uml:Deployment"/>
+<xsd:complexType name="DeployedArtifact">
 <xsd:complexContent>
-<xsd:extension base="uml:ValueSpecification">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="event" type="uml:NamedElement"/>
-</xsd:choice>
-<xsd:attribute name="firstTime" type="xsd:string"/>
-<xsd:attribute name="event" type="xsd:string"/>
-</xsd:extension>
+<xsd:extension base="uml:NamedElement"/>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="Duration" type="uml:Duration"/>
-<xsd:complexType name="TimeObservationAction">
+<xsd:element name="DeployedArtifact" type="uml:DeployedArtifact"/>
+<xsd:complexType name="DeploymentTarget">
 <xsd:complexContent>
-<xsd:extension base="uml:WriteStructuralFeatureAction">
+<xsd:extension base="uml:NamedElement">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="now" type="uml:TimeExpression"/>
+<xsd:element name="deployment" type="uml:Deployment"/>
 </xsd:choice>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="TimeObservationAction" type="uml:TimeObservationAction"/>
-<xsd:complexType name="DurationInterval">
+<xsd:element name="DeploymentTarget" type="uml:DeploymentTarget"/>
+<xsd:complexType name="Node">
 <xsd:complexContent>
-<xsd:extension base="uml:Interval"/>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="DurationInterval" type="uml:DurationInterval"/>
-<xsd:complexType name="Interval">
-<xsd:complexContent>
-<xsd:extension base="uml:ValueSpecification">
+<xsd:extension base="uml:Class">
 <xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="min" type="uml:ValueSpecification"/>
-<xsd:element name="max" type="uml:ValueSpecification"/>
-</xsd:choice>
-<xsd:attribute name="min" type="xsd:string"/>
-<xsd:attribute name="max" type="xsd:string"/>
-</xsd:extension>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="Interval" type="uml:Interval"/>
-<xsd:complexType name="TimeConstraint">
-<xsd:complexContent>
-<xsd:extension base="uml:IntervalConstraint"/>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="TimeConstraint" type="uml:TimeConstraint"/>
-<xsd:complexType name="IntervalConstraint">
-<xsd:complexContent>
-<xsd:extension base="uml:Constraint"/>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="IntervalConstraint" type="uml:IntervalConstraint"/>
-<xsd:complexType name="TimeInterval">
-<xsd:complexContent>
-<xsd:extension base="uml:Interval"/>
-</xsd:complexContent>
-</xsd:complexType>
-<xsd:element name="TimeInterval" type="uml:TimeInterval"/>
-<xsd:complexType name="DurationObservationAction">
-<xsd:complexContent>
-<xsd:extension base="uml:WriteStructuralFeatureAction">
-<xsd:choice minOccurs="0" maxOccurs="unbounded">
-<xsd:element name="duration" type="uml:Duration"/>
+<xsd:element name="deployment" type="uml:Deployment"/>
+<xsd:element name="nestedNode" type="uml:Node"/>
 </xsd:choice>
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="DurationObservationAction" type="uml:DurationObservationAction"/>
-<xsd:complexType name="DurationConstraint">
+<xsd:element name="Node" type="uml:Node"/>
+<xsd:complexType name="Device">
 <xsd:complexContent>
-<xsd:extension base="uml:IntervalConstraint"/>
+<xsd:extension base="uml:Node"/>
 </xsd:complexContent>
 </xsd:complexType>
-<xsd:element name="DurationConstraint" type="uml:DurationConstraint"/>
+<xsd:element name="Device" type="uml:Device"/>
+<xsd:complexType name="ExecutionEnvironment">
+<xsd:complexContent>
+<xsd:extension base="uml:Node"/>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="ExecutionEnvironment" type="uml:ExecutionEnvironment"/>
+<xsd:complexType name="CommunicationPath">
+<xsd:complexContent>
+<xsd:extension base="uml:Association"/>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="CommunicationPath" type="uml:CommunicationPath"/>
+<xsd:complexType name="DataStoreNode">
+<xsd:complexContent>
+<xsd:extension base="uml:CentralBufferNode"/>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="DataStoreNode" type="uml:DataStoreNode"/>
+<xsd:complexType name="InterruptibleActivityRegion">
+<xsd:complexContent>
+<xsd:extension base="uml:ActivityGroup">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="interruptingEdge" type="uml:ActivityEdge"/>
+<xsd:element name="containedNode" type="uml:ActivityNode"/>
+</xsd:choice>
+<xsd:attribute name="interruptingEdge" type="xsd:string"/>
+<xsd:attribute name="containedNode" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="InterruptibleActivityRegion" type="uml:InterruptibleActivityRegion"/>
+<xsd:complexType name="ParameterSet">
+<xsd:complexContent>
+<xsd:extension base="uml:NamedElement">
+<xsd:choice minOccurs="0" maxOccurs="unbounded">
+<xsd:element name="parameter" type="uml:Parameter"/>
+<xsd:element name="condition" type="uml:Constraint"/>
+</xsd:choice>
+<xsd:attribute name="parameter" type="xsd:string"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="ParameterSet" type="uml:ParameterSet"/>
 <xsd:complexType name="DeploymentSpecification">
 <xsd:complexContent>
 <xsd:extension base="uml:Artifact">

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionItemProviderTest.java,v 1.1 2004/04/29 14:43:45 khussey Exp $
+ * $Id: TemplateParameterSubstitutionItemProviderTest.java,v 1.2 2004/04/30 17:18:14 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -19,9 +19,10 @@ import junit.textui.TestRunner;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.ReplaceCommand;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.uml2.ParameterableElement;
 import org.eclipse.uml2.TemplateParameterSubstitution;
 import org.eclipse.uml2.UML2Factory;
@@ -84,6 +85,44 @@ public class TemplateParameterSubstitutionItemProviderTest extends ElementItemPr
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.provider.TemplateParameterSubstitutionItemProvider#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int) <em>Create Add Command</em>}' method.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.provider.TemplateParameterSubstitutionItemProvider#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
+	 * @generated NOT
+	 */
+	public void testCreateAddCommand() {
+		
+		// test TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL subset...
+		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
+			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
+			
+			Command command =
+				AddCommand.create(
+						getEditingDomain(),
+						getModelObject(),
+						UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+						Collections.singleton(parameterableElement),
+						CommandParameter.NO_INDEX);
+			
+			getCommandStack().execute(command);
+			
+			assertTrue(getModelObject().getOwnedActuals().contains(parameterableElement));
+			assertTrue(getModelObject().getActuals().contains(parameterableElement));
+			
+			getCommandStack().undo();
+			
+			assertFalse(getModelObject().getOwnedActuals().contains(parameterableElement));
+			assertFalse(getModelObject().getActuals().contains(parameterableElement));
+			
+			getCommandStack().redo();
+			
+			assertTrue(getModelObject().getOwnedActuals().contains(parameterableElement));
+			assertTrue(getModelObject().getActuals().contains(parameterableElement));
+		}
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.provider.TemplateParameterSubstitutionItemProvider#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference, java.util.Collection) <em>Create Remove Command</em>}' method.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -95,30 +134,26 @@ public class TemplateParameterSubstitutionItemProviderTest extends ElementItemPr
 		// test TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL superset...
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
 			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
-	
-			getModelObject().setOwnedActual(parameterableElement);
-	
+			
+			getModelObject().getOwnedActuals().add(parameterableElement);
+			
 			Command command =
-				RemoveCommand.create(
-					getEditingDomain(),
-					getModelObject(),
-					UML2Package.eINSTANCE.getTemplateParameterSubstitution_Actual(),
-					Collections.singleton(parameterableElement));
-	
+				RemoveCommand.create(getEditingDomain(), getModelObject(), UML2Package.eINSTANCE.getTemplateParameterSubstitution_Actual(), Collections.singleton(parameterableElement));
+			
 			getCommandStack().execute(command);
-	
+			
 			assertFalse(getModelObject().getActuals().contains(parameterableElement));
-			assertNotSame(parameterableElement, getModelObject().getOwnedActual());
-	
+			assertFalse(getModelObject().getOwnedActuals().contains(parameterableElement));
+			
 			getCommandStack().undo();
-	
+			
 			assertTrue(getModelObject().getActuals().contains(parameterableElement));
-			assertSame(parameterableElement, getModelObject().getOwnedActual());
-	
+			assertTrue(getModelObject().getOwnedActuals().contains(parameterableElement));
+			
 			getCommandStack().redo();
-	
+			
 			assertFalse(getModelObject().getActuals().contains(parameterableElement));
-			assertNotSame(parameterableElement, getModelObject().getOwnedActual());
+			assertFalse(getModelObject().getOwnedActuals().contains(parameterableElement));
 		}
 	}
 
@@ -131,72 +166,74 @@ public class TemplateParameterSubstitutionItemProviderTest extends ElementItemPr
 	 */
 	public void testCreateReplaceCommand() {
 		
+		// test TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL subset...
+		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
+			EClass eClass = (EClass) eAllSubClasses.next();
+			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create(eClass);
+			ParameterableElement replacementParameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create(eClass);
+			
+			getModelObject().getOwnedActuals().add(parameterableElement);
+			
+			Command command =
+				ReplaceCommand.create(
+						getEditingDomain(),
+						getModelObject(),
+						UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(),
+						parameterableElement,
+						Collections.singleton(replacementParameterableElement));
+			
+			getCommandStack().execute(command);
+			
+			assertFalse(getModelObject().getOwnedActuals().contains(parameterableElement));
+			assertTrue(getModelObject().getOwnedActuals().contains(replacementParameterableElement));
+			assertTrue(getModelObject().getActuals().contains(replacementParameterableElement));
+			
+			getCommandStack().undo();
+			
+			assertTrue(getModelObject().getOwnedActuals().contains(parameterableElement));
+			assertFalse(getModelObject().getOwnedActuals().contains(replacementParameterableElement));
+			assertFalse(getModelObject().getActuals().contains(replacementParameterableElement));
+			
+			getCommandStack().redo();
+			
+			assertFalse(getModelObject().getOwnedActuals().contains(parameterableElement));
+			assertTrue(getModelObject().getOwnedActuals().contains(replacementParameterableElement));
+			assertTrue(getModelObject().getActuals().contains(replacementParameterableElement));
+		}
+		
 		// test TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL superset...
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
 			EClass eClass = (EClass) eAllSubClasses.next();
 			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create(eClass);
 			ParameterableElement replacementParameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create(eClass);
-	
-			getModelObject().setOwnedActual(parameterableElement);
-	
+			
+			getModelObject().getOwnedActuals().add(parameterableElement);
+			
 			Command command =
 				ReplaceCommand.create(
-					getEditingDomain(),
-					getModelObject(),
-					UML2Package.eINSTANCE.getTemplateParameterSubstitution_Actual(),
-					parameterableElement,
-					Collections.singleton(replacementParameterableElement));
-	
+						getEditingDomain(),
+						getModelObject(),
+						UML2Package.eINSTANCE.getTemplateParameterSubstitution_Actual(),
+						parameterableElement,
+						Collections.singleton(replacementParameterableElement));
+			
 			getCommandStack().execute(command);
-	
+			
 			assertFalse(getModelObject().getActuals().contains(parameterableElement));
 			assertTrue(getModelObject().getActuals().contains(replacementParameterableElement));
-			assertNotSame(parameterableElement, getModelObject().getOwnedActual());
-	
+			assertFalse(getModelObject().getOwnedActuals().contains(parameterableElement));
+			
 			getCommandStack().undo();
-	
+			
 			assertTrue(getModelObject().getActuals().contains(parameterableElement));
 			assertFalse(getModelObject().getActuals().contains(replacementParameterableElement));
-			assertSame(parameterableElement, getModelObject().getOwnedActual());
-	
+			assertTrue(getModelObject().getOwnedActuals().contains(parameterableElement));
+			
 			getCommandStack().redo();
-	
+			
 			assertFalse(getModelObject().getActuals().contains(parameterableElement));
 			assertTrue(getModelObject().getActuals().contains(replacementParameterableElement));
-			assertNotSame(parameterableElement, getModelObject().getOwnedActual());
-		}
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.provider.TemplateParameterSubstitutionItemProvider#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object) <em>Create Set Command</em>}' method.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.provider.TemplateParameterSubstitutionItemProvider#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
-	 * @generated NOT
-	 */
-	public void testCreateSetCommand() {
-		
-		// test TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL subset...
-		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
-			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
-	
-			Command command =
-				SetCommand.create(getEditingDomain(), getModelObject(), UML2Package.eINSTANCE.getTemplateParameterSubstitution_OwnedActual(), parameterableElement);
-	
-			getCommandStack().execute(command);
-	
-			assertSame(parameterableElement, getModelObject().getOwnedActual());
-			assertTrue(getModelObject().getActuals().contains(parameterableElement));
-	
-			getCommandStack().undo();
-	
-			assertNotSame(parameterableElement, getModelObject().getOwnedActual());
-			assertFalse(getModelObject().getActuals().contains(parameterableElement));
-	
-			getCommandStack().redo();
-	
-			assertSame(parameterableElement, getModelObject().getOwnedActual());
-			assertTrue(getModelObject().getActuals().contains(parameterableElement));
+			assertFalse(getModelObject().getOwnedActuals().contains(parameterableElement));
 		}
 	}
 

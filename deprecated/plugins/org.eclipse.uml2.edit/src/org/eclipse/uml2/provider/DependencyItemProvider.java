@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DependencyItemProvider.java,v 1.3 2004/04/14 20:45:54 khussey Exp $
+ * $Id: DependencyItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -184,8 +184,8 @@ public class DependencyItemProvider
 	}
 
 	/**
-	 * This handles model notifications by updating any cached children and by
-	 * creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

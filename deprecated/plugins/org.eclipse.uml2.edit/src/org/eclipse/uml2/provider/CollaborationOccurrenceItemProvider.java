@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CollaborationOccurrenceItemProvider.java,v 1.3 2004/04/14 20:45:54 khussey Exp $
+ * $Id: CollaborationOccurrenceItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -154,8 +154,8 @@ public class CollaborationOccurrenceItemProvider
 	}
 
 	/**
-	 * This handles model notifications by updating any cached children and by
-	 * creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -214,12 +214,12 @@ public class CollaborationOccurrenceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
-				 UML2Factory.eINSTANCE.createManifestation()));
+				 UML2Factory.eINSTANCE.createImplementation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding(),
-				 UML2Factory.eINSTANCE.createImplementation()));
+				 UML2Factory.eINSTANCE.createManifestation()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassItemProvider.java,v 1.4 2004/04/23 02:26:00 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.5 2004/04/30 17:20:11 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -325,8 +325,8 @@ public class ClassItemProvider
 	}
 
 	/**
-	 * This handles model notifications by updating any cached children and by
-	 * creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -438,7 +438,7 @@ public class ClassItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createInformationItem()));
+				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -448,12 +448,12 @@ public class ClassItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createActivity()));
+				 UML2Factory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createArtifact()));
+				 UML2Factory.eINSTANCE.createInterface()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -468,7 +468,7 @@ public class ClassItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createInterface()));
+				 UML2Factory.eINSTANCE.createArtifact()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -489,6 +489,11 @@ public class ClassItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createStateMachine()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -518,11 +523,6 @@ public class ClassItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createDeploymentSpecification()));
 
 		newChildDescriptors.add
@@ -539,11 +539,11 @@ public class ClassItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
+			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
 			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$

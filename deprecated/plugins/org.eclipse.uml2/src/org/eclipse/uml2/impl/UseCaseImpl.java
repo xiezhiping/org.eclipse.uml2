@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.5 2004/04/30 17:21:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -362,10 +362,10 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 					return eBasicSetContainer(otherEnd, UML2Package.USE_CASE__OWNING_PARAMETER, msgs);
 				case UML2Package.USE_CASE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.USE_CASE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.USE_CASE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.USE_CASE__IMPLEMENTATION:
@@ -419,10 +419,10 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 					return eBasicSetContainer(null, UML2Package.USE_CASE__OWNING_PARAMETER, msgs);
 				case UML2Package.USE_CASE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.USE_CASE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.USE_CASE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.USE_CASE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.USE_CASE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.USE_CASE__OCCURRENCE:
@@ -531,10 +531,10 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				return getAttributes();
 			case UML2Package.USE_CASE__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.USE_CASE__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.USE_CASE__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.USE_CASE__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.USE_CASE__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.USE_CASE__REPRESENTATION:
@@ -631,13 +631,13 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.USE_CASE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.USE_CASE__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.USE_CASE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.USE_CASE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -746,11 +746,11 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.USE_CASE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.USE_CASE__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.USE_CASE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.USE_CASE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -854,10 +854,10 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 				return !getAttributes().isEmpty();
 			case UML2Package.USE_CASE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.USE_CASE__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.USE_CASE__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.USE_CASE__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.USE_CASE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.USE_CASE__REPRESENTATION:

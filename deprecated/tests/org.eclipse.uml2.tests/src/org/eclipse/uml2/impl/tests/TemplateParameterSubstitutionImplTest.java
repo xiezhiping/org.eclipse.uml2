@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImplTest.java,v 1.2 2004/04/30 17:18:09 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -30,7 +30,7 @@ import org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getActuals() <em>Actual</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getOwnedActual() <em>Owned Actual</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getOwnedActuals() <em>Owned Actual</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -105,71 +105,21 @@ public class TemplateParameterSubstitutionImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getActuals()
-	 * @generated NOT
+	 * @generated
 	 */
 	public void testGetActuals() {
-
-		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
-			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
-
-			getFixture().setOwnedActual(parameterableElement);
-
-			getFixture().getActuals().remove(parameterableElement);
-
-			assertFalse(getFixture().getActuals().contains(parameterableElement));
-			assertSame(null, getFixture().getOwnedActual());
-
-			getFixture().getActuals().add(parameterableElement);
-
-			assertTrue(getFixture().getActuals().contains(parameterableElement));
-			assertSame(null, getFixture().getOwnedActual());
-		}
+		// TODO: implement this feature getter test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getOwnedActual() <em>Owned Actual</em>}' feature getter.
+	 * Tests the '{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getOwnedActuals() <em>Owned Actual</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getOwnedActual()
-	 * @generated NOT
+	 * @see org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getOwnedActuals()
+	 * @generated
 	 */
-	public void testGetOwnedActual() {
-
-		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
-			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
-
-			getFixture().setOwnedActual(parameterableElement);
-
-			assertSame(parameterableElement, getFixture().getOwnedActual());
-
-			getFixture().setOwnedActual(null);
-
-			assertSame(null, getFixture().getOwnedActual());
-		}
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#setOwnedActual() <em>Owned Actual</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#setOwnedActual()
-	 * @generated NOT
-	 */
-	public void testSetOwnedActual() {
-
-		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
-			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
-
-			getFixture().setOwnedActual(parameterableElement);
-
-			assertSame(parameterableElement, getFixture().getOwnedActual());
-			assertTrue(getFixture().getActuals().contains(parameterableElement));
-
-			getFixture().setOwnedActual(null);
-
-			assertSame(null, getFixture().getOwnedActual());
-			assertTrue(getFixture().getActuals().contains(parameterableElement));
-		}
+	public void testGetOwnedActuals() {
+		// TODO: implement this feature getter test method
 	}
 
 	/**
@@ -195,16 +145,24 @@ public class TemplateParameterSubstitutionImplTest extends ElementImplTest {
 	public void testGetOwnedElements() {
 		super.testGetOwnedElements();
 
-		getFixture().setOwnedActual(UML2Factory.eINSTANCE.createInstanceValue());
-
-		assertTrue(getFixture().getOwnedElements().contains(getFixture().getOwnedActual()));
+		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getOwnedActuals()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createTemplateBinding().getParameterSubstitutions().add(getFixture());
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
+	 */
+	protected void setUpOwnedElements() {
+		super.setUpOwnedElements();
+
+		getFixture().getOwnedActuals().add(UML2Factory.eINSTANCE.createInstanceValue());
+		getFixture().getOwnedActuals().add(UML2Factory.eINSTANCE.createInstanceValue());
 	}
 
 } //TemplateParameterSubstitutionImplTest
