@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperationsTest.java,v 1.4 2005/03/30 13:56:49 khussey Exp $
+ * $Id: StereotypeOperationsTest.java,v 1.5 2005/04/06 21:32:04 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -4044,6 +4044,1031 @@ public class StereotypeOperationsTest
 		profile.getOwnedMembers().add(getElement());
 
 		assertSame(profile, StereotypeOperations.getProfile(getElement()));
+	}
+
+	/**
+	 * Tests the '
+	 * {@link org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype, org.eclipse.uml2.Element, String) <em>Has Value</em>}'
+	 * method.
+	 * 
+	 * @see org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype,
+	 *      org.eclipse.uml2.Element, String)
+	 */
+	public void testHasValue_Boolean() {
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(null, null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Class class_ = UML2Factory.eINSTANCE.createClass();
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE
+			.createPackage();
+		package_.getOwnedMembers().add(class_);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		applyProfile(package_, getElement().getProfile());
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_, "")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"boolean")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		setRequired(getElement(), false);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"boolean")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		EClass eClass = StereotypeOperations.getEClass(getElement(), String
+			.valueOf(0));
+		EObject stereotypeEObject = eClass.getEPackage().getEFactoryInstance()
+			.create(eClass);
+		class_.createEAnnotation(
+			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES)
+			.getContents().add(stereotypeEObject);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"boolean")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		stereotypeEObject.eSet(eClass.getEStructuralFeature("boolean"), //$NON-NLS-1$
+			Boolean.FALSE);
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"boolean")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		stereotypeEObject.eSet(eClass.getEStructuralFeature("boolean"), //$NON-NLS-1$
+			Boolean.TRUE);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"boolean")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+	}
+
+	/**
+	 * Tests the '
+	 * {@link org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype, org.eclipse.uml2.Element, String) <em>Has Value</em>}'
+	 * method.
+	 * 
+	 * @see org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype,
+	 *      org.eclipse.uml2.Element, String)
+	 */
+	public void testHasValue_Booleans() {
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(null, null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Class class_ = UML2Factory.eINSTANCE.createClass();
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE
+			.createPackage();
+		package_.getOwnedMembers().add(class_);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		applyProfile(package_, getElement().getProfile());
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"booleans")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		setRequired(getElement(), false);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"booleans")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		EClass eClass = StereotypeOperations.getEClass(getElement(), String
+			.valueOf(0));
+		EObject stereotypeEObject = eClass.getEPackage().getEFactoryInstance()
+			.create(eClass);
+		class_.createEAnnotation(
+			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES)
+			.getContents().add(stereotypeEObject);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"booleans")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"booleans[")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"booleans[0")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"booleans[0]")); //$NON-NLS-1$
+			fail();
+		} catch (IndexOutOfBoundsException ioobe) {
+			// pass
+		}
+
+		((List) stereotypeEObject
+			.eGet(eClass.getEStructuralFeature("booleans"))) //$NON-NLS-1$
+			.add(Boolean.TRUE);
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"booleans")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"booleans[0]")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		((List) stereotypeEObject
+			.eGet(eClass.getEStructuralFeature("booleans"))) //$NON-NLS-1$
+			.set(0, Boolean.FALSE);
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"booleans")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"booleans[0]")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+	}
+
+	/**
+	 * Tests the '
+	 * {@link org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype, org.eclipse.uml2.Element, String) <em>Has Value</em>}'
+	 * method.
+	 * 
+	 * @see org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype,
+	 *      org.eclipse.uml2.Element, String)
+	 */
+	public void testHasValue_Integer() {
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(null, null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Class class_ = UML2Factory.eINSTANCE.createClass();
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE
+			.createPackage();
+		package_.getOwnedMembers().add(class_);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		applyProfile(package_, getElement().getProfile());
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_, "")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"integer")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		setRequired(getElement(), false);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"integer")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		EClass eClass = StereotypeOperations.getEClass(getElement(), String
+			.valueOf(0));
+		EObject stereotypeEObject = eClass.getEPackage().getEFactoryInstance()
+			.create(eClass);
+		class_.createEAnnotation(
+			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES)
+			.getContents().add(stereotypeEObject);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"integer")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		stereotypeEObject.eSet(eClass.getEStructuralFeature("integer"), //$NON-NLS-1$
+			new Integer(Integer.MAX_VALUE));
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"integer")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		stereotypeEObject.eSet(eClass.getEStructuralFeature("integer"), //$NON-NLS-1$
+			new Integer(Integer.MIN_VALUE));
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"integer")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+	}
+
+	/**
+	 * Tests the '
+	 * {@link org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype, org.eclipse.uml2.Element, String) <em>Has Value</em>}'
+	 * method.
+	 * 
+	 * @see org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype,
+	 *      org.eclipse.uml2.Element, String)
+	 */
+	public void testHasValue_Integers() {
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(null, null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Class class_ = UML2Factory.eINSTANCE.createClass();
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE
+			.createPackage();
+		package_.getOwnedMembers().add(class_);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		applyProfile(package_, getElement().getProfile());
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_, "")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"integers")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		setRequired(getElement(), false);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"integers")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		EClass eClass = StereotypeOperations.getEClass(getElement(), String
+			.valueOf(0));
+		EObject stereotypeEObject = eClass.getEPackage().getEFactoryInstance()
+			.create(eClass);
+		class_.createEAnnotation(
+			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES)
+			.getContents().add(stereotypeEObject);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"integers")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"integers[")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"integers[0")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"integers[0]")); //$NON-NLS-1$
+			fail();
+		} catch (IndexOutOfBoundsException ioobe) {
+			// pass
+		}
+
+		((List) stereotypeEObject
+			.eGet(eClass.getEStructuralFeature("integers"))) //$NON-NLS-1$
+			.add(new Integer(Integer.MIN_VALUE));
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"integers")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"integers[0]")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		((List) stereotypeEObject
+			.eGet(eClass.getEStructuralFeature("integers"))) //$NON-NLS-1$
+			.set(0, new Integer(0));
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"integers")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"integers[0]")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+	}
+
+	/**
+	 * Tests the '
+	 * {@link org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype, org.eclipse.uml2.Element, String) <em>Has Value</em>}'
+	 * method.
+	 * 
+	 * @see org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype,
+	 *      org.eclipse.uml2.Element, String)
+	 */
+	public void testHasValue_String() {
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(null, null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Class class_ = UML2Factory.eINSTANCE.createClass();
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE
+			.createPackage();
+		package_.getOwnedMembers().add(class_);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		applyProfile(package_, getElement().getProfile());
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_, "")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"string")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		setRequired(getElement(), false);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"string")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		EClass eClass = StereotypeOperations.getEClass(getElement(), String
+			.valueOf(0));
+		EObject stereotypeEObject = eClass.getEPackage().getEFactoryInstance()
+			.create(eClass);
+		class_.createEAnnotation(
+			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES)
+			.getContents().add(stereotypeEObject);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"string")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		stereotypeEObject.eSet(eClass.getEStructuralFeature("string"), //$NON-NLS-1$
+			getName());
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"string")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		stereotypeEObject.eSet(eClass.getEStructuralFeature("string"), //$NON-NLS-1$
+			"");
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"string")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+	}
+
+	/**
+	 * Tests the '
+	 * {@link org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype, org.eclipse.uml2.Element, String) <em>Has Value</em>}'
+	 * method.
+	 * 
+	 * @see org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype,
+	 *      org.eclipse.uml2.Element, String)
+	 */
+	public void testHasValue_Strings() {
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(null, null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Class class_ = UML2Factory.eINSTANCE.createClass();
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE
+			.createPackage();
+		package_.getOwnedMembers().add(class_);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		applyProfile(package_, getElement().getProfile());
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_, "")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"strings")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		setRequired(getElement(), false);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"strings")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		EClass eClass = StereotypeOperations.getEClass(getElement(), String
+			.valueOf(0));
+		EObject stereotypeEObject = eClass.getEPackage().getEFactoryInstance()
+			.create(eClass);
+		class_.createEAnnotation(
+			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES)
+			.getContents().add(stereotypeEObject);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"strings")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"strings[")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"strings[0")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"strings[0]")); //$NON-NLS-1$
+			fail();
+		} catch (IndexOutOfBoundsException ioobe) {
+			// pass
+		}
+
+		((List) stereotypeEObject.eGet(eClass.getEStructuralFeature("strings"))) //$NON-NLS-1$
+			.add(getName());
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"strings")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"strings[0]")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		((List) stereotypeEObject.eGet(eClass.getEStructuralFeature("strings"))) //$NON-NLS-1$
+			.set(0, "");
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"strings")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"strings[0]")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+	}
+
+	/**
+	 * Tests the '
+	 * {@link org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype, org.eclipse.uml2.Element, String) <em>Has Value</em>}'
+	 * method.
+	 * 
+	 * @see org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype,
+	 *      org.eclipse.uml2.Element, String)
+	 */
+	public void testHasValue_UnlimitedNatural() {
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(null, null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Class class_ = UML2Factory.eINSTANCE.createClass();
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE
+			.createPackage();
+		package_.getOwnedMembers().add(class_);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		applyProfile(package_, getElement().getProfile());
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_, "")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNatural")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		setRequired(getElement(), false);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNatural")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		EClass eClass = StereotypeOperations.getEClass(getElement(), String
+			.valueOf(0));
+		EObject stereotypeEObject = eClass.getEPackage().getEFactoryInstance()
+			.create(eClass);
+		class_.createEAnnotation(
+			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES)
+			.getContents().add(stereotypeEObject);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNatural")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		stereotypeEObject.eSet(
+			eClass.getEStructuralFeature("unlimitedNatural"), //$NON-NLS-1$
+			new Integer(Integer.MIN_VALUE));
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNatural")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		stereotypeEObject.eSet(
+			eClass.getEStructuralFeature("unlimitedNatural"), //$NON-NLS-1$
+			new Integer(Integer.MAX_VALUE));
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNatural")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+	}
+
+	/**
+	 * Tests the '
+	 * {@link org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype, org.eclipse.uml2.Element, String) <em>Has Value</em>}'
+	 * method.
+	 * 
+	 * @see org.eclipse.uml2.internal.operation.StereotypeOperations#hasValue(org.eclipse.uml2.Stereotype,
+	 *      org.eclipse.uml2.Element, String)
+	 */
+	public void testHasValue_UnlimitedNaturals() {
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(null, null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), null, null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Class class_ = UML2Factory.eINSTANCE.createClass();
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE
+			.createPackage();
+		package_.getOwnedMembers().add(class_);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		applyProfile(package_, getElement().getProfile());
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				null));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_, "")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNaturals")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		setRequired(getElement(), false);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNaturals")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		EClass eClass = StereotypeOperations.getEClass(getElement(), String
+			.valueOf(0));
+		EObject stereotypeEObject = eClass.getEPackage().getEFactoryInstance()
+			.create(eClass);
+		class_.createEAnnotation(
+			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES)
+			.getContents().add(stereotypeEObject);
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNaturals")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNaturals[")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNaturals[0")); //$NON-NLS-1$
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNaturals[0]")); //$NON-NLS-1$
+			fail();
+		} catch (IndexOutOfBoundsException ioobe) {
+			// pass
+		}
+
+		((List) stereotypeEObject.eGet(eClass
+			.getEStructuralFeature("unlimitedNaturals"))) //$NON-NLS-1$
+			.add(new Integer(Integer.MAX_VALUE));
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNaturals")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNaturals[0]")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		((List) stereotypeEObject.eGet(eClass
+			.getEStructuralFeature("unlimitedNaturals"))) //$NON-NLS-1$
+			.set(0, new Integer(0));
+
+		try {
+			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNaturals")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
+
+		try {
+			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
+				"unlimitedNaturals[0]")); //$NON-NLS-1$
+		} catch (IndexOutOfBoundsException ioobe) {
+			fail();
+		}
 	}
 
 }
