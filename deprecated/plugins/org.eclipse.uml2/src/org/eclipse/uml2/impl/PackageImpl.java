@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: PackageImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,7 +49,6 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.operation.PackageOperations;
 import org.eclipse.uml2.internal.operation.ProfileOperations;
 import org.eclipse.uml2.internal.util.SubsetEObjectEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList;
@@ -655,11 +654,11 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics, Map data) {
+	public boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return PackageOperations.validateElementsPublicOrPrivate(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.PackageOperations.validateElementsPublicOrPrivate(this, diagnostics, context);
 	}
 
 	/**

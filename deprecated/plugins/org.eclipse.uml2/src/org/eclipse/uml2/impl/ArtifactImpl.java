@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.3 2004/04/23 02:31:47 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -514,10 +514,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 					return eBasicSetContainer(otherEnd, UML2Package.ARTIFACT__OWNING_PARAMETER, msgs);
 				case UML2Package.ARTIFACT__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ARTIFACT__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.ARTIFACT__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -559,10 +559,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 					return eBasicSetContainer(null, UML2Package.ARTIFACT__OWNING_PARAMETER, msgs);
 				case UML2Package.ARTIFACT__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ARTIFACT__SUBSTITUTION:
-					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
+				case UML2Package.ARTIFACT__SUBSTITUTION:
+					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
 				case UML2Package.ARTIFACT__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ARTIFACT__OCCURRENCE:
@@ -667,10 +667,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 				return getAttributes();
 			case UML2Package.ARTIFACT__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.ARTIFACT__SUBSTITUTION:
-				return getSubstitutions();
 			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
 				return getPowertypeExtents();
+			case UML2Package.ARTIFACT__SUBSTITUTION:
+				return getSubstitutions();
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.ARTIFACT__REPRESENTATION:
@@ -761,13 +761,13 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.ARTIFACT__SUBSTITUTION:
-				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection)newValue);
-				return;
 			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
 				getPowertypeExtents().addAll((Collection)newValue);
+				return;
+			case UML2Package.ARTIFACT__SUBSTITUTION:
+				getSubstitutions().clear();
+				getSubstitutions().addAll((Collection)newValue);
 				return;
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -864,11 +864,11 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			case UML2Package.ARTIFACT__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.ARTIFACT__SUBSTITUTION:
-				getSubstitutions().clear();
-				return;
 			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
 				getPowertypeExtents().clear();
+				return;
+			case UML2Package.ARTIFACT__SUBSTITUTION:
+				getSubstitutions().clear();
 				return;
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -963,10 +963,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 				return !getAttributes().isEmpty();
 			case UML2Package.ARTIFACT__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.ARTIFACT__SUBSTITUTION:
-				return substitution != null && !substitution.isEmpty();
 			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
+			case UML2Package.ARTIFACT__SUBSTITUTION:
+				return substitution != null && !substitution.isEmpty();
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.ARTIFACT__REPRESENTATION:

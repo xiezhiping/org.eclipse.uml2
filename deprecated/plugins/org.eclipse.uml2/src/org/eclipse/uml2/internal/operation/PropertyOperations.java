@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -260,7 +260,7 @@ public final class PropertyOperations
 	}
 
 	public static boolean validateOppositeIsOtherEnd(Property property,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		Property otherEnd = null;
@@ -302,7 +302,7 @@ public final class PropertyOperations
 	}
 
 	public static boolean validateMultiplicityOfComposite(Property property,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		int upperBound = property.upperBound();
@@ -330,7 +330,7 @@ public final class PropertyOperations
 	}
 
 	public static boolean validateSubsettingContext(Property property,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		spLoop: for (Iterator sp = property.getSubsettedProperties().iterator(); sp
@@ -372,7 +372,7 @@ public final class PropertyOperations
 	}
 
 	public static boolean validateNavigablePropertyRedefinition(
-			Property property, DiagnosticChain diagnostics, Map data) {
+			Property property, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		for (Iterator subsettedProperties = property.getSubsettedProperties()
@@ -425,7 +425,7 @@ public final class PropertyOperations
 	}
 
 	public static boolean validateSubsettingRules(Property property,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		for (Iterator subsettedProperties = property.getSubsettedProperties()
@@ -457,7 +457,7 @@ public final class PropertyOperations
 	}
 
 	public static boolean validateNavigableReadonly(Property property,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (property.isReadOnly() && !property.isNavigable()) {
@@ -479,7 +479,7 @@ public final class PropertyOperations
 	}
 
 	public static boolean validateDerivedUnionIsDerived(Property property,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (property.isDerivedUnion() && !property.isDerived()) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -74,7 +74,7 @@ public final class RedefinableElementOperations
 
 	public static boolean validateRedefinitionConsistent(
 			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
-			Map data) {
+			Map context) {
 		boolean result = true;
 
 		for (Iterator redefinedElements = redefinableElement
@@ -106,7 +106,7 @@ public final class RedefinableElementOperations
 
 	public static boolean validateRedefinitionContextValid(
 			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
-			Map data) {
+			Map context) {
 		boolean result = true;
 
 		for (Iterator redefinedElements = redefinableElement

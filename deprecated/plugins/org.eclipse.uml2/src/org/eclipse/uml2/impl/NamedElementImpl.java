@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -38,7 +38,6 @@ import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.operation.NamedElementOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -301,21 +300,21 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateNoName(DiagnosticChain diagnostics, Map data) {
+	public boolean validateNoName(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return NamedElementOperations.validateNoName(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.NamedElementOperations.validateNoName(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateQualifiedName(DiagnosticChain diagnostics, Map data) {
+	public boolean validateQualifiedName(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return NamedElementOperations.validateQualifiedName(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.NamedElementOperations.validateQualifiedName(this, diagnostics, context);
 	}
 
 	/**
@@ -371,11 +370,11 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics, Map data) {
+	public boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return NamedElementOperations.validateVisibilityNeedsOwnership(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.NamedElementOperations.validateVisibilityNeedsOwnership(this, diagnostics, context);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: PackageOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -134,7 +134,7 @@ public final class PackageOperations
 
 	public static boolean validateElementsPublicOrPrivate(
 			org.eclipse.uml2.Package package_, DiagnosticChain diagnostics,
-			Map data) {
+			Map context) {
 		boolean result = true;
 
 		for (Iterator ownedElements = package_.getOwnedElements().iterator(); ownedElements

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -807,51 +807,51 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map data) {
+	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return MultiplicityElementOperations.validateUpperGt0(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGt0(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateLowerGe0(DiagnosticChain diagnostics, Map data) {
+	public boolean validateLowerGe0(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return MultiplicityElementOperations.validateLowerGe0(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerGe0(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map data) {
+	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map data) {
+	public boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map data) {
+	public boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, context);
 	}
 
 	/**

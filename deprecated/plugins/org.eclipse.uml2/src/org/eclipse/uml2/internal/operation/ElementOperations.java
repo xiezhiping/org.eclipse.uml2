@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: ElementOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -312,7 +312,7 @@ public final class ElementOperations
 	}
 
 	public static boolean validateNotOwnSelf(Element element,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (element.allOwnedElements().contains(element)) {
@@ -333,7 +333,7 @@ public final class ElementOperations
 	}
 
 	public static boolean validateHasOwner(Element element,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (element.mustBeOwned() && null == element.getOwner()) {

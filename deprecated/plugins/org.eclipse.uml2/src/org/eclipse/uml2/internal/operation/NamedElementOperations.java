@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -98,7 +98,7 @@ public final class NamedElementOperations
 	}
 
 	public static boolean validateNoName(NamedElement namedElement,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (isEmpty(namedElement.getName())) {
@@ -128,7 +128,7 @@ public final class NamedElementOperations
 	}
 
 	public static boolean validateQualifiedName(NamedElement namedElement,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (!isEmpty(namedElement.getName())) {
@@ -168,7 +168,7 @@ public final class NamedElementOperations
 	}
 
 	public static boolean validateVisibilityNeedsOwnership(NamedElement namedElement,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (null == namedElement.getNamespace()

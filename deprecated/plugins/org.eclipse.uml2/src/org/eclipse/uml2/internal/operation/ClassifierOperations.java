@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -198,7 +198,7 @@ public final class ClassifierOperations
 	}
 
 	public static boolean validateNoCyclesInGeneralization(
-			Classifier classifier, DiagnosticChain diagnostics, Map data) {
+			Classifier classifier, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (classifier.allParents().contains(classifier)) {
@@ -220,7 +220,7 @@ public final class ClassifierOperations
 	}
 
 	public static boolean validateSpecializeType(Classifier classifier,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		for (Iterator parents = classifier.parents().iterator(); parents
@@ -250,7 +250,7 @@ public final class ClassifierOperations
 	}
 
 	public static boolean validateInheritedMember(Classifier classifier,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		Set inheritedMember = new HashSet();
@@ -283,7 +283,7 @@ public final class ClassifierOperations
 	}
 
 	public static boolean validateGeneralEqualsParents(Classifier classifier,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (!classifier.general().equals(classifier.parents())) {

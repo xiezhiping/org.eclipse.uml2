@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -289,7 +289,7 @@ public final class NamespaceOperations
 	}
 
 	public static boolean validateMembersAreDistinguishable(
-			Namespace namespace, DiagnosticChain diagnostics, Map data) {
+			Namespace namespace, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (!namespace.membersAreDistinguishable()) {
@@ -311,7 +311,7 @@ public final class NamespaceOperations
 	}
 
 	public static boolean validateImportedMemberDerived(Namespace namespace,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		Set importedMember = new HashSet();

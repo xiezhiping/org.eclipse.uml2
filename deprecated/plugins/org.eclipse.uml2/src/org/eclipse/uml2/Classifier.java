@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Classifier.java,v 1.3 2004/04/23 02:31:51 khussey Exp $
+ * $Id: Classifier.java,v 1.4 2004/04/27 16:38:55 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -35,8 +35,8 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.Classifier#getGeneralizations <em>Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getPowertypeExtents <em>Powertype Extent</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getOwnedUseCases <em>Owned Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getRepresentation <em>Representation</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getOccurrences <em>Occurrence</em>}</li>
@@ -445,7 +445,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateNoCyclesInGeneralization(DiagnosticChain diagnostics, Map data);
+	boolean validateNoCyclesInGeneralization(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -459,7 +459,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateSpecializeType(DiagnosticChain diagnostics, Map data);
+	boolean validateSpecializeType(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -473,7 +473,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateInheritedMember(DiagnosticChain diagnostics, Map data);
+	boolean validateInheritedMember(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -599,7 +599,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateGeneralEqualsParents(DiagnosticChain diagnostics, Map data);
+	boolean validateGeneralEqualsParents(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

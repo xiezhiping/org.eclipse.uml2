@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecificationOperations.java,v 1.1 2004/04/27 13:56:09 khussey Exp $
+ * $Id: InstanceSpecificationOperations.java,v 1.2 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -44,7 +44,7 @@ public final class InstanceSpecificationOperations
 
 	public static boolean validateSlotsAreDefined(
 			InstanceSpecification instanceSpecification,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		slotsLoop: for (Iterator slots = instanceSpecification.getSlots()
@@ -85,7 +85,7 @@ public final class InstanceSpecificationOperations
 
 	public static boolean validateNoDuplicateSlots(
 			InstanceSpecification instanceSpecification,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		Set definingFeatures = new HashSet();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -152,7 +152,7 @@ public final class MultiplicityElementOperations
 	}
 
 	public static boolean validateUpperGt0(MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		int upperBound = multiplicityElement.upperBound();
@@ -177,7 +177,7 @@ public final class MultiplicityElementOperations
 	}
 
 	public static boolean validateLowerGe0(MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		int lowerBound = multiplicityElement.lowerBound();
@@ -202,7 +202,7 @@ public final class MultiplicityElementOperations
 
 	public static boolean validateUpperGeLower(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		int upperBound = multiplicityElement.upperBound();
@@ -228,7 +228,7 @@ public final class MultiplicityElementOperations
 
 	public static boolean validateLowerEqLowerbound(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		int lower = multiplicityElement.lower();
@@ -253,7 +253,7 @@ public final class MultiplicityElementOperations
 
 	public static boolean validateUpperEqUpperbound(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map data) {
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		int upper = multiplicityElement.upper();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -34,7 +34,6 @@ import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.operation.ElementImportOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -273,21 +272,21 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateVisibilityPublicOrPrivate(DiagnosticChain diagnostics, Map data) {
+	public boolean validateVisibilityPublicOrPrivate(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return ElementImportOperations.validateVisibilityPublicOrPrivate(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.ElementImportOperations.validateVisibilityPublicOrPrivate(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateImportedElementIsPublic(DiagnosticChain diagnostics, Map data) {
+	public boolean validateImportedElementIsPublic(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return ElementImportOperations.validateImportedElementIsPublic(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.ElementImportOperations.validateImportedElementIsPublic(this, diagnostics, context);
 	}
 
 	/**

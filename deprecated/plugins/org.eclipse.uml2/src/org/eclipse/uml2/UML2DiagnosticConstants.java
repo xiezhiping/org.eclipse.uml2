@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2DiagnosticConstants.java,v 1.1 2004/04/14 20:46:29 khussey Exp $
+ * $Id: UML2DiagnosticConstants.java,v 1.2 2004/04/27 16:38:55 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -254,7 +254,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Classifier#validateNoCyclesInGeneralization(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int CLASSIFIER__NO_CYCLES_IN_GENERALIZATION = 23;
+	public static final int CLASSIFIER__NO_CYCLES_IN_GENERALIZATION = 24;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,7 +263,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Classifier#validateSpecializeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int CLASSIFIER__SPECIALIZE_TYPE = 24;
+	public static final int CLASSIFIER__SPECIALIZE_TYPE = 25;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -272,7 +272,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Classifier#validateInheritedMember(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int CLASSIFIER__INHERITED_MEMBER = 25;
+	public static final int CLASSIFIER__INHERITED_MEMBER = 26;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -281,7 +281,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Classifier#validateGeneralEqualsParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int CLASSIFIER__GENERAL_EQUALS_PARENTS = 26;
+	public static final int CLASSIFIER__GENERAL_EQUALS_PARENTS = 27;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -290,7 +290,7 @@ public interface UML2DiagnosticConstants {
 	 * @see org.eclipse.uml2.Constraint#validateNotApplyToSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public static final int CONSTRAINT__NOT_APPLY_TO_SELF = 27;
+	public static final int CONSTRAINT__NOT_APPLY_TO_SELF = 23;
 
 	/**
 	 * <!-- begin-user-doc -->

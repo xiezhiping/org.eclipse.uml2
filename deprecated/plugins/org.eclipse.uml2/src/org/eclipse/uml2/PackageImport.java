@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImport.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: PackageImport.java,v 1.3 2004/04/27 16:38:55 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -138,7 +138,7 @@ public interface PackageImport extends DirectedRelationship{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validatePublicOrPrivate(DiagnosticChain diagnostics, Map data);
+	boolean validatePublicOrPrivate(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1067,11 +1067,11 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map data) {
+	public boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return PropertyOperations.validateOppositeIsOtherEnd(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.PropertyOperations.validateOppositeIsOtherEnd(this, diagnostics, context);
 	}
 
 	/**
@@ -1087,61 +1087,61 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics, Map data) {
+	public boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return PropertyOperations.validateMultiplicityOfComposite(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.PropertyOperations.validateMultiplicityOfComposite(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateSubsettingContext(DiagnosticChain diagnostics, Map data) {
+	public boolean validateSubsettingContext(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return PropertyOperations.validateSubsettingContext(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.PropertyOperations.validateSubsettingContext(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics, Map data) {
+	public boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return PropertyOperations.validateNavigablePropertyRedefinition(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.PropertyOperations.validateNavigablePropertyRedefinition(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateSubsettingRules(DiagnosticChain diagnostics, Map data) {
+	public boolean validateSubsettingRules(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return PropertyOperations.validateSubsettingRules(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.PropertyOperations.validateSubsettingRules(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateNavigableReadonly(DiagnosticChain diagnostics, Map data) {
+	public boolean validateNavigableReadonly(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return PropertyOperations.validateNavigableReadonly(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.PropertyOperations.validateNavigableReadonly(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics, Map data) {
+	public boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return PropertyOperations.validateDerivedUnionIsDerived(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.PropertyOperations.validateDerivedUnionIsDerived(this, diagnostics, context);
 	}
 
 	/**

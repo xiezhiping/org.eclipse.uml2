@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.3 2004/04/27 16:38:55 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -81,7 +81,7 @@ public interface RedefinableElement extends NamedElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map data);
+	boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,7 +95,7 @@ public interface RedefinableElement extends NamedElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map data);
+	boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * Returns the value of the '<em><b>Redefinition Context</b></em>' reference list.

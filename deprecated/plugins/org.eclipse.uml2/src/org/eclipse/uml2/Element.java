@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Element.java,v 1.3 2004/04/27 13:56:10 khussey Exp $
+ * $Id: Element.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -121,7 +121,7 @@ public interface Element extends EModelElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map data);
+	boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,7 +135,7 @@ public interface Element extends EModelElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateHasOwner(DiagnosticChain diagnostics, Map data);
+	boolean validateHasOwner(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

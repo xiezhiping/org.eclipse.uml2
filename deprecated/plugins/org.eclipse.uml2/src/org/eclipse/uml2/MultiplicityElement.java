@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.3 2004/04/27 16:38:55 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -291,7 +291,7 @@ public interface MultiplicityElement extends Element{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateUpperGt0(DiagnosticChain diagnostics, Map data);
+	boolean validateUpperGt0(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -305,7 +305,7 @@ public interface MultiplicityElement extends Element{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateLowerGe0(DiagnosticChain diagnostics, Map data);
+	boolean validateLowerGe0(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -319,7 +319,7 @@ public interface MultiplicityElement extends Element{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateUpperGeLower(DiagnosticChain diagnostics, Map data);
+	boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -333,7 +333,7 @@ public interface MultiplicityElement extends Element{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map data);
+	boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -347,7 +347,7 @@ public interface MultiplicityElement extends Element{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map data);
+	boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

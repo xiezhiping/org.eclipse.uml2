@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Property.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Property.java,v 1.3 2004/04/27 16:38:55 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -464,7 +464,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map data);
+	boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -496,7 +496,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics, Map data);
+	boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -513,7 +513,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateSubsettingContext(DiagnosticChain diagnostics, Map data);
+	boolean validateSubsettingContext(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -531,7 +531,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics, Map data);
+	boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -548,7 +548,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateSubsettingRules(DiagnosticChain diagnostics, Map data);
+	boolean validateSubsettingRules(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -562,7 +562,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateNavigableReadonly(DiagnosticChain diagnostics, Map data);
+	boolean validateNavigableReadonly(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -576,7 +576,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics, Map data);
+	boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

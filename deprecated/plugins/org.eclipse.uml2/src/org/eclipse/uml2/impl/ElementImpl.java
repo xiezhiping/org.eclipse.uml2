@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: ElementImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -191,21 +191,21 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map data) {
+	public boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return ElementOperations.validateNotOwnSelf(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.ElementOperations.validateNotOwnSelf(this, diagnostics, context);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateHasOwner(DiagnosticChain diagnostics, Map data) {
+	public boolean validateHasOwner(DiagnosticChain diagnostics, Map context) {
 		// TODO: test this OCL constraint
-		return ElementOperations.validateHasOwner(this, diagnostics, data);
+		return org.eclipse.uml2.internal.operation.ElementOperations.validateHasOwner(this, diagnostics, context);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElement.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: NamedElement.java,v 1.3 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -200,7 +200,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateNoName(DiagnosticChain diagnostics, Map data);
+	boolean validateNoName(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,7 +217,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateQualifiedName(DiagnosticChain diagnostics, Map data);
+	boolean validateQualifiedName(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -298,7 +298,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics, Map data);
+	boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Package.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Package.java,v 1.3 2004/04/27 16:38:55 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -248,7 +248,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics, Map data);
+	boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

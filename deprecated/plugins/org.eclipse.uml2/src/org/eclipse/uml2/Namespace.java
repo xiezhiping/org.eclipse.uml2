@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Namespace.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Namespace.java,v 1.3 2004/04/27 16:38:54 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -212,7 +212,7 @@ public interface Namespace extends NamedElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateMembersAreDistinguishable(DiagnosticChain diagnostics, Map data);
+	boolean validateMembersAreDistinguishable(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -264,7 +264,7 @@ public interface Namespace extends NamedElement{
 	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	boolean validateImportedMemberDerived(DiagnosticChain diagnostics, Map data);
+	boolean validateImportedMemberDerived(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->
