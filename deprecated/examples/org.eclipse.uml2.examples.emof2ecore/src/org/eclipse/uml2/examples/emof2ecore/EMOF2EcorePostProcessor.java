@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  * 
- * $Id: EMOF2EcorePostProcessor.java,v 1.2 2004/12/22 15:15:27 khussey Exp $
+ * $Id: EMOF2EcorePostProcessor.java,v 1.3 2004/12/22 21:12:17 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore;
 
@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -46,14 +47,26 @@ public class EMOF2EcorePostProcessor
 
 	public static final String copyright = "Copyright (c) 2004 IBM Corporation and others."; //$NON-NLS-1$
 
+	protected static final boolean DEBUG = false;
+
 	protected AnyType getExtension(EMOF2EcoreResource resource, EObject eObject) {
 		return (AnyType) resource.getEObjectToExtensionMap().get(eObject);
+	}
+
+	protected AnyType putExtension(EMOF2EcoreResource resource,
+			EObject eObject, AnyType extension) {
+		return (AnyType) resource.getEObjectToExtensionMap().put(eObject,
+			extension);
+	}
+
+	protected AnyType removeExtension(EMOF2EcoreResource resource,
+			EObject eObject) {
+		return (AnyType) resource.getEObjectToExtensionMap().remove(eObject);
 	}
 
 	protected Object getValue(FeatureMap featureMap, String name) {
 
 		for (Iterator entries = featureMap.iterator(); entries.hasNext();) {
-
 			FeatureMap.Entry entry = (FeatureMap.Entry) entries.next();
 
 			if (name.equals(entry.getEStructuralFeature().getName())) {
@@ -70,7 +83,6 @@ public class EMOF2EcorePostProcessor
 		AnyType extension = getExtension(resource, eObject);
 
 		if (null != extension) {
-
 			AnyType ecoreExtension = (AnyType) getValue(extension.getMixed(),
 				"Extension");
 
@@ -182,14 +194,21 @@ public class EMOF2EcorePostProcessor
 		EcoreSwitch ecoreSwitch = new EcoreSwitch() {
 
 			public Object caseEModelElement(EModelElement eModelElement) {
-				AnyType extension = getExtension(resource, eModelElement);
+				AnyType extension = removeExtension(resource, eModelElement);
 
 				if (null != extension) {
 					System.out.println(eModelElement);
 					System.out.println("->");
 					System.out.println(extension);
 
-					resource.getEObjectToExtensionMap().remove(eModelElement);
+					if (DEBUG) {
+						EAnnotation eAnnotation = EcoreFactory.eINSTANCE
+							.createEAnnotation();
+						eAnnotation.setEModelElement(eModelElement);
+						eAnnotation.setSource(ExtendedMetaData.ANNOTATION_URI);
+
+						eAnnotation.getContents().add(extension);
+					}
 				}
 
 				return super.caseEModelElement(eModelElement);
@@ -216,6 +235,9 @@ public class EMOF2EcorePostProcessor
 						}
 
 						if (property != eStructuralFeature) {
+							putExtension(resource, eStructuralFeature,
+								removeExtension(resource, property));
+
 							String isComposite = (String) getValue(extension
 								.getAnyAttribute(), "isComposite");
 
