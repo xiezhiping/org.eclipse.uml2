@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.3 2004/04/23 02:31:48 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -317,10 +317,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 					return eBasicSetContainer(otherEnd, UML2Package.DATA_TYPE__OWNING_PARAMETER, msgs);
 				case UML2Package.DATA_TYPE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicAdd(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__OWNED_OPERATION:
@@ -366,10 +366,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 					return eBasicSetContainer(null, UML2Package.DATA_TYPE__OWNING_PARAMETER, msgs);
 				case UML2Package.DATA_TYPE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.DATA_TYPE__OCCURRENCE:
@@ -470,10 +470,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 				return getAttributes();
 			case UML2Package.DATA_TYPE__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.DATA_TYPE__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.DATA_TYPE__REPRESENTATION:
@@ -558,13 +558,13 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.DATA_TYPE__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -650,11 +650,11 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 			case UML2Package.DATA_TYPE__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.DATA_TYPE__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -740,10 +740,10 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 				return !getAttributes().isEmpty();
 			case UML2Package.DATA_TYPE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.DATA_TYPE__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.DATA_TYPE__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.DATA_TYPE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.DATA_TYPE__REPRESENTATION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PrimitiveTypeImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: PrimitiveTypeImpl.java,v 1.3 2004/04/23 02:31:48 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -96,10 +96,10 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 					return eBasicSetContainer(otherEnd, UML2Package.PRIMITIVE_TYPE__OWNING_PARAMETER, msgs);
 				case UML2Package.PRIMITIVE_TYPE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicAdd(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__OWNED_OPERATION:
@@ -145,10 +145,10 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 					return eBasicSetContainer(null, UML2Package.PRIMITIVE_TYPE__OWNING_PARAMETER, msgs);
 				case UML2Package.PRIMITIVE_TYPE__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.PRIMITIVE_TYPE__OCCURRENCE:
@@ -249,10 +249,10 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 				return getAttributes();
 			case UML2Package.PRIMITIVE_TYPE__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.PRIMITIVE_TYPE__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.PRIMITIVE_TYPE__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.PRIMITIVE_TYPE__REPRESENTATION:
@@ -337,13 +337,13 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.PRIMITIVE_TYPE__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.PRIMITIVE_TYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -429,11 +429,11 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 			case UML2Package.PRIMITIVE_TYPE__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.PRIMITIVE_TYPE__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.PRIMITIVE_TYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -519,10 +519,10 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 				return !getAttributes().isEmpty();
 			case UML2Package.PRIMITIVE_TYPE__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.PRIMITIVE_TYPE__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.PRIMITIVE_TYPE__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.PRIMITIVE_TYPE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.PRIMITIVE_TYPE__REPRESENTATION:

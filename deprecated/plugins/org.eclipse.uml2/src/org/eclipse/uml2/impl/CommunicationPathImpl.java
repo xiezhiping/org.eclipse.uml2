@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CommunicationPathImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: CommunicationPathImpl.java,v 1.3 2004/04/23 02:31:47 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -96,10 +96,10 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 					return eBasicSetContainer(otherEnd, UML2Package.COMMUNICATION_PATH__OWNING_PARAMETER, msgs);
 				case UML2Package.COMMUNICATION_PATH__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMMUNICATION_PATH__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMMUNICATION_PATH__OWNED_END:
 					return ((InternalEList)getOwnedEnds()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMMUNICATION_PATH__MEMBER_END:
@@ -145,10 +145,10 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 					return eBasicSetContainer(null, UML2Package.COMMUNICATION_PATH__OWNING_PARAMETER, msgs);
 				case UML2Package.COMMUNICATION_PATH__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMMUNICATION_PATH__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMMUNICATION_PATH__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.COMMUNICATION_PATH__OCCURRENCE:
@@ -249,10 +249,10 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 				return getAttributes();
 			case UML2Package.COMMUNICATION_PATH__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.COMMUNICATION_PATH__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.COMMUNICATION_PATH__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.COMMUNICATION_PATH__REPRESENTATION:
@@ -343,13 +343,13 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.COMMUNICATION_PATH__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.COMMUNICATION_PATH__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -438,11 +438,11 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 			case UML2Package.COMMUNICATION_PATH__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.COMMUNICATION_PATH__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.COMMUNICATION_PATH__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -531,10 +531,10 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 				return !getAttributes().isEmpty();
 			case UML2Package.COMMUNICATION_PATH__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.COMMUNICATION_PATH__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.COMMUNICATION_PATH__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.COMMUNICATION_PATH__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.COMMUNICATION_PATH__REPRESENTATION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.3 2004/04/23 02:31:47 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -425,10 +425,10 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 					return eBasicSetContainer(otherEnd, UML2Package.ASSOCIATION_CLASS__OWNING_PARAMETER, msgs);
 				case UML2Package.ASSOCIATION_CLASS__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
+				case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__IMPLEMENTATION:
@@ -482,10 +482,10 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 					return eBasicSetContainer(null, UML2Package.ASSOCIATION_CLASS__OWNING_PARAMETER, msgs);
 				case UML2Package.ASSOCIATION_CLASS__GENERALIZATION:
 					return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
-				case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
-					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
 					return ((InternalEList)getSubstitutions()).basicRemove(otherEnd, msgs);
+				case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
+					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.ASSOCIATION_CLASS__OCCURRENCE:
@@ -604,10 +604,10 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				return getAttributes();
 			case UML2Package.ASSOCIATION_CLASS__REDEFINED_CLASSIFIER:
 				return getRedefinedClassifiers();
-			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
-				return getPowertypeExtents();
 			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
 				return getSubstitutions();
+			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
+				return getPowertypeExtents();
 			case UML2Package.ASSOCIATION_CLASS__OWNED_USE_CASE:
 				return getOwnedUseCases();
 			case UML2Package.ASSOCIATION_CLASS__REPRESENTATION:
@@ -728,13 +728,13 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				getRedefinedClassifiers().clear();
 				getRedefinedClassifiers().addAll((Collection)newValue);
 				return;
-			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection)newValue);
-				return;
 			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection)newValue);
+				return;
+			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll((Collection)newValue);
 				return;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -865,11 +865,11 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__REDEFINED_CLASSIFIER:
 				getRedefinedClassifiers().clear();
 				return;
-			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
-				getPowertypeExtents().clear();
-				return;
 			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
 				getSubstitutions().clear();
+				return;
+			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
+				getPowertypeExtents().clear();
 				return;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
@@ -991,10 +991,10 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 				return !getAttributes().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
-			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
 				return substitution != null && !substitution.isEmpty();
+			case UML2Package.ASSOCIATION_CLASS__POWERTYPE_EXTENT:
+				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__REPRESENTATION:

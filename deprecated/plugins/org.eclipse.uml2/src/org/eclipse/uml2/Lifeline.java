@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Lifeline.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Lifeline.java,v 1.3 2004/04/23 02:31:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.Lifeline#getCoveredBys <em>Covered By</em>}</li>
  *   <li>{@link org.eclipse.uml2.Lifeline#getRepresents <em>Represents</em>}</li>
  *   <li>{@link org.eclipse.uml2.Lifeline#getInteraction <em>Interaction</em>}</li>
- *   <li>{@link org.eclipse.uml2.Lifeline#getDiscriminator <em>Discriminator</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Lifeline#getSelector <em>Selector</em>}</li>
  *   <li>{@link org.eclipse.uml2.Lifeline#getDecomposedAs <em>Decomposed As</em>}</li>
  * </ul>
  * </p>
@@ -133,41 +133,41 @@ public interface Lifeline extends NamedElement{
 	void setInteraction(Interaction value);
 
 	/**
-	 * Returns the value of the '<em><b>Discriminator</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Selector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Discriminator</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Selector</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Discriminator</em>' containment reference.
-	 * @see #setDiscriminator(OpaqueExpression)
-	 * @see org.eclipse.uml2.UML2Package#getLifeline_Discriminator()
+	 * @return the value of the '<em>Selector</em>' containment reference.
+	 * @see #setSelector(OpaqueExpression)
+	 * @see org.eclipse.uml2.UML2Package#getLifeline_Selector()
 	 * @model containment="true"
 	 * @generated
 	 */
-	OpaqueExpression getDiscriminator();
+	OpaqueExpression getSelector();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.Lifeline#getDiscriminator <em>Discriminator</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.Lifeline#getSelector <em>Selector</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Discriminator</em>' containment reference.
-	 * @see #getDiscriminator()
+	 * @param value the new value of the '<em>Selector</em>' containment reference.
+	 * @see #getSelector()
 	 * @generated
 	 */
-	void setDiscriminator(OpaqueExpression value);
+	void setSelector(OpaqueExpression value);
 
     /**
-     * Creates a {@link org.eclipse.uml2.OpaqueExpression} and sets the '<em><b>Discriminator</b></em>' containment reference.
+     * Creates a {@link org.eclipse.uml2.OpaqueExpression} and sets the '<em><b>Selector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.OpaqueExpression} to create.
 	 * @return The new {@link org.eclipse.uml2.OpaqueExpression}.
-	 * @see #getDiscriminator()
+	 * @see #getSelector()
 	 * @generated
      */
-    OpaqueExpression createDiscriminator(EClass eClass);
+    OpaqueExpression createSelector(EClass eClass);
      
 	/**
 	 * Returns the value of the '<em><b>Decomposed As</b></em>' reference.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: State.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: State.java,v 1.3 2004/04/23 02:31:49 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,7 +54,6 @@ public interface State extends RedefinableElement, Vertex{
 
 	/**
 	 * Returns the value of the '<em><b>Is Composite</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Composite</em>' attribute isn't clear,
@@ -63,14 +62,13 @@ public interface State extends RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Is Composite</em>' attribute.
 	 * @see org.eclipse.uml2.UML2Package#getState_IsComposite()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model dataType="org.eclipse.uml2.Boolean" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	boolean isComposite();
 
 	/**
 	 * Returns the value of the '<em><b>Is Orthogonal</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Orthogonal</em>' attribute isn't clear,
@@ -79,14 +77,13 @@ public interface State extends RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Is Orthogonal</em>' attribute.
 	 * @see org.eclipse.uml2.UML2Package#getState_IsOrthogonal()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model dataType="org.eclipse.uml2.Boolean" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	boolean isOrthogonal();
 
 	/**
 	 * Returns the value of the '<em><b>Is Simple</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Simple</em>' attribute isn't clear,
@@ -95,14 +92,13 @@ public interface State extends RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Is Simple</em>' attribute.
 	 * @see org.eclipse.uml2.UML2Package#getState_IsSimple()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model dataType="org.eclipse.uml2.Boolean" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	boolean isSimple();
 
 	/**
 	 * Returns the value of the '<em><b>Is Submachine State</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Submachine State</em>' attribute isn't clear,
@@ -111,7 +107,7 @@ public interface State extends RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Is Submachine State</em>' attribute.
 	 * @see org.eclipse.uml2.UML2Package#getState_IsSubmachineState()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model dataType="org.eclipse.uml2.Boolean" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	boolean isSubmachineState();

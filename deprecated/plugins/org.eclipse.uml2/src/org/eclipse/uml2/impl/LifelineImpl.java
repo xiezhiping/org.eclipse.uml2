@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.3 2004/04/23 02:31:47 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,7 +50,7 @@ import org.eclipse.uml2.VisibilityKind;
  *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getCoveredBys <em>Covered By</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getRepresents <em>Represents</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getInteraction <em>Interaction</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getDiscriminator <em>Discriminator</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getSelector <em>Selector</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getDecomposedAs <em>Decomposed As</em>}</li>
  * </ul>
  * </p>
@@ -86,14 +86,14 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	protected ConnectableElement represents = null;
 
 	/**
-	 * The cached value of the '{@link #getDiscriminator() <em>Discriminator</em>}' containment reference.
+	 * The cached value of the '{@link #getSelector() <em>Selector</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDiscriminator()
+	 * @see #getSelector()
 	 * @generated
 	 * @ordered
 	 */
-	protected OpaqueExpression discriminator = null;
+	protected OpaqueExpression selector = null;
 
 	/**
 	 * The cached value of the '{@link #getDecomposedAs() <em>Decomposed As</em>}' reference.
@@ -234,7 +234,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * Returns the value of the '<em><b>Discriminator</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Selector</b></em>' containment reference.
 	 * <p>
 	 * Subsets the following features:
 	 * <ul>
@@ -243,8 +243,8 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * </p>
 	 * @generated
 	 */
-	public OpaqueExpression getDiscriminator() {
-		return discriminator;
+	public OpaqueExpression getSelector() {
+		return selector;
 	}
 
 	/**
@@ -252,11 +252,11 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDiscriminator(OpaqueExpression newDiscriminator, NotificationChain msgs) {
-		OpaqueExpression oldDiscriminator = discriminator;
-		discriminator = newDiscriminator;
+	public NotificationChain basicSetSelector(OpaqueExpression newSelector, NotificationChain msgs) {
+		OpaqueExpression oldSelector = selector;
+		selector = newSelector;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.LIFELINE__DISCRIMINATOR, oldDiscriminator, newDiscriminator);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.LIFELINE__SELECTOR, oldSelector, newSelector);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -267,18 +267,18 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDiscriminator(OpaqueExpression newDiscriminator) {
-		if (newDiscriminator != discriminator) {
+	public void setSelector(OpaqueExpression newSelector) {
+		if (newSelector != selector) {
 			NotificationChain msgs = null;
-			if (discriminator != null)
-				msgs = ((InternalEObject)discriminator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.LIFELINE__DISCRIMINATOR, null, msgs);
-			if (newDiscriminator != null)
-				msgs = ((InternalEObject)newDiscriminator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UML2Package.LIFELINE__DISCRIMINATOR, null, msgs);
-			msgs = basicSetDiscriminator(newDiscriminator, msgs);
+			if (selector != null)
+				msgs = ((InternalEObject)selector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.LIFELINE__SELECTOR, null, msgs);
+			if (newSelector != null)
+				msgs = ((InternalEObject)newSelector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UML2Package.LIFELINE__SELECTOR, null, msgs);
+			msgs = basicSetSelector(newSelector, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LIFELINE__DISCRIMINATOR, newDiscriminator, newDiscriminator));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LIFELINE__SELECTOR, newSelector, newSelector));
 	}
 
 	/**
@@ -286,13 +286,13 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OpaqueExpression createDiscriminator(EClass eClass) {
-		OpaqueExpression newDiscriminator = (OpaqueExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
+	public OpaqueExpression createSelector(EClass eClass) {
+		OpaqueExpression newSelector = (OpaqueExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.LIFELINE__DISCRIMINATOR, null, newDiscriminator));
+			eNotify(new ENotificationImpl(this, Notification.CREATE, UML2Package.LIFELINE__SELECTOR, null, newSelector));
 		}
-        setDiscriminator(newDiscriminator);
-		return newDiscriminator;
+        setSelector(newSelector);
+		return newSelector;
 	}
 
 	/**
@@ -363,8 +363,8 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 		if (!getCacheAdapter().containsKey(this, UML2Package.eINSTANCE.getElement_OwnedElement())) {
 			Set union = new LinkedHashSet();
 			union.addAll(super.getOwnedElements());
-			if (null != getDiscriminator()) {
-				union.add(getDiscriminator());
+			if (null != getSelector()) {
+				union.add(getSelector());
 			}
 			getCacheAdapter().put(
 				this,
@@ -434,8 +434,8 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 					return ((InternalEList)getCoveredBys()).basicRemove(otherEnd, msgs);
 				case UML2Package.LIFELINE__INTERACTION:
 					return eBasicSetContainer(null, UML2Package.LIFELINE__INTERACTION, msgs);
-				case UML2Package.LIFELINE__DISCRIMINATOR:
-					return basicSetDiscriminator(null, msgs);
+				case UML2Package.LIFELINE__SELECTOR:
+					return basicSetSelector(null, msgs);
 				default:
 					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
 			}
@@ -497,8 +497,8 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 				return basicGetRepresents();
 			case UML2Package.LIFELINE__INTERACTION:
 				return getInteraction();
-			case UML2Package.LIFELINE__DISCRIMINATOR:
-				return getDiscriminator();
+			case UML2Package.LIFELINE__SELECTOR:
+				return getSelector();
 			case UML2Package.LIFELINE__DECOMPOSED_AS:
 				if (resolve) return getDecomposedAs();
 				return basicGetDecomposedAs();
@@ -551,8 +551,8 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 			case UML2Package.LIFELINE__INTERACTION:
 				setInteraction((Interaction)newValue);
 				return;
-			case UML2Package.LIFELINE__DISCRIMINATOR:
-				setDiscriminator((OpaqueExpression)newValue);
+			case UML2Package.LIFELINE__SELECTOR:
+				setSelector((OpaqueExpression)newValue);
 				return;
 			case UML2Package.LIFELINE__DECOMPOSED_AS:
 				setDecomposedAs((PartDecomposition)newValue);
@@ -601,8 +601,8 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 			case UML2Package.LIFELINE__INTERACTION:
 				setInteraction((Interaction)null);
 				return;
-			case UML2Package.LIFELINE__DISCRIMINATOR:
-				setDiscriminator((OpaqueExpression)null);
+			case UML2Package.LIFELINE__SELECTOR:
+				setSelector((OpaqueExpression)null);
 				return;
 			case UML2Package.LIFELINE__DECOMPOSED_AS:
 				setDecomposedAs((PartDecomposition)null);
@@ -646,8 +646,8 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 				return represents != null;
 			case UML2Package.LIFELINE__INTERACTION:
 				return getInteraction() != null;
-			case UML2Package.LIFELINE__DISCRIMINATOR:
-				return discriminator != null;
+			case UML2Package.LIFELINE__SELECTOR:
+				return selector != null;
 			case UML2Package.LIFELINE__DECOMPOSED_AS:
 				return decomposedAs != null;
 		}
