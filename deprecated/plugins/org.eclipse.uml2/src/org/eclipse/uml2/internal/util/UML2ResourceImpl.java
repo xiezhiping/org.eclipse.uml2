@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ResourceImpl.java,v 1.3 2004/12/21 21:25:37 khussey Exp $
+ * $Id: UML2ResourceImpl.java,v 1.4 2005/02/14 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -81,8 +81,9 @@ public class UML2ResourceImpl extends XMIResourceImpl implements UML2Resource {
 
 		super.doLoad(inputStream, options);
 
-		PostProcessor postProcessor = (PostProcessor) options
-			.get(OPTION_POST_PROCESSOR);
+		PostProcessor postProcessor = null == options
+			? null
+			: (PostProcessor) options.get(OPTION_POST_PROCESSOR);
 
 		if (null != postProcessor) {
 			postProcessor.postLoad(this, options);
@@ -98,8 +99,9 @@ public class UML2ResourceImpl extends XMIResourceImpl implements UML2Resource {
 	public void doSave(OutputStream outputStream, Map options)
 			throws IOException {
 
-		PreProcessor preProcessor = (PreProcessor) options
-			.get(OPTION_PRE_PROCESSOR);
+		PreProcessor preProcessor = null == options
+			? null
+			: (PreProcessor) options.get(OPTION_PRE_PROCESSOR);
 
 		if (null != preProcessor) {
 			preProcessor.preSave(this, options);
