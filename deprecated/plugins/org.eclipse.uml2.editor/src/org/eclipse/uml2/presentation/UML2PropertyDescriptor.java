@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2PropertyDescriptor.java,v 1.3 2004/04/11 02:46:02 khussey Exp $
+ * $Id: UML2PropertyDescriptor.java,v 1.4 2004/04/11 02:53:38 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -83,7 +83,7 @@ public class UML2PropertyDescriptor
 					EObject eObject = (EObject) object;
 
 					if (null != eObject.eResource()) {
-						return getLabelProvider().getText(eObject) + " {"
+						return getLabelProvider().getText(eObject) + " {" //$NON-NLS-1$
 							+ eObject.eResource().getURIFragment(eObject) + '}';
 					}
 				}

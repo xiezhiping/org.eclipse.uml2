@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Validator.java,v 1.2 2004/04/10 03:58:45 khussey Exp $
+ * $Id: UML2Validator.java,v 1.3 2004/04/11 02:53:43 khussey Exp $
  */
 package org.eclipse.uml2.edit.util;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -482,8 +481,7 @@ public class UML2Validator
 											UML2StatusConstants.UNSPECIFIED,
 											UML2EditPlugin.INSTANCE
 												.getString(
-													"_UI_FeatureHasTooManyValues_message",
-													//$NON-NLS-1$
+													"_UI_FeatureHasTooManyValues_message", //$NON-NLS-1$
 													new Object[] {
 														eStructuralFeature
 															.getName(),
@@ -505,8 +503,8 @@ public class UML2Validator
 								UML2EditPlugin.INSTANCE.getString(
 									"_UI_RequiredFeatureMustBeSet_message", //$NON-NLS-1$
 									new Object[] {eStructuralFeature.getName(),
-										EcoreUtil.getIdentification(object)}),
-								new Object[] {object, eStructuralFeature}));
+										getText(object)}), new Object[] {
+									object, eStructuralFeature}));
 				}
 			}
 		}
