@@ -8,9 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SubsetEObjectContainmentEList.java,v 1.3 2004/06/23 20:34:41 khussey Exp $
+ * $Id: SubsetEObjectContainmentEList.java,v 1.4 2004/12/02 16:28:22 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -109,6 +112,24 @@ public class SubsetEObjectContainmentEList
 	 */
 	protected boolean isContainment() {
 		return true;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.Collection#addAll(java.util.Collection)
+	 */
+	public boolean addAll(Collection collection) {
+		return super.addAll(new ArrayList(collection));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.List#addAll(int, java.util.Collection)
+	 */
+	public boolean addAll(int index, Collection collection) {
+		return super.addAll(index, new ArrayList(collection));
 	}
 
 }
