@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -38,6 +38,7 @@ import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.NamedElementOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -300,21 +301,21 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateNoName(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return NamedElementOperations.validateNoName(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateQualifiedName(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return NamedElementOperations.validateQualifiedName(this, diagnostics, data);
 	}
 
 	/**
@@ -370,11 +371,11 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return NamedElementOperations.validateVisibilityNeedsOwnership(this, diagnostics, data);
 	}
 
 	/**

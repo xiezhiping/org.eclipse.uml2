@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1067,11 +1067,11 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return PropertyOperations.validateOppositeIsOtherEnd(this, diagnostics, data);
 	}
 
 	/**
@@ -1087,61 +1087,61 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return PropertyOperations.validateMultiplicityOfComposite(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateSubsettingContext(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return PropertyOperations.validateSubsettingContext(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return PropertyOperations.validateNavigablePropertyRedefinition(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateSubsettingRules(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return PropertyOperations.validateSubsettingRules(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateNavigableReadonly(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return PropertyOperations.validateNavigableReadonly(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return PropertyOperations.validateDerivedUnionIsDerived(this, diagnostics, data);
 	}
 
 	/**

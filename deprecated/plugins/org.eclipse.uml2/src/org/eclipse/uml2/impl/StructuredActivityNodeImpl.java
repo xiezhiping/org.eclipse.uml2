@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -446,11 +446,11 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateMembersAreDistinguishable(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return NamespaceOperations.validateMembersAreDistinguishable(this, diagnostics, data);
 	}
 
 	/**
@@ -626,11 +626,11 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateImportedMemberDerived(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return NamespaceOperations.validateImportedMemberDerived(this, diagnostics, data);
 	}
 
 	/**

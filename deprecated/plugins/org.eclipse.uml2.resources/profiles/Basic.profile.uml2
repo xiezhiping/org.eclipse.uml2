@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ASCII"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <uml:Profile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_Rj5hEIKZEdihC9hGDszZng" name="Basic" metaclassReference="_UhSfQIKZEdihC9hGDszZng _UhxAYIKZEdihC9hGDszZng _UiDUQIKZEdihC9hGDszZng _UiPhgIKZEdihC9hGDszZng _UibuwYKZEdihC9hGDszZng _Ui0JQIKZEdihC9hGDszZng _Ujk-QIKZEdihC9hGDszZng">
   <eAnnotations xmi:id="_WvNIUIKZEdihC9hGDszZng" source="attributes">
     <details xmi:id="_WvTO8IKZEdihC9hGDszZng" key="version" value="0"/>
@@ -89,212 +89,212 @@
     <importedElement xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9YPJoKVEdi2Wc8D4GtlCQ"/>
   </elementImport>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UYmdUIKZEdihC9hGDszZng" name="Auxiliary">
-    <ownedAttribute xmi:id="_UhkzIoKZEdihC9hGDszZng" name="baseClass_Class" association="_UhesgIKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UhkzIoKZEdihC9hGDszZng" name="base$Class" association="_UhesgIKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9SIEoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UhesgIKZEdihC9hGDszZng" name="Class_Auxiliary" memberEnd="_UhkzIIKZEdihC9hGDszZng _UhkzIoKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UhkzIIKZEdihC9hGDszZng" type="_UYmdUIKZEdihC9hGDszZng" association="_UhesgIKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UhkzIIKZEdihC9hGDszZng" name="extension$Auxiliary" type="_UYmdUIKZEdihC9hGDszZng" association="_UhesgIKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UhkzIYKZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_Uhq5wIKZEdihC9hGDszZng" name="BuildComponent">
-    <ownedAttribute xmi:id="_UhxAZIKZEdihC9hGDszZng" name="baseClass_Component" association="_UhxAYYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UhxAZIKZEdihC9hGDszZng" name="base$Component" association="_UhxAYYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9kb8oKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UhxAYYKZEdihC9hGDszZng" name="Component_BuildComponent" memberEnd="_UhxAYoKZEdihC9hGDszZng _UhxAZIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UhxAYoKZEdihC9hGDszZng" type="_Uhq5wIKZEdihC9hGDszZng" association="_UhxAYYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UhxAYoKZEdihC9hGDszZng" name="extension$BuildComponent" type="_Uhq5wIKZEdihC9hGDszZng" association="_UhxAYYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UhxAY4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_Uh9NoIKZEdihC9hGDszZng" name="Create">
-    <ownedAttribute xmi:id="_UiDURIKZEdihC9hGDszZng" name="baseClass_BehavioralFeature" association="_UiDUQYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UiDURIKZEdihC9hGDszZng" name="base$BehavioralFeature" association="_UiDUQYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9YPvoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UiDUQYKZEdihC9hGDszZng" name="BehavioralFeature_Create" memberEnd="_UiDUQoKZEdihC9hGDszZng _UiDURIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UiDUQoKZEdihC9hGDszZng" type="_Uh9NoIKZEdihC9hGDszZng" association="_UiDUQYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UiDUQoKZEdihC9hGDszZng" name="extension$Create" type="_Uh9NoIKZEdihC9hGDszZng" association="_UiDUQYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UiDUQ4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UiJa4IKZEdihC9hGDszZng" name="Create">
-    <ownedAttribute xmi:id="_UiPhhIKZEdihC9hGDszZng" name="baseClass_Usage" association="_UiPhgYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UiPhhIKZEdihC9hGDszZng" name="base$Usage" association="_UiPhgYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q92xPIKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UiPhgYKZEdihC9hGDszZng" name="Usage_Create" memberEnd="_UiPhgoKZEdihC9hGDszZng _UiPhhIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UiPhgoKZEdihC9hGDszZng" type="_UiJa4IKZEdihC9hGDszZng" association="_UiPhgYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UiPhgoKZEdihC9hGDszZng" name="extension$Create" type="_UiJa4IKZEdihC9hGDszZng" association="_UiPhgYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UiPhg4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UiVoIIKZEdihC9hGDszZng" name="Call">
-    <ownedAttribute xmi:id="_UiVoJIKZEdihC9hGDszZng" name="baseClass_Usage" association="_UiVoIYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UiVoJIKZEdihC9hGDszZng" name="base$Usage" association="_UiVoIYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q92xPIKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UiVoIYKZEdihC9hGDszZng" name="Usage_Call" memberEnd="_UiVoIoKZEdihC9hGDszZng _UiVoJIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UiVoIoKZEdihC9hGDszZng" type="_UiVoIIKZEdihC9hGDszZng" association="_UiVoIYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UiVoIoKZEdihC9hGDszZng" name="extension$Call" type="_UiVoIIKZEdihC9hGDszZng" association="_UiVoIYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UiVoI4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UibuwIKZEdihC9hGDszZng" name="Derive">
-    <ownedAttribute xmi:id="_Uih1Y4KZEdihC9hGDszZng" name="baseClass_Abstraction" association="_Uih1YIKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_Uih1Y4KZEdihC9hGDszZng" name="base$Abstraction" association="_Uih1YIKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9YPTYKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_Uih1YIKZEdihC9hGDszZng" name="Abstraction_Derive" memberEnd="_Uih1YYKZEdihC9hGDszZng _Uih1Y4KZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uih1YYKZEdihC9hGDszZng" type="_UibuwIKZEdihC9hGDszZng" association="_Uih1YIKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uih1YYKZEdihC9hGDszZng" name="extension$Derive" type="_UibuwIKZEdihC9hGDszZng" association="_Uih1YIKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_Uih1YoKZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_Uih1ZIKZEdihC9hGDszZng" name="Destroy">
-    <ownedAttribute xmi:id="_Uin8A4KZEdihC9hGDszZng" name="baseClass_BehavioralFeature" association="_Uin8AIKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_Uin8A4KZEdihC9hGDszZng" name="base$BehavioralFeature" association="_Uin8AIKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9YPvoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_Uin8AIKZEdihC9hGDszZng" name="BehavioralFeature_Destroy" memberEnd="_Uin8AYKZEdihC9hGDszZng _Uin8A4KZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uin8AYKZEdihC9hGDszZng" type="_Uih1ZIKZEdihC9hGDszZng" association="_Uin8AIKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uin8AYKZEdihC9hGDszZng" name="extension$Destroy" type="_Uih1ZIKZEdihC9hGDszZng" association="_Uin8AIKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_Uin8AoKZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_Uin8BIKZEdihC9hGDszZng" name="Focus">
-    <ownedAttribute xmi:id="_UiuCo4KZEdihC9hGDszZng" name="baseClass_Class" association="_UiuCoIKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UiuCo4KZEdihC9hGDszZng" name="base$Class" association="_UiuCoIKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9SIEoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UiuCoIKZEdihC9hGDszZng" name="Class_Focus" memberEnd="_UiuCoYKZEdihC9hGDszZng _UiuCo4KZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UiuCoYKZEdihC9hGDszZng" type="_Uin8BIKZEdihC9hGDszZng" association="_UiuCoIKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UiuCoYKZEdihC9hGDszZng" name="extension$Focus" type="_Uin8BIKZEdihC9hGDszZng" association="_UiuCoIKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UiuCooKZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UiuCpIKZEdihC9hGDszZng" name="Framework">
-    <ownedAttribute xmi:id="_Ui0JRIKZEdihC9hGDszZng" name="baseClass_Package" association="_Ui0JQYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_Ui0JRIKZEdihC9hGDszZng" name="base$Package" association="_Ui0JQYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9MBpoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_Ui0JQYKZEdihC9hGDszZng" name="Package_Framework" memberEnd="_Ui0JQoKZEdihC9hGDszZng _Ui0JRIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Ui0JQoKZEdihC9hGDszZng" type="_UiuCpIKZEdihC9hGDszZng" association="_Ui0JQYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Ui0JQoKZEdihC9hGDszZng" name="extension$Framework" type="_UiuCpIKZEdihC9hGDszZng" association="_Ui0JQYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_Ui0JQ4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_Ui0JRYKZEdihC9hGDszZng" name="Implement">
-    <ownedAttribute xmi:id="_Ui6P44KZEdihC9hGDszZng" name="baseClass_Component" association="_Ui6P4IKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_Ui6P44KZEdihC9hGDszZng" name="base$Component" association="_Ui6P4IKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9kb8oKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_Ui6P4IKZEdihC9hGDszZng" name="Component_Implement" memberEnd="_Ui6P4YKZEdihC9hGDszZng _Ui6P44KZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Ui6P4YKZEdihC9hGDszZng" type="_Ui0JRYKZEdihC9hGDszZng" association="_Ui6P4IKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Ui6P4YKZEdihC9hGDszZng" name="extension$Implement" type="_Ui0JRYKZEdihC9hGDszZng" association="_Ui6P4IKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_Ui6P4oKZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UjAWgIKZEdihC9hGDszZng" name="ImplementationClass">
-    <ownedAttribute xmi:id="_UjAWhIKZEdihC9hGDszZng" name="baseClass_Class" association="_UjAWgYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UjAWhIKZEdihC9hGDszZng" name="base$Class" association="_UjAWgYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9SIEoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UjAWgYKZEdihC9hGDszZng" name="Class_ImplementationClass" memberEnd="_UjAWgoKZEdihC9hGDszZng _UjAWhIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjAWgoKZEdihC9hGDszZng" type="_UjAWgIKZEdihC9hGDszZng" association="_UjAWgYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjAWgoKZEdihC9hGDszZng" name="extension$ImplementationClass" type="_UjAWgIKZEdihC9hGDszZng" association="_UjAWgYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UjAWg4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UjGdIIKZEdihC9hGDszZng" name="Instantiate">
-    <ownedAttribute xmi:id="_UjGdJIKZEdihC9hGDszZng" name="baseClass_Usage" association="_UjGdIYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UjGdJIKZEdihC9hGDszZng" name="base$Usage" association="_UjGdIYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q92xPIKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UjGdIYKZEdihC9hGDszZng" name="Usage_Instantiate" memberEnd="_UjGdIoKZEdihC9hGDszZng _UjGdJIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjGdIoKZEdihC9hGDszZng" type="_UjGdIIKZEdihC9hGDszZng" association="_UjGdIYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjGdIoKZEdihC9hGDszZng" name="extension$Instantiate" type="_UjGdIIKZEdihC9hGDszZng" association="_UjGdIYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UjGdI4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UjMjwIKZEdihC9hGDszZng" name="Metaclass">
-    <ownedAttribute xmi:id="_UjMjxIKZEdihC9hGDszZng" name="baseClass_Class" association="_UjMjwYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UjMjxIKZEdihC9hGDszZng" name="base$Class" association="_UjMjwYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9SIEoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UjMjwYKZEdihC9hGDszZng" name="Class_Metaclass" memberEnd="_UjMjwoKZEdihC9hGDszZng _UjMjxIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjMjwoKZEdihC9hGDszZng" type="_UjMjwIKZEdihC9hGDszZng" association="_UjMjwYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjMjwoKZEdihC9hGDszZng" name="extension$Metaclass" type="_UjMjwIKZEdihC9hGDszZng" association="_UjMjwYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UjMjw4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UjSqYIKZEdihC9hGDszZng" name="ModelLibrary">
-    <ownedAttribute xmi:id="_UjSqZIKZEdihC9hGDszZng" name="baseClass_Package" association="_UjSqYYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UjSqZIKZEdihC9hGDszZng" name="base$Package" association="_UjSqYYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9MBpoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UjSqYYKZEdihC9hGDszZng" name="Package_ModelLibrary" memberEnd="_UjSqYoKZEdihC9hGDszZng _UjSqZIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjSqYoKZEdihC9hGDszZng" type="_UjSqYIKZEdihC9hGDszZng" association="_UjSqYYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjSqYoKZEdihC9hGDszZng" name="extension$ModelLibrary" type="_UjSqYIKZEdihC9hGDszZng" association="_UjSqYYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UjSqY4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UjYxAIKZEdihC9hGDszZng" name="Refine">
-    <ownedAttribute xmi:id="_UjYxBIKZEdihC9hGDszZng" name="baseClass_Abstraction" association="_UjYxAYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UjYxBIKZEdihC9hGDszZng" name="base$Abstraction" association="_UjYxAYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9YPTYKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UjYxAYKZEdihC9hGDszZng" name="Abstraction_Refine" memberEnd="_UjYxAoKZEdihC9hGDszZng _UjYxBIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjYxAoKZEdihC9hGDszZng" type="_UjYxAIKZEdihC9hGDszZng" association="_UjYxAYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjYxAoKZEdihC9hGDszZng" name="extension$Refine" type="_UjYxAIKZEdihC9hGDszZng" association="_UjYxAYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UjYxA4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UjYxBYKZEdihC9hGDszZng" name="Responsibility">
-    <ownedAttribute xmi:id="_Uje3o4KZEdihC9hGDszZng" name="baseClass_Usage" association="_Uje3oIKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_Uje3o4KZEdihC9hGDszZng" name="base$Usage" association="_Uje3oIKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q92xPIKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_Uje3oIKZEdihC9hGDszZng" name="Usage_Responsibility" memberEnd="_Uje3oYKZEdihC9hGDszZng _Uje3o4KZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uje3oYKZEdihC9hGDszZng" type="_UjYxBYKZEdihC9hGDszZng" association="_Uje3oIKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uje3oYKZEdihC9hGDszZng" name="extension$Responsibility" type="_UjYxBYKZEdihC9hGDszZng" association="_Uje3oIKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_Uje3ooKZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_Uje3pIKZEdihC9hGDszZng" name="Script">
-    <ownedAttribute xmi:id="_Ujk-RIKZEdihC9hGDszZng" name="baseClass_Artifact" association="_Ujk-QYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_Ujk-RIKZEdihC9hGDszZng" name="base$Artifact" association="_Ujk-QYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9YPJoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_Ujk-QYKZEdihC9hGDszZng" name="Artifact_Script" memberEnd="_Ujk-QoKZEdihC9hGDszZng _Ujk-RIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Ujk-QoKZEdihC9hGDszZng" type="_Uje3pIKZEdihC9hGDszZng" association="_Ujk-QYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Ujk-QoKZEdihC9hGDszZng" name="extension$Script" type="_Uje3pIKZEdihC9hGDszZng" association="_Ujk-QYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_Ujk-Q4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_Ujk-RYKZEdihC9hGDszZng" name="Send">
-    <ownedAttribute xmi:id="_UjrE44KZEdihC9hGDszZng" name="baseClass_Usage" association="_UjrE4IKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UjrE44KZEdihC9hGDszZng" name="base$Usage" association="_UjrE4IKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q92xPIKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_UjrE4IKZEdihC9hGDszZng" name="Usage_Send" memberEnd="_UjrE4YKZEdihC9hGDszZng _UjrE44KZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjrE4YKZEdihC9hGDszZng" type="_Ujk-RYKZEdihC9hGDszZng" association="_UjrE4IKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_UjrE4YKZEdihC9hGDszZng" name="extension$Send" type="_Ujk-RYKZEdihC9hGDszZng" association="_UjrE4IKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UjrE4oKZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_UjxLgIKZEdihC9hGDszZng" name="Trace">
-    <ownedAttribute xmi:id="_Uj3SI4KZEdihC9hGDszZng" name="baseClass_Abstraction" association="_Uj3SIIKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_Uj3SI4KZEdihC9hGDszZng" name="base$Abstraction" association="_Uj3SIIKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9YPTYKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_Uj3SIIKZEdihC9hGDszZng" name="Abstraction_Trace" memberEnd="_Uj3SIYKZEdihC9hGDszZng _Uj3SI4KZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uj3SIYKZEdihC9hGDszZng" type="_UjxLgIKZEdihC9hGDszZng" association="_Uj3SIIKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uj3SIYKZEdihC9hGDszZng" name="extension$Trace" type="_UjxLgIKZEdihC9hGDszZng" association="_Uj3SIIKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_Uj3SIoKZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_Uj3SJIKZEdihC9hGDszZng" name="Type">
-    <ownedAttribute xmi:id="_Uj9YwYKZEdihC9hGDszZng" name="baseClass_Class" association="_Uj3SJYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_Uj9YwYKZEdihC9hGDszZng" name="base$Class" association="_Uj3SJYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9SIEoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_Uj3SJYKZEdihC9hGDszZng" name="Class_Type" memberEnd="_Uj3SJoKZEdihC9hGDszZng _Uj9YwYKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uj3SJoKZEdihC9hGDszZng" type="_Uj3SJIKZEdihC9hGDszZng" association="_Uj3SJYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uj3SJoKZEdihC9hGDszZng" name="extension$Type" type="_Uj3SJIKZEdihC9hGDszZng" association="_Uj3SJYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_Uj9YwIKZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_Uj9YwoKZEdihC9hGDszZng" name="Utility">
-    <ownedAttribute xmi:id="_UkDfYYKZEdihC9hGDszZng" name="baseClass_Class" association="_Uj9Yw4KZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_UkDfYYKZEdihC9hGDszZng" name="base$Class" association="_Uj9Yw4KZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q9SIEoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_Uj9Yw4KZEdihC9hGDszZng" name="Class_Utility" memberEnd="_Uj9YxIKZEdihC9hGDszZng _UkDfYYKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uj9YxIKZEdihC9hGDszZng" type="_Uj9YwoKZEdihC9hGDszZng" association="_Uj9Yw4KZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_Uj9YxIKZEdihC9hGDszZng" name="extension$Utility" type="_Uj9YwoKZEdihC9hGDszZng" association="_Uj9Yw4KZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_UkDfYIKZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: OperationImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -54,6 +54,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
+import org.eclipse.uml2.internal.operation.OperationOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -853,51 +854,51 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return MultiplicityElementOperations.validateUpperGt0(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateLowerGe0(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return MultiplicityElementOperations.validateLowerGe0(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, data);
 	}
 
 	/**
@@ -948,11 +949,11 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateTypeOfResult(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return OperationOperations.validateTypeOfResult(this, diagnostics, data);
 	}
 
 	/**
@@ -1008,11 +1009,11 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateOnlyBodyForQuery(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return OperationOperations.validateOnlyBodyForQuery(this, diagnostics, data);
 	}
 
 	/**

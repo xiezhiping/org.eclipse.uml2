@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.3 2004/04/23 02:31:46 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.4 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -59,6 +59,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UseCase;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.internal.operation.ClassifierOperations;
+import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
 import org.eclipse.uml2.internal.operation.TypeOperations;
 import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectContainmentEList;
@@ -1078,21 +1079,21 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, data);
 	}
 
 	/**
@@ -1138,31 +1139,31 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateNoCyclesInGeneralization(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return ClassifierOperations.validateNoCyclesInGeneralization(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateSpecializeType(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return ClassifierOperations.validateSpecializeType(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateInheritedMember(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return ClassifierOperations.validateInheritedMember(this, diagnostics, data);
 	}
 
 	/**
@@ -1288,11 +1289,11 @@ public EList getGenerals() {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateGeneralEqualsParents(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return ClassifierOperations.validateGeneralEqualsParents(this, diagnostics, data);
 	}
 
 	/**

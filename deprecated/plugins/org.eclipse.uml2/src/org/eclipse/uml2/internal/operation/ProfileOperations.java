@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.3 2004/04/21 14:52:19 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.4 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -41,6 +41,7 @@ import org.eclipse.uml2.Element;
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.EnumerationLiteral;
+import org.eclipse.uml2.Extension;
 import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.InstanceValue;
 import org.eclipse.uml2.Interface;
@@ -265,8 +266,7 @@ public final class ProfileOperations
 				Property property = (Property) ownedAttributes.next();
 
 				if (!isEmpty(property.getName())
-					&& !property.getName().startsWith(
-						StereotypeOperations.EXTENSION_END_PREFIX)
+					&& !Extension.class.isInstance(property.getAssociation())
 					&& null != property.getType()) {
 
 					if (DataType.class.isInstance(property.getType())) {

@@ -8,14 +8,20 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import java.util.Iterator;
+import java.util.Map;
 
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.RedefinableElement;
+import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.UML2Plugin;
 
 /**
  * A static utility class that provides operations related to redefinable
@@ -62,7 +68,73 @@ public final class RedefinableElementOperations
 				}
 			}
 		}
+
 		return false;
+	}
+
+	public static boolean validateRedefinitionConsistent(
+			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
+			Map data) {
+		boolean result = true;
+
+		for (Iterator redefinedElements = redefinableElement
+			.getRedefinedElements().iterator(); redefinedElements.hasNext();) {
+
+			RedefinableElement redefinedElement = (RedefinableElement) redefinedElements
+				.next();
+
+			if (!redefinedElement.isConsistentWith(redefinableElement)) {
+				result = false;
+
+				if (null == diagnostics) {
+					return result;
+				} else {
+					diagnostics
+						.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UML2DiagnosticConstants.PLUGIN_ID,
+								UML2DiagnosticConstants.REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT,
+								UML2Plugin.INSTANCE
+									.getString("_UI_RedefinableElement_RedefinitionConsistent_message"), //$NON-NLS-1$
+								new Object[] {redefinedElement}));
+				}
+			}
+		}
+
+		return result;
+	}
+
+	public static boolean validateRedefinitionContextValid(
+			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
+			Map data) {
+		boolean result = true;
+
+		for (Iterator redefinedElements = redefinableElement
+			.getRedefinedElements().iterator(); redefinedElements.hasNext();) {
+
+			RedefinableElement redefinedElement = (RedefinableElement) redefinedElements
+				.next();
+
+			if (!redefinableElement
+				.isRedefinitionContextValid(redefinedElement)) {
+				result = false;
+
+				if (null == diagnostics) {
+					return result;
+				} else {
+					diagnostics
+						.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UML2DiagnosticConstants.PLUGIN_ID,
+								UML2DiagnosticConstants.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID,
+								UML2Plugin.INSTANCE
+									.getString("_UI_RedefinableElement_RedefinitionContextValid_message"), //$NON-NLS-1$
+								new Object[] {redefinedElement}));
+				}
+			}
+		}
+
+		return result;
 	}
 
 }

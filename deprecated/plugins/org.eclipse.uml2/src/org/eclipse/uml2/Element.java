@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Element.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: Element.java,v 1.3 2004/04/27 13:56:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -301,9 +301,10 @@ public interface Element extends EModelElement{
 
 	/**
 	 * Retrieves the nearest package that contains (either directly or
-	 * indirectly) this element.
+	 * indirectly) this element, or the element itself (if it is a package).
 	 * 
-	 * @return The nearest package containing this element, or <code>null</code>.
+	 * @return The nearest package containing this element, the element itself,
+	 *         or <code>null</code>.
 	 */
 	public org.eclipse.uml2.Package getNearestPackage();
 

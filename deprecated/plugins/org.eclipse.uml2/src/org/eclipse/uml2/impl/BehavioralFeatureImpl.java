@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.2 2004/04/10 04:09:48 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -46,6 +46,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -383,21 +384,21 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, data);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, data);
 	}
 
 	/**

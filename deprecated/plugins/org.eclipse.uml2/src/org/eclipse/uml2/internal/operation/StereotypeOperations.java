@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -63,9 +63,14 @@ public final class StereotypeOperations
 	public static final String ANNOTATION_SOURCE__ENUMERATION_LITERAL = "enumerationLiteral"; //$NON-NLS-1$
 
 	/**
-	 * The prefix for extension end property names.
+	 * The prefix for metaclass extension role names.
 	 */
-	public static final String EXTENSION_END_PREFIX = "baseClass_"; //$NON-NLS-1$
+	public static final String METACLASS_EXTENSION_ROLE_PREFIX = "base$"; //$NON-NLS-1$
+
+	/**
+	 * The prefix for stereotype extension role names.
+	 */
+	public static final String STEREOTYPE_EXTENSION_ROLE_PREFIX = "extension$"; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Streotype Operations. This constructor should never be
@@ -323,6 +328,7 @@ public final class StereotypeOperations
 		ExtensionEnd extensionEnd = (ExtensionEnd) extension
 			.createOwnedEnd(UML2Package.eINSTANCE.getExtensionEnd());
 
+		extensionEnd.setName(STEREOTYPE_EXTENSION_ROLE_PREFIX + stereotype.getName());
 		extensionEnd.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 		extensionEnd.setType(stereotype);
 
@@ -334,7 +340,7 @@ public final class StereotypeOperations
 		Property property = stereotype
 			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
 
-		property.setName(EXTENSION_END_PREFIX + class_.getName());
+		property.setName(METACLASS_EXTENSION_ROLE_PREFIX + class_.getName());
 		property.setType(class_);
 		property.setAssociation(extension);
 

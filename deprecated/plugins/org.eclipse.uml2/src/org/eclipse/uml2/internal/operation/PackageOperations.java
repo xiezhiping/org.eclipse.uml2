@@ -8,18 +8,25 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: PackageOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageableElement;
+import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
 
 /**
@@ -123,6 +130,45 @@ public final class PackageOperations
 		}
 
 		return visibleMembers;
+	}
+
+	public static boolean validateElementsPublicOrPrivate(
+			org.eclipse.uml2.Package package_, DiagnosticChain diagnostics,
+			Map data) {
+		boolean result = true;
+
+		for (Iterator ownedElements = package_.getOwnedElements().iterator(); ownedElements
+			.hasNext();) {
+			
+			Element ownedElement = (Element) ownedElements.next();
+
+			if (NamedElement.class.isInstance(ownedElement)) {
+				VisibilityKind visibility = (VisibilityKind) ((NamedElement) ownedElement)
+					.getVisibility();
+
+				if (null != visibility
+					&& !VisibilityKind.PUBLIC_LITERAL.equals(visibility)
+					&& !VisibilityKind.PRIVATE_LITERAL.equals(visibility)) {
+
+					result = false;
+
+					if (null == diagnostics) {
+						return result;
+					} else {
+						diagnostics
+							.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UML2DiagnosticConstants.PLUGIN_ID,
+									UML2DiagnosticConstants.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
+									UML2Plugin.INSTANCE
+										.getString("_UI_Package_ElementsPublicOrPrivate_message"), //$NON-NLS-1$
+									new Object[] {ownedElement}));
+					}
+				}
+			}
+		}
+
+		return result;
 	}
 
 }

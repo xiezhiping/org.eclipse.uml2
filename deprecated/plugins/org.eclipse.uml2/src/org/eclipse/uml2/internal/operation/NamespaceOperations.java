@@ -8,21 +8,27 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageableElement;
+import org.eclipse.uml2.UML2DiagnosticConstants;
 import org.eclipse.uml2.UML2Package;
+import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
 
 /**
@@ -193,8 +199,8 @@ public final class NamespaceOperations
 	 * @param element
 	 *            The element to import.
 	 * @exception IllegalArgumentException
-	 *                If the namespace, visibility, or element is null or if
-	 *                the namespace already imports the element.
+	 *                If the namespace, visibility, or element is null or if the
+	 *                namespace already imports the element.
 	 */
 	public static void importElement(Namespace namespace,
 			VisibilityKind visibility, PackageableElement element) {
@@ -280,6 +286,75 @@ public final class NamespaceOperations
 
 		packageImport.setVisibility(visibility);
 		packageImport.setImportedPackage(package_);
+	}
+
+	public static boolean validateMembersAreDistinguishable(
+			Namespace namespace, DiagnosticChain diagnostics, Map data) {
+		boolean result = true;
+
+		if (!namespace.membersAreDistinguishable()) {
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics
+					.add(new BasicDiagnostic(
+							Diagnostic.WARNING,
+							UML2DiagnosticConstants.PLUGIN_ID,
+							UML2DiagnosticConstants.NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE,
+							UML2Plugin.INSTANCE
+								.getString("_UI_Namespace_MembersAreDistinguishable_message"), //$NON-NLS-1$
+							null));
+			}
+		}
+
+		return result;
+	}
+
+	public static boolean validateImportedMemberDerived(Namespace namespace,
+			DiagnosticChain diagnostics, Map data) {
+		boolean result = true;
+
+		Set importedMember = new HashSet();
+
+		for (Iterator elementImports = namespace.getElementImports().iterator(); elementImports
+			.hasNext();) {
+
+			ElementImport elementImport = (ElementImport) elementImports.next();
+
+			if (null != elementImport.getImportedElement()) {
+				importedMember.add(elementImport.getImportedElement());
+			}
+		}
+
+		for (Iterator packageImports = namespace.getPackageImports().iterator(); packageImports
+			.hasNext();) {
+
+			PackageImport packageImport = (PackageImport) packageImports.next();
+
+			if (null != packageImport.getImportedPackage()) {
+				importedMember.addAll(packageImport.getImportedPackage()
+					.visibleMembers());
+			}
+		}
+
+		if (!namespace.getImportedMembers().containsAll(
+			namespace.importMembers(importedMember))) {
+
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics
+					.add(new BasicDiagnostic(
+							Diagnostic.ERROR,
+							UML2DiagnosticConstants.PLUGIN_ID,
+							UML2DiagnosticConstants.NAMESPACE__IMPORTED_MEMBER_DERIVED,
+							UML2Plugin.INSTANCE
+								.getString("_UI_Namespace_ImportedMemberDerived_message"), //$NON-NLS-1$
+							null));
+			}
+		}
+
+		return result;
 	}
 
 }

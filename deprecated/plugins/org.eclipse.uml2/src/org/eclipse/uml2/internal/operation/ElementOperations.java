@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ElementOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -17,9 +17,13 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -32,6 +36,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Model;
+import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.UML2Plugin;
 
 /**
  * A static utility class that provides operations related to elements.
@@ -100,8 +106,9 @@ public final class ElementOperations
 		protected ListIterator newListIterator() {
 			return this.resolve()
 				? new ChangeableResolvingFeatureIteratorImpl(eObject,
-					eStructuralFeatures) : new ChangeableFeatureIteratorImpl(
-					eObject, eStructuralFeatures);
+						eStructuralFeatures)
+				: new ChangeableFeatureIteratorImpl(eObject,
+						eStructuralFeatures);
 		}
 
 		public List basicList() {
@@ -121,7 +128,7 @@ public final class ElementOperations
 			}
 
 			return new ChangeableFeatureIteratorImpl(eObject,
-				eStructuralFeatures);
+					eStructuralFeatures);
 		}
 
 		public ListIterator basicListIterator() {
@@ -131,7 +138,7 @@ public final class ElementOperations
 			}
 
 			return new ChangeableFeatureIteratorImpl(eObject,
-				eStructuralFeatures);
+					eStructuralFeatures);
 		}
 
 		public ListIterator basicListIterator(int index) {
@@ -147,7 +154,7 @@ public final class ElementOperations
 			}
 
 			ListIterator result = new ChangeableFeatureIteratorImpl(eObject,
-				eStructuralFeatures);
+					eStructuralFeatures);
 
 			for (int i = 0; i < index; ++i) {
 				result.next();
@@ -172,7 +179,7 @@ public final class ElementOperations
 
 		protected void handleCrossReference(EObject eObject) {
 			InternalEList eCrossReferences = new ChangeableECrossReferenceEList(
-				eObject);
+					eObject);
 
 			EContentsEList.FeatureIterator crossReferences = (EContentsEList.FeatureIterator) (resolve()
 				? eCrossReferences.iterator() : eCrossReferences
@@ -239,11 +246,13 @@ public final class ElementOperations
 
 	/**
 	 * Retrieves the nearest package that contains (either directly or
-	 * indirectly) the specified element.
+	 * indirectly) the specified element, or the element itself (if it is a
+	 * package).
 	 * 
 	 * @param element
 	 *            The element for which to retrieve the nearest package.
-	 * @return The nearest package containing the element, or <code>null</code>.
+	 * @return The nearest package containing the element, the element itself,
+	 *         or <code>null</code>.
 	 */
 	public static org.eclipse.uml2.Package getNearestPackage(Element element) {
 
@@ -300,6 +309,46 @@ public final class ElementOperations
 		}
 
 		EcoreUtil.remove(element);
+	}
+
+	public static boolean validateNotOwnSelf(Element element,
+			DiagnosticChain diagnostics, Map data) {
+		boolean result = true;
+
+		if (element.allOwnedElements().contains(element)) {
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics
+					.add(new BasicDiagnostic(Diagnostic.WARNING,
+							UML2DiagnosticConstants.PLUGIN_ID,
+							UML2DiagnosticConstants.ELEMENT__NOT_OWN_SELF,
+							UML2Plugin.INSTANCE
+								.getString("_UI_Element_NotOwnSelf_message"), //$NON-NLS-1$
+							null));
+			}
+		}
+
+		return result;
+	}
+
+	public static boolean validateHasOwner(Element element,
+			DiagnosticChain diagnostics, Map data) {
+		boolean result = true;
+
+		if (element.mustBeOwned() && null == element.getOwner()) {
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+						UML2DiagnosticConstants.PLUGIN_ID,
+						UML2DiagnosticConstants.ELEMENT__HAS_OWNER,
+						UML2Plugin.INSTANCE
+							.getString("_UI_Element_HasOwner_message"), null)); //$NON-NLS-1$
+			}
+		}
+
+		return result;
 	}
 
 }

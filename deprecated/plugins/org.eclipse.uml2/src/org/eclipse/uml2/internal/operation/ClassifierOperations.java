@@ -8,19 +8,25 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Feature;
 import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.NamedElement;
+import org.eclipse.uml2.UML2DiagnosticConstants;
 import org.eclipse.uml2.UML2Package;
+import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
 
 /**
@@ -189,6 +195,113 @@ public final class ClassifierOperations
 		generalization.setGeneral(generalClassifier);
 
 		return generalization;
+	}
+
+	public static boolean validateNoCyclesInGeneralization(
+			Classifier classifier, DiagnosticChain diagnostics, Map data) {
+		boolean result = true;
+
+		if (classifier.allParents().contains(classifier)) {
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics
+					.add(new BasicDiagnostic(
+							Diagnostic.WARNING,
+							UML2DiagnosticConstants.PLUGIN_ID,
+							UML2DiagnosticConstants.CLASSIFIER__NO_CYCLES_IN_GENERALIZATION,
+							UML2Plugin.INSTANCE
+								.getString("_UI_Classifier_NoCyclesInGeneralization_message"), //$NON-NLS-1$
+							null));
+			}
+		}
+
+		return result;
+	}
+
+	public static boolean validateSpecializeType(Classifier classifier,
+			DiagnosticChain diagnostics, Map data) {
+		boolean result = true;
+
+		for (Iterator parents = classifier.parents().iterator(); parents
+			.hasNext();) {
+
+			Classifier parent = (Classifier) parents.next();
+
+			if (!classifier.maySpecializeType(parent)) {
+				result = false;
+
+				if (null == diagnostics) {
+					return result;
+				} else {
+					diagnostics
+						.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UML2DiagnosticConstants.PLUGIN_ID,
+								UML2DiagnosticConstants.CLASSIFIER__SPECIALIZE_TYPE,
+								UML2Plugin.INSTANCE
+									.getString("_UI_Classifier_SpecializeType_message"), //$NON-NLS-1$
+								new Object[] {parent}));
+				}
+			}
+		}
+
+		return result;
+	}
+
+	public static boolean validateInheritedMember(Classifier classifier,
+			DiagnosticChain diagnostics, Map data) {
+		boolean result = true;
+
+		Set inheritedMember = new HashSet();
+
+		for (Iterator parents = classifier.parents().iterator(); parents
+			.hasNext();) {
+
+			inheritedMember.addAll(((Classifier) parents.next())
+				.inheritableMembers(classifier));
+		}
+
+		if (!classifier.inheritedMember().containsAll(
+			classifier.inherit(inheritedMember))) {
+
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics
+					.add(new BasicDiagnostic(
+							Diagnostic.ERROR,
+							UML2DiagnosticConstants.PLUGIN_ID,
+							UML2DiagnosticConstants.CLASSIFIER__INHERITED_MEMBER,
+							UML2Plugin.INSTANCE
+								.getString("_UI_Classifier_InheritedMember_message"), //$NON-NLS-1$
+							null));
+			}
+		}
+
+		return result;
+	}
+
+	public static boolean validateGeneralEqualsParents(Classifier classifier,
+			DiagnosticChain diagnostics, Map data) {
+		boolean result = true;
+
+		if (!classifier.general().equals(classifier.parents())) {
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics
+					.add(new BasicDiagnostic(
+							Diagnostic.ERROR,
+							UML2DiagnosticConstants.PLUGIN_ID,
+							UML2DiagnosticConstants.CLASSIFIER__GENERAL_EQUALS_PARENTS,
+							UML2Plugin.INSTANCE
+								.getString("_UI_Classifier_GeneralEqualsParents_message"), //$NON-NLS-1$
+							null));
+			}
+		}
+
+		return result;
 	}
 
 }

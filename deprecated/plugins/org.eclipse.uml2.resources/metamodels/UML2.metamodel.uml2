@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ASCII"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Basic_0="http:///Basic_0.profile.uml2" xmlns:Complete_0="http:///Complete_0.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Basic_0.profile.uml2 pathmap://UML2_PROFILES/Basic.profile.uml2#_Wv32sIKZEdihC9hGDszZng http:///Complete_0.profile.uml2 pathmap://UML2_PROFILES/Complete.profile.uml2#_ludV4YKZEdihC9hGDszZng" xmi:id="_q8_0IIKVEdi2Wc8D4GtlCQ" name="uml2" appliedProfile="_DOfsUIKaEdiQZY6ayxtRxA _DSBhcIKaEdiQZY6ayxtRxA">
   <eAnnotations xmi:id="_DRvNkIKaEdiQZY6ayxtRxA" source="appliedStereotypes">
     <contents xsi:type="Complete_0:Complete__Metamodel" xmi:id="_DRvNkYKaEdiQZY6ayxtRxA"/>
@@ -4275,7 +4275,7 @@
       <upperValue xsi:type="uml:LiteralUnlimitedNatural" xmi:id="_q92yEoKVEdi2Wc8D4GtlCQ" value="1"/>
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_q92yE4KVEdi2Wc8D4GtlCQ" value="1"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_q92yFIKVEdi2Wc8D4GtlCQ" name="discriminator" type="_q9YPVoKVEdi2Wc8D4GtlCQ" isOrdered="true" association="_q92yJIKVEdi2Wc8D4GtlCQ" aggregation="composite">
+    <ownedAttribute xmi:id="_q92yFIKVEdi2Wc8D4GtlCQ" name="selector" type="_q9YPVoKVEdi2Wc8D4GtlCQ" isOrdered="true" association="_q92yJIKVEdi2Wc8D4GtlCQ" aggregation="composite">
       <upperValue xsi:type="uml:LiteralUnlimitedNatural" xmi:id="_q92yFYKVEdi2Wc8D4GtlCQ" value="1"/>
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_q92yFoKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>

@@ -8,15 +8,22 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: OperationOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
+import java.util.Map;
+
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Operation;
 import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.Type;
+import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.UML2Plugin;
 
 /**
  * A static utility class that provides operations related to operations.
@@ -108,6 +115,52 @@ public final class OperationOperations
 	public static int upper(Operation operation) {
 		return 1 == operation.getReturnResults().size()
 			? ((Parameter) operation.getReturnResults().get(0)).upper() : 1;
+	}
+
+	public static boolean validateTypeOfResult(Operation operation,
+			DiagnosticChain diagnostics, Map data) {
+		boolean result = true;
+
+		if (!safeEquals(operation.getType(), 1 == operation.getReturnResults()
+			.size()
+			? ((Parameter) operation.getReturnResults().get(0)).getType()
+			: null)) {
+
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+						UML2DiagnosticConstants.PLUGIN_ID,
+						UML2DiagnosticConstants.OPERATION__TYPE_OF_RESULT,
+						UML2Plugin.INSTANCE
+							.getString("_UI_Operation_TypeOfResult_message"), //$NON-NLS-1$
+						null));
+			}
+		}
+
+		return result;
+	}
+
+	public static boolean validateOnlyBodyForQuery(Operation operation,
+			DiagnosticChain diagnostics, Map data) {
+		boolean result = true;
+
+		if (null != operation.getBodyCondition() && !operation.isQuery()) {
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics
+					.add(new BasicDiagnostic(
+							Diagnostic.WARNING,
+							UML2DiagnosticConstants.PLUGIN_ID,
+							UML2DiagnosticConstants.OPERATION__ONLY_BODY_FOR_QUERY,
+							UML2Plugin.INSTANCE
+								.getString("_UI_Operation_OnlyBodyForQuery_message"), //$NON-NLS-1$
+							null));
+			}
+		}
+
+		return result;
 	}
 
 }

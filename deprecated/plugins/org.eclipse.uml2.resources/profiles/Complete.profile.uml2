@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ASCII"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <uml:Profile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_i0mz4IKZEdihC9hGDszZng" name="Complete" metaclassReference="_lGD5IIKZEdihC9hGDszZng">
   <eAnnotations xmi:id="_luXPQIKZEdihC9hGDszZng" source="attributes">
     <details xmi:id="_luXPQYKZEdihC9hGDszZng" key="version" value="0"/>
@@ -17,22 +17,22 @@
     <importedElement xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q92xUYKVEdi2Wc8D4GtlCQ"/>
   </elementImport>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_k_R7sIKZEdihC9hGDszZng" name="Metamodel">
-    <ownedAttribute xmi:id="_lGD5JIKZEdihC9hGDszZng" name="baseClass_Model" association="_lGD5IYKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_lGD5JIKZEdihC9hGDszZng" name="base$Model" association="_lGD5IYKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q92xUYKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_lGD5IYKZEdihC9hGDszZng" name="Model_Metamodel" memberEnd="_lGD5IoKZEdihC9hGDszZng _lGD5JIKZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_lGD5IoKZEdihC9hGDszZng" type="_k_R7sIKZEdihC9hGDszZng" association="_lGD5IYKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_lGD5IoKZEdihC9hGDszZng" name="extension$Metamodel" type="_k_R7sIKZEdihC9hGDszZng" association="_lGD5IYKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_lGD5I4KZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>
   <ownedMember xsi:type="uml:Stereotype" xmi:id="_lGD5JYKZEdihC9hGDszZng" name="SystemModel">
-    <ownedAttribute xmi:id="_lGJ_w4KZEdihC9hGDszZng" name="baseClass_Model" association="_lGJ_wIKZEdihC9hGDszZng">
+    <ownedAttribute xmi:id="_lGJ_w4KZEdihC9hGDszZng" name="base$Model" association="_lGJ_wIKZEdihC9hGDszZng">
       <type xsi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_q92xUYKVEdi2Wc8D4GtlCQ"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xsi:type="uml:Extension" xmi:id="_lGJ_wIKZEdihC9hGDszZng" name="Model_SystemModel" memberEnd="_lGJ_wYKZEdihC9hGDszZng _lGJ_w4KZEdihC9hGDszZng">
-    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_lGJ_wYKZEdihC9hGDszZng" type="_lGD5JYKZEdihC9hGDszZng" association="_lGJ_wIKZEdihC9hGDszZng" aggregation="composite">
+    <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_lGJ_wYKZEdihC9hGDszZng" name="extension$SystemModel" type="_lGD5JYKZEdihC9hGDszZng" association="_lGJ_wIKZEdihC9hGDszZng" aggregation="composite">
       <lowerValue xsi:type="uml:LiteralInteger" xmi:id="_lGJ_woKZEdihC9hGDszZng"/>
     </ownedEnd>
   </ownedMember>

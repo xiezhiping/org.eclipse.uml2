@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -33,6 +33,7 @@ import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.PackageImportOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -223,11 +224,11 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validatePublicOrPrivate(DiagnosticChain diagnostics, Map data) {
-		// TODO: implement this OCL constraint
-		return true;
+		// TODO: test this OCL constraint
+		return PackageImportOperations.validatePublicOrPrivate(this, diagnostics, data);
 	}
 
 	/**

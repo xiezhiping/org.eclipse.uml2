@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ASCII"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Basic_0="http:///Basic_0.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Basic_0.profile.uml2 pathmap://UML2_PROFILES/Basic.profile.uml2#_Wv32sIKZEdihC9hGDszZng" xmi:id="_NUv84IKVEdiFpp01w6WBkA" name="Ecore" appliedProfile="_9wFi4IKZEdiQZY6ayxtRxA">
   <eAnnotations xmi:id="_93oVUIKZEdiQZY6ayxtRxA" source="appliedStereotypes">
     <contents xsi:type="Basic_0:Basic__ModelLibrary" xmi:id="_93oVUYKZEdiQZY6ayxtRxA"/>
