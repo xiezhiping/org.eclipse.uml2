@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CommunicationPathImpl.java,v 1.12 2004/06/18 04:34:31 khussey Exp $
+ * $Id: CommunicationPathImpl.java,v 1.13 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -503,7 +503,7 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 			case UML2Package.COMMUNICATION_PATH__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COMMUNICATION_PATH__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.COMMUNICATION_PATH__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.COMMUNICATION_PATH__NAME_EXPRESSION:

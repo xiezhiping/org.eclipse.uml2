@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.12 2004/06/18 04:34:31 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.13 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -590,7 +590,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ENUMERATION__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.ENUMERATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ENUMERATION__NAME_EXPRESSION:

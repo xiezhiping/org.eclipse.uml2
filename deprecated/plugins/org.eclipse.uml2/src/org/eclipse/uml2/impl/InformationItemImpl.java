@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.12 2004/06/18 04:34:32 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.13 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -522,7 +522,7 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 			case UML2Package.INFORMATION_ITEM__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INFORMATION_ITEM__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.INFORMATION_ITEM__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INFORMATION_ITEM__NAME_EXPRESSION:

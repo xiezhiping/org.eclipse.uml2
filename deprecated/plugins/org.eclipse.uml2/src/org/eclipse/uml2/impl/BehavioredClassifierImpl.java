@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.12 2004/06/18 04:34:32 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.13 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -853,7 +853,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.BEHAVIORED_CLASSIFIER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.BEHAVIORED_CLASSIFIER__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__NAME_EXPRESSION:

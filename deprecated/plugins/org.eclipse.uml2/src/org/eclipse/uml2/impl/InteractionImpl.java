@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.15 2004/06/18 04:34:31 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.16 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1258,7 +1258,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERACTION__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.INTERACTION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INTERACTION__NAME_EXPRESSION:

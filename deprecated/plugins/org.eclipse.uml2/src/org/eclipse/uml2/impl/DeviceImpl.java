@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeviceImpl.java,v 1.15 2004/06/18 04:34:31 khussey Exp $
+ * $Id: DeviceImpl.java,v 1.16 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -634,7 +634,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEVICE__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.DEVICE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEVICE__NAME_EXPRESSION:
@@ -714,7 +714,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.DEVICE__NESTED_CLASSIFIER:
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
+				return false;
 			case UML2Package.DEVICE__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.DEVICE__OWNED_RECEPTION:

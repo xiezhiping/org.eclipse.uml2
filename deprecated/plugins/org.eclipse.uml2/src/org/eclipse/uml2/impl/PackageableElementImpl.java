@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.6 2004/06/18 04:34:31 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.7 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -507,7 +507,7 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 			case UML2Package.PACKAGEABLE_ELEMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PACKAGEABLE_ELEMENT__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PACKAGEABLE_ELEMENT__NAME_EXPRESSION:

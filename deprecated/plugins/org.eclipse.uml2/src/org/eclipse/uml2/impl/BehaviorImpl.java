@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.17 2004/06/18 04:34:31 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.18 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1265,7 +1265,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.BEHAVIOR__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.BEHAVIOR__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.BEHAVIOR__NAME_EXPRESSION:

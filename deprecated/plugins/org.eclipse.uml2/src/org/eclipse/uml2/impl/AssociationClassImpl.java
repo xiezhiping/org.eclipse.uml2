@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.18 2004/06/18 04:34:32 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.19 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -929,7 +929,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ASSOCIATION_CLASS__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.ASSOCIATION_CLASS__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__NAME_EXPRESSION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.12 2004/06/18 04:34:31 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.13 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -694,7 +694,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			case UML2Package.INSTANCE_SPECIFICATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INSTANCE_SPECIFICATION__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__NAME_EXPRESSION:

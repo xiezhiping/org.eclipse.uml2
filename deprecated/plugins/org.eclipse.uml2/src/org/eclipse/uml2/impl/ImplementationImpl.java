@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.8 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.9 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -575,7 +575,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			case UML2Package.IMPLEMENTATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.IMPLEMENTATION__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.IMPLEMENTATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.IMPLEMENTATION__NAME_EXPRESSION:

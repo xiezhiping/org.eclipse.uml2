@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.6 2004/06/18 04:34:31 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.7 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -677,7 +677,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 			case UML2Package.SEND_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__ARGUMENT:
-				return argument != null && !argument.isEmpty();
+				return false;
 			case UML2Package.SEND_OBJECT_ACTION__ON_PORT:
 				return onPort != null;
 			case UML2Package.SEND_OBJECT_ACTION__TARGET:

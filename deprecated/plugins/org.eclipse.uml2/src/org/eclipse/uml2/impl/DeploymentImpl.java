@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.8 2004/06/18 04:34:31 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.9 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -611,7 +611,7 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			case UML2Package.DEPLOYMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEPLOYMENT__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.DEPLOYMENT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEPLOYMENT__NAME_EXPRESSION:

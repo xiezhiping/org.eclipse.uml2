@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.16 2004/06/18 04:34:31 khussey Exp $
+ * $Id: NodeImpl.java,v 1.17 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -870,7 +870,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.NODE__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.NODE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.NODE__NAME_EXPRESSION:
@@ -950,7 +950,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.NODE__NESTED_CLASSIFIER:
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
+				return false;
 			case UML2Package.NODE__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.NODE__OWNED_RECEPTION:

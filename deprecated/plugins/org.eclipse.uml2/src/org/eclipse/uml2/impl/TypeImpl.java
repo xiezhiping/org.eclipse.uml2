@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.5 2004/06/18 04:34:31 khussey Exp $
+ * $Id: TypeImpl.java,v 1.6 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -361,7 +361,7 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 			case UML2Package.TYPE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TYPE__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.TYPE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.TYPE__NAME_EXPRESSION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.7 2004/06/18 04:34:31 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.8 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -462,7 +462,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 			case UML2Package.INFORMATION_FLOW__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INFORMATION_FLOW__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.INFORMATION_FLOW__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INFORMATION_FLOW__NAME_EXPRESSION:

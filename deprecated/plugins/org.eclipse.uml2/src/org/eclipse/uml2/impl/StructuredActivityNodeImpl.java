@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.14 2004/06/18 04:34:31 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.15 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1204,7 +1204,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_GROUP:
 				return !getInGroups().isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY:
-				return getActivity() != null;
+				return false;
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__REDEFINED_ELEMENT:
 				return redefinedElement != null && !redefinedElement.isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE:
@@ -1240,7 +1240,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__SUPER_GROUP:
 				return basicGetSuperGroup() != null;
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY:
-				return getActivityGroup_activity() != null;
+				return false;
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE:
 				return variable != null && !variable.isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE:

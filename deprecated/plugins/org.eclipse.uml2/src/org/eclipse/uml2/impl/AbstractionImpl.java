@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.7 2004/06/18 04:34:32 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.8 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -439,7 +439,7 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 			case UML2Package.ABSTRACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ABSTRACTION__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.ABSTRACTION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ABSTRACTION__NAME_EXPRESSION:

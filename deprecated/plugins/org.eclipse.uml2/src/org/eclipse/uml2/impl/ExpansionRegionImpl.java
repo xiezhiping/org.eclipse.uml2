@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.4 2004/06/18 04:34:31 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.5 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -706,7 +706,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__IN_GROUP:
 				return !getInGroups().isEmpty();
 			case UML2Package.EXPANSION_REGION__ACTIVITY:
-				return getActivity() != null;
+				return false;
 			case UML2Package.EXPANSION_REGION__REDEFINED_ELEMENT:
 				return redefinedElement != null && !redefinedElement.isEmpty();
 			case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
@@ -742,7 +742,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__SUPER_GROUP:
 				return basicGetSuperGroup() != null;
 			case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
-				return getActivityGroup_activity() != null;
+				return false;
 			case UML2Package.EXPANSION_REGION__VARIABLE:
 				return variable != null && !variable.isEmpty();
 			case UML2Package.EXPANSION_REGION__CONTAINED_NODE:

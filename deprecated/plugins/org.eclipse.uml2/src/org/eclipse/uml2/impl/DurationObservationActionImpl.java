@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.5 2004/06/18 04:34:32 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.6 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -589,7 +589,7 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 			case UML2Package.DURATION_OBSERVATION_ACTION__OBJECT:
 				return object != null;
 			case UML2Package.DURATION_OBSERVATION_ACTION__VALUE:
-				return value != null;
+				return false;
 			case UML2Package.DURATION_OBSERVATION_ACTION__DURATION:
 				return duration != null && !duration.isEmpty();
 		}

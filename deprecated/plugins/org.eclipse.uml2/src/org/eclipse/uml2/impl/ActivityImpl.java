@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.16 2004/06/18 04:34:31 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.17 2004/06/18 17:44:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1261,7 +1261,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACTIVITY__VISIBILITY:
-				return getVisibility() != VISIBILITY_EDEFAULT;
+				return false;
 			case UML2Package.ACTIVITY__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ACTIVITY__NAME_EXPRESSION:
