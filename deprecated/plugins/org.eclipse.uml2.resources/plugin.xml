@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+/*
+ * Copyright (c) 2004 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Common Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/cpl-v10.html
+ * 
+ * Contributors: 
+ *   IBM - Initial API and implementation
+ */
+-->
+
+<plugin
+   id="org.eclipse.uml2.resources"
+   name="%pluginName"
+   version="1.0.0"
+   provider-name="%providerName">
+
+   <runtime>
+   </runtime>
+
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://UML2_LIBRARIES/"
+            target="libraries/">
+      </mapping>
+   </extension>
+
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://UML2_METAMODELS/"
+            target="metamodels/">
+      </mapping>
+   </extension>
+
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://UML2_PROFILES/"
+            target="profiles/">
+      </mapping>
+   </extension>
+
+</plugin>

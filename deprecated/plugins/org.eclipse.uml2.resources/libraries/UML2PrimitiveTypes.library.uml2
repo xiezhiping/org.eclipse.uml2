@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Basic_0="http:///Basic_0.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Basic_0.profile.uml2 pathmap://UML2_PROFILES/Basic.profile.uml2#_Wv32sIKZEdihC9hGDszZng" xmi:id="_FkgTsIKVEdiFpp01w6WBkA" name="UML2" appliedProfile="_FpZogIKaEdiQZY6ayxtRxA">
+  <eAnnotations xmi:id="_Fsc8gIKaEdiQZY6ayxtRxA" source="appliedStereotypes">
+    <contents xsi:type="Basic_0:Basic__ModelLibrary" xmi:id="_FsjDIIKaEdiQZY6ayxtRxA"/>
+  </eAnnotations>
+  <packageImport xsi:type="uml:ProfileApplication" xmi:id="_FpZogIKaEdiQZY6ayxtRxA">
+    <eAnnotations xmi:id="_FpZogYKaEdiQZY6ayxtRxA" source="attributes">
+      <details xmi:id="_FpZogoKaEdiQZY6ayxtRxA" key="version" value="0"/>
+    </eAnnotations>
+    <importedPackage href="pathmap://UML2_PROFILES/Basic.profile.uml2#_Rj5hEIKZEdihC9hGDszZng"/>
+    <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_Rj5hEIKZEdihC9hGDszZng"/>
+  </packageImport>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HTSwwIKVEdiFpp01w6WBkA" name="Boolean"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HTSwwYKVEdiFpp01w6WBkA" name="Integer"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HTY3YIKVEdiFpp01w6WBkA" name="String"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HTe-AIKVEdiFpp01w6WBkA" name="UnlimitedNatural"/>
+</uml:Model>
