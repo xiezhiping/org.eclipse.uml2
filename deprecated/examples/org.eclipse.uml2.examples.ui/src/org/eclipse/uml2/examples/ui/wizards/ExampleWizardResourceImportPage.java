@@ -8,19 +8,15 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExampleWizardResourceImportPage.java,v 1.1 2004/04/29 15:31:14 khussey Exp $
+ * $Id: ExampleWizardResourceImportPage.java,v 1.2 2004/05/17 19:52:39 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.wizards;
 
 import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.ui.dialogs.FileSystemElement;
@@ -40,23 +36,9 @@ public abstract class ExampleWizardResourceImportPage
 
 		switch (resource.getType()) {
 			case IResource.FILE:
-				if (resource.getName().endsWith("." + extension)) { //$NON-NLS-1$
-					IProject project = resource.getProject();
-					IJavaProject javaProject = JavaCore.create(project);
-
-					try {
-						if (!javaProject.exists()
-							|| project == project.getWorkspace().getRoot()
-								.findMember(javaProject.getOutputLocation())
-							|| !javaProject.getOutputLocation().isPrefixOf(
-								resource.getFullPath())) {
-
-							result = new FileSystemElement(label, parent, false);
-							result.setFileSystemObject(resource);
-						}
-					} catch (JavaModelException jme) {
-						// ignore
-					}
+				if (resource.getName().endsWith('.' + extension)) {
+					result = new FileSystemElement(label, parent, false);
+					result.setFileSystemObject(resource);
 				}
 				break;
 			case IResource.ROOT:
