@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Resource.java,v 1.6 2005/03/15 18:44:46 khussey Exp $
+ * $Id: UML2Resource.java,v 1.7 2005/03/15 20:27:50 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
-import java.util.Map;
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
+import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.internal.util.UML2ResourceFactoryImpl;
 
 /**
@@ -33,22 +32,6 @@ public interface UML2Resource
 
 	}
 
-	public abstract class PreProcessor {
-
-		public void preSave(UML2Resource resource, Map options) {
-			// do nothing
-		}
-
-	}
-
-	public abstract class PostProcessor {
-
-		public void postLoad(UML2Resource resource, Map options) {
-			// do nothing
-		}
-
-	}
-
 	/**
 	 * The scheme for platform URIs.
 	 */
@@ -59,15 +42,14 @@ public interface UML2Resource
 	 */
 	public static final String URI_SEGMENT_PLUGIN = "plugin"; //$NON-NLS-1$
 
-	public static final String UML2_NS_URI = "http://www.eclipse.org/uml2/1.0.0/UML"; //$NON-NLS-1$
+	/**
+	 * @deprecated Use UML2Package.eNS_URI instead.
+	 */
+	public static final String UML2_NS_URI = UML2Package.eNS_URI; //$NON-NLS-1$
 
 	public static final String FILE_EXTENSION = "uml2"; //$NON-NLS-1$
 
 	public static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
-
-	public static final String OPTION_PRE_PROCESSOR = "PRE_PROCESSOR"; //$NON-NLS-1$
-
-	public static final String OPTION_POST_PROCESSOR = "POST_PROCESSOR"; //$NON-NLS-1$
 
 	public static final String METAMODEL_FILE_EXTENSION = "metamodel." //$NON-NLS-1$
 		+ FILE_EXTENSION;

@@ -8,14 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ResourceImpl.java,v 1.5 2005/03/15 18:44:46 khussey Exp $
+ * $Id: UML2ResourceImpl.java,v 1.6 2005/03/15 20:27:50 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
@@ -36,7 +31,7 @@ public class UML2ResourceImpl extends XMIResourceImpl implements UML2Resource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Creates an instance of the resource.
@@ -68,46 +63,6 @@ public class UML2ResourceImpl extends XMIResourceImpl implements UML2Resource {
 	 */
 	protected XMLLoad createXMLLoad() {
 		return new UML2LoadImpl(createXMLHelper());
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#doLoad(java.io.InputStream,
-	 *      java.util.Map)
-	 */
-	public void doLoad(InputStream inputStream, Map options)
-			throws IOException {
-
-		super.doLoad(inputStream, options);
-
-		PostProcessor postProcessor = null == options
-			? null
-			: (PostProcessor) options.get(OPTION_POST_PROCESSOR);
-
-		if (null != postProcessor) {
-			postProcessor.postLoad(this, options);
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#doSave(java.io.OutputStream,
-	 *      java.util.Map)
-	 */
-	public void doSave(OutputStream outputStream, Map options)
-			throws IOException {
-
-		PreProcessor preProcessor = null == options
-			? null
-			: (PreProcessor) options.get(OPTION_PRE_PROCESSOR);
-
-		if (null != preProcessor) {
-			preProcessor.preSave(this, options);
-		}
-
-		super.doSave(outputStream, options);
 	}
 
 } //UML2ResourceImpl
