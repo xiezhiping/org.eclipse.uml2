@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.15 2004/06/15 21:01:03 khussey Exp $
+ * $Id: ClassImpl.java,v 1.16 2004/06/16 03:38:11 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,8 +66,8 @@ import org.eclipse.uml2.internal.operation.ClassOperations;
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedPorts <em>Owned Port</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getSuperClasses <em>Super Class</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getNestedClassifiers <em>Nested Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getExtensions <em>Extension</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getNestedClassifiers <em>Nested Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#isActive <em>Is Active</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedReceptions <em>Owned Reception</em>}</li>
  * </ul>
@@ -983,10 +983,10 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 				return getOwnedOperations();
 			case UML2Package.CLASS__SUPER_CLASS:
 				return getSuperClasses();
-			case UML2Package.CLASS__NESTED_CLASSIFIER:
-				return getNestedClassifiers();
 			case UML2Package.CLASS__EXTENSION:
 				return getExtensions();
+			case UML2Package.CLASS__NESTED_CLASSIFIER:
+				return getNestedClassifiers();
 			case UML2Package.CLASS__IS_ACTIVE:
 				return isActive() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.CLASS__OWNED_RECEPTION:
@@ -1358,10 +1358,10 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.CLASS__SUPER_CLASS:
 				return !getSuperClasses().isEmpty();
-			case UML2Package.CLASS__NESTED_CLASSIFIER:
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.CLASS__EXTENSION:
 				return !getExtensions().isEmpty();
+			case UML2Package.CLASS__NESTED_CLASSIFIER:
+				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.CLASS__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.CLASS__OWNED_RECEPTION:

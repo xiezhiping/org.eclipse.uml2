@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Package.java,v 1.9 2004/06/06 01:35:07 khussey Exp $
+ * $Id: Package.java,v 1.10 2004/06/16 03:38:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -37,8 +37,8 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.Package#getOwnedTypes <em>Owned Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getPackageMerges <em>Package Merge</em>}</li>
- *   <li>{@link org.eclipse.uml2.Package#getPackageExtensions <em>Package Extension</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getAppliedProfiles <em>Applied Profile</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Package#getPackageExtensions <em>Package Extension</em>}</li>
  * </ul>
  * </p>
  *

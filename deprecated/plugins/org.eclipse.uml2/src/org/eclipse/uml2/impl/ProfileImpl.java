@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.11 2004/06/15 16:13:32 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.12 2004/06/16 03:38:11 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -366,10 +366,10 @@ public class ProfileImpl extends PackageImpl implements Profile {
 				return getOwnedMembers();
 			case UML2Package.PROFILE__PACKAGE_MERGE:
 				return getPackageMerges();
-			case UML2Package.PROFILE__PACKAGE_EXTENSION:
-				return getPackageExtensions();
 			case UML2Package.PROFILE__APPLIED_PROFILE:
 				return getAppliedProfiles();
+			case UML2Package.PROFILE__PACKAGE_EXTENSION:
+				return getPackageExtensions();
 			case UML2Package.PROFILE__OWNED_STEREOTYPE:
 				return getOwnedStereotypes();
 			case UML2Package.PROFILE__METACLASS_REFERENCE:
@@ -444,13 +444,13 @@ public class ProfileImpl extends PackageImpl implements Profile {
 				getPackageMerges().clear();
 				getPackageMerges().addAll((Collection)newValue);
 				return;
-			case UML2Package.PROFILE__PACKAGE_EXTENSION:
-				getPackageExtensions().clear();
-				getPackageExtensions().addAll((Collection)newValue);
-				return;
 			case UML2Package.PROFILE__APPLIED_PROFILE:
 				getAppliedProfiles().clear();
 				getAppliedProfiles().addAll((Collection)newValue);
+				return;
+			case UML2Package.PROFILE__PACKAGE_EXTENSION:
+				getPackageExtensions().clear();
+				getPackageExtensions().addAll((Collection)newValue);
 				return;
 			case UML2Package.PROFILE__METACLASS_REFERENCE:
 				getMetaclassReferences().clear();
@@ -519,11 +519,11 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__PACKAGE_MERGE:
 				getPackageMerges().clear();
 				return;
-			case UML2Package.PROFILE__PACKAGE_EXTENSION:
-				getPackageExtensions().clear();
-				return;
 			case UML2Package.PROFILE__APPLIED_PROFILE:
 				getAppliedProfiles().clear();
+				return;
+			case UML2Package.PROFILE__PACKAGE_EXTENSION:
+				getPackageExtensions().clear();
 				return;
 			case UML2Package.PROFILE__METACLASS_REFERENCE:
 				getMetaclassReferences().clear();
@@ -590,10 +590,10 @@ public class ProfileImpl extends PackageImpl implements Profile {
 				return ownedMember != null && !ownedMember.isEmpty();
 			case UML2Package.PROFILE__PACKAGE_MERGE:
 				return packageMerge != null && !packageMerge.isEmpty();
-			case UML2Package.PROFILE__PACKAGE_EXTENSION:
-				return packageExtension != null && !packageExtension.isEmpty();
 			case UML2Package.PROFILE__APPLIED_PROFILE:
 				return appliedProfile != null && !appliedProfile.isEmpty();
+			case UML2Package.PROFILE__PACKAGE_EXTENSION:
+				return packageExtension != null && !packageExtension.isEmpty();
 			case UML2Package.PROFILE__OWNED_STEREOTYPE:
 				return !getOwnedStereotypes().isEmpty();
 			case UML2Package.PROFILE__METACLASS_REFERENCE:

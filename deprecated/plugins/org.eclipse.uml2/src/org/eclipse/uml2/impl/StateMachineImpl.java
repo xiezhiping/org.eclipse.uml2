@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.13 2004/06/15 21:01:03 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.14 2004/06/16 03:38:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -596,10 +596,10 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return getOwnedOperations();
 			case UML2Package.STATE_MACHINE__SUPER_CLASS:
 				return getSuperClasses();
-			case UML2Package.STATE_MACHINE__NESTED_CLASSIFIER:
-				return getNestedClassifiers();
 			case UML2Package.STATE_MACHINE__EXTENSION:
 				return getExtensions();
+			case UML2Package.STATE_MACHINE__NESTED_CLASSIFIER:
+				return getNestedClassifiers();
 			case UML2Package.STATE_MACHINE__IS_ACTIVE:
 				return isActive() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.STATE_MACHINE__OWNED_RECEPTION:
@@ -1080,10 +1080,10 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.STATE_MACHINE__SUPER_CLASS:
 				return !getSuperClasses().isEmpty();
-			case UML2Package.STATE_MACHINE__NESTED_CLASSIFIER:
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.STATE_MACHINE__EXTENSION:
 				return !getExtensions().isEmpty();
+			case UML2Package.STATE_MACHINE__NESTED_CLASSIFIER:
+				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.STATE_MACHINE__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.STATE_MACHINE__OWNED_RECEPTION:
