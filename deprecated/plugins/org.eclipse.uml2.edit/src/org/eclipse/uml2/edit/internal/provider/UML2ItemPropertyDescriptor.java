@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ItemPropertyDescriptor.java,v 1.2 2004/06/18 20:30:23 khussey Exp $
+ * $Id: UML2ItemPropertyDescriptor.java,v 1.3 2004/06/19 02:53:34 khussey Exp $
  */
 package org.eclipse.uml2.edit.internal.provider;
 
@@ -41,35 +41,10 @@ public class UML2ItemPropertyDescriptor
 	extends ItemPropertyDescriptor {
 
 	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			String displayName, String description, EStructuralFeature feature) {
-		super(adapterFactory, displayName, description, feature);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			ResourceLocator resourceLocator, String displayName,
-			String description, EStructuralFeature feature) {
-		super(adapterFactory, resourceLocator, displayName, description,
-			feature);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			String displayName, String description, EStructuralFeature feature,
-			boolean isSettable) {
-		super(adapterFactory, displayName, description, feature, isSettable);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
 			ResourceLocator resourceLocator, String displayName,
 			String description, EStructuralFeature feature, boolean isSettable) {
 		super(adapterFactory, resourceLocator, displayName, description,
 			feature, isSettable);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			String displayName, String description, EStructuralFeature feature,
-			boolean isSettable, Object staticImage) {
-		super(adapterFactory, displayName, description, feature, isSettable,
-			staticImage);
 	}
 
 	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
@@ -81,123 +56,11 @@ public class UML2ItemPropertyDescriptor
 	}
 
 	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			String displayName, String description, EStructuralFeature feature,
-			boolean isSettable, String category) {
-		super(adapterFactory, displayName, description, feature, isSettable,
-			category);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			ResourceLocator resourceLocator, String displayName,
-			String description, EStructuralFeature feature, boolean isSettable,
-			String category) {
-		super(adapterFactory, resourceLocator, displayName, description,
-			feature, isSettable, category);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			String displayName, String description, EStructuralFeature feature,
-			boolean isSettable, Object staticImage, String category) {
-		super(adapterFactory, displayName, description, feature, isSettable,
-			staticImage, category);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			ResourceLocator resourceLocator, String displayName,
-			String description, EStructuralFeature feature, boolean isSettable,
-			Object staticImage, String category) {
-		super(adapterFactory, resourceLocator, displayName, description,
-			feature, isSettable, staticImage, category);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			String displayName, String description, EStructuralFeature feature,
-			boolean isSettable, String category, String[] filterFlags) {
-		super(adapterFactory, displayName, description, feature, isSettable,
-			category, filterFlags);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
 			ResourceLocator resourceLocator, String displayName,
 			String description, EStructuralFeature feature, boolean isSettable,
 			String category, String[] filterFlags) {
 		super(adapterFactory, resourceLocator, displayName, description,
 			feature, isSettable, category, filterFlags);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			String displayName, String description, EStructuralFeature feature,
-			boolean isSettable, Object staticImage, String category,
-			String[] filterFlags) {
-		super(adapterFactory, displayName, description, feature, isSettable,
-			staticImage, category, filterFlags);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			ResourceLocator resourceLocator, String displayName,
-			String description, EStructuralFeature feature, boolean isSettable,
-			Object staticImage, String category, String[] filterFlags) {
-		super(adapterFactory, resourceLocator, displayName, description,
-			feature, isSettable, staticImage, category, filterFlags);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			String displayName, String description,
-			EReference[] parentReferences) {
-		super(adapterFactory, displayName, description, parentReferences);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			ResourceLocator resourceLocator, String displayName,
-			String description, EReference[] parentReferences) {
-		super(adapterFactory, resourceLocator, displayName, description,
-			parentReferences);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			String displayName, String description,
-			EReference[] parentReferences, boolean isSettable) {
-		super(adapterFactory, displayName, description, parentReferences,
-			isSettable);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			ResourceLocator resourceLocator, String displayName,
-			String description, EReference[] parentReferences,
-			boolean isSettable) {
-		super(adapterFactory, resourceLocator, displayName, description,
-			parentReferences, isSettable);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			String displayName, String description,
-			EReference[] parentReferences, boolean isSettable, String category) {
-		super(adapterFactory, displayName, description, parentReferences,
-			isSettable, category);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			ResourceLocator resourceLocator, String displayName,
-			String description, EReference[] parentReferences,
-			boolean isSettable, String category) {
-		super(adapterFactory, resourceLocator, displayName, description,
-			parentReferences, isSettable, category);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			String displayName, String description,
-			EReference[] parentReferences, boolean isSettable, String category,
-			String[] filterFlags) {
-		super(adapterFactory, displayName, description, parentReferences,
-			isSettable, category, filterFlags);
-	}
-
-	public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-			ResourceLocator resourceLocator, String displayName,
-			String description, EReference[] parentReferences,
-			boolean isSettable, String category, String[] filterFlags) {
-		super(adapterFactory, resourceLocator, displayName, description,
-			parentReferences, isSettable, category, filterFlags);
 	}
 
 	public static void collectReferenceableObjectsOfType(Collection visited,

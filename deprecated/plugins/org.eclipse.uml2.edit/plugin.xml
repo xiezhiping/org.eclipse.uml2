@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.8 2004/05/25 20:03:27 khussey Exp $
+ * $Id: plugin.xml,v 1.9 2004/06/19 02:53:34 khussey Exp $
  */
 -->
 
@@ -26,7 +26,7 @@
    <runtime>
       <library name="uml2.edit.jar">
          <export name="*"/>
-         <packages prefixes="org.eclipse.uml2.edit.internal.command,org.eclipse.uml2.edit.util,org.eclipse.uml2.provider"/>
+         <packages prefixes="org.eclipse.uml2.edit,org.eclipse.uml2.provider"/>
       </library>
    </runtime>
 
