@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredClassifierImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: StructuredClassifierImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -85,9 +85,15 @@ public abstract class StructuredClassifierImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredClassifierImpl#getParts()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetPartsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetParts() {
+		testGetPartsGen();
+		
 		Property property0 = UML2Factory.eINSTANCE.createProperty();
 		property0.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 
@@ -118,9 +124,15 @@ public abstract class StructuredClassifierImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredClassifierImpl#getRoles()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRolesGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetRoles() {
+		testGetRolesGen();
+		
 		getFixture().getOwnedAttributes().add(UML2Factory.eINSTANCE.createProperty());
 		getFixture().getOwnedAttributes().add(UML2Factory.eINSTANCE.createProperty());
 
@@ -132,9 +144,15 @@ public abstract class StructuredClassifierImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredClassifierImpl#getAttributes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetAttributesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetAttributes() {
+		testGetAttributesGen();
+		
 		super.testGetAttributes();
 
 		assertTrue(getFixture().getAttributes().containsAll(getFixture().getOwnedAttributes()));
@@ -145,9 +163,15 @@ public abstract class StructuredClassifierImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredClassifierImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getOwnedAttributes()));
@@ -159,9 +183,15 @@ public abstract class StructuredClassifierImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredClassifierImpl#getMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetMembers() {
+		testGetMembersGen();
+		
 		super.testGetMembers();
 
 		assertTrue(getFixture().getMembers().containsAll(getFixture().getRoles()));
@@ -172,15 +202,21 @@ public abstract class StructuredClassifierImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredClassifierImpl#getFeatures()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetFeatures() {
+		testGetFeaturesGen();
+		
 		super.testGetFeatures();
 
 		assertTrue(getFixture().getFeatures().containsAll(getFixture().getOwnedConnectors()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpMembers()
 	 */
 	protected void setUpMembers() {
@@ -190,7 +226,7 @@ public abstract class StructuredClassifierImplTest extends ClassifierImplTest {
 		getFixture().getOwnedAttributes().add(UML2Factory.eINSTANCE.createProperty());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -203,7 +239,7 @@ public abstract class StructuredClassifierImplTest extends ClassifierImplTest {
 		getFixture().getOwnedConnectors().add(UML2Factory.eINSTANCE.createConnector());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ClassifierImplTest#setUpAttributes()
 	 */
 	protected void setUpAttributes() {
@@ -213,7 +249,7 @@ public abstract class StructuredClassifierImplTest extends ClassifierImplTest {
 		getFixture().getOwnedAttributes().add(UML2Factory.eINSTANCE.createProperty());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ClassifierImplTest#setUpFeatures()
 	 */
 	protected void setUpFeatures() {

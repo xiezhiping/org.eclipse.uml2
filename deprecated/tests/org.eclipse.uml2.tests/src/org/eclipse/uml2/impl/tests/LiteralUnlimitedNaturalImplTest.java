@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -93,9 +93,15 @@ public class LiteralUnlimitedNaturalImplTest extends LiteralSpecificationImplTes
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LiteralUnlimitedNaturalImpl#isComputable()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsComputableGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsComputable() {
+		testIsComputableGen();
+		
 		assertTrue(getFixture().isComputable());
 	}
 
@@ -104,9 +110,15 @@ public class LiteralUnlimitedNaturalImplTest extends LiteralSpecificationImplTes
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LiteralUnlimitedNaturalImpl#unlimitedValue()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testUnlimitedValueGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testUnlimitedValue() {
+		testUnlimitedValueGen();
+		
 		getFixture().setValue(0);
 		assertEquals(0, getFixture().unlimitedValue());
 
@@ -114,7 +126,7 @@ public class LiteralUnlimitedNaturalImplTest extends LiteralSpecificationImplTes
 		assertEquals(Integer.MAX_VALUE, getFixture().unlimitedValue());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ValueSpecificationImplTest#testStringValue()
 	 */
 	public void testStringValue() {
@@ -125,14 +137,14 @@ public class LiteralUnlimitedNaturalImplTest extends LiteralSpecificationImplTes
 		assertEquals(String.valueOf(Integer.MAX_VALUE), getFixture().stringValue());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		// TODO implement setUpNamespace
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {

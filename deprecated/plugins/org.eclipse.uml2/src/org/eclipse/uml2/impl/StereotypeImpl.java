@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.8 2004/05/18 21:00:48 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.9 2004/05/20 03:01:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -105,6 +105,8 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 					return ((InternalEList)getSubstitutions()).basicAdd(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__POWERTYPE_EXTENT:
 					return ((InternalEList)getPowertypeExtents()).basicAdd(otherEnd, msgs);
+				case UML2Package.STEREOTYPE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicAdd(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__IMPLEMENTATION:
@@ -160,20 +162,24 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 					return ((InternalEList)getPowertypeExtents()).basicRemove(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__OWNED_USE_CASE:
 					return ((InternalEList)getOwnedUseCases()).basicRemove(otherEnd, msgs);
+				case UML2Package.STEREOTYPE__USE_CASE:
+					return ((InternalEList)getUseCases()).basicRemove(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__OCCURRENCE:
 					return ((InternalEList)getOccurrences()).basicRemove(otherEnd, msgs);
+				case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
+					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
+				case UML2Package.STEREOTYPE__IMPLEMENTATION:
+					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
+				case UML2Package.STEREOTYPE__OWNED_TRIGGER:
+					return ((InternalEList)getOwnedTriggers()).basicRemove(otherEnd, msgs);
+				case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
+					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__OWNED_ATTRIBUTE:
 					return ((InternalEList)getOwnedAttributes()).basicRemove(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__OWNED_CONNECTOR:
 					return ((InternalEList)getOwnedConnectors()).basicRemove(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__OWNED_PORT:
 					return ((InternalEList)getOwnedPorts()).basicRemove(otherEnd, msgs);
-				case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
-					return ((InternalEList)getOwnedBehaviors()).basicRemove(otherEnd, msgs);
-				case UML2Package.STEREOTYPE__IMPLEMENTATION:
-					return ((InternalEList)getImplementations()).basicRemove(otherEnd, msgs);
-				case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicRemove(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__NESTED_CLASSIFIER:
@@ -278,10 +284,22 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				return getPowertypeExtents();
 			case UML2Package.STEREOTYPE__OWNED_USE_CASE:
 				return getOwnedUseCases();
+			case UML2Package.STEREOTYPE__USE_CASE:
+				return getUseCases();
 			case UML2Package.STEREOTYPE__REPRESENTATION:
 				return getRepresentation();
 			case UML2Package.STEREOTYPE__OCCURRENCE:
 				return getOccurrences();
+			case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
+				return getOwnedBehaviors();
+			case UML2Package.STEREOTYPE__CLASSIFIER_BEHAVIOR:
+				return getClassifierBehavior();
+			case UML2Package.STEREOTYPE__IMPLEMENTATION:
+				return getImplementations();
+			case UML2Package.STEREOTYPE__OWNED_TRIGGER:
+				return getOwnedTriggers();
+			case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
+				return getOwnedStateMachines();
 			case UML2Package.STEREOTYPE__OWNED_ATTRIBUTE:
 				return getOwnedAttributes();
 			case UML2Package.STEREOTYPE__PART:
@@ -292,14 +310,6 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				return getOwnedConnectors();
 			case UML2Package.STEREOTYPE__OWNED_PORT:
 				return getOwnedPorts();
-			case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
-				return getOwnedBehaviors();
-			case UML2Package.STEREOTYPE__CLASSIFIER_BEHAVIOR:
-				return getClassifierBehavior();
-			case UML2Package.STEREOTYPE__IMPLEMENTATION:
-				return getImplementations();
-			case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
-				return getOwnedStateMachines();
 			case UML2Package.STEREOTYPE__OWNED_OPERATION:
 				return getOwnedOperations();
 			case UML2Package.STEREOTYPE__SUPER_CLASS:
@@ -398,24 +408,16 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				getOwnedUseCases().clear();
 				getOwnedUseCases().addAll((Collection)newValue);
 				return;
+			case UML2Package.STEREOTYPE__USE_CASE:
+				getUseCases().clear();
+				getUseCases().addAll((Collection)newValue);
+				return;
 			case UML2Package.STEREOTYPE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)newValue);
 				return;
 			case UML2Package.STEREOTYPE__OCCURRENCE:
 				getOccurrences().clear();
 				getOccurrences().addAll((Collection)newValue);
-				return;
-			case UML2Package.STEREOTYPE__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection)newValue);
-				return;
-			case UML2Package.STEREOTYPE__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection)newValue);
-				return;
-			case UML2Package.STEREOTYPE__OWNED_PORT:
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -428,9 +430,25 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				getImplementations().clear();
 				getImplementations().addAll((Collection)newValue);
 				return;
+			case UML2Package.STEREOTYPE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				getOwnedTriggers().addAll((Collection)newValue);
+				return;
 			case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
 				getOwnedStateMachines().addAll((Collection)newValue);
+				return;
+			case UML2Package.STEREOTYPE__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				getOwnedAttributes().addAll((Collection)newValue);
+				return;
+			case UML2Package.STEREOTYPE__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				getOwnedConnectors().addAll((Collection)newValue);
+				return;
+			case UML2Package.STEREOTYPE__OWNED_PORT:
+				getOwnedPorts().clear();
+				getOwnedPorts().addAll((Collection)newValue);
 				return;
 			case UML2Package.STEREOTYPE__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -521,20 +539,14 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__OWNED_USE_CASE:
 				getOwnedUseCases().clear();
 				return;
+			case UML2Package.STEREOTYPE__USE_CASE:
+				getUseCases().clear();
+				return;
 			case UML2Package.STEREOTYPE__REPRESENTATION:
 				setRepresentation((CollaborationOccurrence)null);
 				return;
 			case UML2Package.STEREOTYPE__OCCURRENCE:
 				getOccurrences().clear();
-				return;
-			case UML2Package.STEREOTYPE__OWNED_ATTRIBUTE:
-				getOwnedAttributes().clear();
-				return;
-			case UML2Package.STEREOTYPE__OWNED_CONNECTOR:
-				getOwnedConnectors().clear();
-				return;
-			case UML2Package.STEREOTYPE__OWNED_PORT:
-				getOwnedPorts().clear();
 				return;
 			case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
 				getOwnedBehaviors().clear();
@@ -545,8 +557,20 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__IMPLEMENTATION:
 				getImplementations().clear();
 				return;
+			case UML2Package.STEREOTYPE__OWNED_TRIGGER:
+				getOwnedTriggers().clear();
+				return;
 			case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
 				getOwnedStateMachines().clear();
+				return;
+			case UML2Package.STEREOTYPE__OWNED_ATTRIBUTE:
+				getOwnedAttributes().clear();
+				return;
+			case UML2Package.STEREOTYPE__OWNED_CONNECTOR:
+				getOwnedConnectors().clear();
+				return;
+			case UML2Package.STEREOTYPE__OWNED_PORT:
+				getOwnedPorts().clear();
 				return;
 			case UML2Package.STEREOTYPE__OWNED_OPERATION:
 				getOwnedOperations().clear();
@@ -635,12 +659,24 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				return powertypeExtent != null && !powertypeExtent.isEmpty();
 			case UML2Package.STEREOTYPE__OWNED_USE_CASE:
 				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UML2Package.STEREOTYPE__USE_CASE:
+				return useCase != null && !useCase.isEmpty();
 			case UML2Package.STEREOTYPE__REPRESENTATION:
 				return representation != null;
 			case UML2Package.STEREOTYPE__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
+			case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.STEREOTYPE__CLASSIFIER_BEHAVIOR:
+				return classifierBehavior != null;
+			case UML2Package.STEREOTYPE__IMPLEMENTATION:
+				return implementation != null && !implementation.isEmpty();
+			case UML2Package.STEREOTYPE__OWNED_TRIGGER:
+				return ownedTrigger != null && !ownedTrigger.isEmpty();
+			case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.STEREOTYPE__OWNED_ATTRIBUTE:
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return !getOwnedAttributes().isEmpty();
 			case UML2Package.STEREOTYPE__PART:
 				return !getParts().isEmpty();
 			case UML2Package.STEREOTYPE__ROLE:
@@ -649,14 +685,6 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.STEREOTYPE__OWNED_PORT:
 				return ownedPort != null && !ownedPort.isEmpty();
-			case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
-			case UML2Package.STEREOTYPE__CLASSIFIER_BEHAVIOR:
-				return classifierBehavior != null;
-			case UML2Package.STEREOTYPE__IMPLEMENTATION:
-				return implementation != null && !implementation.isEmpty();
-			case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.STEREOTYPE__OWNED_OPERATION:
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.STEREOTYPE__SUPER_CLASS:
@@ -675,19 +703,14 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 
 	// <!-- begin-custom-operations -->
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.uml2.Stereotype#createExtension(org.eclipse.emf.ecore.EClass,
-	 *      boolean)
+	/* (non-Javadoc)
+	 * @see org.eclipse.uml2.Stereotype#createExtension(org.eclipse.emf.ecore.EClass, boolean)
 	 */
 	public Extension createExtension(EClass eClass, boolean required) {
 		return StereotypeOperations.createExtension(this, eClass, required);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.Stereotype#getProfile()
 	 */
 	public Profile getProfile() {
@@ -702,7 +725,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	public String getKeyword() {
 		return StereotypeOperations.getKeyword(this);
 	}
-
+	
 	// <!-- end-custom-operations -->
 
 } //StereotypeImpl

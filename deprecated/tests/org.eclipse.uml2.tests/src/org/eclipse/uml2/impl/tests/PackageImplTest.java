@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImplTest.java,v 1.2 2004/05/11 15:20:50 khussey Exp $
+ * $Id: PackageImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -214,9 +214,15 @@ public class PackageImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImpl#getOwnedTypes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedTypesGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetOwnedTypes() {
+		testGetOwnedTypesGen();
+		
 		Actor ownedActor = UML2Factory.eINSTANCE.createActor();
 		getFixture().getOwnedMembers().add(ownedActor);
 
@@ -250,39 +256,57 @@ public class PackageImplTest extends NamespaceImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PackageImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PackageImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		assertSame(getFixture().getOwningParameter(), getFixture().getOwner());
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PackageImpl#getVisibility() <em>Get Visibility</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PackageImpl#getVisibility() <em>Get Visibility</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImpl#getVisibility()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetVisibilityGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetVisibility() {
+		testGetVisibilityGen();
+		
 		getFixture().setPackageableElement_visibility(VisibilityKind.PACKAGE_LITERAL);
 
 		assertSame(getFixture().getPackageableElement_visibility(), getFixture().getVisibility());
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PackageImpl#setVisibility(VisibilityKind) <em>Set Visibility</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PackageImpl#setVisibility(VisibilityKind) <em>Set Visibility</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImpl#setVisibility(VisibilityKind)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetVisibility__VisibilityKindGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetVisibility__VisibilityKind() {
+		testSetVisibility__VisibilityKindGen();
+		
 		getFixture().setVisibility(VisibilityKind.PACKAGE_LITERAL);
 
 		assertSame(getFixture().getVisibility(), getFixture().getPackageableElement_visibility());
@@ -304,9 +328,15 @@ public class PackageImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImpl#mustBeOwned()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testMustBeOwnedGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testMustBeOwned() {
+		testMustBeOwnedGen();
+		
 		assertFalse(getFixture().mustBeOwned());
 	}
 
@@ -315,9 +345,15 @@ public class PackageImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImpl#visibleMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testVisibleMembersGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testVisibleMembers() {
+		testVisibleMembersGen();
+		
 		Actor[] ownedActors = new Actor[VisibilityKind.VALUES.size() + 1];
 		for (int index = 0; index < VisibilityKind.VALUES.size(); index++) {
 			ownedActors[index] = UML2Factory.eINSTANCE.createActor();
@@ -372,9 +408,15 @@ public class PackageImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImpl#makesVisible(NamedElement)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testMakesVisible__NamedElementGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testMakesVisible__NamedElement() {
+		testMakesVisible__NamedElementGen();
+		
 		Actor[] ownedActors = new Actor[VisibilityKind.VALUES.size() + 1];
 
 		for (int index = 0; index < VisibilityKind.VALUES.size(); index++) {
@@ -436,13 +478,19 @@ public class PackageImplTest extends NamespaceImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PackageImpl#getNamespace() <em>Get Namespace</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PackageImpl#getNamespace() <em>Get Namespace</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImpl#getNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetNamespaceGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetNamespace() {
+		testGetNamespaceGen();
+		
 		super.testGetNamespace();
 
 		assertSame(getFixture().getNestingPackage(), getFixture().getNamespace());
@@ -453,9 +501,15 @@ public class PackageImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getPackageExtensions()));
@@ -473,14 +527,14 @@ public class PackageImplTest extends NamespaceImplTest {
 		// TODO: implement this getter operation test method
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createPackage().getOwnedMembers().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -493,14 +547,14 @@ public class PackageImplTest extends NamespaceImplTest {
 		getFixture().getPackageMerges().add(UML2Factory.eINSTANCE.createPackageMerge());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createTemplateParameter().setOwnedParameteredElement(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#testGetOwnedMembers()
 	 */
 	public void testGetOwnedMember() {

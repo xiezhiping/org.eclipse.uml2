@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExtensionPointImplTest.java,v 1.1 2004/04/29 14:56:48 khussey Exp $
+ * $Id: ExtensionPointImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -81,14 +81,14 @@ public class ExtensionPointImplTest extends RedefinableElementImplTest {
 		setFixture(null);
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createUseCase().getExtensionPoints().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TriggerItemProviderTest.java,v 1.1 2004/04/29 14:43:45 khussey Exp $
+ * $Id: TriggerItemProviderTest.java,v 1.2 2004/05/20 03:04:01 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -20,7 +20,7 @@ import org.eclipse.uml2.Trigger;
  * <!-- end-user-doc -->
  * @generated
  */
-public abstract class TriggerItemProviderTest extends PackageableElementItemProviderTest {
+public abstract class TriggerItemProviderTest extends NamedElementItemProviderTest {
 
 	/**
 	 * <!-- begin-user-doc -->

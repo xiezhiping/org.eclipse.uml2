@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: StateImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -111,9 +111,15 @@ public class StateImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateImpl#isComposite()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsCompositeGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testIsComposite() {
+		testIsCompositeGen();
+		
 		getFixture().getRegions().clear();
 
 		assertFalse(getFixture().isComposite());
@@ -128,9 +134,15 @@ public class StateImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateImpl#isOrthogonal()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsOrthogonalGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testIsOrthogonal() {
+		testIsOrthogonalGen();
+		
 		getFixture().getRegions().clear();
 
 		assertFalse(getFixture().isOrthogonal());
@@ -149,9 +161,15 @@ public class StateImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateImpl#isSimple()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsSimpleGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testIsSimple() {
+		testIsSimpleGen();
+		
 		getFixture().getRegions().clear();
 
 		assertTrue(getFixture().isSimple());
@@ -166,9 +184,15 @@ public class StateImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateImpl#isSubmachineState()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsSubmachineStateGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testIsSubmachineState() {
+		testIsSubmachineStateGen();
+		
 		getFixture().setSubmachine(null);
 
 		assertFalse(getFixture().isSubmachineState());
@@ -223,13 +247,19 @@ public class StateImplTest extends NamespaceImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.StateImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.StateImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		assertSame(getFixture().getContainer(), getFixture().getOwner());
@@ -240,9 +270,15 @@ public class StateImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateImpl#getRedefinitionContexts()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinitionContextsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinitionContexts() {
+		testGetRedefinitionContextsGen();
+		
 		assertTrue(getFixture().getRedefinitionContexts().isEmpty());
 	}
 
@@ -251,9 +287,15 @@ public class StateImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateImpl#getRedefinedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinedElements() {
+		testGetRedefinedElementsGen();
+		
 		assertTrue(getFixture().getRedefinedElements().isEmpty());
 	}
 
@@ -262,9 +304,15 @@ public class StateImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getConnections()));
@@ -279,9 +327,15 @@ public class StateImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 		
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getRegions()));

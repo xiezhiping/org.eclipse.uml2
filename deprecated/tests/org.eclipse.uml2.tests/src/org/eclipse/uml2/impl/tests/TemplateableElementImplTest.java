@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateableElementImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: TemplateableElementImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -62,9 +62,15 @@ public abstract class TemplateableElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.TemplateableElementImpl#parameterableElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testParameterableElementsGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testParameterableElements() {
+		testParameterableElementsGen();
+		
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().parameterableElements()));
 	}
 
@@ -73,15 +79,21 @@ public abstract class TemplateableElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.TemplateableElementImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getTemplateBindings()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

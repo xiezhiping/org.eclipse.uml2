@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InformationFlowImplTest.java,v 1.2 2004/04/30 21:58:06 khussey Exp $
+ * $Id: InformationFlowImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -21,9 +21,23 @@ import org.eclipse.uml2.impl.InformationFlowImpl;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Information Flow</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getRelatedElements() <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getSources() <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getTargets() <em>Target</em>}</li>
+ * </ul>
+ * </p>
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getRelatedElements() <em>Get Related Elements</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
-public class InformationFlowImplTest extends DirectedRelationshipImplTest {
+public class InformationFlowImplTest extends PackageableElementImplTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,10 +96,28 @@ public class InformationFlowImplTest extends DirectedRelationshipImplTest {
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.InformationFlowImpl#getRelatedElements() <em>Related Element</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.InformationFlowImpl#getRelatedElements()
+	 * @generated
+	 */
+	public void testGetRelatedElements() {
+		// TODO: implement this feature getter test method
+	}
+
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
-		// TODO implement setUpOwner
+		UML2Factory.eINSTANCE.createPackage().getOwnedMembers().add(getFixture());
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
+	 */
+	protected void setUpNamespace() {
+		UML2Factory.eINSTANCE.createPackage().getOwnedMembers().add(getFixture());
 	}
 
 	/* (non-Javadoc)

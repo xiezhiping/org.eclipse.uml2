@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DestroyObjectActionImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: DestroyObjectActionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -92,15 +92,21 @@ public class DestroyObjectActionImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DestroyObjectActionImpl#getInputs()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetInputsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetInputs() {
+		testGetInGroupsGen();
+		
 		super.testGetInputs();
 
 		assertTrue(getFixture().getInputs().contains(getFixture().getTarget()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#setUpInputs()
 	 */
 	protected void setUpInputs() {

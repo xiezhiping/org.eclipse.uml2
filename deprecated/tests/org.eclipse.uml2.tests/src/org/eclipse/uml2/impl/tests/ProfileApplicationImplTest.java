@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileApplicationImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ProfileApplicationImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -99,9 +99,15 @@ public class ProfileApplicationImplTest extends PackageImportImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ProfileApplicationImpl#getImportedProfile()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetImportedProfileGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetImportedProfile() {
+		testGetImportedProfileGen();
+		
 		Profile profile = UML2Factory.eINSTANCE.createProfile();
 
 		getFixture().setImportedProfile(profile);
@@ -118,9 +124,15 @@ public class ProfileApplicationImplTest extends PackageImportImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ProfileApplicationImpl#setImportedProfile()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetImportedProfileGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetImportedProfile() {
+		testSetImportedProfileGen();
+		
 		Profile profile = UML2Factory.eINSTANCE.createProfile();
 
 		getFixture().setImportedProfile(profile);
@@ -139,9 +151,15 @@ public class ProfileApplicationImplTest extends PackageImportImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ProfileApplicationImpl#setImportedPackage(Package)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetImportedPackage__PackageGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetImportedPackage__Package() {
+		testSetImportedPackage__PackageGen();
+		
 		getFixture().setImportedProfile(UML2Factory.eINSTANCE.createProfile());
 
 		Profile profile = UML2Factory.eINSTANCE.createProfile();
@@ -157,7 +175,7 @@ public class ProfileApplicationImplTest extends PackageImportImplTest {
 		assertSame(getFixture().getImportedPackage(), getFixture().getImportedProfile());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DirectedRelationshipImplTest#setUpTarget()
 	 */
 	protected void setUpTargets() {

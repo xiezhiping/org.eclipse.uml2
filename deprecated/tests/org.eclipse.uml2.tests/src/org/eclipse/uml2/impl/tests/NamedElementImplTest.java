@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: NamedElementImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -83,9 +83,15 @@ public abstract class NamedElementImplTest extends TemplateableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamedElementImpl#getQualifiedName()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetQualifiedNameGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetQualifiedName() {
+		testGetQualifiedNameGen();
+		
 		setUpNamespace();
 
 		for (NamedElement namedElement = getFixture(); null != namedElement; namedElement = namedElement.getNamespace()) {
@@ -107,9 +113,14 @@ public abstract class NamedElementImplTest extends TemplateableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamedElementImpl#getClientDependencies()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetClientDependenciesGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetClientDependencies() {
+		testGetClientDependenciesGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDependency()).iterator(); eAllSubClasses.hasNext();) {
 			Dependency dependency = (Dependency) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -153,9 +164,15 @@ public abstract class NamedElementImplTest extends TemplateableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamedElementImpl#allNamespaces()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testAllNamespacesGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testAllNamespaces() {
+		testAllNamespacesGen();
+		
 		setUpNamespace();
 
 		for (NamedElement namedElement = getFixture(); null != namedElement; namedElement = namedElement.getNamespace()) {
@@ -179,9 +196,15 @@ public abstract class NamedElementImplTest extends TemplateableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamedElementImpl#separator()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSeparatorGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testSeparator() {
+		testSeparatorGen();
+		
 		assertEquals(NamedElement.SEPARATOR, getFixture().separator());
 	}
 
@@ -190,9 +213,15 @@ public abstract class NamedElementImplTest extends TemplateableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamedElementImpl#qualifiedName()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testQualifiedNameGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testQualifiedName() {
+		testQualifiedNameGen();
+		
 		setUpNamespace();
 
 		for (NamedElement namedElement = getFixture(); null != namedElement; namedElement = namedElement.getNamespace()) {
@@ -231,13 +260,19 @@ public abstract class NamedElementImplTest extends TemplateableElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.NamedElementImpl#getNamespace() <em>Get Namespace</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.NamedElementImpl#getNamespace() <em>Get Namespace</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamedElementImpl#getNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetNamespaceGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetNamespace() {
+		testGetNamespaceGen();
+		
 		setUpNamespace();
 
 		if (null != getFixture().eContainer()) {
@@ -246,13 +281,19 @@ public abstract class NamedElementImplTest extends TemplateableElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.NamedElementImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.NamedElementImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamedElementImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		if (null != getFixture().getNamespace()) {
@@ -265,15 +306,21 @@ public abstract class NamedElementImplTest extends TemplateableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamedElementImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getNameExpression()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationItemProviderTest.java,v 1.1 2004/04/29 14:43:45 khussey Exp $
+ * $Id: OperationItemProviderTest.java,v 1.2 2004/05/20 03:04:01 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -75,6 +75,39 @@ public class OperationItemProviderTest extends BehavioralFeatureItemProviderTest
 		super.setUp();
 
 		setModelObject(UML2Factory.eINSTANCE.createOperation());
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.provider.OperationItemProvider#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int) <em>Create Add Command</em>}' method.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.provider.OperationItemProvider#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
+	 * @generated
+	 */
+	public void testCreateAddCommand() {
+		// TODO: implement this command creation test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.provider.OperationItemProvider#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference, java.util.Collection) <em>Create Remove Command</em>}' method.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.provider.OperationItemProvider#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference, java.util.Collection)
+	 * @generated
+	 */
+	public void testCreateRemoveCommand() {
+		// TODO: implement this command creation test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.provider.OperationItemProvider#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference, org.eclipse.emf.ecore.EObject, java.util.Collection) <em>Create Replace Command</em>}' method.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.provider.OperationItemProvider#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * @generated
+	 */
+	public void testCreateReplaceCommand() {
+		// TODO: implement this command creation test method
 	}
 
 	/**

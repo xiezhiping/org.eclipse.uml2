@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuralFeatureImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: StructuralFeatureImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -153,9 +153,15 @@ public abstract class StructuralFeatureImplTest extends FeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuralFeatureImpl#getLower()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetLowerGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetLower() {
+		testGetLowerGen();
+		
 		getFixture().setLowerValue(null);
 
 		assertEquals(getFixture().lower(), getFixture().getLower());
@@ -177,9 +183,15 @@ public abstract class StructuralFeatureImplTest extends FeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuralFeatureImpl#getUpper()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetUpperGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetUpper() {
+		testGetUpperGen();
+		
 		getFixture().setUpperValue(null);
 
 		assertEquals(getFixture().upper(), getFixture().getUpper());
@@ -223,9 +235,15 @@ public abstract class StructuralFeatureImplTest extends FeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuralFeatureImpl#lowerBound()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testLowerBoundGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testLowerBound() {
+		testLowerBoundGen();
+		
 		getFixture().setLowerValue(null);
 
 		assertEquals(1, getFixture().lowerBound());
@@ -247,9 +265,15 @@ public abstract class StructuralFeatureImplTest extends FeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuralFeatureImpl#upperBound()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testUpperBoundGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testUpperBound() {
+		testUpperBoundGen();
+		
 		getFixture().setUpperValue(null);
 
 		assertEquals(1, getFixture().upperBound());
@@ -271,9 +295,15 @@ public abstract class StructuralFeatureImplTest extends FeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuralFeatureImpl#isMultivalued()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsMultivaluedGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsMultivalued() {
+		testIsMultivaluedGen();
+		
 		getFixture().setUpperValue(null);
 
 		assertFalse(getFixture().isMultivalued());
@@ -299,9 +329,15 @@ public abstract class StructuralFeatureImplTest extends FeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuralFeatureImpl#includesCardinality(Integer)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIncludesCardinality__IntegerGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIncludesCardinality__Integer() {
+		testIncludesCardinality__IntegerGen();
+		
 		getFixture().setLowerValue(null);
 		getFixture().setUpperValue(null);
 
@@ -350,9 +386,15 @@ public abstract class StructuralFeatureImplTest extends FeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuralFeatureImpl#includesMultiplicity(MultiplicityElement)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIncludesMultiplicity__MultiplicityElementGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIncludesMultiplicity__MultiplicityElement() {
+		testIncludesMultiplicity__MultiplicityElementGen();
+		
 		MultiplicityElement defaultMultiplicity = (MultiplicityElement) UML2Factory.eINSTANCE.create(getFixture().eClass());
 
 		MultiplicityElement unboundedMultiplicity = (MultiplicityElement) UML2Factory.eINSTANCE.create(getFixture().eClass());
@@ -468,9 +510,15 @@ public abstract class StructuralFeatureImplTest extends FeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuralFeatureImpl#lower()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testLowerGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testLower() {
+		testLowerGen();
+		
 		getFixture().setLowerValue(null);
 
 		assertEquals(getFixture().lowerBound(), getFixture().lower());
@@ -492,9 +540,15 @@ public abstract class StructuralFeatureImplTest extends FeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuralFeatureImpl#upper()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testUpperGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testUpper() {
+		testUpperGen();
+		
 		getFixture().setUpperValue(null);
 
 		assertEquals(getFixture().upperBound(), getFixture().upper());
@@ -516,16 +570,22 @@ public abstract class StructuralFeatureImplTest extends FeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuralFeatureImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getLowerValue()));
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getUpperValue()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

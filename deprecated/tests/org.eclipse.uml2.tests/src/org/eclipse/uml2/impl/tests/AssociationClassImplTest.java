@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: AssociationClassImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -110,9 +110,14 @@ public class AssociationClassImplTest extends ClassImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.AssociationClassImpl#getRelatedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRelatedElementsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetRelatedElements() {
+		testGetRelatedElementsGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getType()).iterator(); eAllSubClasses.hasNext();) {
 			Property memberEnd = UML2Factory.eINSTANCE.createProperty();
@@ -140,9 +145,14 @@ public class AssociationClassImplTest extends ClassImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.AssociationClassImpl#getEndTypes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetEndTypesGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetEndTypes() {
+		testGetEndTypesGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getType()).iterator(); eAllSubClasses.hasNext();) {
 			Property memberEnd = UML2Factory.eINSTANCE.createProperty();
@@ -172,9 +182,15 @@ public class AssociationClassImplTest extends ClassImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.AssociationClassImpl#getFeatures()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetFeatures() {
+		testGetFeaturesGen();
+		
 		super.testGetFeatures();
 
 		assertTrue(getFixture().getFeatures().containsAll(getFixture().getOwnedEnds()));
@@ -185,9 +201,15 @@ public class AssociationClassImplTest extends ClassImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.AssociationClassImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getOwnedEnds()));
@@ -198,15 +220,21 @@ public class AssociationClassImplTest extends ClassImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.AssociationClassImpl#getMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetMembers() {
+		testGetMembersGen();
+		
 		super.testGetMembers();
 
 		assertTrue(getFixture().getMembers().containsAll(getFixture().getMemberEnds()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpMembers()
 	 */
 	protected void setUpMembers() {
@@ -216,7 +244,7 @@ public class AssociationClassImplTest extends ClassImplTest {
 		getFixture().getMemberEnds().add(UML2Factory.eINSTANCE.createProperty());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -226,7 +254,7 @@ public class AssociationClassImplTest extends ClassImplTest {
 		getFixture().getOwnedEnds().add(UML2Factory.eINSTANCE.createProperty());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ClassifierImplTest#setUpFeatures()
 	 */
 	protected void setUpFeatures() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SignalImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: SignalImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -93,9 +93,15 @@ public class SignalImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.SignalImpl#getAttributes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetAttributesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetAttributes() {
+		testGetAttributesGen();
+		
 		super.testGetAttributes();
 
 		assertTrue(getFixture().getAttributes().containsAll(getFixture().getOwnedAttributes()));
@@ -106,29 +112,35 @@ public class SignalImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.SignalImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getOwnedAttributes()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createPackage().getOwnedMembers().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createTemplateParameter().setOwnedParameteredElement(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -138,7 +150,7 @@ public class SignalImplTest extends ClassifierImplTest {
 		getFixture().getOwnedAttributes().add(UML2Factory.eINSTANCE.createProperty());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ClassifierImplTest#setUpAttributes()
 	 */
 	protected void setUpAttributes() {

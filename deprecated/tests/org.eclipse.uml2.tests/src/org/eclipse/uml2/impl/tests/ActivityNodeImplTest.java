@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityNodeImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: ActivityNodeImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -74,9 +74,15 @@ public abstract class ActivityNodeImplTest extends RedefinableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityNodeImpl#getInGroups()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetInGroupsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetInGroups() {
+		testGetInGroupsGen();
+		
 		getFixture().setInStructuredNode(UML2Factory.eINSTANCE.createStructuredActivityNode());
 
 		getFixture().getInPartitions().add(UML2Factory.eINSTANCE.createActivityPartition());
@@ -115,13 +121,19 @@ public abstract class ActivityNodeImplTest extends RedefinableElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ActivityNodeImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityNodeImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityNodeImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		if (null != getFixture().getActivity()) {
@@ -129,7 +141,7 @@ public abstract class ActivityNodeImplTest extends RedefinableElementImplTest {
 		}
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.RedefinableElementImplTest#testGetRedefinedElements()
 	 */
 	public void testGetRedefinedElements() {

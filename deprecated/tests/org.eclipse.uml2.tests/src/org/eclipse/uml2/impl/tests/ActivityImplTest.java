@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ActivityImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -106,10 +106,14 @@ public class ActivityImplTest extends BehaviorImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityImpl#getGroups()
-	 * @generated NOT
+	 * @generated
 	 */
-	public void testGetGroups() {
+	public void testGetGroupsGen() {
 		// TODO: implement this feature getter test method
+	}
+
+	public void testGetGroups() {
+		testGetGroupsGen();
 
 		for (int i = 0; i < 5; i++) {
 			assertTrue(getFixture().getGroups().contains(getFixture().createGroup(UML2Package.eINSTANCE.getStructuredActivityNode())));
@@ -151,9 +155,15 @@ public class ActivityImplTest extends BehaviorImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityImpl#getStructuredNodes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetStructuredNodesGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetStructuredNodes() {
+		testGetStructuredNodesGen();
+		
 		StructuredActivityNode structuredNode1 = UML2Factory.eINSTANCE.createStructuredActivityNode();
 		getFixture().getNodes().add(structuredNode1);
 
@@ -173,9 +183,15 @@ public class ActivityImplTest extends BehaviorImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getEdges()));
@@ -183,7 +199,7 @@ public class ActivityImplTest extends BehaviorImplTest {
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getNodes()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

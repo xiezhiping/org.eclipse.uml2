@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MessageImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: MessageImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -100,9 +100,15 @@ public class MessageImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MessageImpl#getMessageKind()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetMessageKindGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetMessageKind() {
+		testGetMessageKindGen();
+		
 		getFixture().setSendEvent(null);
 		getFixture().setReceiveEvent(null);
 
@@ -125,13 +131,19 @@ public class MessageImplTest extends NamedElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.MessageImpl#getNamespace() <em>Get Namespace</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.MessageImpl#getNamespace() <em>Get Namespace</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MessageImpl#getNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetNamespaceGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetNamespace() {
+		testGetNamespaceGen();
+		
 		super.testGetNamespace();
 
 		assertSame(getFixture().getInteraction(), getFixture().getNamespace());
@@ -142,29 +154,35 @@ public class MessageImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MessageImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getArguments()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createInteraction().getMessages().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createInteraction().getMessages().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

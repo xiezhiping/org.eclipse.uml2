@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateSignatureImplTest.java,v 1.1 2004/04/29 14:56:48 khussey Exp $
+ * $Id: TemplateSignatureImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -105,9 +105,14 @@ public class TemplateSignatureImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.TemplateSignatureImpl#getParameters()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetParametersGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetParameters() {
+		testGetParametersGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getTemplateParameter()).iterator(); eAllSubClasses.hasNext();) {
 			TemplateParameter templateParameter = (TemplateParameter) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -131,9 +136,14 @@ public class TemplateSignatureImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.TemplateSignatureImpl#getOwnedParameters()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedParametersGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetOwnedParameters() {
+		testGetOwnedParametersGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getTemplateParameter()).iterator(); eAllSubClasses.hasNext();) {
 			TemplateParameter templateParameter = (TemplateParameter) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -155,35 +165,47 @@ public class TemplateSignatureImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.TemplateSignatureImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getOwnedParameters()));
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.TemplateSignatureImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.TemplateSignatureImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.TemplateSignatureImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		assertSame(getFixture().getTemplate(), getFixture().getOwner());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createComment().setOwnedTemplateSignature(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

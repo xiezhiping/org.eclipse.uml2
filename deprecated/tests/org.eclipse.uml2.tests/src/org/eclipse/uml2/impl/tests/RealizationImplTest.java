@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RealizationImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: RealizationImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -109,9 +109,15 @@ public class RealizationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RealizationImpl#getAbstraction()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetAbstractionGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetAbstraction() {
+		testGetAbstractionGen();
+		
 		Component component = UML2Factory.eINSTANCE.createComponent();
 
 		getFixture().setAbstraction(component);
@@ -128,9 +134,15 @@ public class RealizationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RealizationImpl#setAbstraction()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetAbstractionGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetAbstraction() {
+		testSetAbstractionGen();
+		
 		Component component = UML2Factory.eINSTANCE.createComponent();
 
 		getFixture().setAbstraction(component);
@@ -151,9 +163,14 @@ public class RealizationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RealizationImpl#getRealizingClassifier()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRealizingClassifierGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetRealizingClassifier() {
+		testGetRealizingClassifierGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getClassifier()).iterator(); eAllSubClasses.hasNext();) {
 			Classifier classifier = (Classifier) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -173,9 +190,14 @@ public class RealizationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RealizationImpl#setRealizingClassifier()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetRealizingClassifierGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetRealizingClassifier() {
+		testSetRealizingClassifierGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getClassifier()).iterator(); eAllSubClasses.hasNext();) {
 			Classifier classifier = (Classifier) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -197,9 +219,15 @@ public class RealizationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RealizationImpl#getSources()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSourcesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSources() {
+		testGetSourcesGen();
+		
 		super.testGetSources();
 
 		if (null != getFixture().getAbstraction()) {
@@ -208,13 +236,19 @@ public class RealizationImplTest extends AbstractionImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.RealizationImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.RealizationImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RealizationImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		assertSame(getFixture().getAbstraction(), getFixture().getOwner());
@@ -225,9 +259,15 @@ public class RealizationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RealizationImpl#getClients()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetClientsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetClients() {
+		testGetClientsGen();
+		
 		super.testGetClients();
 
 		Component component = UML2Factory.eINSTANCE.createComponent();
@@ -252,9 +292,15 @@ public class RealizationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RealizationImpl#getSuppliers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSuppliersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSuppliers() {
+		testGetSuppliersGen();
+		
 		super.testGetSuppliers();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getClassifier()).iterator(); eAllSubClasses.hasNext();) {
@@ -279,22 +325,28 @@ public class RealizationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RealizationImpl#getTargets()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetTargetsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetTargets() {
+		testGetTargetsGen();
+		
 		super.testGetTargets();
 
 		assertTrue(getFixture().getTargets().contains(getFixture().getRealizingClassifier()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createComponent().getRealizations().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DependencyImplTest#setUpSources()
 	 */
 	protected void setUpSources() {
@@ -303,7 +355,7 @@ public class RealizationImplTest extends AbstractionImplTest {
 		getFixture().setAbstraction(UML2Factory.eINSTANCE.createComponent());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DependencyImplTest#setUpTargets()
 	 */
 	protected void setUpTargets() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: PropertyImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -195,9 +195,15 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PropertyImpl#getDeployedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetDeployedElementsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetDeployedElements() {
+		testGetDeployedElementsGen();
+		
 		List packageableElements = new ArrayList();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getPackageableElement()).iterator(); eAllSubClasses.hasNext();) {
@@ -230,9 +236,15 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PropertyImpl#getDefault()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetDefaultGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetDefault() {
+		testGetDefaultGen();
+		
 		getFixture().setDefaultValue(null);
 
 		assertEquals("", getFixture().getDefault()); //$NON-NLS-1$
@@ -251,9 +263,15 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PropertyImpl#isComposite()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsCompositeGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testIsComposite() {
+		testIsCompositeGen();
+		
 		getFixture().setAggregation(null);
 		assertFalse(getFixture().isComposite());
 
@@ -272,9 +290,14 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PropertyImpl#getClass_()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetClass_Gen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetClass_() {
+		testGetClass_Gen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getClass_()).iterator(); eAllSubClasses.hasNext();) {
 			Class class_ = (Class) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -465,9 +488,15 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PropertyImpl#isReadOnly()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsReadOnlyGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testIsReadOnly() {
+		testIsReadOnlyGen();
+		
 		getFixture().setIsReadOnly(false);
 		assertEquals(false, getFixture().isReadOnly());
 
@@ -476,13 +505,19 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#setIsReadOnly(Boolean) <em>Set Is Read Only</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#setIsReadOnly(Boolean) <em>Set Is Read Only</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PropertyImpl#setIsReadOnly(Boolean)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetIsReadOnly__BooleanGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetIsReadOnly__Boolean() {
+		testSetIsReadOnly__BooleanGen();
+		
 		getFixture().setIsReadOnly(false);
 		assertFalse(getFixture().isReadOnly());
 
@@ -491,13 +526,19 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#getNamespace() <em>Get Namespace</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#getNamespace() <em>Get Namespace</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PropertyImpl#getNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetNamespaceGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetNamespace() {
+		testGetNamespaceGen();
+		
 		super.testGetNamespace();
 
 		assertSame(getFixture().getClass_(), getFixture().getNamespace());
@@ -514,9 +555,15 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PropertyImpl#getFeaturingClassifiers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturingClassifiersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetFeaturingClassifiers() {
+		testGetFeaturingClassifiersGen();
+		
 		super.testGetFeaturingClassifiers();
 
 		assertTrue(getFixture().getFeaturingClassifiers().contains(getFixture().getClass_()));
@@ -537,9 +584,15 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PropertyImpl#getRedefinedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinedElements() {
+		testGetRedefinedElementsGen();
+		
 		super.testGetRedefinedElements();
 
 		assertTrue(getFixture().getRedefinedElements().containsAll(getFixture().getRedefinedProperties()));
@@ -550,9 +603,15 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PropertyImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getDefaultValue()));
@@ -560,33 +619,39 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PropertyImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PropertyImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		assertSame(getFixture().getAssociationEnd(), getFixture().getOwner());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createClass().getOwnedAttributes().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createProperty().getQualifiers().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -598,7 +663,7 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 		getFixture().getQualifiers().add(UML2Factory.eINSTANCE.createProperty());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.RedefinableElementImplTest#setUpRedefinedElements()
 	 */
 	protected void setUpRedefinedElements() {
@@ -608,7 +673,7 @@ public class PropertyImplTest extends StructuralFeatureImplTest {
 		getFixture().getRedefinedProperties().add(UML2Factory.eINSTANCE.createProperty());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.FeatureImplTest#setUpFeaturingClassifiers()
 	 */
 	protected void setUpFeaturingClassifiers() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityEdgeImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ActivityEdgeImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -74,9 +74,15 @@ public abstract class ActivityEdgeImplTest extends RedefinableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityEdgeImpl#getInGroups()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetInGroupsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetInGroups() {
+		testGetInGroupsGen();
+		
 		getFixture().setInStructuredNode(UML2Factory.eINSTANCE.createStructuredActivityNode());
 
 		getFixture().getInPartitions().add(UML2Factory.eINSTANCE.createActivityPartition());
@@ -88,13 +94,19 @@ public abstract class ActivityEdgeImplTest extends RedefinableElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityEdgeImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		if (null != getFixture().getActivity()) {
@@ -107,16 +119,22 @@ public abstract class ActivityEdgeImplTest extends RedefinableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityEdgeImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getGuard()));
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getWeight()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -127,7 +145,7 @@ public abstract class ActivityEdgeImplTest extends RedefinableElementImplTest {
 		getFixture().setWeight(UML2Factory.eINSTANCE.createLiteralNull());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.RedefinableElementImplTest#testGetRedefinedElements()
 	 */
 	public void testGetRedefinedElement() {

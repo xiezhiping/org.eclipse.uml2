@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RegionImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: RegionImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -154,9 +154,15 @@ public class RegionImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RegionImpl#getRedefinitionContexts()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinitionContextsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinitionContexts() {
+		testGetRedefinitionContextsGen();
+		
 		assertTrue(getFixture().getRedefinitionContexts().isEmpty());
 	}
 
@@ -165,9 +171,15 @@ public class RegionImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RegionImpl#getRedefinedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinedElements() {
+		testGetRedefinedElementsGen();
+		
 		assertTrue(getFixture().getRedefinedElements().isEmpty());
 	}
 
@@ -176,9 +188,15 @@ public class RegionImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RegionImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getSubvertices()));
@@ -190,9 +208,15 @@ public class RegionImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RegionImpl#getNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetNamespaceGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetNamespace() {
+		testGetNamespaceGen();
+		
 		super.testGetNamespace();
 		
 		assertSame(getFixture().getStateMachine(), getFixture().getNamespace());
@@ -202,21 +226,21 @@ public class RegionImplTest extends NamespaceImplTest {
 		assertSame(getFixture().getState(), getFixture().getNamespace());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createStateMachine().getRegions().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createStateMachine().getRegions().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

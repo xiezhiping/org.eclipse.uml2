@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConstraintImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: ConstraintImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -101,9 +101,15 @@ public class ConstraintImplTest extends PackageableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ConstraintImpl#getContext()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetContextGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetContext() {
+		testGetContextGen();
+		
 		setUpNamespace();
 
 		assertSame(getFixture().getNamespace(), getFixture().getContext());
@@ -169,29 +175,35 @@ public class ConstraintImplTest extends PackageableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ConstraintImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getSpecification()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createPackage().getOwnedRules().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createTemplateParameter().setOwnedParameteredElement(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

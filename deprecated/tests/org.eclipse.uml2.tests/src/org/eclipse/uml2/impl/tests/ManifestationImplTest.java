@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ManifestationImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ManifestationImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -104,9 +104,14 @@ public class ManifestationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ManifestationImpl#getUtilizedElement()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetUtilizedElementGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetUtilizedElement() {
+		testGetUtilizedElementGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getPackageableElement()).iterator(); eAllSubClasses.hasNext();) {
 			PackageableElement packageableElement = (PackageableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -126,9 +131,14 @@ public class ManifestationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ManifestationImpl#setUtilizedElement()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetUtilizedElementGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetUtilizedElement() {
+		testSetUtilizedElementGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getPackageableElement()).iterator(); eAllSubClasses.hasNext();) {
 			PackageableElement packageableElement = (PackageableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -150,9 +160,15 @@ public class ManifestationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ManifestationImpl#getSuppliers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSuppliersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSuppliers() {
+		testGetSuppliersGen();
+		
 		super.testGetSuppliers();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getPackageableElement()).iterator(); eAllSubClasses.hasNext();) {
@@ -177,15 +193,21 @@ public class ManifestationImplTest extends AbstractionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ManifestationImpl#getTargets()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetTargetsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetTargets() {
+		testGetTargetsGen();
+		
 		super.testGetTargets();
 
 		assertTrue(getFixture().getTargets().contains(getFixture().getUtilizedElement()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DependencyImplTest#setUpTargets()
 	 */
 	protected void setUpTargets() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EncapsulatedClassifierImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: EncapsulatedClassifierImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -62,9 +62,15 @@ public abstract class EncapsulatedClassifierImplTest extends StructuredClassifie
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.EncapsulatedClassifierImpl#getFeatures()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetFeatures() {
+		testGetFeaturesGen();
+		
 		super.testGetFeatures();
 
 		assertTrue(getFixture().getFeatures().containsAll(getFixture().getOwnedPorts()));
@@ -75,15 +81,21 @@ public abstract class EncapsulatedClassifierImplTest extends StructuredClassifie
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.EncapsulatedClassifierImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getOwnedPorts()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -93,7 +105,7 @@ public abstract class EncapsulatedClassifierImplTest extends StructuredClassifie
 		getFixture().getOwnedPorts().add(UML2Factory.eINSTANCE.createPort());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ClassifierImplTest#setUpFeatures()
 	 */
 	protected void setUpFeatures() {

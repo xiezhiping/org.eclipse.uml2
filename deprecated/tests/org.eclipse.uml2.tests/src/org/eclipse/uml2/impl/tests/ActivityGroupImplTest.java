@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityGroupImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ActivityGroupImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -78,9 +78,15 @@ public abstract class ActivityGroupImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityGroupImpl#getSuperGroup()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSuperGroupGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetSuperGroup() {
+		testGetSuperGroupGen();
+		
 		assertNull(getFixture().getSuperGroup());
 	}
 
@@ -89,9 +95,15 @@ public abstract class ActivityGroupImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityGroupImpl#getActivityGroup_activity()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetActivityGroup_activityGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetActivityGroup_activity() {
+		testGetActivityGroup_activityGen();
+		
 		Activity activity = UML2Factory.eINSTANCE.createActivity();
 
 		activity.getGroups().add(getFixture());
@@ -108,9 +120,15 @@ public abstract class ActivityGroupImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityGroupImpl#setActivityGroup_activity()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetActivityGroup_activityGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetActivityGroup_activity() {
+		testSetActivityGroup_activityGen();
+		
 		Activity activity = UML2Factory.eINSTANCE.createActivity();
 
 		getFixture().setActivityGroup_activity(activity);
@@ -129,9 +147,14 @@ public abstract class ActivityGroupImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityGroupImpl#getSubgroups()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSubgroupsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSubgroups() {
+		testGetSubgroupsGen();
 
 		for (Iterator subgroups = getFixture().getSubgroups().iterator(); subgroups.hasNext();) {
 			assertTrue(ActivityGroup.class.isInstance(subgroups.next()));
@@ -143,9 +166,15 @@ public abstract class ActivityGroupImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityGroupImpl#getContainedEdges()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetContainedEdgesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetContainedEdges() {
+		testGetContainedEdgesGen();
+		
 		assertTrue(getFixture().getContainedEdges().isEmpty());
 	}
 
@@ -154,20 +183,32 @@ public abstract class ActivityGroupImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityGroupImpl#getContainedNodes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetContainedNodesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetContainedNodes() {
+		testGetContainedNodesGen();
+		
 		assertTrue(getFixture().getContainedNodes().isEmpty());
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ActivityGroupImpl#getActivity() <em>Get Activity</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityGroupImpl#getActivity() <em>Get Activity</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityGroupImpl#getActivity()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetActivityGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetActivity() {
+		testGetActivityGen();
+		
 		Activity activity = UML2Factory.eINSTANCE.createActivity();
 
 		activity.getGroups().add(getFixture());
@@ -180,13 +221,19 @@ public abstract class ActivityGroupImplTest extends ElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ActivityGroupImpl#setActivity(Activity) <em>Set Activity</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityGroupImpl#setActivity(Activity) <em>Set Activity</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityGroupImpl#setActivity(Activity)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetActivity__ActivityGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetActivity__Activity() {
+		testSetActivity__ActivityGen();
+		
 		getFixture().setActivity(UML2Factory.eINSTANCE.createActivity());
 
 		assertSame(getFixture().getActivity(), getFixture().getActivityGroup_activity());
@@ -201,22 +248,34 @@ public abstract class ActivityGroupImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityGroupImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getSubgroups()));
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ActivityGroupImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityGroupImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityGroupImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		if (null != getFixture().getSuperGroup()) {

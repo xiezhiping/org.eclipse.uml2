@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: ElementImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -99,9 +99,15 @@ public abstract class ElementImplTest extends TestCase {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ElementImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		setUpOwnedElements();
 
 		for (Iterator ownedElements = getFixture().getOwnedElements().iterator(); ownedElements.hasNext();) {
@@ -116,9 +122,15 @@ public abstract class ElementImplTest extends TestCase {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ElementImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		setUpOwner();
 
 		if (null != getFixture().eContainer()) {
@@ -153,9 +165,15 @@ public abstract class ElementImplTest extends TestCase {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ElementImpl#allOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testAllOwnedElementsGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testAllOwnedElements() {
+		testAllOwnedElementsGen();
+		
 		setUpOwnedElements();
 
 		assertTrue(getFixture().allOwnedElements().containsAll(getFixture().getOwnedElements()));
@@ -170,9 +188,15 @@ public abstract class ElementImplTest extends TestCase {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ElementImpl#mustBeOwned()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testMustBeOwnedGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testMustBeOwned() {
+		testMustBeOwnedGen();
+		
 		assertTrue(getFixture().mustBeOwned());
 	}
 

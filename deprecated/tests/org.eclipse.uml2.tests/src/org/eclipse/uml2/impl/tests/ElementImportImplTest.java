@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImportImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: ElementImportImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -108,9 +108,14 @@ public class ElementImportImplTest extends DirectedRelationshipImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ElementImportImpl#getImportingNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetImportingNamespaceGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetImportingNamespace() {
+		testGetImportingNamespaceGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getNamespace()).iterator(); eAllSubClasses.hasNext();) {
 			Namespace namespace = (Namespace) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -130,9 +135,14 @@ public class ElementImportImplTest extends DirectedRelationshipImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ElementImportImpl#setImportingNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetImportingNamespaceGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetImportingNamespace() {
+		testSetImportingNamespaceGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getNamespace()).iterator(); eAllSubClasses.hasNext();) {
 			Namespace namespace = (Namespace) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -176,9 +186,15 @@ public class ElementImportImplTest extends DirectedRelationshipImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ElementImportImpl#getName()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetNameGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testGetName() {
+		testGetNameGen();
+		
 		setUpTargets();
 
 		getFixture().setAlias(null);
@@ -193,9 +209,15 @@ public class ElementImportImplTest extends DirectedRelationshipImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ElementImportImpl#getTargets()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetTargetsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetTargets() {
+		testGetTargetsGen();
+		
 		super.testGetTargets();
 
 		assertTrue(getFixture().getTargets().contains(getFixture().getImportedElement()));
@@ -206,42 +228,54 @@ public class ElementImportImplTest extends DirectedRelationshipImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ElementImportImpl#getSources()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSourcesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSources() {
+		testGetSourcesGen();
+		
 		super.testGetSources();
 
 		assertTrue(getFixture().getSources().contains(getFixture().getImportingNamespace()));
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ElementImportImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ElementImportImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ElementImportImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		assertSame(getFixture().getImportingNamespace(), getFixture().getOwner());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createPackage().getElementImports().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DirectedRelationshipImplTest#setUpSources()
 	 */
 	protected void setUpSources() {
 		setUpOwner();
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DirectedRelationshipImplTest#setUpTargets()
 	 */
 	protected void setUpTargets() {

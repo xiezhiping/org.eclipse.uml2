@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TriggerImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: TriggerImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -21,7 +21,7 @@ import org.eclipse.uml2.impl.TriggerImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public abstract class TriggerImplTest extends PackageableElementImplTest {
+public abstract class TriggerImplTest extends NamedElementImplTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -50,18 +50,18 @@ public abstract class TriggerImplTest extends PackageableElementImplTest {
 		return (TriggerImpl) fixture;
 	}
 
-	/**
-	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
-	 */
-	protected void setUpNamespace() {
-		UML2Factory.eINSTANCE.createPackage().getOwnedMembers().add(getFixture());
-	}
-
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
-		UML2Factory.eINSTANCE.createPackage().getOwnedMembers().add(getFixture());
+		UML2Factory.eINSTANCE.createClass().getOwnedTriggers().add(getFixture());
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
+	 */
+	protected void setUpNamespace() {
+		UML2Factory.eINSTANCE.createClass().getOwnedTriggers().add(getFixture());
 	}
 
 } //TriggerImplTest

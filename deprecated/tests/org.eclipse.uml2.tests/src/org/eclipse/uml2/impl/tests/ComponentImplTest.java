@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: ComponentImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -140,9 +140,15 @@ public class ComponentImplTest extends ClassImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ComponentImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getRealizations()));
@@ -159,7 +165,7 @@ public class ComponentImplTest extends ClassImplTest {
 		// TODO: implement this getter operation test method
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -169,7 +175,7 @@ public class ComponentImplTest extends ClassImplTest {
 		getFixture().getRealizations().add(UML2Factory.eINSTANCE.createRealization());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#testGetOwnedMembers()
 	 */
 	public void testGetOwnedMembers() {

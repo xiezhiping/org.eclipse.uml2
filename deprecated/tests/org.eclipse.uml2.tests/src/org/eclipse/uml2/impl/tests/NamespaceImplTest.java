@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceImplTest.java,v 1.2 2004/05/11 15:20:50 khussey Exp $
+ * $Id: NamespaceImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -86,9 +86,15 @@ public abstract class NamespaceImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamespaceImpl#getMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetMembersGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetMembers() {
+		testGetMembersGen();
+		
 		setUpMembers();
 
 		for (Iterator members = getFixture().getMembers().iterator(); members.hasNext();) {
@@ -115,9 +121,15 @@ public abstract class NamespaceImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamespaceImpl#getImportedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetImportedMembersGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetImportedMembers() {
+		testGetImportedMembersGen();
+		
 		assertEquals(getFixture().importedMember().size(), getFixture().getImportedMembers().size());
 		assertTrue(getFixture().getImportedMembers().containsAll(getFixture().importedMember()));
 	}
@@ -193,9 +205,15 @@ public abstract class NamespaceImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamespaceImpl#importedMember()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testImportedMemberGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testImportedMember() {
+		testImportedMemberGen();
+		
 		setUpImportedMembers();
 
 		for (Iterator elementImports = getFixture().getElementImports().iterator(); elementImports.hasNext();) {
@@ -234,9 +252,15 @@ public abstract class NamespaceImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamespaceImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		setUpOwnedMembers();
 
 		for (Iterator ownedMembers = getFixture().getOwnedMembers().iterator(); ownedMembers.hasNext();) {
@@ -251,9 +275,15 @@ public abstract class NamespaceImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.NamespaceImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getElementImports()));
@@ -261,7 +291,7 @@ public abstract class NamespaceImplTest extends NamedElementImplTest {
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getPackageImports()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

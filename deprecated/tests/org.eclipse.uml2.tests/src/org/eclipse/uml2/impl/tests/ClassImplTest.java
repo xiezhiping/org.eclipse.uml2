@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ClassImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -29,10 +29,9 @@ import org.eclipse.uml2.impl.ClassImpl;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedBehaviors() <em>Owned Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getClassifierBehavior() <em>Classifier Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getImplementations() <em>Implementation</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedStateMachines() <em>Owned State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedAttributes() <em>Owned Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getParts() <em>Part</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getRoles() <em>Role</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getSuperClasses() <em>Super Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getExtensions() <em>Extension</em>}</li>
  * </ul>
@@ -40,9 +39,12 @@ import org.eclipse.uml2.impl.ClassImpl;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getAttributes() <em>Get Attributes</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedMembers() <em>Get Owned Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getClientDependencies() <em>Get Client Dependencies</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getMembers() <em>Get Members</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getFeatures() <em>Get Features</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getFeatures() <em>Get Features</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedMembers() <em>Get Owned Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#inherit(Set) <em>Inherit</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#isAbstract() <em>Is Abstract</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#setIsAbstract(Boolean) <em>Set Is Abstract</em>}</li>
@@ -55,7 +57,7 @@ import org.eclipse.uml2.impl.ClassImpl;
  * </p>
  * @generated
  */
-public class ClassImplTest extends EncapsulatedClassifierImplTest {
+public class ClassImplTest extends BehavioredClassifierImplTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,57 +116,24 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#getOwnedBehaviors() <em>Owned Behavior</em>}' feature getter.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#getParts() <em>Part</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassImpl#getOwnedBehaviors()
+	 * @see org.eclipse.uml2.impl.ClassImpl#getParts()
 	 * @generated
 	 */
-	public void testGetOwnedBehaviors() {
+	public void testGetParts() {
 		// TODO: implement this feature getter test method
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#getClassifierBehavior() <em>Classifier Behavior</em>}' feature getter.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#getRoles() <em>Role</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassImpl#getClassifierBehavior()
+	 * @see org.eclipse.uml2.impl.ClassImpl#getRoles()
 	 * @generated
 	 */
-	public void testGetClassifierBehavior() {
-		// TODO: implement this feature getter test method
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#setClassifierBehavior() <em>Classifier Behavior</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassImpl#setClassifierBehavior()
-	 * @generated
-	 */
-	public void testSetClassifierBehavior() {
-		// TODO: implement this feature setter test method
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#getImplementations() <em>Implementation</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassImpl#getImplementations()
-	 * @generated
-	 */
-	public void testGetImplementations() {
-		// TODO: implement this feature getter test method
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#getOwnedStateMachines() <em>Owned State Machine</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassImpl#getOwnedStateMachines()
-	 * @generated
-	 */
-	public void testGetOwnedStateMachines() {
+	public void testGetRoles() {
 		// TODO: implement this feature getter test method
 	}
 
@@ -173,9 +142,15 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassImpl#getSuperClasses()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSuperClassesGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetSuperClasses() {
+		testGetSuperClassesGen();
+		
 		setUpParents();
 		
 		assertTrue(getFixture().getSuperClasses().containsAll(getFixture().parents()));
@@ -193,27 +168,22 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#getMembers() <em>Get Members</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassImpl#getOwnedElements()
-	 * @generated NOT
+	 * @see org.eclipse.uml2.impl.ClassImpl#getMembers()
+	 * @generated
 	 */
+	public void testGetMembers() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getImplementations()));
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#getClientDependencies() <em>Get Client Dependencies</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.impl.ClassImpl#getClientDependencies()
-	 * @generated
-	 */
-	public void testGetClientDependencies() {
-		// TODO: implement this getter operation test method
 	}
 
 	/**
@@ -232,9 +202,15 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassImpl#isAbstract()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsAbstractGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testIsAbstract() {
+		testIsAbstractGen();
+		
 		getFixture().setIsAbstract(false);
 
 		assertEquals(false, getFixture().isAbstract());
@@ -245,13 +221,19 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#setIsAbstract(Boolean) <em>Set Is Abstract</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassImpl#setIsAbstract(Boolean) <em>Set Is Abstract</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassImpl#setIsAbstract(Boolean)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetIsAbstract__BooleanGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetIsAbstract__Boolean() {
+		testSetIsAbstract__BooleanGen();
+		
 		getFixture().setIsAbstract(false);
 
 		assertFalse(getFixture().isAbstract());
@@ -266,9 +248,14 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassImpl#getOwnedAttributes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedAttributesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedAttributes() {
+		testGetOwnedAttributesGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getProperty()).iterator(); eAllSubClasses.hasNext();) {
 			Property property = (Property) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -290,9 +277,15 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassImpl#getGenerals()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetGeneralsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetGenerals() {
+		testGetGeneralsGen();
+		
 		setUpParents();
 
 		assertTrue(getFixture().getGenerals().containsAll(getFixture().getSuperClasses()));
@@ -303,9 +296,15 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassImpl#getAttributes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetAttributesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetAttributes() {
+		testGetAttributesGen();
+		
 		super.testGetAttributes();
 	}
 
@@ -314,9 +313,15 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getNestedClassifiers()));
@@ -330,30 +335,36 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassImpl#getFeatures()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetFeatures() {
+		testGetFeaturesGen();
+		
 		super.testGetFeatures();
 
 		assertTrue(getFixture().getFeatures().containsAll(getFixture().getOwnedOperations()));
 		assertTrue(getFixture().getFeatures().containsAll(getFixture().getOwnedReceptions()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createPackage().getOwnedMembers().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createTemplateParameter().setOwnedParameteredElement(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -363,7 +374,7 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 		getFixture().getImplementations().add(UML2Factory.eINSTANCE.createImplementation());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -382,7 +393,7 @@ public class ClassImplTest extends EncapsulatedClassifierImplTest {
 		getFixture().getOwnedReceptions().add(UML2Factory.eINSTANCE.createReception());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ClassifierImplTest#setUpFeatures()
 	 */
 	protected void setUpFeatures() {

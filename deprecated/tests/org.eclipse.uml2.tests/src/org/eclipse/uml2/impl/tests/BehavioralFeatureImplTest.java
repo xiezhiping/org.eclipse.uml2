@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeatureImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: BehavioralFeatureImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -82,9 +82,15 @@ public abstract class BehavioralFeatureImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#getRedefinitionContexts()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinitionContextsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetRedefinitionContexts() {
+		testGetRedefinitionContextsGen();
+		
 		setUpRedefinitionContexts();
 
 		for (Iterator redefinitionContexts = getFixture().getRedefinitionContexts().iterator(); redefinitionContexts.hasNext();) {
@@ -97,9 +103,15 @@ public abstract class BehavioralFeatureImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#getFeaturingClassifiers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturingClassifiersGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetFeaturingClassifiers() {
+		testGetFeaturingClassifiersGen();
+		
 		setUpFeaturingClassifiers();
 
 		for (Iterator featuringClassifiers = getFixture().getFeaturingClassifiers().iterator(); featuringClassifiers.hasNext();) {
@@ -112,9 +124,15 @@ public abstract class BehavioralFeatureImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#getParameters()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetParametersGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetParameters() {
+		testGetParametersGen();
+		
 		getFixture().getFormalParameters().add(UML2Factory.eINSTANCE.createParameter());
 		getFixture().getFormalParameters().add(UML2Factory.eINSTANCE.createParameter());
 
@@ -196,9 +214,15 @@ public abstract class BehavioralFeatureImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#getRedefinedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinedElements() {
+		testGetRedefinedElementsGen();
+		
 		setUpRedefinedElements();
 
 		for (Iterator redefinedElements = getFixture().getRedefinedElements().iterator(); redefinedElements.hasNext();) {
@@ -222,9 +246,15 @@ public abstract class BehavioralFeatureImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#getMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetMembers() {
+		testGetMembersGen();
+		
 		super.testGetMembers();
 
 		assertTrue(getFixture().getMembers().containsAll(getFixture().getParameters()));
@@ -235,16 +265,22 @@ public abstract class BehavioralFeatureImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getFormalParameters()));
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getReturnResults()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {

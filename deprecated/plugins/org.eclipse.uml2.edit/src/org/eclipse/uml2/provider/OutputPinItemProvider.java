@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OutputPinItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: OutputPinItemProvider.java,v 1.5 2004/05/20 03:06:21 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -25,6 +25,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.uml2.OutputPin;
+
+import org.eclipse.uml2.UML2Package;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.OutputPin} object.
@@ -116,6 +118,22 @@ public class OutputPinItemProvider
 	 */
 	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
+		boolean qualify =
+			feature == UML2Package.eINSTANCE.getObjectNode_UpperBound() ||
+			feature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
+			feature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue();
+		return getString(
+			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
+			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
 	}
 
 	/**

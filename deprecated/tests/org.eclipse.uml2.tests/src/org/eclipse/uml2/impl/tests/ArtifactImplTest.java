@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ArtifactImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ArtifactImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -113,9 +113,15 @@ public class ArtifactImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ArtifactImpl#getFeatures()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetFeatures() {
+		testGetFeaturesGen();
+		
 		super.testGetFeatures();
 
 		assertTrue(getFixture().getFeatures().containsAll(getFixture().getOwnedOperations()));
@@ -126,9 +132,15 @@ public class ArtifactImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ArtifactImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getOwnedAttributes()));
@@ -140,9 +152,15 @@ public class ArtifactImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ArtifactImpl#getAttributes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetAttributesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetAttributes() {
+		testGetAttributesGen();
+		
 		super.testGetAttributes();
 
 		assertTrue(getFixture().getAttributes().containsAll(getFixture().getOwnedAttributes()));
@@ -153,9 +171,15 @@ public class ArtifactImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ArtifactImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getManifestations()));

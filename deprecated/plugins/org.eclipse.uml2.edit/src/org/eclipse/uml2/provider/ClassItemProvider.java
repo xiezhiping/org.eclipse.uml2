@@ -8,20 +8,17 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassItemProvider.java,v 1.7 2004/05/14 14:12:18 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.8 2004/05/20 03:06:21 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -33,11 +30,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.edit.internal.command.SubsetAddCommand;
-import org.eclipse.uml2.edit.internal.command.SubsetReplaceCommand;
-import org.eclipse.uml2.edit.internal.command.SubsetSetCommand;
-import org.eclipse.uml2.edit.internal.command.SupersetRemoveCommand;
-import org.eclipse.uml2.edit.internal.command.SupersetReplaceCommand;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Class} object.
@@ -46,7 +38,7 @@ import org.eclipse.uml2.edit.internal.command.SupersetReplaceCommand;
  * @generated
  */
 public class ClassItemProvider
-	extends EncapsulatedClassifierItemProvider
+	extends BehavioredClassifierItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -80,10 +72,11 @@ public class ClassItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOwnedBehaviorPropertyDescriptor(object);
-			addClassifierBehaviorPropertyDescriptor(object);
-			addImplementationPropertyDescriptor(object);
-			addOwnedStateMachinePropertyDescriptor(object);
+			addOwnedAttributePropertyDescriptor(object);
+			addPartPropertyDescriptor(object);
+			addRolePropertyDescriptor(object);
+			addOwnedConnectorPropertyDescriptor(object);
+			addOwnedPortPropertyDescriptor(object);
 			addOwnedOperationPropertyDescriptor(object);
 			addSuperClassPropertyDescriptor(object);
 			addExtensionPropertyDescriptor(object);
@@ -95,70 +88,86 @@ public class ClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Owned Behavior feature.
+	 * This adds a property descriptor for the Owned Attribute feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addOwnedBehaviorPropertyDescriptor(Object object) {
+	protected void addOwnedAttributePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(new ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getString("_UI_BehavioredClassifier_ownedBehavior_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_ownedBehavior_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
+				 getString("_UI_StructuredClassifier_ownedAttribute_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedAttribute_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
 				 true,
 				 null,
 				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
-	 * This adds a property descriptor for the Classifier Behavior feature.
+	 * This adds a property descriptor for the Part feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addClassifierBehaviorPropertyDescriptor(Object object) {
+	protected void addPartPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(new ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getString("_UI_BehavioredClassifier_classifierBehavior_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_classifierBehavior_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior(),
-				 true));
+				 getString("_UI_StructuredClassifier_part_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_part_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getStructuredClassifier_Part(),
+				 false));
 	}
 
 	/**
-	 * This adds a property descriptor for the Implementation feature.
+	 * This adds a property descriptor for the Role feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addImplementationPropertyDescriptor(Object object) {
+	protected void addRolePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(new ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getString("_UI_BehavioredClassifier_implementation_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_implementation_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioredClassifier_Implementation(),
+				 getString("_UI_StructuredClassifier_role_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_role_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getStructuredClassifier_Role(),
+				 false));
+	}
+
+	/**
+	 * This adds a property descriptor for the Owned Connector feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOwnedConnectorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_StructuredClassifier_ownedConnector_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedConnector_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector(),
 				 true,
 				 null,
 				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
 	}
 
 	/**
-	 * This adds a property descriptor for the Owned State Machine feature.
+	 * This adds a property descriptor for the Owned Port feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addOwnedStateMachinePropertyDescriptor(Object object) {
+	protected void addOwnedPortPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(new ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getString("_UI_BehavioredClassifier_ownedStateMachine_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_ownedStateMachine_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine(),
+				 getString("_UI_EncapsulatedClassifier_ownedPort_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_EncapsulatedClassifier_ownedPort_feature", "_UI_EncapsulatedClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort(),
 				 true,
 				 null,
 				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
@@ -228,9 +237,9 @@ public class ClassItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior());
-			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation());
-			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine());
+			childrenFeatures.add(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
+			childrenFeatures.add(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector());
+			childrenFeatures.add(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort());
 			childrenFeatures.add(UML2Package.eINSTANCE.getClass_OwnedOperation());
 			childrenFeatures.add(UML2Package.eINSTANCE.getClass_NestedClassifier());
 			childrenFeatures.add(UML2Package.eINSTANCE.getClass_OwnedReception());
@@ -338,9 +347,9 @@ public class ClassItemProvider
 			case UML2Package.CLASS__IS_ACTIVE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case UML2Package.CLASS__OWNED_BEHAVIOR:
-			case UML2Package.CLASS__IMPLEMENTATION:
-			case UML2Package.CLASS__OWNED_STATE_MACHINE:
+			case UML2Package.CLASS__OWNED_ATTRIBUTE:
+			case UML2Package.CLASS__OWNED_CONNECTOR:
+			case UML2Package.CLASS__OWNED_PORT:
 			case UML2Package.CLASS__OWNED_OPERATION:
 			case UML2Package.CLASS__NESTED_CLASSIFIER:
 			case UML2Package.CLASS__OWNED_RECEPTION:
@@ -362,38 +371,28 @@ public class ClassItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
-				 UML2Factory.eINSTANCE.createActivity()));
+				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				 UML2Factory.eINSTANCE.createProperty()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
-				 UML2Factory.eINSTANCE.createInteraction()));
+				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				 UML2Factory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
-				 UML2Factory.eINSTANCE.createStateMachine()));
+				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
+				 UML2Factory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
-				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
+				(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector(),
+				 UML2Factory.eINSTANCE.createConnector()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation(),
-				 UML2Factory.eINSTANCE.createImplementation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine(),
-				 UML2Factory.eINSTANCE.createStateMachine()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine(),
-				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
+				(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort(),
+				 UML2Factory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -438,27 +437,17 @@ public class ClassItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				 UML2Factory.eINSTANCE.createInformationItem()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createAssociationClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createInformationItem()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createInterface()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createArtifact()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -473,17 +462,27 @@ public class ClassItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				 UML2Factory.eINSTANCE.createArtifact()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				 UML2Factory.eINSTANCE.createInterface()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createCollaboration()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createSignal()));
+				 UML2Factory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createInteraction()));
+				 UML2Factory.eINSTANCE.createSignal()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -541,10 +540,10 @@ public class ClassItemProvider
 		boolean qualify =
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
+			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
@@ -558,66 +557,5 @@ public class ClassItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
-		if (feature == UML2Package.eINSTANCE.getBehavioredClassifier_Implementation()) {
-			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, collection, index);
-		}
-		return super.createAddCommand(domain, owner, feature, collection, index);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior()}, collection);
-		}
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Substitution(), UML2Package.eINSTANCE.getBehavioredClassifier_Implementation()}, collection);
-		}
-		return super.createRemoveCommand(domain, owner, feature, collection);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getBehavioredClassifier_Implementation()) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, value, collection);
-		}
-		if (feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior()}, value, collection);
-		}
-		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Substitution(), UML2Package.eINSTANCE.getBehavioredClassifier_Implementation()}, value, collection);
-		}
-		return super.createReplaceCommand(domain, owner, feature, value, collection);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
-		if (feature == UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior()) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior()}, value);
-		}
-		return super.createSetCommand(domain, owner, feature, value);
 	}
 }

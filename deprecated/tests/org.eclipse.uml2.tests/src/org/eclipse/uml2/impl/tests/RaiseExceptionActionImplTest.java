@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RaiseExceptionActionImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: RaiseExceptionActionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -92,15 +92,21 @@ public class RaiseExceptionActionImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RaiseExceptionActionImpl#getInputs()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetInputsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetInputs() {
+		testGetInputsGen();
+		
 		super.testGetInputs();
 
 		assertTrue(getFixture().getInputs().contains(getFixture().getException()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#setUpInputs()
 	 */
 	protected void setUpInputs() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: InteractionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -115,9 +115,15 @@ public class InteractionImplTest extends BehaviorImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.InteractionImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getGeneralOrderings()));
@@ -128,9 +134,15 @@ public class InteractionImplTest extends BehaviorImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.InteractionImpl#getNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetNamespaceGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetNamespace() {
+		testGetNamespaceGen();
+		
 		setUpNamespace();
 
 		if (null != getFixture().getEnclosingOperand()) {
@@ -143,9 +155,15 @@ public class InteractionImplTest extends BehaviorImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.InteractionImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getFormalGates()));
@@ -153,7 +171,7 @@ public class InteractionImplTest extends BehaviorImplTest {
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getMessages()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -163,7 +181,7 @@ public class InteractionImplTest extends BehaviorImplTest {
 		getFixture().getGeneralOrderings().add(UML2Factory.eINSTANCE.createGeneralOrdering());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -184,6 +202,7 @@ public class InteractionImplTest extends BehaviorImplTest {
 		for (Iterator interactionFragmentSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getInteractionFragment()).iterator();
 			interactionFragmentSubClasses.hasNext();
 			) {
+
 			EClass interactionFragmentSubClass = (EClass) interactionFragmentSubClasses.next();
 
 			for (int i = 0; i < 5; i++) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeObservationActionImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: TimeObservationActionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -89,24 +89,36 @@ public class TimeObservationActionImplTest extends WriteStructuralFeatureActionI
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.TimeObservationActionImpl#getValue() <em>Get Value</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.TimeObservationActionImpl#getValue() <em>Get Value</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.TimeObservationActionImpl#getValue()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetValueGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetValue() {
+		testGetValueGen();
+		
 		assertNull(getFixture().getValue());
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.TimeObservationActionImpl#setValue(InputPin) <em>Set Value</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.TimeObservationActionImpl#setValue(InputPin) <em>Set Value</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.TimeObservationActionImpl#setValue(InputPin)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetValue__InputPinGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetValue__InputPin() {
+		testSetValue__InputPinGen();
+		
 		try {
 			getFixture().setValue(UML2Factory.eINSTANCE.createInputPin());
 			fail();
@@ -115,7 +127,7 @@ public class TimeObservationActionImplTest extends WriteStructuralFeatureActionI
 		}
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#setUpInputs()
 	 */
 	protected void setUpInputs() {
@@ -125,7 +137,7 @@ public class TimeObservationActionImplTest extends WriteStructuralFeatureActionI
 		getFixture().getNows().add(UML2Factory.eINSTANCE.createTimeExpression());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#testGetInputs()
 	 */
 	public void testGetInputs() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LoopNodeImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: LoopNodeImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -94,9 +94,15 @@ public class LoopNodeImplTest extends StructuredActivityNodeImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LoopNodeImpl#getOutputs()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOutputsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOutputs() {
+		testGetOutputsGen();
+		
 		super.testGetOutputs();
 
 		assertTrue(getFixture().getOutputs().containsAll(getFixture().getResults()));
@@ -107,9 +113,15 @@ public class LoopNodeImplTest extends StructuredActivityNodeImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LoopNodeImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getLoopVariables()));
@@ -120,15 +132,21 @@ public class LoopNodeImplTest extends StructuredActivityNodeImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LoopNodeImpl#getInputs()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetInputsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetInputs() {
+		testGetInputsGen();
+		
 		super.testGetInputs();
 
 		assertTrue(getFixture().getInputs().containsAll(getFixture().getLoopVariableInputs()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -138,7 +156,7 @@ public class LoopNodeImplTest extends StructuredActivityNodeImplTest {
 		getFixture().getLoopVariables().add(UML2Factory.eINSTANCE.createOutputPin());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#setUpInputs()
 	 */
 	protected void setUpInputs() {
@@ -148,7 +166,7 @@ public class LoopNodeImplTest extends StructuredActivityNodeImplTest {
 		getFixture().getLoopVariableInputs().add(UML2Factory.eINSTANCE.createInputPin());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#setUpOutputs()
 	 */
 	protected void setUpOutputs() {

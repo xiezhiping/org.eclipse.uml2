@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: StructuredActivityNodeImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -127,9 +127,15 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#getMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetMembersGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetMembers() {
+		testGetMembersGen();
+		
 		setUpOwnedMembers();
 
 		ElementImport elementImport = UML2Factory.eINSTANCE.createElementImport();
@@ -281,9 +287,15 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getElementImports()));
@@ -303,13 +315,19 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		assertSame(getFixture().getActivityGroup_activity(), getFixture().getOwner());
@@ -320,9 +338,15 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#getActivity()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetActivityGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetActivity() {
+		testGetActivityGen();
+		
 		Activity activity = UML2Factory.eINSTANCE.createActivity();
 		activity.getNodes().add(getFixture());
 
@@ -340,9 +364,14 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#setActivity(Activity)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetActivity__ActivityGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetActivity__Activity() {
+		testSetActivity__ActivityGen();
 
 		try {
 			getFixture().setActivity(UML2Factory.eINSTANCE.createActivity());
@@ -357,9 +386,15 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#getActivityGroup_activity()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetActivityGroup_activityGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetActivityGroup_activity() {
+		testGetActivityGroup_activityGen();
+		
 		Activity activity = UML2Factory.eINSTANCE.createActivity();
 		activity.getGroups().add(getFixture());
 
@@ -377,9 +412,14 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#setActivityGroup_activity(Activity)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetActivityGroup_activity__ActivityGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetActivityGroup_activity__Activity() {
+		testSetActivityGroup_activity__ActivityGen();
 
 		try {
 			getFixture().setActivityGroup_activity(UML2Factory.eINSTANCE.createActivity());
@@ -394,22 +434,28 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		setUpOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getVariables()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createActivity().getNodes().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: AssociationImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -121,9 +121,14 @@ public class AssociationImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.AssociationImpl#getEndTypes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetEndTypesGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetEndTypes() {
+		testGetEndTypesGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getType()).iterator(); eAllSubClasses.hasNext();) {
 			Property memberEnd = UML2Factory.eINSTANCE.createProperty();
@@ -153,9 +158,15 @@ public class AssociationImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.AssociationImpl#getFeatures()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetFeatures() {
+		testGetFeaturesGen();
+		
 		super.testGetFeatures();
 
 		assertTrue(getFixture().getFeatures().containsAll(getFixture().getOwnedEnds()));
@@ -166,9 +177,15 @@ public class AssociationImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.AssociationImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getOwnedEnds()));
@@ -179,9 +196,14 @@ public class AssociationImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.AssociationImpl#getRelatedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRelatedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRelatedElements() {
+		testGetRelatedElementsGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getType()).iterator(); eAllSubClasses.hasNext();) {
 			Property memberEnd = UML2Factory.eINSTANCE.createProperty();
@@ -198,29 +220,35 @@ public class AssociationImplTest extends ClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.AssociationImpl#getMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetMembers() {
+		testGetMembersGen();
+		
 		super.testGetMembers();
 
 		assertTrue(getFixture().getMembers().containsAll(getFixture().getMemberEnds()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createPackage().getOwnedMembers().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createTemplateParameter().setOwnedParameteredElement(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpMembers()
 	 */
 	protected void setUpMembers() {
@@ -230,7 +258,7 @@ public class AssociationImplTest extends ClassifierImplTest {
 		getFixture().getMemberEnds().add(UML2Factory.eINSTANCE.createProperty());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -240,7 +268,7 @@ public class AssociationImplTest extends ClassifierImplTest {
 		getFixture().getOwnedEnds().add(UML2Factory.eINSTANCE.createProperty());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ClassifierImplTest#setUpFeatures()
 	 */
 	protected void setUpFeatures() {

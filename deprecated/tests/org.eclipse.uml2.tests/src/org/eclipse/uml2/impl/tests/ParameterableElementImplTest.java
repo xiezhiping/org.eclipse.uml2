@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterableElementImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ParameterableElementImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -69,9 +69,15 @@ public abstract class ParameterableElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ParameterableElementImpl#getTemplateParameter()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetTemplateParameterGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetTemplateParameter() {
+		testGetTemplateParameterGen();
+		
 		TemplateParameter templateParameter = UML2Factory.eINSTANCE.createTemplateParameter();
 
 		templateParameter.setParameteredElement(getFixture());
@@ -88,9 +94,15 @@ public abstract class ParameterableElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ParameterableElementImpl#setTemplateParameter()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetTemplateParameterGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetTemplateParameter() {
+		testSetTemplateParameterGen();
+		
 		TemplateParameter templateParameter = UML2Factory.eINSTANCE.createTemplateParameter();
 
 		getFixture().setTemplateParameter(templateParameter);
@@ -109,9 +121,15 @@ public abstract class ParameterableElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ParameterableElementImpl#getOwningParameter()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwningParameterGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetOwningParameter() {
+		testGetOwningParameterGen();
+		
 		TemplateParameter templateParameter = UML2Factory.eINSTANCE.createTemplateParameter();
 
 		templateParameter.setOwnedParameteredElement(getFixture());
@@ -128,9 +146,15 @@ public abstract class ParameterableElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ParameterableElementImpl#setOwningParameter()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetOwningParameterGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetOwningParameter() {
+		testSetOwningParameterGen();
+		
 		TemplateParameter templateParameter = UML2Factory.eINSTANCE.createTemplateParameter();
 
 		getFixture().setOwningParameter(templateParameter);
@@ -145,13 +169,19 @@ public abstract class ParameterableElementImplTest extends ElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ParameterableElementImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ParameterableElementImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ParameterableElementImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		if (null != getFixture().getOwningParameter()) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityPartitionImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ActivityPartitionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -113,9 +113,15 @@ public class ActivityPartitionImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityPartitionImpl#getActivityGroup_activity()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetActivityGroup_activityGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetActivityGroup_activity() {
+		testGetActivityGroup_activityGen();
+		
 		Activity activity = UML2Factory.eINSTANCE.createActivity();
 
 		activity.getGroups().add(getFixture());
@@ -132,9 +138,15 @@ public class ActivityPartitionImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityPartitionImpl#setActivityGroup_activity()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetActivityGroup_activityGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetActivityGroup_activity() {
+		testSetActivityGroup_activityGen();
+		
 		Activity activity = UML2Factory.eINSTANCE.createActivity();
 
 		getFixture().setActivityGroup_activity(activity);
@@ -149,13 +161,19 @@ public class ActivityPartitionImplTest extends NamedElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getActivity() <em>Get Activity</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getActivity() <em>Get Activity</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityPartitionImpl#getActivity()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetActivityGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetActivity() {
+		testGetActivityGen();
+		
 		Activity activity = UML2Factory.eINSTANCE.createActivity();
 
 		activity.getGroups().add(getFixture());
@@ -168,13 +186,19 @@ public class ActivityPartitionImplTest extends NamedElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#setActivity(Activity) <em>Set Activity</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#setActivity(Activity) <em>Set Activity</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityPartitionImpl#setActivity(Activity)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetActivity__ActivityGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetActivity__Activity() {
+		testSetActivity__ActivityGen();
+		
 		getFixture().setActivity(UML2Factory.eINSTANCE.createActivity());
 
 		assertSame(getFixture().getActivity(), getFixture().getActivityGroup_activity());
@@ -189,22 +213,34 @@ public class ActivityPartitionImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityPartitionImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getSubgroups()));
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityPartitionImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		assertSame(getFixture().getSuperGroup(), getFixture().getOwner());
@@ -215,33 +251,39 @@ public class ActivityPartitionImplTest extends NamedElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getSuperGroup() <em>Get Super Group</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getSuperGroup() <em>Get Super Group</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ActivityPartitionImpl#getSuperGroup()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSuperGroupGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSuperGroup() {
+		testGetSuperGroupGen();
+		
 		getFixture().setSuperPartition(UML2Factory.eINSTANCE.createActivityPartition());
 
 		assertSame(getFixture().getSuperPartition(), getFixture().getSuperGroup());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		// TODO implement setUpNamespace
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createActivityPartition().getSubgroups().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -251,9 +293,6 @@ public class ActivityPartitionImplTest extends NamedElementImplTest {
 		getFixture().getSubgroups().add(UML2Factory.eINSTANCE.createActivityPartition());
 	}
 
-	/**
-	 * @see org.eclipse.uml2.impl.tests.ActivityGroupImplTest#testGetSubgroups()
-	 */
 	public void testGetSubgroups() {
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getActivityGroup()).iterator(); eAllSubClasses.hasNext();) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: FeatureImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: FeatureImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -63,9 +63,15 @@ public abstract class FeatureImplTest extends RedefinableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.FeatureImpl#getFeaturingClassifiers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturingClassifiersGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetFeaturingClassifiers() {
+		testGetFeaturingClassifiersGen();
+		
 		setUpFeaturingClassifiers();
 
 		for (Iterator featuringClassifiers = getFixture().getFeaturingClassifiers().iterator(); featuringClassifiers.hasNext();) {

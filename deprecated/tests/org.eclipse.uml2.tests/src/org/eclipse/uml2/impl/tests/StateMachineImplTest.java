@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateMachineImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: StateMachineImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -122,9 +122,15 @@ public class StateMachineImplTest extends BehaviorImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateMachineImpl#getRedefinedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinedElements() {
+		testGetRedefinedElementsGen();
+		
 		assertTrue(getFixture().getRedefinedElements().isEmpty());
 	}
 
@@ -133,9 +139,15 @@ public class StateMachineImplTest extends BehaviorImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateMachineImpl#getRedefinitionContexts()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinitionContextsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinitionContexts() {
+		testGetRedefinitionContextsGen();
+		
 		assertTrue(getFixture().getRedefinitionContexts().isEmpty());
 	}
 
@@ -144,16 +156,22 @@ public class StateMachineImplTest extends BehaviorImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.StateMachineImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getConnectionPoints()));
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getRegions()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {

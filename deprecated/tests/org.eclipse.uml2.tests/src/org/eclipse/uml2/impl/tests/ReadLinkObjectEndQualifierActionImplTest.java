@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -93,9 +93,15 @@ public class ReadLinkObjectEndQualifierActionImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ReadLinkObjectEndQualifierActionImpl#getInputs()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetInputsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetInputs() {
+		testGetInputsGen();
+		
 		super.testGetInputs();
 
 		assertTrue(getFixture().getInputs().contains(getFixture().getObject()));
@@ -106,15 +112,21 @@ public class ReadLinkObjectEndQualifierActionImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ReadLinkObjectEndQualifierActionImpl#getOutputs()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOutputsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOutputs() {
+		testGetOutputsGen();
+		
 		super.testGetOutputs();
 
 		assertTrue(getFixture().getOutputs().contains(getFixture().getResult()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#setUpInputs()
 	 */
 	protected void setUpInputs() {
@@ -123,7 +135,7 @@ public class ReadLinkObjectEndQualifierActionImplTest extends ActionImplTest {
 		getFixture().setObject(UML2Factory.eINSTANCE.createInputPin());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#setUpOutputs()
 	 */
 	protected void setUpOutputs() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: BehaviorImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -97,9 +97,15 @@ public abstract class BehaviorImplTest extends ClassImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.BehaviorImpl#getFormalParameters()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFormalParametersGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetFormalParameters() {
+		testGetFormalParametersGen();
+		
 		Parameter parameter0 = UML2Factory.eINSTANCE.createParameter();
 		parameter0.setDirection(ParameterDirectionKind.RETURN_LITERAL);
 
@@ -138,9 +144,15 @@ public abstract class BehaviorImplTest extends ClassImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.BehaviorImpl#getReturnResults()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetReturnResultsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetReturnResults() {
+		testGetReturnResultsGen();
+		
 		Parameter parameter0 = UML2Factory.eINSTANCE.createParameter();
 		parameter0.setDirection(ParameterDirectionKind.RETURN_LITERAL);
 
@@ -201,9 +213,15 @@ public abstract class BehaviorImplTest extends ClassImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.BehaviorImpl#getRedefinedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinedElements() {
+		testGetRedefinedElementsGen();
+		
 		super.testGetRedefinedElements();
 
 		assertTrue(getFixture().getRedefinedElements().containsAll(getFixture().getRedefinedBehaviors()));
@@ -214,9 +232,15 @@ public abstract class BehaviorImplTest extends ClassImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.BehaviorImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getParameters()));
@@ -227,13 +251,13 @@ public abstract class BehaviorImplTest extends ClassImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.BehaviorImpl#getOwnedRules()
-	 * @generated NOT
+	 * @generated
 	 */
 	public void testGetOwnedRules() {
 		// TODO: implement this getter operation test method
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -243,7 +267,7 @@ public abstract class BehaviorImplTest extends ClassImplTest {
 		getFixture().getParameters().add(UML2Factory.eINSTANCE.createParameter());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ClassifierImplTest#setUpRedefinedElements()
 	 */
 	protected void setUpRedefinedElements() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TypeImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: TypeImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -68,9 +68,15 @@ public abstract class TypeImplTest extends PackageableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.TypeImpl#getPackage()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetPackageGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetPackage() {
+		testGetPackageGen();
+		
 		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE.createPackage();
 
 		package_.getOwnedMembers().add(getFixture());
@@ -96,9 +102,15 @@ public abstract class TypeImplTest extends PackageableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.TypeImpl#getNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetNamespaceGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetNamespace() {
+		testGetNamespaceGen();
+		
 		super.testGetNamespace();
 
 		if (null != getFixture().getPackage()) {

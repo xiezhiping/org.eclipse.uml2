@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NodeItemProvider.java,v 1.7 2004/05/14 14:12:18 khussey Exp $
+ * $Id: NodeItemProvider.java,v 1.8 2004/05/20 03:06:21 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -252,11 +252,11 @@ public class NodeItemProvider
 		boolean qualify =
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
+			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
 			feature == UML2Package.eINSTANCE.getNode_NestedNode() ||
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });

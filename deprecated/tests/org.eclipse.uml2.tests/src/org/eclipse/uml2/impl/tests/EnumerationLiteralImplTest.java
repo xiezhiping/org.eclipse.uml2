@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EnumerationLiteralImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: EnumerationLiteralImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -88,19 +88,25 @@ public class EnumerationLiteralImplTest extends InstanceSpecificationImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.EnumerationLiteralImpl#getNamespace() <em>Get Namespace</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.EnumerationLiteralImpl#getNamespace() <em>Get Namespace</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.EnumerationLiteralImpl#getNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetNamespaceGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetNamespace() {
+		testGetNamespaceGen();
+		
 		super.testGetNamespace();
 
 		assertSame(getFixture().getEnumeration(), getFixture().getNamespace());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CollaborationImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: CollaborationImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -117,9 +117,15 @@ public class CollaborationImplTest extends BehavioredClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.CollaborationImpl#getParts()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetPartsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetParts() {
+		testGetPartsGen();
+		
 		Property property0 = UML2Factory.eINSTANCE.createProperty();
 		property0.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 
@@ -150,9 +156,15 @@ public class CollaborationImplTest extends BehavioredClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.CollaborationImpl#getAttributes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetAttributesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetAttributes() {
+		testGetAttributesGen();
+		
 		super.testGetAttributes();
 
 		assertTrue(getFixture().getAttributes().containsAll(getFixture().getOwnedAttributes()));
@@ -163,9 +175,15 @@ public class CollaborationImplTest extends BehavioredClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.CollaborationImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getOwnedAttributes()));
@@ -177,9 +195,15 @@ public class CollaborationImplTest extends BehavioredClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.CollaborationImpl#getMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetMembers() {
+		testGetMembersGen();
+		
 		super.testGetMembers();
 
 		assertTrue(getFixture().getMembers().containsAll(getFixture().getRoles()));
@@ -190,9 +214,15 @@ public class CollaborationImplTest extends BehavioredClassifierImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.CollaborationImpl#getFeatures()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetFeatures() {
+		testGetFeaturesGen();
+		
 		super.testGetFeatures();
 
 		assertTrue(getFixture().getFeatures().containsAll(getFixture().getOwnedConnectors()));
@@ -209,21 +239,21 @@ public class CollaborationImplTest extends BehavioredClassifierImplTest {
 		// TODO: implement this getter operation test method
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createPackage().getOwnedMembers().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createTemplateParameter().setOwnedParameteredElement(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpMembers()
 	 */
 	protected void setUpMembers() {
@@ -233,7 +263,7 @@ public class CollaborationImplTest extends BehavioredClassifierImplTest {
 		getFixture().getCollaborationRoles().add(UML2Factory.eINSTANCE.createProperty());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -246,7 +276,7 @@ public class CollaborationImplTest extends BehavioredClassifierImplTest {
 		getFixture().getOwnedConnectors().add(UML2Factory.eINSTANCE.createConnector());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ClassifierImplTest#setUpAttributes()
 	 */
 	protected void setUpAttributes() {
@@ -256,7 +286,7 @@ public class CollaborationImplTest extends BehavioredClassifierImplTest {
 		getFixture().getOwnedAttributes().add(UML2Factory.eINSTANCE.createProperty());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ClassifierImplTest#setUpFeatures()
 	 */
 	protected void setUpFeatures() {

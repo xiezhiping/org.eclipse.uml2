@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: OperationImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -41,6 +41,9 @@ import org.eclipse.uml2.impl.OperationImpl;
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getUpper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getTemplateParameter() <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getOwningParameter() <em>Owning Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getPreconditions() <em>Precondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getPostconditions() <em>Postcondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getBodyCondition() <em>Body Condition</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -80,6 +83,7 @@ import org.eclipse.uml2.impl.OperationImpl;
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getNamespace() <em>Get Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getFeaturingClassifiers() <em>Get Featuring Classifiers</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getOwnedMembers() <em>Get Owned Members</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getOwnedRules() <em>Get Owned Rules</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
  * </ul>
  * </p>
@@ -188,13 +192,63 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getPreconditions() <em>Precondition</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.OperationImpl#getPreconditions()
+	 * @generated
+	 */
+	public void testGetPreconditions() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getPostconditions() <em>Postcondition</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.OperationImpl#getPostconditions()
+	 * @generated
+	 */
+	public void testGetPostconditions() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getBodyCondition() <em>Body Condition</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.OperationImpl#getBodyCondition()
+	 * @generated
+	 */
+	public void testGetBodyCondition() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#setBodyCondition() <em>Body Condition</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.OperationImpl#setBodyCondition()
+	 * @generated
+	 */
+	public void testSetBodyCondition() {
+		// TODO: implement this feature setter test method
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#lowerBound() <em>Lower Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#lowerBound()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testLowerBoundGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testLowerBound() {
+		testLowerBoundGen();
+		
 		getFixture().setLowerValue(null);
 
 		assertEquals(1, getFixture().lowerBound());
@@ -216,9 +270,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#upperBound()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testUpperBoundGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testUpperBound() {
+		testUpperBoundGen();
+		
 		getFixture().setUpperValue(null);
 
 		assertEquals(1, getFixture().upperBound());
@@ -240,9 +300,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#isMultivalued()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsMultivaluedGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsMultivalued() {
+		testIsMultivaluedGen();
+		
 		getFixture().setUpperValue(null);
 
 		assertFalse(getFixture().isMultivalued());
@@ -268,9 +334,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#includesCardinality(Integer)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIncludesCardinality__IntegerGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIncludesCardinality__Integer() {
+		testIncludesCardinality__IntegerGen();
+		
 		getFixture().setLowerValue(null);
 		getFixture().setUpperValue(null);
 
@@ -319,9 +391,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#includesMultiplicity(MultiplicityElement)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIncludesMultiplicity__MultiplicityElementGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIncludesMultiplicity__MultiplicityElement() {
+		testIncludesMultiplicity__MultiplicityElementGen();
+		
 		MultiplicityElement defaultMultiplicity = (MultiplicityElement) UML2Factory.eINSTANCE.create(getFixture().eClass());
 
 		MultiplicityElement unboundedMultiplicity = (MultiplicityElement) UML2Factory.eINSTANCE.create(getFixture().eClass());
@@ -437,9 +515,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getLowerValue()));
@@ -447,13 +531,19 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		assertSame(getFixture().getOwningParameter(), getFixture().getOwner());
@@ -475,9 +565,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#lower()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testLowerGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testLower() {
+		testLowerGen();
+		
 		getFixture().getReturnResults().clear();
 
 		assertEquals(1, getFixture().lower());
@@ -503,9 +599,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#upper()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testUpperGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testUpper() {
+		testUpperGen();
+		
 		getFixture().getReturnResults().clear();
 
 		assertEquals(1, getFixture().upper());
@@ -531,9 +633,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#type()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testTypeGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testType() {
+		testTypeGen();
+		
 		getFixture().getReturnResults().clear();
 
 		assertNull(getFixture().type());
@@ -572,13 +680,19 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#isOrdered() <em>Is Ordered</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#isOrdered() <em>Is Ordered</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#isOrdered()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsOrderedGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsOrdered() {
+		testIsOrderedGen();
+		
 		getFixture().getReturnResults().clear();
 
 		assertEquals(false, getFixture().isOrdered());
@@ -597,13 +711,19 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#setIsOrdered(Boolean) <em>Set Is Ordered</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#setIsOrdered(Boolean) <em>Set Is Ordered</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#setIsOrdered(Boolean)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetIsOrdered__BooleanGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetIsOrdered__Boolean() {
+		testSetIsOrdered__BooleanGen();
+		
 		getFixture().getReturnResults().clear();
 
 		assertEquals(false, getFixture().isOrdered());
@@ -622,13 +742,19 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#isUnique() <em>Is Unique</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#isUnique() <em>Is Unique</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#isUnique()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsUniqueGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsUnique() {
+		testIsUniqueGen();
+		
 		getFixture().getReturnResults().clear();
 
 		assertEquals(true, getFixture().isUnique());
@@ -647,13 +773,19 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 }
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#setIsUnique(Boolean) <em>Set Is Unique</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#setIsUnique(Boolean) <em>Set Is Unique</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#setIsUnique(Boolean)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetIsUnique__BooleanGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetIsUnique__Boolean() {
+		testSetIsUnique__BooleanGen();
+		
 		getFixture().getReturnResults().clear();
 
 		assertEquals(true, getFixture().isUnique());
@@ -672,13 +804,19 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getLower() <em>Get Lower</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getLower() <em>Get Lower</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getLower()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetLowerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetLower() {
+		testGetLowerGen();
+		
 		getFixture().getReturnResults().clear();
 
 		assertEquals(getFixture().lower(), getFixture().getLower());
@@ -700,13 +838,19 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getUpper() <em>Get Upper</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getUpper() <em>Get Upper</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getUpper()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetUpperGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetUpper() {
+		testGetUpperGen();
+		
 		getFixture().getReturnResults().clear();
 
 		assertEquals(getFixture().upper(), getFixture().getUpper());
@@ -732,9 +876,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getRaisedExceptions()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRaisedExceptionsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRaisedExceptions() {
+		testGetRaisedExceptionsGen();
+		
 		assertTrue(true);
 	}
 
@@ -743,9 +893,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getFormalParameters()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFormalParametersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetFormalParameters() {
+		testGetFormalParametersGen();
+		
 		getFixture().getFormalParameters().add(UML2Factory.eINSTANCE.createParameter());
 		getFixture().getFormalParameters().add(UML2Factory.eINSTANCE.createParameter());
 
@@ -760,13 +916,19 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getType() <em>Get Type</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getType() <em>Get Type</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getType()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetTypeGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetType() {
+		testGetTypeGen();
+		
 		getFixture().getReturnResults().clear();
 
 		assertSame(null, getFixture().getType());
@@ -784,13 +946,19 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#setType(Type) <em>Set Type</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#setType(Type) <em>Set Type</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#setType(Type)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetType__TypeGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetType__Type() {
+		testSetType__TypeGen();
+		
 		getFixture().getReturnResults().clear();
 
 		assertSame(null, getFixture().getType());
@@ -812,9 +980,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getRedefinitionContexts()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinitionContextsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinitionContexts() {
+		testGetRedefinitionContextsGen();
+		
 		super.testGetRedefinitionContexts();
 
 		assertTrue(getFixture().getRedefinitionContexts().contains(getFixture().getClass_()));
@@ -825,13 +999,19 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getNamespace() <em>Get Namespace</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getNamespace() <em>Get Namespace</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetNamespaceGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetNamespace() {
+		testGetNamespaceGen();
+		
 		super.testGetNamespace();
 
 		assertSame(getFixture().getClass_(), getFixture().getNamespace());
@@ -845,9 +1025,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getFeaturingClassifiers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturingClassifiersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetFeaturingClassifiers() {
+		testGetFeaturingClassifiersGen();
+		
 		super.testGetFeaturingClassifiers();
 
 		assertTrue(getFixture().getFeaturingClassifiers().contains(getFixture().getClass_()));
@@ -864,9 +1050,15 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().contains(getFixture().getBodyCondition()));
@@ -875,33 +1067,50 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getOwnedRules() <em>Get Owned Rules</em>}' getter operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.OperationImpl#getOwnedRules()
+	 * @generated
+	 */
+	public void testGetOwnedRules() {
+		// TODO: implement this getter operation test method
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.impl.OperationImpl#getRedefinedElements() <em>Get Redefined Elements</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.OperationImpl#getRedefinedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinedElements() {
+		testGetRedefinedElementsGen();
+		
 		super.testGetRedefinedElements();
 
 		assertTrue(getFixture().getRedefinedElements().containsAll(getFixture().getRedefinedOperations()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createClass().getOwnedOperations().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createTemplateParameter().setOwnedParameteredElement(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -912,7 +1121,7 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 		getFixture().setUpperValue(UML2Factory.eINSTANCE.createLiteralUnlimitedNatural());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -927,7 +1136,7 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 		getFixture().getPreconditions().add(UML2Factory.eINSTANCE.createConstraint());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.BehavioralFeatureImplTest#setUpRedefinedElements()
 	 */
 	protected void setUpRedefinedElements() {
@@ -937,7 +1146,7 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 		getFixture().getRedefinedOperations().add(UML2Factory.eINSTANCE.createOperation());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.BehavioralFeatureImplTest#setUpRedefinitionContexts()
 	 */
 	protected void setUpRedefinitionContexts() {
@@ -946,7 +1155,7 @@ public class OperationImplTest extends BehavioralFeatureImplTest {
 		getFixture().setClass_(UML2Factory.eINSTANCE.createClass());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.BehavioralFeatureImplTest#setUpFeaturingClassifiers()
 	 */
 	protected void setUpFeaturingClassifiers() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: DeploymentImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -109,9 +109,14 @@ public class DeploymentImplTest extends DependencyImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DeploymentImpl#getDeployedArtifacts()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetDeployedArtifactsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetDeployedArtifacts() {
+		testGetDeployedArtifactsGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDeployedArtifact()).iterator(); eAllSubClasses.hasNext();) {
 			DeployedArtifact deployedArtifact = (DeployedArtifact) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -133,9 +138,14 @@ public class DeploymentImplTest extends DependencyImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DeploymentImpl#getLocation()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetLocationGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetLocation() {
+		testGetLocationGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDeploymentTarget()).iterator(); eAllSubClasses.hasNext();) {
 			DeploymentTarget deploymentTarget = (DeploymentTarget) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -155,9 +165,14 @@ public class DeploymentImplTest extends DependencyImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DeploymentImpl#setLocation()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetLocationGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetLocation() {
+		testSetLocationGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDeploymentTarget()).iterator(); eAllSubClasses.hasNext();) {
 			DeploymentTarget deploymentTarget = (DeploymentTarget) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -181,9 +196,15 @@ public class DeploymentImplTest extends DependencyImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DeploymentImpl#getSuppliers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSuppliersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSuppliers() {
+		testGetSuppliersGen();
+		
 		super.testGetSuppliers();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDeployedArtifact()).iterator(); eAllSubClasses.hasNext();) {
@@ -208,9 +229,15 @@ public class DeploymentImplTest extends DependencyImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DeploymentImpl#getTargets()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetTargetsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetTargets() {
+		testGetTargetsGen();
+		
 		super.testGetTargets();
 
 		assertTrue(getFixture().getTargets().containsAll(getFixture().getDeployedArtifacts()));
@@ -221,9 +248,15 @@ public class DeploymentImplTest extends DependencyImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DeploymentImpl#getSources()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSourcesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSources() {
+		testGetSourcesGen();
+		
 		super.testGetSources();
 
 		assertTrue(getFixture().getSources().contains(getFixture().getLocation()));
@@ -234,9 +267,15 @@ public class DeploymentImplTest extends DependencyImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DeploymentImpl#getClients()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetClientsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetClients() {
+		testGetClientsGen();
+		
 		super.testGetClients();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDeploymentTarget()).iterator(); eAllSubClasses.hasNext();) {
@@ -263,15 +302,21 @@ public class DeploymentImplTest extends DependencyImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DeploymentImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getConfigurations()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -281,7 +326,7 @@ public class DeploymentImplTest extends DependencyImplTest {
 		getFixture().getConfigurations().add(UML2Factory.eINSTANCE.createDeploymentSpecification());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DependencyImplTest#setUpSources()
 	 */
 	protected void setUpSources() {
@@ -290,7 +335,7 @@ public class DeploymentImplTest extends DependencyImplTest {
 		getFixture().setLocation(UML2Factory.eINSTANCE.createNode());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DependencyImplTest#setUpTargets()
 	 */
 	protected void setUpTargets() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifierItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: BehavioredClassifierItemProvider.java,v 1.5 2004/05/20 03:06:21 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -84,6 +84,7 @@ public class BehavioredClassifierItemProvider
 			addOwnedBehaviorPropertyDescriptor(object);
 			addClassifierBehaviorPropertyDescriptor(object);
 			addImplementationPropertyDescriptor(object);
+			addOwnedTriggerPropertyDescriptor(object);
 			addOwnedStateMachinePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -142,6 +143,24 @@ public class BehavioredClassifierItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Owned Trigger feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOwnedTriggerPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_BehavioredClassifier_ownedTrigger_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_ownedTrigger_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+	}
+
+	/**
 	 * This adds a property descriptor for the Owned State Machine feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -172,6 +191,7 @@ public class BehavioredClassifierItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior());
 			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation());
+			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger());
 			childrenFeatures.add(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine());
 		}
 		return childrenFeatures;
@@ -226,6 +246,7 @@ public class BehavioredClassifierItemProvider
 		switch (notification.getFeatureID(BehavioredClassifier.class)) {
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR:
 			case UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION:
+			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER:
 			case UML2Package.BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -267,6 +288,31 @@ public class BehavioredClassifierItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation(),
 				 UML2Factory.eINSTANCE.createImplementation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				 UML2Factory.eINSTANCE.createCallTrigger()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				 UML2Factory.eINSTANCE.createChangeTrigger()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				 UML2Factory.eINSTANCE.createSignalTrigger()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				 UML2Factory.eINSTANCE.createTimeTrigger()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
+				 UML2Factory.eINSTANCE.createAnyTrigger()));
 
 		newChildDescriptors.add
 			(createChildParameter

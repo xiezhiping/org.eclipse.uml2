@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralStringImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: LiteralStringImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -93,9 +93,15 @@ public class LiteralStringImplTest extends LiteralSpecificationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LiteralStringImpl#isComputable()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsComputableGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsComputable() {
+		testIsComputableGen();
+		
 		assertTrue(getFixture().isComputable());
 	}
 
@@ -104,21 +110,27 @@ public class LiteralStringImplTest extends LiteralSpecificationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LiteralStringImpl#stringValue()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testStringValueGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testStringValue() {
+		testStringValueGen();
+		
 		getFixture().setValue(getName());
 		assertEquals(getName(), getFixture().stringValue());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		// TODO implement setUpNamespace
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {

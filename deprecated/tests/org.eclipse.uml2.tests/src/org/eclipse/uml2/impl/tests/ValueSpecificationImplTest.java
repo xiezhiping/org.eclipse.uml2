@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ValueSpecificationImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ValueSpecificationImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -113,13 +113,19 @@ public abstract class ValueSpecificationImplTest extends TypedElementImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ValueSpecificationImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ValueSpecificationImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ValueSpecificationImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		if (null != getFixture().getOwningParameter()) {
@@ -132,9 +138,15 @@ public abstract class ValueSpecificationImplTest extends TypedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ValueSpecificationImpl#isComputable()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsComputableGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsComputable() {
+		testIsComputableGen();
+		
 		assertFalse(getFixture().isComputable());
 	}
 
@@ -143,9 +155,15 @@ public abstract class ValueSpecificationImplTest extends TypedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ValueSpecificationImpl#integerValue()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIntegerValueGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIntegerValue() {
+		testIntegerValueGen();
+		
 		try {
 			getFixture().integerValue();
 			fail();
@@ -159,9 +177,15 @@ public abstract class ValueSpecificationImplTest extends TypedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ValueSpecificationImpl#booleanValue()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testBooleanValueGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testBooleanValue() {
+		testBooleanValueGen();
+		
 		try {
 			getFixture().booleanValue();
 			fail();
@@ -175,9 +199,15 @@ public abstract class ValueSpecificationImplTest extends TypedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ValueSpecificationImpl#stringValue()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testStringValueGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testStringValue() {
+		testStringValueGen();
+		
 		assertEquals("", getFixture().stringValue()); //$NON-NLS-1$
 	}
 
@@ -186,9 +216,15 @@ public abstract class ValueSpecificationImplTest extends TypedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ValueSpecificationImpl#unlimitedValue()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testUnlimitedValueGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testUnlimitedValue() {
+		testUnlimitedValueGen();
+		
 		try {
 			getFixture().unlimitedValue();
 			fail();
@@ -202,9 +238,15 @@ public abstract class ValueSpecificationImplTest extends TypedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ValueSpecificationImpl#isNull()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsNullGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsNull() {
+		testIsNullGen();
+		
 		assertFalse(getFixture().isNull());
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralBooleanImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: LiteralBooleanImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -93,9 +93,15 @@ public class LiteralBooleanImplTest extends LiteralSpecificationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LiteralBooleanImpl#isComputable()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsComputableGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsComputable() {
+		testIsComputableGen();
+		
 		assertTrue(getFixture().isComputable());
 	}
 
@@ -104,9 +110,15 @@ public class LiteralBooleanImplTest extends LiteralSpecificationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LiteralBooleanImpl#booleanValue()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testBooleanValueGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testBooleanValue() {
+		testBooleanValueGen();
+		
 		getFixture().setValue(false);
 		assertFalse(getFixture().booleanValue());
 
@@ -114,7 +126,7 @@ public class LiteralBooleanImplTest extends LiteralSpecificationImplTest {
 		assertTrue(getFixture().booleanValue());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ValueSpecificationImplTest#testStringValue()
 	 */
 	public void testStringValue() {
@@ -125,14 +137,14 @@ public class LiteralBooleanImplTest extends LiteralSpecificationImplTest {
 		assertEquals("true", getFixture().stringValue()); //$NON-NLS-1$
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		// TODO implement setUpNamespace
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {

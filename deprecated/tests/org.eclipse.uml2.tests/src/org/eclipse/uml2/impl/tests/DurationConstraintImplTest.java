@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DurationConstraintImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: DurationConstraintImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -89,24 +89,36 @@ public class DurationConstraintImplTest extends IntervalConstraintImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.DurationConstraintImpl#getSpecification() <em>Get Specification</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.DurationConstraintImpl#getSpecification() <em>Get Specification</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DurationConstraintImpl#getSpecification()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSpecificationGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSpecification() {
+		testGetSpecificationGen();
+		
 		assertTrue(true);
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.DurationConstraintImpl#setSpecification(ValueSpecification) <em>Set Specification</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.DurationConstraintImpl#setSpecification(ValueSpecification) <em>Set Specification</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DurationConstraintImpl#setSpecification(ValueSpecification)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetSpecification__ValueSpecificationGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetSpecification__ValueSpecification() {
+		testSetSpecification__ValueSpecificationGen();
+		
 		try {
 			getFixture().setSpecification(UML2Factory.eINSTANCE.createLiteralString());
 			fail();
@@ -115,7 +127,7 @@ public class DurationConstraintImplTest extends IntervalConstraintImplTest {
 		}
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImportImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: PackageImportImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -107,9 +107,15 @@ public class PackageImportImplTest extends DirectedRelationshipImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImportImpl#getImportedPackage()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetImportedPackageGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetImportedPackage() {
+		testGetImportedPackageGen();
+		
 		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE.createPackage();
 
 		getFixture().setImportedPackage(package_);
@@ -126,9 +132,15 @@ public class PackageImportImplTest extends DirectedRelationshipImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImportImpl#setImportedPackage()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetImportedPackageGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetImportedPackage() {
+		testSetImportedPackageGen();
+		
 		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE.createPackage();
 
 		getFixture().setImportedPackage(package_);
@@ -145,9 +157,14 @@ public class PackageImportImplTest extends DirectedRelationshipImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImportImpl#getImportingNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetImportingNamespaceGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetImportingNamespace() {
+		testGetImportingNamespaceGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getNamespace()).iterator(); eAllSubClasses.hasNext();) {
 			Namespace namespace = (Namespace) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -167,9 +184,14 @@ public class PackageImportImplTest extends DirectedRelationshipImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImportImpl#setImportingNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetImportingNamespaceGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetImportingNamespace() {
+		testSetImportingNamespaceGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getNamespace()).iterator(); eAllSubClasses.hasNext();) {
 			Namespace namespace = (Namespace) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -202,9 +224,15 @@ public class PackageImportImplTest extends DirectedRelationshipImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImportImpl#getTargets()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetTargetsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetTargets() {
+		testGetTargetsGen();
+		
 		super.testGetTargets();
 
 		assertTrue(getFixture().getTargets().contains(getFixture().getImportedPackage()));
@@ -215,42 +243,54 @@ public class PackageImportImplTest extends DirectedRelationshipImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImportImpl#getSources()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSourcesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSources() {
+		testGetSourcesGen();
+		
 		super.testGetSources();
 
 		assertTrue(getFixture().getSources().contains(getFixture().getImportingNamespace()));
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.PackageImportImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.PackageImportImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.PackageImportImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		assertSame(getFixture().getImportingNamespace(), getFixture().getOwner());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createPackage().getPackageImports().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DirectedRelationshipImplTest#setUpSources()
 	 */
 	protected void setUpSources() {
 		setUpOwner();
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DirectedRelationshipImplTest#setUpTargets()
 	 */
 	protected void setUpTargets() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DependencyImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: DependencyImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -107,9 +107,15 @@ public class DependencyImplTest extends PackageableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DependencyImpl#getRelatedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRelatedElementsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetRelatedElements() {
+		testGetRelatedElementsGen();
+		
 		setUpSources();
 		setUpTargets();
 
@@ -122,9 +128,15 @@ public class DependencyImplTest extends PackageableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DependencyImpl#getSources()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSourcesGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetSources() {
+		testGetSourcesGen();
+		
 		setUpSources();
 
 		assertTrue(getFixture().getSources().containsAll(getFixture().getClients()));
@@ -135,9 +147,15 @@ public class DependencyImplTest extends PackageableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DependencyImpl#getTargets()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetTargetsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetTargets() {
+		testGetTargetsGen();
+		
 		setUpTargets();
 
 		assertTrue(getFixture().getTargets().containsAll(getFixture().getSuppliers()));
@@ -148,9 +166,14 @@ public class DependencyImplTest extends PackageableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DependencyImpl#getClients()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetClientsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetClients() {
+		testGetClientsGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getNamedElement()).iterator(); eAllSubClasses.hasNext();) {
 			NamedElement namedElement = (NamedElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -172,9 +195,14 @@ public class DependencyImplTest extends PackageableElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DependencyImpl#getSuppliers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSuppliersGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetSuppliers() {
+		testGetSuppliersGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getNamedElement()).iterator(); eAllSubClasses.hasNext();) {
 			NamedElement namedElement = (NamedElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -61,9 +61,15 @@ public abstract class WriteStructuralFeatureActionImplTest extends StructuralFea
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.WriteStructuralFeatureActionImpl#getInputs()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetInputsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetInputs() {
+		testGetInputsGen();
+		
 		super.testGetInputs();
 
 		if (null != getFixture().getValue()) {
@@ -71,7 +77,7 @@ public abstract class WriteStructuralFeatureActionImplTest extends StructuralFea
 		}
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#setUpInputs()
 	 */
 	protected void setUpInputs() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkEndCreationDataImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: LinkEndCreationDataImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -92,9 +92,15 @@ public class LinkEndCreationDataImplTest extends LinkEndDataImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LinkEndCreationDataImpl#getQualifiers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetQualifiersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetQualifiers() {
+		testGetQualifiersGen();
+		
 		super.testGetQualifiers();
 	}
 

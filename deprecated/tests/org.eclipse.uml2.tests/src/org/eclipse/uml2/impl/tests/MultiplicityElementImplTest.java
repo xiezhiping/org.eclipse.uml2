@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MultiplicityElementImplTest.java,v 1.2 2004/05/11 15:20:49 khussey Exp $
+ * $Id: MultiplicityElementImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -85,9 +85,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#isOrdered()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsOrderedGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testIsOrdered() {
+		testIsOrderedGen();
+		
 		getFixture().setIsOrdered(false);
 
 		assertFalse(getFixture().isOrdered());
@@ -102,9 +108,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#setIsOrdered()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetIsOrderedGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetIsOrdered() {
+		testSetIsOrderedGen();
+		
 		getFixture().setIsOrdered(false);
 
 		assertEquals(false, getFixture().isOrdered());
@@ -119,9 +131,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#isUnique()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsUniqueGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testIsUnique() {
+		testIsUniqueGen();
+		
 		getFixture().setIsUnique(false);
 
 		assertFalse(getFixture().isUnique());
@@ -136,9 +154,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#setIsUnique()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetIsUniqueGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetIsUnique() {
+		testSetIsUniqueGen();
+		
 		getFixture().setIsUnique(false);
 
 		assertEquals(false, getFixture().isUnique());
@@ -153,9 +177,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#getLower()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetLowerGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetLower() {
+		testGetLowerGen();
+		
 		getFixture().setLowerValue(null);
 
 		assertEquals(getFixture().lower(), getFixture().getLower());
@@ -177,9 +207,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#getUpper()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetUpperGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetUpper() {
+		testGetUpperGen();
+		
 		getFixture().setUpperValue(null);
 
 		assertEquals(getFixture().upper(), getFixture().getUpper());
@@ -201,9 +237,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#lowerBound()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testLowerBoundGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testLowerBound() {
+		testLowerBoundGen();
+		
 		getFixture().setLowerValue(null);
 
 		assertEquals(1, getFixture().lowerBound());
@@ -225,9 +267,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#upperBound()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testUpperBoundGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testUpperBound() {
+		testUpperBoundGen();
+		
 		getFixture().setUpperValue(null);
 
 		assertEquals(1, getFixture().upperBound());
@@ -249,9 +297,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#isMultivalued()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsMultivaluedGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsMultivalued() {
+		testIsMultivaluedGen();
+		
 		getFixture().setUpperValue(null);
 
 		assertFalse(getFixture().isMultivalued());
@@ -277,9 +331,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#includesCardinality(Integer)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIncludesCardinality__IntegerGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIncludesCardinality__Integer() {
+		testIncludesCardinality__IntegerGen();
+		
 		getFixture().setLowerValue(null);
 		getFixture().setUpperValue(null);
 
@@ -328,9 +388,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#includesMultiplicity(MultiplicityElement)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIncludesMultiplicity__MultiplicityElementGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIncludesMultiplicity__MultiplicityElement() {
+		testIncludesMultiplicity__MultiplicityElementGen();
+		
 		MultiplicityElement defaultMultiplicity = (MultiplicityElement) UML2Factory.eINSTANCE.create(getFixture().eClass());
 
 		MultiplicityElement unboundedMultiplicity = (MultiplicityElement) UML2Factory.eINSTANCE.create(getFixture().eClass());
@@ -446,9 +512,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#lower()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testLowerGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testLower() {
+		testLowerGen();
+		
 		getFixture().setLowerValue(null);
 
 		assertEquals(getFixture().lowerBound(), getFixture().lower());
@@ -470,9 +542,15 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#upper()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testUpperGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testUpper() {
+		testUpperGen();
+		
 		getFixture().setUpperValue(null);
 
 		assertEquals(getFixture().upperBound(), getFixture().upper());
@@ -494,16 +572,22 @@ public abstract class MultiplicityElementImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.MultiplicityElementImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getLowerValue()));
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getUpperValue()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

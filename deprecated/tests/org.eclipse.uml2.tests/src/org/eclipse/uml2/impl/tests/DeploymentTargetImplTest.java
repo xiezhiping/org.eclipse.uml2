@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentTargetImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: DeploymentTargetImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -90,9 +90,15 @@ public abstract class DeploymentTargetImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DeploymentTargetImpl#getDeployedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetDeployedElementsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetDeployedElements() {
+		testGetDeployedElementsGen();
+		
 		List packageableElements = new ArrayList();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getPackageableElement()).iterator(); eAllSubClasses.hasNext();) {
@@ -122,9 +128,15 @@ public abstract class DeploymentTargetImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DeploymentTargetImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getDeployments()));
@@ -141,7 +153,7 @@ public abstract class DeploymentTargetImplTest extends NamedElementImplTest {
 		// TODO: implement this getter operation test method
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {

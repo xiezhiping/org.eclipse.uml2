@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkEndDataImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: LinkEndDataImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -93,9 +93,15 @@ public class LinkEndDataImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LinkEndDataImpl#getQualifiers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetQualifiersGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetQualifiers() {
+		testGetQualifiersGen();
+		
 		QualifierValue qualifierValue = UML2Factory.eINSTANCE.createQualifierValue();
 
 		getFixture().getQualifiers().add(qualifierValue);
@@ -107,7 +113,7 @@ public class LinkEndDataImplTest extends ElementImplTest {
 		assertFalse(getFixture().getQualifiers().contains(qualifierValue));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ApplyFunctionActionImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ApplyFunctionActionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -93,9 +93,15 @@ public class ApplyFunctionActionImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ApplyFunctionActionImpl#getInputs()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetInputsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetInputs() {
+		testGetInGroupsGen();
+		
 		super.testGetInputs();
 
 		assertTrue(getFixture().getInputs().containsAll(getFixture().getArguments()));
@@ -106,15 +112,21 @@ public class ApplyFunctionActionImplTest extends ActionImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ApplyFunctionActionImpl#getOutputs()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOutputsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOutputs() {
+		testGetOutputsGen();
+		
 		super.testGetOutputs();
 
 		assertTrue(getFixture().getOutputs().containsAll(getFixture().getResults()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#setUpInputs()
 	 */
 	protected void setUpInputs() {
@@ -124,7 +136,7 @@ public class ApplyFunctionActionImplTest extends ActionImplTest {
 		getFixture().getArguments().add(UML2Factory.eINSTANCE.createInputPin());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#setUpOutputs()
 	 */
 	protected void setUpOutputs() {

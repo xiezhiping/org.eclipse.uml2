@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImplTest.java,v 1.2 2004/05/11 15:20:50 khussey Exp $
+ * $Id: ClassifierImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -182,9 +182,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getPackage()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetPackageGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetPackage() {
+		testGetPackageGen();
+		
 		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE.createPackage();
 
 		package_.getOwnedMembers().add(getFixture());
@@ -199,9 +205,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getRedefinitionContexts()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinitionContextsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetRedefinitionContexts() {
+		testGetRedefinitionContextsGen();
+		
 		setUpRedefinitionContexts();
 
 		for (Iterator redefinitionContexts = getFixture().getRedefinitionContexts().iterator(); redefinitionContexts.hasNext();) {
@@ -236,9 +248,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getFeatures()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetFeaturesGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetFeatures() {
+		testGetFeaturesGen();
+		
 		setUpFeatures();
 
 		for (Iterator features = getFixture().getFeatures().iterator(); features.hasNext();) {
@@ -264,9 +282,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getGenerals()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetGeneralsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetGenerals() {
+		testGetGeneralsGen();
+		
 		setUpParents();
 
 		assertEquals(getFixture().general().size(), getFixture().getGenerals().size());
@@ -278,9 +302,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getAttributes()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetAttributesGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetAttributes() {
+		testGetAttributesGen();
+		
 		setUpAttributes();
 
 		for (Iterator attributes = getFixture().getAttributes().iterator(); attributes.hasNext();) {
@@ -333,13 +363,19 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#getOwner() <em>Get Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#getOwner() <em>Get Owner</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getOwner()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnerGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwner() {
+		testGetOwnerGen();
+		
 		super.testGetOwner();
 
 		if (null != getFixture().getOwningParameter()) {
@@ -348,26 +384,38 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#getVisibility() <em>Get Visibility</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#getVisibility() <em>Get Visibility</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getVisibility()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetVisibilityGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetVisibility() {
+		testGetVisibilityGen();
+		
 		getFixture().setPackageableElement_visibility(VisibilityKind.PACKAGE_LITERAL);
 
 		assertSame(getFixture().getPackageableElement_visibility(), getFixture().getVisibility());
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#setVisibility(VisibilityKind) <em>Set Visibility</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#setVisibility(VisibilityKind) <em>Set Visibility</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#setVisibility(VisibilityKind)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetVisibility__VisibilityKindGen() {
+		// TODO: implement this setter operation test method
+	}
+
 	public void testSetVisibility__VisibilityKind() {
+		testSetVisibility__VisibilityKindGen();
+		
 		getFixture().setVisibility(VisibilityKind.PACKAGE_LITERAL);
 
 		assertSame(getFixture().getVisibility(), getFixture().getPackageableElement_visibility());
@@ -385,13 +433,19 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#getNamespace() <em>Get Namespace</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.impl.ClassifierImpl#getNamespace() <em>Get Namespace</em>}' getter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getNamespace()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetNamespaceGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetNamespace() {
+		testGetNamespaceGen();
+		
 		super.testGetNamespace();
 
 		if (null != getFixture().getPackage()) {
@@ -448,9 +502,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#allFeatures()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testAllFeaturesGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testAllFeatures() {
+		testAllFeaturesGen();
+		
 		setUpMembers();
 
 		try {
@@ -515,9 +575,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#parents()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testParentsGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testParents() {
+		testParentsGen();
+		
 		setUpParents();
 
 		for (Iterator generalizations = getFixture().getGeneralizations().iterator(); generalizations.hasNext();) {
@@ -530,9 +596,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#allParents()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testAllParentsGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testAllParents() {
+		testAllParentsGen();
+		
 		setUpParents();
 
 		assertTrue(getFixture().allParents().containsAll(getFixture().parents()));
@@ -598,9 +670,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#general()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGeneralGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testGeneral() {
+		testGeneralGen();
+		
 		setUpParents();
 
 		assertTrue(getFixture().general().containsAll(getFixture().parents()));
@@ -633,9 +711,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetMembers() {
+		testGetMembersGen();
+		
 		super.testGetMembers();
 
 		assertTrue(getFixture().getMembers().containsAll(getFixture().getFeatures()));
@@ -648,9 +732,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getGeneralizations()));
@@ -663,9 +753,15 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getRedefinedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRedefinedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRedefinedElements() {
+		testGetRedefinedElementsGen();
+		
 		setUpRedefinedElements();
 
 		for (Iterator redefinedElements = getFixture().getRedefinedElements().iterator(); redefinedElements.hasNext();) {
@@ -691,15 +787,21 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ClassifierImpl#getOwnedMembers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedMembersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedMembers() {
+		testGetOwnedMembersGen();
+		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getOwnedUseCases()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -715,11 +817,10 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 		getFixture().getSubstitutions().add(UML2Factory.eINSTANCE.createSubstitution());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpMembers()
 	 */
 	protected void setUpMembers() {
-		// TODO implement setUpMembers
 		super.setUpMembers();
 
 		setUpFeatures();
@@ -727,7 +828,7 @@ public abstract class ClassifierImplTest extends NamespaceImplTest {
 		setUpParents();
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {

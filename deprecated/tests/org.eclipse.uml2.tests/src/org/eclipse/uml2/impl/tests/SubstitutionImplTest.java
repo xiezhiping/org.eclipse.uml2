@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SubstitutionImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: SubstitutionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -107,9 +107,14 @@ public class SubstitutionImplTest extends RealizationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.SubstitutionImpl#getContract()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetContractGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetContract() {
+		testGetContractGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getClassifier()).iterator(); eAllSubClasses.hasNext();) {
 			Classifier classifier = (Classifier) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -129,9 +134,14 @@ public class SubstitutionImplTest extends RealizationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.SubstitutionImpl#setContract()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetContractGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetContract() {
+		testSetContractGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getClassifier()).iterator(); eAllSubClasses.hasNext();) {
 			Classifier classifier = (Classifier) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -153,9 +163,14 @@ public class SubstitutionImplTest extends RealizationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.SubstitutionImpl#getSubstitutingClassifier()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSubstitutingClassifierGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetSubstitutingClassifier() {
+		testGetSubstitutingClassifierGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getClassifier()).iterator(); eAllSubClasses.hasNext();) {
 			Classifier classifier = (Classifier) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -175,9 +190,14 @@ public class SubstitutionImplTest extends RealizationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.SubstitutionImpl#setSubstitutingClassifier()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testSetSubstitutingClassifierGen() {
+		// TODO: implement this feature setter test method
+	}
+
 	public void testSetSubstitutingClassifier() {
+		testSetSubstitutingClassifierGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getClassifier()).iterator(); eAllSubClasses.hasNext();) {
 			Classifier classifier = (Classifier) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -201,9 +221,15 @@ public class SubstitutionImplTest extends RealizationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.SubstitutionImpl#getSuppliers()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSuppliersGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSuppliers() {
+		testGetSuppliersGen();
+		
 		super.testGetSuppliers();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getClassifier()).iterator(); eAllSubClasses.hasNext();) {
@@ -228,9 +254,15 @@ public class SubstitutionImplTest extends RealizationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.SubstitutionImpl#getTargets()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetTargetsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetTargets() {
+		testGetTargetsGen();
+		
 		super.testGetTargets();
 
 		assertTrue(getFixture().getTargets().contains(getFixture().getContract()));
@@ -241,9 +273,15 @@ public class SubstitutionImplTest extends RealizationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.SubstitutionImpl#getClients()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetClientsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetClients() {
+		testGetClientsGen();
+		
 		super.testGetClients();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getClassifier()).iterator(); eAllSubClasses.hasNext();) {
@@ -270,15 +308,21 @@ public class SubstitutionImplTest extends RealizationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.SubstitutionImpl#getSources()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSourcesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSources() {
+		testGetSourcesGen();
+		
 		super.testGetSources();
 
 		assertTrue(getFixture().getSources().contains(getFixture().getSubstitutingClassifier()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DependencyImplTest#setUpSources()
 	 */
 	protected void setUpSources() {
@@ -287,7 +331,7 @@ public class SubstitutionImplTest extends RealizationImplTest {
 		getFixture().setSubstitutingClassifier(UML2Factory.eINSTANCE.createActor());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DependencyImplTest#setUpTargets()
 	 */
 	protected void setUpTargets() {

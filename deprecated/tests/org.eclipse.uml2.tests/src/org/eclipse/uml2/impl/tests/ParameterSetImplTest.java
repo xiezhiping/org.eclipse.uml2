@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterSetImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ParameterSetImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -93,9 +93,15 @@ public class ParameterSetImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ParameterSetImpl#getOwnedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedElements() {
+		testGetOwnedElementsGen();
+		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getConditions()));
@@ -105,14 +111,14 @@ public class ParameterSetImplTest extends NamedElementImplTest {
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
-		// TODO implement setUpNamespace
+		UML2Factory.eINSTANCE.createActivity().getOwnedParameterSets().add(getFixture());
 	}
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
-		// TODO implement setUpOwner
+		UML2Factory.eINSTANCE.createActivity().getOwnedParameterSets().add(getFixture());
 	}
 
 	/* (non-Javadoc)

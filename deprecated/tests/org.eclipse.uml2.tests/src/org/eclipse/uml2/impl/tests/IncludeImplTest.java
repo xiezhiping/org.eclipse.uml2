@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: IncludeImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: IncludeImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -102,9 +102,15 @@ public class IncludeImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.IncludeImpl#getRelatedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRelatedElementsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetRelatedElements() {
+		testGetRelatedElementsGen();
+		
 		setUpSources();
 		setUpTargets();
 
@@ -117,9 +123,15 @@ public class IncludeImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.IncludeImpl#getSources()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSourcesGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetSources() {
+		testGetSourcesGen();
+		
 		setUpSources();
 
 		assertFalse(getFixture().getSources().isEmpty());
@@ -131,37 +143,43 @@ public class IncludeImplTest extends NamedElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.IncludeImpl#getTargets()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetTargetsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetTargets() {
+		testGetTargetsGen();
+		
 		setUpTargets();
 
 		assertFalse(getFixture().getTargets().isEmpty());
 		assertTrue(getFixture().getTargets().contains(getFixture().getAddition()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createUseCase().getIncludes().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DirectedRelationshipImplTest#setUpSources()
 	 */
 	protected void setUpSources() {
 		setUpOwner();
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.DirectedRelationshipImplTest#setUpTargets()
 	 */
 	protected void setUpTargets() {
 		getFixture().setAddition(UML2Factory.eINSTANCE.createUseCase());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralNullImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: LiteralNullImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -93,9 +93,15 @@ public class LiteralNullImplTest extends LiteralSpecificationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LiteralNullImpl#isComputable()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsComputableGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsComputable() {
+		testIsComputableGen();
+		
 		assertTrue(getFixture().isComputable());
 	}
 
@@ -104,27 +110,33 @@ public class LiteralNullImplTest extends LiteralSpecificationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.LiteralNullImpl#isNull()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsNullGen() {
+		// TODO: implement this operation test method
+	}
+
 	public void testIsNull() {
+		testIsNullGen();
+		
 		assertTrue(getFixture().isNull());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ValueSpecificationImplTest#testStringValue()
 	 */
 	public void testStringValue() {
 		assertEquals(String.valueOf((Object) null), getFixture().stringValue());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		// TODO implement setUpNamespace
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {

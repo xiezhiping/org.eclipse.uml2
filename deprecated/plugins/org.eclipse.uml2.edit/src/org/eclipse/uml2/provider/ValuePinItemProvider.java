@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ValuePinItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: ValuePinItemProvider.java,v 1.5 2004/05/20 03:06:21 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -240,6 +240,8 @@ public class ValuePinItemProvider
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
 			feature == UML2Package.eINSTANCE.getObjectNode_UpperBound() ||
+			feature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
+			feature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue() ||
 			feature == UML2Package.eINSTANCE.getValuePin_Value();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$

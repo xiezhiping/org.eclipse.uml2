@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorItemProvider.java,v 1.7 2004/05/14 14:12:18 khussey Exp $
+ * $Id: BehaviorItemProvider.java,v 1.8 2004/05/20 03:06:21 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -88,6 +88,7 @@ public class BehaviorItemProvider
 			addReturnResultPropertyDescriptor(object);
 			addPreconditionPropertyDescriptor(object);
 			addPostconditionPropertyDescriptor(object);
+			addOwnedParameterSetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -224,6 +225,24 @@ public class BehaviorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Owned Parameter Set feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOwnedParameterSetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_Behavior_ownedParameterSet_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Behavior_ownedParameterSet_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getBehavior_OwnedParameterSet(),
+				 true,
+				 null,
+				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -235,8 +254,21 @@ public class BehaviorItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UML2Package.eINSTANCE.getBehavior_Parameter());
+			childrenFeatures.add(UML2Package.eINSTANCE.getBehavior_OwnedParameterSet());
 		}
 		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 
@@ -278,6 +310,7 @@ public class BehaviorItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case UML2Package.BEHAVIOR__PARAMETER:
+			case UML2Package.BEHAVIOR__OWNED_PARAMETER_SET:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -298,6 +331,11 @@ public class BehaviorItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getBehavior_Parameter(),
 				 UML2Factory.eINSTANCE.createParameter()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getBehavior_OwnedParameterSet(),
+				 UML2Factory.eINSTANCE.createParameterSet()));
 	}
 
 	/**
@@ -310,10 +348,10 @@ public class BehaviorItemProvider
 		boolean qualify =
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
+			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });

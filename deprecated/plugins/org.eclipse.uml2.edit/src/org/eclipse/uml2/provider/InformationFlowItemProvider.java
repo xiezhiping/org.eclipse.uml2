@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InformationFlowItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: InformationFlowItemProvider.java,v 1.5 2004/05/20 03:06:21 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.uml2.InformationFlow;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -35,7 +36,7 @@ import org.eclipse.uml2.UML2Package;
  * @generated
  */
 public class InformationFlowItemProvider
-	extends DirectedRelationshipItemProvider
+	extends PackageableElementItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -69,10 +70,61 @@ public class InformationFlowItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addRelatedElementPropertyDescriptor(object);
+			addSourcePropertyDescriptor(object);
+			addTargetPropertyDescriptor(object);
 			addRealizationPropertyDescriptor(object);
 			addConveyedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Related Element feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRelatedElementPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_Relationship_relatedElement_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Relationship_relatedElement_feature", "_UI_Relationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getRelationship_RelatedElement(),
+				 false));
+	}
+
+	/**
+	 * This adds a property descriptor for the Source feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSourcePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_DirectedRelationship_source_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_source_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getDirectedRelationship_Source(),
+				 false));
+	}
+
+	/**
+	 * This adds a property descriptor for the Target feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTargetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getString("_UI_DirectedRelationship_target_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_DirectedRelationship_target_feature", "_UI_DirectedRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getDirectedRelationship_Target(),
+				 false));
 	}
 
 	/**
@@ -125,7 +177,10 @@ public class InformationFlowItemProvider
 	 * @generated
 	 */
 	public String getText(Object object) {
-		return getString("_UI_InformationFlow_type"); //$NON-NLS-1$
+		String label = ((InformationFlow)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_InformationFlow_type") : //$NON-NLS-1$
+			getString("_UI_InformationFlow_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

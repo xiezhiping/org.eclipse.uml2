@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SignalTriggerItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: SignalTriggerItemProvider.java,v 1.5 2004/05/20 03:06:21 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+
 import org.eclipse.uml2.SignalTrigger;
 import org.eclipse.uml2.UML2Package;
 

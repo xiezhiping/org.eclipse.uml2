@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DirectedRelationshipImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: DirectedRelationshipImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -67,9 +67,15 @@ public abstract class DirectedRelationshipImplTest extends RelationshipImplTest 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DirectedRelationshipImpl#getSources()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetSourcesGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetSources() {
+		testGetSourcesGen();
+		
 		setUpSources();
 
 		assertFalse(getFixture().getSources().isEmpty());
@@ -80,9 +86,15 @@ public abstract class DirectedRelationshipImplTest extends RelationshipImplTest 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DirectedRelationshipImpl#getTargets()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetTargetsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetTargets() {
+		testGetTargetsGen();
+		
 		setUpTargets();
 
 		assertFalse(getFixture().getTargets().isEmpty());
@@ -93,9 +105,15 @@ public abstract class DirectedRelationshipImplTest extends RelationshipImplTest 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.DirectedRelationshipImpl#getRelatedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRelatedElementsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetRelatedElements() {
+		testGetRelatedElementsGen();
+		
 		setUpSources();
 		setUpTargets();
 

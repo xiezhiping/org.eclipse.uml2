@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: EventOccurrenceImplTest.java,v 1.1 2004/04/29 14:56:48 khussey Exp $
+ * $Id: EventOccurrenceImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -92,20 +92,26 @@ public class EventOccurrenceImplTest extends InteractionFragmentImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.EventOccurrenceImpl#getCovereds()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetCoveredsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetCovereds() {
+		testGetCoveredsGen();
+		
 		assertTrue(true);
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createInteractionOperand().getFragments().add(getFixture());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {

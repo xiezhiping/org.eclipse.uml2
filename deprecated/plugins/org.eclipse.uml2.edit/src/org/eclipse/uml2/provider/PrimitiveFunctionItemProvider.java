@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PrimitiveFunctionItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: PrimitiveFunctionItemProvider.java,v 1.5 2004/05/20 03:06:21 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -38,7 +38,7 @@ import org.eclipse.uml2.UML2Package;
  * @generated
  */
 public class PrimitiveFunctionItemProvider
-	extends ElementItemProvider
+	extends PackageableElementItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -130,7 +130,7 @@ public class PrimitiveFunctionItemProvider
 	 * @generated
 	 */
 	public String getText(Object object) {
-		String label = ((PrimitiveFunction)object).getBody();
+		String label = ((PrimitiveFunction)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_PrimitiveFunction_type") : //$NON-NLS-1$
 			getString("_UI_PrimitiveFunction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$

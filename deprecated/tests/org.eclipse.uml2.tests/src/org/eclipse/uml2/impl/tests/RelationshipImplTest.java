@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RelationshipImplTest.java,v 1.1 2004/04/29 14:56:46 khussey Exp $
+ * $Id: RelationshipImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -63,9 +63,14 @@ public abstract class RelationshipImplTest extends ElementImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.RelationshipImpl#getRelatedElements()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetRelatedElementsGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetRelatedElements() {
+		testGetRelatedElementsGen();
 
 		for (Iterator relatedElements = getFixture().getRelatedElements().iterator(); relatedElements.hasNext();) {
 			assertTrue(Element.class.isInstance(relatedElements.next()));

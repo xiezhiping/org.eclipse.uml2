@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExtensionImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ExtensionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -102,9 +102,15 @@ public class ExtensionImplTest extends AssociationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ExtensionImpl#isRequired()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testIsRequiredGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testIsRequired() {
+		testIsRequiredGen();
+		
 		assertFalse(getFixture().isRequired());
 
 		ExtensionEnd extensionEnd = UML2Factory.eINSTANCE.createExtensionEnd();
@@ -123,9 +129,15 @@ public class ExtensionImplTest extends AssociationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ExtensionImpl#getMetaclass()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetMetaclassGen() {
+		// TODO: implement this feature getter test method
+	}
+
 	public void testGetMetaclass() {
+		testGetMembersGen();
+		
 		Property property = UML2Factory.eINSTANCE.createProperty();
 		property.setType(UML2Factory.eINSTANCE.createClass());
 		getFixture().getMemberEnds().add(property);
@@ -143,9 +155,14 @@ public class ExtensionImplTest extends AssociationImplTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ExtensionImpl#getOwnedEnds()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOwnedEndsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOwnedEnds() {
+		testGetOwnedEndsGen();
 
 		try {
 			getFixture().getOwnedEnds().add(UML2Factory.eINSTANCE.createProperty());
@@ -158,7 +175,7 @@ public class ExtensionImplTest extends AssociationImplTest {
 		}
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.AssociationImplTest#testGetEndTypes()
 	 */
 	public void testGetEndTypes() {
@@ -175,7 +192,7 @@ public class ExtensionImplTest extends AssociationImplTest {
 		assertTrue(getFixture().getEndTypes().contains(extensionEnd.getType()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.AssociationImplTest#testGetRelatedElements()
 	 */
 	public void testGetRelatedElements() {
@@ -190,7 +207,7 @@ public class ExtensionImplTest extends AssociationImplTest {
 		assertTrue(getFixture().getRelatedElements().containsAll(getFixture().getEndTypes()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -203,14 +220,14 @@ public class ExtensionImplTest extends AssociationImplTest {
 		getFixture().getOwnedEnds().add(UML2Factory.eINSTANCE.createExtensionEnd());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ClassifierImplTest#setUpFeatures()
 	 */
 	protected void setUpFeatures() {
 		getFixture().getOwnedEnds().add(UML2Factory.eINSTANCE.createExtensionEnd());
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpMembers()
 	 */
 	protected void setUpMembers() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionImplTest.java,v 1.1 2004/04/29 14:56:47 khussey Exp $
+ * $Id: ReadStructuralFeatureActionImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -92,15 +92,21 @@ public class ReadStructuralFeatureActionImplTest extends StructuralFeatureAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.impl.ReadStructuralFeatureActionImpl#getOutputs()
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testGetOutputsGen() {
+		// TODO: implement this getter operation test method
+	}
+
 	public void testGetOutputs() {
+		testGetOutputsGen();
+		
 		super.testGetOutputs();
 
 		assertTrue(getFixture().getOutputs().contains(getFixture().getResult()));
 	}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ActionImplTest#setUpOutputs()
 	 */
 	protected void setUpOutputs() {

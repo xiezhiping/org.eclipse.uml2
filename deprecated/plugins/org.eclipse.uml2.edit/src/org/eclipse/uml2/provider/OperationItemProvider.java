@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.6 2004/05/14 14:12:18 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.7 2004/05/20 03:06:21 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -39,7 +39,11 @@ import org.eclipse.uml2.Operation;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.edit.internal.command.SubsetAddCommand;
+import org.eclipse.uml2.edit.internal.command.SubsetReplaceCommand;
 import org.eclipse.uml2.edit.internal.command.SubsetSetCommand;
+import org.eclipse.uml2.edit.internal.command.SupersetRemoveCommand;
+import org.eclipse.uml2.edit.internal.command.SupersetReplaceCommand;
 import org.eclipse.uml2.edit.internal.command.SupersetSetCommand;
 
 /**
@@ -285,9 +289,7 @@ public class OperationItemProvider
 				 getString("_UI_Operation_precondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_precondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getOperation_Precondition(),
-				 true,
-				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 true));
 	}
 
 	/**
@@ -303,9 +305,7 @@ public class OperationItemProvider
 				 getString("_UI_Operation_postcondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_postcondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getOperation_Postcondition(),
-				 true,
-				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 true));
 	}
 
 	/**
@@ -337,9 +337,7 @@ public class OperationItemProvider
 				 getString("_UI_Operation_bodyCondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_bodyCondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getOperation_BodyCondition(),
-				 true,
-				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 true));
 	}
 
 	/**
@@ -658,12 +656,12 @@ public class OperationItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
+			feature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
+			feature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue() ||
 			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
 			feature == UML2Package.eINSTANCE.getOperation_Precondition() ||
 			feature == UML2Package.eINSTANCE.getOperation_Postcondition() ||
 			feature == UML2Package.eINSTANCE.getOperation_BodyCondition() ||
-			feature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
-			feature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue() ||
 			feature == UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter() ||
 			feature == UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult() ||
 			feature == UML2Package.eINSTANCE.getOperation_OwnedParameter();
@@ -683,6 +681,54 @@ public class OperationItemProvider
 	}
 
 	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection, int index) {
+		if (feature == UML2Package.eINSTANCE.getOperation_Precondition()) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, collection, index);
+		}
+		if (feature == UML2Package.eINSTANCE.getOperation_Postcondition()) {
+			return new SubsetAddCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, collection, index);
+		}
+		return super.createAddCommand(domain, owner, feature, collection, index);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
+		if (feature == UML2Package.eINSTANCE.getNamespace_OwnedRule()) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getOperation_Precondition(), UML2Package.eINSTANCE.getOperation_Postcondition(), UML2Package.eINSTANCE.getOperation_BodyCondition()}, collection);
+		}
+		return super.createRemoveCommand(domain, owner, feature, collection);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
+		if (feature == UML2Package.eINSTANCE.getOperation_Precondition()) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, value, collection);
+		}
+		if (feature == UML2Package.eINSTANCE.getOperation_Postcondition()) {
+			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, value, collection);
+		}
+		if (feature == UML2Package.eINSTANCE.getNamespace_OwnedRule()) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getOperation_Precondition(), UML2Package.eINSTANCE.getOperation_Postcondition(), UML2Package.eINSTANCE.getOperation_BodyCondition()}, value, collection);
+		}
+		return super.createReplaceCommand(domain, owner, feature, value, collection);
+	}
+
+	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -691,6 +737,9 @@ public class OperationItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
 		if (feature == UML2Package.eINSTANCE.getParameterableElement_OwningParameter()) {
 			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()}, value);
+		}
+		if (feature == UML2Package.eINSTANCE.getOperation_BodyCondition()) {
+			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamespace_OwnedRule()}, value);
 		}
 		if (feature == UML2Package.eINSTANCE.getParameterableElement_TemplateParameter()) {
 			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getParameterableElement_OwningParameter()}, value);
