@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.8 2004/05/25 20:03:27 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.9 2004/06/01 15:26:41 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -655,12 +655,12 @@ public class OperationItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
-			feature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue() ||
 			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
 			feature == UML2Package.eINSTANCE.getOperation_Precondition() ||
 			feature == UML2Package.eINSTANCE.getOperation_Postcondition() ||
 			feature == UML2Package.eINSTANCE.getOperation_BodyCondition() ||
+			feature == UML2Package.eINSTANCE.getMultiplicityElement_UpperValue() ||
+			feature == UML2Package.eINSTANCE.getMultiplicityElement_LowerValue() ||
 			feature == UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter() ||
 			feature == UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult() ||
 			feature == UML2Package.eINSTANCE.getOperation_OwnedParameter();

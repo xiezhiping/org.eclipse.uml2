@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassItemProvider.java,v 1.9 2004/05/25 20:03:27 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.10 2004/06/01 15:26:41 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -79,8 +79,8 @@ public class ClassItemProvider
 			addOwnedPortPropertyDescriptor(object);
 			addOwnedOperationPropertyDescriptor(object);
 			addSuperClassPropertyDescriptor(object);
-			addNestedClassifierPropertyDescriptor(object);
 			addExtensionPropertyDescriptor(object);
+			addNestedClassifierPropertyDescriptor(object);
 			addIsActivePropertyDescriptor(object);
 			addOwnedReceptionPropertyDescriptor(object);
 		}
@@ -436,12 +436,12 @@ public class ClassItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createInformationItem()));
+				 UML2Factory.eINSTANCE.createAssociationClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createAssociationClass()));
+				 UML2Factory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -491,11 +491,6 @@ public class ClassItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createComponent()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createNode()));
 
 		newChildDescriptors.add
@@ -512,6 +507,11 @@ public class ClassItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createCommunicationPath()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getClass_NestedClassifier(),
+				 UML2Factory.eINSTANCE.createComponent()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -537,10 +537,10 @@ public class ClassItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
-			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
+			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
 			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
 		return getString(

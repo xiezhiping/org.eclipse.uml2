@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateItemProvider.java,v 1.6 2004/05/25 20:03:27 khussey Exp $
+ * $Id: StateItemProvider.java,v 1.7 2004/06/01 15:26:41 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -540,11 +540,11 @@ public class StateItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			feature == UML2Package.eINSTANCE.getState_StateInvariant() ||
 			feature == UML2Package.eINSTANCE.getState_Entry() ||
 			feature == UML2Package.eINSTANCE.getState_Exit() ||
-			feature == UML2Package.eINSTANCE.getState_DoActivity();
+			feature == UML2Package.eINSTANCE.getState_DoActivity() ||
+			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
+			feature == UML2Package.eINSTANCE.getState_StateInvariant();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });

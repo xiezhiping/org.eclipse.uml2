@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterItemProvider.java,v 1.9 2004/05/25 20:03:27 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.10 2004/06/01 15:26:41 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -236,6 +236,16 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
+				 UML2Factory.eINSTANCE.createOpaqueExpression()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
+				 UML2Factory.eINSTANCE.createExpression()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
 				 UML2Factory.eINSTANCE.createClass()));
 
 		newChildDescriptors.add
@@ -282,16 +292,6 @@ public class TemplateParameterItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
 				 UML2Factory.eINSTANCE.createPrimitiveType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
-				 UML2Factory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
-				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -356,17 +356,17 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
+				 UML2Factory.eINSTANCE.createAssociationClass()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
 				 UML2Factory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
 				 UML2Factory.eINSTANCE.createInformationFlow()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
-				 UML2Factory.eINSTANCE.createAssociationClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -401,12 +401,12 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
-				 UML2Factory.eINSTANCE.createModel()));
+				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
-				 UML2Factory.eINSTANCE.createActivity()));
+				 UML2Factory.eINSTANCE.createModel()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -446,12 +446,12 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
-				 UML2Factory.eINSTANCE.createVariable()));
+				 UML2Factory.eINSTANCE.createCollaboration()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
-				 UML2Factory.eINSTANCE.createCollaboration()));
+				 UML2Factory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -466,12 +466,7 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
-				 UML2Factory.eINSTANCE.createPort()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
-				 UML2Factory.eINSTANCE.createStateMachine()));
+				 UML2Factory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -486,7 +481,7 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
-				 UML2Factory.eINSTANCE.createComponent()));
+				 UML2Factory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -512,6 +507,11 @@ public class TemplateParameterItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
 				 UML2Factory.eINSTANCE.createCommunicationPath()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
+				 UML2Factory.eINSTANCE.createComponent()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -566,6 +566,16 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
+				 UML2Factory.eINSTANCE.createOpaqueExpression()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
+				 UML2Factory.eINSTANCE.createExpression()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
 				 UML2Factory.eINSTANCE.createClass()));
 
 		newChildDescriptors.add
@@ -612,16 +622,6 @@ public class TemplateParameterItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
 				 UML2Factory.eINSTANCE.createPrimitiveType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
-				 UML2Factory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
-				 UML2Factory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -686,17 +686,17 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
+				 UML2Factory.eINSTANCE.createAssociationClass()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
 				 UML2Factory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
 				 UML2Factory.eINSTANCE.createInformationFlow()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
-				 UML2Factory.eINSTANCE.createAssociationClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -731,12 +731,12 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
-				 UML2Factory.eINSTANCE.createModel()));
+				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
-				 UML2Factory.eINSTANCE.createActivity()));
+				 UML2Factory.eINSTANCE.createModel()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -776,12 +776,12 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
-				 UML2Factory.eINSTANCE.createVariable()));
+				 UML2Factory.eINSTANCE.createCollaboration()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
-				 UML2Factory.eINSTANCE.createCollaboration()));
+				 UML2Factory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -796,12 +796,7 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
-				 UML2Factory.eINSTANCE.createPort()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
-				 UML2Factory.eINSTANCE.createStateMachine()));
+				 UML2Factory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -816,7 +811,7 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
-				 UML2Factory.eINSTANCE.createComponent()));
+				 UML2Factory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -842,6 +837,11 @@ public class TemplateParameterItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
 				 UML2Factory.eINSTANCE.createCommunicationPath()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
+				 UML2Factory.eINSTANCE.createComponent()));
 
 		newChildDescriptors.add
 			(createChildParameter

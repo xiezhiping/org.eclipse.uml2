@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageItemProvider.java,v 1.9 2004/05/25 20:03:27 khussey Exp $
+ * $Id: PackageItemProvider.java,v 1.10 2004/06/01 15:26:41 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,8 +89,8 @@ public class PackageItemProvider
 			addOwnedTypePropertyDescriptor(object);
 			addOwnedMemberPropertyDescriptor(object);
 			addPackageMergePropertyDescriptor(object);
-			addPackageExtensionPropertyDescriptor(object);
 			addAppliedProfilePropertyDescriptor(object);
+			addPackageExtensionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -395,17 +395,17 @@ public class PackageItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Factory.eINSTANCE.createAssociationClass()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
 				 UML2Factory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
 				 UML2Factory.eINSTANCE.createInformationFlow()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createAssociationClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -440,12 +440,12 @@ public class PackageItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createModel()));
+				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createActivity()));
+				 UML2Factory.eINSTANCE.createModel()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -500,11 +500,6 @@ public class PackageItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createStateMachine()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
 				 UML2Factory.eINSTANCE.createPrimitiveFunction()));
 
 		newChildDescriptors.add
@@ -515,7 +510,7 @@ public class PackageItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
-				 UML2Factory.eINSTANCE.createComponent()));
+				 UML2Factory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -541,6 +536,11 @@ public class PackageItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
 				 UML2Factory.eINSTANCE.createCommunicationPath()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getPackage_OwnedMember(),
+				 UML2Factory.eINSTANCE.createComponent()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -586,10 +586,10 @@ public class PackageItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getPackage_PackageMerge() ||
-			feature == UML2Package.eINSTANCE.getPackage_PackageExtension() ||
 			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			feature == UML2Package.eINSTANCE.getPackage_OwnedMember();
+			feature == UML2Package.eINSTANCE.getPackage_OwnedMember() ||
+			feature == UML2Package.eINSTANCE.getPackage_PackageMerge() ||
+			feature == UML2Package.eINSTANCE.getPackage_PackageExtension();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
