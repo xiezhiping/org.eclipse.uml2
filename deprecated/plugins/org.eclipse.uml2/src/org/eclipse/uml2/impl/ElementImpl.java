@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.4 2004/04/27 16:43:14 khussey Exp $
+ * $Id: ElementImpl.java,v 1.5 2004/05/12 22:21:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -376,8 +376,6 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 
 		eAnnotation.setSource(source);
 		eAnnotation.setEModelElement(this);
-
-		eAnnotation.eAdapters().add(getCacheAdapter());
 
 		return eAnnotation;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ResourceFactoryImpl.java,v 1.5 2004/05/04 19:17:48 khussey Exp $
+ * $Id: UML2ResourceFactoryImpl.java,v 1.6 2004/05/12 22:21:59 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -54,13 +54,11 @@ public class UML2ResourceFactoryImpl extends ResourceFactoryImpl {
 		Resource result = new UML2ResourceImpl(uri);
 		return result;
 	}
+
 	public Resource createResource(URI uri) {
 		XMIResource resource = (XMIResource) createResourceGen(uri);
 
 		resource.setEncoding(UML2Resource.DEFAULT_ENCODING);
-
-		resource.getDefaultLoadOptions().put(XMIResource.OPTION_DISABLE_NOTIFY,
-			Boolean.TRUE);
 		resource.getDefaultSaveOptions().put(
 			XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 

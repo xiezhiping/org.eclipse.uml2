@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.1 2004/04/29 15:31:13 khussey Exp $
+ * $Id: plugin.xml,v 1.2 2004/05/12 22:20:17 khussey Exp $
  */
 -->
 
@@ -170,18 +170,6 @@
             </enablement>
          </action>
          <action
-               label="%_UI_ValidateElementAction_label"
-               class="org.eclipse.uml2.examples.ui.actions.ValidateElementAction"
-               menubarPath="org.eclipse.uml2MenuID/org.eclipse.uml2.examples.ui.ElementMenuID/additions"
-               enablesFor="1"
-               id="org.eclipse.uml2.examples.ui.ValidateElementAction">
-            <enablement>
-               <objectClass
-                     name="org.eclipse.uml2.Element">
-               </objectClass>
-            </enablement>
-         </action>
-         <action
                label="%_UI_DestroyElementAction_label"
                class="org.eclipse.uml2.examples.ui.actions.DestroyElementAction"
                menubarPath="org.eclipse.uml2MenuID/org.eclipse.uml2.examples.ui.ElementMenuID/additions"
@@ -199,7 +187,7 @@
    <extension
          point="org.eclipse.ui.importWizards">
       <wizard
-            name="Ecore Model"
+            name="Ecore to UML2"
             icon="icons/full/obj16/EcoreModelFile.gif"
             class="org.eclipse.uml2.examples.ui.wizards.ecore2uml2.Ecore2UML2ImportWizard"
             id="org.eclipse.uml2.examples.ui.Ecore2UML2ImportWizard">
@@ -209,7 +197,7 @@
          </selection>
       </wizard>
       <wizard
-            name="UML2 Model"
+            name="UML2 to Ecore"
             icon="icons/full/obj16/UML2ModelFile.gif"
             class="org.eclipse.uml2.examples.ui.wizards.uml22ecore.UML22EcoreImportWizard"
             id="org.eclipse.uml2.examples.ui.UML22EcoreImportWizard">

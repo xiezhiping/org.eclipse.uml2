@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.5 2004/05/05 17:16:21 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.6 2004/05/12 22:21:59 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -86,6 +86,34 @@ public final class ProfileOperations
 		super();
 	}
 
+	protected static String getValidIdentifier(String name) {
+
+		if (isEmpty(name)) {
+			return name;
+		}
+
+		StringBuffer validIdentifier = new StringBuffer();
+
+		if (Character.isJavaIdentifierStart(name.charAt(0))) {
+			validIdentifier.append(name.charAt(0));
+		} else {
+			validIdentifier.append('_');
+
+			if (Character.isJavaIdentifierPart(name.charAt(0))) {
+				validIdentifier.append(name.charAt(0));
+			}
+		}
+
+		for (int i = 1; i < name.length(); ++i) {
+
+			if (Character.isJavaIdentifierPart(name.charAt(i))) {
+				validIdentifier.append(name.charAt(i));
+			}
+		}
+
+		return validIdentifier.toString();
+	}
+
 	/**
 	 * Retrieves a name suitable for an Ecore representation of the specified
 	 * profile.
@@ -95,9 +123,8 @@ public final class ProfileOperations
 	 * @return The Ecore package name.
 	 */
 	public static String getEPackageName(Profile profile) {
-		return (isEmpty(profile.getQualifiedName())
-			? profile.getName() : profile.getQualifiedName().replace(':', '_')
-				.replace(' ', '_'))
+		return getValidIdentifier(isEmpty(profile.getQualifiedName())
+			? profile.getName() : profile.getQualifiedName().replace(':', '_'))
 			+ '_' + getVersion(profile);
 	}
 
@@ -110,9 +137,9 @@ public final class ProfileOperations
 	 * @return The Ecore classifier name.
 	 */
 	public static String getEClassifierName(Classifier classifier) {
-		return isEmpty(classifier.getQualifiedName())
+		return getValidIdentifier(isEmpty(classifier.getQualifiedName())
 			? classifier.getName() : classifier.getQualifiedName().replace(':',
-				'_').replace(' ', '_');
+				'_'));
 	}
 
 	/**

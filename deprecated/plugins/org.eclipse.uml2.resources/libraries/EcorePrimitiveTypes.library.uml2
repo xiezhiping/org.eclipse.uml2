@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Basic_0="http:///Basic_0.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Basic_0.profile.uml2 pathmap://UML2_PROFILES/Basic.profile.uml2#_i2TIoJ4GEdi-h6zTMn5cgg" xmi:id="_EI4OgJ4FEdijJJZSMuU0GQ" name="Ecore" appliedProfile="_3o70oJ4HEdiwo51KPV5kJA">
-  <eAnnotations xmi:id="_3sFPQJ4HEdiwo51KPV5kJA" source="appliedStereotypes">
-    <contents xsi:type="Basic_0:Basic__ModelLibrary" xmi:id="_3sFPQZ4HEdiwo51KPV5kJA"/>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Basic_0="http:///Basic_0.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Basic_0.profile.uml2 pathmap://UML2_PROFILES/Basic.profile.uml2#_rjUZQKQ_Edi_cfSpB2IFNw" xmi:id="_4td70KQ-Edi0K65YJD49Qg" name="Ecore" appliedProfile="_qCMvUKRAEdiZYaXu6w_Kpw">
+  <eAnnotations xmi:id="_qF6xsKRAEdiZYaXu6w_Kpw" source="appliedStereotypes">
+    <contents xsi:type="Basic_0:Basic__ModelLibrary" xmi:id="_qF6xsaRAEdiZYaXu6w_Kpw"/>
   </eAnnotations>
-  <packageImport xsi:type="uml:ProfileApplication" xmi:id="_3o70oJ4HEdiwo51KPV5kJA">
-    <eAnnotations xmi:id="_3o70oZ4HEdiwo51KPV5kJA" source="attributes">
-      <details xmi:id="_3o70op4HEdiwo51KPV5kJA" key="version" value="0"/>
+  <packageImport xsi:type="uml:ProfileApplication" xmi:id="_qCMvUKRAEdiZYaXu6w_Kpw">
+    <eAnnotations xmi:id="_qCMvUaRAEdiZYaXu6w_Kpw" source="attributes">
+      <details xmi:id="_qCMvUqRAEdiZYaXu6w_Kpw" key="version" value="0"/>
     </eAnnotations>
-    <importedPackage href="pathmap://UML2_PROFILES/Basic.profile.uml2#_UBnzYJ4GEdi-h6zTMn5cgg"/>
-    <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_UBnzYJ4GEdi-h6zTMn5cgg"/>
+    <importedPackage href="pathmap://UML2_PROFILES/Basic.profile.uml2#_nX5hsKQ_Edi_cfSpB2IFNw"/>
+    <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_nX5hsKQ_Edi_cfSpB2IFNw"/>
   </packageImport>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HHq64J4FEdijJJZSMuU0GQ" name="EBigDecimal"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HHq64Z4FEdijJJZSMuU0GQ" name="EBigInteger"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HHq64p4FEdijJJZSMuU0GQ" name="EBoolean"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HHq6454FEdijJJZSMuU0GQ" name="EBooleanObject"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HHq65J4FEdijJJZSMuU0GQ" name="EByte"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HHxBgJ4FEdijJJZSMuU0GQ" name="EByteArray"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HHxBgZ4FEdijJJZSMuU0GQ" name="EByteObject"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HHxBgp4FEdijJJZSMuU0GQ" name="EChar"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HHxBg54FEdijJJZSMuU0GQ" name="ECharacterObject"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HHxBhJ4FEdijJJZSMuU0GQ" name="EDate"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH3IIJ4FEdijJJZSMuU0GQ" name="EDouble"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH3IIZ4FEdijJJZSMuU0GQ" name="EDoubleObject"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH3IIp4FEdijJJZSMuU0GQ" name="EEList"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH3II54FEdijJJZSMuU0GQ" name="EEnumerator"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH3IJJ4FEdijJJZSMuU0GQ" name="EFeatureMap"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH9OwJ4FEdijJJZSMuU0GQ" name="EFeatureMapEntry"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH9OwZ4FEdijJJZSMuU0GQ" name="EFloat"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH9Owp4FEdijJJZSMuU0GQ" name="EFloatObject"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH9Ow54FEdijJJZSMuU0GQ" name="EInt"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH9OxJ4FEdijJJZSMuU0GQ" name="EIntegerObject"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH9OxZ4FEdijJJZSMuU0GQ" name="EJavaClass"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HH9Oxp4FEdijJJZSMuU0GQ" name="EJavaObject"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HIDVYJ4FEdijJJZSMuU0GQ" name="ELong"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HIDVYZ4FEdijJJZSMuU0GQ" name="ELongObject"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HIDVYp4FEdijJJZSMuU0GQ" name="EResource"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HIDVY54FEdijJJZSMuU0GQ" name="EResourceSet"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HIJcAJ4FEdijJJZSMuU0GQ" name="EShort"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HIJcAZ4FEdijJJZSMuU0GQ" name="EShortObject"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HIJcAp4FEdijJJZSMuU0GQ" name="EString"/>
-  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_HIJcA54FEdijJJZSMuU0GQ" name="ETreeIterator"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70sLcKQ-Edi0K65YJD49Qg" name="EBigDecimal"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70sLcaQ-Edi0K65YJD49Qg" name="EBigInteger"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70sLcqQ-Edi0K65YJD49Qg" name="EBoolean"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70sLc6Q-Edi0K65YJD49Qg" name="EBooleanObject"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70ySEKQ-Edi0K65YJD49Qg" name="EByte"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70ySEaQ-Edi0K65YJD49Qg" name="EByteArray"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70ySEqQ-Edi0K65YJD49Qg" name="EByteObject"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70ySE6Q-Edi0K65YJD49Qg" name="EChar"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_704YsKQ-Edi0K65YJD49Qg" name="ECharacterObject"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_704YsaQ-Edi0K65YJD49Qg" name="EDate"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_704YsqQ-Edi0K65YJD49Qg" name="EDiagnosticChain"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_704Ys6Q-Edi0K65YJD49Qg" name="EDouble"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_704YtKQ-Edi0K65YJD49Qg" name="EDoubleObject"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_704YtaQ-Edi0K65YJD49Qg" name="EEList"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70-fUKQ-Edi0K65YJD49Qg" name="EEnumerator"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70-fUaQ-Edi0K65YJD49Qg" name="EFeatureMap"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70-fUqQ-Edi0K65YJD49Qg" name="EFeatureMapEntry"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70-fU6Q-Edi0K65YJD49Qg" name="EFloat"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70-fVKQ-Edi0K65YJD49Qg" name="EFloatObject"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70-fVaQ-Edi0K65YJD49Qg" name="EInt"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_70-fVqQ-Edi0K65YJD49Qg" name="EIntegerObject"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_71El8KQ-Edi0K65YJD49Qg" name="EJavaClass"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_71El8aQ-Edi0K65YJD49Qg" name="EJavaObject"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_71El8qQ-Edi0K65YJD49Qg" name="ELong"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_71El86Q-Edi0K65YJD49Qg" name="ELongObject"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_71El9KQ-Edi0K65YJD49Qg" name="EMap"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_71KskKQ-Edi0K65YJD49Qg" name="EResource"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_71KskaQ-Edi0K65YJD49Qg" name="EResourceSet"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_71KskqQ-Edi0K65YJD49Qg" name="EShort"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_71QzMKQ-Edi0K65YJD49Qg" name="EShortObject"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_71QzMaQ-Edi0K65YJD49Qg" name="EString"/>
+  <ownedMember xsi:type="uml:PrimitiveType" xmi:id="_71QzMqQ-Edi0K65YJD49Qg" name="ETreeIterator"/>
 </uml:Model>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML22Ecore.java,v 1.1 2004/04/29 15:14:39 khussey Exp $
+ * $Id: UML22Ecore.java,v 1.2 2004/05/12 22:20:08 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml22ecore;
 
@@ -54,6 +54,7 @@ import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.TypedElement;
 import org.eclipse.uml2.examples.Converter;
+import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Switch;
 
 /**
@@ -187,7 +188,7 @@ public class UML22Ecore
 
 	public Object caseResource(Resource object) {
 
-		if (object.getURI().lastSegment().endsWith(".profile.uml2")) { //$NON-NLS-1$
+		if (object.getURI().lastSegment().endsWith(UML2Resource.PROFILE_FILE_EXTENSION)) {
 			return this;
 		}
 
@@ -198,6 +199,7 @@ public class UML22Ecore
 
 		for (Iterator contents = object.getContents().iterator(); contents
 			.hasNext();) {
+
 			doSwitch((EObject) contents.next());
 		}
 
