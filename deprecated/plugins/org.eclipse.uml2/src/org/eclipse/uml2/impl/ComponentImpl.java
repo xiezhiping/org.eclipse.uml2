@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.15 2004/06/16 03:38:11 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.16 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -923,7 +923,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.COMPONENT__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.COMPONENT__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
@@ -932,7 +932,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 			case UML2Package.COMPONENT__IS_ABSTRACT:
-				setIsAbstract(false);
+				setIsAbstract(IS_ABSTRACT_EDEFAULT);
 				return;
 			case UML2Package.COMPONENT__GENERALIZATION:
 				getGeneralizations().clear();
@@ -1029,9 +1029,9 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.COMPONENT__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COMPONENT__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.COMPONENT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.COMPONENT__NAME_EXPRESSION:
@@ -1061,7 +1061,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.COMPONENT__IS_ABSTRACT:
-				return isAbstract() != false;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.COMPONENT__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.COMPONENT__GENERAL:

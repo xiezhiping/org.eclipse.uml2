@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UsageImpl.java,v 1.3 2004/06/15 16:13:32 khussey Exp $
+ * $Id: UsageImpl.java,v 1.4 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -290,7 +290,7 @@ public class UsageImpl extends DependencyImpl implements Usage {
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.USAGE__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.USAGE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
@@ -327,9 +327,9 @@ public class UsageImpl extends DependencyImpl implements Usage {
 			case UML2Package.USAGE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.USAGE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.USAGE__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.USAGE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.USAGE__NAME_EXPRESSION:

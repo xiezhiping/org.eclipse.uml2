@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExecutionOccurrenceImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: ExecutionOccurrenceImpl.java,v 1.4 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -549,7 +549,7 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 			case UML2Package.EXECUTION_OCCURRENCE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EXECUTION_OCCURRENCE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXECUTION_OCCURRENCE__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.EXECUTION_OCCURRENCE__CLIENT_DEPENDENCY:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.7 2004/06/02 05:02:25 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.8 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -98,6 +98,26 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @ordered
 	 */
 	protected boolean isUnique = IS_UNIQUE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLower()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LOWER_EDEFAULT = 1;
+
+	/**
+	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpper()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
 	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
@@ -602,9 +622,9 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 			case UML2Package.MULTIPLICITY_ELEMENT__IS_UNIQUE:
 				return isUnique != IS_UNIQUE_EDEFAULT;
 			case UML2Package.MULTIPLICITY_ELEMENT__LOWER:
-				return getLower() != 1;
+				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.MULTIPLICITY_ELEMENT__UPPER:
-				return getUpper() != 1;
+				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE:
 				return upperValue != null;
 			case UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.4 2004/06/02 16:01:35 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.5 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -284,7 +284,7 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 				setImportedPackage((org.eclipse.uml2.Package)null);
 				return;
 			case UML2Package.PROFILE_APPLICATION__IMPORTING_NAMESPACE:
-				setImportingNamespace(null);
+				setImportingNamespace((Namespace)null);
 				return;
 			case UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE:
 				setImportedProfile((Profile)null);

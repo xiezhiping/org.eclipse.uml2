@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.14 2004/06/16 03:38:11 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.15 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -695,7 +695,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
@@ -704,7 +704,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_ABSTRACT:
-				setIsAbstract(false);
+				setIsAbstract(IS_ABSTRACT_EDEFAULT);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__GENERALIZATION:
 				getGeneralizations().clear();
@@ -770,7 +770,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__CONTEXT:
-				setContext(null);
+				setContext((BehavioredClassifier)null);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR:
 				getRedefinedBehaviors().clear();
@@ -800,7 +800,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				setExtendedStateMachine((StateMachine)null);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT:
-				setStateMachine_redefinitionContext(null);
+				setStateMachine_redefinitionContext((BehavioredClassifier)null);
 				return;
 			case UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE:
 				getConformances().clear();
@@ -831,9 +831,9 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PROTOCOL_STATE_MACHINE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PROTOCOL_STATE_MACHINE__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__NAME_EXPRESSION:
@@ -863,7 +863,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_ABSTRACT:
-				return isAbstract() != false;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__GENERAL:

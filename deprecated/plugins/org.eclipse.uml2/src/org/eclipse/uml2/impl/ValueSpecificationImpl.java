@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ValueSpecificationImpl.java,v 1.4 2004/06/02 16:01:35 khussey Exp $
+ * $Id: ValueSpecificationImpl.java,v 1.5 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -471,7 +471,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.VALUE_SPECIFICATION__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 		}
 		eDynamicUnset(eFeature);
@@ -499,7 +499,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 			case UML2Package.VALUE_SPECIFICATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.VALUE_SPECIFICATION__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.VALUE_SPECIFICATION__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.VALUE_SPECIFICATION__CLIENT_DEPENDENCY:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuralFeatureActionImpl.java,v 1.5 2004/06/02 05:02:25 khussey Exp $
+ * $Id: StructuralFeatureActionImpl.java,v 1.6 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -527,7 +527,7 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 				getIncomings().clear();
 				return;
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__ACTIVITY:
-				setActivity(null);
+				setActivity((Activity)null);
 				return;
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__REDEFINED_ELEMENT:
 				getRedefinedElements().clear();
@@ -585,7 +585,7 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.STRUCTURAL_FEATURE_ACTION__CLIENT_DEPENDENCY:

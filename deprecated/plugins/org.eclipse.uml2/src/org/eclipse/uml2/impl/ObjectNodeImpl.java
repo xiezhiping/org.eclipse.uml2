@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.6 2004/06/02 16:01:35 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.7 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -645,7 +645,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 				getIncomings().clear();
 				return;
 			case UML2Package.OBJECT_NODE__ACTIVITY:
-				setActivity(null);
+				setActivity((Activity)null);
 				return;
 			case UML2Package.OBJECT_NODE__REDEFINED_ELEMENT:
 				getRedefinedElements().clear();
@@ -700,7 +700,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 			case UML2Package.OBJECT_NODE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.OBJECT_NODE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.OBJECT_NODE__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.OBJECT_NODE__CLIENT_DEPENDENCY:

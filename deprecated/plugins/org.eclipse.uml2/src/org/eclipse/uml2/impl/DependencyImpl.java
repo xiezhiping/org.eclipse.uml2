@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.7 2004/06/16 22:32:13 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.8 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -482,7 +482,7 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.DEPENDENCY__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.DEPENDENCY__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
@@ -519,9 +519,9 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 			case UML2Package.DEPENDENCY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DEPENDENCY__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEPENDENCY__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.DEPENDENCY__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEPENDENCY__NAME_EXPRESSION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalImpl.java,v 1.4 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -343,7 +343,7 @@ public class LiteralUnlimitedNaturalImpl extends LiteralSpecificationImpl implem
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.LITERAL_UNLIMITED_NATURAL__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.LITERAL_UNLIMITED_NATURAL__VALUE:
 				setValue(VALUE_EDEFAULT);
@@ -374,7 +374,7 @@ public class LiteralUnlimitedNaturalImpl extends LiteralSpecificationImpl implem
 			case UML2Package.LITERAL_UNLIMITED_NATURAL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.LITERAL_UNLIMITED_NATURAL__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.LITERAL_UNLIMITED_NATURAL__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.LITERAL_UNLIMITED_NATURAL__CLIENT_DEPENDENCY:

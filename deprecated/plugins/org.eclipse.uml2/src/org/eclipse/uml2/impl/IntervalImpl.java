@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: IntervalImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: IntervalImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -368,7 +368,7 @@ public class IntervalImpl extends ValueSpecificationImpl implements Interval {
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.INTERVAL__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.INTERVAL__MIN:
 				getMins().clear();
@@ -402,7 +402,7 @@ public class IntervalImpl extends ValueSpecificationImpl implements Interval {
 			case UML2Package.INTERVAL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INTERVAL__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERVAL__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.INTERVAL__CLIENT_DEPENDENCY:

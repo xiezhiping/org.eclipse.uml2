@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.6 2004/06/15 16:13:32 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.7 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -483,13 +483,13 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.INTERACTION_CONSTRAINT__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.INTERACTION_CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
 				return;
 			case UML2Package.INTERACTION_CONSTRAINT__NAMESPACE:
-				setNamespace(null);
+				setNamespace((Namespace)null);
 				return;
 			case UML2Package.INTERACTION_CONSTRAINT__SPECIFICATION:
 				setSpecification((ValueSpecification)null);
@@ -529,9 +529,9 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 			case UML2Package.INTERACTION_CONSTRAINT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INTERACTION_CONSTRAINT__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERACTION_CONSTRAINT__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INTERACTION_CONSTRAINT__NAME_EXPRESSION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.7 2004/06/02 16:01:35 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.8 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -411,7 +411,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 				setImportedPackage((org.eclipse.uml2.Package)null);
 				return;
 			case UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE:
-				setImportingNamespace(null);
+				setImportingNamespace((Namespace)null);
 				return;
 		}
 		eDynamicUnset(eFeature);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: DurationImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -376,7 +376,7 @@ public class DurationImpl extends ValueSpecificationImpl implements Duration {
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.DURATION__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.DURATION__FIRST_TIME:
 				setFirstTime(FIRST_TIME_EDEFAULT);
@@ -410,7 +410,7 @@ public class DurationImpl extends ValueSpecificationImpl implements Duration {
 			case UML2Package.DURATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DURATION__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DURATION__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.DURATION__CLIENT_DEPENDENCY:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.9 2004/06/16 22:32:13 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.10 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -135,6 +135,26 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	protected boolean isUnique = IS_UNIQUE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLower()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LOWER_EDEFAULT = 1;
+
+	/**
+	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpper()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int UPPER_EDEFAULT = 1;
+
+	/**
 	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -153,6 +173,16 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @ordered
 	 */
 	protected ValueSpecification lowerValue = null;
+
+	/**
+	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DEFAULT_EDEFAULT = ""; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
@@ -1146,7 +1176,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.PARAMETER__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.PARAMETER__END:
 				getEnds().clear();
@@ -1213,7 +1243,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PARAMETER__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PARAMETER__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.PARAMETER__CLIENT_DEPENDENCY:
@@ -1233,9 +1263,9 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__IS_UNIQUE:
 				return isUnique != IS_UNIQUE_EDEFAULT;
 			case UML2Package.PARAMETER__LOWER:
-				return getLower() != 1;
+				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.PARAMETER__UPPER:
-				return getUpper() != 1;
+				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.PARAMETER__UPPER_VALUE:
 				return upperValue != null;
 			case UML2Package.PARAMETER__LOWER_VALUE:
@@ -1243,7 +1273,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__OPERATION:
 				return getOperation() != null;
 			case UML2Package.PARAMETER__DEFAULT:
-				return !"".equals(getDefault()); //$NON-NLS-1$
+				return DEFAULT_EDEFAULT == null ? getDefault() != null : !DEFAULT_EDEFAULT.equals(getDefault());
 			case UML2Package.PARAMETER__DIRECTION:
 				return direction != DIRECTION_EDEFAULT;
 			case UML2Package.PARAMETER__DEFAULT_VALUE:

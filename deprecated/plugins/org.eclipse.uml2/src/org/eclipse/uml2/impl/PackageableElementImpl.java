@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.5 2004/06/15 16:13:32 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.6 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -474,7 +474,7 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.PACKAGEABLE_ELEMENT__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
@@ -505,9 +505,9 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 			case UML2Package.PACKAGEABLE_ELEMENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PACKAGEABLE_ELEMENT__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PACKAGEABLE_ELEMENT__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PACKAGEABLE_ELEMENT__NAME_EXPRESSION:

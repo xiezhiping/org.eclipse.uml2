@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.7 2004/06/15 16:13:32 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.8 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -563,7 +563,7 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.DEPLOYMENT__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.DEPLOYMENT__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
@@ -578,7 +578,7 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 				getDeployedArtifacts().clear();
 				return;
 			case UML2Package.DEPLOYMENT__LOCATION:
-				setLocation(null);
+				setLocation((DeploymentTarget)null);
 				return;
 			case UML2Package.DEPLOYMENT__CONFIGURATION:
 				getConfigurations().clear();
@@ -609,9 +609,9 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			case UML2Package.DEPLOYMENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DEPLOYMENT__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEPLOYMENT__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.DEPLOYMENT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEPLOYMENT__NAME_EXPRESSION:

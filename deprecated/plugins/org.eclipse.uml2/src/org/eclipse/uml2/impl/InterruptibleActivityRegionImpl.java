@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -289,7 +289,7 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 				getOwnedComments().clear();
 				return;
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY:
-				setActivityGroup_activity(null);
+				setActivityGroup_activity((Activity)null);
 				return;
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE:
 				getInterruptingEdges().clear();

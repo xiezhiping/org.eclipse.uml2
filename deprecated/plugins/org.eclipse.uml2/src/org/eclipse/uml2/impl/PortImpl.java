@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PortImpl.java,v 1.6 2004/06/15 16:13:32 khussey Exp $
+ * $Id: PortImpl.java,v 1.7 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -856,13 +856,13 @@ public class PortImpl extends PropertyImpl implements Port {
 				setLowerValue((ValueSpecification)null);
 				return;
 			case UML2Package.PORT__IS_READ_ONLY:
-				setIsReadOnly(false);
+				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
 				return;
 			case UML2Package.PORT__TEMPLATE_PARAMETER:
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.PORT__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.PORT__END:
 				getEnds().clear();
@@ -877,7 +877,7 @@ public class PortImpl extends PropertyImpl implements Port {
 				setIsDerivedUnion(IS_DERIVED_UNION_EDEFAULT);
 				return;
 			case UML2Package.PORT__OWNING_ASSOCIATION:
-				setOwningAssociation(null);
+				setOwningAssociation((Association)null);
 				return;
 			case UML2Package.PORT__REDEFINED_PROPERTY:
 				getRedefinedProperties().clear();
@@ -941,7 +941,7 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PORT__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PORT__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.PORT__CLIENT_DEPENDENCY:
@@ -963,15 +963,15 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__IS_UNIQUE:
 				return isUnique != IS_UNIQUE_EDEFAULT;
 			case UML2Package.PORT__LOWER:
-				return getLower() != 1;
+				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.PORT__UPPER:
-				return getUpper() != 1;
+				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.PORT__UPPER_VALUE:
 				return upperValue != null;
 			case UML2Package.PORT__LOWER_VALUE:
 				return lowerValue != null;
 			case UML2Package.PORT__IS_READ_ONLY:
-				return isReadOnly() != false;
+				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
 			case UML2Package.PORT__TEMPLATE_PARAMETER:
 				return templateParameter != null;
 			case UML2Package.PORT__OWNING_PARAMETER:
@@ -983,9 +983,9 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__DEPLOYED_ELEMENT:
 				return !getDeployedElements().isEmpty();
 			case UML2Package.PORT__DEFAULT:
-				return !"".equals(getDefault()); //$NON-NLS-1$
+				return DEFAULT_EDEFAULT == null ? getDefault() != null : !DEFAULT_EDEFAULT.equals(getDefault());
 			case UML2Package.PORT__IS_COMPOSITE:
-				return isComposite() != false;
+				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UML2Package.PORT__IS_DERIVED:
 				return isDerived != IS_DERIVED_EDEFAULT;
 			case UML2Package.PORT__CLASS_:

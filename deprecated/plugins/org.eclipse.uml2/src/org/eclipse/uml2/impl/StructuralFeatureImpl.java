@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.8 2004/06/02 16:01:35 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.9 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -115,6 +115,26 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @ordered
 	 */
 	protected boolean isUnique = IS_UNIQUE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLower()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LOWER_EDEFAULT = 1;
+
+	/**
+	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpper()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
 	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
@@ -809,7 +829,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 			case UML2Package.STRUCTURAL_FEATURE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.STRUCTURAL_FEATURE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STRUCTURAL_FEATURE__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY:
@@ -831,9 +851,9 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 			case UML2Package.STRUCTURAL_FEATURE__IS_UNIQUE:
 				return isUnique != IS_UNIQUE_EDEFAULT;
 			case UML2Package.STRUCTURAL_FEATURE__LOWER:
-				return getLower() != 1;
+				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.STRUCTURAL_FEATURE__UPPER:
-				return getUpper() != 1;
+				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.STRUCTURAL_FEATURE__UPPER_VALUE:
 				return upperValue != null;
 			case UML2Package.STRUCTURAL_FEATURE__LOWER_VALUE:

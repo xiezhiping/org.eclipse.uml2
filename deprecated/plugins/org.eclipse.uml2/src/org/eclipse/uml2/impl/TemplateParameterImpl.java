@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.7 2004/06/02 16:01:35 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.8 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -589,7 +589,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 				getOwnedComments().clear();
 				return;
 			case UML2Package.TEMPLATE_PARAMETER__SIGNATURE:
-				setSignature(null);
+				setSignature((TemplateSignature)null);
 				return;
 			case UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT:
 				setParameteredElement((ParameterableElement)null);

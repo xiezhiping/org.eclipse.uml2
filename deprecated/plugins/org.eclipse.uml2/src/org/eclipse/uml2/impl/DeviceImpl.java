@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeviceImpl.java,v 1.14 2004/06/16 03:38:10 khussey Exp $
+ * $Id: DeviceImpl.java,v 1.15 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -529,7 +529,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.DEVICE__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.DEVICE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
@@ -538,7 +538,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 			case UML2Package.DEVICE__IS_ABSTRACT:
-				setIsAbstract(false);
+				setIsAbstract(IS_ABSTRACT_EDEFAULT);
 				return;
 			case UML2Package.DEVICE__GENERALIZATION:
 				getGeneralizations().clear();
@@ -632,9 +632,9 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DEVICE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEVICE__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.DEVICE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEVICE__NAME_EXPRESSION:
@@ -664,7 +664,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.DEVICE__IS_ABSTRACT:
-				return isAbstract() != false;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.DEVICE__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.DEVICE__GENERAL:

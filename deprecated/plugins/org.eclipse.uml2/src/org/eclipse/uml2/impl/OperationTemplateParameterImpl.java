@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationTemplateParameterImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: OperationTemplateParameterImpl.java,v 1.3 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -214,7 +214,7 @@ public class OperationTemplateParameterImpl extends TemplateParameterImpl implem
 				getOwnedComments().clear();
 				return;
 			case UML2Package.OPERATION_TEMPLATE_PARAMETER__SIGNATURE:
-				setSignature(null);
+				setSignature((TemplateSignature)null);
 				return;
 			case UML2Package.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT:
 				setParameteredElement((ParameterableElement)null);

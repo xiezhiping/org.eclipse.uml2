@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.7 2004/06/15 16:13:32 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.8 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -521,7 +521,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.IMPLEMENTATION__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.IMPLEMENTATION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
@@ -536,7 +536,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 				setMapping((OpaqueExpression)null);
 				return;
 			case UML2Package.IMPLEMENTATION__ABSTRACTION:
-				setAbstraction(null);
+				setAbstraction((Component)null);
 				return;
 			case UML2Package.IMPLEMENTATION__REALIZING_CLASSIFIER:
 				setRealizingClassifier((Classifier)null);
@@ -545,7 +545,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 				setContract((Interface)null);
 				return;
 			case UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER:
-				setImplementingClassifier(null);
+				setImplementingClassifier((BehavioredClassifier)null);
 				return;
 		}
 		eDynamicUnset(eFeature);
@@ -573,9 +573,9 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			case UML2Package.IMPLEMENTATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.IMPLEMENTATION__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.IMPLEMENTATION__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.IMPLEMENTATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.IMPLEMENTATION__NAME_EXPRESSION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2PackageImpl.java,v 1.15 2004/06/16 03:38:11 khussey Exp $
+ * $Id: UML2PackageImpl.java,v 1.16 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1848,7 +1848,13 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		theUML2Package.fixPackageContents();
 
 		// Register package validator
-		EValidator.Registry.INSTANCE.put(theUML2Package, UML2Validator.INSTANCE);
+		EValidator.Registry.INSTANCE.put
+			(theUML2Package, 
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return UML2Validator.INSTANCE;
+				 }
+			 });
 
 		return theUML2Package;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.5 2004/06/02 05:02:26 khussey Exp $
+ * $Id: MessageImpl.java,v 1.6 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -69,6 +69,16 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The default value of the '{@link #getMessageKind() <em>Message Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessageKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final MessageKind MESSAGE_KIND_EDEFAULT = MessageKind.COMPLETE_LITERAL;
 
 	/**
 	 * The default value of the '{@link #getMessageSort() <em>Message Sort</em>}' attribute.
@@ -777,7 +787,7 @@ public class MessageImpl extends NamedElementImpl implements Message {
 			case UML2Package.MESSAGE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.MESSAGE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.MESSAGE__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.MESSAGE__CLIENT_DEPENDENCY:
@@ -785,7 +795,7 @@ public class MessageImpl extends NamedElementImpl implements Message {
 			case UML2Package.MESSAGE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.MESSAGE__MESSAGE_KIND:
-				return getMessageKind() != MessageKind.COMPLETE_LITERAL;
+				return getMessageKind() != MESSAGE_KIND_EDEFAULT;
 			case UML2Package.MESSAGE__MESSAGE_SORT:
 				return messageSort != MESSAGE_SORT_EDEFAULT;
 			case UML2Package.MESSAGE__RECEIVE_EVENT:

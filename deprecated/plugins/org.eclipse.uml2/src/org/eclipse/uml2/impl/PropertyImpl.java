@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.13 2004/06/16 22:32:13 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.14 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -132,6 +132,26 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @ordered
 	 */
 	protected EList deployment = null;
+
+	/**
+	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DEFAULT_EDEFAULT = ""; //$NON-NLS-1$
+
+	/**
+	 * The default value of the '{@link #isComposite() <em>Is Composite</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isComposite()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_COMPOSITE_EDEFAULT = false;
 
 	/**
 	 * The default value of the '{@link #isDerived() <em>Is Derived</em>}' attribute.
@@ -1597,13 +1617,13 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 				setLowerValue((ValueSpecification)null);
 				return;
 			case UML2Package.PROPERTY__IS_READ_ONLY:
-				setIsReadOnly(false);
+				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
 				return;
 			case UML2Package.PROPERTY__TEMPLATE_PARAMETER:
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.PROPERTY__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.PROPERTY__END:
 				getEnds().clear();
@@ -1618,7 +1638,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 				setIsDerivedUnion(IS_DERIVED_UNION_EDEFAULT);
 				return;
 			case UML2Package.PROPERTY__OWNING_ASSOCIATION:
-				setOwningAssociation(null);
+				setOwningAssociation((Association)null);
 				return;
 			case UML2Package.PROPERTY__REDEFINED_PROPERTY:
 				getRedefinedProperties().clear();
@@ -1670,7 +1690,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PROPERTY__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PROPERTY__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.PROPERTY__CLIENT_DEPENDENCY:
@@ -1692,15 +1712,15 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__IS_UNIQUE:
 				return isUnique != IS_UNIQUE_EDEFAULT;
 			case UML2Package.PROPERTY__LOWER:
-				return getLower() != 1;
+				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.PROPERTY__UPPER:
-				return getUpper() != 1;
+				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.PROPERTY__UPPER_VALUE:
 				return upperValue != null;
 			case UML2Package.PROPERTY__LOWER_VALUE:
 				return lowerValue != null;
 			case UML2Package.PROPERTY__IS_READ_ONLY:
-				return isReadOnly() != false;
+				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
 			case UML2Package.PROPERTY__TEMPLATE_PARAMETER:
 				return templateParameter != null;
 			case UML2Package.PROPERTY__OWNING_PARAMETER:
@@ -1712,9 +1732,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__DEPLOYED_ELEMENT:
 				return !getDeployedElements().isEmpty();
 			case UML2Package.PROPERTY__DEFAULT:
-				return !"".equals(getDefault()); //$NON-NLS-1$
+				return DEFAULT_EDEFAULT == null ? getDefault() != null : !DEFAULT_EDEFAULT.equals(getDefault());
 			case UML2Package.PROPERTY__IS_COMPOSITE:
-				return isComposite() != false;
+				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UML2Package.PROPERTY__IS_DERIVED:
 				return isDerived != IS_DERIVED_EDEFAULT;
 			case UML2Package.PROPERTY__CLASS_:

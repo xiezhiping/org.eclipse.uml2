@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.4 2004/06/02 16:01:35 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.5 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -443,7 +443,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.CONNECTABLE_ELEMENT__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.CONNECTABLE_ELEMENT__END:
 				getEnds().clear();
@@ -474,7 +474,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 			case UML2Package.CONNECTABLE_ELEMENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CONNECTABLE_ELEMENT__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CONNECTABLE_ELEMENT__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY:

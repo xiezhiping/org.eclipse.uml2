@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OutputPinImpl.java,v 1.3 2004/05/20 03:20:02 khussey Exp $
+ * $Id: OutputPinImpl.java,v 1.4 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -388,7 +388,7 @@ public class OutputPinImpl extends PinImpl implements OutputPin {
 				getIncomings().clear();
 				return;
 			case UML2Package.OUTPUT_PIN__ACTIVITY:
-				setActivity(null);
+				setActivity((Activity)null);
 				return;
 			case UML2Package.OUTPUT_PIN__REDEFINED_ELEMENT:
 				getRedefinedElements().clear();
@@ -455,7 +455,7 @@ public class OutputPinImpl extends PinImpl implements OutputPin {
 			case UML2Package.OUTPUT_PIN__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.OUTPUT_PIN__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.OUTPUT_PIN__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.OUTPUT_PIN__CLIENT_DEPENDENCY:
@@ -497,9 +497,9 @@ public class OutputPinImpl extends PinImpl implements OutputPin {
 			case UML2Package.OUTPUT_PIN__IS_UNIQUE:
 				return isUnique != IS_UNIQUE_EDEFAULT;
 			case UML2Package.OUTPUT_PIN__LOWER:
-				return getLower() != 1;
+				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.OUTPUT_PIN__UPPER:
-				return getUpper() != 1;
+				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.OUTPUT_PIN__UPPER_VALUE:
 				return upperValue != null;
 			case UML2Package.OUTPUT_PIN__LOWER_VALUE:

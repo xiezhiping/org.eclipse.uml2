@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.7 2004/06/15 16:13:32 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.8 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -514,7 +514,7 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.REALIZATION__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.REALIZATION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
@@ -529,7 +529,7 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 				setMapping((OpaqueExpression)null);
 				return;
 			case UML2Package.REALIZATION__ABSTRACTION:
-				setAbstraction(null);
+				setAbstraction((Component)null);
 				return;
 			case UML2Package.REALIZATION__REALIZING_CLASSIFIER:
 				setRealizingClassifier((Classifier)null);
@@ -560,9 +560,9 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 			case UML2Package.REALIZATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.REALIZATION__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.REALIZATION__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.REALIZATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.REALIZATION__NAME_EXPRESSION:

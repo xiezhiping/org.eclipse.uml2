@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.6 2004/06/16 22:32:13 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.7 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -450,7 +450,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 			case UML2Package.INCLUDE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INCLUDE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INCLUDE__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.INCLUDE__CLIENT_DEPENDENCY:

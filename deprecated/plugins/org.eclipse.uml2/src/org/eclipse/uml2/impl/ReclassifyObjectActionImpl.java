@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.5 2004/06/02 05:02:25 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.6 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -613,7 +613,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 				getIncomings().clear();
 				return;
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__ACTIVITY:
-				setActivity(null);
+				setActivity((Activity)null);
 				return;
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__REDEFINED_ELEMENT:
 				getRedefinedElements().clear();
@@ -677,7 +677,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.RECLASSIFY_OBJECT_ACTION__CLIENT_DEPENDENCY:

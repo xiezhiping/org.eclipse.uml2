@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.3 2004/05/20 03:20:03 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -266,7 +266,7 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 				getOwnedComments().clear();
 				return;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE:
-				setSignature(null);
+				setSignature((TemplateSignature)null);
 				return;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT:
 				setParameteredElement((ParameterableElement)null);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.5 2004/06/17 01:09:03 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.6 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -342,7 +342,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 				getOwnedComments().clear();
 				return;
 			case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
-				setActivityGroup_activity(null);
+				setActivityGroup_activity((Activity)null);
 				return;
 		}
 		eDynamicUnset(eFeature);

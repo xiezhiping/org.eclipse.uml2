@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.4 2004/06/17 01:09:03 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.5 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -126,8 +126,8 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ConnectableElement getRole() {
@@ -404,9 +404,9 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 			case UML2Package.CONNECTOR_END__IS_UNIQUE:
 				return isUnique != IS_UNIQUE_EDEFAULT;
 			case UML2Package.CONNECTOR_END__LOWER:
-				return getLower() != 1;
+				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.CONNECTOR_END__UPPER:
-				return getUpper() != 1;
+				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.CONNECTOR_END__UPPER_VALUE:
 				return upperValue != null;
 			case UML2Package.CONNECTOR_END__LOWER_VALUE:

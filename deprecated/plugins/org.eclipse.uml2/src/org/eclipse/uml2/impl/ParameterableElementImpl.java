@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.4 2004/06/02 16:01:35 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.5 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -335,7 +335,7 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 		}
 		eDynamicUnset(eFeature);

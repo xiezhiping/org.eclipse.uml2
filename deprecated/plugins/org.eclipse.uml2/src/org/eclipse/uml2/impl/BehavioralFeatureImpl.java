@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.8 2004/06/17 03:20:09 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.9 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -998,7 +998,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			case UML2Package.BEHAVIORAL_FEATURE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.BEHAVIORAL_FEATURE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.BEHAVIORAL_FEATURE__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY:

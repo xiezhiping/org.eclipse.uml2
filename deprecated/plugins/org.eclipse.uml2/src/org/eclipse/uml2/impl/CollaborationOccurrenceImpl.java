@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CollaborationOccurrenceImpl.java,v 1.5 2004/06/02 05:02:25 khussey Exp $
+ * $Id: CollaborationOccurrenceImpl.java,v 1.6 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -400,7 +400,7 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 			case UML2Package.COLLABORATION_OCCURRENCE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.COLLABORATION_OCCURRENCE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COLLABORATION_OCCURRENCE__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.COLLABORATION_OCCURRENCE__CLIENT_DEPENDENCY:

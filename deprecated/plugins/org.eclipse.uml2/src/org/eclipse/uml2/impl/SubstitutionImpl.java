@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.7 2004/06/15 16:13:32 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.8 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -519,7 +519,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.SUBSTITUTION__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.SUBSTITUTION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
@@ -534,7 +534,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 				setMapping((OpaqueExpression)null);
 				return;
 			case UML2Package.SUBSTITUTION__ABSTRACTION:
-				setAbstraction(null);
+				setAbstraction((Component)null);
 				return;
 			case UML2Package.SUBSTITUTION__REALIZING_CLASSIFIER:
 				setRealizingClassifier((Classifier)null);
@@ -543,7 +543,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 				setContract((Classifier)null);
 				return;
 			case UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER:
-				setSubstitutingClassifier(null);
+				setSubstitutingClassifier((Classifier)null);
 				return;
 		}
 		eDynamicUnset(eFeature);
@@ -571,9 +571,9 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			case UML2Package.SUBSTITUTION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.SUBSTITUTION__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.SUBSTITUTION__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.SUBSTITUTION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.SUBSTITUTION__NAME_EXPRESSION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.10 2004/06/15 16:13:32 khussey Exp $
+ * $Id: OperationImpl.java,v 1.11 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -93,6 +93,46 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOrdered()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_ORDERED_EDEFAULT = false;
+
+	/**
+	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUnique()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_UNIQUE_EDEFAULT = true;
+
+	/**
+	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLower()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LOWER_EDEFAULT = 1;
+
+	/**
+	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpper()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
 	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
@@ -1528,13 +1568,13 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 				setConcurrency(CONCURRENCY_EDEFAULT);
 				return;
 			case UML2Package.OPERATION__TYPE:
-				setType(null);
+				setType((Type)null);
 				return;
 			case UML2Package.OPERATION__IS_ORDERED:
-				setIsOrdered(false);
+				setIsOrdered(IS_ORDERED_EDEFAULT);
 				return;
 			case UML2Package.OPERATION__IS_UNIQUE:
-				setIsUnique(true);
+				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UML2Package.OPERATION__UPPER_VALUE:
 				setUpperValue((ValueSpecification)null);
@@ -1546,7 +1586,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.OPERATION__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.OPERATION__OWNED_PARAMETER:
 				getOwnedParameters().clear();
@@ -1598,7 +1638,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.OPERATION__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.OPERATION__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.OPERATION__CLIENT_DEPENDENCY:
@@ -1640,13 +1680,13 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__TYPE:
 				return basicGetType() != null;
 			case UML2Package.OPERATION__IS_ORDERED:
-				return isOrdered() != false;
+				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UML2Package.OPERATION__IS_UNIQUE:
-				return isUnique() != true;
+				return isUnique() != IS_UNIQUE_EDEFAULT;
 			case UML2Package.OPERATION__LOWER:
-				return getLower() != 1;
+				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.OPERATION__UPPER:
-				return getUpper() != 1;
+				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.OPERATION__UPPER_VALUE:
 				return upperValue != null;
 			case UML2Package.OPERATION__LOWER_VALUE:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StopImpl.java,v 1.3 2004/06/15 16:13:32 khussey Exp $
+ * $Id: StopImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -400,7 +400,7 @@ public class StopImpl extends EventOccurrenceImpl implements Stop {
 			case UML2Package.STOP__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.STOP__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STOP__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.STOP__CLIENT_DEPENDENCY:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: FinalStateImpl.java,v 1.3 2004/05/11 15:24:00 khussey Exp $
+ * $Id: FinalStateImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -458,7 +458,7 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 			case UML2Package.FINAL_STATE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.FINAL_STATE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.FINAL_STATE__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.FINAL_STATE__CLIENT_DEPENDENCY:
@@ -486,13 +486,13 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 			case UML2Package.FINAL_STATE__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.FINAL_STATE__IS_COMPOSITE:
-				return isComposite() != false;
+				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UML2Package.FINAL_STATE__IS_ORTHOGONAL:
-				return isOrthogonal() != false;
+				return isOrthogonal() != IS_ORTHOGONAL_EDEFAULT;
 			case UML2Package.FINAL_STATE__IS_SIMPLE:
-				return isSimple() != false;
+				return isSimple() != IS_SIMPLE_EDEFAULT;
 			case UML2Package.FINAL_STATE__IS_SUBMACHINE_STATE:
-				return isSubmachineState() != false;
+				return isSubmachineState() != IS_SUBMACHINE_STATE_EDEFAULT;
 			case UML2Package.FINAL_STATE__SUBMACHINE:
 				return submachine != null;
 			case UML2Package.FINAL_STATE__CONNECTION:

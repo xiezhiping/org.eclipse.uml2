@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InitialNodeImpl.java,v 1.2 2004/04/10 04:09:49 khussey Exp $
+ * $Id: InitialNodeImpl.java,v 1.3 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -326,7 +326,7 @@ public class InitialNodeImpl extends ControlNodeImpl implements InitialNode {
 				getIncomings().clear();
 				return;
 			case UML2Package.INITIAL_NODE__ACTIVITY:
-				setActivity(null);
+				setActivity((Activity)null);
 				return;
 			case UML2Package.INITIAL_NODE__REDEFINED_ELEMENT:
 				getRedefinedElements().clear();
@@ -366,7 +366,7 @@ public class InitialNodeImpl extends ControlNodeImpl implements InitialNode {
 			case UML2Package.INITIAL_NODE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INITIAL_NODE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INITIAL_NODE__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.INITIAL_NODE__CLIENT_DEPENDENCY:

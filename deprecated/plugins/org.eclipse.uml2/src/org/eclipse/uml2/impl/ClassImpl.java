@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.18 2004/06/17 01:09:03 khussey Exp $
+ * $Id: ClassImpl.java,v 1.19 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -548,10 +548,10 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	}
 
     /**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
-	 */
+     */
     public Extension getExtension(String unqualifiedName) {
     	for (Iterator i = getExtensions().iterator(); i.hasNext(); ) {
     		Extension namedExtension = (Extension) i.next();
@@ -1233,7 +1233,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.CLASS__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.CLASS__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
@@ -1242,7 +1242,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
 			case UML2Package.CLASS__IS_ABSTRACT:
-				setIsAbstract(false);
+				setIsAbstract(IS_ABSTRACT_EDEFAULT);
 				return;
 			case UML2Package.CLASS__GENERALIZATION:
 				getGeneralizations().clear();
@@ -1330,9 +1330,9 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CLASS__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CLASS__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.CLASS__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CLASS__NAME_EXPRESSION:
@@ -1362,7 +1362,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.CLASS__IS_ABSTRACT:
-				return isAbstract() != false;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.CLASS__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.CLASS__GENERAL:

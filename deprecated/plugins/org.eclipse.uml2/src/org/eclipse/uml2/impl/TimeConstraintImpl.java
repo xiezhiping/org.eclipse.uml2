@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.4 2004/06/15 16:13:32 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.5 2004/06/18 04:34:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -337,16 +337,16 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 				setTemplateParameter((TemplateParameter)null);
 				return;
 			case UML2Package.TIME_CONSTRAINT__OWNING_PARAMETER:
-				setOwningParameter(null);
+				setOwningParameter((TemplateParameter)null);
 				return;
 			case UML2Package.TIME_CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY:
 				setPackageableElement_visibility(PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT);
 				return;
 			case UML2Package.TIME_CONSTRAINT__NAMESPACE:
-				setNamespace(null);
+				setNamespace((Namespace)null);
 				return;
 			case UML2Package.TIME_CONSTRAINT__SPECIFICATION:
-				setSpecification(null);
+				setSpecification((ValueSpecification)null);
 				return;
 			case UML2Package.TIME_CONSTRAINT__CONSTRAINED_ELEMENT:
 				getConstrainedElements().clear();
@@ -377,9 +377,9 @@ public class TimeConstraintImpl extends IntervalConstraintImpl implements TimeCo
 			case UML2Package.TIME_CONSTRAINT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.TIME_CONSTRAINT__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TIME_CONSTRAINT__VISIBILITY:
-				return getVisibility() != VisibilityKind.PUBLIC_LITERAL;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.TIME_CONSTRAINT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.TIME_CONSTRAINT__NAME_EXPRESSION:

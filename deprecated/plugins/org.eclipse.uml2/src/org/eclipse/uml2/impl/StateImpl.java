@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateImpl.java,v 1.7 2004/06/17 01:09:03 khussey Exp $
+ * $Id: StateImpl.java,v 1.8 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -131,6 +131,46 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @ordered
 	 */
 	protected EList incoming = null;
+
+	/**
+	 * The default value of the '{@link #isComposite() <em>Is Composite</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isComposite()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_COMPOSITE_EDEFAULT = false;
+
+	/**
+	 * The default value of the '{@link #isOrthogonal() <em>Is Orthogonal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOrthogonal()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_ORTHOGONAL_EDEFAULT = false;
+
+	/**
+	 * The default value of the '{@link #isSimple() <em>Is Simple</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSimple()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_SIMPLE_EDEFAULT = false;
+
+	/**
+	 * The default value of the '{@link #isSubmachineState() <em>Is Submachine State</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSubmachineState()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_SUBMACHINE_STATE_EDEFAULT = false;
 
 	/**
 	 * The cached value of the '{@link #getSubmachine() <em>Submachine</em>}' reference.
@@ -1364,7 +1404,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.STATE__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STATE__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.STATE__CLIENT_DEPENDENCY:
@@ -1392,13 +1432,13 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.STATE__IS_COMPOSITE:
-				return isComposite() != false;
+				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UML2Package.STATE__IS_ORTHOGONAL:
-				return isOrthogonal() != false;
+				return isOrthogonal() != IS_ORTHOGONAL_EDEFAULT;
 			case UML2Package.STATE__IS_SIMPLE:
-				return isSimple() != false;
+				return isSimple() != IS_SIMPLE_EDEFAULT;
 			case UML2Package.STATE__IS_SUBMACHINE_STATE:
-				return isSubmachineState() != false;
+				return isSubmachineState() != IS_SUBMACHINE_STATE_EDEFAULT;
 			case UML2Package.STATE__SUBMACHINE:
 				return submachine != null;
 			case UML2Package.STATE__CONNECTION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.6 2004/06/17 01:09:03 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.7 2004/06/18 04:34:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -924,7 +924,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			case UML2Package.TRANSITION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.TRANSITION__QUALIFIED_NAME:
-				return !"".equals(getQualifiedName()); //$NON-NLS-1$
+				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TRANSITION__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.TRANSITION__CLIENT_DEPENDENCY:
