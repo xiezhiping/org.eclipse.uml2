@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Validator.java,v 1.1 2004/05/11 15:24:01 khussey Exp $
+ * $Id: UML2Validator.java,v 1.2 2004/05/11 15:30:44 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -16,15 +16,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
 import org.eclipse.uml2.Abstraction;
