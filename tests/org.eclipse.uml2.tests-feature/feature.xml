@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: feature.xml,v 1.5 2004/11/02 15:32:28 khussey Exp $
+ * $Id: feature.xml,v 1.6 2004/11/15 18:04:35 khussey Exp $
  */
 -->
 
@@ -32,7 +32,8 @@
    </license>
 
    <url>
-      <update label="%update.label" url="http://update.eclipse.org/updates"/>
+      <update label="%update.label" url="http://download.eclipse.org/tools/uml2/updates/"/>
+      <discovery label="%update.label" url="http://download.eclipse.org/tools/uml2/updates/"/>
    </url>
 
    <requires>

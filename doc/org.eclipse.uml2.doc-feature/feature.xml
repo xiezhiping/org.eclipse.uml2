@@ -12,14 +12,14 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: feature.xml,v 1.5 2004/11/02 15:30:07 khussey Exp $
+ * $Id: feature.xml,v 1.6 2004/11/15 18:04:42 khussey Exp $
  */
 -->
 
 <feature
    id="org.eclipse.uml2.doc"
    label="%feature.label"
-   version="1.0.2"
+   version="1.1.0"
    provider-name="%feature.provider-name"
    image="eclipse_update_120.jpg">
 
@@ -32,13 +32,14 @@
    </license>
 
    <url>
-      <update label="%update.label" url="http://update.eclipse.org/updates"/>
+      <update label="%update.label" url="http://download.eclipse.org/tools/uml2/updates/"/>
+      <discovery label="%update.label" url="http://download.eclipse.org/tools/uml2/updates/"/>
    </url>
 
    <plugin
       id="org.eclipse.uml2.doc"
       download-size="0"
       install-size="0"   		
-      version="1.0.2"/>
+      version="1.1.0"/>
 
 </feature>
