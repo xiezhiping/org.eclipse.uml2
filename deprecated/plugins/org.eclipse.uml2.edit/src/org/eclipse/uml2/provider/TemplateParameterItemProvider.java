@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterItemProvider.java,v 1.16 2005/03/15 18:48:28 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.17 2005/04/04 20:03:41 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -58,7 +58,7 @@ public class TemplateParameterItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This constructs an instance from a factory and a notifier.

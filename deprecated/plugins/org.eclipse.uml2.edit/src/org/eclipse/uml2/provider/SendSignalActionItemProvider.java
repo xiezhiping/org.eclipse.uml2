@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionItemProvider.java,v 1.12 2005/03/15 18:48:29 khussey Exp $
+ * $Id: SendSignalActionItemProvider.java,v 1.13 2005/04/04 20:03:41 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -52,7 +52,7 @@ public class SendSignalActionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This constructs an instance from a factory and a notifier.

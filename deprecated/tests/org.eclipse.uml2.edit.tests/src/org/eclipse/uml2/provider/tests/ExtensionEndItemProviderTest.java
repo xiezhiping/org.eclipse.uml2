@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndItemProviderTest.java,v 1.2 2005/03/15 18:49:59 khussey Exp $
+ * $Id: ExtensionEndItemProviderTest.java,v 1.3 2005/04/04 20:02:09 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -34,7 +34,7 @@ public class ExtensionEndItemProviderTest extends PropertyItemProviderTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public class ExtensionEndItemProviderTest extends PropertyItemProviderTest {
 		return (ExtensionEnd) modelObject;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
@@ -77,31 +77,38 @@ public class ExtensionEndItemProviderTest extends PropertyItemProviderTest {
 		setModelObject(UML2Factory.eINSTANCE.createExtensionEnd());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.provider.PropertyItemProvider#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object) <em>Create Set Command</em>}' method.
-	 * @see org.eclipse.uml2.provider.PropertyItemProvider#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.provider.tests.PropertyItemProviderTest#testCreateSetCommand()
 	 */
 	public void testCreateSetCommand() {
+		testCreateSetCommandGen();
 
 		// test PROPERTY__OWNING_ASSOCIATION subset...
 		Extension extension = UML2Factory.eINSTANCE.createExtension();
 
-		Command command = SetCommand.create(getEditingDomain(), getModelObject(), UML2Package.eINSTANCE.getProperty_OwningAssociation(), extension);
+		Command command = SetCommand.create(getEditingDomain(),
+			getModelObject(), UML2Package.eINSTANCE
+				.getProperty_OwningAssociation(), extension);
 
 		getCommandStack().execute(command);
 
 		assertSame(extension, getModelObject().getOwningAssociation());
-		assertSame(getModelObject().getOwningAssociation(), getModelObject().getAssociation());
+		assertSame(getModelObject().getOwningAssociation(), getModelObject()
+			.getAssociation());
 
 		getCommandStack().undo();
 
 		assertNotSame(extension, getModelObject().getOwningAssociation());
-		assertSame(getModelObject().getOwningAssociation(), getModelObject().getAssociation());
+		assertSame(getModelObject().getOwningAssociation(), getModelObject()
+			.getAssociation());
 
 		getCommandStack().redo();
 
 		assertSame(extension, getModelObject().getOwningAssociation());
-		assertSame(getModelObject().getOwningAssociation(), getModelObject().getAssociation());
+		assertSame(getModelObject().getOwningAssociation(), getModelObject()
+			.getAssociation());
 
 		// test PROPERTY__ASSOCIATION superset...
 		Extension oldExtension = UML2Factory.eINSTANCE.createExtension();
@@ -109,7 +116,8 @@ public class ExtensionEndItemProviderTest extends PropertyItemProviderTest {
 
 		getModelObject().setOwningAssociation(oldExtension);
 
-		command = SetCommand.create(getEditingDomain(), getModelObject(), UML2Package.eINSTANCE.getProperty_Association(), newExtension);
+		command = SetCommand.create(getEditingDomain(), getModelObject(),
+			UML2Package.eINSTANCE.getProperty_Association(), newExtension);
 
 		getCommandStack().execute(command);
 

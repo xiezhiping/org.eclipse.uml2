@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassItemProviderTest.java,v 1.3 2005/03/15 18:49:59 khussey Exp $
+ * $Id: ClassItemProviderTest.java,v 1.4 2005/04/04 20:02:09 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -29,7 +29,7 @@ public class ClassItemProviderTest extends BehavioredClassifierItemProviderTest 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -60,7 +60,7 @@ public class ClassItemProviderTest extends BehavioredClassifierItemProviderTest 
 		return (org.eclipse.uml2.Class) modelObject;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()

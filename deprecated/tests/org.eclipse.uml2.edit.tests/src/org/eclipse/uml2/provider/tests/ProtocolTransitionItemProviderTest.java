@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionItemProviderTest.java,v 1.4 2005/03/15 18:49:58 khussey Exp $
+ * $Id: ProtocolTransitionItemProviderTest.java,v 1.5 2005/04/04 20:02:08 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -34,7 +34,7 @@ public class ProtocolTransitionItemProviderTest extends TransitionItemProviderTe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public class ProtocolTransitionItemProviderTest extends TransitionItemProviderTe
 		return (ProtocolTransition) modelObject;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
@@ -82,9 +82,15 @@ public class ProtocolTransitionItemProviderTest extends TransitionItemProviderTe
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.provider.ProtocolTransitionItemProvider#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testCreateSetCommandGen() {
+		// TODO: implement this set command creation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
 	public void testCreateSetCommand() {
+		testCreateSetCommandGen();
 		
 		// test PROTOCOL_TRANSITION__PRE_CONDITION subset...
 		Constraint constraint = UML2Factory.eINSTANCE.createConstraint();

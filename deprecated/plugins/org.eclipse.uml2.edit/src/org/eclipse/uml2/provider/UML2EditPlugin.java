@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2EditPlugin.java,v 1.5 2005/03/15 18:48:27 khussey Exp $
+ * $Id: UML2EditPlugin.java,v 1.6 2005/04/04 20:03:40 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -29,7 +29,7 @@ public final class UML2EditPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Keep track of the singleton.

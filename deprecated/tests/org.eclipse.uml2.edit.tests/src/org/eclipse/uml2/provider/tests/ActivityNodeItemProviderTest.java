@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeItemProviderTest.java,v 1.2 2005/03/15 18:49:58 khussey Exp $
+ * $Id: ActivityNodeItemProviderTest.java,v 1.3 2005/04/04 20:02:08 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -27,7 +27,7 @@ public abstract class ActivityNodeItemProviderTest extends RedefinableElementIte
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Activity Node item provider adapter test case with the given name.

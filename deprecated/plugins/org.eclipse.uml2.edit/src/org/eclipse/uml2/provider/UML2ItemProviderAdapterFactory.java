@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ItemProviderAdapterFactory.java,v 1.6 2005/03/15 18:48:28 khussey Exp $
+ * $Id: UML2ItemProviderAdapterFactory.java,v 1.7 2005/04/04 20:03:41 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -46,7 +46,7 @@ public class UML2ItemProviderAdapterFactory extends UML2AdapterFactory implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.

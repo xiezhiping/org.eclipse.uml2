@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InputPinItemProvider.java,v 1.8 2005/03/15 18:48:27 khussey Exp $
+ * $Id: InputPinItemProvider.java,v 1.9 2005/04/04 20:03:40 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -47,7 +47,7 @@ public class InputPinItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This constructs an instance from a factory and a notifier.

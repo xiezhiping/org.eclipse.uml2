@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ActionBarContributor.java,v 1.10 2005/03/15 18:50:31 khussey Exp $
+ * $Id: UML2ActionBarContributor.java,v 1.11 2005/04/04 20:01:46 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -62,7 +62,7 @@ public class UML2ActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This keeps track of the active editor.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProviderTest.java,v 1.8 2005/03/15 18:49:58 khussey Exp $
+ * $Id: ElementItemProviderTest.java,v 1.9 2005/04/04 20:02:08 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -84,8 +84,7 @@ public abstract class ElementItemProviderTest
 	protected Element modelObject = null;
 
 	/**
-	 * Constructs a new Element item provider adapter test case with the given
-	 * name.
+	 * Constructs a new Element item provider adapter test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -95,8 +94,7 @@ public abstract class ElementItemProviderTest
 	}
 
 	/**
-	 * Sets the adapter factory for this Element item provider adapter test
-	 * case.
+	 * Sets the adapter factory for this Element item provider adapter test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -106,8 +104,7 @@ public abstract class ElementItemProviderTest
 	}
 
 	/**
-	 * Returns the adapter factory for this Element item provider adapter test
-	 * case.
+	 * Returns the adapter factory for this Element item provider adapter test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -127,8 +124,7 @@ public abstract class ElementItemProviderTest
 	}
 
 	/**
-	 * Returns the command stack for this Element item provider adapter test
-	 * case.
+	 * Returns the command stack for this Element item provider adapter test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -148,8 +144,7 @@ public abstract class ElementItemProviderTest
 	}
 
 	/**
-	 * Returns the editing domain for this Element item provider adapter test
-	 * case.
+	 * Returns the editing domain for this Element item provider adapter test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -168,8 +163,7 @@ public abstract class ElementItemProviderTest
 		this.modelObject = modelObject;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
@@ -179,13 +173,10 @@ public abstract class ElementItemProviderTest
 		throws Exception {
 		setAdapterFactory(new UML2ItemProviderAdapterFactory());
 		setCommandStack(new BasicCommandStack());
-		setEditingDomain(new AdapterFactoryEditingDomain(getAdapterFactory(),
-			getCommandStack()));
-
+		setEditingDomain(new AdapterFactoryEditingDomain(getAdapterFactory(), getCommandStack()));
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#tearDown()
@@ -200,10 +191,15 @@ public abstract class ElementItemProviderTest
 	}
 
 	/**
+	 * Returns the model object for this Element item provider adapter test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private Element getModelObject() {
+		return modelObject;
+	}
+
 	protected List getEAllSubClasses(EClass eClass) {
 		List eAllSubClasses = new ArrayList();
 
@@ -219,17 +215,6 @@ public abstract class ElementItemProviderTest
 		}
 
 		return eAllSubClasses;
-	}
-
-	/**
-	 * Returns the model object for this Element item provider adapter test
-	 * case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private Element getModelObject() {
-		return modelObject;
 	}
 
 	public void testSetTarget() {

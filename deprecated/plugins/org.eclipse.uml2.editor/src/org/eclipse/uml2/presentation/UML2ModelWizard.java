@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,24 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ModelWizard.java,v 1.7 2005/03/15 18:50:31 khussey Exp $
+ * $Id: UML2ModelWizard.java,v 1.8 2005/04/04 20:01:46 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
-import java.util.Collections;
-
-import java.util.HashMap;
 import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.EClassifier;
 
 import org.eclipse.emf.ecore.resource.Resource;
@@ -47,36 +48,28 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 
 import org.eclipse.swt.SWT;
 
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.ModifyEvent;
 
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
-import org.eclipse.swt.widgets.Combo;
-
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
@@ -90,6 +83,15 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.provider.UML2EditPlugin;
 
 
+import org.eclipse.core.runtime.Path;
+
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
+
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 
 
 /**
@@ -104,7 +106,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This caches an instance of the model package.
@@ -131,7 +133,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	protected UML2ModelWizardNewFileCreationPage newFileCreationPage;
 
 	/**
-	 * This is the file creation page.
+	 * This is the initial object creation page.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -155,6 +157,14 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	protected IWorkbench workbench;
 
 	/**
+	 * Caches the names of the types that can be created as the root object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected List initialObjectNames;
+
+	/**
 	 * This just records the information.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,12 +178,44 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	}
 
 	/**
+	 * Returns the names of the types that can be created as the root object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Collection getInitialObjectNamesGen() {
+		if (initialObjectNames == null) {
+			initialObjectNames = new ArrayList();
+			for (Iterator classifiers = umL2Package.getEClassifiers().iterator(); classifiers.hasNext(); ) {
+				EClassifier eClassifier = (EClassifier)classifiers.next();
+				if (eClassifier instanceof EClass) {
+					EClass eClass = (EClass)eClassifier;
+					if (!eClass.isAbstract()) {
+						initialObjectNames.add(eClass.getName());
+					}
+				}
+			}
+			Collections.sort(initialObjectNames, java.text.Collator.getInstance());
+		}
+		return initialObjectNames;
+	}
+
+	protected Collection getInitialObjectNames() {
+		if (initialObjectNames == null) {
+			initialObjectNames = new ArrayList();
+			initialObjectNames.add(umL2Package.getModel().getName());
+			initialObjectNames.add(umL2Package.getProfile().getName());
+		}
+		return initialObjectNames;
+	}
+
+	/**
 	 * Create a new model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	EObject createInitialModel() {
+	protected EObject createInitialModel() {
 		EClass eClass = (EClass)umL2Package.getEClassifier(initialObjectCreationPage.getInitialObjectName());
 		EObject rootObject = umL2Factory.create(eClass);
 		return rootObject;
@@ -276,14 +318,6 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	 */
 	public class UML2ModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 		/**
-		 * Remember the model file.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected IFile modelFile;
-
-		/**
 		 * Pass in the selection.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -319,26 +353,12 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 		}
 
 		/**
-		 * Store the dialog field settings upon completion.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public boolean performFinish() {
-			modelFile = getModelFile();
-			return true;
-		}
-
-		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		public IFile getModelFile() {
-			return
-				modelFile == null ?
-					ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName())) :
-					modelFile;
+			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
 		}
 	}
 
@@ -354,13 +374,6 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		protected String initialObjectName;
-
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
 		protected Combo initialObjectField;
 
 		/**
@@ -368,7 +381,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 */
-		protected String encoding;
+		protected List encodings;
 
 		/**
 		 * <!-- begin-user-doc -->
@@ -392,87 +405,6 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public void createControlGen(Composite parent) {
-			Composite composite = new Composite(parent, SWT.NONE);
-			{
-				GridLayout layout = new GridLayout();
-				layout.numColumns = 1;
-				layout.verticalSpacing = 12;
-				composite.setLayout(layout);
-
-				GridData data = new GridData();
-				data.verticalAlignment = GridData.FILL;
-				data.grabExcessVerticalSpace = true;
-				data.horizontalAlignment = GridData.FILL;
-				composite.setLayoutData(data);
-			}
-
-			Label containerLabel = new Label(composite, SWT.LEFT);
-			{
-				containerLabel.setText(UML2EditorPlugin.INSTANCE.getString("_UI_ModelObject")); //$NON-NLS-1$
-
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				containerLabel.setLayoutData(data);
-			}
-
-			initialObjectField = new Combo(composite, SWT.BORDER);
-			{
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				data.grabExcessHorizontalSpace = true;
-				initialObjectField.setLayoutData(data);
-			}
-
-			List objectNames = new ArrayList();
-			for (Iterator classifier = umL2Package.getEClassifiers().iterator(); classifier.hasNext(); ) {
-				EClassifier eClassifier = (EClassifier)classifier.next();
-				if (eClassifier instanceof EClass) {
-					EClass eClass = (EClass)eClassifier;
-					if (!eClass.isAbstract()) {
-						objectNames.add(getLabel(eClass));
-					}
-				}
-			}
-
-			Collections.sort(objectNames, java.text.Collator.getInstance());
-			for (Iterator i = objectNames.iterator(); i.hasNext(); ) {
-				String objectName = (String)i.next();
-				initialObjectField.add(objectName);
-			}
-
-			initialObjectField.addSelectionListener
-				(new SelectionAdapter() {
-					 public void widgetSelected(SelectionEvent e) {
-						 setPageComplete(isPageComplete());
-					 }
-				 });
-
-			Label encodingLabel = new Label(composite, SWT.LEFT);
-			{
-				encodingLabel.setText(UML2EditorPlugin.INSTANCE.getString("_UI_XMLEncoding")); //$NON-NLS-1$
-
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				encodingLabel.setLayoutData(data);
-			}
-			encodingField = new Combo(composite, SWT.BORDER);
-			{
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				data.grabExcessHorizontalSpace = true;
-				encodingField.setLayoutData(data);
-			}
-
-			for (StringTokenizer stringTokenizer = new StringTokenizer(UML2EditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) //$NON-NLS-1$
-			{
-				encodingField.add(stringTokenizer.nextToken());
-			}
-			encodingField.select(0);
-
-			setControl(composite);
-		}
-
 		public void createControl(Composite parent) {
 			Composite composite = new Composite(parent, SWT.NONE);
 			{
@@ -505,15 +437,14 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 				initialObjectField.setLayoutData(data);
 			}
 
-			initialObjectField.add(getLabel(umL2Package.getModel()));
-			initialObjectField.add(getLabel(umL2Package.getProfile()));
+			for (Iterator i = getInitialObjectNames().iterator(); i.hasNext(); ) {
+				initialObjectField.add(getLabel((String)i.next()));
+			}
 
-			initialObjectField.addSelectionListener
-				(new SelectionAdapter() {
-					 public void widgetSelected(SelectionEvent e) {
-						 setPageComplete(isPageComplete());
-					 }
-				 });
+			if (initialObjectField.getItemCount() == 1) {
+				initialObjectField.select(0);
+			}
+			initialObjectField.addModifyListener(validator);
 
 			Label encodingLabel = new Label(composite, SWT.LEFT);
 			{
@@ -531,40 +462,55 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 				encodingField.setLayoutData(data);
 			}
 
-			for (StringTokenizer stringTokenizer = new StringTokenizer(UML2EditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) //$NON-NLS-1$
-			{
-				encodingField.add(stringTokenizer.nextToken());
+			for (Iterator i = getEncodings().iterator(); i.hasNext(); ) {
+				encodingField.add((String)i.next());
 			}
-			encodingField.select(0);
 
+			encodingField.select(0);
+			encodingField.addModifyListener(validator);
+
+			setPageComplete(validatePage());
 			setControl(composite);
 		}
 
 		/**
-		 * The framework calls this to see if the file is correct.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public boolean isPageComplete() {
-			if (super.isPageComplete()) {
-				return initialObjectField.getSelectionIndex() != -1;
-			}
-			else {
-				return false;
-			}
+		protected ModifyListener validator =
+			new ModifyListener() {
+				public void modifyText(ModifyEvent e) {
+					setPageComplete(validatePage());
+				}
+			};
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		protected boolean validatePage() {
+			return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
 		}
 
 		/**
-		 * Store the dialog field settings upon completion.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public boolean performFinish() {
-			initialObjectName = getInitialObjectName();
-			encoding = getEncoding();
-			return true;
+		public void setVisible(boolean visible) {
+			super.setVisible(visible);
+			if (visible) {
+				if (initialObjectField.getItemCount() == 1) {
+					initialObjectField.clearSelection();
+					encodingField.setFocus();
+				}
+				else {
+					encodingField.clearSelection();
+					initialObjectField.setFocus();
+				}
+			}
 		}
 
 		/**
@@ -573,22 +519,15 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		public String getInitialObjectName() {
-			if (initialObjectName != null) {
-				return initialObjectName;
-			}
-			else {
-				String label = initialObjectField.getText();
-				for (Iterator classifier = umL2Package.getEClassifiers().iterator(); classifier.hasNext(); ) {
-					EClassifier eClassifier = (EClassifier)classifier.next();
-					if (eClassifier instanceof EClass) {
-						EClass eClass = (EClass)eClassifier;
-						if (!eClass.isAbstract() && getLabel(eClass).equals(label)) {
-							return eClass.getName();
-						}
-					}
+			String label = initialObjectField.getText();
+
+			for (Iterator i = getInitialObjectNames().iterator(); i.hasNext(); ) {
+				String name = (String)i.next();
+				if (getLabel(name).equals(label)) {
+					return name;
 				}
-				return label;
 			}
+			return null;
 		}
 
 		/**
@@ -597,25 +536,37 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		public String getEncoding() {
-			return
-				encoding == null ?
-					encodingField.getText() :
-					encoding;
+			return encodingField.getText();
 		}
+
 		/**
-		 * Returns the label of the specified element.
+		 * Returns the label for the specified type name.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		protected String getLabel(EClass eClass) {
-			String name = eClass.getName();
+		protected String getLabel(String typeName) {
 			try {
-				return UML2EditPlugin.INSTANCE.getString("_UI_" + name + "_type");
+				return UML2EditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
 			}
 			catch(MissingResourceException mre) {
 			}
-			return name;
+			return typeName;
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		protected Collection getEncodings() {
+			if (encodings == null) {
+				encodings = new ArrayList();
+				for (StringTokenizer stringTokenizer = new StringTokenizer(UML2EditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
+					encodings.add(stringTokenizer.nextToken());
+				}
+			}
+			return encodings;
 		}
 	}
 

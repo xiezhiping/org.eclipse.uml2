@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetItemProviderTest.java,v 1.2 2005/03/15 18:49:59 khussey Exp $
+ * $Id: DeploymentTargetItemProviderTest.java,v 1.3 2005/04/04 20:02:09 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -37,7 +37,7 @@ public abstract class DeploymentTargetItemProviderTest extends NamedElementItemP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Deployment Target item provider adapter test case with the given name.
@@ -58,14 +58,21 @@ public abstract class DeploymentTargetItemProviderTest extends NamedElementItemP
 	private DeploymentTarget getModelObject() {
 		return (DeploymentTarget) modelObject;
 	}
+
 	/**
 	 * Tests the '{@link org.eclipse.uml2.provider.DeploymentTargetItemProvider#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int) <em>Create Add Command</em>}' method.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.provider.DeploymentTargetItemProvider#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testCreateAddCommandGen() {
+		// TODO: implement this add command creation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
 	public void testCreateAddCommand() {
+		testCreateAddCommandGen();
 		
 		// test DEPLOYMENT_TARGET__DEPLOYMENT subset...
 		Deployment deployment = UML2Factory.eINSTANCE.createDeployment();
@@ -99,9 +106,15 @@ public abstract class DeploymentTargetItemProviderTest extends NamedElementItemP
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.provider.DeploymentTargetItemProvider#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference, java.util.Collection)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testCreateRemoveCommandGen() {
+		// TODO: implement this remove command creation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
 	public void testCreateRemoveCommand() {
+		testCreateRemoveCommandGen();
 		
 		// test DEPLOYMENT_TARGET__CLIENT_DEPENDENCY superset...
 		Deployment deployment = UML2Factory.eINSTANCE.createDeployment();
@@ -132,9 +145,15 @@ public abstract class DeploymentTargetItemProviderTest extends NamedElementItemP
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.provider.DeploymentTargetItemProvider#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference, org.eclipse.emf.ecore.EObject, java.util.Collection)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testCreateReplaceCommandGen() {
+		// TODO: implement this replace command creation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
 	public void testCreateReplaceCommand() {
+		testCreateReplaceCommandGen();
 		
 		// test DEPLOYMENT_TARGET__DEPLOYMENT subset...
 		Deployment deployment = UML2Factory.eINSTANCE.createDeployment();

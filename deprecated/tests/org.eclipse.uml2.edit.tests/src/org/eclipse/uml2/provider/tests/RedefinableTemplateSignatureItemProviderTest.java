@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureItemProviderTest.java,v 1.2 2005/03/15 18:49:59 khussey Exp $
+ * $Id: RedefinableTemplateSignatureItemProviderTest.java,v 1.3 2005/04/04 20:02:09 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -41,7 +41,7 @@ public class RedefinableTemplateSignatureItemProviderTest extends RedefinableEle
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,7 +72,7 @@ public class RedefinableTemplateSignatureItemProviderTest extends RedefinableEle
 		return (RedefinableTemplateSignature) modelObject;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
@@ -89,9 +89,15 @@ public class RedefinableTemplateSignatureItemProviderTest extends RedefinableEle
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.provider.RedefinableTemplateSignatureItemProvider#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testCreateAddCommandGen() {
+		// TODO: implement this add command creation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
 	public void testCreateAddCommand() {
+		testCreateAddCommandGen();
 		
 		// test REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER subset...
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getTemplateParameter()).iterator(); eAllSubClasses.hasNext();) {
@@ -127,9 +133,15 @@ public class RedefinableTemplateSignatureItemProviderTest extends RedefinableEle
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.provider.RedefinableTemplateSignatureItemProvider#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference, java.util.Collection)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testCreateRemoveCommandGen() {
+		// TODO: implement this remove command creation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
 	public void testCreateRemoveCommand() {
+		testCreateRemoveCommandGen();
 		
 		// test REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER superset...
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getTemplateParameter()).iterator(); eAllSubClasses.hasNext();) {
@@ -166,9 +178,15 @@ public class RedefinableTemplateSignatureItemProviderTest extends RedefinableEle
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.provider.RedefinableTemplateSignatureItemProvider#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference, org.eclipse.emf.ecore.EObject, java.util.Collection)
-	 * @generated NOT
+	 * @generated
 	 */
+	public void testCreateReplaceCommandGen() {
+		// TODO: implement this replace command creation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
 	public void testCreateReplaceCommand() {
+		testCreateReplaceCommandGen();
 		
 		// test REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER subset...
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getTemplateParameter()).iterator(); eAllSubClasses.hasNext();) {

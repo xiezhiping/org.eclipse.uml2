@@ -5,10 +5,11 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
+ * $Id: UML2Editor.java,v 1.14 2005/04/04 20:01:46 khussey Exp $
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.13 2005/04/04 19:01:27 khussey Exp $
+ * $Id: UML2Editor.java,v 1.14 2005/04/04 20:01:46 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -32,7 +33,6 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
@@ -45,6 +45,7 @@ import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.ecore.EObject;
@@ -85,7 +86,6 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 
-
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -100,12 +100,10 @@ import org.eclipse.jface.viewers.TableTreeViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.window.Window;
 
 import org.eclipse.swt.SWT;
 
 import org.eclipse.swt.custom.TableTree;
-
 import org.eclipse.swt.custom.CTabFolder;
 
 import org.eclipse.swt.dnd.DND;
@@ -130,9 +128,6 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PartInitException;
-
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import org.eclipse.ui.dialogs.SaveAsDialog;
 
@@ -151,11 +146,15 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import org.eclipse.uml2.editor.internal.presentation.UML2AdapterFactoryContentProvider;
 import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
+
+
 import java.util.HashMap;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
+
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 
 /**
@@ -172,7 +171,7 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -312,7 +311,7 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ISelection editorSelection= StructuredSelection.EMPTY;
+	protected ISelection editorSelection = StructuredSelection.EMPTY;
 
 	/**
 	 * This listens for when the outline becomes active
@@ -437,7 +436,6 @@ public class UML2Editor
 				}
 			}
 		};
-
 
 	/**
 	 * Handles activation of the editor or it's associated views.
@@ -618,7 +616,7 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public class ReverseAdapterFactoryContentProvider extends UML2AdapterFactoryContentProvider {
+	public class ReverseAdapterFactoryContentProvider extends AdapterFactoryContentProvider {
 		public ReverseAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
 			super(adapterFactory);
 		}
@@ -749,8 +747,7 @@ public class UML2Editor
 		try {
 			// Load the resource through the editing domain.
 			//
-			editingDomain.loadResource
-				(URI.createPlatformResourceURI(modelFile.getFile().getFullPath().toString()).toString());
+			editingDomain.loadResource(URI.createPlatformResourceURI(modelFile.getFile().getFullPath().toString()).toString());
 		}
 		catch (Exception exception) {
 			UML2EditorPlugin.INSTANCE.log(exception);
@@ -786,7 +783,7 @@ public class UML2Editor
 			viewerPane.createControl(getContainer());
 
 			selectionViewer = (TreeViewer)viewerPane.getViewer();
-			selectionViewer.setContentProvider(new UML2AdapterFactoryContentProvider(adapterFactory));
+			selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 
 			selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 			selectionViewer.setInput(editingDomain.getResourceSet());
@@ -841,7 +838,7 @@ public class UML2Editor
 				};
 			viewerPane.createControl(getContainer());
 			listViewer = (ListViewer)viewerPane.getViewer();
-			listViewer.setContentProvider(new UML2AdapterFactoryContentProvider(adapterFactory));
+			listViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 			listViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 			createContextMenuFor(listViewer);
@@ -864,7 +861,7 @@ public class UML2Editor
 				};
 			viewerPane.createControl(getContainer());
 			treeViewer = (TreeViewer)viewerPane.getViewer();
-			treeViewer.setContentProvider(new UML2AdapterFactoryContentProvider(adapterFactory));
+			treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 			treeViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 			new AdapterFactoryTreeEditor(treeViewer.getTree(), adapterFactory);
@@ -907,7 +904,7 @@ public class UML2Editor
 			selfColumn.setResizable(true);
 
 			tableViewer.setColumnProperties(new String [] {"a", "b"}); //$NON-NLS-1$ //$NON-NLS-2$
-			tableViewer.setContentProvider(new UML2AdapterFactoryContentProvider(adapterFactory));
+			tableViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 			tableViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 			createContextMenuFor(tableViewer);
@@ -949,7 +946,7 @@ public class UML2Editor
 			selfColumn.setResizable(true);
 
 			tableTreeViewer.setColumnProperties(new String [] {"a", "b"}); //$NON-NLS-1$ //$NON-NLS-2$
-			tableTreeViewer.setContentProvider(new UML2AdapterFactoryContentProvider(adapterFactory));
+			tableTreeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 			tableTreeViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 			createContextMenuFor(tableTreeViewer);
@@ -1051,7 +1048,7 @@ public class UML2Editor
 
 					// Set up the tree viewer.
 					//
-					contentOutlineViewer.setContentProvider(new UML2AdapterFactoryContentProvider(adapterFactory));
+					contentOutlineViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 					contentOutlineViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 					contentOutlineViewer.setInput(editingDomain.getResourceSet());
 
@@ -1102,6 +1099,25 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public IPropertySheetPage getPropertySheetPageGen() {
+		if (propertySheetPage == null) {
+			propertySheetPage =
+				new PropertySheetPage() {
+					public void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager, IStatusLineManager statusLineManager) {
+						super.makeContributions(menuManager, toolBarManager, statusLineManager);
+					}
+
+					public void setActionBars(IActionBars actionBars) {
+						super.setActionBars(actionBars);
+						getActionBarContributor().shareGlobalActions(this, actionBars);
+					}
+				};
+			propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
+		}
+
+		return propertySheetPage;
+	}
+
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null) {
 			propertySheetPage =
@@ -1287,7 +1303,7 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void init(IEditorSite site, IEditorInput editorInput) throws PartInitException {
+	public void init(IEditorSite site, IEditorInput editorInput) {
 		setSite(site);
 		setInput(editorInput);
 		setPartName(editorInput.getName());
@@ -1469,5 +1485,5 @@ public class UML2Editor
 
 		super.dispose();
 	}
-	
+
 }
