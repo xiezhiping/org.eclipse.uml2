@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - Initial API and implementation
  * 
- * $Id: EMOF2EcorePostProcessor.java,v 1.1 2004/12/21 21:22:00 khussey Exp $
+ * $Id: EMOF2EcorePostProcessor.java,v 1.1 2004/12/21 22:06:15 khussey Exp $
  */
-package org.eclipse.uml2.examples.emof2ecore.util;
+package org.eclipse.uml2.examples.emof2ecore;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
-import org.eclipse.uml2.examples.emof2ecore.util.EMOF2EcoreResource.PostProcessor;
+import org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResource.PostProcessor;
 
 /**
  * 

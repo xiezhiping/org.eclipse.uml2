@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.1 2004/12/21 21:22:00 khussey Exp $
+ * $Id: plugin.xml,v 1.2 2004/12/21 22:06:15 khussey Exp $
  */
 -->
 
@@ -37,7 +37,7 @@
      point = "org.eclipse.emf.ecore.extension_parser">
     <parser
        type="emof2ecore"
-       class="org.eclipse.uml2.examples.emof2ecore.internal.util.EMOF2EcoreResourceFactoryImpl"/>
+       class="org.eclipse.uml2.examples.emof2ecore.internal.EMOF2EcoreResourceFactoryImpl"/>
   </extension>
 
   <extension

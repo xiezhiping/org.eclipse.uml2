@@ -8,15 +8,15 @@
  * Contributors:
  *   IBM - Initial API and implementation
  * 
- * $Id: EMOF2EcoreResource.java,v 1.1 2004/12/21 21:22:00 khussey Exp $
+ * $Id: EMOF2EcoreResource.java,v 1.1 2004/12/21 22:06:15 khussey Exp $
  */
-package org.eclipse.uml2.examples.emof2ecore.util;
+package org.eclipse.uml2.examples.emof2ecore;
 
 import java.util.Map;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
-import org.eclipse.uml2.examples.emof2ecore.internal.util.EMOF2EcoreResourceFactoryImpl;
+import org.eclipse.uml2.examples.emof2ecore.internal.EMOF2EcoreResourceFactoryImpl;
 
 /**
  * 
