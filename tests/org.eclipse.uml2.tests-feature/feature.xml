@@ -3,7 +3,7 @@
 
 <!--
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,14 +12,14 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: feature.xml,v 1.6 2004/11/15 18:04:35 khussey Exp $
+ * $Id: feature.xml,v 1.7 2005/02/24 20:12:54 khussey Exp $
  */
 -->
 
 <feature
       id="org.eclipse.uml2.tests"
       label="%feature-label"
-      version="1.0.2"
+      version="1.1.0"
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg">
 
@@ -60,7 +60,7 @@
          id="org.eclipse.test"
          download-size="0"
          install-size="0"
-         version="2.1.0"/>
+         version="3.1.0"/>
 
    <plugin
          id="org.eclipse.ant.optional.junit"
