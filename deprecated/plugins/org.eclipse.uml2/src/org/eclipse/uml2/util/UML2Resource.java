@@ -8,23 +8,44 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Resource.java,v 1.3 2004/10/01 19:36:29 khussey Exp $
+ * $Id: UML2Resource.java,v 1.4 2004/12/21 21:25:37 khussey Exp $
  */
 package org.eclipse.uml2.util;
+
+import java.util.Map;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.uml2.internal.util.UML2ResourceFactoryImpl;
 
 /**
- *
+ * 
  */
 public interface UML2Resource
-	extends XMIResource {
-	
-	public interface Factory extends Resource.Factory {
-		
+		extends XMIResource {
+
+	public static final String copyright = "Copyright (c) 2004 IBM Corporation and others."; //$NON-NLS-1$
+
+	public interface Factory
+			extends Resource.Factory {
+
 		public static final Factory INSTANCE = new UML2ResourceFactoryImpl();
+
+	}
+
+	public abstract class PreProcessor {
+
+		public void preSave(UML2Resource resource, Map options) {
+			// do nothing
+		}
+
+	}
+
+	public abstract class PostProcessor {
+
+		public void postLoad(UML2Resource resource, Map options) {
+			// do nothing
+		}
 
 	}
 
@@ -33,6 +54,10 @@ public interface UML2Resource
 	public static final String FILE_EXTENSION = "uml2"; //$NON-NLS-1$
 
 	public static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
+
+	public static final String OPTION_PRE_PROCESSOR = "PRE_PROCESSOR"; //$NON-NLS-1$
+
+	public static final String OPTION_POST_PROCESSOR = "POST_PROCESSOR"; //$NON-NLS-1$
 
 	public static final String METAMODEL_FILE_EXTENSION = "metamodel." //$NON-NLS-1$
 		+ FILE_EXTENSION;
@@ -74,6 +99,6 @@ public interface UML2Resource
 		+ "Complete." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
 	public static final String ECORE_PROFILE_URI = PROFILES_PATHMAP
-	+ "Ecore." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
+		+ "Ecore." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
 }

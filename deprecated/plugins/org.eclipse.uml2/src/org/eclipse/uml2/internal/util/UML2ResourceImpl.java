@@ -8,9 +8,14 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ResourceImpl.java,v 1.2 2004/10/01 19:36:29 khussey Exp $
+ * $Id: UML2ResourceImpl.java,v 1.3 2004/12/21 21:25:37 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
@@ -63,6 +68,44 @@ public class UML2ResourceImpl extends XMIResourceImpl implements UML2Resource {
 	 */
 	protected XMLLoad createXMLLoad() {
 		return new UML2LoadImpl(createXMLHelper());
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#doLoad(java.io.InputStream,
+	 *      java.util.Map)
+	 */
+	public void doLoad(InputStream inputStream, Map options)
+			throws IOException {
+
+		super.doLoad(inputStream, options);
+
+		PostProcessor postProcessor = (PostProcessor) options
+			.get(OPTION_POST_PROCESSOR);
+
+		if (null != postProcessor) {
+			postProcessor.postLoad(this, options);
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#doSave(java.io.OutputStream,
+	 *      java.util.Map)
+	 */
+	public void doSave(OutputStream outputStream, Map options)
+			throws IOException {
+
+		PreProcessor preProcessor = (PreProcessor) options
+			.get(OPTION_PRE_PROCESSOR);
+
+		if (null != preProcessor) {
+			preProcessor.preSave(this, options);
+		}
+
+		super.doSave(outputStream, options);
 	}
 
 } //UML2ResourceImpl
