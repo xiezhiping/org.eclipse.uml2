@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReceptionItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: ReceptionItemProvider.java,v 1.5 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,6 @@ public class ReceptionItemProvider
 				 true));
 	}
 
-
 	/**
 	 * This returns Reception.gif.
 	 * <!-- begin-user-doc -->
@@ -162,4 +161,5 @@ public class ReceptionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

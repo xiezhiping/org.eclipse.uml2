@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: GateItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: GateItemProvider.java,v 1.5 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -71,7 +71,6 @@ public class GateItemProvider
 		return itemPropertyDescriptors;
 	}
 
-
 	/**
 	 * This returns Gate.gif.
 	 * <!-- begin-user-doc -->
@@ -127,4 +126,5 @@ public class GateItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

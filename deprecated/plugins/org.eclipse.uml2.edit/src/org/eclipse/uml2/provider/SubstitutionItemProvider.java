@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SubstitutionItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: SubstitutionItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -97,7 +97,6 @@ public class SubstitutionItemProvider
 				 true));
 	}
 
-
 	/**
 	 * This returns Substitution.gif.
 	 * <!-- begin-user-doc -->
@@ -153,6 +152,7 @@ public class SubstitutionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 
 	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)

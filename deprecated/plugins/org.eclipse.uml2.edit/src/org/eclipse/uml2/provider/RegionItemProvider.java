@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RegionItemProvider.java,v 1.5 2004/05/11 15:21:50 khussey Exp $
+ * $Id: RegionItemProvider.java,v 1.6 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -198,7 +198,6 @@ public class RegionItemProvider
 		return super.getChildFeature(object, child);
 	}
 
-
 	/**
 	 * This returns Region.gif.
 	 * <!-- begin-user-doc -->
@@ -294,4 +293,5 @@ public class RegionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

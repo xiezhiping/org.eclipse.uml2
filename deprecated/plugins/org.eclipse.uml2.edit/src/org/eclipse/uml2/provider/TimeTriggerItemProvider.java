@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeTriggerItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: TimeTriggerItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -129,7 +129,6 @@ public class TimeTriggerItemProvider
 		}
 		return childrenFeatures;
 	}
-
 
 	/**
 	 * This returns TimeTrigger.gif.
@@ -260,4 +259,5 @@ public class TimeTriggerItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DependencyItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: DependencyItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -159,7 +159,6 @@ public class DependencyItemProvider
 				 true));
 	}
 
-
 	/**
 	 * This returns Dependency.gif.
 	 * <!-- begin-user-doc -->
@@ -215,4 +214,5 @@ public class DependencyItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExecutionOccurrenceItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: ExecutionOccurrenceItemProvider.java,v 1.5 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -125,7 +125,6 @@ public class ExecutionOccurrenceItemProvider
 				 true));
 	}
 
-
 	/**
 	 * This returns ExecutionOccurrence.gif.
 	 * <!-- begin-user-doc -->
@@ -181,4 +180,5 @@ public class ExecutionOccurrenceItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

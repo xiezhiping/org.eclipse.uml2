@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StartOwnedBehaviorActionItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: StartOwnedBehaviorActionItemProvider.java,v 1.5 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -113,7 +113,6 @@ public class StartOwnedBehaviorActionItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns StartOwnedBehaviorAction.gif.
 	 * <!-- begin-user-doc -->
@@ -200,4 +199,5 @@ public class StartOwnedBehaviorActionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

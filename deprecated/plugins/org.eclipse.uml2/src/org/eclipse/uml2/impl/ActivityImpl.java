@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.9 2004/05/25 20:05:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -818,10 +818,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return getOwnedOperations();
 			case UML2Package.ACTIVITY__SUPER_CLASS:
 				return getSuperClasses();
-			case UML2Package.ACTIVITY__EXTENSION:
-				return getExtensions();
 			case UML2Package.ACTIVITY__NESTED_CLASSIFIER:
 				return getNestedClassifiers();
+			case UML2Package.ACTIVITY__EXTENSION:
+				return getExtensions();
 			case UML2Package.ACTIVITY__IS_ACTIVE:
 				return isActive() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.ACTIVITY__OWNED_RECEPTION:
@@ -1337,10 +1337,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.ACTIVITY__SUPER_CLASS:
 				return !getSuperClasses().isEmpty();
-			case UML2Package.ACTIVITY__EXTENSION:
-				return !getExtensions().isEmpty();
 			case UML2Package.ACTIVITY__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UML2Package.ACTIVITY__EXTENSION:
+				return !getExtensions().isEmpty();
 			case UML2Package.ACTIVITY__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.ACTIVITY__OWNED_RECEPTION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateItemProvider.java,v 1.5 2004/05/11 15:21:50 khussey Exp $
+ * $Id: StateItemProvider.java,v 1.6 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -418,7 +418,6 @@ public class StateItemProvider
 		return super.getChildFeature(object, child);
 	}
 
-
 	/**
 	 * This returns State.gif.
 	 * <!-- begin-user-doc -->
@@ -560,4 +559,5 @@ public class StateItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

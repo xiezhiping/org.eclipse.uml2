@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Plugin.java,v 1.3 2004/05/21 20:20:27 khussey Exp $
+ * $Id: UML2Plugin.java,v 1.4 2004/05/25 20:05:06 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.core.runtime.IPluginDescriptor;
 
 import org.eclipse.emf.common.EMFPlugin;
 
@@ -95,8 +93,8 @@ public final class UML2Plugin extends EMFPlugin {
 		 * @param descriptor the description of the plugin.
 		 * @generated
 		 */
-		public Implementation(IPluginDescriptor descriptor) {
-			super(descriptor);
+		public Implementation() {
+			super();
 
 			// Remember the static instance.
 			//

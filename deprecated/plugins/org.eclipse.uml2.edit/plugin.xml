@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.7 2004/05/22 14:17:50 khussey Exp $
+ * $Id: plugin.xml,v 1.8 2004/05/25 20:03:27 khussey Exp $
  */
 -->
 
@@ -33,7 +33,7 @@
    <requires>
       <import plugin="org.eclipse.uml2" export="true"/>
       <import plugin="org.eclipse.emf.ecore.change.edit" export="true"/>
-      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      <import plugin="org.eclipse.core.runtime"/>
    </requires>
 
 </plugin>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: VariableItemProvider.java,v 1.5 2004/05/20 03:06:21 khussey Exp $
+ * $Id: VariableItemProvider.java,v 1.6 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -235,7 +235,6 @@ public class VariableItemProvider
 		return super.getChildFeature(object, child);
 	}
 
-
 	/**
 	 * This returns Variable.gif.
 	 * <!-- begin-user-doc -->
@@ -449,4 +448,5 @@ public class VariableItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

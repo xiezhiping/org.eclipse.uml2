@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageableElementItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: PackageableElementItemProvider.java,v 1.5 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -121,7 +121,6 @@ public class PackageableElementItemProvider
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE));
 	}
 
-
 	/**
 	 * This returns PackageableElement.gif.
 	 * <!-- begin-user-doc -->
@@ -183,6 +182,7 @@ public class PackageableElementItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 
 	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)

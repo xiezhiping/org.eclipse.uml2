@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.8 2004/05/20 03:20:02 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.9 2004/05/25 20:05:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -871,10 +871,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return getOwnedOperations();
 			case UML2Package.BEHAVIOR__SUPER_CLASS:
 				return getSuperClasses();
-			case UML2Package.BEHAVIOR__EXTENSION:
-				return getExtensions();
 			case UML2Package.BEHAVIOR__NESTED_CLASSIFIER:
 				return getNestedClassifiers();
+			case UML2Package.BEHAVIOR__EXTENSION:
+				return getExtensions();
 			case UML2Package.BEHAVIOR__IS_ACTIVE:
 				return isActive() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.BEHAVIOR__OWNED_RECEPTION:
@@ -1320,10 +1320,10 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UML2Package.BEHAVIOR__SUPER_CLASS:
 				return !getSuperClasses().isEmpty();
-			case UML2Package.BEHAVIOR__EXTENSION:
-				return !getExtensions().isEmpty();
 			case UML2Package.BEHAVIOR__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UML2Package.BEHAVIOR__EXTENSION:
+				return !getExtensions().isEmpty();
 			case UML2Package.BEHAVIOR__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case UML2Package.BEHAVIOR__OWNED_RECEPTION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeItemProvider.java,v 1.8 2004/05/20 03:06:21 khussey Exp $
+ * $Id: StructuredActivityNodeItemProvider.java,v 1.9 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -295,7 +295,6 @@ public class StructuredActivityNodeItemProvider
 		return super.getChildFeature(object, child);
 	}
 
-
 	/**
 	 * This returns StructuredActivityNode.gif.
 	 * <!-- begin-user-doc -->
@@ -463,6 +462,26 @@ public class StructuredActivityNodeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
+				 UML2Factory.eINSTANCE.createForkNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
+				 UML2Factory.eINSTANCE.createJoinNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
+				 UML2Factory.eINSTANCE.createFlowFinalNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
+				 UML2Factory.eINSTANCE.createCentralBufferNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
 				 UML2Factory.eINSTANCE.createCreateObjectAction()));
 
 		newChildDescriptors.add
@@ -583,26 +602,6 @@ public class StructuredActivityNodeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
-				 UML2Factory.eINSTANCE.createForkNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
-				 UML2Factory.eINSTANCE.createJoinNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
-				 UML2Factory.eINSTANCE.createFlowFinalNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
-				 UML2Factory.eINSTANCE.createCentralBufferNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
 				 UML2Factory.eINSTANCE.createReadExtentAction()));
 
 		newChildDescriptors.add
@@ -706,4 +705,5 @@ public class StructuredActivityNodeItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

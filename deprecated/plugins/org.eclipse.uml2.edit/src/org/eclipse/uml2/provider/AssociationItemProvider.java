@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: AssociationItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -188,7 +188,6 @@ public class AssociationItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns Association.gif.
 	 * <!-- begin-user-doc -->
@@ -268,6 +267,7 @@ public class AssociationItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 
 	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)

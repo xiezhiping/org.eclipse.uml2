@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TriggerItemProvider.java,v 1.5 2004/05/20 03:06:21 khussey Exp $
+ * $Id: TriggerItemProvider.java,v 1.6 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -92,7 +92,6 @@ public class TriggerItemProvider
 				 true));
 	}
 
-
 	/**
 	 * This returns Trigger.gif.
 	 * <!-- begin-user-doc -->
@@ -148,4 +147,5 @@ public class TriggerItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TemplateableElementItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: TemplateableElementItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -147,7 +147,6 @@ public class TemplateableElementItemProvider
 		return super.getChildFeature(object, child);
 	}
 
-
 	/**
 	 * This returns TemplateableElement.gif.
 	 * <!-- begin-user-doc -->
@@ -222,4 +221,5 @@ public class TemplateableElementItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

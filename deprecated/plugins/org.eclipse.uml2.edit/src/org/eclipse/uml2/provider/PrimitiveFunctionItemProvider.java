@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PrimitiveFunctionItemProvider.java,v 1.5 2004/05/20 03:06:21 khussey Exp $
+ * $Id: PrimitiveFunctionItemProvider.java,v 1.6 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -112,7 +112,6 @@ public class PrimitiveFunctionItemProvider
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE));
 	}
 
-
 	/**
 	 * This returns PrimitiveFunction.gif.
 	 * <!-- begin-user-doc -->
@@ -175,4 +174,5 @@ public class PrimitiveFunctionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

@@ -8,13 +8,13 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2EditPlugin.java,v 1.2 2004/04/10 03:58:45 khussey Exp $
+ * $Id: UML2EditPlugin.java,v 1.3 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
-import org.eclipse.core.runtime.IPluginDescriptor;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 
 /**
@@ -96,8 +96,8 @@ public final class UML2EditPlugin extends EMFPlugin {
 		 * @param descriptor the description of the plugin.
 		 * @generated
 		 */
-		public Implementation(IPluginDescriptor descriptor) {
-			super(descriptor);
+		public Implementation() {
+			super();
 
 			// Remember the static instance.
 			//

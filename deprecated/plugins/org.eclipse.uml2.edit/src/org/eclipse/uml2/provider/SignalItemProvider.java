@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SignalItemProvider.java,v 1.5 2004/05/11 15:21:50 khussey Exp $
+ * $Id: SignalItemProvider.java,v 1.6 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -113,7 +113,6 @@ public class SignalItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns Signal.gif.
 	 * <!-- begin-user-doc -->
@@ -190,4 +189,5 @@ public class SignalItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

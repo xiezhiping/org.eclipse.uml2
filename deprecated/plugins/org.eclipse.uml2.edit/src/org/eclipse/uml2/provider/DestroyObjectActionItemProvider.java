@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DestroyObjectActionItemProvider.java,v 1.5 2004/05/11 15:21:50 khussey Exp $
+ * $Id: DestroyObjectActionItemProvider.java,v 1.6 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -149,7 +149,6 @@ public class DestroyObjectActionItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns DestroyObjectAction.gif.
 	 * <!-- begin-user-doc -->
@@ -240,4 +239,5 @@ public class DestroyObjectActionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

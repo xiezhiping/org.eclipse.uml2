@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SendSignalActionItemProvider.java,v 1.5 2004/04/30 17:20:12 khussey Exp $
+ * $Id: SendSignalActionItemProvider.java,v 1.6 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -129,7 +129,6 @@ public class SendSignalActionItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns SendSignalAction.gif.
 	 * <!-- begin-user-doc -->
@@ -218,4 +217,5 @@ public class SendSignalActionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

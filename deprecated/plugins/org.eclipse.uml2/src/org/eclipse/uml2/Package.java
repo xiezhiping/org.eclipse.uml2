@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Package.java,v 1.4 2004/05/11 15:24:01 khussey Exp $
+ * $Id: Package.java,v 1.5 2004/05/25 20:05:06 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,8 +33,8 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.Package#getOwnedTypes <em>Owned Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getPackageMerges <em>Package Merge</em>}</li>
- *   <li>{@link org.eclipse.uml2.Package#getAppliedProfiles <em>Applied Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getPackageExtensions <em>Package Extension</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Package#getAppliedProfiles <em>Applied Profile</em>}</li>
  * </ul>
  * </p>
  *
@@ -210,6 +210,20 @@ public interface Package extends Namespace, PackageableElement{
 	EList getAppliedProfiles();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * self.ownedElements->forAll(e | e.visibility->notEmpty() implies e.visbility = #public or e.visibility = #private)
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @generated
+	 */
+	boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics, Map context);
+
+	/**
 	 * Returns the value of the '<em><b>Package Extension</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.PackageMerge}.
 	 * <!-- begin-user-doc -->
@@ -235,20 +249,6 @@ public interface Package extends Namespace, PackageableElement{
 	 * @generated
      */
     PackageMerge createPackageExtension(EClass eClass);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An invariant constraint based on the following OCL expression:
-	 * <code>
-	 * self.ownedElements->forAll(e | e.visibility->notEmpty() implies e.visbility = #public or e.visibility = #private)
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
-	 * @generated
-	 */
-	boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

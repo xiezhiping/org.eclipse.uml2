@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassItemProvider.java,v 1.8 2004/05/20 03:06:21 khussey Exp $
+ * $Id: AssociationClassItemProvider.java,v 1.9 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -188,7 +188,6 @@ public class AssociationClassItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns AssociationClass.gif.
 	 * <!-- begin-user-doc -->
@@ -271,9 +270,9 @@ public class AssociationClassItemProvider
 			feature == UML2Package.eINSTANCE.getAssociation_OwnedEnd() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine();
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
+			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
@@ -288,6 +287,7 @@ public class AssociationClassItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 
 	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)

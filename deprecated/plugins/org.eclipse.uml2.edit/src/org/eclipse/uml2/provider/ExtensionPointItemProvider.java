@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExtensionPointItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: ExtensionPointItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -72,7 +72,6 @@ public class ExtensionPointItemProvider
 		return itemPropertyDescriptors;
 	}
 
-
 	/**
 	 * This returns ExtensionPoint.gif.
 	 * <!-- begin-user-doc -->
@@ -128,4 +127,5 @@ public class ExtensionPointItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

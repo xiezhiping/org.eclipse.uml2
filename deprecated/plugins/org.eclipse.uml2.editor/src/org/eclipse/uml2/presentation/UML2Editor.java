@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.5 2004/05/21 20:20:11 khussey Exp $
+ * $Id: UML2Editor.java,v 1.6 2004/05/25 20:02:56 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -747,12 +747,12 @@ public class UML2Editor
 	}
 
 	/**
-	 * This is the method used by the framework to install your own controls.
+	 * This is the method called to load a resource into the editing domain's resource set based on the editor's input.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void createPagesGen() {
+	public void createModel() {
 		// I assume that the input is a file object.
 		//
 		IFileEditorInput modelFile = (IFileEditorInput)getEditorInput();
@@ -760,12 +760,25 @@ public class UML2Editor
 		try {
 			// Load the resource through the editing domain.
 			//
-			editingDomain.loadResource
-				(URI.createPlatformResourceURI(modelFile.getFile().getFullPath().toString()).toString());
+			Resource resource = 
+				editingDomain.loadResource
+					(URI.createPlatformResourceURI(modelFile.getFile().getFullPath().toString()).toString());
 		}
 		catch (Exception exception) {
 			UML2EditorPlugin.INSTANCE.log(exception);
 		}
+	}
+
+	/**
+	 * This is the method used by the framework to install your own controls.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void createPagesGen() {
+		// Creates the model from the editor input
+		//
+		createModel();
 
 		// Create a page for the selection tree view.
 		//
@@ -1475,7 +1488,7 @@ public class UML2Editor
 			new WorkspaceModifyOperation() {
 				// This is the method that gets invoked when the operation runs.
 				//
-				protected void execute(IProgressMonitor monitor) throws CoreException {
+				public void execute(IProgressMonitor monitor) {
 					try {
 						// Save the resource to the file system.
 						//
@@ -1534,7 +1547,7 @@ public class UML2Editor
 					(URI.createPlatformResourceURI(file.getFullPath().toString()));
 				IFileEditorInput modelFile = new FileEditorInput(file);
 				setInput(modelFile);
-				setTitle(file.getName());
+				setPartName(file.getName());
 				doSave(getActionBars().getStatusLineManager().getProgressMonitor());
 			}
 		}
@@ -1570,17 +1583,12 @@ public class UML2Editor
 	 * @generated
 	 */
 	public void init(IEditorSite site, IEditorInput editorInput) throws PartInitException {
-		if (editorInput instanceof IFileEditorInput) {
-			setSite(site);
-			setInput(editorInput);
-			setTitle(((IFileEditorInput)editorInput).getFile().getName());
-			site.setSelectionProvider(this);
-			site.getPage().addPartListener(partListener);
-			ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
-		}
-		else {
-			throw new PartInitException("Invalid Input: Must be IFileEditorInput."); //$NON-NLS-1$
-		}
+		setSite(site);
+		setInput(editorInput);
+		setPartName(editorInput.getName());
+		site.setSelectionProvider(this);
+		site.getPage().addPartListener(partListener);
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
 	}
 
 	/**
@@ -1755,4 +1763,5 @@ public class UML2Editor
 
 		super.dispose();
 	}
+
 }

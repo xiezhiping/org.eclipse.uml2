@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolStateMachineItemProvider.java,v 1.8 2004/05/20 03:06:21 khussey Exp $
+ * $Id: ProtocolStateMachineItemProvider.java,v 1.9 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -113,7 +113,6 @@ public class ProtocolStateMachineItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns ProtocolStateMachine.gif.
 	 * <!-- begin-user-doc -->
@@ -181,10 +180,10 @@ public class ProtocolStateMachineItemProvider
 		boolean qualify =
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine();
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
+			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
@@ -199,4 +198,5 @@ public class ProtocolStateMachineItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

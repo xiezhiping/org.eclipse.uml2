@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReclassifyObjectActionItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: ReclassifyObjectActionItemProvider.java,v 1.5 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -164,7 +164,6 @@ public class ReclassifyObjectActionItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns ReclassifyObjectAction.gif.
 	 * <!-- begin-user-doc -->
@@ -254,4 +253,5 @@ public class ReclassifyObjectActionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

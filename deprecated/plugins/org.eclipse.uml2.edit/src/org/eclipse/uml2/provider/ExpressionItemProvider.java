@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExpressionItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: ExpressionItemProvider.java,v 1.5 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -129,7 +129,6 @@ public class ExpressionItemProvider
 		}
 		return childrenFeatures;
 	}
-
 
 	/**
 	 * This returns Expression.gif.
@@ -260,4 +259,5 @@ public class ExpressionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

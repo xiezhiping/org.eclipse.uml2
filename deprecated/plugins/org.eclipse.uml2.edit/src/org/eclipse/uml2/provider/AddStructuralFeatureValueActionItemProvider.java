@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionItemProvider.java,v 1.5 2004/04/30 17:20:11 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionItemProvider.java,v 1.6 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -130,7 +130,6 @@ public class AddStructuralFeatureValueActionItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns AddStructuralFeatureValueAction.gif.
 	 * <!-- begin-user-doc -->
@@ -223,4 +222,5 @@ public class AddStructuralFeatureValueActionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

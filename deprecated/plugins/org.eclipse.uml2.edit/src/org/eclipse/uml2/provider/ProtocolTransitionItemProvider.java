@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolTransitionItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: ProtocolTransitionItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -152,7 +152,6 @@ public class ProtocolTransitionItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns ProtocolTransition.gif.
 	 * <!-- begin-user-doc -->
@@ -254,6 +253,7 @@ public class ProtocolTransitionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 
 	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)

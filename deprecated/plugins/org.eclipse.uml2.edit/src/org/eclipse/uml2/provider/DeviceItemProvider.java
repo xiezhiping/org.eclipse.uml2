@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeviceItemProvider.java,v 1.8 2004/05/20 03:06:21 khussey Exp $
+ * $Id: DeviceItemProvider.java,v 1.9 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -72,7 +72,6 @@ public class DeviceItemProvider
 		return itemPropertyDescriptors;
 	}
 
-
 	/**
 	 * This returns Device.gif.
 	 * <!-- begin-user-doc -->
@@ -127,13 +126,13 @@ public class DeviceItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
+			feature == UML2Package.eINSTANCE.getNode_NestedNode() ||
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort() ||
-			feature == UML2Package.eINSTANCE.getNode_NestedNode() ||
-			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine();
+			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
+			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
@@ -148,4 +147,5 @@ public class DeviceItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

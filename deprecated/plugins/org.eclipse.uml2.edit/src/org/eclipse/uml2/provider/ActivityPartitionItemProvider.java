@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityPartitionItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: ActivityPartitionItemProvider.java,v 1.5 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -216,7 +216,6 @@ public class ActivityPartitionItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns ActivityPartition.gif.
 	 * <!-- begin-user-doc -->
@@ -287,4 +286,5 @@ public class ActivityPartitionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

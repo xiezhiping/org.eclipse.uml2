@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.5 2004/04/30 17:20:11 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.6 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -71,7 +71,6 @@ public class RemoveStructuralFeatureValueActionItemProvider
 		}
 		return itemPropertyDescriptors;
 	}
-
 
 	/**
 	 * This returns RemoveStructuralFeatureValueAction.gif.
@@ -145,4 +144,5 @@ public class RemoveStructuralFeatureValueActionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AddVariableValueActionItemProvider.java,v 1.5 2004/04/30 17:20:12 khussey Exp $
+ * $Id: AddVariableValueActionItemProvider.java,v 1.6 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -130,7 +130,6 @@ public class AddVariableValueActionItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns AddVariableValueAction.gif.
 	 * <!-- begin-user-doc -->
@@ -222,4 +221,5 @@ public class AddVariableValueActionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

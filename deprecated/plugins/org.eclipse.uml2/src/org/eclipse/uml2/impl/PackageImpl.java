@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.6 2004/05/20 03:20:02 khussey Exp $
+ * $Id: PackageImpl.java,v 1.7 2004/05/25 20:05:05 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,8 +68,8 @@ import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getOwnedTypes <em>Owned Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getPackageMerges <em>Package Merge</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getAppliedProfiles <em>Applied Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getPackageExtensions <em>Package Extension</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getAppliedProfiles <em>Applied Profile</em>}</li>
  * </ul>
  * </p>
  *
@@ -134,16 +134,6 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	protected EList packageMerge = null;
 
 	/**
-	 * The cached value of the '{@link #getAppliedProfiles() <em>Applied Profile</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAppliedProfiles()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList appliedProfile = null;
-
-	/**
 	 * The cached value of the '{@link #getPackageExtensions() <em>Package Extension</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -152,6 +142,16 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @ordered
 	 */
 	protected EList packageExtension = null;
+
+	/**
+	 * The cached value of the '{@link #getAppliedProfiles() <em>Applied Profile</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAppliedProfiles()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList appliedProfile = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -802,10 +802,10 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 				return getOwnedMembers();
 			case UML2Package.PACKAGE__PACKAGE_MERGE:
 				return getPackageMerges();
-			case UML2Package.PACKAGE__APPLIED_PROFILE:
-				return getAppliedProfiles();
 			case UML2Package.PACKAGE__PACKAGE_EXTENSION:
 				return getPackageExtensions();
+			case UML2Package.PACKAGE__APPLIED_PROFILE:
+				return getAppliedProfiles();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -874,13 +874,13 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 				getPackageMerges().clear();
 				getPackageMerges().addAll((Collection)newValue);
 				return;
-			case UML2Package.PACKAGE__APPLIED_PROFILE:
-				getAppliedProfiles().clear();
-				getAppliedProfiles().addAll((Collection)newValue);
-				return;
 			case UML2Package.PACKAGE__PACKAGE_EXTENSION:
 				getPackageExtensions().clear();
 				getPackageExtensions().addAll((Collection)newValue);
+				return;
+			case UML2Package.PACKAGE__APPLIED_PROFILE:
+				getAppliedProfiles().clear();
+				getAppliedProfiles().addAll((Collection)newValue);
 				return;
 		}
 		eDynamicSet(eFeature, newValue);
@@ -941,11 +941,11 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__PACKAGE_MERGE:
 				getPackageMerges().clear();
 				return;
-			case UML2Package.PACKAGE__APPLIED_PROFILE:
-				getAppliedProfiles().clear();
-				return;
 			case UML2Package.PACKAGE__PACKAGE_EXTENSION:
 				getPackageExtensions().clear();
+				return;
+			case UML2Package.PACKAGE__APPLIED_PROFILE:
+				getAppliedProfiles().clear();
 				return;
 		}
 		eDynamicUnset(eFeature);
@@ -1006,10 +1006,10 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 				return ownedMember != null && !ownedMember.isEmpty();
 			case UML2Package.PACKAGE__PACKAGE_MERGE:
 				return packageMerge != null && !packageMerge.isEmpty();
-			case UML2Package.PACKAGE__APPLIED_PROFILE:
-				return appliedProfile != null && !appliedProfile.isEmpty();
 			case UML2Package.PACKAGE__PACKAGE_EXTENSION:
 				return packageExtension != null && !packageExtension.isEmpty();
+			case UML2Package.PACKAGE__APPLIED_PROFILE:
+				return appliedProfile != null && !appliedProfile.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
 	}

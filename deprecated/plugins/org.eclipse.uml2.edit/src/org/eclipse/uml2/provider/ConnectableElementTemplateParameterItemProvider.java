@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConnectableElementTemplateParameterItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: ConnectableElementTemplateParameterItemProvider.java,v 1.5 2004/05/25 20:03:26 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -70,7 +70,6 @@ public class ConnectableElementTemplateParameterItemProvider
 		}
 		return itemPropertyDescriptors;
 	}
-
 
 	/**
 	 * This returns ConnectableElementTemplateParameter.gif.
@@ -139,4 +138,5 @@ public class ConnectableElementTemplateParameterItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InterfaceItemProvider.java,v 1.8 2004/05/20 03:06:21 khussey Exp $
+ * $Id: InterfaceItemProvider.java,v 1.9 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -223,7 +223,6 @@ public class InterfaceItemProvider
 		return super.getChildFeature(object, child);
 	}
 
-
 	/**
 	 * This returns Interface.gif.
 	 * <!-- begin-user-doc -->
@@ -342,12 +341,12 @@ public class InterfaceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createActivity()));
+				 UML2Factory.eINSTANCE.createAssociationClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createAssociationClass()));
+				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -392,6 +391,11 @@ public class InterfaceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
+				 UML2Factory.eINSTANCE.createComponent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createNode()));
 
 		newChildDescriptors.add
@@ -417,11 +421,6 @@ public class InterfaceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createComponent()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createDeploymentSpecification()));
 
 		newChildDescriptors.add
@@ -443,9 +442,9 @@ public class InterfaceItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
 			feature == UML2Package.eINSTANCE.getInterface_NestedClassifier() ||
-			feature == UML2Package.eINSTANCE.getInterface_Protocol();
+			feature == UML2Package.eINSTANCE.getInterface_Protocol() ||
+			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
@@ -460,4 +459,5 @@ public class InterfaceItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

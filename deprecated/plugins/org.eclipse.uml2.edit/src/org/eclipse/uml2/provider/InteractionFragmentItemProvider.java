@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionFragmentItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: InteractionFragmentItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -129,7 +129,6 @@ public class InteractionFragmentItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns InteractionFragment.gif.
 	 * <!-- begin-user-doc -->
@@ -196,4 +195,5 @@ public class InteractionFragmentItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeExpressionItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: TimeExpressionItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -111,7 +111,6 @@ public class TimeExpressionItemProvider
 				 true));
 	}
 
-
 	/**
 	 * This returns TimeExpression.gif.
 	 * <!-- begin-user-doc -->
@@ -173,4 +172,5 @@ public class TimeExpressionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

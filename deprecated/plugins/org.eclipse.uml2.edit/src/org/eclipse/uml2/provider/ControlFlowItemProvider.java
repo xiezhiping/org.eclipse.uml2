@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ControlFlowItemProvider.java,v 1.4 2004/04/30 17:20:12 khussey Exp $
+ * $Id: ControlFlowItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -71,7 +71,6 @@ public class ControlFlowItemProvider
 		}
 		return itemPropertyDescriptors;
 	}
-
 
 	/**
 	 * This returns ControlFlow.gif.
@@ -143,4 +142,5 @@ public class ControlFlowItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }

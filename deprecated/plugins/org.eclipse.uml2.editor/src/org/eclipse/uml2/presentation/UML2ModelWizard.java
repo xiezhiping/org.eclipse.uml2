@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ModelWizard.java,v 1.2 2004/04/10 03:56:09 khussey Exp $
+ * $Id: UML2ModelWizard.java,v 1.3 2004/05/25 20:02:56 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -653,4 +653,5 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	public IFile getModelFile() {
 		return newFileCreationPage.getModelFile();
 	}
+
 }

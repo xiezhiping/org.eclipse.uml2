@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AbstractionItemProvider.java,v 1.4 2004/04/30 17:20:11 khussey Exp $
+ * $Id: AbstractionItemProvider.java,v 1.5 2004/05/25 20:03:27 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -113,7 +113,6 @@ public class AbstractionItemProvider
 		return childrenFeatures;
 	}
 
-
 	/**
 	 * This returns Abstraction.gif.
 	 * <!-- begin-user-doc -->
@@ -185,4 +184,5 @@ public class AbstractionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 }
