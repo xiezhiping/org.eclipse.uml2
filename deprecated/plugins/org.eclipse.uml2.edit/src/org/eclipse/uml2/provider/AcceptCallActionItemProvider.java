@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AcceptCallActionItemProvider.java,v 1.5 2004/05/25 20:03:26 khussey Exp $
+ * $Id: AcceptCallActionItemProvider.java,v 1.6 2004/06/06 01:25:31 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -85,6 +85,7 @@ public class AcceptCallActionItemProvider
 		itemPropertyDescriptors.add
 			(new ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
 				 getString("_UI_AcceptCallAction_returnInformation_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AcceptCallAction_returnInformation_feature", "_UI_AcceptCallAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getAcceptCallAction_ReturnInformation(),

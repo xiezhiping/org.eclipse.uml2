@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.6 2004/05/25 20:02:56 khussey Exp $
+ * $Id: UML2Editor.java,v 1.7 2004/06/06 01:23:38 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -151,6 +151,8 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import org.eclipse.uml2.editor.internal.presentation.*;
 import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
+import java.util.HashMap;
+
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 
 
@@ -440,6 +442,16 @@ public class UML2Editor
 	 * @generated
 	 */
 	protected void handleActivate() {
+		// Recompute the read only state.
+		//
+		if (editingDomain.getResourceToReadOnlyMap() != null) {
+		  editingDomain.getResourceToReadOnlyMap().clear();
+
+		  // Refresh any actions that may become enabled or disabled.
+		  //
+		  setSelection(getSelection());
+		}
+
 		if (!removedResources.isEmpty()) {
 			if (handleDirtyConflict()) {
 				getSite().getPage().closeEditor(UML2Editor.this, false);
@@ -544,7 +556,7 @@ public class UML2Editor
 
 		// Create the editing domain with a special command stack.
 		//
-		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack);
+		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap());
 	}
 
 	/**
@@ -760,9 +772,8 @@ public class UML2Editor
 		try {
 			// Load the resource through the editing domain.
 			//
-			Resource resource = 
-				editingDomain.loadResource
-					(URI.createPlatformResourceURI(modelFile.getFile().getFullPath().toString()).toString());
+			editingDomain.loadResource
+				(URI.createPlatformResourceURI(modelFile.getFile().getFullPath().toString()).toString());
 		}
 		catch (Exception exception) {
 			UML2EditorPlugin.INSTANCE.log(exception);
@@ -1566,7 +1577,7 @@ public class UML2Editor
 					URI uri = URI.createURI(uriAttribute);
 					EObject eObject = editingDomain.getResourceSet().getEObject(uri, true);
 					if (eObject != null) {
-					  setSelectionToViewer(Collections.singleton(eObject));
+					  setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(eObject)));
 					}
 				}
 			}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: FinalStateItemProvider.java,v 1.7 2004/06/01 15:26:41 khussey Exp $
+ * $Id: FinalStateItemProvider.java,v 1.8 2004/06/06 01:25:31 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -126,11 +126,11 @@ public class FinalStateItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
+			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
+			feature == UML2Package.eINSTANCE.getState_StateInvariant() ||
 			feature == UML2Package.eINSTANCE.getState_Entry() ||
 			feature == UML2Package.eINSTANCE.getState_Exit() ||
-			feature == UML2Package.eINSTANCE.getState_DoActivity() ||
-			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
-			feature == UML2Package.eINSTANCE.getState_StateInvariant();
+			feature == UML2Package.eINSTANCE.getState_DoActivity();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
