@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AllTests.java,v 1.5 2004/05/20 03:04:01 khussey Exp $
+ * $Id: AllTests.java,v 1.6 2004/05/20 04:54:51 khussey Exp $
  */
 package org.eclipse.uml2.edit.tests;
 
@@ -227,15 +227,15 @@ public class AllTests extends TestSuite {
 			getTestConstructor(testClass);
 		} catch (NoSuchMethodException nsme) {
 			suite
-					.addTest(warning("Class " //$NON-NLS-1$
-							+ testClass.getName()
-							+ " has no public constructor TestCase(String name) or TestCase()")); //$NON-NLS-1$
+				.addTest(warning("Class " //$NON-NLS-1$
+					+ testClass.getName()
+					+ " has no public constructor TestCase(String name) or TestCase()")); //$NON-NLS-1$
 			return;
 		}
 
 		if (!Modifier.isPublic(testClass.getModifiers())) {
 			suite.addTest(warning("Class " + testClass.getName() //$NON-NLS-1$
-					+ " is not public")); //$NON-NLS-1$
+				+ " is not public")); //$NON-NLS-1$
 			return;
 		}
 
@@ -255,12 +255,13 @@ public class AllTests extends TestSuite {
 		if (0 == suite.testCount()) {
 			suite.addTest(warning("No tests found in " + testClass.getName())); //$NON-NLS-1$
 		}
-		
+
 		addTest(suite);
 	}
 
 	private Test warning(final String message) {
 		return new TestCase("warning") { //$NON-NLS-1$
+
 			protected void runTest() {
 				fail(message);
 			}
@@ -279,7 +280,7 @@ public class AllTests extends TestSuite {
 
 			if (isTestMethod(method)) {
 				suite.addTest(warning("Test method isn't public: " //$NON-NLS-1$
-						+ method.getName()));
+					+ method.getName()));
 			}
 
 			return;
@@ -297,8 +298,8 @@ public class AllTests extends TestSuite {
 		String name = method.getName();
 
 		return 0 == method.getParameterTypes().length
-				&& name.startsWith("test") && !name.endsWith("Gen") //$NON-NLS-1$ //$NON-NLS-2$
-				&& method.getReturnType().equals(Void.TYPE);
+			&& name.startsWith("test") && !name.endsWith("Gen") //$NON-NLS-1$ //$NON-NLS-2$
+			&& method.getReturnType().equals(Void.TYPE);
 	}
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.8 2004/05/20 03:01:44 khussey Exp $
+ * $Id: ElementImpl.java,v 1.9 2004/05/20 04:55:48 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -344,7 +344,9 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		return CacheAdapter.INSTANCE;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#createEAnnotation(String)
 	 */
 	public EAnnotation createEAnnotation(String source) {
@@ -362,14 +364,18 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		return eAnnotation;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#apply(org.eclipse.uml2.Stereotype)
 	 */
 	public void apply(Stereotype stereotype) {
 		StereotypeOperations.apply(stereotype, this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#getApplicableStereotype(java.lang.String)
 	 */
 	public Stereotype getApplicableStereotype(String qualifiedStereotypeName) {
@@ -377,7 +383,9 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			qualifiedStereotypeName);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#getApplicableStereotypes()
 	 */
 	public Set getApplicableStereotypes() {
@@ -398,7 +406,9 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#getAppliedStereotype(java.lang.String)
 	 */
 	public Stereotype getAppliedStereotype(String qualifiedStereotypeName) {
@@ -406,7 +416,9 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			qualifiedStereotypeName);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#getAppliedStereotypes()
 	 */
 	public Set getAppliedStereotypes() {
@@ -427,64 +439,84 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#getModel()
 	 */
 	public Model getModel() {
 		return ElementOperations.getModel(this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#getNearestPackage()
 	 */
 	public org.eclipse.uml2.Package getNearestPackage() {
 		return ElementOperations.getNearestPackage(this);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.uml2.Element#getValue(org.eclipse.uml2.Stereotype, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Element#getValue(org.eclipse.uml2.Stereotype,
+	 *      java.lang.String)
 	 */
 	public Object getValue(Stereotype stereotype, String propertyName) {
 		return StereotypeOperations.getValue(stereotype, this, propertyName);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#isApplied(org.eclipse.uml2.Stereotype)
 	 */
 	public boolean isApplied(Stereotype stereotype) {
 		return StereotypeOperations.isApplied(stereotype, this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#isRequired(org.eclipse.uml2.Stereotype)
 	 */
 	public boolean isRequired(Stereotype stereotype) {
 		return StereotypeOperations.isRequired(stereotype, this);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.uml2.Element#setValue(org.eclipse.uml2.Stereotype, java.lang.String, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Element#setValue(org.eclipse.uml2.Stereotype,
+	 *      java.lang.String, java.lang.Object)
 	 */
 	public void setValue(Stereotype stereotype, String propertyName,
 			Object value) {
 		StereotypeOperations.setValue(stereotype, this, propertyName, value);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#unapply(org.eclipse.uml2.Stereotype)
 	 */
 	public void unapply(Stereotype stereotype) {
 		StereotypeOperations.unapply(stereotype, this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#destroy()
 	 */
 	public void destroy() {
 		ElementOperations.destroy(this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#getAppliedVersion(org.eclipse.uml2.Stereotype)
 	 */
 	public String getAppliedVersion(Stereotype stereotype) {
