@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.11 2004/12/03 22:32:52 khussey Exp $
+ * $Id: UML2Operations.java,v 1.12 2004/12/21 21:26:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -578,7 +578,7 @@ class UML2Operations {
 				List resourceBundleURIs = getResourceBundleURIs(resource
 					.getURI(), locale);
 
-				if (null != EcorePlugin.getWorkspaceRoot()) {
+				if (EcorePlugin.IS_ECLIPSE_RUNNING) {
 					URI normalizedURI = uriConverter.normalize(resource
 						.getURI());
 					int segmentCount = normalizedURI.segmentCount();
