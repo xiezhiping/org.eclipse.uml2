@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.9 2004/06/02 19:52:53 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.10 2004/06/09 18:04:16 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.uml2.AggregationKind;
@@ -94,9 +95,13 @@ public final class StereotypeOperations
 	 * @return The Ecore class representing the stereotype, or <code>null</code>.
 	 */
 	public static EClass getEClass(Stereotype stereotype, String version) {
-		return (EClass) ProfileOperations.getEPackage(stereotype.getProfile(),
-			version).getEClassifier(
-			ProfileOperations.getEClassifierName(stereotype));
+		EPackage ePackage = ProfileOperations.getEPackage(stereotype
+			.getProfile(), version);
+
+		return null == ePackage
+			? null
+			: (EClass) ePackage.getEClassifier(ProfileOperations
+				.getEClassifierName(stereotype));
 	}
 
 	/**
@@ -696,22 +701,28 @@ public final class StereotypeOperations
 	 */
 	public static boolean isApplied(Stereotype stereotype, Element element) {
 
-		if (null == stereotype) {
+		if (null == stereotype || null == element) {
 			return false;
 		}
 
-		if (null == element) {
-			return false;
+		org.eclipse.uml2.Package nearestPackage = element.getNearestPackage();
+
+		if (null != nearestPackage) {
+
+			if (null != getEObject(stereotype, element)) {
+				return true;
+			}
+
+			String appliedVersion = nearestPackage.getAppliedVersion(stereotype
+				.getProfile());
+
+			if (null != appliedVersion) {
+				return isRequired(stereotype, element)
+					&& null != getEClass(stereotype, appliedVersion);
+			}
 		}
 
-		if (isRequired(stereotype, element)
-			&& null != element.getNearestPackage()) {
-
-			return element.getNearestPackage().getAllAppliedProfiles()
-				.contains(stereotype.getProfile());
-		}
-
-		return null != getEObject(stereotype, element);
+		return false;
 	}
 
 	/**

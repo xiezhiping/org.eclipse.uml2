@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ModelWizard.java,v 1.3 2004/05/25 20:02:56 khussey Exp $
+ * $Id: UML2ModelWizard.java,v 1.4 2004/06/09 18:04:40 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -68,7 +68,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
-import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.widgets.Combo;
 
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
@@ -359,7 +359,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		protected CCombo initialObjectField;
+		protected Combo initialObjectField;
 
 		/**
 		 * @generated
@@ -373,7 +373,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		protected CCombo encodingField;
+		protected Combo encodingField;
 
 		/**
 		 * Pass in the selection.
@@ -414,7 +414,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 				containerLabel.setLayoutData(data);
 			}
 
-			initialObjectField = new CCombo(composite, SWT.BORDER);
+			initialObjectField = new Combo(composite, SWT.BORDER);
 			{
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -454,7 +454,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 				data.horizontalAlignment = GridData.FILL;
 				encodingLabel.setLayoutData(data);
 			}
-			encodingField = new CCombo(composite, SWT.BORDER);
+			encodingField = new Combo(composite, SWT.BORDER);
 			{
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -495,7 +495,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 				containerLabel.setLayoutData(data);
 			}
 
-			initialObjectField = new CCombo(composite, SWT.BORDER);
+			initialObjectField = new Combo(composite, SWT.BORDER);
 			{
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -521,7 +521,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 				data.horizontalAlignment = GridData.FILL;
 				encodingLabel.setLayoutData(data);
 			}
-			encodingField = new CCombo(composite, SWT.BORDER);
+			encodingField = new Combo(composite, SWT.BORDER);
 			{
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
