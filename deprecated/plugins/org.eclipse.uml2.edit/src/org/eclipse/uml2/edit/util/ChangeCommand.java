@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ChangeCommand.java,v 1.4 2004/06/21 19:25:03 khussey Exp $
+ * $Id: ChangeCommand.java,v 1.5 2004/06/23 17:12:19 khussey Exp $
  */
 package org.eclipse.uml2.edit.util;
 
@@ -109,7 +109,7 @@ public class ChangeCommand
 		}
 
 		protected void createRemoveListChange(EList oldList, EList changesList,
-				Object newObject, int index, int targetIndex) {
+				Object newObject, int index) {
 
 			if (featureIsUnique) {
 				ListChange listChange = createListChange(changesList,
@@ -117,7 +117,7 @@ public class ChangeCommand
 				listChange.getValues().add(oldList.remove(index));
 			} else {
 				super.createRemoveListChange(oldList, changesList, newObject,
-					index, targetIndex);
+					index);
 			}
 		}
 
