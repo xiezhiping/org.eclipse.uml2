@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2LoadImpl.java,v 1.2 2004/04/10 04:09:51 khussey Exp $
+ * $Id: UML2LoadImpl.java,v 1.3 2004/06/14 02:22:00 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -18,17 +18,18 @@ import org.eclipse.emf.ecore.xmi.impl.XMILoadImpl;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- *
+ *  
  */
 public class UML2LoadImpl
 	extends XMILoadImpl {
 
 	public UML2LoadImpl(XMLHelper helper) {
-
 		super(helper);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.ecore.xmi.impl.XMLLoadImpl#makeDefaultHandler()
 	 */
 	protected DefaultHandler makeDefaultHandler() {
