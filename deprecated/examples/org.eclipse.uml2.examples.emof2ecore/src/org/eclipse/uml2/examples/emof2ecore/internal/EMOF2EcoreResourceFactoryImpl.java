@@ -8,17 +8,25 @@
  * Contributors:
  *   IBM - Initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.1 2004/12/21 22:06:15 khussey Exp $
+ * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.2 2004/12/22 15:15:27 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore.internal;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.uml2.examples.emof2ecore.EMOF2EcorePostProcessor;
 import org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResource;
+import org.eclipse.uml2.mapping.ecore2xml.Ecore2XMLPackage;
+import org.eclipse.uml2.mapping.ecore2xml.Ecore2XMLRegistry;
+import org.eclipse.uml2.mapping.ecore2xml.impl.Ecore2XMLRegistryImpl;
 import org.eclipse.uml2.mapping.ecore2xml.util.Ecore2XMLExtendedMetaData;
 
 /**
@@ -51,7 +59,27 @@ public class EMOF2EcoreResourceFactoryImpl
 		resource.getDefaultLoadOptions().put(
 			XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 
-		ExtendedMetaData extendedMetaData = new Ecore2XMLExtendedMetaData();
+		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
+			EPackage.Registry.INSTANCE);
+		ePackageRegistry.put(EMOF2EcoreResource.EMOF_NS_URI,
+			EcorePackage.eINSTANCE);
+
+		Ecore2XMLRegistry ecore2xmlRegistry = new Ecore2XMLRegistryImpl(
+			Ecore2XMLRegistry.INSTANCE);
+		ecore2xmlRegistry
+			.put(
+				EMOF2EcoreResource.EMOF_NS_URI,
+				EcoreUtil
+					.getObjectByType(
+						new ResourceSetImpl()
+							.getResource(
+								URI
+									.createURI("platform:/plugin/org.eclipse.uml2.examples.emof2ecore/EMOF_2_Ecore.ecore2xml"),
+								true).getContents(), Ecore2XMLPackage.eINSTANCE
+							.getXMLMap()));
+
+		ExtendedMetaData extendedMetaData = new Ecore2XMLExtendedMetaData(
+			ePackageRegistry, ecore2xmlRegistry);
 
 		resource.getDefaultLoadOptions().put(
 			XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);

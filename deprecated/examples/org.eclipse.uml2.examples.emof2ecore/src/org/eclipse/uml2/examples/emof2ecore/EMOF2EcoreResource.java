@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  * 
- * $Id: EMOF2EcoreResource.java,v 1.1 2004/12/21 22:06:15 khussey Exp $
+ * $Id: EMOF2EcoreResource.java,v 1.2 2004/12/22 15:15:27 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore;
 
@@ -41,11 +41,11 @@ public interface EMOF2EcoreResource
 
 	}
 
+	public static final String EMOF_NS_URI = "http://schema.omg.org/spec/mof/2.0/emof.xmi"; //$NON-NLS-1$
+
 	public static final String FILE_EXTENSION = "emof2ecore"; //$NON-NLS-1$
 
 	public static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
-
-	public static final String OPTION_PRE_PROCESSOR = "PRE_PROCESSOR"; //$NON-NLS-1$
 
 	public static final String OPTION_POST_PROCESSOR = "POST_PROCESSOR"; //$NON-NLS-1$
 

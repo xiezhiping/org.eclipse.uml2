@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  * 
- * $Id: EMOF2EcorePostProcessor.java,v 1.1 2004/12/21 22:06:15 khussey Exp $
+ * $Id: EMOF2EcorePostProcessor.java,v 1.2 2004/12/22 15:15:27 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore;
 
@@ -172,7 +172,7 @@ public class EMOF2EcorePostProcessor
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.uml2.mapping.emof2ecore.util.EMOF2EcoreResource.PostProcessor#postLoad(org.eclipse.uml2.mapping.emof2ecore.util.EMOF2EcoreResource,
+	 * @see org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResource.PostProcessor#postLoad(org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResource,
 	 *      java.util.Map)
 	 */
 	public void postLoad(final EMOF2EcoreResource resource, Map options) {

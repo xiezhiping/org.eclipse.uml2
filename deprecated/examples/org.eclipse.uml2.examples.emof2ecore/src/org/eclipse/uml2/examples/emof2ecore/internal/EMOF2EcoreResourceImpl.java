@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceImpl.java,v 1.1 2004/12/21 22:06:15 khussey Exp $
+ * $Id: EMOF2EcoreResourceImpl.java,v 1.2 2004/12/22 15:15:27 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore.internal;
 
@@ -23,7 +23,7 @@ import org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResource;
 /**
  * The <b>Resource </b> associated with the package.
  * 
- * @see org.eclipse.uml2.examples.emof2ecore.Ecore2EcoreResourceFactoryImpl
+ * @see org.eclipse.uml2.examples.emof2ecore.internal.Ecore2EcoreResourceFactoryImpl
  */
 public class EMOF2EcoreResourceImpl
 		extends XMIResourceImpl
