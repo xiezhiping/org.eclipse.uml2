@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.8 2004/06/21 19:25:06 khussey Exp $
+ * $Id: ElementOperations.java,v 1.9 2004/06/22 19:54:04 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -148,7 +149,8 @@ public final class ElementOperations
 			TreeIterator eAllContents = new AbstractTreeIterator(element, true) {
 
 				public Iterator getChildren(Object parent) {
-					return ((EObject) parent).eContents().iterator();
+					return new ArrayList(((EObject) parent).eContents())
+						.iterator();
 				}
 			};
 
