@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InterfaceItemProvider.java,v 1.3 2004/04/14 20:45:54 khussey Exp $
+ * $Id: InterfaceItemProvider.java,v 1.4 2004/04/23 02:26:00 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -337,17 +337,17 @@ public class InterfaceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createActivity()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createAssociationClass()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
+				 UML2Factory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -372,11 +372,6 @@ public class InterfaceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createSignal()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createCollaboration()));
 
 		newChildDescriptors.add
@@ -387,17 +382,17 @@ public class InterfaceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
+				 UML2Factory.eINSTANCE.createSignal()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createComponent()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
-				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -418,6 +413,11 @@ public class InterfaceItemProvider
 			(createChildParameter
 				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
 				 UML2Factory.eINSTANCE.createCommunicationPath()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UML2Package.eINSTANCE.getInterface_NestedClassifier(),
+				 UML2Factory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -443,9 +443,9 @@ public class InterfaceItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
+			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
 			feature == UML2Package.eINSTANCE.getInterface_NestedClassifier() ||
-			feature == UML2Package.eINSTANCE.getInterface_Protocol() ||
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase();
+			feature == UML2Package.eINSTANCE.getInterface_Protocol();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });

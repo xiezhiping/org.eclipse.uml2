@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LifelineItemProvider.java,v 1.3 2004/04/14 20:45:54 khussey Exp $
+ * $Id: LifelineItemProvider.java,v 1.4 2004/04/23 02:26:00 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -75,7 +75,7 @@ public class LifelineItemProvider
 
 			addCoveredByPropertyDescriptor(object);
 			addRepresentsPropertyDescriptor(object);
-			addDiscriminatorPropertyDescriptor(object);
+			addSelectorPropertyDescriptor(object);
 			addDecomposedAsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -114,18 +114,18 @@ public class LifelineItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Discriminator feature.
+	 * This adds a property descriptor for the Selector feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDiscriminatorPropertyDescriptor(Object object) {
+	protected void addSelectorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(new ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getString("_UI_Lifeline_discriminator_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Lifeline_discriminator_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getLifeline_Discriminator(),
+				 getString("_UI_Lifeline_selector_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Lifeline_selector_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 UML2Package.eINSTANCE.getLifeline_Selector(),
 				 true,
 				 null,
 				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
@@ -158,7 +158,7 @@ public class LifelineItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UML2Package.eINSTANCE.getLifeline_Discriminator());
+			childrenFeatures.add(UML2Package.eINSTANCE.getLifeline_Selector());
 		}
 		return childrenFeatures;
 	}
@@ -198,7 +198,7 @@ public class LifelineItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Lifeline.class)) {
-			case UML2Package.LIFELINE__DISCRIMINATOR:
+			case UML2Package.LIFELINE__SELECTOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -217,12 +217,12 @@ public class LifelineItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getLifeline_Discriminator(),
+				(UML2Package.eINSTANCE.getLifeline_Selector(),
 				 UML2Factory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UML2Package.eINSTANCE.getLifeline_Discriminator(),
+				(UML2Package.eINSTANCE.getLifeline_Selector(),
 				 UML2Factory.eINSTANCE.createExpression()));
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.3 2004/04/14 20:45:54 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.4 2004/04/23 02:26:00 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -127,10 +127,10 @@ public class RemoveStructuralFeatureValueActionItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
-			feature == UML2Package.eINSTANCE.getStructuralFeatureAction_Object() ||
-			feature == UML2Package.eINSTANCE.getWriteStructuralFeatureAction_Value() ||
 			feature == UML2Package.eINSTANCE.getAction_LocalPrecondition() ||
-			feature == UML2Package.eINSTANCE.getAction_LocalPostcondition();
+			feature == UML2Package.eINSTANCE.getAction_LocalPostcondition() ||
+			feature == UML2Package.eINSTANCE.getStructuralFeatureAction_Object() ||
+			feature == UML2Package.eINSTANCE.getWriteStructuralFeatureAction_Value();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
