@@ -37,8 +37,7 @@
 				<tag name="implements" description="ignore" enabled="false"/>
 				<tag name="ordered" description="ignore" enabled="false"/>
 
-				<group title="UML2 API" packages="org.eclipse.uml2"/>
-				<group title="UML2 Utilities" packages="org.eclipse.uml2.util"/>
+				<group title="UML2 Model" packages="org.eclipse.uml2"/>
 				<group title="UML2 Edit" packages="org.eclipse.uml2.provider"/>
 				<group title="UML2 Editor" packages="org.eclipse.uml2.presentation"/>
 
