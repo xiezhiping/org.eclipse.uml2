@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22EcoreConverterOptionsDialog.java,v 1.2 2005/03/15 18:54:23 khussey Exp $
+ * $Id: UML22EcoreConverterOptionsDialog.java,v 1.3 2005/04/06 19:59:55 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.dialogs;
 
@@ -38,6 +38,10 @@ public class UML22EcoreConverterOptionsDialog
 	protected void createOptionAreas(Composite parent) {
 		super.createOptionAreas(parent);
 
+		createOptionArea(parent,
+			UML2Util.UML22EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
+			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
+				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__DERIVED_FEATURES,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,

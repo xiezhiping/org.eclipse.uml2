@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.18 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ElementImpl.java,v 1.19 2005/04/06 19:59:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -354,7 +354,6 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 */
 	public NotificationChain eSetResource(Internal resource,
 			NotificationChain notifications) {
-
 		getCacheAdapter().adapt(resource);
 
 		return super.eSetResource(resource, notifications);
@@ -370,8 +369,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0,
-					EcorePackage.EMODEL_ELEMENT__EANNOTATIONS, null,
-					eAnnotation));
+				EcorePackage.EMODEL_ELEMENT__EANNOTATIONS, null, eAnnotation));
 		}
 
 		eAnnotation.setSource(source);
@@ -409,7 +407,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			// ignore
 		}
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -449,7 +447,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			// ignore
 		}
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -529,6 +527,16 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see org.eclipse.uml2.Element#hasValue(org.eclipse.uml2.Stereotype,
+	 *      java.lang.String)
+	 */
+	public boolean hasValue(Stereotype stereotype, String propertyName) {
+		return StereotypeOperations.hasValue(stereotype, this, propertyName);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.Element#unapply(org.eclipse.uml2.Stereotype)
 	 */
 	public void unapply(Stereotype stereotype) {
@@ -572,7 +580,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			// ignore
 		}
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 

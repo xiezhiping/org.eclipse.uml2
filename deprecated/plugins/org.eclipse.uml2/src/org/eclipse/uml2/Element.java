@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.10 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Element.java,v 1.11 2005/04/06 19:59:37 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -309,6 +309,19 @@ public interface Element extends EModelElement{
 	public void setValue(Stereotype stereotype, String propertyName,
 			Object value);
 
+	/**
+	 * Determines whether this element has a (non-default) value for the
+	 * property with the specified name in the specified stereotype application.
+	 * 
+	 * @param stereotype
+	 *            The stereotype whose application contains the property.
+	 * @param propertyName
+	 *            The name of the property whose value to test.
+	 * @return <code>true</code> if the applied stereotype property has a
+	 *         (non-default) value; <code>false</code> otherwise.
+	 */
+	boolean hasValue(Stereotype stereotype, String propertyName);
+	
 	/**
 	 * Retrieves the model that contains (either directly or indirectly) this
 	 * element.

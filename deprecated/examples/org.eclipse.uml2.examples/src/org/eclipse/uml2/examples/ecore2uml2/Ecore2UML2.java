@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Ecore2UML2.java,v 1.5 2005/03/15 18:54:14 khussey Exp $
+ * $Id: Ecore2UML2.java,v 1.6 2005/04/06 19:59:31 khussey Exp $
  */
 package org.eclipse.uml2.examples.ecore2uml2;
 
@@ -65,7 +65,7 @@ import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Switch;
 
 /**
- *  
+ * @deprecated Use UML2Util.Ecore2UML2Converter instead.
  */
 public class Ecore2UML2
 	extends EcoreSwitch

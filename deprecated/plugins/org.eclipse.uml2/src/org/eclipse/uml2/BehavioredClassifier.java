@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.9 2005/04/04 20:11:14 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.10 2005/04/06 19:59:37 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -284,7 +284,29 @@ public interface BehavioredClassifier extends Classifier{
 	 * @return The interfaces implemented by this behaviored classifier.
 	 */
 	Set getImplementedInterfaces();
-	
+
+	/**
+	 * Retrieves the interfaces on which this behaviored classifier or any of
+	 * its parents has an implementation dependency.
+	 * 
+	 * @return The interfaces implemented by the specified behaviored classifier
+	 *         or any of its parents.
+	 */
+	Set getAllImplementedInterfaces();
+
+	/**
+	 * Creates an implementation where this behaviored classifier is the
+	 * implementing classifier and the specified interface is the contract.
+	 * 
+	 * @param contract
+	 *            The contract for the implementation.
+	 * @return The new implementation.
+	 * @exception IllegalArgumentException
+	 *                If this behaviored classifier or any of its parents is
+	 *                already an implementing classifier of the interface.
+	 */
+	Implementation createImplementation(Interface contract);
+
 	// <!-- end-custom-operations -->
 
 } // BehavioredClassifier

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.17 2005/03/18 04:00:53 khussey Exp $
+ * $Id: UML2Operations.java,v 1.18 2005/04/06 19:59:37 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -28,7 +28,6 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EModelElement;
@@ -46,14 +45,7 @@ import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.ECrossReferenceEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.uml2.Artifact;
-import org.eclipse.uml2.DataType;
-import org.eclipse.uml2.Interface;
-import org.eclipse.uml2.Signal;
-import org.eclipse.uml2.StructuredClassifier;
-import org.eclipse.uml2.Type;
 import org.eclipse.uml2.util.UML2Resource;
-import org.eclipse.uml2.util.UML2Switch;
 import org.eclipse.uml2.util.UML2Util;
 import org.osgi.framework.Bundle;
 
@@ -279,36 +271,6 @@ class UML2Operations
 		return null == eAnnotation
 			? EcoreFactory.eINSTANCE.createEAnnotation()
 			: eAnnotation;
-	}
-
-	protected static EList getOwnedAttributes(Type type) {
-
-		if (null == type) {
-			return null;
-		}
-
-		return (EList) new UML2Switch() {
-
-			public Object caseArtifact(Artifact object) {
-				return object.getOwnedAttributes();
-			}
-
-			public Object caseDataType(DataType object) {
-				return object.getOwnedAttributes();
-			}
-
-			public Object caseInterface(Interface object) {
-				return object.getOwnedAttributes();
-			}
-
-			public Object caseSignal(Signal object) {
-				return object.getOwnedAttributes();
-			}
-
-			public Object caseStructuredClassifier(StructuredClassifier object) {
-				return object.getOwnedAttributes();
-			}
-		}.doSwitch(type);
 	}
 
 	/**

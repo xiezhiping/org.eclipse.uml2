@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.16 2005/04/04 20:11:12 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.17 2005/04/06 19:59:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -35,6 +35,7 @@ import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Dependency;
 import org.eclipse.uml2.Implementation;
+import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.StateMachine;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
@@ -951,6 +952,47 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 		}
 
 		return implementedInterfaces;
+	}
+
+	private static Method GET_ALL_IMPLEMENTED_INTERFACES_METHOD = null;
+
+	static {
+		try {
+			GET_ALL_IMPLEMENTED_INTERFACES_METHOD = BehavioredClassifierImpl.class
+				.getMethod("getAllImplementedInterfaces", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// ignore
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.BehavioredClassifier#getAllImplementedInterfaces()
+	 */
+	public Set getAllImplementedInterfaces() {
+		Set allImplementedInterfaces = (Set) getCacheAdapter().get(eResource(),
+			this, GET_ALL_IMPLEMENTED_INTERFACES_METHOD);
+
+		if (null == allImplementedInterfaces) {
+			allImplementedInterfaces = BehavioredClassifierOperations
+				.getAllImplementedInterfaces(this);
+			getCacheAdapter()
+				.put(eResource(), this, GET_ALL_IMPLEMENTED_INTERFACES_METHOD,
+					allImplementedInterfaces);
+		}
+
+		return allImplementedInterfaces;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.BehavioredClassifier#createImplementation(org.eclipse.uml2.Interface)
+	 */
+	public Implementation createImplementation(Interface contract) {
+		return BehavioredClassifierOperations.createImplementation(this,
+			contract);
 	}
 	
 	// <!-- end-custom-operations -->

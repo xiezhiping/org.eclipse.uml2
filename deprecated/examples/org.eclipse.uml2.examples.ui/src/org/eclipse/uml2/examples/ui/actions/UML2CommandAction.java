@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2CommandAction.java,v 1.3 2005/03/15 18:54:23 khussey Exp $
+ * $Id: UML2CommandAction.java,v 1.4 2005/04/06 19:59:55 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.ui.action.CommandAction;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.action.IAction;
@@ -21,10 +22,10 @@ import org.eclipse.uml2.presentation.UML2Editor;
 import org.eclipse.uml2.provider.IItemQualifiedTextProvider;
 
 /**
- *  
+ * 
  */
 public class UML2CommandAction
-	extends CommandAction {
+		extends CommandAction {
 
 	private ILabelProvider labelProvider = null;
 
@@ -34,6 +35,12 @@ public class UML2CommandAction
 
 	protected ILabelProvider getLabelProvider() {
 		return labelProvider;
+	}
+
+	protected AdapterFactory getAdapterFactory() {
+		return null == editorPart
+			? null
+			: ((UML2Editor) editorPart).getAdapterFactory();
 	}
 
 	/*
@@ -47,8 +54,7 @@ public class UML2CommandAction
 
 		labelProvider = null == editorPart
 			? null
-			: new AdapterFactoryLabelProvider(((UML2Editor) editorPart)
-				.getAdapterFactory()) {
+			: new AdapterFactoryLabelProvider(getAdapterFactory()) {
 
 				public String getColumnText(Object object, int columnIndex) {
 					IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory

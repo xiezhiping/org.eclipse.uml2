@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.19 2005/03/30 13:56:54 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.20 2005/04/06 19:59:37 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -946,6 +946,106 @@ public final class StereotypeOperations
 				}
 			}
 		}
+	}
+
+	/**
+	 * Determines whether the specified element has a (non-default) value for
+	 * the property with the specified name in the specified stereotype
+	 * application.
+	 * 
+	 * @param stereotype
+	 *            The stereotype whose application contains the property.
+	 * @param element
+	 *            The element for which to test the value.
+	 * @param propertyName
+	 *            The name of the property whose value to test.
+	 * @return <code>true</code> if the applied stereotype property has a
+	 *         (non-default) value; <code>false</code> otherwise.
+	 */
+	public static boolean hasValue(Stereotype stereotype, Element element,
+			String propertyName) {
+
+		if (null == stereotype || !isApplied(stereotype, element)) {
+			return false;
+		}
+
+		if (isEmpty(propertyName)) {
+			return false;
+		}
+
+		EClass eClass = getEClass(stereotype, getAppliedVersion(stereotype,
+			element));
+
+		EObject eObject = getEObject(stereotype, element);
+
+		String[] tokens = propertyName.split(NamedElement.SEPARATOR);
+
+		for (int i = 0, length = tokens.length; i < length; i++) {
+			String token = tokens[i];
+
+			EStructuralFeature eStructuralFeature = null;
+			int index = -1;
+
+			if (-1 == token.indexOf('[')) {
+				eStructuralFeature = eClass
+					.getEStructuralFeature(getValidIdentifier(token));
+			} else {
+				eStructuralFeature = eClass
+					.getEStructuralFeature(getValidIdentifier(token.substring(
+						0, token.indexOf('['))));
+
+				try {
+					index = Integer.parseInt(token.substring(
+						token.indexOf('[') + 1, token.indexOf(']')));
+				} catch (Exception e) {
+					return false;
+				}
+			}
+
+			if (null == eStructuralFeature) {
+				return false;
+			}
+
+			if (i + 1 < length) {
+
+				if (null == eObject
+					|| !EClass.class.isInstance(eStructuralFeature.getEType())) {
+
+					return false;
+				}
+
+				eClass = (EClass) eStructuralFeature.getEType();
+
+				eObject = (EObject) (eStructuralFeature.isMany()
+					? ((List) eObject.eGet(eStructuralFeature)).get(index)
+					: eObject.eGet(eStructuralFeature));
+			} else {
+
+				if (null == eObject && stereotype != getStereotype(eClass)) {
+					return false;
+				}
+
+				Object value = null;
+
+				if (eStructuralFeature.isMany()) {
+					List list = null == eObject
+						? Collections.EMPTY_LIST
+						: (List) eObject.eGet(eStructuralFeature);
+
+					return -1 == index
+						? !list.isEmpty()
+						: !safeEquals(eStructuralFeature.getDefaultValue(),
+							list.get(index));
+				} else {
+					return null == eObject
+						? false
+						: !safeEquals(eStructuralFeature.getDefaultValue(),
+							eObject.eGet(eStructuralFeature));
+				}
+			}
+		}
+
+		return false;
 	}
 
 	/**
