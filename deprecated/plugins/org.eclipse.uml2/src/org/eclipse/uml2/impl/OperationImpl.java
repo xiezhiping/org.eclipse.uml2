@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.13 2004/06/18 06:20:53 khussey Exp $
+ * $Id: OperationImpl.java,v 1.14 2004/06/18 06:50:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1621,7 +1621,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.OPERATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1713,6 +1713,14 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 				return bodyCondition != null;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.OPERATION__FORMAL_PARAMETER:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
