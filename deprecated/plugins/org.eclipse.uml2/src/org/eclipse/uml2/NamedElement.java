@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElement.java,v 1.6 2004/06/06 01:35:03 khussey Exp $
+ * $Id: NamedElement.java,v 1.7 2004/12/03 22:32:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
 import java.util.List;
-
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -343,6 +342,13 @@ public interface NamedElement extends TemplateableElement{
 	// <!-- begin-custom-operations -->
 
 	public static final String SEPARATOR = "::"; //$NON-NLS-1$
+
+	/**
+	 * Retrieves a (localized) label for this named element.
+	 * 
+	 * @return A label for this named element.
+	 */
+	public String getLabel();
 
 	// <!-- end-custom-operations -->
 

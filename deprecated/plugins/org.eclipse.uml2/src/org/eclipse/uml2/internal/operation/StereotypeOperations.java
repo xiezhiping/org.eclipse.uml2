@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.14 2004/12/02 16:14:25 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.15 2004/12/03 22:32:52 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -16,8 +16,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -996,18 +994,8 @@ public final class StereotypeOperations
 		String keyword = EMPTY_STRING;
 
 		if (null != stereotype) {
-
-			try {
-				ResourceBundle resourceBundle = ProfileOperations
-					.getResourceBundle(stereotype.getProfile());
-
-				if (null != resourceBundle) {
-					keyword = resourceBundle.getString(stereotype
-						.getQualifiedName().replace(':', '_'));
-				}
-			} catch (MissingResourceException mre) {
-				// ignore
-			}
+			keyword = getString(stereotype, getValidIdentifier(stereotype
+				.getQualifiedName().replace(':', '_')), EMPTY_STRING);
 
 			if (isEmpty(keyword)) {
 				String identifier = getValidIdentifier(stereotype.getName());

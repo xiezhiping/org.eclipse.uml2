@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.10 2004/06/18 04:34:32 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.11 2004/12/03 22:32:52 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -38,6 +38,7 @@ import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.NamedElementOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -633,5 +634,18 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		result.append(')');
 		return result.toString();
 	}
+
+	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.NamedElement#getLabel()
+	 */
+	public String getLabel() {
+		return NamedElementOperations.getLabel(this);
+	}
+
+	// <!-- end-custom-operations -->
 
 } //NamedElementImpl

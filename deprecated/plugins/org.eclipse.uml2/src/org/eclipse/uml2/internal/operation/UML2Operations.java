@@ -8,18 +8,25 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.10 2004/11/02 15:30:10 khussey Exp $
+ * $Id: UML2Operations.java,v 1.11 2004/12/03 22:32:52 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.MissingResourceException;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
@@ -30,8 +37,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
 import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.ECrossReferenceEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -45,6 +55,7 @@ import org.eclipse.uml2.Signal;
 import org.eclipse.uml2.StructuredClassifier;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.util.UML2Switch;
+import org.osgi.framework.Bundle;
 
 /**
  * The base class for all UML2 operation utility classes.
@@ -52,12 +63,12 @@ import org.eclipse.uml2.util.UML2Switch;
 class UML2Operations {
 
 	protected static class FilteredECrossReferenceEList
-		extends ECrossReferenceEList {
+			extends ECrossReferenceEList {
 
 		private final FilteredUsageCrossReferencer.Filter filter;
 
 		protected static class FilteredFeatureIteratorImpl
-			extends ECrossReferenceEList.FeatureIteratorImpl {
+				extends ECrossReferenceEList.FeatureIteratorImpl {
 
 			private final FilteredUsageCrossReferencer.Filter filter;
 
@@ -82,7 +93,7 @@ class UML2Operations {
 		}
 
 		protected static class FilteredResolvingFeatureIteratorImpl
-			extends FilteredFeatureIteratorImpl {
+				extends FilteredFeatureIteratorImpl {
 
 			public FilteredResolvingFeatureIteratorImpl(EObject eObject,
 					EStructuralFeature[] eStructuralFeatures,
@@ -178,7 +189,7 @@ class UML2Operations {
 	}
 
 	protected static class FilteredUsageCrossReferencer
-		extends EcoreUtil.UsageCrossReferencer {
+			extends EcoreUtil.UsageCrossReferencer {
 
 		protected static interface Filter {
 
@@ -244,6 +255,33 @@ class UML2Operations {
 	 * The standard extension for properties files.
 	 */
 	protected static final String PROPERTIES_FILE_EXTENSION = "properties"; //$NON-NLS-1$
+
+	/**
+	 * The scheme for platform URIs.
+	 */
+	private static final String URI_SCHEME_PLATFORM = "platform"; //$NON-NLS-1$
+
+	/**
+	 * The first segment for platform plugin URIs.
+	 */
+	private static final String URI_SEGMENT_PLUGIN = "plugin"; //$NON-NLS-1$
+
+	/**
+	 * The default URI converter for resource bundle look-ups.
+	 */
+	private static final URIConverter DEFAULT_URI_CONVERTER = new URIConverterImpl();
+
+	/**
+	 * A cache of locales.
+	 */
+	private static final Map LOCALES = Collections
+		.synchronizedMap(new HashMap());
+
+	/**
+	 * A cache of resource bundles.
+	 */
+	private static final Map RESOURCE_BUNDLES = Collections
+		.synchronizedMap(new HashMap());
 
 	protected static EAnnotation createEAnnotation(String source,
 			EModelElement eModelElement) {
@@ -508,6 +546,135 @@ class UML2Operations {
 		}
 
 		return resourceBundleURIs;
+	}
+
+	/**
+	 * Retrieves the (cached) resource bundle for the specified object in the
+	 * specified locale.
+	 * 
+	 * @param eObject
+	 *            The object for which to retrieve the resource bundle.
+	 * @param locale
+	 *            The locale in which to retrieve the resource bundle.
+	 * @return The resource bundle for the object in the locale.
+	 */
+	protected static ResourceBundle getResourceBundle(EObject eObject,
+			Locale locale) {
+
+		eObject = EcoreUtil.getRootContainer(eObject);
+
+		if (!RESOURCE_BUNDLES.containsKey(eObject)
+			|| !locale.equals(LOCALES.get(eObject))) {
+
+			ResourceBundle resourceBundle = null;
+			Resource resource = eObject.eResource();
+
+			if (null != resource) {
+				ResourceSet resourceSet = resource.getResourceSet();
+				URIConverter uriConverter = null == resourceSet
+					? DEFAULT_URI_CONVERTER
+					: resourceSet.getURIConverter();
+
+				List resourceBundleURIs = getResourceBundleURIs(resource
+					.getURI(), locale);
+
+				if (null != EcorePlugin.getWorkspaceRoot()) {
+					URI normalizedURI = uriConverter.normalize(resource
+						.getURI());
+					int segmentCount = normalizedURI.segmentCount();
+
+					if (URI_SCHEME_PLATFORM.equals(normalizedURI.scheme())
+						&& segmentCount > 2
+						&& URI_SEGMENT_PLUGIN.equals(normalizedURI.segment(0))) {
+
+						Bundle bundle = Platform.getBundle(normalizedURI
+							.segment(1));
+
+						if (null != bundle) {
+							Bundle[] fragments = Platform.getFragments(bundle);
+
+							if (null != fragments) {
+								String[] trailingSegments = (String[]) normalizedURI
+									.segmentsList().subList(2, segmentCount)
+									.toArray(new String[]{});
+
+								for (int i = 0; i < fragments.length; i++) {
+									resourceBundleURIs.addAll(0,
+										getResourceBundleURIs(normalizedURI
+											.trimSegments(segmentCount - 1)
+											.appendSegment(
+												fragments[i].getSymbolicName())
+											.appendSegments(trailingSegments),
+											locale));
+								}
+							}
+						}
+					}
+				}
+
+				for (Iterator i = resourceBundleURIs.iterator(); i.hasNext();) {
+
+					try {
+						resourceBundle = new PropertyResourceBundle(
+							uriConverter.createInputStream((URI) i.next()));
+						locale = resourceBundle.getLocale();
+						break;
+					} catch (IOException ioe) {
+						// ignore
+					}
+				}
+			}
+
+			LOCALES.put(eObject, locale);
+			RESOURCE_BUNDLES.put(eObject, resourceBundle);
+		}
+
+		return (ResourceBundle) RESOURCE_BUNDLES.get(eObject);
+	}
+
+	/**
+	 * Retrieves the (cached) resource bundle for the specified object in the
+	 * default locale.
+	 * 
+	 * @param eObject
+	 *            The object for which to retrieve the resource bundle.
+	 * @return The resource bundle for the object in the default locale.
+	 */
+	protected static ResourceBundle getResourceBundle(EObject eObject) {
+		return getResourceBundle(eObject, Locale.getDefault());
+	}
+
+	/**
+	 * Retrieves a (localized) string for the specified object.
+	 * 
+	 * @param object
+	 *            The object for which to retrieve a string.
+	 * @param key
+	 *            The key in the resource bundle.
+	 * @param defaultString
+	 *            The string to return if no string for the given key can be
+	 *            found.
+	 * @return The (localized) string.
+	 */
+	protected static String getString(EObject eObject, String key,
+			String defaultString) {
+
+		String string = defaultString;
+
+		if (null != eObject) {
+
+			try {
+				ResourceBundle resourceBundle = getResourceBundle(eObject);
+
+				if (null != resourceBundle) {
+					string = resourceBundle.getString(key);
+				}
+			} catch (MissingResourceException mre) {
+				// ignore
+			}
+		}
+
+		return string;
 	}
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.6 2004/05/11 15:24:01 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.7 2004/12/03 22:32:52 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -22,16 +22,17 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
-import org.eclipse.uml2.util.UML2Validator;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
-
+import org.eclipse.uml2.util.UML2Validator;
 
 /**
  * A static utility class that provides operations related to named elements.
  */
 public final class NamedElementOperations
-	extends UML2Operations {
+		extends UML2Operations {
+
+	protected static final String LABEL_KEY_PREFIX = "_label_"; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Named Element Operations. This constructor should never
@@ -101,7 +102,7 @@ public final class NamedElementOperations
 	/**
 	 * If there is no name, or one of the containing namespaces has no name,
 	 * there is no qualified name.
-	 *  
+	 * 
 	 */
 	public static boolean validateNoName(NamedElement namedElement,
 			DiagnosticChain diagnostics, Map context) {
@@ -123,12 +124,11 @@ public final class NamedElementOperations
 
 		if (!result && null != diagnostics) {
 			diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UML2Validator.DIAGNOSTIC_SOURCE,
-					UML2Validator.NAMED_ELEMENT__NO_NAME,
-					UML2Plugin.INSTANCE.getString(
-						"_UI_NamedElement_NoName_diagnostic", //$NON-NLS-1$
+				UML2Validator.DIAGNOSTIC_SOURCE,
+				UML2Validator.NAMED_ELEMENT__NO_NAME, UML2Plugin.INSTANCE
+					.getString("_UI_NamedElement_NoName_diagnostic", //$NON-NLS-1$
 						getMessageSubstitutions(context, namedElement)),
-					new Object[] {namedElement}));
+				new Object[]{namedElement}));
 		}
 
 		return result;
@@ -138,7 +138,7 @@ public final class NamedElementOperations
 	 * When there is a name, and all of the containing namespaces have a name,
 	 * the qualified name is constructed from the names of the containing
 	 * namespaces.
-	 *  
+	 * 
 	 */
 	public static boolean validateQualifiedName(NamedElement namedElement,
 			DiagnosticChain diagnostics, Map context) {
@@ -165,17 +165,13 @@ public final class NamedElementOperations
 				result = false;
 
 				if (null != diagnostics) {
-					diagnostics
-						.add(new BasicDiagnostic(
-								Diagnostic.ERROR,
-								UML2Validator.DIAGNOSTIC_SOURCE,
-								UML2Validator.NAMED_ELEMENT__NO_NAME,
-								UML2Plugin.INSTANCE
-									.getString(
-										"_UI_NamedElement_QualifiedName_diagnostic", //$NON-NLS-1$
-										getMessageSubstitutions(context,
-											namedElement)),
-								new Object[] {namedElement}));
+					diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+						UML2Validator.DIAGNOSTIC_SOURCE,
+						UML2Validator.NAMED_ELEMENT__NO_NAME,
+						UML2Plugin.INSTANCE.getString(
+							"_UI_NamedElement_QualifiedName_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, namedElement)),
+						new Object[]{namedElement}));
 				}
 			}
 		}
@@ -186,7 +182,7 @@ public final class NamedElementOperations
 	/**
 	 * If a named element is not owned by a namespace, it does not have a
 	 * visibility.
-	 *  
+	 * 
 	 */
 	public static boolean validateVisibilityNeedsOwnership(
 			NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
@@ -199,21 +195,36 @@ public final class NamedElementOperations
 			result = false;
 
 			if (null != diagnostics) {
-				diagnostics
-					.add(new BasicDiagnostic(
-							Diagnostic.WARNING,
-							UML2Validator.DIAGNOSTIC_SOURCE,
-							UML2Validator.NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP,
-							UML2Plugin.INSTANCE
-								.getString(
-									"_UI_NamedElement_VisibilityNeedsOwnership_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context,
-										namedElement)),
-							new Object[] {namedElement}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UML2Validator.DIAGNOSTIC_SOURCE,
+					UML2Validator.NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP,
+					UML2Plugin.INSTANCE.getString(
+						"_UI_NamedElement_VisibilityNeedsOwnership_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, namedElement)),
+					new Object[]{namedElement}));
 			}
 		}
 
 		return result;
+	}
+
+	/**
+	 * Retrieves a (localized) label for the specified named element.
+	 * 
+	 * @param namedElement
+	 *            The named element for which to retrieve a label.
+	 * @return A label for the named element.
+	 */
+	public static String getLabel(NamedElement namedElement) {
+		String label = EMPTY_STRING;
+
+		if (null != namedElement) {
+			label = getString(namedElement, LABEL_KEY_PREFIX
+				+ getValidIdentifier(namedElement.getQualifiedName().replace(
+					':', '_')), namedElement.getName());
+		}
+
+		return label;
 	}
 
 }
