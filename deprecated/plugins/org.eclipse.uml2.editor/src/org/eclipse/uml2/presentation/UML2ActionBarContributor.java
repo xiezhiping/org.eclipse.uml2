@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ActionBarContributor.java,v 1.2 2004/04/10 03:56:09 khussey Exp $
+ * $Id: UML2ActionBarContributor.java,v 1.3 2004/04/14 20:45:21 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -245,7 +245,7 @@ public class UML2ActionBarContributor
 
 	/**
 	 * This implements {@link ISelectionChangedListener},
-	 * handling {@link SelectionChangedEvents} by querying for the children and siblings
+	 * handling {@link SelectionChangedEvent}s by querying for the children and siblings
 	 * that can be added to the selected object and updating the menus accordingly.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

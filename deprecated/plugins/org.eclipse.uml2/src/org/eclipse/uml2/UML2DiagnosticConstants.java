@@ -8,23 +8,23 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2StatusConstants.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: UML2DiagnosticConstants.java,v 1.1 2004/04/14 20:46:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
 /**
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * Status constants for this plug-in.
+ * Diagnostic constants for this plug-in.
  * <p>
  * This interface declares constants only; it is not intended to be implemented
  * or extended.
  * </p>
  *
- * @see org.eclipse.uml2.util.Status#getCode()
+ * @see org.eclipse.emf.common.util.Diagnostic#getCode()
  * @generated
  */
-public interface UML2StatusConstants {
+public interface UML2DiagnosticConstants {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -36,7 +36,7 @@ public interface UML2StatusConstants {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * A constant indicating the plug-in identifier for status objects.
+	 * A constant indicating the plug-in identifier for diagnostic objects.
 	 * @generated
 	 */
 	public static final String PLUGIN_ID = "org.eclipse.uml2"; //$NON-NLS-1$
@@ -44,7 +44,7 @@ public interface UML2StatusConstants {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * A code indicating an unspecified status.
+	 * A code indicating an unspecified diagnostic.
 	 * @generated
 	 */
 	public static final int UNSPECIFIED = 0;
@@ -53,7 +53,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Element#validateNotOwnSelf(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Element#validateNotOwnSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int ELEMENT__NOT_OWN_SELF = 1;
@@ -62,7 +62,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Element#validateHasOwner(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Element#validateHasOwner(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int ELEMENT__HAS_OWNER = 2;
@@ -71,7 +71,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGt0(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGt0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int MULTIPLICITY_ELEMENT__UPPER_GT0 = 3;
@@ -80,7 +80,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerGe0(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerGe0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int MULTIPLICITY_ELEMENT__LOWER_GE0 = 4;
@@ -89,7 +89,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int MULTIPLICITY_ELEMENT__UPPER_GE_LOWER = 5;
@@ -98,7 +98,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int MULTIPLICITY_ELEMENT__LOWER_EQ_LOWERBOUND = 6;
@@ -107,7 +107,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int MULTIPLICITY_ELEMENT__UPPER_EQ_UPPERBOUND = 7;
@@ -116,7 +116,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Property#validateOppositeIsOtherEnd(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Property#validateOppositeIsOtherEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int PROPERTY__OPPOSITE_IS_OTHER_END = 8;
@@ -125,7 +125,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Property#validateMultiplicityOfComposite(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Property#validateMultiplicityOfComposite(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int PROPERTY__MULTIPLICITY_OF_COMPOSITE = 9;
@@ -134,7 +134,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Property#validateSubsettingContext(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Property#validateSubsettingContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int PROPERTY__SUBSETTING_CONTEXT = 10;
@@ -143,7 +143,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Property#validateNavigablePropertyRedefinition(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Property#validateNavigablePropertyRedefinition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION = 11;
@@ -152,7 +152,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Property#validateSubsettingRules(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Property#validateSubsettingRules(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int PROPERTY__SUBSETTING_RULES = 12;
@@ -161,7 +161,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Property#validateNavigableReadonly(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Property#validateNavigableReadonly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int PROPERTY__NAVIGABLE_READONLY = 13;
@@ -170,7 +170,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Property#validateDerivedUnionIsDerived(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Property#validateDerivedUnionIsDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int PROPERTY__DERIVED_UNION_IS_DERIVED = 14;
@@ -179,7 +179,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Operation#validateTypeOfResult(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Operation#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int OPERATION__TYPE_OF_RESULT = 15;
@@ -188,7 +188,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Operation#validateOnlyBodyForQuery(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Operation#validateOnlyBodyForQuery(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int OPERATION__ONLY_BODY_FOR_QUERY = 16;
@@ -197,7 +197,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.NamedElement#validateNoName(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.NamedElement#validateNoName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int NAMED_ELEMENT__NO_NAME = 17;
@@ -206,7 +206,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.NamedElement#validateQualifiedName(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.NamedElement#validateQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int NAMED_ELEMENT__QUALIFIED_NAME = 18;
@@ -215,7 +215,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP = 19;
@@ -224,7 +224,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Package#validateElementsPublicOrPrivate(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Package#validateElementsPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE = 20;
@@ -233,7 +233,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Namespace#validateMembersAreDistinguishable(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Namespace#validateMembersAreDistinguishable(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE = 21;
@@ -242,7 +242,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Namespace#validateImportedMemberDerived(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Namespace#validateImportedMemberDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int NAMESPACE__IMPORTED_MEMBER_DERIVED = 22;
@@ -251,7 +251,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Classifier#validateNoCyclesInGeneralization(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Classifier#validateNoCyclesInGeneralization(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int CLASSIFIER__NO_CYCLES_IN_GENERALIZATION = 23;
@@ -260,7 +260,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Classifier#validateSpecializeType(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Classifier#validateSpecializeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int CLASSIFIER__SPECIALIZE_TYPE = 24;
@@ -269,7 +269,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Classifier#validateInheritedMember(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Classifier#validateInheritedMember(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int CLASSIFIER__INHERITED_MEMBER = 25;
@@ -278,7 +278,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Classifier#validateGeneralEqualsParents(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Classifier#validateGeneralEqualsParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int CLASSIFIER__GENERAL_EQUALS_PARENTS = 26;
@@ -287,7 +287,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.Constraint#validateNotApplyToSelf(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.Constraint#validateNotApplyToSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int CONSTRAINT__NOT_APPLY_TO_SELF = 27;
@@ -296,7 +296,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.InstanceSpecification#validateSlotsAreDefined(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.InstanceSpecification#validateSlotsAreDefined(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int INSTANCE_SPECIFICATION__SLOTS_ARE_DEFINED = 28;
@@ -305,7 +305,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.InstanceSpecification#validateNoDuplicateSlots(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.InstanceSpecification#validateNoDuplicateSlots(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int INSTANCE_SPECIFICATION__NO_DUPLICATE_SLOTS = 29;
@@ -314,7 +314,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.RedefinableElement#validateRedefinitionContextValid(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.RedefinableElement#validateRedefinitionContextValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID = 30;
@@ -323,7 +323,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.RedefinableElement#validateRedefinitionConsistent(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.RedefinableElement#validateRedefinitionConsistent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT = 31;
@@ -332,7 +332,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.ElementImport#validateVisibilityPublicOrPrivate(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.ElementImport#validateVisibilityPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int ELEMENT_IMPORT__VISIBILITY_PUBLIC_OR_PRIVATE = 32;
@@ -341,7 +341,7 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.ElementImport#validateImportedElementIsPublic(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.ElementImport#validateImportedElementIsPublic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int ELEMENT_IMPORT__IMPORTED_ELEMENT_IS_PUBLIC = 33;
@@ -350,9 +350,9 @@ public interface UML2StatusConstants {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * A code indicating that a constraint was violated.
-	 * @see org.eclipse.uml2.PackageImport#validatePublicOrPrivate(org.eclipse.uml2.util.Validator.ValidationContext)
+	 * @see org.eclipse.uml2.PackageImport#validatePublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public static final int PACKAGE_IMPORT__PUBLIC_OR_PRIVATE = 34;
 
-} //UML2StatusConstants
+} //UML2DiagnosticConstants

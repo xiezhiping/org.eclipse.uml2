@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LoopNodeItemProvider.java,v 1.2 2004/04/10 03:58:45 khussey Exp $
+ * $Id: LoopNodeItemProvider.java,v 1.3 2004/04/14 20:45:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -294,8 +294,8 @@ public class LoopNodeItemProvider
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * This handles model notifications by updating any cached children and by
+	 * creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -359,9 +359,9 @@ public class LoopNodeItemProvider
 			feature == UML2Package.eINSTANCE.getAction_LocalPostcondition() ||
 			feature == UML2Package.eINSTANCE.getNamespace_OwnedRule() ||
 			feature == UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode() ||
-			feature == UML2Package.eINSTANCE.getLoopNode_LoopVariableInput() ||
 			feature == UML2Package.eINSTANCE.getLoopNode_Result() ||
-			feature == UML2Package.eINSTANCE.getLoopNode_LoopVariable();
+			feature == UML2Package.eINSTANCE.getLoopNode_LoopVariable() ||
+			feature == UML2Package.eINSTANCE.getLoopNode_LoopVariableInput();
 		return getString(
 			qualify ? "_UI_CreateChild_text2" : "_UI_CreateChild_text", //$NON-NLS-1$ //$NON-NLS-2$
 			new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });

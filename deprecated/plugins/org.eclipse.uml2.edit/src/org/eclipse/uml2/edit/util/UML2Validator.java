@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Validator.java,v 1.3 2004/04/11 02:53:43 khussey Exp $
+ * $Id: UML2Validator.java,v 1.4 2004/04/14 20:45:54 khussey Exp $
  */
 package org.eclipse.uml2.edit.util;
 
@@ -40,7 +40,7 @@ import org.eclipse.uml2.Operation;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.RedefinableElement;
-import org.eclipse.uml2.UML2StatusConstants;
+import org.eclipse.uml2.UML2DiagnosticConstants;
 
 import org.eclipse.uml2.provider.UML2EditPlugin;
 import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
@@ -161,7 +161,7 @@ public class UML2Validator
 	public Diagnostic validate(EObject object, ProgressMonitor monitor) {
 		context =
 			new Validator.ValidationContext(
-				new BasicDiagnostic(UML2StatusConstants.PLUGIN_ID, UML2StatusConstants.UNSPECIFIED, getText(object), null),
+				new BasicDiagnostic(UML2DiagnosticConstants.PLUGIN_ID, UML2DiagnosticConstants.UNSPECIFIED, getText(object), null),
 				null == monitor ? new BasicProgressMonitor() : monitor);
 
 		context.getMonitor().beginTask(UML2EditPlugin.INSTANCE.getString("_UI_Validating_message", new Object[] { getText(object)}), ProgressMonitor.UNKNOWN); //$NON-NLS-1$
@@ -438,8 +438,8 @@ public class UML2Validator
 					if (size < lowerBound) {
 						getContext().getDiagnostics().add(
 							new BasicDiagnostic(Diagnostic.WARNING,
-									UML2StatusConstants.PLUGIN_ID,
-									UML2StatusConstants.UNSPECIFIED,
+									UML2DiagnosticConstants.PLUGIN_ID,
+									UML2DiagnosticConstants.UNSPECIFIED,
 									UML2EditPlugin.INSTANCE.getString(
 										"_UI_FeatureHasTooFewValues_message", //$NON-NLS-1$
 										new Object[] {
@@ -454,8 +454,8 @@ public class UML2Validator
 					if (upperBound > 0 && size > upperBound) {
 						getContext().getDiagnostics().add(
 							new BasicDiagnostic(Diagnostic.WARNING,
-									UML2StatusConstants.PLUGIN_ID,
-									UML2StatusConstants.UNSPECIFIED,
+									UML2DiagnosticConstants.PLUGIN_ID,
+									UML2DiagnosticConstants.UNSPECIFIED,
 									UML2EditPlugin.INSTANCE.getString(
 										"_UI_FeatureHasTooManyValues_message", //$NON-NLS-1$
 										new Object[] {
@@ -477,8 +477,8 @@ public class UML2Validator
 								.add(
 									new BasicDiagnostic(
 											Diagnostic.WARNING,
-											UML2StatusConstants.PLUGIN_ID,
-											UML2StatusConstants.UNSPECIFIED,
+											UML2DiagnosticConstants.PLUGIN_ID,
+											UML2DiagnosticConstants.UNSPECIFIED,
 											UML2EditPlugin.INSTANCE
 												.getString(
 													"_UI_FeatureHasTooManyValues_message", //$NON-NLS-1$
@@ -498,8 +498,8 @@ public class UML2Validator
 				if (!object.eIsSet(eStructuralFeature)) {
 					getContext().getDiagnostics().add(
 						new BasicDiagnostic(Diagnostic.WARNING,
-								UML2StatusConstants.PLUGIN_ID,
-								UML2StatusConstants.UNSPECIFIED,
+								UML2DiagnosticConstants.PLUGIN_ID,
+								UML2DiagnosticConstants.UNSPECIFIED,
 								UML2EditPlugin.INSTANCE.getString(
 									"_UI_RequiredFeatureMustBeSet_message", //$NON-NLS-1$
 									new Object[] {eStructuralFeature.getName(),

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassItemProvider.java,v 1.2 2004/04/10 03:58:45 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.3 2004/04/14 20:45:54 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -325,8 +325,8 @@ public class ClassItemProvider
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * This handles model notifications by updating any cached children and by
+	 * creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -539,10 +539,10 @@ public class ClassItemProvider
 	 */
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
 		boolean qualify =
+			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
+			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior() ||
 			feature == UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine() ||
-			feature == UML2Package.eINSTANCE.getClass_NestedClassifier() ||
-			feature == UML2Package.eINSTANCE.getClassifier_OwnedUseCase() ||
 			feature == UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute() ||
 			feature == UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort();
 		return getString(

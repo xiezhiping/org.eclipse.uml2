@@ -6,7 +6,7 @@
     editorDirectory="/org.eclipse.uml2.editor/src" modelPluginID="org.eclipse.uml2"
     runtimeJar="true" modelName="UML2" modelPluginClass="org.eclipse.uml2.UML2Plugin"
     editPluginClass="org.eclipse.uml2.provider.UML2EditPlugin" editorPluginClass="org.eclipse.uml2.presentation.UML2EditorPlugin"
-    generateSchema="true" nonNLSMarkers="true" usedGenPackages="../../org.eclipse.emf.ecore_2.0.0/src/model/Ecore.genmodel#//ecore">
+    nonNLSMarkers="true" usedGenPackages="../../org.eclipse.emf.ecore_2.0.0/src/model/Ecore.genmodel#//ecore">
   <foreignModel>C:\eclipse\uml2-workspace\org.eclipse.uml2\model\UML2.mdl</foreignModel>
   <foreignModel>VABASE_PLUGINS_PATH</foreignModel>
   <foreignModel>C:\eclipse\uml2-workspace</foreignModel>
