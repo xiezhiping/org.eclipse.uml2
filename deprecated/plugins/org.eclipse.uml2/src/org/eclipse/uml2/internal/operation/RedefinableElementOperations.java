@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -72,6 +72,10 @@ public final class RedefinableElementOperations
 		return false;
 	}
 
+	/**
+	 * A redefining element must be consistent with each redefined element.
+	 *  
+	 */
 	public static boolean validateRedefinitionConsistent(
 			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
 			Map context) {
@@ -83,7 +87,7 @@ public final class RedefinableElementOperations
 			RedefinableElement redefinedElement = (RedefinableElement) redefinedElements
 				.next();
 
-			if (!redefinedElement.isConsistentWith(redefinableElement)) {
+			if (!redefinableElement.isConsistentWith(redefinedElement)) {
 				result = false;
 
 				if (null == diagnostics) {
@@ -95,7 +99,11 @@ public final class RedefinableElementOperations
 								UML2DiagnosticConstants.PLUGIN_ID,
 								UML2DiagnosticConstants.REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT,
 								UML2Plugin.INSTANCE
-									.getString("_UI_RedefinableElement_RedefinitionConsistent_message"), //$NON-NLS-1$
+									.getString(
+										"_UI_RedefinableElement_RedefinitionConsistent_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											redefinableElement,
+											redefinedElement)),
 								new Object[] {redefinedElement}));
 				}
 			}
@@ -104,6 +112,12 @@ public final class RedefinableElementOperations
 		return result;
 	}
 
+	/**
+	 * At least one of the redefinition contexts of the redefining element must
+	 * be a specialization of at least one of the redefinition contexts for each
+	 * redefined element.
+	 *  
+	 */
 	public static boolean validateRedefinitionContextValid(
 			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
 			Map context) {
@@ -117,6 +131,7 @@ public final class RedefinableElementOperations
 
 			if (!redefinableElement
 				.isRedefinitionContextValid(redefinedElement)) {
+
 				result = false;
 
 				if (null == diagnostics) {
@@ -128,7 +143,11 @@ public final class RedefinableElementOperations
 								UML2DiagnosticConstants.PLUGIN_ID,
 								UML2DiagnosticConstants.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID,
 								UML2Plugin.INSTANCE
-									.getString("_UI_RedefinableElement_RedefinitionContextValid_message"), //$NON-NLS-1$
+									.getString(
+										"_UI_RedefinableElement_RedefinitionContextValid_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											redefinableElement,
+											redefinedElement)),
 								new Object[] {redefinedElement}));
 				}
 			}

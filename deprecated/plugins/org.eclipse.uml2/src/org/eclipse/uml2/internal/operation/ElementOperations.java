@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: ElementOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -311,6 +311,10 @@ public final class ElementOperations
 		EcoreUtil.remove(element);
 	}
 
+	/**
+	 * An element may not directly or indirectly own itself.
+	 *  
+	 */
 	public static boolean validateNotOwnSelf(Element element,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -319,19 +323,22 @@ public final class ElementOperations
 			result = false;
 
 			if (null != diagnostics) {
-				diagnostics
-					.add(new BasicDiagnostic(Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.ELEMENT__NOT_OWN_SELF,
-							UML2Plugin.INSTANCE
-								.getString("_UI_Element_NotOwnSelf_message"), //$NON-NLS-1$
-							null));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+						UML2DiagnosticConstants.PLUGIN_ID,
+						UML2DiagnosticConstants.ELEMENT__NOT_OWN_SELF,
+						UML2Plugin.INSTANCE.getString(
+							"_UI_Element_NotOwnSelf_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, element)), null));
 			}
 		}
 
 		return result;
 	}
 
+	/**
+	 * Elements that must be owned must have an owner.
+	 * 
+	 */
 	public static boolean validateHasOwner(Element element,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -343,8 +350,10 @@ public final class ElementOperations
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UML2DiagnosticConstants.PLUGIN_ID,
 						UML2DiagnosticConstants.ELEMENT__HAS_OWNER,
-						UML2Plugin.INSTANCE
-							.getString("_UI_Element_HasOwner_message"), null)); //$NON-NLS-1$
+						UML2Plugin.INSTANCE.getString(
+							"_UI_Element_HasOwner_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, element)),
+						null));
 			}
 		}
 

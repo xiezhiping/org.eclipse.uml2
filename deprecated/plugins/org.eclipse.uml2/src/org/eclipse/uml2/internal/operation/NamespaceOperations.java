@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -288,6 +288,10 @@ public final class NamespaceOperations
 		packageImport.setImportedPackage(package_);
 	}
 
+	/**
+	 * All the members of a namespace are distinguishable within it.
+	 *  
+	 */
 	public static boolean validateMembersAreDistinguishable(
 			Namespace namespace, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -302,7 +306,9 @@ public final class NamespaceOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE,
 							UML2Plugin.INSTANCE
-								.getString("_UI_Namespace_MembersAreDistinguishable_message"), //$NON-NLS-1$
+								.getString(
+									"_UI_Namespace_MembersAreDistinguishable_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, namespace)),
 							null));
 			}
 		}
@@ -310,6 +316,11 @@ public final class NamespaceOperations
 		return result;
 	}
 
+	/**
+	 * The imported members are derived from the element imports and the package
+	 * imports.
+	 *  
+	 */
 	public static boolean validateImportedMemberDerived(Namespace namespace,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -349,7 +360,9 @@ public final class NamespaceOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.NAMESPACE__IMPORTED_MEMBER_DERIVED,
 							UML2Plugin.INSTANCE
-								.getString("_UI_Namespace_ImportedMemberDerived_message"), //$NON-NLS-1$
+								.getString(
+									"_UI_Namespace_ImportedMemberDerived_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, namespace)),
 							null));
 			}
 		}

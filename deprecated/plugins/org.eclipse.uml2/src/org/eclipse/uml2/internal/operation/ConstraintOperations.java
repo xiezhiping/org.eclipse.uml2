@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConstraintOperations.java,v 1.2 2004/04/27 16:38:54 khussey Exp $
+ * $Id: ConstraintOperations.java,v 1.3 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -36,6 +36,10 @@ public final class ConstraintOperations
 		super();
 	}
 
+	/**
+	 * A constraint cannot be applied to itself.
+	 * 
+	 */
 	public static boolean validateNotApplyToSelf(Constraint constraint,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -49,11 +53,13 @@ public final class ConstraintOperations
 							Diagnostic.WARNING,
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.CONSTRAINT__NOT_APPLY_TO_SELF,
-							UML2Plugin.INSTANCE
-								.getString("_UI_Constraint_NotApplyToSelf_message"), //$NON-NLS-1$
+							UML2Plugin.INSTANCE.getString(
+								"_UI_Constraint_NotApplyToSelf_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, constraint)),
 							null));
 			}
 		}
+
 		return result;
 	}
 

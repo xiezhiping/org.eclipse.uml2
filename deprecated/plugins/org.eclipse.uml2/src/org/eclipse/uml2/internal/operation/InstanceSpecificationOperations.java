@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InstanceSpecificationOperations.java,v 1.2 2004/04/27 16:38:54 khussey Exp $
+ * $Id: InstanceSpecificationOperations.java,v 1.3 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.InstanceSpecification;
 import org.eclipse.uml2.Slot;
+import org.eclipse.uml2.StructuralFeature;
 import org.eclipse.uml2.UML2DiagnosticConstants;
 import org.eclipse.uml2.UML2Plugin;
 
@@ -42,6 +43,11 @@ public final class InstanceSpecificationOperations
 		super();
 	}
 
+	/**
+	 * The defining feature of each slot is a structural feature (directly or
+	 * inherited) of a classifier of the instance specification.
+	 *  
+	 */
 	public static boolean validateSlotsAreDefined(
 			InstanceSpecification instanceSpecification,
 			DiagnosticChain diagnostics, Map context) {
@@ -75,7 +81,10 @@ public final class InstanceSpecificationOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.INSTANCE_SPECIFICATION__SLOTS_ARE_DEFINED,
 							UML2Plugin.INSTANCE
-								.getString("_UI_InstanceSpecification_SlotsAreDefined_message"), //$NON-NLS-1$
+								.getString(
+									"_UI_InstanceSpecification_SlotsAreDefined_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, slot,
+										instanceSpecification)),
 							new Object[] {slot}));
 			}
 		}
@@ -83,6 +92,12 @@ public final class InstanceSpecificationOperations
 		return result;
 	}
 
+	/**
+	 * One structural feature (including the same feature inherited from
+	 * multiple classifiers) is the defining feature of at most one slot in an
+	 * instance specification.
+	 *  
+	 */
 	public static boolean validateNoDuplicateSlots(
 			InstanceSpecification instanceSpecification,
 			DiagnosticChain diagnostics, Map context) {
@@ -93,9 +108,10 @@ public final class InstanceSpecificationOperations
 		for (Iterator slots = instanceSpecification.getSlots().iterator(); slots
 			.hasNext();) {
 
-			Slot slot = (Slot) slots.next();
+			StructuralFeature definingFeature = ((Slot) slots.next())
+				.getDefiningFeature();
 
-			if (definingFeatures.contains(slot.getDefiningFeature())) {
+			if (definingFeatures.contains(definingFeature)) {
 				result = false;
 
 				if (null == diagnostics) {
@@ -107,11 +123,15 @@ public final class InstanceSpecificationOperations
 								UML2DiagnosticConstants.PLUGIN_ID,
 								UML2DiagnosticConstants.INSTANCE_SPECIFICATION__NO_DUPLICATE_SLOTS,
 								UML2Plugin.INSTANCE
-									.getString("_UI_InstanceSpecification_NoDuplicateSlots_message"), //$NON-NLS-1$
-								new Object[] {slot}));
+									.getString(
+										"_UI_InstanceSpecification_NoDuplicateSlots_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											definingFeature,
+											instanceSpecification)),
+								new Object[] {definingFeature}));
 				}
 			} else {
-				definingFeatures.add(slot.getDefiningFeature());
+				definingFeatures.add(definingFeature);
 			}
 		}
 

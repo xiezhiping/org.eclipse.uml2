@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -151,7 +151,13 @@ public final class MultiplicityElementOperations
 					.getLiteralUnlimitedNatural()))).setValue(value);
 	}
 
-	public static boolean validateUpperGt0(MultiplicityElement multiplicityElement,
+	/**
+	 * A multiplicity must define at least one valid cardinality that is greater
+	 * than zero.
+	 *  
+	 */
+	public static boolean validateUpperGt0(
+			MultiplicityElement multiplicityElement,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
@@ -167,8 +173,10 @@ public final class MultiplicityElementOperations
 							Diagnostic.WARNING,
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.MULTIPLICITY_ELEMENT__UPPER_GT0,
-							UML2Plugin.INSTANCE
-								.getString("_UI_MultiplicityElement_UpperGT0_message"), //$NON-NLS-1$
+							UML2Plugin.INSTANCE.getString(
+								"_UI_MultiplicityElement_UpperGT0_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context,
+									multiplicityElement)),
 							new Object[] {new Integer(upperBound)}));
 			}
 		}
@@ -176,7 +184,12 @@ public final class MultiplicityElementOperations
 		return result;
 	}
 
-	public static boolean validateLowerGe0(MultiplicityElement multiplicityElement,
+	/**
+	 * The lower bound must be a non-negative integer literal.
+	 *  
+	 */
+	public static boolean validateLowerGe0(
+			MultiplicityElement multiplicityElement,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
@@ -191,8 +204,10 @@ public final class MultiplicityElementOperations
 							Diagnostic.WARNING,
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.MULTIPLICITY_ELEMENT__LOWER_GE0,
-							UML2Plugin.INSTANCE
-								.getString("_UI_MultiplicityElement_LowerGE0_message"), //$NON-NLS-1$
+							UML2Plugin.INSTANCE.getString(
+								"_UI_MultiplicityElement_LowerGE0_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context,
+									multiplicityElement)),
 							new Object[] {new Integer(lowerBound)}));
 			}
 		}
@@ -200,6 +215,10 @@ public final class MultiplicityElementOperations
 		return result;
 	}
 
+	/**
+	 * The upper bound must be greater than or equal to the lower bound.
+	 *  
+	 */
 	public static boolean validateUpperGeLower(
 			MultiplicityElement multiplicityElement,
 			DiagnosticChain diagnostics, Map context) {
@@ -218,7 +237,10 @@ public final class MultiplicityElementOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.MULTIPLICITY_ELEMENT__UPPER_GE_LOWER,
 							UML2Plugin.INSTANCE
-								.getString("_UI_MultiplicityElement_UpperGELower_message"), //$NON-NLS-1$
+								.getString(
+									"_UI_MultiplicityElement_UpperGELower_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										multiplicityElement)),
 							new Object[] {new Integer(upperBound)}));
 			}
 		}
@@ -226,6 +248,10 @@ public final class MultiplicityElementOperations
 		return result;
 	}
 
+	/**
+	 * The derived lower attribute must equal the lower bound.
+	 *  
+	 */
 	public static boolean validateLowerEqLowerbound(
 			MultiplicityElement multiplicityElement,
 			DiagnosticChain diagnostics, Map context) {
@@ -243,7 +269,10 @@ public final class MultiplicityElementOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.MULTIPLICITY_ELEMENT__LOWER_EQ_LOWERBOUND,
 							UML2Plugin.INSTANCE
-								.getString("_UI_MultiplicityElement_LowerEQLowerBound_message"), //$NON-NLS-1$
+								.getString(
+									"_UI_MultiplicityElement_LowerEQLowerBound_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										multiplicityElement)),
 							new Object[] {new Integer(lower)}));
 			}
 		}
@@ -251,6 +280,10 @@ public final class MultiplicityElementOperations
 		return result;
 	}
 
+	/**
+	 * The derived upper attribute must equal the upper bound.
+	 *  
+	 */
 	public static boolean validateUpperEqUpperbound(
 			MultiplicityElement multiplicityElement,
 			DiagnosticChain diagnostics, Map context) {
@@ -268,7 +301,10 @@ public final class MultiplicityElementOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.MULTIPLICITY_ELEMENT__UPPER_EQ_UPPERBOUND,
 							UML2Plugin.INSTANCE
-								.getString("_UI_MultiplicityElement_UpperEQUpperBound_message"), //$NON-NLS-1$
+								.getString(
+									"_UI_MultiplicityElement_UpperEQUpperBound_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										multiplicityElement)),
 							new Object[] {new Integer(upper)}));
 			}
 		}

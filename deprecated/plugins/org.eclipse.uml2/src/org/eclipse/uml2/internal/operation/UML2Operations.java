@@ -8,18 +8,24 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.2 2004/04/10 04:09:50 khussey Exp $
+ * $Id: UML2Operations.java,v 1.3 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
+
+import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.Artifact;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Interface;
+import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Signal;
 import org.eclipse.uml2.StructuredClassifier;
 import org.eclipse.uml2.Type;
@@ -101,6 +107,50 @@ class UML2Operations {
 				return object.getOwnedAttributes();
 			}
 		}.doSwitch(type);
+	}
+
+	private static String getMessageSubstitution(Map context, Object object) {
+
+		if (EObject.class.isInstance(object)) {
+			EObject eObject = (EObject) object;
+
+			if (NamedElement.class.isInstance(object)) {
+				String qualifiedName = ((NamedElement) object)
+					.getQualifiedName();
+
+				if (!isEmpty(qualifiedName)) {
+					return qualifiedName;
+				}
+			}
+
+			Resource resource = eObject.eResource();
+
+			if (null != resource) {
+				return resource.getURI().lastSegment() + '#'
+					+ resource.getURIFragment(eObject);
+			}
+
+			return EcoreUtil.getIdentification((EObject) object);
+		} else {
+			return String.valueOf(object);
+		}
+	}
+
+	protected static Object[] getMessageSubstitutions(Map context, Object object0) {
+		return new Object[] {getMessageSubstitution(context, object0)};
+	}
+
+	protected static Object[] getMessageSubstitutions(Map context, Object object0,
+			Object object1) {
+		return new Object[] {getMessageSubstitution(context, object0),
+			getMessageSubstitution(context, object1)};
+	}
+
+	protected static Object[] getMessageSubstitutions(Map context, Object object0,
+			Object object1, Object object2) {
+		return new Object[] {getMessageSubstitution(context, object0),
+			getMessageSubstitution(context, object1),
+			getMessageSubstitution(context, object2)};
 	}
 
 }

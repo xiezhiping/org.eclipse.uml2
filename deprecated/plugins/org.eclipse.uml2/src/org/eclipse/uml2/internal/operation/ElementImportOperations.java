@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementImportOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: ElementImportOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -44,8 +44,13 @@ public final class ElementImportOperations
 			: elementImport.getAlias();
 	}
 
+	/**
+	 * The visibility of an element import is either public or private.
+	 *  
+	 */
 	public static boolean validateVisibilityPublicOrPrivate(
-			ElementImport elementImport, DiagnosticChain diagnostics, Map context) {
+			ElementImport elementImport, DiagnosticChain diagnostics,
+			Map context) {
 		boolean result = true;
 
 		if (!VisibilityKind.PUBLIC_LITERAL
@@ -62,8 +67,10 @@ public final class ElementImportOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.ELEMENT_IMPORT__VISIBILITY_PUBLIC_OR_PRIVATE,
 							UML2Plugin.INSTANCE
-								.getString("_UI_ElementImport_VisibilityPublicOrPrivate_message"), //$NON-NLS-1$
-							null));
+								.getString(
+									"_UI_ElementImport_VisibilityPublicOrPrivate_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										elementImport)), null));
 
 			}
 		}
@@ -71,8 +78,13 @@ public final class ElementImportOperations
 		return result;
 	}
 
+	/**
+	 * An imported element has either public visibility or no visibility at all.
+	 *  
+	 */
 	public static boolean validateImportedElementIsPublic(
-			ElementImport elementImport, DiagnosticChain diagnostics, Map context) {
+			ElementImport elementImport, DiagnosticChain diagnostics,
+			Map context) {
 		boolean result = true;
 
 		PackageableElement importedElement = elementImport.getImportedElement();
@@ -91,7 +103,10 @@ public final class ElementImportOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.ELEMENT_IMPORT__IMPORTED_ELEMENT_IS_PUBLIC,
 							UML2Plugin.INSTANCE
-								.getString("_UI_ElementImport_ImportedElementIsPublic_message"), //$NON-NLS-1$
+								.getString(
+									"_UI_ElementImport_ImportedElementIsPublic_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										importedElement)),
 							new Object[] {importedElement}));
 
 			}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImportOperations.java,v 1.2 2004/04/27 16:38:54 khussey Exp $
+ * $Id: PackageImportOperations.java,v 1.3 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -36,6 +36,10 @@ public final class PackageImportOperations
 		super();
 	}
 
+	/**
+	 * The visibility of a package import is either public or private.
+	 *  
+	 */
 	public static boolean validatePublicOrPrivate(PackageImport packageImport,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -54,8 +58,10 @@ public final class PackageImportOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.PACKAGE_IMPORT__PUBLIC_OR_PRIVATE,
 							UML2Plugin.INSTANCE
-								.getString("_UI_PackageImport_PublicOrPrivate_message"), //$NON-NLS-1$
-							null));
+								.getString(
+									"_UI_PackageImport_PublicOrPrivate_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										packageImport)), null));
 
 			}
 		}

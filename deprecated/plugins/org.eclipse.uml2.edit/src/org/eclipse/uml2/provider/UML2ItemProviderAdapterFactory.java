@@ -8,22 +8,16 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ItemProviderAdapterFactory.java,v 1.2 2004/04/10 03:58:45 khussey Exp $
+ * $Id: UML2ItemProviderAdapterFactory.java,v 1.3 2004/04/29 01:38:22 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.ecore.EAnnotation;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.provider.EAnnotationItemProvider;
-import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -34,7 +28,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.uml2.util.UML2AdapterFactory;
 
 /**
@@ -4055,12 +4048,8 @@ public class UML2ItemProviderAdapterFactory extends UML2AdapterFactory implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isFactoryForTypeGen(Object type) {
+	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
-
-	public boolean isFactoryForType(Object object) {
-		return isFactoryForTypeGen(object) || ecoreItemProviderAdapterFactory.isFactoryForType(object);
 	}
 
 	/**
@@ -4121,54 +4110,6 @@ public class UML2ItemProviderAdapterFactory extends UML2AdapterFactory implement
 		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
-	}
-
-	protected EAnnotationItemProvider eAnnotationItemProvider;
-
-	public Adapter createEAnnotationAdapter() {
-		if (eAnnotationItemProvider == null) {
-			eAnnotationItemProvider = new EAnnotationItemProvider(this) {
-				public List getPropertyDescriptors(Object object) {
-					if (null == itemPropertyDescriptors) {
-						super.getPropertyDescriptors(object);
-						addReferencesPropertyDescriptor(object);
-					}
-					return itemPropertyDescriptors;
-				}
-				protected void addReferencesPropertyDescriptor(Object object) {
-					itemPropertyDescriptors.add(
-						new ItemPropertyDescriptor(
-							((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-							getString("_UI_EAnnotation_references_feature"), //$NON-NLS-1$
-							getString("_UI_PropertyDescriptor_description", "_UI_EAnnotation_references_feature", "_UI_EAnnotation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-							EcorePackage.eINSTANCE.getEAnnotation_References(),
-							true));
-				}
-				public void notifyChanged(Notification notification) {
-					switch (notification.getFeatureID(EAnnotation.class)) {
-						case EcorePackage.EANNOTATION__CONTENTS :
-						case EcorePackage.EANNOTATION__REFERENCES :
-							this.fireNotifyChanged(notification);
-							return;
-					}
-					super.notifyChanged(notification);
-				}
-			};
-		}
-
-		return eAnnotationItemProvider;
-	}
-
-	protected static EcoreItemProviderAdapterFactory ecoreItemProviderAdapterFactory = new EcoreItemProviderAdapterFactory();
-
-	public Adapter createAdapter(Notifier target) {
-		Adapter adapter = super.createAdapter(target);
-
-		return null == adapter
-			? (EcorePackage.EANNOTATION == ((EObject) target).eClass().getClassifierID()
-				? createEAnnotationAdapter()
-				: ecoreItemProviderAdapterFactory.createAdapter(target))
-			: adapter;
 	}
 
 }

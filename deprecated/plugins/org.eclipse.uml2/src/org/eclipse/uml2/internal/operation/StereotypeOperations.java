@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.3 2004/04/27 13:56:09 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.4 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -560,7 +560,7 @@ public final class StereotypeOperations
 		EObject eObject = getEObject(stereotype, element);
 
 		for (StringTokenizer tokens = new StringTokenizer(propertyName,
-			NamedElement.SEPARATOR); tokens.hasMoreTokens();) {
+				NamedElement.SEPARATOR); tokens.hasMoreTokens();) {
 
 			String token = tokens.nextToken();
 
@@ -601,6 +601,16 @@ public final class StereotypeOperations
 					? ((List) eObject.eGet(eStructuralFeature)).get(index)
 					: eObject.eGet(eStructuralFeature));
 			} else {
+
+				if (null == eObject
+					&& stereotype != getEAnnotation(
+						ANNOTATION_SOURCE__STEREOTYPE, eClass).getReferences()
+						.get(0)) {
+
+					throw new IllegalArgumentException(String
+						.valueOf(propertyName));
+				}
+
 				Object value = null;
 
 				if (eStructuralFeature.isMany()) {

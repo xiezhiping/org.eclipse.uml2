@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: OperationOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -117,6 +117,11 @@ public final class OperationOperations
 			? ((Parameter) operation.getReturnResults().get(0)).upper() : 1;
 	}
 
+	/**
+	 * If this operation has a single return result, type equals the value of
+	 * type for that parameter. Otherwise type is not defined.
+	 *  
+	 */
 	public static boolean validateTypeOfResult(Operation operation,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -129,18 +134,24 @@ public final class OperationOperations
 			result = false;
 
 			if (null != diagnostics) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-						UML2DiagnosticConstants.PLUGIN_ID,
-						UML2DiagnosticConstants.OPERATION__TYPE_OF_RESULT,
-						UML2Plugin.INSTANCE
-							.getString("_UI_Operation_TypeOfResult_message"), //$NON-NLS-1$
-						null));
+				diagnostics
+					.add(new BasicDiagnostic(Diagnostic.ERROR,
+							UML2DiagnosticConstants.PLUGIN_ID,
+							UML2DiagnosticConstants.OPERATION__TYPE_OF_RESULT,
+							UML2Plugin.INSTANCE.getString(
+								"_UI_Operation_TypeOfResult_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, operation)),
+							null));
 			}
 		}
 
 		return result;
 	}
 
+	/**
+	 * A body condition can only be specified for a query operation.
+	 *  
+	 */
 	public static boolean validateOnlyBodyForQuery(Operation operation,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -154,8 +165,9 @@ public final class OperationOperations
 							Diagnostic.WARNING,
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.OPERATION__ONLY_BODY_FOR_QUERY,
-							UML2Plugin.INSTANCE
-								.getString("_UI_Operation_OnlyBodyForQuery_message"), //$NON-NLS-1$
+							UML2Plugin.INSTANCE.getString(
+								"_UI_Operation_OnlyBodyForQuery_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, operation)),
 							null));
 			}
 		}

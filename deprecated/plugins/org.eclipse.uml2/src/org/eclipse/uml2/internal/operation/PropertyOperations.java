@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -61,8 +61,9 @@ public final class PropertyOperations
 				? null == prop.getType() : property.getType().conformsTo(
 					prop.getType()))
 				&& property.lowerBound() >= prop.lowerBound()
-				&& property.upperBound() <= prop.upperBound()
-				&& (prop.isDerived()
+				&& (MultiplicityElement.UNLIMITED_UPPER_BOUND == prop
+					.upperBound() || (property.upperBound() != MultiplicityElement.UNLIMITED_UPPER_BOUND && property
+					.upperBound() <= prop.upperBound())) && (prop.isDerived()
 					? property.isDerived() : true);
 		}
 
@@ -259,6 +260,12 @@ public final class PropertyOperations
 			? EMPTY_STRING : property.getDefaultValue().stringValue();
 	}
 
+	/**
+	 * If this property is owned by a class, associated with a binary
+	 * association, and the other end of the association is also owned by a
+	 * class, then opposite gives the other end.
+	 *  
+	 */
 	public static boolean validateOppositeIsOtherEnd(Property property,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -291,9 +298,10 @@ public final class PropertyOperations
 							Diagnostic.ERROR,
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.PROPERTY__OPPOSITE_IS_OTHER_END,
-							UML2Plugin.INSTANCE
-								.getString("_UI_Property_OppositeIsOtherEnd_message"), //$NON-NLS-1$
-							null));
+							UML2Plugin.INSTANCE.getString(
+								"_UI_Property_OppositeIsOtherEnd_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, property)),
+							new Object[] {otherEnd}));
 
 			}
 		}
@@ -301,6 +309,11 @@ public final class PropertyOperations
 		return result;
 	}
 
+	/**
+	 * A multiplicity of a composite aggregation must have an upper bound
+	 * greater than 1.
+	 *  
+	 */
 	public static boolean validateMultiplicityOfComposite(Property property,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -320,7 +333,9 @@ public final class PropertyOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.PROPERTY__MULTIPLICITY_OF_COMPOSITE,
 							UML2Plugin.INSTANCE
-								.getString("_UI_Property_MultiplicityOfComposite_message"), //$NON-NLS-1$
+								.getString(
+									"_UI_Property_MultiplicityOfComposite_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, property)),
 							new Object[] {new Integer(upperBound)}));
 
 			}
@@ -329,6 +344,11 @@ public final class PropertyOperations
 		return result;
 	}
 
+	/**
+	 * Subsetting may only occur when the context of the subsetting property
+	 * conforms to the context of the subsetted property.
+	 *  
+	 */
 	public static boolean validateSubsettingContext(Property property,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -357,20 +377,25 @@ public final class PropertyOperations
 			if (null == diagnostics) {
 				return result;
 			} else {
-				diagnostics
-					.add(new BasicDiagnostic(
-							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.PROPERTY__SUBSETTING_CONTEXT,
-							UML2Plugin.INSTANCE
-								.getString("_UI_Property_SubsettingContext_message"), //$NON-NLS-1$
-							new Object[] {subsettedProperty}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+						UML2DiagnosticConstants.PLUGIN_ID,
+						UML2DiagnosticConstants.PROPERTY__SUBSETTING_CONTEXT,
+						UML2Plugin.INSTANCE.getString(
+							"_UI_Property_SubsettingContext_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, property,
+								subsettedProperty)),
+						new Object[] {subsettedProperty}));
 			}
 		}
 
 		return result;
 	}
 
+	/**
+	 * A navigable property (one that is owned by a class) can only be redefined
+	 * or subsetted by a navigable property.
+	 *  
+	 */
 	public static boolean validateNavigablePropertyRedefinition(
 			Property property, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -392,7 +417,10 @@ public final class PropertyOperations
 								UML2DiagnosticConstants.PLUGIN_ID,
 								UML2DiagnosticConstants.PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION,
 								UML2Plugin.INSTANCE
-									.getString("_UI_Property_NavigablePropertyRedefinition_message"), //$NON-NLS-1$
+									.getString(
+										"_UI_Property_NavigablePropertyRedefinition_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											property, subsettedProperty)),
 								new Object[] {subsettedProperty}));
 				}
 			}
@@ -415,7 +443,10 @@ public final class PropertyOperations
 								UML2DiagnosticConstants.PLUGIN_ID,
 								UML2DiagnosticConstants.PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION,
 								UML2Plugin.INSTANCE
-									.getString("_UI_Property_NavigablePropertyRedefinition_message"), //$NON-NLS-1$
+									.getString(
+										"_UI_Property_NavigablePropertyRedefinition_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											property, redefinedProperty)),
 								new Object[] {redefinedProperty}));
 				}
 			}
@@ -424,6 +455,11 @@ public final class PropertyOperations
 		return result;
 	}
 
+	/**
+	 * A subsetting property may strengthen the type of the subsetted property,
+	 * and its upper bound may be less.
+	 *  
+	 */
 	public static boolean validateSubsettingRules(Property property,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -434,21 +470,23 @@ public final class PropertyOperations
 			Property subsettedProperty = (Property) subsettedProperties.next();
 
 			if (!property.getType().conformsTo(subsettedProperty.getType())
-				|| property.upperBound() > subsettedProperty.upperBound()) {
+				|| (MultiplicityElement.UNLIMITED_UPPER_BOUND != subsettedProperty
+					.upperBound() && (property.upperBound() == MultiplicityElement.UNLIMITED_UPPER_BOUND || property
+					.upperBound() > subsettedProperty.upperBound()))) {
 
 				result = false;
 
 				if (null == diagnostics) {
 					return result;
 				} else {
-					diagnostics
-						.add(new BasicDiagnostic(
-								Diagnostic.WARNING,
-								UML2DiagnosticConstants.PLUGIN_ID,
-								UML2DiagnosticConstants.PROPERTY__SUBSETTING_RULES,
-								UML2Plugin.INSTANCE
-									.getString("_UI_Property_SubsettingRules_message"), //$NON-NLS-1$
-								new Object[] {subsettedProperty}));
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+							UML2DiagnosticConstants.PLUGIN_ID,
+							UML2DiagnosticConstants.PROPERTY__SUBSETTING_RULES,
+							UML2Plugin.INSTANCE.getString(
+								"_UI_Property_SubsettingRules_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, property,
+									subsettedProperty)),
+							new Object[] {subsettedProperty}));
 				}
 			}
 		}
@@ -456,6 +494,10 @@ public final class PropertyOperations
 		return result;
 	}
 
+	/**
+	 * Only a navigable property can be marked as readOnly.
+	 *  
+	 */
 	public static boolean validateNavigableReadonly(Property property,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -464,20 +506,22 @@ public final class PropertyOperations
 			result = false;
 
 			if (null != diagnostics) {
-				diagnostics
-					.add(new BasicDiagnostic(
-							Diagnostic.WARNING,
-							UML2DiagnosticConstants.PLUGIN_ID,
-							UML2DiagnosticConstants.PROPERTY__NAVIGABLE_READONLY,
-							UML2Plugin.INSTANCE
-								.getString("_UI_Property_NavigableReadOnly_message"), //$NON-NLS-1$
-							null));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+						UML2DiagnosticConstants.PLUGIN_ID,
+						UML2DiagnosticConstants.PROPERTY__NAVIGABLE_READONLY,
+						UML2Plugin.INSTANCE.getString(
+							"_UI_Property_NavigableReadOnly_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, property)), null));
 			}
 		}
 
 		return result;
 	}
 
+	/**
+	 * A derived union is derived.
+	 *  
+	 */
 	public static boolean validateDerivedUnionIsDerived(Property property,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -492,7 +536,9 @@ public final class PropertyOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.PROPERTY__DERIVED_UNION_IS_DERIVED,
 							UML2Plugin.INSTANCE
-								.getString("_UI_Property_DerivedUnionIsDerived_message"), //$NON-NLS-1$
+								.getString(
+									"_UI_Property_DerivedUnionIsDerived_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, property)),
 							null));
 			}
 		}

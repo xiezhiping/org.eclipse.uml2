@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.UML2DiagnosticConstants;
+import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 
 
@@ -97,6 +98,11 @@ public final class NamedElementOperations
 		return NamedElement.SEPARATOR;
 	}
 
+	/**
+	 * If there is no name, or one of the containing namespaces has no name,
+	 * there is no qualified name.
+	 *  
+	 */
 	public static boolean validateNoName(NamedElement namedElement,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -119,14 +125,20 @@ public final class NamedElementOperations
 			diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
 					UML2DiagnosticConstants.PLUGIN_ID,
 					UML2DiagnosticConstants.NAMED_ELEMENT__NO_NAME,
-					UML2Plugin.INSTANCE
-						.getString("_UI_NamedElement_NoName_message"), //$NON-NLS-1$
-					null));
+					UML2Plugin.INSTANCE.getString(
+						"_UI_NamedElement_NoName_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, namedElement)), null));
 		}
 
 		return result;
 	}
 
+	/**
+	 * When there is a name, and all of the containing namespaces have a name,
+	 * the qualified name is constructed from the names of the containing
+	 * namespaces.
+	 *  
+	 */
 	public static boolean validateQualifiedName(NamedElement namedElement,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -158,8 +170,10 @@ public final class NamedElementOperations
 								UML2DiagnosticConstants.PLUGIN_ID,
 								UML2DiagnosticConstants.NAMED_ELEMENT__NO_NAME,
 								UML2Plugin.INSTANCE
-									.getString("_UI_NamedElement_QualifiedName_message"), //$NON-NLS-1$
-								null));
+									.getString(
+										"_UI_NamedElement_QualifiedName_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											namedElement)), null));
 				}
 			}
 		}
@@ -167,12 +181,18 @@ public final class NamedElementOperations
 		return result;
 	}
 
-	public static boolean validateVisibilityNeedsOwnership(NamedElement namedElement,
-			DiagnosticChain diagnostics, Map context) {
+	/**
+	 * If a named element is not owned by a namespace, it does not have a
+	 * visibility.
+	 *  
+	 */
+	public static boolean validateVisibilityNeedsOwnership(
+			NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (null == namedElement.getNamespace()
-			&& null != namedElement.getVisibility()) {
+			&& namedElement.eIsSet(UML2Package.eINSTANCE
+				.getNamedElement_Visibility())) {
 
 			result = false;
 
@@ -183,8 +203,10 @@ public final class NamedElementOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP,
 							UML2Plugin.INSTANCE
-								.getString("_UI_NamedElement_VisibilityNeedsOwnership_message"), //$NON-NLS-1$
-							null));
+								.getString(
+									"_UI_NamedElement_VisibilityNeedsOwnership_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										namedElement)), null));
 			}
 		}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: PackageOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -132,6 +132,11 @@ public final class PackageOperations
 		return visibleMembers;
 	}
 
+	/**
+	 * If an element that is owned by a package has visibility, it is public or
+	 * private.
+	 *  
+	 */
 	public static boolean validateElementsPublicOrPrivate(
 			org.eclipse.uml2.Package package_, DiagnosticChain diagnostics,
 			Map context) {
@@ -139,7 +144,7 @@ public final class PackageOperations
 
 		for (Iterator ownedElements = package_.getOwnedElements().iterator(); ownedElements
 			.hasNext();) {
-			
+
 			Element ownedElement = (Element) ownedElements.next();
 
 			if (NamedElement.class.isInstance(ownedElement)) {
@@ -161,7 +166,10 @@ public final class PackageOperations
 									UML2DiagnosticConstants.PLUGIN_ID,
 									UML2DiagnosticConstants.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
 									UML2Plugin.INSTANCE
-										.getString("_UI_Package_ElementsPublicOrPrivate_message"), //$NON-NLS-1$
+										.getString(
+											"_UI_Package_ElementsPublicOrPrivate_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												ownedElement, package_)),
 									new Object[] {ownedElement}));
 					}
 				}

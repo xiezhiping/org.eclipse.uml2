@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.4 2004/04/27 16:38:54 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.5 2004/04/29 01:38:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -197,6 +197,12 @@ public final class ClassifierOperations
 		return generalization;
 	}
 
+	/**
+	 * Generalization hierarchies must be directed and acyclical. A classifier
+	 * can not be both a transitively general and transitively specific
+	 * classifier of the same classifier.
+	 *  
+	 */
 	public static boolean validateNoCyclesInGeneralization(
 			Classifier classifier, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -211,7 +217,10 @@ public final class ClassifierOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.CLASSIFIER__NO_CYCLES_IN_GENERALIZATION,
 							UML2Plugin.INSTANCE
-								.getString("_UI_Classifier_NoCyclesInGeneralization_message"), //$NON-NLS-1$
+								.getString(
+									"_UI_Classifier_NoCyclesInGeneralization_diagnostic",
+									//$NON-NLS-1$
+									getMessageSubstitutions(context, classifier)),
 							null));
 			}
 		}
@@ -219,6 +228,10 @@ public final class ClassifierOperations
 		return result;
 	}
 
+	/**
+	 * A classifier may only specialize classifiers of a valid type.
+	 *  
+	 */
 	public static boolean validateSpecializeType(Classifier classifier,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -239,8 +252,10 @@ public final class ClassifierOperations
 								Diagnostic.WARNING,
 								UML2DiagnosticConstants.PLUGIN_ID,
 								UML2DiagnosticConstants.CLASSIFIER__SPECIALIZE_TYPE,
-								UML2Plugin.INSTANCE
-									.getString("_UI_Classifier_SpecializeType_message"), //$NON-NLS-1$
+								UML2Plugin.INSTANCE.getString(
+									"_UI_Classifier_SpecializeType_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										classifier, parent)),
 								new Object[] {parent}));
 				}
 			}
@@ -249,6 +264,11 @@ public final class ClassifierOperations
 		return result;
 	}
 
+	/**
+	 * The inherited members are derived by inheriting the inheritable members
+	 * of the parents.
+	 *  
+	 */
 	public static boolean validateInheritedMember(Classifier classifier,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -273,8 +293,9 @@ public final class ClassifierOperations
 							Diagnostic.ERROR,
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.CLASSIFIER__INHERITED_MEMBER,
-							UML2Plugin.INSTANCE
-								.getString("_UI_Classifier_InheritedMember_message"), //$NON-NLS-1$
+							UML2Plugin.INSTANCE.getString(
+								"_UI_Classifier_InheritedMember_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, classifier)),
 							null));
 			}
 		}
@@ -282,6 +303,11 @@ public final class ClassifierOperations
 		return result;
 	}
 
+	/**
+	 * The general classifiers are the classifiers referenced by the
+	 * generalization relationships.
+	 *  
+	 */
 	public static boolean validateGeneralEqualsParents(Classifier classifier,
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -296,7 +322,9 @@ public final class ClassifierOperations
 							UML2DiagnosticConstants.PLUGIN_ID,
 							UML2DiagnosticConstants.CLASSIFIER__GENERAL_EQUALS_PARENTS,
 							UML2Plugin.INSTANCE
-								.getString("_UI_Classifier_GeneralEqualsParents_message"), //$NON-NLS-1$
+								.getString(
+									"_UI_Classifier_GeneralEqualsParents_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, classifier)),
 							null));
 			}
 		}
