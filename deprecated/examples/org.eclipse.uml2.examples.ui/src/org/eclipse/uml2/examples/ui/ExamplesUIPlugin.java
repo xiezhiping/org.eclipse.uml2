@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExamplesUIPlugin.java,v 1.1 2004/04/29 15:31:14 khussey Exp $
+ * $Id: ExamplesUIPlugin.java,v 1.2 2004/05/25 21:58:17 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui;
 
@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPluginDescriptor;
+
 import org.eclipse.emf.common.EMFPlugin;
 
 /**
@@ -35,8 +35,9 @@ public class ExamplesUIPlugin
 	/**
 	 * The constructor.
 	 */
-	public ExamplesUIPlugin(IPluginDescriptor descriptor) {
-		super(descriptor);
+	public ExamplesUIPlugin() {
+		super();
+		
 		plugin = this;
 
 		try {

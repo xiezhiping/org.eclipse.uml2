@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.2 2004/04/10 03:59:19 khussey Exp $
+ * $Id: plugin.xml,v 1.3 2004/05/25 21:58:18 khussey Exp $
  */
 -->
 
@@ -29,7 +29,7 @@
          point="org.eclipse.emf.ecore.uri_mapping">
       <mapping
             source="pathmap://UML2_LIBRARIES/"
-            target="libraries/">
+            target="platform:/plugin/org.eclipse.uml2.resources/libraries/">
       </mapping>
    </extension>
 
@@ -37,7 +37,7 @@
          point="org.eclipse.emf.ecore.uri_mapping">
       <mapping
             source="pathmap://UML2_METAMODELS/"
-            target="metamodels/">
+            target="platform:/plugin/org.eclipse.uml2.resources/metamodels/">
       </mapping>
    </extension>
 
@@ -45,7 +45,7 @@
          point="org.eclipse.emf.ecore.uri_mapping">
       <mapping
             source="pathmap://UML2_PROFILES/"
-            target="profiles/">
+            target="platform:/plugin/org.eclipse.uml2.resources/profiles/">
       </mapping>
    </extension>
 

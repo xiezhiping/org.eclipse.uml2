@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2URIConverterImpl.java,v 1.3 2004/05/18 21:00:48 khussey Exp $
+ * $Id: UML2URIConverterImpl.java,v 1.4 2004/05/25 21:58:19 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -18,13 +18,12 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.util.Map;
 
-import org.eclipse.core.runtime.IPluginDescriptor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.PluginVersionIdentifier;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.URIConverter;
+import org.osgi.framework.Bundle;
 
 /**
  *  
@@ -33,35 +32,37 @@ public class UML2URIConverterImpl
 	implements URIConverter {
 
 	// ECLIPSE-DEPEND-BEGIN
-	public static class WorkbenchHelper {
+
+    public static class WorkbenchHelper {
 
 		public static InputStream createPlatformPluginInputStream(
 				String platformPluginPath)
 			throws IOException {
 
-			int segmentIndex = platformPluginPath.indexOf('/', 1);
-			int versionIndex = platformPluginPath.substring(0, segmentIndex)
-				.lastIndexOf('_');
+            int segmentIndex = platformPluginPath.indexOf('/', 1);
+            int versionIndex = platformPluginPath.substring(0, segmentIndex)
+                .lastIndexOf('_');
 
-			String pluginId = platformPluginPath.substring(1,
-				-1 == versionIndex
-					? segmentIndex : versionIndex);
-			IPluginDescriptor plugin = -1 == versionIndex
-				? Platform.getPluginRegistry().getPluginDescriptor(pluginId)
-				: Platform.getPluginRegistry().getPluginDescriptor(
-					pluginId,
-					new PluginVersionIdentifier(platformPluginPath.substring(
-						versionIndex + 1, segmentIndex)));
+            String pluginId = platformPluginPath.substring(1,
+                -1 == versionIndex ? segmentIndex : versionIndex);
 
-			URL url = plugin.find(new Path(platformPluginPath
-				.substring(segmentIndex + 1)));
+            Bundle[] bundles = Platform.getBundles(pluginId,
+                -1 == versionIndex ? null : platformPluginPath.substring(
+                    versionIndex + 1, segmentIndex));
 
-			if (null == url) {
-				throw new IOException();
-			}
+            URL url = null;
 
-			return url.openConnection().getInputStream();
-		}
+            if (null != bundles) {
+                url = Platform.find(bundles[0], new Path(platformPluginPath
+                    .substring(segmentIndex + 1)));
+            }
+
+            if (null == url) {
+                throw new IOException();
+            }
+
+            return url.openConnection().getInputStream();
+        }
 	}
 
 	// ECLIPSE-DEPEND-END

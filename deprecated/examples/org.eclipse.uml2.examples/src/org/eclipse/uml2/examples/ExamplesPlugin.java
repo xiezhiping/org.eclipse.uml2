@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ExamplesPlugin.java,v 1.1 2004/04/29 15:14:39 khussey Exp $
+ * $Id: ExamplesPlugin.java,v 1.2 2004/05/25 21:58:16 khussey Exp $
  */
 package org.eclipse.uml2.examples;
 
@@ -17,14 +17,14 @@ import java.util.ResourceBundle;
 
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPluginDescriptor;
-import org.eclipse.core.runtime.Plugin;
+
+import org.eclipse.emf.common.EMFPlugin;
 
 /**
  *  
  */
 public class ExamplesPlugin
-	extends Plugin {
+	extends EMFPlugin.EclipsePlugin {
 
 	//The shared instance.
 	private static ExamplesPlugin plugin;
@@ -35,8 +35,9 @@ public class ExamplesPlugin
 	/**
 	 * The constructor.
 	 */
-	public ExamplesPlugin(IPluginDescriptor descriptor) {
-		super(descriptor);
+	public ExamplesPlugin() {
+		super();
+
 		plugin = this;
 
 		try {
