@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SubsetEObjectEList.java,v 1.2 2004/04/10 04:09:51 khussey Exp $
+ * $Id: SubsetEObjectEList.java,v 1.3 2004/06/23 20:34:41 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectEList;
 
 /**
- *
+ *  
  */
 public class SubsetEObjectEList
 	extends EObjectEList {
@@ -40,17 +40,32 @@ public class SubsetEObjectEList
 
 		public Unsettable(Class dataClass, InternalEObject owner,
 				int featureID, int supersetFeatureID) {
-			this(dataClass, owner, featureID, new int[] {supersetFeatureID});
+			this(dataClass, owner, featureID, new int[]{supersetFeatureID});
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.common.util.BasicEList#didChange()
+		 */
 		protected void didChange() {
 			isSet = true;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#isSet()
+		 */
 		public boolean isSet() {
 			return isSet;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.EStructuralFeature.Setting#unset()
+		 */
 		public void unset() {
 			super.unset();
 
@@ -77,7 +92,7 @@ public class SubsetEObjectEList
 
 	public SubsetEObjectEList(Class dataClass, InternalEObject owner,
 			int featureID, int supersetFeatureID) {
-		this(dataClass, owner, featureID, new int[] {supersetFeatureID});
+		this(dataClass, owner, featureID, new int[]{supersetFeatureID});
 	}
 
 	protected void supersetAdd(Object object) {
@@ -97,8 +112,11 @@ public class SubsetEObjectEList
 		}
 	}
 
-	/**
-	 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#basicAdd(java.lang.Object, org.eclipse.emf.common.notify.NotificationChain)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#basicAdd(java.lang.Object,
+	 *      org.eclipse.emf.common.notify.NotificationChain)
 	 */
 	public NotificationChain basicAdd(Object object,
 			NotificationChain notifications) {
@@ -109,8 +127,11 @@ public class SubsetEObjectEList
 		return notifications;
 	}
 
-	/**
-	 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#basicSet(int, java.lang.Object, org.eclipse.emf.common.notify.NotificationChain)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#basicSet(int,
+	 *      java.lang.Object, org.eclipse.emf.common.notify.NotificationChain)
 	 */
 	public NotificationChain basicSet(int index, Object object,
 			NotificationChain notifications) {
@@ -121,7 +142,9 @@ public class SubsetEObjectEList
 		return notifications;
 	}
 
-	/**
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#add(int, java.lang.Object)
 	 */
 	public void add(int index, Object object) {
@@ -130,7 +153,9 @@ public class SubsetEObjectEList
 		supersetAdd(object);
 	}
 
-	/**
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.Collection#add(java.lang.Object)
 	 */
 	public boolean add(Object object) {
@@ -141,7 +166,9 @@ public class SubsetEObjectEList
 		return result;
 	}
 
-	/**
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.Collection#addAll(java.util.Collection)
 	 */
 	public boolean addAll(Collection collection) {
@@ -154,7 +181,9 @@ public class SubsetEObjectEList
 		return result;
 	}
 
-	/**
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#addAll(int, java.util.Collection)
 	 */
 	public boolean addAll(int index, Collection collection) {
@@ -167,7 +196,9 @@ public class SubsetEObjectEList
 		return result;
 	}
 
-	/**
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#set(int, java.lang.Object)
 	 */
 	public Object set(int index, Object object) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SupersetEObjectEList.java,v 1.2 2004/04/10 04:09:51 khussey Exp $
+ * $Id: SupersetEObjectEList.java,v 1.3 2004/06/23 20:34:41 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectEList;
 
 /**
- *
+ *  
  */
 public class SupersetEObjectEList
 	extends EObjectEList {
@@ -36,17 +36,32 @@ public class SupersetEObjectEList
 
 		public Unsettable(Class dataClass, InternalEObject owner,
 				int featureID, int subsetFeatureID) {
-			this(dataClass, owner, featureID, new int[] {subsetFeatureID});
+			this(dataClass, owner, featureID, new int[]{subsetFeatureID});
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.common.util.BasicEList#didChange()
+		 */
 		protected void didChange() {
 			isSet = true;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#isSet()
+		 */
 		public boolean isSet() {
 			return isSet;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.EStructuralFeature.Setting#unset()
+		 */
 		public void unset() {
 			super.unset();
 
@@ -73,7 +88,7 @@ public class SupersetEObjectEList
 
 	public SupersetEObjectEList(Class dataClass, InternalEObject owner,
 			int featureID, int subsetFeatureID) {
-		this(dataClass, owner, featureID, new int[] {subsetFeatureID});
+		this(dataClass, owner, featureID, new int[]{subsetFeatureID});
 	}
 
 	protected void subsetRemove(Object object) {
@@ -83,12 +98,7 @@ public class SupersetEObjectEList
 				.getEStructuralFeature(subsetFeatureIDs[i]);
 
 			if (subsetEStructuralFeature.isMany()) {
-				EList subsetEList = (EList) owner
-					.eGet(subsetEStructuralFeature);
-
-				if (subsetEList.contains(object)) {
-					subsetEList.remove(object);
-				}
+				((EList) owner.eGet(subsetEStructuralFeature)).remove(object);
 			} else {
 
 				if (object.equals(owner.eGet(subsetEStructuralFeature))) {
@@ -98,12 +108,24 @@ public class SupersetEObjectEList
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.util.BasicEList#didRemove(int,
+	 *      java.lang.Object)
+	 */
 	protected void didRemove(int index, Object oldObject) {
 		super.didRemove(index, oldObject);
 
 		subsetRemove(oldObject);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.util.BasicEList#didSet(int, java.lang.Object,
+	 *      java.lang.Object)
+	 */
 	protected void didSet(int index, Object newObject, Object oldObject) {
 		super.didSet(index, newObject, oldObject);
 

@@ -8,16 +8,15 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SubsetEObjectWithInverseResolvingEList.java,v 1.2 2004/04/10 04:09:51 khussey Exp $
+ * $Id: SubsetEObjectWithInverseResolvingEList.java,v 1.3 2004/06/23 20:34:41 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 /**
- *
+ *  
  */
 public class SubsetEObjectWithInverseResolvingEList
 	extends SubsetEObjectWithInverseEList {
@@ -37,10 +36,15 @@ public class SubsetEObjectWithInverseResolvingEList
 
 			public ManyInverse(Class dataClass, InternalEObject owner,
 					int featureID, int supersetFeatureID, int inverseFeatureID) {
-				this(dataClass, owner, featureID,
-					new int[] {supersetFeatureID}, inverseFeatureID);
+				this(dataClass, owner, featureID, new int[]{supersetFeatureID},
+					inverseFeatureID);
 			}
 
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see org.eclipse.emf.ecore.util.EcoreEList#hasManyInverse()
+			 */
 			protected boolean hasManyInverse() {
 				return true;
 			}
@@ -56,18 +60,33 @@ public class SubsetEObjectWithInverseResolvingEList
 
 		public Unsettable(Class dataClass, InternalEObject owner,
 				int featureID, int supersetFeatureID, int inverseFeatureID) {
-			this(dataClass, owner, featureID, new int[] {supersetFeatureID},
+			this(dataClass, owner, featureID, new int[]{supersetFeatureID},
 				inverseFeatureID);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.common.util.BasicEList#didChange()
+		 */
 		protected void didChange() {
 			isSet = true;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#isSet()
+		 */
 		public boolean isSet() {
 			return isSet;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.EStructuralFeature.Setting#unset()
+		 */
 		public void unset() {
 			super.unset();
 
@@ -94,12 +113,16 @@ public class SubsetEObjectWithInverseResolvingEList
 
 		public ManyInverse(Class dataClass, InternalEObject owner,
 				int featureID, int supersetFeatureID, int inverseFeatureID) {
-			this(dataClass, owner, featureID, new int[] {supersetFeatureID},
+			this(dataClass, owner, featureID, new int[]{supersetFeatureID},
 				inverseFeatureID);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreEList#hasManyInverse()
+		 */
 		protected boolean hasManyInverse() {
-
 			return true;
 		}
 	}
@@ -113,24 +136,16 @@ public class SubsetEObjectWithInverseResolvingEList
 	public SubsetEObjectWithInverseResolvingEList(Class dataClass,
 			InternalEObject owner, int featureID, int supersetFeatureID,
 			int inverseFeatureID) {
-		this(dataClass, owner, featureID, new int[] {supersetFeatureID},
+		this(dataClass, owner, featureID, new int[]{supersetFeatureID},
 			inverseFeatureID);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecore.util.EcoreEList#hasProxies()
+	 */
 	protected boolean hasProxies() {
 		return true;
 	}
-
-	protected Object resolve(Object object) {
-		return object instanceof EObject && ((EObject) object).eIsProxy()
-			? resolveProxy((EObject) object) : object;
-	}
-
-	/**
-	 * @see org.eclipse.uml2.internal.util.SubsetEObjectEList#supersetAdd(java.lang.Object)
-	 */
-	protected void supersetAdd(Object object) {
-		super.supersetAdd(resolve(object));
-	}
-
 }
