@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2PropertyDescriptor.java,v 1.2 2004/04/10 03:56:09 khussey Exp $
+ * $Id: UML2PropertyDescriptor.java,v 1.3 2004/04/11 02:46:02 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -44,7 +44,7 @@ import org.eclipse.uml2.NamedElement;
  *  
  */
 public class UML2PropertyDescriptor
-		extends PropertyDescriptor {
+	extends PropertyDescriptor {
 
 	public UML2PropertyDescriptor(Object object,
 			IItemPropertyDescriptor itemPropertyDescriptor) {
@@ -52,6 +52,8 @@ public class UML2PropertyDescriptor
 	}
 
 	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.ui.views.properties.IPropertyDescriptor#createPropertyEditor(org.eclipse.swt.widgets.Composite)
 	 */
 	public CellEditor createPropertyEditor(Composite composite) {
@@ -70,10 +72,19 @@ public class UML2PropertyDescriptor
 
 				if (NamedElement.class.isInstance(object)) {
 					String qualifiedName = ((NamedElement) object)
-							.getQualifiedName();
+						.getQualifiedName();
 
 					if (null != qualifiedName && 0 != qualifiedName.length()) {
 						return qualifiedName;
+					}
+				}
+
+				if (EObject.class.isInstance(object)) {
+					EObject eObject = (EObject) object;
+
+					if (null != eObject.eResource()) {
+						return getLabelProvider().getText(eObject) + " {"
+							+ eObject.eResource().getURIFragment(eObject) + '}';
 					}
 				}
 
@@ -87,13 +98,13 @@ public class UML2PropertyDescriptor
 
 		if (genericFeature instanceof EReference[]) {
 			List choiceOfValues = new ArrayList(itemPropertyDescriptor
-					.getChoiceOfValues(object));
+				.getChoiceOfValues(object));
 
 			Collections.sort(choiceOfValues, new Comparator() {
 
 				public int compare(Object o1, Object o2) {
 					return labelProvider.getText(o1).compareTo(
-							labelProvider.getText(o2));
+						labelProvider.getText(o2));
 				}
 			});
 
@@ -103,7 +114,7 @@ public class UML2PropertyDescriptor
 			final EStructuralFeature feature = (EStructuralFeature) genericFeature;
 			final EClassifier eType = feature.getEType();
 			Collection choices = itemPropertyDescriptor
-					.getChoiceOfValues(object);
+				.getChoiceOfValues(object);
 
 			if (choices != null) {
 				final List choiceOfValues = new ArrayList(choices);
@@ -112,7 +123,7 @@ public class UML2PropertyDescriptor
 
 					public int compare(Object o1, Object o2) {
 						return labelProvider.getText(o1).compareTo(
-								labelProvider.getText(o2));
+							labelProvider.getText(o2));
 					}
 				});
 
@@ -130,7 +141,7 @@ public class UML2PropertyDescriptor
 
 					if (valid) {
 						result = new ExtendedDialogCellEditor(composite,
-								labelProvider) {
+							labelProvider) {
 
 							protected Object openDialogBox(
 									Control cellEditorWindow) {
@@ -140,8 +151,8 @@ public class UML2PropertyDescriptor
 										(EObject) object,
 										feature.getEType(),
 										(List) ((IItemPropertySource) itemPropertyDescriptor
-												.getPropertyValue(object))
-												.getEditableValue(object),
+											.getPropertyValue(object))
+											.getEditableValue(object),
 										getDisplayName(), new ArrayList(
 												choiceOfValues));
 								dialog.open();
@@ -162,7 +173,7 @@ public class UML2PropertyDescriptor
 
 					if (feature.isMany() && object instanceof EObject) {
 						result = new ExtendedDialogCellEditor(composite,
-								labelProvider) {
+							labelProvider) {
 
 							protected Object openDialogBox(
 									Control cellEditorWindow) {
@@ -172,21 +183,21 @@ public class UML2PropertyDescriptor
 										(EObject) object,
 										feature.getEType(),
 										(List) ((IItemPropertySource) itemPropertyDescriptor
-												.getPropertyValue(object))
-												.getEditableValue(object),
+											.getPropertyValue(object))
+											.getEditableValue(object),
 										getDisplayName(), null);
 								dialog.open();
 								return dialog.getResult();
 							}
 						};
 					} else if (eDataType == EcorePackage.eINSTANCE
-							.getEBoolean()
-							|| eDataType == EcorePackage.eINSTANCE
-									.getEBooleanObject()) {
+						.getEBoolean()
+						|| eDataType == EcorePackage.eINSTANCE
+							.getEBooleanObject()) {
+
 						result = new ExtendedComboBoxCellEditor(composite,
 								Arrays.asList(new Object[] {new Boolean(false),
-										new Boolean(true)}), labelProvider,
-								true);
+									new Boolean(true)}), labelProvider, true);
 					} else {
 						result = new EDataTypeCellEditor(eDataType, composite);
 					}
