@@ -31,8 +31,11 @@ function groupPackage
 groupPackage org.eclipse.uml2
 groupPackage org.eclipse.uml2.edit
 groupPackage org.eclipse.uml2.editor
+groupPackage org.eclipse.uml2.mapping.ecore2xml
+groupPackage org.eclipse.uml2.mapping.ecore2xml.edit
+groupPackage org.eclipse.uml2.mapping.ecore2xml.editor
 
-# The directory of the sdo plugins in the order they were built 
+# The directory of the uml2 plugins in the order they were built 
 pluginDirs=`find $eclipseDir/plugins -name *.jar -printf '%T@ %p\n' | sort -n | egrep -e 'org.eclipse.uml2' | egrep -v 'example' | egrep -v 'tests' | cut -f2 -d' ' | sed -e 's/\(\/.*\)\/.*/\1/'`
 
 # All the jars in the pluigins directory

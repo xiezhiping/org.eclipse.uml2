@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: feature.xml,v 1.9 2004/11/18 18:07:57 khussey Exp $
+ * $Id: feature.xml,v 1.10 2004/12/21 21:47:30 khussey Exp $
  */
 -->
 
@@ -38,12 +38,15 @@
 
    <requires>
       <import plugin="org.eclipse.core.resources"/>
-      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.ecore.change.edit"/>
       <import plugin="org.eclipse.emf.ecore.edit"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.emf.edit"/>
       <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.emf.mapping.ecore2ecore"/>
+      <import plugin="org.eclipse.ui.ide"/>
    </requires>
 
    <plugin
@@ -60,6 +63,24 @@
 
    <plugin
       id="org.eclipse.uml2.editor"
+      download-size="0"
+      install-size="0"
+      version="1.1.0"/>
+
+   <plugin
+      id="org.eclipse.uml2.mapping.ecore2xml"
+      download-size="0"
+      install-size="0"
+      version="1.1.0"/>
+
+   <plugin
+      id="org.eclipse.uml2.mapping.ecore2xml.edit"
+      download-size="0"
+      install-size="0"
+      version="1.1.0"/>
+
+   <plugin
+      id="org.eclipse.uml2.mapping.ecore2xml.editor"
       download-size="0"
       install-size="0"
       version="1.1.0"/>
