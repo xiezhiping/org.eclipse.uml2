@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.7 2004/06/21 19:25:06 khussey Exp $
+ * $Id: UML2Operations.java,v 1.8 2004/06/21 21:01:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -177,10 +177,10 @@ class UML2Operations {
 
 	}
 
-	public static class FilteredUsageCrossReferencer
+	protected static class FilteredUsageCrossReferencer
 		extends EcoreUtil.UsageCrossReferencer {
 
-		public static interface Filter {
+		protected static interface Filter {
 
 			boolean accept(EStructuralFeature eStructuralFeature);
 
@@ -194,7 +194,7 @@ class UML2Operations {
 				.findUsage(eObject);
 		}
 
-		public static Collection find(EObject eObject, Resource resource,
+		protected static Collection find(EObject eObject, Resource resource,
 				Filter filter) {
 			return new FilteredUsageCrossReferencer(resource, filter)
 				.findUsage(eObject);
