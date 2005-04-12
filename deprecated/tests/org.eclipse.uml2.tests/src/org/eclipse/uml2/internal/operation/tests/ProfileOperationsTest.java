@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperationsTest.java,v 1.4 2005/04/12 17:46:05 khussey Exp $
+ * $Id: ProfileOperationsTest.java,v 1.5 2005/04/12 20:28:16 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -321,7 +321,8 @@ public class ProfileOperationsTest
 			String.valueOf(0));
 		getElement().createEAnnotation(
 			ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES).getContents().add(
-			0, ProfileOperations.createEPackage(getElement()));
+			0,
+			ProfileOperations.Profile2EPackageConverter.convert(getElement()));
 
 		try {
 			ProfileOperations.apply(getElement(), null);
@@ -438,7 +439,8 @@ public class ProfileOperationsTest
 			String.valueOf(1));
 		getElement().getEAnnotation(
 			ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES).getContents().add(
-			0, ProfileOperations.createEPackage(getElement()));
+			0,
+			ProfileOperations.Profile2EPackageConverter.convert(getElement()));
 
 		try {
 			ProfileOperations.apply(getElement(), package_);
@@ -695,7 +697,8 @@ public class ProfileOperationsTest
 			String.valueOf(0));
 		getElement().createEAnnotation(
 			ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES).getContents().add(
-			0, ProfileOperations.createEPackage(getElement()));
+			0,
+			ProfileOperations.Profile2EPackageConverter.convert(getElement()));
 
 		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE
 			.createPackage();
@@ -753,7 +756,8 @@ public class ProfileOperationsTest
 			String.valueOf(0));
 		getElement().createEAnnotation(
 			ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES).getContents().add(
-			0, ProfileOperations.createEPackage(getElement()));
+			0,
+			ProfileOperations.Profile2EPackageConverter.convert(getElement()));
 
 		assertFalse(ProfileOperations.isApplied(getElement(), null));
 
@@ -798,7 +802,8 @@ public class ProfileOperationsTest
 			String.valueOf(0));
 		getElement().createEAnnotation(
 			ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES).getContents().add(
-			0, ProfileOperations.createEPackage(getElement()));
+			0,
+			ProfileOperations.Profile2EPackageConverter.convert(getElement()));
 
 		assertTrue(ProfileOperations.isDefined(getElement()));
 	}
@@ -833,7 +838,8 @@ public class ProfileOperationsTest
 			String.valueOf(0));
 		getElement().createEAnnotation(
 			ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES).getContents().add(
-			0, ProfileOperations.createEPackage(getElement()));
+			0,
+			ProfileOperations.Profile2EPackageConverter.convert(getElement()));
 
 		try {
 			ProfileOperations.unapply(getElement(), null);
@@ -1068,7 +1074,8 @@ public class ProfileOperationsTest
 			String.valueOf(0));
 		getElement().createEAnnotation(
 			ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES).getContents().add(
-			0, ProfileOperations.createEPackage(getElement()));
+			0,
+			ProfileOperations.Profile2EPackageConverter.convert(getElement()));
 
 		try {
 			ProfileOperations.create(getElement(), null);

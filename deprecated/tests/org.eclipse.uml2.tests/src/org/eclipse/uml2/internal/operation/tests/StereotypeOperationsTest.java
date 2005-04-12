@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperationsTest.java,v 1.7 2005/04/12 17:46:05 khussey Exp $
+ * $Id: StereotypeOperationsTest.java,v 1.8 2005/04/12 20:28:16 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -312,7 +312,7 @@ public class StereotypeOperationsTest
 			String.valueOf(0));
 		profile.createEAnnotation(
 			ProfileOperations.ANNOTATION_SOURCE__E_PACKAGES).getContents().add(
-			0, ProfileOperations.createEPackage(profile));
+			0, ProfileOperations.Profile2EPackageConverter.convert(profile));
 	}
 
 	protected void applyProfile(org.eclipse.uml2.Package package_,

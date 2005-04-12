@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.18 2005/03/15 18:44:46 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.19 2005/04/12 20:28:13 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -29,12 +31,14 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.DataType;
@@ -66,6 +70,95 @@ import org.eclipse.uml2.util.UML2Switch;
  */
 public final class ProfileOperations
 		extends UML2Operations {
+
+	public static final class Profile2EPackageConverter
+			extends UML22EcoreConverter {
+
+		public Object caseEnumerationLiteral(
+				EnumerationLiteral enumerationLiteral) {
+			EEnumLiteral eEnumLiteral = (EEnumLiteral) super
+				.caseEnumerationLiteral(enumerationLiteral);
+			createEAnnotation(eEnumLiteral,
+				StereotypeOperations.ANNOTATION_SOURCE__ENUMERATION_LITERAL)
+				.getReferences().add(enumerationLiteral);
+			return eEnumLiteral;
+		}
+
+		public Object caseProfile(Profile profile) {
+			EPackage ePackage = (EPackage) casePackage(profile);
+			ePackage.setNsPrefix(ePackage.getName());
+			ePackage
+				.setNsURI("http:///" + ePackage.getName() + EcoreUtil.generateUUID() //$NON-NLS-1$
+					+ "." + UML2Resource.PROFILE_FILE_EXTENSION); //$NON-NLS-1$
+			return ePackage;
+		}
+
+		public Object caseProperty(final Property property) {
+
+			if (!isEmpty(property.getName()) && null != property.getType()
+				&& !Extension.class.isInstance(property.getAssociation())) {
+
+				return new EcoreSwitch() {
+
+					public Object caseEAttribute(EAttribute eAttribute) {
+
+						if (EcorePackage.eINSTANCE.getEString() == eAttribute
+							.getEAttributeType()) {
+							eAttribute.setDefaultValueLiteral(property
+								.getDefault());
+						}
+
+						return eAttribute;
+					}
+
+					public Object caseEReference(EReference eReference) {
+						eReference.setChangeable(true);
+						eReference.setContainment(true);
+						return eReference;
+					}
+				}.doSwitch((EStructuralFeature) super.caseProperty(property));
+			}
+			return null;
+		}
+
+		public Object caseStereotype(Stereotype stereotype) {
+			EClass eClass = (EClass) caseClass(stereotype);
+			createEAnnotation(eClass,
+				StereotypeOperations.ANNOTATION_SOURCE__STEREOTYPE)
+				.getReferences().add(stereotype);
+			return eClass;
+		}
+
+		protected void setName(final ENamedElement eNamedElement,
+				NamedElement namedElement) {
+
+			new UML2Switch() {
+
+				public Object caseClassifier(Classifier classifier) {
+					setName(eNamedElement, getEClassifierName(classifier));
+					return classifier;
+				}
+
+				public Object caseProfile(Profile profile) {
+					setName(eNamedElement, getEPackageName(profile));
+					return profile;
+				}
+
+				public Object caseNamedElement(NamedElement namedElement) {
+					setName(eNamedElement, namedElement.getName());
+					return namedElement;
+				}
+			}.doSwitch(namedElement);
+		}
+
+		public static EPackage convert(Profile profile) {
+			Collection ePackages = new Profile2EPackageConverter().convert(
+				Collections.singleton(profile), null, null, null);
+			return 1 == ePackages.size()
+				? (EPackage) ePackages.iterator().next()
+				: null;
+		}
+	}
 
 	/**
 	 * The source for the attributes annotation on profiles.
@@ -182,7 +275,7 @@ public final class ProfileOperations
 	 *            The type for which to retrieve the Ecore classifier.
 	 * @return The Ecore classifier representing the type.
 	 * 
-	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
+	 * @deprecated Use EPackage.getEClassifier(String) instead.
 	 */
 	public static EClassifier getEClassifier(EPackage ePackage, Type type) {
 		EClassifier eClassifier = ePackage.getEClassifier(type.getName());
@@ -241,22 +334,7 @@ public final class ProfileOperations
 	 * @deprecated Use UML2Util.UML22EcoreConverter instead.
 	 */
 	public static EPackage createEPackage(Profile profile) {
-		EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
-
-		String ePackageName = getEPackageName(profile);
-
-		ePackage.setName(ePackageName);
-		ePackage.setNsPrefix(ePackageName);
-		ePackage.setNsURI("http:///" + ePackageName + EcoreUtil.generateUUID() //$NON-NLS-1$
-			+ "." + UML2Resource.PROFILE_FILE_EXTENSION); //$NON-NLS-1$
-
-		for (Iterator ownedTypes = profile.getOwnedTypes().iterator(); ownedTypes
-			.hasNext();) {
-
-			createEClassifier(ePackage, (Type) ownedTypes.next());
-		}
-
-		return ePackage;
+		return Profile2EPackageConverter.convert(profile);
 	}
 
 	/**
@@ -756,9 +834,6 @@ public final class ProfileOperations
 				profile.getVersion());
 	}
 
-	/**
-	 * @deprecated Use EcoreUtil.Copier instead.
-	 */
 	protected static void copyValues(EObject sourceEObject,
 			EObject targetEObject) {
 
@@ -806,9 +881,6 @@ public final class ProfileOperations
 		}
 	}
 
-	/**
-	 * @deprecated Use EcoreUtil.Copier instead.
-	 */
 	protected static void copyEClassValue(EObject sourceEObject,
 			EStructuralFeature sourceEStructuralFeature, EObject targetEObject,
 			EStructuralFeature targetEStructuralFeature) {
@@ -845,9 +917,6 @@ public final class ProfileOperations
 		}
 	}
 
-	/**
-	 * @deprecated Use EcoreUtil.Copier instead.
-	 */
 	protected static void copyEDataTypeValue(EObject sourceEObject,
 			EStructuralFeature sourceEStructuralFeature, EObject targetEObject,
 			EStructuralFeature targetEStructuralFeature) {
@@ -889,9 +958,6 @@ public final class ProfileOperations
 		}
 	}
 
-	/**
-	 * @deprecated Use EcoreUtil.Copier instead.
-	 */
 	protected static void copyEEnumValue(EObject sourceEObject,
 			EStructuralFeature sourceEStructuralFeature, EObject targetEObject,
 			EStructuralFeature targetEStructuralFeature) {
@@ -946,7 +1012,7 @@ public final class ProfileOperations
 				: String.valueOf(new Integer(Integer.parseInt(version) + 1)));
 
 		getEAnnotation(profile, ANNOTATION_SOURCE__E_PACKAGES, true)
-			.getContents().add(0, createEPackage(profile));
+			.getContents().add(0, Profile2EPackageConverter.convert(profile));
 	}
 
 	/**
