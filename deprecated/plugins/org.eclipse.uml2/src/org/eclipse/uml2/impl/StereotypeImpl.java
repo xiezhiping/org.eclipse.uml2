@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.28 2005/04/04 20:11:13 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.29 2005/04/12 17:46:00 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -705,17 +705,6 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 
 	// <!-- begin-custom-operations -->
 
-	private static Method GET_ALL_EXTENDED_E_CLASSES_METHOD = null;
-
-	static {
-		try {
-			GET_ALL_EXTENDED_E_CLASSES_METHOD = StereotypeImpl.class.getMethod(
-				"getAllExtendedEClasses", null); //$NON-NLS-1$
-		} catch (Exception e) {
-			// ignore
-		}
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -726,6 +715,17 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 		return StereotypeOperations.createExtension(this, eClass, required);
 	}
 
+	private static Method GET_ALL_EXTENDED_E_CLASSES = null;
+
+	static {
+		try {
+			GET_ALL_EXTENDED_E_CLASSES = StereotypeImpl.class.getMethod(
+				"getAllExtendedEClasses", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// ignore
+		}
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -733,12 +733,12 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 */
 	public Set getAllExtendedEClasses() {
 		Set allExtendedEClasses = (Set) getCacheAdapter().get(this,
-			GET_ALL_EXTENDED_E_CLASSES_METHOD);
+			GET_ALL_EXTENDED_E_CLASSES);
 
 		if (null == allExtendedEClasses) {
 			allExtendedEClasses = StereotypeOperations
 				.getAllExtendedEClasses(this);
-			getCacheAdapter().put(this, GET_ALL_EXTENDED_E_CLASSES_METHOD,
+			getCacheAdapter().put(this, GET_ALL_EXTENDED_E_CLASSES,
 				allExtendedEClasses);
 		}
 
@@ -770,6 +770,56 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 */
 	public String getKeyword(boolean localize) {
 		return StereotypeOperations.getKeyword(this, localize);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Stereotype#createExtension(org.eclipse.uml2.Class,
+	 *      boolean)
+	 */
+	public Extension createExtension(org.eclipse.uml2.Class metaclass,
+			boolean required) {
+		return StereotypeOperations.createExtension(this, metaclass, required);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Stereotype#getExtendedMetaclasses()
+	 */
+	public Set getExtendedMetaclasses() {
+		return StereotypeOperations.getExtendedMetaclasses(this);
+	}
+
+	private static Method GET_ALL_EXTENDED_METACLASSES = null;
+
+	static {
+		try {
+			GET_ALL_EXTENDED_METACLASSES = StereotypeImpl.class.getMethod(
+				"getAllExtendedMetaclasses", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// ignore
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Stereotype#getAllExtendedMetaclasses()
+	 */
+	public Set getAllExtendedMetaclasses() {
+		Set allExtendedMetaclasses = (Set) getCacheAdapter().get(this,
+			GET_ALL_EXTENDED_METACLASSES);
+
+		if (null == allExtendedMetaclasses) {
+			allExtendedMetaclasses = StereotypeOperations
+				.getAllExtendedMetaclasses(this);
+			getCacheAdapter().put(this, GET_ALL_EXTENDED_METACLASSES,
+				allExtendedMetaclasses);
+		}
+
+		return allExtendedMetaclasses;
 	}
 
 	// <!-- end-custom-operations -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.10 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Stereotype.java,v 1.11 2005/04/12 17:46:00 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -49,8 +49,9 @@ public interface Stereotype extends org.eclipse.uml2.Class{
 	 * @throws IllegalArgumentException
 	 *             If this stereotype already extends (a subclass of) the Ecore
 	 *             class.
+	 * @deprecated Use createExtension(org.eclipse.uml2.Class, boolean) instead.
 	 */
-	public Extension createExtension(EClass eClass, boolean required);
+	Extension createExtension(EClass eClass, boolean required);
 
 	/**
 	 * Retrieves the set of Ecore classes extended by this stereotype, including
@@ -58,22 +59,23 @@ public interface Stereotype extends org.eclipse.uml2.Class{
 	 * 
 	 * @return The Ecore classes extended by this stereotype and its
 	 *         super(stereo)types.
+	 * @deprecated Use getAllExtendedMetaclasses() instead.
 	 */
-	public Set getAllExtendedEClasses();
+	Set getAllExtendedEClasses();
 
 	/**
 	 * Retrieves the profile that owns this stereotype.
 	 * 
 	 * @return The profile that owns this stereotype.
 	 */
-	public Profile getProfile();
+	Profile getProfile();
 
 	/**
 	 * Retrieves the localized keyword for this stereotype.
 	 * 
 	 * @return The localized keyword for this stereotype.
 	 */
-	public String getKeyword();
+	String getKeyword();
 
 	/**
 	 * Retrieves the keyword for this stereotype, localized if indicated.
@@ -82,7 +84,38 @@ public interface Stereotype extends org.eclipse.uml2.Class{
 	 *            Whether the keyword should be localized.
 	 * @return The (localized) keyword for this stereotype.
 	 */
-	public String getKeyword(boolean localize);
+	String getKeyword(boolean localize);
+
+	/**
+	 * Creates a(n) (required) extension of the specified metaclass with this
+	 * stereotype.
+	 * 
+	 * @param metaclass
+	 *            The metaclass to be extended.
+	 * @param required
+	 *            Whether the extension should be required.
+	 * @return The new extension.
+	 * @throws IllegalArgumentException
+	 *             If this stereotype or any of its super(stereo)types already
+	 *             extends the metaclass.
+	 */
+	Extension createExtension(org.eclipse.uml2.Class metaclass, boolean required);
+
+	/**
+	 * Retrieves the metaclasses extended by this stereotype.
+	 * 
+	 * @return The metaclasses extended by this stereotype.
+	 */
+	Set getExtendedMetaclasses();
+
+	/**
+	 * Retrieves the metaclasses extended by this stereotype, including the
+	 * metaclasses extended by its super(stereo)types.
+	 * 
+	 * @return The metaclasses extended by this stereotype and its
+	 *         super(stereo)types.
+	 */
+	Set getAllExtendedMetaclasses();
 
 	// <!-- end-custom-operations -->
 

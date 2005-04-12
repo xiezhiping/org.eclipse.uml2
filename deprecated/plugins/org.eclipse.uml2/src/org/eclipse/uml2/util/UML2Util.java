@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.10 2005/04/06 19:59:37 khussey Exp $
+ * $Id: UML2Util.java,v 1.11 2005/04/12 17:46:00 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -5387,7 +5387,7 @@ public class UML2Util {
 		return rootContainers;
 	}
 
-	protected static org.eclipse.uml2.Package load(ResourceSet resourceSet,
+	public static org.eclipse.uml2.Package load(ResourceSet resourceSet,
 			URI uri) {
 		org.eclipse.uml2.Package package_ = null;
 

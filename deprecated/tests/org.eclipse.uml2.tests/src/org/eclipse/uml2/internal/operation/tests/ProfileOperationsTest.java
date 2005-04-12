@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperationsTest.java,v 1.3 2005/03/15 18:51:32 khussey Exp $
+ * $Id: ProfileOperationsTest.java,v 1.4 2005/04/12 17:46:05 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -84,11 +84,9 @@ public class ProfileOperationsTest
 		setElement(UML2Factory.eINSTANCE.createProfile());
 		getElement().setName(getName());
 
-		Model metamodel = getUML2Metamodel();
-
 		PackageImport metamodelReference = getElement().createPackageImport(
 			UML2Package.eINSTANCE.getPackageImport());
-		metamodelReference.setImportedPackage(metamodel);
+		metamodelReference.setImportedPackage(getUML2Metamodel());
 
 		getElement().getMetamodelReferences().add(metamodelReference);
 
@@ -112,19 +110,16 @@ public class ProfileOperationsTest
 		stereotypeEnd
 			.setName(StereotypeOperations.METACLASS_EXTENSION_ROLE_PREFIX
 				+ UML2Package.eINSTANCE.getClass_().getName());
-		stereotypeEnd.setType(metamodel.getOwnedType(UML2Package.eINSTANCE
-			.getClass_().getName()));
-
-		Model primitiveTypes = getUML2PrimitiveTypesLibrary();
+		stereotypeEnd.setType(getUML2Metaclass(UML2Package.eINSTANCE
+			.getClass_()));
 
 		PackageImport packageImport = getElement().createPackageImport(
 			UML2Package.eINSTANCE.getPackageImport());
-		packageImport.setImportedPackage(primitiveTypes);
+		packageImport.setImportedPackage(getUML2PrimitiveTypesLibrary());
 
 		getElement().getPackageImports().add(packageImport);
 
-		PrimitiveType booleanPrimitiveType = (PrimitiveType) primitiveTypes
-			.getOwnedType("Boolean"); //$NON-NLS-1$
+		PrimitiveType booleanPrimitiveType = getUML2PrimitiveType("Boolean"); //$NON-NLS-1$
 
 		Property booleanProperty = stereotype
 			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
@@ -140,8 +135,7 @@ public class ProfileOperationsTest
 		booleansProperty
 			.setUpperBound(MultiplicityElement.UNLIMITED_UPPER_BOUND);
 
-		PrimitiveType integerPrimitiveType = (PrimitiveType) primitiveTypes
-			.getOwnedType("Integer"); //$NON-NLS-1$
+		PrimitiveType integerPrimitiveType = getUML2PrimitiveType("Integer"); //$NON-NLS-1$
 
 		Property integerProperty = stereotype
 			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
@@ -157,8 +151,7 @@ public class ProfileOperationsTest
 		integersProperty
 			.setUpperBound(MultiplicityElement.UNLIMITED_UPPER_BOUND);
 
-		PrimitiveType unlimitedNaturalPrimitiveType = (PrimitiveType) primitiveTypes
-			.getOwnedType("UnlimitedNatural"); //$NON-NLS-1$
+		PrimitiveType unlimitedNaturalPrimitiveType = getUML2PrimitiveType("UnlimitedNatural"); //$NON-NLS-1$
 
 		Property unlimitedNaturalProperty = stereotype
 			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
@@ -174,8 +167,7 @@ public class ProfileOperationsTest
 		unlimitedNaturalsProperty
 			.setUpperBound(MultiplicityElement.UNLIMITED_UPPER_BOUND);
 
-		PrimitiveType stringPrimitiveType = (PrimitiveType) primitiveTypes
-			.getOwnedType("String"); //$NON-NLS-1$
+		PrimitiveType stringPrimitiveType = getUML2PrimitiveType("String"); //$NON-NLS-1$
 
 		Property stringProperty = stereotype
 			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.20 2005/04/06 19:59:37 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.21 2005/04/12 17:46:00 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -187,6 +187,7 @@ public final class StereotypeOperations
 	 *            The stereotype for which to retrieve the Ecore classes.
 	 * @return The Ecore classes extended by the stereotype and its
 	 *         super(stereo)types.
+	 * @deprecated Use getAllExtendedMetaclasses(Stereotype) instead.
 	 */
 	public static Set getAllExtendedEClasses(Stereotype stereotype) {
 		Set allExtendedEClasses = new HashSet();
@@ -205,6 +206,7 @@ public final class StereotypeOperations
 	 *            The stereotype for which to add the Ecore classes.
 	 * @param allExtendedEClasses
 	 *            The set to which to add the Ecore classes.
+	 * @deprecated Use getExtendedMetaclassesHelper(Stereotype, Set) instead.
 	 */
 	protected static void getAllExtendedEClassesHelper(Stereotype stereotype,
 			Set allExtendedEClasses) {
@@ -249,35 +251,6 @@ public final class StereotypeOperations
 					allExtendedEClasses);
 			}
 		}
-	}
-
-	/**
-	 * Retrieves the metaclasses extended by the specified stereotype.
-	 * 
-	 * @param stereotype
-	 *            The stereotype for which to retrieve the metaclasses.
-	 * @return The metaclasses extended by the stereotype.
-	 */
-	public static Set getExtendedMetaclasses(Stereotype stereotype) {
-		Set extendedMetaclasses = new HashSet();
-
-		if (null != stereotype) {
-
-			for (Iterator ownedAttributes = stereotype.getOwnedAttributes()
-				.iterator(); ownedAttributes.hasNext();) {
-
-				Property property = (Property) ownedAttributes.next();
-				Type type = property.getType();
-
-				if (org.eclipse.uml2.Class.class.isInstance(type)
-					&& Extension.class.isInstance(property.getAssociation())) {
-
-					extendedMetaclasses.add(type);
-				}
-			}
-		}
-
-		return extendedMetaclasses;
 	}
 
 	/**
@@ -326,6 +299,8 @@ public final class StereotypeOperations
 	 * @throws IllegalArgumentException
 	 *             If the stereotype already extends (a subclass of) the Ecore
 	 *             class.
+	 * @deprecated Use createExtension(Stereotype, org.eclipse.uml2.Class,
+	 *             boolean) instead.
 	 */
 	public static Extension createExtension(Stereotype stereotype,
 			EClass eClass, boolean required) {
@@ -441,11 +416,12 @@ public final class StereotypeOperations
 				if (!stereotype.isAbstract()
 					&& null != getEClass(stereotype, appliedVersion)) {
 
-					for (Iterator extendedEClasses = stereotype
-						.getAllExtendedEClasses().iterator(); extendedEClasses
+					for (Iterator extendedMetaclasses = stereotype
+						.getAllExtendedMetaclasses().iterator(); extendedMetaclasses
 						.hasNext();) {
 
-						if (((EClass) extendedEClasses.next())
+						if (getEClass(
+							(org.eclipse.uml2.Class) extendedMetaclasses.next())
 							.isInstance(element)) {
 
 							applicableStereotypes.add(stereotype);
@@ -1135,6 +1111,146 @@ public final class StereotypeOperations
 		}
 
 		return keyword;
+	}
+
+	protected static EClass getEClass(org.eclipse.uml2.Class metaclass) {
+		return (EClass) UML2Package.eINSTANCE.getEClassifier(metaclass
+			.getName());
+	}
+
+	/**
+	 * Creates a(n) (required) extension of the specified metaclass with the
+	 * specified stereotype.
+	 * 
+	 * @param stereotype
+	 *            The stereotype with which to extend the metaclass.
+	 * @param metaclass
+	 *            The metaclass to be extended.
+	 * @param required
+	 *            Whether the extension should be required.
+	 * @return The new extension.
+	 * @throws IllegalArgumentException
+	 *             If the stereotype or any of its super(stereo)types already
+	 *             extends the metaclass.
+	 */
+	public static Extension createExtension(Stereotype stereotype,
+			org.eclipse.uml2.Class metaclass, boolean required) {
+
+		if (null == stereotype || isEmpty(stereotype.getName())) {
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
+
+		Profile profile = stereotype.getProfile();
+
+		if (null == profile) {
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
+
+		if (null == metaclass || !metaclass.isMetaclass()
+			|| stereotype.getAllExtendedMetaclasses().contains(metaclass)) {
+
+			throw new IllegalArgumentException(String.valueOf(metaclass));
+		}
+
+		if (!profile.getReferencedMetaclasses().contains(metaclass)
+			&& !profile.getReferencedMetamodels()
+				.contains(metaclass.getModel())) {
+
+			throw new IllegalArgumentException(String.valueOf(metaclass));
+		}
+
+		Extension extension = (Extension) stereotype.getPackage()
+			.createOwnedMember(UML2Package.eINSTANCE.getExtension());
+
+		extension.setName(metaclass.getName() + '_' + stereotype.getName());
+
+		ExtensionEnd extensionEnd = (ExtensionEnd) extension
+			.createOwnedEnd(UML2Package.eINSTANCE.getExtensionEnd());
+
+		extensionEnd.setName(STEREOTYPE_EXTENSION_ROLE_PREFIX
+			+ stereotype.getName());
+		extensionEnd.setAggregation(AggregationKind.COMPOSITE_LITERAL);
+		extensionEnd.setType(stereotype);
+
+		if (!required) {
+			extensionEnd.createLowerValue(UML2Package.eINSTANCE
+				.getLiteralInteger());
+		}
+
+		Property property = stereotype
+			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
+
+		property.setName(METACLASS_EXTENSION_ROLE_PREFIX + metaclass.getName());
+		property.setType(metaclass);
+		property.setAssociation(extension);
+
+		return extension;
+	}
+
+	protected static Set getExtendedMetaclassesHelper(Stereotype stereotype,
+			Set extendedMetaclasses) {
+
+		for (Iterator ownedAttributes = stereotype.getOwnedAttributes()
+			.iterator(); ownedAttributes.hasNext();) {
+
+			Property property = (Property) ownedAttributes.next();
+			Type type = property.getType();
+
+			if (org.eclipse.uml2.Class.class.isInstance(type)
+				&& Extension.class.isInstance(property.getAssociation())) {
+
+				extendedMetaclasses.add(type);
+			}
+		}
+
+		return extendedMetaclasses;
+	}
+
+	/**
+	 * Retrieves the metaclasses extended by the specified stereotype.
+	 * 
+	 * @param stereotype
+	 *            The stereotype for which to retrieve the extended metaclasses.
+	 * @return The metaclasses extended by the stereotype.
+	 */
+	public static Set getExtendedMetaclasses(Stereotype stereotype) {
+		Set extendedMetaclasses = new HashSet();
+
+		if (null != stereotype) {
+			getExtendedMetaclassesHelper(stereotype, extendedMetaclasses);
+		}
+
+		return extendedMetaclasses;
+	}
+
+	/**
+	 * Retrieves the metaclasses extended by the specified stereotype, including
+	 * the metaclasses extended by its super(stereo)types.
+	 * 
+	 * @param stereotype
+	 *            The stereotype for which to retrieve the extended metaclasses.
+	 * @return The metaclasses extended by the specified stereotype and its
+	 *         super(stereo)types.
+	 */
+	public static Set getAllExtendedMetaclasses(Stereotype stereotype) {
+		Set allExtendedMetaclasses = new HashSet();
+
+		if (null != stereotype) {
+			getExtendedMetaclassesHelper(stereotype, allExtendedMetaclasses);
+
+			for (Iterator allParents = stereotype.allParents().iterator(); allParents
+				.hasNext();) {
+
+				Classifier parent = (Classifier) allParents.next();
+
+				if (Stereotype.class.isInstance(parent)) {
+					getExtendedMetaclassesHelper((Stereotype) parent,
+						allExtendedMetaclasses);
+				}
+			}
+		}
+
+		return allExtendedMetaclasses;
 	}
 
 }

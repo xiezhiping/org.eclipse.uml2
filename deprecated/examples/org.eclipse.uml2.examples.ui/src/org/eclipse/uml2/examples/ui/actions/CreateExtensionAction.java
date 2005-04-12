@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateExtensionAction.java,v 1.4 2005/03/15 18:54:23 khussey Exp $
+ * $Id: CreateExtensionAction.java,v 1.5 2005/04/12 17:45:57 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -22,8 +22,6 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
@@ -33,10 +31,10 @@ import org.eclipse.uml2.edit.util.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 
 /**
- *  
+ * 
  */
 public class CreateExtensionAction
-	extends UML2CommandAction {
+		extends UML2CommandAction {
 
 	public CreateExtensionAction() {
 		super();
@@ -76,13 +74,11 @@ public class CreateExtensionAction
 				.getReferencedMetaclasses().iterator(); referencedMetaclasses
 				.hasNext();) {
 
-				EClassifier eClassifier = UML2Package.eINSTANCE
-					.getEClassifier(((org.eclipse.uml2.Class) referencedMetaclasses
-						.next()).getName());
+				org.eclipse.uml2.Class metaclass = (org.eclipse.uml2.Class) referencedMetaclasses
+					.next();
 
-				if (!stereotype.getAllExtendedEClasses().contains(eClassifier)) {
-
-					choiceOfValues.add(eClassifier);
+				if (!stereotype.getAllExtendedMetaclasses().contains(metaclass)) {
+					choiceOfValues.add(metaclass);
 				}
 			}
 
@@ -109,11 +105,13 @@ public class CreateExtensionAction
 
 						public void run() {
 
-							for (Iterator eClasses = dialog.getResult()
-								.iterator(); eClasses.hasNext();) {
+							for (Iterator metaclasses = dialog.getResult()
+								.iterator(); metaclasses.hasNext();) {
 
-								stereotype.createExtension((EClass) eClasses
-									.next(), false);
+								stereotype
+									.createExtension(
+										(org.eclipse.uml2.Class) metaclasses
+											.next(), false);
 							}
 						}
 					}, label));

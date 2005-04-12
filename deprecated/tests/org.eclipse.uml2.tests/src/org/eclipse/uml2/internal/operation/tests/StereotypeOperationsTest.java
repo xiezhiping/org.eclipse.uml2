@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperationsTest.java,v 1.6 2005/04/07 01:14:52 khussey Exp $
+ * $Id: StereotypeOperationsTest.java,v 1.7 2005/04/12 17:46:05 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -33,7 +33,6 @@ import org.eclipse.uml2.Extension;
 import org.eclipse.uml2.ExtensionEnd;
 import org.eclipse.uml2.InstanceValue;
 import org.eclipse.uml2.Interface;
-import org.eclipse.uml2.Model;
 import org.eclipse.uml2.MultiplicityElement;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageImport;
@@ -101,11 +100,9 @@ public class StereotypeOperationsTest
 		Profile profile = UML2Factory.eINSTANCE.createProfile();
 		profile.setName(getName());
 
-		Model metamodel = getUML2Metamodel();
-
 		PackageImport metamodelReference = profile
 			.createPackageImport(UML2Package.eINSTANCE.getPackageImport());
-		metamodelReference.setImportedPackage(metamodel);
+		metamodelReference.setImportedPackage(getUML2Metamodel());
 
 		profile.getMetamodelReferences().add(metamodelReference);
 
@@ -129,19 +126,16 @@ public class StereotypeOperationsTest
 		stereotypeEnd
 			.setName(StereotypeOperations.METACLASS_EXTENSION_ROLE_PREFIX
 				+ UML2Package.eINSTANCE.getClass_().getName());
-		stereotypeEnd.setType(metamodel.getOwnedType(UML2Package.eINSTANCE
-			.getClass_().getName()));
-
-		Model primitiveTypes = getUML2PrimitiveTypesLibrary();
+		stereotypeEnd.setType(getUML2Metaclass(UML2Package.eINSTANCE
+			.getClass_()));
 
 		PackageImport packageImport = profile
 			.createPackageImport(UML2Package.eINSTANCE.getPackageImport());
-		packageImport.setImportedPackage(primitiveTypes);
+		packageImport.setImportedPackage(getUML2PrimitiveTypesLibrary());
 
 		profile.getPackageImports().add(packageImport);
 
-		PrimitiveType booleanPrimitiveType = (PrimitiveType) primitiveTypes
-			.getOwnedType("Boolean"); //$NON-NLS-1$
+		PrimitiveType booleanPrimitiveType = getUML2PrimitiveType("Boolean"); //$NON-NLS-1$
 
 		Property booleanProperty = getElement().createOwnedAttribute(
 			UML2Package.eINSTANCE.getProperty());
@@ -157,8 +151,7 @@ public class StereotypeOperationsTest
 		booleansProperty
 			.setUpperBound(MultiplicityElement.UNLIMITED_UPPER_BOUND);
 
-		PrimitiveType integerPrimitiveType = (PrimitiveType) primitiveTypes
-			.getOwnedType("Integer"); //$NON-NLS-1$
+		PrimitiveType integerPrimitiveType = getUML2PrimitiveType("Integer"); //$NON-NLS-1$
 
 		Property integerProperty = getElement().createOwnedAttribute(
 			UML2Package.eINSTANCE.getProperty());
@@ -174,8 +167,7 @@ public class StereotypeOperationsTest
 		integersProperty
 			.setUpperBound(MultiplicityElement.UNLIMITED_UPPER_BOUND);
 
-		PrimitiveType unlimitedNaturalPrimitiveType = (PrimitiveType) primitiveTypes
-			.getOwnedType("UnlimitedNatural"); //$NON-NLS-1$
+		PrimitiveType unlimitedNaturalPrimitiveType = getUML2PrimitiveType("UnlimitedNatural"); //$NON-NLS-1$
 
 		Property unlimitedNaturalProperty = getElement().createOwnedAttribute(
 			UML2Package.eINSTANCE.getProperty());
@@ -191,8 +183,7 @@ public class StereotypeOperationsTest
 		unlimitedNaturalsProperty
 			.setUpperBound(MultiplicityElement.UNLIMITED_UPPER_BOUND);
 
-		PrimitiveType stringPrimitiveType = (PrimitiveType) primitiveTypes
-			.getOwnedType("String"); //$NON-NLS-1$
+		PrimitiveType stringPrimitiveType = getUML2PrimitiveType("String"); //$NON-NLS-1$
 
 		Property stringProperty = getElement().createOwnedAttribute(
 			UML2Package.eINSTANCE.getProperty());
@@ -440,22 +431,8 @@ public class StereotypeOperationsTest
 	public void testCreateExtension() {
 
 		try {
-			StereotypeOperations.createExtension(null, null, false);
-			fail();
-		} catch (IllegalArgumentException iae) {
-			// pass
-		}
-
-		try {
-			StereotypeOperations.createExtension(getElement(), null, false);
-			fail();
-		} catch (IllegalArgumentException iae) {
-			// pass
-		}
-
-		try {
-			StereotypeOperations.createExtension(getElement(),
-				UML2Package.eINSTANCE.getClass_(), false);
+			StereotypeOperations.createExtension(null,
+				(org.eclipse.uml2.Class) null, false);
 			fail();
 		} catch (IllegalArgumentException iae) {
 			// pass
@@ -463,7 +440,23 @@ public class StereotypeOperationsTest
 
 		try {
 			StereotypeOperations.createExtension(getElement(),
-				UML2Package.eINSTANCE.getInterface(), false);
+				(org.eclipse.uml2.Class) null, false);
+			fail();
+		} catch (IllegalArgumentException iae) {
+			// pass
+		}
+
+		try {
+			StereotypeOperations.createExtension(getElement(),
+				getUML2Metaclass(UML2Package.eINSTANCE.getClass_()), false);
+			fail();
+		} catch (IllegalArgumentException iae) {
+			// pass
+		}
+
+		try {
+			StereotypeOperations.createExtension(getElement(),
+				getUML2Metaclass(UML2Package.eINSTANCE.getInterface()), false);
 		} catch (IllegalArgumentException iae) {
 			fail();
 		}
@@ -493,15 +486,7 @@ public class StereotypeOperationsTest
 
 		try {
 			StereotypeOperations.createExtension(getElement(),
-				UML2Package.eINSTANCE.getClassifier(), true);
-			fail();
-		} catch (IllegalArgumentException iae) {
-			// pass
-		}
-
-		try {
-			StereotypeOperations.createExtension(getElement(),
-				UML2Package.eINSTANCE.getDataType(), true);
+				getUML2Metaclass(UML2Package.eINSTANCE.getDataType()), true);
 		} catch (IllegalArgumentException iae) {
 			fail();
 		}
