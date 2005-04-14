@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.17 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.18 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -617,11 +617,11 @@ public class ProfileImpl extends PackageImpl implements Profile {
 		ProfileOperations.define(this);
 	}
 
-	private static Method GET_REFERENCED_METACLASSES_METHOD = null;
+	private static Method GET_REFERENCED_METACLASSES = null;
 
 	static {
 		try {
-			GET_REFERENCED_METACLASSES_METHOD = ProfileImpl.class.getMethod(
+			GET_REFERENCED_METACLASSES = ProfileImpl.class.getMethod(
 				"getReferencedMetaclasses", null); //$NON-NLS-1$
 		} catch (Exception e) {
 			// ignore
@@ -635,23 +635,23 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 */
 	public Set getReferencedMetaclasses() {
 		Set referencedMetaclasses = (Set) getCacheAdapter().get(eResource(),
-			this, GET_REFERENCED_METACLASSES_METHOD);
+			this, GET_REFERENCED_METACLASSES);
 
 		if (null == referencedMetaclasses) {
 			referencedMetaclasses = ProfileOperations
 				.getReferencedMetaclasses(this);
 			getCacheAdapter().put(eResource(), this,
-				GET_REFERENCED_METACLASSES_METHOD, referencedMetaclasses);
+				GET_REFERENCED_METACLASSES, referencedMetaclasses);
 		}
 
 		return referencedMetaclasses;
 	}
 
-	private static Method GET_REFERENCED_METAMODELS_METHOD = null;
+	private static Method GET_REFERENCED_METAMODELS = null;
 
 	static {
 		try {
-			GET_REFERENCED_METAMODELS_METHOD = ProfileImpl.class.getMethod(
+			GET_REFERENCED_METAMODELS = ProfileImpl.class.getMethod(
 				"getReferencedMetamodels", null); //$NON-NLS-1$
 		} catch (Exception e) {
 			// ignore
@@ -665,13 +665,13 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 */
 	public Set getReferencedMetamodels() {
 		Set referencedMetamodels = (Set) getCacheAdapter().get(eResource(),
-			this, GET_REFERENCED_METAMODELS_METHOD);
+			this, GET_REFERENCED_METAMODELS);
 
 		if (null == referencedMetamodels) {
 			referencedMetamodels = ProfileOperations
 				.getReferencedMetamodels(this);
-			getCacheAdapter().put(eResource(), this,
-				GET_REFERENCED_METAMODELS_METHOD, referencedMetamodels);
+			getCacheAdapter().put(eResource(), this, GET_REFERENCED_METAMODELS,
+				referencedMetamodels);
 		}
 
 		return referencedMetamodels;
@@ -720,6 +720,16 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 */
 	public EObject create(Classifier classifier) {
 		return ProfileOperations.create(this, classifier);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Profile#createOwnedStereotype(java.lang.String,
+	 *      boolean)
+	 */
+	public Stereotype createOwnedStereotype(String name, boolean isAbstract) {
+		return ProfileOperations.createOwnedStereotype(this, name, isAbstract);
 	}
 	
 	// <!-- end-custom-operations -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.21 2005/04/04 20:11:13 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.22 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -34,15 +34,18 @@ import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Component;
 import org.eclipse.uml2.Dependency;
+import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.Port;
+import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.Realization;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.ComponentOperations;
 import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
 
@@ -1086,5 +1089,47 @@ public class ComponentImpl extends ClassImpl implements Component {
 		result.append(')');
 		return result.toString();
 	}
+
+	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Component#createOwnedClass(java.lang.String,
+	 *      boolean)
+	 */
+	public org.eclipse.uml2.Class createOwnedClass(String name,
+			boolean isAbstract) {
+		return ComponentOperations.createOwnedClass(this, name, isAbstract);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Component#createOwnedEnumeraton(java.lang.String)
+	 */
+	public Enumeration createOwnedEnumeraton(String name) {
+		return ComponentOperations.createOwnedEnumeration(this, name);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Component#createOwnedPackage(java.lang.String)
+	 */
+	public org.eclipse.uml2.Package createOwnedPackage(String name) {
+		return ComponentOperations.createOwnedPackage(this, name);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Component#createOwnedPrimitiveType(java.lang.String)
+	 */
+	public PrimitiveType createOwnedPrimitiveType(String name) {
+		return ComponentOperations.createOwnedPrimitiveType(this, name);
+	}
+
+	// <!-- end-custom-operations -->
 
 } //ComponentImpl

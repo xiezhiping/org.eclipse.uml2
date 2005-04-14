@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.18 2005/04/06 19:59:37 khussey Exp $
+ * $Id: UML2Operations.java,v 1.19 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -240,11 +240,6 @@ class UML2Operations
 	}
 
 	/**
-	 * The standard extension for properties files.
-	 */
-	protected static final String PROPERTIES_FILE_EXTENSION = "properties"; //$NON-NLS-1$
-
-	/**
 	 * The default URI converter for resource bundle look-ups.
 	 */
 	private static final URIConverter DEFAULT_URI_CONVERTER = new URIConverterImpl();
@@ -298,14 +293,15 @@ class UML2Operations
 		if (language.length() > 0) {
 			baseSegment += ('_' + language);
 			resourceBundleURIs.add(0, baseURI.appendSegment(baseSegment)
-				.appendFileExtension(PROPERTIES_FILE_EXTENSION));
+				.appendFileExtension(UML2Resource.PROPERTIES_FILE_EXTENSION));
 
 			String country = locale.getCountry();
 
 			if (country.length() > 0) {
 				baseSegment += ('_' + country);
-				resourceBundleURIs.add(0, baseURI.appendSegment(baseSegment)
-					.appendFileExtension(PROPERTIES_FILE_EXTENSION));
+				resourceBundleURIs.add(0,
+					baseURI.appendSegment(baseSegment).appendFileExtension(
+						UML2Resource.PROPERTIES_FILE_EXTENSION));
 
 				String variant = locale.getVariant();
 
@@ -313,7 +309,7 @@ class UML2Operations
 					baseSegment += ('_' + variant);
 					resourceBundleURIs.add(0, baseURI
 						.appendSegment(baseSegment).appendFileExtension(
-							PROPERTIES_FILE_EXTENSION));
+							UML2Resource.PROPERTIES_FILE_EXTENSION));
 				}
 			}
 		}
@@ -340,7 +336,7 @@ class UML2Operations
 		String baseSegment = uri.trimFileExtension().lastSegment();
 
 		resourceBundleURIs.add(baseURI.appendSegment(baseSegment)
-			.appendFileExtension(PROPERTIES_FILE_EXTENSION));
+			.appendFileExtension(UML2Resource.PROPERTIES_FILE_EXTENSION));
 
 		if (null != locale) {
 			Locale defaultLocale = Locale.getDefault();

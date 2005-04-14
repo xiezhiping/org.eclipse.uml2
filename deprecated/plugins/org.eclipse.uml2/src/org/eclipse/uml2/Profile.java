@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Profile.java,v 1.7 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -128,59 +128,62 @@ public interface Profile extends org.eclipse.uml2.Package{
 	/**
 	 * Determines whether this profile is defined.
 	 * 
-	 * @return <code>true</code> if this profile is defined; <code>false</code>
-	 *         otherwise.
+	 * @return <code>true</code> if this profile is defined;
+	 *         <code>false</code> otherwise.
 	 */
-	public boolean isDefined();
+	boolean isDefined();
 
 	/**
 	 * Retrieves the version of this profile.
 	 * 
 	 * @return The version of this profile, or <code>null</code> if undefined.
 	 */
-	public String getVersion();
+	String getVersion();
 
 	/**
 	 * Defines this profile by (re)creating Ecore representations of its current
 	 * contents and incrementing its version.
 	 * 
-	 * @throws IllegalArgumentException If this profile has no name.
+	 * @throws IllegalArgumentException
+	 *             If this profile has no name.
 	 */
-	public void define();
+	void define();
 
 	/**
 	 * Retrieves the set of metaclasses referenced by this profile.
 	 * 
 	 * @return The metaclasses referenced by this profile.
 	 */
-	public Set getReferencedMetaclasses();
+	Set getReferencedMetaclasses();
 
 	/**
 	 * References the specified metaclass in this profile with private
 	 * visibility.
 	 * 
-	 * @param class_ The metaclass to reference.
-	 * @exception IllegalArgumentException If this profile already references
-	 *                                     the metaclass.
+	 * @param class_
+	 *            The metaclass to reference.
+	 * @exception IllegalArgumentException
+	 *                If this profile already references the metaclass.
 	 */
-	public void referenceMetaclass(org.eclipse.uml2.Class class_);
+	void referenceMetaclass(org.eclipse.uml2.Class class_);
 
 	/**
 	 * Retrieves the set of metamodels referenced by this profile.
 	 * 
 	 * @return The metamodels referenced by this profile.
 	 */
-	public Set getReferencedMetamodels();
+	Set getReferencedMetamodels();
 
 	/**
 	 * References the specified metamodel in this profile with private
 	 * visibility.
 	 * 
-	 * @param model The metamodel to reference.
-	 * @exception IllegalArgumentException If this profile already references
-	 *                                     the metamodel.
+	 * @param model
+	 *            The metamodel to reference.
+	 * @exception IllegalArgumentException
+	 *                If this profile already references the metamodel.
 	 */
-	public void referenceMetamodel(Model model);
+	void referenceMetamodel(Model model);
 
 	/**
 	 * Creates and returns an instance of (the Ecore representation of) the
@@ -194,8 +197,22 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 *                If the classifier is not defined in this profile or cannot
 	 *                be instantiated.
 	 */
-	public EObject create(Classifier classifier);
+	EObject create(Classifier classifier);
 
+	/**
+	 * Creates a(n) (abstract) stereotype with the specified name as an owned
+	 * stereotype of this profile.
+	 * 
+	 * @param name
+	 *            The name for the owned stereotype.
+	 * @param isAbstract
+	 *            Whether the owned stereotype should be abstract.
+	 * @return The new stereotype.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	Stereotype createOwnedStereotype(String name, boolean isAbstract);
+	
 	// <!-- end-custom-operations -->
 
 } // Profile

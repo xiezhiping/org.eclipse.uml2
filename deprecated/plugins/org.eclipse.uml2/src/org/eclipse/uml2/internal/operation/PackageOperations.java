@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.8 2005/03/15 18:44:46 khussey Exp $
+ * $Id: PackageOperations.java,v 1.9 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -22,9 +22,12 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.ElementImport;
+import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageableElement;
+import org.eclipse.uml2.PrimitiveType;
+import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.util.UML2Validator;
@@ -33,7 +36,7 @@ import org.eclipse.uml2.util.UML2Validator;
  * A static utility class that provides operations related to packages.
  */
 public final class PackageOperations
-	extends UML2Operations {
+		extends UML2Operations {
 
 	/**
 	 * Constructs a new Package Operations. This constructor should never be
@@ -172,7 +175,7 @@ public final class PackageOperations
 	/**
 	 * If an element that is owned by a package has visibility, it is public or
 	 * private.
-	 *  
+	 * 
 	 */
 	public static boolean validateElementsPublicOrPrivate(
 			org.eclipse.uml2.Package package_, DiagnosticChain diagnostics,
@@ -214,6 +217,125 @@ public final class PackageOperations
 		}
 
 		return result;
+	}
+
+	/**
+	 * Creates a package with the specified name as a nested package of the
+	 * specified package.
+	 * 
+	 * @param package_
+	 *            The package in which to create the nested package.
+	 * @param name
+	 *            The name for the nested package.
+	 * @return The new package.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	public static org.eclipse.uml2.Package createNestedPackage(
+			org.eclipse.uml2.Package package_, String name) {
+
+		if (null == package_) {
+			throw new IllegalArgumentException(String.valueOf(package_));
+		}
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		org.eclipse.uml2.Package nestedPackage = (org.eclipse.uml2.Package) package_
+			.createOwnedMember(UML2Package.eINSTANCE.getPackage());
+		nestedPackage.setName(name);
+		return nestedPackage;
+	}
+
+	/**
+	 * Creates a(n) (abstract) class with the specified name as an owned member
+	 * of the specified package.
+	 * 
+	 * @param package_
+	 *            The package in which to create the owned class.
+	 * @param name
+	 *            The name for the owned class.
+	 * @param isAbstract
+	 *            Whether the owned class should be abstract.
+	 * @return The new class.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	public static org.eclipse.uml2.Class createOwnedClass(
+			org.eclipse.uml2.Package package_, String name, boolean isAbstract) {
+
+		if (null == package_) {
+			throw new IllegalArgumentException(String.valueOf(package_));
+		}
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		org.eclipse.uml2.Class ownedClass = (org.eclipse.uml2.Class) package_
+			.createOwnedMember(UML2Package.eINSTANCE.getClass_());
+		ownedClass.setName(name);
+		ownedClass.setIsAbstract(isAbstract);
+		return ownedClass;
+	}
+
+	/**
+	 * Creates an enumeration with the specified name as an owned member of the
+	 * specified package.
+	 * 
+	 * @param package_
+	 *            The package in which to create the owned enumeration.
+	 * @param name
+	 *            The name for the owned enumeration.
+	 * @return The new enumeration.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	public static Enumeration createOwnedEnumeration(
+			org.eclipse.uml2.Package package_, String name) {
+
+		if (null == package_) {
+			throw new IllegalArgumentException(String.valueOf(package_));
+		}
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		Enumeration ownedEnumeration = (Enumeration) package_
+			.createOwnedMember(UML2Package.eINSTANCE.getEnumeration());
+		ownedEnumeration.setName(name);
+		return ownedEnumeration;
+	}
+
+	/**
+	 * Creates a primitive type with the specified name as an owned member of
+	 * the specified package.
+	 * 
+	 * @param package_
+	 *            The package in which to create the owned primitive type.
+	 * @param name
+	 *            The name for the owned primitive type.
+	 * @return The new primitive type.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	public static PrimitiveType createOwnedPrimitiveType(
+			org.eclipse.uml2.Package package_, String name) {
+
+		if (null == package_) {
+			throw new IllegalArgumentException(String.valueOf(package_));
+		}
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		PrimitiveType ownedPrimitiveType = (PrimitiveType) package_
+			.createOwnedMember(UML2Package.eINSTANCE.getPrimitiveType());
+		ownedPrimitiveType.setName(name);
+		return ownedPrimitiveType;
 	}
 
 }

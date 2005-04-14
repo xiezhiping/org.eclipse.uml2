@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.19 2005/04/12 20:28:13 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.20 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -1431,6 +1431,38 @@ public final class ProfileOperations
 				throw new IllegalArgumentException(String.valueOf(stereotype));
 			}
 		}.doSwitch(classifier);
+	}
+
+	/**
+	 * Creates a(n) (abstract) stereotype with the specified name as an owned
+	 * stereotype of the specified profile.
+	 * 
+	 * @param profile
+	 *            The profile in which to create the owned stereotype.
+	 * @param name
+	 *            The name for the owned stereotype.
+	 * @param isAbstract
+	 *            Whether the owned stereotype should be abstract.
+	 * @return The new stereotype.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	public static Stereotype createOwnedStereotype(Profile profile,
+			String name, boolean isAbstract) {
+
+		if (null == profile) {
+			throw new IllegalArgumentException(String.valueOf(profile));
+		}
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		Stereotype ownedStereotype = (Stereotype) profile
+			.createOwnedMember(UML2Package.eINSTANCE.getStereotype());
+		ownedStereotype.setName(name);
+		ownedStereotype.setIsAbstract(isAbstract);
+		return ownedStereotype;
 	}
 
 }

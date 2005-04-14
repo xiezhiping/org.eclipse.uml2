@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.14 2005/04/04 20:11:16 khussey Exp $
+ * $Id: Class.java,v 1.15 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -360,6 +360,25 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 */
 	public boolean isMetaclass();
 
+	/**
+	 * Creates a property with the specified name, type, lower bound, and upper
+	 * bound as an owned attribute of this class.
+	 * 
+	 * @param name
+	 *            The name for the owned attribute.
+	 * @param type
+	 *            The type for the owned attribute.
+	 * @param lowerBound
+	 *            The lower bound for the owned attribute.
+	 * @param upperBound
+	 *            The upper bound for the owned attribute.
+	 * @return The new property.
+	 * @exception IllegalArgumentException
+	 *                If either of the bounds is invalid.
+	 */
+	Property createOwnedAttribute(String name, Type type, int lowerBound,
+			int upperBound);
+	
 	// <!-- end-custom-operations -->
 
 } // Class

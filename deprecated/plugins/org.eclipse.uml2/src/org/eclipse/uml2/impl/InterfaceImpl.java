@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.16 2005/04/04 20:11:13 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.17 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -39,8 +39,10 @@ import org.eclipse.uml2.Reception;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.TypeOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -1025,5 +1027,15 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+	// <!-- begin-custom-operations -->
+
+	public Property createOwnedAttribute(String name, Type type,
+			int lowerBound, int upperBound) {
+		return TypeOperations.createOwnedAttribute(this, name, type,
+			lowerBound, upperBound);
+	}
+
+	// <!-- end-custom-operations -->
 
 } //InterfaceImpl

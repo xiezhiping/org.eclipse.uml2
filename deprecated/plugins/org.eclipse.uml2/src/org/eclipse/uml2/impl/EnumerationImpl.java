@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.16 2005/04/04 20:11:12 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.17 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -35,6 +35,7 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.EnumerationOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -652,5 +653,18 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Enumeration#createOwnedLiteral(java.lang.String)
+	 */
+	public EnumerationLiteral createOwnedLiteral(String name) {
+		return EnumerationOperations.createOwnedLiteral(this, name);
+	}
+
+	// <!-- end-custom-operations -->
 
 } //EnumerationImpl

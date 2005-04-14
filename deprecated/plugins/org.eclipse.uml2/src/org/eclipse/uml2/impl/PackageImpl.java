@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.22 2005/04/04 20:11:13 khussey Exp $
+ * $Id: PackageImpl.java,v 1.23 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -35,12 +35,14 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Element;
+import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageMerge;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.ParameterableElement;
+import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.Profile;
 import org.eclipse.uml2.ProfileApplication;
 import org.eclipse.uml2.StringExpression;
@@ -49,6 +51,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.PackageOperations;
 import org.eclipse.uml2.internal.operation.ProfileOperations;
 import org.eclipse.uml2.internal.util.SubsetEObjectEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList;
@@ -1091,11 +1094,11 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		ProfileOperations.apply(profile, this);
 	}
 
-	private static Method GET_ALL_APPLIED_PROFILES_METHOD = null;
+	private static Method GET_ALL_APPLIED_PROFILES = null;
 
 	static {
 		try {
-			GET_ALL_APPLIED_PROFILES_METHOD = PackageImpl.class.getMethod(
+			GET_ALL_APPLIED_PROFILES = PackageImpl.class.getMethod(
 				"getAllAppliedProfiles", null); //$NON-NLS-1$
 		} catch (Exception e) {
 			// ignore
@@ -1109,12 +1112,12 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	public Set getAllAppliedProfiles() {
 		Set allAppliedProfiles = (Set) getCacheAdapter().get(eResource(), this,
-			GET_ALL_APPLIED_PROFILES_METHOD);
+			GET_ALL_APPLIED_PROFILES);
 
 		if (null == allAppliedProfiles) {
 			allAppliedProfiles = ProfileOperations.getAllAppliedProfiles(this);
-			getCacheAdapter().put(eResource(), this,
-				GET_ALL_APPLIED_PROFILES_METHOD, allAppliedProfiles);
+			getCacheAdapter().put(eResource(), this, GET_ALL_APPLIED_PROFILES,
+				allAppliedProfiles);
 		}
 
 		return allAppliedProfiles;
@@ -1145,6 +1148,43 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	public String getAppliedVersion(Profile profile) {
 		return ProfileOperations.getAppliedVersion(profile, this);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Package#createNestedPackage(java.lang.String)
+	 */
+	public org.eclipse.uml2.Package createNestedPackage(String name) {
+		return PackageOperations.createNestedPackage(this, name);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Package#createOwnedClass(java.lang.String, boolean)
+	 */
+	public org.eclipse.uml2.Class createOwnedClass(String name,
+			boolean isAbstract) {
+		return PackageOperations.createOwnedClass(this, name, isAbstract);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Package#createOwnedEnumeraton(java.lang.String)
+	 */
+	public Enumeration createOwnedEnumeraton(String name) {
+		return PackageOperations.createOwnedEnumeration(this, name);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Package#createOwnedPrimitiveType(java.lang.String)
+	 */
+	public PrimitiveType createOwnedPrimitiveType(String name) {
+		return PackageOperations.createOwnedPrimitiveType(this, name);
 	}
 
 	// <!-- end-custom-operations -->

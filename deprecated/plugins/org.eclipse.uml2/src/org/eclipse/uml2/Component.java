@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Component.java,v 1.8 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -224,5 +224,59 @@ public interface Component extends org.eclipse.uml2.Class{
 	 * @generated
 	 */
 	EList getClientDependencies();
+
+	// <!-- begin-custom-operations -->
+
+	/**
+	 * Creates a(n) (abstract) class with the specified name as an owned member
+	 * of this component.
+	 * 
+	 * @param name
+	 *            The name for the owned class.
+	 * @param isAbstract
+	 *            Whether the owned class should be abstract.
+	 * @return The new class.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	org.eclipse.uml2.Class createOwnedClass(String name, boolean isAbstract);
+
+	/**
+	 * Creates an enumeration with the specified name as an owned member of this
+	 * component.
+	 * 
+	 * @param name
+	 *            The name for the owned enumeration.
+	 * @return The new enumeration.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	Enumeration createOwnedEnumeraton(String name);
+
+	/**
+	 * Creates a package with the specified name as an owned member of this
+	 * component.
+	 * 
+	 * @param name
+	 *            The name for the owned package.
+	 * @return The new package.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	org.eclipse.uml2.Package createOwnedPackage(String name);
+
+	/**
+	 * Creates a primitive type with the specified name as an owned member of
+	 * this component.
+	 * 
+	 * @param name
+	 *            The name for the owned primitive type.
+	 * @return The new primitive type.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	PrimitiveType createOwnedPrimitiveType(String name);
+
+	// <!-- end-custom-operations -->
 
 } // Component

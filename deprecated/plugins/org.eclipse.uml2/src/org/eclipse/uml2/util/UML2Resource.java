@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Resource.java,v 1.7 2005/03/15 20:27:50 khussey Exp $
+ * $Id: UML2Resource.java,v 1.8 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -92,5 +92,10 @@ public interface UML2Resource
 
 	public static final String ECORE_PROFILE_URI = PROFILES_PATHMAP
 		+ "Ecore." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
+
+	/**
+	 * The standard extension for properties files.
+	 */
+	public static final String PROPERTIES_FILE_EXTENSION = "properties"; //$NON-NLS-1$
 
 }

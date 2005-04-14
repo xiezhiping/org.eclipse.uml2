@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.12 2005/04/04 20:11:16 khussey Exp $
+ * $Id: Package.java,v 1.13 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -353,7 +353,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @return <code>true</code> if the profile is applied to this package;
 	 *         <code>false</code> otherwise.
 	 */
-	public boolean isApplied(Profile profile);
+	boolean isApplied(Profile profile);
 
 	/**
 	 * Retrieves the set of all profiles that are applied to this package,
@@ -361,7 +361,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * 
 	 * @return The profiles applied to the package.
 	 */
-	public Set getAllAppliedProfiles();
+	Set getAllAppliedProfiles();
 
 	/**
 	 * Applies the current version of the specified profile to this package; if
@@ -375,7 +375,7 @@ public interface Package extends Namespace, PackageableElement{
 	 *             If the profile is not defined or its current version is
 	 *             already applied.
 	 */
-	public void apply(Profile profile);
+	void apply(Profile profile);
 
 	/**
 	 * Unapplies the specified profile from this package.
@@ -385,7 +385,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @throws IllegalArgumentException
 	 *             If the profile is not applied to this package.
 	 */
-	public void unapply(Profile profile);
+	void unapply(Profile profile);
 
 	/**
 	 * Retrieves the version of the specified profile that is applied to this
@@ -396,7 +396,57 @@ public interface Package extends Namespace, PackageableElement{
 	 * @return The version of the profile, or <code>null</code> if not
 	 *         applied.
 	 */
-	public String getAppliedVersion(Profile profile);
+	String getAppliedVersion(Profile profile);
+
+	/**
+	 * Creates a package with the specified name as a nested package of this
+	 * package.
+	 * 
+	 * @param name
+	 *            The name for the nested package.
+	 * @return The new package.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	org.eclipse.uml2.Package createNestedPackage(String name);
+
+	/**
+	 * Creates a(n) (abstract) class with the specified name as an owned member
+	 * of this package.
+	 * 
+	 * @param name
+	 *            The name for the owned class.
+	 * @param isAbstract
+	 *            Whether the owned class should be abstract.
+	 * @return The new class.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	org.eclipse.uml2.Class createOwnedClass(String name, boolean isAbstract);
+
+	/**
+	 * Creates an enumeration with the specified name as an owned member of this
+	 * package.
+	 * 
+	 * @param name
+	 *            The name for the owned enumeration.
+	 * @return The new enumeration.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	Enumeration createOwnedEnumeraton(String name);
+
+	/**
+	 * Creates a primitive type with the specified name as an owned member of
+	 * this package.
+	 * 
+	 * @param name
+	 *            The name for the owned primitive type.
+	 * @return The new primitive type.
+	 * @exception IllegalArgumentException
+	 *                If the name is empty.
+	 */
+	PrimitiveType createOwnedPrimitiveType(String name);
 
 	// <!-- end-custom-operations -->
 

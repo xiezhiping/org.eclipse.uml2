@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.11 2005/04/12 17:46:00 khussey Exp $
+ * $Id: UML2Util.java,v 1.12 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -3397,7 +3397,7 @@ public class UML2Util {
 
 	}
 
-	protected static interface EObjectMatcher {
+	public static interface EObjectMatcher {
 
 		public boolean matches(EObject eObject);
 
@@ -4777,7 +4777,7 @@ public class UML2Util {
 	/**
 	 * The empty string.
 	 */
-	protected static final String EMPTY_STRING = ""; //$NON-NLS-1$
+	public static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
 	protected static final String LINE_SEPARATOR = System.getProperties()
 		.getProperty("line.separator"); //$NON-NLS-1$
@@ -4872,11 +4872,11 @@ public class UML2Util {
 			: thisObject.equals(thatObject);
 	}
 
-	protected static boolean isEmpty(String string) {
+	public static boolean isEmpty(String string) {
 		return null == string || 0 == string.length();
 	}
 
-	protected static EObject findEObject(Collection eObjects,
+	public static EObject findEObject(Collection eObjects,
 			EObjectMatcher filter) {
 
 		for (Iterator i = eObjects.iterator(); i.hasNext();) {

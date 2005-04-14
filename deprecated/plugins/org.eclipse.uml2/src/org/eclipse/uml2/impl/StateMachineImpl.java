@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.20 2005/04/04 20:11:13 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.21 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -35,14 +35,17 @@ import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.BehavioralFeature;
 import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.CollaborationOccurrence;
+import org.eclipse.uml2.Property;
 import org.eclipse.uml2.Pseudostate;
 import org.eclipse.uml2.Region;
 import org.eclipse.uml2.StateMachine;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.internal.operation.TypeOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -1119,5 +1122,21 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Class#createOwnedAttribute(java.lang.String,
+	 *      org.eclipse.uml2.Type, int, int)
+	 */
+	public Property createOwnedAttribute(String name, Type type,
+			int lowerBound, int upperBound) {
+		return TypeOperations.createOwnedAttribute(this, name, type,
+			lowerBound, upperBound);
+	}
+	
+	// <!-- end-custom-operations -->
 
 } //StateMachineImpl

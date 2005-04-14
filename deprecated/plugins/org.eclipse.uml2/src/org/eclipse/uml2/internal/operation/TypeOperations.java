@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.3 2005/03/15 18:44:46 khussey Exp $
+ * $Id: TypeOperations.java,v 1.4 2005/04/14 17:30:57 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.Artifact;
 import org.eclipse.uml2.Association;
+import org.eclipse.uml2.AssociationClass;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.MultiplicityElement;
@@ -29,11 +30,11 @@ import org.eclipse.uml2.util.UML2Switch;
  * A static utility class that provides operations related to types.
  */
 public final class TypeOperations
-	extends UML2Operations {
+		extends UML2Operations {
 
 	/**
-	 * Constructs a new Type Operations. This constructor should never be
-	 * called because this is a static utility class.
+	 * Constructs a new Type Operations. This constructor should never be called
+	 * because this is a static utility class.
 	 */
 	private TypeOperations() {
 		super();
@@ -84,7 +85,11 @@ public final class TypeOperations
 			AggregationKind end2Aggregation, String end2Name,
 			int end2LowerBound, int end2UpperBound) {
 
-		if (null == type1 || null == type1.getPackage()) {
+		validateTypeAndBounds(type1, end1LowerBound, end1UpperBound);
+
+		validateTypeAndBounds(type2, end2LowerBound, end2UpperBound);
+
+		if (null == type1.getPackage()) {
 			throw new IllegalArgumentException(String.valueOf(type1));
 		}
 
@@ -96,35 +101,12 @@ public final class TypeOperations
 			throw new IllegalArgumentException(String.valueOf(end1Aggregation));
 		}
 
-		if (0 > end1LowerBound) {
-			throw new IllegalArgumentException(String.valueOf(end1LowerBound));
-		}
-
-		if (MultiplicityElement.UNLIMITED_UPPER_BOUND != end1UpperBound
-			&& (0 == end1UpperBound || end1LowerBound > end1UpperBound)) {
-			throw new IllegalArgumentException(String.valueOf(end1UpperBound));
-		}
-
-		if (null == type2) {
-			throw new IllegalArgumentException(String.valueOf(type2));
-		}
-
 		if (end2IsNavigable && null == getOwnedAttributes(type2)) {
 			throw new IllegalArgumentException(String.valueOf(type2));
 		}
 
 		if (null == end2Aggregation) {
 			throw new IllegalArgumentException(String.valueOf(end2Aggregation));
-		}
-
-		if (0 > end2LowerBound) {
-			throw new IllegalArgumentException(String.valueOf(end2LowerBound));
-		}
-
-		if (MultiplicityElement.UNLIMITED_UPPER_BOUND != end2UpperBound
-			&& (0 == end2UpperBound || end2LowerBound > end2UpperBound)) {
-
-			throw new IllegalArgumentException(String.valueOf(end2UpperBound));
 		}
 
 		Association association = (Association) type1.getPackage()
@@ -142,48 +124,119 @@ public final class TypeOperations
 	protected static Property createAssociationEnd(Association association,
 			Type type, boolean isNavigable, AggregationKind aggregation,
 			String name, int lowerBound, int upperBound, Type otherEndType) {
-		Property associationEnd = isNavigable
-			? (Property) new UML2Switch() {
-
-				public Object caseArtifact(Artifact object) {
-					return object.createOwnedAttribute(UML2Package.eINSTANCE
-						.getProperty());
-				}
-
-				public Object caseDataType(DataType object) {
-					return object.createOwnedAttribute(UML2Package.eINSTANCE
-						.getProperty());
-				}
-
-				public Object caseInterface(Interface object) {
-					return object.createOwnedAttribute(UML2Package.eINSTANCE
-						.getProperty());
-				}
-
-				public Object caseSignal(Signal object) {
-					return object.createOwnedAttribute(UML2Package.eINSTANCE
-						.getProperty());
-				}
-
-				public Object caseStructuredClassifier(
-						StructuredClassifier object) {
-					return object.createOwnedAttribute(UML2Package.eINSTANCE
-						.getProperty());
-				}
-			}.doSwitch(type) : association.createOwnedEnd(UML2Package.eINSTANCE
-				.getProperty());
+		Property associationEnd = createOwnedProperty(isNavigable
+			? type
+			: association, name, otherEndType, lowerBound, upperBound);
 
 		if (isNavigable) {
 			association.getMemberEnds().add(associationEnd);
 		}
 
-		associationEnd.setType(otherEndType);
 		associationEnd.setAggregation(aggregation);
-		associationEnd.setName(name);
-		associationEnd.setUpperBound(upperBound);
-		associationEnd.setLowerBound(lowerBound);
 
 		return associationEnd;
+	}
+
+	protected static void validateTypeAndBounds(Type type, int lowerBound,
+			int upperBound) {
+
+		if (null == type) {
+			throw new IllegalArgumentException(String.valueOf(type));
+		}
+
+		if (0 > lowerBound) {
+			throw new IllegalArgumentException(String.valueOf(lowerBound));
+		}
+
+		if (MultiplicityElement.UNLIMITED_UPPER_BOUND != upperBound
+			&& (0 == upperBound || lowerBound > upperBound)) {
+
+			throw new IllegalArgumentException(String.valueOf(upperBound));
+		}
+	}
+
+	protected static Property createOwnedProperty(Type type, String name,
+			Type propertyType, int lowerBound, int upperBound) {
+		Property ownedProperty = (Property) new UML2Switch() {
+
+			public Object caseArtifact(Artifact artifact) {
+				return artifact.createOwnedAttribute(UML2Package.eINSTANCE
+					.getProperty());
+			}
+
+			public Object caseAssociation(Association association) {
+				return association.createOwnedEnd(UML2Package.eINSTANCE
+					.getProperty());
+			}
+
+			public Object caseAssociationClass(AssociationClass associationClass) {
+				return associationClass
+					.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
+			}
+
+			public Object caseDataType(DataType dataType) {
+				return dataType.createOwnedAttribute(UML2Package.eINSTANCE
+					.getProperty());
+			}
+
+			public Object caseInterface(Interface interface_) {
+				return interface_.createOwnedAttribute(UML2Package.eINSTANCE
+					.getProperty());
+			}
+
+			public Object caseSignal(Signal signal) {
+				return signal.createOwnedAttribute(UML2Package.eINSTANCE
+					.getProperty());
+			}
+
+			public Object caseStructuredClassifier(
+					StructuredClassifier structuredClassifier) {
+				return structuredClassifier
+					.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
+			}
+		}.doSwitch(type);
+
+		ownedProperty.setName(name);
+		ownedProperty.setType(propertyType);
+		ownedProperty.setUpperBound(upperBound);
+		ownedProperty.setLowerBound(lowerBound);
+
+		return ownedProperty;
+	}
+
+	/**
+	 * Creates a property with the specified type, name, lower bound, and upper
+	 * bound as an owned attribute of the specified type.
+	 * 
+	 * @param type
+	 *            The type in which to create the owned attribute.
+	 * @param name
+	 *            The name for the owned attribute.
+	 * @param attributeType
+	 *            The type for the owned attribute.
+	 * @param lowerBound
+	 *            The lower bound for the owned attribute.
+	 * @param upperBound
+	 *            The upper bound for the owned attribute.
+	 * @return The new property.
+	 * @exception IllegalArgumentException
+	 *                If either of the bounds is invalid.
+	 */
+	public static Property createOwnedAttribute(Type type, String name,
+			Type attributeType, int lowerBound, int upperBound) {
+
+		if (null == type || null == getOwnedAttributes(type)) {
+			throw new IllegalArgumentException(String.valueOf(type));
+		}
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		validateTypeAndBounds(attributeType, lowerBound, upperBound);
+
+		return createOwnedProperty(type, name, attributeType, lowerBound,
+			upperBound);
 	}
 
 }
