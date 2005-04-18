@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2004, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeCommand.java,v 1.7 2005/03/15 18:48:29 khussey Exp $
+ * $Id: ChangeCommand.java,v 1.8 2005/04/18 20:20:18 khussey Exp $
  */
 package org.eclipse.uml2.edit.util;
 
@@ -19,28 +19,25 @@ import java.util.ListIterator;
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.change.ChangeDescription;
 import org.eclipse.emf.ecore.change.ChangeKind;
 import org.eclipse.emf.ecore.change.FeatureChange;
 import org.eclipse.emf.ecore.change.ListChange;
+import org.eclipse.emf.ecore.change.impl.FeatureChangeImpl;
 import org.eclipse.emf.ecore.change.impl.ListChangeImpl;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 /**
- *  
+ * 
  */
 public class ChangeCommand
-	extends AbstractCommand {
+		extends AbstractCommand {
 
 	private static class UniqueListChangeImpl
-		extends ListChangeImpl {
+			extends ListChangeImpl {
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.change.ListChange#apply(org.eclipse.emf.common.util.EList)
-		 */
 		public void apply(EList originalList) {
 
 			switch (getKind().getValue()) {
@@ -85,6 +82,81 @@ public class ChangeCommand
 			}
 		}
 
+		public void applyAndReverse(EList originalList) {
+			switch (getKind().getValue()) {
+				case ChangeKind.ADD :
+
+					if (-1 == index) {
+						index = originalList.size();
+
+						for (Iterator values = getValues().iterator(); values
+							.hasNext();) {
+
+							Object value = values.next();
+
+							if (!originalList.contains(value)) {
+								originalList.add(value);
+							}
+						}
+					} else {
+
+						for (ListIterator values = getValues().listIterator(
+							getValues().size()); values.hasPrevious();) {
+
+							Object value = values.previous();
+
+							if (!originalList.contains(value)) {
+								originalList.add(index, value);
+							}
+						}
+					}
+
+					setKind(ChangeKind.REMOVE_LITERAL);
+
+					break;
+				case ChangeKind.REMOVE :
+
+					for (Iterator values = getValues().iterator(); values
+						.hasNext();) {
+
+						originalList.remove(values.next());
+					}
+
+					setKind(ChangeKind.ADD_LITERAL);
+
+					break;
+				default :
+					super.applyAndReverse(originalList);
+			}
+		}
+
+	}
+
+	private static final class UniqueFeatureChangeImpl
+			extends FeatureChangeImpl {
+
+		protected UniqueFeatureChangeImpl(EStructuralFeature feature,
+				Object value, boolean isSet) {
+			super(feature, value, isSet);
+		}
+
+		protected ListChange createListChange(EList changesList,
+				ChangeKind kind, int index) {
+
+			if (getFeature().isUnique()) {
+				ListChange listChange = new UniqueListChangeImpl();
+
+				listChange.setKind(kind);
+				listChange.setIndex(index);
+
+				changesList.add(listChange);
+
+				return listChange;
+			} else {
+				return super.createListChange(changesList, kind, index);
+			}
+		}
+
 	}
 
 	private static final ChangeRecorder CHANGE_RECORDER = new ChangeRecorder() {
@@ -125,6 +197,13 @@ public class ChangeCommand
 			featureIsUnique = change.getFeature().isUnique();
 
 			super.finalizeChange(change, eObject);
+		}
+
+		protected FeatureChange createFeatureChange(EObject eObject,
+				EStructuralFeature eStructuralFeature, Object value,
+				boolean isSet) {
+
+			return new UniqueFeatureChangeImpl(eStructuralFeature, value, isSet);
 		}
 
 	};
