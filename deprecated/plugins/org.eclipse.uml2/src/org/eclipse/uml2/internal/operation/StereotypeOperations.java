@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.21 2005/04/12 17:46:00 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.22 2005/04/20 18:55:24 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -425,6 +425,7 @@ public final class StereotypeOperations
 							.isInstance(element)) {
 
 							applicableStereotypes.add(stereotype);
+							break;
 						}
 					}
 				}
