@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.23 2005/04/14 17:30:57 khussey Exp $
+ * $Id: PackageImpl.java,v 1.24 2005/04/20 18:06:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -374,15 +374,6 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	public org.eclipse.uml2.Package basicGetNestingPackage() {
 		return org.eclipse.uml2.Package.class.isInstance(eContainer) ? (org.eclipse.uml2.Package) eContainer : null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetNestingPackage(org.eclipse.uml2.Package newNestingPackage, NotificationChain msgs) {
-		throw new UnsupportedOperationException();
 	}
 
 	/**

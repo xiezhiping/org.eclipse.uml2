@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.15 2005/04/05 13:08:04 khussey Exp $
+ * $Id: UML2Editor.java,v 1.16 2005/04/20 18:07:13 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -416,18 +416,22 @@ public class UML2Editor
 						ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
 						delta.accept(visitor);
 
-						removedResources.addAll(visitor.getRemovedResources());
-						if (!visitor.getRemovedResources().isEmpty() && !isDirty()) {
-							getSite().getShell().getDisplay().asyncExec
-								(new Runnable() {
-									public void run() {
-										getSite().getPage().closeEditor(UML2Editor.this, false);
-										UML2Editor.this.dispose();
-									}
-								 });
-						}
+						if (!visitor.getRemovedResources().isEmpty()) {
+							removedResources.addAll(visitor.getRemovedResources());
+							if (!isDirty()) {
+ 								getSite().getShell().getDisplay().asyncExec
+ 									(new Runnable() {
+ 										public void run() {
+ 											getSite().getPage().closeEditor(UML2Editor.this, false);
+ 											UML2Editor.this.dispose();
+ 										}
+ 								 	});
+ 							}
+ 						}
 
-						changedResources.addAll(visitor.getChangedResources());
+						if (!visitor.getChangedResources().isEmpty()) {
+							changedResources.addAll(visitor.getChangedResources());
+						}
 					}
 					catch (CoreException exception) {
 						UML2EditorPlugin.INSTANCE.log(exception);

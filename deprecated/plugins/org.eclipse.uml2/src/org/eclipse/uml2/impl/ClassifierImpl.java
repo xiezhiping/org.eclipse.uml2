@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.22 2005/04/04 20:11:13 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.23 2005/04/20 18:06:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -422,15 +422,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public org.eclipse.uml2.Package basicGetPackage() {
 		return org.eclipse.uml2.Package.class.isInstance(eContainer) ? (org.eclipse.uml2.Package) eContainer : null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetPackage(org.eclipse.uml2.Package newPackage, NotificationChain msgs) {
-		throw new UnsupportedOperationException();
 	}
 
 	/**

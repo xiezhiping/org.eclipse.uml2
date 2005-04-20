@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.19 2005/04/06 19:59:37 khussey Exp $
+ * $Id: ElementImpl.java,v 1.20 2005/04/20 18:06:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -137,15 +137,6 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 
 	public Element basicGetOwner() {
 		return Element.class.isInstance(eContainer) ? (Element) eContainer : null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOwner(Element newOwner, NotificationChain msgs) {
-		throw new UnsupportedOperationException();
 	}
 
 	/**
