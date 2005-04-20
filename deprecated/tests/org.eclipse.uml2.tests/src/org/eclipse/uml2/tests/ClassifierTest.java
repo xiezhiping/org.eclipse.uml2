@@ -8,26 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: ClassifierTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Map;
-import java.util.Set;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 import java.util.Iterator;
 
 import org.eclipse.uml2.Classifier;
-import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Feature;
 import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.RedefinableElement;
-import org.eclipse.uml2.TemplateParameter;
-import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -58,28 +50,28 @@ import org.eclipse.uml2.VisibilityKind;
  * <ul>
  *   <li>{@link org.eclipse.uml2.ParameterableElement#getOwner() <em>Get Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.PackageableElement#getVisibility() <em>Get Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.PackageableElement#setVisibility(VisibilityKind) <em>Set Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.Type#conformsTo(Type) <em>Conforms To</em>}</li>
+ *   <li>{@link org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind) <em>Set Visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Type#conformsTo(org.eclipse.uml2.Type) <em>Conforms To</em>}</li>
  *   <li>{@link org.eclipse.uml2.Type#getNamespace() <em>Get Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.RedefinableElement#validateRedefinitionContextValid(DiagnosticChain, Map) <em>Validate Redefinition Context Valid</em>}</li>
- *   <li>{@link org.eclipse.uml2.RedefinableElement#validateRedefinitionConsistent(DiagnosticChain, Map) <em>Validate Redefinition Consistent</em>}</li>
- *   <li>{@link org.eclipse.uml2.RedefinableElement#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}</li>
- *   <li>{@link org.eclipse.uml2.RedefinableElement#isRedefinitionContextValid(RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.RedefinableElement#validateRedefinitionContextValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.RedefinableElement#validateRedefinitionConsistent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefinition Consistent</em>}</li>
+ *   <li>{@link org.eclipse.uml2.RedefinableElement#isConsistentWith(org.eclipse.uml2.RedefinableElement) <em>Is Consistent With</em>}</li>
+ *   <li>{@link org.eclipse.uml2.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
  *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#allFeatures() <em>All Features</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#validateNoCyclesInGeneralization(DiagnosticChain, Map) <em>Validate No Cycles In Generalization</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#validateSpecializeType(DiagnosticChain, Map) <em>Validate Specialize Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#validateInheritedMember(DiagnosticChain, Map) <em>Validate Inherited Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#validateNoCyclesInGeneralization(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Cycles In Generalization</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#validateSpecializeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Specialize Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#validateInheritedMember(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Inherited Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#inheritedMember() <em>Inherited Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#parents() <em>Parents</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#allParents() <em>All Parents</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#inheritableMembers(Classifier) <em>Inheritable Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#hasVisibilityOf(NamedElement) <em>Has Visibility Of</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#inherit(Set) <em>Inherit</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#maySpecializeType(Classifier) <em>May Specialize Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#inheritableMembers(org.eclipse.uml2.Classifier) <em>Inheritable Members</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#hasVisibilityOf(org.eclipse.uml2.NamedElement) <em>Has Visibility Of</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#inherit(java.util.Set) <em>Inherit</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#maySpecializeType(org.eclipse.uml2.Classifier) <em>May Specialize Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#general() <em>General</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#validateGeneralEqualsParents(DiagnosticChain, Map) <em>Validate General Equals Parents</em>}</li>
- *   <li>{@link org.eclipse.uml2.Classifier#conformsTo(Classifier) <em>Conforms To</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#validateGeneralEqualsParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate General Equals Parents</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Classifier#conformsTo(org.eclipse.uml2.Classifier) <em>Conforms To</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getMembers() <em>Get Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getOwnedElements() <em>Get Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.Classifier#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
@@ -131,10 +123,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(TemplateParameter) <em>Template Parameter</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter) <em>Template Parameter</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(TemplateParameter)
+	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter)
 	 * @generated
 	 */
 	public void testSetTemplateParameter() {
@@ -155,10 +147,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(TemplateParameter) <em>Owning Parameter</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter) <em>Owning Parameter</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(TemplateParameter)
+	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter)
 	 * @generated
 	 */
 	public void testSetOwningParameter() {
@@ -179,10 +171,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(VisibilityKind) <em>Packageable Element visibility</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(org.eclipse.uml2.VisibilityKind) <em>Packageable Element visibility</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(VisibilityKind)
+	 * @see org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(org.eclipse.uml2.VisibilityKind)
 	 * @generated
 	 */
 	public void testSetPackageableElement_visibility() {
@@ -364,10 +356,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#setRepresentation(CollaborationOccurrence) <em>Representation</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#setRepresentation(org.eclipse.uml2.CollaborationOccurrence) <em>Representation</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#setRepresentation(CollaborationOccurrence)
+	 * @see org.eclipse.uml2.Classifier#setRepresentation(org.eclipse.uml2.CollaborationOccurrence)
 	 * @generated
 	 */
 	public void testSetRepresentation() {
@@ -430,10 +422,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setVisibility(VisibilityKind) <em>Set Visibility</em>}' setter operation.
+	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind) <em>Set Visibility</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageableElement#setVisibility(VisibilityKind)
+	 * @see org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind)
 	 * @generated
 	 */
 	public void testSetVisibilityGen() {
@@ -450,10 +442,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Type#conformsTo(Type) <em>Conforms To</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Type#conformsTo(org.eclipse.uml2.Type) <em>Conforms To</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Type#conformsTo(Type)
+	 * @see org.eclipse.uml2.Type#conformsTo(org.eclipse.uml2.Type)
 	 * @generated
 	 */
 	public void testConformsTo__Type() {
@@ -484,10 +476,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#validateRedefinitionContextValid(DiagnosticChain, Map) <em>Validate Redefinition Context Valid</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#validateRedefinitionContextValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefinition Context Valid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.RedefinableElement#validateRedefinitionContextValid(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.RedefinableElement#validateRedefinitionContextValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateRedefinitionContextValid__DiagnosticChain_Map() {
@@ -496,10 +488,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#validateRedefinitionConsistent(DiagnosticChain, Map) <em>Validate Redefinition Consistent</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#validateRedefinitionConsistent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefinition Consistent</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.RedefinableElement#validateRedefinitionConsistent(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.RedefinableElement#validateRedefinitionConsistent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateRedefinitionConsistent__DiagnosticChain_Map() {
@@ -508,10 +500,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#isConsistentWith(org.eclipse.uml2.RedefinableElement) <em>Is Consistent With</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.RedefinableElement#isConsistentWith(RedefinableElement)
+	 * @see org.eclipse.uml2.RedefinableElement#isConsistentWith(org.eclipse.uml2.RedefinableElement)
 	 * @generated
 	 */
 	public void testIsConsistentWith__RedefinableElement() {
@@ -520,10 +512,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#isRedefinitionContextValid(RedefinableElement) <em>Is Redefinition Context Valid</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.RedefinableElement) <em>Is Redefinition Context Valid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.RedefinableElement#isRedefinitionContextValid(RedefinableElement)
+	 * @see org.eclipse.uml2.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.RedefinableElement)
 	 * @generated
 	 */
 	public void testIsRedefinitionContextValid__RedefinableElement() {
@@ -562,10 +554,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#validateNoCyclesInGeneralization(DiagnosticChain, Map) <em>Validate No Cycles In Generalization</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#validateNoCyclesInGeneralization(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Cycles In Generalization</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#validateNoCyclesInGeneralization(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Classifier#validateNoCyclesInGeneralization(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateNoCyclesInGeneralization__DiagnosticChain_Map() {
@@ -574,10 +566,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#validateSpecializeType(DiagnosticChain, Map) <em>Validate Specialize Type</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#validateSpecializeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Specialize Type</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#validateSpecializeType(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Classifier#validateSpecializeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateSpecializeType__DiagnosticChain_Map() {
@@ -586,10 +578,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#validateInheritedMember(DiagnosticChain, Map) <em>Validate Inherited Member</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#validateInheritedMember(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Inherited Member</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#validateInheritedMember(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Classifier#validateInheritedMember(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateInheritedMember__DiagnosticChain_Map() {
@@ -663,10 +655,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#inheritableMembers(Classifier) <em>Inheritable Members</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#inheritableMembers(org.eclipse.uml2.Classifier) <em>Inheritable Members</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#inheritableMembers(Classifier)
+	 * @see org.eclipse.uml2.Classifier#inheritableMembers(org.eclipse.uml2.Classifier)
 	 * @generated
 	 */
 	public void testInheritableMembers__Classifier() {
@@ -675,10 +667,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#hasVisibilityOf(NamedElement) <em>Has Visibility Of</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#hasVisibilityOf(org.eclipse.uml2.NamedElement) <em>Has Visibility Of</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#hasVisibilityOf(NamedElement)
+	 * @see org.eclipse.uml2.Classifier#hasVisibilityOf(org.eclipse.uml2.NamedElement)
 	 * @generated
 	 */
 	public void testHasVisibilityOf__NamedElement() {
@@ -687,10 +679,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#inherit(Set) <em>Inherit</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#inherit(java.util.Set) <em>Inherit</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#inherit(Set)
+	 * @see org.eclipse.uml2.Classifier#inherit(java.util.Set)
 	 * @generated
 	 */
 	public void testInherit__Set() {
@@ -699,10 +691,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#maySpecializeType(Classifier) <em>May Specialize Type</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#maySpecializeType(org.eclipse.uml2.Classifier) <em>May Specialize Type</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#maySpecializeType(Classifier)
+	 * @see org.eclipse.uml2.Classifier#maySpecializeType(org.eclipse.uml2.Classifier)
 	 * @generated
 	 */
 	public void testMaySpecializeType__Classifier() {
@@ -731,10 +723,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#validateGeneralEqualsParents(DiagnosticChain, Map) <em>Validate General Equals Parents</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#validateGeneralEqualsParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate General Equals Parents</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#validateGeneralEqualsParents(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Classifier#validateGeneralEqualsParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateGeneralEqualsParents__DiagnosticChain_Map() {
@@ -743,10 +735,10 @@ public abstract class ClassifierTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#conformsTo(Classifier) <em>Conforms To</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#conformsTo(org.eclipse.uml2.Classifier) <em>Conforms To</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#conformsTo(Classifier)
+	 * @see org.eclipse.uml2.Classifier#conformsTo(org.eclipse.uml2.Classifier)
 	 * @generated
 	 */
 	public void testConformsTo__Classifier() {

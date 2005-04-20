@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: ProfileApplicationTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -121,10 +121,10 @@ public class ProfileApplicationTest extends PackageImportTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ProfileApplication#setImportedProfile(Profile) <em>Imported Profile</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ProfileApplication#setImportedProfile(org.eclipse.uml2.Profile) <em>Imported Profile</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ProfileApplication#setImportedProfile(Profile)
+	 * @see org.eclipse.uml2.ProfileApplication#setImportedProfile(org.eclipse.uml2.Profile)
 	 * @generated
 	 */
 	public void testSetImportedProfileGen() {

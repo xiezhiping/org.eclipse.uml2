@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: BehaviorTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
 import org.eclipse.uml2.Behavior;
-import org.eclipse.uml2.BehavioredClassifier;
 
 import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.ParameterDirectionKind;
@@ -85,10 +84,10 @@ public abstract class BehaviorTest extends ClassTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Behavior#setContext(BehavioredClassifier) <em>Context</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Behavior#setContext(org.eclipse.uml2.BehavioredClassifier) <em>Context</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Behavior#setContext(BehavioredClassifier)
+	 * @see org.eclipse.uml2.Behavior#setContext(org.eclipse.uml2.BehavioredClassifier)
 	 * @generated
 	 */
 	public void testSetContext() {

@@ -8,27 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTest.java,v 1.1 2005/04/04 20:06:05 khussey Exp $
+ * $Id: OperationTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Map;
 
 import java.util.Iterator;
 
 import junit.textui.TestRunner;
 
-import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.uml2.Constraint;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.LiteralInteger;
 import org.eclipse.uml2.LiteralUnlimitedNatural;
 import org.eclipse.uml2.MultiplicityElement;
 import org.eclipse.uml2.Operation;
-import org.eclipse.uml2.RedefinableElement;
-import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Factory;
@@ -60,24 +53,24 @@ import org.eclipse.uml2.UML2Package;
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#upperBound() <em>Upper Bound</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#isMultivalued() <em>Is Multivalued</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#includesCardinality(int) <em>Includes Cardinality</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#includesMultiplicity(MultiplicityElement) <em>Includes Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperGt0(DiagnosticChain, Map) <em>Validate Upper Gt0</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateLowerGe0(DiagnosticChain, Map) <em>Validate Lower Ge0</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(DiagnosticChain, Map) <em>Validate Upper Ge Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(DiagnosticChain, Map) <em>Validate Lower Eq Lowerbound</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(DiagnosticChain, Map) <em>Validate Upper Eq Upperbound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#includesMultiplicity(org.eclipse.uml2.MultiplicityElement) <em>Includes Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperGt0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Gt0</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateLowerGe0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Lower Ge0</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Ge Lower</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Lower Eq Lowerbound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Eq Upperbound</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#lower() <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#upper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#getOwnedElements() <em>Get Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.ParameterableElement#getOwner() <em>Get Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.Operation#validateTypeOfResult(DiagnosticChain, Map) <em>Validate Type Of Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Operation#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#isOrdered() <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#isUnique() <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#lower() <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#upper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#type() <em>Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.Operation#validateOnlyBodyForQuery(DiagnosticChain, Map) <em>Validate Only Body For Query</em>}</li>
- *   <li>{@link org.eclipse.uml2.Operation#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Operation#validateOnlyBodyForQuery(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Only Body For Query</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Operation#isConsistentWith(org.eclipse.uml2.RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#getRaisedExceptions() <em>Get Raised Exceptions</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#setIsOrdered(boolean) <em>Set Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#setIsUnique(boolean) <em>Set Is Unique</em>}</li>
@@ -85,7 +78,7 @@ import org.eclipse.uml2.UML2Package;
  *   <li>{@link org.eclipse.uml2.Operation#getUpper() <em>Get Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#getFormalParameters() <em>Get Formal Parameters</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#getType() <em>Get Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.Operation#setType(Type) <em>Set Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Operation#setType(org.eclipse.uml2.Type) <em>Set Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#getRedefinitionContexts() <em>Get Redefinition Contexts</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#getNamespace() <em>Get Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#getFeaturingClassifiers() <em>Get Featuring Classifiers</em>}</li>
@@ -167,10 +160,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(TemplateParameter) <em>Template Parameter</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter) <em>Template Parameter</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(TemplateParameter)
+	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter)
 	 * @generated
 	 */
 	public void testSetTemplateParameter() {
@@ -191,10 +184,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(TemplateParameter) <em>Owning Parameter</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter) <em>Owning Parameter</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(TemplateParameter)
+	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter)
 	 * @generated
 	 */
 	public void testSetOwningParameter() {
@@ -239,10 +232,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Operation#setBodyCondition(Constraint) <em>Body Condition</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Operation#setBodyCondition(org.eclipse.uml2.Constraint) <em>Body Condition</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Operation#setBodyCondition(Constraint)
+	 * @see org.eclipse.uml2.Operation#setBodyCondition(org.eclipse.uml2.Constraint)
 	 * @generated
 	 */
 	public void testSetBodyCondition() {
@@ -406,10 +399,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#includesMultiplicity(MultiplicityElement) <em>Includes Multiplicity</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#includesMultiplicity(org.eclipse.uml2.MultiplicityElement) <em>Includes Multiplicity</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#includesMultiplicity(MultiplicityElement)
+	 * @see org.eclipse.uml2.MultiplicityElement#includesMultiplicity(org.eclipse.uml2.MultiplicityElement)
 	 * @generated
 	 */
 	public void testIncludesMultiplicity__MultiplicityElementGen() {
@@ -476,10 +469,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperGt0(DiagnosticChain, Map) <em>Validate Upper Gt0</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperGt0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Gt0</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGt0(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGt0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateUpperGt0__DiagnosticChain_Map() {
@@ -488,10 +481,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateLowerGe0(DiagnosticChain, Map) <em>Validate Lower Ge0</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateLowerGe0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Lower Ge0</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerGe0(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerGe0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateLowerGe0__DiagnosticChain_Map() {
@@ -500,10 +493,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(DiagnosticChain, Map) <em>Validate Upper Ge Lower</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Ge Lower</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateUpperGeLower__DiagnosticChain_Map() {
@@ -512,10 +505,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(DiagnosticChain, Map) <em>Validate Lower Eq Lowerbound</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Lower Eq Lowerbound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateLowerEqLowerbound__DiagnosticChain_Map() {
@@ -524,10 +517,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(DiagnosticChain, Map) <em>Validate Upper Eq Upperbound</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Eq Upperbound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateUpperEqUpperbound__DiagnosticChain_Map() {
@@ -577,10 +570,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Operation#validateTypeOfResult(DiagnosticChain, Map) <em>Validate Type Of Result</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Operation#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Result</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Operation#validateTypeOfResult(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Operation#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateTypeOfResult__DiagnosticChain_Map() {
@@ -689,10 +682,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Operation#validateOnlyBodyForQuery(DiagnosticChain, Map) <em>Validate Only Body For Query</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Operation#validateOnlyBodyForQuery(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Only Body For Query</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Operation#validateOnlyBodyForQuery(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Operation#validateOnlyBodyForQuery(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateOnlyBodyForQuery__DiagnosticChain_Map() {
@@ -701,10 +694,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Operation#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Operation#isConsistentWith(org.eclipse.uml2.RedefinableElement) <em>Is Consistent With</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Operation#isConsistentWith(RedefinableElement)
+	 * @see org.eclipse.uml2.Operation#isConsistentWith(org.eclipse.uml2.RedefinableElement)
 	 * @generated
 	 */
 	public void testIsConsistentWith__RedefinableElement() {
@@ -988,10 +981,10 @@ public class OperationTest extends BehavioralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Operation#setType(Type) <em>Set Type</em>}' setter operation.
+	 * Tests the '{@link org.eclipse.uml2.Operation#setType(org.eclipse.uml2.Type) <em>Set Type</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Operation#setType(Type)
+	 * @see org.eclipse.uml2.Operation#setType(org.eclipse.uml2.Type)
 	 * @generated
 	 */
 	public void testSetTypeGen() {

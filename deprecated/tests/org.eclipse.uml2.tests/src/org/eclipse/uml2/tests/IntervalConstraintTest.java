@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalConstraintTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: IntervalConstraintTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -16,7 +16,6 @@ import junit.textui.TestRunner;
 
 import org.eclipse.uml2.IntervalConstraint;
 import org.eclipse.uml2.UML2Factory;
-import org.eclipse.uml2.ValueSpecification;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +25,7 @@ import org.eclipse.uml2.ValueSpecification;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.IntervalConstraint#getSpecification() <em>Get Specification</em>}</li>
- *   <li>{@link org.eclipse.uml2.IntervalConstraint#setSpecification(ValueSpecification) <em>Set Specification</em>}</li>
+ *   <li>{@link org.eclipse.uml2.IntervalConstraint#setSpecification(org.eclipse.uml2.ValueSpecification) <em>Set Specification</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -108,10 +107,10 @@ public class IntervalConstraintTest extends ConstraintTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.IntervalConstraint#setSpecification(ValueSpecification) <em>Set Specification</em>}' setter operation.
+	 * Tests the '{@link org.eclipse.uml2.IntervalConstraint#setSpecification(org.eclipse.uml2.ValueSpecification) <em>Set Specification</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.IntervalConstraint#setSpecification(ValueSpecification)
+	 * @see org.eclipse.uml2.IntervalConstraint#setSpecification(org.eclipse.uml2.ValueSpecification)
 	 * @generated
 	 */
 	public void testSetSpecificationGen() {

@@ -8,17 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: ElementImportTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Map;
 
 import java.util.Iterator;
 
 import junit.textui.TestRunner;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.emf.ecore.EClass;
@@ -39,8 +35,8 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.ElementImport#validateVisibilityPublicOrPrivate(DiagnosticChain, Map) <em>Validate Visibility Public Or Private</em>}</li>
- *   <li>{@link org.eclipse.uml2.ElementImport#validateImportedElementIsPublic(DiagnosticChain, Map) <em>Validate Imported Element Is Public</em>}</li>
+ *   <li>{@link org.eclipse.uml2.ElementImport#validateVisibilityPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Public Or Private</em>}</li>
+ *   <li>{@link org.eclipse.uml2.ElementImport#validateImportedElementIsPublic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Imported Element Is Public</em>}</li>
  *   <li>{@link org.eclipse.uml2.ElementImport#getName() <em>Get Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.ElementImport#getTargets() <em>Get Targets</em>}</li>
  *   <li>{@link org.eclipse.uml2.ElementImport#getSources() <em>Get Sources</em>}</li>
@@ -136,10 +132,10 @@ public class ElementImportTest extends DirectedRelationshipTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ElementImport#setImportingNamespace(Namespace) <em>Importing Namespace</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ElementImport#setImportingNamespace(org.eclipse.uml2.Namespace) <em>Importing Namespace</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ElementImport#setImportingNamespace(Namespace)
+	 * @see org.eclipse.uml2.ElementImport#setImportingNamespace(org.eclipse.uml2.Namespace)
 	 * @generated
 	 */
 	public void testSetImportingNamespaceGen() {
@@ -166,10 +162,10 @@ public class ElementImportTest extends DirectedRelationshipTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ElementImport#validateVisibilityPublicOrPrivate(DiagnosticChain, Map) <em>Validate Visibility Public Or Private</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.ElementImport#validateVisibilityPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Public Or Private</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ElementImport#validateVisibilityPublicOrPrivate(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.ElementImport#validateVisibilityPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateVisibilityPublicOrPrivate__DiagnosticChain_Map() {
@@ -178,10 +174,10 @@ public class ElementImportTest extends DirectedRelationshipTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ElementImport#validateImportedElementIsPublic(DiagnosticChain, Map) <em>Validate Imported Element Is Public</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.ElementImport#validateImportedElementIsPublic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Imported Element Is Public</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ElementImport#validateImportedElementIsPublic(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.ElementImport#validateImportedElementIsPublic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateImportedElementIsPublic__DiagnosticChain_Map() {

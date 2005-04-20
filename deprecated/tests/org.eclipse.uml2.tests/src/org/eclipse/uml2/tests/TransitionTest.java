@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionTest.java,v 1.1 2005/04/04 20:06:08 khussey Exp $
+ * $Id: TransitionTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
 import junit.textui.TestRunner;
 
-import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.Transition;
 import org.eclipse.uml2.UML2Factory;
 
@@ -110,10 +109,10 @@ public class TransitionTest extends RedefinableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Transition#setGuard(Constraint) <em>Guard</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Transition#setGuard(org.eclipse.uml2.Constraint) <em>Guard</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Transition#setGuard(Constraint)
+	 * @see org.eclipse.uml2.Transition#setGuard(org.eclipse.uml2.Constraint)
 	 * @generated
 	 */
 	public void testSetGuard() {

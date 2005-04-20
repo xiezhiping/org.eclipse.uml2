@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierTest.java,v 1.1 2005/04/04 20:06:08 khussey Exp $
+ * $Id: BehavioredClassifierTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
-import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.BehavioredClassifier;
 
 import org.eclipse.uml2.UML2Factory;
@@ -94,10 +93,10 @@ public abstract class BehavioredClassifierTest extends ClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.BehavioredClassifier#setClassifierBehavior(Behavior) <em>Classifier Behavior</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.BehavioredClassifier#setClassifierBehavior(org.eclipse.uml2.Behavior) <em>Classifier Behavior</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.BehavioredClassifier#setClassifierBehavior(Behavior)
+	 * @see org.eclipse.uml2.BehavioredClassifier#setClassifierBehavior(org.eclipse.uml2.Behavior)
 	 * @generated
 	 */
 	public void testSetClassifierBehavior() {

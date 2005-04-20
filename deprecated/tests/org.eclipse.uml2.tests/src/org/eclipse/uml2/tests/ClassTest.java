@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: ClassTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Set;
 
 import java.util.Iterator;
 
@@ -46,7 +44,7 @@ import org.eclipse.uml2.UML2Package;
  *   <li>{@link org.eclipse.uml2.StructuredClassifier#getFeatures() <em>Get Features</em>}</li>
  *   <li>{@link org.eclipse.uml2.EncapsulatedClassifier#getFeatures() <em>Get Features</em>}</li>
  *   <li>{@link org.eclipse.uml2.EncapsulatedClassifier#getOwnedMembers() <em>Get Owned Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.Class#inherit(Set) <em>Inherit</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Class#inherit(java.util.Set) <em>Inherit</em>}</li>
  *   <li>{@link org.eclipse.uml2.Class#isAbstract() <em>Is Abstract</em>}</li>
  *   <li>{@link org.eclipse.uml2.Class#setIsAbstract(boolean) <em>Set Is Abstract</em>}</li>
  *   <li>{@link org.eclipse.uml2.Class#getOwnedAttributes() <em>Get Owned Attributes</em>}</li>
@@ -193,10 +191,10 @@ public class ClassTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Class#inherit(Set) <em>Inherit</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Class#inherit(java.util.Set) <em>Inherit</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Class#inherit(Set)
+	 * @see org.eclipse.uml2.Class#inherit(java.util.Set)
 	 * @generated
 	 */
 	public void testInherit__Set() {

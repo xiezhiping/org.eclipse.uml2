@@ -8,19 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationTest.java,v 1.1 2005/04/04 20:06:08 khussey Exp $
+ * $Id: InstanceSpecificationTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Map;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import junit.textui.TestRunner;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.InstanceSpecification;
 import org.eclipse.emf.ecore.EClass;
@@ -47,8 +43,8 @@ import org.eclipse.uml2.UML2Package;
  * <ul>
  *   <li>{@link org.eclipse.uml2.DeploymentTarget#getOwnedElements() <em>Get Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.DeploymentTarget#getClientDependencies() <em>Get Client Dependencies</em>}</li>
- *   <li>{@link org.eclipse.uml2.InstanceSpecification#validateSlotsAreDefined(DiagnosticChain, Map) <em>Validate Slots Are Defined</em>}</li>
- *   <li>{@link org.eclipse.uml2.InstanceSpecification#validateNoDuplicateSlots(DiagnosticChain, Map) <em>Validate No Duplicate Slots</em>}</li>
+ *   <li>{@link org.eclipse.uml2.InstanceSpecification#validateSlotsAreDefined(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Slots Are Defined</em>}</li>
+ *   <li>{@link org.eclipse.uml2.InstanceSpecification#validateNoDuplicateSlots(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Duplicate Slots</em>}</li>
  *   <li>{@link org.eclipse.uml2.InstanceSpecification#getOwnedElements() <em>Get Owned Elements</em>}</li>
  * </ul>
  * </p>
@@ -179,10 +175,10 @@ public class InstanceSpecificationTest extends PackageableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.InstanceSpecification#validateSlotsAreDefined(DiagnosticChain, Map) <em>Validate Slots Are Defined</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.InstanceSpecification#validateSlotsAreDefined(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Slots Are Defined</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.InstanceSpecification#validateSlotsAreDefined(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.InstanceSpecification#validateSlotsAreDefined(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateSlotsAreDefined__DiagnosticChain_Map() {
@@ -191,10 +187,10 @@ public class InstanceSpecificationTest extends PackageableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.InstanceSpecification#validateNoDuplicateSlots(DiagnosticChain, Map) <em>Validate No Duplicate Slots</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.InstanceSpecification#validateNoDuplicateSlots(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Duplicate Slots</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.InstanceSpecification#validateNoDuplicateSlots(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.InstanceSpecification#validateNoDuplicateSlots(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateNoDuplicateSlots__DiagnosticChain_Map() {

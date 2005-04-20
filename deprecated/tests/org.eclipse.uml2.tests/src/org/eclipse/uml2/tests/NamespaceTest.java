@@ -8,14 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: NamespaceTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Map;
-import java.util.Set;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 import java.util.Iterator;
 
@@ -45,13 +40,13 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.Namespace#validateMembersAreDistinguishable(DiagnosticChain, Map) <em>Validate Members Are Distinguishable</em>}</li>
- *   <li>{@link org.eclipse.uml2.Namespace#getNamesOfMember(NamedElement) <em>Get Names Of Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Namespace#validateMembersAreDistinguishable(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Members Are Distinguishable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Namespace#getNamesOfMember(org.eclipse.uml2.NamedElement) <em>Get Names Of Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.Namespace#membersAreDistinguishable() <em>Members Are Distinguishable</em>}</li>
- *   <li>{@link org.eclipse.uml2.Namespace#validateImportedMemberDerived(DiagnosticChain, Map) <em>Validate Imported Member Derived</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Namespace#validateImportedMemberDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Imported Member Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.Namespace#importedMember() <em>Imported Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.Namespace#importMembers(Set) <em>Import Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.Namespace#excludeCollisions(Set) <em>Exclude Collisions</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Namespace#importMembers(java.util.Set) <em>Import Members</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Namespace#excludeCollisions(java.util.Set) <em>Exclude Collisions</em>}</li>
  *   <li>{@link org.eclipse.uml2.Namespace#getOwnedMembers() <em>Get Owned Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.Namespace#getOwnedElements() <em>Get Owned Elements</em>}</li>
  * </ul>
@@ -168,10 +163,10 @@ public abstract class NamespaceTest extends NamedElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Namespace#validateMembersAreDistinguishable(DiagnosticChain, Map) <em>Validate Members Are Distinguishable</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#validateMembersAreDistinguishable(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Members Are Distinguishable</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Namespace#validateMembersAreDistinguishable(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Namespace#validateMembersAreDistinguishable(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateMembersAreDistinguishable__DiagnosticChain_Map() {
@@ -180,10 +175,10 @@ public abstract class NamespaceTest extends NamedElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Namespace#getNamesOfMember(NamedElement) <em>Get Names Of Member</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#getNamesOfMember(org.eclipse.uml2.NamedElement) <em>Get Names Of Member</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Namespace#getNamesOfMember(NamedElement)
+	 * @see org.eclipse.uml2.Namespace#getNamesOfMember(org.eclipse.uml2.NamedElement)
 	 * @generated
 	 */
 	public void testGetNamesOfMember__NamedElement() {
@@ -204,10 +199,10 @@ public abstract class NamespaceTest extends NamedElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Namespace#validateImportedMemberDerived(DiagnosticChain, Map) <em>Validate Imported Member Derived</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#validateImportedMemberDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Imported Member Derived</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Namespace#validateImportedMemberDerived(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Namespace#validateImportedMemberDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateImportedMemberDerived__DiagnosticChain_Map() {
@@ -242,10 +237,10 @@ public abstract class NamespaceTest extends NamedElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Namespace#importMembers(Set) <em>Import Members</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#importMembers(java.util.Set) <em>Import Members</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Namespace#importMembers(Set)
+	 * @see org.eclipse.uml2.Namespace#importMembers(java.util.Set)
 	 * @generated
 	 */
 	public void testImportMembers__Set() {
@@ -254,10 +249,10 @@ public abstract class NamespaceTest extends NamedElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Namespace#excludeCollisions(Set) <em>Exclude Collisions</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#excludeCollisions(java.util.Set) <em>Exclude Collisions</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Namespace#excludeCollisions(Set)
+	 * @see org.eclipse.uml2.Namespace#excludeCollisions(java.util.Set)
 	 * @generated
 	 */
 	public void testExcludeCollisions__Set() {

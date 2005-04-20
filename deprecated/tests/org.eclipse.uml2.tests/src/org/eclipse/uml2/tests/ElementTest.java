@@ -8,19 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: ElementTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Map;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import junit.framework.TestCase;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -42,8 +38,8 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.Element#validateNotOwnSelf(DiagnosticChain, Map) <em>Validate Not Own Self</em>}</li>
- *   <li>{@link org.eclipse.uml2.Element#validateHasOwner(DiagnosticChain, Map) <em>Validate Has Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Element#validateNotOwnSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Own Self</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Element#validateHasOwner(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Has Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.Element#allOwnedElements() <em>All Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.Element#mustBeOwned() <em>Must Be Owned</em>}</li>
  * </ul>
@@ -144,10 +140,10 @@ public abstract class ElementTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Element#validateNotOwnSelf(DiagnosticChain, Map) <em>Validate Not Own Self</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#validateNotOwnSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Own Self</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Element#validateNotOwnSelf(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Element#validateNotOwnSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateNotOwnSelf__DiagnosticChain_Map() {
@@ -156,10 +152,10 @@ public abstract class ElementTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Element#validateHasOwner(DiagnosticChain, Map) <em>Validate Has Owner</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#validateHasOwner(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Has Owner</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Element#validateHasOwner(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Element#validateHasOwner(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateHasOwner__DiagnosticChain_Map() {

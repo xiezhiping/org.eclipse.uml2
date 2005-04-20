@@ -8,18 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: VariableTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
-import java.util.Map;
-
 import junit.textui.TestRunner;
 
-import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.uml2.MultiplicityElement;
-import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.Variable;
 
@@ -44,12 +38,12 @@ import org.eclipse.uml2.Variable;
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#upperBound() <em>Upper Bound</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#isMultivalued() <em>Is Multivalued</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#includesCardinality(int) <em>Includes Cardinality</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#includesMultiplicity(MultiplicityElement) <em>Includes Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperGt0(DiagnosticChain, Map) <em>Validate Upper Gt0</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateLowerGe0(DiagnosticChain, Map) <em>Validate Lower Ge0</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(DiagnosticChain, Map) <em>Validate Upper Ge Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(DiagnosticChain, Map) <em>Validate Lower Eq Lowerbound</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(DiagnosticChain, Map) <em>Validate Upper Eq Upperbound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#includesMultiplicity(org.eclipse.uml2.MultiplicityElement) <em>Includes Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperGt0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Gt0</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateLowerGe0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Lower Ge0</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Ge Lower</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Lower Eq Lowerbound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Eq Upperbound</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#lower() <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#upper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#getOwnedElements() <em>Get Owned Elements</em>}</li>
@@ -129,10 +123,10 @@ public class VariableTest extends ConnectableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.TypedElement#setType(Type) <em>Type</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.TypedElement#setType(org.eclipse.uml2.Type) <em>Type</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TypedElement#setType(Type)
+	 * @see org.eclipse.uml2.TypedElement#setType(org.eclipse.uml2.Type)
 	 * @generated
 	 */
 	public void testSetType() {
@@ -261,10 +255,10 @@ public class VariableTest extends ConnectableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#includesMultiplicity(MultiplicityElement) <em>Includes Multiplicity</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#includesMultiplicity(org.eclipse.uml2.MultiplicityElement) <em>Includes Multiplicity</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#includesMultiplicity(MultiplicityElement)
+	 * @see org.eclipse.uml2.MultiplicityElement#includesMultiplicity(org.eclipse.uml2.MultiplicityElement)
 	 * @generated
 	 */
 	public void testIncludesMultiplicity__MultiplicityElement() {
@@ -273,10 +267,10 @@ public class VariableTest extends ConnectableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperGt0(DiagnosticChain, Map) <em>Validate Upper Gt0</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperGt0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Gt0</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGt0(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGt0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateUpperGt0__DiagnosticChain_Map() {
@@ -285,10 +279,10 @@ public class VariableTest extends ConnectableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateLowerGe0(DiagnosticChain, Map) <em>Validate Lower Ge0</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateLowerGe0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Lower Ge0</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerGe0(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerGe0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateLowerGe0__DiagnosticChain_Map() {
@@ -297,10 +291,10 @@ public class VariableTest extends ConnectableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(DiagnosticChain, Map) <em>Validate Upper Ge Lower</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Ge Lower</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperGeLower(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateUpperGeLower__DiagnosticChain_Map() {
@@ -309,10 +303,10 @@ public class VariableTest extends ConnectableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(DiagnosticChain, Map) <em>Validate Lower Eq Lowerbound</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Lower Eq Lowerbound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateLowerEqLowerbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateLowerEqLowerbound__DiagnosticChain_Map() {
@@ -321,10 +315,10 @@ public class VariableTest extends ConnectableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(DiagnosticChain, Map) <em>Validate Upper Eq Upperbound</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Eq Upperbound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateUpperEqUpperbound__DiagnosticChain_Map() {

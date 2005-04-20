@@ -8,24 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: PackageTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Map;
 
 import java.util.Arrays;
 import java.util.Iterator;
 
 import junit.textui.TestRunner;
 
-import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.uml2.Actor;
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.NamedElement;
-import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.Package;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageableElement;
@@ -55,11 +50,11 @@ import org.eclipse.uml2.VisibilityKind;
  * <ul>
  *   <li>{@link org.eclipse.uml2.ParameterableElement#getOwner() <em>Get Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.PackageableElement#getVisibility() <em>Get Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.PackageableElement#setVisibility(VisibilityKind) <em>Set Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.Package#validateElementsPublicOrPrivate(DiagnosticChain, Map) <em>Validate Elements Public Or Private</em>}</li>
+ *   <li>{@link org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind) <em>Set Visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Package#validateElementsPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Elements Public Or Private</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#mustBeOwned() <em>Must Be Owned</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#visibleMembers() <em>Visible Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.Package#makesVisible(NamedElement) <em>Makes Visible</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Package#makesVisible(org.eclipse.uml2.NamedElement) <em>Makes Visible</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getNamespace() <em>Get Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getOwnedElements() <em>Get Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getPackageImports() <em>Get Package Imports</em>}</li>
@@ -138,10 +133,10 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(TemplateParameter) <em>Template Parameter</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter) <em>Template Parameter</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(TemplateParameter)
+	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter)
 	 * @generated
 	 */
 	public void testSetTemplateParameter() {
@@ -162,10 +157,10 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(TemplateParameter) <em>Owning Parameter</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter) <em>Owning Parameter</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(TemplateParameter)
+	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter)
 	 * @generated
 	 */
 	public void testSetOwningParameter() {
@@ -186,10 +181,10 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(VisibilityKind) <em>Packageable Element visibility</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(org.eclipse.uml2.VisibilityKind) <em>Packageable Element visibility</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(VisibilityKind)
+	 * @see org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(org.eclipse.uml2.VisibilityKind)
 	 * @generated
 	 */
 	public void testSetPackageableElement_visibility() {
@@ -311,10 +306,10 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setVisibility(VisibilityKind) <em>Set Visibility</em>}' setter operation.
+	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind) <em>Set Visibility</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageableElement#setVisibility(VisibilityKind)
+	 * @see org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind)
 	 * @generated
 	 */
 	public void testSetVisibilityGen() {
@@ -331,10 +326,10 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Package#validateElementsPublicOrPrivate(DiagnosticChain, Map) <em>Validate Elements Public Or Private</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Package#validateElementsPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Elements Public Or Private</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Package#validateElementsPublicOrPrivate(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Package#validateElementsPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateElementsPublicOrPrivate__DiagnosticChain_Map() {
@@ -425,10 +420,10 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Package#makesVisible(NamedElement) <em>Makes Visible</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Package#makesVisible(org.eclipse.uml2.NamedElement) <em>Makes Visible</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Package#makesVisible(NamedElement)
+	 * @see org.eclipse.uml2.Package#makesVisible(org.eclipse.uml2.NamedElement)
 	 * @generated
 	 */
 	public void testMakesVisible__NamedElementGen() {

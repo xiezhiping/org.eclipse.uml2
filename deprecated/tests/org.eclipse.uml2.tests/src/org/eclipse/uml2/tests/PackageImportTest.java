@@ -8,17 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: PackageImportTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Map;
 
 import java.util.Iterator;
 
 import junit.textui.TestRunner;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.uml2.Namespace;
@@ -40,7 +36,7 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.PackageImport#validatePublicOrPrivate(DiagnosticChain, Map) <em>Validate Public Or Private</em>}</li>
+ *   <li>{@link org.eclipse.uml2.PackageImport#validatePublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Public Or Private</em>}</li>
  *   <li>{@link org.eclipse.uml2.PackageImport#getTargets() <em>Get Targets</em>}</li>
  *   <li>{@link org.eclipse.uml2.PackageImport#getSources() <em>Get Sources</em>}</li>
  *   <li>{@link org.eclipse.uml2.PackageImport#getOwner() <em>Get Owner</em>}</li>
@@ -187,10 +183,10 @@ public class PackageImportTest extends DirectedRelationshipTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageImport#setImportingNamespace(Namespace) <em>Importing Namespace</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.PackageImport#setImportingNamespace(org.eclipse.uml2.Namespace) <em>Importing Namespace</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageImport#setImportingNamespace(Namespace)
+	 * @see org.eclipse.uml2.PackageImport#setImportingNamespace(org.eclipse.uml2.Namespace)
 	 * @generated
 	 */
 	public void testSetImportingNamespaceGen() {
@@ -217,10 +213,10 @@ public class PackageImportTest extends DirectedRelationshipTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageImport#validatePublicOrPrivate(DiagnosticChain, Map) <em>Validate Public Or Private</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.PackageImport#validatePublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Public Or Private</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageImport#validatePublicOrPrivate(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.PackageImport#validatePublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidatePublicOrPrivate__DiagnosticChain_Map() {

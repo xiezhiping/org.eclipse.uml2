@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: ObjectNodeTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
 import org.eclipse.uml2.ObjectNode;
-import org.eclipse.uml2.Type;
 
 import org.eclipse.uml2.UML2Factory;
 
@@ -77,10 +76,10 @@ public abstract class ObjectNodeTest extends ActivityNodeTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.TypedElement#setType(Type) <em>Type</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.TypedElement#setType(org.eclipse.uml2.Type) <em>Type</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TypedElement#setType(Type)
+	 * @see org.eclipse.uml2.TypedElement#setType(org.eclipse.uml2.Type)
 	 * @generated
 	 */
 	public void testSetType() {

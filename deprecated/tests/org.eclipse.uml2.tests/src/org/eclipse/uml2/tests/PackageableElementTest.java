@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: PackageableElementTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
 import org.eclipse.uml2.PackageableElement;
-import org.eclipse.uml2.TemplateParameter;
-import org.eclipse.uml2.VisibilityKind;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +31,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <ul>
  *   <li>{@link org.eclipse.uml2.ParameterableElement#getOwner() <em>Get Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.PackageableElement#getVisibility() <em>Get Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.PackageableElement#setVisibility(VisibilityKind) <em>Set Visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind) <em>Set Visibility</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -80,10 +78,10 @@ public abstract class PackageableElementTest extends NamedElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(TemplateParameter) <em>Template Parameter</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter) <em>Template Parameter</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(TemplateParameter)
+	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter)
 	 * @generated
 	 */
 	public void testSetTemplateParameter() {
@@ -104,10 +102,10 @@ public abstract class PackageableElementTest extends NamedElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(TemplateParameter) <em>Owning Parameter</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter) <em>Owning Parameter</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(TemplateParameter)
+	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter)
 	 * @generated
 	 */
 	public void testSetOwningParameter() {
@@ -128,10 +126,10 @@ public abstract class PackageableElementTest extends NamedElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(VisibilityKind) <em>Packageable Element visibility</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(org.eclipse.uml2.VisibilityKind) <em>Packageable Element visibility</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(VisibilityKind)
+	 * @see org.eclipse.uml2.PackageableElement#setPackageableElement_visibility(org.eclipse.uml2.VisibilityKind)
 	 * @generated
 	 */
 	public void testSetPackageableElement_visibility() {
@@ -174,10 +172,10 @@ public abstract class PackageableElementTest extends NamedElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setVisibility(VisibilityKind) <em>Set Visibility</em>}' setter operation.
+	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind) <em>Set Visibility</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageableElement#setVisibility(VisibilityKind)
+	 * @see org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind)
 	 * @generated
 	 */
 	public void testSetVisibility() {

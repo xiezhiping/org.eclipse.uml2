@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionTest.java,v 1.1 2005/04/04 20:06:05 khussey Exp $
+ * $Id: ProtocolTransitionTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
 import junit.textui.TestRunner;
 
-import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.ProtocolTransition;
 import org.eclipse.uml2.UML2Factory;
 
@@ -33,7 +32,7 @@ import org.eclipse.uml2.UML2Factory;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.ProtocolTransition#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.ProtocolTransition#setGuard(Constraint) <em>Set Guard</em>}</li>
+ *   <li>{@link org.eclipse.uml2.ProtocolTransition#setGuard(org.eclipse.uml2.Constraint) <em>Set Guard</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -121,10 +120,10 @@ public class ProtocolTransitionTest extends TransitionTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ProtocolTransition#setPreCondition(Constraint) <em>Pre Condition</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ProtocolTransition#setPreCondition(org.eclipse.uml2.Constraint) <em>Pre Condition</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ProtocolTransition#setPreCondition(Constraint)
+	 * @see org.eclipse.uml2.ProtocolTransition#setPreCondition(org.eclipse.uml2.Constraint)
 	 * @generated
 	 */
 	public void testSetPreCondition() {
@@ -153,10 +152,10 @@ public class ProtocolTransitionTest extends TransitionTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ProtocolTransition#setGuard(Constraint) <em>Set Guard</em>}' setter operation.
+	 * Tests the '{@link org.eclipse.uml2.ProtocolTransition#setGuard(org.eclipse.uml2.Constraint) <em>Set Guard</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ProtocolTransition#setGuard(Constraint)
+	 * @see org.eclipse.uml2.ProtocolTransition#setGuard(org.eclipse.uml2.Constraint)
 	 * @generated
 	 */
 	public void testSetGuard() {

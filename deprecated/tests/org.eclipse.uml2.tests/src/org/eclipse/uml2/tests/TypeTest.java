@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: TypeTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -29,7 +29,7 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.Type#conformsTo(Type) <em>Conforms To</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Type#conformsTo(org.eclipse.uml2.Type) <em>Conforms To</em>}</li>
  *   <li>{@link org.eclipse.uml2.Type#getNamespace() <em>Get Namespace</em>}</li>
  * </ul>
  * </p>
@@ -89,10 +89,10 @@ public abstract class TypeTest extends PackageableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Type#conformsTo(Type) <em>Conforms To</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Type#conformsTo(org.eclipse.uml2.Type) <em>Conforms To</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Type#conformsTo(Type)
+	 * @see org.eclipse.uml2.Type#conformsTo(org.eclipse.uml2.Type)
 	 * @generated
 	 */
 	public void testConformsTo__Type() {

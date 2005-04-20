@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: ActivityGroupTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -36,7 +36,7 @@ import org.eclipse.uml2.UML2Factory;
  *   <li>{@link org.eclipse.uml2.ActivityGroup#getContainedEdges() <em>Get Contained Edges</em>}</li>
  *   <li>{@link org.eclipse.uml2.ActivityGroup#getContainedNodes() <em>Get Contained Nodes</em>}</li>
  *   <li>{@link org.eclipse.uml2.ActivityGroup#getActivity() <em>Get Activity</em>}</li>
- *   <li>{@link org.eclipse.uml2.ActivityGroup#setActivity(Activity) <em>Set Activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.ActivityGroup#setActivity(org.eclipse.uml2.Activity) <em>Set Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.ActivityGroup#getOwnedElements() <em>Get Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.ActivityGroup#getOwner() <em>Get Owner</em>}</li>
  * </ul>
@@ -117,10 +117,10 @@ public abstract class ActivityGroupTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#setActivityGroup_activity(Activity) <em>Activity Group activity</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#setActivityGroup_activity(org.eclipse.uml2.Activity) <em>Activity Group activity</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityGroup#setActivityGroup_activity(Activity)
+	 * @see org.eclipse.uml2.ActivityGroup#setActivityGroup_activity(org.eclipse.uml2.Activity)
 	 * @generated
 	 */
 	public void testSetActivityGroup_activityGen() {
@@ -227,10 +227,10 @@ public abstract class ActivityGroupTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#setActivity(Activity) <em>Set Activity</em>}' setter operation.
+	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#setActivity(org.eclipse.uml2.Activity) <em>Set Activity</em>}' setter operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityGroup#setActivity(Activity)
+	 * @see org.eclipse.uml2.ActivityGroup#setActivity(org.eclipse.uml2.Activity)
 	 * @generated
 	 */
 	public void testSetActivityGen() {

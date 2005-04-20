@@ -8,21 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: ConstraintTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
-import java.util.Map;
-
 import junit.textui.TestRunner;
 
-import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.uml2.Constraint;
-import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.UML2Factory;
-
-import org.eclipse.uml2.ValueSpecification;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +32,7 @@ import org.eclipse.uml2.ValueSpecification;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.Constraint#validateNotApplyToSelf(DiagnosticChain, Map) <em>Validate Not Apply To Self</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Constraint#validateNotApplyToSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Apply To Self</em>}</li>
  *   <li>{@link org.eclipse.uml2.Constraint#getOwnedElements() <em>Get Owned Elements</em>}</li>
  * </ul>
  * </p>
@@ -136,10 +129,10 @@ public class ConstraintTest extends PackageableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Constraint#setNamespace(Namespace) <em>Namespace</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Constraint#setNamespace(org.eclipse.uml2.Namespace) <em>Namespace</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Constraint#setNamespace(Namespace)
+	 * @see org.eclipse.uml2.Constraint#setNamespace(org.eclipse.uml2.Namespace)
 	 * @generated
 	 */
 	public void testSetNamespace() {
@@ -160,10 +153,10 @@ public class ConstraintTest extends PackageableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Constraint#setSpecification(ValueSpecification) <em>Specification</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Constraint#setSpecification(org.eclipse.uml2.ValueSpecification) <em>Specification</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Constraint#setSpecification(ValueSpecification)
+	 * @see org.eclipse.uml2.Constraint#setSpecification(org.eclipse.uml2.ValueSpecification)
 	 * @generated
 	 */
 	public void testSetSpecification() {
@@ -172,10 +165,10 @@ public class ConstraintTest extends PackageableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Constraint#validateNotApplyToSelf(DiagnosticChain, Map) <em>Validate Not Apply To Self</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Constraint#validateNotApplyToSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Apply To Self</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Constraint#validateNotApplyToSelf(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Constraint#validateNotApplyToSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateNotApplyToSelf__DiagnosticChain_Map() {

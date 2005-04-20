@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyTest.java,v 1.1 2005/04/04 20:06:08 khussey Exp $
+ * $Id: PropertyTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Map;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,12 +18,7 @@ import java.util.List;
 
 import junit.textui.TestRunner;
 
-import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.uml2.Association;
 import org.eclipse.uml2.Property;
-import org.eclipse.uml2.RedefinableElement;
-import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.Artifact;
@@ -63,15 +56,15 @@ import org.eclipse.uml2.ValueSpecification;
  *   <li>{@link org.eclipse.uml2.ParameterableElement#getOwner() <em>Get Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.DeploymentTarget#getOwnedElements() <em>Get Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.DeploymentTarget#getClientDependencies() <em>Get Client Dependencies</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#validateOppositeIsOtherEnd(DiagnosticChain, Map) <em>Validate Opposite Is Other End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Property#validateOppositeIsOtherEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Opposite Is Other End</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#opposite() <em>Opposite</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#validateMultiplicityOfComposite(DiagnosticChain, Map) <em>Validate Multiplicity Of Composite</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#validateSubsettingContext(DiagnosticChain, Map) <em>Validate Subsetting Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#validateNavigablePropertyRedefinition(DiagnosticChain, Map) <em>Validate Navigable Property Redefinition</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#validateSubsettingRules(DiagnosticChain, Map) <em>Validate Subsetting Rules</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#validateNavigableReadonly(DiagnosticChain, Map) <em>Validate Navigable Readonly</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#validateDerivedUnionIsDerived(DiagnosticChain, Map) <em>Validate Derived Union Is Derived</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Property#validateMultiplicityOfComposite(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Composite</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Property#validateSubsettingContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetting Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Property#validateNavigablePropertyRedefinition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Property Redefinition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Property#validateSubsettingRules(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetting Rules</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Property#validateNavigableReadonly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Readonly</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Property#validateDerivedUnionIsDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Derived Union Is Derived</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Property#isConsistentWith(org.eclipse.uml2.RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#subsettingContext() <em>Subsetting Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#isReadOnly() <em>Is Read Only</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#setIsReadOnly(boolean) <em>Set Is Read Only</em>}</li>
@@ -155,10 +148,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(TemplateParameter) <em>Template Parameter</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter) <em>Template Parameter</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(TemplateParameter)
+	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter)
 	 * @generated
 	 */
 	public void testSetTemplateParameter() {
@@ -179,10 +172,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(TemplateParameter) <em>Owning Parameter</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter) <em>Owning Parameter</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(TemplateParameter)
+	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter)
 	 * @generated
 	 */
 	public void testSetOwningParameter() {
@@ -348,10 +341,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#setOwningAssociation(Association) <em>Owning Association</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Property#setOwningAssociation(org.eclipse.uml2.Association) <em>Owning Association</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#setOwningAssociation(Association)
+	 * @see org.eclipse.uml2.Property#setOwningAssociation(org.eclipse.uml2.Association)
 	 * @generated
 	 */
 	public void testSetOwningAssociation() {
@@ -372,10 +365,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#setAssociation(Association) <em>Association</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Property#setAssociation(org.eclipse.uml2.Association) <em>Association</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#setAssociation(Association)
+	 * @see org.eclipse.uml2.Property#setAssociation(org.eclipse.uml2.Association)
 	 * @generated
 	 */
 	public void testSetAssociation() {
@@ -396,10 +389,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#validateOppositeIsOtherEnd(DiagnosticChain, Map) <em>Validate Opposite Is Other End</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Property#validateOppositeIsOtherEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Opposite Is Other End</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#validateOppositeIsOtherEnd(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Property#validateOppositeIsOtherEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateOppositeIsOtherEnd__DiagnosticChain_Map() {
@@ -420,10 +413,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#validateMultiplicityOfComposite(DiagnosticChain, Map) <em>Validate Multiplicity Of Composite</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Property#validateMultiplicityOfComposite(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Composite</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#validateMultiplicityOfComposite(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Property#validateMultiplicityOfComposite(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateMultiplicityOfComposite__DiagnosticChain_Map() {
@@ -432,10 +425,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#validateSubsettingContext(DiagnosticChain, Map) <em>Validate Subsetting Context</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Property#validateSubsettingContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetting Context</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#validateSubsettingContext(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Property#validateSubsettingContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateSubsettingContext__DiagnosticChain_Map() {
@@ -444,10 +437,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#validateNavigablePropertyRedefinition(DiagnosticChain, Map) <em>Validate Navigable Property Redefinition</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Property#validateNavigablePropertyRedefinition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Property Redefinition</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#validateNavigablePropertyRedefinition(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Property#validateNavigablePropertyRedefinition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateNavigablePropertyRedefinition__DiagnosticChain_Map() {
@@ -456,10 +449,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#validateSubsettingRules(DiagnosticChain, Map) <em>Validate Subsetting Rules</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Property#validateSubsettingRules(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetting Rules</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#validateSubsettingRules(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Property#validateSubsettingRules(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateSubsettingRules__DiagnosticChain_Map() {
@@ -468,10 +461,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#validateNavigableReadonly(DiagnosticChain, Map) <em>Validate Navigable Readonly</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Property#validateNavigableReadonly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Readonly</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#validateNavigableReadonly(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Property#validateNavigableReadonly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateNavigableReadonly__DiagnosticChain_Map() {
@@ -480,10 +473,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#validateDerivedUnionIsDerived(DiagnosticChain, Map) <em>Validate Derived Union Is Derived</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Property#validateDerivedUnionIsDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Derived Union Is Derived</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#validateDerivedUnionIsDerived(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.Property#validateDerivedUnionIsDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateDerivedUnionIsDerived__DiagnosticChain_Map() {
@@ -492,10 +485,10 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#isConsistentWith(RedefinableElement) <em>Is Consistent With</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.Property#isConsistentWith(org.eclipse.uml2.RedefinableElement) <em>Is Consistent With</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#isConsistentWith(RedefinableElement)
+	 * @see org.eclipse.uml2.Property#isConsistentWith(org.eclipse.uml2.RedefinableElement)
 	 * @generated
 	 */
 	public void testIsConsistentWith__RedefinableElement() {

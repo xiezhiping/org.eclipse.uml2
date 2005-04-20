@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: DataTypeTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Set;
 
 import junit.textui.TestRunner;
 
@@ -26,7 +24,7 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.DataType#inherit(Set) <em>Inherit</em>}</li>
+ *   <li>{@link org.eclipse.uml2.DataType#inherit(java.util.Set) <em>Inherit</em>}</li>
  *   <li>{@link org.eclipse.uml2.DataType#getOwnedMembers() <em>Get Owned Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.DataType#getAttributes() <em>Get Attributes</em>}</li>
  *   <li>{@link org.eclipse.uml2.DataType#getFeatures() <em>Get Features</em>}</li>
@@ -93,10 +91,10 @@ public class DataTypeTest extends ClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.DataType#inherit(Set) <em>Inherit</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.DataType#inherit(java.util.Set) <em>Inherit</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.DataType#inherit(Set)
+	 * @see org.eclipse.uml2.DataType#inherit(java.util.Set)
 	 * @generated
 	 */
 	public void testInherit__Set() {

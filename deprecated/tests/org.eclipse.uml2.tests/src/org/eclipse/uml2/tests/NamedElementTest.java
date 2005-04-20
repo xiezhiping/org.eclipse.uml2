@@ -8,20 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementTest.java,v 1.1 2005/04/04 20:06:08 khussey Exp $
+ * $Id: NamedElementTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
-
-import java.util.Map;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.uml2.Dependency;
 import org.eclipse.uml2.NamedElement;
-import org.eclipse.uml2.Namespace;
 
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
@@ -40,13 +35,13 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.NamedElement#validateNoName(DiagnosticChain, Map) <em>Validate No Name</em>}</li>
- *   <li>{@link org.eclipse.uml2.NamedElement#validateQualifiedName(DiagnosticChain, Map) <em>Validate Qualified Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.NamedElement#validateNoName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.NamedElement#validateQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.NamedElement#allNamespaces() <em>All Namespaces</em>}</li>
- *   <li>{@link org.eclipse.uml2.NamedElement#isDistinguishableFrom(NamedElement, Namespace) <em>Is Distinguishable From</em>}</li>
+ *   <li>{@link org.eclipse.uml2.NamedElement#isDistinguishableFrom(org.eclipse.uml2.NamedElement, org.eclipse.uml2.Namespace) <em>Is Distinguishable From</em>}</li>
  *   <li>{@link org.eclipse.uml2.NamedElement#separator() <em>Separator</em>}</li>
  *   <li>{@link org.eclipse.uml2.NamedElement#qualifiedName() <em>Qualified Name</em>}</li>
- *   <li>{@link org.eclipse.uml2.NamedElement#validateVisibilityNeedsOwnership(DiagnosticChain, Map) <em>Validate Visibility Needs Ownership</em>}</li>
+ *   <li>{@link org.eclipse.uml2.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Needs Ownership</em>}</li>
  *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace() <em>Get Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.NamedElement#getOwner() <em>Get Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.NamedElement#getOwnedElements() <em>Get Owned Elements</em>}</li>
@@ -145,10 +140,10 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.NamedElement#validateNoName(DiagnosticChain, Map) <em>Validate No Name</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.NamedElement#validateNoName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Name</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.NamedElement#validateNoName(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.NamedElement#validateNoName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateNoName__DiagnosticChain_Map() {
@@ -157,10 +152,10 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.NamedElement#validateQualifiedName(DiagnosticChain, Map) <em>Validate Qualified Name</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.NamedElement#validateQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualified Name</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.NamedElement#validateQualifiedName(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.NamedElement#validateQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateQualifiedName__DiagnosticChain_Map() {
@@ -191,10 +186,10 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.NamedElement#isDistinguishableFrom(NamedElement, Namespace) <em>Is Distinguishable From</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.NamedElement#isDistinguishableFrom(org.eclipse.uml2.NamedElement, org.eclipse.uml2.Namespace) <em>Is Distinguishable From</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.NamedElement#isDistinguishableFrom(NamedElement, Namespace)
+	 * @see org.eclipse.uml2.NamedElement#isDistinguishableFrom(org.eclipse.uml2.NamedElement, org.eclipse.uml2.Namespace)
 	 * @generated
 	 */
 	public void testIsDistinguishableFrom__NamedElement_Namespace() {
@@ -262,10 +257,10 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.NamedElement#validateVisibilityNeedsOwnership(DiagnosticChain, Map) <em>Validate Visibility Needs Ownership</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Needs Ownership</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.NamedElement#validateVisibilityNeedsOwnership(DiagnosticChain, Map)
+	 * @see org.eclipse.uml2.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateVisibilityNeedsOwnership__DiagnosticChain_Map() {

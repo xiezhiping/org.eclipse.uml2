@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RealizationTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: RealizationTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -131,10 +131,10 @@ public class RealizationTest extends AbstractionTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Realization#setAbstraction(Component) <em>Abstraction</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Realization#setAbstraction(org.eclipse.uml2.Component) <em>Abstraction</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Realization#setAbstraction(Component)
+	 * @see org.eclipse.uml2.Realization#setAbstraction(org.eclipse.uml2.Component)
 	 * @generated
 	 */
 	public void testSetAbstractionGen() {
@@ -189,10 +189,10 @@ public class RealizationTest extends AbstractionTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Realization#setRealizingClassifier(Classifier) <em>Realizing Classifier</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Realization#setRealizingClassifier(org.eclipse.uml2.Classifier) <em>Realizing Classifier</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Realization#setRealizingClassifier(Classifier)
+	 * @see org.eclipse.uml2.Realization#setRealizingClassifier(org.eclipse.uml2.Classifier)
 	 * @generated
 	 */
 	public void testSetRealizingClassifierGen() {

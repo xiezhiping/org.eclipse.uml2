@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineTest.java,v 1.1 2005/04/04 20:06:08 khussey Exp $
+ * $Id: StateMachineTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
 import junit.textui.TestRunner;
 
-import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.StateMachine;
 import org.eclipse.uml2.UML2Factory;
 
@@ -109,10 +108,10 @@ public class StateMachineTest extends BehaviorTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.StateMachine#setStateMachine_redefinitionContext(BehavioredClassifier) <em>State Machine redefinition Context</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.StateMachine#setStateMachine_redefinitionContext(org.eclipse.uml2.BehavioredClassifier) <em>State Machine redefinition Context</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.StateMachine#setStateMachine_redefinitionContext(BehavioredClassifier)
+	 * @see org.eclipse.uml2.StateMachine#setStateMachine_redefinitionContext(org.eclipse.uml2.BehavioredClassifier)
 	 * @generated
 	 */
 	public void testSetStateMachine_redefinitionContext() {

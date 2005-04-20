@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: TemplateParameterTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -131,10 +131,10 @@ public class TemplateParameterTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setSignature(TemplateSignature) <em>Signature</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setSignature(org.eclipse.uml2.TemplateSignature) <em>Signature</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#setSignature(TemplateSignature)
+	 * @see org.eclipse.uml2.TemplateParameter#setSignature(org.eclipse.uml2.TemplateSignature)
 	 * @generated
 	 */
 	public void testSetSignatureGen() {
@@ -187,10 +187,10 @@ public class TemplateParameterTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setParameteredElement(ParameterableElement) <em>Parametered Element</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setParameteredElement(org.eclipse.uml2.ParameterableElement) <em>Parametered Element</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#setParameteredElement(ParameterableElement)
+	 * @see org.eclipse.uml2.TemplateParameter#setParameteredElement(org.eclipse.uml2.ParameterableElement)
 	 * @generated
 	 */
 	public void testSetParameteredElementGen() {
@@ -251,10 +251,10 @@ public class TemplateParameterTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setOwnedParameteredElement(ParameterableElement) <em>Owned Parametered Element</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setOwnedParameteredElement(org.eclipse.uml2.ParameterableElement) <em>Owned Parametered Element</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#setOwnedParameteredElement(ParameterableElement)
+	 * @see org.eclipse.uml2.TemplateParameter#setOwnedParameteredElement(org.eclipse.uml2.ParameterableElement)
 	 * @generated
 	 */
 	public void testSetOwnedParameteredElementGen() {
@@ -311,10 +311,10 @@ public class TemplateParameterTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setDefault(ParameterableElement) <em>Default</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setDefault(org.eclipse.uml2.ParameterableElement) <em>Default</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#setDefault(ParameterableElement)
+	 * @see org.eclipse.uml2.TemplateParameter#setDefault(org.eclipse.uml2.ParameterableElement)
 	 * @generated
 	 */
 	public void testSetDefaultGen() {
@@ -373,10 +373,10 @@ public class TemplateParameterTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setOwnedDefault(ParameterableElement) <em>Owned Default</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setOwnedDefault(org.eclipse.uml2.ParameterableElement) <em>Owned Default</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#setOwnedDefault(ParameterableElement)
+	 * @see org.eclipse.uml2.TemplateParameter#setOwnedDefault(org.eclipse.uml2.ParameterableElement)
 	 * @generated
 	 */
 	public void testSetOwnedDefaultGen() {

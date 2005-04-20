@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionTest.java,v 1.1 2005/04/04 20:06:08 khussey Exp $
+ * $Id: SubstitutionTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -131,10 +131,10 @@ public class SubstitutionTest extends RealizationTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Substitution#setContract(Classifier) <em>Contract</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Substitution#setContract(org.eclipse.uml2.Classifier) <em>Contract</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Substitution#setContract(Classifier)
+	 * @see org.eclipse.uml2.Substitution#setContract(org.eclipse.uml2.Classifier)
 	 * @generated
 	 */
 	public void testSetContractGen() {
@@ -189,10 +189,10 @@ public class SubstitutionTest extends RealizationTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Substitution#setSubstitutingClassifier(Classifier) <em>Substituting Classifier</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Substitution#setSubstitutingClassifier(org.eclipse.uml2.Classifier) <em>Substituting Classifier</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Substitution#setSubstitutingClassifier(Classifier)
+	 * @see org.eclipse.uml2.Substitution#setSubstitutingClassifier(org.eclipse.uml2.Classifier)
 	 * @generated
 	 */
 	public void testSetSubstitutingClassifierGen() {

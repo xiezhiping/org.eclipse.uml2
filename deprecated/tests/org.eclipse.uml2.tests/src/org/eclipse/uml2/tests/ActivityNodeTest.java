@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: ActivityNodeTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
-import org.eclipse.uml2.Activity;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
@@ -112,10 +111,10 @@ public abstract class ActivityNodeTest extends RedefinableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityNode#setActivity(Activity) <em>Activity</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.ActivityNode#setActivity(org.eclipse.uml2.Activity) <em>Activity</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityNode#setActivity(Activity)
+	 * @see org.eclipse.uml2.ActivityNode#setActivity(org.eclipse.uml2.Activity)
 	 * @generated
 	 */
 	public void testSetActivity() {

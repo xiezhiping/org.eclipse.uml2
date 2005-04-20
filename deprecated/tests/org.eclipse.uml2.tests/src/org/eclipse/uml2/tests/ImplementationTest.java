@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImplementationTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: ImplementationTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -130,10 +130,10 @@ public class ImplementationTest extends RealizationTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Implementation#setContract(Interface) <em>Contract</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Implementation#setContract(org.eclipse.uml2.Interface) <em>Contract</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Implementation#setContract(Interface)
+	 * @see org.eclipse.uml2.Implementation#setContract(org.eclipse.uml2.Interface)
 	 * @generated
 	 */
 	public void testSetContractGen() {
@@ -186,10 +186,10 @@ public class ImplementationTest extends RealizationTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Implementation#setImplementingClassifier(BehavioredClassifier) <em>Implementing Classifier</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Implementation#setImplementingClassifier(org.eclipse.uml2.BehavioredClassifier) <em>Implementing Classifier</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Implementation#setImplementingClassifier(BehavioredClassifier)
+	 * @see org.eclipse.uml2.Implementation#setImplementingClassifier(org.eclipse.uml2.BehavioredClassifier)
 	 * @generated
 	 */
 	public void testSetImplementingClassifierGen() {
