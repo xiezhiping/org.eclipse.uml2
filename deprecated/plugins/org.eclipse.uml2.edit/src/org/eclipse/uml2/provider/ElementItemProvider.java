@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.18 2005/04/04 20:03:41 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.19 2005/04/22 18:20:28 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -23,6 +23,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.provider.EModelElementItemProvider;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -206,6 +209,33 @@ public class ElementItemProvider
 	}
 
 	/**
+	 * This returns the icon image for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object getCreateChildImage(Object owner, Object feature, Object child, Collection selection) {
+		if (feature instanceof EStructuralFeature && FeatureMapUtil.isFeatureMap((EStructuralFeature)feature)) {
+			FeatureMap.Entry entry = (FeatureMap.Entry)child;
+			feature = entry.getEStructuralFeature();
+			child = entry.getValue();        
+		}
+
+		if (feature instanceof EReference && child instanceof EObject) {
+			String name = "full/obj16/" + ((EObject)child).eClass().getName(); //$NON-NLS-1$
+
+			try {
+				return getResourceLocator().getImage(name);
+			}
+			catch (Exception e) {
+				UML2EditPlugin.INSTANCE.log(e);
+			}
+		}
+
+		return super.getCreateChildImage(owner, feature, child, selection);
+	}
+
+	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -213,21 +243,6 @@ public class ElementItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.edit.command.CreateChildCommand.Helper#getCreateChildImage(java.lang.Object,
-	 *      java.lang.Object, java.lang.Object, java.util.Collection)
-	 */
-	public Object getCreateChildImage(Object owner, Object feature,
-			Object child, Collection selection) {
-
-		return feature instanceof EReference && child instanceof EObject
-			? getResourceLocator().getImage(
-				"full/obj16/" + ((EObject) child).eClass().getName()) //$NON-NLS-1$
-			: super.getCreateChildImage(owner, feature, child, selection);
 	}
 
 	/*
