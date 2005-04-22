@@ -1525,6 +1525,11 @@
 					    quidu      	"3CA00F020323"))
 				    class_attributes 	(list class_attribute_list
 					(object ClassAttribute "body"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Ecore"
+						    name       	"xmlFeatureKind"
+						    value      	("FeatureKind" 4)))
 					    quid       	"3CA00FEA02EA"
 					    type       	"String"
 					    quidu      	"3CA010B103C3"
@@ -1698,6 +1703,22 @@
 						label      	"OpaqueExpression")
 					    icon_style 	"Icon"
 					    quidu      	"3CA00EFB03B9"
+					    compartment 	(object Compartment
+						Parent_View 	@52
+						location   	(670, 1182)
+						font       	(object Font
+						    size       	10
+						    face       	"Arial"
+						    bold       	FALSE
+						    italics    	FALSE
+						    underline  	FALSE
+						    strike     	FALSE
+						    color      	0
+						    default_color 	TRUE)
+						icon_style 	"Icon"
+						anchor     	2
+						nlines     	2
+						max_width  	0)
 					    width      	563
 					    height     	206)
 					(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Abstractions::Ownerships::Element" @53
@@ -5763,6 +5784,11 @@
 					    quidu      	"3D53913503D7"))
 				    class_attributes 	(list class_attribute_list
 					(object ClassAttribute "body"
+					    attributes 	(list Attribute_Set
+						(object Attribute
+						    tool       	"Ecore"
+						    name       	"xmlFeatureKind"
+						    value      	("FeatureKind" 4)))
 					    quid       	"3CAC072502E2"
 					    type       	"String"
 					    quidu      	"3CA010B103C3"
@@ -5819,8 +5845,8 @@
 				    zoom       	100
 				    max_height 	28350
 				    max_width  	21600
-				    origin_x   	144
-				    origin_y   	0
+				    origin_x   	0
+				    origin_y   	57
 				    items      	(list diagram_item_list
 					(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Abstractions::Comments::Element" @215
 					    ShowCompartmentStereotypes 	TRUE
@@ -5873,6 +5899,22 @@
 					    icon_style 	"Icon"
 					    fill_color 	16777215
 					    quidu      	"3CAC070A03AB"
+					    compartment 	(object Compartment
+						Parent_View 	@216
+						location   	(680, 869)
+						font       	(object Font
+						    size       	10
+						    face       	"Arial"
+						    bold       	FALSE
+						    italics    	FALSE
+						    underline  	FALSE
+						    strike     	FALSE
+						    color      	0
+						    default_color 	TRUE)
+						icon_style 	"Icon"
+						anchor     	2
+						nlines     	1
+						max_width  	240)
 					    width      	290
 					    height     	136)
 					(object AssociationViewNew "$UNNAMED$28" @217

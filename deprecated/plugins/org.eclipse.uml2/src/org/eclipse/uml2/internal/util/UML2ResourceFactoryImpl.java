@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ResourceFactoryImpl.java,v 1.3 2005/03/15 18:44:46 khussey Exp $
+ * $Id: UML2ResourceFactoryImpl.java,v 1.4 2005/04/22 15:18:27 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -61,12 +61,17 @@ public class UML2ResourceFactoryImpl extends ResourceFactoryImpl implements UML2
 
 		resource.setEncoding(UML2Resource.DEFAULT_ENCODING);
 
+		resource.getDefaultLoadOptions().put(
+			XMIResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+
 		resource.getDefaultSaveOptions().put(
 			XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		resource.getDefaultSaveOptions().put(XMIResource.OPTION_USE_XMI_TYPE,
 			Boolean.TRUE);
-		resource.getDefaultSaveOptions().put(XMIResource.OPTION_SAVE_TYPE_INFORMATION,
-			Boolean.TRUE);
+		resource.getDefaultSaveOptions().put(
+			XMIResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);
+		resource.getDefaultSaveOptions().put(
+			XMIResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 
 		return resource;
 	}

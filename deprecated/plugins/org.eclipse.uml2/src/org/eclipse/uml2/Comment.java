@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Comment.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Comment.java,v 1.8 2005/04/22 15:18:27 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -62,6 +62,7 @@ public interface Comment extends TemplateableElement{
 	 * @see #setBody(String)
 	 * @see org.eclipse.uml2.UML2Package#getComment_Body()
 	 * @model default="" dataType="org.eclipse.uml2.String"
+	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	String getBody();

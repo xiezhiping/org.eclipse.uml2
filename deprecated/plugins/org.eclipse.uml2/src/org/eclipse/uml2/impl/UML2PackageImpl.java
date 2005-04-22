@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2PackageImpl.java,v 1.19 2005/04/04 20:11:13 khussey Exp $
+ * $Id: UML2PackageImpl.java,v 1.20 2005/04/22 15:18:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -12338,6 +12338,8 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		createSubsetsAnnotations();
 		// feature
 		createFeatureAnnotations();
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
 		// redefines
 		createRedefinesAnnotations();
 		// redefined
@@ -12701,7 +12703,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "documentation", "An expression contains a language-specific text string used to describe a value or values, and an optional specification of the language. One predefined language for specifying expressions is OCL. Natural language or programming languages may also be used. " //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });			
 		addAnnotation
 		  (getOpaqueExpression_Body(), 
 		   source, 
@@ -12797,7 +12799,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "documentation", "A comment gives the ability to attach various remarks to elements. A comment carries no semantic force, but may contain information that is useful to a modeler. A comment can be owned by any element. " //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });					
 		addAnnotation
 		  (getComment_Body(), 
 		   source, 
@@ -16213,7 +16215,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  (getNamespace_Member(), 
 		   source, 
 		   new String[] {
-		   });																									
+		   });																										
 		addAnnotation
 		  ((EOperation)expressionEClass.getEOperations().get(0), 
 		   source, 
@@ -16223,7 +16225,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		  ((EOperation)commentEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-		   });							
+		   });								
 		addAnnotation
 		  ((EOperation)directedRelationshipEClass.getEOperations().get(0), 
 		   source, 
@@ -17329,13 +17331,13 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																			
+		   });																				
 		addAnnotation
 		  (getExpression_Operand(), 
 		   source, 
 		   new String[] {
 			 "org.eclipse.uml2.Element#getOwnedElements", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });									
 		addAnnotation
 		  (getComment_BodyExpression(), 
 		   source, 
@@ -18908,7 +18910,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																										
+		   });																											
 		addAnnotation
 		  ((EOperation)expressionEClass.getEOperations().get(0), 
 		   source, 
@@ -18934,7 +18936,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 			 "eOpposite.upperBound", "1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eType", "org.eclipse.uml2.Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eOpposite.lowerBound", "0" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });								
 		addAnnotation
 		  ((EOperation)directedRelationshipEClass.getEOperations().get(0), 
 		   source, 
@@ -21895,13 +21897,35 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 	}
 
 	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtendedMetaDataAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$																																																																																
+		addAnnotation
+		  (getOpaqueExpression_Body(), 
+		   source, 
+		   new String[] {
+			 "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
+		   });																						
+		addAnnotation
+		  (getComment_Body(), 
+		   source, 
+		   new String[] {
+			 "kind", "element" //$NON-NLS-1$ //$NON-NLS-2$
+		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										
+	}
+
+	/**
 	 * Initializes the annotations for <b>redefines</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createRedefinesAnnotations() {
-		String source = "redefines"; //$NON-NLS-1$																																																																																																																						
+		String source = "redefines"; //$NON-NLS-1$																																																																																																																								
 		addAnnotation
 		  ((EOperation)classEClass.getEOperations().get(1), 
 		   source, 
@@ -22291,7 +22315,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 	 * @generated
 	 */
 	protected void createRedefinedAnnotations() {
-		String source = "redefined"; //$NON-NLS-1$																																																																																																																													
+		String source = "redefined"; //$NON-NLS-1$																																																																																																																															
 		addAnnotation
 		  ((EOperation)classEClass.getEOperations().get(4), 
 		   source, 
@@ -22462,7 +22486,7 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 	 * @generated
 	 */
 	protected void createSupersetAnnotations() {
-		String source = "superset"; //$NON-NLS-1$																																																																																																																																																																																						
+		String source = "superset"; //$NON-NLS-1$																																																																																																																																																																																								
 		addAnnotation
 		  (getProperty_Association(), 
 		   source, 

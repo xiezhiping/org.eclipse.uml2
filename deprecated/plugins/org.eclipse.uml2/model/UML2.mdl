@@ -109,22 +109,22 @@
 	    (object Class_Category "InfrastructureLibrary"
 		is_unit    	TRUE
 		is_loaded  	FALSE
-		file_name  	"$VABASE_PLUGINS_PATH\\org.eclipse.uml2\\model\\U2P-UML-Infra-v2-030303.cat"
+		file_name  	"$CURDIR\\U2P-UML-Infra-v2-030303.cat"
 		quid       	"3C9FFC9F01A8")
 	    (object Class_Category "UML"
 		is_unit    	TRUE
 		is_loaded  	FALSE
-		file_name  	"$VABASE_PLUGINS_PATH\\org.eclipse.uml2\\model\\U2P-UML-Super-v2-040516.cat"
+		file_name  	"$CURDIR\\U2P-UML-Super-v2-040516.cat"
 		quid       	"3C9FD9A40147")
 	    (object Class_Category "ecore"
 		is_unit    	TRUE
 		is_loaded  	FALSE
-		file_name  	"$VABASE_PLUGINS_PATH\\org.eclipse.emf.ecore\\src\\model\\org.eclipse.emf.Ecore.cat"
+		file_name  	"$CURDIR\\..\\..\\org.eclipse.emf.ecore\\src\\model\\org.eclipse.emf.Ecore.cat"
 		quid       	"39A5ED04004E")
 	    (object Class_Category "UML2"
 		is_unit    	TRUE
 		is_loaded  	FALSE
-		file_name  	"$VABASE_PLUGINS_PATH\\org.eclipse.uml2\\model\\org.eclipse.UML2.cat"
+		file_name  	"$CURDIR\\org.eclipse.UML2.cat"
 		quid       	"4048DAFF0357"))
 	logical_presentations 	(list unit_reference_list
 	    (object ClassDiagram "Main"
@@ -1560,7 +1560,7 @@
 		    (object Attribute
 			tool       	"Java"
 			name       	"ClassPath"
-			value      	";C:\\j2sdk1.4.2_02\\jre\\lib\\charsets.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\jce.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\jsse.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\rt.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\sunrsasign.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\ext\\dnsns.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\ext\\ldapsec.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\ext\\localedata.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\ext\\sunjce_provider.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\security\\local_policy.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\security\\US_export_policy.jar;C:\\j2sdk1.4.2_02\\lib\\dt.jar;C:\\j2sdk1.4.2_02\\lib\\htmlconverter.jar;C:\\j2sdk1.4.2_02\\lib\\tools.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\charsets.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\jce.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\jsse.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\rt.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\sunrsasign.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\ext\\dnsns.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\ext\\ldapsec.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\ext\\localedata.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\ext\\sunjce_provider.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\security\\local_policy.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\security\\US_export_policy.jar;C:\\j2sdk1.4.2_03\\lib\\dt.jar;C:\\j2sdk1.4.2_03\\lib\\htmlconverter.jar;C:\\j2sdk1.4.2_03\\lib\\tools.jar")
+			value      	";C:\\j2sdk1.4.2_02\\jre\\lib\\charsets.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\jce.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\jsse.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\rt.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\sunrsasign.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\ext\\dnsns.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\ext\\ldapsec.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\ext\\localedata.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\ext\\sunjce_provider.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\security\\local_policy.jar;C:\\j2sdk1.4.2_02\\jre\\lib\\security\\US_export_policy.jar;C:\\j2sdk1.4.2_02\\lib\\dt.jar;C:\\j2sdk1.4.2_02\\lib\\htmlconverter.jar;C:\\j2sdk1.4.2_02\\lib\\tools.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\charsets.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\jce.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\jsse.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\rt.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\sunrsasign.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\ext\\dnsns.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\ext\\ldapsec.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\ext\\localedata.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\ext\\sunjce_provider.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\security\\local_policy.jar;C:\\j2sdk1.4.2_03\\jre\\lib\\security\\US_export_policy.jar;C:\\j2sdk1.4.2_03\\lib\\dt.jar;C:\\j2sdk1.4.2_03\\lib\\htmlconverter.jar;C:\\j2sdk1.4.2_03\\lib\\tools.jar;C:\\j2sdk1.4.2_05\\jre\\lib\\charsets.jar;C:\\j2sdk1.4.2_05\\jre\\lib\\jce.jar;C:\\j2sdk1.4.2_05\\jre\\lib\\jsse.jar;C:\\j2sdk1.4.2_05\\jre\\lib\\rt.jar;C:\\j2sdk1.4.2_05\\jre\\lib\\sunrsasign.jar;C:\\j2sdk1.4.2_05\\jre\\lib\\ext\\dnsns.jar;C:\\j2sdk1.4.2_05\\jre\\lib\\ext\\ldapsec.jar;C:\\j2sdk1.4.2_05\\jre\\lib\\ext\\localedata.jar;C:\\j2sdk1.4.2_05\\jre\\lib\\ext\\sunjce_provider.jar;C:\\j2sdk1.4.2_05\\jre\\lib\\security\\local_policy.jar;C:\\j2sdk1.4.2_05\\jre\\lib\\security\\US_export_policy.jar;C:\\j2sdk1.4.2_05\\lib\\dt.jar;C:\\j2sdk1.4.2_05\\lib\\htmlconverter.jar;C:\\j2sdk1.4.2_05\\lib\\tools.jar")
 		    (object Attribute
 			tool       	"Java"
 			name       	"EditorType"
