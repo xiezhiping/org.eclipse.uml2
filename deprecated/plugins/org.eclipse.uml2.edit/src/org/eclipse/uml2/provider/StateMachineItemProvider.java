@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineItemProvider.java,v 1.19 2005/04/22 20:19:59 khussey Exp $
+ * $Id: StateMachineItemProvider.java,v 1.20 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class StateMachineItemProvider
 	 */
 	protected void addRegionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_StateMachine_region_feature"), //$NON-NLS-1$
@@ -97,7 +97,10 @@ public class StateMachineItemProvider
 				 UML2Package.eINSTANCE.getStateMachine_Region(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -108,7 +111,7 @@ public class StateMachineItemProvider
 	 */
 	protected void addConnectionPointPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_StateMachine_connectionPoint_feature"), //$NON-NLS-1$
@@ -116,7 +119,10 @@ public class StateMachineItemProvider
 				 UML2Package.eINSTANCE.getStateMachine_ConnectionPoint(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -127,13 +133,16 @@ public class StateMachineItemProvider
 	 */
 	protected void addExtendedStateMachinePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_StateMachine_extendedStateMachine_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StateMachine_extendedStateMachine_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getStateMachine_ExtendedStateMachine(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -144,7 +153,7 @@ public class StateMachineItemProvider
 	 */
 	protected void addStateMachine_redefinitionContextPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_StateMachine_stateMachine_redefinitionContext_feature"), //$NON-NLS-1$
@@ -152,7 +161,10 @@ public class StateMachineItemProvider
 				 UML2Package.eINSTANCE.getStateMachine_StateMachine_redefinitionContext(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

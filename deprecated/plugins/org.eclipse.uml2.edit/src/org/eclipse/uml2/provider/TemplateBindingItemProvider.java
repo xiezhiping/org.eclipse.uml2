@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingItemProvider.java,v 1.10 2005/04/22 20:19:58 khussey Exp $
+ * $Id: TemplateBindingItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class TemplateBindingItemProvider
 	 */
 	protected void addBoundElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TemplateBinding_boundElement_feature"), //$NON-NLS-1$
@@ -94,7 +94,10 @@ public class TemplateBindingItemProvider
 				 UML2Package.eINSTANCE.getTemplateBinding_BoundElement(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -105,13 +108,16 @@ public class TemplateBindingItemProvider
 	 */
 	protected void addSignaturePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TemplateBinding_signature_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateBinding_signature_feature", "_UI_TemplateBinding_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getTemplateBinding_Signature(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -122,7 +128,7 @@ public class TemplateBindingItemProvider
 	 */
 	protected void addParameterSubstitutionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TemplateBinding_parameterSubstitution_feature"), //$NON-NLS-1$
@@ -130,7 +136,10 @@ public class TemplateBindingItemProvider
 				 UML2Package.eINSTANCE.getTemplateBinding_ParameterSubstitution(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

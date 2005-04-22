@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionItemProvider.java,v 1.11 2005/04/22 20:19:59 khussey Exp $
+ * $Id: ProtocolTransitionItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class ProtocolTransitionItemProvider
 	 */
 	protected void addPostConditionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ProtocolTransition_postCondition_feature"), //$NON-NLS-1$
@@ -101,7 +101,10 @@ public class ProtocolTransitionItemProvider
 				 UML2Package.eINSTANCE.getProtocolTransition_PostCondition(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -112,7 +115,7 @@ public class ProtocolTransitionItemProvider
 	 */
 	protected void addReferredPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ProtocolTransition_referred_feature"), //$NON-NLS-1$
@@ -120,7 +123,10 @@ public class ProtocolTransitionItemProvider
 				 UML2Package.eINSTANCE.getProtocolTransition_Referred(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -131,13 +137,16 @@ public class ProtocolTransitionItemProvider
 	 */
 	protected void addPreConditionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ProtocolTransition_preCondition_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProtocolTransition_preCondition_feature", "_UI_ProtocolTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getProtocolTransition_PreCondition(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

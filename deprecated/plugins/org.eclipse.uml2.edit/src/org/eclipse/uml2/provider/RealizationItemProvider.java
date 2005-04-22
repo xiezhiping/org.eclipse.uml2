@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RealizationItemProvider.java,v 1.10 2005/04/22 20:19:58 khussey Exp $
+ * $Id: RealizationItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class RealizationItemProvider
 	 */
 	protected void addAbstractionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Realization_abstraction_feature"), //$NON-NLS-1$
@@ -97,7 +97,10 @@ public class RealizationItemProvider
 				 UML2Package.eINSTANCE.getRealization_Abstraction(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -108,13 +111,16 @@ public class RealizationItemProvider
 	 */
 	protected void addRealizingClassifierPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Realization_realizingClassifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Realization_realizingClassifier_feature", "_UI_Realization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getRealization_RealizingClassifier(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

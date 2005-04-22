@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionItemProvider.java,v 1.11 2005/04/22 20:19:58 khussey Exp $
+ * $Id: ExpansionRegionItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,14 +86,16 @@ public class ExpansionRegionItemProvider
 	 */
 	protected void addModePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ExpansionRegion_mode_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_mode_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getExpansionRegion_Mode(),
 				 true,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE));
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -104,13 +106,16 @@ public class ExpansionRegionItemProvider
 	 */
 	protected void addOutputElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ExpansionRegion_outputElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_outputElement_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getExpansionRegion_OutputElement(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -121,13 +126,16 @@ public class ExpansionRegionItemProvider
 	 */
 	protected void addInputElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ExpansionRegion_inputElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_inputElement_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getExpansionRegion_InputElement(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

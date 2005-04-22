@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionItemProvider.java,v 1.10 2005/04/22 20:19:58 khussey Exp $
+ * $Id: ActivityPartitionItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class ActivityPartitionItemProvider
 	 */
 	protected void addSuperGroupPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityGroup_superGroup_feature"), //$NON-NLS-1$
@@ -101,7 +101,10 @@ public class ActivityPartitionItemProvider
 				 UML2Package.eINSTANCE.getActivityGroup_SuperGroup(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -112,7 +115,7 @@ public class ActivityPartitionItemProvider
 	 */
 	protected void addActivityGroup_activityPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityGroup_activityGroup_activity_feature"), //$NON-NLS-1$
@@ -120,7 +123,10 @@ public class ActivityPartitionItemProvider
 				 UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -131,14 +137,16 @@ public class ActivityPartitionItemProvider
 	 */
 	protected void addIsDimensionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityPartition_isDimension_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityPartition_isDimension_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getActivityPartition_IsDimension(),
 				 true,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -149,14 +157,16 @@ public class ActivityPartitionItemProvider
 	 */
 	protected void addIsExternalPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityPartition_isExternal_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityPartition_isExternal_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getActivityPartition_IsExternal(),
 				 true,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -167,13 +177,16 @@ public class ActivityPartitionItemProvider
 	 */
 	protected void addContainedEdgePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityPartition_containedEdge_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityPartition_containedEdge_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getActivityPartition_ContainedEdge(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -184,13 +197,16 @@ public class ActivityPartitionItemProvider
 	 */
 	protected void addContainedNodePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityPartition_containedNode_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityPartition_containedNode_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getActivityPartition_ContainedNode(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -201,7 +217,7 @@ public class ActivityPartitionItemProvider
 	 */
 	protected void addSubgroupPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityPartition_subgroup_feature"), //$NON-NLS-1$
@@ -209,7 +225,10 @@ public class ActivityPartitionItemProvider
 				 UML2Package.eINSTANCE.getActivityPartition_Subgroup(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -220,7 +239,7 @@ public class ActivityPartitionItemProvider
 	 */
 	protected void addSuperPartitionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityPartition_superPartition_feature"), //$NON-NLS-1$
@@ -228,7 +247,10 @@ public class ActivityPartitionItemProvider
 				 UML2Package.eINSTANCE.getActivityPartition_SuperPartition(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -239,13 +261,16 @@ public class ActivityPartitionItemProvider
 	 */
 	protected void addRepresentsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityPartition_represents_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityPartition_represents_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getActivityPartition_Represents(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

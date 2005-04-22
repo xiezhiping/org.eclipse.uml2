@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionItemProvider.java,v 1.10 2005/04/22 20:19:59 khussey Exp $
+ * $Id: AbstractionItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -84,7 +84,7 @@ public class AbstractionItemProvider
 	 */
 	protected void addMappingPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Abstraction_mapping_feature"), //$NON-NLS-1$
@@ -92,7 +92,10 @@ public class AbstractionItemProvider
 				 UML2Package.eINSTANCE.getAbstraction_Mapping(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

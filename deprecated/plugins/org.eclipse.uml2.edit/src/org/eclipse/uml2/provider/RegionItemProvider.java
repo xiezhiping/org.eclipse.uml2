@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionItemProvider.java,v 1.11 2005/04/22 20:19:58 khussey Exp $
+ * $Id: RegionItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class RegionItemProvider
 	 */
 	protected void addRedefinitionContextPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
@@ -101,7 +101,10 @@ public class RegionItemProvider
 				 UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -112,14 +115,16 @@ public class RegionItemProvider
 	 */
 	protected void addIsLeafPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getRedefinableElement_IsLeaf(),
 				 true,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -130,7 +135,7 @@ public class RegionItemProvider
 	 */
 	protected void addSubvertexPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Region_subvertex_feature"), //$NON-NLS-1$
@@ -138,7 +143,10 @@ public class RegionItemProvider
 				 UML2Package.eINSTANCE.getRegion_Subvertex(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -149,7 +157,7 @@ public class RegionItemProvider
 	 */
 	protected void addTransitionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Region_transition_feature"), //$NON-NLS-1$
@@ -157,7 +165,10 @@ public class RegionItemProvider
 				 UML2Package.eINSTANCE.getRegion_Transition(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -168,7 +179,7 @@ public class RegionItemProvider
 	 */
 	protected void addStateMachinePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Region_stateMachine_feature"), //$NON-NLS-1$
@@ -176,7 +187,10 @@ public class RegionItemProvider
 				 UML2Package.eINSTANCE.getRegion_StateMachine(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -187,7 +201,7 @@ public class RegionItemProvider
 	 */
 	protected void addStatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Region_state_feature"), //$NON-NLS-1$
@@ -195,7 +209,10 @@ public class RegionItemProvider
 				 UML2Package.eINSTANCE.getRegion_State(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -206,13 +223,16 @@ public class RegionItemProvider
 	 */
 	protected void addExtendedRegionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Region_extendedRegion_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Region_extendedRegion_feature", "_UI_Region_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getRegion_ExtendedRegion(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

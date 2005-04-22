@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeTriggerItemProvider.java,v 1.10 2005/04/22 20:19:58 khussey Exp $
+ * $Id: ChangeTriggerItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -84,7 +84,7 @@ public class ChangeTriggerItemProvider
 	 */
 	protected void addChangeExpressionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ChangeTrigger_changeExpression_feature"), //$NON-NLS-1$
@@ -92,7 +92,10 @@ public class ChangeTriggerItemProvider
 				 UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseItemProvider.java,v 1.11 2005/04/22 20:19:59 khussey Exp $
+ * $Id: UseCaseItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,7 +89,7 @@ public class UseCaseItemProvider
 	 */
 	protected void addIncludePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_UseCase_include_feature"), //$NON-NLS-1$
@@ -97,7 +97,10 @@ public class UseCaseItemProvider
 				 UML2Package.eINSTANCE.getUseCase_Include(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -108,7 +111,7 @@ public class UseCaseItemProvider
 	 */
 	protected void addExtendPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_UseCase_extend_feature"), //$NON-NLS-1$
@@ -116,7 +119,10 @@ public class UseCaseItemProvider
 				 UML2Package.eINSTANCE.getUseCase_Extend(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -127,7 +133,7 @@ public class UseCaseItemProvider
 	 */
 	protected void addExtensionPointPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_UseCase_extensionPoint_feature"), //$NON-NLS-1$
@@ -135,7 +141,10 @@ public class UseCaseItemProvider
 				 UML2Package.eINSTANCE.getUseCase_ExtensionPoint(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -146,13 +155,16 @@ public class UseCaseItemProvider
 	 */
 	protected void addSubjectPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_UseCase_subject_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_UseCase_subject_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getUseCase_Subject(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

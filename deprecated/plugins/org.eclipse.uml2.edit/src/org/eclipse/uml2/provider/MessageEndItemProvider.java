@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageEndItemProvider.java,v 1.11 2005/04/22 20:19:59 khussey Exp $
+ * $Id: MessageEndItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -82,13 +82,16 @@ public class MessageEndItemProvider
 	 */
 	protected void addReceiveMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MessageEnd_receiveMessage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_receiveMessage_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getMessageEnd_ReceiveMessage(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -99,13 +102,16 @@ public class MessageEndItemProvider
 	 */
 	protected void addSendMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MessageEnd_sendMessage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_sendMessage_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getMessageEnd_SendMessage(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

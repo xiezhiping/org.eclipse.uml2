@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetItemProvider.java,v 1.10 2005/04/22 20:19:58 khussey Exp $
+ * $Id: ParameterSetItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -85,13 +85,16 @@ public class ParameterSetItemProvider
 	 */
 	protected void addParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ParameterSet_parameter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterSet_parameter_feature", "_UI_ParameterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getParameterSet_Parameter(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -102,7 +105,7 @@ public class ParameterSetItemProvider
 	 */
 	protected void addConditionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ParameterSet_condition_feature"), //$NON-NLS-1$
@@ -110,7 +113,10 @@ public class ParameterSetItemProvider
 				 UML2Package.eINSTANCE.getParameterSet_Condition(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

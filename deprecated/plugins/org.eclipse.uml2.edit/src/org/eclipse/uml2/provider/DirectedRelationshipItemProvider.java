@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipItemProvider.java,v 1.11 2005/04/22 20:19:58 khussey Exp $
+ * $Id: DirectedRelationshipItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -81,7 +81,7 @@ public class DirectedRelationshipItemProvider
 	 */
 	protected void addSourcePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DirectedRelationship_source_feature"), //$NON-NLS-1$
@@ -89,7 +89,10 @@ public class DirectedRelationshipItemProvider
 				 UML2Package.eINSTANCE.getDirectedRelationship_Source(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -100,7 +103,7 @@ public class DirectedRelationshipItemProvider
 	 */
 	protected void addTargetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DirectedRelationship_target_feature"), //$NON-NLS-1$
@@ -108,7 +111,10 @@ public class DirectedRelationshipItemProvider
 				 UML2Package.eINSTANCE.getDirectedRelationship_Target(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceItemProvider.java,v 1.11 2005/04/22 20:19:59 khussey Exp $
+ * $Id: NamespaceItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -90,7 +90,7 @@ public class NamespaceItemProvider
 	 */
 	protected void addMemberPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Namespace_member_feature"), //$NON-NLS-1$
@@ -98,7 +98,10 @@ public class NamespaceItemProvider
 				 UML2Package.eINSTANCE.getNamespace_Member(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -109,7 +112,7 @@ public class NamespaceItemProvider
 	 */
 	protected void addOwnedRulePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Namespace_ownedRule_feature"), //$NON-NLS-1$
@@ -117,7 +120,10 @@ public class NamespaceItemProvider
 				 UML2Package.eINSTANCE.getNamespace_OwnedRule(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -128,7 +134,7 @@ public class NamespaceItemProvider
 	 */
 	protected void addImportedMemberPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Namespace_importedMember_feature"), //$NON-NLS-1$
@@ -136,7 +142,10 @@ public class NamespaceItemProvider
 				 UML2Package.eINSTANCE.getNamespace_ImportedMember(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -147,7 +156,7 @@ public class NamespaceItemProvider
 	 */
 	protected void addElementImportPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Namespace_elementImport_feature"), //$NON-NLS-1$
@@ -155,7 +164,10 @@ public class NamespaceItemProvider
 				 UML2Package.eINSTANCE.getNamespace_ElementImport(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -166,7 +178,7 @@ public class NamespaceItemProvider
 	 */
 	protected void addPackageImportPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Namespace_packageImport_feature"), //$NON-NLS-1$
@@ -174,7 +186,10 @@ public class NamespaceItemProvider
 				 UML2Package.eINSTANCE.getNamespace_PackageImport(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

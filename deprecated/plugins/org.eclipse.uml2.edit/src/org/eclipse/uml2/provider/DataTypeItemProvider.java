@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeItemProvider.java,v 1.10 2005/04/22 20:19:58 khussey Exp $
+ * $Id: DataTypeItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -87,7 +87,7 @@ public class DataTypeItemProvider
 	 */
 	protected void addOwnedAttributePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DataType_ownedAttribute_feature"), //$NON-NLS-1$
@@ -95,7 +95,10 @@ public class DataTypeItemProvider
 				 UML2Package.eINSTANCE.getDataType_OwnedAttribute(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -106,7 +109,7 @@ public class DataTypeItemProvider
 	 */
 	protected void addOwnedOperationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DataType_ownedOperation_feature"), //$NON-NLS-1$
@@ -114,7 +117,10 @@ public class DataTypeItemProvider
 				 UML2Package.eINSTANCE.getDataType_OwnedOperation(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

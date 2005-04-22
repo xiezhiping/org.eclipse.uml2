@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierItemProvider.java,v 1.12 2005/04/22 20:19:59 khussey Exp $
+ * $Id: BehavioredClassifierItemProvider.java,v 1.13 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -97,7 +97,7 @@ public class BehavioredClassifierItemProvider
 	 */
 	protected void addOwnedBehaviorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_ownedBehavior_feature"), //$NON-NLS-1$
@@ -105,7 +105,10 @@ public class BehavioredClassifierItemProvider
 				 UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -116,13 +119,16 @@ public class BehavioredClassifierItemProvider
 	 */
 	protected void addClassifierBehaviorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_classifierBehavior_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_classifierBehavior_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -133,7 +139,7 @@ public class BehavioredClassifierItemProvider
 	 */
 	protected void addImplementationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_implementation_feature"), //$NON-NLS-1$
@@ -141,7 +147,10 @@ public class BehavioredClassifierItemProvider
 				 UML2Package.eINSTANCE.getBehavioredClassifier_Implementation(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -152,7 +161,7 @@ public class BehavioredClassifierItemProvider
 	 */
 	protected void addOwnedTriggerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_ownedTrigger_feature"), //$NON-NLS-1$
@@ -160,7 +169,10 @@ public class BehavioredClassifierItemProvider
 				 UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -171,7 +183,7 @@ public class BehavioredClassifierItemProvider
 	 */
 	protected void addOwnedStateMachinePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioredClassifier_ownedStateMachine_feature"), //$NON-NLS-1$
@@ -179,7 +191,10 @@ public class BehavioredClassifierItemProvider
 				 UML2Package.eINSTANCE.getBehavioredClassifier_OwnedStateMachine(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionItemProvider.java,v 1.14 2005/04/22 20:19:58 khussey Exp $
+ * $Id: DurationObservationActionItemProvider.java,v 1.15 2005/04/22 20:55:49 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -84,7 +84,7 @@ public class DurationObservationActionItemProvider
 	 */
 	protected void addDurationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DurationObservationAction_duration_feature"), //$NON-NLS-1$
@@ -92,7 +92,10 @@ public class DurationObservationActionItemProvider
 				 UML2Package.eINSTANCE.getDurationObservationAction_Duration(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingItemProvider.java,v 1.10 2005/04/22 20:19:59 khussey Exp $
+ * $Id: GeneralOrderingItemProvider.java,v 1.11 2005/04/22 20:55:49 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -82,13 +82,16 @@ public class GeneralOrderingItemProvider
 	 */
 	protected void addBeforePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_GeneralOrdering_before_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralOrdering_before_feature", "_UI_GeneralOrdering_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getGeneralOrdering_Before(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -99,13 +102,16 @@ public class GeneralOrderingItemProvider
 	 */
 	protected void addAfterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_GeneralOrdering_after_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralOrdering_after_feature", "_UI_GeneralOrdering_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getGeneralOrdering_After(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

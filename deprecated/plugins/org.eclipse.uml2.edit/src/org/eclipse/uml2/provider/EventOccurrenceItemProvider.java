@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrenceItemProvider.java,v 1.10 2005/04/22 20:19:59 khussey Exp $
+ * $Id: EventOccurrenceItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,13 +86,16 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addReceiveMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MessageEnd_receiveMessage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_receiveMessage_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getMessageEnd_ReceiveMessage(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -103,13 +106,16 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addSendMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_MessageEnd_sendMessage_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_sendMessage_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getMessageEnd_SendMessage(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -120,13 +126,16 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addStartExecPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_startExec_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_EventOccurrence_startExec_feature", "_UI_EventOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getEventOccurrence_StartExec(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -137,13 +146,16 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addFinishExecPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_finishExec_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_EventOccurrence_finishExec_feature", "_UI_EventOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getEventOccurrence_FinishExec(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -154,13 +166,16 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addToAfterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_toAfter_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_EventOccurrence_toAfter_feature", "_UI_EventOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getEventOccurrence_ToAfter(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -171,13 +186,16 @@ public class EventOccurrenceItemProvider
 	 */
 	protected void addToBeforePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_EventOccurrence_toBefore_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_EventOccurrence_toBefore_feature", "_UI_EventOccurrence_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getEventOccurrence_ToBefore(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionItemProvider.java,v 1.11 2005/04/22 20:19:59 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -90,14 +90,16 @@ public class ReadIsClassifiedObjectActionItemProvider
 	 */
 	protected void addIsDirectPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ReadIsClassifiedObjectAction_isDirect_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReadIsClassifiedObjectAction_isDirect_feature", "_UI_ReadIsClassifiedObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_IsDirect(),
 				 true,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -108,13 +110,16 @@ public class ReadIsClassifiedObjectActionItemProvider
 	 */
 	protected void addClassifierPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ReadIsClassifiedObjectAction_classifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ReadIsClassifiedObjectAction_classifier_feature", "_UI_ReadIsClassifiedObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Classifier(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -125,7 +130,7 @@ public class ReadIsClassifiedObjectActionItemProvider
 	 */
 	protected void addResultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ReadIsClassifiedObjectAction_result_feature"), //$NON-NLS-1$
@@ -133,7 +138,10 @@ public class ReadIsClassifiedObjectActionItemProvider
 				 UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Result(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -144,7 +152,7 @@ public class ReadIsClassifiedObjectActionItemProvider
 	 */
 	protected void addObjectPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ReadIsClassifiedObjectAction_object_feature"), //$NON-NLS-1$
@@ -152,7 +160,10 @@ public class ReadIsClassifiedObjectActionItemProvider
 				 UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Object(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

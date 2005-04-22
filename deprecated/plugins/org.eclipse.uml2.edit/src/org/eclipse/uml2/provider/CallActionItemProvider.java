@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionItemProvider.java,v 1.11 2005/04/22 20:19:58 khussey Exp $
+ * $Id: CallActionItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,14 +86,16 @@ public class CallActionItemProvider
 	 */
 	protected void addIsSynchronousPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_CallAction_isSynchronous_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_CallAction_isSynchronous_feature", "_UI_CallAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getCallAction_IsSynchronous(),
 				 true,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -104,7 +106,7 @@ public class CallActionItemProvider
 	 */
 	protected void addResultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_CallAction_result_feature"), //$NON-NLS-1$
@@ -112,7 +114,10 @@ public class CallActionItemProvider
 				 UML2Package.eINSTANCE.getCallAction_Result(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

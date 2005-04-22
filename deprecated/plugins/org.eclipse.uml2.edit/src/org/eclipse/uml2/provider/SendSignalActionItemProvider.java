@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionItemProvider.java,v 1.14 2005/04/22 20:19:59 khussey Exp $
+ * $Id: SendSignalActionItemProvider.java,v 1.15 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -85,7 +85,7 @@ public class SendSignalActionItemProvider
 	 */
 	protected void addTargetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_SendSignalAction_target_feature"), //$NON-NLS-1$
@@ -93,7 +93,10 @@ public class SendSignalActionItemProvider
 				 UML2Package.eINSTANCE.getSendSignalAction_Target(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -104,13 +107,16 @@ public class SendSignalActionItemProvider
 	 */
 	protected void addSignalPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_SendSignalAction_signal_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_SendSignalAction_signal_feature", "_UI_SendSignalAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getSendSignalAction_Signal(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineItemProvider.java,v 1.19 2005/04/22 20:19:58 khussey Exp $
+ * $Id: ProtocolStateMachineItemProvider.java,v 1.20 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -84,7 +84,7 @@ public class ProtocolStateMachineItemProvider
 	 */
 	protected void addConformancePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ProtocolStateMachine_conformance_feature"), //$NON-NLS-1$
@@ -92,7 +92,10 @@ public class ProtocolStateMachineItemProvider
 				 UML2Package.eINSTANCE.getProtocolStateMachine_Conformance(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

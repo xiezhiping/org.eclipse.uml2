@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataItemProvider.java,v 1.10 2005/04/22 20:19:58 khussey Exp $
+ * $Id: LinkEndCreationDataItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -85,14 +85,16 @@ public class LinkEndCreationDataItemProvider
 	 */
 	protected void addIsReplaceAllPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LinkEndCreationData_isReplaceAll_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_LinkEndCreationData_isReplaceAll_feature", "_UI_LinkEndCreationData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getLinkEndCreationData_IsReplaceAll(),
 				 true,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -103,13 +105,16 @@ public class LinkEndCreationDataItemProvider
 	 */
 	protected void addInsertAtPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LinkEndCreationData_insertAt_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_LinkEndCreationData_insertAt_feature", "_UI_LinkEndCreationData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getLinkEndCreationData_InsertAt(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetItemProvider.java,v 1.11 2005/04/22 20:19:58 khussey Exp $
+ * $Id: DeploymentTargetItemProvider.java,v 1.12 2005/04/22 20:55:49 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,7 +93,7 @@ public class DeploymentTargetItemProvider
 	 */
 	protected void addDeploymentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
@@ -101,7 +101,10 @@ public class DeploymentTargetItemProvider
 				 UML2Package.eINSTANCE.getDeploymentTarget_Deployment(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -112,7 +115,7 @@ public class DeploymentTargetItemProvider
 	 */
 	protected void addDeployedElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployedElement_feature"), //$NON-NLS-1$
@@ -120,7 +123,10 @@ public class DeploymentTargetItemProvider
 				 UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

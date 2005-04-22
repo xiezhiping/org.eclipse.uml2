@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterItemProvider.java,v 1.18 2005/04/22 20:19:58 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.19 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -95,7 +95,7 @@ public class TemplateParameterItemProvider
 	 */
 	protected void addSignaturePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TemplateParameter_signature_feature"), //$NON-NLS-1$
@@ -103,7 +103,10 @@ public class TemplateParameterItemProvider
 				 UML2Package.eINSTANCE.getTemplateParameter_Signature(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -114,13 +117,16 @@ public class TemplateParameterItemProvider
 	 */
 	protected void addParameteredElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TemplateParameter_parameteredElement_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateParameter_parameteredElement_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getTemplateParameter_ParameteredElement(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -131,7 +137,7 @@ public class TemplateParameterItemProvider
 	 */
 	protected void addOwnedParameteredElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TemplateParameter_ownedParameteredElement_feature"), //$NON-NLS-1$
@@ -139,7 +145,10 @@ public class TemplateParameterItemProvider
 				 UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -150,13 +159,16 @@ public class TemplateParameterItemProvider
 	 */
 	protected void addDefaultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TemplateParameter_default_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TemplateParameter_default_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getTemplateParameter_Default(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -167,7 +179,7 @@ public class TemplateParameterItemProvider
 	 */
 	protected void addOwnedDefaultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TemplateParameter_ownedDefault_feature"), //$NON-NLS-1$
@@ -175,7 +187,10 @@ public class TemplateParameterItemProvider
 				 UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

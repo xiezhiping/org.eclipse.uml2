@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipItemProvider.java,v 1.11 2005/04/22 20:19:58 khussey Exp $
+ * $Id: RelationshipItemProvider.java,v 1.12 2005/04/22 20:55:49 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -80,7 +80,7 @@ public class RelationshipItemProvider
 	 */
 	protected void addRelatedElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Relationship_relatedElement_feature"), //$NON-NLS-1$
@@ -88,7 +88,10 @@ public class RelationshipItemProvider
 				 UML2Package.eINSTANCE.getRelationship_RelatedElement(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

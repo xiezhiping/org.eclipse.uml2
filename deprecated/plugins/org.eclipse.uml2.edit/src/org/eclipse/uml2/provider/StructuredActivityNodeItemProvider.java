@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeItemProvider.java,v 1.18 2005/04/22 20:19:58 khussey Exp $
+ * $Id: StructuredActivityNodeItemProvider.java,v 1.19 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -97,7 +97,7 @@ public class StructuredActivityNodeItemProvider
 	 */
 	protected void addMemberPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Namespace_member_feature"), //$NON-NLS-1$
@@ -105,7 +105,10 @@ public class StructuredActivityNodeItemProvider
 				 UML2Package.eINSTANCE.getNamespace_Member(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -116,7 +119,7 @@ public class StructuredActivityNodeItemProvider
 	 */
 	protected void addOwnedRulePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Namespace_ownedRule_feature"), //$NON-NLS-1$
@@ -124,7 +127,10 @@ public class StructuredActivityNodeItemProvider
 				 UML2Package.eINSTANCE.getNamespace_OwnedRule(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -135,7 +141,7 @@ public class StructuredActivityNodeItemProvider
 	 */
 	protected void addImportedMemberPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Namespace_importedMember_feature"), //$NON-NLS-1$
@@ -143,7 +149,10 @@ public class StructuredActivityNodeItemProvider
 				 UML2Package.eINSTANCE.getNamespace_ImportedMember(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -154,7 +163,7 @@ public class StructuredActivityNodeItemProvider
 	 */
 	protected void addElementImportPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Namespace_elementImport_feature"), //$NON-NLS-1$
@@ -162,7 +171,10 @@ public class StructuredActivityNodeItemProvider
 				 UML2Package.eINSTANCE.getNamespace_ElementImport(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -173,7 +185,7 @@ public class StructuredActivityNodeItemProvider
 	 */
 	protected void addPackageImportPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Namespace_packageImport_feature"), //$NON-NLS-1$
@@ -181,7 +193,10 @@ public class StructuredActivityNodeItemProvider
 				 UML2Package.eINSTANCE.getNamespace_PackageImport(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -192,7 +207,7 @@ public class StructuredActivityNodeItemProvider
 	 */
 	protected void addSuperGroupPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityGroup_superGroup_feature"), //$NON-NLS-1$
@@ -200,7 +215,10 @@ public class StructuredActivityNodeItemProvider
 				 UML2Package.eINSTANCE.getActivityGroup_SuperGroup(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -211,7 +229,7 @@ public class StructuredActivityNodeItemProvider
 	 */
 	protected void addActivityGroup_activityPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityGroup_activityGroup_activity_feature"), //$NON-NLS-1$
@@ -219,7 +237,10 @@ public class StructuredActivityNodeItemProvider
 				 UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -230,7 +251,7 @@ public class StructuredActivityNodeItemProvider
 	 */
 	protected void addVariablePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_StructuredActivityNode_variable_feature"), //$NON-NLS-1$
@@ -238,7 +259,10 @@ public class StructuredActivityNodeItemProvider
 				 UML2Package.eINSTANCE.getStructuredActivityNode_Variable(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -249,7 +273,7 @@ public class StructuredActivityNodeItemProvider
 	 */
 	protected void addContainedNodePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_StructuredActivityNode_containedNode_feature"), //$NON-NLS-1$
@@ -257,7 +281,10 @@ public class StructuredActivityNodeItemProvider
 				 UML2Package.eINSTANCE.getStructuredActivityNode_ContainedNode(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -268,7 +295,7 @@ public class StructuredActivityNodeItemProvider
 	 */
 	protected void addContainedEdgePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_StructuredActivityNode_containedEdge_feature"), //$NON-NLS-1$
@@ -276,7 +303,10 @@ public class StructuredActivityNodeItemProvider
 				 UML2Package.eINSTANCE.getStructuredActivityNode_ContainedEdge(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -287,14 +317,16 @@ public class StructuredActivityNodeItemProvider
 	 */
 	protected void addMustIsolatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_StructuredActivityNode_mustIsolate_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_StructuredActivityNode_mustIsolate_feature", "_UI_StructuredActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getStructuredActivityNode_MustIsolate(),
 				 true,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**

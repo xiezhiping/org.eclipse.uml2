@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueItemProvider.java,v 1.10 2005/04/22 20:19:59 khussey Exp $
+ * $Id: QualifierValueItemProvider.java,v 1.11 2005/04/22 20:55:49 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -81,13 +81,16 @@ public class QualifierValueItemProvider
 	 */
 	protected void addQualifierPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_QualifierValue_qualifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_QualifierValue_qualifier_feature", "_UI_QualifierValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getQualifierValue_Qualifier(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -98,13 +101,16 @@ public class QualifierValueItemProvider
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_QualifierValue_value_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_QualifierValue_value_feature", "_UI_QualifierValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getQualifierValue_Value(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

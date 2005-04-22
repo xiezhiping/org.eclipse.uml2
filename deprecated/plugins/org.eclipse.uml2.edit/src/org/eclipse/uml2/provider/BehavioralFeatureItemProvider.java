@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureItemProvider.java,v 1.11 2005/04/22 20:19:58 khussey Exp $
+ * $Id: BehavioralFeatureItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -97,14 +97,16 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addIsLeafPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getRedefinableElement_IsLeaf(),
 				 true,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -115,7 +117,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addRedefinitionContextPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
@@ -123,7 +125,10 @@ public class BehavioralFeatureItemProvider
 				 UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -134,14 +139,16 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addIsStaticPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Feature_isStatic_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Feature_isStatic_feature", "_UI_Feature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getFeature_IsStatic(),
 				 true,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -152,7 +159,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addFeaturingClassifierPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Feature_featuringClassifier_feature"), //$NON-NLS-1$
@@ -160,7 +167,10 @@ public class BehavioralFeatureItemProvider
 				 UML2Package.eINSTANCE.getFeature_FeaturingClassifier(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -171,14 +181,16 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addIsAbstractPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_isAbstract_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_isAbstract_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getBehavioralFeature_IsAbstract(),
 				 true,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE));
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -189,14 +201,16 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addConcurrencyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_concurrency_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_concurrency_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getBehavioralFeature_Concurrency(),
 				 true,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE));
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -236,7 +250,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_parameter_feature"), //$NON-NLS-1$
@@ -244,7 +258,10 @@ public class BehavioralFeatureItemProvider
 				 UML2Package.eINSTANCE.getBehavioralFeature_Parameter(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -255,7 +272,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addFormalParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_formalParameter_feature"), //$NON-NLS-1$
@@ -263,7 +280,10 @@ public class BehavioralFeatureItemProvider
 				 UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -274,7 +294,7 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addReturnResultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_returnResult_feature"), //$NON-NLS-1$
@@ -282,7 +302,10 @@ public class BehavioralFeatureItemProvider
 				 UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -293,13 +316,16 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addRaisedExceptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_raisedException_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_raisedException_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getBehavioralFeature_RaisedException(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -310,13 +336,16 @@ public class BehavioralFeatureItemProvider
 	 */
 	protected void addMethodPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_BehavioralFeature_method_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_BehavioralFeature_method_feature", "_UI_BehavioralFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getBehavioralFeature_Method(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

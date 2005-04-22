@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointItemProvider.java,v 1.9 2005/04/22 20:19:59 khussey Exp $
+ * $Id: ExtensionPointItemProvider.java,v 1.10 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -83,7 +83,7 @@ public class ExtensionPointItemProvider
 	 */
 	protected void addUseCasePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ExtensionPoint_useCase_feature"), //$NON-NLS-1$
@@ -91,7 +91,10 @@ public class ExtensionPointItemProvider
 				 UML2Package.eINSTANCE.getExtensionPoint_UseCase(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceItemProvider.java,v 1.19 2005/04/22 20:19:59 khussey Exp $
+ * $Id: InterfaceItemProvider.java,v 1.20 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -91,7 +91,7 @@ public class InterfaceItemProvider
 	 */
 	protected void addOwnedAttributePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interface_ownedAttribute_feature"), //$NON-NLS-1$
@@ -99,7 +99,10 @@ public class InterfaceItemProvider
 				 UML2Package.eINSTANCE.getInterface_OwnedAttribute(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -110,7 +113,7 @@ public class InterfaceItemProvider
 	 */
 	protected void addOwnedOperationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interface_ownedOperation_feature"), //$NON-NLS-1$
@@ -118,7 +121,10 @@ public class InterfaceItemProvider
 				 UML2Package.eINSTANCE.getInterface_OwnedOperation(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -129,13 +135,16 @@ public class InterfaceItemProvider
 	 */
 	protected void addRedefinedInterfacePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interface_redefinedInterface_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Interface_redefinedInterface_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getInterface_RedefinedInterface(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -146,7 +155,7 @@ public class InterfaceItemProvider
 	 */
 	protected void addNestedClassifierPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interface_nestedClassifier_feature"), //$NON-NLS-1$
@@ -154,7 +163,10 @@ public class InterfaceItemProvider
 				 UML2Package.eINSTANCE.getInterface_NestedClassifier(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -165,7 +177,7 @@ public class InterfaceItemProvider
 	 */
 	protected void addOwnedReceptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interface_ownedReception_feature"), //$NON-NLS-1$
@@ -173,7 +185,10 @@ public class InterfaceItemProvider
 				 UML2Package.eINSTANCE.getInterface_OwnedReception(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -184,7 +199,7 @@ public class InterfaceItemProvider
 	 */
 	protected void addProtocolPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interface_protocol_feature"), //$NON-NLS-1$
@@ -192,7 +207,10 @@ public class InterfaceItemProvider
 				 UML2Package.eINSTANCE.getInterface_Protocol(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

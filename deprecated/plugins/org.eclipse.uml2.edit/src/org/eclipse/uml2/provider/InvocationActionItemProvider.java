@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionItemProvider.java,v 1.11 2005/04/22 20:19:59 khussey Exp $
+ * $Id: InvocationActionItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -85,7 +85,7 @@ public class InvocationActionItemProvider
 	 */
 	protected void addArgumentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InvocationAction_argument_feature"), //$NON-NLS-1$
@@ -93,7 +93,10 @@ public class InvocationActionItemProvider
 				 UML2Package.eINSTANCE.getInvocationAction_Argument(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -104,13 +107,16 @@ public class InvocationActionItemProvider
 	 */
 	protected void addOnPortPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InvocationAction_onPort_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InvocationAction_onPort_feature", "_UI_InvocationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getInvocationAction_OnPort(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

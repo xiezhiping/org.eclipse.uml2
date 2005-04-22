@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationItemProvider.java,v 1.10 2005/04/22 20:19:58 khussey Exp $
+ * $Id: ProfileApplicationItemProvider.java,v 1.11 2005/04/22 20:55:49 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -89,13 +89,16 @@ public class ProfileApplicationItemProvider
 	 */
 	protected void addImportedProfilePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ProfileApplication_importedProfile_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProfileApplication_importedProfile_feature", "_UI_ProfileApplication_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getProfileApplication_ImportedProfile(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionItemProvider.java,v 1.14 2005/04/22 20:19:58 khussey Exp $
+ * $Id: TestIdentityActionItemProvider.java,v 1.15 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -88,7 +88,7 @@ public class TestIdentityActionItemProvider
 	 */
 	protected void addFirstPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TestIdentityAction_first_feature"), //$NON-NLS-1$
@@ -96,7 +96,10 @@ public class TestIdentityActionItemProvider
 				 UML2Package.eINSTANCE.getTestIdentityAction_First(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -107,7 +110,7 @@ public class TestIdentityActionItemProvider
 	 */
 	protected void addSecondPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TestIdentityAction_second_feature"), //$NON-NLS-1$
@@ -115,7 +118,10 @@ public class TestIdentityActionItemProvider
 				 UML2Package.eINSTANCE.getTestIdentityAction_Second(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -126,7 +132,7 @@ public class TestIdentityActionItemProvider
 	 */
 	protected void addResultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TestIdentityAction_result_feature"), //$NON-NLS-1$
@@ -134,7 +140,10 @@ public class TestIdentityActionItemProvider
 				 UML2Package.eINSTANCE.getTestIdentityAction_Result(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

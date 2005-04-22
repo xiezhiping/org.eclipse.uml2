@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupItemProvider.java,v 1.11 2005/04/22 20:19:58 khussey Exp $
+ * $Id: ActivityGroupItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -81,7 +81,7 @@ public class ActivityGroupItemProvider
 	 */
 	protected void addSuperGroupPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityGroup_superGroup_feature"), //$NON-NLS-1$
@@ -89,7 +89,10 @@ public class ActivityGroupItemProvider
 				 UML2Package.eINSTANCE.getActivityGroup_SuperGroup(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -100,7 +103,7 @@ public class ActivityGroupItemProvider
 	 */
 	protected void addActivityGroup_activityPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ActivityGroup_activityGroup_activity_feature"), //$NON-NLS-1$
@@ -108,7 +111,10 @@ public class ActivityGroupItemProvider
 				 UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

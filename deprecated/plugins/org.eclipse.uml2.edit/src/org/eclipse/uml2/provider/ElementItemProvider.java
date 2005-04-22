@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.20 2005/04/22 20:19:59 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.21 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -104,7 +104,7 @@ public class ElementItemProvider
 	 */
 	protected void addOwnedElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Element_ownedElement_feature"), //$NON-NLS-1$
@@ -112,7 +112,10 @@ public class ElementItemProvider
 				 UML2Package.eINSTANCE.getElement_OwnedElement(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -123,7 +126,7 @@ public class ElementItemProvider
 	 */
 	protected void addOwnerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Element_owner_feature"), //$NON-NLS-1$
@@ -131,7 +134,10 @@ public class ElementItemProvider
 				 UML2Package.eINSTANCE.getElement_Owner(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -142,7 +148,7 @@ public class ElementItemProvider
 	 */
 	protected void addOwnedCommentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Element_ownedComment_feature"), //$NON-NLS-1$
@@ -150,7 +156,10 @@ public class ElementItemProvider
 				 UML2Package.eINSTANCE.getElement_OwnedComment(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

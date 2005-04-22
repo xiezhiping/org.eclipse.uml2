@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionItemProvider.java,v 1.14 2005/04/22 20:19:58 khussey Exp $
+ * $Id: SendObjectActionItemProvider.java,v 1.15 2005/04/22 20:55:49 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -87,7 +87,7 @@ public class SendObjectActionItemProvider
 	 */
 	protected void addTargetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_SendObjectAction_target_feature"), //$NON-NLS-1$
@@ -95,7 +95,10 @@ public class SendObjectActionItemProvider
 				 UML2Package.eINSTANCE.getSendObjectAction_Target(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -106,7 +109,7 @@ public class SendObjectActionItemProvider
 	 */
 	protected void addRequestPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_SendObjectAction_request_feature"), //$NON-NLS-1$
@@ -114,7 +117,10 @@ public class SendObjectActionItemProvider
 				 UML2Package.eINSTANCE.getSendObjectAction_Request(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

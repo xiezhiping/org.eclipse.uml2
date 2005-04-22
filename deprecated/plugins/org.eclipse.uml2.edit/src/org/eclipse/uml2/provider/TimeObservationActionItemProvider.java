@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionItemProvider.java,v 1.14 2005/04/22 20:19:58 khussey Exp $
+ * $Id: TimeObservationActionItemProvider.java,v 1.15 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -84,7 +84,7 @@ public class TimeObservationActionItemProvider
 	 */
 	protected void addNowPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_TimeObservationAction_now_feature"), //$NON-NLS-1$
@@ -92,7 +92,10 @@ public class TimeObservationActionItemProvider
 				 UML2Package.eINSTANCE.getTimeObservationAction_Now(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

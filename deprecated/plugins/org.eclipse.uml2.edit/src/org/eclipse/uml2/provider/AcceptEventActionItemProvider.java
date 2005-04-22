@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionItemProvider.java,v 1.11 2005/04/22 20:19:58 khussey Exp $
+ * $Id: AcceptEventActionItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -82,13 +82,16 @@ public class AcceptEventActionItemProvider
 	 */
 	protected void addTriggerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_AcceptEventAction_trigger_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AcceptEventAction_trigger_feature", "_UI_AcceptEventAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getAcceptEventAction_Trigger(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -99,13 +102,16 @@ public class AcceptEventActionItemProvider
 	 */
 	protected void addResultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_AcceptEventAction_result_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AcceptEventAction_result_feature", "_UI_AcceptEventAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getAcceptEventAction_Result(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

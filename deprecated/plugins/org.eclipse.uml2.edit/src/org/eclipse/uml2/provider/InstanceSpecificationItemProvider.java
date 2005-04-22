@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationItemProvider.java,v 1.10 2005/04/22 20:19:58 khussey Exp $
+ * $Id: InstanceSpecificationItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -96,7 +96,7 @@ public class InstanceSpecificationItemProvider
 	 */
 	protected void addDeploymentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
@@ -104,7 +104,10 @@ public class InstanceSpecificationItemProvider
 				 UML2Package.eINSTANCE.getDeploymentTarget_Deployment(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -115,7 +118,7 @@ public class InstanceSpecificationItemProvider
 	 */
 	protected void addDeployedElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_DeploymentTarget_deployedElement_feature"), //$NON-NLS-1$
@@ -123,7 +126,10 @@ public class InstanceSpecificationItemProvider
 				 UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
 				 false,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -134,7 +140,7 @@ public class InstanceSpecificationItemProvider
 	 */
 	protected void addSlotPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InstanceSpecification_slot_feature"), //$NON-NLS-1$
@@ -142,7 +148,10 @@ public class InstanceSpecificationItemProvider
 				 UML2Package.eINSTANCE.getInstanceSpecification_Slot(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -153,13 +162,16 @@ public class InstanceSpecificationItemProvider
 	 */
 	protected void addClassifierPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InstanceSpecification_classifier_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InstanceSpecification_classifier_feature", "_UI_InstanceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getInstanceSpecification_Classifier(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -170,7 +182,7 @@ public class InstanceSpecificationItemProvider
 	 */
 	protected void addSpecificationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InstanceSpecification_specification_feature"), //$NON-NLS-1$
@@ -178,7 +190,10 @@ public class InstanceSpecificationItemProvider
 				 UML2Package.eINSTANCE.getInstanceSpecification_Specification(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

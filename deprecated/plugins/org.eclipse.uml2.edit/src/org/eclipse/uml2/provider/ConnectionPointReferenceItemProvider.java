@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceItemProvider.java,v 1.10 2005/04/22 20:19:59 khussey Exp $
+ * $Id: ConnectionPointReferenceItemProvider.java,v 1.11 2005/04/22 20:55:49 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -82,13 +82,16 @@ public class ConnectionPointReferenceItemProvider
 	 */
 	protected void addEntryPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ConnectionPointReference_entry_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionPointReference_entry_feature", "_UI_ConnectionPointReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getConnectionPointReference_Entry(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -99,13 +102,16 @@ public class ConnectionPointReferenceItemProvider
 	 */
 	protected void addExitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ConnectionPointReference_exit_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionPointReference_exit_feature", "_UI_ConnectionPointReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getConnectionPointReference_Exit(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

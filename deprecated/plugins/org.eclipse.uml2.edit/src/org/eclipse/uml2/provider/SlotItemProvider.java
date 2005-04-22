@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotItemProvider.java,v 1.10 2005/04/22 20:19:58 khussey Exp $
+ * $Id: SlotItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -86,7 +86,7 @@ public class SlotItemProvider
 	 */
 	protected void addOwningInstancePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Slot_owningInstance_feature"), //$NON-NLS-1$
@@ -94,7 +94,10 @@ public class SlotItemProvider
 				 UML2Package.eINSTANCE.getSlot_OwningInstance(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -105,7 +108,7 @@ public class SlotItemProvider
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Slot_value_feature"), //$NON-NLS-1$
@@ -113,7 +116,10 @@ public class SlotItemProvider
 				 UML2Package.eINSTANCE.getSlot_Value(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -124,13 +130,16 @@ public class SlotItemProvider
 	 */
 	protected void addDefiningFeaturePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Slot_definingFeature_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Slot_definingFeature_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getSlot_DefiningFeature(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

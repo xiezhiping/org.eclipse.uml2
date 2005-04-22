@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionItemProvider.java,v 1.10 2005/04/22 20:19:58 khussey Exp $
+ * $Id: InterruptibleActivityRegionItemProvider.java,v 1.11 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -81,13 +81,16 @@ public class InterruptibleActivityRegionItemProvider
 	 */
 	protected void addInterruptingEdgePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InterruptibleActivityRegion_interruptingEdge_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InterruptibleActivityRegion_interruptingEdge_feature", "_UI_InterruptibleActivityRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getInterruptibleActivityRegion_InterruptingEdge(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -98,13 +101,16 @@ public class InterruptibleActivityRegionItemProvider
 	 */
 	protected void addContainedNodePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InterruptibleActivityRegion_containedNode_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InterruptibleActivityRegion_containedNode_feature", "_UI_InterruptibleActivityRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getInterruptibleActivityRegion_ContainedNode(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

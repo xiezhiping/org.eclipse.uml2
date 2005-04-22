@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionItemProvider.java,v 1.19 2005/04/22 20:19:59 khussey Exp $
+ * $Id: InteractionItemProvider.java,v 1.20 2005/04/22 20:55:49 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -93,13 +93,16 @@ public class InteractionItemProvider
 	 */
 	protected void addCoveredPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_covered_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_InteractionFragment_covered_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getInteractionFragment_Covered(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -110,7 +113,7 @@ public class InteractionItemProvider
 	 */
 	protected void addGeneralOrderingPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_generalOrdering_feature"), //$NON-NLS-1$
@@ -118,7 +121,10 @@ public class InteractionItemProvider
 				 UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -129,7 +135,7 @@ public class InteractionItemProvider
 	 */
 	protected void addEnclosingInteractionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_enclosingInteraction_feature"), //$NON-NLS-1$
@@ -137,7 +143,10 @@ public class InteractionItemProvider
 				 UML2Package.eINSTANCE.getInteractionFragment_EnclosingInteraction(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -148,7 +157,7 @@ public class InteractionItemProvider
 	 */
 	protected void addEnclosingOperandPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionFragment_enclosingOperand_feature"), //$NON-NLS-1$
@@ -156,7 +165,10 @@ public class InteractionItemProvider
 				 UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -167,7 +179,7 @@ public class InteractionItemProvider
 	 */
 	protected void addLifelinePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interaction_lifeline_feature"), //$NON-NLS-1$
@@ -175,7 +187,10 @@ public class InteractionItemProvider
 				 UML2Package.eINSTANCE.getInteraction_Lifeline(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -186,7 +201,7 @@ public class InteractionItemProvider
 	 */
 	protected void addMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interaction_message_feature"), //$NON-NLS-1$
@@ -194,7 +209,10 @@ public class InteractionItemProvider
 				 UML2Package.eINSTANCE.getInteraction_Message(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -205,7 +223,7 @@ public class InteractionItemProvider
 	 */
 	protected void addFragmentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interaction_fragment_feature"), //$NON-NLS-1$
@@ -213,7 +231,10 @@ public class InteractionItemProvider
 				 UML2Package.eINSTANCE.getInteraction_Fragment(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -224,7 +245,7 @@ public class InteractionItemProvider
 	 */
 	protected void addFormalGatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Interaction_formalGate_feature"), //$NON-NLS-1$
@@ -232,7 +253,10 @@ public class InteractionItemProvider
 				 UML2Package.eINSTANCE.getInteraction_FormalGate(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintItemProvider.java,v 1.11 2005/04/22 20:19:58 khussey Exp $
+ * $Id: InteractionConstraintItemProvider.java,v 1.12 2005/04/22 20:55:49 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -87,7 +87,7 @@ public class InteractionConstraintItemProvider
 	 */
 	protected void addMinintPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionConstraint_minint_feature"), //$NON-NLS-1$
@@ -95,7 +95,10 @@ public class InteractionConstraintItemProvider
 				 UML2Package.eINSTANCE.getInteractionConstraint_Minint(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**
@@ -106,7 +109,7 @@ public class InteractionConstraintItemProvider
 	 */
 	protected void addMaxintPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionConstraint_maxint_feature"), //$NON-NLS-1$
@@ -114,7 +117,10 @@ public class InteractionConstraintItemProvider
 				 UML2Package.eINSTANCE.getInteractionConstraint_Maxint(),
 				 true,
 				 null,
-				 new String[] {"org.eclipse.ui.views.properties.expert"})); //$NON-NLS-1$
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				 }));
 	}
 
 	/**

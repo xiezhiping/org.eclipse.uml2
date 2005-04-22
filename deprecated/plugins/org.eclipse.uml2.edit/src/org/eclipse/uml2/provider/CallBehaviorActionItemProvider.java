@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionItemProvider.java,v 1.11 2005/04/22 20:19:59 khussey Exp $
+ * $Id: CallBehaviorActionItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -81,13 +81,16 @@ public class CallBehaviorActionItemProvider
 	 */
 	protected void addBehaviorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new UML2ItemPropertyDescriptor
+			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_CallBehaviorAction_behavior_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_CallBehaviorAction_behavior_feature", "_UI_CallBehaviorAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getCallBehaviorAction_Behavior(),
-				 true));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
