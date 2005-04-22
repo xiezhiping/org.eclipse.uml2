@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassItemProvider.java,v 1.19 2005/04/04 20:03:41 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.20 2005/04/22 20:19:58 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -30,8 +30,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
-
-import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Class} object.

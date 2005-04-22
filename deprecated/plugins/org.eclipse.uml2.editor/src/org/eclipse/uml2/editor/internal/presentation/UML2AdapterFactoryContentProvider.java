@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2AdapterFactoryContentProvider.java,v 1.2 2005/03/15 18:50:31 khussey Exp $
+ * $Id: UML2AdapterFactoryContentProvider.java,v 1.3 2005/04/22 20:19:35 khussey Exp $
  */
 package org.eclipse.uml2.editor.internal.presentation;
 
@@ -18,7 +18,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.ui.views.properties.IPropertySource;
 
 /**
- *
+ * @deprecated Use UML2Editor$UML2AdapterFactoryContentProvider instead.
  */
 public class UML2AdapterFactoryContentProvider extends AdapterFactoryContentProvider {
 

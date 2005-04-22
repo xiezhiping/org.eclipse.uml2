@@ -8,15 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.19 2005/04/22 18:20:28 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.20 2005/04/22 20:19:59 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EObject;
@@ -32,13 +37,13 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
-import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 import org.eclipse.uml2.util.UML2Util;
 
 /**
@@ -263,5 +268,137 @@ public class ElementItemProvider
 
 		});
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createItemPropertyDescriptor(org.eclipse.emf.common.notify.AdapterFactory,
+	 *      org.eclipse.emf.common.util.ResourceLocator, java.lang.String,
+	 *      java.lang.String, org.eclipse.emf.ecore.EStructuralFeature, boolean,
+	 *      java.lang.Object, java.lang.String, java.lang.String[])
+	 */
+	protected ItemPropertyDescriptor createItemPropertyDescriptor(
+			AdapterFactory adapterFactory, ResourceLocator resourceLocator,
+			String displayName, String description, EStructuralFeature feature,
+			boolean isSettable, Object staticImage, String category,
+			String[] filterFlags) {
+		return new UML2ItemPropertyDescriptor(adapterFactory, resourceLocator,
+			displayName, description, feature, isSettable, staticImage,
+			category, filterFlags);
+	}
+	
+	protected static class UML2ItemPropertyDescriptor
+			extends ItemPropertyDescriptor
+			implements IItemQualifiedTextProvider {
+
+		protected class UML2ItemDelegator
+				extends ItemDelegator
+				implements IItemQualifiedTextProvider {
+
+			protected UML2ItemDelegator(AdapterFactory adapterFactory,
+					ResourceLocator resourceLocator) {
+				super(adapterFactory, resourceLocator);
+			}
+
+			public String getQualifiedText(Object object) {
+
+				if (EList.class.isInstance(object)) {
+					StringBuffer text = new StringBuffer();
+
+					for (Iterator i = ((List) object).iterator(); i.hasNext();) {
+						Object child = i.next();
+
+						if (0 != text.length()) {
+							text.append(", "); //$NON-NLS-1$
+						}
+
+						text.append(getQualifiedText(child));
+					}
+
+					return text.toString();
+				} else {
+					IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
+						.adapt(object, IItemQualifiedTextProvider.class);
+
+					return null != itemQualifiedTextProvider
+						? itemQualifiedTextProvider.getQualifiedText(object)
+						: getText(object);
+				}
+			}
+		}
+
+		protected UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
+				ResourceLocator resourceLocator, String displayName,
+				String description, EStructuralFeature feature,
+				boolean isSettable, Object staticImage, String category,
+				String[] filterFlags) {
+			super(adapterFactory, resourceLocator, displayName, description,
+				feature, isSettable, staticImage, category, filterFlags);
+
+			this.itemDelegator = new UML2ItemDelegator(adapterFactory,
+				resourceLocator);
+		}
+
+		public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
+				ResourceLocator resourceLocator, String displayName,
+				String description, EStructuralFeature feature,
+				boolean isSettable) {
+			super(adapterFactory, resourceLocator, displayName, description,
+				feature, isSettable);
+
+			this.itemDelegator = new UML2ItemDelegator(adapterFactory,
+				resourceLocator);
+		}
+
+		public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
+				ResourceLocator resourceLocator, String displayName,
+				String description, EStructuralFeature feature,
+				boolean isSettable, Object staticImage) {
+			super(adapterFactory, resourceLocator, displayName, description,
+				feature, isSettable, staticImage);
+
+			this.itemDelegator = new UML2ItemDelegator(adapterFactory,
+				resourceLocator);
+		}
+
+		public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
+				ResourceLocator resourceLocator, String displayName,
+				String description, EStructuralFeature feature,
+				boolean isSettable, String category, String[] filterFlags) {
+			super(adapterFactory, resourceLocator, displayName, description,
+				feature, isSettable, category, filterFlags);
+
+			this.itemDelegator = new UML2ItemDelegator(adapterFactory,
+				resourceLocator);
+		}
+
+		public Collection getChoiceOfValues(Object object) {
+			Collection comboBoxObjects = getComboBoxObjects(object);
+
+			if (null != comboBoxObjects) {
+				List choiceOfValues = new ArrayList(comboBoxObjects);
+
+				if (null != choiceOfValues) {
+					Collections.sort(choiceOfValues, new Comparator() {
+
+						public int compare(Object o1, Object o2) {
+							return getQualifiedText(o1).compareTo(
+								getQualifiedText(o2));
+						}
+					});
+				}
+
+				return choiceOfValues;
+			}
+
+			return null;
+		}
+
+		public String getQualifiedText(Object object) {
+			return ((IItemQualifiedTextProvider) itemDelegator).getQualifiedText(object);
+		}
+	}
+
+
 
 }

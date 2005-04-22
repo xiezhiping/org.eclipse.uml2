@@ -8,10 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeItemProvider.java,v 1.17 2005/04/04 20:03:41 khussey Exp $
+ * $Id: StereotypeItemProvider.java,v 1.18 2005/04/22 20:19:59 khussey Exp $
  */
 package org.eclipse.uml2.provider;
-
 
 import java.util.Collection;
 import java.util.List;

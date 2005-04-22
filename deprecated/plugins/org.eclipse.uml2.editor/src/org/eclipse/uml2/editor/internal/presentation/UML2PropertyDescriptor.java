@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2PropertyDescriptor.java,v 1.4 2005/03/15 18:50:31 khussey Exp $
+ * $Id: UML2PropertyDescriptor.java,v 1.5 2005/04/22 20:19:35 khussey Exp $
  */
 package org.eclipse.uml2.editor.internal.presentation;
 
@@ -41,7 +41,7 @@ import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 import org.eclipse.uml2.provider.IItemQualifiedTextProvider;
 
 /**
- *  
+ * @deprecated Use UML2Editor$UML2PropertyDescriptor instead.
  */
 public class UML2PropertyDescriptor
 	extends PropertyDescriptor {

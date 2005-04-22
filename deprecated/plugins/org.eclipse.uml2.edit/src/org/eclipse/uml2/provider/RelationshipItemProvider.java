@@ -8,10 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipItemProvider.java,v 1.10 2005/04/04 20:03:41 khussey Exp $
+ * $Id: RelationshipItemProvider.java,v 1.11 2005/04/22 20:19:58 khussey Exp $
  */
 package org.eclipse.uml2.provider;
-
 
 import java.util.Collection;
 import java.util.List;
@@ -26,8 +25,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.uml2.UML2Package;
-
-import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Relationship} object.

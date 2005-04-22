@@ -8,10 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeployedArtifactItemProvider.java,v 1.8 2005/04/04 20:03:40 khussey Exp $
+ * $Id: DeployedArtifactItemProvider.java,v 1.9 2005/04/22 20:19:58 khussey Exp $
  */
 package org.eclipse.uml2.provider;
-
 
 import java.util.Collection;
 import java.util.List;

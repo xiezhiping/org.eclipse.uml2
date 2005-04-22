@@ -8,10 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionItemProvider.java,v 1.13 2005/04/04 20:03:41 khussey Exp $
+ * $Id: TestIdentityActionItemProvider.java,v 1.14 2005/04/22 20:19:58 khussey Exp $
  */
 package org.eclipse.uml2.provider;
-
 
 import java.util.Collection;
 import java.util.List;
@@ -32,8 +31,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.TestIdentityAction;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
-
-import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.TestIdentityAction} object.

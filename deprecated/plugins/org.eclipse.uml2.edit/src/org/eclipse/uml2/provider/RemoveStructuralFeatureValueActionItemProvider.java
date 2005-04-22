@@ -8,10 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.11 2005/04/04 20:03:40 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.12 2005/04/22 20:19:58 khussey Exp $
  */
 package org.eclipse.uml2.provider;
-
 
 import java.util.Collection;
 import java.util.List;

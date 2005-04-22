@@ -8,10 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.16 2005/04/20 18:07:13 khussey Exp $
+ * $Id: UML2Editor.java,v 1.17 2005/04/22 20:19:35 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
-
 
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
@@ -32,6 +31,8 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
@@ -46,6 +47,8 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
+import org.eclipse.emf.edit.ui.provider.PropertySource;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
@@ -86,10 +89,12 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 
 import org.eclipse.jface.viewers.ColumnWeightData;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -111,6 +116,7 @@ import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 
 import org.eclipse.swt.widgets.Composite;
@@ -139,11 +145,13 @@ import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
+import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
+import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-import org.eclipse.uml2.editor.internal.presentation.UML2AdapterFactoryContentProvider;
+import org.eclipse.uml2.provider.IItemQualifiedTextProvider;
 import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
 
 
@@ -1487,6 +1495,62 @@ public class UML2Editor
 		}
 
 		super.dispose();
+	}
+
+	protected static class UML2AdapterFactoryContentProvider
+			extends AdapterFactoryContentProvider {
+
+		protected UML2AdapterFactoryContentProvider(
+				AdapterFactory adapterFactory) {
+			super(adapterFactory);
+		}
+
+		protected IPropertySource createPropertySource(Object object,
+				IItemPropertySource itemPropertySource) {
+			return new UML2PropertySource(object, itemPropertySource);
+		}
+	}
+
+	protected static class UML2PropertySource
+			extends PropertySource {
+
+		protected UML2PropertySource(Object object,
+				IItemPropertySource itemPropertySource) {
+			super(object, itemPropertySource);
+		}
+
+		protected IPropertyDescriptor createPropertyDescriptor(
+				IItemPropertyDescriptor itemPropertyDescriptor) {
+			return new UML2PropertyDescriptor(object, itemPropertyDescriptor);
+		}
+	}
+
+	protected static class UML2PropertyDescriptor
+			extends PropertyDescriptor {
+
+		protected UML2PropertyDescriptor(Object object,
+				IItemPropertyDescriptor itemPropertyDescriptor) {
+			super(object, itemPropertyDescriptor);
+		}
+
+		protected ILabelProvider getEditLabelProvider() {
+			final ILabelProvider editLabelProvider = super
+				.getEditLabelProvider();
+
+			return new LabelProvider() {
+
+				public String getText(Object object) {
+					return itemPropertyDescriptor instanceof IItemQualifiedTextProvider
+						? ((IItemQualifiedTextProvider) itemPropertyDescriptor)
+							.getQualifiedText(object)
+						: editLabelProvider.getText(object);
+				}
+
+				public Image getImage(Object object) {
+					return editLabelProvider.getImage(object);
+				}
+			};
+		}
 	}
 
 }
