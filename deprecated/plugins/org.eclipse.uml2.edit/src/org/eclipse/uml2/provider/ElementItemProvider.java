@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.21 2005/04/22 20:55:48 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.22 2005/04/25 13:43:41 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -343,39 +343,6 @@ public class ElementItemProvider
 				String[] filterFlags) {
 			super(adapterFactory, resourceLocator, displayName, description,
 				feature, isSettable, staticImage, category, filterFlags);
-
-			this.itemDelegator = new UML2ItemDelegator(adapterFactory,
-				resourceLocator);
-		}
-
-		public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-				ResourceLocator resourceLocator, String displayName,
-				String description, EStructuralFeature feature,
-				boolean isSettable) {
-			super(adapterFactory, resourceLocator, displayName, description,
-				feature, isSettable);
-
-			this.itemDelegator = new UML2ItemDelegator(adapterFactory,
-				resourceLocator);
-		}
-
-		public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-				ResourceLocator resourceLocator, String displayName,
-				String description, EStructuralFeature feature,
-				boolean isSettable, Object staticImage) {
-			super(adapterFactory, resourceLocator, displayName, description,
-				feature, isSettable, staticImage);
-
-			this.itemDelegator = new UML2ItemDelegator(adapterFactory,
-				resourceLocator);
-		}
-
-		public UML2ItemPropertyDescriptor(AdapterFactory adapterFactory,
-				ResourceLocator resourceLocator, String displayName,
-				String description, EStructuralFeature feature,
-				boolean isSettable, String category, String[] filterFlags) {
-			super(adapterFactory, resourceLocator, displayName, description,
-				feature, isSettable, category, filterFlags);
 
 			this.itemDelegator = new UML2ItemDelegator(adapterFactory,
 				resourceLocator);
