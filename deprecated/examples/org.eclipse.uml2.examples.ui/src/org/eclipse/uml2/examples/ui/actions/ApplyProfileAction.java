@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.6 2005/03/15 18:54:23 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.7 2005/05/04 20:21:42 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -23,9 +23,9 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
@@ -34,6 +34,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.edit.util.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 import org.eclipse.uml2.util.UML2Resource;
+import org.eclipse.uml2.util.UML2Switch;
 
 /**
  * 
@@ -75,7 +76,7 @@ public class ApplyProfileAction
 			final org.eclipse.uml2.Package package_ = (org.eclipse.uml2.Package) collection
 				.toArray()[0];
 
-			List choiceOfValues = new ArrayList();
+			final List choiceOfValues = new ArrayList();
 
 			ResourceSet resourceSet = package_.eResource().getResourceSet();
 
@@ -89,23 +90,28 @@ public class ApplyProfileAction
 			resourceSet.getResource(URI
 				.createURI(UML2Resource.ECORE_PROFILE_URI), true);
 
-			Iterator resources = resourceSet.getResources().iterator();
-			resources.next();
+			for (Iterator resources = resourceSet.getResources().iterator(); resources
+				.hasNext();) {
 
-			while (resources.hasNext()) {
-				Resource resource = (Resource) resources.next();
+				Iterator allContents = ((Resource) resources.next())
+					.getAllContents();
 
-				Profile profile = (Profile) (null == resource
-					? null
-					: EcoreUtil.getObjectByType(resource.getContents(),
-						UML2Package.eINSTANCE.getProfile()));
+				while (allContents.hasNext()) {
 
-				if (null != profile
-					&& profile.isDefined()
-					&& package_.getAppliedVersion(profile) != profile
-						.getVersion()) {
+					new UML2Switch() {
 
-					choiceOfValues.add(profile);
+						public Object caseProfile(Profile profile) {
+
+							if (profile.isDefined()
+								&& package_.getAppliedVersion(profile) != profile
+									.getVersion()) {
+
+								choiceOfValues.add(profile);
+							}
+
+							return profile;
+						}
+					}.doSwitch((EObject) allContents.next());
 				}
 			}
 
