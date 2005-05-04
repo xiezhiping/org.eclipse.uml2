@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22EcoreConverterOptionsDialog.java,v 1.3 2005/04/06 19:59:55 khussey Exp $
+ * $Id: UML22EcoreConverterOptionsDialog.java,v 1.4 2005/05/04 20:20:10 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.dialogs;
 
@@ -68,10 +68,9 @@ public class UML22EcoreConverterOptionsDialog
 				UML2Util.OPTION__DISCARD, UML2Util.OPTION__PROCESS},
 			UML2Util.OPTION__PROCESS);
 		createOptionArea(parent,
-			UML2Util.UML22EcoreConverter.OPTION__OBSOLETE_FEATURES,
+			UML2Util.UML22EcoreConverter.OPTION__REDEFINING_OPERATIONS,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
-				UML2Util.OPTION__DISCARD, UML2Util.OPTION__PROCESS},
-			UML2Util.OPTION__PROCESS);
+				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,

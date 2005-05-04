@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.12 2005/04/14 17:30:57 khussey Exp $
+ * $Id: UML2Util.java,v 1.13 2005/05/04 20:20:08 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -917,20 +917,21 @@ public class UML2Util {
 				Map.Entry entry = (Map.Entry) entries.next();
 				EModelElement eModelElement = (EModelElement) entry.getKey();
 
-				if (eModelElement instanceof EStructuralFeature) {
+				if (eModelElement instanceof ETypedElement) {
 					EAnnotation redefinesEAnnotation = getEAnnotation(
 						eModelElement, ANNOTATION_SOURCE__REDEFINES, false);
 
 					if (null != redefinesEAnnotation) {
-						Property property = (Property) entry.getValue();
+						TypedElement typedElement = (TypedElement) entry
+							.getValue();
 
 						for (Iterator references = redefinesEAnnotation
 							.getReferences().iterator(); references.hasNext();) {
 
-							Property redefinedProperty = (Property) eModelElementToElementMap
+							TypedElement redefinedTypedElement = (TypedElement) eModelElementToElementMap
 								.get(references.next());
 
-							if (null != redefinedProperty) {
+							if (null != redefinedTypedElement) {
 								if (OPTION__PROCESS.equals(options
 									.get(OPTION__REDEFINES_ANNOTATIONS))) {
 
@@ -944,14 +945,24 @@ public class UML2Util {
 													.getString(
 														"_UI_Ecore2UML2Converter_ProcessRedefinesAnnotation_diagnostic", //$NON-NLS-1$
 														getMessageSubstitutions(
-															context, property,
-															redefinedProperty)),
-												new Object[]{property,
-													redefinedProperty}));
+															context,
+															typedElement,
+															redefinedTypedElement)),
+												new Object[]{typedElement,
+													redefinedTypedElement}));
 									}
 
-									property.getRedefinedProperties().add(
-										redefinedProperty);
+									if (typedElement instanceof Property) {
+										((Property) typedElement)
+											.getRedefinedProperties().add(
+												redefinedTypedElement);
+									}
+
+									if (typedElement instanceof Operation) {
+										((Operation) typedElement)
+											.getRedefinedOperations().add(
+												redefinedTypedElement);
+									}
 								} else if (OPTION__REPORT.equals(options
 									.get(OPTION__REDEFINES_ANNOTATIONS))
 									&& null != diagnostics) {
@@ -965,10 +976,10 @@ public class UML2Util {
 												.getString(
 													"_UI_Ecore2UML2Converter_ReportRedefinesAnnotation_diagnostic", //$NON-NLS-1$
 													getMessageSubstitutions(
-														context, property,
-														redefinedProperty)),
-											new Object[]{property,
-												redefinedProperty}));
+														context, typedElement,
+														redefinedTypedElement)),
+											new Object[]{typedElement,
+												redefinedTypedElement}));
 								}
 							}
 						}
@@ -1228,6 +1239,8 @@ public class UML2Util {
 
 		public static final String OPTION__ECORE_TAGGED_VALUES = "ECORE_TAGGED_VALUES"; //$NON-NLS-1$
 
+		public static final String OPTION__REDEFINING_OPERATIONS = "REDEFINING_OPERATIONS"; //$NON-NLS-1$
+
 		public static final String OPTION__REDEFINING_PROPERTIES = "REDEFINING_PROPERTIES"; //$NON-NLS-1$
 
 		public static final String OPTION__SUBSETTING_PROPERTIES = "SUBSETTING_PROPERTIES"; //$NON-NLS-1$
@@ -1244,49 +1257,31 @@ public class UML2Util {
 
 		public static final String OPTION__DUPLICATE_FEATURE_INHERITANCE = "DUPLICATE_FEATURE_INHERITANCE"; //$NON-NLS-1$
 
-		public static final String OPTION__OBSOLETE_FEATURES = "OBSOLETE_FEATURES"; //$NON-NLS-1$
-
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		public static final int ECORE_TAGGED_VALUE = DIAGNOSTIC_CODE_OFFSET + 1;
 
-		public static final int REDEFINING_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 2;
+		public static final int REDEFINING_OPERATION = DIAGNOSTIC_CODE_OFFSET + 2;
 
-		public static final int SUBSETTING_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 3;
+		public static final int REDEFINING_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 3;
 
-		public static final int UNION_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 4;
+		public static final int SUBSETTING_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 4;
 
-		public static final int DERIVED_FEATURE = DIAGNOSTIC_CODE_OFFSET + 5;
+		public static final int UNION_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 5;
 
-		public static final int DUPLICATE_OPERATION = DIAGNOSTIC_CODE_OFFSET + 6;
+		public static final int DERIVED_FEATURE = DIAGNOSTIC_CODE_OFFSET + 6;
 
-		public static final int DUPLICATE_OPERATION_INHERITANCE = DIAGNOSTIC_CODE_OFFSET + 7;
+		public static final int DUPLICATE_OPERATION = DIAGNOSTIC_CODE_OFFSET + 7;
 
-		public static final int DUPLICATE_FEATURE = DIAGNOSTIC_CODE_OFFSET + 8;
+		public static final int DUPLICATE_OPERATION_INHERITANCE = DIAGNOSTIC_CODE_OFFSET + 8;
 
-		public static final int DUPLICATE_FEATURE_INHERITANCE = DIAGNOSTIC_CODE_OFFSET + 9;
+		public static final int DUPLICATE_FEATURE = DIAGNOSTIC_CODE_OFFSET + 9;
 
-		public static final int OBSOLETE_FEATURE = DIAGNOSTIC_CODE_OFFSET + 10;
-
-		protected static final String ANNOTATION_SOURCE__FEATURE = "feature"; //$NON-NLS-1$
-
-		protected static final String ANNOTATION_SOURCE__OBSOLETE = "obsolete"; //$NON-NLS-1$
+		public static final int DUPLICATE_FEATURE_INHERITANCE = DIAGNOSTIC_CODE_OFFSET + 10;
 
 		protected final Map elementToEModelElementMap = new HashMap();
 
 		protected Collection packages = null;
-
-		protected static boolean isFeature(EOperation eOperation) {
-			return null != getEAnnotation(eOperation,
-				ANNOTATION_SOURCE__FEATURE, false);
-		}
-
-		protected static boolean isObsolete(
-				EStructuralFeature eStructuralFeature) {
-
-			return null != getEAnnotation(eStructuralFeature,
-				ANNOTATION_SOURCE__OBSOLETE, false);
-		}
 
 		protected void setName(ENamedElement eNamedElement, String name) {
 			eNamedElement.setName(getValidIdentifier(name));
@@ -1810,7 +1805,7 @@ public class UML2Util {
 				: eModelElement;
 		}
 
-		private void processEcoreTaggedValue(EModelElement eModelElement,
+		protected void processEcoreTaggedValue(EModelElement eModelElement,
 				EStructuralFeature eStructuralFeature, Element element,
 				Stereotype stereotype, String propertyName, Map options,
 				DiagnosticChain diagnostics, Map context) {
@@ -2283,6 +2278,75 @@ public class UML2Util {
 			}
 		}
 
+		protected void processRedefiningOperations(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator entries = elementToEModelElementMap.entrySet()
+				.iterator(); entries.hasNext();) {
+
+				Map.Entry entry = (Map.Entry) entries.next();
+				EModelElement eModelElement = (EModelElement) entry.getValue();
+
+				if (eModelElement instanceof EOperation) {
+					Operation operation = (Operation) entry.getKey();
+
+					for (Iterator redefinedOperations = operation
+						.getRedefinedOperations().iterator(); redefinedOperations
+						.hasNext();) {
+
+						Operation redefinedOperation = (Operation) redefinedOperations
+							.next();
+
+						EOperation eOperation = (EOperation) elementToEModelElementMap
+							.get(redefinedOperation);
+
+						if (DEBUG) {
+							System.out.println(getQualifiedText(eModelElement)
+								+ " redefines " + getQualifiedText(eOperation));
+						}
+
+						if (OPTION__PROCESS.equals(options
+							.get(OPTION__REDEFINING_OPERATIONS))) {
+
+							if (null != diagnostics) {
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.INFO,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										REDEFINING_OPERATION,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_UML22EcoreConverter_ProcessRedefiningOperation_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, eModelElement,
+													eOperation)), new Object[]{
+											eModelElement, eOperation}));
+							}
+
+							getEAnnotation(eModelElement,
+								ANNOTATION_SOURCE__REDEFINES, true)
+								.getReferences().add(eOperation);
+						} else if (OPTION__REPORT.equals(options
+							.get(OPTION__REDEFINING_OPERATIONS))
+							&& null != diagnostics) {
+
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UML2Validator.DIAGNOSTIC_SOURCE,
+									REDEFINING_OPERATION,
+									UML2Plugin.INSTANCE
+										.getString(
+											"_UI_UML22EcoreConverter_ReportRedefiningOperation_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												eModelElement, eOperation)),
+									new Object[]{eModelElement, eOperation}));
+						}
+					}
+				}
+			}
+		}
+
 		protected void processRedefiningProperties(Map options,
 				DiagnosticChain diagnostics, Map context) {
 
@@ -2697,6 +2761,7 @@ public class UML2Util {
 
 		protected void processDuplicateOperations(Map options,
 				DiagnosticChain diagnostics, Map context) {
+			List operationsToDuplicate = new ArrayList();
 
 			for (Iterator eModelElements = elementToEModelElementMap.values()
 				.iterator(); eModelElements.hasNext();) {
@@ -2744,7 +2809,20 @@ public class UML2Util {
 													eAllOperation}));
 									}
 
+									operationsToDuplicate.add(eOperation);
+
 									ensureConformity(eOperation, eAllOperation);
+
+									List redefinedOperations = getEAnnotation(
+										eOperation,
+										ANNOTATION_SOURCE__REDEFINES, true)
+										.getReferences();
+
+									if (!redefinedOperations
+										.contains(eAllOperation)) {
+
+										redefinedOperations.add(eAllOperation);
+									}
 								} else if (OPTION__DISCARD.equals(options
 									.get(OPTION__DUPLICATE_OPERATIONS))) {
 
@@ -2790,6 +2868,16 @@ public class UML2Util {
 					}
 
 				}
+			}
+
+			for (Iterator eOperations = operationsToDuplicate.iterator(); eOperations
+				.hasNext();) {
+
+				EOperation eOperation = (EOperation) eOperations.next();
+
+				getEAnnotation(eOperation.getEContainingClass(),
+					ANNOTATION_SOURCE__DUPLICATES, true).getContents().add(
+					eOperation);
 			}
 		}
 
@@ -2856,6 +2944,18 @@ public class UML2Util {
 											}
 
 											qualifyName(mixinEOperation);
+
+											List redefinedOperations = getEAnnotation(
+												mixinEOperation,
+												ANNOTATION_SOURCE__REDEFINES,
+												true).getReferences();
+
+											if (!redefinedOperations
+												.contains(eOperation)) {
+
+												redefinedOperations
+													.add(eOperation);
+											}
 										} else if (OPTION__DISCARD
 											.equals(options
 												.get(OPTION__DUPLICATE_OPERATION_INHERITANCE))) {
@@ -2914,9 +3014,8 @@ public class UML2Util {
 
 		protected void processDuplicateFeatures(Map options,
 				DiagnosticChain diagnostics, Map context) {
-
-			List eOppositesToObsolete = new ArrayList();
-			List eOppositesToRemove = new ArrayList();
+			List featuresToDuplicate = new ArrayList();
+			List featuresToRemove = new ArrayList();
 
 			for (Iterator eModelElements = elementToEModelElementMap.values()
 				.iterator(); eModelElements.hasNext();) {
@@ -2967,49 +3066,39 @@ public class UML2Util {
 													eAllStructuralFeature}));
 									}
 
-									if (!isObsolete(eStructuralFeature)) {
+									if (!featuresToDuplicate
+										.contains(eStructuralFeature)) {
 
-										EStructuralFeature obsoleteEStructuralFeature = eAllStructuralFeature
+										EStructuralFeature duplicateEStructuralFeature = eAllStructuralFeature
 											.isDerived()
 											&& !eStructuralFeature.isDerived()
 											? eAllStructuralFeature
 											: eStructuralFeature;
 
-										if (DEBUG) {
+										featuresToDuplicate
+											.add(duplicateEStructuralFeature);
 
-											if (obsoleteEStructuralFeature == eAllStructuralFeature) {
-												System.err
-													.println("Made "
-														+ getQualifiedText(eAllStructuralFeature)
-														+ " obsolete based on "
-														+ getQualifiedText(eStructuralFeature));
-											} else {
-												System.out
-													.println("Made "
-														+ getQualifiedText(eStructuralFeature)
-														+ " obsolete based on "
-														+ getQualifiedText(eAllStructuralFeature));
-											}
-										}
-
-										getEAnnotation(
-											obsoleteEStructuralFeature,
-											ANNOTATION_SOURCE__OBSOLETE, true)
-											.getReferences()
-											.add(
-												obsoleteEStructuralFeature == eAllStructuralFeature
-													? eStructuralFeature
-													: eAllStructuralFeature);
-
-										if (obsoleteEStructuralFeature instanceof EReference) {
-											EReference eOpposite = ((EReference) obsoleteEStructuralFeature)
+										if (duplicateEStructuralFeature instanceof EReference) {
+											EReference eOpposite = ((EReference) duplicateEStructuralFeature)
 												.getEOpposite();
 
 											if (null != eOpposite) {
-												eOppositesToObsolete
+												featuresToDuplicate
 													.add(eOpposite);
 											}
 										}
+									}
+
+									List redefinedFeatures = getEAnnotation(
+										eStructuralFeature,
+										ANNOTATION_SOURCE__REDEFINES, true)
+										.getReferences();
+
+									if (!redefinedFeatures
+										.contains(eAllStructuralFeature)) {
+
+										redefinedFeatures
+											.add(eAllStructuralFeature);
 									}
 								} else if (OPTION__DISCARD.equals(options
 									.get(OPTION__DUPLICATE_FEATURES))) {
@@ -3036,7 +3125,7 @@ public class UML2Util {
 											.getEOpposite();
 
 										if (null != eOpposite) {
-											eOppositesToRemove.add(eOpposite);
+											featuresToRemove.add(eOpposite);
 										}
 									}
 
@@ -3067,14 +3156,18 @@ public class UML2Util {
 				}
 			}
 
-			for (Iterator eStructuralFeatures = eOppositesToObsolete.iterator(); eStructuralFeatures
+			for (Iterator eStructuralFeatures = featuresToDuplicate.iterator(); eStructuralFeatures
 				.hasNext();) {
 
-				getEAnnotation((EStructuralFeature) eStructuralFeatures.next(),
-					ANNOTATION_SOURCE__OBSOLETE, true);
+				EStructuralFeature eStructuralFeature = (EStructuralFeature) eStructuralFeatures
+					.next();
+
+				getEAnnotation(eStructuralFeature.getEContainingClass(),
+					ANNOTATION_SOURCE__DUPLICATES, true).getContents().add(
+					eStructuralFeature);
 			}
 
-			for (Iterator eStructuralFeatures = eOppositesToRemove.iterator(); eStructuralFeatures
+			for (Iterator eStructuralFeatures = featuresToRemove.iterator(); eStructuralFeatures
 				.hasNext();) {
 
 				EStructuralFeature eStructuralFeature = (EStructuralFeature) eStructuralFeatures
@@ -3131,9 +3224,7 @@ public class UML2Util {
 
 										if (OPTION__PROCESS
 											.equals(options
-												.get(OPTION__DUPLICATE_FEATURE_INHERITANCE))
-											&& !isObsolete(eStructuralFeature)
-											&& !isObsolete(mixinEStructuralFeature)) {
+												.get(OPTION__DUPLICATE_FEATURE_INHERITANCE))) {
 
 											if (null != diagnostics) {
 												diagnostics
@@ -3155,6 +3246,18 @@ public class UML2Util {
 											}
 
 											qualifyName(mixinEStructuralFeature);
+
+											List redefinedFeatures = getEAnnotation(
+												mixinEStructuralFeature,
+												ANNOTATION_SOURCE__REDEFINES,
+												true).getReferences();
+
+											if (!redefinedFeatures
+												.contains(eStructuralFeature)) {
+
+												redefinedFeatures
+													.add(eStructuralFeature);
+											}
 										} else if (OPTION__DISCARD
 											.equals(options
 												.get(OPTION__DUPLICATE_FEATURE_INHERITANCE))) {
@@ -3211,108 +3314,6 @@ public class UML2Util {
 			}
 		}
 
-		protected void processObsoleteFeatures(Map options,
-				DiagnosticChain diagnostics, Map context) {
-
-			for (Iterator eModelElements = elementToEModelElementMap.values()
-				.iterator(); eModelElements.hasNext();) {
-
-				EModelElement eModelElement = (EModelElement) eModelElements
-					.next();
-
-				if (eModelElement instanceof EClass) {
-					EClass eClass = (EClass) eModelElement;
-
-					for (Iterator eStructuralFeatures = eClass
-						.getEStructuralFeatures().iterator(); eStructuralFeatures
-						.hasNext();) {
-
-						EStructuralFeature eStructuralFeature = (EStructuralFeature) eStructuralFeatures
-							.next();
-
-						if (isObsolete(eStructuralFeature)) {
-
-							if (OPTION__PROCESS.equals(options
-								.get(OPTION__OBSOLETE_FEATURES))) {
-
-								if (null != diagnostics) {
-									diagnostics
-										.add(new BasicDiagnostic(
-											Diagnostic.INFO,
-											UML2Validator.DIAGNOSTIC_SOURCE,
-											OBSOLETE_FEATURE,
-											UML2Plugin.INSTANCE
-												.getString(
-													"_UI_UML22EcoreConverter_ProcessObsoleteFeature_diagnostic", //$NON-NLS-1$
-													getMessageSubstitutions(
-														context,
-														eStructuralFeature)),
-											new Object[]{eStructuralFeature}));
-								}
-
-								EOperation eOperation = EcoreFactory.eINSTANCE
-									.createEOperation();
-
-								eClass.getEOperations().add(eOperation);
-
-								ensureConformity(eOperation, eStructuralFeature);
-
-								for (Iterator references = getEAnnotation(
-									eStructuralFeature,
-									ANNOTATION_SOURCE__OBSOLETE, false)
-									.getReferences().iterator(); references
-									.hasNext();) {
-
-									ensureConformity(eOperation,
-										(EStructuralFeature) references.next());
-								}
-
-								eStructuralFeatures.remove();
-
-								getEAnnotation(eOperation,
-									ANNOTATION_SOURCE__FEATURE, true)
-									.getContents().add(eStructuralFeature);
-							} else if (OPTION__DISCARD.equals(options
-								.get(OPTION__OBSOLETE_FEATURES))) {
-
-								if (null != diagnostics) {
-									diagnostics
-										.add(new BasicDiagnostic(
-											Diagnostic.WARNING,
-											UML2Validator.DIAGNOSTIC_SOURCE,
-											OBSOLETE_FEATURE,
-											UML2Plugin.INSTANCE
-												.getString(
-													"_UI_UML22EcoreConverter_DiscardObsoleteFeature_diagnostic", //$NON-NLS-1$
-													getMessageSubstitutions(
-														context,
-														eStructuralFeature)),
-											new Object[]{eClass}));
-								}
-
-								eStructuralFeatures.remove();
-							} else if (OPTION__REPORT.equals(options
-								.get(OPTION__OBSOLETE_FEATURES))
-								&& null != diagnostics) {
-
-								diagnostics
-									.add(new BasicDiagnostic(
-										Diagnostic.ERROR,
-										UML2Validator.DIAGNOSTIC_SOURCE,
-										OBSOLETE_FEATURE,
-										UML2Plugin.INSTANCE
-											.getString(
-												"_UI_UML22EcoreConverter_ReportObsoleteFeature_diagnostic", //$NON-NLS-1$
-												getMessageSubstitutions(
-													context, eStructuralFeature)),
-										new Object[]{eStructuralFeature}));
-							}
-						}
-					}
-				}
-			}
-		}
-
 		protected void processOptions(Map options, DiagnosticChain diagnostics,
 				Map context) {
 
@@ -3320,6 +3321,12 @@ public class UML2Util {
 				.equals(options.get(OPTION__ECORE_TAGGED_VALUES))) {
 
 				processEcoreTaggedValues(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__REDEFINING_OPERATIONS))) {
+
+				processRedefiningOperations(options, diagnostics, context);
 			}
 
 			if (!OPTION__IGNORE.equals(options
@@ -3364,10 +3371,6 @@ public class UML2Util {
 
 				processDuplicateFeatureInheritance(options, diagnostics,
 					context);
-			}
-
-			if (!OPTION__IGNORE.equals(options.get(OPTION__OBSOLETE_FEATURES))) {
-				processObsoleteFeatures(options, diagnostics, context);
 			}
 		}
 
@@ -4790,6 +4793,8 @@ public class UML2Util {
 
 	public static final String OPTION__REPORT = "REPORT"; //$NON-NLS-1$
 
+	protected static final String ANNOTATION_SOURCE__DUPLICATES = "duplicates"; //$NON-NLS-1$
+
 	protected static final String ANNOTATION_SOURCE__REDEFINES = "redefines"; //$NON-NLS-1$
 
 	protected static final String ANNOTATION_SOURCE__SUBSETS = "subsets"; //$NON-NLS-1$
@@ -4876,8 +4881,7 @@ public class UML2Util {
 		return null == string || 0 == string.length();
 	}
 
-	public static EObject findEObject(Collection eObjects,
-			EObjectMatcher filter) {
+	public static EObject findEObject(Collection eObjects, EObjectMatcher filter) {
 
 		for (Iterator i = eObjects.iterator(); i.hasNext();) {
 			EObject eObject = (EObject) i.next();
@@ -5387,8 +5391,7 @@ public class UML2Util {
 		return rootContainers;
 	}
 
-	public static org.eclipse.uml2.Package load(ResourceSet resourceSet,
-			URI uri) {
+	public static org.eclipse.uml2.Package load(ResourceSet resourceSet, URI uri) {
 		org.eclipse.uml2.Package package_ = null;
 
 		try {
@@ -5487,6 +5490,13 @@ public class UML2Util {
 		}
 
 		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__REDEFINING_OPERATIONS)) {
+
+			options.put(UML22EcoreConverter.OPTION__REDEFINING_OPERATIONS,
+				OPTION__IGNORE);
+		}
+
+		if (!options
 			.containsKey(UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES)) {
 
 			options.put(UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES,
@@ -5539,11 +5549,6 @@ public class UML2Util {
 
 			options.put(
 				UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
-				OPTION__IGNORE);
-		}
-
-		if (!options.containsKey(UML22EcoreConverter.OPTION__OBSOLETE_FEATURES)) {
-			options.put(UML22EcoreConverter.OPTION__OBSOLETE_FEATURES,
 				OPTION__IGNORE);
 		}
 
@@ -5558,6 +5563,13 @@ public class UML2Util {
 		}
 
 		if (!options
+			.containsKey(UML22EcoreConverter.OPTION__REDEFINING_OPERATIONS)) {
+
+			options.put(UML22EcoreConverter.OPTION__REDEFINING_OPERATIONS,
+				OPTION__REPORT);
+		}
+
+		if (!options
 			.containsKey(UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES)) {
 
 			options.put(UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES,
@@ -5610,11 +5622,6 @@ public class UML2Util {
 
 			options.put(
 				UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
-				OPTION__REPORT);
-		}
-
-		if (!options.containsKey(UML22EcoreConverter.OPTION__OBSOLETE_FEATURES)) {
-			options.put(UML22EcoreConverter.OPTION__OBSOLETE_FEATURES,
 				OPTION__REPORT);
 		}
 
