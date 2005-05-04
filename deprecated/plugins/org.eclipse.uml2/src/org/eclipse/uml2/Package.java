@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.13 2005/04/14 17:30:57 khussey Exp $
+ * $Id: Package.java,v 1.14 2005/05/04 20:21:10 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -373,7 +373,8 @@ public interface Package extends Namespace, PackageableElement{
 	 *            The profile to be applied.
 	 * @throws IllegalArgumentException
 	 *             If the profile is not defined or its current version is
-	 *             already applied.
+	 *             already applied to this package or (one of) its nesting
+	 *             package(s).
 	 */
 	void apply(Profile profile);
 

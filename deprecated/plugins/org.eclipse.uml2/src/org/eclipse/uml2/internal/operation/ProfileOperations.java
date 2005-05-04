@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.20 2005/04/14 17:30:57 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.21 2005/05/04 20:21:10 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -709,7 +709,8 @@ public final class ProfileOperations
 	 *            The package to which to apply the profile.
 	 * @throws IllegalArgumentException
 	 *             If the profile is not defined or its current version is
-	 *             already applied.
+	 *             already applied to the package or (one of) its nesting
+	 *             package(s).
 	 */
 	public static void apply(Profile profile, org.eclipse.uml2.Package package_) {
 
@@ -723,37 +724,8 @@ public final class ProfileOperations
 			throw new IllegalArgumentException(String.valueOf(package_));
 		}
 
-		ProfileApplication profileApplication = null;
-
-		for (Iterator allProfileApplications = getAllProfileApplications(
-			package_).iterator(); allProfileApplications.hasNext();) {
-
-			profileApplication = (ProfileApplication) allProfileApplications
-				.next();
-
-			Profile importedProfile = profileApplication.getImportedProfile();
-
-			if (profile == importedProfile) {
-
-				if (profile.getVersion().equals(getVersion(profileApplication))) {
-					throw new IllegalArgumentException(String.valueOf(profile));
-				}
-
-				break;
-			} else {
-				EPackage importedEPackage = getEPackage(importedProfile,
-					getVersion(profileApplication));
-
-				if (null != importedEPackage
-					&& getEPackage(profile, profile.getVersion()).getNsURI()
-						.equals(importedEPackage.getNsURI())) {
-
-					throw new IllegalArgumentException(String.valueOf(profile));
-				}
-
-				profileApplication = null;
-			}
-		}
+		ProfileApplication profileApplication = getProfileApplication(profile,
+			package_, true);
 
 		if (null == profileApplication) {
 			profileApplication = (ProfileApplication) package_
@@ -764,8 +736,10 @@ public final class ProfileOperations
 			package_.getAppliedProfiles().add(profileApplication);
 		} else {
 
-			if (package_ != profileApplication.getImportingNamespace()) {
-				throw new IllegalArgumentException(String.valueOf(package_));
+			if (package_ != profileApplication.getImportingNamespace()
+				|| profile.getVersion().equals(getVersion(profileApplication))) {
+
+				throw new IllegalArgumentException(String.valueOf(profile));
 			}
 
 			TreeIterator eAllContents = new AbstractTreeIterator(package_, true) {
@@ -1016,31 +990,6 @@ public final class ProfileOperations
 	}
 
 	/**
-	 * Retrieves the set of all profile applications on the specified package,
-	 * including profiles applications on its nesting package(s).
-	 * 
-	 * @param package_
-	 *            The package for which to retrieve the profile applications.
-	 * @return The profile applications on the package.
-	 */
-	protected static Set getAllProfileApplications(
-			org.eclipse.uml2.Package package_) {
-		Set allProfileApplications = new HashSet();
-
-		while (null != package_) {
-			allProfileApplications.addAll(package_.getAppliedProfiles());
-
-			EObject eContainer = package_.eContainer();
-
-			package_ = Element.class.isInstance(eContainer)
-				? ((Element) eContainer).getNearestPackage()
-				: null;
-		}
-
-		return allProfileApplications;
-	}
-
-	/**
 	 * Retrieves the set of all profiles that are applied to the specified
 	 * package, including profiles applied to its nesting package(s).
 	 * 
@@ -1114,20 +1063,11 @@ public final class ProfileOperations
 		}
 
 		ProfileApplication profileApplication = getProfileApplication(profile,
-			package_);
+			package_, true);
 
-		if (null != profileApplication) {
-			return getVersion(profileApplication);
-		}
-
-		EObject eContainer = package_.eContainer();
-
-		if (Element.class.isInstance(eContainer)) {
-			return getAppliedVersion(profile, ((Element) eContainer)
-				.getNearestPackage());
-		}
-
-		return null;
+		return null != profileApplication
+			? getVersion(profileApplication)
+			: null;
 	}
 
 	protected static String getVersion(ProfileApplication profileApplication) {
@@ -1137,16 +1077,36 @@ public final class ProfileOperations
 	}
 
 	protected static ProfileApplication getProfileApplication(Profile profile,
-			org.eclipse.uml2.Package package_) {
+			org.eclipse.uml2.Package package_, boolean recurse) {
 
 		for (Iterator appliedProfiles = package_.getAppliedProfiles()
 			.iterator(); appliedProfiles.hasNext();) {
 
 			ProfileApplication profileApplication = (ProfileApplication) appliedProfiles
 				.next();
+			Profile importedProfile = profileApplication.getImportedProfile();
 
-			if (profile == profileApplication.getImportedProfile()) {
+			if (profile == importedProfile) {
 				return profileApplication;
+			} else {
+				EPackage importedEPackage = getEPackage(importedProfile,
+					getVersion(profileApplication));
+
+				if (null != importedEPackage
+					&& getEPackage(profile, profile.getVersion()).getNsURI()
+						.equals(importedEPackage.getNsURI())) {
+
+					return profileApplication;
+				}
+			}
+		}
+
+		if (recurse) {
+			EObject eContainer = package_.eContainer();
+
+			if (Element.class.isInstance(eContainer)) {
+				return getProfileApplication(profile, ((Element) eContainer)
+					.getNearestPackage(), recurse);
 			}
 		}
 
@@ -1198,7 +1158,7 @@ public final class ProfileOperations
 			return false;
 		}
 
-		return null != getProfileApplication(profile, package_);
+		return null != getProfileApplication(profile, package_, false);
 	}
 
 	/**
@@ -1229,11 +1189,23 @@ public final class ProfileOperations
 	public static void unapply(Profile profile,
 			org.eclipse.uml2.Package package_) {
 
-		if (null == profile || !isApplied(profile, package_)) {
+		if (null == profile) {
 			throw new IllegalArgumentException(String.valueOf(profile));
 		}
 
-		TreeIterator eAllContents = new AbstractTreeIterator(package_, true) {
+		if (null == package_) {
+			throw new IllegalArgumentException(String.valueOf(package_));
+		}
+
+		ProfileApplication profileApplication = getProfileApplication(profile,
+			package_, false);
+
+		if (null == profileApplication) {
+			throw new IllegalArgumentException(String.valueOf(profile));
+		}
+
+		TreeIterator eAllContents = new AbstractTreeIterator(profileApplication
+			.getImportingNamespace(), true) {
 
 			public Iterator getChildren(Object parent) {
 				return ((EObject) parent).eContents().iterator();
@@ -1267,8 +1239,8 @@ public final class ProfileOperations
 			((EAnnotation) eAnnotations.next()).setEModelElement(null);
 		}
 
-		package_.getPackageImports().remove(
-			getProfileApplication(profile, package_));
+		profileApplication.getImportingNamespace().getPackageImports().remove(
+			profileApplication);
 	}
 
 	/**
