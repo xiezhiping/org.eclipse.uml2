@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.4 2005/04/14 17:30:57 khussey Exp $
+ * $Id: TypeOperations.java,v 1.5 2005/05/12 18:58:00 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -89,7 +89,7 @@ public final class TypeOperations
 
 		validateTypeAndBounds(type2, end2LowerBound, end2UpperBound);
 
-		if (null == type1.getPackage()) {
+		if (null == type1.getNearestPackage()) {
 			throw new IllegalArgumentException(String.valueOf(type1));
 		}
 
@@ -109,7 +109,7 @@ public final class TypeOperations
 			throw new IllegalArgumentException(String.valueOf(end2Aggregation));
 		}
 
-		Association association = (Association) type1.getPackage()
+		Association association = (Association) type1.getNearestPackage()
 			.createOwnedMember(UML2Package.eINSTANCE.getAssociation());
 
 		createAssociationEnd(association, type1, end1IsNavigable,
