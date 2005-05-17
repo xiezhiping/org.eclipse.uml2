@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.14 2005/05/17 04:05:50 khussey Exp $
+ * $Id: UML2Util.java,v 1.15 2005/05/17 17:42:03 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -596,35 +596,60 @@ public class UML2Util {
 			} else {
 
 				if (PROPERTY_NAME__XML_CONTENT_KIND == propertyName) {
-					int contentKind = ExtendedMetaData.INSTANCE
-						.getContentKind((EClass) eModelElement);
+					Enumeration contentKindEnumeration = (Enumeration) getEcoreProfile(
+						eModelElement).getOwnedType(
+						ENUMERATION_NAME__CONTENT_KIND);
 
-					if (ExtendedMetaData.UNSPECIFIED_CONTENT != contentKind) {
-						Enumeration contentKindEnumeration = (Enumeration) getEcoreProfile(
-							eModelElement).getOwnedType(
-							ENUMERATION_NAME__CONTENT_KIND);
+					if (null != contentKindEnumeration) {
 
-						if (null != contentKindEnumeration) {
-							value = contentKindEnumeration.getOwnedLiterals()
-								.get(contentKind);
+						switch (ExtendedMetaData.INSTANCE
+							.getContentKind((EClass) eModelElement)) {
+							case ExtendedMetaData.EMPTY_CONTENT :
+								value = contentKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__EMPTY);
+								break;
+							case ExtendedMetaData.SIMPLE_CONTENT :
+								value = contentKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__SIMPLE);
+								break;
+							case ExtendedMetaData.MIXED_CONTENT :
+								value = contentKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__MIXED);
+								break;
+							case ExtendedMetaData.ELEMENT_ONLY_CONTENT :
+								value = contentKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT_ONLY);
+								break;
 						}
+
 					}
 
 					if (null == value) {
 						return;
 					}
 				} else if (PROPERTY_NAME__XML_FEATURE_KIND == propertyName) {
-					int featureKind = ExtendedMetaData.INSTANCE
-						.getFeatureKind((EStructuralFeature) eModelElement);
+					Enumeration featureKindEnumeration = (Enumeration) getEcoreProfile(
+						eModelElement).getOwnedType(
+						ENUMERATION_NAME__FEATURE_KIND);
 
-					if (ExtendedMetaData.UNSPECIFIED_FEATURE != featureKind) {
-						Enumeration featureKindEnumeration = (Enumeration) getEcoreProfile(
-							eModelElement).getOwnedType(
-							ENUMERATION_NAME__FEATURE_KIND);
+					if (null != featureKindEnumeration) {
 
-						if (null != featureKindEnumeration) {
-							value = featureKindEnumeration.getOwnedLiterals()
-								.get(featureKind);
+						switch (ExtendedMetaData.INSTANCE
+							.getFeatureKind((EStructuralFeature) eModelElement)) {
+							case ExtendedMetaData.SIMPLE_FEATURE :
+								value = featureKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__SIMPLE);
+								break;
+							case ExtendedMetaData.ATTRIBUTE_FEATURE :
+							case ExtendedMetaData.ATTRIBUTE_WILDCARD_FEATURE :
+								value = featureKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ATTRIBUTE);
+								break;
+							case ExtendedMetaData.ELEMENT_FEATURE :
+							case ExtendedMetaData.ELEMENT_WILDCARD_FEATURE :
+								value = featureKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT);
+								break;
 						}
 					}
 
@@ -654,44 +679,41 @@ public class UML2Util {
 						return;
 					}
 				} else if (PROPERTY_NAME__VISIBILITY == propertyName) {
-					eStructuralFeature = (EStructuralFeature) eModelElement;
+					Enumeration visibilityKindEnumeration = (Enumeration) getEcoreProfile(
+						eModelElement).getOwnedType(
+						ENUMERATION_NAME__VISIBILITY_KIND);
 
-					int visibilityKind = 0; // same as 5
-
-					if (EcoreUtil.isSuppressedVisibility(eStructuralFeature,
-						EcoreUtil.GET)) {
-
-						visibilityKind = 1;
-					} else {
+					if (null != visibilityKindEnumeration) {
+						eStructuralFeature = (EStructuralFeature) eModelElement;
 
 						if (EcoreUtil.isSuppressedVisibility(
-							eStructuralFeature, EcoreUtil.SET)) {
+							eStructuralFeature, EcoreUtil.GET)) {
 
-							if (EcoreUtil.isSuppressedVisibility(
-								eStructuralFeature, EcoreUtil.IS_SET)) {
-
-								visibilityKind = 2;
-							} else {
-								visibilityKind = 4;
-							}
+							value = visibilityKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__NONE);
 						} else {
 
 							if (EcoreUtil.isSuppressedVisibility(
-								eStructuralFeature, EcoreUtil.UNSET)) {
+								eStructuralFeature, EcoreUtil.SET)) {
 
-								visibilityKind = 3;
+								if (EcoreUtil.isSuppressedVisibility(
+									eStructuralFeature, EcoreUtil.IS_SET)) {
+
+									value = visibilityKindEnumeration
+										.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_ONLY);
+								} else {
+									value = visibilityKindEnumeration
+										.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_ONLY_UNSETTABLE);
+								}
+							} else {
+
+								if (EcoreUtil.isSuppressedVisibility(
+									eStructuralFeature, EcoreUtil.UNSET)) {
+
+									value = visibilityKindEnumeration
+										.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_WRITE);
+								}
 							}
-						}
-					}
-
-					if (0 != visibilityKind) {
-						Enumeration visibilityKindEnumeration = (Enumeration) getEcoreProfile(
-							eModelElement).getOwnedType(
-							ENUMERATION_NAME__VISIBILITY_KIND);
-
-						if (null != visibilityKindEnumeration) {
-							value = visibilityKindEnumeration
-								.getOwnedLiterals().get(visibilityKind);
 						}
 					}
 
@@ -4800,6 +4822,30 @@ public class UML2Util {
 	protected static final String ANNOTATION_SOURCE__SUBSETS = "subsets"; //$NON-NLS-1$
 
 	protected static final String ANNOTATION_SOURCE__UNION = "union"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__ATTRIBUTE = "Attribute"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__ELEMENT = "Element"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__ELEMENT_ONLY = "ElementOnly"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__EMPTY = "Empty"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__MIXED = "Mixed"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__NONE = "None"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__SIMPLE = "Simple"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__READ_ONLY = "ReadOnly"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__READ_ONLY_UNSETTABLE = "ReadOnlyUnsettable"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__READ_WRITE = "ReadWrite"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__READ_WRITE_UNSETTABLE = "ReadWriteUnsettable"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__UNSPECIFIED = "Unspecified"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION_NAME__CONTENT_KIND = "ContentKind"; //$NON-NLS-1$
 
