@@ -1,0 +1,54 @@
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <%=genOperation.getImportedReturnType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
+	{
+<%if (genOperation.hasBody()) {%>
+		<%=genOperation.getBody(genModel.getIndentation(stringBuffer))%>
+<%} else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = ((GenParameter)genOperation.getGenParameters().get(0)).getName(); String context = ((GenParameter)genOperation.getGenParameters().get(1)).getName();%>
+  <%if (UML2GenModelUtil.isOperationsClasses(opClass.getGenPackage())) {%>
+		return <%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this, <%=diagnostics%>, <%=context%>);
+  <%} else {%>
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false)
+		{
+			if (<%=diagnostics%> != null)
+			{
+				<%=diagnostics%>.add
+					(new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicDiagnostic")%>
+						(<%=genModel.getImportedName("org.eclipse.emf.common.util.Diagnostic")%>.ERROR,
+						 <%=opClass.getGenPackage().getImportedValidatorClassName()%>.DIAGNOSTIC_SOURCE,
+						 <%=opClass.getGenPackage().getImportedValidatorClassName()%>.<%=opClass.getOperationID(genOperation)%>,
+						 <%=genModel.getImportedName("org.eclipse.emf.ecore.plugin.EcorePlugin")%>.INSTANCE.getString("_UI_GenericInvariant_diagnostic", new Object[] { "<%=genOperation.getName()%>", <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EObjectValidator")%>.getObjectLabel(this, <%=context%>) }),<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+						 new Object [] { this }));
+			}
+			return false;
+		}
+		return true;
+  <%}%>
+<%} else { GenPackage opPackage = genOperation.getGenPackage();%>
+  <%if (!genOperation.isVoid() && UML2GenModelUtil.isOperationsClasses(opPackage)) { GenClass opClass = genOperation.getGenClass();%>
+    <%if (UML2GenModelUtil.isCacheAdapterSupport(genModel) && UML2GenModelUtil.isCached(genOperation)) {%>
+		<%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%> cache = getCacheAdapter();
+		if (cache != null) {
+			<%=genOperation.getObjectReturnType()%> result = (<%=genOperation.getObjectReturnType()%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opPackage.getImportedPackageInterfaceName()%>.eINSTANCE.get<%=opClass.getClassifierAccessorName()%>().getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>));
+			if (result == null) {
+				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opPackage.getImportedPackageInterfaceName()%>.eINSTANCE.get<%=opClass.getClassifierAccessorName()%>().getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>), result = <%if (genOperation.isPrimitiveReturnType()) {%>new <%=genOperation.getObjectReturnType()%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>)<%if (genOperation.isPrimitiveReturnType()) {%>)<%}%>);
+			}
+			return result<%if (genOperation.isPrimitiveReturnType()) {%>.<%=genOperation.getPrimitiveValueFunction()%>()<%}%>;
+		}
+    <%}%>
+		return <%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>);
+  <%} else {%>
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+  <%}%>
+<%}%>
+	}
+

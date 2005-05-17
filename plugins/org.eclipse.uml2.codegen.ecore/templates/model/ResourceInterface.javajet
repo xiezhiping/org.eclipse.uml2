@@ -1,0 +1,78 @@
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="ResourceInterface" version="$Id: ResourceInterface.javajet,v 1.1 2005/05/17 22:06:28 khussey Exp $" %>
+<%
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2005 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - initial API and implementation
+ *
+ * </copyright>
+ */
+%>
+<%GenPackage genPackage = (GenPackage)argument; GenModel genModel=genPackage.getGenModel();%>
+<%@ include file="../Header.jetinc"%>
+package <%=genPackage.getUtilitiesPackageName()%>;
+
+<%genModel.markImportLocation(stringBuffer);%>
+
+/**
+ * <!-- begin-user-doc -->
+ * The resource associated with the '<em><b><%=genPackage.getPackageName()%></b></em>' package.
+ * <!-- end-user-doc -->
+ * @generated
+ */
+public interface <%=UML2GenModelUtil.getResourceInterfaceName(genPackage)%> extends <%=UML2GenModelUtil.getImportedResourceBaseInterfaceName(genPackage)%>
+{
+<%if (genModel.getCopyrightText() != null) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	<%=genModel.getImportedName("java.lang.String")%> copyright = "<%=genModel.getCopyrightText()%>";<%=genModel.getNonNLS()%>
+
+<%}%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * The factory for '<em><b><%=genPackage.getPackageName()%></b></em>' resources.
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public interface Factory
+			extends <%=UML2GenModelUtil.getImportedResourceFactoryBaseInterfaceName(genPackage)%> {
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final Factory INSTANCE = new <%=genPackage.getImportedResourceFactoryClassName()%>();
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * The file extension for '<em><b><%=genPackage.getPackageName()%></b></em>' resources.
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String FILE_EXTENSION = "<%=genPackage.getPrefix().toLowerCase()%>";<%=genModel.getNonNLS()%>
+
+<%if (UML2GenModelUtil.isXMLResource(genPackage)) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * The default encoding for '<em><b><%=genPackage.getPackageName()%></b></em>' resources.
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String DEFAULT_ENCODING = "UTF-8";<%=genModel.getNonNLS()%>
+
+<%}%>
+} //<%=UML2GenModelUtil.getResourceInterfaceName(genPackage)%>
+<%genModel.emitSortedImports();%>

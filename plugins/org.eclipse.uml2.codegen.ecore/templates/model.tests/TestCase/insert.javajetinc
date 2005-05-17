@@ -1,0 +1,109 @@
+<%for (Iterator i=UML2GenModelUtil.getImplementedUnionGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
+  <%if (genFeature.isGet() && !genFeature.isSuppressedGetVisibility()) {%>
+
+	/**
+	 * Tests the '{@link <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#<%=genFeature.getGetAccessor()%>() <em><%=genFeature.getFormattedName()%></em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#<%=genFeature.getGetAccessor()%>()
+	 * @generated
+	 */
+	public void test<%=genModel.capName(genFeature.getGetAccessor())%>()
+	{
+		// TODO: implement this union feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+  <%}%>
+  <%if (genFeature.isIsSet() && !genFeature.isSuppressedIsSetVisibility()) {%>
+
+	/**
+	 * Tests the '{@link <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#isSet<%=genFeature.getAccessorName()%>() <em>isSet<%=genFeature.getAccessorName()%>()</em>}' method.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#isSet<%=genFeature.getAccessorName()%>()
+	 * @generated
+	 */
+	public void testIsSet<%=genFeature.getAccessorName()%>()
+	{
+		// TODO: implement this union test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+  <%}%>
+<%}%>
+<%for (Iterator i=UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
+  <%if (genFeature.isGet() && !genFeature.isSuppressedGetVisibility()) {%>
+
+	/**
+	 * Tests the '{@link <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#<%=genFeature.getGetAccessor()%>() <em><%=genFeature.getFormattedName()%></em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#<%=genFeature.getGetAccessor()%>()
+	 * @generated
+	 */
+	public void test<%=genModel.capName(genFeature.getGetAccessor())%>()
+	{
+		// TODO: implement this redefined feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+  <%}%>
+  <%if (genFeature.isSet() && !genFeature.isSuppressedSetVisibility()) {%>
+
+	/**
+	 * Tests the '{@link <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#set<%=genFeature.getAccessorName()%>(<%=genFeature.getType()%>) <em><%=genFeature.getFormattedName()%></em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#set<%=genFeature.getAccessorName()%>(<%=genFeature.getType()%>)
+	 * @generated
+	 */
+	public void testSet<%=genFeature.getAccessorName()%>()
+	{
+		// TODO: implement this redefined feature setter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+  <%}%>
+  <%if (genFeature.isUnset() && !genFeature.isSuppressedUnsetVisibility()) {%>
+
+	/**
+	 * Tests the '{@link <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#unset<%=genFeature.getAccessorName()%>() <em>unset<%=genFeature.getAccessorName()%>()</em>}' method.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#unset<%=genFeature.getAccessorName()%>()
+	 * @generated
+	 */
+	public void testUnset<%=genFeature.getAccessorName()%>()
+	{
+		// TODO: implement this redefined test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+  <%}%>
+  <%if (genFeature.isIsSet() && !genFeature.isSuppressedIsSetVisibility()) {%>
+
+	/**
+	 * Tests the '{@link <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#isSet<%=genFeature.getAccessorName()%>() <em>isSet<%=genFeature.getAccessorName()%>()</em>}' method.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#isSet<%=genFeature.getAccessorName()%>()
+	 * @generated
+	 */
+	public void testIsSet<%=genFeature.getAccessorName()%>()
+	{
+		// TODO: implement this redefined test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+  <%}%>
+<%}%>
+<%for (Iterator i=UML2GenModelUtil.getImplementedRedefinedGenOperations(genClass).iterator(); i.hasNext();) { GenOperation genOperation = (GenOperation)i.next();%>
+
+	/**
+	 * Tests the '{@link <%=genOperation.getGenClass().getQualifiedInterfaceName()%>#<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>) <em><%=genOperation.getFormattedName()%></em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see <%=genOperation.getGenClass().getQualifiedInterfaceName()%>#<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>)
+	 * @generated
+	 */
+	public void test<%=genModel.capName(genOperation.getName())%><%=genOperation.getGenParameters().size() == 0 ? "" : "__" + genOperation.getParameterTypes("_", false)%>()
+	{
+		// TODO: implement this redefined operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+<%}%>

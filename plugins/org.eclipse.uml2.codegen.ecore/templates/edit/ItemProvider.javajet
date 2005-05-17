@@ -1,0 +1,2 @@
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.edit" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="ItemProvider" version="$Id: ItemProvider.javajet,v 1.1 2005/05/17 22:06:28 khussey Exp $" %>
+<%@ include file="ItemProvider.javajet"%>

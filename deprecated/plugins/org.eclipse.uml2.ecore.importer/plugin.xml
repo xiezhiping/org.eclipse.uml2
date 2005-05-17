@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+/*
+ * Copyright (c) 2005 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ *   IBM - initial API and implementation
+ *
+ * $Id: plugin.xml,v 1.1 2005/05/17 22:10:19 khussey Exp $
+ */
+-->
+
+<plugin
+	name = "%pluginName"
+    id = "org.eclipse.uml2.ecore.importer"
+    version = "1.1.0" 
+    provider-name = "%providerName"
+    class = "org.eclipse.uml2.ecore.importer.UML2ImporterPlugin$Implementation">
+    
+	<requires>
+	    <import plugin="org.eclipse.core.runtime"/>
+	    <import plugin="org.eclipse.core.resources"/>
+	    <import plugin="org.eclipse.uml2.codegen.ecore" export="true"/>
+	    <import plugin="org.eclipse.uml2.editor"/>
+   	    <import plugin="org.eclipse.emf.importer"/>
+	    <import plugin="org.eclipse.emf.codegen.ecore.ui" optional="true"/>
+	</requires>
+
+	<runtime>
+		<library name="uml2.ecore.importer.jar">
+			<export name="*"/>
+		</library>
+	</runtime>
+
+	<extension point="org.eclipse.emf.importer.modelImporterDescriptors">
+		<modelImporterDescriptor
+			id="org.eclipse.uml2.ecore.importer"
+			name="%_UI_UML2Importer_label"
+			icon="platform:/plugin/org.eclipse.uml2.editor/icons/full/obj16/UML2ModelFile.gif"
+			extensions="uml2"
+			description="%_UI_UML2ModelImporter_description"
+			wizard="org.eclipse.uml2.ecore.importer.ui.UML2ImporterWizard"/>
+	</extension>	
+
+</plugin>
+
+
+

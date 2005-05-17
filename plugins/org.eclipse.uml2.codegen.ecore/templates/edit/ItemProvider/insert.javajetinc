@@ -1,0 +1,78 @@
+<%if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true).isEmpty()) {%>
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createAddCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> feature, <%=genModel.getImportedName("java.util.Collection")%> collection, int index) {
+  <%for (Iterator subsetGenFeatures = UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true).iterator(); subsetGenFeatures.hasNext(); ) { GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();%>
+		if (feature == <%=subsetGenFeature.getQualifiedFeatureAccessorName()%>()) {
+			return new <%=genModel.getImportedName("org.eclipse.uml2.common.edit.command.SubsetAddCommand")%>(domain, owner, feature, <%=UML2GenModelUtil.getSupersetFeatureAccessorArray(genClass, subsetGenFeature)%>, collection, index);
+		}
+  <%}%>
+		return super.createAddCommand(domain, owner, feature, collection, index);
+	}
+
+<%}%>
+<%if (!UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true).isEmpty()) {%>
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createRemoveCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> feature, <%=genModel.getImportedName("java.util.Collection")%> collection) {
+  <%for (Iterator supersetGenFeatures = UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true).iterator(); supersetGenFeatures.hasNext(); ) { GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures.next();%>
+		if (feature == <%=supersetGenFeature.getQualifiedFeatureAccessorName()%>()) {
+			return new <%=genModel.getImportedName("org.eclipse.uml2.common.edit.command.SupersetRemoveCommand")%>(domain, owner, feature, <%=UML2GenModelUtil.getSubsetFeatureAccessorArray(genClass, supersetGenFeature)%>, collection);
+		}
+  <%}%>
+		return super.createRemoveCommand(domain, owner, feature, collection);
+	}
+
+<%}%>
+<%if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true).isEmpty() || !UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true).isEmpty()) {%>
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createReplaceCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> feature, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> value, <%=genModel.getImportedName("java.util.Collection")%> collection) {
+  <%for (Iterator subsetGenFeatures = UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true).iterator(); subsetGenFeatures.hasNext(); ) { GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();%>
+		if (feature == <%=subsetGenFeature.getQualifiedFeatureAccessorName()%>()) {
+			return new <%=genModel.getImportedName("org.eclipse.uml2.common.edit.command.SubsetReplaceCommand")%>(domain, owner, feature, <%=UML2GenModelUtil.getSupersetFeatureAccessorArray(genClass, subsetGenFeature)%>, value, collection);
+		}
+  <%}%>
+  <%for (Iterator supersetGenFeatures = UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true).iterator(); supersetGenFeatures.hasNext(); ) { GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures.next();%>
+		if (feature == <%=supersetGenFeature.getQualifiedFeatureAccessorName()%>()) {
+			return new <%=genModel.getImportedName("org.eclipse.uml2.common.edit.command.SupersetReplaceCommand")%>(domain, owner, feature, <%=UML2GenModelUtil.getSubsetFeatureAccessorArray(genClass, supersetGenFeature)%>, value, collection);
+		}
+  <%}%>
+		return super.createReplaceCommand(domain, owner, feature, value, collection);
+	}
+
+<%}%>
+<%if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, false).isEmpty() || !UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, false).isEmpty()) {%>
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createSetCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> feature, Object value) {
+  <%for (Iterator subsetGenFeatures = UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, false).iterator(); subsetGenFeatures.hasNext(); ) { GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();%>
+		if (feature == <%=subsetGenFeature.getQualifiedFeatureAccessorName()%>()) {
+			return new <%=genModel.getImportedName("org.eclipse.uml2.common.edit.command.SubsetSetCommand")%>(domain, owner, feature, <%=UML2GenModelUtil.getSupersetFeatureAccessorArray(genClass, subsetGenFeature)%>, value);
+		}
+  <%}%>
+  <%for (Iterator supersetGenFeatures = UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, false).iterator(); supersetGenFeatures.hasNext(); ) { GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures.next();%>
+		if (feature == <%=supersetGenFeature.getQualifiedFeatureAccessorName()%>()) {
+			return new <%=genModel.getImportedName("org.eclipse.uml2.common.edit.command.SupersetSetCommand")%>(domain, owner, feature, <%=UML2GenModelUtil.getSubsetFeatureAccessorArray(genClass, supersetGenFeature)%>, value);
+		}
+  <%}%>
+		return super.createSetCommand(domain, owner, feature, value);
+	}
+
+<%}%>

@@ -1,0 +1,117 @@
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.1 2005/05/17 22:06:28 khussey Exp $" %>
+<%
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2005 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - initial API and implementation
+ *
+ * </copyright>
+ */
+%>
+<%GenClass genClass = (GenClass)argument; GenPackage genPackage = genClass.getGenPackage(); GenModel genModel=genPackage.getGenModel();%>
+<%@ include file="../Header.jetinc"%>
+package <%=UML2GenModelUtil.getOperationsPackageName(genPackage)%>;
+
+<%genModel.markImportLocation(stringBuffer, genPackage);%>
+
+/**
+ * <!-- begin-user-doc -->
+ * A static utility class that provides operations related to '<em><b><%=genClass.getFormattedName()%></b></em>' model objects.
+ * <!-- end-user-doc -->
+ *
+<%if (!UML2GenModelUtil.getDuplicateGenOperations(genClass).isEmpty()) { boolean first = true;%>
+  <%for (Iterator genOperations = UML2GenModelUtil.getDuplicateGenOperations(genClass).iterator(); genOperations.hasNext();) { GenOperation genOperation = (GenOperation)genOperations.next();%>
+    <%if (first) { first = false;%>
+ * <p>
+ * The following operations are supported:
+ * <ul>
+    <%}%>
+ *   <li>{@link <%=genOperation.getGenClass().getQualifiedInterfaceName()%>#<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>) <em><%=genOperation.getFormattedName()%></em>}</li>
+  <%}%>
+  <% if (!first) {%>
+ * </ul>
+ * </p>
+  <%}%>
+<%}%>
+ *
+ * @generated
+ */
+public final class <%=UML2GenModelUtil.getOperationsClassName(genClass)%>
+{
+<%if (genModel.getCopyrightText() != null) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final <%=genModel.getImportedName("java.lang.String")%> copyright = "<%=genModel.getCopyrightText()%>";<%=genModel.getNonNLS()%>
+
+<%}%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private <%=UML2GenModelUtil.getOperationsClassName(genClass)%>() {
+		super();
+	}
+
+<%for (Iterator i=UML2GenModelUtil.getDuplicateGenOperations(genClass).iterator(); i.hasNext();) { GenOperation genOperation = (GenOperation)i.next();%>
+<%@ include file="Operations/genOperation.override.javajetinc" fail="alternative" %>
+<%@ start %>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+  <%if (genOperation.hasDocumentation()) {%>
+	 * <!-- begin-model-doc -->
+	 * <%=genOperation.getDocumentation(genModel.getIndentation(stringBuffer))%>
+	 * <!-- end-model-doc -->
+  <%}%>
+	 * @generated
+	 */
+	public static <%=genOperation.getImportedReturnType()%> <%=genOperation.getName()%>(<%=genClass.getImportedInterfaceName()%> <%=genClass.safeName(genClass.getUncapName())%><%if (!genOperation.getGenParameters().isEmpty()) {%>, <%}%><%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
+	{
+  <%if (genOperation.hasBody()) {%>
+		<%=genOperation.getBody(genModel.getIndentation(stringBuffer))%>
+  <%} else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = ((GenParameter)genOperation.getGenParameters().get(0)).getName(); String context = ((GenParameter)genOperation.getGenParameters().get(1)).getName();%>
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false)
+		{
+			if (<%=diagnostics%> != null)
+			{
+				<%=diagnostics%>.add
+					(new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicDiagnostic")%>
+						(<%=genModel.getImportedName("org.eclipse.emf.common.util.Diagnostic")%>.ERROR,
+						 <%=opClass.getGenPackage().getImportedValidatorClassName()%>.DIAGNOSTIC_SOURCE,
+						 <%=opClass.getGenPackage().getImportedValidatorClassName()%>.<%=opClass.getOperationID(genOperation)%>,
+						 org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", new Object[] { "<%=genOperation.getName()%>", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(<%=genClass.safeName(genClass.getUncapName())%>, <%=context%>) }),<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+						 new Object [] { <%=genClass.safeName(genClass.getUncapName())%> }));
+			}
+			return false;
+		}
+		return true;
+  <%} else {%>
+<%@ include file="Operations/genOperation.TODO.override.javajetinc" fail="alternative" %>
+<%@ start %>
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+<%@ end %><%//Operations/genOperation.todo.override.javajetinc%>
+  <%}%>
+	}
+
+<%@ include file="Operations/genOperation.insert.javajetinc" fail="silent" %>
+<%@ end %><%//Operations/genOperation.override.javajetinc%>
+<%}%>
+} // <%=UML2GenModelUtil.getOperationsClassName(genClass)%>
+<%genModel.emitSortedImports();%>

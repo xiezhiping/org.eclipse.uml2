@@ -1,0 +1,52 @@
+<%if (UML2GenModelUtil.isFactoryMethods(genModel) && genFeature.isChangeable() && genFeature.isContains() && !genFeature.isSuppressedSetVisibility()) {%>
+  <%if (genClass.getChildrenClasses(genFeature).size() > 0) {%>
+    <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getGenClassType().isAbstract()) {%>
+    /**
+    <%if (genFeature.isListType()) {%>
+     * Creates a {@link <%=genFeature.getQualifiedListItemType()%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+    <%} else {%>
+     * Creates a {@link <%=genFeature.getType()%>} and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+    <%}%>
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClass The Ecore class of the {@link <%=genFeature.getQualifiedListItemType()%>} to create.
+	 * @return The new {@link <%=genFeature.getQualifiedListItemType()%>}.
+	 * @see #<%=genFeature.getGetAccessor()%>()
+	 * @generated
+     */
+    <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass);
+
+    <%}%>
+    <%if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getGenClassType().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);%>
+    /**
+      <%if (genFeature.isListType()) {%>
+     * Creates a {@link <%=childGenClass.getQualifiedInterfaceName()%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+      <%} else {%>
+     * Creates a {@link <%=childGenClass.getQualifiedInterfaceName()%>} and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+      <%}%>
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link <%=childGenClass.getQualifiedInterfaceName()%>}.
+	 * @see #<%=genFeature.getGetAccessor()%>()
+	 * @generated
+     */
+    <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>();
+
+    <%}%>
+  <%}%>
+<%}%>
+<%if (genFeature.isListType() && genFeature.isReferenceType() && !genFeature.isSuppressedSetVisibility()) {%>
+  <%for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getGenClassType()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();%>
+    /**
+     * Retrieves the {@link <%=genFeature.getQualifiedListItemType()%>} with the specified '<em><b><%=keyGenFeature.getFormattedName()%></b></em>' from the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param <%=keyGenFeature.getUncapName()%> The '<em><b><%=keyGenFeature.getFormattedName()%></b></em>' of the {@link <%=genFeature.getQualifiedListItemType()%>} to retrieve.
+	 * @return The {@link <%=genFeature.getQualifiedListItemType()%>} with the specified '<em><b><%=keyGenFeature.getFormattedName()%></b></em>', or <code>null</code>.
+	 * @see #<%=genFeature.getGetAccessor()%>()
+	 * @generated
+     */
+    <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=keyGenFeature.getImportedType()%> <%=keyGenFeature.getUncapName()%>);
+      
+  <%}%>
+<%}%>

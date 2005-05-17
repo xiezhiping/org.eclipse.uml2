@@ -1,0 +1,63 @@
+<%if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genModel) && genFeature.isChangeable() && genFeature.isContains()) {%>
+  <%if (genClass.getChildrenClasses(genFeature).size() > 0) {%>
+   <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getGenClassType().isAbstract()) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass) {
+		<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> new<%=genFeature.getCapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new <%=genModel.getImportedName("org.eclipse.emf.ecore.impl.ENotificationImpl")%>(this, 0, <%=genClass.getQualifiedFeatureID(genFeature)%>, null, new<%=genFeature.getCapName()%>));
+		}
+      <%if (genFeature.isListType()) {%>
+		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
+      <%} else {%>
+		set<%=genFeature.getAccessorName()%>(new<%=genFeature.getCapName()%>);
+      <%}%>
+		return new<%=genFeature.getCapName()%>;
+	}
+
+    <%}%>
+    <%if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getGenClassType().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>() {
+		<%=childGenClass.getImportedInterfaceName()%> new<%=genFeature.getCapName()%> = <%=childGenClass.getGenPackage().getImportedFactoryInterfaceName()%>.eINSTANCE.create<%=childGenClass.getName()%>();
+		if (eNotificationRequired()) {
+			eNotify(new <%=genModel.getImportedName("org.eclipse.emf.ecore.impl.ENotificationImpl")%>(this, 0, <%=genClass.getQualifiedFeatureID(genFeature)%>, null, new<%=genFeature.getCapName()%>));
+		}
+      <%if (genFeature.isListType()) {%>
+		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
+      <%} else {%>
+		set<%=genFeature.getAccessorName()%>(new<%=genFeature.getCapName()%>);
+      <%}%>
+		return new<%=genFeature.getCapName()%>;
+	}
+
+    <%}%>
+  <%}%>
+<%}%>
+<%if (!genClass.getExtendedGenFeatures().contains(genFeature) && genFeature.isListType() && genFeature.isReferenceType()) {%>
+  <%for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getGenClassType()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=keyGenFeature.getImportedType()%> <%=keyGenFeature.getUncapName()%>) {
+		for (<%=genModel.getImportedName("java.util.Iterator")%> i = <%=genFeature.getGetAccessor()%>().iterator(); i.hasNext(); ) {
+			<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> <%=genFeature.getUncapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) i.next();
+			if (<%=keyGenFeature.getUncapName()%>.equals(<%=genFeature.getUncapName()%>.<%=keyGenFeature.getGetAccessor()%>())) {
+				return <%=genFeature.getUncapName()%>;
+			}
+		}
+		return null;
+	}
+
+  <%}%>
+<%}%>
