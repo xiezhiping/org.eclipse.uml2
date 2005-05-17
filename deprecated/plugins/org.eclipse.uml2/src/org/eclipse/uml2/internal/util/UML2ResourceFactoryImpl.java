@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ResourceFactoryImpl.java,v 1.4 2005/04/22 15:18:27 khussey Exp $
+ * $Id: UML2ResourceFactoryImpl.java,v 1.5 2005/05/17 19:01:14 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -63,6 +63,8 @@ public class UML2ResourceFactoryImpl extends ResourceFactoryImpl implements UML2
 
 		resource.getDefaultLoadOptions().put(
 			XMIResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		resource.getDefaultLoadOptions().put(
+			XMIResource.OPTION_LAX_FEATURE_PROCESSING, Boolean.TRUE);
 
 		resource.getDefaultSaveOptions().put(
 			XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
