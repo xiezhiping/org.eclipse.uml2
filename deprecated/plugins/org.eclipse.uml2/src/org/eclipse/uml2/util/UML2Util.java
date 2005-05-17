@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.13 2005/05/04 20:20:08 khussey Exp $
+ * $Id: UML2Util.java,v 1.14 2005/05/17 04:05:50 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -129,7 +129,7 @@ public class UML2Util {
 
 	}
 
-	protected static interface Converter {
+	public static interface Converter {
 
 		Collection convert(Collection eObjects, Map options,
 				DiagnosticChain diagnostics, Map context);
@@ -2851,7 +2851,7 @@ public class UML2Util {
 
 									diagnostics
 										.add(new BasicDiagnostic(
-											Diagnostic.WARNING,
+											Diagnostic.ERROR,
 											UML2Validator.DIAGNOSTIC_SOURCE,
 											DUPLICATE_OPERATION,
 											UML2Plugin.INSTANCE
@@ -4809,7 +4809,7 @@ public class UML2Util {
 
 	protected static final String PROPERTY_NAME__ATTRIBUTE_NAME = "attributeName"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__BASE_PACKAGE = "basePackage"; //$NON-NLS-1$
+	public static final String PROPERTY_NAME__BASE_PACKAGE = "basePackage"; //$NON-NLS-1$
 
 	protected static final String PROPERTY_NAME__CLASS_NAME = "className"; //$NON-NLS-1$
 
@@ -4831,11 +4831,17 @@ public class UML2Util {
 
 	protected static final String PROPERTY_NAME__IS_VOLATILE = "isVolatile"; //$NON-NLS-1$
 
+	protected static final String PROPERTY_NAME__NS_PREFIX = "nsPrefix"; //$NON-NLS-1$
+
+	protected static final String PROPERTY_NAME__NS_URI = "nsURI"; //$NON-NLS-1$
+
 	protected static final String PROPERTY_NAME__OPERATION_NAME = "operationName"; //$NON-NLS-1$
 
 	protected static final String PROPERTY_NAME__PACKAGE_NAME = "packageName"; //$NON-NLS-1$
 
 	protected static final String PROPERTY_NAME__PARAMETER_NAME = "parameterName"; //$NON-NLS-1$
+
+	public static final String PROPERTY_NAME__PREFIX = "prefix"; //$NON-NLS-1$
 
 	protected static final String PROPERTY_NAME__REFERENCE_NAME = "referenceName"; //$NON-NLS-1$
 
@@ -4861,15 +4867,11 @@ public class UML2Util {
 
 	protected static final String STEREOTYPE_NAME__E_OPERATION = "EOperation"; //$NON-NLS-1$
 
-	protected static final String STEREOTYPE_NAME__E_PACKAGE = "EPackage"; //$NON-NLS-1$
+	public static final String STEREOTYPE_NAME__E_PACKAGE = "EPackage"; //$NON-NLS-1$
 
 	protected static final String STEREOTYPE_NAME__E_PARAMETER = "EParameter"; //$NON-NLS-1$
 
 	protected static final String STEREOTYPE_NAME__E_REFERENCE = "EReference"; //$NON-NLS-1$
-
-	protected static final String PROPERTY_NAME__NS_PREFIX = "nsPrefix"; //$NON-NLS-1$
-
-	protected static final String PROPERTY_NAME__NS_URI = "nsURI"; //$NON-NLS-1$
 
 	protected static boolean safeEquals(Object thisObject, Object thatObject) {
 		return null == thisObject
