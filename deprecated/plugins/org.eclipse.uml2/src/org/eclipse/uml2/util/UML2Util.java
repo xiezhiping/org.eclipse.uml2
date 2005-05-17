@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.15 2005/05/17 17:42:03 khussey Exp $
+ * $Id: UML2Util.java,v 1.16 2005/05/17 19:00:04 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
@@ -1378,19 +1379,25 @@ public class UML2Util {
 		 * @see org.eclipse.uml2.util.UML2Switch#caseClass(org.eclipse.uml2.Class)
 		 */
 		public Object caseClass(org.eclipse.uml2.Class class_) {
-			EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-			elementToEModelElementMap.put(class_, eClass);
+			org.eclipse.uml2.Package package_ = class_.getNearestPackage();
 
-			EPackage ePackage = (EPackage) doSwitch(class_.getPackage());
-			ePackage.getEClassifiers().add(eClass);
+			if (null == package_) {
+				return super.caseClass(class_);
+			} else {
+				EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+				elementToEModelElementMap.put(class_, eClass);
 
-			setName(eClass, class_);
+				EPackage ePackage = (EPackage) doSwitch(package_);
+				ePackage.getEClassifiers().add(eClass);
 
-			eClass.setAbstract(class_.isAbstract());
+				setName(eClass, class_);
 
-			defaultCase(class_);
+				eClass.setAbstract(class_.isAbstract());
 
-			return eClass;
+				defaultCase(class_);
+
+				return eClass;
+			}
 		}
 
 		/*
@@ -1462,17 +1469,23 @@ public class UML2Util {
 		 * @see org.eclipse.uml2.util.UML2Switch#caseEnumeration(org.eclipse.uml2.Enumeration)
 		 */
 		public Object caseEnumeration(Enumeration enumeration) {
-			EEnum eEnum = EcoreFactory.eINSTANCE.createEEnum();
-			elementToEModelElementMap.put(enumeration, eEnum);
+			org.eclipse.uml2.Package package_ = enumeration.getNearestPackage();
 
-			EPackage ePackage = (EPackage) doSwitch(enumeration.getPackage());
-			ePackage.getEClassifiers().add(eEnum);
+			if (null == package_) {
+				return super.caseEnumeration(enumeration);
+			} else {
+				EEnum eEnum = EcoreFactory.eINSTANCE.createEEnum();
+				elementToEModelElementMap.put(enumeration, eEnum);
 
-			setName(eEnum, enumeration);
+				EPackage ePackage = (EPackage) doSwitch(package_);
+				ePackage.getEClassifiers().add(eEnum);
 
-			defaultCase(enumeration);
+				setName(eEnum, enumeration);
 
-			return eEnum;
+				defaultCase(enumeration);
+
+				return eEnum;
+			}
 		}
 
 		/*
@@ -1560,20 +1573,26 @@ public class UML2Util {
 		 * @see org.eclipse.uml2.util.UML2Switch#caseInterface(org.eclipse.uml2.Interface)
 		 */
 		public Object caseInterface(Interface interface_) {
-			EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-			elementToEModelElementMap.put(interface_, eClass);
+			org.eclipse.uml2.Package package_ = interface_.getNearestPackage();
 
-			EPackage ePackage = (EPackage) doSwitch(interface_.getPackage());
-			ePackage.getEClassifiers().add(eClass);
+			if (null == package_) {
+				return super.caseInterface(interface_);
+			} else {
+				EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+				elementToEModelElementMap.put(interface_, eClass);
 
-			setName(eClass, interface_);
+				EPackage ePackage = (EPackage) doSwitch(package_);
+				ePackage.getEClassifiers().add(eClass);
 
-			eClass.setAbstract(true);
-			eClass.setInterface(true);
+				setName(eClass, interface_);
 
-			defaultCase(interface_);
+				eClass.setAbstract(true);
+				eClass.setInterface(true);
 
-			return eClass;
+				defaultCase(interface_);
+
+				return eClass;
+			}
 		}
 
 		/*
@@ -1691,19 +1710,26 @@ public class UML2Util {
 		 * @see org.eclipse.uml2.util.UML2Switch#casePrimitiveType(org.eclipse.uml2.PrimitiveType)
 		 */
 		public Object casePrimitiveType(PrimitiveType primitiveType) {
-			EDataType eDataType = EcoreFactory.eINSTANCE.createEDataType();
-			elementToEModelElementMap.put(primitiveType, eDataType);
+			org.eclipse.uml2.Package package_ = primitiveType
+				.getNearestPackage();
 
-			EPackage ePackage = (EPackage) doSwitch(primitiveType.getPackage());
-			ePackage.getEClassifiers().add(eDataType);
+			if (null == package_) {
+				return super.casePrimitiveType(primitiveType);
+			} else {
+				EDataType eDataType = EcoreFactory.eINSTANCE.createEDataType();
+				elementToEModelElementMap.put(primitiveType, eDataType);
 
-			setName(eDataType, primitiveType);
+				EPackage ePackage = (EPackage) doSwitch(package_);
+				ePackage.getEClassifiers().add(eDataType);
 
-			eDataType.setInstanceClassName(eDataType.getName());
+				setName(eDataType, primitiveType);
 
-			defaultCase(primitiveType);
+				eDataType.setInstanceClassName(eDataType.getName());
 
-			return eDataType;
+				defaultCase(primitiveType);
+
+				return eDataType;
+			}
 		}
 
 		/*
@@ -2783,7 +2809,7 @@ public class UML2Util {
 
 		protected void processDuplicateOperations(Map options,
 				DiagnosticChain diagnostics, Map context) {
-			List operationsToDuplicate = new ArrayList();
+			List operationsToDuplicate = new UniqueEList();
 
 			for (Iterator eModelElements = elementToEModelElementMap.values()
 				.iterator(); eModelElements.hasNext();) {
@@ -3036,8 +3062,8 @@ public class UML2Util {
 
 		protected void processDuplicateFeatures(Map options,
 				DiagnosticChain diagnostics, Map context) {
-			List featuresToDuplicate = new ArrayList();
-			List featuresToRemove = new ArrayList();
+			List featuresToDuplicate = new UniqueEList();
+			List featuresToRemove = new UniqueEList();
 
 			for (Iterator eModelElements = elementToEModelElementMap.values()
 				.iterator(); eModelElements.hasNext();) {
