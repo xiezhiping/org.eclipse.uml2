@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - initial API and implementation
  *
- * $Id: plugin.xml,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: plugin.xml,v 1.2 2005/05/18 19:47:21 khussey Exp $
  */
 -->
 
@@ -32,7 +32,7 @@
   </requires>
 
   <runtime>
-    <library name="codegen.ecore.jar">
+    <library name="uml2.codegen.ecore.jar">
       <export name="*"/>
     </library>
   </runtime>

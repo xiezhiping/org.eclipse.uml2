@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - initial API and implementation
  *
- * $Id: plugin.xml,v 1.5 2005/03/18 21:15:42 khussey Exp $
+ * $Id: plugin.xml,v 1.6 2005/05/18 19:47:10 khussey Exp $
  */
 -->
 
@@ -23,7 +23,7 @@
    provider-name="%providerName">
 
   <runtime>
-    <library name="examples.emof2ecore.jar">
+    <library name="uml2.examples.emof2ecore.jar">
       <export name="*"/>
     </library>
   </runtime>
