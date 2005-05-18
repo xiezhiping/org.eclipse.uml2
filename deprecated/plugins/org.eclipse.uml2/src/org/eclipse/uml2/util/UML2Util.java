@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.17 2005/05/18 12:50:30 khussey Exp $
+ * $Id: UML2Util.java,v 1.18 2005/05/18 15:56:21 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -18,7 +18,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -642,14 +641,24 @@ public class UML2Util {
 									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__SIMPLE);
 								break;
 							case ExtendedMetaData.ATTRIBUTE_FEATURE :
-							case ExtendedMetaData.ATTRIBUTE_WILDCARD_FEATURE :
 								value = featureKindEnumeration
 									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ATTRIBUTE);
 								break;
+							case ExtendedMetaData.ATTRIBUTE_WILDCARD_FEATURE :
+								value = featureKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ATTRIBUTE_WILDCARD);
+								break;
 							case ExtendedMetaData.ELEMENT_FEATURE :
-							case ExtendedMetaData.ELEMENT_WILDCARD_FEATURE :
 								value = featureKindEnumeration
 									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT);
+								break;
+							case ExtendedMetaData.ELEMENT_WILDCARD_FEATURE :
+								value = featureKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT_WILDCARD);
+								break;
+							case ExtendedMetaData.GROUP_FEATURE :
+								value = featureKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__GROUP);
 								break;
 						}
 					}
@@ -1935,11 +1944,30 @@ public class UML2Util {
 									(EStructuralFeature) eModelElement,
 									ExtendedMetaData.ATTRIBUTE_FEATURE);
 							} else if (featureKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ATTRIBUTE_WILDCARD) == value) {
+
+								ExtendedMetaData.INSTANCE
+									.setFeatureKind(
+										(EStructuralFeature) eModelElement,
+										ExtendedMetaData.ATTRIBUTE_WILDCARD_FEATURE);
+							} else if (featureKindEnumeration
 								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT) == value) {
 
 								ExtendedMetaData.INSTANCE.setFeatureKind(
 									(EStructuralFeature) eModelElement,
 									ExtendedMetaData.ELEMENT_FEATURE);
+							} else if (featureKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT_WILDCARD) == value) {
+
+								ExtendedMetaData.INSTANCE.setFeatureKind(
+									(EStructuralFeature) eModelElement,
+									ExtendedMetaData.ELEMENT_WILDCARD_FEATURE);
+							} else if (featureKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__GROUP) == value) {
+
+								ExtendedMetaData.INSTANCE.setFeatureKind(
+									(EStructuralFeature) eModelElement,
+									ExtendedMetaData.GROUP_FEATURE);
 							}
 						} else if (PROPERTY_NAME__XML_NAME == propertyName) {
 
@@ -4891,11 +4919,17 @@ public class UML2Util {
 
 	protected static final String ENUMERATION_LITERAL_NAME__ATTRIBUTE = "Attribute"; //$NON-NLS-1$
 
+	protected static final String ENUMERATION_LITERAL_NAME__ATTRIBUTE_WILDCARD = "AttributeWilcard"; //$NON-NLS-1$
+
 	protected static final String ENUMERATION_LITERAL_NAME__ELEMENT = "Element"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION_LITERAL_NAME__ELEMENT_ONLY = "ElementOnly"; //$NON-NLS-1$
 
+	protected static final String ENUMERATION_LITERAL_NAME__ELEMENT_WILDCARD = "ElementWildcard"; //$NON-NLS-1$
+
 	protected static final String ENUMERATION_LITERAL_NAME__EMPTY = "Empty"; //$NON-NLS-1$
+
+	protected static final String ENUMERATION_LITERAL_NAME__GROUP = "Group"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION_LITERAL_NAME__MIXED = "Mixed"; //$NON-NLS-1$
 
@@ -5253,14 +5287,14 @@ public class UML2Util {
 		return qualifiedText;
 	}
 
-	public static Set findNamedElements(ResourceSet resourceSet,
+	public static Collection findNamedElements(ResourceSet resourceSet,
 			String qualifiedName) {
 		return findNamedElements(resourceSet, qualifiedName, false);
 	}
 
-	public static Set findNamedElements(ResourceSet resourceSet,
+	public static Collection findNamedElements(ResourceSet resourceSet,
 			String qualifiedName, boolean ignoreCase) {
-		Set namedElements = new LinkedHashSet();
+		List namedElements = new UniqueEList();
 
 		for (Iterator resources = resourceSet.getResources().iterator(); resources
 			.hasNext();) {
@@ -5273,9 +5307,9 @@ public class UML2Util {
 		return namedElements;
 	}
 
-	public static Set findNamedElements(ResourceSet resourceSet,
+	public static Collection findNamedElements(ResourceSet resourceSet,
 			String qualifiedName, boolean ignoreCase, EClass eClass) {
-		Set namedElements = new LinkedHashSet();
+		List namedElements = new UniqueEList();
 
 		if (UML2Package.eINSTANCE.getNamedElement().isSuperTypeOf(eClass)) {
 
@@ -5283,39 +5317,40 @@ public class UML2Util {
 				.hasNext();) {
 
 				findNamedElements(((Resource) resources.next()).getContents(),
-					qualifiedName, ignoreCase, eClass, new LinkedHashSet());
+					qualifiedName, ignoreCase, eClass, namedElements);
 			}
 		}
 
 		return namedElements;
 	}
 
-	public static Set findNamedElements(Resource resource, String qualifiedName) {
+	public static Collection findNamedElements(Resource resource,
+			String qualifiedName) {
 		return findNamedElements(resource, qualifiedName, false);
 	}
 
-	public static Set findNamedElements(Resource resource,
+	public static Collection findNamedElements(Resource resource,
 			String qualifiedName, boolean ignoreCase) {
 		return findNamedElements(resource.getContents(), qualifiedName,
 			ignoreCase, UML2Package.eINSTANCE.getNamedElement(),
-			new LinkedHashSet());
+			new UniqueEList());
 	}
 
-	public static Set findNamedElements(Resource resource,
+	public static Collection findNamedElements(Resource resource,
 			String qualifiedName, boolean ignoreCase, EClass eClass) {
-		Set namedElements = new LinkedHashSet();
+		List namedElements = new UniqueEList();
 
 		if (UML2Package.eINSTANCE.getNamedElement().isSuperTypeOf(eClass)) {
 			findNamedElements(resource.getContents(), qualifiedName,
-				ignoreCase, eClass, new LinkedHashSet());
+				ignoreCase, eClass, namedElements);
 		}
 
 		return namedElements;
 	}
 
-	protected static Set findNamedElements(Collection eObjects,
+	protected static Collection findNamedElements(Collection eObjects,
 			String qualifiedName, boolean ignoreCase, EClass eClass,
-			Set namedElements) {
+			Collection namedElements) {
 		int index = qualifiedName.indexOf(NamedElement.SEPARATOR);
 
 		if (-1 == index) {

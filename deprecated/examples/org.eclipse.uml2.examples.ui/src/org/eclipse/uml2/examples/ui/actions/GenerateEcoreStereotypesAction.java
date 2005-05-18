@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.1 2005/04/14 17:32:07 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.2 2005/05/18 15:55:56 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -78,13 +78,6 @@ public class GenerateEcoreStereotypesAction
 						eNamedElementStereotype);
 					generateOwnedAttribute(eClassifierStereotype,
 						"instanceClassName", stringPrimitiveType, 0, 1); //$NON-NLS-1$
-
-					Stereotype extendStereotype = generateOwnedStereotype(
-						profile, "Extend", false); //$NON-NLS-1$
-					org.eclipse.uml2.Class generalizationMetaclass = getReferencedUML2Metaclass(
-						profile, UML2Package.eINSTANCE.getGeneralization());
-					generateExtension(extendStereotype,
-						generalizationMetaclass, false);
 
 					Enumeration contentKindEnumeration = generateOwnedEnumeration(
 						profile, "ContentKind"); //$NON-NLS-1$
@@ -166,7 +159,10 @@ public class GenerateEcoreStereotypesAction
 					generateOwnedLiteral(featureKindEnumeration, "Unspecified"); //$NON-NLS-1$
 					generateOwnedLiteral(featureKindEnumeration, "Simple"); //$NON-NLS-1$
 					generateOwnedLiteral(featureKindEnumeration, "Attribute"); //$NON-NLS-1$
+					generateOwnedLiteral(featureKindEnumeration, "AttributeWildcard"); //$NON-NLS-1$
 					generateOwnedLiteral(featureKindEnumeration, "Element"); //$NON-NLS-1$
+					generateOwnedLiteral(featureKindEnumeration, "ElementWildcard"); //$NON-NLS-1$
+					generateOwnedLiteral(featureKindEnumeration, "Group"); //$NON-NLS-1$
 
 					Enumeration visibilityKindEnumeration = generateOwnedEnumeration(
 						profile, "VisibilityKind"); //$NON-NLS-1$
@@ -193,11 +189,11 @@ public class GenerateEcoreStereotypesAction
 					generateOwnedAttribute(eStructuralFeatureStereotype,
 						"isUnsettable", booleanPrimitiveType, 0, 1); //$NON-NLS-1$
 					generateOwnedAttribute(eStructuralFeatureStereotype,
-						"xmlNamespace", booleanPrimitiveType, 0, 1); //$NON-NLS-1$
+						"xmlNamespace", stringPrimitiveType, 0, 1); //$NON-NLS-1$
 					generateOwnedAttribute(eStructuralFeatureStereotype,
-						"xmlFeatureKind", booleanPrimitiveType, 0, 1); //$NON-NLS-1$
+						"xmlFeatureKind", featureKindEnumeration, 0, 1); //$NON-NLS-1$
 					generateOwnedAttribute(eStructuralFeatureStereotype,
-						"visibility", booleanPrimitiveType, 0, 1); //$NON-NLS-1$
+						"visibility", visibilityKindEnumeration, 0, 1); //$NON-NLS-1$
 
 					Stereotype eAttributeStereotype = generateOwnedStereotype(
 						profile, "EAttribute", false); //$NON-NLS-1$

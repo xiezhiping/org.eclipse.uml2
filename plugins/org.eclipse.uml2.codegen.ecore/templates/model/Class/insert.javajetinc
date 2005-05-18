@@ -7,7 +7,13 @@
 	 * @generated
 	 */
 	protected <%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%> getCacheAdapter() {
-		return <%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%>.INSTANCE;
+		for (<%=genModel.getImportedName("java.util.Iterator")%> i = eAdapters().iterator(); i.hasNext();) {
+			<%=genModel.getImportedName("org.eclipse.emf.common.notify.Adapter")%> adapter = (<%=genModel.getImportedName("org.eclipse.emf.common.notify.Adapter")%>) i.next();
+			if (adapter instanceof <%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%>) {
+				return (<%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%>) adapter;
+			}
+		}
+		return null;
 	}
 
 <%}%>
