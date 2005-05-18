@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseEcoreBuilder.java,v 1.2 2005/05/18 20:25:14 khussey Exp $
+ * $Id: RoseEcoreBuilder.java,v 1.3 2005/05/18 21:08:51 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.builder;
 
@@ -41,7 +41,6 @@ import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
@@ -1759,24 +1758,13 @@ public class RoseEcoreBuilder
 	protected void makeCompatible(ETypedElement eTypedElement,
 			ETypedElement otherETypedElement) {
 
-		if (!eTypedElement.eIsSet(EcorePackage.eINSTANCE
-			.getENamedElement_Name())) {
-
-			eTypedElement.setName(otherETypedElement.getName());
-		}
-
-		if (!eTypedElement.eIsSet(EcorePackage.eINSTANCE
-			.getETypedElement_LowerBound())) {
-
-			eTypedElement.setLowerBound(otherETypedElement.getLowerBound());
-		} else if (eTypedElement.isRequired() != otherETypedElement
-			.isRequired()) {
+		if (eTypedElement.isRequired() != otherETypedElement.isRequired()) {
 
 			int lesserLowerBound = getLesserCommonLowerBound(
 				otherETypedElement, eTypedElement);
 
 			if (lesserLowerBound != otherETypedElement.getLowerBound()) {
-				info("Changed lower bound of "
+				warning("Changed lower bound of "
 					+ getQualifiedName(otherETypedElement) + " from "
 					+ otherETypedElement.getLowerBound() + " to "
 					+ lesserLowerBound);
@@ -1793,11 +1781,7 @@ public class RoseEcoreBuilder
 			}
 		}
 
-		if (!eTypedElement.eIsSet(EcorePackage.eINSTANCE
-			.getETypedElement_UpperBound())) {
-
-			eTypedElement.setUpperBound(otherETypedElement.getUpperBound());
-		} else if (eTypedElement.isMany() != otherETypedElement.isMany()) {
+		if (eTypedElement.isMany() != otherETypedElement.isMany()) {
 			int greaterUpperBound = getGreaterCommonUpperBound(
 				otherETypedElement, eTypedElement);
 
@@ -1820,11 +1804,7 @@ public class RoseEcoreBuilder
 			}
 		}
 
-		if (!eTypedElement.eIsSet(EcorePackage.eINSTANCE
-			.getETypedElement_EType())) {
-
-			eTypedElement.setEType(otherETypedElement.getEType());
-		} else if (!eTypedElement.isMany() && !otherETypedElement.isMany()) {
+		if (!eTypedElement.isMany() && !otherETypedElement.isMany()) {
 			EClassifier commonEType = getCommonEType(otherETypedElement,
 				eTypedElement);
 

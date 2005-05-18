@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.19 2005/05/18 16:38:32 khussey Exp $
+ * $Id: UML2Util.java,v 1.20 2005/05/18 21:08:48 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -2747,18 +2747,7 @@ public class UML2Util {
 		protected void ensureConformity(ETypedElement eTypedElement,
 				ETypedElement otherETypedElement) {
 
-			if (!eTypedElement.eIsSet(EcorePackage.eINSTANCE
-				.getENamedElement_Name())) {
-
-				eTypedElement.setName(otherETypedElement.getName());
-			}
-
-			if (!eTypedElement.eIsSet(EcorePackage.eINSTANCE
-				.getETypedElement_LowerBound())) {
-
-				eTypedElement.setLowerBound(otherETypedElement.getLowerBound());
-			} else if (eTypedElement.isRequired() != otherETypedElement
-				.isRequired()) {
+			if (eTypedElement.isRequired() != otherETypedElement.isRequired()) {
 
 				int lesserLowerBound = getLesserLowerBound(otherETypedElement
 					.getLowerBound(), eTypedElement.getLowerBound());
@@ -2788,11 +2777,7 @@ public class UML2Util {
 				}
 			}
 
-			if (!eTypedElement.eIsSet(EcorePackage.eINSTANCE
-				.getETypedElement_UpperBound())) {
-
-				eTypedElement.setUpperBound(otherETypedElement.getUpperBound());
-			} else if (eTypedElement.isMany() != otherETypedElement.isMany()) {
+			if (eTypedElement.isMany() != otherETypedElement.isMany()) {
 				int greaterUpperBound = getGreaterUpperBound(otherETypedElement
 					.getUpperBound(), eTypedElement.getUpperBound());
 
@@ -2821,11 +2806,7 @@ public class UML2Util {
 				}
 			}
 
-			if (!eTypedElement.eIsSet(EcorePackage.eINSTANCE
-				.getETypedElement_EType())) {
-
-				eTypedElement.setEType(otherETypedElement.getEType());
-			} else if (!eTypedElement.isMany() && !otherETypedElement.isMany()) {
+			if (!eTypedElement.isMany() && !otherETypedElement.isMany()) {
 				EClassifier commonEType = getCommonEType(otherETypedElement
 					.getEType(), eTypedElement.getEType());
 
@@ -3194,6 +3175,9 @@ public class UML2Util {
 
 										featuresToDuplicate
 											.add(duplicateEStructuralFeature);
+
+										ensureConformity(eStructuralFeature,
+											eAllStructuralFeature);
 
 										if (duplicateEStructuralFeature instanceof EReference) {
 											EReference eOpposite = ((EReference) duplicateEStructuralFeature)

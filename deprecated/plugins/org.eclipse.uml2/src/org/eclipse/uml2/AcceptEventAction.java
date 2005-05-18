@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.8 2005/05/18 21:13:19 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -53,7 +53,7 @@ public interface AcceptEventAction extends Action{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Trigger</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAcceptEventAction_Trigger()
-	 * @model type="org.eclipse.uml2.Trigger" required="true"
+	 * @model type="org.eclipse.uml2.Trigger"
 	 * @generated
 	 */
 	EList getTriggers();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragment.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: InteractionFragment.java,v 1.8 2005/05/18 21:13:19 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -61,7 +61,7 @@ public interface InteractionFragment extends NamedElement{
 	 * @return the value of the '<em>Covered</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteractionFragment_Covered()
 	 * @see org.eclipse.uml2.Lifeline#getCoveredBys
-	 * @model type="org.eclipse.uml2.Lifeline" opposite="coveredBy" required="true"
+	 * @model type="org.eclipse.uml2.Lifeline" opposite="coveredBy"
 	 * @generated
 	 */
 	EList getCovereds();

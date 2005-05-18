@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.11 2005/05/18 21:13:19 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -91,7 +91,7 @@ public interface RedefinableElement extends NamedElement{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefinition Context</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinitionContext()
-	 * @model type="org.eclipse.uml2.Classifier" required="true" transient="true" changeable="false" derived="true"
+	 * @model type="org.eclipse.uml2.Classifier" transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList getRedefinitionContexts();

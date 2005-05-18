@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interval.java,v 1.7 2005/05/18 16:38:31 khussey Exp $
+ * $Id: Interval.java,v 1.8 2005/05/18 21:13:19 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,7 +57,7 @@ public interface Interval extends ValueSpecification{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterval_Min()
-	 * @model type="org.eclipse.uml2.ValueSpecification" required="true"
+	 * @model type="org.eclipse.uml2.ValueSpecification"
 	 * @generated
 	 */
 	EList getMins();
@@ -88,7 +88,7 @@ public interface Interval extends ValueSpecification{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterval_Max()
-	 * @model type="org.eclipse.uml2.ValueSpecification" required="true"
+	 * @model type="org.eclipse.uml2.ValueSpecification"
 	 * @generated
 	 */
 	EList getMaxes();
