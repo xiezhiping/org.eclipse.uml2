@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2DetailPage.java,v 1.1 2005/05/17 22:10:19 khussey Exp $
+ * $Id: UML2DetailPage.java,v 1.2 2005/05/18 13:02:35 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer.ui;
 
@@ -125,44 +125,44 @@ public class UML2DetailPage
 			.getString("_UI_DuplicateFeatureInheritance_label"),
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
-				discardChoiceLabel, processChoiceLabel}, processChoiceLabel);
+				discardChoiceLabel, discardChoiceLabel}, processChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
 			.getString("_UI_DuplicateFeatures_label"),
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_FEATURES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
-				discardChoiceLabel, processChoiceLabel}, processChoiceLabel);
+				discardChoiceLabel, discardChoiceLabel}, processChoiceLabel);
 		addOptionControl(
 			group,
 			UML2ImporterPlugin.INSTANCE
 				.getString("_UI_DuplicateOperationInheritance_label"),
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
-				discardChoiceLabel, processChoiceLabel}, processChoiceLabel);
+				discardChoiceLabel, discardChoiceLabel}, processChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
 			.getString("_UI_DuplicateOperations_label"),
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
-				discardChoiceLabel, processChoiceLabel}, processChoiceLabel);
+				discardChoiceLabel, discardChoiceLabel}, processChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
 			.getString("_UI_RedefiningOperations_label"),
 			UML2Util.UML22EcoreConverter.OPTION__REDEFINING_OPERATIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
-				processChoiceLabel}, processChoiceLabel);
+				processChoiceLabel}, reportChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
 			.getString("_UI_RedefiningProperties_label"),
 			UML2Util.UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
-				processChoiceLabel}, processChoiceLabel);
+				processChoiceLabel}, reportChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
 			.getString("_UI_SubsettingProperties_label"),
 			UML2Util.UML22EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
-				processChoiceLabel}, processChoiceLabel);
+				processChoiceLabel}, reportChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
 			.getString("_UI_UnionProperties_label"),
 			UML2Util.UML22EcoreConverter.OPTION__UNION_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
-				processChoiceLabel}, processChoiceLabel);
+				processChoiceLabel}, reportChoiceLabel);
 	}
 
 	protected UML2Importer getUML2Importer() {
