@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: ProfileTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -25,15 +25,6 @@ import org.eclipse.uml2.UML2Factory;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.Profile#getOwnedStereotypes() <em>Owned Stereotype</em>}</li>
- *   <li>{@link org.eclipse.uml2.Profile#getMetaclassReferences() <em>Metaclass Reference</em>}</li>
- *   <li>{@link org.eclipse.uml2.Profile#getMetamodelReferences() <em>Metamodel Reference</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Profile#getElementImports() <em>Get Element Imports</em>}</li>
- *   <li>{@link org.eclipse.uml2.Profile#getPackageImports() <em>Get Package Imports</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -45,7 +36,7 @@ public class ProfileTest extends PackageTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,52 +99,5 @@ public class ProfileTest extends PackageTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Profile#getMetaclassReferences() <em>Metaclass Reference</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Profile#getMetaclassReferences()
-	 * @generated
-	 */
-	public void testGetMetaclassReferences() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Profile#getMetamodelReferences() <em>Metamodel Reference</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Profile#getMetamodelReferences()
-	 * @generated
-	 */
-	public void testGetMetamodelReferences() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Profile#getElementImports() <em>Get Element Imports</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Profile#getElementImports()
-	 * @generated
-	 */
-	public void testGetElementImports() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Profile#getPackageImports() <em>Get Package Imports</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Profile#getPackageImports()
-	 * @generated
-	 */
-	public void testGetPackageImports() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
 
 } //ProfileImplTest

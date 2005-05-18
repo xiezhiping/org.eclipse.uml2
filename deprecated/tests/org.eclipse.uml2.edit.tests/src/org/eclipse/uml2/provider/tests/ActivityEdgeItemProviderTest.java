@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeItemProviderTest.java,v 1.3 2005/04/04 20:02:08 khussey Exp $
+ * $Id: ActivityEdgeItemProviderTest.java,v 1.4 2005/05/18 17:04:07 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -27,7 +27,7 @@ public abstract class ActivityEdgeItemProviderTest extends RedefinableElementIte
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Activity Edge item provider adapter test case with the given name.

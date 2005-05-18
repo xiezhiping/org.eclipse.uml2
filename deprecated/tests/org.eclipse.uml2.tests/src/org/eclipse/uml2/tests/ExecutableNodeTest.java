@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: ExecutableNodeTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -20,12 +20,6 @@ import org.eclipse.uml2.UML2Factory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Executable Node</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.ExecutableNode#getOwnedElements() <em>Get Owned Elements</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public abstract class ExecutableNodeTest extends ActivityNodeTest {
@@ -35,7 +29,7 @@ public abstract class ExecutableNodeTest extends ActivityNodeTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Executable Node test case with the given name.
@@ -57,18 +51,19 @@ public abstract class ExecutableNodeTest extends ActivityNodeTest {
 		return (ExecutableNode)fixture;
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ExecutableNode#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ExecutableNode#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwnedElements() {
 		testGetOwnedElementsGen();
 		

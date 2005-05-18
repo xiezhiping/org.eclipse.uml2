@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureTest.java,v 1.1 2005/04/04 20:06:08 khussey Exp $
+ * $Id: FeatureTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -22,12 +22,6 @@ import org.eclipse.uml2.Classifier;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Feature</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public abstract class FeatureTest extends RedefinableElementTest {
@@ -37,7 +31,7 @@ public abstract class FeatureTest extends RedefinableElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Feature test case with the given name.
@@ -59,6 +53,8 @@ public abstract class FeatureTest extends RedefinableElementTest {
 		return (Feature)fixture;
 	}
 
+
+
 	/**
 	 * Tests the '{@link org.eclipse.uml2.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}' feature getter.
 	 * <!-- begin-user-doc -->
@@ -67,10 +63,9 @@ public abstract class FeatureTest extends RedefinableElementTest {
 	 * @generated
 	 */
 	public void testGetFeaturingClassifiersGen() {
-		// TODO: implement this feature getter test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetFeaturingClassifiers() {
 		testGetFeaturingClassifiersGen();
 		

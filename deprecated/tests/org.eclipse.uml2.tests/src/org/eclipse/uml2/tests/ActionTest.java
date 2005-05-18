@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: ActionTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -24,15 +24,7 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.Action#getOutputs() <em>Output</em>}</li>
- *   <li>{@link org.eclipse.uml2.Action#getInputs() <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.Action#getContext() <em>Context</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Action#getOwnedElements() <em>Get Owned Elements</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -44,7 +36,7 @@ public class ActionTest extends ExecutableNodeTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,7 +95,7 @@ public class ActionTest extends ExecutableNodeTest {
 	 * @generated
 	 */
 	public void testGetOutputsGen() {
-		// TODO: implement this feature getter test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -121,10 +113,9 @@ public class ActionTest extends ExecutableNodeTest {
 	 * @generated
 	 */
 	public void testGetInputsGen() {
-		// TODO: implement this feature getter test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetInputs() {
 		testGetInputsGen();
 		
@@ -143,15 +134,17 @@ public class ActionTest extends ExecutableNodeTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Action#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Action#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

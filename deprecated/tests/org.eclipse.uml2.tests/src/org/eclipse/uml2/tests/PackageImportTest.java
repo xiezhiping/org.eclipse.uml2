@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: PackageImportTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -27,19 +27,9 @@ import org.eclipse.uml2.UML2Package;
  * A test case for the model object '<em><b>Package Import</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.PackageImport#getImportedPackage() <em>Imported Package</em>}</li>
- *   <li>{@link org.eclipse.uml2.PackageImport#getImportingNamespace() <em>Importing Namespace</em>}</li>
- * </ul>
- * </p>
- * <p>
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.PackageImport#validatePublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Public Or Private</em>}</li>
- *   <li>{@link org.eclipse.uml2.PackageImport#getTargets() <em>Get Targets</em>}</li>
- *   <li>{@link org.eclipse.uml2.PackageImport#getSources() <em>Get Sources</em>}</li>
- *   <li>{@link org.eclipse.uml2.PackageImport#getOwner() <em>Get Owner</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -51,7 +41,7 @@ public class PackageImportTest extends DirectedRelationshipTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,21 +92,7 @@ public class PackageImportTest extends DirectedRelationshipTest {
 		setFixture(null);
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageImport#getImportedPackage() <em>Imported Package</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageImport#getImportedPackage()
-	 * @generated
-	 */
-	public void testGetImportedPackageGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetImportedPackage() {
-		testGetImportedPackageGen();
-		
 		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE.createPackage();
 
 		getFixture().setImportedPackage(package_);
@@ -126,23 +102,9 @@ public class PackageImportTest extends DirectedRelationshipTest {
 		getFixture().setImportedPackage(null);
 
 		assertSame(null, getFixture().getImportedPackage());
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageImport#setImportedPackage(org.eclipse.uml2.Package) <em>Imported Package</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageImport#setImportedPackage(org.eclipse.uml2.Package)
-	 * @generated
-	 */
-	public void testSetImportedPackageGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	public void testSetImportedPackage() {
-		testSetImportedPackageGen();
-		
 		org.eclipse.uml2.Package package_ = UML2Factory.eINSTANCE.createPackage();
 
 		getFixture().setImportedPackage(package_);
@@ -154,20 +116,7 @@ public class PackageImportTest extends DirectedRelationshipTest {
 		assertSame(null, getFixture().getImportedPackage());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageImport#getImportingNamespace() <em>Importing Namespace</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageImport#getImportingNamespace()
-	 * @generated
-	 */
-	public void testGetImportingNamespaceGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetImportingNamespace() {
-		testGetImportingNamespaceGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getNamespace()).iterator(); eAllSubClasses.hasNext();) {
 			Namespace namespace = (Namespace) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -182,20 +131,7 @@ public class PackageImportTest extends DirectedRelationshipTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageImport#setImportingNamespace(org.eclipse.uml2.Namespace) <em>Importing Namespace</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageImport#setImportingNamespace(org.eclipse.uml2.Namespace)
-	 * @generated
-	 */
-	public void testSetImportingNamespaceGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testSetImportingNamespace() {
-		testSetImportingNamespaceGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getNamespace()).iterator(); eAllSubClasses.hasNext();) {
 			Namespace namespace = (Namespace) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -220,19 +156,21 @@ public class PackageImportTest extends DirectedRelationshipTest {
 	 * @generated
 	 */
 	public void testValidatePublicOrPrivate__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageImport#getTargets() <em>Get Targets</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.DirectedRelationship#getTargets() <em>Target</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageImport#getTargets()
+	 * @see org.eclipse.uml2.DirectedRelationship#getTargets()
 	 * @generated
 	 */
 	public void testGetTargetsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -245,14 +183,14 @@ public class PackageImportTest extends DirectedRelationshipTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageImport#getSources() <em>Get Sources</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.DirectedRelationship#getSources() <em>Source</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageImport#getSources()
+	 * @see org.eclipse.uml2.DirectedRelationship#getSources()
 	 * @generated
 	 */
 	public void testGetSourcesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -265,17 +203,16 @@ public class PackageImportTest extends DirectedRelationshipTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageImport#getOwner() <em>Get Owner</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageImport#getOwner()
+	 * @see org.eclipse.uml2.Element#getOwner()
 	 * @generated
 	 */
 	public void testGetOwnerGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwner() {
 		testGetOwnerGen();
 		

@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
- * $Id: UML2EditTests.java,v 1.1 2005/04/04 20:02:10 khussey Exp $
+ * $Id: UML2EditTests.java,v 1.2 2005/05/18 17:04:10 khussey Exp $
  */
 package org.eclipse.uml2.edit.tests;
 
@@ -212,7 +212,7 @@ public class UML2EditTests extends TestSuite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->

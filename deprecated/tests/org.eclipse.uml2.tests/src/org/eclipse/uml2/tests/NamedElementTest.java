@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: NamedElementTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -29,7 +29,6 @@ import org.eclipse.uml2.UML2Package;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.NamedElement#getQualifiedName() <em>Qualified Name</em>}</li>
- *   <li>{@link org.eclipse.uml2.NamedElement#getClientDependencies() <em>Client Dependency</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -42,9 +41,6 @@ import org.eclipse.uml2.UML2Package;
  *   <li>{@link org.eclipse.uml2.NamedElement#separator() <em>Separator</em>}</li>
  *   <li>{@link org.eclipse.uml2.NamedElement#qualifiedName() <em>Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Needs Ownership</em>}</li>
- *   <li>{@link org.eclipse.uml2.NamedElement#getNamespace() <em>Get Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.NamedElement#getOwner() <em>Get Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.NamedElement#getOwnedElements() <em>Get Owned Elements</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -56,7 +52,7 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Named Element test case with the given name.
@@ -109,20 +105,7 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 		assertEquals(getFixture().qualifiedName(), getFixture().getQualifiedName());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.NamedElement#getClientDependencies() <em>Client Dependency</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.NamedElement#getClientDependencies()
-	 * @generated
-	 */
-	public void testGetClientDependenciesGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetClientDependencies() {
-		testGetClientDependenciesGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDependency()).iterator(); eAllSubClasses.hasNext();) {
 			Dependency dependency = (Dependency) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -147,7 +130,7 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	 * @generated
 	 */
 	public void testValidateNoName__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -159,7 +142,7 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	 * @generated
 	 */
 	public void testValidateQualifiedName__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -171,7 +154,7 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	 * @generated
 	 */
 	public void testAllNamespacesGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -193,7 +176,7 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	 * @generated
 	 */
 	public void testIsDistinguishableFrom__NamedElement_Namespace() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -205,7 +188,7 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	 * @generated
 	 */
 	public void testSeparatorGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -223,7 +206,7 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	 * @generated
 	 */
 	public void testQualifiedNameGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -264,19 +247,21 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	 * @generated
 	 */
 	public void testValidateVisibilityNeedsOwnership__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.NamedElement#getNamespace() <em>Get Namespace</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.NamedElement#getNamespace() <em>Namespace</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.NamedElement#getNamespace()
 	 * @generated
 	 */
 	public void testGetNamespaceGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -291,17 +276,16 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.NamedElement#getOwner() <em>Get Owner</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.NamedElement#getOwner()
+	 * @see org.eclipse.uml2.Element#getOwner()
 	 * @generated
 	 */
 	public void testGetOwnerGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwner() {
 		testGetOwnerGen();
 		
@@ -313,14 +297,14 @@ public abstract class NamedElementTest extends TemplateableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.NamedElement#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.NamedElement#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

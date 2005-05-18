@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: ActivityGroupTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -25,20 +25,9 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.ActivityGroup#getSuperGroup() <em>Super Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.ActivityGroup#getActivityGroup_activity() <em>Activity Group activity</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.ActivityGroup#getSubgroups() <em>Get Subgroups</em>}</li>
- *   <li>{@link org.eclipse.uml2.ActivityGroup#getContainedEdges() <em>Get Contained Edges</em>}</li>
- *   <li>{@link org.eclipse.uml2.ActivityGroup#getContainedNodes() <em>Get Contained Nodes</em>}</li>
- *   <li>{@link org.eclipse.uml2.ActivityGroup#getActivity() <em>Get Activity</em>}</li>
- *   <li>{@link org.eclipse.uml2.ActivityGroup#setActivity(org.eclipse.uml2.Activity) <em>Set Activity</em>}</li>
- *   <li>{@link org.eclipse.uml2.ActivityGroup#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.ActivityGroup#getOwner() <em>Get Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.ActivityGroup#getContainedNodes() <em>Contained Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.ActivityGroup#getContainedEdges() <em>Contained Edge</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -50,7 +39,7 @@ public abstract class ActivityGroupTest extends ElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Activity Group test case with the given name.
@@ -80,7 +69,7 @@ public abstract class ActivityGroupTest extends ElementTest {
 	 * @generated
 	 */
 	public void testGetSuperGroupGen() {
-		// TODO: implement this feature getter test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -124,7 +113,7 @@ public abstract class ActivityGroupTest extends ElementTest {
 	 * @generated
 	 */
 	public void testSetActivityGroup_activityGen() {
-		// TODO: implement this feature setter test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -145,14 +134,14 @@ public abstract class ActivityGroupTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getSubgroups() <em>Get Subgroups</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getSubgroups() <em>Subgroup</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.ActivityGroup#getSubgroups()
 	 * @generated
 	 */
 	public void testGetSubgroupsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -165,16 +154,18 @@ public abstract class ActivityGroupTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getContainedEdges() <em>Get Contained Edges</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getContainedEdges() <em>Contained Edge</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.ActivityGroup#getContainedEdges()
 	 * @generated
 	 */
 	public void testGetContainedEdgesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
+
 
 	public void testGetContainedEdges() {
 		testGetContainedEdgesGen();
@@ -183,14 +174,14 @@ public abstract class ActivityGroupTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getContainedNodes() <em>Get Contained Nodes</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getContainedNodes() <em>Contained Node</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.ActivityGroup#getContainedNodes()
 	 * @generated
 	 */
 	public void testGetContainedNodesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -201,14 +192,14 @@ public abstract class ActivityGroupTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getActivity() <em>Get Activity</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.ActivityNode#getActivity() <em>Activity</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityGroup#getActivity()
+	 * @see org.eclipse.uml2.ActivityNode#getActivity()
 	 * @generated
 	 */
 	public void testGetActivityGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -227,17 +218,16 @@ public abstract class ActivityGroupTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#setActivity(org.eclipse.uml2.Activity) <em>Set Activity</em>}' setter operation.
+	 * Tests the '{@link org.eclipse.uml2.ActivityNode#setActivity(org.eclipse.uml2.Activity) <em>Activity</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityGroup#setActivity(org.eclipse.uml2.Activity)
+	 * @see org.eclipse.uml2.ActivityNode#setActivity(org.eclipse.uml2.Activity)
 	 * @generated
 	 */
 	public void testSetActivityGen() {
-		// TODO: implement this setter operation test method
+		// TODO: implement this redefined feature setter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testSetActivity() {
 		testSetActivityGen();
 		
@@ -251,14 +241,14 @@ public abstract class ActivityGroupTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityGroup#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -271,14 +261,14 @@ public abstract class ActivityGroupTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getOwner() <em>Get Owner</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityGroup#getOwner()
+	 * @see org.eclipse.uml2.Element#getOwner()
 	 * @generated
 	 */
 	public void testGetOwnerGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

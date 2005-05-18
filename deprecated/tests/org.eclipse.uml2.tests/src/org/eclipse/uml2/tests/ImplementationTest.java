@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImplementationTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: ImplementationTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -27,22 +27,6 @@ import org.eclipse.uml2.UML2Package;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Implementation</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Implementation#getContract() <em>Contract</em>}</li>
- *   <li>{@link org.eclipse.uml2.Implementation#getImplementingClassifier() <em>Implementing Classifier</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Implementation#getSuppliers() <em>Get Suppliers</em>}</li>
- *   <li>{@link org.eclipse.uml2.Implementation#getTargets() <em>Get Targets</em>}</li>
- *   <li>{@link org.eclipse.uml2.Implementation#getClients() <em>Get Clients</em>}</li>
- *   <li>{@link org.eclipse.uml2.Implementation#getSources() <em>Get Sources</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class ImplementationTest extends RealizationTest {
@@ -52,7 +36,7 @@ public class ImplementationTest extends RealizationTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,21 +87,9 @@ public class ImplementationTest extends RealizationTest {
 		setFixture(null);
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Implementation#getContract() <em>Contract</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Implementation#getContract()
-	 * @generated
-	 */
-	public void testGetContractGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
+
 
 	public void testGetContract() {
-		testGetClientsGen();
-		
 		Interface interface_ = UML2Factory.eINSTANCE.createInterface();
 
 		getFixture().setContract(interface_);
@@ -127,23 +99,9 @@ public class ImplementationTest extends RealizationTest {
 		getFixture().setContract(null);
 
 		assertSame(null, getFixture().getContract());
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Implementation#setContract(org.eclipse.uml2.Interface) <em>Contract</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Implementation#setContract(org.eclipse.uml2.Interface)
-	 * @generated
-	 */
-	public void testSetContractGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	public void testSetContract() {
-		testSetContractGen();
-		
 		Interface interface_ = UML2Factory.eINSTANCE.createInterface();
 
 		getFixture().setContract(interface_);
@@ -157,20 +115,7 @@ public class ImplementationTest extends RealizationTest {
 		assertTrue(getFixture().getSuppliers().contains(interface_));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Implementation#getImplementingClassifier() <em>Implementing Classifier</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Implementation#getImplementingClassifier()
-	 * @generated
-	 */
-	public void testGetImplementingClassifierGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetImplementingClassifier() {
-		testGetImplementingClassifierGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getBehavioredClassifier()).iterator(); eAllSubClasses.hasNext();) {
 			BehavioredClassifier behavioredClassifier = (BehavioredClassifier) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -185,20 +130,7 @@ public class ImplementationTest extends RealizationTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Implementation#setImplementingClassifier(org.eclipse.uml2.BehavioredClassifier) <em>Implementing Classifier</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Implementation#setImplementingClassifier(org.eclipse.uml2.BehavioredClassifier)
-	 * @generated
-	 */
-	public void testSetImplementingClassifierGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testSetImplementingClassifier() {
-		testSetImplementingClassifierGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getBehavioredClassifier()).iterator(); eAllSubClasses.hasNext();) {
 			BehavioredClassifier behavioredClassifier = (BehavioredClassifier) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -217,21 +149,7 @@ public class ImplementationTest extends RealizationTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Implementation#getSuppliers() <em>Get Suppliers</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Implementation#getSuppliers()
-	 * @generated
-	 */
-	public void testGetSuppliersGen() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetSuppliers() {
-		testGetSuppliersGen();
-		
 		super.testGetSuppliers();
 
 		Interface interface_ = UML2Factory.eINSTANCE.createInterface();
@@ -250,14 +168,14 @@ public class ImplementationTest extends RealizationTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Implementation#getTargets() <em>Get Targets</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.DirectedRelationship#getTargets() <em>Target</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Implementation#getTargets()
+	 * @see org.eclipse.uml2.DirectedRelationship#getTargets()
 	 * @generated
 	 */
 	public void testGetTargetsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -269,21 +187,7 @@ public class ImplementationTest extends RealizationTest {
 		assertTrue(getFixture().getTargets().contains(getFixture().getContract()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Implementation#getClients() <em>Get Clients</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Implementation#getClients()
-	 * @generated
-	 */
-	public void testGetClientsGen() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetClients() {
-		testGetClientsGen();
-		
 		super.testGetClients();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getBehavioredClassifier()).iterator(); eAllSubClasses.hasNext();) {
@@ -306,17 +210,16 @@ public class ImplementationTest extends RealizationTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Implementation#getSources() <em>Get Sources</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.DirectedRelationship#getSources() <em>Source</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Implementation#getSources()
+	 * @see org.eclipse.uml2.DirectedRelationship#getSources()
 	 * @generated
 	 */
 	public void testGetSourcesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetSources() {
 		testGetSourcesGen();
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: DurationObservationActionTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -21,13 +21,6 @@ import org.eclipse.uml2.UML2Factory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Duration Observation Action</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.DurationObservationAction#getValue() <em>Get Value</em>}</li>
- *   <li>{@link org.eclipse.uml2.DurationObservationAction#setValue(org.eclipse.uml2.InputPin) <em>Set Value</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class DurationObservationActionTest extends WriteStructuralFeatureActionTest {
@@ -37,7 +30,7 @@ public class DurationObservationActionTest extends WriteStructuralFeatureActionT
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,15 +81,17 @@ public class DurationObservationActionTest extends WriteStructuralFeatureActionT
 		setFixture(null);
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.DurationObservationAction#getValue() <em>Get Value</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.WriteStructuralFeatureAction#getValue() <em>Value</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.DurationObservationAction#getValue()
+	 * @see org.eclipse.uml2.WriteStructuralFeatureAction#getValue()
 	 * @generated
 	 */
 	public void testGetValueGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -107,17 +102,16 @@ public class DurationObservationActionTest extends WriteStructuralFeatureActionT
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.DurationObservationAction#setValue(org.eclipse.uml2.InputPin) <em>Set Value</em>}' setter operation.
+	 * Tests the '{@link org.eclipse.uml2.WriteStructuralFeatureAction#setValue(org.eclipse.uml2.InputPin) <em>Value</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.DurationObservationAction#setValue(org.eclipse.uml2.InputPin)
+	 * @see org.eclipse.uml2.WriteStructuralFeatureAction#setValue(org.eclipse.uml2.InputPin)
 	 * @generated
 	 */
 	public void testSetValueGen() {
-		// TODO: implement this setter operation test method
+		// TODO: implement this redefined feature setter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testSetValue() {
 		testSetValueGen();
 		

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableClassifierTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: TemplateableClassifierTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -27,7 +27,7 @@ public abstract class TemplateableClassifierTest extends ClassifierTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Templateable Classifier test case with the given name.
@@ -48,5 +48,6 @@ public abstract class TemplateableClassifierTest extends ClassifierTest {
 	private TemplateableClassifier getFixture() {
 		return (TemplateableClassifier)fixture;
 	}
+
 
 } //TemplateableClassifierImplTest

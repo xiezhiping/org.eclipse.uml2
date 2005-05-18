@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionTest.java,v 1.1 2005/04/04 20:06:05 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -21,13 +21,6 @@ import org.eclipse.uml2.UML2Factory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Read Link Object End Qualifier Action</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.ReadLinkObjectEndQualifierAction#getInputs() <em>Get Inputs</em>}</li>
- *   <li>{@link org.eclipse.uml2.ReadLinkObjectEndQualifierAction#getOutputs() <em>Get Outputs</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class ReadLinkObjectEndQualifierActionTest extends ActionTest {
@@ -37,7 +30,7 @@ public class ReadLinkObjectEndQualifierActionTest extends ActionTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,15 +81,17 @@ public class ReadLinkObjectEndQualifierActionTest extends ActionTest {
 		setFixture(null);
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ReadLinkObjectEndQualifierAction#getInputs() <em>Get Inputs</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Action#getInputs() <em>Input</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ReadLinkObjectEndQualifierAction#getInputs()
+	 * @see org.eclipse.uml2.Action#getInputs()
 	 * @generated
 	 */
 	public void testGetInputsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -109,17 +104,16 @@ public class ReadLinkObjectEndQualifierActionTest extends ActionTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ReadLinkObjectEndQualifierAction#getOutputs() <em>Get Outputs</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Action#getOutputs() <em>Output</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ReadLinkObjectEndQualifierAction#getOutputs()
+	 * @see org.eclipse.uml2.Action#getOutputs()
 	 * @generated
 	 */
 	public void testGetOutputsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOutputs() {
 		testGetOutputsGen();
 		

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: ExtensionEndTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -21,13 +21,6 @@ import org.eclipse.uml2.UML2Factory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Extension End</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.ExtensionEnd#getType() <em>Get Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.ExtensionEnd#setType(org.eclipse.uml2.Type) <em>Set Type</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class ExtensionEndTest extends PropertyTest {
@@ -37,7 +30,7 @@ public class ExtensionEndTest extends PropertyTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,28 +81,5 @@ public class ExtensionEndTest extends PropertyTest {
 		setFixture(null);
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ExtensionEnd#getType() <em>Get Type</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ExtensionEnd#getType()
-	 * @generated
-	 */
-	public void testGetType() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ExtensionEnd#setType(org.eclipse.uml2.Type) <em>Set Type</em>}' setter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ExtensionEnd#setType(org.eclipse.uml2.Type)
-	 * @generated
-	 */
-	public void testSetType() {
-		// TODO: implement this setter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
 
 } //ExtensionEndImplTest

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: ComponentTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -32,14 +32,6 @@ import org.eclipse.uml2.UML2Package;
  * <ul>
  *   <li>{@link org.eclipse.uml2.Component#getRequireds() <em>Required</em>}</li>
  *   <li>{@link org.eclipse.uml2.Component#getProvideds() <em>Provided</em>}</li>
- *   <li>{@link org.eclipse.uml2.Component#getRealizations() <em>Realization</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Component#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.Component#getClientDependencies() <em>Get Client Dependencies</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -51,7 +43,7 @@ public class ComponentTest extends ClassTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -126,48 +118,25 @@ public class ComponentTest extends ClassTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Component#getRealizations() <em>Realization</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Component#getRealizations()
-	 * @generated
-	 */
-	public void testGetRealizations() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
+
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Component#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Component#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwnedElements() {
 		testGetOwnedElementsGen();
 		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getRealizations()));
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Component#getClientDependencies() <em>Get Client Dependencies</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Component#getClientDependencies()
-	 * @generated
-	 */
-	public void testGetClientDependencies() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/* (non-Javadoc)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: ClassTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -28,9 +28,7 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getOwnedAttributes() <em>Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.StructuredClassifier#getParts() <em>Part</em>}</li>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getRoles() <em>Role</em>}</li>
  *   <li>{@link org.eclipse.uml2.Class#getSuperClasses() <em>Super Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.Class#getExtensions() <em>Extension</em>}</li>
  * </ul>
@@ -38,20 +36,7 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getAttributes() <em>Get Attributes</em>}</li>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getOwnedMembers() <em>Get Owned Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getMembers() <em>Get Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getFeatures() <em>Get Features</em>}</li>
- *   <li>{@link org.eclipse.uml2.EncapsulatedClassifier#getFeatures() <em>Get Features</em>}</li>
- *   <li>{@link org.eclipse.uml2.EncapsulatedClassifier#getOwnedMembers() <em>Get Owned Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.Class#inherit(java.util.Set) <em>Inherit</em>}</li>
- *   <li>{@link org.eclipse.uml2.Class#isAbstract() <em>Is Abstract</em>}</li>
- *   <li>{@link org.eclipse.uml2.Class#setIsAbstract(boolean) <em>Set Is Abstract</em>}</li>
- *   <li>{@link org.eclipse.uml2.Class#getOwnedAttributes() <em>Get Owned Attributes</em>}</li>
- *   <li>{@link org.eclipse.uml2.Class#getGenerals() <em>Get Generals</em>}</li>
- *   <li>{@link org.eclipse.uml2.Class#getAttributes() <em>Get Attributes</em>}</li>
- *   <li>{@link org.eclipse.uml2.Class#getOwnedMembers() <em>Get Owned Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.Class#getFeatures() <em>Get Features</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -63,7 +48,7 @@ public class ClassTest extends BehavioredClassifierTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -134,7 +119,7 @@ public class ClassTest extends BehavioredClassifierTest {
 	 * @generated
 	 */
 	public void testGetRoles() {
-		// TODO: implement this feature getter test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -171,14 +156,14 @@ public class ClassTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.StructuredClassifier#getMembers() <em>Get Members</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#getMembers() <em>Member</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.StructuredClassifier#getMembers()
+	 * @see org.eclipse.uml2.Namespace#getMembers()
 	 * @generated
 	 */
 	public void testGetMembers() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -198,72 +183,13 @@ public class ClassTest extends BehavioredClassifierTest {
 	 * @generated
 	 */
 	public void testInherit__Set() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Class#isAbstract() <em>Is Abstract</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Class#isAbstract()
-	 * @generated
-	 */
-	public void testIsAbstractGen() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
 
-	public void testIsAbstract() {
-		testIsAbstractGen();
-		
-		getFixture().setIsAbstract(false);
-
-		assertEquals(false, getFixture().isAbstract());
-
-		getFixture().setIsAbstract(true);
-
-		assertEquals(true, getFixture().isAbstract());
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Class#setIsAbstract(boolean) <em>Set Is Abstract</em>}' setter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Class#setIsAbstract(boolean)
-	 * @generated
-	 */
-	public void testSetIsAbstractGen() {
-		// TODO: implement this setter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	public void testSetIsAbstract() {
-		testSetIsAbstractGen();
-		
-		getFixture().setIsAbstract(false);
-
-		assertFalse(getFixture().isAbstract());
-
-		getFixture().setIsAbstract(true);
-
-		assertTrue(getFixture().isAbstract());
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Class#getOwnedAttributes() <em>Get Owned Attributes</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Class#getOwnedAttributes()
-	 * @generated
-	 */
-	public void testGetOwnedAttributesGen() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
 
 	public void testGetOwnedAttributes() {
-		testGetOwnedAttributesGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getProperty()).iterator(); eAllSubClasses.hasNext();) {
 			Property property = (Property) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -281,17 +207,16 @@ public class ClassTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Class#getGenerals() <em>Get Generals</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#getGenerals() <em>General</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Class#getGenerals()
+	 * @see org.eclipse.uml2.Classifier#getGenerals()
 	 * @generated
 	 */
 	public void testGetGeneralsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetGenerals() {
 		testGetGeneralsGen();
 		
@@ -301,14 +226,14 @@ public class ClassTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Class#getAttributes() <em>Get Attributes</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#getAttributes() <em>Attribute</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Class#getAttributes()
+	 * @see org.eclipse.uml2.Classifier#getAttributes()
 	 * @generated
 	 */
 	public void testGetAttributesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -319,14 +244,14 @@ public class ClassTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Class#getOwnedMembers() <em>Get Owned Members</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Class#getOwnedMembers()
+	 * @see org.eclipse.uml2.Namespace#getOwnedMembers()
 	 * @generated
 	 */
 	public void testGetOwnedMembersGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -342,14 +267,14 @@ public class ClassTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Class#getFeatures() <em>Get Features</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#getFeatures() <em>Feature</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Class#getFeatures()
+	 * @see org.eclipse.uml2.Classifier#getFeatures()
 	 * @generated
 	 */
 	public void testGetFeaturesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

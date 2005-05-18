@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: InstanceSpecificationTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -34,18 +34,14 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.DeploymentTarget#getDeployments() <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.DeploymentTarget#getDeployedElements() <em>Deployed Element</em>}</li>
  * </ul>
  * </p>
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.DeploymentTarget#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.DeploymentTarget#getClientDependencies() <em>Get Client Dependencies</em>}</li>
  *   <li>{@link org.eclipse.uml2.InstanceSpecification#validateSlotsAreDefined(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Slots Are Defined</em>}</li>
  *   <li>{@link org.eclipse.uml2.InstanceSpecification#validateNoDuplicateSlots(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Duplicate Slots</em>}</li>
- *   <li>{@link org.eclipse.uml2.InstanceSpecification#getOwnedElements() <em>Get Owned Elements</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -57,7 +53,7 @@ public class InstanceSpecificationTest extends PackageableElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,18 +105,6 @@ public class InstanceSpecificationTest extends PackageableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.DeploymentTarget#getDeployments() <em>Deployment</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.DeploymentTarget#getDeployments()
-	 * @generated
-	 */
-	public void testGetDeployments() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
 	 * Tests the '{@link org.eclipse.uml2.DeploymentTarget#getDeployedElements() <em>Deployed Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -163,18 +147,6 @@ public class InstanceSpecificationTest extends PackageableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.DeploymentTarget#getClientDependencies() <em>Get Client Dependencies</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.DeploymentTarget#getClientDependencies()
-	 * @generated
-	 */
-	public void testGetClientDependencies() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
 	 * Tests the '{@link org.eclipse.uml2.InstanceSpecification#validateSlotsAreDefined(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Slots Are Defined</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -182,7 +154,7 @@ public class InstanceSpecificationTest extends PackageableElementTest {
 	 * @generated
 	 */
 	public void testValidateSlotsAreDefined__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -194,22 +166,23 @@ public class InstanceSpecificationTest extends PackageableElementTest {
 	 * @generated
 	 */
 	public void testValidateNoDuplicateSlots__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.InstanceSpecification#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.InstanceSpecification#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwnedElements() {
 		testGetOwnedElementsGen();
 		

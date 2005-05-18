@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: PackageTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -35,29 +35,19 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.ParameterableElement#getTemplateParameter() <em>Template Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.ParameterableElement#getOwningParameter() <em>Owning Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.PackageableElement#getPackageableElement_visibility() <em>Packageable Element visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getNestedPackages() <em>Nested Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getNestingPackage() <em>Nesting Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#getOwnedTypes() <em>Owned Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.Package#getOwnedMembers() <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.Package#getAppliedProfiles() <em>Applied Profile</em>}</li>
  * </ul>
  * </p>
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.ParameterableElement#getOwner() <em>Get Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.PackageableElement#getVisibility() <em>Get Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind) <em>Set Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#validateElementsPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Elements Public Or Private</em>}</li>
- *   <li>{@link org.eclipse.uml2.Package#mustBeOwned() <em>Must Be Owned</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#visibleMembers() <em>Visible Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.Package#makesVisible(org.eclipse.uml2.NamedElement) <em>Makes Visible</em>}</li>
- *   <li>{@link org.eclipse.uml2.Package#getNamespace() <em>Get Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.Package#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.Package#getPackageImports() <em>Get Package Imports</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Package#mustBeOwned() <em>Must Be Owned</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -69,7 +59,7 @@ public class PackageTest extends NamespaceTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,54 +111,6 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#getTemplateParameter() <em>Template Parameter</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#getTemplateParameter()
-	 * @generated
-	 */
-	public void testGetTemplateParameter() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter) <em>Template Parameter</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter)
-	 * @generated
-	 */
-	public void testSetTemplateParameter() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#getOwningParameter() <em>Owning Parameter</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#getOwningParameter()
-	 * @generated
-	 */
-	public void testGetOwningParameter() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter) <em>Owning Parameter</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter)
-	 * @generated
-	 */
-	public void testSetOwningParameter() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
 	 * Tests the '{@link org.eclipse.uml2.PackageableElement#getPackageableElement_visibility() <em>Packageable Element visibility</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -188,7 +130,7 @@ public class PackageTest extends NamespaceTest {
 	 * @generated
 	 */
 	public void testSetPackageableElement_visibility() {
-		// TODO: implement this feature setter test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -242,38 +184,14 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Package#getOwnedMembers() <em>Owned Member</em>}' feature getter.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Package#getOwnedMembers()
-	 * @generated
-	 */
-	public void testGetOwnedMembers() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Package#getAppliedProfiles() <em>Applied Profile</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Package#getAppliedProfiles()
-	 * @generated
-	 */
-	public void testGetAppliedProfiles() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#getOwner() <em>Get Owner</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#getOwner()
+	 * @see org.eclipse.uml2.Element#getOwner()
 	 * @generated
 	 */
 	public void testGetOwnerGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -286,14 +204,14 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageableElement#getVisibility() <em>Get Visibility</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.NamedElement#getVisibility() <em>Visibility</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageableElement#getVisibility()
+	 * @see org.eclipse.uml2.NamedElement#getVisibility()
 	 * @generated
 	 */
 	public void testGetVisibilityGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -306,17 +224,16 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind) <em>Set Visibility</em>}' setter operation.
+	 * Tests the '{@link org.eclipse.uml2.NamedElement#setVisibility(org.eclipse.uml2.VisibilityKind) <em>Visibility</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.PackageableElement#setVisibility(org.eclipse.uml2.VisibilityKind)
+	 * @see org.eclipse.uml2.NamedElement#setVisibility(org.eclipse.uml2.VisibilityKind)
 	 * @generated
 	 */
 	public void testSetVisibilityGen() {
-		// TODO: implement this setter operation test method
+		// TODO: implement this redefined feature setter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testSetVisibility() {
 		testSetVisibilityGen();
 		
@@ -333,7 +250,7 @@ public class PackageTest extends NamespaceTest {
 	 * @generated
 	 */
 	public void testValidateElementsPublicOrPrivate__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -345,9 +262,11 @@ public class PackageTest extends NamespaceTest {
 	 * @generated
 	 */
 	public void testMustBeOwnedGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
+
 
 	public void testMustBeOwned() {
 		testMustBeOwnedGen();
@@ -363,7 +282,7 @@ public class PackageTest extends NamespaceTest {
 	 * @generated
 	 */
 	public void testVisibleMembersGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -427,7 +346,7 @@ public class PackageTest extends NamespaceTest {
 	 * @generated
 	 */
 	public void testMakesVisible__NamedElementGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -495,14 +414,14 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Package#getNamespace() <em>Get Namespace</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.NamedElement#getNamespace() <em>Namespace</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Package#getNamespace()
+	 * @see org.eclipse.uml2.NamedElement#getNamespace()
 	 * @generated
 	 */
 	public void testGetNamespaceGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -515,14 +434,14 @@ public class PackageTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Package#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Package#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -533,18 +452,6 @@ public class PackageTest extends NamespaceTest {
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getPackageExtensions()));
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getPackageMerges()));
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Package#getPackageImports() <em>Get Package Imports</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Package#getPackageImports()
-	 * @generated
-	 */
-	public void testGetPackageImports() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/* (non-Javadoc)
@@ -577,7 +484,7 @@ public class PackageTest extends NamespaceTest {
 	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#testGetOwnedMembers()
 	 */
-	public void testGetOwnedMember() {
+	public void testGetOwnedMembers() {
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getNamedElement()).iterator(); eAllSubClasses.hasNext();) {
 			NamedElement namedElement = (NamedElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());

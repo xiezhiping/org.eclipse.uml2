@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: AssociationTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -30,19 +30,7 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.Relationship#getRelatedElements() <em>Related Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.Association#getOwnedEnds() <em>Owned End</em>}</li>
  *   <li>{@link org.eclipse.uml2.Association#getEndTypes() <em>End Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.Association#getMemberEnds() <em>Member End</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Association#getFeatures() <em>Get Features</em>}</li>
- *   <li>{@link org.eclipse.uml2.Association#getOwnedMembers() <em>Get Owned Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.Association#getRelatedElements() <em>Get Related Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.Association#getMembers() <em>Get Members</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -54,7 +42,7 @@ public class AssociationTest extends ClassifierTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,18 +94,6 @@ public class AssociationTest extends ClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Association#getOwnedEnds() <em>Owned End</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Association#getOwnedEnds()
-	 * @generated
-	 */
-	public void testGetOwnedEnds() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
 	 * Tests the '{@link org.eclipse.uml2.Association#getEndTypes() <em>End Type</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,6 +104,8 @@ public class AssociationTest extends ClassifierTest {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
+
 
 	public void testGetEndTypes() {
 		testGetEndTypesGen();
@@ -145,26 +123,14 @@ public class AssociationTest extends ClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Association#getMemberEnds() <em>Member End</em>}' feature getter.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#getFeatures() <em>Feature</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Association#getMemberEnds()
-	 * @generated
-	 */
-	public void testGetMemberEnds() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Association#getFeatures() <em>Get Features</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Association#getFeatures()
+	 * @see org.eclipse.uml2.Classifier#getFeatures()
 	 * @generated
 	 */
 	public void testGetFeaturesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -177,14 +143,14 @@ public class AssociationTest extends ClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Association#getOwnedMembers() <em>Get Owned Members</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Association#getOwnedMembers()
+	 * @see org.eclipse.uml2.Namespace#getOwnedMembers()
 	 * @generated
 	 */
 	public void testGetOwnedMembersGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -197,14 +163,14 @@ public class AssociationTest extends ClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Association#getRelatedElements() <em>Get Related Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Relationship#getRelatedElements() <em>Related Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Association#getRelatedElements()
+	 * @see org.eclipse.uml2.Relationship#getRelatedElements()
 	 * @generated
 	 */
 	public void testGetRelatedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -228,17 +194,16 @@ public class AssociationTest extends ClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Association#getMembers() <em>Get Members</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#getMembers() <em>Member</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Association#getMembers()
+	 * @see org.eclipse.uml2.Namespace#getMembers()
 	 * @generated
 	 */
 	public void testGetMembersGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetMembers() {
 		testGetMembersGen();
 		

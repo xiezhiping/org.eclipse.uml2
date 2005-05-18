@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: PortTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -28,12 +28,6 @@ import org.eclipse.uml2.UML2Factory;
  *   <li>{@link org.eclipse.uml2.Port#getProvideds() <em>Provided</em>}</li>
  * </ul>
  * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Port#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class PortTest extends PropertyTest {
@@ -43,7 +37,7 @@ public class PortTest extends PropertyTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,18 +112,19 @@ public class PortTest extends PropertyTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Port#getRedefinedElements() <em>Get Redefined Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Port#getRedefinedElements()
+	 * @see org.eclipse.uml2.RedefinableElement#getRedefinedElements()
 	 * @generated
 	 */
 	public void testGetRedefinedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetRedefinedElements() {
 		testGetRedefinedElementsGen();
 		

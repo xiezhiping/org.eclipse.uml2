@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralNullTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: LiteralNullTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -24,8 +24,8 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.LiteralNull#isComputable() <em>Is Computable</em>}</li>
  *   <li>{@link org.eclipse.uml2.LiteralNull#isNull() <em>Is Null</em>}</li>
+ *   <li>{@link org.eclipse.uml2.LiteralNull#isComputable() <em>Is Computable</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -37,7 +37,7 @@ public class LiteralNullTest extends LiteralSpecificationTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -96,9 +96,10 @@ public class LiteralNullTest extends LiteralSpecificationTest {
 	 * @generated
 	 */
 	public void testIsComputableGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
 
 	public void testIsComputable() {
 		testIsComputableGen();
@@ -114,7 +115,7 @@ public class LiteralNullTest extends LiteralSpecificationTest {
 	 * @generated
 	 */
 	public void testIsNullGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

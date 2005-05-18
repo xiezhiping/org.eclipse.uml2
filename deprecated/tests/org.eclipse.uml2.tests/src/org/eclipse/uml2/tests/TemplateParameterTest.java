@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: TemplateParameterTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -27,23 +27,6 @@ import org.eclipse.uml2.UML2Package;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Template Parameter</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.TemplateParameter#getSignature() <em>Signature</em>}</li>
- *   <li>{@link org.eclipse.uml2.TemplateParameter#getParameteredElement() <em>Parametered Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.TemplateParameter#getOwnedParameteredElement() <em>Owned Parametered Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.TemplateParameter#getDefault() <em>Default</em>}</li>
- *   <li>{@link org.eclipse.uml2.TemplateParameter#getOwnedDefault() <em>Owned Default</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.TemplateParameter#getOwner() <em>Get Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.TemplateParameter#getOwnedElements() <em>Get Owned Elements</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class TemplateParameterTest extends ElementTest {
@@ -53,7 +36,7 @@ public class TemplateParameterTest extends ElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,21 +87,9 @@ public class TemplateParameterTest extends ElementTest {
 		setFixture(null);
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#getSignature() <em>Signature</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#getSignature()
-	 * @generated
-	 */
-	public void testGetSignatureGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
+
 
 	public void testGetSignature() {
-		testGetSignatureGen();
-		
 		TemplateSignature templateSignature = UML2Factory.eINSTANCE.createTemplateSignature();
 
 		templateSignature.getOwnedParameters().add(getFixture());
@@ -130,21 +101,7 @@ public class TemplateParameterTest extends ElementTest {
 		assertSame(null, getFixture().getSignature());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setSignature(org.eclipse.uml2.TemplateSignature) <em>Signature</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#setSignature(org.eclipse.uml2.TemplateSignature)
-	 * @generated
-	 */
-	public void testSetSignatureGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testSetSignature() {
-		testSetSignatureGen();
-		
 		TemplateSignature templateSignature = UML2Factory.eINSTANCE.createTemplateSignature();
 
 		getFixture().setSignature(templateSignature);
@@ -158,20 +115,7 @@ public class TemplateParameterTest extends ElementTest {
 		assertFalse(templateSignature.getOwnedParameters().contains(getFixture()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#getParameteredElement() <em>Parametered Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#getParameteredElement()
-	 * @generated
-	 */
-	public void testGetParameteredElementGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetParameteredElement() {
-		testGetParameteredElementGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
 			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -186,20 +130,7 @@ public class TemplateParameterTest extends ElementTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setParameteredElement(org.eclipse.uml2.ParameterableElement) <em>Parametered Element</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#setParameteredElement(org.eclipse.uml2.ParameterableElement)
-	 * @generated
-	 */
-	public void testSetParameteredElementGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testSetParameteredElement() {
-		testSetParameteredElementGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
 			EClass eClass = (EClass) eAllSubClasses.next();
@@ -222,20 +153,7 @@ public class TemplateParameterTest extends ElementTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#getOwnedParameteredElement() <em>Owned Parametered Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#getOwnedParameteredElement()
-	 * @generated
-	 */
-	public void testGetOwnedParameteredElementGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwnedParameteredElement() {
-		testGetOwnedParameteredElementGen();
 		
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
 			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -250,20 +168,7 @@ public class TemplateParameterTest extends ElementTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setOwnedParameteredElement(org.eclipse.uml2.ParameterableElement) <em>Owned Parametered Element</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#setOwnedParameteredElement(org.eclipse.uml2.ParameterableElement)
-	 * @generated
-	 */
-	public void testSetOwnedParameteredElementGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testSetOwnedParameteredElement() {
-		testSetOwnedParameteredElementGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
 			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -282,20 +187,7 @@ public class TemplateParameterTest extends ElementTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#getDefault() <em>Default</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#getDefault()
-	 * @generated
-	 */
-	public void testGetDefaultGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetDefault() {
-		testGetDefaultGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
 			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -310,20 +202,7 @@ public class TemplateParameterTest extends ElementTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setDefault(org.eclipse.uml2.ParameterableElement) <em>Default</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#setDefault(org.eclipse.uml2.ParameterableElement)
-	 * @generated
-	 */
-	public void testSetDefaultGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testSetDefault() {
-		testSetDefaultGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
 			EClass eClass = (EClass) eAllSubClasses.next();
@@ -344,20 +223,7 @@ public class TemplateParameterTest extends ElementTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#getOwnedDefault() <em>Owned Default</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#getOwnedDefault()
-	 * @generated
-	 */
-	public void testGetOwnedDefaultGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwnedDefault() {
-		testGetOwnedDefaultGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
 			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -370,22 +236,9 @@ public class TemplateParameterTest extends ElementTest {
 
 			assertSame(null, getFixture().getOwnedDefault());
 		}
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#setOwnedDefault(org.eclipse.uml2.ParameterableElement) <em>Owned Default</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#setOwnedDefault(org.eclipse.uml2.ParameterableElement)
-	 * @generated
-	 */
-	public void testSetOwnedDefaultGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	public void testSetOwnedDefault() {
-		testSetOwnedDefaultGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getParameterableElement()).iterator(); eAllSubClasses.hasNext();) {
 			ParameterableElement parameterableElement = (ParameterableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -403,14 +256,14 @@ public class TemplateParameterTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#getOwner() <em>Get Owner</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#getOwner()
+	 * @see org.eclipse.uml2.Element#getOwner()
 	 * @generated
 	 */
 	public void testGetOwnerGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -423,17 +276,16 @@ public class TemplateParameterTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.TemplateParameter#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TemplateParameter#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwnedElements() {
 		testGetOwnedElementsGen();
 		

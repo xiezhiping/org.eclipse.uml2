@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: CollaborationTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -26,19 +26,7 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getOwnedAttributes() <em>Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.StructuredClassifier#getParts() <em>Part</em>}</li>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getRoles() <em>Role</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getAttributes() <em>Get Attributes</em>}</li>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getOwnedMembers() <em>Get Owned Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getMembers() <em>Get Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.StructuredClassifier#getFeatures() <em>Get Features</em>}</li>
- *   <li>{@link org.eclipse.uml2.Collaboration#getRoles() <em>Get Roles</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -50,7 +38,7 @@ public class CollaborationTest extends BehavioredClassifierTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,18 +90,6 @@ public class CollaborationTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.StructuredClassifier#getOwnedAttributes() <em>Owned Attribute</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.StructuredClassifier#getOwnedAttributes()
-	 * @generated
-	 */
-	public void testGetOwnedAttributes() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
 	 * Tests the '{@link org.eclipse.uml2.StructuredClassifier#getParts() <em>Part</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -124,6 +100,8 @@ public class CollaborationTest extends BehavioredClassifierTest {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
+
 
 	public void testGetParts() {
 		testGetPartsGen();
@@ -154,14 +132,14 @@ public class CollaborationTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.StructuredClassifier#getAttributes() <em>Get Attributes</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#getAttributes() <em>Attribute</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.StructuredClassifier#getAttributes()
+	 * @see org.eclipse.uml2.Classifier#getAttributes()
 	 * @generated
 	 */
 	public void testGetAttributesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -174,14 +152,14 @@ public class CollaborationTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.StructuredClassifier#getOwnedMembers() <em>Get Owned Members</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.StructuredClassifier#getOwnedMembers()
+	 * @see org.eclipse.uml2.Namespace#getOwnedMembers()
 	 * @generated
 	 */
 	public void testGetOwnedMembersGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -195,14 +173,14 @@ public class CollaborationTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.StructuredClassifier#getMembers() <em>Get Members</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#getMembers() <em>Member</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.StructuredClassifier#getMembers()
+	 * @see org.eclipse.uml2.Namespace#getMembers()
 	 * @generated
 	 */
 	public void testGetMembersGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -215,17 +193,16 @@ public class CollaborationTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.StructuredClassifier#getFeatures() <em>Get Features</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#getFeatures() <em>Feature</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.StructuredClassifier#getFeatures()
+	 * @see org.eclipse.uml2.Classifier#getFeatures()
 	 * @generated
 	 */
 	public void testGetFeaturesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetFeatures() {
 		testGetFeaturesGen();
 		
@@ -235,14 +212,14 @@ public class CollaborationTest extends BehavioredClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Collaboration#getRoles() <em>Get Roles</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.StructuredClassifier#getRoles() <em>Role</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Collaboration#getRoles()
+	 * @see org.eclipse.uml2.StructuredClassifier#getRoles()
 	 * @generated
 	 */
 	public void testGetRoles() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

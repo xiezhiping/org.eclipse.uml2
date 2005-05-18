@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: ArtifactTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -21,22 +21,6 @@ import org.eclipse.uml2.UML2Factory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Artifact</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Artifact#getManifestations() <em>Manifestation</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Artifact#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.Artifact#getClientDependencies() <em>Get Client Dependencies</em>}</li>
- *   <li>{@link org.eclipse.uml2.Artifact#getFeatures() <em>Get Features</em>}</li>
- *   <li>{@link org.eclipse.uml2.Artifact#getOwnedMembers() <em>Get Owned Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.Artifact#getAttributes() <em>Get Attributes</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class ArtifactTest extends ClassifierTest {
@@ -46,7 +30,7 @@ public class ArtifactTest extends ClassifierTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,27 +81,17 @@ public class ArtifactTest extends ClassifierTest {
 		setFixture(null);
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Artifact#getManifestations() <em>Manifestation</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Artifact#getManifestations()
-	 * @generated
-	 */
-	public void testGetManifestations() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
+
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Artifact#getFeatures() <em>Get Features</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#getFeatures() <em>Feature</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Artifact#getFeatures()
+	 * @see org.eclipse.uml2.Classifier#getFeatures()
 	 * @generated
 	 */
 	public void testGetFeaturesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -130,14 +104,14 @@ public class ArtifactTest extends ClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Artifact#getOwnedMembers() <em>Get Owned Members</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Artifact#getOwnedMembers()
+	 * @see org.eclipse.uml2.Namespace#getOwnedMembers()
 	 * @generated
 	 */
 	public void testGetOwnedMembersGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -151,17 +125,16 @@ public class ArtifactTest extends ClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Artifact#getAttributes() <em>Get Attributes</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Classifier#getAttributes() <em>Attribute</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Artifact#getAttributes()
+	 * @see org.eclipse.uml2.Classifier#getAttributes()
 	 * @generated
 	 */
 	public void testGetAttributesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetAttributes() {
 		testGetAttributesGen();
 		
@@ -171,14 +144,14 @@ public class ArtifactTest extends ClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Artifact#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Artifact#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -188,18 +161,6 @@ public class ArtifactTest extends ClassifierTest {
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getManifestations()));
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Artifact#getClientDependencies() <em>Get Client Dependencies</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Artifact#getClientDependencies()
-	 * @generated
-	 */
-	public void testGetClientDependencies() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/* (non-Javadoc)

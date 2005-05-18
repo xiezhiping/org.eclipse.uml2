@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: TypeTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -30,7 +30,6 @@ import org.eclipse.uml2.UML2Factory;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.Type#conformsTo(org.eclipse.uml2.Type) <em>Conforms To</em>}</li>
- *   <li>{@link org.eclipse.uml2.Type#getNamespace() <em>Get Namespace</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -42,7 +41,7 @@ public abstract class TypeTest extends PackageableElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Type test case with the given name.
@@ -96,22 +95,23 @@ public abstract class TypeTest extends PackageableElementTest {
 	 * @generated
 	 */
 	public void testConformsTo__Type() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Type#getNamespace() <em>Get Namespace</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.NamedElement#getNamespace() <em>Namespace</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Type#getNamespace()
+	 * @see org.eclipse.uml2.NamedElement#getNamespace()
 	 * @generated
 	 */
 	public void testGetNamespaceGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetNamespace() {
 		testGetNamespaceGen();
 		

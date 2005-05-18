@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: ProtocolTransitionTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -25,14 +25,6 @@ import org.eclipse.uml2.UML2Factory;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.ProtocolTransition#getReferreds() <em>Referred</em>}</li>
- *   <li>{@link org.eclipse.uml2.ProtocolTransition#getPreCondition() <em>Pre Condition</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.ProtocolTransition#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.ProtocolTransition#setGuard(org.eclipse.uml2.Constraint) <em>Set Guard</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -44,7 +36,7 @@ public class ProtocolTransitionTest extends TransitionTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,60 +99,25 @@ public class ProtocolTransitionTest extends TransitionTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ProtocolTransition#getPreCondition() <em>Pre Condition</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ProtocolTransition#getPreCondition()
-	 * @generated
-	 */
-	public void testGetPreCondition() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
+
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ProtocolTransition#setPreCondition(org.eclipse.uml2.Constraint) <em>Pre Condition</em>}' feature setter.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ProtocolTransition#setPreCondition(org.eclipse.uml2.Constraint)
-	 * @generated
-	 */
-	public void testSetPreCondition() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ProtocolTransition#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ProtocolTransition#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwnedElements() {
 		testGetOwnedElementsGen();
 		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getPostCondition()));
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ProtocolTransition#setGuard(org.eclipse.uml2.Constraint) <em>Set Guard</em>}' setter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ProtocolTransition#setGuard(org.eclipse.uml2.Constraint)
-	 * @generated
-	 */
-	public void testSetGuard() {
-		// TODO: implement this setter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/* (non-Javadoc)

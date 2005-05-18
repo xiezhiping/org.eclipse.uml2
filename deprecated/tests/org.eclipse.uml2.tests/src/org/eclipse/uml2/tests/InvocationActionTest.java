@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: InvocationActionTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -20,12 +20,6 @@ import org.eclipse.uml2.UML2Factory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Invocation Action</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.InvocationAction#getInputs() <em>Get Inputs</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public abstract class InvocationActionTest extends ActionTest {
@@ -35,7 +29,7 @@ public abstract class InvocationActionTest extends ActionTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Invocation Action test case with the given name.
@@ -57,18 +51,19 @@ public abstract class InvocationActionTest extends ActionTest {
 		return (InvocationAction)fixture;
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.InvocationAction#getInputs() <em>Get Inputs</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Action#getInputs() <em>Input</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.InvocationAction#getInputs()
+	 * @see org.eclipse.uml2.Action#getInputs()
 	 * @generated
 	 */
 	public void testGetInputsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetInputs() {
 		testGetInputsGen();
 		

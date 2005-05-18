@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: LoopNodeTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -21,14 +21,6 @@ import org.eclipse.uml2.UML2Factory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Loop Node</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.LoopNode#getOutputs() <em>Get Outputs</em>}</li>
- *   <li>{@link org.eclipse.uml2.LoopNode#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.LoopNode#getInputs() <em>Get Inputs</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class LoopNodeTest extends StructuredActivityNodeTest {
@@ -38,7 +30,7 @@ public class LoopNodeTest extends StructuredActivityNodeTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,15 +81,17 @@ public class LoopNodeTest extends StructuredActivityNodeTest {
 		setFixture(null);
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.LoopNode#getOutputs() <em>Get Outputs</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Action#getOutputs() <em>Output</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.LoopNode#getOutputs()
+	 * @see org.eclipse.uml2.Action#getOutputs()
 	 * @generated
 	 */
 	public void testGetOutputsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -110,14 +104,14 @@ public class LoopNodeTest extends StructuredActivityNodeTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.LoopNode#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.LoopNode#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -130,17 +124,16 @@ public class LoopNodeTest extends StructuredActivityNodeTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.LoopNode#getInputs() <em>Get Inputs</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Action#getInputs() <em>Input</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.LoopNode#getInputs()
+	 * @see org.eclipse.uml2.Action#getInputs()
 	 * @generated
 	 */
 	public void testGetInputsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetInputs() {
 		testGetInputsGen();
 		

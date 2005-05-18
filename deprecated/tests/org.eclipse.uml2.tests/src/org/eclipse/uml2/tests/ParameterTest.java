@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: ParameterTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -32,9 +32,6 @@ import org.eclipse.uml2.ValueSpecification;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.TypedElement#getType() <em>Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#isOrdered() <em>Is Ordered</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#isUnique() <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#getLower() <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#getUpper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.Parameter#getDefault() <em>Default</em>}</li>
@@ -55,9 +52,6 @@ import org.eclipse.uml2.ValueSpecification;
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Eq Upperbound</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#lower() <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#upper() <em>Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.Parameter#getNamespace() <em>Get Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.Parameter#getOwnedElements() <em>Get Owned Elements</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -69,7 +63,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,78 +112,6 @@ public class ParameterTest extends ConnectableElementTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TypedElement#getType() <em>Type</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TypedElement#getType()
-	 * @generated
-	 */
-	public void testGetType() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.TypedElement#setType(org.eclipse.uml2.Type) <em>Type</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.TypedElement#setType(org.eclipse.uml2.Type)
-	 * @generated
-	 */
-	public void testSetType() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#isOrdered() <em>Is Ordered</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#isOrdered()
-	 * @generated
-	 */
-	public void testIsOrdered() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#setIsOrdered(boolean) <em>Is Ordered</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#setIsOrdered(boolean)
-	 * @generated
-	 */
-	public void testSetIsOrdered() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#isUnique() <em>Is Unique</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#isUnique()
-	 * @generated
-	 */
-	public void testIsUnique() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#setIsUnique(boolean) <em>Is Unique</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#setIsUnique(boolean)
-	 * @generated
-	 */
-	public void testSetIsUnique() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
@@ -290,7 +212,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testLowerBoundGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -321,7 +243,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testUpperBoundGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -352,7 +274,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testIsMultivaluedGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -387,7 +309,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testIncludesCardinality__intGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -445,7 +367,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testIncludesMultiplicity__MultiplicityElementGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -515,7 +437,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testValidateUpperGt0__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -527,7 +449,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testValidateLowerGe0__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -539,7 +461,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testValidateUpperGeLower__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -551,7 +473,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testValidateLowerEqLowerbound__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -563,7 +485,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testValidateUpperEqUpperbound__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -575,7 +497,7 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testLowerGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -606,9 +528,11 @@ public class ParameterTest extends ConnectableElementTest {
 	 * @generated
 	 */
 	public void testUpperGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
+
 
 	public void testUpper() {
 		testUpperGen();
@@ -630,17 +554,16 @@ public class ParameterTest extends ConnectableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Parameter#getNamespace() <em>Get Namespace</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.NamedElement#getNamespace() <em>Namespace</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Parameter#getNamespace()
+	 * @see org.eclipse.uml2.NamedElement#getNamespace()
 	 * @generated
 	 */
 	public void testGetNamespaceGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetNamespace() {
 		testGetNamespaceGen();
 		
@@ -650,14 +573,14 @@ public class ParameterTest extends ConnectableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Parameter#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Parameter#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

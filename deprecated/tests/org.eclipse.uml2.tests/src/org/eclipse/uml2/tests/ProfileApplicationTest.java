@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: ProfileApplicationTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -22,18 +22,6 @@ import org.eclipse.uml2.UML2Factory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Profile Application</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.ProfileApplication#getImportedProfile() <em>Imported Profile</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.ProfileApplication#setImportedPackage(org.eclipse.uml2.Package) <em>Set Imported Package</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class ProfileApplicationTest extends PackageImportTest {
@@ -43,7 +31,7 @@ public class ProfileApplicationTest extends PackageImportTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,21 +82,8 @@ public class ProfileApplicationTest extends PackageImportTest {
 		setFixture(null);
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ProfileApplication#getImportedProfile() <em>Imported Profile</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ProfileApplication#getImportedProfile()
-	 * @generated
-	 */
-	public void testGetImportedProfileGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
 
 	public void testGetImportedProfile() {
-		testGetImportedProfileGen();
-		
 		Profile profile = UML2Factory.eINSTANCE.createProfile();
 
 		getFixture().setImportedProfile(profile);
@@ -118,23 +93,9 @@ public class ProfileApplicationTest extends PackageImportTest {
 		getFixture().setImportedProfile(null);
 
 		assertSame(null, getFixture().getImportedProfile());
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ProfileApplication#setImportedProfile(org.eclipse.uml2.Profile) <em>Imported Profile</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ProfileApplication#setImportedProfile(org.eclipse.uml2.Profile)
-	 * @generated
-	 */
-	public void testSetImportedProfileGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	public void testSetImportedProfile() {
-		testSetImportedProfileGen();
-		
 		Profile profile = UML2Factory.eINSTANCE.createProfile();
 
 		getFixture().setImportedProfile(profile);
@@ -148,21 +109,7 @@ public class ProfileApplicationTest extends PackageImportTest {
 		assertSame(getFixture().getImportedProfile(), getFixture().getImportedPackage());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ProfileApplication#setImportedPackage(org.eclipse.uml2.Package) <em>Set Imported Package</em>}' setter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ProfileApplication#setImportedPackage(org.eclipse.uml2.Package)
-	 * @generated
-	 */
-	public void testSetImportedPackageGen() {
-		// TODO: implement this setter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testSetImportedPackage() {
-		testSetImportedPackageGen();
-		
 		getFixture().setImportedProfile(UML2Factory.eINSTANCE.createProfile());
 
 		Profile profile = UML2Factory.eINSTANCE.createProfile();

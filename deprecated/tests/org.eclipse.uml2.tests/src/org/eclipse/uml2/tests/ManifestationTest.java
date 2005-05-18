@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: ManifestationTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -26,19 +26,6 @@ import org.eclipse.uml2.UML2Package;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Manifestation</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Manifestation#getUtilizedElement() <em>Utilized Element</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Manifestation#getSuppliers() <em>Get Suppliers</em>}</li>
- *   <li>{@link org.eclipse.uml2.Manifestation#getTargets() <em>Get Targets</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class ManifestationTest extends AbstractionTest {
@@ -48,7 +35,7 @@ public class ManifestationTest extends AbstractionTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -99,20 +86,9 @@ public class ManifestationTest extends AbstractionTest {
 		setFixture(null);
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Manifestation#getUtilizedElement() <em>Utilized Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Manifestation#getUtilizedElement()
-	 * @generated
-	 */
-	public void testGetUtilizedElementGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
+
 
 	public void testGetUtilizedElement() {
-		testGetUtilizedElementGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getPackageableElement()).iterator(); eAllSubClasses.hasNext();) {
 			PackageableElement packageableElement = (PackageableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -125,22 +101,9 @@ public class ManifestationTest extends AbstractionTest {
 
 			assertSame(null, getFixture().getUtilizedElement());
 		}
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Manifestation#setUtilizedElement(org.eclipse.uml2.PackageableElement) <em>Utilized Element</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Manifestation#setUtilizedElement(org.eclipse.uml2.PackageableElement)
-	 * @generated
-	 */
-	public void testSetUtilizedElementGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	public void testSetUtilizedElement() {
-		testSetUtilizedElementGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getPackageableElement()).iterator(); eAllSubClasses.hasNext();) {
 			PackageableElement packageableElement = (PackageableElement) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -157,21 +120,7 @@ public class ManifestationTest extends AbstractionTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Manifestation#getSuppliers() <em>Get Suppliers</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Manifestation#getSuppliers()
-	 * @generated
-	 */
-	public void testGetSuppliersGen() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetSuppliers() {
-		testGetSuppliersGen();
-		
 		super.testGetSuppliers();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getPackageableElement()).iterator(); eAllSubClasses.hasNext();) {
@@ -192,17 +141,16 @@ public class ManifestationTest extends AbstractionTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Manifestation#getTargets() <em>Get Targets</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.DirectedRelationship#getTargets() <em>Target</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Manifestation#getTargets()
+	 * @see org.eclipse.uml2.DirectedRelationship#getTargets()
 	 * @generated
 	 */
 	public void testGetTargetsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetTargets() {
 		testGetTargetsGen();
 		

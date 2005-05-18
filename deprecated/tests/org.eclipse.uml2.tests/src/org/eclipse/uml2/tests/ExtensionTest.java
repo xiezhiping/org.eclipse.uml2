@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionTest.java,v 1.1 2005/04/04 20:06:08 khussey Exp $
+ * $Id: ExtensionTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -31,12 +31,6 @@ import org.eclipse.uml2.UML2Factory;
  *   <li>{@link org.eclipse.uml2.Extension#getMetaclass() <em>Metaclass</em>}</li>
  * </ul>
  * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Extension#getOwnedEnds() <em>Get Owned Ends</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class ExtensionTest extends AssociationTest {
@@ -46,7 +40,7 @@ public class ExtensionTest extends AssociationTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,6 +131,7 @@ public class ExtensionTest extends AssociationTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
 	public void testGetMetaclass() {
 		testGetMembersGen();
 		
@@ -152,20 +147,7 @@ public class ExtensionTest extends AssociationTest {
 		assertSame(property.getType(), getFixture().getMetaclass());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Extension#getOwnedEnds() <em>Get Owned Ends</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Extension#getOwnedEnds()
-	 * @generated
-	 */
-	public void testGetOwnedEndsGen() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwnedEnds() {
-		testGetOwnedEndsGen();
 
 		try {
 			getFixture().getOwnedEnds().add(UML2Factory.eINSTANCE.createProperty());

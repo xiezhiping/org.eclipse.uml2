@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionItemProviderTest.java,v 1.4 2005/04/04 20:02:08 khussey Exp $
+ * $Id: TemplateParameterSubstitutionItemProviderTest.java,v 1.5 2005/05/18 17:04:05 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -41,7 +41,7 @@ public class TemplateParameterSubstitutionItemProviderTest extends ElementItemPr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->

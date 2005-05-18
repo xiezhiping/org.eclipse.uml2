@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: BehavioredClassifierTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -23,18 +23,7 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors() <em>Owned Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getClassifierBehavior() <em>Classifier Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getImplementations() <em>Implementation</em>}</li>
  *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getOwnedStateMachines() <em>Owned State Machine</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getOwnedMembers() <em>Get Owned Members</em>}</li>
- *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.BehavioredClassifier#getClientDependencies() <em>Get Client Dependencies</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -46,7 +35,7 @@ public abstract class BehavioredClassifierTest extends ClassifierTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Behaviored Classifier test case with the given name.
@@ -76,46 +65,9 @@ public abstract class BehavioredClassifierTest extends ClassifierTest {
 	 * @generated
 	 */
 	public void testGetOwnedBehaviors() {
-		// TODO: implement this feature getter test method
+		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.BehavioredClassifier#getClassifierBehavior() <em>Classifier Behavior</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.BehavioredClassifier#getClassifierBehavior()
-	 * @generated
-	 */
-	public void testGetClassifierBehavior() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.BehavioredClassifier#setClassifierBehavior(org.eclipse.uml2.Behavior) <em>Classifier Behavior</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.BehavioredClassifier#setClassifierBehavior(org.eclipse.uml2.Behavior)
-	 * @generated
-	 */
-	public void testSetClassifierBehavior() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.BehavioredClassifier#getImplementations() <em>Implementation</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.BehavioredClassifier#getImplementations()
-	 * @generated
-	 */
-	public void testGetImplementations() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	/**
 	 * Tests the '{@link org.eclipse.uml2.BehavioredClassifier#getOwnedStateMachines() <em>Owned State Machine</em>}' feature getter.
 	 * <!-- begin-user-doc -->
@@ -128,15 +80,17 @@ public abstract class BehavioredClassifierTest extends ClassifierTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.BehavioredClassifier#getOwnedMembers() <em>Get Owned Members</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.BehavioredClassifier#getOwnedMembers()
+	 * @see org.eclipse.uml2.Namespace#getOwnedMembers()
 	 * @generated
 	 */
 	public void testGetOwnedMembersGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -151,14 +105,14 @@ public abstract class BehavioredClassifierTest extends ClassifierTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.BehavioredClassifier#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.BehavioredClassifier#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -168,18 +122,6 @@ public abstract class BehavioredClassifierTest extends ClassifierTest {
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getImplementations()));
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.BehavioredClassifier#getClientDependencies() <em>Get Client Dependencies</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.BehavioredClassifier#getClientDependencies()
-	 * @generated
-	 */
-	public void testGetClientDependencies() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/* (non-Javadoc)

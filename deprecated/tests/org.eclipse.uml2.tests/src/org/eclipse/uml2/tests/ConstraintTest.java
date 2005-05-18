@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: ConstraintTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -22,18 +22,9 @@ import org.eclipse.uml2.UML2Factory;
  * A test case for the model object '<em><b>Constraint</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Constraint#getContext() <em>Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.Constraint#getNamespace() <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.Constraint#getSpecification() <em>Specification</em>}</li>
- * </ul>
- * </p>
- * <p>
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.Constraint#validateNotApplyToSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Apply To Self</em>}</li>
- *   <li>{@link org.eclipse.uml2.Constraint#getOwnedElements() <em>Get Owned Elements</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -45,7 +36,7 @@ public class ConstraintTest extends PackageableElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,7 +95,7 @@ public class ConstraintTest extends PackageableElementTest {
 	 * @generated
 	 */
 	public void testGetContextGen() {
-		// TODO: implement this feature getter test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -117,54 +108,6 @@ public class ConstraintTest extends PackageableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Constraint#getNamespace() <em>Namespace</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Constraint#getNamespace()
-	 * @generated
-	 */
-	public void testGetNamespace() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Constraint#setNamespace(org.eclipse.uml2.Namespace) <em>Namespace</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Constraint#setNamespace(org.eclipse.uml2.Namespace)
-	 * @generated
-	 */
-	public void testSetNamespace() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Constraint#getSpecification() <em>Specification</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Constraint#getSpecification()
-	 * @generated
-	 */
-	public void testGetSpecification() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Constraint#setSpecification(org.eclipse.uml2.ValueSpecification) <em>Specification</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Constraint#setSpecification(org.eclipse.uml2.ValueSpecification)
-	 * @generated
-	 */
-	public void testSetSpecification() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
 	 * Tests the '{@link org.eclipse.uml2.Constraint#validateNotApplyToSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Apply To Self</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -172,22 +115,23 @@ public class ConstraintTest extends PackageableElementTest {
 	 * @generated
 	 */
 	public void testValidateNotApplyToSelf__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Constraint#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Constraint#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwnedElements() {
 		testGetOwnedElementsGen();
 		

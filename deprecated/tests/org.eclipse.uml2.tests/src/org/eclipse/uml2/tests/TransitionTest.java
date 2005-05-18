@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: TransitionTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -24,16 +24,7 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.Transition#getGuard() <em>Guard</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Transition#getRedefinitionContexts() <em>Get Redefinition Contexts</em>}</li>
- *   <li>{@link org.eclipse.uml2.Transition#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.Transition#getOwner() <em>Get Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.Transition#getOwnedElements() <em>Get Owned Elements</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Transition#getRedefinitionContexts() <em>Redefinition Context</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -45,7 +36,7 @@ public class TransitionTest extends RedefinableElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,40 +88,18 @@ public class TransitionTest extends RedefinableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Transition#getGuard() <em>Guard</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Transition#getGuard()
-	 * @generated
-	 */
-	public void testGetGuard() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Transition#setGuard(org.eclipse.uml2.Constraint) <em>Guard</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Transition#setGuard(org.eclipse.uml2.Constraint)
-	 * @generated
-	 */
-	public void testSetGuard() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Transition#getRedefinitionContexts() <em>Get Redefinition Contexts</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Transition#getRedefinitionContexts() <em>Redefinition Context</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.Transition#getRedefinitionContexts()
 	 * @generated
 	 */
 	public void testGetRedefinitionContextsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
+
 
 	public void testGetRedefinitionContexts() {
 		testGetRedefinitionContextsGen();
@@ -139,14 +108,14 @@ public class TransitionTest extends RedefinableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Transition#getOwner() <em>Get Owner</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Transition#getOwner()
+	 * @see org.eclipse.uml2.Element#getOwner()
 	 * @generated
 	 */
 	public void testGetOwnerGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -159,17 +128,16 @@ public class TransitionTest extends RedefinableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Transition#getRedefinedElements() <em>Get Redefined Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Transition#getRedefinedElements()
+	 * @see org.eclipse.uml2.RedefinableElement#getRedefinedElements()
 	 * @generated
 	 */
 	public void testGetRedefinedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetRedefinedElements() {
 		testGetRedefinedElementsGen();
 		
@@ -177,14 +145,14 @@ public class TransitionTest extends RedefinableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Transition#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Transition#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

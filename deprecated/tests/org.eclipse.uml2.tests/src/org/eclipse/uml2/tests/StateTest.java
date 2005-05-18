@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: StateTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -24,7 +24,7 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.State#getRedefinitionContexts() <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.State#isComposite() <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.State#isOrthogonal() <em>Is Orthogonal</em>}</li>
  *   <li>{@link org.eclipse.uml2.State#isSimple() <em>Is Simple</em>}</li>
@@ -38,12 +38,6 @@ import org.eclipse.uml2.UML2Factory;
  *   <li>{@link org.eclipse.uml2.RedefinableElement#validateRedefinitionConsistent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefinition Consistent</em>}</li>
  *   <li>{@link org.eclipse.uml2.RedefinableElement#isConsistentWith(org.eclipse.uml2.RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
- *   <li>{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.Vertex#getOwner() <em>Get Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.State#getRedefinitionContexts() <em>Get Redefinition Contexts</em>}</li>
- *   <li>{@link org.eclipse.uml2.State#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.State#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.State#getOwnedMembers() <em>Get Owned Members</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -55,7 +49,7 @@ public class StateTest extends NamespaceTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,7 +208,7 @@ public class StateTest extends NamespaceTest {
 	 * @generated
 	 */
 	public void testValidateRedefinitionContextValid__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -226,7 +220,7 @@ public class StateTest extends NamespaceTest {
 	 * @generated
 	 */
 	public void testValidateRedefinitionConsistent__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -238,7 +232,7 @@ public class StateTest extends NamespaceTest {
 	 * @generated
 	 */
 	public void testIsConsistentWith__RedefinableElement() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -250,22 +244,23 @@ public class StateTest extends NamespaceTest {
 	 * @generated
 	 */
 	public void testIsRedefinitionContextValid__RedefinableElement() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
+
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Vertex#getOwner() <em>Get Owner</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Vertex#getOwner()
+	 * @see org.eclipse.uml2.Element#getOwner()
 	 * @generated
 	 */
 	public void testGetOwnerGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwner() {
 		testGetOwnerGen();
 		
@@ -275,14 +270,14 @@ public class StateTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.State#getRedefinitionContexts() <em>Get Redefinition Contexts</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.State#getRedefinitionContexts() <em>Redefinition Context</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.State#getRedefinitionContexts()
 	 * @generated
 	 */
 	public void testGetRedefinitionContextsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -293,14 +288,14 @@ public class StateTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.State#getRedefinedElements() <em>Get Redefined Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.State#getRedefinedElements()
+	 * @see org.eclipse.uml2.RedefinableElement#getRedefinedElements()
 	 * @generated
 	 */
 	public void testGetRedefinedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -311,14 +306,14 @@ public class StateTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.State#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.State#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -335,14 +330,14 @@ public class StateTest extends NamespaceTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.State#getOwnedMembers() <em>Get Owned Members</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.State#getOwnedMembers()
+	 * @see org.eclipse.uml2.Namespace#getOwnedMembers()
 	 * @generated
 	 */
 	public void testGetOwnedMembersGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

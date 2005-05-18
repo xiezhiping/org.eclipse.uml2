@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: PropertyTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -38,24 +38,16 @@ import org.eclipse.uml2.ValueSpecification;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.ParameterableElement#getTemplateParameter() <em>Template Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.ParameterableElement#getOwningParameter() <em>Owning Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.DeploymentTarget#getDeployments() <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.DeploymentTarget#getDeployedElements() <em>Deployed Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#getDefault() <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#isComposite() <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#getClass_() <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#getOpposite() <em>Opposite</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#getOwningAssociation() <em>Owning Association</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#getAssociation() <em>Association</em>}</li>
  * </ul>
  * </p>
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.ParameterableElement#getOwner() <em>Get Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.DeploymentTarget#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.DeploymentTarget#getClientDependencies() <em>Get Client Dependencies</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#validateOppositeIsOtherEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Opposite Is Other End</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#opposite() <em>Opposite</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#validateMultiplicityOfComposite(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Composite</em>}</li>
@@ -64,15 +56,8 @@ import org.eclipse.uml2.ValueSpecification;
  *   <li>{@link org.eclipse.uml2.Property#validateSubsettingRules(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetting Rules</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#validateNavigableReadonly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Readonly</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#validateDerivedUnionIsDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Derived Union Is Derived</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#isConsistentWith(org.eclipse.uml2.RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.Property#subsettingContext() <em>Subsetting Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#isReadOnly() <em>Is Read Only</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#setIsReadOnly(boolean) <em>Set Is Read Only</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#getNamespace() <em>Get Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#getFeaturingClassifiers() <em>Get Featuring Classifiers</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#getRedefinedElements() <em>Get Redefined Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#getOwnedElements() <em>Get Owned Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.Property#getOwner() <em>Get Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Property#isConsistentWith(org.eclipse.uml2.RedefinableElement) <em>Is Consistent With</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -84,7 +69,7 @@ public class PropertyTest extends StructuralFeatureTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,66 +118,6 @@ public class PropertyTest extends StructuralFeatureTest {
 	 */
 	protected void tearDown() throws Exception {
 		setFixture(null);
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#getTemplateParameter() <em>Template Parameter</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#getTemplateParameter()
-	 * @generated
-	 */
-	public void testGetTemplateParameter() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter) <em>Template Parameter</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setTemplateParameter(org.eclipse.uml2.TemplateParameter)
-	 * @generated
-	 */
-	public void testSetTemplateParameter() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#getOwningParameter() <em>Owning Parameter</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#getOwningParameter()
-	 * @generated
-	 */
-	public void testGetOwningParameter() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter) <em>Owning Parameter</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ParameterableElement#setOwningParameter(org.eclipse.uml2.TemplateParameter)
-	 * @generated
-	 */
-	public void testSetOwningParameter() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.DeploymentTarget#getDeployments() <em>Deployment</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.DeploymentTarget#getDeployments()
-	 * @generated
-	 */
-	public void testGetDeployments() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
@@ -329,66 +254,6 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#getOwningAssociation() <em>Owning Association</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#getOwningAssociation()
-	 * @generated
-	 */
-	public void testGetOwningAssociation() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#setOwningAssociation(org.eclipse.uml2.Association) <em>Owning Association</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#setOwningAssociation(org.eclipse.uml2.Association)
-	 * @generated
-	 */
-	public void testSetOwningAssociation() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#getAssociation() <em>Association</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#getAssociation()
-	 * @generated
-	 */
-	public void testGetAssociation() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#setAssociation(org.eclipse.uml2.Association) <em>Association</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#setAssociation(org.eclipse.uml2.Association)
-	 * @generated
-	 */
-	public void testSetAssociation() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.DeploymentTarget#getClientDependencies() <em>Get Client Dependencies</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.DeploymentTarget#getClientDependencies()
-	 * @generated
-	 */
-	public void testGetClientDependencies() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
 	 * Tests the '{@link org.eclipse.uml2.Property#validateOppositeIsOtherEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Opposite Is Other End</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -396,7 +261,7 @@ public class PropertyTest extends StructuralFeatureTest {
 	 * @generated
 	 */
 	public void testValidateOppositeIsOtherEnd__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -408,7 +273,7 @@ public class PropertyTest extends StructuralFeatureTest {
 	 * @generated
 	 */
 	public void testOpposite() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -420,7 +285,7 @@ public class PropertyTest extends StructuralFeatureTest {
 	 * @generated
 	 */
 	public void testValidateMultiplicityOfComposite__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -432,7 +297,7 @@ public class PropertyTest extends StructuralFeatureTest {
 	 * @generated
 	 */
 	public void testValidateSubsettingContext__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -444,7 +309,7 @@ public class PropertyTest extends StructuralFeatureTest {
 	 * @generated
 	 */
 	public void testValidateNavigablePropertyRedefinition__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -456,7 +321,7 @@ public class PropertyTest extends StructuralFeatureTest {
 	 * @generated
 	 */
 	public void testValidateSubsettingRules__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -468,7 +333,7 @@ public class PropertyTest extends StructuralFeatureTest {
 	 * @generated
 	 */
 	public void testValidateNavigableReadonly__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -480,7 +345,7 @@ public class PropertyTest extends StructuralFeatureTest {
 	 * @generated
 	 */
 	public void testValidateDerivedUnionIsDerived__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -492,9 +357,11 @@ public class PropertyTest extends StructuralFeatureTest {
 	 * @generated
 	 */
 	public void testIsConsistentWith__RedefinableElement() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
+
 
 	/**
 	 * Tests the '{@link org.eclipse.uml2.Property#subsettingContext() <em>Subsetting Context</em>}' operation.
@@ -504,63 +371,19 @@ public class PropertyTest extends StructuralFeatureTest {
 	 * @generated
 	 */
 	public void testSubsettingContext() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#isReadOnly() <em>Is Read Only</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.NamedElement#getNamespace() <em>Namespace</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#isReadOnly()
-	 * @generated
-	 */
-	public void testIsReadOnlyGen() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	public void testIsReadOnly() {
-		testIsReadOnlyGen();
-		
-		getFixture().setIsReadOnly(false);
-		assertEquals(false, getFixture().isReadOnly());
-
-		getFixture().setIsReadOnly(true);
-		assertEquals(true, getFixture().isReadOnly());
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#setIsReadOnly(boolean) <em>Set Is Read Only</em>}' setter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#setIsReadOnly(boolean)
-	 * @generated
-	 */
-	public void testSetIsReadOnlyGen() {
-		// TODO: implement this setter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	public void testSetIsReadOnly() {
-		testSetIsReadOnlyGen();
-		
-		getFixture().setIsReadOnly(false);
-		assertFalse(getFixture().isReadOnly());
-
-		getFixture().setIsReadOnly(true);
-		assertTrue(getFixture().isReadOnly());
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#getNamespace() <em>Get Namespace</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#getNamespace()
+	 * @see org.eclipse.uml2.NamedElement#getNamespace()
 	 * @generated
 	 */
 	public void testGetNamespaceGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -579,14 +402,14 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#getFeaturingClassifiers() <em>Get Featuring Classifiers</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#getFeaturingClassifiers()
+	 * @see org.eclipse.uml2.Feature#getFeaturingClassifiers()
 	 * @generated
 	 */
 	public void testGetFeaturingClassifiersGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -609,17 +432,16 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#getRedefinedElements() <em>Get Redefined Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#getRedefinedElements()
+	 * @see org.eclipse.uml2.RedefinableElement#getRedefinedElements()
 	 * @generated
 	 */
 	public void testGetRedefinedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetRedefinedElements() {
 		testGetRedefinedElementsGen();
 		
@@ -629,14 +451,14 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -650,14 +472,14 @@ public class PropertyTest extends StructuralFeatureTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Property#getOwner() <em>Get Owner</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Property#getOwner()
+	 * @see org.eclipse.uml2.Element#getOwner()
 	 * @generated
 	 */
 	public void testGetOwnerGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2OperationsTest.java,v 1.3 2005/04/12 17:46:05 khussey Exp $
+ * $Id: UML2OperationsTest.java,v 1.4 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 

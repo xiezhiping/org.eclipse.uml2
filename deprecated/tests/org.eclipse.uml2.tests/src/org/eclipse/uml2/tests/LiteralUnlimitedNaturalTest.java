@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -37,7 +37,7 @@ public class LiteralUnlimitedNaturalTest extends LiteralSpecificationTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -96,7 +96,7 @@ public class LiteralUnlimitedNaturalTest extends LiteralSpecificationTest {
 	 * @generated
 	 */
 	public void testIsComputableGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -114,9 +114,10 @@ public class LiteralUnlimitedNaturalTest extends LiteralSpecificationTest {
 	 * @generated
 	 */
 	public void testUnlimitedValueGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
 
 	public void testUnlimitedValue() {
 		testUnlimitedValueGen();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationItemProviderTest.java,v 1.3 2005/04/04 20:02:09 khussey Exp $
+ * $Id: ProfileApplicationItemProviderTest.java,v 1.4 2005/05/18 17:04:08 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -34,7 +34,7 @@ public class ProfileApplicationItemProviderTest extends PackageImportItemProvide
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->

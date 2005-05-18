@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: TriggerTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -29,7 +29,7 @@ public abstract class TriggerTest extends NamedElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Trigger test case with the given name.
@@ -50,6 +50,7 @@ public abstract class TriggerTest extends NamedElementTest {
 	private Trigger getFixture() {
 		return (Trigger)fixture;
 	}
+
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()

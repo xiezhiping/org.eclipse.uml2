@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: MultiplicityElementTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -24,8 +24,6 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#isOrdered() <em>Is Ordered</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#isUnique() <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#getLower() <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#getUpper() <em>Upper</em>}</li>
  * </ul>
@@ -45,7 +43,6 @@ import org.eclipse.uml2.UML2Factory;
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#validateUpperEqUpperbound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Eq Upperbound</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#lower() <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.MultiplicityElement#upper() <em>Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.MultiplicityElement#getOwnedElements() <em>Get Owned Elements</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -57,7 +54,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Multiplicity Element test case with the given name.
@@ -77,102 +74,6 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 */
 	private MultiplicityElement getFixture() {
 		return (MultiplicityElement)fixture;
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#isOrdered() <em>Is Ordered</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#isOrdered()
-	 * @generated
-	 */
-	public void testIsOrderedGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	public void testIsOrdered() {
-		testIsOrderedGen();
-		
-		getFixture().setIsOrdered(false);
-
-		assertFalse(getFixture().isOrdered());
-
-		getFixture().setIsOrdered(true);
-
-		assertTrue(getFixture().isOrdered());
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#setIsOrdered(boolean) <em>Is Ordered</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#setIsOrdered(boolean)
-	 * @generated
-	 */
-	public void testSetIsOrderedGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	public void testSetIsOrdered() {
-		testSetIsOrderedGen();
-		
-		getFixture().setIsOrdered(false);
-
-		assertEquals(false, getFixture().isOrdered());
-
-		getFixture().setIsOrdered(true);
-
-		assertEquals(true, getFixture().isOrdered());
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#isUnique() <em>Is Unique</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#isUnique()
-	 * @generated
-	 */
-	public void testIsUniqueGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	public void testIsUnique() {
-		testIsUniqueGen();
-		
-		getFixture().setIsUnique(false);
-
-		assertFalse(getFixture().isUnique());
-
-		getFixture().setIsUnique(true);
-
-		assertTrue(getFixture().isUnique());
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#setIsUnique(boolean) <em>Is Unique</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#setIsUnique(boolean)
-	 * @generated
-	 */
-	public void testSetIsUniqueGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	public void testSetIsUnique() {
-		testSetIsUniqueGen();
-		
-		getFixture().setIsUnique(false);
-
-		assertEquals(false, getFixture().isUnique());
-
-		getFixture().setIsUnique(true);
-
-		assertEquals(true, getFixture().isUnique());
 	}
 
 	/**
@@ -245,7 +146,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testLowerBoundGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -276,7 +177,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testUpperBoundGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -307,7 +208,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testIsMultivaluedGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -342,7 +243,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testIncludesCardinality__intGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -400,7 +301,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testIncludesMultiplicity__MultiplicityElementGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -470,7 +371,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testValidateUpperGt0__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -482,7 +383,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testValidateLowerGe0__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -494,7 +395,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testValidateUpperGeLower__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -506,7 +407,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testValidateLowerEqLowerbound__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -518,7 +419,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testValidateUpperEqUpperbound__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -530,7 +431,7 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testLowerGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -561,9 +462,11 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	 * @generated
 	 */
 	public void testUpperGen() {
-		// TODO: implement this operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
+
 
 	public void testUpper() {
 		testUpperGen();
@@ -585,17 +488,16 @@ public abstract class MultiplicityElementTest extends ElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.MultiplicityElement#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.MultiplicityElement#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwnedElements() {
 		testGetOwnedElementsGen();
 		

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperationsTest.java,v 1.8 2005/04/12 20:28:16 khussey Exp $
+ * $Id: StereotypeOperationsTest.java,v 1.9 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -205,11 +205,11 @@ public class StereotypeOperationsTest
 			getName() + UML2Package.eINSTANCE.getEnumeration().getName());
 
 		EnumerationLiteral enumerationLiteral0 = getEnumeration()
-			.createOwnedLiteral(UML2Package.eINSTANCE.getEnumerationLiteral());
+			.createOwnedLiteral();
 		enumerationLiteral0.setName(getName() + String.valueOf(0));
 
 		EnumerationLiteral enumerationLiteral1 = getEnumeration()
-			.createOwnedLiteral(UML2Package.eINSTANCE.getEnumerationLiteral());
+			.createOwnedLiteral();
 		enumerationLiteral1.setName(getName() + String.valueOf(1));
 
 		Property enumerationProperty = getElement().createOwnedAttribute(

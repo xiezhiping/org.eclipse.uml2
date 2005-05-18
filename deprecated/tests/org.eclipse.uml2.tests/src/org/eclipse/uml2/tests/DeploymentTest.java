@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTest.java,v 1.2 2005/04/20 19:00:46 khussey Exp $
+ * $Id: DeploymentTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -27,23 +27,6 @@ import org.eclipse.uml2.UML2Package;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Deployment</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Deployment#getDeployedArtifacts() <em>Deployed Artifact</em>}</li>
- *   <li>{@link org.eclipse.uml2.Deployment#getLocation() <em>Location</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Deployment#getSuppliers() <em>Get Suppliers</em>}</li>
- *   <li>{@link org.eclipse.uml2.Deployment#getTargets() <em>Get Targets</em>}</li>
- *   <li>{@link org.eclipse.uml2.Deployment#getSources() <em>Get Sources</em>}</li>
- *   <li>{@link org.eclipse.uml2.Deployment#getClients() <em>Get Clients</em>}</li>
- *   <li>{@link org.eclipse.uml2.Deployment#getOwnedElements() <em>Get Owned Elements</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class DeploymentTest extends DependencyTest {
@@ -53,7 +36,7 @@ public class DeploymentTest extends DependencyTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,20 +87,9 @@ public class DeploymentTest extends DependencyTest {
 		setFixture(null);
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Deployment#getDeployedArtifacts() <em>Deployed Artifact</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Deployment#getDeployedArtifacts()
-	 * @generated
-	 */
-	public void testGetDeployedArtifactsGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
+
 
 	public void testGetDeployedArtifacts() {
-		testGetDeployedArtifactsGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDeployedArtifact()).iterator(); eAllSubClasses.hasNext();) {
 			DeployedArtifact deployedArtifact = (DeployedArtifact) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -134,20 +106,7 @@ public class DeploymentTest extends DependencyTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Deployment#getLocation() <em>Location</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Deployment#getLocation()
-	 * @generated
-	 */
-	public void testGetLocationGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetLocation() {
-		testGetLocationGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDeploymentTarget()).iterator(); eAllSubClasses.hasNext();) {
 			DeploymentTarget deploymentTarget = (DeploymentTarget) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -162,20 +121,7 @@ public class DeploymentTest extends DependencyTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Deployment#setLocation(org.eclipse.uml2.DeploymentTarget) <em>Location</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Deployment#setLocation(org.eclipse.uml2.DeploymentTarget)
-	 * @generated
-	 */
-	public void testSetLocationGen() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testSetLocation() {
-		testSetLocationGen();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDeploymentTarget()).iterator(); eAllSubClasses.hasNext();) {
 			DeploymentTarget deploymentTarget = (DeploymentTarget) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next());
@@ -194,21 +140,7 @@ public class DeploymentTest extends DependencyTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Deployment#getSuppliers() <em>Get Suppliers</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Deployment#getSuppliers()
-	 * @generated
-	 */
-	public void testGetSuppliersGen() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetSuppliers() {
-		testGetSuppliersGen();
-		
 		super.testGetSuppliers();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDeployedArtifact()).iterator(); eAllSubClasses.hasNext();) {
@@ -229,14 +161,14 @@ public class DeploymentTest extends DependencyTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Deployment#getTargets() <em>Get Targets</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.DirectedRelationship#getTargets() <em>Target</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Deployment#getTargets()
+	 * @see org.eclipse.uml2.DirectedRelationship#getTargets()
 	 * @generated
 	 */
 	public void testGetTargetsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -249,14 +181,14 @@ public class DeploymentTest extends DependencyTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Deployment#getSources() <em>Get Sources</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.DirectedRelationship#getSources() <em>Source</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Deployment#getSources()
+	 * @see org.eclipse.uml2.DirectedRelationship#getSources()
 	 * @generated
 	 */
 	public void testGetSourcesGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -268,21 +200,7 @@ public class DeploymentTest extends DependencyTest {
 		assertTrue(getFixture().getSources().contains(getFixture().getLocation()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Deployment#getClients() <em>Get Clients</em>}' getter operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Deployment#getClients()
-	 * @generated
-	 */
-	public void testGetClientsGen() {
-		// TODO: implement this getter operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetClients() {
-		testGetClientsGen();
-		
 		super.testGetClients();
 
 		for (Iterator eAllSubClasses = getEAllSubClasses(UML2Package.eINSTANCE.getDeploymentTarget()).iterator(); eAllSubClasses.hasNext();) {
@@ -305,17 +223,16 @@ public class DeploymentTest extends DependencyTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.Deployment#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Deployment#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwnedElements() {
 		testGetOwnedElementsGen();
 		

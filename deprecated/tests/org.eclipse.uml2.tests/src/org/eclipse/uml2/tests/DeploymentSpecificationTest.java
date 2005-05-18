@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: DeploymentSpecificationTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -30,7 +30,7 @@ public class DeploymentSpecificationTest extends ArtifactTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,5 +80,6 @@ public class DeploymentSpecificationTest extends ArtifactTest {
 	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
+
 
 } //DeploymentSpecificationImplTest

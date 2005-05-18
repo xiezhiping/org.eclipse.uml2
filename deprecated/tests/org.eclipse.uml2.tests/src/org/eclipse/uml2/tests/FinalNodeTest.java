@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalNodeTest.java,v 1.1 2005/04/04 20:06:05 khussey Exp $
+ * $Id: FinalNodeTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -27,7 +27,7 @@ public abstract class FinalNodeTest extends ControlNodeTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Final Node test case with the given name.
@@ -48,5 +48,6 @@ public abstract class FinalNodeTest extends ControlNodeTest {
 	private FinalNode getFixture() {
 		return (FinalNode)fixture;
 	}
+
 
 } //FinalNodeImplTest

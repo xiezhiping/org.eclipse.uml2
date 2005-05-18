@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeTest.java,v 1.1 2005/04/04 20:06:07 khussey Exp $
+ * $Id: ActivityEdgeTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -24,19 +24,6 @@ import org.eclipse.uml2.UML2Package;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Activity Edge</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.ActivityEdge#getInGroups() <em>In Group</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.ActivityEdge#getOwner() <em>Get Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.ActivityEdge#getOwnedElements() <em>Get Owned Elements</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public abstract class ActivityEdgeTest extends RedefinableElementTest {
@@ -46,7 +33,7 @@ public abstract class ActivityEdgeTest extends RedefinableElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Constructs a new Activity Edge test case with the given name.
@@ -68,6 +55,8 @@ public abstract class ActivityEdgeTest extends RedefinableElementTest {
 		return (ActivityEdge)fixture;
 	}
 
+
+
 	/**
 	 * Tests the '{@link org.eclipse.uml2.ActivityEdge#getInGroups() <em>In Group</em>}' feature getter.
 	 * <!-- begin-user-doc -->
@@ -76,7 +65,7 @@ public abstract class ActivityEdgeTest extends RedefinableElementTest {
 	 * @generated
 	 */
 	public void testGetInGroupsGen() {
-		// TODO: implement this feature getter test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -94,14 +83,14 @@ public abstract class ActivityEdgeTest extends RedefinableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityEdge#getOwner() <em>Get Owner</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityEdge#getOwner()
+	 * @see org.eclipse.uml2.Element#getOwner()
 	 * @generated
 	 */
 	public void testGetOwnerGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -116,17 +105,16 @@ public abstract class ActivityEdgeTest extends RedefinableElementTest {
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityEdge#getOwnedElements() <em>Get Owned Elements</em>}' getter operation.
+	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityEdge#getOwnedElements()
+	 * @see org.eclipse.uml2.Element#getOwnedElements()
 	 * @generated
 	 */
 	public void testGetOwnedElementsGen() {
-		// TODO: implement this getter operation test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	public void testGetOwnedElements() {
 		testGetOwnedElementsGen();
 		

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowTest.java,v 1.1 2005/04/04 20:06:06 khussey Exp $
+ * $Id: InformationFlowTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -21,20 +21,6 @@ import org.eclipse.uml2.UML2Factory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Information Flow</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.Relationship#getRelatedElements() <em>Related Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.DirectedRelationship#getSources() <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.DirectedRelationship#getTargets() <em>Target</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.DirectedRelationship#getRelatedElements() <em>Get Related Elements</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class InformationFlowTest extends PackageableElementTest {
@@ -44,7 +30,7 @@ public class InformationFlowTest extends PackageableElementTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,6 +81,8 @@ public class InformationFlowTest extends PackageableElementTest {
 		setFixture(null);
 	}
 
+
+
 	/**
 	 * Tests the '{@link org.eclipse.uml2.Relationship#getRelatedElements() <em>Related Element</em>}' feature getter.
 	 * <!-- begin-user-doc -->
@@ -103,7 +91,7 @@ public class InformationFlowTest extends PackageableElementTest {
 	 * @generated
 	 */
 	public void testGetRelatedElements() {
-		// TODO: implement this feature getter test method
+		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
