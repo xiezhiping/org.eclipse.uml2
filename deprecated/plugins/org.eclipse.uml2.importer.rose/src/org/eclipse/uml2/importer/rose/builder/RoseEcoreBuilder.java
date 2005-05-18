@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseEcoreBuilder.java,v 1.1 2005/05/17 22:09:07 khussey Exp $
+ * $Id: RoseEcoreBuilder.java,v 1.2 2005/05/18 20:25:14 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.builder;
 
@@ -971,7 +971,7 @@ public class RoseEcoreBuilder
 							collapsingAttribute.setDerived(collapsedAttribute
 								.isDerived());
 							collapsingAttribute
-								.setLowerBound(getGreaterCommonLowerBound(
+								.setLowerBound(getLesserCommonLowerBound(
 									collapsingAttribute, collapsedAttribute));
 							collapsingAttribute
 								.setUpperBound(getGreaterCommonUpperBound(
@@ -1265,7 +1265,7 @@ public class RoseEcoreBuilder
 							collapsingReference.setDerived(collapsedReference
 								.isDerived());
 							collapsingReference
-								.setLowerBound(getGreaterCommonLowerBound(
+								.setLowerBound(getLesserCommonLowerBound(
 									collapsingReference, collapsedReference));
 							collapsingReference
 								.setUpperBound(getGreaterCommonUpperBound(
@@ -2534,19 +2534,6 @@ public class RoseEcoreBuilder
 		return ecorePackage.getEObject();
 	}
 
-	protected int getGreaterCommonLowerBound(
-			EStructuralFeature redefiningFeature,
-			EStructuralFeature redefinedFeature) {
-
-		if (redefinedFeature.getLowerBound() <= redefiningFeature
-			.getLowerBound()) {
-
-			return redefinedFeature.getLowerBound();
-		} else {
-			return redefiningFeature.getLowerBound();
-		}
-	}
-
 	protected int getGreaterCommonUpperBound(ETypedElement eTypedElement,
 			ETypedElement otherETypedElement) {
 
@@ -2568,7 +2555,7 @@ public class RoseEcoreBuilder
 	protected int getLesserCommonLowerBound(ETypedElement eTypedElement,
 			ETypedElement otherETypedElement) {
 
-		if (otherETypedElement.getLowerBound() >= eTypedElement.getLowerBound()) {
+		if (otherETypedElement.getLowerBound() <= eTypedElement.getLowerBound()) {
 			return otherETypedElement.getLowerBound();
 		} else {
 			return eTypedElement.getLowerBound();
