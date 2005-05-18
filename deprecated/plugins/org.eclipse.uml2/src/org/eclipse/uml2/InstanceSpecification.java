@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -47,7 +47,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Slot</b></em>' containment reference list.
@@ -66,10 +66,10 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * @see org.eclipse.uml2.UML2Package#getInstanceSpecification_Slot()
 	 * @see org.eclipse.uml2.Slot#getOwningInstance
 	 * @model type="org.eclipse.uml2.Slot" opposite="owningInstance" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getSlots();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.Slot} and appends it to the '<em><b>Slot</b></em>' containment reference list.
@@ -78,9 +78,20 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Slot} to create.
 	 * @return The new {@link org.eclipse.uml2.Slot}.
 	 * @see #getSlots()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createSlot() instead.
      */
     Slot createSlot(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Slot} and appends it to the '<em><b>Slot</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Slot}.
+	 * @see #getSlots()
+	 * @generated
+     */
+    Slot createSlot();
 
 	/**
 	 * Returns the value of the '<em><b>Classifier</b></em>' reference list.
@@ -101,12 +112,13 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 */
 	EList getClassifiers();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified name from the '<em><b>Classifier</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getClassifiers()
 	 * @generated
      */
@@ -127,7 +139,6 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * @see #setSpecification(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getInstanceSpecification_Specification()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getSpecification();
@@ -142,6 +153,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 */
 	void setSpecification(ValueSpecification value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Specification</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -152,7 +164,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * @generated
      */
     ValueSpecification createSpecification(EClass eClass);
-     
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -163,8 +175,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 *   classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.InstanceSpecificationOperations.validateSlotsAreDefined(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateSlotsAreDefined(DiagnosticChain diagnostics, Map context);
@@ -180,19 +191,9 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * 	)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.InstanceSpecificationOperations.validateNoDuplicateSlots(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateNoDuplicateSlots(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
 
 } // InstanceSpecification

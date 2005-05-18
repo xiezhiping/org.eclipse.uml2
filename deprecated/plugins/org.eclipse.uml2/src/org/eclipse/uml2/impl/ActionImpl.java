@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,24 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.10 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ActionImpl.java,v 1.11 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Action;
 import org.eclipse.uml2.Activity;
@@ -37,8 +36,13 @@ import org.eclipse.uml2.OutputPin;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,8 +52,6 @@ import org.eclipse.uml2.VisibilityKind;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getEffect <em>Effect</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getOutputs <em>Output</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getLocalPreconditions <em>Local Precondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getLocalPostconditions <em>Local Postcondition</em>}</li>
@@ -59,12 +61,13 @@ import org.eclipse.uml2.VisibilityKind;
  * @generated
  */
 public class ActionImpl extends ExecutableNodeImpl implements Action {
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getEffect() <em>Effect</em>}' attribute.
@@ -139,11 +142,14 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public void setEffect(String newEffect) {
+		newEffect = newEffect == null ? EFFECT_EDEFAULT : newEffect;
 		String oldEffect = effect;
-		effect = newEffect == null ? EFFECT_EDEFAULT : newEffect;
+		effect = newEffect;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTION__EFFECT, oldEffect, effect));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -151,70 +157,102 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	public EList getOutputs() {
-		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
-
-		if (null == output) {
-			Set union = new LinkedHashSet();
-
-			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList output = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getAction_Output());
+			if (output == null) {
+				EList union = getOutputsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getAction_Output(), output = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return output;
 		}
-
-		return output;
+		EList union = getOutputsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public OutputPin getOutput(String unqualifiedName) {
-    	for (Iterator i = getOutputs().iterator(); i.hasNext(); ) {
-    		OutputPin namedOutput = (OutputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedOutput.getName())) {
-    			return namedOutput;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public OutputPin getOutput(String name) {
+		for (Iterator i = getOutputs().iterator(); i.hasNext(); ) {
+			OutputPin output = (OutputPin) i.next();
+			if (name.equals(output.getName())) {
+				return output;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getInputsHelper(EList input) {
+		return input;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getInputs() {
-		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
-
-		if (null == input) {
-			Set union = new LinkedHashSet();
-
-			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList input = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getAction_Input());
+			if (input == null) {
+				EList union = getInputsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getAction_Input(), input = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return input;
 		}
-
-		return input;
+		EList union = getInputsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public InputPin getInput(String unqualifiedName) {
-    	for (Iterator i = getInputs().iterator(); i.hasNext(); ) {
-    		InputPin namedInput = (InputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedInput.getName())) {
-    			return namedInput;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public InputPin getInput(String name) {
+		for (Iterator i = getInputs().iterator(); i.hasNext(); ) {
+			InputPin input = (InputPin) i.next();
+			if (name.equals(input.getName())) {
+				return input;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		for (Iterator i = ((InternalEList) getOutputs()).basicIterator(); i.hasNext(); ) {
+			ownedElement.add(i.next());
+		}
+		for (Iterator i = ((InternalEList) getInputs()).basicIterator(); i.hasNext(); ) {
+			ownedElement.add(i.next());
+		}
+		if (localPrecondition != null) {
+			ownedElement.addAll(localPrecondition);
+		}
+		if (localPostcondition != null) {
+			ownedElement.addAll(localPostcondition);
+		}
+		return ownedElement;
+	}
+
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -248,23 +286,22 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		return localPrecondition;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Constraint getLocalPrecondition(String unqualifiedName) {
-    	for (Iterator i = getLocalPreconditions().iterator(); i.hasNext(); ) {
-    		Constraint namedLocalPrecondition = (Constraint) i.next();
-    		
-    		if (unqualifiedName.equals(namedLocalPrecondition.getName())) {
-    			return namedLocalPrecondition;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Constraint getLocalPrecondition(String name) {
+		for (Iterator i = getLocalPreconditions().iterator(); i.hasNext(); ) {
+			Constraint localPrecondition = (Constraint) i.next();
+			if (name.equals(localPrecondition.getName())) {
+				return localPrecondition;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -284,6 +321,20 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Constraint createLocalPrecondition() {
+		Constraint newLocalPrecondition = UML2Factory.eINSTANCE.createConstraint();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTION__LOCAL_PRECONDITION, null, newLocalPrecondition));
+		}
+		getLocalPreconditions().add(newLocalPrecondition);
+		return newLocalPrecondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getLocalPostconditions() {
 		if (localPostcondition == null) {
 			localPostcondition = new EObjectContainmentEList(Constraint.class, this, UML2Package.ACTION__LOCAL_POSTCONDITION);
@@ -291,23 +342,22 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		return localPostcondition;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Constraint getLocalPostcondition(String unqualifiedName) {
-    	for (Iterator i = getLocalPostconditions().iterator(); i.hasNext(); ) {
-    		Constraint namedLocalPostcondition = (Constraint) i.next();
-    		
-    		if (unqualifiedName.equals(namedLocalPostcondition.getName())) {
-    			return namedLocalPostcondition;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Constraint getLocalPostcondition(String name) {
+		for (Iterator i = getLocalPostconditions().iterator(); i.hasNext(); ) {
+			Constraint localPostcondition = (Constraint) i.next();
+			if (name.equals(localPostcondition.getName())) {
+				return localPostcondition;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -327,22 +377,13 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getOutputs());
-			union.addAll(getInputs());
-			union.addAll(getLocalPreconditions());
-			union.addAll(getLocalPostconditions());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	public Constraint createLocalPostcondition() {
+		Constraint newLocalPostcondition = UML2Factory.eINSTANCE.createConstraint();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTION__LOCAL_POSTCONDITION, null, newLocalPostcondition));
 		}
-
-		return ownedElement;
+		getLocalPostconditions().add(newLocalPostcondition);
+		return newLocalPostcondition;
 	}
 
 	/**
@@ -757,6 +798,16 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		result.append(effect);
 		result.append(')');
 		return result.toString();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOutputsHelper(EList output) {
+		return output;
 	}
 
 } //ActionImpl

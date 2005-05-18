@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResource.java,v 1.4 2005/03/15 20:28:16 khussey Exp $
+ * $Id: EMOF2EcoreResource.java,v 1.5 2005/05/18 16:42:31 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore;
 
@@ -22,7 +22,7 @@ import org.eclipse.uml2.examples.emof2ecore.internal.EMOF2EcoreResourceFactoryIm
 public interface EMOF2EcoreResource
 		extends XMIResource {
 
-	public static final String copyright = "Copyright (c) 2004, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	public interface Factory
 			extends Resource.Factory {

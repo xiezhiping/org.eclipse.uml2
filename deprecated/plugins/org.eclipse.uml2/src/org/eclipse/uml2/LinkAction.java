@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkAction.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: LinkAction.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface LinkAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>End Data</b></em>' containment reference list.
@@ -58,10 +58,11 @@ public interface LinkAction extends Action{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End Data</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLinkAction_EndData()
-	 * @model type="org.eclipse.uml2.LinkEndData" containment="true" lower="2" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.LinkEndData" containment="true" lower="2" ordered="false"
 	 * @generated
 	 */
 	EList getEndData();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.LinkEndData} and appends it to the '<em><b>End Data</b></em>' containment reference list.
@@ -73,5 +74,15 @@ public interface LinkAction extends Action{
 	 * @generated
      */
     LinkEndData createEndData(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.LinkEndData} and appends it to the '<em><b>End Data</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.LinkEndData}.
+	 * @see #getEndData()
+	 * @generated
+     */
+    LinkEndData createEndData();
 
 } // LinkAction

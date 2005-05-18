@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.8 2005/04/04 20:11:13 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,7 +56,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getMode() <em>Mode</em>}' attribute.
@@ -135,7 +135,9 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 		mode = newMode == null ? MODE_EDEFAULT : newMode;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXPANSION_REGION__MODE, oldMode, mode));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -149,23 +151,22 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 		return outputElement;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ExpansionNode getOutputElement(String unqualifiedName) {
-    	for (Iterator i = getOutputElements().iterator(); i.hasNext(); ) {
-    		ExpansionNode namedOutputElement = (ExpansionNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedOutputElement.getName())) {
-    			return namedOutputElement;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ExpansionNode getOutputElement(String name) {
+		for (Iterator i = getOutputElements().iterator(); i.hasNext(); ) {
+			ExpansionNode outputElement = (ExpansionNode) i.next();
+			if (name.equals(outputElement.getName())) {
+				return outputElement;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -178,23 +179,22 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 		return inputElement;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ExpansionNode getInputElement(String unqualifiedName) {
-    	for (Iterator i = getInputElements().iterator(); i.hasNext(); ) {
-    		ExpansionNode namedInputElement = (ExpansionNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedInputElement.getName())) {
-    			return namedInputElement;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ExpansionNode getInputElement(String name) {
+		for (Iterator i = getInputElements().iterator(); i.hasNext(); ) {
+			ExpansionNode inputElement = (ExpansionNode) i.next();
+			if (name.equals(inputElement.getName())) {
+				return inputElement;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -300,8 +300,6 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXPANSION_REGION__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.EXPANSION_REGION__VARIABLE:
 					return ((InternalEList)getVariables()).basicRemove(otherEnd, msgs);
 				case UML2Package.EXPANSION_REGION__CONTAINED_NODE:
@@ -317,6 +315,15 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
+			default :
+				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -671,7 +678,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.EXPANSION_REGION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -706,7 +713,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__IN_GROUP:
 				return !getInGroups().isEmpty();
 			case UML2Package.EXPANSION_REGION__ACTIVITY:
-				return false;
+				return getActivity() != null;
 			case UML2Package.EXPANSION_REGION__REDEFINED_ELEMENT:
 				return redefinedElement != null && !redefinedElement.isEmpty();
 			case UML2Package.EXPANSION_REGION__IN_STRUCTURED_NODE:
@@ -742,7 +749,7 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__SUPER_GROUP:
 				return basicGetSuperGroup() != null;
 			case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
-				return false;
+				return getActivityGroup_activity() != null;
 			case UML2Package.EXPANSION_REGION__VARIABLE:
 				return variable != null && !variable.isEmpty();
 			case UML2Package.EXPANSION_REGION__CONTAINED_NODE:
@@ -761,6 +768,16 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 		return eDynamicIsSet(eFeature);
 	}
 
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.EXPANSION_REGION__ACTIVITY:
+				return false;
+			case UML2Package.EXPANSION_REGION__ACTIVITY_GROUP_ACTIVITY:
+				return false;
+		}
+		return eIsSetGen(eFeature);
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -775,5 +792,6 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //ExpansionRegionImpl

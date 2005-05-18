@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSet.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
+ * $Id: GeneralizationSet.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -43,7 +43,7 @@ public interface GeneralizationSet extends PackageableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Covering</b></em>' attribute.
@@ -74,6 +74,7 @@ public interface GeneralizationSet extends PackageableElement{
 	 */
 	void setIsCovering(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Disjoint</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -103,6 +104,7 @@ public interface GeneralizationSet extends PackageableElement{
 	 */
 	void setIsDisjoint(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Powertype</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Classifier#getPowertypeExtents <em>Powertype Extent</em>}'.
@@ -131,6 +133,7 @@ public interface GeneralizationSet extends PackageableElement{
 	 */
 	void setPowertype(Classifier value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Generalization</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Generalization}.
@@ -148,5 +151,6 @@ public interface GeneralizationSet extends PackageableElement{
 	 * @generated
 	 */
 	EList getGeneralizations();
+
 
 } // GeneralizationSet

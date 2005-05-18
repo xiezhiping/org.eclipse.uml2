@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,34 +8,35 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.6 2005/04/04 20:11:13 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.DirectedRelationship;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Directed Relationship</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following features are implemented:
- * <ul>
- *   <li>{@link org.eclipse.uml2.impl.DirectedRelationshipImpl#getSources <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.DirectedRelationshipImpl#getTargets <em>Target</em>}</li>
- * </ul>
  * </p>
  *
  * @generated
@@ -46,7 +47,7 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,33 +73,43 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
-
-		if (null == source) {
-			Set union = new LinkedHashSet();
-
-			source = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList source = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
+			if (source == null) {
+				EList union = getSourcesHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return source;
 		}
-
-		return source;
+		EList union = getSourcesHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargets() {
-		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-
-		if (null == target) {
-			Set union = new LinkedHashSet();
-
-			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
+	protected EList getRelatedElementsHelper(EList relatedElement) {
+		super.getRelatedElementsHelper(relatedElement);
+		for (Iterator i = ((InternalEList) getSources()).basicIterator(); i.hasNext(); ) {
+			relatedElement.add(i.next());
 		}
+		for (Iterator i = ((InternalEList) getTargets()).basicIterator(); i.hasNext(); ) {
+			relatedElement.add(i.next());
+		}
+		return relatedElement;
+	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getTargetsHelper(EList target) {
 		return target;
 	}
 
@@ -107,21 +118,20 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelatedElements() {
-		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
-
-		if (null == relatedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getRelatedElements());
-			union.addAll(getSources());
-			union.addAll(getTargets());
-
-			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
+	public EList getTargets() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList target = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
+			if (target == null) {
+				EList union = getTargetsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return target;
 		}
-
-		return relatedElement;
+		EList union = getTargetsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -246,6 +256,16 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 				return !getTargets().isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getSourcesHelper(EList source) {
+		return source;
 	}
 
 } //DirectedRelationshipImpl

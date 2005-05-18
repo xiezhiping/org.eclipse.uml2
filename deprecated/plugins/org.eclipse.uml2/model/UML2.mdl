@@ -119,7 +119,7 @@
 	    (object Class_Category "ecore"
 		is_unit    	TRUE
 		is_loaded  	FALSE
-		file_name  	"$CURDIR\\..\\..\\org.eclipse.emf.ecore\\src\\model\\org.eclipse.emf.Ecore.cat"
+		file_name  	"$CURDIR\\..\\..\\org.eclipse.emf.ecore\\model\\org.eclipse.emf.Ecore.cat"
 		quid       	"39A5ED04004E")
 	    (object Class_Category "UML2"
 		is_unit    	TRUE

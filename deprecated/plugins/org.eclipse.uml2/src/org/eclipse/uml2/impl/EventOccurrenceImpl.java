@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrenceImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
+ * $Id: EventOccurrenceImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,13 +18,19 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.EventOccurrence;
 import org.eclipse.uml2.ExecutionOccurrence;
 import org.eclipse.uml2.GeneralOrdering;
@@ -51,6 +57,7 @@ import org.eclipse.uml2.VisibilityKind;
  *   <li>{@link org.eclipse.uml2.impl.EventOccurrenceImpl#getFinishExecs <em>Finish Exec</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.EventOccurrenceImpl#getToAfters <em>To After</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.EventOccurrenceImpl#getToBefores <em>To Before</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.EventOccurrenceImpl#getCovereds <em>Covered</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,7 +69,7 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getReceiveMessage() <em>Receive Message</em>}' reference.
@@ -180,6 +187,7 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE, oldReceiveMessage, newReceiveMessage);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -200,7 +208,9 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE, newReceiveMessage, newReceiveMessage));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -240,6 +250,7 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE, oldSendMessage, newSendMessage);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -260,7 +271,9 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE, newSendMessage, newSendMessage));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -274,23 +287,22 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 		return startExec;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ExecutionOccurrence getStartExec(String unqualifiedName) {
-    	for (Iterator i = getStartExecs().iterator(); i.hasNext(); ) {
-    		ExecutionOccurrence namedStartExec = (ExecutionOccurrence) i.next();
-    		
-    		if (unqualifiedName.equals(namedStartExec.getName())) {
-    			return namedStartExec;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ExecutionOccurrence getStartExec(String name) {
+		for (Iterator i = getStartExecs().iterator(); i.hasNext(); ) {
+			ExecutionOccurrence startExec = (ExecutionOccurrence) i.next();
+			if (name.equals(startExec.getName())) {
+				return startExec;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -303,23 +315,22 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 		return finishExec;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ExecutionOccurrence getFinishExec(String unqualifiedName) {
-    	for (Iterator i = getFinishExecs().iterator(); i.hasNext(); ) {
-    		ExecutionOccurrence namedFinishExec = (ExecutionOccurrence) i.next();
-    		
-    		if (unqualifiedName.equals(namedFinishExec.getName())) {
-    			return namedFinishExec;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ExecutionOccurrence getFinishExec(String name) {
+		for (Iterator i = getFinishExecs().iterator(); i.hasNext(); ) {
+			ExecutionOccurrence finishExec = (ExecutionOccurrence) i.next();
+			if (name.equals(finishExec.getName())) {
+				return finishExec;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -332,23 +343,22 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 		return toAfter;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public GeneralOrdering getToAfter(String unqualifiedName) {
-    	for (Iterator i = getToAfters().iterator(); i.hasNext(); ) {
-    		GeneralOrdering namedToAfter = (GeneralOrdering) i.next();
-    		
-    		if (unqualifiedName.equals(namedToAfter.getName())) {
-    			return namedToAfter;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public GeneralOrdering getToAfter(String name) {
+		for (Iterator i = getToAfters().iterator(); i.hasNext(); ) {
+			GeneralOrdering toAfter = (GeneralOrdering) i.next();
+			if (name.equals(toAfter.getName())) {
+				return toAfter;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -361,36 +371,48 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 		return toBefore;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public GeneralOrdering getToBefore(String unqualifiedName) {
-    	for (Iterator i = getToBefores().iterator(); i.hasNext(); ) {
-    		GeneralOrdering namedToBefore = (GeneralOrdering) i.next();
-    		
-    		if (unqualifiedName.equals(namedToBefore.getName())) {
-    			return namedToBefore;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public GeneralOrdering getToBefore(String name) {
+		for (Iterator i = getToBefores().iterator(); i.hasNext(); ) {
+			GeneralOrdering toBefore = (GeneralOrdering) i.next();
+			if (name.equals(toBefore.getName())) {
+				return toBefore;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList getCovereds() {
-
-		if (null == covered) {
-			covered =
-				new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.EVENT_OCCURRENCE__COVERED, UML2Package.LIFELINE__COVERED_BY);
+		if (covered == null) {
+			covered = new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.EVENT_OCCURRENCE__COVERED, UML2Package.LIFELINE__COVERED_BY);
 		}
-
 		return covered;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public Lifeline getCovered(String name) {
+		for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
+			Lifeline covered = (Lifeline) i.next();
+			if (name.equals(covered.getName())) {
+				return covered;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -792,5 +814,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
+
 
 } //EventOccurrenceImpl

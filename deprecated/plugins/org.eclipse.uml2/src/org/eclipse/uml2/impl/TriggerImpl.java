@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerImpl.java,v 1.6 2005/04/04 20:11:12 khussey Exp $
+ * $Id: TriggerImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,7 +50,7 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getPorts() <em>Port</em>}' reference list.
@@ -92,23 +92,22 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 		return port;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Port getPort(String unqualifiedName) {
-    	for (Iterator i = getPorts().iterator(); i.hasNext(); ) {
-    		Port namedPort = (Port) i.next();
-    		
-    		if (unqualifiedName.equals(namedPort.getName())) {
-    			return namedPort;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Port getPort(String name) {
+		for (Iterator i = getPorts().iterator(); i.hasNext(); ) {
+			Port port = (Port) i.next();
+			if (name.equals(port.getName())) {
+				return port;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -314,5 +313,6 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //TriggerImpl

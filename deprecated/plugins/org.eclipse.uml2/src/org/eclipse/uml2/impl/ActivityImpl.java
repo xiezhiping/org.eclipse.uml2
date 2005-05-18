@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,26 +8,30 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.21 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.22 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Action;
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.ActivityEdge;
@@ -43,8 +47,9 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.util.SubsetEObjectEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList;
+
+import org.eclipse.uml2.common.util.SubsetEObjectEList;
+import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,11 +58,11 @@ import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getGroups <em>Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getBody <em>Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getLanguage <em>Language</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getEdges <em>Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getGroups <em>Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getActions <em>Action</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getStructuredNodes <em>Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#isSingleExecution <em>Is Single Execution</em>}</li>
@@ -73,7 +78,17 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getNodes() <em>Node</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList node = null;
 
 	/**
 	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
@@ -130,20 +145,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGroups()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected EList group = null;
-
-	/**
-	 * The cached value of the '{@link #getNodes() <em>Node</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNodes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList node = null;
 
 	/**
 	 * The cached value of the '{@link #getActions() <em>Action</em>}' reference list.
@@ -228,11 +233,14 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public void setBody(String newBody) {
+		newBody = newBody == null ? BODY_EDEFAULT : newBody;
 		String oldBody = body;
-		body = newBody == null ? BODY_EDEFAULT : newBody;
+		body = newBody;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__BODY, oldBody, body));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -249,11 +257,14 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public void setLanguage(String newLanguage) {
+		newLanguage = newLanguage == null ? LANGUAGE_EDEFAULT : newLanguage;
 		String oldLanguage = language;
-		language = newLanguage == null ? LANGUAGE_EDEFAULT : newLanguage;
+		language = newLanguage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__LANGUAGE, oldLanguage, language));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -274,7 +285,9 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		if (newIsReadOnly) eFlags |= IS_READ_ONLY_EFLAG; else eFlags &= ~IS_READ_ONLY_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__IS_READ_ONLY, oldIsReadOnly, newIsReadOnly));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -295,7 +308,9 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		if (newIsSingleExecution) eFlags |= IS_SINGLE_EXECUTION_EFLAG; else eFlags &= ~IS_SINGLE_EXECUTION_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__IS_SINGLE_EXECUTION, oldIsSingleExecution, newIsSingleExecution));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -309,23 +324,22 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		return edge;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityEdge getEdge(String unqualifiedName) {
-    	for (Iterator i = getEdges().iterator(); i.hasNext(); ) {
-    		ActivityEdge namedEdge = (ActivityEdge) i.next();
-    		
-    		if (unqualifiedName.equals(namedEdge.getName())) {
-    			return namedEdge;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityEdge getEdge(String name) {
+		for (Iterator i = getEdges().iterator(); i.hasNext(); ) {
+			ActivityEdge edge = (ActivityEdge) i.next();
+			if (name.equals(edge.getName())) {
+				return edge;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -343,10 +357,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getGroups() {
-		if (null == group) {
+		if (group == null) {
 			group = new EObjectContainmentWithInverseEList(ActivityGroup.class, this, UML2Package.ACTIVITY__GROUP, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY);
 		}
 		return group;
@@ -376,26 +390,24 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			node = new SupersetEObjectContainmentWithInverseEList(ActivityNode.class, this, UML2Package.ACTIVITY__NODE, new int[] {UML2Package.ACTIVITY__ACTION}, UML2Package.ACTIVITY_NODE__ACTIVITY);
 		}
 		return node;
-
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityNode getNode(String unqualifiedName) {
-    	for (Iterator i = getNodes().iterator(); i.hasNext(); ) {
-    		ActivityNode namedNode = (ActivityNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedNode.getName())) {
-    			return namedNode;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityNode getNode(String name) {
+		for (Iterator i = getNodes().iterator(); i.hasNext(); ) {
+			ActivityNode node = (ActivityNode) i.next();
+			if (name.equals(node.getName())) {
+				return node;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -420,26 +432,24 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			action = new SubsetEObjectEList(Action.class, this, UML2Package.ACTIVITY__ACTION, new int[] {UML2Package.ACTIVITY__NODE});
 		}
 		return action;
-
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Action getAction(String unqualifiedName) {
-    	for (Iterator i = getActions().iterator(); i.hasNext(); ) {
-    		Action namedAction = (Action) i.next();
-    		
-    		if (unqualifiedName.equals(namedAction.getName())) {
-    			return namedAction;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Action getAction(String name) {
+		for (Iterator i = getActions().iterator(); i.hasNext(); ) {
+			Action action = (Action) i.next();
+			if (name.equals(action.getName())) {
+				return action;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -479,43 +489,19 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		return structuredNodes;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public StructuredActivityNode getStructuredNode(String unqualifiedName) {
-    	for (Iterator i = getStructuredNodes().iterator(); i.hasNext(); ) {
-    		StructuredActivityNode namedStructuredNode = (StructuredActivityNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedStructuredNode.getName())) {
-    			return namedStructuredNode;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getEdges());
-			union.addAll(getGroups());
-			union.addAll(getNodes());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+    public StructuredActivityNode getStructuredNode(String name) {
+		for (Iterator i = getStructuredNodes().iterator(); i.hasNext(); ) {
+			StructuredActivityNode structuredNode = (StructuredActivityNode) i.next();
+			if (name.equals(structuredNode.getName())) {
+				return structuredNode;
+			}
 		}
-
-		return ownedElement;
+		return null;
 	}
 
 	/**
@@ -562,8 +548,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__CONTEXT:
@@ -576,8 +560,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 					return basicSetSpecification((BehavioralFeature)otherEnd, msgs);
 				case UML2Package.ACTIVITY__EDGE:
 					return ((InternalEList)getEdges()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY__GROUP:
-					return ((InternalEList)getGroups()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY__NODE:
 					return ((InternalEList)getNodes()).basicAdd(otherEnd, msgs);
 				default:
@@ -589,11 +571,12 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		return eBasicSetContainer(otherEnd, featureID, msgs);
 	}
 
-	/**
-	 * @see org.eclipse.emf.ecore.impl.EObjectImpl#eDynamicInverseAdd(org.eclipse.emf.ecore.InternalEObject, int, java.lang.Class, org.eclipse.emf.common.notify.NotificationChain)
-	 */
 	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
 		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.ACTIVITY__GROUP:
+				return ((InternalEList)getGroups()).basicAdd(otherEnd, msgs);
+			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
+				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 			case UML2Package.ACTIVITY__STRUCTURED_NODE :
 				return ((InternalEList) getStructuredNodes()).basicAdd(otherEnd, msgs);
 			default :
@@ -684,9 +667,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		return eBasicSetContainer(null, featureID, msgs);
 	}
 
-	/**
-	 * @see org.eclipse.emf.ecore.impl.EObjectImpl#eDynamicInverseRemove(org.eclipse.emf.ecore.InternalEObject, int, java.lang.Class, org.eclipse.emf.common.notify.NotificationChain)
-	 */
 	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
 		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
 			case UML2Package.ACTIVITY__STRUCTURED_NODE :
@@ -1242,7 +1222,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ACTIVITY__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1261,7 +1241,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACTIVITY__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.ACTIVITY__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ACTIVITY__NAME_EXPRESSION:
@@ -1281,7 +1261,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ACTIVITY__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.ACTIVITY__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.ACTIVITY__REDEFINITION_CONTEXT:
@@ -1315,7 +1295,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return !getOwnedBehaviors().isEmpty();
 			case UML2Package.ACTIVITY__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.ACTIVITY__IMPLEMENTATION:
@@ -1323,7 +1303,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__OWNED_TRIGGER:
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+				return !getOwnedStateMachines().isEmpty();
 			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
 				return !getOwnedAttributes().isEmpty();
 			case UML2Package.ACTIVITY__PART:
@@ -1373,7 +1353,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__EDGE:
 				return edge != null && !edge.isEmpty();
 			case UML2Package.ACTIVITY__GROUP:
-				return group != null && !group.isEmpty();
+				return !getGroups().isEmpty();
 			case UML2Package.ACTIVITY__NODE:
 				return node != null && !node.isEmpty();
 			case UML2Package.ACTIVITY__ACTION:
@@ -1386,6 +1366,22 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.ACTIVITY__VISIBILITY:
+				return false;
+			case UML2Package.ACTIVITY__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+			case UML2Package.ACTIVITY__GROUP:
+				return group != null && !group.isEmpty();
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -1408,5 +1404,24 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (edge != null) {
+			ownedElement.addAll(edge);
+		}
+		ownedElement.addAll(getGroups());
+		if (node != null) {
+			ownedElement.addAll(node);
+		}
+		return ownedElement;
+	}
+
 
 } //ActivityImpl

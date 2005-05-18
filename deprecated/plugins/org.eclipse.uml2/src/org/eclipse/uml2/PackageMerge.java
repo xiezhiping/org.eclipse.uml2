@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMerge.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: PackageMerge.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +39,7 @@ public interface PackageMerge extends DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Merging Package</b></em>' container reference.
@@ -60,7 +58,6 @@ public interface PackageMerge extends DirectedRelationship{
 	 * @see org.eclipse.uml2.UML2Package#getPackageMerge_MergingPackage()
 	 * @see org.eclipse.uml2.Package#getPackageMerges
 	 * @model opposite="packageMerge" required="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getSources='' org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	org.eclipse.uml2.Package getMergingPackage();
@@ -74,6 +71,7 @@ public interface PackageMerge extends DirectedRelationship{
 	 * @generated
 	 */
 	void setMergingPackage(org.eclipse.uml2.Package value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Merged Package</b></em>' reference.
@@ -90,7 +88,6 @@ public interface PackageMerge extends DirectedRelationship{
 	 * @see #setMergedPackage(org.eclipse.uml2.Package)
 	 * @see org.eclipse.uml2.UML2Package#getPackageMerge_MergedPackage()
 	 * @model required="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getTargets=''"
 	 * @generated
 	 */
 	org.eclipse.uml2.Package getMergedPackage();
@@ -105,31 +102,5 @@ public interface PackageMerge extends DirectedRelationship{
 	 */
 	void setMergedPackage(org.eclipse.uml2.Package value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getSources();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getTargets();
 
 } // PackageMerge

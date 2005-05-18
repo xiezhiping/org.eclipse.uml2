@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,17 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalConstraintImpl.java,v 1.8 2005/04/04 20:11:13 khussey Exp $
+ * $Id: IntervalConstraintImpl.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Interval;
 import org.eclipse.uml2.IntervalConstraint;
 import org.eclipse.uml2.Namespace;
@@ -34,6 +40,10 @@ import org.eclipse.uml2.VisibilityKind;
  * An implementation of the model object '<em><b>Interval Constraint</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.IntervalConstraintImpl#getSpecification <em>Specification</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
@@ -44,7 +54,7 @@ public class IntervalConstraintImpl extends ConstraintImpl implements IntervalCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -70,6 +80,15 @@ public class IntervalConstraintImpl extends ConstraintImpl implements IntervalCo
 	 * @generated NOT
 	 */
 	public ValueSpecification getSpecification() {
+		return basicGetSpecification();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetSpecification() {
 		return specification;
 	}
 
@@ -78,28 +97,23 @@ public class IntervalConstraintImpl extends ConstraintImpl implements IntervalCo
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public NotificationChain basicSetSpecification(ValueSpecification newSpecification, NotificationChain msgs) {
-
-		if (null != newSpecification && !Interval.class.isInstance(newSpecification)) {
-			throw new IllegalArgumentException(String.valueOf(newSpecification));
-		}
-
-		return super.basicSetSpecification(newSpecification, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
 	public void setSpecification(ValueSpecification newSpecification) {
-
-		if (null != newSpecification && !Interval.class.isInstance(newSpecification)) {
+		if (newSpecification != null && !(newSpecification instanceof Interval)) {
 			throw new IllegalArgumentException(String.valueOf(newSpecification));
 		}
-
-		super.setSpecification(newSpecification);
+		if (newSpecification != specification) {
+			NotificationChain msgs = null;
+			if (specification != null)
+				msgs = ((InternalEObject)specification).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.INTERVAL_CONSTRAINT__SPECIFICATION, null, msgs);
+			if (newSpecification != null)
+				msgs = ((InternalEObject)newSpecification).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UML2Package.INTERVAL_CONSTRAINT__SPECIFICATION, null, msgs);
+			msgs = basicSetSpecification(newSpecification, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERVAL_CONSTRAINT__SPECIFICATION, newSpecification, newSpecification));
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -360,7 +374,7 @@ public class IntervalConstraintImpl extends ConstraintImpl implements IntervalCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INTERVAL_CONSTRAINT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -379,7 +393,7 @@ public class IntervalConstraintImpl extends ConstraintImpl implements IntervalCo
 			case UML2Package.INTERVAL_CONSTRAINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERVAL_CONSTRAINT__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INTERVAL_CONSTRAINT__NAME_EXPRESSION:
@@ -389,7 +403,7 @@ public class IntervalConstraintImpl extends ConstraintImpl implements IntervalCo
 			case UML2Package.INTERVAL_CONSTRAINT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INTERVAL_CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.INTERVAL_CONSTRAINT__CONTEXT:
 				return basicGetContext() != null;
 			case UML2Package.INTERVAL_CONSTRAINT__NAMESPACE:
@@ -400,6 +414,17 @@ public class IntervalConstraintImpl extends ConstraintImpl implements IntervalCo
 				return constrainedElement != null && !constrainedElement.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.INTERVAL_CONSTRAINT__VISIBILITY:
+				return false;
+			case UML2Package.INTERVAL_CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //IntervalConstraintImpl

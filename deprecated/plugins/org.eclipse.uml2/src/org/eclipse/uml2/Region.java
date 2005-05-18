@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Region.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface Region extends Namespace, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Subvertex</b></em>' containment reference list.
@@ -58,17 +58,17 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getRegion_Subvertex()
 	 * @see org.eclipse.uml2.Vertex#getContainer
 	 * @model type="org.eclipse.uml2.Vertex" opposite="container" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getSubvertices();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Vertex} with the specified name from the '<em><b>Subvertex</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Vertex} with the specified '<em><b>Name</b></em>' from the '<em><b>Subvertex</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Vertex} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Vertex} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Vertex} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Vertex} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubvertices()
 	 * @generated
      */
@@ -99,17 +99,17 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getRegion_Transition()
 	 * @see org.eclipse.uml2.Transition#getContainer
 	 * @model type="org.eclipse.uml2.Transition" opposite="container" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getTransitions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Transition} with the specified name from the '<em><b>Transition</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Transition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Transition} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Transition} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Transition} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getTransitions()
 	 * @generated
      */
@@ -126,6 +126,16 @@ public interface Region extends Namespace, RedefinableElement{
      */
     Transition createTransition(EClass eClass);
 
+    /**
+     * Creates a {@link org.eclipse.uml2.Transition} and appends it to the '<em><b>Transition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Transition}.
+	 * @see #getTransitions()
+	 * @generated
+     */
+    Transition createTransition();
+
 	/**
 	 * Returns the value of the '<em><b>State Machine</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.StateMachine#getRegions <em>Region</em>}'.
@@ -140,7 +150,6 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getRegion_StateMachine()
 	 * @see org.eclipse.uml2.StateMachine#getRegions
 	 * @model opposite="region"
-	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	StateMachine getStateMachine();
@@ -154,6 +163,7 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @generated
 	 */
 	void setStateMachine(StateMachine value);
+
 
 	/**
 	 * Returns the value of the '<em><b>State</b></em>' container reference.
@@ -169,7 +179,6 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getRegion_State()
 	 * @see org.eclipse.uml2.State#getRegions
 	 * @model opposite="region"
-	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	State getState();
@@ -184,6 +193,7 @@ public interface Region extends Namespace, RedefinableElement{
 	 */
 	void setState(State value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Extended Region</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -195,7 +205,7 @@ public interface Region extends Namespace, RedefinableElement{
 	 * @return the value of the '<em>Extended Region</em>' reference.
 	 * @see #setExtendedRegion(Region)
 	 * @see org.eclipse.uml2.UML2Package#getRegion_ExtendedRegion()
-	 * @model annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
+	 * @model
 	 * @generated
 	 */
 	Region getExtendedRegion();
@@ -210,41 +220,32 @@ public interface Region extends Namespace, RedefinableElement{
 	 */
 	void setExtendedRegion(Region value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinitionContext' eType='org.eclipse.uml2.Classifier' containment='false'"
-	 *        annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinitionContexts=''" 
-	 * @generated
-	 */
-	EList getRedefinitionContexts();
 
 	/**
+	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
+	 * <!-- begin-model-doc -->
+	 * redefinable element that is being redefined by this element. This is a derived union.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Redefined Element</em>' reference list.
+	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinedElement()
+	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedElements();
 
-	/**
+
+    /**
+     * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
+	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedElements()
 	 * @generated
-	 */
-	EList getOwnedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
-	 * @generated
-	 */
-	Namespace getNamespace();
-
+     */
+    RedefinableElement getRedefinedElement(String name);
+      
 } // Region

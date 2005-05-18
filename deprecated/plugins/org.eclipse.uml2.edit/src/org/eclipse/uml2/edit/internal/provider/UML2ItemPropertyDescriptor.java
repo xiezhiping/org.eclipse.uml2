@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ItemPropertyDescriptor.java,v 1.7 2005/04/22 20:19:59 khussey Exp $
+ * $Id: UML2ItemPropertyDescriptor.java,v 1.8 2005/05/18 16:40:46 khussey Exp $
  */
 package org.eclipse.uml2.edit.internal.provider;
 

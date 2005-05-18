@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -45,7 +45,7 @@ public interface TemplateableElement extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Template Binding</b></em>' containment reference list.
@@ -64,10 +64,10 @@ public interface TemplateableElement extends Element{
 	 * @see org.eclipse.uml2.UML2Package#getTemplateableElement_TemplateBinding()
 	 * @see org.eclipse.uml2.TemplateBinding#getBoundElement
 	 * @model type="org.eclipse.uml2.TemplateBinding" opposite="boundElement" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getTemplateBindings();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.TemplateBinding} and appends it to the '<em><b>Template Binding</b></em>' containment reference list.
@@ -76,9 +76,20 @@ public interface TemplateableElement extends Element{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.TemplateBinding} to create.
 	 * @return The new {@link org.eclipse.uml2.TemplateBinding}.
 	 * @see #getTemplateBindings()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createTemplateBinding() instead.
      */
     TemplateBinding createTemplateBinding(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.TemplateBinding} and appends it to the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.TemplateBinding}.
+	 * @see #getTemplateBindings()
+	 * @generated
+     */
+    TemplateBinding createTemplateBinding();
 
 	/**
 	 * Returns the value of the '<em><b>Owned Template Signature</b></em>' containment reference.
@@ -94,7 +105,6 @@ public interface TemplateableElement extends Element{
 	 * @see org.eclipse.uml2.UML2Package#getTemplateableElement_OwnedTemplateSignature()
 	 * @see org.eclipse.uml2.TemplateSignature#getTemplate
 	 * @model opposite="template" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	TemplateSignature getOwnedTemplateSignature();
@@ -109,6 +119,7 @@ public interface TemplateableElement extends Element{
 	 */
 	void setOwnedTemplateSignature(TemplateSignature value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.TemplateSignature} and sets the '<em><b>Owned Template Signature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -119,23 +130,23 @@ public interface TemplateableElement extends Element{
 	 * @generated
      */
     TemplateSignature createOwnedTemplateSignature(EClass eClass);
-     
-	/**
+
+    /**
+     * Creates a {@link org.eclipse.uml2.TemplateSignature} and sets the '<em><b>Owned Template Signature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.Set"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"parameterableElements\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.TemplateableElementOperations.parameterableElements(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.TemplateableElementOperations.parameterableElements(this);\r\n}'" 
+	 * @return The new {@link org.eclipse.uml2.TemplateSignature}.
+	 * @see #getOwnedTemplateSignature()
 	 * @generated
-	 */
-	Set parameterableElements();
+     */
+    TemplateSignature createOwnedTemplateSignature();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * @model dataType="org.eclipse.uml2.Set" 
 	 * @generated
 	 */
-	EList getOwnedElements();
+	Set parameterableElements();
 
 } // TemplateableElement

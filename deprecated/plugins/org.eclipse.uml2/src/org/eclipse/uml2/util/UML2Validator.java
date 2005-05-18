@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2004, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Validator.java,v 1.14 2005/04/04 20:11:16 khussey Exp $
+ * $Id: UML2Validator.java,v 1.15 2005/05/18 16:38:32 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -262,7 +262,7 @@ public class UML2Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached model package
@@ -339,6 +339,46 @@ public class UML2Validator extends EObjectValidator {
 	public static final int MULTIPLICITY_ELEMENT__UPPER_EQ_UPPERBOUND = 7;
 
 	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate No Name' of 'Named Element'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NAMED_ELEMENT__NO_NAME = 8;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Qualified Name' of 'Named Element'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NAMED_ELEMENT__QUALIFIED_NAME = 9;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Visibility Needs Ownership' of 'Named Element'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP = 10;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Members Are Distinguishable' of 'Namespace'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE = 11;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Imported Member Derived' of 'Namespace'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NAMESPACE__IMPORTED_MEMBER_DERIVED = 12;
+
+	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Opposite Is Other End' of 'Property'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -411,52 +451,12 @@ public class UML2Validator extends EObjectValidator {
 	public static final int OPERATION__ONLY_BODY_FOR_QUERY = 21;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate No Name' of 'Named Element'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int NAMED_ELEMENT__NO_NAME = 8;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Qualified Name' of 'Named Element'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int NAMED_ELEMENT__QUALIFIED_NAME = 9;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Visibility Needs Ownership' of 'Named Element'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP = 10;
-
-	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Elements Public Or Private' of 'Package'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final int PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE = 22;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Members Are Distinguishable' of 'Namespace'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE = 11;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Imported Member Derived' of 'Namespace'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int NAMESPACE__IMPORTED_MEMBER_DERIVED = 12;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate No Cycles In Generalization' of 'Classifier'.

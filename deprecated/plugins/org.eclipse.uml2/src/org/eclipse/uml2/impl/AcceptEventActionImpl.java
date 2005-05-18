@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,22 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.AcceptEventAction;
 import org.eclipse.uml2.Activity;
@@ -56,7 +54,17 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getTriggers() <em>Trigger</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTriggers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList trigger = null;
 
 	/**
 	 * The cached value of the '{@link #getResults() <em>Result</em>}' reference list.
@@ -67,12 +75,6 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	 * @ordered
 	 */
 	protected EList result = null;
-
-	/**
-	 * The cached value of the '{@link #getTrigger() <em>Trigger</em>}' reference list.
-	 * @see #getTrigger()
-	 */
-	protected EList _trigger = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,34 +97,31 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EList getTriggers() {
-
-		if (null == _trigger) {
-			_trigger = new EObjectResolvingEList(Trigger.class, this, UML2Package.ACCEPT_CALL_ACTION__TRIGGER);
+		if (trigger == null) {
+			trigger = new EObjectResolvingEList(Trigger.class, this, UML2Package.ACCEPT_EVENT_ACTION__TRIGGER);
 		}
-
-		return _trigger;
+		return trigger;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Trigger getTrigger(String unqualifiedName) {
-    	for (Iterator i = getTriggers().iterator(); i.hasNext(); ) {
-    		Trigger namedTrigger = (Trigger) i.next();
-    		
-    		if (unqualifiedName.equals(namedTrigger.getName())) {
-    			return namedTrigger;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Trigger getTrigger(String name) {
+		for (Iterator i = getTriggers().iterator(); i.hasNext(); ) {
+			Trigger trigger = (Trigger) i.next();
+			if (name.equals(trigger.getName())) {
+				return trigger;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -135,41 +134,20 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 		return result;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public OutputPin getResult(String unqualifiedName) {
-    	for (Iterator i = getResults().iterator(); i.hasNext(); ) {
-    		OutputPin namedResult = (OutputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedResult.getName())) {
-    			return namedResult;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutputs() {
-		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
-
-		if (null == output) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOutputs());
-			union.addAll(getResults());
-
-			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
+    public OutputPin getResult(String name) {
+		for (Iterator i = getResults().iterator(); i.hasNext(); ) {
+			OutputPin result = (OutputPin) i.next();
+			if (name.equals(result.getName())) {
+				return result;
+			}
 		}
-
-		return output;
+		return null;
 	}
 
 	/**
@@ -586,11 +564,28 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 			case UML2Package.ACCEPT_EVENT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__TRIGGER:
-				return !getTriggers().isEmpty();
+				return trigger != null && !trigger.isEmpty();
 			case UML2Package.ACCEPT_EVENT_ACTION__RESULT:
 				return result != null && !result.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOutputsHelper(EList output) {
+		super.getOutputsHelper(output);
+		if (result != null) {
+			for (Iterator i = ((InternalEList) result).basicIterator(); i.hasNext(); ) {
+				output.add(i.next());
+			}
+		}
+		return output;
+	}
+
 
 } //AcceptEventActionImpl

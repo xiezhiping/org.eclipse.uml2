@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.22 2005/04/25 13:43:41 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.23 2005/05/18 16:40:46 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -44,6 +44,7 @@ import org.eclipse.uml2.Element;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 import org.eclipse.uml2.util.UML2Util;
 
 /**
@@ -67,7 +68,7 @@ public class ElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -258,6 +259,7 @@ public class ElementItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 
 	/*
 	 * (non-Javadoc)

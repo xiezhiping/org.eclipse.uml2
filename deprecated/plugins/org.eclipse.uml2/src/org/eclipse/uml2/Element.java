@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.11 2005/04/06 19:59:37 khussey Exp $
+ * $Id: Element.java,v 1.12 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -49,7 +49,7 @@ public interface Element extends EModelElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list.
@@ -67,10 +67,11 @@ public interface Element extends EModelElement{
 	 * @return the value of the '<em>Owned Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getElement_OwnedElement()
 	 * @see org.eclipse.uml2.Element#getOwner
-	 * @model type="org.eclipse.uml2.Element" opposite="owner" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Element" opposite="owner" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedElements();
+
 
 	/**
 	 * Returns the value of the '<em><b>Owner</b></em>' reference.
@@ -87,10 +88,11 @@ public interface Element extends EModelElement{
 	 * @return the value of the '<em>Owner</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getElement_Owner()
 	 * @see org.eclipse.uml2.Element#getOwnedElements
-	 * @model opposite="ownedElement" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model opposite="ownedElement" transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	Element getOwner();
+
 
 	/**
 	 * Returns the value of the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -107,10 +109,10 @@ public interface Element extends EModelElement{
 	 * @return the value of the '<em>Owned Comment</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getElement_OwnedComment()
 	 * @model type="org.eclipse.uml2.Comment" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getOwnedComments();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.Comment} and appends it to the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -119,9 +121,20 @@ public interface Element extends EModelElement{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Comment} to create.
 	 * @return The new {@link org.eclipse.uml2.Comment}.
 	 * @see #getOwnedComments()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedComment() instead.
      */
     Comment createOwnedComment(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Comment} and appends it to the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Comment}.
+	 * @see #getOwnedComments()
+	 * @generated
+     */
+    Comment createOwnedComment();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,8 +145,7 @@ public interface Element extends EModelElement{
 	 * not self.allOwnedElements()->includes(self)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ElementOperations.validateNotOwnSelf(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map context);
@@ -147,8 +159,7 @@ public interface Element extends EModelElement{
 	 * self.mustBeOwned() implies owner->notEmpty()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ElementOperations.validateHasOwner(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateHasOwner(DiagnosticChain diagnostics, Map context);
@@ -162,8 +173,7 @@ public interface Element extends EModelElement{
 	 * ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allOwnedElements\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ElementOperations.allOwnedElements(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.ElementOperations.allOwnedElements(this);\r\n}'" 
+	 * @model dataType="org.eclipse.uml2.Set" 
 	 * @generated
 	 */
 	Set allOwnedElements();
@@ -177,8 +187,7 @@ public interface Element extends EModelElement{
 	 * true
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ElementOperations.mustBeOwned(this);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean mustBeOwned();

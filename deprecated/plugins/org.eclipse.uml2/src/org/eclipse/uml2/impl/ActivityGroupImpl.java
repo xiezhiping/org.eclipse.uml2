@@ -8,30 +8,38 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.8 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
+import java.lang.reflect.Method;
+
 import java.util.Collection;
-import java.util.LinkedHashSet;
+import java.util.Iterator;
+
 import java.util.Collections;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Activity;
+import org.eclipse.uml2.ActivityEdge;
 import org.eclipse.uml2.ActivityGroup;
+import org.eclipse.uml2.ActivityNode;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,8 +48,9 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ActivityGroupImpl#getSuperGroup <em>Super Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityGroupImpl#getActivityGroup_activity <em>Activity Group activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityGroupImpl#getContainedNodes <em>Contained Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityGroupImpl#getContainedEdges <em>Contained Edge</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,7 +63,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,6 +93,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return superGroup == null ? null : (ActivityGroup)eResolveProxy((InternalEObject)superGroup);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,40 +106,34 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Activity getActivityGroup_activity() {
-		if (eContainerFeatureID != UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY) {
-			return null;
-		}
-		return (Activity) eContainer;
+		if (eContainerFeatureID != UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY) return null;
+		return (Activity)eContainer;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setActivityGroup_activity(Activity newActivityGroup_activity) {
-		if (eContainer != newActivityGroup_activity || (eContainerFeatureID != UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY && null != newActivityGroup_activity)) {
-			if (EcoreUtil.isAncestor(this, newActivityGroup_activity)) {
+		if (newActivityGroup_activity != eContainer || (eContainerFeatureID != UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY && newActivityGroup_activity != null)) {
+			if (EcoreUtil.isAncestor(this, newActivityGroup_activity))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newActivityGroup_activity) {
-				msgs = ((InternalEObject) newActivityGroup_activity).eInverseAdd(this, UML2Package.ACTIVITY__GROUP, Activity.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newActivityGroup_activity, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, newActivityGroup_activity, newActivityGroup_activity));
+			if (newActivityGroup_activity != null)
+				msgs = ((InternalEObject)newActivityGroup_activity).eInverseAdd(this, UML2Package.ACTIVITY__GROUP, Activity.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newActivityGroup_activity, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, newActivityGroup_activity, newActivityGroup_activity));
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,17 +141,38 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated
 	 */
 	public EList getSubgroups() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getActivityGroup().getEAllOperations().get(19));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getActivityGroup().getEAllOperations().get(19), result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getSubgroups", null);
+				EList subgroup = (EList) cache.get(eResource(), this, method);
+				if (subgroup == null) {
+					EList union = getSubgroupsHelper(new UniqueEList());
+					cache.put(eResource(), this, method, subgroup = new UnionEObjectEList(this, union.size(), union.toArray()));
+				}
+				return subgroup;
+			} catch (NoSuchMethodException nsme) {
+				// do nothing
+			}
 		}
-
-		return result;
+		EList union = getSubgroupsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		for (Iterator i = ((InternalEList) getSubgroups()).basicIterator(); i.hasNext(); ) {
+			ownedElement.add(i.next());
+		}
+		return ownedElement;
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -161,10 +186,40 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public ActivityEdge getContainedEdge(String name) {
+		for (Iterator i = getContainedEdges().iterator(); i.hasNext(); ) {
+			ActivityEdge containedEdge = (ActivityEdge) i.next();
+			if (name.equals(containedEdge.getName())) {
+				return containedEdge;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList getContainedNodes() {
 		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public ActivityNode getContainedNode(String name) {
+		for (Iterator i = getContainedNodes().iterator(); i.hasNext(); ) {
+			ActivityNode containedNode = (ActivityNode) i.next();
+			if (name.equals(containedNode.getName())) {
+				return containedNode;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -185,25 +240,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		setActivityGroup_activity(newActivity);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getSubgroups());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -211,13 +247,25 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getSuperGroup()) {
-			return (Element) getSuperGroup();
+		ActivityGroup superGroup = basicGetSuperGroup();			
+		if (superGroup != null) {
+			return superGroup;
 		}
-		if (null != getActivityGroup_activity()) {
-			return (Element) getActivityGroup_activity();
+		Activity activityGroup_activity = getActivityGroup_activity();			
+		if (activityGroup_activity != null) {
+			return activityGroup_activity;
 		}
 		return super.basicGetOwner();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getSubgroupsHelper(EList subgroup) {
+		return subgroup;
 	}
 
 	/**
@@ -230,10 +278,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
 				case UML2Package.ACTIVITY_GROUP__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
 				default:
 					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
@@ -241,6 +285,17 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
+				if (eContainer != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
+			default :
+				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -255,13 +310,20 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY_GROUP__OWNED_COMMENT:
 					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
 				default:
 					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
+			default :
+				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -370,5 +432,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //ActivityGroupImpl

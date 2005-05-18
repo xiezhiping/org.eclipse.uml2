@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Activity.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,7 +50,7 @@ public interface Activity extends Behavior{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Body</b></em>' attribute.
@@ -82,6 +82,7 @@ public interface Activity extends Behavior{
 	 */
 	void setBody(String value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Language</b></em>' attribute.
 	 * The default value is <code>""</code>.
@@ -112,6 +113,7 @@ public interface Activity extends Behavior{
 	 */
 	void setLanguage(String value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Read Only</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
@@ -139,6 +141,7 @@ public interface Activity extends Behavior{
 	 */
 	void setIsReadOnly(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Single Execution</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -165,6 +168,7 @@ public interface Activity extends Behavior{
 	 */
 	void setIsSingleExecution(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Edge</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityEdge}.
@@ -179,17 +183,17 @@ public interface Activity extends Behavior{
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Edge()
 	 * @see org.eclipse.uml2.ActivityEdge#getActivity
 	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="activity" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getEdges();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified name from the '<em><b>Edge</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Edge</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getEdges()
 	 * @generated
      */
@@ -220,10 +224,10 @@ public interface Activity extends Behavior{
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Group()
 	 * @see org.eclipse.uml2.ActivityGroup#getActivityGroup_activity
 	 * @model type="org.eclipse.uml2.ActivityGroup" opposite="activityGroup_activity" containment="true" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getGroups();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.ActivityGroup} and appends it to the '<em><b>Group</b></em>' containment reference list.
@@ -249,18 +253,18 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Node()
 	 * @see org.eclipse.uml2.ActivityNode#getActivity
-	 * @model type="org.eclipse.uml2.ActivityNode" opposite="activity" containment="true" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
+	 * @model type="org.eclipse.uml2.ActivityNode" opposite="activity" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getNodes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified name from the '<em><b>Node</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNodes()
 	 * @generated
      */
@@ -288,18 +292,18 @@ public interface Activity extends Behavior{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Action</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_Action()
-	 * @model type="org.eclipse.uml2.Action" resolveProxies="false" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Activity#getNodes=''"
+	 * @model type="org.eclipse.uml2.Action" resolveProxies="false"
 	 * @generated
 	 */
 	EList getActions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Action} with the specified name from the '<em><b>Action</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Action</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Action} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Action} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Action} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Action} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getActions()
 	 * @generated
      */
@@ -317,30 +321,20 @@ public interface Activity extends Behavior{
 	 * @return the value of the '<em>Structured Node</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivity_StructuredNode()
 	 * @model type="org.eclipse.uml2.StructuredActivityNode" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Activity#getNodes='' org.eclipse.uml2.Activity#getGroups=''"
-	 *        annotation="redefined eOpposite='activity' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='1'"
 	 * @generated
 	 */
 	EList getStructuredNodes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.StructuredActivityNode} with the specified name from the '<em><b>Structured Node</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.StructuredActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.StructuredActivityNode} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.StructuredActivityNode} to retrieve.
+	 * @return The {@link org.eclipse.uml2.StructuredActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getStructuredNodes()
 	 * @generated
      */
     StructuredActivityNode getStructuredNode(String unqualifiedName);
       
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
-
 } // Activity

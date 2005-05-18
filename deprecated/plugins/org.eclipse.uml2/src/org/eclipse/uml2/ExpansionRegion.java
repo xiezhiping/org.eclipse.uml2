@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegion.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ExpansionRegion.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface ExpansionRegion extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Mode</b></em>' attribute.
@@ -76,6 +76,7 @@ public interface ExpansionRegion extends StructuredActivityNode{
 	 */
 	void setMode(ExpansionKind value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Output Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ExpansionNode}.
@@ -97,12 +98,13 @@ public interface ExpansionRegion extends StructuredActivityNode{
 	 */
 	EList getOutputElements();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ExpansionNode} with the specified name from the '<em><b>Output Element</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Output Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ExpansionNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ExpansionNode} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExpansionNode} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOutputElements()
 	 * @generated
      */
@@ -129,12 +131,13 @@ public interface ExpansionRegion extends StructuredActivityNode{
 	 */
 	EList getInputElements();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ExpansionNode} with the specified name from the '<em><b>Input Element</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Input Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ExpansionNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ExpansionNode} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExpansionNode} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInputElements()
 	 * @generated
      */

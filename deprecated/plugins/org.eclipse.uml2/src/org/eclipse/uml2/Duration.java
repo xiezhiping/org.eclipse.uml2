@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Duration.java,v 1.8 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Duration.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface Duration extends ValueSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>First Time</b></em>' attribute.
@@ -73,6 +73,7 @@ public interface Duration extends ValueSpecification{
 	 */
 	void setFirstTime(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Event</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
@@ -92,12 +93,13 @@ public interface Duration extends ValueSpecification{
 	 */
 	EList getEvents();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified name from the '<em><b>Event</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Event</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.NamedElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.NamedElement} to retrieve.
+	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getEvents()
 	 * @generated
      */

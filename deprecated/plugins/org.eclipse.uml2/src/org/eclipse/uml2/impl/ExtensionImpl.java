@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.17 2005/04/20 18:06:34 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.18 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -17,10 +17,16 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Extension;
 import org.eclipse.uml2.ExtensionEnd;
@@ -28,9 +34,11 @@ import org.eclipse.uml2.Property;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
+
+import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,6 +49,7 @@ import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.ExtensionImpl#isRequired <em>Is Required</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExtensionImpl#getMetaclass <em>Metaclass</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ExtensionImpl#getOwnedEnds <em>Owned End</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,7 +61,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isRequired() <em>Is Required</em>}' attribute.
@@ -126,18 +135,55 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * @generated NOT
 	 */
 	public EList getOwnedEnds() {
-
-		if (null == ownedEnd) {
-			ownedEnd =
-				new SubsetEObjectContainmentWithInverseEList(
-					ExtensionEnd.class,
-					this,
-					UML2Package.EXTENSION__OWNED_END,
-					new int[] { UML2Package.EXTENSION__MEMBER_END },
-					UML2Package.EXTENSION_END__OWNING_ASSOCIATION);
+		if (ownedEnd == null) {
+			ownedEnd = new SubsetEObjectContainmentWithInverseEList(ExtensionEnd.class, this, UML2Package.EXTENSION__OWNED_END, new int[] {UML2Package.EXTENSION__MEMBER_END}, UML2Package.EXTENSION_END__OWNING_ASSOCIATION);
 		}
-
 		return ownedEnd;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOwnedEnd() instead.
+	 */
+	public Property createOwnedEnd(EClass eClass) {
+		ExtensionEnd newOwnedEnd = (ExtensionEnd) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.EXTENSION__OWNED_END, null, newOwnedEnd));
+		}
+		getOwnedEnds().add(newOwnedEnd);
+		return newOwnedEnd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property createOwnedEnd() {
+		ExtensionEnd newOwnedEnd = UML2Factory.eINSTANCE.createExtensionEnd();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.EXTENSION__OWNED_END, null, newOwnedEnd));
+		}
+		getOwnedEnds().add(newOwnedEnd);
+		return newOwnedEnd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public Property getOwnedEnd(String name) {
+		for (Iterator i = getOwnedEnds().iterator(); i.hasNext(); ) {
+			ExtensionEnd ownedEnd = (ExtensionEnd) i.next();
+			if (name.equals(ownedEnd.getName())) {
+				return ownedEnd;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -567,7 +613,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.EXTENSION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -586,7 +632,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXTENSION__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.EXTENSION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.EXTENSION__NAME_EXPRESSION:
@@ -606,7 +652,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.EXTENSION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.EXTENSION__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.EXTENSION__REDEFINITION_CONTEXT:
@@ -655,6 +701,17 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 				return basicGetMetaclass() != null;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.EXTENSION__VISIBILITY:
+				return false;
+			case UML2Package.EXTENSION__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //ExtensionImpl

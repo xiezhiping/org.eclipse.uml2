@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.7 2005/05/04 20:21:42 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.8 2005/05/18 16:43:51 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.uml2.Profile;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.edit.util.ChangeCommand;
+import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Switch;

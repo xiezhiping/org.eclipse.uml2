@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.21 2005/05/04 20:21:10 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.22 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -20,9 +20,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
+
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -38,8 +37,10 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.Element;
@@ -62,14 +63,18 @@ import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Switch;
 
 /**
- * A static utility class that provides operations related to profiles.
+ * A static utility class that provides operations related to '<em><b>Profile</b></em>'
+ * model objects.
  */
 public final class ProfileOperations
 		extends UML2Operations {
+
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	public static final class Profile2EPackageConverter
 			extends UML22EcoreConverter {
@@ -176,10 +181,6 @@ public final class ProfileOperations
 	 */
 	public static final String ANNOTATION_DETAILS_KEY__VERSION = "version"; //$NON-NLS-1$
 
-	/**
-	 * Constructs a new Profile Operations. This constructor should never be
-	 * called because this is a static utility class.
-	 */
 	private ProfileOperations() {
 		super();
 	}
@@ -742,17 +743,12 @@ public final class ProfileOperations
 				throw new IllegalArgumentException(String.valueOf(profile));
 			}
 
-			TreeIterator eAllContents = new AbstractTreeIterator(package_, true) {
-
-				public Iterator getChildren(Object parent) {
-					return ((EObject) parent).eContents().iterator();
-				}
-			};
-
 			List eAnnotationsToRemove = new ArrayList();
 
-			while (eAllContents.hasNext()) {
-				EObject eObject = (EObject) eAllContents.next();
+			for (Iterator allContents = getAllContents(package_, true, false); allContents
+				.hasNext();) {
+
+				EObject eObject = (EObject) allContents.next();
 
 				if (Element.class.isInstance(eObject)) {
 					Element element = (Element) eObject;
@@ -1204,18 +1200,12 @@ public final class ProfileOperations
 			throw new IllegalArgumentException(String.valueOf(profile));
 		}
 
-		TreeIterator eAllContents = new AbstractTreeIterator(profileApplication
-			.getImportingNamespace(), true) {
-
-			public Iterator getChildren(Object parent) {
-				return ((EObject) parent).eContents().iterator();
-			}
-		};
-
 		List eAnnotationsToRemove = new ArrayList();
 
-		while (eAllContents.hasNext()) {
-			EObject eObject = (EObject) eAllContents.next();
+		for (Iterator allContents = getAllContents(profileApplication
+			.getImportingNamespace(), true, false); allContents.hasNext();) {
+
+			EObject eObject = (EObject) allContents.next();
 
 			if (Element.class.isInstance(eObject)) {
 				Element element = (Element) eObject;
@@ -1291,8 +1281,7 @@ public final class ProfileOperations
 			throw new IllegalArgumentException(String.valueOf(class_));
 		}
 
-		ElementImport elementImport = profile
-			.createElementImport(UML2Package.eINSTANCE.getElementImport());
+		ElementImport elementImport = profile.createElementImport();
 
 		elementImport.setVisibility(VisibilityKind.PRIVATE_LITERAL);
 		elementImport.setImportedElement(class_);
@@ -1437,4 +1426,4 @@ public final class ProfileOperations
 		return ownedStereotype;
 	}
 
-}
+} // ProfileOperations

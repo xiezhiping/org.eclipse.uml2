@@ -8,29 +8,65 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Resource.java,v 1.8 2005/04/14 17:30:57 khussey Exp $
+ * $Id: UML2Resource.java,v 1.9 2005/05/18 16:38:32 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
 import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.xmi.XMIResource;
+
 import org.eclipse.uml2.UML2Package;
+
 import org.eclipse.uml2.internal.util.UML2ResourceFactoryImpl;
 
 /**
- * 
+ * <!-- begin-user-doc -->
+ * The resource associated with the '<em><b>uml2</b></em>' package.
+ * <!-- end-user-doc -->
+ * @generated
  */
-public interface UML2Resource
-		extends XMIResource {
+public interface UML2Resource extends XMIResource {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
-	public static final String copyright = "Copyright (c) 2004, 2005 IBM Corporation and others."; //$NON-NLS-1$
-
+	/**
+	 * <!-- begin-user-doc -->
+	 * The factory for '<em><b>uml2</b></em>' resources.
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public interface Factory
 			extends Resource.Factory {
 
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated NOT
+		 */
 		public static final Factory INSTANCE = new UML2ResourceFactoryImpl();
 
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * The file extension for '<em><b>uml2</b></em>' resources.
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String FILE_EXTENSION = "uml2"; //$NON-NLS-1$
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * The default encoding for '<em><b>uml2</b></em>' resources.
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
 
 	/**
 	 * The scheme for platform URIs.
@@ -46,10 +82,6 @@ public interface UML2Resource
 	 * @deprecated Use UML2Package.eNS_URI instead.
 	 */
 	public static final String UML2_NS_URI = UML2Package.eNS_URI; //$NON-NLS-1$
-
-	public static final String FILE_EXTENSION = "uml2"; //$NON-NLS-1$
-
-	public static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
 
 	public static final String METAMODEL_FILE_EXTENSION = "metamodel." //$NON-NLS-1$
 		+ FILE_EXTENSION;
@@ -98,4 +130,4 @@ public interface UML2Resource
 	 */
 	public static final String PROPERTIES_FILE_EXTENSION = "properties"; //$NON-NLS-1$
 
-}
+} //UML2Resource

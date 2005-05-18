@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2LoadImpl.java,v 1.4 2005/03/15 18:44:46 khussey Exp $
+ * $Id: UML2LoadImpl.java,v 1.5 2005/05/18 16:38:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 

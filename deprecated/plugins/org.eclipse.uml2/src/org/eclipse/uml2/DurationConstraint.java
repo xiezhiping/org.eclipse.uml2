@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraint.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
+ * $Id: DurationConstraint.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,25 +32,6 @@ public interface DurationConstraint extends IntervalConstraint{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='false' name='specification' eType='org.eclipse.uml2.DurationInterval' containment='false'"
-	 *        annotation="redefines org.eclipse.uml2.Constraint#getSpecification='' org.eclipse.uml2.IntervalConstraint#getSpecification=''" 
-	 * @generated
-	 */
-	ValueSpecification getSpecification();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="feature derived='false' name='specification' eType='org.eclipse.uml2.DurationInterval' containment='false'"
-	 *        annotation="redefines org.eclipse.uml2.Constraint#getSpecification='' org.eclipse.uml2.IntervalConstraint#getSpecification=''" 
-	 * @generated
-	 */
-	void setSpecification(ValueSpecification newSpecification);
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 } // DurationConstraint

@@ -8,51 +8,142 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.11 2005/03/15 18:44:46 khussey Exp $
+ * $Id: ElementOperations.java,v 1.12 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.common.util.TreeIterator;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.UML2Plugin;
+
 import org.eclipse.uml2.util.UML2Validator;
 
 /**
- * A static utility class that provides operations related to elements.
+ * <!-- begin-user-doc -->
+ * A static utility class that provides operations related to '<em><b>Element</b></em>' model objects.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following operations are supported:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.Element#validateNotOwnSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Own Self</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Element#validateHasOwner(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Has Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Element#allOwnedElements() <em>All Owned Elements</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Element#mustBeOwned() <em>Must Be Owned</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated not
  */
-public final class ElementOperations
-		extends UML2Operations {
+public final class ElementOperations extends UML2Operations {
 
 	/**
-	 * The source for the keywords annotation on elements.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public static final String ANNOTATION_SOURCE__KEYWORDS = "keywords"; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * Constructs a new Element Operations. This constructor should never be
-	 * called because this is a static utility class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	private ElementOperations() {
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * An element may not directly or indirectly own itself.
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * not self.allOwnedElements()->includes(self)
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static boolean validateNotOwnSelf(Element element, DiagnosticChain diagnostics, Map context) {
+		boolean result = true;
+
+		if (element.allOwnedElements().contains(element)) {
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UML2Validator.DIAGNOSTIC_SOURCE,
+					UML2Validator.ELEMENT__NOT_OWN_SELF,
+					UML2Plugin.INSTANCE.getString(
+						"_UI_Element_NotOwnSelf_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, element)),
+					new Object[]{element}));
+			}
+		}
+
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Elements that must be owned must have an owner.
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * self.mustBeOwned() implies owner->notEmpty()
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static boolean validateHasOwner(Element element, DiagnosticChain diagnostics, Map context) {
+		boolean result = true;
+
+		if (element.mustBeOwned() && null == element.getOwner()) {
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UML2Validator.DIAGNOSTIC_SOURCE,
+					UML2Validator.ELEMENT__HAS_OWNER, UML2Plugin.INSTANCE
+						.getString("_UI_Element_HasOwner_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, element)),
+					new Object[]{element}));
+			}
+		}
+
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
 	public static Set allOwnedElements(Element element) {
 		Set allOwnedElements = new HashSet();
 		allOwnedElements.addAll(element.getOwnedElements());
@@ -64,12 +155,30 @@ public final class ElementOperations
 				.allOwnedElements());
 		}
 
-		return allOwnedElements;
+		return Collections.unmodifiableSet(allOwnedElements);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * true
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
 	public static boolean mustBeOwned(Element element) {
 		return true;
 	}
+
+	// <!-- begin-custom-operations -->
+
+	/**
+	 * The source for the keywords annotation on elements.
+	 */
+	public static final String ANNOTATION_SOURCE__KEYWORDS = "keywords"; //$NON-NLS-1$
 
 	/**
 	 * Retrieves the model that contains (either directly or indirectly) the
@@ -146,16 +255,10 @@ public final class ElementOperations
 				}
 			};
 
-			TreeIterator eAllContents = new AbstractTreeIterator(element, true) {
+			for (Iterator allContents = getAllContents(element, true, true); allContents
+				.hasNext();) {
 
-				public Iterator getChildren(Object parent) {
-					return new ArrayList(((EObject) parent).eContents())
-						.iterator();
-				}
-			};
-
-			while (eAllContents.hasNext()) {
-				EObject eObject = (EObject) eAllContents.next();
+				EObject eObject = (EObject) allContents.next();
 
 				Iterator settings = null == resourceSet
 					? FilteredUsageCrossReferencer.find(eObject, resource,
@@ -263,52 +366,6 @@ public final class ElementOperations
 			.removeKey(keyword);
 	}
 
-	/**
-	 * An element may not directly or indirectly own itself.
-	 * 
-	 */
-	public static boolean validateNotOwnSelf(Element element,
-			DiagnosticChain diagnostics, Map context) {
-		boolean result = true;
+	// <!-- end-custom-operations -->
 
-		if (element.allOwnedElements().contains(element)) {
-			result = false;
-
-			if (null != diagnostics) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-					UML2Validator.DIAGNOSTIC_SOURCE,
-					UML2Validator.ELEMENT__NOT_OWN_SELF, UML2Plugin.INSTANCE
-						.getString("_UI_Element_NotOwnSelf_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, element)),
-					new Object[]{element}));
-			}
-		}
-
-		return result;
-	}
-
-	/**
-	 * Elements that must be owned must have an owner.
-	 * 
-	 */
-	public static boolean validateHasOwner(Element element,
-			DiagnosticChain diagnostics, Map context) {
-		boolean result = true;
-
-		if (element.mustBeOwned() && null == element.getOwner()) {
-			result = false;
-
-			if (null != diagnostics) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-					UML2Validator.DIAGNOSTIC_SOURCE,
-					UML2Validator.ELEMENT__HAS_OWNER, UML2Plugin.INSTANCE
-						.getString("_UI_Element_HasOwner_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, element)),
-					new Object[]{element}));
-			}
-		}
-
-		return result;
-	}
-
-}
+} // ElementOperations

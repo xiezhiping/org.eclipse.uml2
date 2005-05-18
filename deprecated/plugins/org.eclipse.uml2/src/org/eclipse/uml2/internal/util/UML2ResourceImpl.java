@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ResourceImpl.java,v 1.6 2005/03/15 20:27:50 khussey Exp $
+ * $Id: UML2ResourceImpl.java,v 1.7 2005/05/18 16:38:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -31,7 +31,7 @@ public class UML2ResourceImpl extends XMIResourceImpl implements UML2Resource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Creates an instance of the resource.

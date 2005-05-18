@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBoolean.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
+ * $Id: LiteralBoolean.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ public interface LiteralBoolean extends LiteralSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
@@ -70,34 +70,5 @@ public interface LiteralBoolean extends LiteralSpecification{
 	 */
 	void setValue(boolean value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A query based on the following OCL expression:
-	 * <code>
-	 * true
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.LiteralBooleanOperations.isComputable(this);'" 
-	 * @generated
-	 */
-	boolean isComputable();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A query based on the following OCL expression:
-	 * <code>
-	 * value
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.LiteralBooleanOperations.booleanValue(this);'" 
-	 * @generated
-	 */
-	boolean booleanValue();
 
 } // LiteralBoolean

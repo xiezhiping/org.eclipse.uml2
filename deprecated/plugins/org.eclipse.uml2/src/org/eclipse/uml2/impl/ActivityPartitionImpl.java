@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,7 +24,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Activity;
@@ -37,6 +34,7 @@ import org.eclipse.uml2.ActivityPartition;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -47,13 +45,12 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getSuperGroup <em>Super Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getSubgroups <em>Subgroup</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getActivityGroup_activity <em>Activity Group activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getContainedNodes <em>Contained Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getContainedEdges <em>Contained Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#isDimension <em>Is Dimension</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#isExternal <em>Is External</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getContainedEdges <em>Contained Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getContainedNodes <em>Contained Node</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getSubgroups <em>Subgroup</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getSuperPartition <em>Super Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getRepresents <em>Represents</em>}</li>
  * </ul>
@@ -62,12 +59,43 @@ import org.eclipse.uml2.VisibilityKind;
  * @generated
  */
 public class ActivityPartitionImpl extends NamedElementImpl implements ActivityPartition {
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getSubgroups() <em>Subgroup</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubgroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList subgroup = null;
+
+	/**
+	 * The cached value of the '{@link #getContainedNodes() <em>Contained Node</em>}' reference list.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getContainedNodes()
+	 * @generated
+	 * @ordered
+	 */
+    protected EList containedNode = null;
+
+	/**
+	 * The cached value of the '{@link #getContainedEdges() <em>Contained Edge</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainedEdges()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList containedEdge = null;
 
 	/**
 	 * The default value of the '{@link #isDimension() <em>Is Dimension</em>}' attribute.
@@ -110,36 +138,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	protected static final int IS_EXTERNAL_EFLAG = 1 << 9;
 
 	/**
-	 * The cached value of the '{@link #getContainedEdges() <em>Contained Edge</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContainedEdges()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList containedEdge = null;
-
-	/**
-	 * The cached value of the '{@link #getContainedNodes() <em>Contained Node</em>}' reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #getContainedNodes()
-	 * @generated
-	 * @ordered
-	 */
-    protected EList containedNode = null;
-
-	/**
-	 * The cached value of the '{@link #getSubgroups() <em>Subgroup</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubgroups()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList subgroup = null;
-
-	/**
 	 * The cached value of the '{@link #getRepresents() <em>Represents</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -170,39 +168,32 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Activity getActivityGroup_activity() {
-		if (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY) {
-			return null;
-		}
-		return (Activity) eContainer;
+		if (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY) return null;
+		return (Activity)eContainer;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setActivityGroup_activity(Activity newActivityGroup_activity) {
-		if (eContainer != newActivityGroup_activity || (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY && null != newActivityGroup_activity)) {
-			if (EcoreUtil.isAncestor(this, newActivityGroup_activity)) {
+		if (newActivityGroup_activity != eContainer || (eContainerFeatureID != UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY && newActivityGroup_activity != null)) {
+			if (EcoreUtil.isAncestor(this, newActivityGroup_activity))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newActivityGroup_activity) {
-				msgs = ((InternalEObject) newActivityGroup_activity).eInverseAdd(this, UML2Package.ACTIVITY__GROUP, Activity.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newActivityGroup_activity, UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY, newActivityGroup_activity, newActivityGroup_activity));
+			if (newActivityGroup_activity != null)
+				msgs = ((InternalEObject)newActivityGroup_activity).eInverseAdd(this, UML2Package.ACTIVITY__GROUP, Activity.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newActivityGroup_activity, UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY, newActivityGroup_activity, newActivityGroup_activity));
 	}
 
 	/**
@@ -224,7 +215,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		if (newIsDimension) eFlags |= IS_DIMENSION_EFLAG; else eFlags &= ~IS_DIMENSION_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__IS_DIMENSION, oldIsDimension, newIsDimension));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -245,7 +238,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		if (newIsExternal) eFlags |= IS_EXTERNAL_EFLAG; else eFlags &= ~IS_EXTERNAL_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__IS_EXTERNAL, oldIsExternal, newIsExternal));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -259,23 +254,22 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return containedEdge;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityEdge getContainedEdge(String unqualifiedName) {
-    	for (Iterator i = getContainedEdges().iterator(); i.hasNext(); ) {
-    		ActivityEdge namedContainedEdge = (ActivityEdge) i.next();
-    		
-    		if (unqualifiedName.equals(namedContainedEdge.getName())) {
-    			return namedContainedEdge;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityEdge getContainedEdge(String name) {
+		for (Iterator i = getContainedEdges().iterator(); i.hasNext(); ) {
+			ActivityEdge containedEdge = (ActivityEdge) i.next();
+			if (name.equals(containedEdge.getName())) {
+				return containedEdge;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -288,23 +282,22 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return containedNode;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityNode getContainedNode(String unqualifiedName) {
-    	for (Iterator i = getContainedNodes().iterator(); i.hasNext(); ) {
-    		ActivityNode namedContainedNode = (ActivityNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedContainedNode.getName())) {
-    			return namedContainedNode;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityNode getContainedNode(String name) {
+		for (Iterator i = getContainedNodes().iterator(); i.hasNext(); ) {
+			ActivityNode containedNode = (ActivityNode) i.next();
+			if (name.equals(containedNode.getName())) {
+				return containedNode;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -317,30 +310,44 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return subgroup;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public ActivityPartition getSubgroup(String unqualifiedName) {
-    	for (Iterator i = getSubgroups().iterator(); i.hasNext(); ) {
-    		ActivityPartition namedSubgroup = (ActivityPartition) i.next();
-    		
-    		if (unqualifiedName.equals(namedSubgroup.getName())) {
-    			return namedSubgroup;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityPartition createSubgroup(EClass eClass) {
+    public ActivityGroup getSubgroup(String name) {
+		for (Iterator i = getSubgroups().iterator(); i.hasNext(); ) {
+			ActivityPartition subgroup = (ActivityPartition) i.next();
+			if (name.equals(subgroup.getName())) {
+				return subgroup;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createSubgroup() instead.
+	 */
+	public ActivityGroup createSubgroup(EClass eClass) {
 		ActivityPartition newSubgroup = (ActivityPartition) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTIVITY_PARTITION__SUBGROUP, null, newSubgroup));
+		}
+		getSubgroups().add(newSubgroup);
+		return newSubgroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup createSubgroup() {
+		ActivityPartition newSubgroup = UML2Factory.eINSTANCE.createActivityPartition();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTIVITY_PARTITION__SUBGROUP, null, newSubgroup));
 		}
@@ -377,7 +384,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION, newSuperPartition, newSuperPartition));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -415,7 +424,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		represents = newRepresents;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARTITION__REPRESENTS, oldRepresents, represents));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -435,25 +446,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		setActivityGroup_activity(newActivity);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getSubgroups());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -461,14 +453,31 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getSuperGroup()) {
-			return (Element) getSuperGroup();
+		ActivityGroup superGroup = basicGetSuperGroup();			
+		if (superGroup != null) {
+			return superGroup;
 		}
-		if (null != getActivityGroup_activity()) {
-			return (Element) getActivityGroup_activity();
+		Activity activityGroup_activity = getActivityGroup_activity();			
+		if (activityGroup_activity != null) {
+			return activityGroup_activity;
 		}
 		return super.basicGetOwner();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (subgroup != null) {
+			ownedElement.addAll(subgroup);
+		}
+		return ownedElement;
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -476,8 +485,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public ActivityGroup basicGetSuperGroup() {
-		if (null != getSuperPartition()) {
-			return (ActivityGroup) getSuperPartition();
+		ActivityPartition superPartition = getSuperPartition();			
+		if (superPartition != null) {
+			return superPartition;
 		}
 		return null;
 	}
@@ -488,11 +498,10 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 */
 	public ActivityGroup getSuperGroup() {
-		if (null != getSuperPartition()) {
-			return (ActivityGroup) getSuperPartition();
-		}
-		return null;
+		ActivityGroup superGroup = basicGetSuperGroup();
+		return superGroup == null ? null : (ActivityGroup)eResolveProxy((InternalEObject)superGroup);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -512,10 +521,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 					return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 				case UML2Package.ACTIVITY_PARTITION__CLIENT_DEPENDENCY:
 					return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
-				case UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE:
 					return ((InternalEList)getContainedEdges()).basicAdd(otherEnd, msgs);
 				case UML2Package.ACTIVITY_PARTITION__CONTAINED_NODE:
@@ -533,6 +538,17 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY:
+				if (eContainer != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY, msgs);
+			default :
+				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -555,8 +571,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 					return ((InternalEList)getClientDependencies()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY_PARTITION__NAME_EXPRESSION:
 					return basicSetNameExpression(null, msgs);
-				case UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE:
 					return ((InternalEList)getContainedEdges()).basicRemove(otherEnd, msgs);
 				case UML2Package.ACTIVITY_PARTITION__CONTAINED_NODE:
@@ -570,6 +584,15 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.ACTIVITY_PARTITION__ACTIVITY_GROUP_ACTIVITY, msgs);
+			default :
+				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -869,5 +892,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //ActivityPartitionImpl

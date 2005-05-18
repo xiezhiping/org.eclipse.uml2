@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndData.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: LinkEndData.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ public interface LinkEndData extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' reference.
@@ -71,6 +71,7 @@ public interface LinkEndData extends Element{
 	 */
 	void setValue(InputPin value);
 
+
 	/**
 	 * Returns the value of the '<em><b>End</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -100,6 +101,7 @@ public interface LinkEndData extends Element{
 	 */
 	void setEnd(Property value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Qualifier</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.QualifierValue}.
@@ -114,10 +116,11 @@ public interface LinkEndData extends Element{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLinkEndData_Qualifier()
-	 * @model type="org.eclipse.uml2.QualifierValue" containment="true" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.QualifierValue" containment="true" required="true"
 	 * @generated
 	 */
 	EList getQualifiers();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.QualifierValue} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
@@ -126,8 +129,19 @@ public interface LinkEndData extends Element{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.QualifierValue} to create.
 	 * @return The new {@link org.eclipse.uml2.QualifierValue}.
 	 * @see #getQualifiers()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createQualifier() instead.
      */
     QualifierValue createQualifier(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.QualifierValue} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.QualifierValue}.
+	 * @see #getQualifiers()
+	 * @generated
+     */
+    QualifierValue createQualifier();
 
 } // LinkEndData

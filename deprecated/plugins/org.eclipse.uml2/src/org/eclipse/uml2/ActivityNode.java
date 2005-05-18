@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ActivityNode.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -43,7 +43,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
@@ -63,12 +63,13 @@ public interface ActivityNode extends RedefinableElement{
 	 */
 	EList getOutgoings();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified name from the '<em><b>Outgoing</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Outgoing</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOutgoings()
 	 * @generated
      */
@@ -92,12 +93,13 @@ public interface ActivityNode extends RedefinableElement{
 	 */
 	EList getIncomings();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified name from the '<em><b>Incoming</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getIncomings()
 	 * @generated
      */
@@ -115,10 +117,10 @@ public interface ActivityNode extends RedefinableElement{
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InGroup()
 	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 *        annotation="redefined eOpposite='containedNode' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'"
 	 * @generated
 	 */
 	EList getInGroups();
+
 
 	/**
 	 * Returns the value of the '<em><b>Activity</b></em>' container reference.
@@ -133,8 +135,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @see #setActivity(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_Activity()
 	 * @see org.eclipse.uml2.Activity#getNodes
-	 * @model opposite="node" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
+	 * @model opposite="node"
 	 * @generated
 	 */
 	Activity getActivity();
@@ -149,6 +150,7 @@ public interface ActivityNode extends RedefinableElement{
 	 */
 	void setActivity(Activity value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityNode}.
@@ -161,21 +163,21 @@ public interface ActivityNode extends RedefinableElement{
 	 * @return the value of the '<em>Redefined Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_RedefinedElement()
 	 * @model type="org.eclipse.uml2.ActivityNode" ordered="false"
-	 *        annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedElements();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified name from the '<em><b>Redefined Element</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedElements()
 	 * @generated
      */
-    ActivityNode getRedefinedElement(String unqualifiedName);
+    RedefinableElement getRedefinedElement(String unqualifiedName);
       
 	/**
 	 * Returns the value of the '<em><b>In Structured Node</b></em>' container reference.
@@ -194,7 +196,6 @@ public interface ActivityNode extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InStructuredNode()
 	 * @see org.eclipse.uml2.StructuredActivityNode#getContainedNodes
 	 * @model opposite="containedNode"
-	 *        annotation="subsets org.eclipse.uml2.ActivityNode#getInGroups=''"
 	 * @generated
 	 */
 	StructuredActivityNode getInStructuredNode();
@@ -208,6 +209,7 @@ public interface ActivityNode extends RedefinableElement{
 	 * @generated
 	 */
 	void setInStructuredNode(StructuredActivityNode value);
+
 
 	/**
 	 * Returns the value of the '<em><b>In Partition</b></em>' reference list.
@@ -223,17 +225,17 @@ public interface ActivityNode extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InPartition()
 	 * @see org.eclipse.uml2.ActivityPartition#getContainedNodes
 	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="containedNode" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.ActivityNode#getInGroups=''"
 	 * @generated
 	 */
 	EList getInPartitions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityPartition} with the specified name from the '<em><b>In Partition</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>' from the '<em><b>In Partition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityPartition} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityPartition} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityPartition} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInPartitions()
 	 * @generated
      */
@@ -253,18 +255,9 @@ public interface ActivityNode extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InInterruptibleRegion()
 	 * @see org.eclipse.uml2.InterruptibleActivityRegion#getContainedNodes
 	 * @model type="org.eclipse.uml2.InterruptibleActivityRegion" opposite="containedNode" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.ActivityNode#getInGroups=''"
 	 * @generated
 	 */
 	EList getInInterruptibleRegions();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
 
 } // ActivityNode

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.7 2005/04/04 20:11:13 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -29,6 +29,8 @@ import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.internal.operation.LiteralBooleanOperations;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Literal Boolean</b></em>'.
@@ -48,7 +50,7 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
@@ -107,7 +109,9 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 		if (newValue) eFlags |= VALUE_EFLAG; else eFlags &= ~VALUE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LITERAL_BOOLEAN__VALUE, oldValue, newValue));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,7 +119,7 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	 * @generated
 	 */
 	public boolean isComputable() {
-		return org.eclipse.uml2.internal.operation.LiteralBooleanOperations.isComputable(this);
+		return LiteralBooleanOperations.isComputable(this);
 	}
 
 	/**
@@ -124,7 +128,7 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	 * @generated
 	 */
 	public boolean booleanValue() {
-		return org.eclipse.uml2.internal.operation.LiteralBooleanOperations.booleanValue(this);
+		return LiteralBooleanOperations.booleanValue(this);
 	}
 
 	/**
@@ -407,6 +411,7 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 		result.append(')');
 		return result.toString();
 	}
+
 
 	/**
 	 * @see org.eclipse.uml2.ValueSpecification#stringValue()

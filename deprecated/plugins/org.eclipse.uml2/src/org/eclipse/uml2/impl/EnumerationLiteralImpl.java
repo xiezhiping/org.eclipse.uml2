@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,12 +16,16 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.EnumerationLiteral;
 import org.eclipse.uml2.Namespace;
@@ -51,7 +55,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,19 +104,23 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ENUMERATION_LITERAL__ENUMERATION, newEnumeration, newEnumeration));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Namespace getNamespace() {
-		if (null != getEnumeration()) {
-			return (Namespace) getEnumeration();
+	public Namespace basicGetNamespace() {
+		Enumeration enumeration = getEnumeration();			
+		if (enumeration != null) {
+			return enumeration;
 		}
-		return super.getNamespace();
+		return super.basicGetNamespace();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -398,7 +406,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ENUMERATION_LITERAL__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -417,7 +425,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 			case UML2Package.ENUMERATION_LITERAL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ENUMERATION_LITERAL__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.ENUMERATION_LITERAL__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__NAME_EXPRESSION:
@@ -427,7 +435,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 			case UML2Package.ENUMERATION_LITERAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ENUMERATION_LITERAL__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.ENUMERATION_LITERAL__DEPLOYMENT:
 				return deployment != null && !deployment.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__DEPLOYED_ELEMENT:
@@ -442,6 +450,17 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 				return getEnumeration() != null;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.ENUMERATION_LITERAL__VISIBILITY:
+				return false;
+			case UML2Package.ENUMERATION_LITERAL__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //EnumerationLiteralImpl

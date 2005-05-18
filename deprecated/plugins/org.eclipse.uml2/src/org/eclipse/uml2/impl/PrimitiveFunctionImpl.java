@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PrimitiveFunctionImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: PrimitiveFunctionImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,7 +49,7 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
@@ -124,11 +124,14 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 	 * @generated
 	 */
 	public void setBody(String newBody) {
+		newBody = newBody == null ? BODY_EDEFAULT : newBody;
 		String oldBody = body;
-		body = newBody == null ? BODY_EDEFAULT : newBody;
+		body = newBody;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PRIMITIVE_FUNCTION__BODY, oldBody, body));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,11 +148,14 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 	 * @generated
 	 */
 	public void setLanguage(String newLanguage) {
+		newLanguage = newLanguage == null ? LANGUAGE_EDEFAULT : newLanguage;
 		String oldLanguage = language;
-		language = newLanguage == null ? LANGUAGE_EDEFAULT : newLanguage;
+		language = newLanguage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PRIMITIVE_FUNCTION__LANGUAGE, oldLanguage, language));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -388,7 +394,7 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.PRIMITIVE_FUNCTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -407,7 +413,7 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 			case UML2Package.PRIMITIVE_FUNCTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PRIMITIVE_FUNCTION__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.PRIMITIVE_FUNCTION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PRIMITIVE_FUNCTION__NAME_EXPRESSION:
@@ -417,13 +423,23 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 			case UML2Package.PRIMITIVE_FUNCTION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.PRIMITIVE_FUNCTION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.PRIMITIVE_FUNCTION__BODY:
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 			case UML2Package.PRIMITIVE_FUNCTION__LANGUAGE:
 				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.PRIMITIVE_FUNCTION__VISIBILITY:
+				return false;
+			case UML2Package.PRIMITIVE_FUNCTION__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -442,5 +458,6 @@ public class PrimitiveFunctionImpl extends PackageableElementImpl implements Pri
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //PrimitiveFunctionImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.17 2005/04/22 20:19:35 khussey Exp $
+ * $Id: UML2Editor.java,v 1.18 2005/05/18 16:42:19 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -151,7 +151,7 @@ import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-import org.eclipse.uml2.provider.IItemQualifiedTextProvider;
+import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
 
 
@@ -178,7 +178,7 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -427,15 +427,15 @@ public class UML2Editor
 						if (!visitor.getRemovedResources().isEmpty()) {
 							removedResources.addAll(visitor.getRemovedResources());
 							if (!isDirty()) {
- 								getSite().getShell().getDisplay().asyncExec
- 									(new Runnable() {
- 										public void run() {
- 											getSite().getPage().closeEditor(UML2Editor.this, false);
- 											UML2Editor.this.dispose();
- 										}
- 								 	});
- 							}
- 						}
+								getSite().getShell().getDisplay().asyncExec
+									(new Runnable() {
+										 public void run() {
+											 getSite().getPage().closeEditor(UML2Editor.this, false);
+											 UML2Editor.this.dispose();
+										 }
+									 });
+							}
+						}
 
 						if (!visitor.getChangedResources().isEmpty()) {
 							changedResources.addAll(visitor.getChangedResources());

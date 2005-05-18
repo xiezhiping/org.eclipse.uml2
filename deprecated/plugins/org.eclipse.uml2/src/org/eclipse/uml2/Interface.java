@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.8 2005/04/14 17:30:57 khussey Exp $
+ * $Id: Interface.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -47,7 +47,7 @@ public interface Interface extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -64,17 +64,17 @@ public interface Interface extends Classifier{
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedAttribute()
 	 * @model type="org.eclipse.uml2.Property" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Classifier#getAttributes='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified name from the '<em><b>Owned Attribute</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedAttributes()
 	 * @generated
      */
@@ -91,6 +91,16 @@ public interface Interface extends Classifier{
      */
     Property createOwnedAttribute(EClass eClass);
 
+    /**
+     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Property}.
+	 * @see #getOwnedAttributes()
+	 * @generated
+     */
+    Property createOwnedAttribute();
+
 	/**
 	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Operation}.
@@ -106,17 +116,17 @@ public interface Interface extends Classifier{
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedOperation()
 	 * @model type="org.eclipse.uml2.Operation" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedOperations();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified name from the '<em><b>Owned Operation</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Operation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Operation} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedOperations()
 	 * @generated
      */
@@ -129,9 +139,20 @@ public interface Interface extends Classifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Operation} to create.
 	 * @return The new {@link org.eclipse.uml2.Operation}.
 	 * @see #getOwnedOperations()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedOperation() instead.
      */
     Operation createOwnedOperation(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Operation}.
+	 * @see #getOwnedOperations()
+	 * @generated
+     */
+    Operation createOwnedOperation();
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Interface</b></em>' reference list.
@@ -148,17 +169,17 @@ public interface Interface extends Classifier{
 	 * @return the value of the '<em>Redefined Interface</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_RedefinedInterface()
 	 * @model type="org.eclipse.uml2.Interface" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedInterfaces();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Interface} with the specified name from the '<em><b>Redefined Interface</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Interface</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Interface} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Interface} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Interface} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedInterfaces()
 	 * @generated
      */
@@ -176,17 +197,17 @@ public interface Interface extends Classifier{
 	 * @return the value of the '<em>Nested Classifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_NestedClassifier()
 	 * @model type="org.eclipse.uml2.Classifier" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getNestedClassifiers();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified name from the '<em><b>Nested Classifier</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNestedClassifiers()
 	 * @generated
      */
@@ -218,17 +239,17 @@ public interface Interface extends Classifier{
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInterface_OwnedReception()
 	 * @model type="org.eclipse.uml2.Reception" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedReceptions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Reception} with the specified name from the '<em><b>Owned Reception</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Reception} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Reception} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Reception} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedReceptions()
 	 * @generated
      */
@@ -241,9 +262,20 @@ public interface Interface extends Classifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Reception} to create.
 	 * @return The new {@link org.eclipse.uml2.Reception}.
 	 * @see #getOwnedReceptions()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedReception() instead.
      */
     Reception createOwnedReception(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Reception} and appends it to the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Reception}.
+	 * @see #getOwnedReceptions()
+	 * @generated
+     */
+    Reception createOwnedReception();
 
 	/**
 	 * Returns the value of the '<em><b>Protocol</b></em>' containment reference.
@@ -260,7 +292,6 @@ public interface Interface extends Classifier{
 	 * @see #setProtocol(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getInterface_Protocol()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	ProtocolStateMachine getProtocol();
@@ -275,6 +306,7 @@ public interface Interface extends Classifier{
 	 */
 	void setProtocol(ProtocolStateMachine value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ProtocolStateMachine} and sets the '<em><b>Protocol</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -282,45 +314,20 @@ public interface Interface extends Classifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ProtocolStateMachine} to create.
 	 * @return The new {@link org.eclipse.uml2.ProtocolStateMachine}.
 	 * @see #getProtocol()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createProtocol() instead.
      */
     ProtocolStateMachine createProtocol(EClass eClass);
-     
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='attribute' eType='org.eclipse.uml2.Property' containment='false'" 
-	 * @generated
-	 */
-	EList getAttributes();
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.ProtocolStateMachine} and sets the '<em><b>Protocol</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
+	 * @return The new {@link org.eclipse.uml2.ProtocolStateMachine}.
+	 * @see #getProtocol()
 	 * @generated
-	 */
-	EList getOwnedMembers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getFeatures();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
-	 * @generated
-	 */
-	EList getRedefinedElements();
+     */
+    ProtocolStateMachine createProtocol();
 
 	// <!-- begin-custom-operations -->
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.7 2005/04/14 17:30:57 khussey Exp $
+ * $Id: Profile.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Stereotype</b></em>' reference list.
@@ -55,17 +55,17 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * @return the value of the '<em>Owned Stereotype</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProfile_OwnedStereotype()
 	 * @model type="org.eclipse.uml2.Stereotype" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Package#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedStereotypes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Stereotype} with the specified name from the '<em><b>Owned Stereotype</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Stereotype} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Stereotype</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Stereotype} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Stereotype} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Stereotype} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Stereotype} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedStereotypes()
 	 * @generated
      */
@@ -82,11 +82,11 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Metaclass Reference</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProfile_MetaclassReference()
-	 * @model type="org.eclipse.uml2.ElementImport" resolveProxies="false" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getElementImports=''"
+	 * @model type="org.eclipse.uml2.ElementImport" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getMetaclassReferences();
+
 
 	/**
 	 * Returns the value of the '<em><b>Metamodel Reference</b></em>' reference list.
@@ -99,29 +99,11 @@ public interface Profile extends org.eclipse.uml2.Package{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Metamodel Reference</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProfile_MetamodelReference()
-	 * @model type="org.eclipse.uml2.PackageImport" resolveProxies="false" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getPackageImports=''"
+	 * @model type="org.eclipse.uml2.PackageImport" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getMetamodelReferences();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='true' name='elementImport' eOpposite='importingNamespace' derived='false' eOpposite.upperBound='1' eType='org.eclipse.uml2.ElementImport' eOpposite.lowerBound='1'" 
-	 * @generated
-	 */
-	EList getElementImports();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='true' name='packageImport' eOpposite='importingNamespace' derived='false' eOpposite.upperBound='1' eType='org.eclipse.uml2.PackageImport' eOpposite.lowerBound='1'" 
-	 * @generated
-	 */
-	EList getPackageImports();
 
 	// <!-- begin-custom-operations -->
 

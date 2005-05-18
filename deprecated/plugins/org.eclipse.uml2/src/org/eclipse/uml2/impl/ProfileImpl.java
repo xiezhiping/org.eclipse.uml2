@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.18 2005/04/14 17:30:57 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.19 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Classifier;
@@ -31,6 +32,7 @@ import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageImport;
+import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.Profile;
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.StringExpression;
@@ -38,9 +40,10 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.common.util.SubsetEObjectEList;
+import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+
 import org.eclipse.uml2.internal.operation.ProfileOperations;
-import org.eclipse.uml2.internal.util.SubsetEObjectEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,6 +52,9 @@ import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ProfileImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ProfileImpl#getElementImports <em>Element Import</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ProfileImpl#getPackageImports <em>Package Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProfileImpl#getOwnedStereotypes <em>Owned Stereotype</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProfileImpl#getMetaclassReferences <em>Metaclass Reference</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProfileImpl#getMetamodelReferences <em>Metamodel Reference</em>}</li>
@@ -64,7 +70,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getMetaclassReferences() <em>Metaclass Reference</em>}' reference list.
@@ -107,6 +113,19 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedMembers() {
+		if (ownedMember == null) {
+			ownedMember = new EObjectContainmentEList(PackageableElement.class, this, UML2Package.PROFILE__OWNED_MEMBER);
+		}
+		return ownedMember;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList getOwnedStereotypes() {
@@ -138,23 +157,21 @@ public class ProfileImpl extends PackageImpl implements Profile {
 		return ownedStereotypes;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Stereotype getOwnedStereotype(String unqualifiedName) {
-    	for (Iterator i = getOwnedStereotypes().iterator(); i.hasNext(); ) {
-    		Stereotype namedOwnedStereotype = (Stereotype) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedStereotype.getName())) {
-    			return namedOwnedStereotype;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Stereotype getOwnedStereotype(String name) {
+		for (Iterator i = getOwnedStereotypes().iterator(); i.hasNext(); ) {
+			Stereotype ownedStereotype = (Stereotype) i.next();
+			if (name.equals(ownedStereotype.getName())) {
+				return ownedStereotype;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -165,8 +182,8 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			metaclassReference = new SubsetEObjectEList(ElementImport.class, this, UML2Package.PROFILE__METACLASS_REFERENCE, new int[] {UML2Package.PROFILE__ELEMENT_IMPORT});
 		}
 		return metaclassReference;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,8 +195,8 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			metamodelReference = new SubsetEObjectEList(PackageImport.class, this, UML2Package.PROFILE__METAMODEL_REFERENCE, new int[] {UML2Package.PROFILE__PACKAGE_IMPORT});
 		}
 		return metamodelReference;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -191,8 +208,8 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			elementImport = new SupersetEObjectContainmentWithInverseEList(ElementImport.class, this, UML2Package.PROFILE__ELEMENT_IMPORT, new int[] {UML2Package.PROFILE__METACLASS_REFERENCE}, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 		}
 		return elementImport;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -204,8 +221,8 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			packageImport = new SupersetEObjectContainmentWithInverseEList(PackageImport.class, this, UML2Package.PROFILE__PACKAGE_IMPORT, new int[] {UML2Package.PROFILE__APPLIED_PROFILE, UML2Package.PROFILE__METAMODEL_REFERENCE}, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 		}
 		return packageImport;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -542,7 +559,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.PROFILE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -561,7 +578,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PROFILE__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.PROFILE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PROFILE__NAME_EXPRESSION:
@@ -581,7 +598,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.PROFILE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.PROFILE__NESTED_PACKAGE:
 				return !getNestedPackages().isEmpty();
 			case UML2Package.PROFILE__NESTING_PACKAGE:
@@ -604,6 +621,17 @@ public class ProfileImpl extends PackageImpl implements Profile {
 				return metamodelReference != null && !metamodelReference.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.PROFILE__VISIBILITY:
+				return false;
+			case UML2Package.PROFILE__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	// <!-- begin-custom-operations -->

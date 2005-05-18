@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.10 2005/04/04 20:11:14 khussey Exp $
+ * $Id: NamedElement.java,v 1.11 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,7 +50,7 @@ public interface NamedElement extends TemplateableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -82,6 +82,7 @@ public interface NamedElement extends TemplateableElement{
 	 */
 	void setName(String value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Qualified Name</b></em>' attribute.
 	 * The default value is <code>""</code>.
@@ -100,6 +101,7 @@ public interface NamedElement extends TemplateableElement{
 	 * @generated
 	 */
 	String getQualifiedName();
+
 
 	/**
 	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
@@ -133,6 +135,7 @@ public interface NamedElement extends TemplateableElement{
 	 */
 	void setVisibility(VisibilityKind value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Client Dependency</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Dependency}.
@@ -146,17 +149,18 @@ public interface NamedElement extends TemplateableElement{
 	 * @return the value of the '<em>Client Dependency</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getNamedElement_ClientDependency()
 	 * @see org.eclipse.uml2.Dependency#getClients
-	 * @model type="org.eclipse.uml2.Dependency" opposite="client" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Dependency" opposite="client" ordered="false"
 	 * @generated
 	 */
 	EList getClientDependencies();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Dependency} with the specified name from the '<em><b>Client Dependency</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Dependency} with the specified '<em><b>Name</b></em>' from the '<em><b>Client Dependency</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Dependency} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Dependency} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Dependency} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Dependency} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getClientDependencies()
 	 * @generated
      */
@@ -177,7 +181,6 @@ public interface NamedElement extends TemplateableElement{
 	 * @see #setNameExpression(StringExpression)
 	 * @see org.eclipse.uml2.UML2Package#getNamedElement_NameExpression()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	StringExpression getNameExpression();
@@ -192,6 +195,7 @@ public interface NamedElement extends TemplateableElement{
 	 */
 	void setNameExpression(StringExpression value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.StringExpression} and sets the '<em><b>Name Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -199,43 +203,20 @@ public interface NamedElement extends TemplateableElement{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.StringExpression} to create.
 	 * @return The new {@link org.eclipse.uml2.StringExpression}.
 	 * @see #getNameExpression()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createNameExpression() instead.
      */
     StringExpression createNameExpression(EClass eClass);
-     
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An invariant constraint based on the following OCL expression:
-	 * <code>
-	 * self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty()
-	 * 	implies self.qualifiedName->isEmpty()
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.validateNoName(this, diagnostics, context);'" 
-	 * @generated
-	 */
-	boolean validateNoName(DiagnosticChain diagnostics, Map context);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.StringExpression} and sets the '<em><b>Name Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An invariant constraint based on the following OCL expression:
-	 * <code>
-	 * (self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()) implies
-	 * self.qualifiedName =
-	 *  self.allNamespaces()->iterate( ns : Namespace; result: String = self.name |
-	 * 		ns.name->union(self.separator())->union(result))
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.validateQualifiedName(this, diagnostics, context);'" 
+	 * @return The new {@link org.eclipse.uml2.StringExpression}.
+	 * @see #getNameExpression()
 	 * @generated
-	 */
-	boolean validateQualifiedName(DiagnosticChain diagnostics, Map context);
+     */
+    StringExpression createNameExpression();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -249,8 +230,7 @@ public interface NamedElement extends TemplateableElement{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Sequence"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"allNamespaces\", null); //$NON-NLS-1$\r\n\tList result = (List) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableList(org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this);\r\n}'" 
+	 * @model dataType="org.eclipse.uml2.Sequence" 
 	 * @generated
 	 */
 	List allNamespaces();
@@ -267,8 +247,7 @@ public interface NamedElement extends TemplateableElement{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.isDistinguishableFrom(this, n, ns);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean isDistinguishableFrom(NamedElement n, Namespace ns);
@@ -282,8 +261,7 @@ public interface NamedElement extends TemplateableElement{
 	 * '::'
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.separator(this);'" 
+	 * @model dataType="org.eclipse.uml2.String" 
 	 * @generated
 	 */
 	String separator();
@@ -302,8 +280,7 @@ public interface NamedElement extends TemplateableElement{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.qualifiedName(this);'" 
+	 * @model dataType="org.eclipse.uml2.String" 
 	 * @generated
 	 */
 	String qualifiedName();
@@ -317,39 +294,59 @@ public interface NamedElement extends TemplateableElement{
 	 * namespace->isEmpty() implies visibility->isEmpty()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.NamedElementOperations.validateVisibilityNeedsOwnership(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics, Map context);
 
 	/**
+	 * Returns the value of the '<em><b>Namespace</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Namespace#getOwnedMembers <em>Owned Member</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''" 
+	 * <!-- begin-model-doc -->
+	 * Specifies the namespace that owns the NamedElement. Subsets Element::owner. This is a derived union.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Namespace</em>' reference.
+	 * @see org.eclipse.uml2.UML2Package#getNamedElement_Namespace()
+	 * @see org.eclipse.uml2.Namespace#getOwnedMembers
+	 * @model opposite="ownedMember" transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	Namespace getNamespace();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty()
+	 * 	implies self.qualifiedName->isEmpty()
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
-	EList getOwnedElements();
+	boolean validateNoName(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * (self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()) implies
+	 * self.qualifiedName =
+	 *  self.allNamespaces()->iterate( ns : Namespace; result: String = self.name |
+	 * 		ns.name->union(self.separator())->union(result))
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @generated
+	 */
+	boolean validateQualifiedName(DiagnosticChain diagnostics, Map context);
 
 	// <!-- begin-custom-operations -->
 

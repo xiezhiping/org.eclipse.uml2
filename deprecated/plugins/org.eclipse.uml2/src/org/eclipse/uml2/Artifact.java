@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Artifact.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Artifact.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>File Name</b></em>' attribute.
@@ -71,6 +71,7 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 */
 	void setFileName(String value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Nested Artifact</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Artifact}.
@@ -87,12 +88,13 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 */
 	EList getNestedArtifacts();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Artifact} with the specified name from the '<em><b>Nested Artifact</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Artifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Artifact</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Artifact} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Artifact} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Artifact} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Artifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNestedArtifacts()
 	 * @generated
      */
@@ -109,6 +111,16 @@ public interface Artifact extends Classifier, DeployedArtifact{
      */
     Artifact createNestedArtifact(EClass eClass);
 
+    /**
+     * Creates a {@link org.eclipse.uml2.Artifact} and appends it to the '<em><b>Nested Artifact</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Artifact}.
+	 * @see #getNestedArtifacts()
+	 * @generated
+     */
+    Artifact createNestedArtifact();
+
 	/**
 	 * Returns the value of the '<em><b>Manifestation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Manifestation}.
@@ -120,18 +132,18 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Manifestation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getArtifact_Manifestation()
-	 * @model type="org.eclipse.uml2.Manifestation" containment="true" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements='' org.eclipse.uml2.NamedElement#getClientDependencies=''"
+	 * @model type="org.eclipse.uml2.Manifestation" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getManifestations();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Manifestation} with the specified name from the '<em><b>Manifestation</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Manifestation} with the specified '<em><b>Name</b></em>' from the '<em><b>Manifestation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Manifestation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Manifestation} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Manifestation} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Manifestation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getManifestations()
 	 * @generated
      */
@@ -144,9 +156,20 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Manifestation} to create.
 	 * @return The new {@link org.eclipse.uml2.Manifestation}.
 	 * @see #getManifestations()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createManifestation() instead.
      */
     Manifestation createManifestation(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Manifestation} and appends it to the '<em><b>Manifestation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Manifestation}.
+	 * @see #getManifestations()
+	 * @generated
+     */
+    Manifestation createManifestation();
 
 	/**
 	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -156,17 +179,17 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getArtifact_OwnedOperation()
 	 * @model type="org.eclipse.uml2.Operation" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedOperations();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified name from the '<em><b>Owned Operation</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Operation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Operation} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedOperations()
 	 * @generated
      */
@@ -179,9 +202,20 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Operation} to create.
 	 * @return The new {@link org.eclipse.uml2.Operation}.
 	 * @see #getOwnedOperations()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedOperation() instead.
      */
     Operation createOwnedOperation(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Operation}.
+	 * @see #getOwnedOperations()
+	 * @generated
+     */
+    Operation createOwnedOperation();
 
 	/**
 	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -191,17 +225,17 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getArtifact_OwnedAttribute()
 	 * @model type="org.eclipse.uml2.Property" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Classifier#getAttributes='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified name from the '<em><b>Owned Attribute</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedAttributes()
 	 * @generated
      */
@@ -218,49 +252,14 @@ public interface Artifact extends Classifier, DeployedArtifact{
      */
     Property createOwnedAttribute(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
+	 * @return The new {@link org.eclipse.uml2.Property}.
+	 * @see #getOwnedAttributes()
 	 * @generated
-	 */
-	EList getFeatures();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='attribute' eType='org.eclipse.uml2.Property' containment='false'" 
-	 * @generated
-	 */
-	EList getAttributes();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='clientDependency' eOpposite='client' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Dependency' eOpposite.lowerBound='1'" 
-	 * @generated
-	 */
-	EList getClientDependencies();
+     */
+    Property createOwnedAttribute();
 
 } // Artifact

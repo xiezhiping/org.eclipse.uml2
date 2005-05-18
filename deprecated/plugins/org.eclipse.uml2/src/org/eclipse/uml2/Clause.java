@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Clause.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Clause.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface Clause extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Test</b></em>' reference list.
@@ -59,12 +59,13 @@ public interface Clause extends Element{
 	 */
 	EList getTests();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified name from the '<em><b>Test</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Test</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getTests()
 	 * @generated
      */
@@ -86,12 +87,13 @@ public interface Clause extends Element{
 	 */
 	EList getBodies();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified name from the '<em><b>Body</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Body</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getBodies()
 	 * @generated
      */
@@ -115,6 +117,7 @@ public interface Clause extends Element{
 	 */
 	EList getPredecessorClauses();
 
+
 	/**
 	 * Returns the value of the '<em><b>Successor Clause</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Clause}.
@@ -132,6 +135,7 @@ public interface Clause extends Element{
 	 * @generated
 	 */
 	EList getSuccessorClauses();
+
 
 	/**
 	 * Returns the value of the '<em><b>Decider</b></em>' reference.
@@ -159,6 +163,7 @@ public interface Clause extends Element{
 	 */
 	void setDecider(OutputPin value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Body Output</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
@@ -178,12 +183,13 @@ public interface Clause extends Element{
 	 */
 	EList getBodyOutputs();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified name from the '<em><b>Body Output</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Output</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.OutputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
+	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getBodyOutputs()
 	 * @generated
      */

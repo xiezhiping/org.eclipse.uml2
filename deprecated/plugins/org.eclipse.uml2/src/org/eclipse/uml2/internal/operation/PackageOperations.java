@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.9 2005/04/14 17:30:57 khussey Exp $
+ * $Id: PackageOperations.java,v 1.10 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -20,6 +21,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.Enumeration;
@@ -30,24 +32,135 @@ import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
+
 import org.eclipse.uml2.util.UML2Validator;
 
 /**
- * A static utility class that provides operations related to packages.
+ * <!-- begin-user-doc -->
+ * A static utility class that provides operations related to '<em><b>Package</b></em>' model objects.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following operations are supported:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.Package#validateElementsPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Elements Public Or Private</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Package#visibleMembers() <em>Visible Members</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Package#makesVisible(org.eclipse.uml2.NamedElement) <em>Makes Visible</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Package#mustBeOwned() <em>Must Be Owned</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated not
  */
-public final class PackageOperations
-		extends UML2Operations {
+public final class PackageOperations extends UML2Operations {
 
 	/**
-	 * Constructs a new Package Operations. This constructor should never be
-	 * called because this is a static utility class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	private PackageOperations() {
 		super();
 	}
 
-	public static boolean makesVisible(org.eclipse.uml2.Package package_,
-			NamedElement el) {
+	/**
+	 * <!-- begin-user-doc -->
+	 * If an element that is owned by a package has visibility, it is public or
+	 * private.
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * self.ownedElements->forAll(e | e.visibility->notEmpty() implies e.visbility = #public or e.visibility = #private)
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static boolean validateElementsPublicOrPrivate(org.eclipse.uml2.Package package_, DiagnosticChain diagnostics, Map context) {
+		boolean result = true;
+
+		for (Iterator ownedElements = package_.getOwnedElements().iterator(); ownedElements
+			.hasNext();) {
+
+			Element ownedElement = (Element) ownedElements.next();
+
+			if (NamedElement.class.isInstance(ownedElement)) {
+				VisibilityKind visibility = (VisibilityKind) ((NamedElement) ownedElement)
+					.getVisibility();
+
+				if (null != visibility
+					&& !VisibilityKind.PUBLIC_LITERAL.equals(visibility)
+					&& !VisibilityKind.PRIVATE_LITERAL.equals(visibility)) {
+
+					result = false;
+
+					if (null == diagnostics) {
+						return result;
+					} else {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UML2Validator.DIAGNOSTIC_SOURCE,
+								UML2Validator.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
+								UML2Plugin.INSTANCE
+									.getString(
+										"_UI_Package_ElementsPublicOrPrivate_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											ownedElement, package_)),
+								new Object[]{package_, ownedElement}));
+					}
+				}
+			}
+		}
+
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * member->select( m | self.makesVisible(m))
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static Set visibleMembers(org.eclipse.uml2.Package package_) {
+		Set visibleMembers = new HashSet();
+
+		visibleMembersHelper(package_, visibleMembers);
+
+		for (Iterator allImportedPackages = allImportedPackagesHelper(package_,
+			new HashSet()).iterator(); allImportedPackages.hasNext();) {
+
+			visibleMembersHelper((org.eclipse.uml2.Package) allImportedPackages
+				.next(), visibleMembers);
+		}
+
+		return Collections.unmodifiableSet(visibleMembers);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * el.visibility->isEmpty() or el.visibility = #public
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static boolean makesVisible(org.eclipse.uml2.Package package_, NamedElement el) {
 
 		if (package_.getOwnedMembers().contains(el)) {
 			return null == el.getVisibility()
@@ -86,24 +199,22 @@ public final class PackageOperations
 		return false;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * false
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
 	public static boolean mustBeOwned(org.eclipse.uml2.Package package_) {
 		return false;
 	}
 
-	public static Set visibleMembers(org.eclipse.uml2.Package package_) {
-		Set visibleMembers = new HashSet();
-
-		visibleMembersHelper(package_, visibleMembers);
-
-		for (Iterator allImportedPackages = allImportedPackagesHelper(package_,
-			new HashSet()).iterator(); allImportedPackages.hasNext();) {
-
-			visibleMembersHelper((org.eclipse.uml2.Package) allImportedPackages
-				.next(), visibleMembers);
-		}
-
-		return visibleMembers;
-	}
+	// <!-- begin-custom-operations -->
 
 	protected static Set visibleMembersHelper(
 			org.eclipse.uml2.Package package_, Set visibleMembers) {
@@ -170,53 +281,6 @@ public final class PackageOperations
 		}
 
 		return allImportedPackages;
-	}
-
-	/**
-	 * If an element that is owned by a package has visibility, it is public or
-	 * private.
-	 * 
-	 */
-	public static boolean validateElementsPublicOrPrivate(
-			org.eclipse.uml2.Package package_, DiagnosticChain diagnostics,
-			Map context) {
-		boolean result = true;
-
-		for (Iterator ownedElements = package_.getOwnedElements().iterator(); ownedElements
-			.hasNext();) {
-
-			Element ownedElement = (Element) ownedElements.next();
-
-			if (NamedElement.class.isInstance(ownedElement)) {
-				VisibilityKind visibility = (VisibilityKind) ((NamedElement) ownedElement)
-					.getVisibility();
-
-				if (null != visibility
-					&& !VisibilityKind.PUBLIC_LITERAL.equals(visibility)
-					&& !VisibilityKind.PRIVATE_LITERAL.equals(visibility)) {
-
-					result = false;
-
-					if (null == diagnostics) {
-						return result;
-					} else {
-						diagnostics
-							.add(new BasicDiagnostic(
-								Diagnostic.WARNING,
-								UML2Validator.DIAGNOSTIC_SOURCE,
-								UML2Validator.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
-								UML2Plugin.INSTANCE
-									.getString(
-										"_UI_Package_ElementsPublicOrPrivate_diagnostic", //$NON-NLS-1$
-										getMessageSubstitutions(context,
-											ownedElement, package_)),
-								new Object[]{package_, ownedElement}));
-					}
-				}
-			}
-		}
-
-		return result;
 	}
 
 	/**
@@ -338,4 +402,6 @@ public final class PackageOperations
 		return ownedPrimitiveType;
 	}
 
-}
+	// <!-- end-custom-operations -->
+
+} // PackageOperations

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,24 +8,26 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.ParameterableElement;
 import org.eclipse.uml2.TemplateBinding;
@@ -33,8 +35,8 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateParameterSubstitution;
 import org.eclipse.uml2.UML2Package;
 
-import org.eclipse.uml2.internal.util.SubsetEObjectContainmentEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SubsetEObjectContainmentEList;
+import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,9 +45,9 @@ import org.eclipse.uml2.internal.util.SupersetEObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getActuals <em>Actual</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getFormal <em>Formal</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getTemplateBinding <em>Template Binding</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getActuals <em>Actual</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getOwnedActuals <em>Owned Actual</em>}</li>
  * </ul>
  * </p>
@@ -58,17 +60,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * The cached value of the '{@link #getFormal() <em>Formal</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFormal()
-	 * @generated
-	 * @ordered
-	 */
-	protected TemplateParameter formal = null;
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getActuals() <em>Actual</em>}' reference list.
@@ -79,6 +71,16 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 * @ordered
 	 */
 	protected EList actual = null;
+
+	/**
+	 * The cached value of the '{@link #getFormal() <em>Formal</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFormal()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateParameter formal = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedActuals() <em>Owned Actual</em>}' containment reference list.
@@ -144,7 +146,9 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 		formal = newFormal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL, oldFormal, formal));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -175,7 +179,9 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING, newTemplateBinding, newTemplateBinding));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -187,8 +193,8 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 			actual = new SupersetEObjectResolvingEList(ParameterableElement.class, this, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL, new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL});
 		}
 		return actual;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -200,8 +206,8 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 			ownedActual = new SubsetEObjectContainmentEList(ParameterableElement.class, this, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL, new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL});
 		}
 		return ownedActual;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -223,31 +229,27 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getTemplateBinding()) {
-			return (Element) getTemplateBinding();
+		TemplateBinding templateBinding = getTemplateBinding();			
+		if (templateBinding != null) {
+			return templateBinding;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getOwnedActuals());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (ownedActual != null) {
+			ownedElement.addAll(ownedActual);
 		}
-
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -429,5 +431,6 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //TemplateParameterSubstitutionImpl

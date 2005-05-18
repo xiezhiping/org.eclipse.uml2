@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.9 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Behavior.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -51,7 +51,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Reentrant</b></em>' attribute.
@@ -82,6 +82,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 */
 	void setIsReentrant(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Context</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors <em>Owned Behavior</em>}'.
@@ -98,7 +99,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @see #setContext(BehavioredClassifier)
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Context()
 	 * @see org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors
-	 * @model opposite="ownedBehavior" volatile="true"
+	 * @model opposite="ownedBehavior"
 	 * @generated
 	 */
 	BehavioredClassifier getContext();
@@ -113,6 +114,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 */
 	void setContext(BehavioredClassifier value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Redefined Behavior</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Behavior}.
@@ -125,17 +127,17 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @return the value of the '<em>Redefined Behavior</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_RedefinedBehavior()
 	 * @model type="org.eclipse.uml2.Behavior" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedBehaviors();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified name from the '<em><b>Redefined Behavior</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Behavior</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Behavior} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Behavior} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedBehaviors()
 	 * @generated
      */
@@ -172,6 +174,7 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 */
 	void setSpecification(BehavioralFeature value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Parameter</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Parameter}.
@@ -187,17 +190,17 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @return the value of the '<em>Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Parameter()
 	 * @model type="org.eclipse.uml2.Parameter" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getParameters();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified name from the '<em><b>Parameter</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParameters()
 	 * @generated
      */
@@ -210,9 +213,20 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Parameter} to create.
 	 * @return The new {@link org.eclipse.uml2.Parameter}.
 	 * @see #getParameters()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createParameter() instead.
      */
     Parameter createParameter(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Parameter}.
+	 * @see #getParameters()
+	 * @generated
+     */
+    Parameter createParameter();
 
 	/**
 	 * Returns the value of the '<em><b>Formal Parameter</b></em>' reference list.
@@ -230,12 +244,13 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 */
 	EList getFormalParameters();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified name from the '<em><b>Formal Parameter</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Formal Parameter</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFormalParameters()
 	 * @generated
      */
@@ -257,12 +272,13 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 */
 	EList getReturnResults();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified name from the '<em><b>Return Result</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Return Result</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getReturnResults()
 	 * @generated
      */
@@ -279,18 +295,18 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Precondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Precondition()
-	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedRules=''"
+	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getPreconditions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified name from the '<em><b>Precondition</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Constraint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Constraint} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPreconditions()
 	 * @generated
      */
@@ -307,18 +323,18 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Postcondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Postcondition()
-	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedRules=''"
+	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getPostconditions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified name from the '<em><b>Postcondition</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Constraint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Constraint} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPostconditions()
 	 * @generated
      */
@@ -340,12 +356,13 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 */
 	EList getOwnedParameterSets();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ParameterSet} with the specified name from the '<em><b>Owned Parameter Set</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.ParameterSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Parameter Set</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ParameterSet} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ParameterSet} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ParameterSet} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ParameterSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedParameterSets()
 	 * @generated
      */
@@ -358,35 +375,19 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ParameterSet} to create.
 	 * @return The new {@link org.eclipse.uml2.ParameterSet}.
 	 * @see #getOwnedParameterSets()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedParameterSet() instead.
      */
     ParameterSet createOwnedParameterSet(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.ParameterSet} and appends it to the '<em><b>Owned Parameter Set</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
+	 * @return The new {@link org.eclipse.uml2.ParameterSet}.
+	 * @see #getOwnedParameterSets()
 	 * @generated
-	 */
-	EList getRedefinedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='true' name='ownedRule' eOpposite='namespace' derived='false' eOpposite.upperBound='1' eType='org.eclipse.uml2.Constraint' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedRules();
+     */
+    ParameterSet createOwnedParameterSet();
 
 } // Behavior

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Implementation.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Implementation.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +39,7 @@ public interface Implementation extends Realization{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Contract</b></em>' reference.
@@ -57,8 +55,7 @@ public interface Implementation extends Realization{
 	 * @return the value of the '<em>Contract</em>' reference.
 	 * @see #setContract(Interface)
 	 * @see org.eclipse.uml2.UML2Package#getImplementation_Contract()
-	 * @model required="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Dependency#getSuppliers='' org.eclipse.uml2.DirectedRelationship#getTargets=''"
+	 * @model required="true"
 	 * @generated
 	 */
 	Interface getContract();
@@ -72,6 +69,7 @@ public interface Implementation extends Realization{
 	 * @generated
 	 */
 	void setContract(Interface value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Implementing Classifier</b></em>' container reference.
@@ -89,8 +87,7 @@ public interface Implementation extends Realization{
 	 * @see #setImplementingClassifier(BehavioredClassifier)
 	 * @see org.eclipse.uml2.UML2Package#getImplementation_ImplementingClassifier()
 	 * @see org.eclipse.uml2.BehavioredClassifier#getImplementations
-	 * @model opposite="implementation" required="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Dependency#getClients='' org.eclipse.uml2.DirectedRelationship#getSources=''"
+	 * @model opposite="implementation" required="true"
 	 * @generated
 	 */
 	BehavioredClassifier getImplementingClassifier();
@@ -105,40 +102,5 @@ public interface Implementation extends Realization{
 	 */
 	void setImplementingClassifier(BehavioredClassifier value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='false' name='supplier' eType='org.eclipse.uml2.NamedElement' containment='false'" 
-	 * @generated
-	 */
-	EList getSuppliers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getTargets();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='client' eOpposite='clientDependency' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getClients();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getSources();
 
 } // Implementation

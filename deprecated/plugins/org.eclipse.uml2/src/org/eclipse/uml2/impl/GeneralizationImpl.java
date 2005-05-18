@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,26 +8,28 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Generalization;
@@ -56,7 +58,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getGeneral() <em>General</em>}' reference.
@@ -135,7 +137,9 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		if (newIsSubstitutable) eFlags |= IS_SUBSTITUTABLE_EFLAG; else eFlags &= ~IS_SUBSTITUTABLE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION__IS_SUBSTITUTABLE, oldIsSubstitutable, newIsSubstitutable));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -166,7 +170,9 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION__SPECIFIC, newSpecific, newSpecific));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -204,7 +210,9 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		general = newGeneral;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION__GENERAL, oldGeneral, general));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -218,43 +226,20 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		return generalizationSet;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public GeneralizationSet getGeneralizationSet(String unqualifiedName) {
-    	for (Iterator i = getGeneralizationSets().iterator(); i.hasNext(); ) {
-    		GeneralizationSet namedGeneralizationSet = (GeneralizationSet) i.next();
-    		
-    		if (unqualifiedName.equals(namedGeneralizationSet.getName())) {
-    			return namedGeneralizationSet;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSources() {
-		EList source = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
-
-		if (null == source) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getSources());
-			if (null != getSpecific()) {
-				union.add(getSpecific());
+    public GeneralizationSet getGeneralizationSet(String name) {
+		for (Iterator i = getGeneralizationSets().iterator(); i.hasNext(); ) {
+			GeneralizationSet generalizationSet = (GeneralizationSet) i.next();
+			if (name.equals(generalizationSet.getName())) {
+				return generalizationSet;
 			}
-
-			source = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source);
 		}
-
-		return source;
+		return null;
 	}
 
 	/**
@@ -263,33 +248,27 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getSpecific()) {
-			return (Element) getSpecific();
+		Classifier specific = getSpecific();			
+		if (specific != null) {
+			return specific;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargets() {
-		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-
-		if (null == target) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getTargets());
-			if (null != getGeneral()) {
-				union.add(getGeneral());
-			}
-
-			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
+	protected EList getTargetsHelper(EList target) {
+		super.getTargetsHelper(target);
+		if (general != null) {
+			target.add(general);
 		}
-
 		return target;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -499,5 +478,21 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getSourcesHelper(EList source) {
+		super.getSourcesHelper(source);
+		Classifier specific = getSpecific();
+		if (specific != null) {
+			source.add(specific);
+		}
+		return source;
+	}
+
 
 } //GeneralizationImpl

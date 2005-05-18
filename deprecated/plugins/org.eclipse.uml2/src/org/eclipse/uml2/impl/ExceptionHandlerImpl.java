@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.5 2005/04/04 20:11:13 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -18,14 +18,19 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.ExceptionHandler;
@@ -55,7 +60,7 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getHandlerBody() <em>Handler Body</em>}' reference.
@@ -134,7 +139,9 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXCEPTION_HANDLER__PROTECTED_NODE, newProtectedNode, newProtectedNode));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,7 +179,9 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 		handlerBody = newHandlerBody;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXCEPTION_HANDLER__HANDLER_BODY, oldHandlerBody, handlerBody));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -210,7 +219,9 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 		exceptionInput = newExceptionInput;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXCEPTION_HANDLER__EXCEPTION_INPUT, oldExceptionInput, exceptionInput));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -224,34 +235,35 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 		return exceptionType;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getExceptionType(String unqualifiedName) {
-    	for (Iterator i = getExceptionTypes().iterator(); i.hasNext(); ) {
-    		Classifier namedExceptionType = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedExceptionType.getName())) {
-    			return namedExceptionType;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getExceptionType(String name) {
+		for (Iterator i = getExceptionTypes().iterator(); i.hasNext(); ) {
+			Classifier exceptionType = (Classifier) i.next();
+			if (name.equals(exceptionType.getName())) {
+				return exceptionType;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getProtectedNode()) {
-			return (Element) getProtectedNode();
+		ExecutableNode protectedNode = getProtectedNode();			
+		if (protectedNode != null) {
+			return protectedNode;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -431,5 +443,6 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //ExceptionHandlerImpl

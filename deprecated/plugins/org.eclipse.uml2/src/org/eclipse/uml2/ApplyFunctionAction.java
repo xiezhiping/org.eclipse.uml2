@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionAction.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ApplyFunctionAction.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -44,7 +44,7 @@ public interface ApplyFunctionAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Function</b></em>' reference.
@@ -75,6 +75,7 @@ public interface ApplyFunctionAction extends Action{
 	 */
 	void setFunction(PrimitiveFunction value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Argument</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.InputPin}.
@@ -90,17 +91,17 @@ public interface ApplyFunctionAction extends Action{
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getApplyFunctionAction_Argument()
 	 * @model type="org.eclipse.uml2.InputPin" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Action#getInputs=''"
 	 * @generated
 	 */
 	EList getArguments();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified name from the '<em><b>Argument</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.InputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.InputPin} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InputPin} to retrieve.
+	 * @return The {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getArguments()
 	 * @generated
      */
@@ -117,6 +118,16 @@ public interface ApplyFunctionAction extends Action{
      */
     InputPin createArgument(EClass eClass);
 
+    /**
+     * Creates a {@link org.eclipse.uml2.InputPin} and appends it to the '<em><b>Argument</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.InputPin}.
+	 * @see #getArguments()
+	 * @generated
+     */
+    InputPin createArgument();
+
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
@@ -132,17 +143,17 @@ public interface ApplyFunctionAction extends Action{
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getApplyFunctionAction_Result()
 	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Action#getOutputs=''"
 	 * @generated
 	 */
 	EList getResults();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified name from the '<em><b>Result</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.OutputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
+	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getResults()
 	 * @generated
      */
@@ -155,26 +166,19 @@ public interface ApplyFunctionAction extends Action{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.OutputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.OutputPin}.
 	 * @see #getResults()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createResult() instead.
      */
     OutputPin createResult(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.OutputPin} and appends it to the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='input' eType='org.eclipse.uml2.InputPin' containment='false'" 
+	 * @return The new {@link org.eclipse.uml2.OutputPin}.
+	 * @see #getResults()
 	 * @generated
-	 */
-	EList getInputs();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='output' eType='org.eclipse.uml2.OutputPin' containment='false'" 
-	 * @generated
-	 */
-	EList getOutputs();
+     */
+    OutputPin createResult();
 
 } // ApplyFunctionAction

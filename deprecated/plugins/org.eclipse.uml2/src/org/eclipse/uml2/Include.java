@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Include.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Include.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +39,7 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Including Case</b></em>' container reference.
@@ -60,7 +58,6 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * @see org.eclipse.uml2.UML2Package#getInclude_IncludingCase()
 	 * @see org.eclipse.uml2.UseCase#getIncludes
 	 * @model opposite="include" required="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getSources=''"
 	 * @generated
 	 */
 	UseCase getIncludingCase();
@@ -74,6 +71,7 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * @generated
 	 */
 	void setIncludingCase(UseCase value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Addition</b></em>' reference.
@@ -90,7 +88,6 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * @see #setAddition(UseCase)
 	 * @see org.eclipse.uml2.UML2Package#getInclude_Addition()
 	 * @model required="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getTargets=''"
 	 * @generated
 	 */
 	UseCase getAddition();
@@ -105,22 +102,5 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 */
 	void setAddition(UseCase value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getSources();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getTargets();
 
 } // Include

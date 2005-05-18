@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommunicationPathImpl.java,v 1.16 2005/04/04 20:11:12 khussey Exp $
+ * $Id: CommunicationPathImpl.java,v 1.17 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -42,7 +42,7 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -484,7 +484,7 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.COMMUNICATION_PATH__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -503,7 +503,7 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 			case UML2Package.COMMUNICATION_PATH__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COMMUNICATION_PATH__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.COMMUNICATION_PATH__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.COMMUNICATION_PATH__NAME_EXPRESSION:
@@ -523,7 +523,7 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 			case UML2Package.COMMUNICATION_PATH__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.COMMUNICATION_PATH__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.COMMUNICATION_PATH__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.COMMUNICATION_PATH__REDEFINITION_CONTEXT:
@@ -568,6 +568,17 @@ public class CommunicationPathImpl extends AssociationImpl implements Communicat
 				return memberEnd != null && !memberEnd.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.COMMUNICATION_PATH__VISIBILITY:
+				return false;
+			case UML2Package.COMMUNICATION_PATH__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //CommunicationPathImpl

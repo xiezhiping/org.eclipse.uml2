@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.7 2005/04/22 15:18:27 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface OpaqueExpression extends ValueSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Body</b></em>' attribute.
@@ -75,6 +75,7 @@ public interface OpaqueExpression extends ValueSpecification{
 	 */
 	void setBody(String value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Language</b></em>' attribute.
 	 * The default value is <code>""</code>.
@@ -105,6 +106,7 @@ public interface OpaqueExpression extends ValueSpecification{
 	 */
 	void setLanguage(String value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -122,6 +124,7 @@ public interface OpaqueExpression extends ValueSpecification{
 	 * @generated
 	 */
 	Parameter getResult();
+
 
 	/**
 	 * Returns the value of the '<em><b>Behavior</b></em>' reference.
@@ -151,5 +154,6 @@ public interface OpaqueExpression extends ValueSpecification{
 	 * @generated
 	 */
 	void setBehavior(Behavior value);
+
 
 } // OpaqueExpression

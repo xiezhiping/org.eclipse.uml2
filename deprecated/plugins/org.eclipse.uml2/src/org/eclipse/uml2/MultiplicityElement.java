@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -50,7 +49,7 @@ public interface MultiplicityElement extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Ordered</b></em>' attribute.
@@ -67,7 +66,7 @@ public interface MultiplicityElement extends Element{
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
 	 * @see #setIsOrdered(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getMultiplicityElement_IsOrdered()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isOrdered();
@@ -81,6 +80,7 @@ public interface MultiplicityElement extends Element{
 	 * @generated
 	 */
 	void setIsOrdered(boolean value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Is Unique</b></em>' attribute.
@@ -97,7 +97,7 @@ public interface MultiplicityElement extends Element{
 	 * @return the value of the '<em>Is Unique</em>' attribute.
 	 * @see #setIsUnique(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getMultiplicityElement_IsUnique()
-	 * @model default="true" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="true" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isUnique();
@@ -111,6 +111,7 @@ public interface MultiplicityElement extends Element{
 	 * @generated
 	 */
 	void setIsUnique(boolean value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Lower</b></em>' attribute.
@@ -131,6 +132,7 @@ public interface MultiplicityElement extends Element{
 	 */
 	int getLower();
 
+
 	/**
 	 * Returns the value of the '<em><b>Upper</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
@@ -150,6 +152,7 @@ public interface MultiplicityElement extends Element{
 	 */
 	int getUpper();
 
+
 	/**
 	 * Returns the value of the '<em><b>Upper Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -165,7 +168,6 @@ public interface MultiplicityElement extends Element{
 	 * @see #setUpperValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getMultiplicityElement_UpperValue()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getUpperValue();
@@ -180,6 +182,7 @@ public interface MultiplicityElement extends Element{
 	 */
 	void setUpperValue(ValueSpecification value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Upper Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -190,7 +193,7 @@ public interface MultiplicityElement extends Element{
 	 * @generated
      */
     ValueSpecification createUpperValue(EClass eClass);
-     
+
 	/**
 	 * Returns the value of the '<em><b>Lower Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -206,7 +209,6 @@ public interface MultiplicityElement extends Element{
 	 * @see #setLowerValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getMultiplicityElement_LowerValue()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getLowerValue();
@@ -221,6 +223,7 @@ public interface MultiplicityElement extends Element{
 	 */
 	void setLowerValue(ValueSpecification value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Lower Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -231,7 +234,7 @@ public interface MultiplicityElement extends Element{
 	 * @generated
      */
     ValueSpecification createLowerValue(EClass eClass);
-     
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -241,8 +244,7 @@ public interface MultiplicityElement extends Element{
 	 * if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.lowerBound(this);'" 
+	 * @model dataType="org.eclipse.uml2.Integer" 
 	 * @generated
 	 */
 	int lowerBound();
@@ -256,8 +258,7 @@ public interface MultiplicityElement extends Element{
 	 * if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.UnlimitedNatural"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.upperBound(this);'" 
+	 * @model dataType="org.eclipse.uml2.UnlimitedNatural" 
 	 * @generated
 	 */
 	int upperBound();
@@ -271,8 +272,7 @@ public interface MultiplicityElement extends Element{
 	 * upperBound() > 1
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.isMultivalued(this);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean isMultivalued();
@@ -288,7 +288,6 @@ public interface MultiplicityElement extends Element{
 	 * </code>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.Boolean" parameters="org.eclipse.uml2.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.includesCardinality(this, C);'" 
 	 * @generated
 	 */
 	boolean includesCardinality(int C);
@@ -302,8 +301,7 @@ public interface MultiplicityElement extends Element{
 	 * (self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound())
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.includesMultiplicity(this, M);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean includesMultiplicity(MultiplicityElement M);
@@ -317,8 +315,7 @@ public interface MultiplicityElement extends Element{
 	 * upperBound()->notEmpty() implies upperBound() > 0
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGt0(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateUpperGt0(DiagnosticChain diagnostics, Map context);
@@ -332,8 +329,7 @@ public interface MultiplicityElement extends Element{
 	 * lowerBound()->notEmpty() implies lowerBound() >= 0
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerGe0(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateLowerGe0(DiagnosticChain diagnostics, Map context);
@@ -347,8 +343,7 @@ public interface MultiplicityElement extends Element{
 	 * (upperBound()->notEmpty() and lowerBound()->notEmpty()) implies upperBound() >= lowerBound()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context);
@@ -362,8 +357,7 @@ public interface MultiplicityElement extends Element{
 	 * lower=lowerBound()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map context);
@@ -377,8 +371,7 @@ public interface MultiplicityElement extends Element{
 	 * upper = upperBound()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map context);
@@ -392,8 +385,7 @@ public interface MultiplicityElement extends Element{
 	 * lowerBound()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.lower(this);'" 
+	 * @model dataType="org.eclipse.uml2.Integer" 
 	 * @generated
 	 */
 	int lower();
@@ -407,20 +399,10 @@ public interface MultiplicityElement extends Element{
 	 * upperBound()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.UnlimitedNatural"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.upper(this);'" 
+	 * @model dataType="org.eclipse.uml2.UnlimitedNatural" 
 	 * @generated
 	 */
 	int upper();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
 
 	// <!-- begin-custom-operations -->
 

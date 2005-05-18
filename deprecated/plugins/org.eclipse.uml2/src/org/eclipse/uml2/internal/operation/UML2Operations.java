@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.19 2005/04/14 17:30:57 khussey Exp $
+ * $Id: UML2Operations.java,v 1.20 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -49,9 +49,6 @@ import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Util;
 import org.osgi.framework.Bundle;
 
-/**
- * The base class for all UML2 operation utility classes.
- */
 class UML2Operations
 		extends UML2Util {
 

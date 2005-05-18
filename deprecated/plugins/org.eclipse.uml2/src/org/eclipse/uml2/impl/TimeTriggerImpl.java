@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,23 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeTriggerImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
+ * $Id: TimeTriggerImpl.java,v 1.10 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.TimeTrigger;
@@ -53,7 +55,7 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isRelative() <em>Is Relative</em>}' attribute.
@@ -122,7 +124,9 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 		if (newIsRelative) eFlags |= IS_RELATIVE_EFLAG; else eFlags &= ~IS_RELATIVE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TIME_TRIGGER__IS_RELATIVE, oldIsRelative, newIsRelative));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,6 +149,7 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TIME_TRIGGER__WHEN, oldWhen, newWhen);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -165,7 +170,9 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TIME_TRIGGER__WHEN, newWhen, newWhen));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -177,30 +184,8 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.TIME_TRIGGER__WHEN, null, newWhen));
 		}
-        setWhen(newWhen);
+		setWhen(newWhen);
 		return newWhen;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getWhen()) {
-				union.add(getWhen());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
 	}
 
 	/**
@@ -445,5 +430,20 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (when != null) {
+			ownedElement.add(when);
+		}
+		return ownedElement;
+	}
+
 
 } //TimeTriggerImpl

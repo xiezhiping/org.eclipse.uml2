@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,26 +8,28 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.21 2005/04/04 20:11:12 khussey Exp $
+ * $Id: NodeImpl.java,v 1.22 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Artifact;
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.CollaborationOccurrence;
@@ -41,10 +43,12 @@ import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
+
+import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,6 +57,7 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.NodeImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NodeImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NodeImpl#getDeployedElements <em>Deployed Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NodeImpl#getNestedNodes <em>Nested Node</em>}</li>
@@ -67,7 +72,7 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
@@ -117,33 +122,46 @@ public class NodeImpl extends ClassImpl implements Node {
 			deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.NODE__DEPLOYMENT, new int[] {UML2Package.NODE__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION);
 		}
 		return deployment;
-
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Deployment getDeployment(String unqualifiedName) {
-    	for (Iterator i = getDeployments().iterator(); i.hasNext(); ) {
-    		Deployment namedDeployment = (Deployment) i.next();
-    		
-    		if (unqualifiedName.equals(namedDeployment.getName())) {
-    			return namedDeployment;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public Deployment getDeployment(String name) {
+		for (Iterator i = getDeployments().iterator(); i.hasNext(); ) {
+			Deployment deployment = (Deployment) i.next();
+			if (name.equals(deployment.getName())) {
+				return deployment;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createDeployment() instead.
+	 */
 	public Deployment createDeployment(EClass eClass) {
 		Deployment newDeployment = (Deployment) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NODE__DEPLOYMENT, null, newDeployment));
+		}
+		getDeployments().add(newDeployment);
+		return newDeployment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deployment createDeployment() {
+		Deployment newDeployment = UML2Factory.eINSTANCE.createDeployment();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.NODE__DEPLOYMENT, null, newDeployment));
 		}
@@ -197,23 +215,21 @@ public class NodeImpl extends ClassImpl implements Node {
 		return deployedElements;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public PackageableElement getDeployedElement(String unqualifiedName) {
-    	for (Iterator i = getDeployedElements().iterator(); i.hasNext(); ) {
-    		PackageableElement namedDeployedElement = (PackageableElement) i.next();
-    		
-    		if (unqualifiedName.equals(namedDeployedElement.getName())) {
-    			return namedDeployedElement;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public PackageableElement getDeployedElement(String name) {
+		for (Iterator i = getDeployedElements().iterator(); i.hasNext(); ) {
+			PackageableElement deployedElement = (PackageableElement) i.next();
+			if (name.equals(deployedElement.getName())) {
+				return deployedElement;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -226,23 +242,22 @@ public class NodeImpl extends ClassImpl implements Node {
 		return nestedNode;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Node getNestedNode(String unqualifiedName) {
-    	for (Iterator i = getNestedNodes().iterator(); i.hasNext(); ) {
-    		Node namedNestedNode = (Node) i.next();
-    		
-    		if (unqualifiedName.equals(namedNestedNode.getName())) {
-    			return namedNestedNode;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Node getNestedNode(String name) {
+		for (Iterator i = getNestedNodes().iterator(); i.hasNext(); ) {
+			Node nestedNode = (Node) i.next();
+			if (name.equals(nestedNode.getName())) {
+				return nestedNode;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -262,19 +277,13 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getDeployments());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	public Node createNestedNode() {
+		Node newNestedNode = UML2Factory.eINSTANCE.createNode();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NODE__NESTED_NODE, null, newNestedNode));
 		}
-
-		return ownedElement;
+		getNestedNodes().add(newNestedNode);
+		return newNestedNode;
 	}
 
 	/**
@@ -287,8 +296,8 @@ public class NodeImpl extends ClassImpl implements Node {
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.NODE__CLIENT_DEPENDENCY, new int[] {UML2Package.NODE__SUBSTITUTION, UML2Package.NODE__IMPLEMENTATION, UML2Package.NODE__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT);
 		}
 		return clientDependency;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -298,6 +307,7 @@ public class NodeImpl extends ClassImpl implements Node {
 	public EList getNestedClassifiers() {
 		return getNestedNodes();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -343,8 +353,6 @@ public class NodeImpl extends ClassImpl implements Node {
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
-				case UML2Package.NODE__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.NODE__DEPLOYMENT:
@@ -356,6 +364,15 @@ public class NodeImpl extends ClassImpl implements Node {
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.NODE__OWNED_STATE_MACHINE:
+				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
+			default :
+				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -851,7 +868,7 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -870,7 +887,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.NODE__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.NODE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.NODE__NAME_EXPRESSION:
@@ -890,7 +907,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.NODE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.NODE__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.NODE__REDEFINITION_CONTEXT:
@@ -924,7 +941,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.NODE__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return !getOwnedBehaviors().isEmpty();
 			case UML2Package.NODE__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.NODE__IMPLEMENTATION:
@@ -932,7 +949,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__OWNED_TRIGGER:
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.NODE__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+				return !getOwnedStateMachines().isEmpty();
 			case UML2Package.NODE__OWNED_ATTRIBUTE:
 				return !getOwnedAttributes().isEmpty();
 			case UML2Package.NODE__PART:
@@ -950,7 +967,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.NODE__NESTED_CLASSIFIER:
-				return false;
+				return !getNestedClassifiers().isEmpty();
 			case UML2Package.NODE__IS_ACTIVE:
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.NODE__OWNED_RECEPTION:
@@ -963,6 +980,22 @@ public class NodeImpl extends ClassImpl implements Node {
 				return nestedNode != null && !nestedNode.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.NODE__VISIBILITY:
+				return false;
+			case UML2Package.NODE__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+			case UML2Package.NODE__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.NODE__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+			case UML2Package.NODE__NESTED_CLASSIFIER:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -996,5 +1029,29 @@ public class NodeImpl extends ClassImpl implements Node {
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (deployment != null) {
+			ownedElement.addAll(deployment);
+		}
+		return ownedElement;
+	}
+
+
+	protected EList getOwnedMembersHelper(EList ownedMember) {
+		super.getOwnedMembersHelper(ownedMember);
+		if (nestedNode != null) {
+			ownedMember.addAll(nestedNode);
+		}
+		return ownedMember;
+	}
+
 
 } //NodeImpl

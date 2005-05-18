@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,23 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.11 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.12 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Manifestation;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.OpaqueExpression;
@@ -35,7 +37,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.internal.util.SupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,6 +46,7 @@ import org.eclipse.uml2.internal.util.SupersetEObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ManifestationImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ManifestationImpl#getUtilizedElement <em>Utilized Element</em>}</li>
  * </ul>
  * </p>
@@ -56,7 +59,7 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getUtilizedElement() <em>Utilized Element</em>}' reference.
@@ -118,15 +121,16 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 * @generated
 	 */
 	public void setUtilizedElement(PackageableElement newUtilizedElement) {
-		if (null != newUtilizedElement && !getSuppliers().contains(newUtilizedElement)) {
+		if (newUtilizedElement != null && !getSuppliers().contains(newUtilizedElement)) {
 			getSuppliers().add(newUtilizedElement);
 		}
 		PackageableElement oldUtilizedElement = utilizedElement;
 		utilizedElement = newUtilizedElement;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MANIFESTATION__UTILIZED_ELEMENT, oldUtilizedElement, newUtilizedElement));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MANIFESTATION__UTILIZED_ELEMENT, oldUtilizedElement, utilizedElement));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,30 +142,8 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 			supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.MANIFESTATION__SUPPLIER, new int[] {UML2Package.MANIFESTATION__UTILIZED_ELEMENT});
 		}
 		return supplier;
-
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getTargets() {
-		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-
-		if (null == target) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getTargets());
-			if (null != getUtilizedElement()) {
-				union.add(getUtilizedElement());
-			}
-
-			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
-		}
-
-		return target;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -431,7 +413,7 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.MANIFESTATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -450,7 +432,7 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 			case UML2Package.MANIFESTATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.MANIFESTATION__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.MANIFESTATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.MANIFESTATION__NAME_EXPRESSION:
@@ -460,7 +442,7 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 			case UML2Package.MANIFESTATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.MANIFESTATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.MANIFESTATION__RELATED_ELEMENT:
 				return !getRelatedElements().isEmpty();
 			case UML2Package.MANIFESTATION__SOURCE:
@@ -478,5 +460,30 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.MANIFESTATION__VISIBILITY:
+				return false;
+			case UML2Package.MANIFESTATION__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getTargetsHelper(EList target) {
+		super.getTargetsHelper(target);
+		if (utilizedElement != null) {
+			target.add(utilizedElement);
+		}
+		return target;
+	}
+
 
 } //ManifestationImpl

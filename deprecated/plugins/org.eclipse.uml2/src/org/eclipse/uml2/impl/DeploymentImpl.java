@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,27 +8,28 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.11 2005/04/04 20:11:12 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.12 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.DeployedArtifact;
 import org.eclipse.uml2.Deployment;
 import org.eclipse.uml2.DeploymentSpecification;
@@ -37,11 +38,13 @@ import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.util.SubsetEObjectResolvingEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectResolvingEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
+
+import org.eclipse.uml2.common.util.SubsetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,6 +53,8 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getSuppliers <em>Supplier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getDeployedArtifacts <em>Deployed Artifact</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getConfigurations <em>Configuration</em>}</li>
@@ -64,7 +69,7 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getDeployedArtifacts() <em>Deployed Artifact</em>}' reference list.
@@ -114,36 +119,32 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			deployedArtifact = new SubsetEObjectResolvingEList(DeployedArtifact.class, this, UML2Package.DEPLOYMENT__DEPLOYED_ARTIFACT, new int[] {UML2Package.DEPLOYMENT__SUPPLIER});
 		}
 		return deployedArtifact;
-
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public DeployedArtifact getDeployedArtifact(String unqualifiedName) {
-    	for (Iterator i = getDeployedArtifacts().iterator(); i.hasNext(); ) {
-    		DeployedArtifact namedDeployedArtifact = (DeployedArtifact) i.next();
-    		
-    		if (unqualifiedName.equals(namedDeployedArtifact.getName())) {
-    			return namedDeployedArtifact;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public DeployedArtifact getDeployedArtifact(String name) {
+		for (Iterator i = getDeployedArtifacts().iterator(); i.hasNext(); ) {
+			DeployedArtifact deployedArtifact = (DeployedArtifact) i.next();
+			if (name.equals(deployedArtifact.getName())) {
+				return deployedArtifact;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public DeploymentTarget getLocation() {
-		if (eContainerFeatureID != UML2Package.DEPLOYMENT__LOCATION) {
-			return null;
-		}
-		return (DeploymentTarget) eContainer;
+		if (eContainerFeatureID != UML2Package.DEPLOYMENT__LOCATION) return null;
+		return (DeploymentTarget)eContainer;
 	}
 
 	/**
@@ -152,29 +153,25 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 * @generated
 	 */
 	public void setLocation(DeploymentTarget newLocation) {
-		if (null != newLocation && !getClients().contains(newLocation)) {
+		if (newLocation != null && !getClients().contains(newLocation)) {
 			getClients().add(newLocation);
 		}
-		EObject oldLocation = eContainer;
-		if (eContainer != newLocation || (eContainerFeatureID != UML2Package.DEPLOYMENT__LOCATION && null != newLocation)) {
-			if (EcoreUtil.isAncestor(this, newLocation)) {
+		if (newLocation != eContainer || (eContainerFeatureID != UML2Package.DEPLOYMENT__LOCATION && newLocation != null)) {
+			if (EcoreUtil.isAncestor(this, newLocation))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newLocation) {
-				msgs = ((InternalEObject) newLocation).eInverseAdd(this, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT, DeploymentTarget.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newLocation, UML2Package.DEPLOYMENT__LOCATION, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DEPLOYMENT__LOCATION, newLocation, newLocation));
+			if (newLocation != null)
+				msgs = ((InternalEObject)newLocation).eInverseAdd(this, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT, DeploymentTarget.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newLocation, UML2Package.DEPLOYMENT__LOCATION, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DEPLOYMENT__LOCATION, newLocation, newLocation));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -188,30 +185,44 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 		return configuration;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public DeploymentSpecification getConfiguration(String unqualifiedName) {
-    	for (Iterator i = getConfigurations().iterator(); i.hasNext(); ) {
-    		DeploymentSpecification namedConfiguration = (DeploymentSpecification) i.next();
-    		
-    		if (unqualifiedName.equals(namedConfiguration.getName())) {
-    			return namedConfiguration;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public DeploymentSpecification getConfiguration(String name) {
+		for (Iterator i = getConfigurations().iterator(); i.hasNext(); ) {
+			DeploymentSpecification configuration = (DeploymentSpecification) i.next();
+			if (name.equals(configuration.getName())) {
+				return configuration;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createConfiguration() instead.
+	 */
 	public DeploymentSpecification createConfiguration(EClass eClass) {
 		DeploymentSpecification newConfiguration = (DeploymentSpecification) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.DEPLOYMENT__CONFIGURATION, null, newConfiguration));
+		}
+		getConfigurations().add(newConfiguration);
+		return newConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeploymentSpecification createConfiguration() {
+		DeploymentSpecification newConfiguration = UML2Factory.eINSTANCE.createDeploymentSpecification();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.DEPLOYMENT__CONFIGURATION, null, newConfiguration));
 		}
@@ -229,50 +240,8 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.DEPLOYMENT__SUPPLIER, new int[] {UML2Package.DEPLOYMENT__DEPLOYED_ARTIFACT});
 		}
 		return supplier;
-
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getTargets() {
-		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-
-		if (null == target) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getTargets());
-			union.addAll(getDeployedArtifacts());
-
-			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
-		}
-
-		return target;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getSources() {
-		EList source = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
-
-		if (null == source) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getSources());
-			if (null != getLocation()) {
-				union.add(getLocation());
-			}
-
-			source = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source);
-		}
-
-		return source;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -284,28 +253,8 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.DEPLOYMENT__CLIENT, new int[] {UML2Package.DEPLOYMENT__LOCATION}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
 		return client;
-
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getConfigurations());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -592,7 +541,7 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.DEPLOYMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -611,7 +560,7 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			case UML2Package.DEPLOYMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEPLOYMENT__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.DEPLOYMENT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEPLOYMENT__NAME_EXPRESSION:
@@ -621,7 +570,7 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			case UML2Package.DEPLOYMENT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.DEPLOYMENT__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.DEPLOYMENT__RELATED_ELEMENT:
 				return !getRelatedElements().isEmpty();
 			case UML2Package.DEPLOYMENT__SOURCE:
@@ -641,5 +590,61 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.DEPLOYMENT__VISIBILITY:
+				return false;
+			case UML2Package.DEPLOYMENT__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getTargetsHelper(EList target) {
+		super.getTargetsHelper(target);
+		if (deployedArtifact != null) {
+			for (Iterator i = ((InternalEList) deployedArtifact).basicIterator(); i.hasNext(); ) {
+				target.add(i.next());
+			}
+		}
+		return target;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getSourcesHelper(EList source) {
+		super.getSourcesHelper(source);
+		DeploymentTarget location = getLocation();
+		if (location != null) {
+			source.add(location);
+		}
+		return source;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (configuration != null) {
+			ownedElement.addAll(configuration);
+		}
+		return ownedElement;
+	}
+
 
 } //DeploymentImpl

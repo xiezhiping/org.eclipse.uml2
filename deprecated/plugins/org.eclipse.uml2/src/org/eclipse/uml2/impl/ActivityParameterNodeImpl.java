@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.8 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,11 +16,15 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.ActivityParameterNode;
 import org.eclipse.uml2.Behavior;
@@ -48,12 +52,13 @@ import org.eclipse.uml2.VisibilityKind;
  * @generated
  */
 public class ActivityParameterNodeImpl extends ObjectNodeImpl implements ActivityParameterNode {
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getParameter() <em>Parameter</em>}' reference.
@@ -119,7 +124,9 @@ public class ActivityParameterNodeImpl extends ObjectNodeImpl implements Activit
 		parameter = newParameter;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_PARAMETER_NODE__PARAMETER, oldParameter, parameter));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -521,5 +528,6 @@ public class ActivityParameterNodeImpl extends ObjectNodeImpl implements Activit
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //ActivityParameterNodeImpl

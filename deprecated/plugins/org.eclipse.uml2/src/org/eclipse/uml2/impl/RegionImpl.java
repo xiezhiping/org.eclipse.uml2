@@ -8,32 +8,35 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.11 2005/04/04 20:11:12 khussey Exp $
+ * $Id: RegionImpl.java,v 1.12 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.RedefinableElement;
@@ -43,9 +46,12 @@ import org.eclipse.uml2.StateMachine;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Transition;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.Vertex;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,7 +78,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
@@ -142,23 +148,21 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		return UML2Package.eINSTANCE.getRegion();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getRedefinitionContext(String unqualifiedName) {
-    	for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
-    		Classifier namedRedefinitionContext = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedRedefinitionContext.getName())) {
-    			return namedRedefinitionContext;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getRedefinitionContext(String name) {
+		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
+			Classifier redefinitionContext = (Classifier) i.next();
+			if (name.equals(redefinitionContext.getName())) {
+				return redefinitionContext;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -178,7 +182,9 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		if (newIsLeaf) eFlags |= IS_LEAF_EFLAG; else eFlags &= ~IS_LEAF_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__IS_LEAF, oldIsLeaf, newIsLeaf));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -192,23 +198,22 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		return subvertex;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Vertex getSubvertex(String unqualifiedName) {
-    	for (Iterator i = getSubvertices().iterator(); i.hasNext(); ) {
-    		Vertex namedSubvertex = (Vertex) i.next();
-    		
-    		if (unqualifiedName.equals(namedSubvertex.getName())) {
-    			return namedSubvertex;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Vertex getSubvertex(String name) {
+		for (Iterator i = getSubvertices().iterator(); i.hasNext(); ) {
+			Vertex subvertex = (Vertex) i.next();
+			if (name.equals(subvertex.getName())) {
+				return subvertex;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -235,23 +240,22 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		return transition;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Transition getTransition(String unqualifiedName) {
-    	for (Iterator i = getTransitions().iterator(); i.hasNext(); ) {
-    		Transition namedTransition = (Transition) i.next();
-    		
-    		if (unqualifiedName.equals(namedTransition.getName())) {
-    			return namedTransition;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Transition getTransition(String name) {
+		for (Iterator i = getTransitions().iterator(); i.hasNext(); ) {
+			Transition transition = (Transition) i.next();
+			if (name.equals(transition.getName())) {
+				return transition;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -259,6 +263,20 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 */
 	public Transition createTransition(EClass eClass) {
 		Transition newTransition = (Transition) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.REGION__TRANSITION, null, newTransition));
+		}
+		getTransitions().add(newTransition);
+		return newTransition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition createTransition() {
+		Transition newTransition = UML2Factory.eINSTANCE.createTransition();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.REGION__TRANSITION, null, newTransition));
 		}
@@ -295,7 +313,9 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__STATE_MACHINE, newStateMachine, newStateMachine));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -326,7 +346,9 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__STATE, newState, newState));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -364,7 +386,9 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		extendedRegion = newExtendedRegion;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__EXTENDED_REGION, oldExtendedRegion, extendedRegion));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -372,7 +396,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
+		return RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
 	/**
@@ -381,7 +405,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
+		return RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
 	}
 
 	/**
@@ -390,7 +414,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isConsistentWith(this, redefinee);
+		return RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
 
 	/**
@@ -399,7 +423,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 */
 	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
+		return RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
 	}
 
 	/**
@@ -454,25 +478,20 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getSubvertices());
-			union.addAll(getTransitions());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+    public RedefinableElement getRedefinedElement(String name) {
+		for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
+			RedefinableElement redefinedElement = (RedefinableElement) i.next();
+			if (name.equals(redefinedElement.getName())) {
+				return redefinedElement;
+			}
 		}
-
-		return ownedElement;
+		return null;
 	}
 
 	/**
@@ -480,15 +499,18 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Namespace getNamespace() {
-		if (null != getStateMachine()) {
-			return (Namespace) getStateMachine();
+	public Namespace basicGetNamespace() {
+		StateMachine stateMachine = getStateMachine();			
+		if (stateMachine != null) {
+			return stateMachine;
 		}
-		if (null != getState()) {
-			return (Namespace) getState();
+		State state = getState();			
+		if (state != null) {
+			return state;
 		}
-		return super.getNamespace();
+		return super.basicGetNamespace();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -890,5 +912,23 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (subvertex != null) {
+			ownedElement.addAll(subvertex);
+		}
+		if (transition != null) {
+			ownedElement.addAll(transition);
+		}
+		return ownedElement;
+	}
+
 
 } //RegionImpl

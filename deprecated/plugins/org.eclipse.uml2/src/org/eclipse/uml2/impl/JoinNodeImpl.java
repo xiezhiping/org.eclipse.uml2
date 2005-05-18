@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,23 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.JoinNode;
 import org.eclipse.uml2.StringExpression;
@@ -54,7 +56,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isCombineDuplicate() <em>Is Combine Duplicate</em>}' attribute.
@@ -124,7 +126,9 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 		if (newIsCombineDuplicate) eFlags |= IS_COMBINE_DUPLICATE_EFLAG; else eFlags &= ~IS_COMBINE_DUPLICATE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.JOIN_NODE__IS_COMBINE_DUPLICATE, oldIsCombineDuplicate, newIsCombineDuplicate));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,6 +151,7 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.JOIN_NODE__JOIN_SPEC, oldJoinSpec, newJoinSpec);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -167,7 +172,9 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.JOIN_NODE__JOIN_SPEC, newJoinSpec, newJoinSpec));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -179,30 +186,8 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.JOIN_NODE__JOIN_SPEC, null, newJoinSpec));
 		}
-        setJoinSpec(newJoinSpec);
+		setJoinSpec(newJoinSpec);
 		return newJoinSpec;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getJoinSpec()) {
-				union.add(getJoinSpec());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
 	}
 
 	/**
@@ -576,5 +561,20 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (joinSpec != null) {
+			ownedElement.add(joinSpec);
+		}
+		return ownedElement;
+	}
+
 
 } //JoinNodeImpl

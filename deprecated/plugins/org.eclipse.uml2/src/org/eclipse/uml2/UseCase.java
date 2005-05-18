@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCase.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
+ * $Id: UseCase.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -45,7 +45,7 @@ public interface UseCase extends BehavioredClassifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Include</b></em>' containment reference list.
@@ -61,17 +61,17 @@ public interface UseCase extends BehavioredClassifier{
 	 * @see org.eclipse.uml2.UML2Package#getUseCase_Include()
 	 * @see org.eclipse.uml2.Include#getIncludingCase
 	 * @model type="org.eclipse.uml2.Include" opposite="includingCase" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getIncludes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Include} with the specified name from the '<em><b>Include</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Include} with the specified '<em><b>Name</b></em>' from the '<em><b>Include</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Include} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Include} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Include} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Include} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getIncludes()
 	 * @generated
      */
@@ -84,9 +84,20 @@ public interface UseCase extends BehavioredClassifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Include} to create.
 	 * @return The new {@link org.eclipse.uml2.Include}.
 	 * @see #getIncludes()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createInclude() instead.
      */
     Include createInclude(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Include} and appends it to the '<em><b>Include</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Include}.
+	 * @see #getIncludes()
+	 * @generated
+     */
+    Include createInclude();
 
 	/**
 	 * Returns the value of the '<em><b>Extend</b></em>' containment reference list.
@@ -102,17 +113,17 @@ public interface UseCase extends BehavioredClassifier{
 	 * @see org.eclipse.uml2.UML2Package#getUseCase_Extend()
 	 * @see org.eclipse.uml2.Extend#getExtension
 	 * @model type="org.eclipse.uml2.Extend" opposite="extension" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getExtends();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Extend} with the specified name from the '<em><b>Extend</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Extend} with the specified '<em><b>Name</b></em>' from the '<em><b>Extend</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Extend} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Extend} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Extend} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Extend} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExtends()
 	 * @generated
      */
@@ -125,9 +136,20 @@ public interface UseCase extends BehavioredClassifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Extend} to create.
 	 * @return The new {@link org.eclipse.uml2.Extend}.
 	 * @see #getExtends()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createExtend() instead.
      */
     Extend createExtend(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Extend} and appends it to the '<em><b>Extend</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Extend}.
+	 * @see #getExtends()
+	 * @generated
+     */
+    Extend createExtend();
 
 	/**
 	 * Returns the value of the '<em><b>Extension Point</b></em>' containment reference list.
@@ -143,17 +165,17 @@ public interface UseCase extends BehavioredClassifier{
 	 * @see org.eclipse.uml2.UML2Package#getUseCase_ExtensionPoint()
 	 * @see org.eclipse.uml2.ExtensionPoint#getUseCase
 	 * @model type="org.eclipse.uml2.ExtensionPoint" opposite="useCase" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getExtensionPoints();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ExtensionPoint} with the specified name from the '<em><b>Extension Point</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.ExtensionPoint} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ExtensionPoint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ExtensionPoint} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExtensionPoint} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ExtensionPoint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExtensionPoints()
 	 * @generated
      */
@@ -166,9 +188,20 @@ public interface UseCase extends BehavioredClassifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ExtensionPoint} to create.
 	 * @return The new {@link org.eclipse.uml2.ExtensionPoint}.
 	 * @see #getExtensionPoints()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createExtensionPoint() instead.
      */
     ExtensionPoint createExtensionPoint(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.ExtensionPoint} and appends it to the '<em><b>Extension Point</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.ExtensionPoint}.
+	 * @see #getExtensionPoints()
+	 * @generated
+     */
+    ExtensionPoint createExtensionPoint();
 
 	/**
 	 * Returns the value of the '<em><b>Subject</b></em>' reference list.
@@ -188,24 +221,16 @@ public interface UseCase extends BehavioredClassifier{
 	 */
 	EList getSubjects();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified name from the '<em><b>Subject</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Subject</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubjects()
 	 * @generated
      */
     Classifier getSubject(String unqualifiedName);
       
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
-
 } // UseCase

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeCommand.java,v 1.8 2005/04/18 20:20:18 khussey Exp $
+ * $Id: ChangeCommand.java,v 1.9 2005/05/18 16:40:46 khussey Exp $
  */
 package org.eclipse.uml2.edit.util;
 
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 /**
- * 
+ * @deprecated Use org.eclipse.uml2.common.edit.command.ChangeCommand instead.
  */
 public class ChangeCommand
 		extends AbstractCommand {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,23 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.10 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.CallOperationAction;
 import org.eclipse.uml2.InputPin;
@@ -33,6 +35,7 @@ import org.eclipse.uml2.Port;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -56,7 +59,7 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' reference.
@@ -132,7 +135,9 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 		operation = newOperation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CALL_OPERATION_ACTION__OPERATION, oldOperation, operation));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,6 +160,7 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CALL_OPERATION_ACTION__TARGET, oldTarget, newTarget);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -175,7 +181,9 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CALL_OPERATION_ACTION__TARGET, newTarget, newTarget));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -187,7 +195,7 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.CALL_OPERATION_ACTION__TARGET, null, newTarget));
 		}
-        setTarget(newTarget);
+		setTarget(newTarget);
 		return newTarget;
 	}
 
@@ -196,21 +204,13 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInputs() {
-		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
-
-		if (null == input) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getInputs());
-			if (null != getTarget()) {
-				union.add(getTarget());
-			}
-
-			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
+	public InputPin createTarget() {
+		InputPin newTarget = UML2Factory.eINSTANCE.createInputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CALL_OPERATION_ACTION__TARGET, null, newTarget));
 		}
-
-		return input;
+		setTarget(newTarget);
+		return newTarget;
 	}
 
 	/**
@@ -681,5 +681,20 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getInputsHelper(EList input) {
+		super.getInputsHelper(input);
+		if (target != null) {
+			input.add(target);
+		}
+		return input;
+	}
+
 
 } //CallOperationActionImpl

@@ -8,36 +8,42 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.14 2005/04/04 20:11:13 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.15 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Dependency;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+
 import org.eclipse.uml2.internal.operation.NamedElementOperations;
 
 /**
@@ -63,7 +69,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -168,11 +174,14 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public void setName(String newName) {
+		newName = newName == null ? NAME_EDEFAULT : newName;
 		String oldName = name;
-		name = newName == null ? NAME_EDEFAULT : newName;
+		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.NAMED_ELEMENT__NAME, oldName, name));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -213,7 +222,9 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.NAMED_ELEMENT__VISIBILITY, oldVisibility, visibility));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -221,29 +232,28 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		if (null == clientDependency) {
+		if (clientDependency == null) {
 			clientDependency = new EObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY, UML2Package.DEPENDENCY__CLIENT);
 		}
 		return clientDependency;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Dependency getClientDependency(String unqualifiedName) {
-    	for (Iterator i = getClientDependencies().iterator(); i.hasNext(); ) {
-    		Dependency namedClientDependency = (Dependency) i.next();
-    		
-    		if (unqualifiedName.equals(namedClientDependency.getName())) {
-    			return namedClientDependency;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Dependency getClientDependency(String name) {
+		for (Iterator i = getClientDependencies().iterator(); i.hasNext(); ) {
+			Dependency clientDependency = (Dependency) i.next();
+			if (name.equals(clientDependency.getName())) {
+				return clientDependency;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -265,6 +275,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.NAMED_ELEMENT__NAME_EXPRESSION, oldNameExpression, newNameExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -285,6 +296,23 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.NAMED_ELEMENT__NAME_EXPRESSION, newNameExpression, newNameExpression));
+
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createNameExpression() instead.
+	 */
+	public StringExpression createNameExpression(EClass eClass) {
+		StringExpression newNameExpression = (StringExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NAMED_ELEMENT__NAME_EXPRESSION, null, newNameExpression));
+		}
+		setNameExpression(newNameExpression);
+		return newNameExpression;
 	}
 
 	/**
@@ -292,12 +320,12 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringExpression createNameExpression(EClass eClass) {
-		StringExpression newNameExpression = (StringExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
+	public StringExpression createNameExpression() {
+		StringExpression newNameExpression = UML2Factory.eINSTANCE.createStringExpression();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.NAMED_ELEMENT__NAME_EXPRESSION, null, newNameExpression));
 		}
-        setNameExpression(newNameExpression);
+		setNameExpression(newNameExpression);
 		return newNameExpression;
 	}
 
@@ -307,7 +335,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public boolean validateNoName(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.NamedElementOperations.validateNoName(this, diagnostics, context);
+		return NamedElementOperations.validateNoName(this, diagnostics, context);
 	}
 
 	/**
@@ -316,7 +344,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public boolean validateQualifiedName(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.NamedElementOperations.validateQualifiedName(this, diagnostics, context);
+		return NamedElementOperations.validateQualifiedName(this, diagnostics, context);
 	}
 
 	/**
@@ -325,19 +353,15 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public List allNamespaces() {
-		try {
-			java.lang.reflect.Method method = getClass().getMethod("allNamespaces", null); //$NON-NLS-1$
-			List result = (List) getCacheAdapter().get(this, method);
-		
-			if (null == result) {
-				result = java.util.Collections.unmodifiableList(org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this));
-				getCacheAdapter().put(this, method, result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			List result = (List) cache.get(this, UML2Package.eINSTANCE.getNamedElement().getEOperations().get(2));
+			if (result == null) {
+				cache.put(this, UML2Package.eINSTANCE.getNamedElement().getEOperations().get(2), result = NamedElementOperations.allNamespaces(this));
 			}
-		
 			return result;
-		} catch (Exception e) {
-			return org.eclipse.uml2.internal.operation.NamedElementOperations.allNamespaces(this);
 		}
+		return NamedElementOperations.allNamespaces(this);
 	}
 
 	/**
@@ -346,7 +370,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public boolean isDistinguishableFrom(NamedElement n, Namespace ns) {
-		return org.eclipse.uml2.internal.operation.NamedElementOperations.isDistinguishableFrom(this, n, ns);
+		return NamedElementOperations.isDistinguishableFrom(this, n, ns);
 	}
 
 	/**
@@ -355,7 +379,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public String separator() {
-		return org.eclipse.uml2.internal.operation.NamedElementOperations.separator(this);
+		return NamedElementOperations.separator(this);
 	}
 
 	/**
@@ -364,7 +388,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public String qualifiedName() {
-		return org.eclipse.uml2.internal.operation.NamedElementOperations.qualifiedName(this);
+		return NamedElementOperations.qualifiedName(this);
 	}
 
 	/**
@@ -373,7 +397,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.NamedElementOperations.validateVisibilityNeedsOwnership(this, diagnostics, context);
+		return NamedElementOperations.validateVisibilityNeedsOwnership(this, diagnostics, context);
 	}
 
 	/**
@@ -381,13 +405,11 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Namespace getNamespaceGen() {
-		return null;
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace == null ? null : (Namespace)eResolveProxy((InternalEObject)namespace);
 	}
 
-	public Namespace getNamespace() {
-		return Namespace.class.isInstance(eContainer) ? (Namespace) eContainer : null;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -395,32 +417,21 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getNamespace()) {
-			return (Element) getNamespace();
+		Namespace namespace = basicGetNamespace();			
+		if (namespace != null) {
+			return namespace;
 		}
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getNameExpression()) {
-				union.add(getNameExpression());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
+	public Namespace basicGetNamespace() {
+		return eContainer instanceof Namespace ? (Namespace) eContainer : null;
 	}
 
 	/**
@@ -634,6 +645,21 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (nameExpression != null) {
+			ownedElement.add(nameExpression);
+		}
+		return ownedElement;
+	}
+
 
 	// <!-- begin-custom-operations -->
 

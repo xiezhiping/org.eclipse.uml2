@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.3 2005/03/15 18:44:46 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.4 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -20,15 +20,14 @@ import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.UML2Package;
 
 /**
- * A static utility class that provides operations related to parameters.
+ * A static utility class that provides operations related to '<em><b>Parameter</b></em>'
+ * model objects.
  */
 public final class ParameterOperations
-	extends UML2Operations {
+		extends UML2Operations {
 
-	/**
-	 * Constructs a new Parameter Operations. This constructor should never be
-	 * called because this is a static utility class.
-	 */
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
 	private ParameterOperations() {
 		super();
 	}
@@ -50,9 +49,9 @@ public final class ParameterOperations
 
 		((LiteralBoolean) (LiteralBoolean.class.isInstance(parameter
 			.getDefaultValue())
-			? parameter.getDefaultValue() : parameter
-				.createDefaultValue(UML2Package.eINSTANCE.getLiteralBoolean())))
-			.setValue(value);
+			? parameter.getDefaultValue()
+			: parameter.createDefaultValue(UML2Package.eINSTANCE
+				.getLiteralBoolean()))).setValue(value);
 	}
 
 	/**
@@ -72,9 +71,9 @@ public final class ParameterOperations
 
 		((LiteralInteger) (LiteralInteger.class.isInstance(parameter
 			.getDefaultValue())
-			? parameter.getDefaultValue() : parameter
-				.createDefaultValue(UML2Package.eINSTANCE.getLiteralInteger())))
-			.setValue(value);
+			? parameter.getDefaultValue()
+			: parameter.createDefaultValue(UML2Package.eINSTANCE
+				.getLiteralInteger()))).setValue(value);
 	}
 
 	/**
@@ -94,9 +93,9 @@ public final class ParameterOperations
 
 		((LiteralString) (LiteralString.class.isInstance(parameter
 			.getDefaultValue())
-			? parameter.getDefaultValue() : parameter
-				.createDefaultValue(UML2Package.eINSTANCE.getLiteralString())))
-			.setValue(value);
+			? parameter.getDefaultValue()
+			: parameter.createDefaultValue(UML2Package.eINSTANCE
+				.getLiteralString()))).setValue(value);
 	}
 
 	/**
@@ -116,14 +115,15 @@ public final class ParameterOperations
 
 		((LiteralUnlimitedNatural) (LiteralUnlimitedNatural.class
 			.isInstance(parameter.getDefaultValue())
-			? parameter.getDefaultValue() : parameter
-				.createDefaultValue(UML2Package.eINSTANCE
-					.getLiteralUnlimitedNatural()))).setValue(value);
+			? parameter.getDefaultValue()
+			: parameter.createDefaultValue(UML2Package.eINSTANCE
+				.getLiteralUnlimitedNatural()))).setValue(value);
 	}
 
 	public static String getDefault(Parameter parameter) {
 		return null == parameter.getDefaultValue()
-			? EMPTY_STRING : parameter.getDefaultValue().stringValue();
+			? EMPTY_STRING
+			: parameter.getDefaultValue().stringValue();
 	}
 
-}
+} // ParameterOperations

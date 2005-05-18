@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Realization.java,v 1.5 2005/04/04 20:11:16 khussey Exp $
+ * $Id: Realization.java,v 1.6 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +39,7 @@ public interface Realization extends Abstraction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Abstraction</b></em>' container reference.
@@ -56,8 +54,7 @@ public interface Realization extends Abstraction{
 	 * @see #setAbstraction(Component)
 	 * @see org.eclipse.uml2.UML2Package#getRealization_Abstraction()
 	 * @see org.eclipse.uml2.Component#getRealizations
-	 * @model opposite="realization" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getSources='' org.eclipse.uml2.Element#getOwner='' org.eclipse.uml2.Dependency#getClients=''"
+	 * @model opposite="realization"
 	 * @generated
 	 */
 	Component getAbstraction();
@@ -72,6 +69,7 @@ public interface Realization extends Abstraction{
 	 */
 	void setAbstraction(Component value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Realizing Classifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -83,8 +81,7 @@ public interface Realization extends Abstraction{
 	 * @return the value of the '<em>Realizing Classifier</em>' reference.
 	 * @see #setRealizingClassifier(Classifier)
 	 * @see org.eclipse.uml2.UML2Package#getRealization_RealizingClassifier()
-	 * @model required="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Dependency#getSuppliers='' org.eclipse.uml2.DirectedRelationship#getTargets=''"
+	 * @model required="true"
 	 * @generated
 	 */
 	Classifier getRealizingClassifier();
@@ -99,49 +96,5 @@ public interface Realization extends Abstraction{
 	 */
 	void setRealizingClassifier(Classifier value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getSources();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='client' eOpposite='clientDependency' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getClients();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='false' name='supplier' eType='org.eclipse.uml2.NamedElement' containment='false'" 
-	 * @generated
-	 */
-	EList getSuppliers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getTargets();
 
 } // Realization

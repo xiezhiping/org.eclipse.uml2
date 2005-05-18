@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectAction.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: ReclassifyObjectAction.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -45,7 +45,7 @@ public interface ReclassifyObjectAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Replace All</b></em>' attribute.
@@ -77,6 +77,7 @@ public interface ReclassifyObjectAction extends Action{
 	 */
 	void setIsReplaceAll(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Old Classifier</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
@@ -96,12 +97,13 @@ public interface ReclassifyObjectAction extends Action{
 	 */
 	EList getOldClassifiers();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified name from the '<em><b>Old Classifier</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Old Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOldClassifiers()
 	 * @generated
      */
@@ -126,12 +128,13 @@ public interface ReclassifyObjectAction extends Action{
 	 */
 	EList getNewClassifiers();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified name from the '<em><b>New Classifier</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>New Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNewClassifiers()
 	 * @generated
      */
@@ -152,7 +155,6 @@ public interface ReclassifyObjectAction extends Action{
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReclassifyObjectAction_Object()
 	 * @model containment="true" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Action#getInputs=''"
 	 * @generated
 	 */
 	InputPin getObject();
@@ -167,6 +169,7 @@ public interface ReclassifyObjectAction extends Action{
 	 */
 	void setObject(InputPin value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -177,14 +180,15 @@ public interface ReclassifyObjectAction extends Action{
 	 * @generated
      */
     InputPin createObject(EClass eClass);
-     
-	/**
+
+    /**
+     * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='input' eType='org.eclipse.uml2.InputPin' containment='false'" 
+	 * @return The new {@link org.eclipse.uml2.InputPin}.
+	 * @see #getObject()
 	 * @generated
-	 */
-	EList getInputs();
+     */
+    InputPin createObject();
 
 } // ReclassifyObjectAction

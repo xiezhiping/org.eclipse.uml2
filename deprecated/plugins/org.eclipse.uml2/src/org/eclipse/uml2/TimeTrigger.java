@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeTrigger.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
+ * $Id: TimeTrigger.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -43,7 +41,7 @@ public interface TimeTrigger extends Trigger{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Relative</b></em>' attribute.
@@ -74,6 +72,7 @@ public interface TimeTrigger extends Trigger{
 	 */
 	void setIsRelative(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>When</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -89,7 +88,6 @@ public interface TimeTrigger extends Trigger{
 	 * @see #setWhen(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getTimeTrigger_When()
 	 * @model containment="true" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getWhen();
@@ -104,6 +102,7 @@ public interface TimeTrigger extends Trigger{
 	 */
 	void setWhen(ValueSpecification value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>When</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -114,14 +113,5 @@ public interface TimeTrigger extends Trigger{
 	 * @generated
      */
     ValueSpecification createWhen(EClass eClass);
-     
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
 
 } // TimeTrigger

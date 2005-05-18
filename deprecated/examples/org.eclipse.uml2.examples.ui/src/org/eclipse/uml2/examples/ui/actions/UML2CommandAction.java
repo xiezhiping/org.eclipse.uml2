@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2CommandAction.java,v 1.4 2005/04/06 19:59:55 khussey Exp $
+ * $Id: UML2CommandAction.java,v 1.5 2005/05/18 16:43:51 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -18,8 +18,8 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 import org.eclipse.uml2.presentation.UML2Editor;
-import org.eclipse.uml2.provider.IItemQualifiedTextProvider;
 
 /**
  * 

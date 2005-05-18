@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.1 2005/04/14 17:30:57 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.2 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -18,15 +18,14 @@ import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.UML2Package;
 
 /**
- * A static utility class that provides operations related to components.
+ * A static utility class that provides operations related to '<em><b>Component</b></em>'
+ * model objects.
  */
 public final class ComponentOperations
 		extends UML2Operations {
 
-	/**
-	 * Constructs a new Component Operations. This constructor should never be
-	 * called because this is a static utility class.
-	 */
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
 	private ComponentOperations() {
 		super();
 	}
@@ -150,4 +149,4 @@ public final class ComponentOperations
 		return ownedPrimitiveType;
 	}
 
-}
+} // ComponentOperations

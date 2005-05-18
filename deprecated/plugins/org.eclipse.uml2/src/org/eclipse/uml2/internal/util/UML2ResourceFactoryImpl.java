@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ResourceFactoryImpl.java,v 1.5 2005/05/17 19:01:14 khussey Exp $
+ * $Id: UML2ResourceFactoryImpl.java,v 1.6 2005/05/18 16:38:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -33,7 +33,7 @@ public class UML2ResourceFactoryImpl extends ResourceFactoryImpl implements UML2
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2004 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Creates an instance of the resource factory.
@@ -52,14 +52,13 @@ public class UML2ResourceFactoryImpl extends ResourceFactoryImpl implements UML2
 	 * @generated
 	 */
 	public Resource createResourceGen(URI uri) {
-		Resource result = new UML2ResourceImpl(uri);
+		UML2Resource result = new UML2ResourceImpl(uri);
+		result.setEncoding(UML2Resource.DEFAULT_ENCODING);
 		return result;
 	}
 
 	public Resource createResource(URI uri) {
-		XMIResource resource = (XMIResource) createResourceGen(uri);
-
-		resource.setEncoding(UML2Resource.DEFAULT_ENCODING);
+		UML2Resource resource = (UML2Resource) createResourceGen(uri);
 
 		resource.getDefaultLoadOptions().put(
 			XMIResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

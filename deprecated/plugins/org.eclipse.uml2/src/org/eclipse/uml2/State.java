@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: State.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -50,7 +50,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Composite</b></em>' attribute.
@@ -67,6 +67,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 */
 	boolean isComposite();
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Orthogonal</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -81,6 +82,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @generated
 	 */
 	boolean isOrthogonal();
+
 
 	/**
 	 * Returns the value of the '<em><b>Is Simple</b></em>' attribute.
@@ -97,6 +99,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 */
 	boolean isSimple();
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Submachine State</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -111,6 +114,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @generated
 	 */
 	boolean isSubmachineState();
+
 
 	/**
 	 * Returns the value of the '<em><b>Submachine</b></em>' reference.
@@ -138,6 +142,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 */
 	void setSubmachine(StateMachine value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Connection</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ConnectionPointReference}.
@@ -150,17 +155,17 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @return the value of the '<em>Connection</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getState_Connection()
 	 * @model type="org.eclipse.uml2.ConnectionPointReference" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getConnections();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ConnectionPointReference} with the specified name from the '<em><b>Connection</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.ConnectionPointReference} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ConnectionPointReference} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ConnectionPointReference} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ConnectionPointReference} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ConnectionPointReference} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConnections()
 	 * @generated
      */
@@ -173,9 +178,20 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ConnectionPointReference} to create.
 	 * @return The new {@link org.eclipse.uml2.ConnectionPointReference}.
 	 * @see #getConnections()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createConnection() instead.
      */
     ConnectionPointReference createConnection(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.ConnectionPointReference} and appends it to the '<em><b>Connection</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.ConnectionPointReference}.
+	 * @see #getConnections()
+	 * @generated
+     */
+    ConnectionPointReference createConnection();
 
 	/**
 	 * Returns the value of the '<em><b>Redefined State</b></em>' reference.
@@ -188,7 +204,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @return the value of the '<em>Redefined State</em>' reference.
 	 * @see #setRedefinedState(State)
 	 * @see org.eclipse.uml2.UML2Package#getState_RedefinedState()
-	 * @model annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
+	 * @model
 	 * @generated
 	 */
 	State getRedefinedState();
@@ -202,6 +218,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @generated
 	 */
 	void setRedefinedState(State value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Deferrable Trigger</b></em>' reference list.
@@ -219,12 +236,13 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 */
 	EList getDeferrableTriggers();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified name from the '<em><b>Deferrable Trigger</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Deferrable Trigger</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Trigger} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Trigger} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Trigger} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getDeferrableTriggers()
 	 * @generated
      */
@@ -244,17 +262,17 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @see org.eclipse.uml2.UML2Package#getState_Region()
 	 * @see org.eclipse.uml2.Region#getState
 	 * @model type="org.eclipse.uml2.Region" opposite="state" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getRegions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Region} with the specified name from the '<em><b>Region</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>' from the '<em><b>Region</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Region} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Region} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Region} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRegions()
 	 * @generated
      */
@@ -267,9 +285,20 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Region} to create.
 	 * @return The new {@link org.eclipse.uml2.Region}.
 	 * @see #getRegions()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createRegion() instead.
      */
     Region createRegion(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Region} and appends it to the '<em><b>Region</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Region}.
+	 * @see #getRegions()
+	 * @generated
+     */
+    Region createRegion();
 
 	/**
 	 * Returns the value of the '<em><b>Entry</b></em>' containment reference.
@@ -283,7 +312,6 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @see #setEntry(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getState_Entry()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Activity getEntry();
@@ -298,6 +326,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 */
 	void setEntry(Activity value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.Activity} and sets the '<em><b>Entry</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -305,10 +334,21 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Activity} to create.
 	 * @return The new {@link org.eclipse.uml2.Activity}.
 	 * @see #getEntry()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createEntry() instead.
      */
     Activity createEntry(EClass eClass);
-     
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Activity} and sets the '<em><b>Entry</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Activity}.
+	 * @see #getEntry()
+	 * @generated
+     */
+    Activity createEntry();
+
 	/**
 	 * Returns the value of the '<em><b>Exit</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -321,7 +361,6 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @see #setExit(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getState_Exit()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Activity getExit();
@@ -336,6 +375,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 */
 	void setExit(Activity value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.Activity} and sets the '<em><b>Exit</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -343,10 +383,21 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Activity} to create.
 	 * @return The new {@link org.eclipse.uml2.Activity}.
 	 * @see #getExit()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createExit() instead.
      */
     Activity createExit(EClass eClass);
-     
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Activity} and sets the '<em><b>Exit</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Activity}.
+	 * @see #getExit()
+	 * @generated
+     */
+    Activity createExit();
+
 	/**
 	 * Returns the value of the '<em><b>Do Activity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -359,7 +410,6 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @see #setDoActivity(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getState_DoActivity()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Activity getDoActivity();
@@ -374,6 +424,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 */
 	void setDoActivity(Activity value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.Activity} and sets the '<em><b>Do Activity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -381,10 +432,21 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Activity} to create.
 	 * @return The new {@link org.eclipse.uml2.Activity}.
 	 * @see #getDoActivity()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createDoActivity() instead.
      */
     Activity createDoActivity(EClass eClass);
-     
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Activity} and sets the '<em><b>Do Activity</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Activity}.
+	 * @see #getDoActivity()
+	 * @generated
+     */
+    Activity createDoActivity();
+
 	/**
 	 * Returns the value of the '<em><b>State Invariant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -397,7 +459,6 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @see #setStateInvariant(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getState_StateInvariant()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Constraint getStateInvariant();
@@ -412,6 +473,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 */
 	void setStateInvariant(Constraint value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>State Invariant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -422,42 +484,42 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @generated
      */
     Constraint createStateInvariant(EClass eClass);
-     
-	/**
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>State Invariant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinitionContext' eType='org.eclipse.uml2.Classifier' containment='false'"
-	 *        annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinitionContexts=''" 
+	 * @return The new {@link org.eclipse.uml2.Constraint}.
+	 * @see #getStateInvariant()
 	 * @generated
-	 */
-	EList getRedefinitionContexts();
+     */
+    Constraint createStateInvariant();
 
 	/**
+	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
+	 * <!-- begin-model-doc -->
+	 * redefinable element that is being redefined by this element. This is a derived union.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Redefined Element</em>' reference list.
+	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinedElement()
+	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedElements();
 
-	/**
+
+    /**
+     * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
+	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedElements()
 	 * @generated
-	 */
-	EList getOwnedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
-
+     */
+    RedefinableElement getRedefinedElement(String name);
+      
 } // State

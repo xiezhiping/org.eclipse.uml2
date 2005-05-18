@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.6 2005/04/04 20:11:12 khussey Exp $
+ * $Id: VertexImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,7 +56,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
@@ -125,7 +125,9 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VERTEX__CONTAINER, newContainer, newContainer));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,23 +141,22 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 		return outgoing;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Transition getOutgoing(String unqualifiedName) {
-    	for (Iterator i = getOutgoings().iterator(); i.hasNext(); ) {
-    		Transition namedOutgoing = (Transition) i.next();
-    		
-    		if (unqualifiedName.equals(namedOutgoing.getName())) {
-    			return namedOutgoing;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Transition getOutgoing(String name) {
+		for (Iterator i = getOutgoings().iterator(); i.hasNext(); ) {
+			Transition outgoing = (Transition) i.next();
+			if (name.equals(outgoing.getName())) {
+				return outgoing;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,31 +169,44 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 		return incoming;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Transition getIncoming(String unqualifiedName) {
-    	for (Iterator i = getIncomings().iterator(); i.hasNext(); ) {
-    		Transition namedIncoming = (Transition) i.next();
-    		
-    		if (unqualifiedName.equals(namedIncoming.getName())) {
-    			return namedIncoming;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Transition getIncoming(String name) {
+		for (Iterator i = getIncomings().iterator(); i.hasNext(); ) {
+			Transition incoming = (Transition) i.next();
+			if (name.equals(incoming.getName())) {
+				return incoming;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		return (Element) getContainer();
+		return getContainer();
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOwner(Element newOwner, NotificationChain msgs) {
+		if (newOwner != null && !(newOwner instanceof Region)) {
+			throw new IllegalArgumentException(String.valueOf(newOwner));
+		}
+		setContainer((Region) newOwner);
+		return msgs;
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -450,6 +464,16 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 				return incoming != null && !incoming.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		return getContainer();
 	}
 
 } //VertexImpl

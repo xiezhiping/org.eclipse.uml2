@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitution.java,v 1.8 2005/04/04 20:11:14 khussey Exp $
+ * $Id: TemplateParameterSubstitution.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -45,7 +45,7 @@ public interface TemplateParameterSubstitution extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Formal</b></em>' reference.
@@ -76,6 +76,7 @@ public interface TemplateParameterSubstitution extends Element{
 	 */
 	void setFormal(TemplateParameter value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Template Binding</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.TemplateBinding#getParameterSubstitutions <em>Parameter Substitution</em>}'.
@@ -90,7 +91,6 @@ public interface TemplateParameterSubstitution extends Element{
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameterSubstitution_TemplateBinding()
 	 * @see org.eclipse.uml2.TemplateBinding#getParameterSubstitutions
 	 * @model opposite="parameterSubstitution" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	TemplateBinding getTemplateBinding();
@@ -104,6 +104,7 @@ public interface TemplateParameterSubstitution extends Element{
 	 * @generated
 	 */
 	void setTemplateBinding(TemplateBinding value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Actual</b></em>' reference list.
@@ -119,10 +120,11 @@ public interface TemplateParameterSubstitution extends Element{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Actual</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameterSubstitution_Actual()
-	 * @model type="org.eclipse.uml2.ParameterableElement" required="true" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ParameterableElement" required="true" ordered="false"
 	 * @generated
 	 */
 	EList getActuals();
+
 
 	/**
 	 * Returns the value of the '<em><b>Owned Actual</b></em>' containment reference list.
@@ -138,11 +140,11 @@ public interface TemplateParameterSubstitution extends Element{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Actual</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameterSubstitution_OwnedActual()
-	 * @model type="org.eclipse.uml2.ParameterableElement" containment="true" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.TemplateParameterSubstitution#getActuals='' org.eclipse.uml2.Element#getOwnedElements=''"
+	 * @model type="org.eclipse.uml2.ParameterableElement" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedActuals();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.ParameterableElement} and appends it to the '<em><b>Owned Actual</b></em>' containment reference list.
@@ -154,23 +156,5 @@ public interface TemplateParameterSubstitution extends Element{
 	 * @generated
      */
     ParameterableElement createOwnedActual(EClass eClass);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
 
 } // TemplateParameterSubstitution

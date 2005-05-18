@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,32 +8,33 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.16 2005/04/04 20:11:12 khussey Exp $
+ * $Id: SignalImpl.java,v 1.17 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.Signal;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -56,7 +57,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
@@ -98,23 +99,22 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 		return ownedAttribute;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Property getOwnedAttribute(String unqualifiedName) {
-    	for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
-    		Property namedOwnedAttribute = (Property) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedAttribute.getName())) {
-    			return namedOwnedAttribute;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Property getOwnedAttribute(String name) {
+		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
+			Property ownedAttribute = (Property) i.next();
+			if (name.equals(ownedAttribute.getName())) {
+				return ownedAttribute;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -134,39 +134,13 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAttributes() {
-		EList attribute = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
-
-		if (null == attribute) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getAttributes());
-			union.addAll(getOwnedAttributes());
-
-			attribute = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Attribute(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Attribute(), attribute);
+	public Property createOwnedAttribute() {
+		Property newOwnedAttribute = UML2Factory.eINSTANCE.createProperty();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.SIGNAL__OWNED_ATTRIBUTE, null, newOwnedAttribute));
 		}
-
-		return attribute;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedMembers() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getSignal().getEAllOperations().get(70));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedMembers());
-			union.addAll(getOwnedAttributes());
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getSignal().getEAllOperations().get(70), result);
-		}
-
-		return result;
+		getOwnedAttributes().add(newOwnedAttribute);
+		return newOwnedAttribute;
 	}
 
 	/**
@@ -564,7 +538,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.SIGNAL__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -583,7 +557,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.SIGNAL__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.SIGNAL__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.SIGNAL__NAME_EXPRESSION:
@@ -603,7 +577,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.SIGNAL__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.SIGNAL__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.SIGNAL__REDEFINITION_CONTEXT:
@@ -641,5 +615,44 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.SIGNAL__VISIBILITY:
+				return false;
+			case UML2Package.SIGNAL__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getAttributesHelper(EList attribute) {
+		super.getAttributesHelper(attribute);
+		if (ownedAttribute != null) {
+			attribute.addAll(ownedAttribute);
+		}
+		return attribute;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedMembersHelper(EList ownedMember) {
+		super.getOwnedMembersHelper(ownedMember);
+		if (ownedAttribute != null) {
+			ownedMember.addAll(ownedAttribute);
+		}
+		return ownedMember;
+	}
+
 
 } //SignalImpl

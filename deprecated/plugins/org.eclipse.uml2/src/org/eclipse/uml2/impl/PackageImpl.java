@@ -8,32 +8,37 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.24 2005/04/20 18:06:34 khussey Exp $
+ * $Id: PackageImpl.java,v 1.25 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.NamedElement;
@@ -49,12 +54,16 @@ import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Type;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.SubsetEObjectEList;
+import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+
 import org.eclipse.uml2.internal.operation.PackageOperations;
 import org.eclipse.uml2.internal.operation.ProfileOperations;
-import org.eclipse.uml2.internal.util.SubsetEObjectEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -66,10 +75,11 @@ import org.eclipse.uml2.internal.util.SupersetEObjectContainmentWithInverseEList
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getOwningParameter <em>Owning Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getPackageableElement_visibility <em>Packageable Element visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getPackageImports <em>Package Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getNestedPackages <em>Nested Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getNestingPackage <em>Nesting Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getOwnedTypes <em>Owned Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getPackageMerges <em>Package Merge</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getAppliedProfiles <em>Applied Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getPackageExtensions <em>Package Extension</em>}</li>
@@ -84,7 +94,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
@@ -105,16 +115,6 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @ordered
 	 */
 	protected static final VisibilityKind PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT = VisibilityKind.PUBLIC_LITERAL;
-
-	/**
-	 * The cached value of the '{@link #getPackageableElement_visibility() <em>Packageable Element visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPackageableElement_visibility()
-	 * @generated
-	 * @ordered
-	 */
-	protected VisibilityKind packageableElement_visibility = PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOwnedMembers() <em>Owned Member</em>}' containment reference list.
@@ -212,11 +212,11 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGE__TEMPLATE_PARAMETER, oldTemplateParameter, newTemplateParameter);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != getOwningParameter() && newTemplateParameter != getOwningParameter()) {
+
+		if (getOwningParameter() != null && getOwningParameter() != newTemplateParameter) {
 			setOwningParameter(null);
 		}
 		return msgs;
-
 	}
 
 	/**
@@ -227,21 +227,18 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
-			if (null != templateParameter) {
-				msgs = ((InternalEObject) templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
-			if (null != newTemplateParameter) {
-				msgs = ((InternalEObject) newTemplateParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
+			if (templateParameter != null)
+				msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+			if (newTemplateParameter != null)
+				msgs = ((InternalEObject)newTemplateParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 			msgs = basicSetTemplateParameter(newTemplateParameter, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGE__TEMPLATE_PARAMETER, newTemplateParameter, newTemplateParameter));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGE__TEMPLATE_PARAMETER, newTemplateParameter, newTemplateParameter));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -249,10 +246,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated
 	 */
 	public TemplateParameter getOwningParameter() {
-		if (eContainerFeatureID != UML2Package.PACKAGE__OWNING_PARAMETER) {
-			return null;
-		}
-		return (TemplateParameter) eContainer;
+		if (eContainerFeatureID != UML2Package.PACKAGE__OWNING_PARAMETER) return null;
+		return (TemplateParameter)eContainer;
 	}
 
 	/**
@@ -262,50 +257,47 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
 		EObject oldOwningParameter = eContainer;
-		if (eContainer != newOwningParameter || (eContainerFeatureID != UML2Package.PACKAGE__OWNING_PARAMETER && null != newOwningParameter)) {
-			if (EcoreUtil.isAncestor(this, newOwningParameter)) {
+		if (newOwningParameter != eContainer || (eContainerFeatureID != UML2Package.PACKAGE__OWNING_PARAMETER && newOwningParameter != null)) {
+			if (EcoreUtil.isAncestor(this, newOwningParameter))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newOwningParameter) {
-				msgs = ((InternalEObject) newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newOwningParameter, UML2Package.PACKAGE__OWNING_PARAMETER, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGE__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
+			if (newOwningParameter != null)
+				msgs = ((InternalEObject)newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newOwningParameter, UML2Package.PACKAGE__OWNING_PARAMETER, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
-		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGE__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
+
+		if (newOwningParameter != null || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public VisibilityKind getPackageableElement_visibility() {
-		return packageableElement_visibility;
+		return visibility;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setPackageableElement_visibility(VisibilityKind newPackageableElement_visibility) {
-		VisibilityKind oldPackageableElement_visibility = packageableElement_visibility;
-		packageableElement_visibility = null == newPackageableElement_visibility ? PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT : newPackageableElement_visibility;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGE__PACKAGEABLE_ELEMENT_VISIBILITY, oldPackageableElement_visibility, newPackageableElement_visibility));
-		}
+		VisibilityKind oldVisibility = visibility;
+		visibility = newPackageableElement_visibility == null ? VISIBILITY_EDEFAULT : newPackageableElement_visibility;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY, oldVisibility, visibility));
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -340,23 +332,21 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return nestedPackages;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public org.eclipse.uml2.Package getNestedPackage(String unqualifiedName) {
-    	for (Iterator i = getNestedPackages().iterator(); i.hasNext(); ) {
-    		org.eclipse.uml2.Package namedNestedPackage = (org.eclipse.uml2.Package) i.next();
-    		
-    		if (unqualifiedName.equals(namedNestedPackage.getName())) {
-    			return namedNestedPackage;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public org.eclipse.uml2.Package getNestedPackage(String name) {
+		for (Iterator i = getNestedPackages().iterator(); i.hasNext(); ) {
+			org.eclipse.uml2.Package nestedPackage = (org.eclipse.uml2.Package) i.next();
+			if (name.equals(nestedPackage.getName())) {
+				return nestedPackage;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -373,7 +363,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated NOT
 	 */
 	public org.eclipse.uml2.Package basicGetNestingPackage() {
-		return org.eclipse.uml2.Package.class.isInstance(eContainer) ? (org.eclipse.uml2.Package) eContainer : null;
+		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer : null;
 	}
 
 	/**
@@ -408,56 +398,53 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return ownedTypes;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Type getOwnedType(String unqualifiedName) {
-    	for (Iterator i = getOwnedTypes().iterator(); i.hasNext(); ) {
-    		Type namedOwnedType = (Type) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedType.getName())) {
-    			return namedOwnedType;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Type getOwnedType(String name) {
+		for (Iterator i = getOwnedTypes().iterator(); i.hasNext(); ) {
+			Type ownedType = (Type) i.next();
+			if (name.equals(ownedType.getName())) {
+				return ownedType;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		if (null == ownedMember) {
+		if (ownedMember == null) {
 			ownedMember = new EObjectContainmentEList(PackageableElement.class, this, UML2Package.PACKAGE__OWNED_MEMBER);
 		}
 		return ownedMember;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public PackageableElement getOwnedMember(String unqualifiedName) {
-    	for (Iterator i = getOwnedMembers().iterator(); i.hasNext(); ) {
-    		PackageableElement namedOwnedMember = (PackageableElement) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedMember.getName())) {
-    			return namedOwnedMember;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+    public NamedElement getOwnedMember(String name) {
+		for (Iterator i = getOwnedMembers().iterator(); i.hasNext(); ) {
+			PackageableElement ownedMember = (PackageableElement) i.next();
+			if (name.equals(ownedMember.getName())) {
+				return ownedMember;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
 	 */
 	public PackageableElement createOwnedMember(EClass eClass) {
 		PackageableElement newOwnedMember = (PackageableElement) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -480,13 +467,29 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return packageMerge;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createPackageMerge() instead.
+	 */
+	public PackageMerge createPackageMerge(EClass eClass) {
+		PackageMerge newPackageMerge = (PackageMerge) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PACKAGE__PACKAGE_MERGE, null, newPackageMerge));
+		}
+		getPackageMerges().add(newPackageMerge);
+		return newPackageMerge;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PackageMerge createPackageMerge(EClass eClass) {
-		PackageMerge newPackageMerge = (PackageMerge) eClass.getEPackage().getEFactoryInstance().create(eClass);
+	public PackageMerge createPackageMerge() {
+		PackageMerge newPackageMerge = UML2Factory.eINSTANCE.createPackageMerge();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.PACKAGE__PACKAGE_MERGE, null, newPackageMerge));
 		}
@@ -504,8 +507,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			appliedProfile = new SubsetEObjectEList(ProfileApplication.class, this, UML2Package.PACKAGE__APPLIED_PROFILE, new int[] {UML2Package.PACKAGE__PACKAGE_IMPORT});
 		}
 		return appliedProfile;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -519,10 +522,12 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return packageExtension;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createPackageExtension() instead.
 	 */
 	public PackageMerge createPackageExtension(EClass eClass) {
 		PackageMerge newPackageExtension = (PackageMerge) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -538,12 +543,37 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public PackageMerge createPackageExtension() {
+		PackageMerge newPackageExtension = UML2Factory.eINSTANCE.createPackageMerge();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PACKAGE__PACKAGE_EXTENSION, null, newPackageExtension));
+		}
+		getPackageExtensions().add(newPackageExtension);
+		return newPackageExtension;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics, Map context) {
+		return PackageOperations.validateElementsPublicOrPrivate(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Element basicGetOwner() {
-		if (null != getOwningParameter()) {
-			return (Element) getOwningParameter();
+		TemplateParameter owningParameter = getOwningParameter();			
+		if (owningParameter != null) {
+			return owningParameter;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -563,14 +593,6 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		setPackageableElement_visibility(newVisibility);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.PackageOperations.validateElementsPublicOrPrivate(this, diagnostics, context);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -578,7 +600,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated
 	 */
 	public boolean mustBeOwned() {
-		return org.eclipse.uml2.internal.operation.PackageOperations.mustBeOwned(this);
+		return PackageOperations.mustBeOwned(this);
 	}
 
 	/**
@@ -587,19 +609,15 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated
 	 */
 	public Set visibleMembers() {
-		try {
-			java.lang.reflect.Method method = getClass().getMethod("visibleMembers", null); //$NON-NLS-1$
-			Set result = (Set) getCacheAdapter().get(this, method);
-		
-			if (null == result) {
-				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.PackageOperations.visibleMembers(this));
-				getCacheAdapter().put(this, method, result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getPackage().getEOperations().get(1));
+			if (result == null) {
+				cache.put(this, UML2Package.eINSTANCE.getPackage().getEOperations().get(1), result = PackageOperations.visibleMembers(this));
 			}
-		
 			return result;
-		} catch (Exception e) {
-			return org.eclipse.uml2.internal.operation.PackageOperations.visibleMembers(this);
 		}
+		return PackageOperations.visibleMembers(this);
 	}
 
 	/**
@@ -608,7 +626,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated
 	 */
 	public boolean makesVisible(NamedElement el) {
-		return org.eclipse.uml2.internal.operation.PackageOperations.makesVisible(this, el);
+		return PackageOperations.makesVisible(this, el);
 	}
 
 	/**
@@ -616,33 +634,31 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Namespace getNamespace() {
-		if (null != getNestingPackage()) {
-			return (Namespace) getNestingPackage();
+	public Namespace basicGetNamespace() {
+		org.eclipse.uml2.Package nestingPackage = basicGetNestingPackage();			
+		if (nestingPackage != null) {
+			return nestingPackage;
 		}
-		return super.getNamespace();
+		return super.basicGetNamespace();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getPackageMerges());
-			union.addAll(getPackageExtensions());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (packageMerge != null) {
+			ownedElement.addAll(packageMerge);
 		}
-
+		if (packageExtension != null) {
+			ownedElement.addAll(packageExtension);
+		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -654,8 +670,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			packageImport = new SupersetEObjectContainmentWithInverseEList(PackageImport.class, this, UML2Package.PACKAGE__PACKAGE_IMPORT, new int[] {UML2Package.PACKAGE__APPLIED_PROFILE}, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 		}
 		return packageImport;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -972,7 +988,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.PACKAGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -991,7 +1007,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PACKAGE__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.PACKAGE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.PACKAGE__NAME_EXPRESSION:
@@ -1011,7 +1027,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.PACKAGE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.PACKAGE__NESTED_PACKAGE:
 				return !getNestedPackages().isEmpty();
 			case UML2Package.PACKAGE__NESTING_PACKAGE:
@@ -1028,6 +1044,16 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 				return packageExtension != null && !packageExtension.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.PACKAGE__VISIBILITY:
+				return false;
+			case UML2Package.PACKAGE__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -1073,6 +1099,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
+
 
 	// <!-- begin-custom-operations -->
 

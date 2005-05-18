@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,33 +8,42 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.11 2005/04/04 20:11:12 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.12 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
+import java.lang.reflect.Method;
+
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
+import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +52,6 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#isLeaf <em>Is Leaf</em>}</li>
  * </ul>
  * </p>
@@ -56,7 +64,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
@@ -115,7 +123,9 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		if (newIsLeaf) eFlags |= IS_LEAF_EFLAG; else eFlags &= ~IS_LEAF_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REDEFINABLE_ELEMENT__IS_LEAF, oldIsLeaf, newIsLeaf));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,7 +133,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
+		return RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
 	/**
@@ -132,7 +142,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
+		return RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
 	}
 
 	/**
@@ -140,60 +150,52 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinitionContextsGen() {
-		EList redefinitionContext = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
-
-		if (null == redefinitionContext) {
-			Set union = new LinkedHashSet();
-
-			redefinitionContext = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext);
-		}
-
-		return redefinitionContext;
-	}
-
 	public EList getRedefinitionContexts() {
-		EList redefinitionContext = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
-
-		if (null == redefinitionContext) {
-			Set union = new LinkedHashSet();
-
-			if (Classifier.class.isInstance(eContainer)) {
-				union.add(eContainer);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList redefinitionContext = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
+			if (redefinitionContext == null) {
+				EList union = getRedefinitionContextsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext = new UnionEObjectEList(this, union.size(), union.toArray()));
 			}
-
-			redefinitionContext = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext);
+			return redefinitionContext;
 		}
-
-		return redefinitionContext;
+		EList union = getRedefinitionContextsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getRedefinitionContext(String unqualifiedName) {
-    	for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
-    		Classifier namedRedefinitionContext = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedRedefinitionContext.getName())) {
-    			return namedRedefinitionContext;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getRedefinitionContext(String name) {
+		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
+			Classifier redefinitionContext = (Classifier) i.next();
+			if (name.equals(redefinitionContext.getName())) {
+				return redefinitionContext;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getRedefinedElementsHelper(EList redefinedElement) {
+		return redefinedElement;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isConsistentWith(this, redefinee);
+		return RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
 
 	/**
@@ -202,7 +204,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
+		return RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
 	}
 
 	/**
@@ -211,16 +213,38 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement().getEAllOperations().get(35));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRedefinableElement().getEAllOperations().get(35), result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getRedefinedElements", null);
+				EList redefinedElement = (EList) cache.get(eResource(), this, method);
+				if (redefinedElement == null) {
+					EList union = getRedefinedElementsHelper(new UniqueEList());
+					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, union.size(), union.toArray()));
+				}
+				return redefinedElement;
+			} catch (NoSuchMethodException nsme) {
+				// do nothing
+			}
 		}
+		EList union = getRedefinedElementsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
+	}
 
-		return result;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public RedefinableElement getRedefinedElement(String name) {
+		for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
+			RedefinableElement redefinedElement = (RedefinableElement) i.next();
+			if (name.equals(redefinedElement.getName())) {
+				return redefinedElement;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -445,6 +469,19 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		result.append((eFlags & IS_LEAF_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected EList getRedefinitionContextsHelper(EList redefinitionContext) {
+		if (eContainer instanceof Classifier) {
+			redefinitionContext.add(eContainer);
+		}
+		return redefinitionContext;
 	}
 
 } //RedefinableElementImpl

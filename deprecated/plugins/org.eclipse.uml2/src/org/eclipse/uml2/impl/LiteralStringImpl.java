@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringImpl.java,v 1.6 2005/04/04 20:11:12 khussey Exp $
+ * $Id: LiteralStringImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -29,6 +29,8 @@ import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.internal.operation.LiteralStringOperations;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Literal String</b></em>'.
@@ -48,7 +50,7 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -103,11 +105,14 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 	 * @generated
 	 */
 	public void setValue(String newValue) {
+		newValue = newValue == null ? VALUE_EDEFAULT : newValue;
 		String oldValue = value;
-		value = newValue == null ? VALUE_EDEFAULT : newValue;
+		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LITERAL_STRING__VALUE, oldValue, value));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,7 +120,7 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 	 * @generated
 	 */
 	public boolean isComputable() {
-		return org.eclipse.uml2.internal.operation.LiteralStringOperations.isComputable(this);
+		return LiteralStringOperations.isComputable(this);
 	}
 
 	/**
@@ -124,7 +129,7 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 	 * @generated
 	 */
 	public String stringValue() {
-		return org.eclipse.uml2.internal.operation.LiteralStringOperations.stringValue(this);
+		return LiteralStringOperations.stringValue(this);
 	}
 
 	/**
@@ -407,5 +412,6 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //LiteralStringImpl

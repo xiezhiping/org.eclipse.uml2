@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.16 2005/04/04 20:11:13 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.17 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,7 +49,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getDeploymentLocation() <em>Deployment Location</em>}' attribute.
@@ -124,11 +124,14 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 	 * @generated
 	 */
 	public void setDeploymentLocation(String newDeploymentLocation) {
+		newDeploymentLocation = newDeploymentLocation == null ? DEPLOYMENT_LOCATION_EDEFAULT : newDeploymentLocation;
 		String oldDeploymentLocation = deploymentLocation;
-		deploymentLocation = newDeploymentLocation == null ? DEPLOYMENT_LOCATION_EDEFAULT : newDeploymentLocation;
+		deploymentLocation = newDeploymentLocation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION, oldDeploymentLocation, deploymentLocation));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,11 +148,14 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 	 * @generated
 	 */
 	public void setExecutionLocation(String newExecutionLocation) {
+		newExecutionLocation = newExecutionLocation == null ? EXECUTION_LOCATION_EDEFAULT : newExecutionLocation;
 		String oldExecutionLocation = executionLocation;
-		executionLocation = newExecutionLocation == null ? EXECUTION_LOCATION_EDEFAULT : newExecutionLocation;
+		executionLocation = newExecutionLocation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION, oldExecutionLocation, executionLocation));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -603,7 +609,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.DEPLOYMENT_SPECIFICATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -622,7 +628,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 			case UML2Package.DEPLOYMENT_SPECIFICATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DEPLOYMENT_SPECIFICATION__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.DEPLOYMENT_SPECIFICATION__NAME_EXPRESSION:
@@ -642,7 +648,7 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 			case UML2Package.DEPLOYMENT_SPECIFICATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.DEPLOYMENT_SPECIFICATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.DEPLOYMENT_SPECIFICATION__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.DEPLOYMENT_SPECIFICATION__REDEFINITION_CONTEXT:
@@ -693,6 +699,16 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 		return eDynamicIsSet(eFeature);
 	}
 
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.DEPLOYMENT_SPECIFICATION__VISIBILITY:
+				return false;
+			case UML2Package.DEPLOYMENT_SPECIFICATION__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -709,5 +725,6 @@ public class DeploymentSpecificationImpl extends ArtifactImpl implements Deploym
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //DeploymentSpecificationImpl

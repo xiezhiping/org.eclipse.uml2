@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,38 +8,45 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.8 2005/04/04 20:11:13 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.ActivityEdge;
 import org.eclipse.uml2.ActivityNode;
 import org.eclipse.uml2.ActivityPartition;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.InterruptibleActivityRegion;
+import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,7 +57,6 @@ import org.eclipse.uml2.VisibilityKind;
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getIncomings <em>Incoming</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
@@ -67,7 +73,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
@@ -149,23 +155,22 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return outgoing;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityEdge getOutgoing(String unqualifiedName) {
-    	for (Iterator i = getOutgoings().iterator(); i.hasNext(); ) {
-    		ActivityEdge namedOutgoing = (ActivityEdge) i.next();
-    		
-    		if (unqualifiedName.equals(namedOutgoing.getName())) {
-    			return namedOutgoing;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityEdge getOutgoing(String name) {
+		for (Iterator i = getOutgoings().iterator(); i.hasNext(); ) {
+			ActivityEdge outgoing = (ActivityEdge) i.next();
+			if (name.equals(outgoing.getName())) {
+				return outgoing;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -178,44 +183,20 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return incoming;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public ActivityEdge getIncoming(String unqualifiedName) {
-    	for (Iterator i = getIncomings().iterator(); i.hasNext(); ) {
-    		ActivityEdge namedIncoming = (ActivityEdge) i.next();
-    		
-    		if (unqualifiedName.equals(namedIncoming.getName())) {
-    			return namedIncoming;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInGroups() {
-		EList inGroup = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getActivityNode_InGroup());
-
-		if (null == inGroup) {
-			Set union = new LinkedHashSet();
-			if (null != getInStructuredNode()) {
-				union.add(getInStructuredNode());
+    public ActivityEdge getIncoming(String name) {
+		for (Iterator i = getIncomings().iterator(); i.hasNext(); ) {
+			ActivityEdge incoming = (ActivityEdge) i.next();
+			if (name.equals(incoming.getName())) {
+				return incoming;
 			}
-			union.addAll(getInPartitions());
-			union.addAll(getInInterruptibleRegions());
-
-			inGroup = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getActivityNode_InGroup(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getActivityNode_InGroup(), inGroup);
 		}
-
-		return inGroup;
+		return null;
 	}
 
 	/**
@@ -223,11 +204,29 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Activity getActivity() {
-		if (eContainerFeatureID != UML2Package.ACTIVITY_NODE__ACTIVITY) {
-			return null;
+	public EList getInGroups() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList inGroup = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getActivityNode_InGroup());
+			if (inGroup == null) {
+				EList union = getInGroupsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getActivityNode_InGroup(), inGroup = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return inGroup;
 		}
-		return (Activity) eContainer;
+		EList union = getInGroupsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Activity getActivity() {
+		if (eContainerFeatureID != UML2Package.ACTIVITY_NODE__ACTIVITY) return null;
+		return (Activity)eContainer;
 	}
 
 	/**
@@ -236,25 +235,22 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-		if (eContainer != newActivity || (eContainerFeatureID != UML2Package.ACTIVITY_NODE__ACTIVITY && null != newActivity)) {
-			if (EcoreUtil.isAncestor(this, newActivity)) {
+		if (newActivity != eContainer || (eContainerFeatureID != UML2Package.ACTIVITY_NODE__ACTIVITY && newActivity != null)) {
+			if (EcoreUtil.isAncestor(this, newActivity))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newActivity) {
-				msgs = ((InternalEObject) newActivity).eInverseAdd(this, UML2Package.ACTIVITY__NODE, Activity.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newActivity, UML2Package.ACTIVITY_NODE__ACTIVITY, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_NODE__ACTIVITY, newActivity, newActivity));
+			if (newActivity != null)
+				msgs = ((InternalEObject)newActivity).eInverseAdd(this, UML2Package.ACTIVITY__NODE, Activity.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newActivity, UML2Package.ACTIVITY_NODE__ACTIVITY, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_NODE__ACTIVITY, newActivity, newActivity));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -268,23 +264,22 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return redefinedElement;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityNode getRedefinedElement(String unqualifiedName) {
-    	for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
-    		ActivityNode namedRedefinedElement = (ActivityNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedRedefinedElement.getName())) {
-    			return namedRedefinedElement;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public RedefinableElement getRedefinedElement(String name) {
+		for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
+			ActivityNode redefinedElement = (ActivityNode) i.next();
+			if (name.equals(redefinedElement.getName())) {
+				return redefinedElement;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -314,7 +309,9 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_NODE__IN_STRUCTURED_NODE, newInStructuredNode, newInStructuredNode));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -328,23 +325,22 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return inPartition;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityPartition getInPartition(String unqualifiedName) {
-    	for (Iterator i = getInPartitions().iterator(); i.hasNext(); ) {
-    		ActivityPartition namedInPartition = (ActivityPartition) i.next();
-    		
-    		if (unqualifiedName.equals(namedInPartition.getName())) {
-    			return namedInPartition;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityPartition getInPartition(String name) {
+		for (Iterator i = getInPartitions().iterator(); i.hasNext(); ) {
+			ActivityPartition inPartition = (ActivityPartition) i.next();
+			if (name.equals(inPartition.getName())) {
+				return inPartition;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -357,17 +353,20 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return inInterruptibleRegion;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getActivity()) {
-			return (Element) getActivity();
+		Activity activity = getActivity();			
+		if (activity != null) {
+			return activity;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -702,6 +701,30 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getInGroupsHelper(EList inGroup) {
+		StructuredActivityNode inStructuredNode = getInStructuredNode();
+		if (inStructuredNode != null) {
+			inGroup.add(inStructuredNode);
+		}
+		if (inPartition != null) {
+			for (Iterator i = ((InternalEList) inPartition).basicIterator(); i.hasNext(); ) {
+				inGroup.add(i.next());
+			}
+		}
+		if (inInterruptibleRegion != null) {
+			for (Iterator i = ((InternalEList) inInterruptibleRegion).basicIterator(); i.hasNext(); ) {
+				inGroup.add(i.next());
+			}
+		}
+		return inGroup;
 	}
 
 } //ActivityNodeImpl

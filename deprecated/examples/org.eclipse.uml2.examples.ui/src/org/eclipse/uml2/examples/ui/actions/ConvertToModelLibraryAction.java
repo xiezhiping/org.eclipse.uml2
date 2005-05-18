@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToModelLibraryAction.java,v 1.1 2005/04/14 17:32:07 khussey Exp $
+ * $Id: ConvertToModelLibraryAction.java,v 1.2 2005/05/18 16:43:51 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.Profile;
-import org.eclipse.uml2.edit.util.ChangeCommand;
+import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 import org.eclipse.uml2.util.UML2Resource;
 

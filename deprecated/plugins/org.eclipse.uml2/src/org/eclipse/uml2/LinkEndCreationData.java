@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationData.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: LinkEndCreationData.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,7 +35,7 @@ public interface LinkEndCreationData extends LinkEndData{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Replace All</b></em>' attribute.
@@ -69,6 +67,7 @@ public interface LinkEndCreationData extends LinkEndData{
 	 */
 	void setIsReplaceAll(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Insert At</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -98,14 +97,5 @@ public interface LinkEndCreationData extends LinkEndData{
 	 */
 	void setInsertAt(InputPin value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='false' name='qualifier' eType='org.eclipse.uml2.QualifierValue' containment='false'"
-	 *        annotation="redefines org.eclipse.uml2.LinkEndData#getQualifiers=''" 
-	 * @generated
-	 */
-	EList getQualifiers();
 
 } // LinkEndCreationData

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2AdapterFactory.java,v 1.17 2005/04/04 20:11:16 khussey Exp $
+ * $Id: UML2AdapterFactory.java,v 1.18 2005/05/18 16:38:32 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -259,7 +259,7 @@ public class UML2AdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached model package.

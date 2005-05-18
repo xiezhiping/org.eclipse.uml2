@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionEnvironmentImpl.java,v 1.20 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ExecutionEnvironmentImpl.java,v 1.21 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -43,7 +43,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,8 +107,6 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
-				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.EXECUTION_ENVIRONMENT__DEPLOYMENT:
@@ -120,6 +118,15 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
+				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
+			default :
+				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -615,7 +622,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.EXECUTION_ENVIRONMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -634,7 +641,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 			case UML2Package.EXECUTION_ENVIRONMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXECUTION_ENVIRONMENT__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.EXECUTION_ENVIRONMENT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__NAME_EXPRESSION:
@@ -654,7 +661,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.EXECUTION_ENVIRONMENT__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.EXECUTION_ENVIRONMENT__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.EXECUTION_ENVIRONMENT__REDEFINITION_CONTEXT:
@@ -688,7 +695,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 			case UML2Package.EXECUTION_ENVIRONMENT__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return !getOwnedBehaviors().isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.EXECUTION_ENVIRONMENT__IMPLEMENTATION:
@@ -696,7 +703,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_TRIGGER:
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+				return !getOwnedStateMachines().isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE:
 				return !getOwnedAttributes().isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__PART:
@@ -714,7 +721,7 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 			case UML2Package.EXECUTION_ENVIRONMENT__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__NESTED_CLASSIFIER:
-				return false;
+				return !getNestedClassifiers().isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__IS_ACTIVE:
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_RECEPTION:
@@ -727,6 +734,23 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 				return nestedNode != null && !nestedNode.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.EXECUTION_ENVIRONMENT__VISIBILITY:
+				return false;
+			case UML2Package.EXECUTION_ENVIRONMENT__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+			case UML2Package.EXECUTION_ENVIRONMENT__NESTED_CLASSIFIER:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //ExecutionEnvironmentImpl

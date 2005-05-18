@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.18 2005/05/18 15:56:21 khussey Exp $
+ * $Id: UML2Util.java,v 1.19 2005/05/18 16:38:32 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -22,10 +22,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.common.util.WrappedException;
@@ -373,8 +375,7 @@ public class UML2Util {
 			operation.setName(eOperation.getName());
 
 			if (null != eOperation.getEType()) {
-				Parameter parameter = operation
-					.createReturnResult(UML2Package.eINSTANCE.getParameter());
+				Parameter parameter = operation.createReturnResult();
 
 				parameter.setDirection(ParameterDirectionKind.RETURN_LITERAL);
 				parameter.setType(getType(eOperation));
@@ -5538,6 +5539,18 @@ public class UML2Util {
 		}
 
 		return rootContainers;
+	}
+
+	protected static TreeIterator getAllContents(EObject eObject,
+			boolean includeRoot, final boolean defensiveCopy) {
+		return new AbstractTreeIterator(eObject, includeRoot) {
+
+			protected Iterator getChildren(Object object) {
+				return defensiveCopy
+					? new ArrayList(((EObject) object).eContents()).iterator()
+					: ((EObject) object).eContents().iterator();
+			}
+		};
 	}
 
 	public static org.eclipse.uml2.Package load(ResourceSet resourceSet, URI uri) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,33 +8,33 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.8 2005/04/04 20:11:13 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-
 import java.util.Iterator;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.ParameterSet;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -58,7 +58,7 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameter</em>}' reference list.
@@ -110,23 +110,22 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 		return parameter;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Parameter getParameter(String unqualifiedName) {
-    	for (Iterator i = getParameters().iterator(); i.hasNext(); ) {
-    		Parameter namedParameter = (Parameter) i.next();
-    		
-    		if (unqualifiedName.equals(namedParameter.getName())) {
-    			return namedParameter;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Parameter getParameter(String name) {
+		for (Iterator i = getParameters().iterator(); i.hasNext(); ) {
+			Parameter parameter = (Parameter) i.next();
+			if (name.equals(parameter.getName())) {
+				return parameter;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -139,23 +138,22 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 		return condition;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Constraint getCondition(String unqualifiedName) {
-    	for (Iterator i = getConditions().iterator(); i.hasNext(); ) {
-    		Constraint namedCondition = (Constraint) i.next();
-    		
-    		if (unqualifiedName.equals(namedCondition.getName())) {
-    			return namedCondition;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Constraint getCondition(String name) {
+		for (Iterator i = getConditions().iterator(); i.hasNext(); ) {
+			Constraint condition = (Constraint) i.next();
+			if (name.equals(condition.getName())) {
+				return condition;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -175,19 +173,13 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getConditions());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	public Constraint createCondition() {
+		Constraint newCondition = UML2Factory.eINSTANCE.createConstraint();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PARAMETER_SET__CONDITION, null, newCondition));
 		}
-
-		return ownedElement;
+		getConditions().add(newCondition);
+		return newCondition;
 	}
 
 	/**
@@ -412,5 +404,20 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (condition != null) {
+			ownedElement.addAll(condition);
+		}
+		return ownedElement;
+	}
+
 
 } //ParameterSetImpl

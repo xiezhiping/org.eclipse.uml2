@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,32 +8,33 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.16 2005/04/04 20:11:13 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.17 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.EncapsulatedClassifier;
 import org.eclipse.uml2.Port;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -56,7 +57,7 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOwnedPorts() <em>Owned Port</em>}' containment reference list.
@@ -98,27 +99,27 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 		return ownedPort;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Port getOwnedPort(String unqualifiedName) {
-    	for (Iterator i = getOwnedPorts().iterator(); i.hasNext(); ) {
-    		Port namedOwnedPort = (Port) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedPort.getName())) {
-    			return namedOwnedPort;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+    public Port getOwnedPort(String name) {
+		for (Iterator i = getOwnedPorts().iterator(); i.hasNext(); ) {
+			Port ownedPort = (Port) i.next();
+			if (name.equals(ownedPort.getName())) {
+				return ownedPort;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOwnedPort() instead.
 	 */
 	public Port createOwnedPort(EClass eClass) {
 		Port newOwnedPort = (Port) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -134,39 +135,13 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFeatures() {
-		EList feature = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
-
-		if (null == feature) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getFeatures());
-			union.addAll(getOwnedPorts());
-
-			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);
+	public Port createOwnedPort() {
+		Port newOwnedPort = UML2Factory.eINSTANCE.createPort();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_PORT, null, newOwnedPort));
 		}
-
-		return feature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedMembers() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getEncapsulatedClassifier().getEAllOperations().get(74));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedMembers());
-			union.addAll(getOwnedPorts());
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getEncapsulatedClassifier().getEAllOperations().get(74), result);
-		}
-
-		return result;
+		getOwnedPorts().add(newOwnedPort);
+		return newOwnedPort;
 	}
 
 	/**
@@ -590,7 +565,7 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ENCAPSULATED_CLASSIFIER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -609,7 +584,7 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 			case UML2Package.ENCAPSULATED_CLASSIFIER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ENCAPSULATED_CLASSIFIER__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ENCAPSULATED_CLASSIFIER__NAME_EXPRESSION:
@@ -629,7 +604,7 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 			case UML2Package.ENCAPSULATED_CLASSIFIER__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ENCAPSULATED_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.ENCAPSULATED_CLASSIFIER__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.ENCAPSULATED_CLASSIFIER__REDEFINITION_CONTEXT:
@@ -675,5 +650,44 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.ENCAPSULATED_CLASSIFIER__VISIBILITY:
+				return false;
+			case UML2Package.ENCAPSULATED_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getFeaturesHelper(EList feature) {
+		super.getFeaturesHelper(feature);
+		if (ownedPort != null) {
+			feature.addAll(ownedPort);
+		}
+		return feature;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedMembersHelper(EList ownedMember) {
+		super.getOwnedMembersHelper(ownedMember);
+		if (ownedPort != null) {
+			ownedMember.addAll(ownedPort);
+		}
+		return ownedMember;
+	}
+
 
 } //EncapsulatedClassifierImpl

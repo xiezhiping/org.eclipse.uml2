@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,33 +8,36 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.7 2005/04/04 20:11:13 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.TemplateableElement;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
-import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,7 +62,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameter</em>}' reference list.
@@ -129,8 +132,8 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 			parameter = new SupersetEObjectResolvingEList(TemplateParameter.class, this, UML2Package.TEMPLATE_SIGNATURE__PARAMETER, new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER});
 		}
 		return parameter;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -142,8 +145,8 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 			ownedParameter = new SubsetEObjectContainmentWithInverseEList(TemplateParameter.class, this, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, new int[] {UML2Package.TEMPLATE_SIGNATURE__PARAMETER}, UML2Package.TEMPLATE_PARAMETER__SIGNATURE);
 		}
 		return ownedParameter;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,12 +167,27 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TemplateParameter createOwnedParameter() {
+		TemplateParameter newOwnedParameter = UML2Factory.eINSTANCE.createTemplateParameter();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, null, newOwnedParameter));
+		}
+		getOwnedParameters().add(newOwnedParameter);
+		return newOwnedParameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getNestedSignatures() {
 		if (nestedSignature == null) {
 			nestedSignature = new EObjectWithInverseResolvingEList(TemplateSignature.class, this, UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE, UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE);
 		}
 		return nestedSignature;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -209,6 +227,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE, oldNestingSignature, newNestingSignature);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -229,7 +248,9 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE, newNestingSignature, newNestingSignature));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,27 +281,9 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_SIGNATURE__TEMPLATE, newTemplate, newTemplate));
+
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getOwnedParameters());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -288,11 +291,13 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getTemplate()) {
-			return (Element) getTemplate();
+		TemplateableElement template = getTemplate();			
+		if (template != null) {
+			return template;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -497,5 +502,20 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (ownedParameter != null) {
+			ownedElement.addAll(ownedParameter);
+		}
+		return ownedElement;
+	}
+
 
 } //TemplateSignatureImpl

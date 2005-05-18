@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Feature.java,v 1.8 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Feature.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface Feature extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Static</b></em>' attribute.
@@ -73,6 +73,7 @@ public interface Feature extends RedefinableElement{
 	 */
 	void setIsStatic(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Featuring Classifier</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
@@ -89,17 +90,18 @@ public interface Feature extends RedefinableElement{
 	 * @return the value of the '<em>Featuring Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getFeature_FeaturingClassifier()
 	 * @see org.eclipse.uml2.Classifier#getFeatures
-	 * @model type="org.eclipse.uml2.Classifier" opposite="feature" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Classifier" opposite="feature" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getFeaturingClassifiers();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified name from the '<em><b>Featuring Classifier</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Featuring Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFeaturingClassifiers()
 	 * @generated
      */

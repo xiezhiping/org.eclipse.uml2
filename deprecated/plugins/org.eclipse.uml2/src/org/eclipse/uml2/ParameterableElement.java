@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElement.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
+ * $Id: ParameterableElement.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ public interface ParameterableElement extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Template Parameter</b></em>' reference.
@@ -55,7 +55,7 @@ public interface ParameterableElement extends Element{
 	 * @see #setTemplateParameter(TemplateParameter)
 	 * @see org.eclipse.uml2.UML2Package#getParameterableElement_TemplateParameter()
 	 * @see org.eclipse.uml2.TemplateParameter#getParameteredElement
-	 * @model opposite="parameteredElement" volatile="true"
+	 * @model opposite="parameteredElement"
 	 * @generated
 	 */
 	TemplateParameter getTemplateParameter();
@@ -70,6 +70,7 @@ public interface ParameterableElement extends Element{
 	 */
 	void setTemplateParameter(TemplateParameter value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Owning Parameter</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.TemplateParameter#getOwnedParameteredElement <em>Owned Parametered Element</em>}'.
@@ -83,8 +84,7 @@ public interface ParameterableElement extends Element{
 	 * @see #setOwningParameter(TemplateParameter)
 	 * @see org.eclipse.uml2.UML2Package#getParameterableElement_OwningParameter()
 	 * @see org.eclipse.uml2.TemplateParameter#getOwnedParameteredElement
-	 * @model opposite="ownedParameteredElement" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner='' org.eclipse.uml2.ParameterableElement#getTemplateParameter=''"
+	 * @model opposite="ownedParameteredElement"
 	 * @generated
 	 */
 	TemplateParameter getOwningParameter();
@@ -99,13 +99,5 @@ public interface ParameterableElement extends Element{
 	 */
 	void setOwningParameter(TemplateParameter value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
 
 } // ParameterableElement

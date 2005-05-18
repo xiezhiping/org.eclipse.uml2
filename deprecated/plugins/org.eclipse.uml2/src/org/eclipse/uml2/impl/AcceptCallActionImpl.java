@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,24 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.8 2005/04/04 20:11:13 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.AcceptCallAction;
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.CallTrigger;
@@ -33,6 +36,7 @@ import org.eclipse.uml2.OutputPin;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.Trigger;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -44,6 +48,7 @@ import org.eclipse.uml2.VisibilityKind;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.AcceptCallActionImpl#getReturnInformation <em>Return Information</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.AcceptCallActionImpl#getTriggers <em>Trigger</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,7 +61,7 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getReturnInformation() <em>Return Information</em>}' reference.
@@ -122,42 +127,36 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 		returnInformation = newReturnInformation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACCEPT_CALL_ACTION__RETURN_INFORMATION, oldReturnInformation, returnInformation));
+
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public EList getTriggers() {
-
-		if (null == _trigger) {
-			_trigger = new EObjectResolvingEList(CallTrigger.class, this, UML2Package.ACCEPT_CALL_ACTION__TRIGGER);
-		}
-
-		return _trigger;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutputs() {
-		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
-
-		if (null == output) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOutputs());
-			if (null != getReturnInformation()) {
-				union.add(getReturnInformation());
-			}
-
-			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
+	public EList getTriggers() {
+		if (trigger == null) {
+			trigger = new EObjectResolvingEList(CallTrigger.class, this, UML2Package.ACCEPT_CALL_ACTION__TRIGGER);
 		}
+		return trigger;
+	}
 
-		return output;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Trigger getTrigger(String name) {
+		for (Iterator i = getTriggers().iterator(); i.hasNext(); ) {
+			CallTrigger trigger = (CallTrigger) i.next();
+			if (name.equals(trigger.getName())) {
+				return trigger;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -591,5 +590,20 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOutputsHelper(EList output) {
+		super.getOutputsHelper(output);
+		if (returnInformation != null) {
+			output.add(returnInformation);
+		}
+		return output;
+	}
+
 
 } //AcceptCallActionImpl

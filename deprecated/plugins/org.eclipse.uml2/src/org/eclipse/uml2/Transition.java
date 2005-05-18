@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Transition.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -45,7 +45,7 @@ public interface Transition extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
@@ -79,6 +79,7 @@ public interface Transition extends RedefinableElement{
 	 */
 	void setKind(TransitionKind value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Container</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Region#getTransitions <em>Transition</em>}'.
@@ -93,7 +94,6 @@ public interface Transition extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Container()
 	 * @see org.eclipse.uml2.Region#getTransitions
 	 * @model opposite="transition" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	Region getContainer();
@@ -107,6 +107,7 @@ public interface Transition extends RedefinableElement{
 	 * @generated
 	 */
 	void setContainer(Region value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
@@ -139,6 +140,7 @@ public interface Transition extends RedefinableElement{
 	 */
 	void setSource(Vertex value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Vertex#getIncomings <em>Incoming</em>}'.
@@ -170,6 +172,7 @@ public interface Transition extends RedefinableElement{
 	 */
 	void setTarget(Vertex value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Redefined Transition</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -181,7 +184,7 @@ public interface Transition extends RedefinableElement{
 	 * @return the value of the '<em>Redefined Transition</em>' reference.
 	 * @see #setRedefinedTransition(Transition)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_RedefinedTransition()
-	 * @model annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
+	 * @model
 	 * @generated
 	 */
 	Transition getRedefinedTransition();
@@ -195,6 +198,7 @@ public interface Transition extends RedefinableElement{
 	 * @generated
 	 */
 	void setRedefinedTransition(Transition value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Trigger</b></em>' reference list.
@@ -215,12 +219,13 @@ public interface Transition extends RedefinableElement{
 	 */
 	EList getTriggers();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified name from the '<em><b>Trigger</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Trigger</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Trigger} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Trigger} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Trigger} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getTriggers()
 	 * @generated
      */
@@ -240,8 +245,7 @@ public interface Transition extends RedefinableElement{
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Guard()
-	 * @model containment="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Constraint getGuard();
@@ -256,6 +260,7 @@ public interface Transition extends RedefinableElement{
 	 */
 	void setGuard(Constraint value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -266,7 +271,17 @@ public interface Transition extends RedefinableElement{
 	 * @generated
      */
     Constraint createGuard(EClass eClass);
-     
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Guard</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Constraint}.
+	 * @see #getGuard()
+	 * @generated
+     */
+    Constraint createGuard();
+
 	/**
 	 * Returns the value of the '<em><b>Effect</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -282,7 +297,6 @@ public interface Transition extends RedefinableElement{
 	 * @see #setEffect(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Effect()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Activity getEffect();
@@ -297,6 +311,7 @@ public interface Transition extends RedefinableElement{
 	 */
 	void setEffect(Activity value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.Activity} and sets the '<em><b>Effect</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -304,45 +319,46 @@ public interface Transition extends RedefinableElement{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Activity} to create.
 	 * @return The new {@link org.eclipse.uml2.Activity}.
 	 * @see #getEffect()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createEffect() instead.
      */
     Activity createEffect(EClass eClass);
-     
-	/**
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Activity} and sets the '<em><b>Effect</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinitionContext' eType='org.eclipse.uml2.Classifier' containment='false'"
-	 *        annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinitionContexts=''" 
+	 * @return The new {@link org.eclipse.uml2.Activity}.
+	 * @see #getEffect()
 	 * @generated
-	 */
-	EList getRedefinitionContexts();
+     */
+    Activity createEffect();
 
 	/**
+	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
+	 * <!-- begin-model-doc -->
+	 * redefinable element that is being redefined by this element. This is a derived union.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Redefined Element</em>' reference list.
+	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinedElement()
+	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedElements();
 
-	/**
+
+    /**
+     * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
+	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedElements()
 	 * @generated
-	 */
-	EList getOwnedElements();
-
+     */
+    RedefinableElement getRedefinedElement(String name);
+      
 } // Transition

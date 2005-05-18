@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,30 +8,33 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.TemplateBinding;
 import org.eclipse.uml2.TemplateParameterSubstitution;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.TemplateableElement;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -55,7 +58,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getSignature() <em>Signature</em>}' reference.
@@ -124,7 +127,9 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT, newBoundElement, newBoundElement));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -162,7 +167,9 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		signature = newSignature;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_BINDING__SIGNATURE, oldSignature, signature));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,10 +183,12 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return parameterSubstitution;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createParameterSubstitution() instead.
 	 */
 	public TemplateParameterSubstitution createParameterSubstitution(EClass eClass) {
 		TemplateParameterSubstitution newParameterSubstitution = (TemplateParameterSubstitution) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -195,76 +204,71 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TemplateParameterSubstitution createParameterSubstitution() {
+		TemplateParameterSubstitution newParameterSubstitution = UML2Factory.eINSTANCE.createTemplateParameterSubstitution();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION, null, newParameterSubstitution));
+		}
+		getParameterSubstitutions().add(newParameterSubstitution);
+		return newParameterSubstitution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Element basicGetOwner() {
-		if (null != getBoundElement()) {
-			return (Element) getBoundElement();
+		TemplateableElement boundElement = getBoundElement();			
+		if (boundElement != null) {
+			return boundElement;
 		}
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSources() {
-		EList source = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
-
-		if (null == source) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getSources());
-			if (null != getBoundElement()) {
-				union.add(getBoundElement());
-			}
-
-			source = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source);
+	protected EList getSourcesHelper(EList source) {
+		super.getSourcesHelper(source);
+		TemplateableElement boundElement = getBoundElement();
+		if (boundElement != null) {
+			source.add(boundElement);
 		}
-
 		return source;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargets() {
-		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-
-		if (null == target) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getTargets());
-			if (null != getSignature()) {
-				union.add(getSignature());
-			}
-
-			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
+	protected EList getTargetsHelper(EList target) {
+		super.getTargetsHelper(target);
+		if (signature != null) {
+			target.add(signature);
 		}
-
 		return target;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getParameterSubstitutions());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (parameterSubstitution != null) {
+			ownedElement.addAll(parameterSubstitution);
 		}
-
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -449,5 +453,6 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //TemplateBindingImpl

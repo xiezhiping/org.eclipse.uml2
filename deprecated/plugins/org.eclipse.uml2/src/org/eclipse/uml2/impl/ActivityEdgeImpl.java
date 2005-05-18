@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,39 +8,46 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.10 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.ActivityEdge;
 import org.eclipse.uml2.ActivityNode;
 import org.eclipse.uml2.ActivityPartition;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.InterruptibleActivityRegion;
+import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,7 +59,6 @@ import org.eclipse.uml2.VisibilityKind;
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
@@ -70,7 +76,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
@@ -189,7 +195,9 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__ACTIVITY, newActivity, newActivity));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -229,6 +237,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__SOURCE, oldSource, newSource);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -249,7 +258,9 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__SOURCE, newSource, newSource));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -289,6 +300,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__TARGET, oldTarget, newTarget);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -309,7 +321,9 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__TARGET, newTarget, newTarget));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -317,21 +331,36 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getInGroups() {
-		EList inGroup = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getActivityEdge_InGroup());
-
-		if (null == inGroup) {
-			Set union = new LinkedHashSet();
-			if (null != getInStructuredNode()) {
-				union.add(getInStructuredNode());
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList inGroup = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getActivityEdge_InGroup());
+			if (inGroup == null) {
+				EList union = getInGroupsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getActivityEdge_InGroup(), inGroup = new UnionEObjectEList(this, union.size(), union.toArray()));
 			}
-			union.addAll(getInPartitions());
-
-			inGroup = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getActivityEdge_InGroup(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getActivityEdge_InGroup(), inGroup);
+			return inGroup;
 		}
-
-		return inGroup;
+		EList union = getInGroupsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (guard != null) {
+			ownedElement.add(guard);
+		}
+		if (weight != null) {
+			ownedElement.add(weight);
+		}
+		return ownedElement;
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -354,6 +383,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__GUARD, oldGuard, newGuard);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -374,7 +404,9 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__GUARD, newGuard, newGuard));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -386,7 +418,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTIVITY_EDGE__GUARD, null, newGuard));
 		}
-        setGuard(newGuard);
+		setGuard(newGuard);
 		return newGuard;
 	}
 
@@ -402,23 +434,22 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return redefinedElement;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityEdge getRedefinedElement(String unqualifiedName) {
-    	for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
-    		ActivityEdge namedRedefinedElement = (ActivityEdge) i.next();
-    		
-    		if (unqualifiedName.equals(namedRedefinedElement.getName())) {
-    			return namedRedefinedElement;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public RedefinableElement getRedefinedElement(String name) {
+		for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
+			ActivityEdge redefinedElement = (ActivityEdge) i.next();
+			if (name.equals(redefinedElement.getName())) {
+				return redefinedElement;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -448,7 +479,9 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE, newInStructuredNode, newInStructuredNode));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -462,23 +495,22 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return inPartition;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityPartition getInPartition(String unqualifiedName) {
-    	for (Iterator i = getInPartitions().iterator(); i.hasNext(); ) {
-    		ActivityPartition namedInPartition = (ActivityPartition) i.next();
-    		
-    		if (unqualifiedName.equals(namedInPartition.getName())) {
-    			return namedInPartition;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityPartition getInPartition(String name) {
+		for (Iterator i = getInPartitions().iterator(); i.hasNext(); ) {
+			ActivityPartition inPartition = (ActivityPartition) i.next();
+			if (name.equals(inPartition.getName())) {
+				return inPartition;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -500,6 +532,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__WEIGHT, oldWeight, newWeight);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -520,7 +553,9 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__WEIGHT, newWeight, newWeight));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -532,7 +567,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTIVITY_EDGE__WEIGHT, null, newWeight));
 		}
-        setWeight(newWeight);
+		setWeight(newWeight);
 		return newWeight;
 	}
 
@@ -574,6 +609,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__INTERRUPTS, oldInterrupts, newInterrupts);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -594,7 +630,9 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__INTERRUPTS, newInterrupts, newInterrupts));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -602,35 +640,30 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getActivity()) {
-			return (Element) getActivity();
+		Activity activity = getActivity();			
+		if (activity != null) {
+			return activity;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getGuard()) {
-				union.add(getGuard());
-			}
-			if (null != getWeight()) {
-				union.add(getWeight());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	protected EList getInGroupsHelper(EList inGroup) {
+		StructuredActivityNode inStructuredNode = getInStructuredNode();
+		if (inStructuredNode != null) {
+			inGroup.add(inStructuredNode);
 		}
-
-		return ownedElement;
+		if (inPartition != null) {
+			for (Iterator i = ((InternalEList) inPartition).basicIterator(); i.hasNext(); ) {
+				inGroup.add(i.next());
+			}
+		}
+		return inGroup;
 	}
 
 	/**
@@ -997,5 +1030,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //ActivityEdgeImpl

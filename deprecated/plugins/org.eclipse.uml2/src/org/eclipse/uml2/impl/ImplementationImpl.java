@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,26 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.11 2005/04/04 20:11:13 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.12 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Component;
@@ -39,8 +40,9 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.util.SupersetEObjectResolvingEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
+
+import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,6 +51,8 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ImplementationImpl#getSuppliers <em>Supplier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ImplementationImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ImplementationImpl#getContract <em>Contract</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ImplementationImpl#getImplementingClassifier <em>Implementing Classifier</em>}</li>
  * </ul>
@@ -62,7 +66,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getContract() <em>Contract</em>}' reference.
@@ -124,15 +128,16 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	public void setContract(Interface newContract) {
-		if (null != newContract && !getSuppliers().contains(newContract)) {
+		if (newContract != null && !getSuppliers().contains(newContract)) {
 			getSuppliers().add(newContract);
 		}
 		Interface oldContract = contract;
 		contract = newContract;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.IMPLEMENTATION__CONTRACT, oldContract, newContract));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.IMPLEMENTATION__CONTRACT, oldContract, contract));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,10 +145,8 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	public BehavioredClassifier getImplementingClassifier() {
-		if (eContainerFeatureID != UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER) {
-			return null;
-		}
-		return (BehavioredClassifier) eContainer;
+		if (eContainerFeatureID != UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER) return null;
+		return (BehavioredClassifier)eContainer;
 	}
 
 	/**
@@ -152,29 +155,25 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @generated
 	 */
 	public void setImplementingClassifier(BehavioredClassifier newImplementingClassifier) {
-		if (null != newImplementingClassifier && !getClients().contains(newImplementingClassifier)) {
+		if (newImplementingClassifier != null && !getClients().contains(newImplementingClassifier)) {
 			getClients().add(newImplementingClassifier);
 		}
-		EObject oldImplementingClassifier = eContainer;
-		if (eContainer != newImplementingClassifier || (eContainerFeatureID != UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER && null != newImplementingClassifier)) {
-			if (EcoreUtil.isAncestor(this, newImplementingClassifier)) {
+		if (newImplementingClassifier != eContainer || (eContainerFeatureID != UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER && newImplementingClassifier != null)) {
+			if (EcoreUtil.isAncestor(this, newImplementingClassifier))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newImplementingClassifier) {
-				msgs = ((InternalEObject) newImplementingClassifier).eInverseAdd(this, UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, BehavioredClassifier.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newImplementingClassifier, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER, newImplementingClassifier, newImplementingClassifier));
+			if (newImplementingClassifier != null)
+				msgs = ((InternalEObject)newImplementingClassifier).eInverseAdd(this, UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, BehavioredClassifier.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newImplementingClassifier, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER, newImplementingClassifier, newImplementingClassifier));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,30 +185,8 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.IMPLEMENTATION__SUPPLIER, new int[] {UML2Package.IMPLEMENTATION__REALIZING_CLASSIFIER, UML2Package.IMPLEMENTATION__CONTRACT});
 		}
 		return supplier;
-
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getTargets() {
-		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-
-		if (null == target) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getTargets());
-			if (null != getContract()) {
-				union.add(getContract());
-			}
-
-			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
-		}
-
-		return target;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -221,30 +198,8 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.IMPLEMENTATION__CLIENT, new int[] {UML2Package.IMPLEMENTATION__ABSTRACTION, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
 		return client;
-
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getSources() {
-		EList source = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
-
-		if (null == source) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getSources());
-			if (null != getImplementingClassifier()) {
-				union.add(getImplementingClassifier());
-			}
-
-			source = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source);
-		}
-
-		return source;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -555,7 +510,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.IMPLEMENTATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -574,7 +529,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			case UML2Package.IMPLEMENTATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.IMPLEMENTATION__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.IMPLEMENTATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.IMPLEMENTATION__NAME_EXPRESSION:
@@ -584,7 +539,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			case UML2Package.IMPLEMENTATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.IMPLEMENTATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.IMPLEMENTATION__RELATED_ELEMENT:
 				return !getRelatedElements().isEmpty();
 			case UML2Package.IMPLEMENTATION__SOURCE:
@@ -608,5 +563,45 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.IMPLEMENTATION__VISIBILITY:
+				return false;
+			case UML2Package.IMPLEMENTATION__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getTargetsHelper(EList target) {
+		super.getTargetsHelper(target);
+		if (contract != null) {
+			target.add(contract);
+		}
+		return target;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getSourcesHelper(EList source) {
+		super.getSourcesHelper(source);
+		BehavioredClassifier implementingClassifier = getImplementingClassifier();
+		if (implementingClassifier != null) {
+			source.add(implementingClassifier);
+		}
+		return source;
+	}
+
 
 } //ImplementationImpl

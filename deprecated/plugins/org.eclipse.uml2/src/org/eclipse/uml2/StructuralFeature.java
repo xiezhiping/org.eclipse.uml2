@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeature.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: StructuralFeature.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ public interface StructuralFeature extends Feature, TypedElement, MultiplicityEl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Read Only</b></em>' attribute.
@@ -56,7 +56,7 @@ public interface StructuralFeature extends Feature, TypedElement, MultiplicityEl
 	 * @return the value of the '<em>Is Read Only</em>' attribute.
 	 * @see #setIsReadOnly(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getStructuralFeature_IsReadOnly()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isReadOnly();
@@ -70,5 +70,6 @@ public interface StructuralFeature extends Feature, TypedElement, MultiplicityEl
 	 * @generated
 	 */
 	void setIsReadOnly(boolean value);
+
 
 } // StructuralFeature

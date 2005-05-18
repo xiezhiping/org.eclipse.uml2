@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Action.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -43,7 +43,7 @@ public interface Action extends ExecutableNode{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Effect</b></em>' attribute.
@@ -72,6 +72,7 @@ public interface Action extends ExecutableNode{
 	 */
 	void setEffect(String value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Output</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
@@ -83,18 +84,18 @@ public interface Action extends ExecutableNode{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Output</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_Output()
-	 * @model type="org.eclipse.uml2.OutputPin" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
+	 * @model type="org.eclipse.uml2.OutputPin" transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList getOutputs();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified name from the '<em><b>Output</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Output</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.OutputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
+	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOutputs()
 	 * @generated
      */
@@ -111,18 +112,18 @@ public interface Action extends ExecutableNode{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Input</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_Input()
-	 * @model type="org.eclipse.uml2.InputPin" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
+	 * @model type="org.eclipse.uml2.InputPin" transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList getInputs();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified name from the '<em><b>Input</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Input</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.InputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.InputPin} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InputPin} to retrieve.
+	 * @return The {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInputs()
 	 * @generated
      */
@@ -143,6 +144,7 @@ public interface Action extends ExecutableNode{
 	 */
 	Classifier getContext();
 
+
 	/**
 	 * Returns the value of the '<em><b>Local Precondition</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Constraint}.
@@ -158,17 +160,17 @@ public interface Action extends ExecutableNode{
 	 * @return the value of the '<em>Local Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_LocalPrecondition()
 	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getLocalPreconditions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified name from the '<em><b>Local Precondition</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Local Precondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Constraint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Constraint} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getLocalPreconditions()
 	 * @generated
      */
@@ -185,6 +187,16 @@ public interface Action extends ExecutableNode{
      */
     Constraint createLocalPrecondition(EClass eClass);
 
+    /**
+     * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Local Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Constraint}.
+	 * @see #getLocalPreconditions()
+	 * @generated
+     */
+    Constraint createLocalPrecondition();
+
 	/**
 	 * Returns the value of the '<em><b>Local Postcondition</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Constraint}.
@@ -200,17 +212,17 @@ public interface Action extends ExecutableNode{
 	 * @return the value of the '<em>Local Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_LocalPostcondition()
 	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getLocalPostconditions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified name from the '<em><b>Local Postcondition</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Local Postcondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Constraint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Constraint} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getLocalPostconditions()
 	 * @generated
      */
@@ -227,13 +239,14 @@ public interface Action extends ExecutableNode{
      */
     Constraint createLocalPostcondition(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Local Postcondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * @return The new {@link org.eclipse.uml2.Constraint}.
+	 * @see #getLocalPostconditions()
 	 * @generated
-	 */
-	EList getOwnedElements();
+     */
+    Constraint createLocalPostcondition();
 
 } // Action

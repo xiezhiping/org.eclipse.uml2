@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Port.java,v 1.8 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Port.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -45,7 +45,7 @@ public interface Port extends Property{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Behavior</b></em>' attribute.
@@ -77,6 +77,7 @@ public interface Port extends Property{
 	 */
 	void setIsBehavior(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Service</b></em>' attribute.
 	 * The default value is <code>"true"</code>.
@@ -107,6 +108,7 @@ public interface Port extends Property{
 	 */
 	void setIsService(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Required</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Interface}.
@@ -126,12 +128,13 @@ public interface Port extends Property{
 	 */
 	EList getRequireds();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Interface} with the specified name from the '<em><b>Required</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Interface} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Interface} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Interface} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRequireds()
 	 * @generated
      */
@@ -152,17 +155,17 @@ public interface Port extends Property{
 	 * @return the value of the '<em>Redefined Port</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPort_RedefinedPort()
 	 * @model type="org.eclipse.uml2.Port" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedPorts();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Port} with the specified name from the '<em><b>Redefined Port</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Port</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Port} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Port} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Port} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedPorts()
 	 * @generated
      */
@@ -187,12 +190,13 @@ public interface Port extends Property{
 	 */
 	EList getProvideds();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Interface} with the specified name from the '<em><b>Provided</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Interface} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Interface} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Interface} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getProvideds()
 	 * @generated
      */
@@ -227,13 +231,5 @@ public interface Port extends Property{
 	 */
 	void setProtocol(ProtocolStateMachine value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
-	 * @generated
-	 */
-	EList getRedefinedElements();
 
 } // Port

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2004, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelOperations.java,v 1.2 2005/03/15 18:44:46 khussey Exp $
+ * $Id: ModelOperations.java,v 1.3 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -16,15 +16,14 @@ import org.eclipse.uml2.Model;
 import org.eclipse.uml2.NamedElement;
 
 /**
- * A static utility class that provides operations related to models.
+ * A static utility class that provides operations related to '<em><b>Model</b></em>'
+ * model objects.
  */
 public final class ModelOperations
-	extends UML2Operations {
+		extends UML2Operations {
 
-	/**
-	 * Constructs a new Model Operations. This constructor should never be
-	 * called because this is a static utility class.
-	 */
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
 	private ModelOperations() {
 		super();
 	}
@@ -55,4 +54,4 @@ public final class ModelOperations
 			+ NamedElement.SEPARATOR + "Metamodel"); //$NON-NLS-1$
 	}
 
-}
+} // ModelOperations

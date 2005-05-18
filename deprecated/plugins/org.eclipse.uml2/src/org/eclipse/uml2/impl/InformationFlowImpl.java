@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.10 2005/04/04 20:11:12 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.11 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,17 +16,18 @@ import java.util.Collection;
 
 import java.util.Iterator;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.DirectedRelationship;
 import org.eclipse.uml2.InformationFlow;
@@ -35,8 +36,10 @@ import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
-
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,9 +48,6 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getRelatedElements <em>Related Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getSources <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getRealizations <em>Realization</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getConveyeds <em>Conveyed</em>}</li>
  * </ul>
@@ -61,7 +61,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getRealizations() <em>Realization</em>}' reference list.
@@ -107,35 +107,26 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
-
-		if (null == relatedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(getSources());
-			union.addAll(getTargets());
-
-			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList relatedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+			if (relatedElement == null) {
+				EList union = getRelatedElementsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return relatedElement;
 		}
-
-		return relatedElement;
+		EList union = getRelatedElementsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSources() {
-		EList source = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
-
-		if (null == source) {
-			Set union = new LinkedHashSet();
-
-			source = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source);
-		}
-
+	protected EList getSourcesHelper(EList source) {
 		return source;
 	}
 
@@ -144,18 +135,49 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargets() {
-		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-
-		if (null == target) {
-			Set union = new LinkedHashSet();
-
-			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
+	public EList getSources() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList source = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
+			if (source == null) {
+				EList union = getSourcesHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return source;
 		}
+		EList union = getSourcesHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
+	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getTargetsHelper(EList target) {
 		return target;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getTargets() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList target = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
+			if (target == null) {
+				EList union = getTargetsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return target;
+		}
+		EList union = getTargetsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,6 +191,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		return realization;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -181,23 +204,22 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		return conveyed;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getConveyed(String unqualifiedName) {
-    	for (Iterator i = getConveyeds().iterator(); i.hasNext(); ) {
-    		Classifier namedConveyed = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedConveyed.getName())) {
-    			return namedConveyed;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getConveyed(String name) {
+		for (Iterator i = getConveyeds().iterator(); i.hasNext(); ) {
+			Classifier conveyed = (Classifier) i.next();
+			if (name.equals(conveyed.getName())) {
+				return conveyed;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -443,7 +465,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INFORMATION_FLOW__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -462,7 +484,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 			case UML2Package.INFORMATION_FLOW__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INFORMATION_FLOW__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.INFORMATION_FLOW__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INFORMATION_FLOW__NAME_EXPRESSION:
@@ -472,7 +494,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 			case UML2Package.INFORMATION_FLOW__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INFORMATION_FLOW__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.INFORMATION_FLOW__RELATED_ELEMENT:
 				return !getRelatedElements().isEmpty();
 			case UML2Package.INFORMATION_FLOW__SOURCE:
@@ -485,6 +507,16 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 				return conveyed != null && !conveyed.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.INFORMATION_FLOW__VISIBILITY:
+				return false;
+			case UML2Package.INFORMATION_FLOW__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -529,6 +561,22 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getRelatedElementsHelper(EList relatedElement) {
+		for (Iterator i = ((InternalEList) getSources()).basicIterator(); i.hasNext(); ) {
+			relatedElement.add(i.next());
+		}
+		for (Iterator i = ((InternalEList) getTargets()).basicIterator(); i.hasNext(); ) {
+			relatedElement.add(i.next());
+		}
+		return relatedElement;
 	}
 
 } //InformationFlowImpl

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,28 +8,31 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.10 2005/04/04 20:11:13 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.11 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Abstraction;
 import org.eclipse.uml2.OpaqueExpression;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -47,12 +50,13 @@ import org.eclipse.uml2.VisibilityKind;
  * @generated
  */
 public class AbstractionImpl extends DependencyImpl implements Abstraction {
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getMapping() <em>Mapping</em>}' containment reference.
@@ -103,6 +107,7 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ABSTRACTION__MAPPING, oldMapping, newMapping);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -123,7 +128,9 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ABSTRACTION__MAPPING, newMapping, newMapping));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,7 +142,7 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.ABSTRACTION__MAPPING, null, newMapping));
 		}
-        setMapping(newMapping);
+		setMapping(newMapping);
 		return newMapping;
 	}
 
@@ -144,21 +151,13 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getMapping()) {
-				union.add(getMapping());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	public OpaqueExpression createMapping() {
+		OpaqueExpression newMapping = UML2Factory.eINSTANCE.createOpaqueExpression();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ABSTRACTION__MAPPING, null, newMapping));
 		}
-
-		return ownedElement;
+		setMapping(newMapping);
+		return newMapping;
 	}
 
 	/**
@@ -420,7 +419,7 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ABSTRACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -439,7 +438,7 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 			case UML2Package.ABSTRACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ABSTRACTION__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.ABSTRACTION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.ABSTRACTION__NAME_EXPRESSION:
@@ -449,7 +448,7 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 			case UML2Package.ABSTRACTION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ABSTRACTION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.ABSTRACTION__RELATED_ELEMENT:
 				return !getRelatedElements().isEmpty();
 			case UML2Package.ABSTRACTION__SOURCE:
@@ -465,5 +464,30 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.ABSTRACTION__VISIBILITY:
+				return false;
+			case UML2Package.ABSTRACTION__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (mapping != null) {
+			ownedElement.add(mapping);
+		}
+		return ownedElement;
+	}
+
 
 } //AbstractionImpl

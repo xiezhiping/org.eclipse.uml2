@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,32 +8,36 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.internal.operation.ElementImportOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,7 +61,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
@@ -146,7 +150,9 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ELEMENT_IMPORT__VISIBILITY, oldVisibility, visibility));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,11 +169,14 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public void setAlias(String newAlias) {
+		newAlias = newAlias == null ? ALIAS_EDEFAULT : newAlias;
 		String oldAlias = alias;
-		alias = newAlias == null ? ALIAS_EDEFAULT : newAlias;
+		alias = newAlias;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ELEMENT_IMPORT__ALIAS, oldAlias, alias));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -205,7 +214,9 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		importedElement = newImportedElement;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT, oldImportedElement, importedElement));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -213,10 +224,8 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public Namespace getImportingNamespace() {
-		if (eContainerFeatureID != UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE) {
-			return null;
-		}
-		return (Namespace) eContainer;
+		if (eContainerFeatureID != UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE) return null;
+		return (Namespace)eContainer;
 	}
 
 	/**
@@ -225,25 +234,22 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public void setImportingNamespace(Namespace newImportingNamespace) {
-		if (eContainer != newImportingNamespace || (eContainerFeatureID != UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE && null != newImportingNamespace)) {
-			if (EcoreUtil.isAncestor(this, newImportingNamespace)) {
+		if (newImportingNamespace != eContainer || (eContainerFeatureID != UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE && newImportingNamespace != null)) {
+			if (EcoreUtil.isAncestor(this, newImportingNamespace))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newImportingNamespace) {
-				msgs = ((InternalEObject) newImportingNamespace).eInverseAdd(this, UML2Package.NAMESPACE__ELEMENT_IMPORT, Namespace.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newImportingNamespace, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE, newImportingNamespace, newImportingNamespace));
+			if (newImportingNamespace != null)
+				msgs = ((InternalEObject)newImportingNamespace).eInverseAdd(this, UML2Package.NAMESPACE__ELEMENT_IMPORT, Namespace.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newImportingNamespace, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE, newImportingNamespace, newImportingNamespace));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -251,7 +257,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public boolean validateVisibilityPublicOrPrivate(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.ElementImportOperations.validateVisibilityPublicOrPrivate(this, diagnostics, context);
+		return ElementImportOperations.validateVisibilityPublicOrPrivate(this, diagnostics, context);
 	}
 
 	/**
@@ -260,7 +266,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public boolean validateImportedElementIsPublic(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.ElementImportOperations.validateImportedElementIsPublic(this, diagnostics, context);
+		return ElementImportOperations.validateImportedElementIsPublic(this, diagnostics, context);
 	}
 
 	/**
@@ -269,51 +275,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public String getName() {
-		return org.eclipse.uml2.internal.operation.ElementImportOperations.getName(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getTargets() {
-		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-
-		if (null == target) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getTargets());
-			if (null != getImportedElement()) {
-				union.add(getImportedElement());
-			}
-
-			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
-		}
-
-		return target;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getSources() {
-		EList source = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
-
-		if (null == source) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getSources());
-			if (null != getImportingNamespace()) {
-				union.add(getImportingNamespace());
-			}
-
-			source = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source);
-		}
-
-		return source;
+		return ElementImportOperations.getName(this);
 	}
 
 	/**
@@ -322,11 +284,13 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getImportingNamespace()) {
-			return (Element) getImportingNamespace();
+		Namespace importingNamespace = getImportingNamespace();			
+		if (importingNamespace != null) {
+			return importingNamespace;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -533,5 +497,35 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getTargetsHelper(EList target) {
+		super.getTargetsHelper(target);
+		if (importedElement != null) {
+			target.add(importedElement);
+		}
+		return target;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getSourcesHelper(EList source) {
+		super.getSourcesHelper(source);
+		Namespace importingNamespace = getImportingNamespace();
+		if (importingNamespace != null) {
+			source.add(importingNamespace);
+		}
+		return source;
+	}
+
 
 } //ElementImportImpl

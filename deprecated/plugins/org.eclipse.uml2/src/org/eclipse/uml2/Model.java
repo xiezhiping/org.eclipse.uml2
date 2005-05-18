@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Model.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Model.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ public interface Model extends org.eclipse.uml2.Package{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Viewpoint</b></em>' attribute.
@@ -70,6 +70,7 @@ public interface Model extends org.eclipse.uml2.Package{
 	 * @generated
 	 */
 	void setViewpoint(String value);
+
 
 	// <!-- begin-custom-operations -->
 

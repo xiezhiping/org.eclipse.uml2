@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -48,7 +48,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Dimension</b></em>' attribute.
@@ -80,6 +80,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 */
 	void setIsDimension(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Is External</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
@@ -110,6 +111,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 */
 	void setIsExternal(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Contained Edge</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityEdge}.
@@ -124,17 +126,17 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_ContainedEdge()
 	 * @see org.eclipse.uml2.ActivityEdge#getInPartitions
 	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="inPartition"
-	 *        annotation="redefines org.eclipse.uml2.ActivityGroup#getContainedEdges=''"
 	 * @generated
 	 */
 	EList getContainedEdges();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified name from the '<em><b>Contained Edge</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContainedEdges()
 	 * @generated
      */
@@ -154,17 +156,17 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_ContainedNode()
 	 * @see org.eclipse.uml2.ActivityNode#getInPartitions
 	 * @model type="org.eclipse.uml2.ActivityNode" opposite="inPartition"
-	 *        annotation="redefines org.eclipse.uml2.ActivityGroup#getContainedNodes=''"
 	 * @generated
 	 */
 	EList getContainedNodes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified name from the '<em><b>Contained Node</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContainedNodes()
 	 * @generated
      */
@@ -184,21 +186,21 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_Subgroup()
 	 * @see org.eclipse.uml2.ActivityPartition#getSuperPartition
 	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="superPartition" containment="true" ordered="false"
-	 *        annotation="redefines org.eclipse.uml2.ActivityGroup#getSubgroups=''"
 	 * @generated
 	 */
 	EList getSubgroups();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityPartition} with the specified name from the '<em><b>Subgroup</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>' from the '<em><b>Subgroup</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityPartition} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityPartition} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityPartition} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubgroups()
 	 * @generated
      */
-    ActivityPartition getSubgroup(String unqualifiedName);
+    ActivityGroup getSubgroup(String unqualifiedName);
       
     /**
      * Creates a {@link org.eclipse.uml2.ActivityPartition} and appends it to the '<em><b>Subgroup</b></em>' containment reference list.
@@ -207,9 +209,20 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityPartition} to create.
 	 * @return The new {@link org.eclipse.uml2.ActivityPartition}.
 	 * @see #getSubgroups()
+	 * @generated NOT
+	 * @deprecated Use #createSubgroup() instead.
+     */
+    ActivityGroup createSubgroup(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.ActivityPartition} and appends it to the '<em><b>Subgroup</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.ActivityPartition}.
+	 * @see #getSubgroups()
 	 * @generated
      */
-    ActivityPartition createSubgroup(EClass eClass);
+    ActivityGroup createSubgroup();
 
 	/**
 	 * Returns the value of the '<em><b>Super Partition</b></em>' container reference.
@@ -225,7 +238,6 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_SuperPartition()
 	 * @see org.eclipse.uml2.ActivityPartition#getSubgroups
 	 * @model opposite="subgroup"
-	 *        annotation="subsets org.eclipse.uml2.ActivityGroup#getSuperGroup=''"
 	 * @generated
 	 */
 	ActivityPartition getSuperPartition();
@@ -239,6 +251,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @generated
 	 */
 	void setSuperPartition(ActivityPartition value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Represents</b></em>' reference.
@@ -269,13 +282,5 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 */
 	void setRepresents(Element value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='superGroup' eType='org.eclipse.uml2.ActivityGroup' containment='false' eOpposite='subgroup' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
-	 * @generated
-	 */
-	ActivityGroup getSuperGroup();
 
 } // ActivityPartition

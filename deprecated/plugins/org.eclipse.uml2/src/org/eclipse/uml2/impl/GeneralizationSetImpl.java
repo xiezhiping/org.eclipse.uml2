@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -54,7 +54,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isCovering() <em>Is Covering</em>}' attribute.
@@ -153,7 +153,9 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 		if (newIsCovering) eFlags |= IS_COVERING_EFLAG; else eFlags &= ~IS_COVERING_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION_SET__IS_COVERING, oldIsCovering, newIsCovering));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -174,7 +176,9 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 		if (newIsDisjoint) eFlags |= IS_DISJOINT_EFLAG; else eFlags &= ~IS_DISJOINT_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION_SET__IS_DISJOINT, oldIsDisjoint, newIsDisjoint));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,6 +218,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION_SET__POWERTYPE, oldPowertype, newPowertype);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -234,7 +239,9 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.GENERALIZATION_SET__POWERTYPE, newPowertype, newPowertype));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -247,6 +254,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 		}
 		return generalization;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -513,7 +521,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.GENERALIZATION_SET__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -532,7 +540,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 			case UML2Package.GENERALIZATION_SET__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.GENERALIZATION_SET__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.GENERALIZATION_SET__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.GENERALIZATION_SET__NAME_EXPRESSION:
@@ -542,7 +550,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 			case UML2Package.GENERALIZATION_SET__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.GENERALIZATION_SET__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.GENERALIZATION_SET__IS_COVERING:
 				return ((eFlags & IS_COVERING_EFLAG) != 0) != IS_COVERING_EDEFAULT;
 			case UML2Package.GENERALIZATION_SET__IS_DISJOINT:
@@ -553,6 +561,16 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 				return generalization != null && !generalization.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.GENERALIZATION_SET__VISIBILITY:
+				return false;
+			case UML2Package.GENERALIZATION_SET__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -571,5 +589,6 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //GeneralizationSetImpl

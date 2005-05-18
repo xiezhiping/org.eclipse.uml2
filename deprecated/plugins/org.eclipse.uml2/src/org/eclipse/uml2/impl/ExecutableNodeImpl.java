@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,30 +8,31 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.9 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.ExceptionHandler;
 import org.eclipse.uml2.ExecutableNode;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -54,7 +55,7 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getHandlers() <em>Handler</em>}' containment reference list.
@@ -96,10 +97,12 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 		return handler;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createHandler() instead.
 	 */
 	public ExceptionHandler createHandler(EClass eClass) {
 		ExceptionHandler newHandler = (ExceptionHandler) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -115,19 +118,13 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getHandlers());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	public ExceptionHandler createHandler() {
+		ExceptionHandler newHandler = UML2Factory.eINSTANCE.createExceptionHandler();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.EXECUTABLE_NODE__HANDLER, null, newHandler));
 		}
-
-		return ownedElement;
+		getHandlers().add(newHandler);
+		return newHandler;
 	}
 
 	/**
@@ -479,5 +476,20 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (handler != null) {
+			ownedElement.addAll(handler);
+		}
+		return ownedElement;
+	}
+
 
 } //ExecutableNodeImpl

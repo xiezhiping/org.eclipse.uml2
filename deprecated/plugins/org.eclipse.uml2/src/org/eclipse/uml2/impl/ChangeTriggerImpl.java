@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,29 +8,30 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeTriggerImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ChangeTriggerImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.ChangeTrigger;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
-
 import org.eclipse.uml2.VisibilityKind;
 
 /**
@@ -52,7 +53,7 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getChangeExpression() <em>Change Expression</em>}' containment reference.
@@ -103,6 +104,7 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION, oldChangeExpression, newChangeExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -123,7 +125,9 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION, newChangeExpression, newChangeExpression));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,30 +139,8 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION, null, newChangeExpression));
 		}
-        setChangeExpression(newChangeExpression);
+		setChangeExpression(newChangeExpression);
 		return newChangeExpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getChangeExpression()) {
-				union.add(getChangeExpression());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
 	}
 
 	/**
@@ -378,5 +360,20 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (changeExpression != null) {
+			ownedElement.add(changeExpression);
+		}
+		return ownedElement;
+	}
+
 
 } //ChangeTriggerImpl

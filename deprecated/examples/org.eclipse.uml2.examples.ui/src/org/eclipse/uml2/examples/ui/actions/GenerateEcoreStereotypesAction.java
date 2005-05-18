@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.2 2005/05/18 15:55:56 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.3 2005/05/18 16:43:51 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -22,7 +22,7 @@ import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.Profile;
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.edit.util.ChangeCommand;
+import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 
 /**

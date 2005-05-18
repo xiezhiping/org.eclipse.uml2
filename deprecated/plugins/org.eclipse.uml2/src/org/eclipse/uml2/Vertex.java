@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Vertex.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Vertex.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ public interface Vertex extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Container</b></em>' container reference.
@@ -57,7 +57,6 @@ public interface Vertex extends NamedElement{
 	 * @see org.eclipse.uml2.UML2Package#getVertex_Container()
 	 * @see org.eclipse.uml2.Region#getSubvertices
 	 * @model opposite="subvertex"
-	 *        annotation="redefines org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	Region getContainer();
@@ -71,6 +70,7 @@ public interface Vertex extends NamedElement{
 	 * @generated
 	 */
 	void setContainer(Region value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
@@ -93,12 +93,13 @@ public interface Vertex extends NamedElement{
 	 */
 	EList getOutgoings();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Transition} with the specified name from the '<em><b>Outgoing</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Outgoing</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Transition} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Transition} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Transition} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOutgoings()
 	 * @generated
      */
@@ -125,24 +126,16 @@ public interface Vertex extends NamedElement{
 	 */
 	EList getIncomings();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Transition} with the specified name from the '<em><b>Incoming</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Transition} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Transition} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Transition} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getIncomings()
 	 * @generated
      */
     Transition getIncoming(String unqualifiedName);
       
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
-
 } // Vertex

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNode.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ConditionalNode.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Determinate</b></em>' attribute.
@@ -69,6 +69,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 */
 	void setIsDeterminate(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Assured</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -95,6 +96,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 */
 	void setIsAssured(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Clause</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Clause}.
@@ -107,10 +109,10 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * @return the value of the '<em>Clause</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConditionalNode_Clause()
 	 * @model type="org.eclipse.uml2.Clause" containment="true" required="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getClauses();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.Clause} and appends it to the '<em><b>Clause</b></em>' containment reference list.
@@ -119,9 +121,20 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Clause} to create.
 	 * @return The new {@link org.eclipse.uml2.Clause}.
 	 * @see #getClauses()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createClause() instead.
      */
     Clause createClause(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Clause} and appends it to the '<em><b>Clause</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Clause}.
+	 * @see #getClauses()
+	 * @generated
+     */
+    Clause createClause();
 
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
@@ -138,17 +151,17 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConditionalNode_Result()
 	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Action#getOutputs=''"
 	 * @generated
 	 */
 	EList getResults();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified name from the '<em><b>Result</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.OutputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
+	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getResults()
 	 * @generated
      */
@@ -161,26 +174,19 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.OutputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.OutputPin}.
 	 * @see #getResults()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createResult() instead.
      */
     OutputPin createResult(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.OutputPin} and appends it to the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * @return The new {@link org.eclipse.uml2.OutputPin}.
+	 * @see #getResults()
 	 * @generated
-	 */
-	EList getOwnedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='output' eType='org.eclipse.uml2.OutputPin' containment='false'" 
-	 * @generated
-	 */
-	EList getOutputs();
+     */
+    OutputPin createResult();
 
 } // ConditionalNode

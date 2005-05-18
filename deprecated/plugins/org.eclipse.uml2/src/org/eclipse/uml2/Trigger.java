@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Trigger.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Trigger.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ public interface Trigger extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Port</b></em>' reference list.
@@ -61,12 +61,13 @@ public interface Trigger extends NamedElement{
 	 */
 	EList getPorts();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Port} with the specified name from the '<em><b>Port</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>' from the '<em><b>Port</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Port} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Port} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Port} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPorts()
 	 * @generated
      */

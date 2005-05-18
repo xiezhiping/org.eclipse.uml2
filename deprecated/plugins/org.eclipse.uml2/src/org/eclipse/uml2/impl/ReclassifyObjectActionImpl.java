@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.InputPin;
@@ -34,6 +36,7 @@ import org.eclipse.uml2.ReclassifyObjectAction;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -59,7 +62,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isReplaceAll() <em>Is Replace All</em>}' attribute.
@@ -148,7 +151,9 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 		if (newIsReplaceAll) eFlags |= IS_REPLACE_ALL_EFLAG; else eFlags &= ~IS_REPLACE_ALL_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL, oldIsReplaceAll, newIsReplaceAll));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -162,23 +167,22 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 		return oldClassifier;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getOldClassifier(String unqualifiedName) {
-    	for (Iterator i = getOldClassifiers().iterator(); i.hasNext(); ) {
-    		Classifier namedOldClassifier = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedOldClassifier.getName())) {
-    			return namedOldClassifier;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getOldClassifier(String name) {
+		for (Iterator i = getOldClassifiers().iterator(); i.hasNext(); ) {
+			Classifier oldClassifier = (Classifier) i.next();
+			if (name.equals(oldClassifier.getName())) {
+				return oldClassifier;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -191,23 +195,22 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 		return newClassifier;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getNewClassifier(String unqualifiedName) {
-    	for (Iterator i = getNewClassifiers().iterator(); i.hasNext(); ) {
-    		Classifier namedNewClassifier = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedNewClassifier.getName())) {
-    			return namedNewClassifier;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getNewClassifier(String name) {
+		for (Iterator i = getNewClassifiers().iterator(); i.hasNext(); ) {
+			Classifier newClassifier = (Classifier) i.next();
+			if (name.equals(newClassifier.getName())) {
+				return newClassifier;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -229,6 +232,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.RECLASSIFY_OBJECT_ACTION__OBJECT, oldObject, newObject);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -249,7 +253,9 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.RECLASSIFY_OBJECT_ACTION__OBJECT, newObject, newObject));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -261,7 +267,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.RECLASSIFY_OBJECT_ACTION__OBJECT, null, newObject));
 		}
-        setObject(newObject);
+		setObject(newObject);
 		return newObject;
 	}
 
@@ -270,21 +276,13 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInputs() {
-		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
-
-		if (null == input) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getInputs());
-			if (null != getObject()) {
-				union.add(getObject());
-			}
-
-			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
+	public InputPin createObject() {
+		InputPin newObject = UML2Factory.eINSTANCE.createInputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.RECLASSIFY_OBJECT_ACTION__OBJECT, null, newObject));
 		}
-
-		return input;
+		setObject(newObject);
+		return newObject;
 	}
 
 	/**
@@ -744,5 +742,20 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getInputsHelper(EList input) {
+		super.getInputsHelper(input);
+		if (object != null) {
+			input.add(object);
+		}
+		return input;
+	}
+
 
 } //ReclassifyObjectActionImpl

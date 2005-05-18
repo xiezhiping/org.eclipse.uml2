@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UsageImpl.java,v 1.7 2005/04/04 20:11:13 khussey Exp $
+ * $Id: UsageImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -41,7 +41,7 @@ public class UsageImpl extends DependencyImpl implements Usage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -310,7 +310,7 @@ public class UsageImpl extends DependencyImpl implements Usage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.USAGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -329,7 +329,7 @@ public class UsageImpl extends DependencyImpl implements Usage {
 			case UML2Package.USAGE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.USAGE__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.USAGE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.USAGE__NAME_EXPRESSION:
@@ -339,7 +339,7 @@ public class UsageImpl extends DependencyImpl implements Usage {
 			case UML2Package.USAGE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.USAGE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.USAGE__RELATED_ELEMENT:
 				return !getRelatedElements().isEmpty();
 			case UML2Package.USAGE__SOURCE:
@@ -352,6 +352,17 @@ public class UsageImpl extends DependencyImpl implements Usage {
 				return supplier != null && !supplier.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.USAGE__VISIBILITY:
+				return false;
+			case UML2Package.USAGE__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //UsageImpl

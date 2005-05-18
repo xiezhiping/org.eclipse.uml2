@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionActionImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
+ * $Id: ApplyFunctionActionImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.ApplyFunctionAction;
 import org.eclipse.uml2.InputPin;
@@ -35,6 +37,7 @@ import org.eclipse.uml2.PrimitiveFunction;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -59,7 +62,7 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getFunction() <em>Function</em>}' reference.
@@ -145,7 +148,9 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 		function = newFunction;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.APPLY_FUNCTION_ACTION__FUNCTION, oldFunction, function));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,23 +164,22 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 		return argument;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public InputPin getArgument(String unqualifiedName) {
-    	for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
-    		InputPin namedArgument = (InputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedArgument.getName())) {
-    			return namedArgument;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public InputPin getArgument(String name) {
+		for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
+			InputPin argument = (InputPin) i.next();
+			if (name.equals(argument.getName())) {
+				return argument;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -195,6 +199,20 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public InputPin createArgument() {
+		InputPin newArgument = UML2Factory.eINSTANCE.createInputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.APPLY_FUNCTION_ACTION__ARGUMENT, null, newArgument));
+		}
+		getArguments().add(newArgument);
+		return newArgument;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getResults() {
 		if (result == null) {
 			result = new EObjectContainmentEList(OutputPin.class, this, UML2Package.APPLY_FUNCTION_ACTION__RESULT);
@@ -202,27 +220,27 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 		return result;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public OutputPin getResult(String unqualifiedName) {
-    	for (Iterator i = getResults().iterator(); i.hasNext(); ) {
-    		OutputPin namedResult = (OutputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedResult.getName())) {
-    			return namedResult;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+    public OutputPin getResult(String name) {
+		for (Iterator i = getResults().iterator(); i.hasNext(); ) {
+			OutputPin result = (OutputPin) i.next();
+			if (name.equals(result.getName())) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createResult() instead.
 	 */
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -238,39 +256,13 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInputs() {
-		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
-
-		if (null == input) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getInputs());
-			union.addAll(getArguments());
-
-			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
+	public OutputPin createResult() {
+		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.APPLY_FUNCTION_ACTION__RESULT, null, newResult));
 		}
-
-		return input;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOutputs() {
-		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
-
-		if (null == output) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOutputs());
-			union.addAll(getResults());
-
-			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
-		}
-
-		return output;
+		getResults().add(newResult);
+		return newResult;
 	}
 
 	/**
@@ -708,5 +700,34 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getInputsHelper(EList input) {
+		super.getInputsHelper(input);
+		if (argument != null) {
+			input.addAll(argument);
+		}
+		return input;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOutputsHelper(EList output) {
+		super.getOutputsHelper(output);
+		if (result != null) {
+			output.addAll(result);
+		}
+		return output;
+	}
+
 
 } //ApplyFunctionActionImpl

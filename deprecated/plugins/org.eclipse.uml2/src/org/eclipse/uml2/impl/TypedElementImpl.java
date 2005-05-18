@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypedElementImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
+ * $Id: TypedElementImpl.java,v 1.8 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -47,7 +47,7 @@ public abstract class TypedElementImpl extends NamedElementImpl implements Typed
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -111,10 +111,11 @@ public abstract class TypedElementImpl extends NamedElementImpl implements Typed
 	public void setType(Type newType) {
 		Type oldType = type;
 		type = newType;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TYPED_ELEMENT__TYPE, oldType, newType));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TYPED_ELEMENT__TYPE, oldType, type));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -321,5 +322,6 @@ public abstract class TypedElementImpl extends NamedElementImpl implements Typed
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //TypedElementImpl

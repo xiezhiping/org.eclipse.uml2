@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.9 2005/04/04 20:11:14 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -44,7 +44,7 @@ public interface RedefinableElement extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Leaf</b></em>' attribute.
@@ -76,35 +76,6 @@ public interface RedefinableElement extends NamedElement{
 	 */
 	void setIsLeaf(boolean value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An invariant constraint based on the following OCL expression:
-	 * <code>
-	 * self.redefinedElement->forAll(e | self.isRedefinitionContextValid(e))
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);'" 
-	 * @generated
-	 */
-	boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An invariant constraint based on the following OCL expression:
-	 * <code>
-	 * self.redefinedElement->forAll(re | re.isConsistentWith(self))
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);'" 
-	 * @generated
-	 */
-	boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context);
 
 	/**
 	 * Returns the value of the '<em><b>Redefinition Context</b></em>' reference list.
@@ -120,17 +91,18 @@ public interface RedefinableElement extends NamedElement{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefinition Context</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinitionContext()
-	 * @model type="org.eclipse.uml2.Classifier" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Classifier" required="true" transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList getRedefinitionContexts();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified name from the '<em><b>Redefinition Context</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefinition Context</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinitionContexts()
 	 * @generated
      */
@@ -145,8 +117,7 @@ public interface RedefinableElement extends NamedElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isConsistentWith(this, redefinee);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean isConsistentWith(RedefinableElement redefinee);
@@ -160,19 +131,64 @@ public interface RedefinableElement extends NamedElement{
 	 * self.redefinitionContext->exists(c | redefinable.redefinitionContext->exists(r | c.allParents()->includes(r)))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean isRedefinitionContextValid(RedefinableElement redefinable);
 
 	/**
+	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
+	 * <!-- begin-model-doc -->
+	 * redefinable element that is being redefined by this element. This is a derived union.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Redefined Element</em>' reference list.
+	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinedElement()
+	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedElements();
+
+
+    /**
+     * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
+	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedElements()
+	 * @generated
+     */
+    RedefinableElement getRedefinedElement(String name);
+      
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * self.redefinedElement->forAll(e | self.isRedefinitionContextValid(e))
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @generated
+	 */
+	boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * self.redefinedElement->forAll(re | re.isConsistentWith(self))
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @generated
+	 */
+	boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context);
 
 } // RedefinableElement

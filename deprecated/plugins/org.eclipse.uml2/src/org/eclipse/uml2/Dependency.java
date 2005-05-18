@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Dependency.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Dependency.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface Dependency extends PackageableElement, DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Client</b></em>' reference list.
@@ -59,17 +59,18 @@ public interface Dependency extends PackageableElement, DirectedRelationship{
 	 * @return the value of the '<em>Client</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDependency_Client()
 	 * @see org.eclipse.uml2.NamedElement#getClientDependencies
-	 * @model type="org.eclipse.uml2.NamedElement" opposite="clientDependency" required="true" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.NamedElement" opposite="clientDependency" required="true" ordered="false"
 	 * @generated
 	 */
 	EList getClients();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified name from the '<em><b>Client</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Client</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.NamedElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.NamedElement} to retrieve.
+	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getClients()
 	 * @generated
      */
@@ -89,17 +90,18 @@ public interface Dependency extends PackageableElement, DirectedRelationship{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Supplier</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDependency_Supplier()
-	 * @model type="org.eclipse.uml2.NamedElement" required="true" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.NamedElement" required="true" ordered="false"
 	 * @generated
 	 */
 	EList getSuppliers();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified name from the '<em><b>Supplier</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Supplier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.NamedElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.NamedElement} to retrieve.
+	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSuppliers()
 	 * @generated
      */

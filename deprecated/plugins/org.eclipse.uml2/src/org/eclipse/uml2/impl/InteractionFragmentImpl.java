@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,27 +8,29 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.8 2005/04/04 20:11:13 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.GeneralOrdering;
 import org.eclipse.uml2.Interaction;
 import org.eclipse.uml2.InteractionFragment;
@@ -37,6 +39,7 @@ import org.eclipse.uml2.Lifeline;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -62,7 +65,7 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getCovereds() <em>Covered</em>}' reference list.
@@ -108,29 +111,28 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public EList getCovereds() {
-		if (null == covered) {
+		if (covered == null) {
 			covered = new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.INTERACTION_FRAGMENT__COVERED, UML2Package.LIFELINE__COVERED_BY);
 		}
 		return covered;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Lifeline getCovered(String unqualifiedName) {
-    	for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
-    		Lifeline namedCovered = (Lifeline) i.next();
-    		
-    		if (unqualifiedName.equals(namedCovered.getName())) {
-    			return namedCovered;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Lifeline getCovered(String name) {
+		for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
+			Lifeline covered = (Lifeline) i.next();
+			if (name.equals(covered.getName())) {
+				return covered;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -143,30 +145,44 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 		return generalOrdering;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public GeneralOrdering getGeneralOrdering(String unqualifiedName) {
-    	for (Iterator i = getGeneralOrderings().iterator(); i.hasNext(); ) {
-    		GeneralOrdering namedGeneralOrdering = (GeneralOrdering) i.next();
-    		
-    		if (unqualifiedName.equals(namedGeneralOrdering.getName())) {
-    			return namedGeneralOrdering;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public GeneralOrdering getGeneralOrdering(String name) {
+		for (Iterator i = getGeneralOrderings().iterator(); i.hasNext(); ) {
+			GeneralOrdering generalOrdering = (GeneralOrdering) i.next();
+			if (name.equals(generalOrdering.getName())) {
+				return generalOrdering;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createGeneralOrdering() instead.
+	 */
 	public GeneralOrdering createGeneralOrdering(EClass eClass) {
 		GeneralOrdering newGeneralOrdering = (GeneralOrdering) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_FRAGMENT__GENERAL_ORDERING, null, newGeneralOrdering));
+		}
+		getGeneralOrderings().add(newGeneralOrdering);
+		return newGeneralOrdering;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralOrdering createGeneralOrdering() {
+		GeneralOrdering newGeneralOrdering = UML2Factory.eINSTANCE.createGeneralOrdering();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_FRAGMENT__GENERAL_ORDERING, null, newGeneralOrdering));
 		}
@@ -203,7 +219,9 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION, newEnclosingInteraction, newEnclosingInteraction));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -234,39 +252,23 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_FRAGMENT__ENCLOSING_OPERAND, newEnclosingOperand, newEnclosingOperand));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getGeneralOrderings());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	public Namespace basicGetNamespace() {
+		InteractionOperand enclosingOperand = getEnclosingOperand();			
+		if (enclosingOperand != null) {
+			return enclosingOperand;
 		}
-
-		return ownedElement;
+		return super.basicGetNamespace();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Namespace getNamespace() {
-		if (null != getEnclosingOperand()) {
-			return (Namespace) getEnclosingOperand();
-		}
-		return super.getNamespace();
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -541,5 +543,20 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (generalOrdering != null) {
+			ownedElement.addAll(generalOrdering);
+		}
+		return ownedElement;
+	}
+
 
 } //InteractionFragmentImpl

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,26 +8,28 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.10 2005/04/04 20:11:12 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.11 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.ActivityNode;
 import org.eclipse.uml2.InputPin;
@@ -36,6 +38,7 @@ import org.eclipse.uml2.OutputPin;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -66,7 +69,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isTestedFirst() <em>Is Tested First</em>}' attribute.
@@ -205,7 +208,9 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		if (newIsTestedFirst) eFlags |= IS_TESTED_FIRST_EFLAG; else eFlags &= ~IS_TESTED_FIRST_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LOOP_NODE__IS_TESTED_FIRST, oldIsTestedFirst, newIsTestedFirst));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -219,23 +224,22 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return bodyPart;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityNode getBodyPart(String unqualifiedName) {
-    	for (Iterator i = getBodyParts().iterator(); i.hasNext(); ) {
-    		ActivityNode namedBodyPart = (ActivityNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedBodyPart.getName())) {
-    			return namedBodyPart;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityNode getBodyPart(String name) {
+		for (Iterator i = getBodyParts().iterator(); i.hasNext(); ) {
+			ActivityNode bodyPart = (ActivityNode) i.next();
+			if (name.equals(bodyPart.getName())) {
+				return bodyPart;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -248,23 +252,22 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return setupPart;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityNode getSetupPart(String unqualifiedName) {
-    	for (Iterator i = getSetupParts().iterator(); i.hasNext(); ) {
-    		ActivityNode namedSetupPart = (ActivityNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedSetupPart.getName())) {
-    			return namedSetupPart;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityNode getSetupPart(String name) {
+		for (Iterator i = getSetupParts().iterator(); i.hasNext(); ) {
+			ActivityNode setupPart = (ActivityNode) i.next();
+			if (name.equals(setupPart.getName())) {
+				return setupPart;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -301,7 +304,9 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		decider = newDecider;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LOOP_NODE__DECIDER, oldDecider, decider));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -315,23 +320,22 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return test;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityNode getTest(String unqualifiedName) {
-    	for (Iterator i = getTests().iterator(); i.hasNext(); ) {
-    		ActivityNode namedTest = (ActivityNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedTest.getName())) {
-    			return namedTest;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityNode getTest(String name) {
+		for (Iterator i = getTests().iterator(); i.hasNext(); ) {
+			ActivityNode test = (ActivityNode) i.next();
+			if (name.equals(test.getName())) {
+				return test;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -344,30 +348,44 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return result;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public OutputPin getResult(String unqualifiedName) {
-    	for (Iterator i = getResults().iterator(); i.hasNext(); ) {
-    		OutputPin namedResult = (OutputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedResult.getName())) {
-    			return namedResult;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public OutputPin getResult(String name) {
+		for (Iterator i = getResults().iterator(); i.hasNext(); ) {
+			OutputPin result = (OutputPin) i.next();
+			if (name.equals(result.getName())) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createResult() instead.
+	 */
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.LOOP_NODE__RESULT, null, newResult));
+		}
+		getResults().add(newResult);
+		return newResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin createResult() {
+		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.LOOP_NODE__RESULT, null, newResult));
 		}
@@ -387,30 +405,44 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return loopVariable;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public OutputPin getLoopVariable(String unqualifiedName) {
-    	for (Iterator i = getLoopVariables().iterator(); i.hasNext(); ) {
-    		OutputPin namedLoopVariable = (OutputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedLoopVariable.getName())) {
-    			return namedLoopVariable;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public OutputPin getLoopVariable(String name) {
+		for (Iterator i = getLoopVariables().iterator(); i.hasNext(); ) {
+			OutputPin loopVariable = (OutputPin) i.next();
+			if (name.equals(loopVariable.getName())) {
+				return loopVariable;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createLoopVariable() instead.
+	 */
 	public OutputPin createLoopVariable(EClass eClass) {
 		OutputPin newLoopVariable = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.LOOP_NODE__LOOP_VARIABLE, null, newLoopVariable));
+		}
+		getLoopVariables().add(newLoopVariable);
+		return newLoopVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin createLoopVariable() {
+		OutputPin newLoopVariable = UML2Factory.eINSTANCE.createOutputPin();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.LOOP_NODE__LOOP_VARIABLE, null, newLoopVariable));
 		}
@@ -430,23 +462,22 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return bodyOutput;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public OutputPin getBodyOutput(String unqualifiedName) {
-    	for (Iterator i = getBodyOutputs().iterator(); i.hasNext(); ) {
-    		OutputPin namedBodyOutput = (OutputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedBodyOutput.getName())) {
-    			return namedBodyOutput;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public OutputPin getBodyOutput(String name) {
+		for (Iterator i = getBodyOutputs().iterator(); i.hasNext(); ) {
+			OutputPin bodyOutput = (OutputPin) i.next();
+			if (name.equals(bodyOutput.getName())) {
+				return bodyOutput;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -459,23 +490,22 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return loopVariableInput;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public InputPin getLoopVariableInput(String unqualifiedName) {
-    	for (Iterator i = getLoopVariableInputs().iterator(); i.hasNext(); ) {
-    		InputPin namedLoopVariableInput = (InputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedLoopVariableInput.getName())) {
-    			return namedLoopVariableInput;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public InputPin getLoopVariableInput(String name) {
+		for (Iterator i = getLoopVariableInputs().iterator(); i.hasNext(); ) {
+			InputPin loopVariableInput = (InputPin) i.next();
+			if (name.equals(loopVariableInput.getName())) {
+				return loopVariableInput;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -495,59 +525,13 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutputs() {
-		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
-
-		if (null == output) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOutputs());
-			union.addAll(getResults());
-
-			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
+	public InputPin createLoopVariableInput() {
+		InputPin newLoopVariableInput = UML2Factory.eINSTANCE.createInputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.LOOP_NODE__LOOP_VARIABLE_INPUT, null, newLoopVariableInput));
 		}
-
-		return output;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getLoopVariables());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getInputs() {
-		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
-
-		if (null == input) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getInputs());
-			union.addAll(getLoopVariableInputs());
-
-			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
-		}
-
-		return input;
+		getLoopVariableInputs().add(newLoopVariableInput);
+		return newLoopVariableInput;
 	}
 
 	/**
@@ -651,8 +635,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 					return ((InternalEList)getElementImports()).basicRemove(otherEnd, msgs);
 				case UML2Package.LOOP_NODE__PACKAGE_IMPORT:
 					return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
-				case UML2Package.LOOP_NODE__ACTIVITY_GROUP_ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.LOOP_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.LOOP_NODE__VARIABLE:
 					return ((InternalEList)getVariables()).basicRemove(otherEnd, msgs);
 				case UML2Package.LOOP_NODE__CONTAINED_NODE:
@@ -670,6 +652,15 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.LOOP_NODE__ACTIVITY_GROUP_ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.LOOP_NODE__ACTIVITY_GROUP_ACTIVITY, msgs);
+			default :
+				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -1078,7 +1069,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.LOOP_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1113,7 +1104,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 			case UML2Package.LOOP_NODE__IN_GROUP:
 				return !getInGroups().isEmpty();
 			case UML2Package.LOOP_NODE__ACTIVITY:
-				return false;
+				return getActivity() != null;
 			case UML2Package.LOOP_NODE__REDEFINED_ELEMENT:
 				return redefinedElement != null && !redefinedElement.isEmpty();
 			case UML2Package.LOOP_NODE__IN_STRUCTURED_NODE:
@@ -1149,7 +1140,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 			case UML2Package.LOOP_NODE__SUPER_GROUP:
 				return basicGetSuperGroup() != null;
 			case UML2Package.LOOP_NODE__ACTIVITY_GROUP_ACTIVITY:
-				return false;
+				return getActivityGroup_activity() != null;
 			case UML2Package.LOOP_NODE__VARIABLE:
 				return variable != null && !variable.isEmpty();
 			case UML2Package.LOOP_NODE__CONTAINED_NODE:
@@ -1180,6 +1171,16 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return eDynamicIsSet(eFeature);
 	}
 
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.LOOP_NODE__ACTIVITY:
+				return false;
+			case UML2Package.LOOP_NODE__ACTIVITY_GROUP_ACTIVITY:
+				return false;
+		}
+		return eIsSetGen(eFeature);
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1194,5 +1195,48 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOutputsHelper(EList output) {
+		super.getOutputsHelper(output);
+		if (result != null) {
+			output.addAll(result);
+		}
+		return output;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (loopVariable != null) {
+			ownedElement.addAll(loopVariable);
+		}
+		return ownedElement;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getInputsHelper(EList input) {
+		super.getInputsHelper(input);
+		if (loopVariableInput != null) {
+			input.addAll(loopVariableInput);
+		}
+		return input;
+	}
+
 
 } //LoopNodeImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpression.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
+ * $Id: TimeExpression.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ public interface TimeExpression extends ValueSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>First Time</b></em>' attribute.
@@ -72,6 +72,7 @@ public interface TimeExpression extends ValueSpecification{
 	 */
 	void setFirstTime(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Event</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -100,5 +101,6 @@ public interface TimeExpression extends ValueSpecification{
 	 * @generated
 	 */
 	void setEvent(NamedElement value);
+
 
 } // TimeExpression

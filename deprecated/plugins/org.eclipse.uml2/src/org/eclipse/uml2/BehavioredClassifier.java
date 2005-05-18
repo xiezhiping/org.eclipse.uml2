@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.10 2005/04/06 19:59:37 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.11 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -48,7 +48,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Behavior</b></em>' containment reference list.
@@ -66,18 +66,18 @@ public interface BehavioredClassifier extends Classifier{
 	 * @return the value of the '<em>Owned Behavior</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedBehavior()
 	 * @see org.eclipse.uml2.Behavior#getContext
-	 * @model type="org.eclipse.uml2.Behavior" opposite="context" containment="true" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
+	 * @model type="org.eclipse.uml2.Behavior" opposite="context" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedBehaviors();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified name from the '<em><b>Owned Behavior</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Behavior</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Behavior} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Behavior} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedBehaviors()
 	 * @generated
      */
@@ -108,8 +108,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @return the value of the '<em>Classifier Behavior</em>' reference.
 	 * @see #setClassifierBehavior(Behavior)
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_ClassifierBehavior()
-	 * @model resolveProxies="false" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors=''"
+	 * @model resolveProxies="false"
 	 * @generated
 	 */
 	Behavior getClassifierBehavior();
@@ -123,6 +122,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @generated
 	 */
 	void setClassifierBehavior(Behavior value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Implementation</b></em>' containment reference list.
@@ -140,18 +140,18 @@ public interface BehavioredClassifier extends Classifier{
 	 * @return the value of the '<em>Implementation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_Implementation()
 	 * @see org.eclipse.uml2.Implementation#getImplementingClassifier
-	 * @model type="org.eclipse.uml2.Implementation" opposite="implementingClassifier" containment="true" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements='' org.eclipse.uml2.NamedElement#getClientDependencies=''"
+	 * @model type="org.eclipse.uml2.Implementation" opposite="implementingClassifier" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getImplementations();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Implementation} with the specified name from the '<em><b>Implementation</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Implementation} with the specified '<em><b>Name</b></em>' from the '<em><b>Implementation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Implementation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Implementation} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Implementation} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Implementation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getImplementations()
 	 * @generated
      */
@@ -164,9 +164,20 @@ public interface BehavioredClassifier extends Classifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Implementation} to create.
 	 * @return The new {@link org.eclipse.uml2.Implementation}.
 	 * @see #getImplementations()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createImplementation() instead.
      */
     Implementation createImplementation(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Implementation} and appends it to the '<em><b>Implementation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Implementation}.
+	 * @see #getImplementations()
+	 * @generated
+     */
+    Implementation createImplementation();
 
 	/**
 	 * Returns the value of the '<em><b>Owned Trigger</b></em>' containment reference list.
@@ -180,17 +191,17 @@ public interface BehavioredClassifier extends Classifier{
 	 * @return the value of the '<em>Owned Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedTrigger()
 	 * @model type="org.eclipse.uml2.Trigger" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedTriggers();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified name from the '<em><b>Owned Trigger</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Trigger</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Trigger} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Trigger} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Trigger} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedTriggers()
 	 * @generated
      */
@@ -221,17 +232,17 @@ public interface BehavioredClassifier extends Classifier{
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedStateMachine()
 	 * @see org.eclipse.uml2.StateMachine#getStateMachine_redefinitionContext
 	 * @model type="org.eclipse.uml2.StateMachine" opposite="stateMachine_redefinitionContext" containment="true" volatile="true" ordered="false"
-	 *        annotation="redefines org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors=''"
 	 * @generated
 	 */
 	EList getOwnedStateMachines();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.StateMachine} with the specified name from the '<em><b>Owned State Machine</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.StateMachine} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned State Machine</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.StateMachine} to retrieve.
-	 * @return The {@link org.eclipse.uml2.StateMachine} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.StateMachine} to retrieve.
+	 * @return The {@link org.eclipse.uml2.StateMachine} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedStateMachines()
 	 * @generated
      */
@@ -248,32 +259,15 @@ public interface BehavioredClassifier extends Classifier{
      */
     StateMachine createOwnedStateMachine(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.StateMachine} and appends it to the '<em><b>Owned State Machine</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
+	 * @return The new {@link org.eclipse.uml2.StateMachine}.
+	 * @see #getOwnedStateMachines()
 	 * @generated
-	 */
-	EList getOwnedMembers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='clientDependency' eOpposite='client' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Dependency' eOpposite.lowerBound='1'" 
-	 * @generated
-	 */
-	EList getClientDependencies();
+     */
+    StateMachine createOwnedStateMachine();
 
 	// <!-- begin-custom-operations -->
 	

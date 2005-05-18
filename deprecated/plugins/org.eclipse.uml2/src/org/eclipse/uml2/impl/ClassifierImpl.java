@@ -8,27 +8,31 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.23 2005/04/20 18:06:34 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.24 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
+
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -36,6 +40,7 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.Association;
 import org.eclipse.uml2.Classifier;
@@ -56,14 +61,20 @@ import org.eclipse.uml2.Substitution;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Type;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UseCase;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SupersetEObjectContainmentEList;
+import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.internal.operation.ClassifierOperations;
+import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
 import org.eclipse.uml2.internal.operation.TypeOperations;
-import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectContainmentEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,21 +87,19 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOwningParameter <em>Owning Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPackageableElement_visibility <em>Packageable Element visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPackage <em>Package</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#isLeaf <em>Is Leaf</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getClientDependencies <em>Client Dependency</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOccurrences <em>Occurrence</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#isAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getInheritedMembers <em>Inherited Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getGenerals <em>General</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getGeneralizations <em>Generalization</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPowertypeExtents <em>Powertype Extent</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOwnedUseCases <em>Owned Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getUseCases <em>Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRepresentation <em>Representation</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOccurrences <em>Occurrence</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,7 +111,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
@@ -125,16 +134,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	protected static final VisibilityKind PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT = VisibilityKind.PUBLIC_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getPackageableElement_visibility() <em>Packageable Element visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPackageableElement_visibility()
-	 * @generated
-	 * @ordered
-	 */
-	protected VisibilityKind packageableElement_visibility = PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -153,6 +152,16 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @ordered
 	 */
 	protected static final int IS_LEAF_EFLAG = 1 << 8;
+
+	/**
+	 * The cached value of the '{@link #getOccurrences() <em>Occurrence</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOccurrences()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList occurrence = null;
 
 	/**
 	 * The default value of the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
@@ -245,16 +254,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	protected CollaborationOccurrence representation = null;
 
 	/**
-	 * The cached value of the '{@link #getOccurrences() <em>Occurrence</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOccurrences()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList occurrence = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -310,11 +309,11 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__TEMPLATE_PARAMETER, oldTemplateParameter, newTemplateParameter);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != getOwningParameter() && newTemplateParameter != getOwningParameter()) {
+
+		if (getOwningParameter() != null && getOwningParameter() != newTemplateParameter) {
 			setOwningParameter(null);
 		}
 		return msgs;
-
 	}
 
 	/**
@@ -325,21 +324,18 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
-			if (null != templateParameter) {
-				msgs = ((InternalEObject) templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
-			if (null != newTemplateParameter) {
-				msgs = ((InternalEObject) newTemplateParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
+			if (templateParameter != null)
+				msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+			if (newTemplateParameter != null)
+				msgs = ((InternalEObject)newTemplateParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 			msgs = basicSetTemplateParameter(newTemplateParameter, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__TEMPLATE_PARAMETER, newTemplateParameter, newTemplateParameter));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__TEMPLATE_PARAMETER, newTemplateParameter, newTemplateParameter));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -347,10 +343,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public TemplateParameter getOwningParameter() {
-		if (eContainerFeatureID != UML2Package.CLASSIFIER__OWNING_PARAMETER) {
-			return null;
-		}
-		return (TemplateParameter) eContainer;
+		if (eContainerFeatureID != UML2Package.CLASSIFIER__OWNING_PARAMETER) return null;
+		return (TemplateParameter)eContainer;
 	}
 
 	/**
@@ -360,50 +354,47 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
 		EObject oldOwningParameter = eContainer;
-		if (eContainer != newOwningParameter || (eContainerFeatureID != UML2Package.CLASSIFIER__OWNING_PARAMETER && null != newOwningParameter)) {
-			if (EcoreUtil.isAncestor(this, newOwningParameter)) {
+		if (newOwningParameter != eContainer || (eContainerFeatureID != UML2Package.CLASSIFIER__OWNING_PARAMETER && newOwningParameter != null)) {
+			if (EcoreUtil.isAncestor(this, newOwningParameter))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newOwningParameter) {
-				msgs = ((InternalEObject) newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newOwningParameter, UML2Package.CLASSIFIER__OWNING_PARAMETER, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
+			if (newOwningParameter != null)
+				msgs = ((InternalEObject)newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newOwningParameter, UML2Package.CLASSIFIER__OWNING_PARAMETER, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
-		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
+
+		if (newOwningParameter != null || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public VisibilityKind getPackageableElement_visibility() {
-		return packageableElement_visibility;
+		return visibility;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setPackageableElement_visibility(VisibilityKind newPackageableElement_visibility) {
-		VisibilityKind oldPackageableElement_visibility = packageableElement_visibility;
-		packageableElement_visibility = null == newPackageableElement_visibility ? PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT : newPackageableElement_visibility;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY, oldPackageableElement_visibility, newPackageableElement_visibility));
-		}
+		VisibilityKind oldVisibility = visibility;
+		visibility = newPackageableElement_visibility == null ? PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT : newPackageableElement_visibility;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY, oldVisibility, visibility));
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -443,6 +434,43 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		if (newIsLeaf) eFlags |= IS_LEAF_EFLAG; else eFlags &= ~IS_LEAF_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__IS_LEAF, oldIsLeaf, newIsLeaf));
+
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getRedefinitionContexts() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList redefinitionContext = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
+			if (redefinitionContext == null) {
+				EList union = getRedefinitionContextsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return redefinitionContext;
+		}
+		EList union = getRedefinitionContextsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public Classifier getRedefinitionContext(String name) {
+		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
+			Classifier redefinitionContext = (Classifier) i.next();
+			if (name.equals(redefinitionContext.getName())) {
+				return redefinitionContext;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -450,53 +478,15 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinitionContextsGen() {
-		EList redefinitionContext = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
-
-		if (null == redefinitionContext) {
-			Set union = new LinkedHashSet();
-
-			redefinitionContext = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext);
-		}
-
-		return redefinitionContext;
-	}
-
-	public EList getRedefinitionContexts() {
-		EList redefinitionContext = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
-
-		if (null == redefinitionContext) {
-			Set union = new LinkedHashSet();
-
-			if (Classifier.class.isInstance(eContainer)) {
-				union.add(eContainer);
+	protected EList getRedefinedElementsHelper(EList redefinedElement) {
+		if (redefinedClassifier != null) {
+			for (Iterator i = ((InternalEList) redefinedClassifier).basicIterator(); i.hasNext(); ) {
+				redefinedElement.add(i.next());
 			}
-
-			redefinitionContext = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext);
 		}
-
-		return redefinitionContext;
+		return redefinedElement;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Classifier getRedefinitionContext(String unqualifiedName) {
-    	for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
-    		Classifier namedRedefinitionContext = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedRedefinitionContext.getName())) {
-    			return namedRedefinitionContext;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -514,10 +504,11 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public void setIsAbstract(boolean newIsAbstract) {
 		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
 		if (newIsAbstract) eFlags |= IS_ABSTRACT_EFLAG; else eFlags &= ~IS_ABSTRACT_EFLAG;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__IS_ABSTRACT, oldIsAbstract, newIsAbstract));
-		}
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -525,36 +516,81 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public EList getFeatures() {
-		EList feature = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
-
-		if (null == feature) {
-			Set union = new LinkedHashSet();
-			union.addAll(getAttributes());
-
-			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList feature = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getClassifier_Feature());
+			if (feature == null) {
+				EList union = getFeaturesHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getClassifier_Feature(), feature = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return feature;
 		}
-
-		return feature;
+		EList union = getFeaturesHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Feature getFeature(String unqualifiedName) {
-    	for (Iterator i = getFeatures().iterator(); i.hasNext(); ) {
-    		Feature namedFeature = (Feature) i.next();
-    		
-    		if (unqualifiedName.equals(namedFeature.getName())) {
-    			return namedFeature;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Feature getFeature(String name) {
+		for (Iterator i = getFeatures().iterator(); i.hasNext(); ) {
+			Feature feature = (Feature) i.next();
+			if (name.equals(feature.getName())) {
+				return feature;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getMembersHelper(EList member) {
+		super.getMembersHelper(member);
+		for (Iterator i = ((InternalEList) getFeatures()).basicIterator(); i.hasNext(); ) {
+			member.add(i.next());
+		}
+		for (Iterator i = ((InternalEList) getInheritedMembers()).basicIterator(); i.hasNext(); ) {
+			member.add(i.next());
+		}
+		return member;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (generalization != null) {
+			ownedElement.addAll(generalization);
+		}
+		if (substitution != null) {
+			ownedElement.addAll(substitution);
+		}
+		if (occurrence != null) {
+			ownedElement.addAll(occurrence);
+		}
+		return ownedElement;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getAttributesHelper(EList attribute) {
+		return attribute;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -578,23 +614,21 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return inheritedMembers;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public NamedElement getInheritedMember(String unqualifiedName) {
-    	for (Iterator i = getInheritedMembers().iterator(); i.hasNext(); ) {
-    		NamedElement namedInheritedMember = (NamedElement) i.next();
-    		
-    		if (unqualifiedName.equals(namedInheritedMember.getName())) {
-    			return namedInheritedMember;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public NamedElement getInheritedMember(String name) {
+		for (Iterator i = getInheritedMembers().iterator(); i.hasNext(); ) {
+			NamedElement inheritedMember = (NamedElement) i.next();
+			if (name.equals(inheritedMember.getName())) {
+				return inheritedMember;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -617,23 +651,21 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return generals;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getGeneral(String unqualifiedName) {
-    	for (Iterator i = getGenerals().iterator(); i.hasNext(); ) {
-    		Classifier namedGeneral = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedGeneral.getName())) {
-    			return namedGeneral;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getGeneral(String name) {
+		for (Iterator i = getGenerals().iterator(); i.hasNext(); ) {
+			Classifier general = (Classifier) i.next();
+			if (name.equals(general.getName())) {
+				return general;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -646,10 +678,12 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return generalization;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createGeneralization() instead.
 	 */
 	public Generalization createGeneralization(EClass eClass) {
 		Generalization newGeneralization = (Generalization) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -665,36 +699,64 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAttributes() {
-		EList attribute = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
-
-		if (null == attribute) {
-			Set union = new LinkedHashSet();
-
-			attribute = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Attribute(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Attribute(), attribute);
+	public Generalization createGeneralization() {
+		Generalization newGeneralization = UML2Factory.eINSTANCE.createGeneralization();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASSIFIER__GENERALIZATION, null, newGeneralization));
 		}
-
-		return attribute;
+		getGeneralizations().add(newGeneralization);
+		return newGeneralization;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Property getAttribute(String unqualifiedName) {
-    	for (Iterator i = getAttributes().iterator(); i.hasNext(); ) {
-    		Property namedAttribute = (Property) i.next();
-    		
-    		if (unqualifiedName.equals(namedAttribute.getName())) {
-    			return namedAttribute;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+	public EList getAttributes() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList attribute = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getClassifier_Attribute());
+			if (attribute == null) {
+				EList union = getAttributesHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getClassifier_Attribute(), attribute = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return attribute;
+		}
+		EList union = getAttributesHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public Property getAttribute(String name) {
+		for (Iterator i = getAttributes().iterator(); i.hasNext(); ) {
+			Property attribute = (Property) i.next();
+			if (name.equals(attribute.getName())) {
+				return attribute;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedMembersHelper(EList ownedMember) {
+		super.getOwnedMembersHelper(ownedMember);
+		if (ownedUseCase != null) {
+			ownedMember.addAll(ownedUseCase);
+		}
+		return ownedMember;
+	}
+
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -707,23 +769,22 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return redefinedClassifier;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getRedefinedClassifier(String unqualifiedName) {
-    	for (Iterator i = getRedefinedClassifiers().iterator(); i.hasNext(); ) {
-    		Classifier namedRedefinedClassifier = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedRedefinedClassifier.getName())) {
-    			return namedRedefinedClassifier;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getRedefinedClassifier(String name) {
+		for (Iterator i = getRedefinedClassifiers().iterator(); i.hasNext(); ) {
+			Classifier redefinedClassifier = (Classifier) i.next();
+			if (name.equals(redefinedClassifier.getName())) {
+				return redefinedClassifier;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -734,33 +795,46 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			substitution = new SubsetEObjectContainmentWithInverseEList(Substitution.class, this, UML2Package.CLASSIFIER__SUBSTITUTION, new int[] {UML2Package.CLASSIFIER__CLIENT_DEPENDENCY}, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER);
 		}
 		return substitution;
-
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Substitution getSubstitution(String unqualifiedName) {
-    	for (Iterator i = getSubstitutions().iterator(); i.hasNext(); ) {
-    		Substitution namedSubstitution = (Substitution) i.next();
-    		
-    		if (unqualifiedName.equals(namedSubstitution.getName())) {
-    			return namedSubstitution;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public Substitution getSubstitution(String name) {
+		for (Iterator i = getSubstitutions().iterator(); i.hasNext(); ) {
+			Substitution substitution = (Substitution) i.next();
+			if (name.equals(substitution.getName())) {
+				return substitution;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createSubstitution() instead.
+	 */
 	public Substitution createSubstitution(EClass eClass) {
 		Substitution newSubstitution = (Substitution) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASSIFIER__SUBSTITUTION, null, newSubstitution));
+		}
+		getSubstitutions().add(newSubstitution);
+		return newSubstitution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Substitution createSubstitution() {
+		Substitution newSubstitution = UML2Factory.eINSTANCE.createSubstitution();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASSIFIER__SUBSTITUTION, null, newSubstitution));
 		}
@@ -780,23 +854,22 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return powertypeExtent;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public GeneralizationSet getPowertypeExtent(String unqualifiedName) {
-    	for (Iterator i = getPowertypeExtents().iterator(); i.hasNext(); ) {
-    		GeneralizationSet namedPowertypeExtent = (GeneralizationSet) i.next();
-    		
-    		if (unqualifiedName.equals(namedPowertypeExtent.getName())) {
-    			return namedPowertypeExtent;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public GeneralizationSet getPowertypeExtent(String name) {
+		for (Iterator i = getPowertypeExtents().iterator(); i.hasNext(); ) {
+			GeneralizationSet powertypeExtent = (GeneralizationSet) i.next();
+			if (name.equals(powertypeExtent.getName())) {
+				return powertypeExtent;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -809,30 +882,44 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return ownedUseCase;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public UseCase getOwnedUseCase(String unqualifiedName) {
-    	for (Iterator i = getOwnedUseCases().iterator(); i.hasNext(); ) {
-    		UseCase namedOwnedUseCase = (UseCase) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedUseCase.getName())) {
-    			return namedOwnedUseCase;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public UseCase getOwnedUseCase(String name) {
+		for (Iterator i = getOwnedUseCases().iterator(); i.hasNext(); ) {
+			UseCase ownedUseCase = (UseCase) i.next();
+			if (name.equals(ownedUseCase.getName())) {
+				return ownedUseCase;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOwnedUseCase() instead.
+	 */
 	public UseCase createOwnedUseCase(EClass eClass) {
 		UseCase newOwnedUseCase = (UseCase) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASSIFIER__OWNED_USE_CASE, null, newOwnedUseCase));
+		}
+		getOwnedUseCases().add(newOwnedUseCase);
+		return newOwnedUseCase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UseCase createOwnedUseCase() {
+		UseCase newOwnedUseCase = UML2Factory.eINSTANCE.createUseCase();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASSIFIER__OWNED_USE_CASE, null, newOwnedUseCase));
 		}
@@ -852,23 +939,22 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return useCase;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public UseCase getUseCase(String unqualifiedName) {
-    	for (Iterator i = getUseCases().iterator(); i.hasNext(); ) {
-    		UseCase namedUseCase = (UseCase) i.next();
-    		
-    		if (unqualifiedName.equals(namedUseCase.getName())) {
-    			return namedUseCase;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public UseCase getUseCase(String name) {
+		for (Iterator i = getUseCases().iterator(); i.hasNext(); ) {
+			UseCase useCase = (UseCase) i.next();
+			if (name.equals(useCase.getName())) {
+				return useCase;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -884,15 +970,16 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public void setRepresentation(CollaborationOccurrence newRepresentation) {
-		if (null != newRepresentation && !getOccurrences().contains(newRepresentation)) {
+		if (newRepresentation != null && !getOccurrences().contains(newRepresentation)) {
 			getOccurrences().add(newRepresentation);
 		}
 		CollaborationOccurrence oldRepresentation = representation;
 		representation = newRepresentation;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__REPRESENTATION, oldRepresentation, newRepresentation));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__REPRESENTATION, oldRepresentation, representation));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -904,30 +991,29 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			occurrence = new SupersetEObjectContainmentEList(CollaborationOccurrence.class, this, UML2Package.CLASSIFIER__OCCURRENCE, new int[] {UML2Package.CLASSIFIER__REPRESENTATION});
 		}
 		return occurrence;
-
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public CollaborationOccurrence getOccurrence(String unqualifiedName) {
-    	for (Iterator i = getOccurrences().iterator(); i.hasNext(); ) {
-    		CollaborationOccurrence namedOccurrence = (CollaborationOccurrence) i.next();
-    		
-    		if (unqualifiedName.equals(namedOccurrence.getName())) {
-    			return namedOccurrence;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+    public CollaborationOccurrence getOccurrence(String name) {
+		for (Iterator i = getOccurrences().iterator(); i.hasNext(); ) {
+			CollaborationOccurrence occurrence = (CollaborationOccurrence) i.next();
+			if (name.equals(occurrence.getName())) {
+				return occurrence;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOccurrence() instead.
 	 */
 	public CollaborationOccurrence createOccurrence(EClass eClass) {
 		CollaborationOccurrence newOccurrence = (CollaborationOccurrence) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -943,12 +1029,28 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public CollaborationOccurrence createOccurrence() {
+		CollaborationOccurrence newOccurrence = UML2Factory.eINSTANCE.createCollaborationOccurrence();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASSIFIER__OCCURRENCE, null, newOccurrence));
+		}
+		getOccurrences().add(newOccurrence);
+		return newOccurrence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Element basicGetOwner() {
-		if (null != getOwningParameter()) {
-			return (Element) getOwningParameter();
+		TemplateParameter owningParameter = getOwningParameter();			
+		if (owningParameter != null) {
+			return owningParameter;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -968,30 +1070,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		setPackageableElement_visibility(newVisibility);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public boolean conformsToGen(Type other) {
-		return org.eclipse.uml2.internal.operation.TypeOperations.conformsTo(this, other);
-	}
-
 	public boolean conformsTo(Type other) {
-		return Classifier.class.isInstance(other)
-			? conformsTo((Classifier) other) : conformsToGen(other);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Namespace getNamespace() {
-		if (null != getPackage()) {
-			return (Namespace) getPackage();
-		}
-		return super.getNamespace();
+		return conformsTo((Classifier) other);
 	}
 
 	/**
@@ -1000,7 +1086,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
+		return RedefinableElementOperations.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
 	/**
@@ -1009,7 +1095,33 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
+		return RedefinableElementOperations.validateRedefinitionConsistent(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace basicGetNamespace() {
+		org.eclipse.uml2.Package package_ = basicGetPackage();			
+		if (package_ != null) {
+			return package_;
+		}
+		return super.basicGetNamespace();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected EList getRedefinitionContextsHelper(EList redefinitionContext) {
+		if (eContainer instanceof Classifier) {
+			redefinitionContext.add(eContainer);
+		}
+		return redefinitionContext;
 	}
 
 	/**
@@ -1018,7 +1130,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isConsistentWith(this, redefinee);
+		return RedefinableElementOperations.isConsistentWith(this, redefinee);
 	}
 
 	/**
@@ -1027,7 +1139,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean isRedefinitionContextValid(RedefinableElement redefinable) {
-		return org.eclipse.uml2.internal.operation.RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
+		return RedefinableElementOperations.isRedefinitionContextValid(this, redefinable);
 	}
 
 	/**
@@ -1036,19 +1148,15 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public Set allFeatures() {
-		try {
-			java.lang.reflect.Method method = getClass().getMethod("allFeatures", null); //$NON-NLS-1$
-			Set result = (Set) getCacheAdapter().get(this, method);
-		
-			if (null == result) {
-				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allFeatures(this));
-				getCacheAdapter().put(this, method, result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(0));
+			if (result == null) {
+				cache.put(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(0), result = ClassifierOperations.allFeatures(this));
 			}
-		
 			return result;
-		} catch (Exception e) {
-			return org.eclipse.uml2.internal.operation.ClassifierOperations.allFeatures(this);
 		}
+		return ClassifierOperations.allFeatures(this);
 	}
 
 	/**
@@ -1057,7 +1165,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean validateNoCyclesInGeneralization(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.ClassifierOperations.validateNoCyclesInGeneralization(this, diagnostics, context);
+		return ClassifierOperations.validateNoCyclesInGeneralization(this, diagnostics, context);
 	}
 
 	/**
@@ -1066,7 +1174,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean validateSpecializeType(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.ClassifierOperations.validateSpecializeType(this, diagnostics, context);
+		return ClassifierOperations.validateSpecializeType(this, diagnostics, context);
 	}
 
 	/**
@@ -1075,7 +1183,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean validateInheritedMember(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.ClassifierOperations.validateInheritedMember(this, diagnostics, context);
+		return ClassifierOperations.validateInheritedMember(this, diagnostics, context);
 	}
 
 	/**
@@ -1084,19 +1192,15 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public Set inheritedMember() {
-		try {
-			java.lang.reflect.Method method = getClass().getMethod("inheritedMember", null); //$NON-NLS-1$
-			Set result = (Set) getCacheAdapter().get(this, method);
-		
-			if (null == result) {
-				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.inheritedMember(this));
-				getCacheAdapter().put(this, method, result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(4));
+			if (result == null) {
+				cache.put(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(4), result = ClassifierOperations.inheritedMember(this));
 			}
-		
 			return result;
-		} catch (Exception e) {
-			return org.eclipse.uml2.internal.operation.ClassifierOperations.inheritedMember(this);
 		}
+		return ClassifierOperations.inheritedMember(this);
 	}
 
 	/**
@@ -1105,19 +1209,15 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public Set parents() {
-		try {
-			java.lang.reflect.Method method = getClass().getMethod("parents", null); //$NON-NLS-1$
-			Set result = (Set) getCacheAdapter().get(this, method);
-		
-			if (null == result) {
-				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.parents(this));
-				getCacheAdapter().put(this, method, result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Set result = (Set) cache.get(eResource(), this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(5));
+			if (result == null) {
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(5), result = ClassifierOperations.parents(this));
 			}
-		
 			return result;
-		} catch (Exception e) {
-			return org.eclipse.uml2.internal.operation.ClassifierOperations.parents(this);
 		}
+		return ClassifierOperations.parents(this);
 	}
 
 	/**
@@ -1126,19 +1226,15 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public Set allParents() {
-		try {
-			java.lang.reflect.Method method = getClass().getMethod("allParents", null); //$NON-NLS-1$
-			Set result = (Set) getCacheAdapter().get(this, method);
-		
-			if (null == result) {
-				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.allParents(this));
-				getCacheAdapter().put(this, method, result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(6));
+			if (result == null) {
+				cache.put(this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(6), result = ClassifierOperations.allParents(this));
 			}
-		
 			return result;
-		} catch (Exception e) {
-			return org.eclipse.uml2.internal.operation.ClassifierOperations.allParents(this);
 		}
+		return ClassifierOperations.allParents(this);
 	}
 
 	/**
@@ -1147,7 +1243,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public Set inheritableMembers(Classifier c) {
-		return org.eclipse.uml2.internal.operation.ClassifierOperations.inheritableMembers(this, c);
+		return ClassifierOperations.inheritableMembers(this, c);
 	}
 
 	/**
@@ -1156,7 +1252,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean hasVisibilityOf(NamedElement n) {
-		return org.eclipse.uml2.internal.operation.ClassifierOperations.hasVisibilityOf(this, n);
+		return ClassifierOperations.hasVisibilityOf(this, n);
 	}
 
 	/**
@@ -1165,7 +1261,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public Set inherit(Set inhs) {
-		return org.eclipse.uml2.internal.operation.ClassifierOperations.inherit(this, inhs);
+		return ClassifierOperations.inherit(this, inhs);
 	}
 
 	/**
@@ -1174,7 +1270,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean maySpecializeType(Classifier c) {
-		return org.eclipse.uml2.internal.operation.ClassifierOperations.maySpecializeType(this, c);
+		return ClassifierOperations.maySpecializeType(this, c);
 	}
 
 	/**
@@ -1183,19 +1279,15 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public Set general() {
-		try {
-			java.lang.reflect.Method method = getClass().getMethod("general", null); //$NON-NLS-1$
-			Set result = (Set) getCacheAdapter().get(this, method);
-		
-			if (null == result) {
-				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ClassifierOperations.general(this));
-				getCacheAdapter().put(this, method, result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Set result = (Set) cache.get(eResource(), this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(11));
+			if (result == null) {
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getClassifier().getEOperations().get(11), result = ClassifierOperations.general(this));
 			}
-		
 			return result;
-		} catch (Exception e) {
-			return org.eclipse.uml2.internal.operation.ClassifierOperations.general(this);
 		}
+		return ClassifierOperations.general(this);
 	}
 
 	/**
@@ -1204,7 +1296,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean validateGeneralEqualsParents(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.ClassifierOperations.validateGeneralEqualsParents(this, diagnostics, context);
+		return ClassifierOperations.validateGeneralEqualsParents(this, diagnostics, context);
 	}
 
 	/**
@@ -1213,50 +1305,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public boolean conformsTo(Classifier other) {
-		return org.eclipse.uml2.internal.operation.ClassifierOperations.conformsTo(this, other);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getMembers() {
-		EList member = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
-
-		if (null == member) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getMembers());
-			union.addAll(getFeatures());
-			union.addAll(getInheritedMembers());
-
-			member = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getNamespace_Member(), member);
-		}
-
-		return member;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getGeneralizations());
-			union.addAll(getSubstitutions());
-			union.addAll(getOccurrences());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
+		return ClassifierOperations.conformsTo(this, other);
 	}
 
 	/**
@@ -1265,17 +1314,50 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(66));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-			union.addAll(getRedefinedClassifiers());
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(66), result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getRedefinedElements", null);
+				EList redefinedElement = (EList) cache.get(eResource(), this, method);
+				if (redefinedElement == null) {
+					EList union = getRedefinedElementsHelper(new UniqueEList());
+					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, union.size(), union.toArray()));
+				}
+				return redefinedElement;
+			} catch (NoSuchMethodException nsme) {
+				// do nothing
+			}
 		}
+		EList union = getRedefinedElementsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
+	}
 
-		return result;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public RedefinableElement getRedefinedElement(String name) {
+		for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
+			RedefinableElement redefinedElement = (RedefinableElement) i.next();
+			if (name.equals(redefinedElement.getName())) {
+				return redefinedElement;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getFeaturesHelper(EList feature) {
+		for (Iterator i = ((InternalEList) getAttributes()).basicIterator(); i.hasNext(); ) {
+			feature.add(i.next());
+		}
+		return feature;
 	}
 
 	/**
@@ -1288,28 +1370,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.CLASSIFIER__CLIENT_DEPENDENCY, new int[] {UML2Package.CLASSIFIER__SUBSTITUTION}, UML2Package.DEPENDENCY__CLIENT);
 		}
 		return clientDependency;
-
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedMembers() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(68));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedMembers());
-			union.addAll(getOwnedUseCases());
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier().getEAllOperations().get(68), result);
-		}
-
-		return result;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1695,7 +1757,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.CLASSIFIER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1714,7 +1776,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CLASSIFIER__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.CLASSIFIER__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CLASSIFIER__NAME_EXPRESSION:
@@ -1734,7 +1796,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.CLASSIFIER__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.CLASSIFIER__REDEFINITION_CONTEXT:
@@ -1769,6 +1831,16 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				return occurrence != null && !occurrence.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.CLASSIFIER__VISIBILITY:
+				return false;
+			case UML2Package.CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -1852,9 +1924,12 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isLeaf: "); //$NON-NLS-1$
 		result.append((eFlags & IS_LEAF_EFLAG) != 0);
+		result.append(", isAbstract: "); //$NON-NLS-1$
+		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}
+
 
 	// <!-- begin-custom-operations -->
 

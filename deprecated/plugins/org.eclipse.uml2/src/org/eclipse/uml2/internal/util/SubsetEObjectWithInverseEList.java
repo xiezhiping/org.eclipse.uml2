@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetEObjectWithInverseEList.java,v 1.4 2005/03/15 18:44:46 khussey Exp $
+ * $Id: SubsetEObjectWithInverseEList.java,v 1.5 2005/05/18 16:38:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -16,7 +16,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.InternalEObject;
 
 /**
- *  
+ * @deprecated Use org.eclipse.uml2.common.util.SubsetEObjectWithInverseEList instead.
  */
 public class SubsetEObjectWithInverseEList
 	extends SubsetEObjectEList {

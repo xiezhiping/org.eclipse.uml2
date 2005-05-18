@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNode.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: JoinNode.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -39,7 +37,7 @@ public interface JoinNode extends ControlNode{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Combine Duplicate</b></em>' attribute.
@@ -71,6 +69,7 @@ public interface JoinNode extends ControlNode{
 	 */
 	void setIsCombineDuplicate(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Join Spec</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -86,7 +85,6 @@ public interface JoinNode extends ControlNode{
 	 * @see #setJoinSpec(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getJoinNode_JoinSpec()
 	 * @model containment="true" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getJoinSpec();
@@ -101,6 +99,7 @@ public interface JoinNode extends ControlNode{
 	 */
 	void setJoinSpec(ValueSpecification value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Join Spec</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -111,14 +110,5 @@ public interface JoinNode extends ControlNode{
 	 * @generated
      */
     ValueSpecification createJoinSpec(EClass eClass);
-     
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
 
 } // JoinNode

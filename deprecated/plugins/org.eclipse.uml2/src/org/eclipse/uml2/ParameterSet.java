@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSet.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ParameterSet.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -43,7 +43,7 @@ public interface ParameterSet extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Parameter</b></em>' reference list.
@@ -63,12 +63,13 @@ public interface ParameterSet extends NamedElement{
 	 */
 	EList getParameters();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified name from the '<em><b>Parameter</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParameters()
 	 * @generated
      */
@@ -86,17 +87,17 @@ public interface ParameterSet extends NamedElement{
 	 * @return the value of the '<em>Condition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getParameterSet_Condition()
 	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getConditions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified name from the '<em><b>Condition</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Condition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Constraint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Constraint} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConditions()
 	 * @generated
      */
@@ -113,13 +114,14 @@ public interface ParameterSet extends NamedElement{
      */
     Constraint createCondition(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Condition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * @return The new {@link org.eclipse.uml2.Constraint}.
+	 * @see #getConditions()
 	 * @generated
-	 */
-	EList getOwnedElements();
+     */
+    Constraint createCondition();
 
 } // ParameterSet

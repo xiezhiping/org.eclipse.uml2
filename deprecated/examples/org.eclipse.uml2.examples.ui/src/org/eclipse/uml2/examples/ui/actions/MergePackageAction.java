@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MergePackageAction.java,v 1.5 2005/03/15 18:54:23 khussey Exp $
+ * $Id: MergePackageAction.java,v 1.6 2005/05/18 16:43:51 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -32,7 +32,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.uml2.edit.util.ChangeCommand;
+import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 import org.eclipse.uml2.examples.ui.dialogs.OptionsDialog;
 import org.eclipse.uml2.examples.ui.dialogs.PackageMergerOptionsDialog;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,33 +8,34 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.6 2005/04/04 20:11:13 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Relationship;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Relationship</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following features are implemented:
- * <ul>
- *   <li>{@link org.eclipse.uml2.impl.RelationshipImpl#getRelatedElements <em>Related Element</em>}</li>
- * </ul>
  * </p>
  *
  * @generated
@@ -45,7 +46,7 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,17 +72,19 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
-
-		if (null == relatedElement) {
-			Set union = new LinkedHashSet();
-
-			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList relatedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+			if (relatedElement == null) {
+				EList union = getRelatedElementsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return relatedElement;
 		}
-
-		return relatedElement;
+		EList union = getRelatedElementsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -198,6 +201,16 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 				return !getRelatedElements().isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getRelatedElementsHelper(EList relatedElement) {
+		return relatedElement;
 	}
 
 } //RelationshipImpl

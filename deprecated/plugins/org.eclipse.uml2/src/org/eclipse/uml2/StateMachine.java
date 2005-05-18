@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
+ * $Id: StateMachine.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface StateMachine extends Behavior{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Region</b></em>' containment reference list.
@@ -57,17 +57,17 @@ public interface StateMachine extends Behavior{
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_Region()
 	 * @see org.eclipse.uml2.Region#getStateMachine
 	 * @model type="org.eclipse.uml2.Region" opposite="stateMachine" containment="true" required="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getRegions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Region} with the specified name from the '<em><b>Region</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>' from the '<em><b>Region</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Region} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Region} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Region} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRegions()
 	 * @generated
      */
@@ -80,9 +80,20 @@ public interface StateMachine extends Behavior{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Region} to create.
 	 * @return The new {@link org.eclipse.uml2.Region}.
 	 * @see #getRegions()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createRegion() instead.
      */
     Region createRegion(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Region} and appends it to the '<em><b>Region</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Region}.
+	 * @see #getRegions()
+	 * @generated
+     */
+    Region createRegion();
 
 	/**
 	 * Returns the value of the '<em><b>Connection Point</b></em>' containment reference list.
@@ -96,17 +107,17 @@ public interface StateMachine extends Behavior{
 	 * @return the value of the '<em>Connection Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_ConnectionPoint()
 	 * @model type="org.eclipse.uml2.Pseudostate" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getConnectionPoints();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Pseudostate} with the specified name from the '<em><b>Connection Point</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Pseudostate} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Pseudostate} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Pseudostate} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Pseudostate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConnectionPoints()
 	 * @generated
      */
@@ -119,9 +130,20 @@ public interface StateMachine extends Behavior{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Pseudostate} to create.
 	 * @return The new {@link org.eclipse.uml2.Pseudostate}.
 	 * @see #getConnectionPoints()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createConnectionPoint() instead.
      */
     Pseudostate createConnectionPoint(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Pseudostate} and appends it to the '<em><b>Connection Point</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Pseudostate}.
+	 * @see #getConnectionPoints()
+	 * @generated
+     */
+    Pseudostate createConnectionPoint();
 
 	/**
 	 * Returns the value of the '<em><b>Extended State Machine</b></em>' reference.
@@ -134,7 +156,7 @@ public interface StateMachine extends Behavior{
 	 * @return the value of the '<em>Extended State Machine</em>' reference.
 	 * @see #setExtendedStateMachine(StateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_ExtendedStateMachine()
-	 * @model annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
+	 * @model
 	 * @generated
 	 */
 	StateMachine getExtendedStateMachine();
@@ -148,6 +170,7 @@ public interface StateMachine extends Behavior{
 	 * @generated
 	 */
 	void setExtendedStateMachine(StateMachine value);
+
 
 	/**
 	 * Returns the value of the '<em><b>State Machine redefinition Context</b></em>' container reference.
@@ -163,7 +186,6 @@ public interface StateMachine extends Behavior{
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_StateMachine_redefinitionContext()
 	 * @see org.eclipse.uml2.BehavioredClassifier#getOwnedStateMachines
 	 * @model opposite="ownedStateMachine" volatile="true"
-	 *        annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinitionContexts=''"
 	 * @generated
 	 */
 	BehavioredClassifier getStateMachine_redefinitionContext();
@@ -178,31 +200,32 @@ public interface StateMachine extends Behavior{
 	 */
 	void setStateMachine_redefinitionContext(BehavioredClassifier value);
 
+
 	/**
+	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.RedefinableElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
+	 * <!-- begin-model-doc -->
+	 * redefinable element that is being redefined by this element. This is a derived union.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Redefined Element</em>' reference list.
+	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinedElement()
+	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedElements();
 
-	/**
+
+    /**
+     * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinitionContext' eType='org.eclipse.uml2.Classifier' containment='false'" 
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
+	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedElements()
 	 * @generated
-	 */
-	EList getRedefinitionContexts();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
-
+     */
+    RedefinableElement getRedefinedElement(String name);
+      
 } // StateMachine

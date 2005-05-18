@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.5 2005/03/18 21:15:42 khussey Exp $
+ * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.6 2005/05/18 16:42:31 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore.internal;
 
@@ -37,7 +37,7 @@ public class EMOF2EcoreResourceFactoryImpl
 		extends ResourceFactoryImpl
 		implements EMOF2EcoreResource.Factory {
 
-	public static final String copyright = "Copyright (c) 2004, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Creates an instance of the resource factory.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.CombinedFragment;
 import org.eclipse.uml2.Gate;
 import org.eclipse.uml2.Interaction;
@@ -34,6 +36,7 @@ import org.eclipse.uml2.InteractionOperand;
 import org.eclipse.uml2.InteractionOperator;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -58,7 +61,7 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getInteractionOperator() <em>Interaction Operator</em>}' attribute.
@@ -137,7 +140,9 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 		interactionOperator = newInteractionOperator == null ? INTERACTION_OPERATOR_EDEFAULT : newInteractionOperator;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMBINED_FRAGMENT__INTERACTION_OPERATOR, oldInteractionOperator, interactionOperator));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -151,30 +156,44 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 		return operand;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public InteractionOperand getOperand(String unqualifiedName) {
-    	for (Iterator i = getOperands().iterator(); i.hasNext(); ) {
-    		InteractionOperand namedOperand = (InteractionOperand) i.next();
-    		
-    		if (unqualifiedName.equals(namedOperand.getName())) {
-    			return namedOperand;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public InteractionOperand getOperand(String name) {
+		for (Iterator i = getOperands().iterator(); i.hasNext(); ) {
+			InteractionOperand operand = (InteractionOperand) i.next();
+			if (name.equals(operand.getName())) {
+				return operand;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOperand() instead.
+	 */
 	public InteractionOperand createOperand(EClass eClass) {
 		InteractionOperand newOperand = (InteractionOperand) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COMBINED_FRAGMENT__OPERAND, null, newOperand));
+		}
+		getOperands().add(newOperand);
+		return newOperand;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionOperand createOperand() {
+		InteractionOperand newOperand = UML2Factory.eINSTANCE.createInteractionOperand();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.COMBINED_FRAGMENT__OPERAND, null, newOperand));
 		}
@@ -194,27 +213,27 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 		return cfragmentGate;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Gate getCfragmentGate(String unqualifiedName) {
-    	for (Iterator i = getCfragmentGates().iterator(); i.hasNext(); ) {
-    		Gate namedCfragmentGate = (Gate) i.next();
-    		
-    		if (unqualifiedName.equals(namedCfragmentGate.getName())) {
-    			return namedCfragmentGate;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+    public Gate getCfragmentGate(String name) {
+		for (Iterator i = getCfragmentGates().iterator(); i.hasNext(); ) {
+			Gate cfragmentGate = (Gate) i.next();
+			if (name.equals(cfragmentGate.getName())) {
+				return cfragmentGate;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createCfragmentGate() instead.
 	 */
 	public Gate createCfragmentGate(EClass eClass) {
 		Gate newCfragmentGate = (Gate) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -230,20 +249,13 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getOperands());
-			union.addAll(getCfragmentGates());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	public Gate createCfragmentGate() {
+		Gate newCfragmentGate = UML2Factory.eINSTANCE.createGate();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE, null, newCfragmentGate));
 		}
-
-		return ownedElement;
+		getCfragmentGates().add(newCfragmentGate);
+		return newCfragmentGate;
 	}
 
 	/**
@@ -570,5 +582,23 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (operand != null) {
+			ownedElement.addAll(operand);
+		}
+		if (cfragmentGate != null) {
+			ownedElement.addAll(cfragmentGate);
+		}
+		return ownedElement;
+	}
+
 
 } //CombinedFragmentImpl

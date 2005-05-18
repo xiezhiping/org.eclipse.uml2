@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - initial API and implementation
  *
- * $Id: plugin.xml,v 1.13 2005/03/15 18:44:46 khussey Exp $
+ * $Id: plugin.xml,v 1.14 2005/05/18 16:38:32 khussey Exp $
  */
 -->
 
@@ -30,6 +30,7 @@
    </runtime>
 
    <requires>
+      <import plugin="org.eclipse.uml2.common" export="true"/>
       <import plugin="org.eclipse.emf.ecore.xmi" export="true"/>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.core.resources" optional="true"/>
@@ -39,8 +40,8 @@
          point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://www.eclipse.org/uml2/1.0.0/UML"
-            class="org.eclipse.uml2.UML2Package">
-      </package>
+            class="org.eclipse.uml2.UML2Package"
+            genModel = "model/UML2.genmodel"/>
    </extension>
 
    <extension

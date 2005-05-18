@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,26 +8,28 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.7 2005/04/04 20:11:13 khussey Exp $
+ * $Id: SlotImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.InstanceSpecification;
 import org.eclipse.uml2.Slot;
@@ -56,7 +58,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getValues() <em>Value</em>}' containment reference list.
@@ -125,7 +127,9 @@ public class SlotImpl extends ElementImpl implements Slot {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.SLOT__OWNING_INSTANCE, newOwningInstance, newOwningInstance));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,23 +143,22 @@ public class SlotImpl extends ElementImpl implements Slot {
 		return value;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ValueSpecification getValue(String unqualifiedName) {
-    	for (Iterator i = getValues().iterator(); i.hasNext(); ) {
-    		ValueSpecification namedValue = (ValueSpecification) i.next();
-    		
-    		if (unqualifiedName.equals(namedValue.getName())) {
-    			return namedValue;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ValueSpecification getValue(String name) {
+		for (Iterator i = getValues().iterator(); i.hasNext(); ) {
+			ValueSpecification value = (ValueSpecification) i.next();
+			if (name.equals(value.getName())) {
+				return value;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -206,7 +209,9 @@ public class SlotImpl extends ElementImpl implements Slot {
 		definingFeature = newDefiningFeature;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.SLOT__DEFINING_FEATURE, oldDefiningFeature, definingFeature));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,31 +219,27 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getOwningInstance()) {
-			return (Element) getOwningInstance();
+		InstanceSpecification owningInstance = getOwningInstance();			
+		if (owningInstance != null) {
+			return owningInstance;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getValues());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (value != null) {
+			ownedElement.addAll(value);
 		}
-
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -409,5 +410,6 @@ public class SlotImpl extends ElementImpl implements Slot {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //SlotImpl

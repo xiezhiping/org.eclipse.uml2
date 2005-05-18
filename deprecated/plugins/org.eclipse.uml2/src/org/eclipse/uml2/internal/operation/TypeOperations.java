@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.5 2005/05/12 18:58:00 khussey Exp $
+ * $Id: TypeOperations.java,v 1.6 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -24,25 +24,57 @@ import org.eclipse.uml2.Signal;
 import org.eclipse.uml2.StructuredClassifier;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
+
 import org.eclipse.uml2.util.UML2Switch;
 
 /**
- * A static utility class that provides operations related to types.
+ * <!-- begin-user-doc -->
+ * A static utility class that provides operations related to '<em><b>Type</b></em>' model objects.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following operations are supported:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.Type#conformsTo(org.eclipse.uml2.Type) <em>Conforms To</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated not
  */
-public final class TypeOperations
-		extends UML2Operations {
+public final class TypeOperations extends UML2Operations {
 
 	/**
-	 * Constructs a new Type Operations. This constructor should never be called
-	 * because this is a static utility class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	private TypeOperations() {
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * false
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
 	public static boolean conformsTo(Type type, Type other) {
 		return false;
 	}
+
+	// <!-- begin-custom-operations -->
 
 	/**
 	 * Creates a(n) (binary) association between the specified types, with the
@@ -239,4 +271,6 @@ public final class TypeOperations
 			upperBound);
 	}
 
-}
+	// <!-- end-custom-operations -->
+	
+} // TypeOperations

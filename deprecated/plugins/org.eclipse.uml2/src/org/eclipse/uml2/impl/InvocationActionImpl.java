@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.InputPin;
 import org.eclipse.uml2.InvocationAction;
@@ -34,6 +36,7 @@ import org.eclipse.uml2.Port;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -57,7 +60,7 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getArguments() <em>Argument</em>}' containment reference list.
@@ -109,23 +112,22 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 		return argument;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public InputPin getArgument(String unqualifiedName) {
-    	for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
-    		InputPin namedArgument = (InputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedArgument.getName())) {
-    			return namedArgument;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public InputPin getArgument(String name) {
+		for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
+			InputPin argument = (InputPin) i.next();
+			if (name.equals(argument.getName())) {
+				return argument;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -133,6 +135,20 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	 */
 	public InputPin createArgument(EClass eClass) {
 		InputPin newArgument = (InputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INVOCATION_ACTION__ARGUMENT, null, newArgument));
+		}
+		getArguments().add(newArgument);
+		return newArgument;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin createArgument() {
+		InputPin newArgument = UML2Factory.eINSTANCE.createInputPin();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INVOCATION_ACTION__ARGUMENT, null, newArgument));
 		}
@@ -176,27 +192,9 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 		onPort = newOnPort;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INVOCATION_ACTION__ON_PORT, oldOnPort, onPort));
+
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getInputs() {
-		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
-
-		if (null == input) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getInputs());
-			union.addAll(getArguments());
-
-			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
-		}
-
-		return input;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -620,5 +618,20 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getInputsHelper(EList input) {
+		super.getInputsHelper(input);
+		if (argument != null) {
+			input.addAll(argument);
+		}
+		return input;
+	}
+
 
 } //InvocationActionImpl

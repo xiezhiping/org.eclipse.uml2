@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationAction.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: TimeObservationAction.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Now</b></em>' containment reference list.
@@ -59,17 +59,17 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
 	 * @return the value of the '<em>Now</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTimeObservationAction_Now()
 	 * @model type="org.eclipse.uml2.TimeExpression" containment="true"
-	 *        annotation="redefines org.eclipse.uml2.WriteStructuralFeatureAction#getValue=''"
 	 * @generated
 	 */
 	EList getNows();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.TimeExpression} with the specified name from the '<em><b>Now</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.TimeExpression} with the specified '<em><b>Name</b></em>' from the '<em><b>Now</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.TimeExpression} to retrieve.
-	 * @return The {@link org.eclipse.uml2.TimeExpression} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.TimeExpression} to retrieve.
+	 * @return The {@link org.eclipse.uml2.TimeExpression} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNows()
 	 * @generated
      */
@@ -82,25 +82,19 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.TimeExpression} to create.
 	 * @return The new {@link org.eclipse.uml2.TimeExpression}.
 	 * @see #getNows()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createNow() instead.
      */
     TimeExpression createNow(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.TimeExpression} and appends it to the '<em><b>Now</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='false' name='value' eType='org.eclipse.uml2.InputPin' containment='true'" 
+	 * @return The new {@link org.eclipse.uml2.TimeExpression}.
+	 * @see #getNows()
 	 * @generated
-	 */
-	InputPin getValue();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="feature derived='false' name='value' eType='org.eclipse.uml2.InputPin' containment='true'" 
-	 * @generated
-	 */
-	void setValue(InputPin value);
+     */
+    TimeExpression createNow();
 
 } // TimeObservationAction

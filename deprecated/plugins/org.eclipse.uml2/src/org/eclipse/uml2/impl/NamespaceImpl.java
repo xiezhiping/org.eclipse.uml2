@@ -8,29 +8,32 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.16 2005/04/04 20:11:12 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.17 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.NamedElement;
@@ -39,8 +42,13 @@ import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.internal.operation.NamespaceOperations;
 
 /**
@@ -50,7 +58,6 @@ import org.eclipse.uml2.internal.operation.NamespaceOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#getMembers <em>Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#getImportedMembers <em>Imported Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamespaceImpl#getElementImports <em>Element Import</em>}</li>
@@ -66,7 +73,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
@@ -122,66 +129,75 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public EList getMembers() {
-		EList member = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
-
-		if (null == member) {
-			Set union = new LinkedHashSet();
-			union.addAll(getOwnedMembers());
-			union.addAll(getImportedMembers());
-
-			member = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getNamespace_Member(), member);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList member = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member());
+			if (member == null) {
+				EList union = getMembersHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member(), member = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return member;
 		}
-
-		return member;
+		EList union = getMembersHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public NamedElement getMember(String unqualifiedName) {
-    	for (Iterator i = getMembers().iterator(); i.hasNext(); ) {
-    		NamedElement namedMember = (NamedElement) i.next();
-    		
-    		if (unqualifiedName.equals(namedMember.getName())) {
-    			return namedMember;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public NamedElement getMember(String name) {
+		for (Iterator i = getMembers().iterator(); i.hasNext(); ) {
+			NamedElement member = (NamedElement) i.next();
+			if (name.equals(member.getName())) {
+				return member;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedMembersHelper(EList ownedMember) {
+		if (ownedRule != null) {
+			ownedMember.addAll(ownedRule);
+		}
+		return ownedMember;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getOwnedRules() {
-		if (null == ownedRule) {
+		if (ownedRule == null) {
 			ownedRule = new EObjectContainmentWithInverseEList(Constraint.class, this, UML2Package.NAMESPACE__OWNED_RULE, UML2Package.CONSTRAINT__NAMESPACE);
 		}
 		return ownedRule;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Constraint getOwnedRule(String unqualifiedName) {
-    	for (Iterator i = getOwnedRules().iterator(); i.hasNext(); ) {
-    		Constraint namedOwnedRule = (Constraint) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedRule.getName())) {
-    			return namedOwnedRule;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Constraint getOwnedRule(String name) {
+		for (Iterator i = getOwnedRules().iterator(); i.hasNext(); ) {
+			Constraint ownedRule = (Constraint) i.next();
+			if (name.equals(ownedRule.getName())) {
+				return ownedRule;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -189,6 +205,20 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 */
 	public Constraint createOwnedRule(EClass eClass) {
 		Constraint newOwnedRule = (Constraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NAMESPACE__OWNED_RULE, null, newOwnedRule));
+		}
+		getOwnedRules().add(newOwnedRule);
+		return newOwnedRule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createOwnedRule() {
+		Constraint newOwnedRule = UML2Factory.eINSTANCE.createConstraint();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.NAMESPACE__OWNED_RULE, null, newOwnedRule));
 		}
@@ -219,39 +249,39 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		return importedMembers;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public PackageableElement getImportedMember(String unqualifiedName) {
-    	for (Iterator i = getImportedMembers().iterator(); i.hasNext(); ) {
-    		PackageableElement namedImportedMember = (PackageableElement) i.next();
-    		
-    		if (unqualifiedName.equals(namedImportedMember.getName())) {
-    			return namedImportedMember;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getElementImports() {
-		if (null == elementImport) {
-			elementImport = new EObjectContainmentWithInverseEList(ElementImport.class, this, UML2Package.NAMESPACE__ELEMENT_IMPORT, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
+    public PackageableElement getImportedMember(String name) {
+		for (Iterator i = getImportedMembers().iterator(); i.hasNext(); ) {
+			PackageableElement importedMember = (PackageableElement) i.next();
+			if (name.equals(importedMember.getName())) {
+				return importedMember;
+			}
 		}
-		return elementImport;
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+	public EList getElementImports() {
+		if (elementImport == null) {
+			elementImport = new EObjectContainmentWithInverseEList(ElementImport.class, this, UML2Package.NAMESPACE__ELEMENT_IMPORT, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
+		}
+		return elementImport;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createElementImport() instead.
 	 */
 	public ElementImport createElementImport(EClass eClass) {
 		ElementImport newElementImport = (ElementImport) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -267,12 +297,27 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ElementImport createElementImport() {
+		ElementImport newElementImport = UML2Factory.eINSTANCE.createElementImport();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NAMESPACE__ELEMENT_IMPORT, null, newElementImport));
+		}
+		getElementImports().add(newElementImport);
+		return newElementImport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getPackageImports() {
-		if (null == packageImport) {
+		if (packageImport == null) {
 			packageImport = new EObjectContainmentWithInverseEList(PackageImport.class, this, UML2Package.NAMESPACE__PACKAGE_IMPORT, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 		}
 		return packageImport;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -293,8 +338,22 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public PackageImport createPackageImport() {
+		PackageImport newPackageImport = UML2Factory.eINSTANCE.createPackageImport();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.NAMESPACE__PACKAGE_IMPORT, null, newPackageImport));
+		}
+		getPackageImports().add(newPackageImport);
+		return newPackageImport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateMembersAreDistinguishable(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.NamespaceOperations.validateMembersAreDistinguishable(this, diagnostics, context);
+		return NamespaceOperations.validateMembersAreDistinguishable(this, diagnostics, context);
 	}
 
 	/**
@@ -303,7 +362,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public Set getNamesOfMember(NamedElement element) {
-		return org.eclipse.uml2.internal.operation.NamespaceOperations.getNamesOfMember(this, element);
+		return NamespaceOperations.getNamesOfMember(this, element);
 	}
 
 	/**
@@ -312,7 +371,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public boolean membersAreDistinguishable() {
-		return org.eclipse.uml2.internal.operation.NamespaceOperations.membersAreDistinguishable(this);
+		return NamespaceOperations.membersAreDistinguishable(this);
 	}
 
 	/**
@@ -321,7 +380,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public boolean validateImportedMemberDerived(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.NamespaceOperations.validateImportedMemberDerived(this, diagnostics, context);
+		return NamespaceOperations.validateImportedMemberDerived(this, diagnostics, context);
 	}
 
 	/**
@@ -330,19 +389,15 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public Set importedMember() {
-		try {
-			java.lang.reflect.Method method = getClass().getMethod("importedMember", null); //$NON-NLS-1$
-			Set result = (Set) getCacheAdapter().get(this, method);
-		
-			if (null == result) {
-				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.NamespaceOperations.importedMember(this));
-				getCacheAdapter().put(this, method, result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getNamespace().getEOperations().get(4));
+			if (result == null) {
+				cache.put(this, UML2Package.eINSTANCE.getNamespace().getEOperations().get(4), result = NamespaceOperations.importedMember(this));
 			}
-		
 			return result;
-		} catch (Exception e) {
-			return org.eclipse.uml2.internal.operation.NamespaceOperations.importedMember(this);
 		}
+		return NamespaceOperations.importedMember(this);
 	}
 
 	/**
@@ -351,7 +406,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public Set importMembers(Set imps) {
-		return org.eclipse.uml2.internal.operation.NamespaceOperations.importMembers(this, imps);
+		return NamespaceOperations.importMembers(this, imps);
 	}
 
 	/**
@@ -360,7 +415,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public Set excludeCollisions(Set imps) {
-		return org.eclipse.uml2.internal.operation.NamespaceOperations.excludeCollisions(this, imps);
+		return NamespaceOperations.excludeCollisions(this, imps);
 	}
 
 	/**
@@ -369,17 +424,38 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace().getEAllOperations().get(38));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-			union.addAll(getOwnedRules());
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getNamespace().getEAllOperations().get(38), result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getOwnedMembers", null);
+				EList ownedMember = (EList) cache.get(eResource(), this, method);
+				if (ownedMember == null) {
+					EList union = getOwnedMembersHelper(new UniqueEList());
+					cache.put(eResource(), this, method, ownedMember = new UnionEObjectEList(this, union.size(), union.toArray()));
+				}
+				return ownedMember;
+			} catch (NoSuchMethodException nsme) {
+				// do nothing
+			}
 		}
+		EList union = getOwnedMembersHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
+	}
 
-		return result;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public NamedElement getOwnedMember(String name) {
+		for (Iterator i = getOwnedMembers().iterator(); i.hasNext(); ) {
+			NamedElement ownedMember = (NamedElement) i.next();
+			if (name.equals(ownedMember.getName())) {
+				return ownedMember;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -387,22 +463,20 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getOwnedMembers());
-			union.addAll(getElementImports());
-			union.addAll(getPackageImports());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (elementImport != null) {
+			ownedElement.addAll(elementImport);
 		}
-
+		if (packageImport != null) {
+			ownedElement.addAll(packageImport);
+		}
+		for (Iterator i = ((InternalEList) getOwnedMembers()).basicIterator(); i.hasNext(); ) {
+			ownedElement.add(i.next());
+		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -650,6 +724,22 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 				return packageImport != null && !packageImport.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getMembersHelper(EList member) {
+		for (Iterator i = ((InternalEList) getImportedMembers()).basicIterator(); i.hasNext(); ) {
+			member.add(i.next());
+		}
+		for (Iterator i = ((InternalEList) getOwnedMembers()).basicIterator(); i.hasNext(); ) {
+			member.add(i.next());
+		}
+		return member;
 	}
 
 	// <!-- begin-custom-operations -->

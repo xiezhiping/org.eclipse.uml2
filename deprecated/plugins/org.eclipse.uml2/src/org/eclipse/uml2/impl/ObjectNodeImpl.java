@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.10 2005/04/04 20:11:13 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.11 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.ObjectNode;
@@ -64,7 +66,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -178,10 +180,11 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	public void setType(Type newType) {
 		Type oldType = type;
 		type = newType;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__TYPE, oldType, newType));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__TYPE, oldType, type));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -202,7 +205,9 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 		ordering = newOrdering == null ? ORDERING_EDEFAULT : newOrdering;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__ORDERING, oldOrdering, ordering));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -225,6 +230,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__UPPER_BOUND, oldUpperBound, newUpperBound);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -245,7 +251,9 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__UPPER_BOUND, newUpperBound, newUpperBound));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -257,7 +265,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.OBJECT_NODE__UPPER_BOUND, null, newUpperBound));
 		}
-        setUpperBound(newUpperBound);
+		setUpperBound(newUpperBound);
 		return newUpperBound;
 	}
 
@@ -273,23 +281,22 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 		return inState;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public State getInState(String unqualifiedName) {
-    	for (Iterator i = getInStates().iterator(); i.hasNext(); ) {
-    		State namedInState = (State) i.next();
-    		
-    		if (unqualifiedName.equals(namedInState.getName())) {
-    			return namedInState;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public State getInState(String name) {
+		for (Iterator i = getInStates().iterator(); i.hasNext(); ) {
+			State inState = (State) i.next();
+			if (name.equals(inState.getName())) {
+				return inState;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -326,29 +333,9 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 		selection = newSelection;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__SELECTION, oldSelection, selection));
+
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getUpperBound()) {
-				union.add(getUpperBound());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -784,5 +771,20 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (upperBound != null) {
+			ownedElement.add(upperBound);
+		}
+		return ownedElement;
+	}
+
 
 } //ObjectNodeImpl

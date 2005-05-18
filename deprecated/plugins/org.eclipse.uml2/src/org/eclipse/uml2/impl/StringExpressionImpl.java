@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,28 +8,31 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -52,7 +55,7 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getSubExpressions() <em>Sub Expression</em>}' containment reference list.
@@ -94,13 +97,29 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 		return subExpression;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createSubExpression() instead.
+	 */
+	public StringExpression createSubExpression(EClass eClass) {
+		StringExpression newSubExpression = (StringExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION, null, newSubExpression));
+		}
+		getSubExpressions().add(newSubExpression);
+		return newSubExpression;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringExpression createSubExpression(EClass eClass) {
-		StringExpression newSubExpression = (StringExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
+	public StringExpression createSubExpression() {
+		StringExpression newSubExpression = UML2Factory.eINSTANCE.createStringExpression();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION, null, newSubExpression));
 		}
@@ -137,27 +156,9 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION, newOwningExpression, newOwningExpression));
+
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getSubExpressions());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,11 +166,13 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getOwningExpression()) {
-			return (Element) getOwningExpression();
+		StringExpression owningExpression = getOwningExpression();			
+		if (owningExpression != null) {
+			return owningExpression;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -362,5 +365,20 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (subExpression != null) {
+			ownedElement.addAll(subExpression);
+		}
+		return ownedElement;
+	}
+
 
 } //StringExpressionImpl

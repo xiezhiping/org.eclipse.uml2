@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.8 2005/04/04 20:11:14 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -48,7 +48,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
@@ -79,6 +79,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 */
 	void setIsAbstract(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Concurrency</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.uml2.CallConcurrencyKind}.
@@ -108,6 +109,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 */
 	void setConcurrency(CallConcurrencyKind value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Parameter</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Parameter}.
@@ -122,18 +124,18 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_Parameter()
-	 * @model type="org.eclipse.uml2.Parameter" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getMembers=''"
+	 * @model type="org.eclipse.uml2.Parameter" transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList getParameters();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified name from the '<em><b>Parameter</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParameters()
 	 * @generated
      */
@@ -153,18 +155,18 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Formal Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_FormalParameter()
-	 * @model type="org.eclipse.uml2.Parameter" containment="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.BehavioralFeature#getParameters='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
+	 * @model type="org.eclipse.uml2.Parameter" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getFormalParameters();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified name from the '<em><b>Formal Parameter</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Formal Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFormalParameters()
 	 * @generated
      */
@@ -177,9 +179,20 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Parameter} to create.
 	 * @return The new {@link org.eclipse.uml2.Parameter}.
 	 * @see #getFormalParameters()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createFormalParameter() instead.
      */
     Parameter createFormalParameter(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Formal Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Parameter}.
+	 * @see #getFormalParameters()
+	 * @generated
+     */
+    Parameter createFormalParameter();
 
 	/**
 	 * Returns the value of the '<em><b>Return Result</b></em>' containment reference list.
@@ -196,17 +209,17 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * @return the value of the '<em>Return Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_ReturnResult()
 	 * @model type="org.eclipse.uml2.Parameter" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.BehavioralFeature#getParameters='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getReturnResults();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified name from the '<em><b>Return Result</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Return Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getReturnResults()
 	 * @generated
      */
@@ -219,9 +232,20 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Parameter} to create.
 	 * @return The new {@link org.eclipse.uml2.Parameter}.
 	 * @see #getReturnResults()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createReturnResult() instead.
      */
     Parameter createReturnResult(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Return Result</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Parameter}.
+	 * @see #getReturnResults()
+	 * @generated
+     */
+    Parameter createReturnResult();
 
 	/**
 	 * Returns the value of the '<em><b>Raised Exception</b></em>' reference list.
@@ -237,17 +261,18 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Raised Exception</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_RaisedException()
-	 * @model type="org.eclipse.uml2.Type" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Type" ordered="false"
 	 * @generated
 	 */
 	EList getRaisedExceptions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Type} with the specified name from the '<em><b>Raised Exception</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Raised Exception</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Type} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Type} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRaisedExceptions()
 	 * @generated
      */
@@ -274,55 +299,16 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 */
 	EList getMethods();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified name from the '<em><b>Method</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Method</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Behavior} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Behavior} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getMethods()
 	 * @generated
      */
     Behavior getMethod(String unqualifiedName);
       
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A query based on the following OCL expression:
-	 * <code>
-	 * if n.oclIsKindOf(BehavioralFeature)
-	 * then
-	 *     if ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->notEmpty()
-	 *     then Set{}->include(self)->include(n)->isUnique( bf | bf.parameter->collect(type))
-	 *     else true
-	 *     endif
-	 * else true
-	 * endif
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.BehavioralFeatureOperations.isDistinguishableFrom(this, n, ns);'" 
-	 * @generated
-	 */
-	boolean isDistinguishableFrom(NamedElement n, Namespace ns);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='member' eType='org.eclipse.uml2.NamedElement' containment='false'" 
-	 * @generated
-	 */
-	EList getMembers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
-
 } // BehavioralFeature

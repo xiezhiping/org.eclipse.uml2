@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNode.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
+ * $Id: ExpansionNode.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ public interface ExpansionNode extends ObjectNode{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Region As Output</b></em>' reference.
@@ -73,6 +73,7 @@ public interface ExpansionNode extends ObjectNode{
 	 */
 	void setRegionAsOutput(ExpansionRegion value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Region As Input</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ExpansionRegion#getInputElements <em>Input Element</em>}'.
@@ -103,5 +104,6 @@ public interface ExpansionNode extends ObjectNode{
 	 * @generated
 	 */
 	void setRegionAsInput(ExpansionRegion value);
+
 
 } // ExpansionNode

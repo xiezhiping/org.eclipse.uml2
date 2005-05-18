@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.15 2005/04/14 17:30:57 khussey Exp $
+ * $Id: Class.java,v 1.16 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -49,7 +47,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Active</b></em>' attribute.
@@ -80,6 +78,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 */
 	void setIsActive(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Operation}.
@@ -97,17 +96,17 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @see org.eclipse.uml2.UML2Package#getClass_OwnedOperation()
 	 * @see org.eclipse.uml2.Operation#getClass_
 	 * @model type="org.eclipse.uml2.Operation" opposite="class_" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedOperations();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified name from the '<em><b>Owned Operation</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Operation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Operation} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedOperations()
 	 * @generated
      */
@@ -120,9 +119,20 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Operation} to create.
 	 * @return The new {@link org.eclipse.uml2.Operation}.
 	 * @see #getOwnedOperations()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedOperation() instead.
      */
     Operation createOwnedOperation(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Operation}.
+	 * @see #getOwnedOperations()
+	 * @generated
+     */
+    Operation createOwnedOperation();
 
 	/**
 	 * Returns the value of the '<em><b>Super Class</b></em>' reference list.
@@ -139,17 +149,17 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @return the value of the '<em>Super Class</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_SuperClass()
 	 * @model type="org.eclipse.uml2.Class" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 *        annotation="redefines org.eclipse.uml2.Classifier#getGenerals=''"
 	 * @generated
 	 */
 	EList getSuperClasses();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Class} with the specified name from the '<em><b>Super Class</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Class} with the specified '<em><b>Name</b></em>' from the '<em><b>Super Class</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Class} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Class} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Class} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Class} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSuperClasses()
 	 * @generated
      */
@@ -173,12 +183,13 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 */
 	EList getExtensions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Extension} with the specified name from the '<em><b>Extension</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Extension} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Extension} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Extension} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Extension} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Extension} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExtensions()
 	 * @generated
      */
@@ -199,17 +210,17 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @return the value of the '<em>Nested Classifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_NestedClassifier()
 	 * @model type="org.eclipse.uml2.Classifier" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getNestedClassifiers();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified name from the '<em><b>Nested Classifier</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNestedClassifiers()
 	 * @generated
      */
@@ -241,17 +252,17 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_OwnedReception()
 	 * @model type="org.eclipse.uml2.Reception" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedReceptions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Reception} with the specified name from the '<em><b>Owned Reception</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Reception} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Reception} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Reception} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedReceptions()
 	 * @generated
      */
@@ -264,91 +275,20 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Reception} to create.
 	 * @return The new {@link org.eclipse.uml2.Reception}.
 	 * @see #getOwnedReceptions()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedReception() instead.
      */
     Reception createOwnedReception(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.Reception} and appends it to the '<em><b>Owned Reception</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A query based on the following OCL expression:
-	 * <code>
-	 * inhs->excluding(inh | ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" parameters="org.eclipse.uml2.Set"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ClassOperations.inherit(this, inhs);'" 
+	 * @return The new {@link org.eclipse.uml2.Reception}.
+	 * @see #getOwnedReceptions()
 	 * @generated
-	 */
-	Set inherit(Set inhs);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="feature derived='false' defaultValueLiteral='false' name='isAbstract' eType='org.eclipse.uml2.Boolean'"
-	 *        annotation="redefines org.eclipse.uml2.Classifier#isAbstract=''" 
-	 * @generated
-	 */
-	boolean isAbstract();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters="org.eclipse.uml2.Boolean"
-	 *        annotation="feature derived='false' defaultValueLiteral='false' name='isAbstract' eType='org.eclipse.uml2.Boolean'"
-	 *        annotation="redefines org.eclipse.uml2.Classifier#isAbstract=''" 
-	 * @generated
-	 */
-	void setIsAbstract(boolean value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='true' name='ownedAttribute' eOpposite='class_' derived='false' eOpposite.upperBound='1' eType='org.eclipse.uml2.Property' eOpposite.lowerBound='0'"
-	 *        annotation="redefines org.eclipse.uml2.StructuredClassifier#getOwnedAttributes=''"
-	 *        annotation="subsets org.eclipse.uml2.Classifier#getAttributes='' org.eclipse.uml2.Namespace#getOwnedMembers=''" 
-	 * @generated
-	 */
-	EList getOwnedAttributes();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='general' eType='org.eclipse.uml2.Classifier' containment='false'" 
-	 * @generated
-	 */
-	EList getGenerals();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='attribute' eType='org.eclipse.uml2.Property' containment='false'" 
-	 * @generated
-	 */
-	EList getAttributes();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getFeatures();
+     */
+    Reception createOwnedReception();
 
 	// <!-- begin-custom-operations -->
 

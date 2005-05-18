@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,31 +8,35 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkObjectActionImpl.java,v 1.10 2005/04/04 20:11:13 khussey Exp $
+ * $Id: CreateLinkObjectActionImpl.java,v 1.11 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.CreateLinkObjectAction;
 import org.eclipse.uml2.LinkEndCreationData;
+import org.eclipse.uml2.LinkEndData;
 import org.eclipse.uml2.OutputPin;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -44,6 +48,7 @@ import org.eclipse.uml2.VisibilityKind;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.CreateLinkObjectActionImpl#getResult <em>Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.CreateLinkObjectActionImpl#getEndData <em>End Data</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,7 +60,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
@@ -106,6 +111,7 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT, oldResult, newResult);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -126,19 +132,22 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT, newResult, newResult));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createResult() instead.
 	 */
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT, null, newResult));
 		}
-        setResult(newResult);
+		setResult(newResult);
 		return newResult;
 	}
 
@@ -147,21 +156,13 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutputs() {
-		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
-
-		if (null == output) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOutputs());
-			if (null != getResult()) {
-				union.add(getResult());
-			}
-
-			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
+	public OutputPin createResult() {
+		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CREATE_LINK_OBJECT_ACTION__RESULT, null, newResult));
 		}
-
-		return output;
+		setResult(newResult);
+		return newResult;
 	}
 
 	public EList getEndData() {
@@ -170,6 +171,35 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 			endData = new EObjectContainmentEList(LinkEndCreationData.class, this, UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA);
 		}
 		return endData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createEndData() instead.
+	 */
+	public LinkEndData createEndData(EClass eClass) {
+		LinkEndCreationData newEndData = (LinkEndCreationData) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA, null, newEndData));
+		}
+		getEndData().add(newEndData);
+		return newEndData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LinkEndData createEndData() {
+		LinkEndCreationData newEndData = UML2Factory.eINSTANCE.createLinkEndCreationData();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CREATE_LINK_OBJECT_ACTION__END_DATA, null, newEndData));
+		}
+		getEndData().add(newEndData);
+		return newEndData;
 	}
 
 	/**
@@ -595,5 +625,20 @@ public class CreateLinkObjectActionImpl extends CreateLinkActionImpl implements 
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOutputsHelper(EList output) {
+		super.getOutputsHelper(output);
+		if (result != null) {
+			output.add(result);
+		}
+		return output;
+	}
+
 
 } //CreateLinkObjectActionImpl

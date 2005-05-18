@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Must Isolate</b></em>' attribute.
@@ -69,6 +69,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 */
 	void setMustIsolate(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Variable</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Variable}.
@@ -83,17 +84,17 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_Variable()
 	 * @see org.eclipse.uml2.Variable#getScope
 	 * @model type="org.eclipse.uml2.Variable" opposite="scope" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getVariables();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Variable} with the specified name from the '<em><b>Variable</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Variable} with the specified '<em><b>Name</b></em>' from the '<em><b>Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Variable} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Variable} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Variable} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Variable} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getVariables()
 	 * @generated
      */
@@ -106,9 +107,20 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Variable} to create.
 	 * @return The new {@link org.eclipse.uml2.Variable}.
 	 * @see #getVariables()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createVariable() instead.
      */
     Variable createVariable(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Variable} and appends it to the '<em><b>Variable</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Variable}.
+	 * @see #getVariables()
+	 * @generated
+     */
+    Variable createVariable();
 
 	/**
 	 * Returns the value of the '<em><b>Contained Node</b></em>' containment reference list.
@@ -124,17 +136,17 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_ContainedNode()
 	 * @see org.eclipse.uml2.ActivityNode#getInStructuredNode
 	 * @model type="org.eclipse.uml2.ActivityNode" opposite="inStructuredNode" containment="true"
-	 *        annotation="redefines org.eclipse.uml2.ActivityGroup#getContainedNodes=''"
 	 * @generated
 	 */
 	EList getContainedNodes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified name from the '<em><b>Contained Node</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContainedNodes()
 	 * @generated
      */
@@ -165,17 +177,17 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @see org.eclipse.uml2.UML2Package#getStructuredActivityNode_ContainedEdge()
 	 * @see org.eclipse.uml2.ActivityEdge#getInStructuredNode
 	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="inStructuredNode" containment="true"
-	 *        annotation="redefines org.eclipse.uml2.ActivityGroup#getContainedEdges=''"
 	 * @generated
 	 */
 	EList getContainedEdges();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified name from the '<em><b>Contained Edge</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContainedEdges()
 	 * @generated
      */
@@ -191,50 +203,5 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @generated
      */
     ActivityEdge createContainedEdge(EClass eClass);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='activity' eOpposite='structuredNode' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Activity' eOpposite.lowerBound='0'"
-	 *        annotation="redefines org.eclipse.uml2.ActivityNode#getActivity='' org.eclipse.uml2.ActivityGroup#getActivityGroup_activity=''" 
-	 * @generated
-	 */
-	Activity getActivity();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="feature eOpposite.containment='false' containment='false' name='activity' eOpposite='structuredNode' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Activity' eOpposite.lowerBound='0'"
-	 *        annotation="redefines org.eclipse.uml2.ActivityNode#getActivity='' org.eclipse.uml2.ActivityGroup#getActivityGroup_activity=''" 
-	 * @generated
-	 */
-	void setActivity(Activity value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='true' containment='false' name='activityGroup_activity' eOpposite='group' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Activity' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Activity getActivityGroup_activity();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="feature eOpposite.containment='true' containment='false' name='activityGroup_activity' eOpposite='group' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Activity' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	void setActivityGroup_activity(Activity value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
 
 } // StructuredActivityNode

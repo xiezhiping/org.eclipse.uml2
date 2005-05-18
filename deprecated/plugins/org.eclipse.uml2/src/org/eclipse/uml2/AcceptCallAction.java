@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallAction.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
+ * $Id: AcceptCallAction.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +38,7 @@ public interface AcceptCallAction extends AcceptEventAction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Return Information</b></em>' reference.
@@ -57,7 +55,6 @@ public interface AcceptCallAction extends AcceptEventAction{
 	 * @see #setReturnInformation(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getAcceptCallAction_ReturnInformation()
 	 * @model required="true"
-	 *        annotation="subsets org.eclipse.uml2.Action#getOutputs=''"
 	 * @generated
 	 */
 	OutputPin getReturnInformation();
@@ -72,23 +69,5 @@ public interface AcceptCallAction extends AcceptEventAction{
 	 */
 	void setReturnInformation(OutputPin value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='false' name='trigger' eType='org.eclipse.uml2.CallTrigger' containment='false'"
-	 *        annotation="redefines org.eclipse.uml2.AcceptEventAction#getTriggers=''" 
-	 * @generated
-	 */
-	EList getTriggers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='output' eType='org.eclipse.uml2.OutputPin' containment='false'" 
-	 * @generated
-	 */
-	EList getOutputs();
 
 } // AcceptCallAction

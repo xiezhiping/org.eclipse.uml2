@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -44,7 +44,7 @@ public interface ProtocolTransition extends Transition{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Post Condition</b></em>' containment reference.
@@ -61,7 +61,6 @@ public interface ProtocolTransition extends Transition{
 	 * @see #setPostCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getProtocolTransition_PostCondition()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Constraint getPostCondition();
@@ -76,6 +75,7 @@ public interface ProtocolTransition extends Transition{
 	 */
 	void setPostCondition(Constraint value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Post Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -86,7 +86,17 @@ public interface ProtocolTransition extends Transition{
 	 * @generated
      */
     Constraint createPostCondition(EClass eClass);
-     
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Post Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Constraint}.
+	 * @see #getPostCondition()
+	 * @generated
+     */
+    Constraint createPostCondition();
+
 	/**
 	 * Returns the value of the '<em><b>Referred</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Operation}.
@@ -103,12 +113,13 @@ public interface ProtocolTransition extends Transition{
 	 */
 	EList getReferreds();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified name from the '<em><b>Referred</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Referred</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Operation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Operation} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getReferreds()
 	 * @generated
      */
@@ -128,8 +139,7 @@ public interface ProtocolTransition extends Transition{
 	 * @return the value of the '<em>Pre Condition</em>' reference.
 	 * @see #setPreCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getProtocolTransition_PreCondition()
-	 * @model resolveProxies="false" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Transition#getGuard=''"
+	 * @model resolveProxies="false"
 	 * @generated
 	 */
 	Constraint getPreCondition();
@@ -144,21 +154,5 @@ public interface ProtocolTransition extends Transition{
 	 */
 	void setPreCondition(Constraint value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="feature derived='false' name='guard' eType='org.eclipse.uml2.Constraint' containment='true'" 
-	 * @generated
-	 */
-	void setGuard(Constraint value);
 
 } // ProtocolTransition

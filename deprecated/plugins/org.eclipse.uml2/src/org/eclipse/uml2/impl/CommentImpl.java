@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,28 +8,31 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
+ * $Id: CommentImpl.java,v 1.8 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Comment;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -53,7 +56,7 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
@@ -128,11 +131,14 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 * @generated
 	 */
 	public void setBody(String newBody) {
+		newBody = newBody == null ? BODY_EDEFAULT : newBody;
 		String oldBody = body;
-		body = newBody == null ? BODY_EDEFAULT : newBody;
+		body = newBody;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMMENT__BODY, oldBody, body));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,6 +151,7 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 		}
 		return annotatedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -167,6 +174,7 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.COMMENT__BODY_EXPRESSION, oldBodyExpression, newBodyExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -187,19 +195,22 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMMENT__BODY_EXPRESSION, newBodyExpression, newBodyExpression));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createBodyExpression() instead.
 	 */
 	public StringExpression createBodyExpression(EClass eClass) {
 		StringExpression newBodyExpression = (StringExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.COMMENT__BODY_EXPRESSION, null, newBodyExpression));
 		}
-        setBodyExpression(newBodyExpression);
+		setBodyExpression(newBodyExpression);
 		return newBodyExpression;
 	}
 
@@ -208,21 +219,13 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getBodyExpression()) {
-				union.add(getBodyExpression());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	public StringExpression createBodyExpression() {
+		StringExpression newBodyExpression = UML2Factory.eINSTANCE.createStringExpression();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COMMENT__BODY_EXPRESSION, null, newBodyExpression));
 		}
-
-		return ownedElement;
+		setBodyExpression(newBodyExpression);
+		return newBodyExpression;
 	}
 
 	/**
@@ -416,5 +419,20 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (bodyExpression != null) {
+			ownedElement.add(bodyExpression);
+		}
+		return ownedElement;
+	}
+
 
 } //CommentImpl

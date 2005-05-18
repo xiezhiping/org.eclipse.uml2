@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalImpl.java,v 1.6 2005/04/04 20:11:12 khussey Exp $
+ * $Id: IntervalImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -53,19 +53,27 @@ public class IntervalImpl extends ValueSpecificationImpl implements Interval {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * The cached value of the '{@link #getMin() <em>Min</em>}' reference list.
-	 * @see #getMin()
+	 * The cached value of the '{@link #getMins() <em>Min</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMins()
+	 * @generated
+	 * @ordered
 	 */
-	protected EList _min = null;
+	protected EList min = null;
 
 	/**
-	 * The cached value of the '{@link #getMax() <em>Max</em>}' reference list.
-	 * @see #getMax()
+	 * The cached value of the '{@link #getMaxes() <em>Max</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxes()
+	 * @generated
+	 * @ordered
 	 */
-	protected EList _max = null;
+	protected EList max = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,63 +96,59 @@ public class IntervalImpl extends ValueSpecificationImpl implements Interval {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EList getMins() {
-
-		if (null == _min) {
-			_min = new EObjectResolvingEList(ValueSpecification.class, this, UML2Package.INTERVAL__MIN);
+		if (min == null) {
+			min = new EObjectResolvingEList(ValueSpecification.class, this, UML2Package.INTERVAL__MIN);
 		}
-		return _min;
+		return min;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public ValueSpecification getMin(String unqualifiedName) {
-    	for (Iterator i = getMins().iterator(); i.hasNext(); ) {
-    		ValueSpecification namedMin = (ValueSpecification) i.next();
-    		
-    		if (unqualifiedName.equals(namedMin.getName())) {
-    			return namedMin;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public EList getMaxes() {
-
-		if (null == _max) {
-			_max = new EObjectResolvingEList(ValueSpecification.class, this, UML2Package.INTERVAL__MAX);
+    public ValueSpecification getMin(String name) {
+		for (Iterator i = getMins().iterator(); i.hasNext(); ) {
+			ValueSpecification min = (ValueSpecification) i.next();
+			if (name.equals(min.getName())) {
+				return min;
+			}
 		}
-		return _max;
+		return null;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ValueSpecification getMax(String unqualifiedName) {
-    	for (Iterator i = getMaxes().iterator(); i.hasNext(); ) {
-    		ValueSpecification namedMax = (ValueSpecification) i.next();
-    		
-    		if (unqualifiedName.equals(namedMax.getName())) {
-    			return namedMax;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+	public EList getMaxes() {
+		if (max == null) {
+			max = new EObjectResolvingEList(ValueSpecification.class, this, UML2Package.INTERVAL__MAX);
+		}
+		return max;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public ValueSpecification getMax(String name) {
+		for (Iterator i = getMaxes().iterator(); i.hasNext(); ) {
+			ValueSpecification max = (ValueSpecification) i.next();
+			if (name.equals(max.getName())) {
+				return max;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -416,11 +420,12 @@ public class IntervalImpl extends ValueSpecificationImpl implements Interval {
 			case UML2Package.INTERVAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INTERVAL__MIN:
-				return !getMins().isEmpty();
+				return min != null && !min.isEmpty();
 			case UML2Package.INTERVAL__MAX:
-				return !getMaxes().isEmpty();
+				return max != null && !max.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //IntervalImpl

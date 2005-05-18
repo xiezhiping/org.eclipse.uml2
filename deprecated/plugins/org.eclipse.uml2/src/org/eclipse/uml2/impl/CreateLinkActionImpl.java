@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,14 +19,18 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.CreateLinkAction;
 import org.eclipse.uml2.LinkEndCreationData;
+import org.eclipse.uml2.LinkEndData;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -35,6 +39,10 @@ import org.eclipse.uml2.VisibilityKind;
  * An implementation of the model object '<em><b>Create Link Action</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.CreateLinkActionImpl#getEndData <em>End Data</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
@@ -45,7 +53,7 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,6 +79,35 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 			endData = new EObjectContainmentEList(LinkEndCreationData.class, this, UML2Package.CREATE_LINK_ACTION__END_DATA);
 		}
 		return endData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createEndData() instead.
+	 */
+	public LinkEndData createEndData(EClass eClass) {
+		LinkEndCreationData newEndData = (LinkEndCreationData) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CREATE_LINK_ACTION__END_DATA, null, newEndData));
+		}
+		getEndData().add(newEndData);
+		return newEndData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LinkEndData createEndData() {
+		LinkEndCreationData newEndData = UML2Factory.eINSTANCE.createLinkEndCreationData();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CREATE_LINK_ACTION__END_DATA, null, newEndData));
+		}
+		getEndData().add(newEndData);
+		return newEndData;
 	}
 
 	/**
@@ -484,5 +521,6 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //CreateLinkActionImpl

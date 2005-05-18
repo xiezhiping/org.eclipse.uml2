@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValue.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
+ * $Id: QualifierValue.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ public interface QualifierValue extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Qualifier</b></em>' reference.
@@ -67,6 +67,7 @@ public interface QualifierValue extends Element{
 	 * @generated
 	 */
 	void setQualifier(Property value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' reference.
@@ -96,5 +97,6 @@ public interface QualifierValue extends Element{
 	 * @generated
 	 */
 	void setValue(InputPin value);
+
 
 } // QualifierValue

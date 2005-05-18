@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,28 +8,30 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.GeneralOrdering;
 import org.eclipse.uml2.Interaction;
 import org.eclipse.uml2.InteractionConstraint;
@@ -39,6 +41,7 @@ import org.eclipse.uml2.Lifeline;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -66,7 +69,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getCovereds() <em>Covered</em>}' reference list.
@@ -132,29 +135,28 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * @generated
 	 */
 	public EList getCovereds() {
-		if (null == covered) {
+		if (covered == null) {
 			covered = new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.INTERACTION_OPERAND__COVERED, UML2Package.LIFELINE__COVERED_BY);
 		}
 		return covered;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Lifeline getCovered(String unqualifiedName) {
-    	for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
-    		Lifeline namedCovered = (Lifeline) i.next();
-    		
-    		if (unqualifiedName.equals(namedCovered.getName())) {
-    			return namedCovered;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Lifeline getCovered(String name) {
+		for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
+			Lifeline covered = (Lifeline) i.next();
+			if (name.equals(covered.getName())) {
+				return covered;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -167,30 +169,44 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 		return generalOrdering;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public GeneralOrdering getGeneralOrdering(String unqualifiedName) {
-    	for (Iterator i = getGeneralOrderings().iterator(); i.hasNext(); ) {
-    		GeneralOrdering namedGeneralOrdering = (GeneralOrdering) i.next();
-    		
-    		if (unqualifiedName.equals(namedGeneralOrdering.getName())) {
-    			return namedGeneralOrdering;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public GeneralOrdering getGeneralOrdering(String name) {
+		for (Iterator i = getGeneralOrderings().iterator(); i.hasNext(); ) {
+			GeneralOrdering generalOrdering = (GeneralOrdering) i.next();
+			if (name.equals(generalOrdering.getName())) {
+				return generalOrdering;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createGeneralOrdering() instead.
+	 */
 	public GeneralOrdering createGeneralOrdering(EClass eClass) {
 		GeneralOrdering newGeneralOrdering = (GeneralOrdering) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING, null, newGeneralOrdering));
+		}
+		getGeneralOrderings().add(newGeneralOrdering);
+		return newGeneralOrdering;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralOrdering createGeneralOrdering() {
+		GeneralOrdering newGeneralOrdering = UML2Factory.eINSTANCE.createGeneralOrdering();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING, null, newGeneralOrdering));
 		}
@@ -227,7 +243,9 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_OPERAND__ENCLOSING_INTERACTION, newEnclosingInteraction, newEnclosingInteraction));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -258,7 +276,9 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_OPERAND__ENCLOSING_OPERAND, newEnclosingOperand, newEnclosingOperand));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -281,6 +301,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_OPERAND__GUARD, oldGuard, newGuard);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -301,6 +322,23 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_OPERAND__GUARD, newGuard, newGuard));
+
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createGuard() instead.
+	 */
+	public InteractionConstraint createGuard(EClass eClass) {
+		InteractionConstraint newGuard = (InteractionConstraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OPERAND__GUARD, null, newGuard));
+		}
+		setGuard(newGuard);
+		return newGuard;
 	}
 
 	/**
@@ -308,12 +346,12 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InteractionConstraint createGuard(EClass eClass) {
-		InteractionConstraint newGuard = (InteractionConstraint) eClass.getEPackage().getEFactoryInstance().create(eClass);
+	public InteractionConstraint createGuard() {
+		InteractionConstraint newGuard = UML2Factory.eINSTANCE.createInteractionConstraint();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OPERAND__GUARD, null, newGuard));
 		}
-        setGuard(newGuard);
+		setGuard(newGuard);
 		return newGuard;
 	}
 
@@ -329,23 +367,22 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 		return fragment;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public InteractionFragment getFragment(String unqualifiedName) {
-    	for (Iterator i = getFragments().iterator(); i.hasNext(); ) {
-    		InteractionFragment namedFragment = (InteractionFragment) i.next();
-    		
-    		if (unqualifiedName.equals(namedFragment.getName())) {
-    			return namedFragment;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public InteractionFragment getFragment(String name) {
+		for (Iterator i = getFragments().iterator(); i.hasNext(); ) {
+			InteractionFragment fragment = (InteractionFragment) i.next();
+			if (name.equals(fragment.getName())) {
+				return fragment;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -365,35 +402,14 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Namespace getNamespace() {
-		if (null != getEnclosingOperand()) {
-			return (Namespace) getEnclosingOperand();
+	public Namespace basicGetNamespace() {
+		InteractionOperand enclosingOperand = getEnclosingOperand();			
+		if (enclosingOperand != null) {
+			return enclosingOperand;
 		}
-		return super.getNamespace();
+		return super.basicGetNamespace();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getGuard()) {
-				union.add(getGuard());
-			}
-			union.addAll(getGeneralOrderings());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -784,5 +800,23 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (generalOrdering != null) {
+			ownedElement.addAll(generalOrdering);
+		}
+		if (guard != null) {
+			ownedElement.add(guard);
+		}
+		return ownedElement;
+	}
+
 
 } //InteractionOperandImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionItemProvider.java,v 1.20 2005/04/22 20:55:49 khussey Exp $
+ * $Id: InteractionItemProvider.java,v 1.21 2005/05/18 16:40:46 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -51,7 +51,7 @@ public class InteractionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -453,5 +453,6 @@ public class InteractionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,16 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.Association;
@@ -38,6 +41,10 @@ import org.eclipse.uml2.VisibilityKind;
  * An implementation of the model object '<em><b>Extension End</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ExtensionEndImpl#getType <em>Type</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
@@ -49,7 +56,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,7 +79,24 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
+	 */
+	public Type getType() {
+		if (type != null && type.eIsProxy()) {
+			Type oldType = type;
+			type = (Type)eResolveProxy((InternalEObject)type);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.EXTENSION_END__TYPE, oldType, type));
+			}
+		}
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	public Type basicGetType() {
 		return type;
@@ -84,13 +108,16 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 	 * @generated NOT
 	 */
 	public void setType(Type newType) {
-
-		if (null != newType && !Stereotype.class.isInstance(newType)) {
+		if (newType != null && !(newType instanceof Stereotype)) {
 			throw new IllegalArgumentException(String.valueOf(newType));
 		}
+		Type oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXTENSION_END__TYPE, oldType, type));
 
-		super.setType(newType);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -639,5 +666,6 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //ExtensionEndImpl

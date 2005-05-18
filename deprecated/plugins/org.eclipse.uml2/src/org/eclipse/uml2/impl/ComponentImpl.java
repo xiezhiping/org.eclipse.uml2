@@ -8,26 +8,30 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.22 2005/04/14 17:30:57 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.23 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.Classifier;
@@ -36,6 +40,7 @@ import org.eclipse.uml2.Component;
 import org.eclipse.uml2.Dependency;
 import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.Interface;
+import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.Port;
 import org.eclipse.uml2.PrimitiveType;
@@ -43,11 +48,14 @@ import org.eclipse.uml2.Realization;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+
 import org.eclipse.uml2.internal.operation.ComponentOperations;
-import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,6 +64,7 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#isIndirectlyInstantiated <em>Is Indirectly Instantiated</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#getRequireds <em>Required</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#getProvideds <em>Provided</em>}</li>
@@ -72,7 +81,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isIndirectlyInstantiated() <em>Is Indirectly Instantiated</em>}' attribute.
@@ -151,7 +160,9 @@ public class ComponentImpl extends ClassImpl implements Component {
 		if (newIsIndirectlyInstantiated) eFlags |= IS_INDIRECTLY_INSTANTIATED_EFLAG; else eFlags &= ~IS_INDIRECTLY_INSTANTIATED_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMPONENT__IS_INDIRECTLY_INSTANTIATED, oldIsIndirectlyInstantiated, newIsIndirectlyInstantiated));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -194,23 +205,21 @@ public class ComponentImpl extends ClassImpl implements Component {
 		return requireds;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-	public Interface getRequired(String unqualifiedName) {
-    	for (Iterator i = getRequireds().iterator(); i.hasNext(); ) {
-    		Interface namedRequired = (Interface) i.next();
-    		
-    		if (unqualifiedName.equals(namedRequired.getName())) {
-    			return namedRequired;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+	public Interface getRequired(String name) {
+		for (Iterator i = getRequireds().iterator(); i.hasNext(); ) {
+			Interface required = (Interface) i.next();
+			if (name.equals(required.getName())) {
+				return required;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -258,23 +267,21 @@ public class ComponentImpl extends ClassImpl implements Component {
 		return provideds;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-	public Interface getProvided(String unqualifiedName) {
-    	for (Iterator i = getProvideds().iterator(); i.hasNext(); ) {
-    		Interface namedProvided = (Interface) i.next();
-    		
-    		if (unqualifiedName.equals(namedProvided.getName())) {
-    			return namedProvided;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+	public Interface getProvided(String name) {
+		for (Iterator i = getProvideds().iterator(); i.hasNext(); ) {
+			Interface provided = (Interface) i.next();
+			if (name.equals(provided.getName())) {
+				return provided;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -285,26 +292,24 @@ public class ComponentImpl extends ClassImpl implements Component {
 			realization = new SubsetEObjectContainmentWithInverseEList(Realization.class, this, UML2Package.COMPONENT__REALIZATION, new int[] {UML2Package.COMPONENT__CLIENT_DEPENDENCY}, UML2Package.REALIZATION__ABSTRACTION);
 		}
 		return realization;
-
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-	public Realization getRealization(String unqualifiedName) {
-    	for (Iterator i = getRealizations().iterator(); i.hasNext(); ) {
-    		Realization namedRealization = (Realization) i.next();
-    		
-    		if (unqualifiedName.equals(namedRealization.getName())) {
-    			return namedRealization;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+	public Realization getRealization(String name) {
+		for (Iterator i = getRealizations().iterator(); i.hasNext(); ) {
+			Realization realization = (Realization) i.next();
+			if (name.equals(realization.getName())) {
+				return realization;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -324,6 +329,20 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Realization createRealization() {
+		Realization newRealization = UML2Factory.eINSTANCE.createRealization();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COMPONENT__REALIZATION, null, newRealization));
+		}
+		getRealizations().add(newRealization);
+		return newRealization;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getOwnedMembers() {
 		if (ownedMember == null) {
 			ownedMember = new EObjectContainmentEList(PackageableElement.class, this, UML2Package.COMPONENT__OWNED_MEMBER);
@@ -331,27 +350,26 @@ public class ComponentImpl extends ClassImpl implements Component {
 		return ownedMember;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-	public PackageableElement getOwnedMember(String unqualifiedName) {
-    	for (Iterator i = getOwnedMembers().iterator(); i.hasNext(); ) {
-    		PackageableElement namedOwnedMember = (PackageableElement) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedMember.getName())) {
-    			return namedOwnedMember;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+	public NamedElement getOwnedMember(String name) {
+		for (Iterator i = getOwnedMembers().iterator(); i.hasNext(); ) {
+			PackageableElement ownedMember = (PackageableElement) i.next();
+			if (name.equals(ownedMember.getName())) {
+				return ownedMember;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
 	 */
 	public PackageableElement createOwnedMember(EClass eClass) {
 		PackageableElement newOwnedMember = (PackageableElement) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -367,33 +385,13 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getRealizations());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList getClientDependencies() {
 		if (clientDependency == null) {
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.COMPONENT__CLIENT_DEPENDENCY, new int[] {UML2Package.COMPONENT__SUBSTITUTION, UML2Package.COMPONENT__IMPLEMENTATION, UML2Package.COMPONENT__REALIZATION}, UML2Package.DEPENDENCY__CLIENT);
 		}
 		return clientDependency;
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -439,8 +437,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
-				case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				case UML2Package.COMPONENT__REALIZATION:
@@ -452,6 +448,15 @@ public class ComponentImpl extends ClassImpl implements Component {
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
+				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
+			default :
+				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -957,7 +962,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.COMPONENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -976,7 +981,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COMPONENT__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.COMPONENT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.COMPONENT__NAME_EXPRESSION:
@@ -996,7 +1001,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.COMPONENT__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.COMPONENT__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.COMPONENT__REDEFINITION_CONTEXT:
@@ -1030,7 +1035,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return !getOwnedBehaviors().isEmpty();
 			case UML2Package.COMPONENT__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.COMPONENT__IMPLEMENTATION:
@@ -1038,7 +1043,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__OWNED_TRIGGER:
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+				return !getOwnedStateMachines().isEmpty();
 			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
 				return !getOwnedAttributes().isEmpty();
 			case UML2Package.COMPONENT__PART:
@@ -1075,6 +1080,20 @@ public class ComponentImpl extends ClassImpl implements Component {
 		return eDynamicIsSet(eFeature);
 	}
 
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.COMPONENT__VISIBILITY:
+				return false;
+			case UML2Package.COMPONENT__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+		}
+		return eIsSetGen(eFeature);
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1089,6 +1108,21 @@ public class ComponentImpl extends ClassImpl implements Component {
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (realization != null) {
+			ownedElement.addAll(realization);
+		}
+		return ownedElement;
+	}
+
 
 	// <!-- begin-custom-operations -->
 

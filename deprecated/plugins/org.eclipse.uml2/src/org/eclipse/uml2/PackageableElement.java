@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElement.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: PackageableElement.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ public interface PackageableElement extends NamedElement, ParameterableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Packageable Element visibility</b></em>' attribute.
@@ -58,7 +58,6 @@ public interface PackageableElement extends NamedElement, ParameterableElement{
 	 * @see #setPackageableElement_visibility(VisibilityKind)
 	 * @see org.eclipse.uml2.UML2Package#getPackageableElement_PackageableElement_visibility()
 	 * @model volatile="true"
-	 *        annotation="redefines org.eclipse.uml2.NamedElement#getVisibility=''"
 	 * @generated
 	 */
 	VisibilityKind getPackageableElement_visibility();
@@ -74,21 +73,5 @@ public interface PackageableElement extends NamedElement, ParameterableElement{
 	 */
 	void setPackageableElement_visibility(VisibilityKind value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='false' name='visibility' eType='org.eclipse.uml2.VisibilityKind'" 
-	 * @generated
-	 */
-	VisibilityKind getVisibility();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="feature derived='false' name='visibility' eType='org.eclipse.uml2.VisibilityKind'" 
-	 * @generated
-	 */
-	void setVisibility(VisibilityKind value);
 
 } // PackageableElement

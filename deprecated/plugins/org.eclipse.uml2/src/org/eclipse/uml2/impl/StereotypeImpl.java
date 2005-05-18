@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.29 2005/04/12 17:46:00 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.30 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -17,10 +17,13 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Extension;
@@ -31,6 +34,7 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
 import org.eclipse.uml2.internal.operation.StereotypeOperations;
 
 /**
@@ -49,7 +53,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,8 +117,6 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
-				case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.STEREOTYPE__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				default:
@@ -124,6 +126,15 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
+				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
+			default :
+				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -595,7 +606,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.STEREOTYPE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -614,7 +625,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STEREOTYPE__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.STEREOTYPE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.STEREOTYPE__NAME_EXPRESSION:
@@ -634,7 +645,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.STEREOTYPE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.STEREOTYPE__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.STEREOTYPE__REDEFINITION_CONTEXT:
@@ -668,7 +679,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return !getOwnedBehaviors().isEmpty();
 			case UML2Package.STEREOTYPE__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.STEREOTYPE__IMPLEMENTATION:
@@ -676,7 +687,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__OWNED_TRIGGER:
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+				return !getOwnedStateMachines().isEmpty();
 			case UML2Package.STEREOTYPE__OWNED_ATTRIBUTE:
 				return !getOwnedAttributes().isEmpty();
 			case UML2Package.STEREOTYPE__PART:
@@ -701,6 +712,21 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				return ownedReception != null && !ownedReception.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.STEREOTYPE__VISIBILITY:
+				return false;
+			case UML2Package.STEREOTYPE__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+			case UML2Package.STEREOTYPE__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	// <!-- begin-custom-operations -->

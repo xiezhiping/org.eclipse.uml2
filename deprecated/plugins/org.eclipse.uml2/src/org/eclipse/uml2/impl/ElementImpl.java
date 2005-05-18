@@ -8,19 +8,24 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.20 2005/04/20 18:06:34 khussey Exp $
+ * $Id: ElementImpl.java,v 1.21 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
+
 import java.util.Collection;
-import java.util.LinkedHashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -31,17 +36,21 @@ import org.eclipse.emf.ecore.impl.EModelElementImpl;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource.Internal;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Comment;
 import org.eclipse.uml2.Element;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.Stereotype;
+
 import org.eclipse.uml2.internal.operation.ElementOperations;
 import org.eclipse.uml2.internal.operation.StereotypeOperations;
-import org.eclipse.uml2.util.CacheAdapter;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,8 +59,6 @@ import org.eclipse.uml2.util.CacheAdapter;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getOwnedComments <em>Owned Comment</em>}</li>
  * </ul>
  * </p>
@@ -65,7 +72,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOwnedComments() <em>Owned Comment</em>}' containment reference list.
@@ -103,18 +110,19 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(getOwnedComments());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement());
+			if (ownedElement == null) {
+				EList union = getOwnedElementsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return ownedElement;
 		}
-
-		return ownedElement;
+		EList union = getOwnedElementsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -126,17 +134,14 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		return owner == null ? null : (Element)eResolveProxy((InternalEObject)owner);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public Element basicGetOwnerGen() {
-		return null;
-	}
-
 	public Element basicGetOwner() {
-		return Element.class.isInstance(eContainer) ? (Element) eContainer : null;
+		return eContainer instanceof Element ? (Element) eContainer : null;
 	}
 
 	/**
@@ -151,10 +156,12 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		return ownedComment;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedComment() instead.
 	 */
 	public Comment createOwnedComment(EClass eClass) {
 		Comment newOwnedComment = (Comment) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -170,8 +177,22 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Comment createOwnedComment() {
+		Comment newOwnedComment = UML2Factory.eINSTANCE.createComment();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ELEMENT__OWNED_COMMENT, null, newOwnedComment));
+		}
+		getOwnedComments().add(newOwnedComment);
+		return newOwnedComment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.ElementOperations.validateNotOwnSelf(this, diagnostics, context);
+		return ElementOperations.validateNotOwnSelf(this, diagnostics, context);
 	}
 
 	/**
@@ -180,7 +201,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * @generated
 	 */
 	public boolean validateHasOwner(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.ElementOperations.validateHasOwner(this, diagnostics, context);
+		return ElementOperations.validateHasOwner(this, diagnostics, context);
 	}
 
 	/**
@@ -189,19 +210,15 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * @generated
 	 */
 	public Set allOwnedElements() {
-		try {
-			java.lang.reflect.Method method = getClass().getMethod("allOwnedElements", null); //$NON-NLS-1$
-			Set result = (Set) getCacheAdapter().get(this, method);
-		
-			if (null == result) {
-				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.ElementOperations.allOwnedElements(this));
-				getCacheAdapter().put(this, method, result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Set result = (Set) cache.get(eResource(), this, UML2Package.eINSTANCE.getElement().getEOperations().get(2));
+			if (result == null) {
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getElement().getEOperations().get(2), result = ElementOperations.allOwnedElements(this));
 			}
-		
 			return result;
-		} catch (Exception e) {
-			return org.eclipse.uml2.internal.operation.ElementOperations.allOwnedElements(this);
 		}
+		return ElementOperations.allOwnedElements(this);
 	}
 
 	/**
@@ -210,7 +227,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * @generated
 	 */
 	public boolean mustBeOwned() {
-		return org.eclipse.uml2.internal.operation.ElementOperations.mustBeOwned(this);
+		return ElementOperations.mustBeOwned(this);
 	}
 
 	/**
@@ -326,16 +343,31 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		return eDynamicIsSet(eFeature);
 	}
 
-	// <!-- begin-custom-operations -->
 
 	/**
-	 * Retrieves the cache adapter for this element.
-	 * 
-	 * @return The cache adapter for this element.
+	 * Retrieves the cache adapter for this '<em><b>Element</b></em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The cache adapter for this '<em><b>Element</b></em>'.
+	 * @generated NOT
 	 */
 	protected CacheAdapter getCacheAdapter() {
 		return CacheAdapter.INSTANCE;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		if (ownedComment != null) {
+			ownedElement.addAll(ownedComment);
+		}
+		return ownedElement;
+	}
+
+	// <!-- begin-custom-operations -->
 
 	/*
 	 * (non-Javadoc)

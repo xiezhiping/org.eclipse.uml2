@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.Expression;
 import org.eclipse.uml2.StringExpression;
@@ -57,7 +59,7 @@ public class ExpressionImpl extends OpaqueExpressionImpl implements Expression {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getSymbol() <em>Symbol</em>}' attribute.
@@ -122,11 +124,14 @@ public class ExpressionImpl extends OpaqueExpressionImpl implements Expression {
 	 * @generated
 	 */
 	public void setSymbol(String newSymbol) {
+		newSymbol = newSymbol == null ? SYMBOL_EDEFAULT : newSymbol;
 		String oldSymbol = symbol;
-		symbol = newSymbol == null ? SYMBOL_EDEFAULT : newSymbol;
+		symbol = newSymbol;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXPRESSION__SYMBOL, oldSymbol, symbol));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,23 +145,22 @@ public class ExpressionImpl extends OpaqueExpressionImpl implements Expression {
 		return operand;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ValueSpecification getOperand(String unqualifiedName) {
-    	for (Iterator i = getOperands().iterator(); i.hasNext(); ) {
-    		ValueSpecification namedOperand = (ValueSpecification) i.next();
-    		
-    		if (unqualifiedName.equals(namedOperand.getName())) {
-    			return namedOperand;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ValueSpecification getOperand(String name) {
+		for (Iterator i = getOperands().iterator(); i.hasNext(); ) {
+			ValueSpecification operand = (ValueSpecification) i.next();
+			if (name.equals(operand.getName())) {
+				return operand;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -169,26 +173,6 @@ public class ExpressionImpl extends OpaqueExpressionImpl implements Expression {
 		}
 		getOperands().add(newOperand);
 		return newOperand;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getOperands());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
 	}
 
 	/**
@@ -520,5 +504,20 @@ public class ExpressionImpl extends OpaqueExpressionImpl implements Expression {
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (operand != null) {
+			ownedElement.addAll(operand);
+		}
+		return ownedElement;
+	}
+
 
 } //ExpressionImpl

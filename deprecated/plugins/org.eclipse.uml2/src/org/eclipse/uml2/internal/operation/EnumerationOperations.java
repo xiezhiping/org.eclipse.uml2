@@ -8,24 +8,22 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationOperations.java,v 1.1 2005/04/14 17:30:57 khussey Exp $
+ * $Id: EnumerationOperations.java,v 1.2 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.EnumerationLiteral;
-import org.eclipse.uml2.UML2Package;
 
 /**
- * A static utility class that provides operations related to enumerations.
+ * A static utility class that provides operations related to '<em><b>Enumeration</b></em>'
+ * model objects.
  */
 public final class EnumerationOperations
 		extends UML2Operations {
 
-	/**
-	 * Constructs a new Enumeration Operations. This constructor should never be
-	 * called because this is a static utility class.
-	 */
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
 	private EnumerationOperations() {
 		super();
 	}
@@ -53,10 +51,9 @@ public final class EnumerationOperations
 			throw new IllegalArgumentException(String.valueOf(name));
 		}
 
-		EnumerationLiteral ownedLiteral = enumeration
-			.createOwnedLiteral(UML2Package.eINSTANCE.getEnumerationLiteral());
+		EnumerationLiteral ownedLiteral = enumeration.createOwnedLiteral();
 		ownedLiteral.setName(name);
 		return ownedLiteral;
 	}
 
-}
+} // EnumerationOperations

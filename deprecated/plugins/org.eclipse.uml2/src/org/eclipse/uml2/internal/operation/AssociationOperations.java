@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationOperations.java,v 1.2 2005/03/15 18:44:46 khussey Exp $
+ * $Id: AssociationOperations.java,v 1.3 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -21,15 +21,14 @@ import org.eclipse.uml2.Property;
 import org.eclipse.uml2.Type;
 
 /**
- * A static utility class that provides operations related to associations.
+ * A static utility class that provides operations related to '<em><b>Association</b></em>'
+ * model objects.
  */
 public final class AssociationOperations
 		extends UML2Operations {
 
-	/**
-	 * Constructs a new Association Operations. This constructor should never be
-	 * called because this is a static utility class.
-	 */
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
 	private AssociationOperations() {
 		super();
 	}
@@ -57,4 +56,4 @@ public final class AssociationOperations
 		return null != association && 2 == association.getMemberEnds().size();
 	}
 
-}
+} // AssociationOperations

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.9 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Property.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -60,7 +60,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Default</b></em>' attribute.
@@ -78,6 +78,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 */
 	String getDefault();
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Composite</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
@@ -93,6 +94,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @generated
 	 */
 	boolean isComposite();
+
 
 	/**
 	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
@@ -124,6 +126,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 */
 	void setIsDerived(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Derived Union</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
@@ -153,6 +156,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @generated
 	 */
 	void setIsDerivedUnion(boolean value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Aggregation</b></em>' attribute.
@@ -187,6 +191,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 */
 	void setAggregation(AggregationKind value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Class </b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -198,11 +203,10 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @return the value of the '<em>Class </em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getProperty_Class_()
 	 * @model transient="true" changeable="false" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace='' org.eclipse.uml2.Feature#getFeaturingClassifiers=''"
-	 *        annotation="redefined eOpposite='ownedAttribute' eOpposite.containment='true' eOpposite.lowerBound='0' eOpposite.upperBound='-1'"
 	 * @generated
 	 */
 	org.eclipse.uml2.Class getClass_();
+
 
 	/**
 	 * Returns the value of the '<em><b>Opposite</b></em>' reference.
@@ -218,6 +222,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @generated
 	 */
 	Property getOpposite();
+
 
 	/**
 	 * Returns the value of the '<em><b>Owning Association</b></em>' container reference.
@@ -235,8 +240,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see #setOwningAssociation(Association)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_OwningAssociation()
 	 * @see org.eclipse.uml2.Association#getOwnedEnds
-	 * @model opposite="ownedEnd" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Property#getAssociation='' org.eclipse.uml2.NamedElement#getNamespace='' org.eclipse.uml2.Feature#getFeaturingClassifiers=''"
+	 * @model opposite="ownedEnd"
 	 * @generated
 	 */
 	Association getOwningAssociation();
@@ -251,6 +255,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 */
 	void setOwningAssociation(Association value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Redefined Property</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Property}.
@@ -263,17 +268,17 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @return the value of the '<em>Redefined Property</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProperty_RedefinedProperty()
 	 * @model type="org.eclipse.uml2.Property" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedProperties();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified name from the '<em><b>Redefined Property</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Property</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedProperties()
 	 * @generated
      */
@@ -295,12 +300,13 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 */
 	EList getSubsettedProperties();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified name from the '<em><b>Subsetted Property</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Subsetted Property</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubsettedProperties()
 	 * @generated
      */
@@ -323,7 +329,6 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see org.eclipse.uml2.UML2Package#getProperty_Datatype()
 	 * @see org.eclipse.uml2.DataType#getOwnedAttributes
 	 * @model opposite="ownedAttribute"
-	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace='' org.eclipse.uml2.Feature#getFeaturingClassifiers=''"
 	 * @generated
 	 */
 	DataType getDatatype();
@@ -337,6 +342,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @generated
 	 */
 	void setDatatype(DataType value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Association</b></em>' reference.
@@ -354,7 +360,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see #setAssociation(Association)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_Association()
 	 * @see org.eclipse.uml2.Association#getMemberEnds
-	 * @model opposite="memberEnd" volatile="true"
+	 * @model opposite="memberEnd"
 	 * @generated
 	 */
 	Association getAssociation();
@@ -368,6 +374,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @generated
 	 */
 	void setAssociation(Association value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.
@@ -384,7 +391,6 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_DefaultValue()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getDefaultValue();
@@ -399,6 +405,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 */
 	void setDefaultValue(ValueSpecification value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Default Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -409,7 +416,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @generated
      */
     ValueSpecification createDefaultValue(EClass eClass);
-     
+
 	/**
 	 * Returns the value of the '<em><b>Qualifier</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Property}.
@@ -424,17 +431,17 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see org.eclipse.uml2.UML2Package#getProperty_Qualifier()
 	 * @see org.eclipse.uml2.Property#getAssociationEnd
 	 * @model type="org.eclipse.uml2.Property" opposite="associationEnd" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getQualifiers();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified name from the '<em><b>Qualifier</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Qualifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getQualifiers()
 	 * @generated
      */
@@ -451,6 +458,16 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
      */
     Property createQualifier(EClass eClass);
 
+    /**
+     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Property}.
+	 * @see #getQualifiers()
+	 * @generated
+     */
+    Property createQualifier();
+
 	/**
 	 * Returns the value of the '<em><b>Association End</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Property#getQualifiers <em>Qualifier</em>}'.
@@ -465,7 +482,6 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see org.eclipse.uml2.UML2Package#getProperty_AssociationEnd()
 	 * @see org.eclipse.uml2.Property#getQualifiers
 	 * @model opposite="qualifier"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	Property getAssociationEnd();
@@ -479,6 +495,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @generated
 	 */
 	void setAssociationEnd(Property value);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -494,8 +511,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * 	endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PropertyOperations.validateOppositeIsOtherEnd(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map context);
@@ -513,7 +529,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * 	endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PropertyOperations.opposite(this);'" 
+	 * @model
 	 * @generated
 	 */
 	Property opposite();
@@ -527,8 +543,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * isComposite implies (upperBound()->isEmpty() or upperBound() <= 1)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PropertyOperations.validateMultiplicityOfComposite(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics, Map context);
@@ -545,8 +560,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * 			sp.subsettingContext()->exists(c | sc.conformsTo(c)))))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PropertyOperations.validateSubsettingContext(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateSubsettingContext(DiagnosticChain diagnostics, Map context);
@@ -564,8 +578,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * 		implies class->notEmpty())
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PropertyOperations.validateNavigablePropertyRedefinition(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics, Map context);
@@ -582,8 +595,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * 			upperBound()<=sp.upperBound() ))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PropertyOperations.validateSubsettingRules(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateSubsettingRules(DiagnosticChain diagnostics, Map context);
@@ -597,8 +609,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * isReadOnly implies class->notEmpty()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PropertyOperations.validateNavigableReadonly(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateNavigableReadonly(DiagnosticChain diagnostics, Map context);
@@ -612,33 +623,10 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * isDerivedUnion implies isDerived
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PropertyOperations.validateDerivedUnionIsDerived(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A query based on the following OCL expression:
-	 * <code>
-	 * (redefinee.oclIsKindOf(Property) and 
-	 *     let prop: Property = redefinee.oclAsType(Property) in
-	 *         type.conformsTo(prop.type) and
-	 *         (lowerBound()->notEmpty and prop.lowerBound()->notEmpty() implies lowerBound() >= prop.lowerBound())
-	 *     and
-	 *         (upperBound()->notEmpty and prop.upperBound()->notEmpty() implies upperBound() <= prop.upperBound())
-	 *     and
-	 *         (prop.isDerived implies isDerived))
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PropertyOperations.isConsistentWith(this, redefinee);'" 
-	 * @generated
-	 */
-	boolean isConsistentWith(RedefinableElement redefinee);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -652,76 +640,10 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tjava.lang.reflect.Method method = getClass().getMethod(\"subsettingContext\", null); //$NON-NLS-1$\r\n\tSet result = (Set) getCacheAdapter().get(this, method);\r\n\r\n\tif (null == result) {\r\n\t\tresult = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.PropertyOperations.subsettingContext(this));\r\n\t\tgetCacheAdapter().put(this, method, result);\r\n\t}\r\n\r\n\treturn result;\r\n} catch (Exception e) {\r\n\treturn org.eclipse.uml2.internal.operation.PropertyOperations.subsettingContext(this);\r\n}'" 
+	 * @model dataType="org.eclipse.uml2.Set" 
 	 * @generated
 	 */
 	Set subsettingContext();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="feature derived='false' defaultValueLiteral='false' name='isReadOnly' eType='org.eclipse.uml2.Boolean'"
-	 *        annotation="redefines org.eclipse.uml2.StructuralFeature#isReadOnly=''" 
-	 * @generated
-	 */
-	boolean isReadOnly();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters="org.eclipse.uml2.Boolean"
-	 *        annotation="feature derived='false' defaultValueLiteral='false' name='isReadOnly' eType='org.eclipse.uml2.Boolean'"
-	 *        annotation="redefines org.eclipse.uml2.StructuralFeature#isReadOnly=''" 
-	 * @generated
-	 */
-	void setIsReadOnly(boolean value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
-	 * @generated
-	 */
-	Namespace getNamespace();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='featuringClassifier' eOpposite='feature' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Classifier' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getFeaturingClassifiers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
-	 * @generated
-	 */
-	EList getRedefinedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
 
 	// <!-- begin-custom-operations -->
 

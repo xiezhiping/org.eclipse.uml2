@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2AdapterFactoryContentProvider.java,v 1.3 2005/04/22 20:19:35 khussey Exp $
+ * $Id: UML2AdapterFactoryContentProvider.java,v 1.4 2005/05/18 16:42:19 khussey Exp $
  */
 package org.eclipse.uml2.editor.internal.presentation;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.6 2005/04/04 20:11:13 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,7 +49,7 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getInterruptingEdges() <em>Interrupting Edge</em>}' reference list.
@@ -101,23 +101,22 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 		return interruptingEdge;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityEdge getInterruptingEdge(String unqualifiedName) {
-    	for (Iterator i = getInterruptingEdges().iterator(); i.hasNext(); ) {
-    		ActivityEdge namedInterruptingEdge = (ActivityEdge) i.next();
-    		
-    		if (unqualifiedName.equals(namedInterruptingEdge.getName())) {
-    			return namedInterruptingEdge;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityEdge getInterruptingEdge(String name) {
+		for (Iterator i = getInterruptingEdges().iterator(); i.hasNext(); ) {
+			ActivityEdge interruptingEdge = (ActivityEdge) i.next();
+			if (name.equals(interruptingEdge.getName())) {
+				return interruptingEdge;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,23 +129,22 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 		return containedNode;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityNode getContainedNode(String unqualifiedName) {
-    	for (Iterator i = getContainedNodes().iterator(); i.hasNext(); ) {
-    		ActivityNode namedContainedNode = (ActivityNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedContainedNode.getName())) {
-    			return namedContainedNode;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityNode getContainedNode(String name) {
+		for (Iterator i = getContainedNodes().iterator(); i.hasNext(); ) {
+			ActivityNode containedNode = (ActivityNode) i.next();
+			if (name.equals(containedNode.getName())) {
+				return containedNode;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -157,10 +155,6 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
 				case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS:
 					return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-				case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE:
 					return ((InternalEList)getInterruptingEdges()).basicAdd(otherEnd, msgs);
 				case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE:
@@ -172,6 +166,17 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY:
+				if (eContainer != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
+			default :
+				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -186,8 +191,6 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 					return ((InternalEList)getEAnnotations()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT:
 					return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
-				case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY:
-					return eBasicSetContainer(null, UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
 				case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE:
 					return ((InternalEList)getInterruptingEdges()).basicRemove(otherEnd, msgs);
 				case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE:
@@ -197,6 +200,15 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseRemove(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY:
+				return eBasicSetContainer(null, UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__ACTIVITY_GROUP_ACTIVITY, msgs);
+			default :
+				return super.eDynamicInverseRemove(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -327,5 +339,6 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //InterruptibleActivityRegionImpl

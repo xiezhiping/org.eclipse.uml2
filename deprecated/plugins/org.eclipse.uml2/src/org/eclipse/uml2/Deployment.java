@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Deployment.java,v 1.5 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Deployment.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ public interface Deployment extends Dependency{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Deployed Artifact</b></em>' reference list.
@@ -53,18 +53,18 @@ public interface Deployment extends Dependency{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Deployed Artifact</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDeployment_DeployedArtifact()
-	 * @model type="org.eclipse.uml2.DeployedArtifact" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Dependency#getSuppliers='' org.eclipse.uml2.DirectedRelationship#getTargets=''"
+	 * @model type="org.eclipse.uml2.DeployedArtifact" ordered="false"
 	 * @generated
 	 */
 	EList getDeployedArtifacts();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.DeployedArtifact} with the specified name from the '<em><b>Deployed Artifact</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.DeployedArtifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Artifact</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.DeployedArtifact} to retrieve.
-	 * @return The {@link org.eclipse.uml2.DeployedArtifact} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.DeployedArtifact} to retrieve.
+	 * @return The {@link org.eclipse.uml2.DeployedArtifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getDeployedArtifacts()
 	 * @generated
      */
@@ -83,8 +83,7 @@ public interface Deployment extends Dependency{
 	 * @see #setLocation(DeploymentTarget)
 	 * @see org.eclipse.uml2.UML2Package#getDeployment_Location()
 	 * @see org.eclipse.uml2.DeploymentTarget#getDeployments
-	 * @model opposite="deployment" required="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getSources='' org.eclipse.uml2.Dependency#getClients=''"
+	 * @model opposite="deployment" required="true"
 	 * @generated
 	 */
 	DeploymentTarget getLocation();
@@ -99,6 +98,7 @@ public interface Deployment extends Dependency{
 	 */
 	void setLocation(DeploymentTarget value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Configuration</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.DeploymentSpecification}.
@@ -111,17 +111,17 @@ public interface Deployment extends Dependency{
 	 * @return the value of the '<em>Configuration</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDeployment_Configuration()
 	 * @model type="org.eclipse.uml2.DeploymentSpecification" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getConfigurations();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.DeploymentSpecification} with the specified name from the '<em><b>Configuration</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.DeploymentSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Configuration</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.DeploymentSpecification} to retrieve.
-	 * @return The {@link org.eclipse.uml2.DeploymentSpecification} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.DeploymentSpecification} to retrieve.
+	 * @return The {@link org.eclipse.uml2.DeploymentSpecification} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConfigurations()
 	 * @generated
      */
@@ -134,53 +134,19 @@ public interface Deployment extends Dependency{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.DeploymentSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.DeploymentSpecification}.
 	 * @see #getConfigurations()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createConfiguration() instead.
      */
     DeploymentSpecification createConfiguration(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.DeploymentSpecification} and appends it to the '<em><b>Configuration</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='false' name='supplier' eType='org.eclipse.uml2.NamedElement' containment='false'" 
+	 * @return The new {@link org.eclipse.uml2.DeploymentSpecification}.
+	 * @see #getConfigurations()
 	 * @generated
-	 */
-	EList getSuppliers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getTargets();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getSources();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='client' eOpposite='clientDependency' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getClients();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
+     */
+    DeploymentSpecification createConfiguration();
 
 } // Deployment

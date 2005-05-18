@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteral.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: EnumerationLiteral.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ public interface EnumerationLiteral extends InstanceSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Enumeration</b></em>' container reference.
@@ -58,7 +58,6 @@ public interface EnumerationLiteral extends InstanceSpecification{
 	 * @see org.eclipse.uml2.UML2Package#getEnumerationLiteral_Enumeration()
 	 * @see org.eclipse.uml2.Enumeration#getOwnedLiterals
 	 * @model opposite="ownedLiteral"
-	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	Enumeration getEnumeration();
@@ -73,13 +72,5 @@ public interface EnumerationLiteral extends InstanceSpecification{
 	 */
 	void setEnumeration(Enumeration value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
-	 * @generated
-	 */
-	Namespace getNamespace();
 
 } // EnumerationLiteral

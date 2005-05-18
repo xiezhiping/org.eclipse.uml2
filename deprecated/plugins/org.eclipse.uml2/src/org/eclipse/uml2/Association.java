@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.10 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Association.java,v 1.11 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -45,7 +45,7 @@ public interface Association extends Classifier, Relationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
@@ -77,6 +77,7 @@ public interface Association extends Classifier, Relationship{
 	 */
 	void setIsDerived(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Owned End</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Property}.
@@ -93,18 +94,18 @@ public interface Association extends Classifier, Relationship{
 	 * @return the value of the '<em>Owned End</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_OwnedEnd()
 	 * @see org.eclipse.uml2.Property#getOwningAssociation
-	 * @model type="org.eclipse.uml2.Property" opposite="owningAssociation" containment="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Association#getMemberEnds='' org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
+	 * @model type="org.eclipse.uml2.Property" opposite="owningAssociation" containment="true" required="true"
 	 * @generated
 	 */
 	EList getOwnedEnds();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified name from the '<em><b>Owned End</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned End</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedEnds()
 	 * @generated
      */
@@ -121,6 +122,16 @@ public interface Association extends Classifier, Relationship{
      */
     Property createOwnedEnd(EClass eClass);
 
+    /**
+     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned End</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Property}.
+	 * @see #getOwnedEnds()
+	 * @generated
+     */
+    Property createOwnedEnd();
+
 	/**
 	 * Returns the value of the '<em><b>End Type</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Type}.
@@ -136,17 +147,17 @@ public interface Association extends Classifier, Relationship{
 	 * @return the value of the '<em>End Type</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_EndType()
 	 * @model type="org.eclipse.uml2.Type" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Relationship#getRelatedElements=''"
 	 * @generated
 	 */
 	EList getEndTypes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Type} with the specified name from the '<em><b>End Type</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>End Type</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Type} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Type} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getEndTypes()
 	 * @generated
      */
@@ -168,59 +179,23 @@ public interface Association extends Classifier, Relationship{
 	 * @return the value of the '<em>Member End</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_MemberEnd()
 	 * @see org.eclipse.uml2.Property#getAssociation
-	 * @model type="org.eclipse.uml2.Property" opposite="association" lower="2" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getMembers=''"
+	 * @model type="org.eclipse.uml2.Property" opposite="association" lower="2"
 	 * @generated
 	 */
 	EList getMemberEnds();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified name from the '<em><b>Member End</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Member End</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getMemberEnds()
 	 * @generated
      */
     Property getMemberEnd(String unqualifiedName);
       
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getFeatures();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='relatedElement' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getRelatedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='member' eType='org.eclipse.uml2.NamedElement' containment='false'" 
-	 * @generated
-	 */
-	EList getMembers();
-
 	// <!-- begin-custom-operations -->
 
 	/**

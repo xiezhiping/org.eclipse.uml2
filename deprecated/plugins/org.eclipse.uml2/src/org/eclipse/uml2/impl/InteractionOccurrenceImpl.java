@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,26 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrenceImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: InteractionOccurrenceImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Gate;
 import org.eclipse.uml2.InputPin;
 import org.eclipse.uml2.Interaction;
@@ -34,6 +35,7 @@ import org.eclipse.uml2.InteractionOccurrence;
 import org.eclipse.uml2.InteractionOperand;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -58,7 +60,7 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getRefersTo() <em>Refers To</em>}' reference.
@@ -144,7 +146,9 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 		refersTo = newRefersTo;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_OCCURRENCE__REFERS_TO, oldRefersTo, refersTo));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -158,30 +162,44 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 		return actualGate;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Gate getActualGate(String unqualifiedName) {
-    	for (Iterator i = getActualGates().iterator(); i.hasNext(); ) {
-    		Gate namedActualGate = (Gate) i.next();
-    		
-    		if (unqualifiedName.equals(namedActualGate.getName())) {
-    			return namedActualGate;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public Gate getActualGate(String name) {
+		for (Iterator i = getActualGates().iterator(); i.hasNext(); ) {
+			Gate actualGate = (Gate) i.next();
+			if (name.equals(actualGate.getName())) {
+				return actualGate;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createActualGate() instead.
+	 */
 	public Gate createActualGate(EClass eClass) {
 		Gate newActualGate = (Gate) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE, null, newActualGate));
+		}
+		getActualGates().add(newActualGate);
+		return newActualGate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Gate createActualGate() {
+		Gate newActualGate = UML2Factory.eINSTANCE.createGate();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE, null, newActualGate));
 		}
@@ -201,23 +219,22 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 		return argument;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public InputPin getArgument(String unqualifiedName) {
-    	for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
-    		InputPin namedArgument = (InputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedArgument.getName())) {
-    			return namedArgument;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public InputPin getArgument(String name) {
+		for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
+			InputPin argument = (InputPin) i.next();
+			if (name.equals(argument.getName())) {
+				return argument;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -237,19 +254,13 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getActualGates());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	public InputPin createArgument() {
+		InputPin newArgument = UML2Factory.eINSTANCE.createInputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_OCCURRENCE__ARGUMENT, null, newArgument));
 		}
-
-		return ownedElement;
+		getArguments().add(newArgument);
+		return newArgument;
 	}
 
 	/**
@@ -562,5 +573,20 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (actualGate != null) {
+			ownedElement.addAll(actualGate);
+		}
+		return ownedElement;
+	}
+
 
 } //InteractionOccurrenceImpl

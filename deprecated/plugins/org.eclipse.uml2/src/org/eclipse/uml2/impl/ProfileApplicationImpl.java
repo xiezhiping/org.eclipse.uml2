@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -34,6 +34,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ProfileApplicationImpl#getImportedPackage <em>Imported Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProfileApplicationImpl#getImportedProfile <em>Imported Profile</em>}</li>
  * </ul>
  * </p>
@@ -46,7 +47,7 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getImportedProfile() <em>Imported Profile</em>}' reference.
@@ -74,6 +75,32 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.eINSTANCE.getProfileApplication();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public org.eclipse.uml2.Package getImportedPackage() {
+		if (importedPackage != null && importedPackage.eIsProxy()) {
+			org.eclipse.uml2.Package oldImportedPackage = importedPackage;
+			importedPackage = (org.eclipse.uml2.Package)eResolveProxy((InternalEObject)importedPackage);
+			if (importedPackage != oldImportedPackage) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE, oldImportedPackage, importedPackage));
+			}
+		}
+		return importedPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public org.eclipse.uml2.Package basicGetImportedPackage() {
+		return importedPackage;
 	}
 
 	/**
@@ -110,13 +137,14 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	public void setImportedProfile(Profile newImportedProfile) {
 		Profile oldImportedProfile = importedProfile;
 		importedProfile = newImportedProfile;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE, oldImportedProfile, newImportedProfile));
-		}
-		if (null != newImportedProfile || oldImportedProfile == importedPackage) {
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE, oldImportedProfile, importedProfile));
+
+		if (newImportedProfile != null || oldImportedProfile == importedPackage) {
 			setImportedPackage(newImportedProfile);
 		}
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -126,13 +154,14 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 	public void setImportedPackage(org.eclipse.uml2.Package newImportedPackage) {
 		org.eclipse.uml2.Package oldImportedPackage = importedPackage;
 		importedPackage = newImportedPackage;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE, oldImportedPackage, newImportedPackage));
-		}		if (null != importedProfile && newImportedPackage != importedProfile) {
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE, oldImportedPackage, importedPackage));
+
+		if (importedProfile != null && importedProfile != newImportedPackage) {
 			setImportedProfile(null);
 		}
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -323,5 +352,6 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //ProfileApplicationImpl

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.6 2005/04/04 20:11:12 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.uml2.InputPin;
 import org.eclipse.uml2.LinkEndData;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.QualifierValue;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -50,7 +51,7 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
@@ -136,7 +137,9 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LINK_END_DATA__VALUE, oldValue, value));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -174,7 +177,9 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 		end = newEnd;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LINK_END_DATA__END, oldEnd, end));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -182,10 +187,26 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	 * @generated
 	 */
 	public EList getQualifiers() {
-		if (null == qualifier) {
+		if (qualifier == null) {
 			qualifier = new EObjectContainmentEList(QualifierValue.class, this, UML2Package.LINK_END_DATA__QUALIFIER);
 		}
 		return qualifier;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createQualifier() instead.
+	 */
+	public QualifierValue createQualifier(EClass eClass) {
+		QualifierValue newQualifier = (QualifierValue) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.LINK_END_DATA__QUALIFIER, null, newQualifier));
+		}
+		getQualifiers().add(newQualifier);
+		return newQualifier;
 	}
 
 	/**
@@ -193,8 +214,8 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QualifierValue createQualifier(EClass eClass) {
-		QualifierValue newQualifier = (QualifierValue) eClass.getEPackage().getEFactoryInstance().create(eClass);
+	public QualifierValue createQualifier() {
+		QualifierValue newQualifier = UML2Factory.eINSTANCE.createQualifierValue();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.LINK_END_DATA__QUALIFIER, null, newQualifier));
 		}
@@ -349,5 +370,6 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //LinkEndDataImpl

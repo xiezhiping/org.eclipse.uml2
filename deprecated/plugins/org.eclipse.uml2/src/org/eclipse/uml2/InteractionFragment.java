@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragment.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: InteractionFragment.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -46,7 +46,7 @@ public interface InteractionFragment extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Covered</b></em>' reference list.
@@ -61,17 +61,18 @@ public interface InteractionFragment extends NamedElement{
 	 * @return the value of the '<em>Covered</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteractionFragment_Covered()
 	 * @see org.eclipse.uml2.Lifeline#getCoveredBys
-	 * @model type="org.eclipse.uml2.Lifeline" opposite="coveredBy" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Lifeline" opposite="coveredBy" required="true"
 	 * @generated
 	 */
 	EList getCovereds();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Lifeline} with the specified name from the '<em><b>Covered</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Lifeline} with the specified '<em><b>Name</b></em>' from the '<em><b>Covered</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Lifeline} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Lifeline} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Lifeline} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Lifeline} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getCovereds()
 	 * @generated
      */
@@ -89,17 +90,17 @@ public interface InteractionFragment extends NamedElement{
 	 * @return the value of the '<em>General Ordering</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInteractionFragment_GeneralOrdering()
 	 * @model type="org.eclipse.uml2.GeneralOrdering" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getGeneralOrderings();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.GeneralOrdering} with the specified name from the '<em><b>General Ordering</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.GeneralOrdering} with the specified '<em><b>Name</b></em>' from the '<em><b>General Ordering</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.GeneralOrdering} to retrieve.
-	 * @return The {@link org.eclipse.uml2.GeneralOrdering} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.GeneralOrdering} to retrieve.
+	 * @return The {@link org.eclipse.uml2.GeneralOrdering} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getGeneralOrderings()
 	 * @generated
      */
@@ -112,9 +113,20 @@ public interface InteractionFragment extends NamedElement{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.GeneralOrdering} to create.
 	 * @return The new {@link org.eclipse.uml2.GeneralOrdering}.
 	 * @see #getGeneralOrderings()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createGeneralOrdering() instead.
      */
     GeneralOrdering createGeneralOrdering(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.GeneralOrdering} and appends it to the '<em><b>General Ordering</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.GeneralOrdering}.
+	 * @see #getGeneralOrderings()
+	 * @generated
+     */
+    GeneralOrdering createGeneralOrdering();
 
 	/**
 	 * Returns the value of the '<em><b>Enclosing Interaction</b></em>' container reference.
@@ -144,6 +156,7 @@ public interface InteractionFragment extends NamedElement{
 	 */
 	void setEnclosingInteraction(Interaction value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Enclosing Operand</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.InteractionOperand#getFragments <em>Fragment</em>}'.
@@ -161,7 +174,6 @@ public interface InteractionFragment extends NamedElement{
 	 * @see org.eclipse.uml2.UML2Package#getInteractionFragment_EnclosingOperand()
 	 * @see org.eclipse.uml2.InteractionOperand#getFragments
 	 * @model opposite="fragment"
-	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	InteractionOperand getEnclosingOperand();
@@ -176,22 +188,5 @@ public interface InteractionFragment extends NamedElement{
 	 */
 	void setEnclosingOperand(InteractionOperand value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
-	 * @generated
-	 */
-	Namespace getNamespace();
 
 } // InteractionFragment

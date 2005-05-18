@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
@@ -116,11 +116,11 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER, oldTemplateParameter, newTemplateParameter);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != getOwningParameter() && newTemplateParameter != getOwningParameter()) {
+
+		if (getOwningParameter() != null && getOwningParameter() != newTemplateParameter) {
 			setOwningParameter(null);
 		}
 		return msgs;
-
 	}
 
 	/**
@@ -131,21 +131,18 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
-			if (null != templateParameter) {
-				msgs = ((InternalEObject) templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
-			if (null != newTemplateParameter) {
-				msgs = ((InternalEObject) newTemplateParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
+			if (templateParameter != null)
+				msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+			if (newTemplateParameter != null)
+				msgs = ((InternalEObject)newTemplateParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 			msgs = basicSetTemplateParameter(newTemplateParameter, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER, newTemplateParameter, newTemplateParameter));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER, newTemplateParameter, newTemplateParameter));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,10 +150,8 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	 * @generated
 	 */
 	public TemplateParameter getOwningParameter() {
-		if (eContainerFeatureID != UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER) {
-			return null;
-		}
-		return (TemplateParameter) eContainer;
+		if (eContainerFeatureID != UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER) return null;
+		return (TemplateParameter)eContainer;
 	}
 
 	/**
@@ -166,28 +161,25 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
 		EObject oldOwningParameter = eContainer;
-		if (eContainer != newOwningParameter || (eContainerFeatureID != UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER && null != newOwningParameter)) {
-			if (EcoreUtil.isAncestor(this, newOwningParameter)) {
+		if (newOwningParameter != eContainer || (eContainerFeatureID != UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER && newOwningParameter != null)) {
+			if (EcoreUtil.isAncestor(this, newOwningParameter))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newOwningParameter) {
-				msgs = ((InternalEObject) newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newOwningParameter, UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
+			if (newOwningParameter != null)
+				msgs = ((InternalEObject)newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newOwningParameter, UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
-		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
+
+		if (newOwningParameter != null || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,11 +187,13 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getOwningParameter()) {
-			return (Element) getOwningParameter();
+		TemplateParameter owningParameter = getOwningParameter();			
+		if (owningParameter != null) {
+			return owningParameter;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -363,5 +357,6 @@ public abstract class ParameterableElementImpl extends ElementImpl implements Pa
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //ParameterableElementImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorItemProvider.java,v 1.20 2005/04/22 20:55:48 khussey Exp $
+ * $Id: BehaviorItemProvider.java,v 1.21 2005/05/18 16:40:45 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -16,12 +16,17 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.domain.EditingDomain;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -34,10 +39,11 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.edit.internal.command.SubsetAddCommand;
-import org.eclipse.uml2.edit.internal.command.SubsetReplaceCommand;
-import org.eclipse.uml2.edit.internal.command.SupersetRemoveCommand;
-import org.eclipse.uml2.edit.internal.command.SupersetReplaceCommand;
+
+import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
+import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
+import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Behavior} object.
@@ -58,7 +64,7 @@ public class BehaviorItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -473,4 +479,5 @@ public class BehaviorItemProvider
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}
+
 }

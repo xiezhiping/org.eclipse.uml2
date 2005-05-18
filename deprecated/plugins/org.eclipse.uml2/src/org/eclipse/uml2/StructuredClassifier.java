@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -45,7 +45,7 @@ public interface StructuredClassifier extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -61,18 +61,18 @@ public interface StructuredClassifier extends Classifier{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.Property" containment="true" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.StructuredClassifier#getRoles='' org.eclipse.uml2.Classifier#getAttributes='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
+	 * @model type="org.eclipse.uml2.Property" containment="true"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified name from the '<em><b>Owned Attribute</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedAttributes()
 	 * @generated
      */
@@ -88,6 +88,16 @@ public interface StructuredClassifier extends Classifier{
 	 * @generated
      */
     Property createOwnedAttribute(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Property}.
+	 * @see #getOwnedAttributes()
+	 * @generated
+     */
+    Property createOwnedAttribute();
 
 	/**
 	 * Returns the value of the '<em><b>Part</b></em>' reference list.
@@ -108,12 +118,13 @@ public interface StructuredClassifier extends Classifier{
 	 */
 	EList getParts();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified name from the '<em><b>Part</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Part</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParts()
 	 * @generated
      */
@@ -133,18 +144,18 @@ public interface StructuredClassifier extends Classifier{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_Role()
-	 * @model type="org.eclipse.uml2.ConnectableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getMembers=''"
+	 * @model type="org.eclipse.uml2.ConnectableElement" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRoles();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ConnectableElement} with the specified name from the '<em><b>Role</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ConnectableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Role</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ConnectableElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ConnectableElement} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ConnectableElement} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ConnectableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRoles()
 	 * @generated
      */
@@ -165,17 +176,17 @@ public interface StructuredClassifier extends Classifier{
 	 * @return the value of the '<em>Owned Connector</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_OwnedConnector()
 	 * @model type="org.eclipse.uml2.Connector" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedConnectors();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Connector} with the specified name from the '<em><b>Owned Connector</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Connector} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Connector</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Connector} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Connector} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Connector} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Connector} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedConnectors()
 	 * @generated
      */
@@ -188,44 +199,19 @@ public interface StructuredClassifier extends Classifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Connector} to create.
 	 * @return The new {@link org.eclipse.uml2.Connector}.
 	 * @see #getOwnedConnectors()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedConnector() instead.
      */
     Connector createOwnedConnector(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.Connector} and appends it to the '<em><b>Owned Connector</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='attribute' eType='org.eclipse.uml2.Property' containment='false'" 
+	 * @return The new {@link org.eclipse.uml2.Connector}.
+	 * @see #getOwnedConnectors()
 	 * @generated
-	 */
-	EList getAttributes();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='member' eType='org.eclipse.uml2.NamedElement' containment='false'" 
-	 * @generated
-	 */
-	EList getMembers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getFeatures();
+     */
+    Connector createOwnedConnector();
 
 } // StructuredClassifier

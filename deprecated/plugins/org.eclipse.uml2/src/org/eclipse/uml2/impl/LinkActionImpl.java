@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.uml2.LinkEndData;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -51,7 +52,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getEndData() <em>End Data</em>}' containment reference list.
@@ -87,11 +88,12 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	 * @generated
 	 */
 	public EList getEndData() {
-		if (null == endData) {
+		if (endData == null) {
 			endData = new EObjectContainmentEList(LinkEndData.class, this, UML2Package.LINK_ACTION__END_DATA);
 		}
 		return endData;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,6 +102,20 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 	 */
 	public LinkEndData createEndData(EClass eClass) {
 		LinkEndData newEndData = (LinkEndData) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.LINK_ACTION__END_DATA, null, newEndData));
+		}
+		getEndData().add(newEndData);
+		return newEndData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LinkEndData createEndData() {
+		LinkEndData newEndData = UML2Factory.eINSTANCE.createLinkEndData();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.LINK_ACTION__END_DATA, null, newEndData));
 		}
@@ -518,5 +534,6 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //LinkActionImpl

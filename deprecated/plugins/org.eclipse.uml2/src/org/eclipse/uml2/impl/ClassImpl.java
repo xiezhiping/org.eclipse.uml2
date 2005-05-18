@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.26 2005/04/14 17:30:57 khussey Exp $
+ * $Id: ClassImpl.java,v 1.27 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,22 +16,26 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.CollaborationOccurrence;
@@ -47,9 +51,14 @@ import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredClassifier;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.internal.operation.ClassOperations;
 import org.eclipse.uml2.internal.operation.TypeOperations;
 
@@ -62,7 +71,6 @@ import org.eclipse.uml2.internal.operation.TypeOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getParts <em>Part</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getRoles <em>Role</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedConnectors <em>Owned Connector</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedPorts <em>Owned Port</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedOperations <em>Owned Operation</em>}</li>
@@ -71,6 +79,7 @@ import org.eclipse.uml2.internal.operation.TypeOperations;
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getNestedClassifiers <em>Nested Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#isActive <em>Is Active</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedReceptions <em>Owned Reception</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#isAbstract <em>Is Abstract</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,7 +91,17 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedAttribute = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedConnectors() <em>Owned Connector</em>}' containment reference list.
@@ -155,12 +174,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	protected EList ownedReception = null;
 
 	/**
-	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
-	 * @see #getOwnedAttributes()
-	 */
-	protected EList _ownedAttribute = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -178,23 +191,34 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return UML2Package.eINSTANCE.getClass_();
 	}
 
-    /**
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getOwnedAttributes() {
+		if (ownedAttribute == null) {
+			ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.CLASS__OWNED_ATTRIBUTE);
+		}
+		return ownedAttribute;
+	}
+
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Property getOwnedAttribute(String unqualifiedName) {
-    	for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
-    		Property namedOwnedAttribute = (Property) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedAttribute.getName())) {
-    			return namedOwnedAttribute;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Property getOwnedAttribute(String name) {
+		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
+			Property ownedAttribute = (Property) i.next();
+			if (name.equals(ownedAttribute.getName())) {
+				return ownedAttribute;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -202,6 +226,20 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 */
 	public Property createOwnedAttribute(EClass eClass) {
 		Property newOwnedAttribute = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_ATTRIBUTE, null, newOwnedAttribute));
+		}
+		getOwnedAttributes().add(newOwnedAttribute);
+		return newOwnedAttribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property createOwnedAttribute() {
+		Property newOwnedAttribute = UML2Factory.eINSTANCE.createProperty();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_ATTRIBUTE, null, newOwnedAttribute));
 		}
@@ -241,59 +279,136 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return parts;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Property getPart(String unqualifiedName) {
-    	for (Iterator i = getParts().iterator(); i.hasNext(); ) {
-    		Property namedPart = (Property) i.next();
-    		
-    		if (unqualifiedName.equals(namedPart.getName())) {
-    			return namedPart;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Property getPart(String name) {
+		for (Iterator i = getParts().iterator(); i.hasNext(); ) {
+			Property part = (Property) i.next();
+			if (name.equals(part.getName())) {
+				return part;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getRoles() {
-		EList role = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getStructuredClassifier_Role());
-
-		if (null == role) {
-			Set union = new LinkedHashSet();
-			union.addAll(getOwnedAttributes());
-
-			role = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), role);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList role = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getStructuredClassifier_Role());
+			if (role == null) {
+				EList union = getRolesHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), role = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return role;
 		}
-
-		return role;
+		EList union = getRolesHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ConnectableElement getRole(String unqualifiedName) {
-    	for (Iterator i = getRoles().iterator(); i.hasNext(); ) {
-    		ConnectableElement namedRole = (ConnectableElement) i.next();
-    		
-    		if (unqualifiedName.equals(namedRole.getName())) {
-    			return namedRole;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ConnectableElement getRole(String name) {
+		for (Iterator i = getRoles().iterator(); i.hasNext(); ) {
+			ConnectableElement role = (ConnectableElement) i.next();
+			if (name.equals(role.getName())) {
+				return role;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getAttributesHelper(EList attribute) {
+		super.getAttributesHelper(attribute);
+		if (ownedAttribute != null) {
+			attribute.addAll(ownedAttribute);
+		}
+		return attribute;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedMembersHelper(EList ownedMember) {
+		super.getOwnedMembersHelper(ownedMember);
+		if (ownedAttribute != null) {
+			ownedMember.addAll(ownedAttribute);
+		}
+		if (ownedConnector != null) {
+			ownedMember.addAll(ownedConnector);
+		}
+		if (ownedPort != null) {
+			ownedMember.addAll(ownedPort);
+		}
+		if (ownedOperation != null) {
+			ownedMember.addAll(ownedOperation);
+		}
+		if (nestedClassifier != null) {
+			ownedMember.addAll(nestedClassifier);
+		}
+		if (ownedReception != null) {
+			ownedMember.addAll(ownedReception);
+		}
+		return ownedMember;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getMembersHelper(EList member) {
+		super.getMembersHelper(member);
+		for (Iterator i = ((InternalEList) getRoles()).basicIterator(); i.hasNext(); ) {
+			member.add(i.next());
+		}
+		return member;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getFeaturesHelper(EList feature) {
+		super.getFeaturesHelper(feature);
+		if (ownedConnector != null) {
+			feature.addAll(ownedConnector);
+		}
+		if (ownedPort != null) {
+			feature.addAll(ownedPort);
+		}
+		if (ownedOperation != null) {
+			feature.addAll(ownedOperation);
+		}
+		if (ownedReception != null) {
+			feature.addAll(ownedReception);
+		}
+		return feature;
+	}
+
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -306,30 +421,44 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return ownedConnector;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Connector getOwnedConnector(String unqualifiedName) {
-    	for (Iterator i = getOwnedConnectors().iterator(); i.hasNext(); ) {
-    		Connector namedOwnedConnector = (Connector) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedConnector.getName())) {
-    			return namedOwnedConnector;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public Connector getOwnedConnector(String name) {
+		for (Iterator i = getOwnedConnectors().iterator(); i.hasNext(); ) {
+			Connector ownedConnector = (Connector) i.next();
+			if (name.equals(ownedConnector.getName())) {
+				return ownedConnector;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOwnedConnector() instead.
+	 */
 	public Connector createOwnedConnector(EClass eClass) {
 		Connector newOwnedConnector = (Connector) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_CONNECTOR, null, newOwnedConnector));
+		}
+		getOwnedConnectors().add(newOwnedConnector);
+		return newOwnedConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Connector createOwnedConnector() {
+		Connector newOwnedConnector = UML2Factory.eINSTANCE.createConnector();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_CONNECTOR, null, newOwnedConnector));
 		}
@@ -349,30 +478,44 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return ownedPort;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Port getOwnedPort(String unqualifiedName) {
-    	for (Iterator i = getOwnedPorts().iterator(); i.hasNext(); ) {
-    		Port namedOwnedPort = (Port) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedPort.getName())) {
-    			return namedOwnedPort;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public Port getOwnedPort(String name) {
+		for (Iterator i = getOwnedPorts().iterator(); i.hasNext(); ) {
+			Port ownedPort = (Port) i.next();
+			if (name.equals(ownedPort.getName())) {
+				return ownedPort;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOwnedPort() instead.
+	 */
 	public Port createOwnedPort(EClass eClass) {
 		Port newOwnedPort = (Port) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_PORT, null, newOwnedPort));
+		}
+		getOwnedPorts().add(newOwnedPort);
+		return newOwnedPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port createOwnedPort() {
+		Port newOwnedPort = UML2Factory.eINSTANCE.createPort();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_PORT, null, newOwnedPort));
 		}
@@ -399,7 +542,9 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		if (newIsActive) eFlags |= IS_ACTIVE_EFLAG; else eFlags &= ~IS_ACTIVE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASS__IS_ACTIVE, oldIsActive, newIsActive));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -413,30 +558,44 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return ownedOperation;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Operation getOwnedOperation(String unqualifiedName) {
-    	for (Iterator i = getOwnedOperations().iterator(); i.hasNext(); ) {
-    		Operation namedOwnedOperation = (Operation) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedOperation.getName())) {
-    			return namedOwnedOperation;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public Operation getOwnedOperation(String name) {
+		for (Iterator i = getOwnedOperations().iterator(); i.hasNext(); ) {
+			Operation ownedOperation = (Operation) i.next();
+			if (name.equals(ownedOperation.getName())) {
+				return ownedOperation;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOwnedOperation() instead.
+	 */
 	public Operation createOwnedOperation(EClass eClass) {
 		Operation newOwnedOperation = (Operation) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_OPERATION, null, newOwnedOperation));
+		}
+		getOwnedOperations().add(newOwnedOperation);
+		return newOwnedOperation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation createOwnedOperation() {
+		Operation newOwnedOperation = UML2Factory.eINSTANCE.createOperation();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_OPERATION, null, newOwnedOperation));
 		}
@@ -474,23 +633,21 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return superClasses;
 	}
 	
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public org.eclipse.uml2.Class getSuperClass(String unqualifiedName) {
-    	for (Iterator i = getSuperClasses().iterator(); i.hasNext(); ) {
-    		org.eclipse.uml2.Class namedSuperClass = (org.eclipse.uml2.Class) i.next();
-    		
-    		if (unqualifiedName.equals(namedSuperClass.getName())) {
-    			return namedSuperClass;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public org.eclipse.uml2.Class getSuperClass(String name) {
+		for (Iterator i = getSuperClasses().iterator(); i.hasNext(); ) {
+			org.eclipse.uml2.Class superClass = (org.eclipse.uml2.Class) i.next();
+			if (name.equals(superClass.getName())) {
+				return superClass;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -513,23 +670,21 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return result;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Extension getExtension(String unqualifiedName) {
-    	for (Iterator i = getExtensions().iterator(); i.hasNext(); ) {
-    		Extension namedExtension = (Extension) i.next();
-    		
-    		if (unqualifiedName.equals(namedExtension.getName())) {
-    			return namedExtension;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Extension getExtension(String name) {
+		for (Iterator i = getExtensions().iterator(); i.hasNext(); ) {
+			Extension extension = (Extension) i.next();
+			if (name.equals(extension.getName())) {
+				return extension;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -542,23 +697,22 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return nestedClassifier;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getNestedClassifier(String unqualifiedName) {
-    	for (Iterator i = getNestedClassifiers().iterator(); i.hasNext(); ) {
-    		Classifier namedNestedClassifier = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedNestedClassifier.getName())) {
-    			return namedNestedClassifier;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getNestedClassifier(String name) {
+		for (Iterator i = getNestedClassifiers().iterator(); i.hasNext(); ) {
+			Classifier nestedClassifier = (Classifier) i.next();
+			if (name.equals(nestedClassifier.getName())) {
+				return nestedClassifier;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -585,27 +739,27 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return ownedReception;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Reception getOwnedReception(String unqualifiedName) {
-    	for (Iterator i = getOwnedReceptions().iterator(); i.hasNext(); ) {
-    		Reception namedOwnedReception = (Reception) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedReception.getName())) {
-    			return namedOwnedReception;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+    public Reception getOwnedReception(String name) {
+		for (Iterator i = getOwnedReceptions().iterator(); i.hasNext(); ) {
+			Reception ownedReception = (Reception) i.next();
+			if (name.equals(ownedReception.getName())) {
+				return ownedReception;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOwnedReception() instead.
 	 */
 	public Reception createOwnedReception(EClass eClass) {
 		Reception newOwnedReception = (Reception) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -621,19 +775,13 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMembers() {
-		EList member = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getNamespace_Member());
-
-		if (null == member) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getMembers());
-			union.addAll(getRoles());
-
-			member = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getNamespace_Member(), member);
+	public Reception createOwnedReception() {
+		Reception newOwnedReception = UML2Factory.eINSTANCE.createReception();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CLASS__OWNED_RECEPTION, null, newOwnedReception));
 		}
-
-		return member;
+		getOwnedReceptions().add(newOwnedReception);
+		return newOwnedReception;
 	}
 
 	/**
@@ -642,39 +790,31 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	public Set inherit(Set inhs) {
-		return org.eclipse.uml2.internal.operation.ClassOperations.inherit(this, inhs);
+		return ClassOperations.inherit(this, inhs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean isAbstract() {
-		return super.isAbstract();
+		return (eFlags & IS_ABSTRACT_EFLAG) != 0;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public void setIsAbstract(boolean newIsAbstract) {
-		super.setIsAbstract(newIsAbstract);
+		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
+		if (newIsAbstract) eFlags |= IS_ABSTRACT_EFLAG; else eFlags &= ~IS_ABSTRACT_EFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASS__IS_ABSTRACT, oldIsAbstract, newIsAbstract));
+
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public EList getOwnedAttributes() {
-
-		if (null == _ownedAttribute) {
-			_ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.CLASS__OWNED_ATTRIBUTE);
-		}
-		return _ownedAttribute;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -685,73 +825,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return getSuperClasses();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getAttributes() {
-		EList attribute = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
-
-		if (null == attribute) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getAttributes());
-			union.addAll(getOwnedAttributes());
-
-			attribute = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Attribute(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Attribute(), attribute);
-		}
-
-		return attribute;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedMembers() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClass_().getEAllOperations().get(84));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedMembers());
-			union.addAll(getOwnedAttributes());
-			union.addAll(getOwnedOperations());
-			union.addAll(getNestedClassifiers());
-			union.addAll(getOwnedReceptions());
-			union.addAll(getOwnedConnectors());
-			union.addAll(getOwnedPorts());
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClass_().getEAllOperations().get(84), result);
-		}
-
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getFeatures() {
-		EList feature = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
-
-		if (null == feature) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getFeatures());
-			union.addAll(getOwnedOperations());
-			union.addAll(getOwnedReceptions());
-			union.addAll(getOwnedConnectors());
-			union.addAll(getOwnedPorts());
-
-			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);
-		}
-
-		return feature;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -797,8 +870,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 					return ((InternalEList)getOwnedBehaviors()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASS__IMPLEMENTATION:
 					return ((InternalEList)getImplementations()).basicAdd(otherEnd, msgs);
-				case UML2Package.CLASS__OWNED_STATE_MACHINE:
-					return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
 				case UML2Package.CLASS__OWNED_OPERATION:
 					return ((InternalEList)getOwnedOperations()).basicAdd(otherEnd, msgs);
 				default:
@@ -808,6 +879,15 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		if (eContainer != null)
 			msgs = eBasicRemoveFromContainer(msgs);
 		return eBasicSetContainer(otherEnd, featureID, msgs);
+	}
+
+	public NotificationChain eDynamicInverseAdd(InternalEObject otherEnd, int featureID, Class inverseClass, NotificationChain msgs) {
+		switch (eDerivedStructuralFeatureID(featureID, inverseClass)) {
+			case UML2Package.CLASS__OWNED_STATE_MACHINE:
+				return ((InternalEList)getOwnedStateMachines()).basicAdd(otherEnd, msgs);
+			default :
+				return super.eDynamicInverseAdd(otherEnd, featureID, inverseClass, msgs);
+		}
 	}
 
 	/**
@@ -1279,7 +1359,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.CLASS__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1298,7 +1378,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CLASS__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.CLASS__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.CLASS__NAME_EXPRESSION:
@@ -1318,7 +1398,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.CLASS__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.CLASS__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.CLASS__REDEFINITION_CONTEXT:
@@ -1352,7 +1432,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__OCCURRENCE:
 				return occurrence != null && !occurrence.isEmpty();
 			case UML2Package.CLASS__OWNED_BEHAVIOR:
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return !getOwnedBehaviors().isEmpty();
 			case UML2Package.CLASS__CLASSIFIER_BEHAVIOR:
 				return classifierBehavior != null;
 			case UML2Package.CLASS__IMPLEMENTATION:
@@ -1360,7 +1440,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__OWNED_TRIGGER:
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
 			case UML2Package.CLASS__OWNED_STATE_MACHINE:
-				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+				return !getOwnedStateMachines().isEmpty();
 			case UML2Package.CLASS__OWNED_ATTRIBUTE:
 				return !getOwnedAttributes().isEmpty();
 			case UML2Package.CLASS__PART:
@@ -1385,6 +1465,20 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 				return ownedReception != null && !ownedReception.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.CLASS__VISIBILITY:
+				return false;
+			case UML2Package.CLASS__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+			case UML2Package.CLASS__OWNED_BEHAVIOR:
+				return ownedBehavior != null && !ownedBehavior.isEmpty();
+			case UML2Package.CLASS__OWNED_STATE_MACHINE:
+				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -1448,6 +1542,17 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		result.append((eFlags & IS_ACTIVE_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getRolesHelper(EList role) {
+		role.addAll(getOwnedAttributes());
+		return role;
 	}
 
 	// <!-- begin-custom-operations -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalTriggerImpl.java,v 1.6 2005/04/04 20:11:12 khussey Exp $
+ * $Id: SignalTriggerImpl.java,v 1.7 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,7 +50,7 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getSignals() <em>Signal</em>}' reference list.
@@ -92,23 +92,22 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 		return signal;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Signal getSignal(String unqualifiedName) {
-    	for (Iterator i = getSignals().iterator(); i.hasNext(); ) {
-    		Signal namedSignal = (Signal) i.next();
-    		
-    		if (unqualifiedName.equals(namedSignal.getName())) {
-    			return namedSignal;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Signal getSignal(String name) {
+		for (Iterator i = getSignals().iterator(); i.hasNext(); ) {
+			Signal signal = (Signal) i.next();
+			if (name.equals(signal.getName())) {
+				return signal;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -325,5 +324,6 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //SignalTriggerImpl

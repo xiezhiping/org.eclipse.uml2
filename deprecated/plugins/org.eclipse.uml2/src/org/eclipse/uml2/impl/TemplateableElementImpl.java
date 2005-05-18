@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,28 +8,36 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.TemplateBinding;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.TemplateableElement;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+
+import org.eclipse.uml2.internal.operation.TemplateableElementOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,7 +59,7 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
@@ -103,13 +111,29 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 		return templateBinding;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createTemplateBinding() instead.
+	 */
+	public TemplateBinding createTemplateBinding(EClass eClass) {
+		TemplateBinding newTemplateBinding = (TemplateBinding) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, null, newTemplateBinding));
+		}
+		getTemplateBindings().add(newTemplateBinding);
+		return newTemplateBinding;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TemplateBinding createTemplateBinding(EClass eClass) {
-		TemplateBinding newTemplateBinding = (TemplateBinding) eClass.getEPackage().getEFactoryInstance().create(eClass);
+	public TemplateBinding createTemplateBinding() {
+		TemplateBinding newTemplateBinding = UML2Factory.eINSTANCE.createTemplateBinding();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, null, newTemplateBinding));
 		}
@@ -138,6 +162,7 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, oldOwnedTemplateSignature, newOwnedTemplateSignature);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -158,7 +183,9 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, newOwnedTemplateSignature, newOwnedTemplateSignature));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,7 +197,21 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, null, newOwnedTemplateSignature));
 		}
-        setOwnedTemplateSignature(newOwnedTemplateSignature);
+		setOwnedTemplateSignature(newOwnedTemplateSignature);
+		return newOwnedTemplateSignature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateSignature createOwnedTemplateSignature() {
+		TemplateSignature newOwnedTemplateSignature = UML2Factory.eINSTANCE.createTemplateSignature();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, null, newOwnedTemplateSignature));
+		}
+		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
 
@@ -180,42 +221,15 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	 * @generated
 	 */
 	public Set parameterableElements() {
-		try {
-			java.lang.reflect.Method method = getClass().getMethod("parameterableElements", null); //$NON-NLS-1$
-			Set result = (Set) getCacheAdapter().get(this, method);
-		
-			if (null == result) {
-				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.TemplateableElementOperations.parameterableElements(this));
-				getCacheAdapter().put(this, method, result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Set result = (Set) cache.get(eResource(), this, UML2Package.eINSTANCE.getTemplateableElement().getEOperations().get(0));
+			if (result == null) {
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getTemplateableElement().getEOperations().get(0), result = TemplateableElementOperations.parameterableElements(this));
 			}
-		
 			return result;
-		} catch (Exception e) {
-			return org.eclipse.uml2.internal.operation.TemplateableElementOperations.parameterableElements(this);
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getTemplateBindings());
-			if (null != getOwnedTemplateSignature()) {
-				union.add(getOwnedTemplateSignature());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
+		return TemplateableElementOperations.parameterableElements(this);
 	}
 
 	/**
@@ -361,5 +375,23 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (templateBinding != null) {
+			ownedElement.addAll(templateBinding);
+		}
+		if (ownedTemplateSignature != null) {
+			ownedElement.add(ownedTemplateSignature);
+		}
+		return ownedElement;
+	}
+
 
 } //TemplateableElementImpl

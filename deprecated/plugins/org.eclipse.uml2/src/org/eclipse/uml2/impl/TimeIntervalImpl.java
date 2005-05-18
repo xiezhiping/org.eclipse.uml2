@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalImpl.java,v 1.6 2005/04/04 20:11:12 khussey Exp $
+ * $Id: TimeIntervalImpl.java,v 1.7 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
+
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -28,6 +30,7 @@ import org.eclipse.uml2.TimeExpression;
 import org.eclipse.uml2.TimeInterval;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
+import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
 /**
@@ -35,6 +38,11 @@ import org.eclipse.uml2.VisibilityKind;
  * An implementation of the model object '<em><b>Time Interval</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TimeIntervalImpl#getMaxes <em>Max</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TimeIntervalImpl#getMins <em>Min</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
@@ -45,7 +53,7 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,29 +76,57 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EList getMaxes() {
-
-		if (null == _max) {
-			_max = new EObjectResolvingEList(TimeExpression.class, this, UML2Package.TIME_INTERVAL__MAX);
+		if (max == null) {
+			max = new EObjectResolvingEList(TimeExpression.class, this, UML2Package.TIME_INTERVAL__MAX);
 		}
+		return max;
+	}
 
-		return _max;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public ValueSpecification getMax(String name) {
+		for (Iterator i = getMaxes().iterator(); i.hasNext(); ) {
+			TimeExpression max = (TimeExpression) i.next();
+			if (name.equals(max.getName())) {
+				return max;
+			}
+		}
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EList getMins() {
-
-		if (null == _min) {
-			_min = new EObjectResolvingEList(TimeExpression.class, this, UML2Package.TIME_INTERVAL__MIN);
+		if (min == null) {
+			min = new EObjectResolvingEList(TimeExpression.class, this, UML2Package.TIME_INTERVAL__MIN);
 		}
+		return min;
+	}
 
-		return _min;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public ValueSpecification getMin(String name) {
+		for (Iterator i = getMins().iterator(); i.hasNext(); ) {
+			TimeExpression min = (TimeExpression) i.next();
+			if (name.equals(min.getName())) {
+				return min;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -370,5 +406,6 @@ public class TimeIntervalImpl extends IntervalImpl implements TimeInterval {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //TimeIntervalImpl

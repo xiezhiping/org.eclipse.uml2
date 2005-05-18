@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Parameter.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -49,7 +49,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Default</b></em>' attribute.
@@ -66,6 +66,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @generated
 	 */
 	String getDefault();
+
 
 	/**
 	 * Returns the value of the '<em><b>Direction</b></em>' attribute.
@@ -100,6 +101,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 */
 	void setDirection(ParameterDirectionKind value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Exception</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
@@ -127,6 +129,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 */
 	void setIsException(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Stream</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
@@ -153,6 +156,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @generated
 	 */
 	void setIsStream(boolean value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Effect</b></em>' attribute.
@@ -183,6 +187,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 */
 	void setEffect(ParameterEffectKind value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Operation</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Operation#getOwnedParameters <em>Owned Parameter</em>}'.
@@ -200,7 +205,6 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @see org.eclipse.uml2.UML2Package#getParameter_Operation()
 	 * @see org.eclipse.uml2.Operation#getOwnedParameters
 	 * @model opposite="ownedParameter"
-	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	Operation getOperation();
@@ -214,6 +218,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @generated
 	 */
 	void setOperation(Operation value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.
@@ -230,7 +235,6 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getParameter_DefaultValue()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getDefaultValue();
@@ -245,6 +249,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 */
 	void setDefaultValue(ValueSpecification value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Default Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -255,7 +260,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @generated
      */
     ValueSpecification createDefaultValue(EClass eClass);
-     
+
 	/**
 	 * Returns the value of the '<em><b>Parameter Set</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ParameterSet}.
@@ -274,35 +279,18 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 */
 	EList getParameterSets();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ParameterSet} with the specified name from the '<em><b>Parameter Set</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ParameterSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter Set</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ParameterSet} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ParameterSet} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ParameterSet} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ParameterSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParameterSets()
 	 * @generated
      */
     ParameterSet getParameterSet(String unqualifiedName);
       
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
-	 * @generated
-	 */
-	Namespace getNamespace();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
-
 	// <!-- begin-custom-operations -->
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Message.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Message.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -49,7 +49,7 @@ public interface Message extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Message Kind</b></em>' attribute.
@@ -70,6 +70,7 @@ public interface Message extends NamedElement{
 	 * @generated
 	 */
 	MessageKind getMessageKind();
+
 
 	/**
 	 * Returns the value of the '<em><b>Message Sort</b></em>' attribute.
@@ -99,6 +100,7 @@ public interface Message extends NamedElement{
 	 * @generated
 	 */
 	void setMessageSort(MessageSort value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Receive Event</b></em>' reference.
@@ -131,6 +133,7 @@ public interface Message extends NamedElement{
 	 */
 	void setReceiveEvent(MessageEnd value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Send Event</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.MessageEnd#getSendMessage <em>Send Message</em>}'.
@@ -162,6 +165,7 @@ public interface Message extends NamedElement{
 	 */
 	void setSendEvent(MessageEnd value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Connector</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -191,6 +195,7 @@ public interface Message extends NamedElement{
 	 */
 	void setConnector(Connector value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Interaction</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Interaction#getMessages <em>Message</em>}'.
@@ -208,7 +213,6 @@ public interface Message extends NamedElement{
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Interaction()
 	 * @see org.eclipse.uml2.Interaction#getMessages
 	 * @model opposite="message" required="true"
-	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	Interaction getInteraction();
@@ -222,6 +226,7 @@ public interface Message extends NamedElement{
 	 * @generated
 	 */
 	void setInteraction(Interaction value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Signature</b></em>' reference.
@@ -252,6 +257,7 @@ public interface Message extends NamedElement{
 	 */
 	void setSignature(NamedElement value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Argument</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ValueSpecification}.
@@ -267,17 +273,17 @@ public interface Message extends NamedElement{
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getMessage_Argument()
 	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getArguments();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ValueSpecification} with the specified name from the '<em><b>Argument</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.ValueSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ValueSpecification} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ValueSpecification} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ValueSpecification} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ValueSpecification} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getArguments()
 	 * @generated
      */
@@ -293,23 +299,5 @@ public interface Message extends NamedElement{
 	 * @generated
      */
     ValueSpecification createArgument(EClass eClass);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
-	 * @generated
-	 */
-	Namespace getNamespace();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
 
 } // Message

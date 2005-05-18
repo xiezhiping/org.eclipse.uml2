@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,28 +8,31 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableActionImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
+ * $Id: WriteVariableActionImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.InputPin;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.Variable;
 import org.eclipse.uml2.VisibilityKind;
@@ -54,7 +57,7 @@ public abstract class WriteVariableActionImpl extends VariableActionImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
@@ -105,6 +108,7 @@ public abstract class WriteVariableActionImpl extends VariableActionImpl impleme
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.WRITE_VARIABLE_ACTION__VALUE, oldValue, newValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -125,7 +129,9 @@ public abstract class WriteVariableActionImpl extends VariableActionImpl impleme
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.WRITE_VARIABLE_ACTION__VALUE, newValue, newValue));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,7 +143,7 @@ public abstract class WriteVariableActionImpl extends VariableActionImpl impleme
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.WRITE_VARIABLE_ACTION__VALUE, null, newValue));
 		}
-        setValue(newValue);
+		setValue(newValue);
 		return newValue;
 	}
 
@@ -146,21 +152,13 @@ public abstract class WriteVariableActionImpl extends VariableActionImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInputs() {
-		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
-
-		if (null == input) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getInputs());
-			if (null != getValue()) {
-				union.add(getValue());
-			}
-
-			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
+	public InputPin createValue() {
+		InputPin newValue = UML2Factory.eINSTANCE.createInputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.WRITE_VARIABLE_ACTION__VALUE, null, newValue));
 		}
-
-		return input;
+		setValue(newValue);
+		return newValue;
 	}
 
 	/**
@@ -584,5 +582,20 @@ public abstract class WriteVariableActionImpl extends VariableActionImpl impleme
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getInputsHelper(EList input) {
+		super.getInputsHelper(input);
+		if (value != null) {
+			input.add(value);
+		}
+		return input;
+	}
+
 
 } //WriteVariableActionImpl

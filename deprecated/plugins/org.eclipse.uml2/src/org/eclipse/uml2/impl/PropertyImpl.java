@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,33 +8,36 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.17 2005/04/04 20:11:13 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.18 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.Artifact;
 import org.eclipse.uml2.Association;
@@ -56,12 +59,16 @@ import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Type;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+
 import org.eclipse.uml2.internal.operation.PropertyOperations;
-import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -73,8 +80,10 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getOwningParameter <em>Owning Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getEnds <em>End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getDeployedElements <em>Deployed Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getAssociation <em>Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#isComposite <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#isDerived <em>Is Derived</em>}</li>
@@ -85,11 +94,11 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getRedefinedProperties <em>Redefined Property</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getSubsettedProperties <em>Subsetted Property</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getDatatype <em>Datatype</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getAssociation <em>Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getAggregation <em>Aggregation</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getQualifiers <em>Qualifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getAssociationEnd <em>Association End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#isReadOnly <em>Is Read Only</em>}</li>
  * </ul>
  * </p>
  *
@@ -101,7 +110,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
@@ -132,6 +141,16 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @ordered
 	 */
 	protected EList deployment = null;
+
+	/**
+	 * The cached value of the '{@link #getAssociation() <em>Association</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAssociation()
+	 * @generated
+	 * @ordered
+	 */
+	protected Association association = null;
 
 	/**
 	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
@@ -212,16 +231,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @ordered
 	 */
 	protected EList subsettedProperty = null;
-
-	/**
-	 * The cached value of the '{@link #getAssociation() <em>Association</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAssociation()
-	 * @generated
-	 * @ordered
-	 */
-	protected Association association = null;
 
 	/**
 	 * The default value of the '{@link #getAggregation() <em>Aggregation</em>}' attribute.
@@ -319,11 +328,11 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__TEMPLATE_PARAMETER, oldTemplateParameter, newTemplateParameter);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != getOwningParameter() && newTemplateParameter != getOwningParameter()) {
+
+		if (getOwningParameter() != null && getOwningParameter() != newTemplateParameter) {
 			setOwningParameter(null);
 		}
 		return msgs;
-
 	}
 
 	/**
@@ -334,21 +343,18 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
-			if (null != templateParameter) {
-				msgs = ((InternalEObject) templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
-			if (null != newTemplateParameter) {
-				msgs = ((InternalEObject) newTemplateParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
+			if (templateParameter != null)
+				msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+			if (newTemplateParameter != null)
+				msgs = ((InternalEObject)newTemplateParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 			msgs = basicSetTemplateParameter(newTemplateParameter, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__TEMPLATE_PARAMETER, newTemplateParameter, newTemplateParameter));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__TEMPLATE_PARAMETER, newTemplateParameter, newTemplateParameter));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -356,10 +362,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public TemplateParameter getOwningParameter() {
-		if (eContainerFeatureID != UML2Package.PROPERTY__OWNING_PARAMETER) {
-			return null;
-		}
-		return (TemplateParameter) eContainer;
+		if (eContainerFeatureID != UML2Package.PROPERTY__OWNING_PARAMETER) return null;
+		return (TemplateParameter)eContainer;
 	}
 
 	/**
@@ -369,28 +373,25 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
 		EObject oldOwningParameter = eContainer;
-		if (eContainer != newOwningParameter || (eContainerFeatureID != UML2Package.PROPERTY__OWNING_PARAMETER && null != newOwningParameter)) {
-			if (EcoreUtil.isAncestor(this, newOwningParameter)) {
+		if (newOwningParameter != eContainer || (eContainerFeatureID != UML2Package.PROPERTY__OWNING_PARAMETER && newOwningParameter != null)) {
+			if (EcoreUtil.isAncestor(this, newOwningParameter))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newOwningParameter) {
-				msgs = ((InternalEObject) newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newOwningParameter, UML2Package.PROPERTY__OWNING_PARAMETER, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
+			if (newOwningParameter != null)
+				msgs = ((InternalEObject)newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newOwningParameter, UML2Package.PROPERTY__OWNING_PARAMETER, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
-		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
+
+		if (newOwningParameter != null || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -404,6 +405,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return end;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -414,33 +416,46 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.PROPERTY__DEPLOYMENT, new int[] {UML2Package.PROPERTY__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION);
 		}
 		return deployment;
-
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Deployment getDeployment(String unqualifiedName) {
-    	for (Iterator i = getDeployments().iterator(); i.hasNext(); ) {
-    		Deployment namedDeployment = (Deployment) i.next();
-    		
-    		if (unqualifiedName.equals(namedDeployment.getName())) {
-    			return namedDeployment;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public Deployment getDeployment(String name) {
+		for (Iterator i = getDeployments().iterator(); i.hasNext(); ) {
+			Deployment deployment = (Deployment) i.next();
+			if (name.equals(deployment.getName())) {
+				return deployment;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createDeployment() instead.
+	 */
 	public Deployment createDeployment(EClass eClass) {
 		Deployment newDeployment = (Deployment) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PROPERTY__DEPLOYMENT, null, newDeployment));
+		}
+		getDeployments().add(newDeployment);
+		return newDeployment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deployment createDeployment() {
+		Deployment newDeployment = UML2Factory.eINSTANCE.createDeployment();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.PROPERTY__DEPLOYMENT, null, newDeployment));
 		}
@@ -495,23 +510,21 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return deployedElements;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public PackageableElement getDeployedElement(String unqualifiedName) {
-    	for (Iterator i = getDeployedElements().iterator(); i.hasNext(); ) {
-    		PackageableElement namedDeployedElement = (PackageableElement) i.next();
-    		
-    		if (unqualifiedName.equals(namedDeployedElement.getName())) {
-    			return namedDeployedElement;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public PackageableElement getDeployedElement(String name) {
+		for (Iterator i = getDeployedElements().iterator(); i.hasNext(); ) {
+			PackageableElement deployedElement = (PackageableElement) i.next();
+			if (name.equals(deployedElement.getName())) {
+				return deployedElement;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -549,7 +562,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		if (newIsDerived) eFlags |= IS_DERIVED_EFLAG; else eFlags &= ~IS_DERIVED_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__IS_DERIVED, oldIsDerived, newIsDerived));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -570,7 +585,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		if (newIsDerivedUnion) eFlags |= IS_DERIVED_UNION_EFLAG; else eFlags &= ~IS_DERIVED_UNION_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__IS_DERIVED_UNION, oldIsDerivedUnion, newIsDerivedUnion));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -591,7 +608,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		aggregation = newAggregation == null ? AGGREGATION_EDEFAULT : newAggregation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__AGGREGATION, oldAggregation, aggregation));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -637,10 +656,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public Association getOwningAssociation() {
-		if (eContainerFeatureID != UML2Package.PROPERTY__OWNING_ASSOCIATION) {
-			return null;
-		}
-		return (Association) eContainer;
+		if (eContainerFeatureID != UML2Package.PROPERTY__OWNING_ASSOCIATION) return null;
+		return (Association)eContainer;
 	}
 
 	/**
@@ -650,28 +667,25 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	public void setOwningAssociation(Association newOwningAssociation) {
 		EObject oldOwningAssociation = eContainer;
-		if (eContainer != newOwningAssociation || (eContainerFeatureID != UML2Package.PROPERTY__OWNING_ASSOCIATION && null != newOwningAssociation)) {
-			if (EcoreUtil.isAncestor(this, newOwningAssociation)) {
+		if (newOwningAssociation != eContainer || (eContainerFeatureID != UML2Package.PROPERTY__OWNING_ASSOCIATION && newOwningAssociation != null)) {
+			if (EcoreUtil.isAncestor(this, newOwningAssociation))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newOwningAssociation) {
-				msgs = ((InternalEObject) newOwningAssociation).eInverseAdd(this, UML2Package.ASSOCIATION__OWNED_END, Association.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newOwningAssociation, UML2Package.PROPERTY__OWNING_ASSOCIATION, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__OWNING_ASSOCIATION, newOwningAssociation, newOwningAssociation));
+			if (newOwningAssociation != null)
+				msgs = ((InternalEObject)newOwningAssociation).eInverseAdd(this, UML2Package.ASSOCIATION__OWNED_END, Association.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newOwningAssociation, UML2Package.PROPERTY__OWNING_ASSOCIATION, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
-		if (null != newOwningAssociation || oldOwningAssociation == association) {
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__OWNING_ASSOCIATION, newOwningAssociation, newOwningAssociation));
+
+		if (newOwningAssociation != null || oldOwningAssociation == association) {
 			setAssociation(newOwningAssociation);
 		}
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -685,23 +699,22 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return redefinedProperty;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Property getRedefinedProperty(String unqualifiedName) {
-    	for (Iterator i = getRedefinedProperties().iterator(); i.hasNext(); ) {
-    		Property namedRedefinedProperty = (Property) i.next();
-    		
-    		if (unqualifiedName.equals(namedRedefinedProperty.getName())) {
-    			return namedRedefinedProperty;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Property getRedefinedProperty(String name) {
+		for (Iterator i = getRedefinedProperties().iterator(); i.hasNext(); ) {
+			Property redefinedProperty = (Property) i.next();
+			if (name.equals(redefinedProperty.getName())) {
+				return redefinedProperty;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -714,23 +727,22 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return subsettedProperty;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Property getSubsettedProperty(String unqualifiedName) {
-    	for (Iterator i = getSubsettedProperties().iterator(); i.hasNext(); ) {
-    		Property namedSubsettedProperty = (Property) i.next();
-    		
-    		if (unqualifiedName.equals(namedSubsettedProperty.getName())) {
-    			return namedSubsettedProperty;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Property getSubsettedProperty(String name) {
+		for (Iterator i = getSubsettedProperties().iterator(); i.hasNext(); ) {
+			Property subsettedProperty = (Property) i.next();
+			if (name.equals(subsettedProperty.getName())) {
+				return subsettedProperty;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -760,7 +772,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__DATATYPE, newDatatype, newDatatype));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -800,11 +814,11 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__ASSOCIATION, oldAssociation, newAssociation);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != getOwningAssociation() && newAssociation != getOwningAssociation()) {
+
+		if (getOwningAssociation() != null && getOwningAssociation() != newAssociation) {
 			setOwningAssociation(null);
 		}
 		return msgs;
-
 	}
 
 	/**
@@ -815,21 +829,18 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	public void setAssociation(Association newAssociation) {
 		if (newAssociation != association) {
 			NotificationChain msgs = null;
-			if (null != association) {
-				msgs = ((InternalEObject) association).eInverseRemove(this, UML2Package.ASSOCIATION__MEMBER_END, Association.class, msgs);
-			}
-			if (null != newAssociation) {
-				msgs = ((InternalEObject) newAssociation).eInverseAdd(this, UML2Package.ASSOCIATION__MEMBER_END, Association.class, msgs);
-			}
+			if (association != null)
+				msgs = ((InternalEObject)association).eInverseRemove(this, UML2Package.ASSOCIATION__MEMBER_END, Association.class, msgs);
+			if (newAssociation != null)
+				msgs = ((InternalEObject)newAssociation).eInverseAdd(this, UML2Package.ASSOCIATION__MEMBER_END, Association.class, msgs);
 			msgs = basicSetAssociation(newAssociation, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__ASSOCIATION, newAssociation, newAssociation));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__ASSOCIATION, newAssociation, newAssociation));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -852,6 +863,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__DEFAULT_VALUE, oldDefaultValue, newDefaultValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -872,7 +884,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__DEFAULT_VALUE, newDefaultValue, newDefaultValue));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -884,7 +898,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.PROPERTY__DEFAULT_VALUE, null, newDefaultValue));
 		}
-        setDefaultValue(newDefaultValue);
+		setDefaultValue(newDefaultValue);
 		return newDefaultValue;
 	}
 
@@ -900,23 +914,22 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return qualifier;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Property getQualifier(String unqualifiedName) {
-    	for (Iterator i = getQualifiers().iterator(); i.hasNext(); ) {
-    		Property namedQualifier = (Property) i.next();
-    		
-    		if (unqualifiedName.equals(namedQualifier.getName())) {
-    			return namedQualifier;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Property getQualifier(String name) {
+		for (Iterator i = getQualifiers().iterator(); i.hasNext(); ) {
+			Property qualifier = (Property) i.next();
+			if (name.equals(qualifier.getName())) {
+				return qualifier;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -924,6 +937,20 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	public Property createQualifier(EClass eClass) {
 		Property newQualifier = (Property) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PROPERTY__QUALIFIER, null, newQualifier));
+		}
+		getQualifiers().add(newQualifier);
+		return newQualifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property createQualifier() {
+		Property newQualifier = UML2Factory.eINSTANCE.createProperty();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.PROPERTY__QUALIFIER, null, newQualifier));
 		}
@@ -960,7 +987,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__ASSOCIATION_END, newAssociationEnd, newAssociationEnd));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -972,17 +1001,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.PROPERTY__CLIENT_DEPENDENCY, new int[] {UML2Package.PROPERTY__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT);
 		}
 		return clientDependency;
-
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.PropertyOperations.validateOppositeIsOtherEnd(this, diagnostics, context);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -990,7 +1010,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public Property opposite() {
-		return org.eclipse.uml2.internal.operation.PropertyOperations.opposite(this);
+		return PropertyOperations.opposite(this);
 	}
 
 	/**
@@ -999,7 +1019,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.PropertyOperations.validateMultiplicityOfComposite(this, diagnostics, context);
+		return PropertyOperations.validateMultiplicityOfComposite(this, diagnostics, context);
 	}
 
 	/**
@@ -1008,7 +1028,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateSubsettingContext(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.PropertyOperations.validateSubsettingContext(this, diagnostics, context);
+		return PropertyOperations.validateSubsettingContext(this, diagnostics, context);
 	}
 
 	/**
@@ -1017,7 +1037,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.PropertyOperations.validateNavigablePropertyRedefinition(this, diagnostics, context);
+		return PropertyOperations.validateNavigablePropertyRedefinition(this, diagnostics, context);
 	}
 
 	/**
@@ -1026,7 +1046,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateSubsettingRules(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.PropertyOperations.validateSubsettingRules(this, diagnostics, context);
+		return PropertyOperations.validateSubsettingRules(this, diagnostics, context);
 	}
 
 	/**
@@ -1035,7 +1055,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateNavigableReadonly(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.PropertyOperations.validateNavigableReadonly(this, diagnostics, context);
+		return PropertyOperations.validateNavigableReadonly(this, diagnostics, context);
 	}
 
 	/**
@@ -1044,7 +1064,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.PropertyOperations.validateDerivedUnionIsDerived(this, diagnostics, context);
+		return PropertyOperations.validateDerivedUnionIsDerived(this, diagnostics, context);
 	}
 
 	/**
@@ -1053,7 +1073,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public boolean isConsistentWith(RedefinableElement redefinee) {
-		return org.eclipse.uml2.internal.operation.PropertyOperations.isConsistentWith(this, redefinee);
+		return PropertyOperations.isConsistentWith(this, redefinee);
 	}
 
 	/**
@@ -1062,19 +1082,15 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public Set subsettingContext() {
-		try {
-			java.lang.reflect.Method method = getClass().getMethod("subsettingContext", null); //$NON-NLS-1$
-			Set result = (Set) getCacheAdapter().get(this, method);
-		
-			if (null == result) {
-				result = java.util.Collections.unmodifiableSet(org.eclipse.uml2.internal.operation.PropertyOperations.subsettingContext(this));
-				getCacheAdapter().put(this, method, result);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Set result = (Set) cache.get(this, UML2Package.eINSTANCE.getProperty().getEOperations().get(8));
+			if (result == null) {
+				cache.put(this, UML2Package.eINSTANCE.getProperty().getEOperations().get(8), result = PropertyOperations.subsettingContext(this));
 			}
-		
 			return result;
-		} catch (Exception e) {
-			return org.eclipse.uml2.internal.operation.PropertyOperations.subsettingContext(this);
 		}
+		return PropertyOperations.subsettingContext(this);
 	}
 
 	/**
@@ -1100,17 +1116,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Namespace getNamespace() {
-		if (null != getClass_()) {
-			return (Namespace) getClass_();
-		}
-		if (null != getOwningAssociation()) {
-			return (Namespace) getOwningAssociation();
-		}
-		if (null != getDatatype()) {
-			return (Namespace) getDatatype();
-		}
-		return super.getNamespace();
+	public boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map context) {
+		return PropertyOperations.validateOppositeIsOtherEnd(this, diagnostics, context);
 	}
 
 	/**
@@ -1118,72 +1125,61 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFeaturingClassifiers() {
-		EList featuringClassifier = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
-
-		if (null == featuringClassifier) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getFeaturingClassifiers());
-			if (null != getClass_()) {
-				union.add(getClass_());
-			}
-			if (null != getOwningAssociation()) {
-				union.add(getOwningAssociation());
-			}
-			if (null != getDatatype()) {
-				union.add(getDatatype());
-			}
-
-			featuringClassifier = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), featuringClassifier);
+	public Namespace basicGetNamespace() {
+		org.eclipse.uml2.Class class_ = basicGetClass_();			
+		if (class_ != null) {
+			return class_;
 		}
+		Association owningAssociation = getOwningAssociation();			
+		if (owningAssociation != null) {
+			return owningAssociation;
+		}
+		DataType datatype = getDatatype();			
+		if (datatype != null) {
+			return datatype;
+		}
+		return super.basicGetNamespace();
+	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getFeaturingClassifiersHelper(EList featuringClassifier) {
+		super.getFeaturingClassifiersHelper(featuringClassifier);
+		org.eclipse.uml2.Class class_ = basicGetClass_();
+		if (class_ != null) {
+			featuringClassifier.add(class_);
+		}
+		Association owningAssociation = getOwningAssociation();
+		if (owningAssociation != null) {
+			featuringClassifier.add(owningAssociation);
+		}
+		DataType datatype = getDatatype();
+		if (datatype != null) {
+			featuringClassifier.add(datatype);
+		}
 		return featuringClassifier;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getRedefinedElements() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getProperty().getEAllOperations().get(66));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getRedefinedElements());
-			union.addAll(getRedefinedProperties());
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getProperty().getEAllOperations().get(66), result);
-		}
-
-		return result;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getDefaultValue()) {
-				union.add(getDefaultValue());
+	protected EList getRedefinedElementsHelper(EList redefinedElement) {
+		super.getRedefinedElementsHelper(redefinedElement);
+		if (redefinedProperty != null) {
+			for (Iterator i = ((InternalEList) redefinedProperty).basicIterator(); i.hasNext(); ) {
+				redefinedElement.add(i.next());
 			}
-			union.addAll(getQualifiers());
-			union.addAll(getDeployments());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
 		}
-
-		return ownedElement;
+		return redefinedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1191,14 +1187,37 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getAssociationEnd()) {
-			return (Element) getAssociationEnd();
+		TemplateParameter owningParameter = getOwningParameter();			
+		if (owningParameter != null) {
+			return owningParameter;
 		}
-		if (null != getOwningParameter()) {
-			return (Element) getOwningParameter();
+		Property associationEnd = getAssociationEnd();			
+		if (associationEnd != null) {
+			return associationEnd;
 		}
 		return super.basicGetOwner();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (deployment != null) {
+			ownedElement.addAll(deployment);
+		}
+		if (defaultValue != null) {
+			ownedElement.add(defaultValue);
+		}
+		if (qualifier != null) {
+			ownedElement.addAll(qualifier);
+		}
+		return ownedElement;
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1836,6 +1855,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		result.append(')');
 		return result.toString();
 	}
+
 
 	// <!-- begin-custom-operations -->
 

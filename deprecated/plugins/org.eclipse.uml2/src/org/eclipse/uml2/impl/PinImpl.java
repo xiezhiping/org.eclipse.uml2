@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,28 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: PinImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.MultiplicityElement;
@@ -42,6 +41,7 @@ import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
+
 import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
 
 /**
@@ -68,7 +68,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -186,10 +186,11 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	public void setIsOrdered(boolean newIsOrdered) {
 		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
 		if (newIsOrdered) eFlags |= IS_ORDERED_EFLAG; else eFlags &= ~IS_ORDERED_EFLAG;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PIN__IS_ORDERED, oldIsOrdered, newIsOrdered));
-		}
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,10 +209,11 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	public void setIsUnique(boolean newIsUnique) {
 		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
 		if (newIsUnique) eFlags |= IS_UNIQUE_EFLAG; else eFlags &= ~IS_UNIQUE_EFLAG;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PIN__IS_UNIQUE, oldIsUnique, newIsUnique));
-		}
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -252,6 +254,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PIN__UPPER_VALUE, oldUpperValue, newUpperValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -272,7 +275,9 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PIN__UPPER_VALUE, newUpperValue, newUpperValue));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -284,7 +289,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.PIN__UPPER_VALUE, null, newUpperValue));
 		}
-        setUpperValue(newUpperValue);
+		setUpperValue(newUpperValue);
 		return newUpperValue;
 	}
 
@@ -309,6 +314,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PIN__LOWER_VALUE, oldLowerValue, newLowerValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -329,7 +335,9 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PIN__LOWER_VALUE, newLowerValue, newLowerValue));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -341,7 +349,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.PIN__LOWER_VALUE, null, newLowerValue));
 		}
-        setLowerValue(newLowerValue);
+		setLowerValue(newLowerValue);
 		return newLowerValue;
 	}
 
@@ -351,7 +359,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public int lowerBound() {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.lowerBound(this);
+		return MultiplicityElementOperations.lowerBound(this);
 	}
 
 	/**
@@ -360,7 +368,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public int upperBound() {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.upperBound(this);
+		return MultiplicityElementOperations.upperBound(this);
 	}
 
 	/**
@@ -369,7 +377,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public boolean isMultivalued() {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.isMultivalued(this);
+		return MultiplicityElementOperations.isMultivalued(this);
 	}
 
 	/**
@@ -378,7 +386,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public boolean includesCardinality(int C) {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.includesCardinality(this, C);
+		return MultiplicityElementOperations.includesCardinality(this, C);
 	}
 
 	/**
@@ -387,7 +395,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public boolean includesMultiplicity(MultiplicityElement M) {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.includesMultiplicity(this, M);
+		return MultiplicityElementOperations.includesMultiplicity(this, M);
 	}
 
 	/**
@@ -396,7 +404,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGt0(this, diagnostics, context);
+		return MultiplicityElementOperations.validateUpperGt0(this, diagnostics, context);
 	}
 
 	/**
@@ -405,7 +413,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public boolean validateLowerGe0(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerGe0(this, diagnostics, context);
+		return MultiplicityElementOperations.validateLowerGe0(this, diagnostics, context);
 	}
 
 	/**
@@ -414,7 +422,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, context);
+		return MultiplicityElementOperations.validateUpperGeLower(this, diagnostics, context);
 	}
 
 	/**
@@ -423,7 +431,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, context);
+		return MultiplicityElementOperations.validateLowerEqLowerbound(this, diagnostics, context);
 	}
 
 	/**
@@ -432,7 +440,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, context);
+		return MultiplicityElementOperations.validateUpperEqUpperbound(this, diagnostics, context);
 	}
 
 	/**
@@ -441,7 +449,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public int lower() {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.lower(this);
+		return MultiplicityElementOperations.lower(this);
 	}
 
 	/**
@@ -450,32 +458,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public int upper() {
-		return org.eclipse.uml2.internal.operation.MultiplicityElementOperations.upper(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getUpperValue()) {
-				union.add(getUpperValue());
-			}
-			if (null != getLowerValue()) {
-				union.add(getLowerValue());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
+		return MultiplicityElementOperations.upper(this);
 	}
 
 	/**
@@ -959,6 +942,41 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isOrdered: "); //$NON-NLS-1$
+		result.append((eFlags & IS_ORDERED_EFLAG) != 0);
+		result.append(", isUnique: "); //$NON-NLS-1$
+		result.append((eFlags & IS_UNIQUE_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (upperValue != null) {
+			ownedElement.add(upperValue);
+		}
+		if (lowerValue != null) {
+			ownedElement.add(lowerValue);
+		}
+		return ownedElement;
+	}
+
 
 	// <!-- begin-custom-operations -->
 

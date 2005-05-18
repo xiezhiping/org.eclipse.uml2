@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PrimitiveFunctionItemProvider.java,v 1.12 2005/04/22 20:55:48 khussey Exp $
+ * $Id: PrimitiveFunctionItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -49,7 +49,7 @@ public class PrimitiveFunctionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -179,5 +179,6 @@ public class PrimitiveFunctionItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 
 }

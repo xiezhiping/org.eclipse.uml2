@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,29 +8,32 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueActionImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
+ * $Id: AddVariableValueActionImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.AddVariableValueAction;
 import org.eclipse.uml2.InputPin;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.Variable;
 import org.eclipse.uml2.VisibilityKind;
@@ -55,7 +58,7 @@ public class AddVariableValueActionImpl extends WriteVariableActionImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isReplaceAll() <em>Is Replace All</em>}' attribute.
@@ -124,7 +127,9 @@ public class AddVariableValueActionImpl extends WriteVariableActionImpl implemen
 		if (newIsReplaceAll) eFlags |= IS_REPLACE_ALL_EFLAG; else eFlags &= ~IS_REPLACE_ALL_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ADD_VARIABLE_VALUE_ACTION__IS_REPLACE_ALL, oldIsReplaceAll, newIsReplaceAll));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,6 +152,7 @@ public class AddVariableValueActionImpl extends WriteVariableActionImpl implemen
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ADD_VARIABLE_VALUE_ACTION__INSERT_AT, oldInsertAt, newInsertAt);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -167,7 +173,9 @@ public class AddVariableValueActionImpl extends WriteVariableActionImpl implemen
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ADD_VARIABLE_VALUE_ACTION__INSERT_AT, newInsertAt, newInsertAt));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -179,7 +187,7 @@ public class AddVariableValueActionImpl extends WriteVariableActionImpl implemen
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.ADD_VARIABLE_VALUE_ACTION__INSERT_AT, null, newInsertAt));
 		}
-        setInsertAt(newInsertAt);
+		setInsertAt(newInsertAt);
 		return newInsertAt;
 	}
 
@@ -188,21 +196,13 @@ public class AddVariableValueActionImpl extends WriteVariableActionImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInputs() {
-		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
-
-		if (null == input) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getInputs());
-			if (null != getInsertAt()) {
-				union.add(getInsertAt());
-			}
-
-			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
+	public InputPin createInsertAt() {
+		InputPin newInsertAt = UML2Factory.eINSTANCE.createInputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.ADD_VARIABLE_VALUE_ACTION__INSERT_AT, null, newInsertAt));
 		}
-
-		return input;
+		setInsertAt(newInsertAt);
+		return newInsertAt;
 	}
 
 	/**
@@ -663,5 +663,20 @@ public class AddVariableValueActionImpl extends WriteVariableActionImpl implemen
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getInputsHelper(EList input) {
+		super.getInputsHelper(input);
+		if (insertAt != null) {
+			input.add(insertAt);
+		}
+		return input;
+	}
+
 
 } //AddVariableValueActionImpl

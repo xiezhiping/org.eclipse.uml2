@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.22 2005/04/20 18:55:24 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.23 2005/05/18 16:38:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Element;
@@ -44,10 +45,13 @@ import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 
 /**
- * A static utility class that provides operations related to stereotypes.
+ * A static utility class that provides operations related to '<em><b>Stereotype</b></em>'
+ * model objects.
  */
 public final class StereotypeOperations
 		extends UML2Operations {
+
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The source for the appliedStereotypes annotation on elements.
@@ -74,10 +78,6 @@ public final class StereotypeOperations
 	 */
 	public static final String STEREOTYPE_EXTENSION_ROLE_PREFIX = "extension$"; //$NON-NLS-1$
 
-	/**
-	 * Constructs a new Streotype Operations. This constructor should never be
-	 * called because this is a static utility class.
-	 */
 	private StereotypeOperations() {
 		super();
 	}
@@ -1254,4 +1254,4 @@ public final class StereotypeOperations
 		return allExtendedMetaclasses;
 	}
 
-}
+} // StereotypeOperations

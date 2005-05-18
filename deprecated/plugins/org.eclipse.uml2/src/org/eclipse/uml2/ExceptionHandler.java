@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandler.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: ExceptionHandler.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -43,7 +43,7 @@ public interface ExceptionHandler extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Protected Node</b></em>' container reference.
@@ -62,7 +62,6 @@ public interface ExceptionHandler extends Element{
 	 * @see org.eclipse.uml2.UML2Package#getExceptionHandler_ProtectedNode()
 	 * @see org.eclipse.uml2.ExecutableNode#getHandlers
 	 * @model opposite="handler" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	ExecutableNode getProtectedNode();
@@ -76,6 +75,7 @@ public interface ExceptionHandler extends Element{
 	 * @generated
 	 */
 	void setProtectedNode(ExecutableNode value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Handler Body</b></em>' reference.
@@ -106,6 +106,7 @@ public interface ExceptionHandler extends Element{
 	 */
 	void setHandlerBody(ExecutableNode value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Exception Input</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -132,6 +133,7 @@ public interface ExceptionHandler extends Element{
 	 */
 	void setExceptionInput(ObjectNode value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Exception Type</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
@@ -148,24 +150,16 @@ public interface ExceptionHandler extends Element{
 	 */
 	EList getExceptionTypes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified name from the '<em><b>Exception Type</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Exception Type</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExceptionTypes()
 	 * @generated
      */
     Classifier getExceptionType(String unqualifiedName);
       
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
-
 } // ExceptionHandler

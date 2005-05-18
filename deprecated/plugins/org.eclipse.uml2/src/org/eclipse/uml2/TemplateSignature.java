@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignature.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
+ * $Id: TemplateSignature.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -46,7 +46,7 @@ public interface TemplateSignature extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Parameter</b></em>' reference list.
@@ -62,10 +62,11 @@ public interface TemplateSignature extends Element{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateSignature_Parameter()
-	 * @model type="org.eclipse.uml2.TemplateParameter" required="true" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.TemplateParameter" required="true" ordered="false"
 	 * @generated
 	 */
 	EList getParameters();
+
 
 	/**
 	 * Returns the value of the '<em><b>Owned Parameter</b></em>' containment reference list.
@@ -83,11 +84,11 @@ public interface TemplateSignature extends Element{
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateSignature_OwnedParameter()
 	 * @see org.eclipse.uml2.TemplateParameter#getSignature
-	 * @model type="org.eclipse.uml2.TemplateParameter" opposite="signature" containment="true" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements='' org.eclipse.uml2.TemplateSignature#getParameters=''"
+	 * @model type="org.eclipse.uml2.TemplateParameter" opposite="signature" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedParameters();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.TemplateParameter} and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
@@ -99,6 +100,16 @@ public interface TemplateSignature extends Element{
 	 * @generated
      */
     TemplateParameter createOwnedParameter(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.TemplateParameter} and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.TemplateParameter}.
+	 * @see #getOwnedParameters()
+	 * @generated
+     */
+    TemplateParameter createOwnedParameter();
 
 	/**
 	 * Returns the value of the '<em><b>Nested Signature</b></em>' reference list.
@@ -117,6 +128,7 @@ public interface TemplateSignature extends Element{
 	 * @generated
 	 */
 	EList getNestedSignatures();
+
 
 	/**
 	 * Returns the value of the '<em><b>Nesting Signature</b></em>' reference.
@@ -146,6 +158,7 @@ public interface TemplateSignature extends Element{
 	 */
 	void setNestingSignature(TemplateSignature value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Template</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.TemplateableElement#getOwnedTemplateSignature <em>Owned Template Signature</em>}'.
@@ -163,7 +176,6 @@ public interface TemplateSignature extends Element{
 	 * @see org.eclipse.uml2.UML2Package#getTemplateSignature_Template()
 	 * @see org.eclipse.uml2.TemplateableElement#getOwnedTemplateSignature
 	 * @model opposite="ownedTemplateSignature" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	TemplateableElement getTemplate();
@@ -178,22 +190,5 @@ public interface TemplateSignature extends Element{
 	 */
 	void setTemplate(TemplateableElement value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
 
 } // TemplateSignature

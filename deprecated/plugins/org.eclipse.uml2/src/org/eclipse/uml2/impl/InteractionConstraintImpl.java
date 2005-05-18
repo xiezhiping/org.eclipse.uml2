@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,23 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.10 2005/04/04 20:11:12 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.11 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.InteractionConstraint;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.StringExpression;
@@ -54,7 +56,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getMinint() <em>Minint</em>}' containment reference.
@@ -115,6 +117,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_CONSTRAINT__MININT, oldMinint, newMinint);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -135,7 +138,9 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_CONSTRAINT__MININT, newMinint, newMinint));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,7 +152,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_CONSTRAINT__MININT, null, newMinint));
 		}
-        setMinint(newMinint);
+		setMinint(newMinint);
 		return newMinint;
 	}
 
@@ -172,6 +177,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_CONSTRAINT__MAXINT, oldMaxint, newMaxint);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -192,7 +198,9 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_CONSTRAINT__MAXINT, newMaxint, newMaxint));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -204,33 +212,8 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERACTION_CONSTRAINT__MAXINT, null, newMaxint));
 		}
-        setMaxint(newMaxint);
+		setMaxint(newMaxint);
 		return newMaxint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getMinint()) {
-				union.add(getMinint());
-			}
-			if (null != getMaxint()) {
-				union.add(getMaxint());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
 	}
 
 	/**
@@ -512,7 +495,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INTERACTION_CONSTRAINT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -531,7 +514,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 			case UML2Package.INTERACTION_CONSTRAINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERACTION_CONSTRAINT__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INTERACTION_CONSTRAINT__NAME_EXPRESSION:
@@ -541,7 +524,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 			case UML2Package.INTERACTION_CONSTRAINT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INTERACTION_CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.INTERACTION_CONSTRAINT__CONTEXT:
 				return basicGetContext() != null;
 			case UML2Package.INTERACTION_CONSTRAINT__NAMESPACE:
@@ -557,5 +540,33 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.INTERACTION_CONSTRAINT__VISIBILITY:
+				return false;
+			case UML2Package.INTERACTION_CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (minint != null) {
+			ownedElement.add(minint);
+		}
+		if (maxint != null) {
+			ownedElement.add(maxint);
+		}
+		return ownedElement;
+	}
+
 
 } //InteractionConstraintImpl

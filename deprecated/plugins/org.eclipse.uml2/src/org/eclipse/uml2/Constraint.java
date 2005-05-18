@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Constraint.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -48,7 +48,7 @@ public interface Constraint extends PackageableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Context</b></em>' reference.
@@ -63,10 +63,11 @@ public interface Constraint extends PackageableElement{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Context</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getConstraint_Context()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	Namespace getContext();
+
 
 	/**
 	 * Returns the value of the '<em><b>Namespace</b></em>' container reference.
@@ -81,9 +82,7 @@ public interface Constraint extends PackageableElement{
 	 * @see #setNamespace(Namespace)
 	 * @see org.eclipse.uml2.UML2Package#getConstraint_Namespace()
 	 * @see org.eclipse.uml2.Namespace#getOwnedRules
-	 * @model opposite="ownedRule" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Constraint#getContext=''"
-	 *        annotation="redefines org.eclipse.uml2.NamedElement#getNamespace=''"
+	 * @model opposite="ownedRule"
 	 * @generated
 	 */
 	Namespace getNamespace();
@@ -97,6 +96,7 @@ public interface Constraint extends PackageableElement{
 	 * @generated
 	 */
 	void setNamespace(Namespace value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Specification</b></em>' containment reference.
@@ -112,8 +112,7 @@ public interface Constraint extends PackageableElement{
 	 * @return the value of the '<em>Specification</em>' containment reference.
 	 * @see #setSpecification(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getConstraint_Specification()
-	 * @model containment="true" required="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	ValueSpecification getSpecification();
@@ -128,6 +127,7 @@ public interface Constraint extends PackageableElement{
 	 */
 	void setSpecification(ValueSpecification value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Specification</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -138,7 +138,7 @@ public interface Constraint extends PackageableElement{
 	 * @generated
      */
     ValueSpecification createSpecification(EClass eClass);
-     
+
 	/**
 	 * Returns the value of the '<em><b>Constrained Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Element}.
@@ -158,6 +158,7 @@ public interface Constraint extends PackageableElement{
 	 */
 	EList getConstrainedElements();
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -167,19 +168,9 @@ public interface Constraint extends PackageableElement{
 	 * not constrainedElement->includes(self)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.ConstraintOperations.validateNotApplyToSelf(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateNotApplyToSelf(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
 
 } // Constraint

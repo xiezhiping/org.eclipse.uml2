@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.9 2005/04/20 18:06:34 khussey Exp $
+ * $Id: TypeImpl.java,v 1.10 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,7 +49,7 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,7 +94,7 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	 * @generated
 	 */
 	public boolean conformsTo(Type other) {
-		return org.eclipse.uml2.internal.operation.TypeOperations.conformsTo(this, other);
+		return TypeOperations.conformsTo(this, other);
 	}
 
 	/**
@@ -102,12 +102,14 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Namespace getNamespace() {
-		if (null != getPackage()) {
-			return (Namespace) getPackage();
+	public Namespace basicGetNamespace() {
+		org.eclipse.uml2.Package package_ = basicGetPackage();			
+		if (package_ != null) {
+			return package_;
 		}
-		return super.getNamespace();
+		return super.basicGetNamespace();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -333,7 +335,7 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.TYPE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -352,7 +354,7 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 			case UML2Package.TYPE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TYPE__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.TYPE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.TYPE__NAME_EXPRESSION:
@@ -362,11 +364,22 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 			case UML2Package.TYPE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.TYPE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.TYPE__PACKAGE:
 				return basicGetPackage() != null;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.TYPE__VISIBILITY:
+				return false;
+			case UML2Package.TYPE__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	// <!-- begin-custom-operations -->

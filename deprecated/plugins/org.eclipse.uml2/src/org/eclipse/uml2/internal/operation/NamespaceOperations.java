@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.9 2005/03/15 18:44:46 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.10 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
@@ -29,43 +31,98 @@ import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
+
 import org.eclipse.uml2.util.UML2Validator;
 
 /**
- * A static utility class that provides operations related to namespaces.
+ * <!-- begin-user-doc -->
+ * A static utility class that provides operations related to '<em><b>Namespace</b></em>' model objects.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following operations are supported:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.Namespace#validateMembersAreDistinguishable(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Members Are Distinguishable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Namespace#getNamesOfMember(org.eclipse.uml2.NamedElement) <em>Get Names Of Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Namespace#membersAreDistinguishable() <em>Members Are Distinguishable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Namespace#validateImportedMemberDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Imported Member Derived</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Namespace#importedMember() <em>Imported Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Namespace#importMembers(java.util.Set) <em>Import Members</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Namespace#excludeCollisions(java.util.Set) <em>Exclude Collisions</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated not
  */
-public final class NamespaceOperations
-	extends UML2Operations {
+public final class NamespaceOperations extends UML2Operations {
 
 	/**
-	 * Constructs a new Namespace Operations. This constructor should never be
-	 * called because this is a static utility class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	private NamespaceOperations() {
 		super();
 	}
 
-	public static Set excludeCollisions(Namespace namespace, Set imps) {
-		Set excludeCollisions = new HashSet();
+	/**
+	 * <!-- begin-user-doc -->
+	 * All the members of a namespace are distinguishable within it.
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * membersAreDistinguishable()
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static boolean validateMembersAreDistinguishable(Namespace namespace, DiagnosticChain diagnostics, Map context) {
+		boolean result = true;
 
-		imps1Loop : for (Iterator imps1 = imps.iterator(); imps1.hasNext();) {
-			PackageableElement imp1 = (PackageableElement) imps1.next();
+		if (!namespace.membersAreDistinguishable()) {
+			result = false;
 
-			for (Iterator imps2 = imps.iterator(); imps2.hasNext();) {
-				PackageableElement imp2 = (PackageableElement) imps2.next();
-
-				if (imp1 != imp2
-					&& !imp1.isDistinguishableFrom(imp2, namespace)) {
-					continue imps1Loop;
-				}
+			if (null != diagnostics) {
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UML2Validator.DIAGNOSTIC_SOURCE,
+					UML2Validator.NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE,
+					UML2Plugin.INSTANCE.getString(
+						"_UI_Namespace_MembersAreDistinguishable_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, namespace)),
+					new Object[]{namespace}));
 			}
-
-			excludeCollisions.add(imp1);
 		}
 
-		return excludeCollisions;
+		return result;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * if self.ownedMember->includes(element)
+	 * then Set{}->include(element.name)
+	 * else let elementImports: ElementImport = self.elementImport->select(ei | ei.importedElement = element) in
+	 *     if elementImports->notEmpty()
+	 *     then elementImports->collect(el | el.getName())
+	 *     else 
+	 *         self.packageImport->select(pi | pi.importedPackage.visibleMembers()->includes(element))->collect(pi | pi.importedPackage.getNamesOfMember(element))
+	 *     endif
+	 * endif
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
 	public static Set getNamesOfMember(Namespace namespace, NamedElement element) {
 		Set namesOfMember = new HashSet();
 
@@ -108,9 +165,113 @@ public final class NamespaceOperations
 			}
 		}
 
-		return namesOfMember;
+		return Collections.unmodifiableSet(namesOfMember);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * self.member->forAll( memb |
+	 * 	self.member->excluding(memb)->forAll(other |
+	 * 		memb.isDistinguishableFrom(other, self)))
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static boolean membersAreDistinguishable(Namespace namespace) {
+		List namespaceMembers = namespace.getMembers();
+
+		for (Iterator members = namespaceMembers.iterator(); members.hasNext();) {
+			NamedElement member = (NamedElement) members.next();
+
+			for (Iterator otherMembers = namespaceMembers.iterator(); otherMembers
+				.hasNext();) {
+
+				NamedElement otherMember = (NamedElement) otherMembers.next();
+
+				if (member != otherMember
+					&& !member.isDistinguishableFrom(otherMember, namespace)) {
+
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * The imported members are derived from the element imports and the package
+	 * imports.
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * self.importedMember->includesAll(self.importedMembers(self.elementImport.importedElement.asSet()->union(self.packageImport.importedPackage->collect(p | p.visibleMembers()))))
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static boolean validateImportedMemberDerived(Namespace namespace, DiagnosticChain diagnostics, Map context) {
+		boolean result = true;
+
+		Set importedMember = new HashSet();
+
+		for (Iterator elementImports = namespace.getElementImports().iterator(); elementImports
+			.hasNext();) {
+
+			ElementImport elementImport = (ElementImport) elementImports.next();
+
+			if (null != elementImport.getImportedElement()) {
+				importedMember.add(elementImport.getImportedElement());
+			}
+		}
+
+		for (Iterator packageImports = namespace.getPackageImports().iterator(); packageImports
+			.hasNext();) {
+
+			PackageImport packageImport = (PackageImport) packageImports.next();
+
+			if (null != packageImport.getImportedPackage()) {
+				importedMember.addAll(packageImport.getImportedPackage()
+					.visibleMembers());
+			}
+		}
+
+		if (!namespace.getImportedMembers().containsAll(
+			namespace.importMembers(importedMember))) {
+
+			result = false;
+
+			if (null != diagnostics) {
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UML2Validator.DIAGNOSTIC_SOURCE,
+					UML2Validator.NAMESPACE__IMPORTED_MEMBER_DERIVED,
+					UML2Plugin.INSTANCE.getString(
+						"_UI_Namespace_ImportedMemberDerived_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, namespace)),
+					new Object[]{namespace}));
+			}
+		}
+
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * self.importedMembers(self.elementImport.importedElement.asSet()->union(self.packageImport.importedPackage->collect(p | p.visibleMembers())))
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
 	public static Set importedMember(Namespace namespace) {
 		Set importedMember = new HashSet();
 
@@ -136,9 +297,20 @@ public final class NamespaceOperations
 			}
 		}
 
-		return importedMember;
+		return Collections.unmodifiableSet(importedMember);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem | mem.imp.isDistinguishableFrom(mem, self)))
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
 	public static Set importMembers(Namespace namespace, Set imps) {
 		Set importMembers = new HashSet();
 
@@ -164,30 +336,42 @@ public final class NamespaceOperations
 			importMembers.add(excludeCollision);
 		}
 
-		return importMembers;
+		return Collections.unmodifiableSet(importMembers);
 	}
 
-	public static boolean membersAreDistinguishable(Namespace namespace) {
-		List namespaceMembers = namespace.getMembers();
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * imps->reject(imp1 | imps.exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static Set excludeCollisions(Namespace namespace, Set imps) {
+		Set excludeCollisions = new HashSet();
 
-		for (Iterator members = namespaceMembers.iterator(); members.hasNext();) {
-			NamedElement member = (NamedElement) members.next();
+		imps1Loop : for (Iterator imps1 = imps.iterator(); imps1.hasNext();) {
+			PackageableElement imp1 = (PackageableElement) imps1.next();
 
-			for (Iterator otherMembers = namespaceMembers.iterator(); otherMembers
-				.hasNext();) {
+			for (Iterator imps2 = imps.iterator(); imps2.hasNext();) {
+				PackageableElement imp2 = (PackageableElement) imps2.next();
 
-				NamedElement otherMember = (NamedElement) otherMembers.next();
-
-				if (member != otherMember
-					&& !member.isDistinguishableFrom(otherMember, namespace)) {
-
-					return false;
+				if (imp1 != imp2
+					&& !imp1.isDistinguishableFrom(imp2, namespace)) {
+					continue imps1Loop;
 				}
 			}
+
+			excludeCollisions.add(imp1);
 		}
 
-		return true;
+		return Collections.unmodifiableSet(excludeCollisions);
 	}
+
+	// <!-- begin-custom-operations -->
 
 	/**
 	 * Imports the specified element into the specified namespace with the
@@ -218,8 +402,7 @@ public final class NamespaceOperations
 			throw new IllegalArgumentException(String.valueOf(element));
 		}
 
-		ElementImport elementImport = namespace
-			.createElementImport(UML2Package.eINSTANCE.getElementImport());
+		ElementImport elementImport = namespace.createElementImport();
 
 		elementImport.setVisibility(visibility);
 		elementImport.setImportedElement(element);
@@ -289,80 +472,6 @@ public final class NamespaceOperations
 		packageImport.setImportedPackage(package_);
 	}
 
-	/**
-	 * All the members of a namespace are distinguishable within it.
-	 *  
-	 */
-	public static boolean validateMembersAreDistinguishable(
-			Namespace namespace, DiagnosticChain diagnostics, Map context) {
-		boolean result = true;
+	// <!-- end-custom-operations -->
 
-		if (!namespace.membersAreDistinguishable()) {
-			result = false;
-
-			if (null != diagnostics) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-					UML2Validator.DIAGNOSTIC_SOURCE,
-					UML2Validator.NAMESPACE__MEMBERS_ARE_DISTINGUISHABLE,
-					UML2Plugin.INSTANCE.getString(
-						"_UI_Namespace_MembersAreDistinguishable_diagnostic", //$NON-NLS-1$
-						getMessageSubstitutions(context, namespace)),
-					new Object[]{namespace}));
-			}
-		}
-
-		return result;
-	}
-
-	/**
-	 * The imported members are derived from the element imports and the package
-	 * imports.
-	 *  
-	 */
-	public static boolean validateImportedMemberDerived(Namespace namespace,
-			DiagnosticChain diagnostics, Map context) {
-		boolean result = true;
-
-		Set importedMember = new HashSet();
-
-		for (Iterator elementImports = namespace.getElementImports().iterator(); elementImports
-			.hasNext();) {
-
-			ElementImport elementImport = (ElementImport) elementImports.next();
-
-			if (null != elementImport.getImportedElement()) {
-				importedMember.add(elementImport.getImportedElement());
-			}
-		}
-
-		for (Iterator packageImports = namespace.getPackageImports().iterator(); packageImports
-			.hasNext();) {
-
-			PackageImport packageImport = (PackageImport) packageImports.next();
-
-			if (null != packageImport.getImportedPackage()) {
-				importedMember.addAll(packageImport.getImportedPackage()
-					.visibleMembers());
-			}
-		}
-
-		if (!namespace.getImportedMembers().containsAll(
-			namespace.importMembers(importedMember))) {
-
-			result = false;
-
-			if (null != diagnostics) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UML2Validator.DIAGNOSTIC_SOURCE,
-					UML2Validator.NAMESPACE__IMPORTED_MEMBER_DERIVED,
-					UML2Plugin.INSTANCE.getString(
-						"_UI_Namespace_ImportedMemberDerived_diagnostic", //$NON-NLS-1$
-						getMessageSubstitutions(context, namespace)),
-					new Object[]{namespace}));
-			}
-		}
-
-		return result;
-	}
-
-}
+} // NamespaceOperations

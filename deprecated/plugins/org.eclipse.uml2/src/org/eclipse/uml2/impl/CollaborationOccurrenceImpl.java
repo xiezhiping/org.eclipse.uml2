@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,30 +8,33 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationOccurrenceImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: CollaborationOccurrenceImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Collaboration;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Dependency;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -55,7 +58,7 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -131,7 +134,9 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COLLABORATION_OCCURRENCE__TYPE, oldType, type));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,23 +150,22 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 		return roleBinding;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Dependency getRoleBinding(String unqualifiedName) {
-    	for (Iterator i = getRoleBindings().iterator(); i.hasNext(); ) {
-    		Dependency namedRoleBinding = (Dependency) i.next();
-    		
-    		if (unqualifiedName.equals(namedRoleBinding.getName())) {
-    			return namedRoleBinding;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Dependency getRoleBinding(String name) {
+		for (Iterator i = getRoleBindings().iterator(); i.hasNext(); ) {
+			Dependency roleBinding = (Dependency) i.next();
+			if (name.equals(roleBinding.getName())) {
+				return roleBinding;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -181,19 +185,13 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getRoleBindings());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	public Dependency createRoleBinding() {
+		Dependency newRoleBinding = UML2Factory.eINSTANCE.createDependency();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.COLLABORATION_OCCURRENCE__ROLE_BINDING, null, newRoleBinding));
 		}
-
-		return ownedElement;
+		getRoleBindings().add(newRoleBinding);
+		return newRoleBinding;
 	}
 
 	/**
@@ -414,5 +412,20 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (roleBinding != null) {
+			ownedElement.addAll(roleBinding);
+		}
+		return ownedElement;
+	}
+
 
 } //CollaborationOccurrenceImpl

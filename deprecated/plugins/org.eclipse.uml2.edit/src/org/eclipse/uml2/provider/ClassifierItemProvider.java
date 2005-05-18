@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierItemProvider.java,v 1.17 2005/04/22 20:55:48 khussey Exp $
+ * $Id: ClassifierItemProvider.java,v 1.18 2005/05/18 16:40:46 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -16,12 +16,17 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.domain.EditingDomain;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -34,13 +39,13 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.edit.internal.command.SubsetAddCommand;
-import org.eclipse.uml2.edit.internal.command.SubsetReplaceCommand;
-import org.eclipse.uml2.edit.internal.command.SubsetSetCommand;
-import org.eclipse.uml2.edit.internal.command.SupersetRemoveCommand;
-import org.eclipse.uml2.edit.internal.command.SupersetReplaceCommand;
 
-import org.eclipse.uml2.edit.internal.command.SupersetSetCommand;
+import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
+import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
+import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
+import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Classifier} object.
@@ -61,7 +66,7 @@ public class ClassifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -640,11 +645,11 @@ public class ClassifierItemProvider
 	 * @generated
 	 */
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Collection collection) {
-		if (feature == UML2Package.eINSTANCE.getClassifier_Occurrence()) {
-			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Representation()}, collection);
-		}
 		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
 			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Substitution()}, collection);
+		}
+		if (feature == UML2Package.eINSTANCE.getClassifier_Occurrence()) {
+			return new SupersetRemoveCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Representation()}, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -659,11 +664,11 @@ public class ClassifierItemProvider
 		if (feature == UML2Package.eINSTANCE.getClassifier_Substitution()) {
 			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getNamedElement_ClientDependency()}, value, collection);
 		}
-		if (feature == UML2Package.eINSTANCE.getClassifier_Occurrence()) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Representation()}, value, collection);
-		}
 		if (feature == UML2Package.eINSTANCE.getNamedElement_ClientDependency()) {
 			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Substitution()}, value, collection);
+		}
+		if (feature == UML2Package.eINSTANCE.getClassifier_Occurrence()) {
+			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.eINSTANCE.getClassifier_Representation()}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}
@@ -686,4 +691,5 @@ public class ClassifierItemProvider
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}
+
 }

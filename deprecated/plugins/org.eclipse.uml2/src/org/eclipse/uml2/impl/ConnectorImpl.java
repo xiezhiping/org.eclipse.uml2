@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,27 +8,28 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.10 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Association;
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.Connector;
@@ -36,6 +37,7 @@ import org.eclipse.uml2.ConnectorEnd;
 import org.eclipse.uml2.ConnectorKind;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -62,7 +64,7 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -161,7 +163,9 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 		kind = newKind == null ? KIND_EDEFAULT : newKind;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTOR__KIND, oldKind, kind));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -199,7 +203,9 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONNECTOR__TYPE, oldType, type));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -213,23 +219,22 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 		return redefinedConnector;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Connector getRedefinedConnector(String unqualifiedName) {
-    	for (Iterator i = getRedefinedConnectors().iterator(); i.hasNext(); ) {
-    		Connector namedRedefinedConnector = (Connector) i.next();
-    		
-    		if (unqualifiedName.equals(namedRedefinedConnector.getName())) {
-    			return namedRedefinedConnector;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Connector getRedefinedConnector(String name) {
+		for (Iterator i = getRedefinedConnectors().iterator(); i.hasNext(); ) {
+			Connector redefinedConnector = (Connector) i.next();
+			if (name.equals(redefinedConnector.getName())) {
+				return redefinedConnector;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -242,13 +247,29 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 		return end;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createEnd() instead.
+	 */
+	public ConnectorEnd createEnd(EClass eClass) {
+		ConnectorEnd newEnd = (ConnectorEnd) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CONNECTOR__END, null, newEnd));
+		}
+		getEnds().add(newEnd);
+		return newEnd;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConnectorEnd createEnd(EClass eClass) {
-		ConnectorEnd newEnd = (ConnectorEnd) eClass.getEPackage().getEFactoryInstance().create(eClass);
+	public ConnectorEnd createEnd() {
+		ConnectorEnd newEnd = UML2Factory.eINSTANCE.createConnectorEnd();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.CONNECTOR__END, null, newEnd));
 		}
@@ -268,61 +289,20 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 		return contract;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Behavior getContract(String unqualifiedName) {
-    	for (Iterator i = getContracts().iterator(); i.hasNext(); ) {
-    		Behavior namedContract = (Behavior) i.next();
-    		
-    		if (unqualifiedName.equals(namedContract.getName())) {
-    			return namedContract;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getRedefinedElements() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getConnector().getEAllOperations().get(36));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getRedefinedElements());
-			union.addAll(getRedefinedConnectors());
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getConnector().getEAllOperations().get(36), result);
-		}
-
-		return result;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getEnds());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+    public Behavior getContract(String name) {
+		for (Iterator i = getContracts().iterator(); i.hasNext(); ) {
+			Behavior contract = (Behavior) i.next();
+			if (name.equals(contract.getName())) {
+				return contract;
+			}
 		}
-
-		return ownedElement;
+		return null;
 	}
 
 	/**
@@ -618,5 +598,36 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getRedefinedElementsHelper(EList redefinedElement) {
+		super.getRedefinedElementsHelper(redefinedElement);
+		if (redefinedConnector != null) {
+			for (Iterator i = ((InternalEList) redefinedConnector).basicIterator(); i.hasNext(); ) {
+				redefinedElement.add(i.next());
+			}
+		}
+		return redefinedElement;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (end != null) {
+			ownedElement.addAll(end);
+		}
+		return ownedElement;
+	}
+
 
 } //ConnectorImpl

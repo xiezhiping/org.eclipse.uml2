@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineItemProvider.java,v 1.20 2005/04/22 20:55:48 khussey Exp $
+ * $Id: StateMachineItemProvider.java,v 1.21 2005/05/18 16:40:46 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -51,7 +51,7 @@ public class StateMachineItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -76,7 +76,6 @@ public class StateMachineItemProvider
 			addRegionPropertyDescriptor(object);
 			addConnectionPointPropertyDescriptor(object);
 			addExtendedStateMachinePropertyDescriptor(object);
-			addStateMachine_redefinitionContextPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -143,28 +142,6 @@ public class StateMachineItemProvider
 				 null,
 				 null,
 				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the State Machine redefinition Context feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addStateMachine_redefinitionContextPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StateMachine_stateMachine_redefinitionContext_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_StateMachine_stateMachine_redefinitionContext_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 UML2Package.eINSTANCE.getStateMachine_StateMachine_redefinitionContext(),
-				 true,
-				 null,
-				 null,
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				 }));
 	}
 
 	/**
@@ -294,5 +271,6 @@ public class StateMachineItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 
 }

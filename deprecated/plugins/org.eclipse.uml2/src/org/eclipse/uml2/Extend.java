@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extend.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Extend.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -45,7 +45,7 @@ public interface Extend extends NamedElement, DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Extended Case</b></em>' reference.
@@ -62,7 +62,6 @@ public interface Extend extends NamedElement, DirectedRelationship{
 	 * @see #setExtendedCase(UseCase)
 	 * @see org.eclipse.uml2.UML2Package#getExtend_ExtendedCase()
 	 * @model required="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getTargets=''"
 	 * @generated
 	 */
 	UseCase getExtendedCase();
@@ -76,6 +75,7 @@ public interface Extend extends NamedElement, DirectedRelationship{
 	 * @generated
 	 */
 	void setExtendedCase(UseCase value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Extension</b></em>' container reference.
@@ -91,7 +91,6 @@ public interface Extend extends NamedElement, DirectedRelationship{
 	 * @see org.eclipse.uml2.UML2Package#getExtend_Extension()
 	 * @see org.eclipse.uml2.UseCase#getExtends
 	 * @model opposite="extend" required="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getSources=''"
 	 * @generated
 	 */
 	UseCase getExtension();
@@ -106,6 +105,7 @@ public interface Extend extends NamedElement, DirectedRelationship{
 	 */
 	void setExtension(UseCase value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -118,7 +118,6 @@ public interface Extend extends NamedElement, DirectedRelationship{
 	 * @see #setCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getExtend_Condition()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	Constraint getCondition();
@@ -133,6 +132,7 @@ public interface Extend extends NamedElement, DirectedRelationship{
 	 */
 	void setCondition(Constraint value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -143,7 +143,17 @@ public interface Extend extends NamedElement, DirectedRelationship{
 	 * @generated
      */
     Constraint createCondition(EClass eClass);
-     
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Constraint}.
+	 * @see #getCondition()
+	 * @generated
+     */
+    Constraint createCondition();
+
 	/**
 	 * Returns the value of the '<em><b>Extension Location</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ExtensionPoint}.
@@ -160,42 +170,16 @@ public interface Extend extends NamedElement, DirectedRelationship{
 	 */
 	EList getExtensionLocations();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ExtensionPoint} with the specified name from the '<em><b>Extension Location</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ExtensionPoint} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension Location</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ExtensionPoint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ExtensionPoint} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExtensionPoint} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ExtensionPoint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExtensionLocations()
 	 * @generated
      */
     ExtensionPoint getExtensionLocation(String unqualifiedName);
       
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getTargets();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getSources();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
-
 } // Extend

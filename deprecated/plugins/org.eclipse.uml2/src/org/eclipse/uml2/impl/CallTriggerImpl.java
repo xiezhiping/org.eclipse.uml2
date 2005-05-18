@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallTriggerImpl.java,v 1.6 2005/04/04 20:11:13 khussey Exp $
+ * $Id: CallTriggerImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' reference.
@@ -114,7 +114,9 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 		operation = newOperation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CALL_TRIGGER__OPERATION, oldOperation, operation));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -332,5 +334,6 @@ public class CallTriggerImpl extends MessageTriggerImpl implements CallTrigger {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //CallTriggerImpl

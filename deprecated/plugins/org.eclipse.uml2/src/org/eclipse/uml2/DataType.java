@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataType.java,v 1.7 2005/04/14 17:30:57 khussey Exp $
+ * $Id: DataType.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -45,7 +43,7 @@ public interface DataType extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -64,17 +62,17 @@ public interface DataType extends Classifier{
 	 * @see org.eclipse.uml2.UML2Package#getDataType_OwnedAttribute()
 	 * @see org.eclipse.uml2.Property#getDatatype
 	 * @model type="org.eclipse.uml2.Property" opposite="datatype" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers='' org.eclipse.uml2.Classifier#getAttributes=''"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified name from the '<em><b>Owned Attribute</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedAttributes()
 	 * @generated
      */
@@ -90,6 +88,16 @@ public interface DataType extends Classifier{
 	 * @generated
      */
     Property createOwnedAttribute(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Property}.
+	 * @see #getOwnedAttributes()
+	 * @generated
+     */
+    Property createOwnedAttribute();
 
 	/**
 	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -108,17 +116,17 @@ public interface DataType extends Classifier{
 	 * @see org.eclipse.uml2.UML2Package#getDataType_OwnedOperation()
 	 * @see org.eclipse.uml2.Operation#getDatatype
 	 * @model type="org.eclipse.uml2.Operation" opposite="datatype" containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers='' org.eclipse.uml2.Classifier#getFeatures=''"
 	 * @generated
 	 */
 	EList getOwnedOperations();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified name from the '<em><b>Owned Operation</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Operation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Operation} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedOperations()
 	 * @generated
      */
@@ -131,52 +139,20 @@ public interface DataType extends Classifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Operation} to create.
 	 * @return The new {@link org.eclipse.uml2.Operation}.
 	 * @see #getOwnedOperations()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedOperation() instead.
      */
     Operation createOwnedOperation(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A query based on the following OCL expression:
-	 * <code>
-	 * inhs->excluding(inh |
-	 * 	ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" parameters="org.eclipse.uml2.Set"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.DataTypeOperations.inherit(this, inhs);'" 
+	 * @return The new {@link org.eclipse.uml2.Operation}.
+	 * @see #getOwnedOperations()
 	 * @generated
-	 */
-	Set inherit(Set inhs);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='attribute' eType='org.eclipse.uml2.Property' containment='false'" 
-	 * @generated
-	 */
-	EList getAttributes();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getFeatures();
+     */
+    Operation createOwnedOperation();
 
 	// <!-- begin-custom-operations -->
 

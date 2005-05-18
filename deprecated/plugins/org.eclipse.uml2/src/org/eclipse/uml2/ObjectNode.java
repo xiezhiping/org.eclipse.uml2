@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNode.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: ObjectNode.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Ordering</b></em>' attribute.
@@ -76,6 +76,7 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 */
 	void setOrdering(ObjectNodeOrderingKind value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Upper Bound</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -88,7 +89,6 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 * @see #setUpperBound(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getObjectNode_UpperBound()
 	 * @model containment="true" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getUpperBound();
@@ -103,6 +103,7 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 */
 	void setUpperBound(ValueSpecification value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Upper Bound</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -113,7 +114,7 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 * @generated
      */
     ValueSpecification createUpperBound(EClass eClass);
-     
+
 	/**
 	 * Returns the value of the '<em><b>In State</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.State}.
@@ -133,12 +134,13 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 */
 	EList getInStates();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.State} with the specified name from the '<em><b>In State</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.State} with the specified '<em><b>Name</b></em>' from the '<em><b>In State</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.State} to retrieve.
-	 * @return The {@link org.eclipse.uml2.State} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.State} to retrieve.
+	 * @return The {@link org.eclipse.uml2.State} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInStates()
 	 * @generated
      */
@@ -170,13 +172,5 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	 */
 	void setSelection(Behavior value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
 
 } // ObjectNode

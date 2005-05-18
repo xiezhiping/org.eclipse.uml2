@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,26 +8,28 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.8 2005/04/04 20:11:12 khussey Exp $
+ * $Id: MessageImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Connector;
 import org.eclipse.uml2.Interaction;
 import org.eclipse.uml2.Message;
@@ -68,7 +70,7 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getMessageKind() <em>Message Kind</em>}' attribute.
@@ -199,7 +201,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
 		messageSort = newMessageSort == null ? MESSAGE_SORT_EDEFAULT : newMessageSort;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE__MESSAGE_SORT, oldMessageSort, messageSort));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -239,6 +243,7 @@ public class MessageImpl extends NamedElementImpl implements Message {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE__RECEIVE_EVENT, oldReceiveEvent, newReceiveEvent);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -259,7 +264,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE__RECEIVE_EVENT, newReceiveEvent, newReceiveEvent));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -299,6 +306,7 @@ public class MessageImpl extends NamedElementImpl implements Message {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE__SEND_EVENT, oldSendEvent, newSendEvent);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -319,7 +327,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE__SEND_EVENT, newSendEvent, newSendEvent));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -357,7 +367,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
 		connector = newConnector;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE__CONNECTOR, oldConnector, connector));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -388,7 +400,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE__INTERACTION, newInteraction, newInteraction));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -426,7 +440,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
 		signature = newSignature;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE__SIGNATURE, oldSignature, signature));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -440,23 +456,22 @@ public class MessageImpl extends NamedElementImpl implements Message {
 		return argument;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ValueSpecification getArgument(String unqualifiedName) {
-    	for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
-    		ValueSpecification namedArgument = (ValueSpecification) i.next();
-    		
-    		if (unqualifiedName.equals(namedArgument.getName())) {
-    			return namedArgument;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ValueSpecification getArgument(String name) {
+		for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
+			ValueSpecification argument = (ValueSpecification) i.next();
+			if (name.equals(argument.getName())) {
+				return argument;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -476,32 +491,28 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Namespace getNamespace() {
-		if (null != getInteraction()) {
-			return (Namespace) getInteraction();
+	public Namespace basicGetNamespace() {
+		Interaction interaction = getInteraction();			
+		if (interaction != null) {
+			return interaction;
 		}
-		return super.getNamespace();
+		return super.basicGetNamespace();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getArguments());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (argument != null) {
+			ownedElement.addAll(argument);
 		}
-
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -828,5 +839,6 @@ public class MessageImpl extends NamedElementImpl implements Message {
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //MessageImpl

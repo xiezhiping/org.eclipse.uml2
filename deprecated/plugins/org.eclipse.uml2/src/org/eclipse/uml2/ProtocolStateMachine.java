@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachine.java,v 1.6 2005/04/04 20:11:16 khussey Exp $
+ * $Id: ProtocolStateMachine.java,v 1.7 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ public interface ProtocolStateMachine extends StateMachine{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Conformance</b></em>' containment reference list.
@@ -57,10 +57,10 @@ public interface ProtocolStateMachine extends StateMachine{
 	 * @see org.eclipse.uml2.UML2Package#getProtocolStateMachine_Conformance()
 	 * @see org.eclipse.uml2.ProtocolConformance#getSpecificMachine
 	 * @model type="org.eclipse.uml2.ProtocolConformance" opposite="specificMachine" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getConformances();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.ProtocolConformance} and appends it to the '<em><b>Conformance</b></em>' containment reference list.
@@ -69,17 +69,19 @@ public interface ProtocolStateMachine extends StateMachine{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ProtocolConformance} to create.
 	 * @return The new {@link org.eclipse.uml2.ProtocolConformance}.
 	 * @see #getConformances()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createConformance() instead.
      */
     ProtocolConformance createConformance(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.ProtocolConformance} and appends it to the '<em><b>Conformance</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * @return The new {@link org.eclipse.uml2.ProtocolConformance}.
+	 * @see #getConformances()
 	 * @generated
-	 */
-	EList getOwnedElements();
+     */
+    ProtocolConformance createConformance();
 
 } // ProtocolStateMachine

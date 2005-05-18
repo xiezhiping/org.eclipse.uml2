@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.9 2005/03/18 04:00:53 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.10 2005/05/18 16:38:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -20,92 +21,67 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
+
 import org.eclipse.uml2.util.UML2Validator;
 
 /**
- * A static utility class that provides operations related to named elements.
+ * <!-- begin-user-doc -->
+ * A static utility class that provides operations related to '<em><b>Named Element</b></em>' model objects.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following operations are supported:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.NamedElement#validateNoName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.NamedElement#validateQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualified Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.NamedElement#allNamespaces() <em>All Namespaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.NamedElement#isDistinguishableFrom(org.eclipse.uml2.NamedElement, org.eclipse.uml2.Namespace) <em>Is Distinguishable From</em>}</li>
+ *   <li>{@link org.eclipse.uml2.NamedElement#separator() <em>Separator</em>}</li>
+ *   <li>{@link org.eclipse.uml2.NamedElement#qualifiedName() <em>Qualified Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Needs Ownership</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated not
  */
-public final class NamedElementOperations
-		extends UML2Operations {
-
-	protected static final String LABEL_KEY_PREFIX = "_label_"; //$NON-NLS-1$
+public final class NamedElementOperations extends UML2Operations {
 
 	/**
-	 * Constructs a new Named Element Operations. This constructor should never
-	 * be called because this is a static utility class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	private NamedElementOperations() {
 		super();
 	}
 
-	public static List allNamespaces(NamedElement namedElement) {
-		List allNamespaces = new ArrayList();
-
-		if (null != namedElement.getNamespace()) {
-			allNamespaces.addAll(namedElement.getNamespace().allNamespaces());
-			allNamespaces.add(0, namedElement.getNamespace());
-		}
-
-		return allNamespaces;
-	}
-
-	public static boolean isDistinguishableFrom(NamedElement namedElement,
-			NamedElement n, Namespace ns) {
-
-		if (n.eClass().isSuperTypeOf(namedElement.eClass())
-			|| namedElement.eClass().isSuperTypeOf(n.eClass())) {
-
-			for (Iterator namesOfMember = ns.getNamesOfMember(namedElement)
-				.iterator(); namesOfMember.hasNext();) {
-
-				if (ns.getNamesOfMember(n).contains(namesOfMember.next())) {
-					return false;
-				}
-			}
-		}
-
-		return true;
-	}
-
-	public static String qualifiedName(NamedElement namedElement) {
-
-		if (isEmpty(namedElement.getName())) {
-			return EMPTY_STRING;
-		}
-
-		String qualifiedName = namedElement.getName();
-
-		for (Iterator allNamespaces = namedElement.allNamespaces().iterator(); allNamespaces
-			.hasNext();) {
-
-			Namespace namespace = (Namespace) allNamespaces.next();
-
-			if (isEmpty(namespace.getName())) {
-				return EMPTY_STRING;
-			} else {
-				qualifiedName = namespace.getName() + namedElement.separator()
-					+ qualifiedName;
-			}
-		}
-
-		return qualifiedName;
-	}
-
-	public static String separator(NamedElement namedElement) {
-		return NamedElement.SEPARATOR;
-	}
-
 	/**
+	 * <!-- begin-user-doc -->
 	 * If there is no name, or one of the containing namespaces has no name,
 	 * there is no qualified name.
-	 * 
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty()
+	 * 	implies self.qualifiedName->isEmpty()
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
 	 */
-	public static boolean validateNoName(NamedElement namedElement,
-			DiagnosticChain diagnostics, Map context) {
+	public static boolean validateNoName(NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (isEmpty(namedElement.getName())) {
@@ -115,7 +91,9 @@ public final class NamedElementOperations
 			for (Iterator allNamespaces = namedElement.allNamespaces()
 				.iterator(); allNamespaces.hasNext();) {
 
-				if (isEmpty(((Namespace) allNamespaces.next()).getName())) {
+				if (isEmpty(((Namespace) allNamespaces.next())
+					.getName())) {
+
 					result = isEmpty(namedElement.qualifiedName());
 					break;
 				}
@@ -125,9 +103,10 @@ public final class NamedElementOperations
 		if (!result && null != diagnostics) {
 			diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
 				UML2Validator.DIAGNOSTIC_SOURCE,
-				UML2Validator.NAMED_ELEMENT__NO_NAME, UML2Plugin.INSTANCE
-					.getString("_UI_NamedElement_NoName_diagnostic", //$NON-NLS-1$
-						getMessageSubstitutions(context, namedElement)),
+				UML2Validator.NAMED_ELEMENT__NO_NAME,
+				UML2Plugin.INSTANCE.getString(
+					"_UI_NamedElement_NoName_diagnostic", //$NON-NLS-1$
+					getMessageSubstitutions(context, namedElement)),
 				new Object[]{namedElement}));
 		}
 
@@ -135,13 +114,23 @@ public final class NamedElementOperations
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * When there is a name, and all of the containing namespaces have a name,
 	 * the qualified name is constructed from the names of the containing
 	 * namespaces.
-	 * 
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * (self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()) implies
+	 * self.qualifiedName =
+	 *  self.allNamespaces()->iterate( ns : Namespace; result: String = self.name |
+	 * 		ns.name->union(self.separator())->union(result))
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
 	 */
-	public static boolean validateQualifiedName(NamedElement namedElement,
-			DiagnosticChain diagnostics, Map context) {
+	public static boolean validateQualifiedName(NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (!isEmpty(namedElement.getName())) {
@@ -170,8 +159,8 @@ public final class NamedElementOperations
 						UML2Validator.NAMED_ELEMENT__NO_NAME,
 						UML2Plugin.INSTANCE.getString(
 							"_UI_NamedElement_QualifiedName_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, namedElement)),
-						new Object[]{namedElement}));
+							getMessageSubstitutions(context,
+								namedElement)), new Object[]{namedElement}));
 				}
 			}
 		}
@@ -180,12 +169,131 @@ public final class NamedElementOperations
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * if self.namespace->isEmpty()
+	 * then Sequence{}
+	 * else self.namespace.allNamespaces()->prepend(self.namespace)
+	 * endif
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static List allNamespaces(NamedElement namedElement) {
+		List allNamespaces = new ArrayList();
+
+		if (null != namedElement.getNamespace()) {
+			allNamespaces.addAll(namedElement.getNamespace().allNamespaces());
+			allNamespaces.add(0, namedElement.getNamespace());
+		}
+
+		return Collections.unmodifiableList(allNamespaces);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * if self.oclIsKindOf(n.oclType) or n.oclIsKindOf(self.oclType)
+	 * then ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()
+	 * else true
+	 * endif
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static boolean isDistinguishableFrom(NamedElement namedElement,
+			NamedElement n, Namespace ns) {
+
+		if (n.eClass().isSuperTypeOf(namedElement.eClass())
+			|| namedElement.eClass().isSuperTypeOf(n.eClass())) {
+
+			for (Iterator namesOfMember = ns.getNamesOfMember(namedElement)
+				.iterator(); namesOfMember.hasNext();) {
+
+				if (ns.getNamesOfMember(n).contains(namesOfMember.next())) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * '::'
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static String separator(NamedElement namedElement) {
+		return NamedElement.SEPARATOR;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A query based on the following OCL expression:
+	 * <code>
+	 * if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()
+	 * then 
+	 *     self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))
+	 * else
+	 *     Set{}
+	 * endif
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static String qualifiedName(NamedElement namedElement) {
+
+		if (isEmpty(namedElement.getName())) {
+			return EMPTY_STRING;
+		}
+
+		String qualifiedName = namedElement.getName();
+
+		for (Iterator allNamespaces = namedElement.allNamespaces().iterator(); allNamespaces
+			.hasNext();) {
+
+			Namespace namespace = (Namespace) allNamespaces.next();
+
+			if (isEmpty(namespace.getName())) {
+				return EMPTY_STRING;
+			} else {
+				qualifiedName = namespace.getName() + namedElement.separator()
+					+ qualifiedName;
+			}
+		}
+
+		return qualifiedName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * If a named element is not owned by a namespace, it does not have a
 	 * visibility.
-	 * 
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An invariant constraint based on the following OCL expression:
+	 * <code>
+	 * namespace->isEmpty() implies visibility->isEmpty()
+	 * </code>
+	 * <!-- end-model-doc -->
+	 * @generated NOT
 	 */
-	public static boolean validateVisibilityNeedsOwnership(
-			NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
+	public static boolean validateVisibilityNeedsOwnership(NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		if (null == namedElement.getNamespace()
@@ -207,6 +315,10 @@ public final class NamedElementOperations
 
 		return result;
 	}
+
+	// <!-- begin-custom-operations -->
+
+	protected static final String LABEL_KEY_PREFIX = "_label_"; //$NON-NLS-1$
 
 	/**
 	 * Retrieves a localized label for the specified named element.
@@ -233,7 +345,7 @@ public final class NamedElementOperations
 		String label = EMPTY_STRING;
 
 		if (null != namedElement) {
-			label = getString(namedElement, LABEL_KEY_PREFIX
+			label = UML2Operations.getString(namedElement, LABEL_KEY_PREFIX
 				+ getValidIdentifier(namedElement.getQualifiedName().replace(
 					':', '_')), namedElement.getName(), localize);
 		}
@@ -241,4 +353,6 @@ public final class NamedElementOperations
 		return label;
 	}
 
-}
+	// <!-- end-custom-operations -->
+
+} // NamedElementOperations

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.6 2005/04/04 20:11:13 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -51,7 +51,7 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entry</em>}' reference list.
@@ -103,23 +103,22 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 		return entry;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Pseudostate getEntry(String unqualifiedName) {
-    	for (Iterator i = getEntries().iterator(); i.hasNext(); ) {
-    		Pseudostate namedEntry = (Pseudostate) i.next();
-    		
-    		if (unqualifiedName.equals(namedEntry.getName())) {
-    			return namedEntry;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Pseudostate getEntry(String name) {
+		for (Iterator i = getEntries().iterator(); i.hasNext(); ) {
+			Pseudostate entry = (Pseudostate) i.next();
+			if (name.equals(entry.getName())) {
+				return entry;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -132,23 +131,22 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 		return exit;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Pseudostate getExit(String unqualifiedName) {
-    	for (Iterator i = getExits().iterator(); i.hasNext(); ) {
-    		Pseudostate namedExit = (Pseudostate) i.next();
-    		
-    		if (unqualifiedName.equals(namedExit.getName())) {
-    			return namedExit;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Pseudostate getExit(String name) {
+		for (Iterator i = getExits().iterator(); i.hasNext(); ) {
+			Pseudostate exit = (Pseudostate) i.next();
+			if (name.equals(exit.getName())) {
+				return exit;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -428,5 +426,6 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //ConnectionPointReferenceImpl

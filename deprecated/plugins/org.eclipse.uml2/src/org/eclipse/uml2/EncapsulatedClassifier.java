@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifier.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: EncapsulatedClassifier.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface EncapsulatedClassifier extends StructuredClassifier{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Owned Port</b></em>' containment reference list.
@@ -59,17 +59,17 @@ public interface EncapsulatedClassifier extends StructuredClassifier{
 	 * @return the value of the '<em>Owned Port</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getEncapsulatedClassifier_OwnedPort()
 	 * @model type="org.eclipse.uml2.Port" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Classifier#getFeatures='' org.eclipse.uml2.Namespace#getOwnedMembers=''"
 	 * @generated
 	 */
 	EList getOwnedPorts();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Port} with the specified name from the '<em><b>Owned Port</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Port</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Port} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Port} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Port} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedPorts()
 	 * @generated
      */
@@ -82,26 +82,19 @@ public interface EncapsulatedClassifier extends StructuredClassifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Port} to create.
 	 * @return The new {@link org.eclipse.uml2.Port}.
 	 * @see #getOwnedPorts()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedPort() instead.
      */
     Port createOwnedPort(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.Port} and appends it to the '<em><b>Owned Port</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='feature' eOpposite='featuringClassifier' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Feature' eOpposite.lowerBound='0'" 
+	 * @return The new {@link org.eclipse.uml2.Port}.
+	 * @see #getOwnedPorts()
 	 * @generated
-	 */
-	EList getFeatures();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
+     */
+    Port createOwnedPort();
 
 } // EncapsulatedClassifier

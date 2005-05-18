@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,27 +8,30 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.10 2005/04/04 20:11:13 khussey Exp $
+ * $Id: PortImpl.java,v 1.11 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.Association;
 import org.eclipse.uml2.BehavioredClassifier;
@@ -70,7 +73,7 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isBehavior() <em>Is Behavior</em>}' attribute.
@@ -170,7 +173,9 @@ public class PortImpl extends PropertyImpl implements Port {
 		if (newIsBehavior) eFlags |= IS_BEHAVIOR_EFLAG; else eFlags &= ~IS_BEHAVIOR_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_BEHAVIOR, oldIsBehavior, newIsBehavior));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -191,7 +196,9 @@ public class PortImpl extends PropertyImpl implements Port {
 		if (newIsService) eFlags |= IS_SERVICE_EFLAG; else eFlags &= ~IS_SERVICE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_SERVICE, oldIsService, newIsService));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -230,23 +237,21 @@ public class PortImpl extends PropertyImpl implements Port {
 		return requireds;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-	public Interface getRequired(String unqualifiedName) {
-    	for (Iterator i = getRequireds().iterator(); i.hasNext(); ) {
-    		Interface namedRequired = (Interface) i.next();
-    		
-    		if (unqualifiedName.equals(namedRequired.getName())) {
-    			return namedRequired;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+	public Interface getRequired(String name) {
+		for (Iterator i = getRequireds().iterator(); i.hasNext(); ) {
+			Interface required = (Interface) i.next();
+			if (name.equals(required.getName())) {
+				return required;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -259,23 +264,22 @@ public class PortImpl extends PropertyImpl implements Port {
 		return redefinedPort;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-	public Port getRedefinedPort(String unqualifiedName) {
-    	for (Iterator i = getRedefinedPorts().iterator(); i.hasNext(); ) {
-    		Port namedRedefinedPort = (Port) i.next();
-    		
-    		if (unqualifiedName.equals(namedRedefinedPort.getName())) {
-    			return namedRedefinedPort;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+	public Port getRedefinedPort(String name) {
+		for (Iterator i = getRedefinedPorts().iterator(); i.hasNext(); ) {
+			Port redefinedPort = (Port) i.next();
+			if (name.equals(redefinedPort.getName())) {
+				return redefinedPort;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -305,23 +309,21 @@ public class PortImpl extends PropertyImpl implements Port {
 		return provideds;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-	public Interface getProvided(String unqualifiedName) {
-    	for (Iterator i = getProvideds().iterator(); i.hasNext(); ) {
-    		Interface namedProvided = (Interface) i.next();
-    		
-    		if (unqualifiedName.equals(namedProvided.getName())) {
-    			return namedProvided;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+	public Interface getProvided(String name) {
+		for (Iterator i = getProvideds().iterator(); i.hasNext(); ) {
+			Interface provided = (Interface) i.next();
+			if (name.equals(provided.getName())) {
+				return provided;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -358,27 +360,9 @@ public class PortImpl extends PropertyImpl implements Port {
 		protocol = newProtocol;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__PROTOCOL, oldProtocol, protocol));
+
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getRedefinedElements() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getPort().getEAllOperations().get(69));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getRedefinedElements());
-			union.addAll(getRedefinedPorts());
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getPort().getEAllOperations().get(69), result);
-		}
-
-		return result;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -994,5 +978,22 @@ public class PortImpl extends PropertyImpl implements Port {
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getRedefinedElementsHelper(EList redefinedElement) {
+		super.getRedefinedElementsHelper(redefinedElement);
+		if (redefinedPort != null) {
+			for (Iterator i = ((InternalEList) redefinedPort).basicIterator(); i.hasNext(); ) {
+				redefinedElement.add(i.next());
+			}
+		}
+		return redefinedElement;
+	}
+
 
 } //PortImpl

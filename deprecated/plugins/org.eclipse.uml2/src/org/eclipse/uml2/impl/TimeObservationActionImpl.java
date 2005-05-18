@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,26 +8,26 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationActionImpl.java,v 1.9 2005/04/04 20:11:14 khussey Exp $
+ * $Id: TimeObservationActionImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.InputPin;
 import org.eclipse.uml2.StringExpression;
@@ -36,6 +36,7 @@ import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.TimeExpression;
 import org.eclipse.uml2.TimeObservationAction;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -58,7 +59,7 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getNows() <em>Now</em>}' containment reference list.
@@ -100,30 +101,44 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 		return now;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public TimeExpression getNow(String unqualifiedName) {
-    	for (Iterator i = getNows().iterator(); i.hasNext(); ) {
-    		TimeExpression namedNow = (TimeExpression) i.next();
-    		
-    		if (unqualifiedName.equals(namedNow.getName())) {
-    			return namedNow;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public TimeExpression getNow(String name) {
+		for (Iterator i = getNows().iterator(); i.hasNext(); ) {
+			TimeExpression now = (TimeExpression) i.next();
+			if (name.equals(now.getName())) {
+				return now;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createNow() instead.
+	 */
 	public TimeExpression createNow(EClass eClass) {
 		TimeExpression newNow = (TimeExpression) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TIME_OBSERVATION_ACTION__NOW, null, newNow));
+		}
+		getNows().add(newNow);
+		return newNow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeExpression createNow() {
+		TimeExpression newNow = UML2Factory.eINSTANCE.createTimeExpression();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.TIME_OBSERVATION_ACTION__NOW, null, newNow));
 		}
@@ -148,6 +163,16 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 	public NotificationChain basicSetValue(InputPin newValue, NotificationChain msgs) {
 		throw new UnsupportedOperationException();
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValue(InputPin newValue) {
+		throw new UnsupportedOperationException();
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -526,7 +551,7 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.TIME_OBSERVATION_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -589,21 +614,28 @@ public class TimeObservationActionImpl extends WriteStructuralFeatureActionImpl 
 			case UML2Package.TIME_OBSERVATION_ACTION__OBJECT:
 				return object != null;
 			case UML2Package.TIME_OBSERVATION_ACTION__VALUE:
-				return false;
+				return getValue() != null;
 			case UML2Package.TIME_OBSERVATION_ACTION__NOW:
 				return now != null && !now.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
 	}
 
-	/**
-	 * @see org.eclipse.uml2.Action#getInputs()
-	 */
-	public EList getInputs() {
-		Set union = new HashSet();
-		union.addAll(super.getInputs());
-		union.addAll(getNows());
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.TIME_OBSERVATION_ACTION__VALUE:
+				return false;
+		}
+		return eIsSetGen(eFeature);
+	}
+
+	protected EList getInputsHelper(EList input) {
+		super.getInputsHelper(input);
+		if (now != null) {
+			input.addAll(now);
+		}
+		return input;
 	}
 
 } //TimeObservationActionImpl

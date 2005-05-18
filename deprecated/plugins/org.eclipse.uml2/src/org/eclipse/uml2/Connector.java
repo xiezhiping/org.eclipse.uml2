@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Connector.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Connector.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -46,7 +46,7 @@ public interface Connector extends Feature{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
@@ -77,6 +77,7 @@ public interface Connector extends Feature{
 	 */
 	void setKind(ConnectorKind value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -106,6 +107,7 @@ public interface Connector extends Feature{
 	 */
 	void setType(Association value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Redefined Connector</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Connector}.
@@ -121,17 +123,17 @@ public interface Connector extends Feature{
 	 * @return the value of the '<em>Redefined Connector</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConnector_RedefinedConnector()
 	 * @model type="org.eclipse.uml2.Connector" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedConnectors();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Connector} with the specified name from the '<em><b>Redefined Connector</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Connector} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Connector</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Connector} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Connector} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Connector} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Connector} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedConnectors()
 	 * @generated
      */
@@ -152,10 +154,10 @@ public interface Connector extends Feature{
 	 * @return the value of the '<em>End</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConnector_End()
 	 * @model type="org.eclipse.uml2.ConnectorEnd" containment="true" lower="2"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getEnds();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.ConnectorEnd} and appends it to the '<em><b>End</b></em>' containment reference list.
@@ -164,9 +166,20 @@ public interface Connector extends Feature{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ConnectorEnd} to create.
 	 * @return The new {@link org.eclipse.uml2.ConnectorEnd}.
 	 * @see #getEnds()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createEnd() instead.
      */
     ConnectorEnd createEnd(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.ConnectorEnd} and appends it to the '<em><b>End</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.ConnectorEnd}.
+	 * @see #getEnds()
+	 * @generated
+     */
+    ConnectorEnd createEnd();
 
 	/**
 	 * Returns the value of the '<em><b>Contract</b></em>' reference list.
@@ -184,33 +197,16 @@ public interface Connector extends Feature{
 	 */
 	EList getContracts();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified name from the '<em><b>Contract</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Contract</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Behavior} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Behavior} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContracts()
 	 * @generated
      */
     Behavior getContract(String unqualifiedName);
       
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
-	 * @generated
-	 */
-	EList getRedefinedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
-
 } // Connector

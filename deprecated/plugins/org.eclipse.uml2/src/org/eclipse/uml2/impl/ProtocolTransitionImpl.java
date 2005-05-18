@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,29 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.10 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.11 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.CallTrigger;
 import org.eclipse.uml2.Constraint;
@@ -37,6 +41,7 @@ import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Transition;
 import org.eclipse.uml2.TransitionKind;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.Trigger;
 import org.eclipse.uml2.Vertex;
@@ -49,6 +54,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getPostCondition <em>Post Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getReferreds <em>Referred</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getPreCondition <em>Pre Condition</em>}</li>
@@ -63,7 +69,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getPostCondition() <em>Post Condition</em>}' containment reference.
@@ -108,6 +114,15 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Constraint getGuard() {
+		return guard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Constraint getPostCondition() {
 		return postCondition;
 	}
@@ -124,6 +139,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__POST_CONDITION, oldPostCondition, newPostCondition);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -144,7 +160,9 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__POST_CONDITION, newPostCondition, newPostCondition));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,7 +174,21 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.PROTOCOL_TRANSITION__POST_CONDITION, null, newPostCondition));
 		}
-        setPostCondition(newPostCondition);
+		setPostCondition(newPostCondition);
+		return newPostCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPostCondition() {
+		Constraint newPostCondition = UML2Factory.eINSTANCE.createConstraint();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.PROTOCOL_TRANSITION__POST_CONDITION, null, newPostCondition));
+		}
+		setPostCondition(newPostCondition);
 		return newPostCondition;
 	}
 
@@ -193,23 +225,21 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 		return referreds;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Operation getReferred(String unqualifiedName) {
-    	for (Iterator i = getReferreds().iterator(); i.hasNext(); ) {
-    		Operation namedReferred = (Operation) i.next();
-    		
-    		if (unqualifiedName.equals(namedReferred.getName())) {
-    			return namedReferred;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Operation getReferred(String name) {
+		for (Iterator i = getReferreds().iterator(); i.hasNext(); ) {
+			Operation referred = (Operation) i.next();
+			if (name.equals(referred.getName())) {
+				return referred;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -227,35 +257,14 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	public void setPreCondition(Constraint newPreCondition) {
 		Constraint oldPreCondition = preCondition;
 		preCondition = newPreCondition;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION, oldPreCondition, newPreCondition));
-		}
-		if (null != newPreCondition || oldPreCondition == guard) {
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION, oldPreCondition, preCondition));
+
+		if (newPreCondition != null || oldPreCondition == guard) {
 			setGuard(newPreCondition);
 		}
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getPostCondition()) {
-				union.add(getPostCondition());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -269,12 +278,33 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__GUARD, oldGuard, newGuard);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != preCondition && newGuard != preCondition) {
+
+		if (preCondition != null && preCondition != newGuard) {
 			setPreCondition(null);
 		}
 		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGuard(Constraint newGuard) {
+		if (newGuard != guard) {
+			NotificationChain msgs = null;
+			if (guard != null)
+				msgs = ((InternalEObject)guard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.PROTOCOL_TRANSITION__GUARD, null, msgs);
+			if (newGuard != null)
+				msgs = ((InternalEObject)newGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UML2Package.PROTOCOL_TRANSITION__GUARD, null, msgs);
+			msgs = basicSetGuard(newGuard, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__GUARD, newGuard, newGuard));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -633,5 +663,20 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (postCondition != null) {
+			ownedElement.add(postCondition);
+		}
+		return ownedElement;
+	}
+
 
 } //ProtocolTransitionImpl

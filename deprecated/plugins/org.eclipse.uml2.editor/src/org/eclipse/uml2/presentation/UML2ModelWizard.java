@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ModelWizard.java,v 1.8 2005/04/04 20:01:46 khussey Exp $
+ * $Id: UML2ModelWizard.java,v 1.9 2005/05/18 16:42:19 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -106,7 +106,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This caches an instance of the model package.

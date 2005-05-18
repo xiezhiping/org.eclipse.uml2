@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,31 +8,35 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.10 2005/04/04 20:11:12 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.11 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
+import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Region;
@@ -42,6 +46,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Transition;
 import org.eclipse.uml2.TransitionKind;
 import org.eclipse.uml2.Trigger;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.Vertex;
 import org.eclipse.uml2.VisibilityKind;
@@ -61,6 +66,7 @@ import org.eclipse.uml2.VisibilityKind;
  *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getTriggers <em>Trigger</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getEffect <em>Effect</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,7 +78,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
@@ -191,7 +197,9 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		kind = newKind == null ? KIND_EDEFAULT : newKind;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__KIND, oldKind, kind));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -222,7 +230,9 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__CONTAINER, newContainer, newContainer));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -262,6 +272,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__SOURCE, oldSource, newSource);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -282,7 +293,9 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__SOURCE, newSource, newSource));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -322,6 +335,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__TARGET, oldTarget, newTarget);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -342,7 +356,9 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__TARGET, newTarget, newTarget));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -380,7 +396,9 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		redefinedTransition = newRedefinedTransition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__REDEFINED_TRANSITION, oldRedefinedTransition, redefinedTransition));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -394,23 +412,22 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		return trigger;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Trigger getTrigger(String unqualifiedName) {
-    	for (Iterator i = getTriggers().iterator(); i.hasNext(); ) {
-    		Trigger namedTrigger = (Trigger) i.next();
-    		
-    		if (unqualifiedName.equals(namedTrigger.getName())) {
-    			return namedTrigger;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Trigger getTrigger(String name) {
+		for (Iterator i = getTriggers().iterator(); i.hasNext(); ) {
+			Trigger trigger = (Trigger) i.next();
+			if (name.equals(trigger.getName())) {
+				return trigger;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -430,12 +447,9 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		guard = newGuard;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__GUARD, oldGuard, newGuard);
-			if (null == msgs) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -447,21 +461,18 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	public void setGuard(Constraint newGuard) {
 		if (newGuard != guard) {
 			NotificationChain msgs = null;
-			if (null != guard) {
-				msgs = ((InternalEObject) guard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.TRANSITION__GUARD, null, msgs);
-			}
-			if (null != newGuard) {
-				msgs = ((InternalEObject) newGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UML2Package.TRANSITION__GUARD, null, msgs);
-			}
+			if (guard != null)
+				msgs = ((InternalEObject)guard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.TRANSITION__GUARD, null, msgs);
+			if (newGuard != null)
+				msgs = ((InternalEObject)newGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UML2Package.TRANSITION__GUARD, null, msgs);
 			msgs = basicSetGuard(newGuard, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__GUARD, newGuard, newGuard));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__GUARD, newGuard, newGuard));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -473,7 +484,21 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.TRANSITION__GUARD, null, newGuard));
 		}
-        setGuard(newGuard);
+		setGuard(newGuard);
+		return newGuard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createGuard() {
+		Constraint newGuard = UML2Factory.eINSTANCE.createConstraint();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TRANSITION__GUARD, null, newGuard));
+		}
+		setGuard(newGuard);
 		return newGuard;
 	}
 
@@ -498,6 +523,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__EFFECT, oldEffect, newEffect);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -518,6 +544,23 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TRANSITION__EFFECT, newEffect, newEffect));
+
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createEffect() instead.
+	 */
+	public Activity createEffect(EClass eClass) {
+		Activity newEffect = (Activity) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.TRANSITION__EFFECT, null, newEffect));
+		}
+		setEffect(newEffect);
+		return newEffect;
 	}
 
 	/**
@@ -525,12 +568,12 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Activity createEffect(EClass eClass) {
-		Activity newEffect = (Activity) eClass.getEPackage().getEFactoryInstance().create(eClass);
+	public Activity createEffect() {
+		Activity newEffect = UML2Factory.eINSTANCE.createActivity();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.TRANSITION__EFFECT, null, newEffect));
 		}
-        setEffect(newEffect);
+		setEffect(newEffect);
 		return newEffect;
 	}
 
@@ -582,12 +625,46 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public Classifier getRedefinitionContext(String name) {
+		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
+			Classifier redefinitionContext = (Classifier) i.next();
+			if (name.equals(redefinitionContext.getName())) {
+				return redefinitionContext;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Element basicGetOwner() {
-		if (null != getContainer()) {
-			return (Element) getContainer();
+		Region container = getContainer();			
+		if (container != null) {
+			return container;
 		}
 		return super.basicGetOwner();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (guard != null) {
+			ownedElement.add(guard);
+		}
+		if (effect != null) {
+			ownedElement.add(effect);
+		}
+		return ownedElement;
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -598,30 +675,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getGuard()) {
-				union.add(getGuard());
-			}
-			if (null != getEffect()) {
-				union.add(getEffect());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -969,5 +1022,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //TransitionImpl

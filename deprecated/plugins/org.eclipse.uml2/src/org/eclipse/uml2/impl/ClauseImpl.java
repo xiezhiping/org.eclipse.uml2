@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.5 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.6 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -55,7 +55,7 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getTests() <em>Test</em>}' reference list.
@@ -147,23 +147,22 @@ public class ClauseImpl extends ElementImpl implements Clause {
 		return test;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityNode getTest(String unqualifiedName) {
-    	for (Iterator i = getTests().iterator(); i.hasNext(); ) {
-    		ActivityNode namedTest = (ActivityNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedTest.getName())) {
-    			return namedTest;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityNode getTest(String name) {
+		for (Iterator i = getTests().iterator(); i.hasNext(); ) {
+			ActivityNode test = (ActivityNode) i.next();
+			if (name.equals(test.getName())) {
+				return test;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -176,23 +175,22 @@ public class ClauseImpl extends ElementImpl implements Clause {
 		return body;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public ActivityNode getBody(String unqualifiedName) {
-    	for (Iterator i = getBodies().iterator(); i.hasNext(); ) {
-    		ActivityNode namedBody = (ActivityNode) i.next();
-    		
-    		if (unqualifiedName.equals(namedBody.getName())) {
-    			return namedBody;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public ActivityNode getBody(String name) {
+		for (Iterator i = getBodies().iterator(); i.hasNext(); ) {
+			ActivityNode body = (ActivityNode) i.next();
+			if (name.equals(body.getName())) {
+				return body;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -205,6 +203,7 @@ public class ClauseImpl extends ElementImpl implements Clause {
 		return predecessorClause;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -216,6 +215,7 @@ public class ClauseImpl extends ElementImpl implements Clause {
 		}
 		return successorClause;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -253,7 +253,9 @@ public class ClauseImpl extends ElementImpl implements Clause {
 		decider = newDecider;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLAUSE__DECIDER, oldDecider, decider));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -267,23 +269,22 @@ public class ClauseImpl extends ElementImpl implements Clause {
 		return bodyOutput;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public OutputPin getBodyOutput(String unqualifiedName) {
-    	for (Iterator i = getBodyOutputs().iterator(); i.hasNext(); ) {
-    		OutputPin namedBodyOutput = (OutputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedBodyOutput.getName())) {
-    			return namedBodyOutput;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public OutputPin getBodyOutput(String name) {
+		for (Iterator i = getBodyOutputs().iterator(); i.hasNext(); ) {
+			OutputPin bodyOutput = (OutputPin) i.next();
+			if (name.equals(bodyOutput.getName())) {
+				return bodyOutput;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -470,5 +471,6 @@ public class ClauseImpl extends ElementImpl implements Clause {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //ClauseImpl

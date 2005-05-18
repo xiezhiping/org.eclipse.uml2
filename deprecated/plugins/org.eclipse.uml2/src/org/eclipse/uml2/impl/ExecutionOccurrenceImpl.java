@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceImpl.java,v 1.6 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ExecutionOccurrenceImpl.java,v 1.7 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,7 +56,7 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
@@ -144,6 +144,7 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.EXECUTION_OCCURRENCE__START, oldStart, newStart);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -164,7 +165,9 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXECUTION_OCCURRENCE__START, newStart, newStart));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -204,6 +207,7 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.EXECUTION_OCCURRENCE__FINISH, oldFinish, newFinish);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -224,7 +228,9 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXECUTION_OCCURRENCE__FINISH, newFinish, newFinish));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -238,23 +244,22 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 		return behavior;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Behavior getBehavior(String unqualifiedName) {
-    	for (Iterator i = getBehaviors().iterator(); i.hasNext(); ) {
-    		Behavior namedBehavior = (Behavior) i.next();
-    		
-    		if (unqualifiedName.equals(namedBehavior.getName())) {
-    			return namedBehavior;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Behavior getBehavior(String name) {
+		for (Iterator i = getBehaviors().iterator(); i.hasNext(); ) {
+			Behavior behavior = (Behavior) i.next();
+			if (name.equals(behavior.getName())) {
+				return behavior;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -573,5 +578,6 @@ public class ExecutionOccurrenceImpl extends InteractionFragmentImpl implements 
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //ExecutionOccurrenceImpl

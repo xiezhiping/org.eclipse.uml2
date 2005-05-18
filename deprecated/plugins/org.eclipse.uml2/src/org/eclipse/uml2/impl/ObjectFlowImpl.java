@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -59,7 +59,7 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isMulticast() <em>Is Multicast</em>}' attribute.
@@ -158,7 +158,9 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 		if (newIsMulticast) eFlags |= IS_MULTICAST_EFLAG; else eFlags &= ~IS_MULTICAST_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__IS_MULTICAST, oldIsMulticast, newIsMulticast));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -179,7 +181,9 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 		if (newIsMultireceive) eFlags |= IS_MULTIRECEIVE_EFLAG; else eFlags &= ~IS_MULTIRECEIVE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__IS_MULTIRECEIVE, oldIsMultireceive, newIsMultireceive));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,7 +221,9 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 		transformation = newTransformation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__TRANSFORMATION, oldTransformation, transformation));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -255,7 +261,9 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 		selection = newSelection;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_FLOW__SELECTION, oldSelection, selection));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -680,5 +688,6 @@ public class ObjectFlowImpl extends ActivityEdgeImpl implements ObjectFlow {
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //ObjectFlowImpl

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,24 +8,26 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.11 2005/04/04 20:11:13 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.12 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.ParameterableElement;
 import org.eclipse.uml2.TemplateParameter;
@@ -39,10 +41,10 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getSignature <em>Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getParameteredElement <em>Parametered Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getOwnedParameteredElement <em>Owned Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getDefault <em>Default</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getSignature <em>Signature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getOwnedParameteredElement <em>Owned Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getOwnedDefault <em>Owned Default</em>}</li>
  * </ul>
  * </p>
@@ -55,7 +57,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getParameteredElement() <em>Parametered Element</em>}' reference.
@@ -68,16 +70,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	protected ParameterableElement parameteredElement = null;
 
 	/**
-	 * The cached value of the '{@link #getOwnedParameteredElement() <em>Owned Parametered Element</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedParameteredElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected ParameterableElement ownedParameteredElement = null;
-
-	/**
 	 * The cached value of the '{@link #getDefault() <em>Default</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -86,6 +78,16 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @ordered
 	 */
 	protected ParameterableElement default_ = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedParameteredElement() <em>Owned Parametered Element</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameteredElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterableElement ownedParameteredElement = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedDefault() <em>Owned Default</em>}' containment reference.
@@ -121,10 +123,8 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public TemplateSignature getSignature() {
-		if (eContainerFeatureID != UML2Package.TEMPLATE_PARAMETER__SIGNATURE) {
-			return null;
-		}
-		return (TemplateSignature) eContainer;
+		if (eContainerFeatureID != UML2Package.TEMPLATE_PARAMETER__SIGNATURE) return null;
+		return (TemplateSignature)eContainer;
 	}
 
 	/**
@@ -133,25 +133,22 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public void setSignature(TemplateSignature newSignature) {
-		if (eContainer != newSignature || (eContainerFeatureID != UML2Package.TEMPLATE_PARAMETER__SIGNATURE && null != newSignature)) {
-			if (EcoreUtil.isAncestor(this, newSignature)) {
+		if (newSignature != eContainer || (eContainerFeatureID != UML2Package.TEMPLATE_PARAMETER__SIGNATURE && newSignature != null)) {
+			if (EcoreUtil.isAncestor(this, newSignature))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			}
 			NotificationChain msgs = null;
-			if (null != eContainer) {
+			if (eContainer != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (null != newSignature) {
-				msgs = ((InternalEObject) newSignature).eInverseAdd(this, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, TemplateSignature.class, msgs);
-			}
-			msgs = eBasicSetContainer((InternalEObject) newSignature, UML2Package.TEMPLATE_PARAMETER__SIGNATURE, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__SIGNATURE, newSignature, newSignature));
+			if (newSignature != null)
+				msgs = ((InternalEObject)newSignature).eInverseAdd(this, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, TemplateSignature.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject)newSignature, UML2Package.TEMPLATE_PARAMETER__SIGNATURE, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__SIGNATURE, newSignature, newSignature));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -191,11 +188,11 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, oldParameteredElement, newParameteredElement);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != ownedParameteredElement && newParameteredElement != ownedParameteredElement) {
+
+		if (ownedParameteredElement != null && ownedParameteredElement != newParameteredElement) {
 			setOwnedParameteredElement(null);
 		}
 		return msgs;
-
 	}
 
 	/**
@@ -206,21 +203,18 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
-			if (null != parameteredElement) {
-				msgs = ((InternalEObject) parameteredElement).eInverseRemove(this, UML2Package.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER, ParameterableElement.class, msgs);
-			}
-			if (null != newParameteredElement) {
-				msgs = ((InternalEObject) newParameteredElement).eInverseAdd(this, UML2Package.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER, ParameterableElement.class, msgs);
-			}
+			if (parameteredElement != null)
+				msgs = ((InternalEObject)parameteredElement).eInverseRemove(this, UML2Package.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER, ParameterableElement.class, msgs);
+			if (newParameteredElement != null)
+				msgs = ((InternalEObject)newParameteredElement).eInverseAdd(this, UML2Package.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER, ParameterableElement.class, msgs);
 			msgs = basicSetParameteredElement(newParameteredElement, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, newParameteredElement, newParameteredElement));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, newParameteredElement, newParameteredElement));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,11 +237,11 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, oldOwnedParameteredElement, newOwnedParameteredElement);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != newOwnedParameteredElement || oldOwnedParameteredElement == parameteredElement) {
+
+		if (newOwnedParameteredElement != null ||  oldOwnedParameteredElement == parameteredElement) {
 			setParameteredElement(newOwnedParameteredElement);
 		}
 		return msgs;
-
 	}
 
 	/**
@@ -258,21 +252,18 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	public void setOwnedParameteredElement(ParameterableElement newOwnedParameteredElement) {
 		if (newOwnedParameteredElement != ownedParameteredElement) {
 			NotificationChain msgs = null;
-			if (null != ownedParameteredElement) {
-				msgs = ((InternalEObject) ownedParameteredElement).eInverseRemove(this, UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER, ParameterableElement.class, msgs);
-			}
-			if (null != newOwnedParameteredElement) {
-				msgs = ((InternalEObject) newOwnedParameteredElement).eInverseAdd(this, UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER, ParameterableElement.class, msgs);
-			}
+			if (ownedParameteredElement != null)
+				msgs = ((InternalEObject)ownedParameteredElement).eInverseRemove(this, UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER, ParameterableElement.class, msgs);
+			if (newOwnedParameteredElement != null)
+				msgs = ((InternalEObject)newOwnedParameteredElement).eInverseAdd(this, UML2Package.PARAMETERABLE_ELEMENT__OWNING_PARAMETER, ParameterableElement.class, msgs);
 			msgs = basicSetOwnedParameteredElement(newOwnedParameteredElement, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, newOwnedParameteredElement, newOwnedParameteredElement));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, newOwnedParameteredElement, newOwnedParameteredElement));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -284,7 +275,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, null, newOwnedParameteredElement));
 		}
-        setOwnedParameteredElement(newOwnedParameteredElement);
+		setOwnedParameteredElement(newOwnedParameteredElement);
 		return newOwnedParameteredElement;
 	}
 
@@ -322,13 +313,14 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	public void setDefault(ParameterableElement newDefault) {
 		ParameterableElement oldDefault = default_;
 		default_ = newDefault;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__DEFAULT, oldDefault, newDefault));
-		}		if (null != ownedDefault && newDefault != ownedDefault) {
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__DEFAULT, oldDefault, default_));
+
+		if (ownedDefault != null && ownedDefault != newDefault) {
 			setOwnedDefault(null);
 		}
-
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -351,11 +343,11 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT, oldOwnedDefault, newOwnedDefault);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != newOwnedDefault || oldOwnedDefault == default_) {
+
+		if (newOwnedDefault != null ||  oldOwnedDefault == default_) {
 			setDefault(newOwnedDefault);
 		}
 		return msgs;
-
 	}
 
 	/**
@@ -366,21 +358,18 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	public void setOwnedDefault(ParameterableElement newOwnedDefault) {
 		if (newOwnedDefault != ownedDefault) {
 			NotificationChain msgs = null;
-			if (null != ownedDefault) {
-				msgs = ((InternalEObject) ownedDefault).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT, null, msgs);
-			}
-			if (null != newOwnedDefault) {
-				msgs = ((InternalEObject) newOwnedDefault).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT, null, msgs);
-			}
+			if (ownedDefault != null)
+				msgs = ((InternalEObject)ownedDefault).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT, null, msgs);
+			if (newOwnedDefault != null)
+				msgs = ((InternalEObject)newOwnedDefault).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT, null, msgs);
 			msgs = basicSetOwnedDefault(newOwnedDefault, msgs);
-			if (null != msgs) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT, newOwnedDefault, newOwnedDefault));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT, newOwnedDefault, newOwnedDefault));
 
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -392,7 +381,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT, null, newOwnedDefault));
 		}
-        setOwnedDefault(newOwnedDefault);
+		setOwnedDefault(newOwnedDefault);
 		return newOwnedDefault;
 	}
 
@@ -402,36 +391,30 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		if (null != getSignature()) {
-			return (Element) getSignature();
+		TemplateSignature signature = getSignature();			
+		if (signature != null) {
+			return signature;
 		}
 		return super.basicGetOwner();
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			if (null != getOwnedParameteredElement()) {
-				union.add(getOwnedParameteredElement());
-			}
-			if (null != getOwnedDefault()) {
-				union.add(getOwnedDefault());
-			}
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (ownedParameteredElement != null) {
+			ownedElement.add(ownedParameteredElement);
 		}
-
+		if (ownedDefault != null) {
+			ownedElement.add(ownedDefault);
+		}
 		return ownedElement;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -634,5 +617,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //TemplateParameterImpl

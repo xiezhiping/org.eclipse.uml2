@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Abstraction.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Abstraction.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -42,7 +40,7 @@ public interface Abstraction extends Dependency{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Mapping</b></em>' containment reference.
@@ -59,7 +57,6 @@ public interface Abstraction extends Dependency{
 	 * @see #setMapping(OpaqueExpression)
 	 * @see org.eclipse.uml2.UML2Package#getAbstraction_Mapping()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	OpaqueExpression getMapping();
@@ -74,6 +71,7 @@ public interface Abstraction extends Dependency{
 	 */
 	void setMapping(OpaqueExpression value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.OpaqueExpression} and sets the '<em><b>Mapping</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -84,14 +82,15 @@ public interface Abstraction extends Dependency{
 	 * @generated
      */
     OpaqueExpression createMapping(EClass eClass);
-     
-	/**
+
+    /**
+     * Creates a {@link org.eclipse.uml2.OpaqueExpression} and sets the '<em><b>Mapping</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * @return The new {@link org.eclipse.uml2.OpaqueExpression}.
+	 * @see #getMapping()
 	 * @generated
-	 */
-	EList getOwnedElements();
+     */
+    OpaqueExpression createMapping();
 
 } // Abstraction

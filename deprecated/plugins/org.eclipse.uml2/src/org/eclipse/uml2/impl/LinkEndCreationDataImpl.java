@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.7 2005/04/04 20:11:13 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,18 +16,23 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.InputPin;
 import org.eclipse.uml2.LinkEndCreationData;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.UML2Package;
-
 import org.eclipse.uml2.QualifierValue;
 
 /**
@@ -39,6 +44,7 @@ import org.eclipse.uml2.QualifierValue;
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.LinkEndCreationDataImpl#isReplaceAll <em>Is Replace All</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LinkEndCreationDataImpl#getInsertAt <em>Insert At</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.LinkEndCreationDataImpl#getQualifiers <em>Qualifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,7 +56,7 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isReplaceAll() <em>Is Replace All</em>}' attribute.
@@ -119,7 +125,9 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 		if (newIsReplaceAll) eFlags |= IS_REPLACE_ALL_EFLAG; else eFlags &= ~IS_REPLACE_ALL_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LINK_END_CREATION_DATA__IS_REPLACE_ALL, oldIsReplaceAll, newIsReplaceAll));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -157,7 +165,9 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 		insertAt = newInsertAt;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LINK_END_CREATION_DATA__INSERT_AT, oldInsertAt, insertAt));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -356,5 +366,6 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //LinkEndCreationDataImpl

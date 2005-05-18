@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Lifeline.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Lifeline.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -46,7 +46,7 @@ public interface Lifeline extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Covered By</b></em>' reference list.
@@ -61,17 +61,18 @@ public interface Lifeline extends NamedElement{
 	 * @return the value of the '<em>Covered By</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLifeline_CoveredBy()
 	 * @see org.eclipse.uml2.InteractionFragment#getCovereds
-	 * @model type="org.eclipse.uml2.InteractionFragment" opposite="covered" volatile="true" ordered="false"
+	 * @model type="org.eclipse.uml2.InteractionFragment" opposite="covered" ordered="false"
 	 * @generated
 	 */
 	EList getCoveredBys();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.InteractionFragment} with the specified name from the '<em><b>Covered By</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Covered By</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.InteractionFragment} to retrieve.
-	 * @return The {@link org.eclipse.uml2.InteractionFragment} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InteractionFragment} to retrieve.
+	 * @return The {@link org.eclipse.uml2.InteractionFragment} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getCoveredBys()
 	 * @generated
      */
@@ -106,6 +107,7 @@ public interface Lifeline extends NamedElement{
 	 */
 	void setRepresents(ConnectableElement value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Interaction</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Interaction#getLifelines <em>Lifeline</em>}'.
@@ -123,7 +125,6 @@ public interface Lifeline extends NamedElement{
 	 * @see org.eclipse.uml2.UML2Package#getLifeline_Interaction()
 	 * @see org.eclipse.uml2.Interaction#getLifelines
 	 * @model opposite="lifeline" required="true"
-	 *        annotation="subsets org.eclipse.uml2.NamedElement#getNamespace=''"
 	 * @generated
 	 */
 	Interaction getInteraction();
@@ -137,6 +138,7 @@ public interface Lifeline extends NamedElement{
 	 * @generated
 	 */
 	void setInteraction(Interaction value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Selector</b></em>' containment reference.
@@ -153,7 +155,6 @@ public interface Lifeline extends NamedElement{
 	 * @see #setSelector(OpaqueExpression)
 	 * @see org.eclipse.uml2.UML2Package#getLifeline_Selector()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	OpaqueExpression getSelector();
@@ -168,6 +169,7 @@ public interface Lifeline extends NamedElement{
 	 */
 	void setSelector(OpaqueExpression value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.OpaqueExpression} and sets the '<em><b>Selector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -178,7 +180,17 @@ public interface Lifeline extends NamedElement{
 	 * @generated
      */
     OpaqueExpression createSelector(EClass eClass);
-     
+
+    /**
+     * Creates a {@link org.eclipse.uml2.OpaqueExpression} and sets the '<em><b>Selector</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.OpaqueExpression}.
+	 * @see #getSelector()
+	 * @generated
+     */
+    OpaqueExpression createSelector();
+
 	/**
 	 * Returns the value of the '<em><b>Decomposed As</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -205,22 +217,5 @@ public interface Lifeline extends NamedElement{
 	 */
 	void setDecomposedAs(PartDecomposition value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
-	 * @generated
-	 */
-	Namespace getNamespace();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
 
 } // Lifeline

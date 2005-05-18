@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationAction.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: DurationObservationAction.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface DurationObservationAction extends WriteStructuralFeatureAction{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Duration</b></em>' containment reference list.
@@ -59,17 +59,17 @@ public interface DurationObservationAction extends WriteStructuralFeatureAction{
 	 * @return the value of the '<em>Duration</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDurationObservationAction_Duration()
 	 * @model type="org.eclipse.uml2.Duration" containment="true"
-	 *        annotation="redefines org.eclipse.uml2.WriteStructuralFeatureAction#getValue=''"
 	 * @generated
 	 */
 	EList getDurations();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Duration} with the specified name from the '<em><b>Duration</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Duration} with the specified '<em><b>Name</b></em>' from the '<em><b>Duration</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Duration} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Duration} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Duration} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Duration} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getDurations()
 	 * @generated
      */
@@ -82,25 +82,19 @@ public interface DurationObservationAction extends WriteStructuralFeatureAction{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Duration} to create.
 	 * @return The new {@link org.eclipse.uml2.Duration}.
 	 * @see #getDurations()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createDuration() instead.
      */
     Duration createDuration(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.Duration} and appends it to the '<em><b>Duration</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='false' name='value' eType='org.eclipse.uml2.InputPin' containment='true'" 
+	 * @return The new {@link org.eclipse.uml2.Duration}.
+	 * @see #getDurations()
 	 * @generated
-	 */
-	InputPin getValue();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="feature derived='false' name='value' eType='org.eclipse.uml2.InputPin' containment='true'" 
-	 * @generated
-	 */
-	void setValue(InputPin value);
+     */
+    Duration createDuration();
 
 } // DurationObservationAction

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationItemProvider.java,v 1.11 2005/04/22 20:55:49 khussey Exp $
+ * $Id: ProfileApplicationItemProvider.java,v 1.12 2005/05/18 16:40:45 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -16,24 +16,30 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.domain.EditingDomain;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
 import org.eclipse.uml2.ProfileApplication;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.edit.internal.command.SubsetSetCommand;
 
-import org.eclipse.uml2.edit.internal.command.SupersetSetCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
+import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.ProfileApplication} object.
@@ -54,7 +60,7 @@ public class ProfileApplicationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -174,4 +180,5 @@ public class ProfileApplicationItemProvider
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}
+
 }

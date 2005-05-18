@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlow.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: ObjectFlow.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ public interface ObjectFlow extends ActivityEdge{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Multicast</b></em>' attribute.
@@ -67,6 +67,7 @@ public interface ObjectFlow extends ActivityEdge{
 	 */
 	void setIsMulticast(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Is Multireceive</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
@@ -93,6 +94,7 @@ public interface ObjectFlow extends ActivityEdge{
 	 * @generated
 	 */
 	void setIsMultireceive(boolean value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Transformation</b></em>' reference.
@@ -123,6 +125,7 @@ public interface ObjectFlow extends ActivityEdge{
 	 */
 	void setTransformation(Behavior value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Selection</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -151,5 +154,6 @@ public interface ObjectFlow extends ActivityEdge{
 	 * @generated
 	 */
 	void setSelection(Behavior value);
+
 
 } // ObjectFlow

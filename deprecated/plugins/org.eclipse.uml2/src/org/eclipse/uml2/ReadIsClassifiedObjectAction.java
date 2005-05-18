@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectAction.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ReadIsClassifiedObjectAction.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -45,7 +43,7 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Direct</b></em>' attribute.
@@ -77,6 +75,7 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 */
 	void setIsDirect(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Classifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -106,6 +105,7 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 */
 	void setClassifier(Classifier value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -121,7 +121,6 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReadIsClassifiedObjectAction_Result()
 	 * @model containment="true" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Action#getOutputs=''"
 	 * @generated
 	 */
 	OutputPin getResult();
@@ -136,6 +135,7 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 */
 	void setResult(OutputPin value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.OutputPin} and sets the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -143,10 +143,21 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.OutputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.OutputPin}.
 	 * @see #getResult()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createResult() instead.
      */
     OutputPin createResult(EClass eClass);
-     
+
+    /**
+     * Creates a {@link org.eclipse.uml2.OutputPin} and sets the '<em><b>Result</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.OutputPin}.
+	 * @see #getResult()
+	 * @generated
+     */
+    OutputPin createResult();
+
 	/**
 	 * Returns the value of the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -162,7 +173,6 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReadIsClassifiedObjectAction_Object()
 	 * @model containment="true" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Action#getInputs=''"
 	 * @generated
 	 */
 	InputPin getObject();
@@ -177,6 +187,7 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 */
 	void setObject(InputPin value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -187,23 +198,15 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	 * @generated
      */
     InputPin createObject(EClass eClass);
-     
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='output' eType='org.eclipse.uml2.OutputPin' containment='false'" 
-	 * @generated
-	 */
-	EList getOutputs();
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='input' eType='org.eclipse.uml2.InputPin' containment='false'" 
+	 * @return The new {@link org.eclipse.uml2.InputPin}.
+	 * @see #getObject()
 	 * @generated
-	 */
-	EList getInputs();
+     */
+    InputPin createObject();
 
 } // ReadIsClassifiedObjectAction

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Generalization.java,v 1.8 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Generalization.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -43,7 +43,7 @@ public interface Generalization extends DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Substitutable</b></em>' attribute.
@@ -74,6 +74,7 @@ public interface Generalization extends DirectedRelationship{
 	 */
 	void setIsSubstitutable(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Specific</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Classifier#getGeneralizations <em>Generalization</em>}'.
@@ -91,7 +92,6 @@ public interface Generalization extends DirectedRelationship{
 	 * @see org.eclipse.uml2.UML2Package#getGeneralization_Specific()
 	 * @see org.eclipse.uml2.Classifier#getGeneralizations
 	 * @model opposite="generalization" required="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getSources='' org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	Classifier getSpecific();
@@ -105,6 +105,7 @@ public interface Generalization extends DirectedRelationship{
 	 * @generated
 	 */
 	void setSpecific(Classifier value);
+
 
 	/**
 	 * Returns the value of the '<em><b>General</b></em>' reference.
@@ -121,7 +122,6 @@ public interface Generalization extends DirectedRelationship{
 	 * @see #setGeneral(Classifier)
 	 * @see org.eclipse.uml2.UML2Package#getGeneralization_General()
 	 * @model required="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getTargets=''"
 	 * @generated
 	 */
 	Classifier getGeneral();
@@ -135,6 +135,7 @@ public interface Generalization extends DirectedRelationship{
 	 * @generated
 	 */
 	void setGeneral(Classifier value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Generalization Set</b></em>' reference list.
@@ -154,42 +155,16 @@ public interface Generalization extends DirectedRelationship{
 	 */
 	EList getGeneralizationSets();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.GeneralizationSet} with the specified name from the '<em><b>Generalization Set</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Generalization Set</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.GeneralizationSet} to retrieve.
-	 * @return The {@link org.eclipse.uml2.GeneralizationSet} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.GeneralizationSet} to retrieve.
+	 * @return The {@link org.eclipse.uml2.GeneralizationSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getGeneralizationSets()
 	 * @generated
      */
     GeneralizationSet getGeneralizationSet(String unqualifiedName);
       
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getSources();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getTargets();
-
 } // Generalization

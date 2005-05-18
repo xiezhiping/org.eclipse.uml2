@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,29 +8,33 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.15 2005/04/04 20:11:12 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.16 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Artifact;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Dependency;
@@ -44,11 +48,15 @@ import org.eclipse.uml2.Slot;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
+
+import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+
+import org.eclipse.uml2.internal.operation.InstanceSpecificationOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,6 +65,7 @@ import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getDeployedElements <em>Deployed Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getSlots <em>Slot</em>}</li>
@@ -73,7 +82,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
@@ -143,33 +152,46 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, new int[] {UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION);
 		}
 		return deployment;
-
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Deployment getDeployment(String unqualifiedName) {
-    	for (Iterator i = getDeployments().iterator(); i.hasNext(); ) {
-    		Deployment namedDeployment = (Deployment) i.next();
-    		
-    		if (unqualifiedName.equals(namedDeployment.getName())) {
-    			return namedDeployment;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public Deployment getDeployment(String name) {
+		for (Iterator i = getDeployments().iterator(); i.hasNext(); ) {
+			Deployment deployment = (Deployment) i.next();
+			if (name.equals(deployment.getName())) {
+				return deployment;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createDeployment() instead.
+	 */
 	public Deployment createDeployment(EClass eClass) {
 		Deployment newDeployment = (Deployment) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, null, newDeployment));
+		}
+		getDeployments().add(newDeployment);
+		return newDeployment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deployment createDeployment() {
+		Deployment newDeployment = UML2Factory.eINSTANCE.createDeployment();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, null, newDeployment));
 		}
@@ -223,23 +245,21 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 		return deployedElements;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public PackageableElement getDeployedElement(String unqualifiedName) {
-    	for (Iterator i = getDeployedElements().iterator(); i.hasNext(); ) {
-    		PackageableElement namedDeployedElement = (PackageableElement) i.next();
-    		
-    		if (unqualifiedName.equals(namedDeployedElement.getName())) {
-    			return namedDeployedElement;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public PackageableElement getDeployedElement(String name) {
+		for (Iterator i = getDeployedElements().iterator(); i.hasNext(); ) {
+			PackageableElement deployedElement = (PackageableElement) i.next();
+			if (name.equals(deployedElement.getName())) {
+				return deployedElement;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -252,13 +272,29 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 		return slot;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createSlot() instead.
+	 */
+	public Slot createSlot(EClass eClass) {
+		Slot newSlot = (Slot) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INSTANCE_SPECIFICATION__SLOT, null, newSlot));
+		}
+		getSlots().add(newSlot);
+		return newSlot;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Slot createSlot(EClass eClass) {
-		Slot newSlot = (Slot) eClass.getEPackage().getEFactoryInstance().create(eClass);
+	public Slot createSlot() {
+		Slot newSlot = UML2Factory.eINSTANCE.createSlot();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INSTANCE_SPECIFICATION__SLOT, null, newSlot));
 		}
@@ -278,23 +314,22 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 		return classifier;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getClassifier(String unqualifiedName) {
-    	for (Iterator i = getClassifiers().iterator(); i.hasNext(); ) {
-    		Classifier namedClassifier = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedClassifier.getName())) {
-    			return namedClassifier;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getClassifier(String name) {
+		for (Iterator i = getClassifiers().iterator(); i.hasNext(); ) {
+			Classifier classifier = (Classifier) i.next();
+			if (name.equals(classifier.getName())) {
+				return classifier;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -316,6 +351,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION, oldSpecification, newSpecification);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -336,7 +372,9 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION, newSpecification, newSpecification));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -348,8 +386,26 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION, null, newSpecification));
 		}
-        setSpecification(newSpecification);
+		setSpecification(newSpecification);
 		return newSpecification;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSlotsAreDefined(DiagnosticChain diagnostics, Map context) {
+		return InstanceSpecificationOperations.validateSlotsAreDefined(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNoDuplicateSlots(DiagnosticChain diagnostics, Map context) {
+		return InstanceSpecificationOperations.validateNoDuplicateSlots(this, diagnostics, context);
 	}
 
 	/**
@@ -362,50 +418,8 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY, new int[] {UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT);
 		}
 		return clientDependency;
-
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSlotsAreDefined(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.InstanceSpecificationOperations.validateSlotsAreDefined(this, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNoDuplicateSlots(DiagnosticChain diagnostics, Map context) {
-		return org.eclipse.uml2.internal.operation.InstanceSpecificationOperations.validateNoDuplicateSlots(this, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getElement_OwnedElement());
-
-		if (null == ownedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedElements());
-			union.addAll(getSlots());
-			if (null != getSpecification()) {
-				union.add(getSpecification());
-			}
-			union.addAll(getDeployments());
-
-			ownedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement);
-		}
-
-		return ownedElement;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -675,7 +689,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INSTANCE_SPECIFICATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -694,7 +708,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			case UML2Package.INSTANCE_SPECIFICATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INSTANCE_SPECIFICATION__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__NAME_EXPRESSION:
@@ -704,7 +718,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			case UML2Package.INSTANCE_SPECIFICATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INSTANCE_SPECIFICATION__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT:
 				return deployment != null && !deployment.isEmpty();
 			case UML2Package.INSTANCE_SPECIFICATION__DEPLOYED_ELEMENT:
@@ -717,6 +731,16 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 				return specification != null;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.INSTANCE_SPECIFICATION__VISIBILITY:
+				return false;
+			case UML2Package.INSTANCE_SPECIFICATION__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**
@@ -760,5 +784,26 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedElementsHelper(EList ownedElement) {
+		super.getOwnedElementsHelper(ownedElement);
+		if (deployment != null) {
+			ownedElement.addAll(deployment);
+		}
+		if (slot != null) {
+			ownedElement.addAll(slot);
+		}
+		if (specification != null) {
+			ownedElement.add(specification);
+		}
+		return ownedElement;
+	}
+
 
 } //InstanceSpecificationImpl

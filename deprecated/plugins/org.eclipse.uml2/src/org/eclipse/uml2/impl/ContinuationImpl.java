@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.8 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isSetting() <em>Setting</em>}' attribute.
@@ -108,7 +108,9 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 		if (newSetting) eFlags |= SETTING_EFLAG; else eFlags &= ~SETTING_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONTINUATION__SETTING, oldSetting, newSetting));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -408,5 +410,6 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 		result.append(')');
 		return result.toString();
 	}
+
 
 } //ContinuationImpl

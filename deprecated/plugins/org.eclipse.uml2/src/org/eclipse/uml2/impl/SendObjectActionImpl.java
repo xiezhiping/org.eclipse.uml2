@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,24 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.10 2005/04/04 20:11:12 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.11 2005/05/18 16:38:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.InputPin;
 import org.eclipse.uml2.Port;
@@ -33,6 +36,7 @@ import org.eclipse.uml2.SendObjectAction;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -56,7 +60,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
@@ -117,6 +121,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.SEND_OBJECT_ACTION__TARGET, oldTarget, newTarget);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -137,7 +142,9 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.SEND_OBJECT_ACTION__TARGET, newTarget, newTarget));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -149,7 +156,21 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.SEND_OBJECT_ACTION__TARGET, null, newTarget));
 		}
-        setTarget(newTarget);
+		setTarget(newTarget);
+		return newTarget;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin createTarget() {
+		InputPin newTarget = UML2Factory.eINSTANCE.createInputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.SEND_OBJECT_ACTION__TARGET, null, newTarget));
+		}
+		setTarget(newTarget);
 		return newTarget;
 	}
 
@@ -174,6 +195,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.SEND_OBJECT_ACTION__REQUEST, oldRequest, newRequest);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -194,7 +216,9 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.SEND_OBJECT_ACTION__REQUEST, newRequest, newRequest));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -206,7 +230,21 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.SEND_OBJECT_ACTION__REQUEST, null, newRequest));
 		}
-        setRequest(newRequest);
+		setRequest(newRequest);
+		return newRequest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin createRequest() {
+		InputPin newRequest = UML2Factory.eINSTANCE.createInputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.SEND_OBJECT_ACTION__REQUEST, null, newRequest));
+		}
+		setRequest(newRequest);
 		return newRequest;
 	}
 
@@ -219,27 +257,6 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getInvocationAction_Argument(), 0, Collections.EMPTY_LIST.toArray());
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getInputs() {
-		EList input = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Input());
-
-		if (null == input) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getInputs());
-			if (null != getTarget()) {
-				union.add(getTarget());
-			}
-
-			input = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Input(), input);
-		}
-
-		return input;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -618,7 +635,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.SEND_OBJECT_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -677,7 +694,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 			case UML2Package.SEND_OBJECT_ACTION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__ARGUMENT:
-				return false;
+				return !getArguments().isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__ON_PORT:
 				return onPort != null;
 			case UML2Package.SEND_OBJECT_ACTION__TARGET:
@@ -687,5 +704,28 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.SEND_OBJECT_ACTION__ARGUMENT:
+				return false;
+		}
+		return eIsSetGen(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getInputsHelper(EList input) {
+		super.getInputsHelper(input);
+		if (target != null) {
+			input.add(target);
+		}
+		return input;
+	}
+
 
 } //SendObjectActionImpl

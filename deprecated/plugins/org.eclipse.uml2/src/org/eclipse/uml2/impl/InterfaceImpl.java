@@ -8,27 +8,28 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.17 2005/04/14 17:30:57 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.18 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Interface;
@@ -39,9 +40,11 @@ import org.eclipse.uml2.Reception;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
 import org.eclipse.uml2.internal.operation.TypeOperations;
 
 /**
@@ -68,7 +71,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
@@ -160,23 +163,22 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		return ownedAttribute;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Property getOwnedAttribute(String unqualifiedName) {
-    	for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
-    		Property namedOwnedAttribute = (Property) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedAttribute.getName())) {
-    			return namedOwnedAttribute;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Property getOwnedAttribute(String name) {
+		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
+			Property ownedAttribute = (Property) i.next();
+			if (name.equals(ownedAttribute.getName())) {
+				return ownedAttribute;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -196,6 +198,20 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Property createOwnedAttribute() {
+		Property newOwnedAttribute = UML2Factory.eINSTANCE.createProperty();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__OWNED_ATTRIBUTE, null, newOwnedAttribute));
+		}
+		getOwnedAttributes().add(newOwnedAttribute);
+		return newOwnedAttribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getOwnedOperations() {
 		if (ownedOperation == null) {
 			ownedOperation = new EObjectContainmentEList(Operation.class, this, UML2Package.INTERFACE__OWNED_OPERATION);
@@ -203,30 +219,44 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		return ownedOperation;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Operation getOwnedOperation(String unqualifiedName) {
-    	for (Iterator i = getOwnedOperations().iterator(); i.hasNext(); ) {
-    		Operation namedOwnedOperation = (Operation) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedOperation.getName())) {
-    			return namedOwnedOperation;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public Operation getOwnedOperation(String name) {
+		for (Iterator i = getOwnedOperations().iterator(); i.hasNext(); ) {
+			Operation ownedOperation = (Operation) i.next();
+			if (name.equals(ownedOperation.getName())) {
+				return ownedOperation;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOwnedOperation() instead.
+	 */
 	public Operation createOwnedOperation(EClass eClass) {
 		Operation newOwnedOperation = (Operation) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__OWNED_OPERATION, null, newOwnedOperation));
+		}
+		getOwnedOperations().add(newOwnedOperation);
+		return newOwnedOperation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation createOwnedOperation() {
+		Operation newOwnedOperation = UML2Factory.eINSTANCE.createOperation();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__OWNED_OPERATION, null, newOwnedOperation));
 		}
@@ -246,23 +276,22 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		return redefinedInterface;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Interface getRedefinedInterface(String unqualifiedName) {
-    	for (Iterator i = getRedefinedInterfaces().iterator(); i.hasNext(); ) {
-    		Interface namedRedefinedInterface = (Interface) i.next();
-    		
-    		if (unqualifiedName.equals(namedRedefinedInterface.getName())) {
-    			return namedRedefinedInterface;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Interface getRedefinedInterface(String name) {
+		for (Iterator i = getRedefinedInterfaces().iterator(); i.hasNext(); ) {
+			Interface redefinedInterface = (Interface) i.next();
+			if (name.equals(redefinedInterface.getName())) {
+				return redefinedInterface;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -275,23 +304,22 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		return nestedClassifier;
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getNestedClassifier(String unqualifiedName) {
-    	for (Iterator i = getNestedClassifiers().iterator(); i.hasNext(); ) {
-    		Classifier namedNestedClassifier = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedNestedClassifier.getName())) {
-    			return namedNestedClassifier;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getNestedClassifier(String name) {
+		for (Iterator i = getNestedClassifiers().iterator(); i.hasNext(); ) {
+			Classifier nestedClassifier = (Classifier) i.next();
+			if (name.equals(nestedClassifier.getName())) {
+				return nestedClassifier;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -318,30 +346,44 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		return ownedReception;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public Reception getOwnedReception(String unqualifiedName) {
-    	for (Iterator i = getOwnedReceptions().iterator(); i.hasNext(); ) {
-    		Reception namedOwnedReception = (Reception) i.next();
-    		
-    		if (unqualifiedName.equals(namedOwnedReception.getName())) {
-    			return namedOwnedReception;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    public Reception getOwnedReception(String name) {
+		for (Iterator i = getOwnedReceptions().iterator(); i.hasNext(); ) {
+			Reception ownedReception = (Reception) i.next();
+			if (name.equals(ownedReception.getName())) {
+				return ownedReception;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createOwnedReception() instead.
+	 */
 	public Reception createOwnedReception(EClass eClass) {
 		Reception newOwnedReception = (Reception) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__OWNED_RECEPTION, null, newOwnedReception));
+		}
+		getOwnedReceptions().add(newOwnedReception);
+		return newOwnedReception;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reception createOwnedReception() {
+		Reception newOwnedReception = UML2Factory.eINSTANCE.createReception();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__OWNED_RECEPTION, null, newOwnedReception));
 		}
@@ -370,6 +412,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERFACE__PROTOCOL, oldProtocol, newProtocol);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -390,19 +433,22 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERFACE__PROTOCOL, newProtocol, newProtocol));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createProtocol() instead.
 	 */
 	public ProtocolStateMachine createProtocol(EClass eClass) {
 		ProtocolStateMachine newProtocol = (ProtocolStateMachine) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__PROTOCOL, null, newProtocol));
 		}
-        setProtocol(newProtocol);
+		setProtocol(newProtocol);
 		return newProtocol;
 	}
 
@@ -411,86 +457,13 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAttributes() {
-		EList attribute = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Attribute());
-
-		if (null == attribute) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getAttributes());
-			union.addAll(getOwnedAttributes());
-
-			attribute = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Attribute(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Attribute(), attribute);
+	public ProtocolStateMachine createProtocol() {
+		ProtocolStateMachine newProtocol = UML2Factory.eINSTANCE.createProtocolStateMachine();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.INTERFACE__PROTOCOL, null, newProtocol));
 		}
-
-		return attribute;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getOwnedMembers() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(70));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOwnedMembers());
-			union.addAll(getOwnedAttributes());
-			union.addAll(getOwnedOperations());
-			union.addAll(getNestedClassifiers());
-			union.addAll(getOwnedReceptions());
-			if (null != getProtocol()) {
-				union.add(getProtocol());
-			}
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(70), result);
-		}
-
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getFeatures() {
-		EList feature = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getClassifier_Feature());
-
-		if (null == feature) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getFeatures());
-			union.addAll(getOwnedOperations());
-			union.addAll(getOwnedReceptions());
-
-			feature = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getClassifier_Feature(), feature);
-		}
-
-		return feature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getRedefinedElements() {
-		EList result = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(72));
-
-		if (null == result) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getRedefinedElements());
-			union.addAll(getRedefinedInterfaces());
-
-			result = new BasicEList.UnmodifiableEList(union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getInterface().getEAllOperations().get(72), result);
-		}
-
-		return result;
+		setProtocol(newProtocol);
+		return newProtocol;
 	}
 
 	/**
@@ -940,7 +913,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INTERFACE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -959,7 +932,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERFACE__VISIBILITY:
-				return false;
+				return getVisibility() != VISIBILITY_EDEFAULT;
 			case UML2Package.INTERFACE__CLIENT_DEPENDENCY:
 				return clientDependency != null && !clientDependency.isEmpty();
 			case UML2Package.INTERFACE__NAME_EXPRESSION:
@@ -979,7 +952,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INTERFACE__PACKAGEABLE_ELEMENT_VISIBILITY:
-				return packageableElement_visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.INTERFACE__PACKAGE:
 				return basicGetPackage() != null;
 			case UML2Package.INTERFACE__REDEFINITION_CONTEXT:
@@ -1027,6 +1000,90 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.INTERFACE__VISIBILITY:
+				return false;
+			case UML2Package.INTERFACE__PACKAGEABLE_ELEMENT_VISIBILITY:
+				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+		}
+		return eIsSetGen(eFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getAttributesHelper(EList attribute) {
+		super.getAttributesHelper(attribute);
+		if (ownedAttribute != null) {
+			attribute.addAll(ownedAttribute);
+		}
+		return attribute;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOwnedMembersHelper(EList ownedMember) {
+		super.getOwnedMembersHelper(ownedMember);
+		if (ownedAttribute != null) {
+			ownedMember.addAll(ownedAttribute);
+		}
+		if (ownedOperation != null) {
+			ownedMember.addAll(ownedOperation);
+		}
+		if (nestedClassifier != null) {
+			ownedMember.addAll(nestedClassifier);
+		}
+		if (ownedReception != null) {
+			ownedMember.addAll(ownedReception);
+		}
+		if (protocol != null) {
+			ownedMember.add(protocol);
+		}
+		return ownedMember;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getFeaturesHelper(EList feature) {
+		super.getFeaturesHelper(feature);
+		if (ownedOperation != null) {
+			feature.addAll(ownedOperation);
+		}
+		if (ownedReception != null) {
+			feature.addAll(ownedReception);
+		}
+		return feature;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getRedefinedElementsHelper(EList redefinedElement) {
+		super.getRedefinedElementsHelper(redefinedElement);
+		if (redefinedInterface != null) {
+			for (Iterator i = ((InternalEList) redefinedInterface).basicIterator(); i.hasNext(); ) {
+				redefinedElement.add(i.next());
+			}
+		}
+		return redefinedElement;
+	}
+
 
 	// <!-- begin-custom-operations -->
 

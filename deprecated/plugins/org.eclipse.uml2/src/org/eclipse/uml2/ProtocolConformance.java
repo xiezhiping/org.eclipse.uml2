@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformance.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
+ * $Id: ProtocolConformance.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,7 +35,7 @@ public interface ProtocolConformance extends DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Specific Machine</b></em>' container reference.
@@ -56,7 +54,6 @@ public interface ProtocolConformance extends DirectedRelationship{
 	 * @see org.eclipse.uml2.UML2Package#getProtocolConformance_SpecificMachine()
 	 * @see org.eclipse.uml2.ProtocolStateMachine#getConformances
 	 * @model opposite="conformance" required="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getSources='' org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	ProtocolStateMachine getSpecificMachine();
@@ -70,6 +67,7 @@ public interface ProtocolConformance extends DirectedRelationship{
 	 * @generated
 	 */
 	void setSpecificMachine(ProtocolStateMachine value);
+
 
 	/**
 	 * Returns the value of the '<em><b>General Machine</b></em>' reference.
@@ -86,7 +84,6 @@ public interface ProtocolConformance extends DirectedRelationship{
 	 * @see #setGeneralMachine(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getProtocolConformance_GeneralMachine()
 	 * @model required="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getTargets=''"
 	 * @generated
 	 */
 	ProtocolStateMachine getGeneralMachine();
@@ -101,31 +98,5 @@ public interface ProtocolConformance extends DirectedRelationship{
 	 */
 	void setGeneralMachine(ProtocolStateMachine value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getSources();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getTargets();
 
 } // ProtocolConformance

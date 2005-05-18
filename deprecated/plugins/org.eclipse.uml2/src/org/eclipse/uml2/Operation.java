@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.10 2005/04/04 20:11:15 khussey Exp $
+ * $Id: Operation.java,v 1.11 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -52,7 +52,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Is Query</b></em>' attribute.
@@ -84,6 +84,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 */
 	void setIsQuery(boolean value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Owned Parameter</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Parameter}.
@@ -102,12 +103,13 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 */
 	EList getOwnedParameters();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified name from the '<em><b>Owned Parameter</b></em>' containment reference list.
+     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedParameters()
 	 * @generated
      */
@@ -120,9 +122,20 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Parameter} to create.
 	 * @return The new {@link org.eclipse.uml2.Parameter}.
 	 * @see #getOwnedParameters()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createOwnedParameter() instead.
      */
     Parameter createOwnedParameter(EClass eClass);
+
+    /**
+     * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.Parameter}.
+	 * @see #getOwnedParameters()
+	 * @generated
+     */
+    Parameter createOwnedParameter();
 
 	/**
 	 * Returns the value of the '<em><b>Class </b></em>' container reference.
@@ -138,7 +151,6 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Class_()
 	 * @see org.eclipse.uml2.Class#getOwnedOperations
 	 * @model opposite="ownedOperation"
-	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinitionContexts='' org.eclipse.uml2.NamedElement#getNamespace='' org.eclipse.uml2.Feature#getFeaturingClassifiers=''"
 	 * @generated
 	 */
 	org.eclipse.uml2.Class getClass_();
@@ -152,6 +164,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @generated
 	 */
 	void setClass_(org.eclipse.uml2.Class value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Datatype</b></em>' container reference.
@@ -167,7 +180,6 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Datatype()
 	 * @see org.eclipse.uml2.DataType#getOwnedOperations
 	 * @model opposite="ownedOperation"
-	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinitionContexts='' org.eclipse.uml2.NamedElement#getNamespace='' org.eclipse.uml2.Feature#getFeaturingClassifiers=''"
 	 * @generated
 	 */
 	DataType getDatatype();
@@ -181,6 +193,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @generated
 	 */
 	void setDatatype(DataType value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Precondition</b></em>' reference list.
@@ -196,18 +209,18 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Precondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Precondition()
-	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers='' org.eclipse.uml2.Namespace#getOwnedRules=''"
+	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getPreconditions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified name from the '<em><b>Precondition</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Constraint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Constraint} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPreconditions()
 	 * @generated
      */
@@ -227,18 +240,18 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Postcondition</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Postcondition()
-	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" volatile="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers='' org.eclipse.uml2.Namespace#getOwnedRules=''"
+	 * @model type="org.eclipse.uml2.Constraint" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getPostconditions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified name from the '<em><b>Postcondition</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Constraint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Constraint} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPostconditions()
 	 * @generated
      */
@@ -259,17 +272,17 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @return the value of the '<em>Redefined Operation</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_RedefinedOperation()
 	 * @model type="org.eclipse.uml2.Operation" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedOperations();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified name from the '<em><b>Redefined Operation</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Operation</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Operation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Operation} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedOperations()
 	 * @generated
      */
@@ -289,8 +302,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @return the value of the '<em>Body Condition</em>' reference.
 	 * @see #setBodyCondition(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getOperation_BodyCondition()
-	 * @model resolveProxies="false" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Namespace#getOwnedMembers='' org.eclipse.uml2.Namespace#getOwnedRules=''"
+	 * @model resolveProxies="false"
 	 * @generated
 	 */
 	Constraint getBodyCondition();
@@ -304,6 +316,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @generated
 	 */
 	void setBodyCondition(Constraint value);
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -319,8 +332,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * 
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.OperationOperations.validateTypeOfResult(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateTypeOfResult(DiagnosticChain diagnostics, Map context);
@@ -334,8 +346,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * if returnResult->size() = 1 then returnResult->any().isOrdered else false endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.OperationOperations.isOrdered(this);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean isOrdered();
@@ -349,8 +360,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 *  if returnResult->size() = 1 then returnResult->any().isUnique else true endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.OperationOperations.isUnique(this);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean isUnique();
@@ -361,40 +371,10 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * <!-- begin-model-doc -->
 	 * A query based on the following OCL expression:
 	 * <code>
-	 * if returnResult->size() = 1 then returnResult->any().lower else Set{} endif
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.OperationOperations.lower(this);'" 
-	 * @generated
-	 */
-	int lower();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A query based on the following OCL expression:
-	 * <code>
-	 * if returnResult->size() = 1 then returnResult->any().upper else Set{} endif
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.UnlimitedNatural"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.OperationOperations.upper(this);'" 
-	 * @generated
-	 */
-	int upper();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A query based on the following OCL expression:
-	 * <code>
 	 * if returnResult->size() = 1 then returnResult->any().type else Set{} endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.OperationOperations.type(this);'" 
+	 * @model
 	 * @generated
 	 */
 	Classifier type();
@@ -408,164 +388,9 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * bodyCondition->notEmpty() implies isQuery
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.OperationOperations.validateOnlyBodyForQuery(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validateOnlyBodyForQuery(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A query based on the following OCL expression:
-	 * <code>
-	 * (redefinee.oclIsKindOf(Operation) and
-	 *     let op: Operation = redefinee.oclAsType(Operation) in
-	 *         self.formalParameter.size() = op.formalParameter.size() and
-	 *         self.returnResult.size() = op.returnResult.size() and
-	 *         forAll(i | op.formalParameter[i].type.conformsTo(self.formalParameter[i].type)) and
-	 *         forAll(i | op.returnResult[i].type.conformsTo(self.returnResult[i].type))
-	 * )
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.OperationOperations.isConsistentWith(this, redefinee);'" 
-	 * @generated
-	 */
-	boolean isConsistentWith(RedefinableElement redefinee);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters="org.eclipse.uml2.Boolean"
-	 *        annotation="feature derived='true' name='isOrdered' eType='org.eclipse.uml2.Boolean'"
-	 *        annotation="redefines org.eclipse.uml2.MultiplicityElement#isOrdered=''" 
-	 * @generated
-	 */
-	void setIsOrdered(boolean value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters="org.eclipse.uml2.Boolean"
-	 *        annotation="feature derived='true' name='isUnique' eType='org.eclipse.uml2.Boolean'"
-	 *        annotation="redefines org.eclipse.uml2.MultiplicityElement#isUnique=''" 
-	 * @generated
-	 */
-	void setIsUnique(boolean value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.Integer" parameters=""
-	 *        annotation="feature derived='true' name='lower' eType='org.eclipse.uml2.Integer'"
-	 *        annotation="redefines org.eclipse.uml2.MultiplicityElement#getLower=''" 
-	 * @generated
-	 */
-	int getLower();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.UnlimitedNatural" parameters=""
-	 *        annotation="feature derived='true' name='upper' eType='org.eclipse.uml2.UnlimitedNatural'"
-	 *        annotation="redefines org.eclipse.uml2.MultiplicityElement#getUpper=''" 
-	 * @generated
-	 */
-	int getUpper();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='false' name='raisedException' eType='org.eclipse.uml2.Type' containment='false'"
-	 *        annotation="redefines org.eclipse.uml2.BehavioralFeature#getRaisedExceptions=''" 
-	 * @generated
-	 */
-	EList getRaisedExceptions();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='false' name='formalParameter' eType='org.eclipse.uml2.Parameter' containment='true'"
-	 *        annotation="redefines org.eclipse.uml2.Operation#getOwnedParameters='' org.eclipse.uml2.BehavioralFeature#getFormalParameters=''" 
-	 * @generated
-	 */
-	EList getFormalParameters();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='type' eType='org.eclipse.uml2.Type' containment='false'"
-	 *        annotation="redefines org.eclipse.uml2.TypedElement#getType=''" 
-	 * @generated
-	 */
-	Type getType();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="feature derived='true' name='type' eType='org.eclipse.uml2.Type' containment='false'"
-	 *        annotation="redefines org.eclipse.uml2.TypedElement#getType=''" 
-	 * @generated
-	 */
-	void setType(Type value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinitionContext' eType='org.eclipse.uml2.Classifier' containment='false'" 
-	 * @generated
-	 */
-	EList getRedefinitionContexts();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='namespace' eType='org.eclipse.uml2.Namespace' containment='false' eOpposite='ownedMember' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'" 
-	 * @generated
-	 */
-	Namespace getNamespace();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='featuringClassifier' eOpposite='feature' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Classifier' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getFeaturingClassifiers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedMember' eOpposite='namespace' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.NamedElement' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedMembers();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='true' name='ownedRule' eOpposite='namespace' derived='false' eOpposite.upperBound='1' eType='org.eclipse.uml2.Constraint' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedRules();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='redefinedElement' eType='org.eclipse.uml2.RedefinableElement' containment='false'" 
-	 * @generated
-	 */
-	EList getRedefinedElements();
 
 } // Operation

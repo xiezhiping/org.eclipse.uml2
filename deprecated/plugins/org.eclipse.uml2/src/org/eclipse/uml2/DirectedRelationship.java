@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationship.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: DirectedRelationship.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface DirectedRelationship extends Relationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference list.
@@ -57,11 +57,11 @@ public interface DirectedRelationship extends Relationship{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDirectedRelationship_Source()
-	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Relationship#getRelatedElements=''"
+	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getSources();
+
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference list.
@@ -77,19 +77,10 @@ public interface DirectedRelationship extends Relationship{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDirectedRelationship_Target()
-	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Relationship#getRelatedElements=''"
+	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getTargets();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='relatedElement' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getRelatedElements();
 
 } // DirectedRelationship

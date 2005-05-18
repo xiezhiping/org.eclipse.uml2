@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameter.java,v 1.6 2005/04/04 20:11:15 khussey Exp $
+ * $Id: TemplateParameter.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -46,7 +44,7 @@ public interface TemplateParameter extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Signature</b></em>' container reference.
@@ -61,8 +59,7 @@ public interface TemplateParameter extends Element{
 	 * @see #setSignature(TemplateSignature)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameter_Signature()
 	 * @see org.eclipse.uml2.TemplateSignature#getOwnedParameters
-	 * @model opposite="ownedParameter" required="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
+	 * @model opposite="ownedParameter" required="true"
 	 * @generated
 	 */
 	TemplateSignature getSignature();
@@ -77,6 +74,7 @@ public interface TemplateParameter extends Element{
 	 */
 	void setSignature(TemplateSignature value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Parametered Element</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ParameterableElement#getTemplateParameter <em>Template Parameter</em>}'.
@@ -90,7 +88,7 @@ public interface TemplateParameter extends Element{
 	 * @see #setParameteredElement(ParameterableElement)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameter_ParameteredElement()
 	 * @see org.eclipse.uml2.ParameterableElement#getTemplateParameter
-	 * @model opposite="templateParameter" required="true" volatile="true"
+	 * @model opposite="templateParameter" required="true"
 	 * @generated
 	 */
 	ParameterableElement getParameteredElement();
@@ -105,6 +103,7 @@ public interface TemplateParameter extends Element{
 	 */
 	void setParameteredElement(ParameterableElement value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Owned Parametered Element</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ParameterableElement#getOwningParameter <em>Owning Parameter</em>}'.
@@ -118,8 +117,7 @@ public interface TemplateParameter extends Element{
 	 * @see #setOwnedParameteredElement(ParameterableElement)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameter_OwnedParameteredElement()
 	 * @see org.eclipse.uml2.ParameterableElement#getOwningParameter
-	 * @model opposite="owningParameter" containment="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements='' org.eclipse.uml2.TemplateParameter#getParameteredElement=''"
+	 * @model opposite="owningParameter" containment="true"
 	 * @generated
 	 */
 	ParameterableElement getOwnedParameteredElement();
@@ -134,6 +132,7 @@ public interface TemplateParameter extends Element{
 	 */
 	void setOwnedParameteredElement(ParameterableElement value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ParameterableElement} and sets the '<em><b>Owned Parametered Element</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -144,7 +143,7 @@ public interface TemplateParameter extends Element{
 	 * @generated
      */
     ParameterableElement createOwnedParameteredElement(EClass eClass);
-     
+
 	/**
 	 * Returns the value of the '<em><b>Default</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -159,7 +158,7 @@ public interface TemplateParameter extends Element{
 	 * @return the value of the '<em>Default</em>' reference.
 	 * @see #setDefault(ParameterableElement)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameter_Default()
-	 * @model volatile="true"
+	 * @model
 	 * @generated
 	 */
 	ParameterableElement getDefault();
@@ -174,6 +173,7 @@ public interface TemplateParameter extends Element{
 	 */
 	void setDefault(ParameterableElement value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Owned Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -185,8 +185,7 @@ public interface TemplateParameter extends Element{
 	 * @return the value of the '<em>Owned Default</em>' containment reference.
 	 * @see #setOwnedDefault(ParameterableElement)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameter_OwnedDefault()
-	 * @model containment="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.TemplateParameter#getDefault='' org.eclipse.uml2.Element#getOwnedElements=''"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ParameterableElement getOwnedDefault();
@@ -201,6 +200,7 @@ public interface TemplateParameter extends Element{
 	 */
 	void setOwnedDefault(ParameterableElement value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ParameterableElement} and sets the '<em><b>Owned Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -211,23 +211,5 @@ public interface TemplateParameter extends Element{
 	 * @generated
      */
     ParameterableElement createOwnedDefault(EClass eClass);
-     
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
 
 } // TemplateParameter

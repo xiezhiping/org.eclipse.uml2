@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,29 +8,32 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfActionImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
+ * $Id: ReadSelfActionImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.OutputPin;
 import org.eclipse.uml2.ReadSelfAction;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -53,7 +56,7 @@ public class ReadSelfActionImpl extends ActionImpl implements ReadSelfAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
@@ -104,6 +107,7 @@ public class ReadSelfActionImpl extends ActionImpl implements ReadSelfAction {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.READ_SELF_ACTION__RESULT, oldResult, newResult);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -124,19 +128,22 @@ public class ReadSelfActionImpl extends ActionImpl implements ReadSelfAction {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.READ_SELF_ACTION__RESULT, newResult, newResult));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createResult() instead.
 	 */
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.READ_SELF_ACTION__RESULT, null, newResult));
 		}
-        setResult(newResult);
+		setResult(newResult);
 		return newResult;
 	}
 
@@ -145,21 +152,13 @@ public class ReadSelfActionImpl extends ActionImpl implements ReadSelfAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutputs() {
-		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
-
-		if (null == output) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOutputs());
-			if (null != getResult()) {
-				union.add(getResult());
-			}
-
-			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
+	public OutputPin createResult() {
+		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.READ_SELF_ACTION__RESULT, null, newResult));
 		}
-
-		return output;
+		setResult(newResult);
+		return newResult;
 	}
 
 	/**
@@ -572,5 +571,20 @@ public class ReadSelfActionImpl extends ActionImpl implements ReadSelfAction {
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOutputsHelper(EList output) {
+		super.getOutputsHelper(output);
+		if (result != null) {
+			output.add(result);
+		}
+		return output;
+	}
+
 
 } //ReadSelfActionImpl

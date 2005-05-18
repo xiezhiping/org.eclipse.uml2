@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,30 +8,36 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Feature;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +46,6 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.FeatureImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.FeatureImpl#isStatic <em>Is Static</em>}</li>
  * </ul>
  * </p>
@@ -53,7 +58,7 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isStatic() <em>Is Static</em>}' attribute.
@@ -112,60 +117,45 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 		if (newIsStatic) eFlags |= IS_STATIC_EFLAG; else eFlags &= ~IS_STATIC_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.FEATURE__IS_STATIC, oldIsStatic, newIsStatic));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFeaturingClassifiersGen() {
-		EList featuringClassifier = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
-
-		if (null == featuringClassifier) {
-			Set union = new LinkedHashSet();
-
-			featuringClassifier = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), featuringClassifier);
-		}
-
-		return featuringClassifier;
-	}
-
 	public EList getFeaturingClassifiers() {
-		EList featuringClassifier = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
-
-		if (null == featuringClassifier) {
-			Set union = new LinkedHashSet();
-
-			if (Classifier.class.isInstance(eContainer)) {
-				union.add(eContainer);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList featuringClassifier = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
+			if (featuringClassifier == null) {
+				EList union = getFeaturingClassifiersHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), featuringClassifier = new UnionEObjectEList(this, union.size(), union.toArray()));
 			}
-
-			featuringClassifier = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), featuringClassifier);
+			return featuringClassifier;
 		}
-
-		return featuringClassifier;
+		EList union = getFeaturingClassifiersHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
 
-    /**
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
-    public Classifier getFeaturingClassifier(String unqualifiedName) {
-    	for (Iterator i = getFeaturingClassifiers().iterator(); i.hasNext(); ) {
-    		Classifier namedFeaturingClassifier = (Classifier) i.next();
-    		
-    		if (unqualifiedName.equals(namedFeaturingClassifier.getName())) {
-    			return namedFeaturingClassifier;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+	 */
+    public Classifier getFeaturingClassifier(String name) {
+		for (Iterator i = getFeaturingClassifiers().iterator(); i.hasNext(); ) {
+			Classifier featuringClassifier = (Classifier) i.next();
+			if (name.equals(featuringClassifier.getName())) {
+				return featuringClassifier;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -402,6 +392,19 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 		result.append((eFlags & IS_STATIC_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected EList getFeaturingClassifiersHelper(EList featuringClassifier) {
+		if (eContainer instanceof Classifier) {
+			featuringClassifier.add(eContainer);
+		}
+		return featuringClassifier;
 	}
 
 } //FeatureImpl

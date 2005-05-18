@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.7 2005/04/04 20:11:12 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,7 +50,7 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getSignal() <em>Signal</em>}' reference.
@@ -116,7 +116,9 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 		signal = newSignal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL, oldSignal, signal));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -551,5 +553,6 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //BroadcastSignalActionImpl

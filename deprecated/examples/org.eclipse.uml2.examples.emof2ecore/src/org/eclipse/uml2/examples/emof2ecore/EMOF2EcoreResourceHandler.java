@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceHandler.java,v 1.1 2005/03/15 20:28:16 khussey Exp $
+ * $Id: EMOF2EcoreResourceHandler.java,v 1.2 2005/05/18 16:42:31 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore;
 
@@ -46,7 +46,7 @@ import org.eclipse.emf.ecore.xml.type.AnyType;
 public class EMOF2EcoreResourceHandler
 		extends BasicResourceHandler {
 
-	public static final String copyright = "Copyright (c) 2004, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	protected static final boolean DEBUG = false;
 

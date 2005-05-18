@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrence.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
+ * $Id: ExecutionOccurrence.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface ExecutionOccurrence extends InteractionFragment{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Start</b></em>' reference.
@@ -75,6 +75,7 @@ public interface ExecutionOccurrence extends InteractionFragment{
 	 */
 	void setStart(EventOccurrence value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Finish</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.EventOccurrence#getFinishExecs <em>Finish Exec</em>}'.
@@ -106,6 +107,7 @@ public interface ExecutionOccurrence extends InteractionFragment{
 	 */
 	void setFinish(EventOccurrence value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Behavior</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Behavior}.
@@ -125,12 +127,13 @@ public interface ExecutionOccurrence extends InteractionFragment{
 	 */
 	EList getBehaviors();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified name from the '<em><b>Behavior</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Behavior</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.Behavior} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Behavior} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve.
+	 * @return The {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getBehaviors()
 	 * @generated
      */

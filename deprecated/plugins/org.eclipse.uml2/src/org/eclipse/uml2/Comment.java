@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Comment.java,v 1.8 2005/04/22 15:18:27 khussey Exp $
+ * $Id: Comment.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -44,7 +44,7 @@ public interface Comment extends TemplateableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Body</b></em>' attribute.
@@ -77,6 +77,7 @@ public interface Comment extends TemplateableElement{
 	 */
 	void setBody(String value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Annotated Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Element}.
@@ -96,6 +97,7 @@ public interface Comment extends TemplateableElement{
 	 */
 	EList getAnnotatedElements();
 
+
 	/**
 	 * Returns the value of the '<em><b>Body Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -108,7 +110,6 @@ public interface Comment extends TemplateableElement{
 	 * @see #setBodyExpression(StringExpression)
 	 * @see org.eclipse.uml2.UML2Package#getComment_BodyExpression()
 	 * @model containment="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	StringExpression getBodyExpression();
@@ -123,6 +124,7 @@ public interface Comment extends TemplateableElement{
 	 */
 	void setBodyExpression(StringExpression value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.StringExpression} and sets the '<em><b>Body Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -130,17 +132,19 @@ public interface Comment extends TemplateableElement{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.StringExpression} to create.
 	 * @return The new {@link org.eclipse.uml2.StringExpression}.
 	 * @see #getBodyExpression()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createBodyExpression() instead.
      */
     StringExpression createBodyExpression(EClass eClass);
-     
-	/**
+
+    /**
+     * Creates a {@link org.eclipse.uml2.StringExpression} and sets the '<em><b>Body Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * @return The new {@link org.eclipse.uml2.StringExpression}.
+	 * @see #getBodyExpression()
 	 * @generated
-	 */
-	EList getOwnedElements();
+     */
+    StringExpression createBodyExpression();
 
 } // Comment

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImport.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: PackageImport.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,7 +44,7 @@ public interface PackageImport extends DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
@@ -79,6 +78,7 @@ public interface PackageImport extends DirectedRelationship{
 	 */
 	void setVisibility(VisibilityKind value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Imported Package</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -93,8 +93,7 @@ public interface PackageImport extends DirectedRelationship{
 	 * @return the value of the '<em>Imported Package</em>' reference.
 	 * @see #setImportedPackage(org.eclipse.uml2.Package)
 	 * @see org.eclipse.uml2.UML2Package#getPackageImport_ImportedPackage()
-	 * @model required="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getTargets=''"
+	 * @model required="true"
 	 * @generated
 	 */
 	org.eclipse.uml2.Package getImportedPackage();
@@ -108,6 +107,7 @@ public interface PackageImport extends DirectedRelationship{
 	 * @generated
 	 */
 	void setImportedPackage(org.eclipse.uml2.Package value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Importing Namespace</b></em>' container reference.
@@ -125,8 +125,7 @@ public interface PackageImport extends DirectedRelationship{
 	 * @see #setImportingNamespace(Namespace)
 	 * @see org.eclipse.uml2.UML2Package#getPackageImport_ImportingNamespace()
 	 * @see org.eclipse.uml2.Namespace#getPackageImports
-	 * @model opposite="packageImport" required="true" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getSources='' org.eclipse.uml2.Element#getOwner=''"
+	 * @model opposite="packageImport" required="true"
 	 * @generated
 	 */
 	Namespace getImportingNamespace();
@@ -141,6 +140,7 @@ public interface PackageImport extends DirectedRelationship{
 	 */
 	void setImportingNamespace(Namespace value);
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,37 +150,9 @@ public interface PackageImport extends DirectedRelationship{
 	 * self.visibility = #public or self.visibility = #private
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return org.eclipse.uml2.internal.operation.PackageImportOperations.validatePublicOrPrivate(this, diagnostics, context);'" 
+	 * @model dataType="org.eclipse.uml2.Boolean" 
 	 * @generated
 	 */
 	boolean validatePublicOrPrivate(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getTargets();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getSources();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
 
 } // PackageImport

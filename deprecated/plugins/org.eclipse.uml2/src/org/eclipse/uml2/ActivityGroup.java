@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroup.java,v 1.5 2005/04/04 20:11:15 khussey Exp $
+ * $Id: ActivityGroup.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ public interface ActivityGroup extends Element{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Super Group</b></em>' reference.
@@ -54,11 +54,10 @@ public interface ActivityGroup extends Element{
 	 * @return the value of the '<em>Super Group</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getActivityGroup_SuperGroup()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
-	 *        annotation="redefined eOpposite='subgroup' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'"
 	 * @generated
 	 */
 	ActivityGroup getSuperGroup();
+
 
 	/**
 	 * Returns the value of the '<em><b>Activity Group activity</b></em>' container reference.
@@ -77,8 +76,6 @@ public interface ActivityGroup extends Element{
 	 * @see org.eclipse.uml2.UML2Package#getActivityGroup_ActivityGroup_activity()
 	 * @see org.eclipse.uml2.Activity#getGroups
 	 * @model opposite="group" volatile="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
-	 *        annotation="redefines org.eclipse.uml2.ActivityNode#getActivity=''"
 	 * @generated
 	 */
 	Activity getActivityGroup_activity();
@@ -93,67 +90,97 @@ public interface ActivityGroup extends Element{
 	 */
 	void setActivityGroup_activity(Activity value);
 
+
 	/**
+	 * Returns the value of the '<em><b>Subgroup</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.ActivityGroup}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ActivityGroup#getSuperGroup <em>Super Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='subgroup' eOpposite='superGroup' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.ActivityGroup' eOpposite.lowerBound='0'"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''" 
+	 * @return the value of the '<em>Subgroup</em>' reference list.
+	 * @see org.eclipse.uml2.UML2Package#getActivityGroup_Subgroup()
+	 * @see org.eclipse.uml2.ActivityGroup#getSuperGroup
+	 * @model type="org.eclipse.uml2.ActivityGroup" opposite="superGroup" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getSubgroups();
 
+
 	/**
+	 * Returns the value of the '<em><b>Contained Edge</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.ActivityEdge}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ActivityEdge#getInGroups <em>In Group</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='containedEdge' eOpposite='inGroup' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.ActivityEdge' eOpposite.lowerBound='0'" 
+	 * @return the value of the '<em>Contained Edge</em>' reference list.
+	 * @see org.eclipse.uml2.UML2Package#getActivityGroup_ContainedEdge()
+	 * @see org.eclipse.uml2.ActivityEdge#getInGroups
+	 * @model type="org.eclipse.uml2.ActivityEdge" opposite="inGroup" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
     EList getContainedEdges();
 
-	/**
+
+    /**
+     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='containedNode' eOpposite='inGroup' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.ActivityNode' eOpposite.lowerBound='0'" 
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getContainedEdges()
+	 * @generated
+     */
+    ActivityEdge getContainedEdge(String name);
+      
+	/**
+	 * Returns the value of the '<em><b>Contained Node</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.ActivityNode}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ActivityNode#getInGroups <em>In Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Contained Node</em>' reference list.
+	 * @see org.eclipse.uml2.UML2Package#getActivityGroup_ContainedNode()
+	 * @see org.eclipse.uml2.ActivityNode#getInGroups
+	 * @model type="org.eclipse.uml2.ActivityNode" opposite="inGroup" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList getContainedNodes();
 
-	/**
+
+    /**
+     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='true' containment='false' name='activity' eOpposite='node' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Activity' eOpposite.lowerBound='0'" 
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getContainedNodes()
+	 * @generated
+     */
+    ActivityNode getContainedNode(String name);
+      
+	/**
+	 * Returns the value of the '<em><b>Activity</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Activity#getNodes <em>Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Activity</em>' container reference.
+	 * @see #setActivity(Activity)
+	 * @see org.eclipse.uml2.UML2Package#getActivityNode_Activity()
+	 * @see org.eclipse.uml2.Activity#getNodes
+	 * @model opposite="node"
 	 * @generated
 	 */
 	Activity getActivity();
 
 	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.ActivityGroup#getActivity <em>Activity</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="feature eOpposite.containment='true' containment='false' name='activity' eOpposite='node' derived='false' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Activity' eOpposite.lowerBound='0'" 
+	 * @param value the new value of the '<em>Activity</em>' container reference.
+	 * @see #getActivity()
 	 * @generated
 	 */
 	void setActivity(Activity value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
 
 } // ActivityGroup

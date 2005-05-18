@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.9 2005/04/04 20:11:13 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Activity;
 import org.eclipse.uml2.CallAction;
 import org.eclipse.uml2.OutputPin;
@@ -34,6 +36,7 @@ import org.eclipse.uml2.Port;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.StructuredActivityNode;
 import org.eclipse.uml2.TemplateSignature;
+import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -57,7 +60,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isSynchronous() <em>Is Synchronous</em>}' attribute.
@@ -127,7 +130,9 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 		if (newIsSynchronous) eFlags |= IS_SYNCHRONOUS_EFLAG; else eFlags &= ~IS_SYNCHRONOUS_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CALL_ACTION__IS_SYNCHRONOUS, oldIsSynchronous, newIsSynchronous));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,27 +146,27 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 		return result;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-     */
-    public OutputPin getResult(String unqualifiedName) {
-    	for (Iterator i = getResults().iterator(); i.hasNext(); ) {
-    		OutputPin namedResult = (OutputPin) i.next();
-    		
-    		if (unqualifiedName.equals(namedResult.getName())) {
-    			return namedResult;
-    		}
-    	}
-    	
-    	return null;
-    }
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+    public OutputPin getResult(String name) {
+		for (Iterator i = getResults().iterator(); i.hasNext(); ) {
+			OutputPin result = (OutputPin) i.next();
+			if (name.equals(result.getName())) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @deprecated Use #createResult() instead.
 	 */
 	public OutputPin createResult(EClass eClass) {
 		OutputPin newResult = (OutputPin) eClass.getEPackage().getEFactoryInstance().create(eClass);
@@ -177,19 +182,13 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutputs() {
-		EList output = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getAction_Output());
-
-		if (null == output) {
-			Set union = new LinkedHashSet();
-			union.addAll(super.getOutputs());
-			union.addAll(getResults());
-
-			output = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getAction_Output(), output);
+	public OutputPin createResult() {
+		OutputPin newResult = UML2Factory.eINSTANCE.createOutputPin();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, 0, UML2Package.CALL_ACTION__RESULT, null, newResult));
 		}
-
-		return output;
+		getResults().add(newResult);
+		return newResult;
 	}
 
 	/**
@@ -652,5 +651,20 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 		result.append(')');
 		return result.toString();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getOutputsHelper(EList output) {
+		super.getOutputsHelper(output);
+		if (result != null) {
+			output.addAll(result);
+		}
+		return output;
+	}
+
 
 } //CallActionImpl

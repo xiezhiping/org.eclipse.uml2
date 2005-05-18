@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Collaboration.java,v 1.7 2005/04/04 20:11:14 khussey Exp $
+ * $Id: Collaboration.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ public interface Collaboration extends BehavioredClassifier, StructuredClassifie
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Collaboration Role</b></em>' reference list.
@@ -54,29 +54,20 @@ public interface Collaboration extends BehavioredClassifier, StructuredClassifie
 	 * @return the value of the '<em>Collaboration Role</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getCollaboration_CollaborationRole()
 	 * @model type="org.eclipse.uml2.ConnectableElement" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.StructuredClassifier#getRoles=''"
 	 * @generated
 	 */
 	EList getCollaborationRoles();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ConnectableElement} with the specified name from the '<em><b>Collaboration Role</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ConnectableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Collaboration Role</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ConnectableElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ConnectableElement} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ConnectableElement} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ConnectableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getCollaborationRoles()
 	 * @generated
      */
     ConnectableElement getCollaborationRole(String unqualifiedName);
       
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='role' eType='org.eclipse.uml2.ConnectableElement' containment='false'" 
-	 * @generated
-	 */
-	EList getRoles();
-
 } // Collaboration

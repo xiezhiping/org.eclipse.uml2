@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValue.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: InstanceValue.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ public interface InstanceValue extends ValueSpecification{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Instance</b></em>' reference.
@@ -69,5 +69,6 @@ public interface InstanceValue extends ValueSpecification{
 	 * @generated
 	 */
 	void setInstance(InstanceSpecification value);
+
 
 } // InstanceValue

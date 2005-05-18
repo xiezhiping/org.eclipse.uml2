@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierOperations.java,v 1.4 2005/04/06 19:59:37 khussey Exp $
+ * $Id: BehavioredClassifierOperations.java,v 1.5 2005/05/18 16:38:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -20,19 +20,16 @@ import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Implementation;
 import org.eclipse.uml2.Interface;
-import org.eclipse.uml2.UML2Package;
 
 /**
- * A static utility class that provides operations related to behaviored
- * classifiers.
+ * A static utility class that provides operations related to '<em><b>Behaviored Classifier</b></em>'
+ * model objects.
  */
 public final class BehavioredClassifierOperations
 		extends UML2Operations {
 
-	/**
-	 * Constructs a new Behaviored Classifier Operations. This constructor
-	 * should never be called because this is a static utility class.
-	 */
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
 	private BehavioredClassifierOperations() {
 		super();
 	}
@@ -131,7 +128,7 @@ public final class BehavioredClassifierOperations
 		}
 
 		Implementation implementation = behavioredClassifier
-			.createImplementation(UML2Package.eINSTANCE.getImplementation());
+			.createImplementation();
 		implementation.setContract(contract);
 
 		implementation.setRealizingClassifier(contract); // constraint
@@ -139,4 +136,4 @@ public final class BehavioredClassifierOperations
 		return implementation;
 	}
 
-}
+} // BehavioredClassifierOperations

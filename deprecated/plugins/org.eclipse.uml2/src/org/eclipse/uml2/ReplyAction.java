@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyAction.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ReplyAction.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ public interface ReplyAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Reply To Call</b></em>' reference.
@@ -73,6 +73,7 @@ public interface ReplyAction extends Action{
 	 */
 	void setReplyToCall(CallTrigger value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Reply Value</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.InputPin}.
@@ -88,17 +89,17 @@ public interface ReplyAction extends Action{
 	 * @return the value of the '<em>Reply Value</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getReplyAction_ReplyValue()
 	 * @model type="org.eclipse.uml2.InputPin" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Action#getInputs=''"
 	 * @generated
 	 */
 	EList getReplyValues();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified name from the '<em><b>Reply Value</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Reply Value</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.InputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.InputPin} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InputPin} to retrieve.
+	 * @return The {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getReplyValues()
 	 * @generated
      */
@@ -119,7 +120,6 @@ public interface ReplyAction extends Action{
 	 * @see #setReturnInformation(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReplyAction_ReturnInformation()
 	 * @model required="true"
-	 *        annotation="subsets org.eclipse.uml2.Action#getInputs=''"
 	 * @generated
 	 */
 	InputPin getReturnInformation();
@@ -134,13 +134,5 @@ public interface ReplyAction extends Action{
 	 */
 	void setReturnInformation(InputPin value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='input' eType='org.eclipse.uml2.InputPin' containment='false'" 
-	 * @generated
-	 */
-	EList getInputs();
 
 } // ReplyAction

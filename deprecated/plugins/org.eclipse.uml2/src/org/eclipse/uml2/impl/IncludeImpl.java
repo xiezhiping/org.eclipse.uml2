@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,24 +8,28 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.9 2005/04/04 20:11:12 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreEList;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.DirectedRelationship;
 import org.eclipse.uml2.Include;
 import org.eclipse.uml2.Relationship;
@@ -33,8 +37,10 @@ import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UseCase;
-
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,9 +49,6 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getRelatedElements <em>Related Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getSources <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getIncludingCase <em>Including Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getAddition <em>Addition</em>}</li>
  * </ul>
@@ -59,7 +62,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getAddition() <em>Addition</em>}' reference.
@@ -95,18 +98,31 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
-
-		if (null == relatedElement) {
-			Set union = new LinkedHashSet();
-			union.addAll(getSources());
-			union.addAll(getTargets());
-
-			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList relatedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
+			if (relatedElement == null) {
+				EList union = getRelatedElementsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, union.size(), union.toArray()));
+			}
+			return relatedElement;
 		}
+		EList union = getRelatedElementsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
+	}
 
-		return relatedElement;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getSourcesHelper(EList source) {
+		UseCase includingCase = getIncludingCase();
+		if (includingCase != null) {
+			source.add(includingCase);
+		}
+		return source;
 	}
 
 	/**
@@ -138,7 +154,9 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INCLUDE__INCLUDING_CASE, newIncludingCase, newIncludingCase));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,7 +194,9 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 		addition = newAddition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INCLUDE__ADDITION, oldAddition, addition));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -184,19 +204,30 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
-
-		if (null == source) {
-			Set union = new LinkedHashSet();
-			if (null != getIncludingCase()) {
-				union.add(getIncludingCase());
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList source = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
+			if (source == null) {
+				EList union = getSourcesHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source = new UnionEObjectEList(this, union.size(), union.toArray()));
 			}
-
-			source = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source);
+			return source;
 		}
+		EList union = getSourcesHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
+	}
 
-		return source;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getTargetsHelper(EList target) {
+		if (addition != null) {
+			target.add(addition);
+		}
+		return target;
 	}
 
 	/**
@@ -205,20 +236,19 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
-
-		if (null == target) {
-			Set union = new LinkedHashSet();
-			if (null != getAddition()) {
-				union.add(getAddition());
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList target = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
+			if (target == null) {
+				EList union = getTargetsHelper(new UniqueEList());
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target = new UnionEObjectEList(this, union.size(), union.toArray()));
 			}
-
-			target = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
-			getCacheAdapter().put(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target);
+			return target;
 		}
-
-		return target;
+		EList union = getTargetsHelper(new UniqueEList());
+		return new UnionEObjectEList(this, union.size(), union.toArray());
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -513,6 +543,22 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EList getRelatedElementsHelper(EList relatedElement) {
+		for (Iterator i = ((InternalEList) getSources()).basicIterator(); i.hasNext(); ) {
+			relatedElement.add(i.next());
+		}
+		for (Iterator i = ((InternalEList) getTargets()).basicIterator(); i.hasNext(); ) {
+			relatedElement.add(i.next());
+		}
+		return relatedElement;
 	}
 
 } //IncludeImpl

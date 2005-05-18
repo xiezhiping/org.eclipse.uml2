@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageEndImpl.java,v 1.6 2005/04/04 20:11:13 khussey Exp $
+ * $Id: MessageEndImpl.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,7 +48,7 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getReceiveMessage() <em>Receive Message</em>}' reference.
@@ -126,6 +126,7 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE_END__RECEIVE_MESSAGE, oldReceiveMessage, newReceiveMessage);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -146,7 +147,9 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE_END__RECEIVE_MESSAGE, newReceiveMessage, newReceiveMessage));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,6 +189,7 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE_END__SEND_MESSAGE, oldSendMessage, newSendMessage);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+
 		return msgs;
 	}
 
@@ -206,7 +210,9 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE_END__SEND_MESSAGE, newSendMessage, newSendMessage));
+
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -436,5 +442,6 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 		}
 		return eDynamicIsSet(eFeature);
 	}
+
 
 } //MessageEndImpl

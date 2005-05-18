@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.6 2005/04/04 20:11:14 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -47,7 +47,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Activity</b></em>' container reference.
@@ -63,7 +63,6 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Activity()
 	 * @see org.eclipse.uml2.Activity#getEdges
 	 * @model opposite="edge"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner=''"
 	 * @generated
 	 */
 	Activity getActivity();
@@ -77,6 +76,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @generated
 	 */
 	void setActivity(Activity value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
@@ -106,6 +106,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 */
 	void setSource(ActivityNode value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.ActivityNode#getIncomings <em>Incoming</em>}'.
@@ -134,6 +135,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 */
 	void setTarget(ActivityNode value);
 
+
 	/**
 	 * Returns the value of the '<em><b>In Group</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityGroup}.
@@ -146,10 +148,10 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InGroup()
 	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 *        annotation="redefined eOpposite='containedEdge' eOpposite.containment='false' eOpposite.lowerBound='0' eOpposite.upperBound='-1'"
 	 * @generated
 	 */
 	EList getInGroups();
+
 
 	/**
 	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
@@ -163,7 +165,6 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see #setGuard(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Guard()
 	 * @model containment="true" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getGuard();
@@ -178,6 +179,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 */
 	void setGuard(ValueSpecification value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -188,7 +190,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @generated
      */
     ValueSpecification createGuard(EClass eClass);
-     
+
 	/**
 	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityEdge}.
@@ -201,21 +203,21 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @return the value of the '<em>Redefined Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_RedefinedElement()
 	 * @model type="org.eclipse.uml2.ActivityEdge" ordered="false"
-	 *        annotation="redefines org.eclipse.uml2.RedefinableElement#getRedefinedElements=''"
 	 * @generated
 	 */
 	EList getRedefinedElements();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified name from the '<em><b>Redefined Element</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedElements()
 	 * @generated
      */
-    ActivityEdge getRedefinedElement(String unqualifiedName);
+    RedefinableElement getRedefinedElement(String unqualifiedName);
       
 	/**
 	 * Returns the value of the '<em><b>In Structured Node</b></em>' container reference.
@@ -234,7 +236,6 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InStructuredNode()
 	 * @see org.eclipse.uml2.StructuredActivityNode#getContainedEdges
 	 * @model opposite="containedEdge"
-	 *        annotation="subsets org.eclipse.uml2.ActivityEdge#getInGroups=''"
 	 * @generated
 	 */
 	StructuredActivityNode getInStructuredNode();
@@ -248,6 +249,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @generated
 	 */
 	void setInStructuredNode(StructuredActivityNode value);
+
 
 	/**
 	 * Returns the value of the '<em><b>In Partition</b></em>' reference list.
@@ -263,17 +265,17 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InPartition()
 	 * @see org.eclipse.uml2.ActivityPartition#getContainedEdges
 	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="containedEdge" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.ActivityEdge#getInGroups=''"
 	 * @generated
 	 */
 	EList getInPartitions();
 
+
     /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityPartition} with the specified name from the '<em><b>In Partition</b></em>' reference list.
+     * Retrieves the {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>' from the '<em><b>In Partition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param unqualifiedName The unqualified name of the {@link org.eclipse.uml2.ActivityPartition} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityPartition} with the specified name, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityPartition} to retrieve.
+	 * @return The {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInPartitions()
 	 * @generated
      */
@@ -291,7 +293,6 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @see #setWeight(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Weight()
 	 * @model containment="true" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	ValueSpecification getWeight();
@@ -306,6 +307,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 */
 	void setWeight(ValueSpecification value);
 
+
     /**
      * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Weight</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -316,7 +318,7 @@ public interface ActivityEdge extends RedefinableElement{
 	 * @generated
      */
     ValueSpecification createWeight(EClass eClass);
-     
+
 	/**
 	 * Returns the value of the '<em><b>Interrupts</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.InterruptibleActivityRegion#getInterruptingEdges <em>Interrupting Edge</em>}'.
@@ -345,22 +347,5 @@ public interface ActivityEdge extends RedefinableElement{
 	 */
 	void setInterrupts(InterruptibleActivityRegion value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	Element getOwner();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
 
 } // ActivityEdge

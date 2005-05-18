@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBinding.java,v 1.7 2005/04/04 20:11:15 khussey Exp $
+ * $Id: TemplateBinding.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -44,7 +44,7 @@ public interface TemplateBinding extends DirectedRelationship{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String copyright = "Copyright (c) 2003, 2005 IBM Corporation and others."; //$NON-NLS-1$
+	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Bound Element</b></em>' container reference.
@@ -63,7 +63,6 @@ public interface TemplateBinding extends DirectedRelationship{
 	 * @see org.eclipse.uml2.UML2Package#getTemplateBinding_BoundElement()
 	 * @see org.eclipse.uml2.TemplateableElement#getTemplateBindings
 	 * @model opposite="templateBinding" required="true"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwner='' org.eclipse.uml2.DirectedRelationship#getSources=''"
 	 * @generated
 	 */
 	TemplateableElement getBoundElement();
@@ -78,6 +77,7 @@ public interface TemplateBinding extends DirectedRelationship{
 	 */
 	void setBoundElement(TemplateableElement value);
 
+
 	/**
 	 * Returns the value of the '<em><b>Signature</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -90,7 +90,6 @@ public interface TemplateBinding extends DirectedRelationship{
 	 * @see #setSignature(TemplateSignature)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateBinding_Signature()
 	 * @model required="true"
-	 *        annotation="subsets org.eclipse.uml2.DirectedRelationship#getTargets=''"
 	 * @generated
 	 */
 	TemplateSignature getSignature();
@@ -104,6 +103,7 @@ public interface TemplateBinding extends DirectedRelationship{
 	 * @generated
 	 */
 	void setSignature(TemplateSignature value);
+
 
 	/**
 	 * Returns the value of the '<em><b>Parameter Substitution</b></em>' containment reference list.
@@ -122,10 +122,10 @@ public interface TemplateBinding extends DirectedRelationship{
 	 * @see org.eclipse.uml2.UML2Package#getTemplateBinding_ParameterSubstitution()
 	 * @see org.eclipse.uml2.TemplateParameterSubstitution#getTemplateBinding
 	 * @model type="org.eclipse.uml2.TemplateParameterSubstitution" opposite="templateBinding" containment="true" ordered="false"
-	 *        annotation="subsets org.eclipse.uml2.Element#getOwnedElements=''"
 	 * @generated
 	 */
 	EList getParameterSubstitutions();
+
 
     /**
      * Creates a {@link org.eclipse.uml2.TemplateParameterSubstitution} and appends it to the '<em><b>Parameter Substitution</b></em>' containment reference list.
@@ -134,44 +134,19 @@ public interface TemplateBinding extends DirectedRelationship{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.TemplateParameterSubstitution} to create.
 	 * @return The new {@link org.eclipse.uml2.TemplateParameterSubstitution}.
 	 * @see #getParameterSubstitutions()
-	 * @generated
+	 * @generated NOT
+	 * @deprecated Use #createParameterSubstitution() instead.
      */
     TemplateParameterSubstitution createParameterSubstitution(EClass eClass);
 
-	/**
+    /**
+     * Creates a {@link org.eclipse.uml2.TemplateParameterSubstitution} and appends it to the '<em><b>Parameter Substitution</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='owner' eOpposite='ownedElement' derived='true' eOpposite.upperBound='-1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
+	 * @return The new {@link org.eclipse.uml2.TemplateParameterSubstitution}.
+	 * @see #getParameterSubstitutions()
 	 * @generated
-	 */
-	Element getOwner();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='source' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getSources();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature derived='true' name='target' eType='org.eclipse.uml2.Element' containment='false'" 
-	 * @generated
-	 */
-	EList getTargets();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model parameters=""
-	 *        annotation="feature eOpposite.containment='false' containment='false' name='ownedElement' eOpposite='owner' derived='true' eOpposite.upperBound='1' eType='org.eclipse.uml2.Element' eOpposite.lowerBound='0'" 
-	 * @generated
-	 */
-	EList getOwnedElements();
+     */
+    TemplateParameterSubstitution createParameterSubstitution();
 
 } // TemplateBinding
