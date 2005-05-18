@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - initial API and implementation
  *
- * $Id: feature.xml,v 1.12 2005/03/18 21:15:39 khussey Exp $
+ * $Id: feature.xml,v 1.13 2005/05/18 17:23:43 khussey Exp $
  */
 -->
 
@@ -40,16 +40,49 @@
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.codegen.ecore"/>
+      <import plugin="org.eclipse.emf.codegen.ecore.ui"/>
       <import plugin="org.eclipse.emf.ecore.change.edit"/>
       <import plugin="org.eclipse.emf.ecore.edit"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.emf.edit"/>
       <import plugin="org.eclipse.emf.edit.ui"/>
+   	  <import plugin="org.eclipse.emf.importer"/>
       <import plugin="org.eclipse.ui.ide"/>
    </requires>
 
    <plugin
       id="org.eclipse.uml2"
+      download-size="0"
+      install-size="0"
+      version="1.1.0"/>
+
+   <plugin
+      id="org.eclipse.uml2.codegen.ecore"
+      download-size="0"
+      install-size="0"
+      version="1.1.0"/>
+
+   <plugin
+      id="org.eclipse.uml2.codegen.ecore.ui"
+      download-size="0"
+      install-size="0"
+      version="1.1.0"/>
+
+   <plugin
+      id="org.eclipse.uml2.common"
+      download-size="0"
+      install-size="0"
+      version="1.1.0"/>
+
+   <plugin
+      id="org.eclipse.uml2.common.edit"
+      download-size="0"
+      install-size="0"
+      version="1.1.0"/>
+
+   <plugin
+      id="org.eclipse.uml2.ecore.importer"
       download-size="0"
       install-size="0"
       version="1.1.0"/>
