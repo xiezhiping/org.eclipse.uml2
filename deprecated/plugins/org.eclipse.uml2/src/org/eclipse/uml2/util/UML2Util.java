@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.16 2005/05/17 19:00:04 khussey Exp $
+ * $Id: UML2Util.java,v 1.17 2005/05/18 12:50:30 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -581,7 +581,7 @@ public class UML2Util {
 				: null;
 		}
 
-		private void processEcoreTaggedValue(Element element,
+		protected void processEcoreTaggedValue(Element element,
 				Stereotype stereotype, String propertyName,
 				EModelElement eModelElement,
 				EStructuralFeature eStructuralFeature, Map options,
@@ -1890,15 +1890,57 @@ public class UML2Util {
 					} else {
 
 						if (PROPERTY_NAME__XML_CONTENT_KIND == propertyName) {
-							ExtendedMetaData.INSTANCE.setContentKind(
-								(EClass) eModelElement,
-								((EnumerationLiteral) value).getEnumeration()
-									.getOwnedLiterals().indexOf(value));
+							Enumeration contentKindEnumeration = ((EnumerationLiteral) value)
+								.getEnumeration();
+
+							if (contentKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__EMPTY) == value) {
+
+								ExtendedMetaData.INSTANCE.setContentKind(
+									(EClass) eModelElement,
+									ExtendedMetaData.EMPTY_CONTENT);
+							} else if (contentKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__SIMPLE) == value) {
+
+								ExtendedMetaData.INSTANCE.setContentKind(
+									(EClass) eModelElement,
+									ExtendedMetaData.SIMPLE_CONTENT);
+							} else if (contentKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__MIXED) == value) {
+
+								ExtendedMetaData.INSTANCE.setContentKind(
+									(EClass) eModelElement,
+									ExtendedMetaData.MIXED_CONTENT);
+							} else if (contentKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT_ONLY) == value) {
+
+								ExtendedMetaData.INSTANCE.setContentKind(
+									(EClass) eModelElement,
+									ExtendedMetaData.ELEMENT_ONLY_CONTENT);
+							}
 						} else if (PROPERTY_NAME__XML_FEATURE_KIND == propertyName) {
-							ExtendedMetaData.INSTANCE.setFeatureKind(
-								(EStructuralFeature) eModelElement,
-								((EnumerationLiteral) value).getEnumeration()
-									.getOwnedLiterals().indexOf(value));
+							Enumeration featureKindEnumeration = ((EnumerationLiteral) value)
+								.getEnumeration();
+
+							if (featureKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__SIMPLE) == value) {
+
+								ExtendedMetaData.INSTANCE.setFeatureKind(
+									(EStructuralFeature) eModelElement,
+									ExtendedMetaData.SIMPLE_FEATURE);
+							} else if (featureKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ATTRIBUTE) == value) {
+
+								ExtendedMetaData.INSTANCE.setFeatureKind(
+									(EStructuralFeature) eModelElement,
+									ExtendedMetaData.ATTRIBUTE_FEATURE);
+							} else if (featureKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT) == value) {
+
+								ExtendedMetaData.INSTANCE.setFeatureKind(
+									(EStructuralFeature) eModelElement,
+									ExtendedMetaData.ELEMENT_FEATURE);
+							}
 						} else if (PROPERTY_NAME__XML_NAME == propertyName) {
 
 							if (eModelElement instanceof EClassifier) {
@@ -1917,93 +1959,91 @@ public class UML2Util {
 						} else if (PROPERTY_NAME__VISIBILITY == propertyName) {
 							eStructuralFeature = (EStructuralFeature) eModelElement;
 
-							EnumerationLiteral visibilityKindLiteral = (EnumerationLiteral) element
-								.getValue(stereotype, PROPERTY_NAME__VISIBILITY);
+							Enumeration visibilityKindEnumeration = ((EnumerationLiteral) value)
+								.getEnumeration();
 
-							int visibilityKind = visibilityKindLiteral
-								.getEnumeration().getOwnedLiterals().indexOf(
-									visibilityKindLiteral);
+							if (visibilityKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__NONE) == value) {
 
-							switch (visibilityKind) {
-								case 1 :
+								EcoreUtil.setSuppressedVisibility(
+									eStructuralFeature, EcoreUtil.GET, true);
+
+								if (eStructuralFeature.isChangeable()
+									&& !eStructuralFeature.isMany()) {
+
 									EcoreUtil
 										.setSuppressedVisibility(
-											eStructuralFeature, EcoreUtil.GET,
-											true);
-
-									if (eStructuralFeature.isChangeable()
-										&& !eStructuralFeature.isMany()) {
-
-										EcoreUtil.setSuppressedVisibility(
 											eStructuralFeature, EcoreUtil.SET,
 											true);
-									}
+								}
 
-									if (eStructuralFeature.isUnsettable()) {
-										EcoreUtil.setSuppressedVisibility(
-											eStructuralFeature,
-											EcoreUtil.IS_SET, true);
+								if (eStructuralFeature.isUnsettable()) {
+									EcoreUtil.setSuppressedVisibility(
+										eStructuralFeature, EcoreUtil.IS_SET,
+										true);
 
-										if (eStructuralFeature.isChangeable()) {
-											EcoreUtil.setSuppressedVisibility(
-												eStructuralFeature,
-												EcoreUtil.UNSET, true);
-										}
-									}
-									break;
-								case 2 :
-									if (!eStructuralFeature.isMany()
-										&& eStructuralFeature.isChangeable()) {
-
-										EcoreUtil.setSuppressedVisibility(
-											eStructuralFeature, EcoreUtil.SET,
-											true);
-									}
-
-									if (eStructuralFeature.isUnsettable()) {
-										EcoreUtil.setSuppressedVisibility(
-											eStructuralFeature,
-											EcoreUtil.IS_SET, true);
-
-										if (eStructuralFeature.isChangeable()) {
-											EcoreUtil.setSuppressedVisibility(
-												eStructuralFeature,
-												EcoreUtil.UNSET, true);
-										}
-									}
-									break;
-								case 3 :
-									if (eStructuralFeature.isUnsettable()) {
-										EcoreUtil.setSuppressedVisibility(
-											eStructuralFeature,
-											EcoreUtil.IS_SET, true);
-
-										if (eStructuralFeature.isChangeable()) {
-											EcoreUtil.setSuppressedVisibility(
-												eStructuralFeature,
-												EcoreUtil.UNSET, true);
-										}
-									}
-									break;
-								case 4 :
-									if (!eStructuralFeature.isMany()
-										&& eStructuralFeature.isChangeable()) {
-
-										EcoreUtil.setSuppressedVisibility(
-											eStructuralFeature, EcoreUtil.SET,
-											true);
-									}
-
-									if (eStructuralFeature.isUnsettable()
-										&& eStructuralFeature.isChangeable()) {
-
+									if (eStructuralFeature.isChangeable()) {
 										EcoreUtil.setSuppressedVisibility(
 											eStructuralFeature,
 											EcoreUtil.UNSET, true);
 									}
-									break;
-								default :
-									break;
+								}
+							} else if (visibilityKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_ONLY) == value) {
+
+								if (!eStructuralFeature.isMany()
+									&& eStructuralFeature.isChangeable()) {
+
+									EcoreUtil
+										.setSuppressedVisibility(
+											eStructuralFeature, EcoreUtil.SET,
+											true);
+								}
+
+								if (eStructuralFeature.isUnsettable()) {
+									EcoreUtil.setSuppressedVisibility(
+										eStructuralFeature, EcoreUtil.IS_SET,
+										true);
+
+									if (eStructuralFeature.isChangeable()) {
+										EcoreUtil.setSuppressedVisibility(
+											eStructuralFeature,
+											EcoreUtil.UNSET, true);
+									}
+								}
+							} else if (visibilityKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_WRITE) == value) {
+
+								if (eStructuralFeature.isUnsettable()) {
+									EcoreUtil.setSuppressedVisibility(
+										eStructuralFeature, EcoreUtil.IS_SET,
+										true);
+
+									if (eStructuralFeature.isChangeable()) {
+										EcoreUtil.setSuppressedVisibility(
+											eStructuralFeature,
+											EcoreUtil.UNSET, true);
+									}
+								}
+							} else if (visibilityKindEnumeration
+								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_ONLY_UNSETTABLE) == value) {
+
+								if (!eStructuralFeature.isMany()
+									&& eStructuralFeature.isChangeable()) {
+
+									EcoreUtil
+										.setSuppressedVisibility(
+											eStructuralFeature, EcoreUtil.SET,
+											true);
+								}
+
+								if (eStructuralFeature.isUnsettable()
+									&& eStructuralFeature.isChangeable()) {
+
+									EcoreUtil.setSuppressedVisibility(
+										eStructuralFeature, EcoreUtil.UNSET,
+										true);
+								}
 							}
 						}
 					}
