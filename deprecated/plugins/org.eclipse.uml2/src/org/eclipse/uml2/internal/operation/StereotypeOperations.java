@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.23 2005/05/18 16:38:32 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.24 2005/05/24 20:27:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -872,8 +872,8 @@ public final class StereotypeOperations
 						&& EnumerationLiteral.class.isInstance(value)) {
 
 						value = ((EEnum) eType).getEEnumLiteral(
-							getValidIdentifier(((EnumerationLiteral) value)
-								.getName())).getInstance();
+							((EnumerationLiteral) value).getName())
+							.getInstance();
 					} else if (EcorePackage.eINSTANCE.getEDataType()
 						.isInstance(eType)
 						&& String.class.isInstance(value)) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.20 2005/05/18 21:08:48 khussey Exp $
+ * $Id: UML2Util.java,v 1.21 2005/05/24 20:27:32 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -1316,13 +1316,16 @@ public class UML2Util {
 
 		protected Collection packages = null;
 
-		protected void setName(ENamedElement eNamedElement, String name) {
-			eNamedElement.setName(getValidIdentifier(name));
+		protected void setName(ENamedElement eNamedElement, String name,
+				boolean validate) {
+			eNamedElement.setName(validate
+				? getValidIdentifier(name)
+				: name);
 		}
 
 		protected void setName(ENamedElement eNamedElement,
 				NamedElement namedElement) {
-			setName(eNamedElement, namedElement.getName());
+			setName(eNamedElement, namedElement.getName(), true);
 		}
 
 		protected EClassifier getEType(Type type) {

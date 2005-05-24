@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.22 2005/05/18 16:38:31 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.23 2005/05/24 20:27:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -37,10 +36,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.Element;
@@ -62,8 +59,8 @@ import org.eclipse.uml2.Property;
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
+import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
-
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Switch;
 
@@ -140,17 +137,24 @@ public final class ProfileOperations
 			new UML2Switch() {
 
 				public Object caseClassifier(Classifier classifier) {
-					setName(eNamedElement, getEClassifierName(classifier));
+					setName(eNamedElement, getEClassifierName(classifier),
+						false);
 					return classifier;
 				}
 
+				public Object caseEnumerationLiteral(
+						EnumerationLiteral enumerationLiteral) {
+					setName(eNamedElement, enumerationLiteral.getName(), false);
+					return enumerationLiteral;
+				}
+
 				public Object caseProfile(Profile profile) {
-					setName(eNamedElement, getEPackageName(profile));
+					setName(eNamedElement, getEPackageName(profile), false);
 					return profile;
 				}
 
 				public Object caseNamedElement(NamedElement namedElement) {
-					setName(eNamedElement, namedElement.getName());
+					setName(eNamedElement, namedElement.getName(), true);
 					return namedElement;
 				}
 			}.doSwitch(namedElement);
@@ -598,8 +602,7 @@ public final class ProfileOperations
 					StereotypeOperations.ANNOTATION_SOURCE__ENUMERATION_LITERAL)
 					.getReferences().add(enumerationLiteral);
 
-				eEnumLiteral.setName(getValidIdentifier(enumerationLiteral
-					.getName()));
+				eEnumLiteral.setName(enumerationLiteral.getName());
 				eEnumLiteral.setValue(index);
 
 				eEnum.getELiterals().add(eEnumLiteral);
@@ -845,7 +848,7 @@ public final class ProfileOperations
 							break;
 					}
 				} catch (Exception e) {
-					System.err.println(e);
+					UML2Plugin.INSTANCE.log(e);
 				}
 			}
 		}
