@@ -6,7 +6,16 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 
 public class ItemProvider
 {
-  protected final String NL = System.getProperties().getProperty("line.separator");
+  protected static String nl;
+  public static synchronized ItemProvider create(String lineSeparator)
+  {
+    nl = lineSeparator;
+    ItemProvider result = new ItemProvider();
+    nl = null;
+    return result;
+  }
+
+  protected final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
   protected final String TEXT_1 = "";
   protected final String TEXT_2 = NL;
   protected final String TEXT_3 = "/**" + NL + " * <copyright>" + NL + " * </copyright>" + NL + " *" + NL + " * ";
