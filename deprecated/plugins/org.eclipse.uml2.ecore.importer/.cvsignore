@@ -1,5 +1,2 @@
 bin
-bin.tasks
-build.xml
-runtime
-temp.folder
+uml2.ecore.importer.jar
