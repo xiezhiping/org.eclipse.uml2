@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.11 2005/05/25 14:33:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -314,9 +314,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-    public ActivityGroup getSubgroup(String name) {
+    public ActivityPartition getSubgroup(String name) {
 		for (Iterator i = getSubgroups().iterator(); i.hasNext(); ) {
 			ActivityPartition subgroup = (ActivityPartition) i.next();
 			if (name.equals(subgroup.getName())) {
@@ -332,7 +332,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated NOT
 	 * @deprecated Use #createSubgroup() instead.
 	 */
-	public ActivityGroup createSubgroup(EClass eClass) {
+	public ActivityPartition createSubgroup(EClass eClass) {
 		ActivityPartition newSubgroup = (ActivityPartition) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTIVITY_PARTITION__SUBGROUP, null, newSubgroup));
@@ -344,9 +344,9 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public ActivityGroup createSubgroup() {
+	public ActivityPartition createSubgroup() {
 		ActivityPartition newSubgroup = UML2Factory.eINSTANCE.createActivityPartition();
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, 0, UML2Package.ACTIVITY_PARTITION__SUBGROUP, null, newSubgroup));

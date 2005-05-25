@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.9 2005/05/25 14:32:40 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -198,9 +198,9 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityPartition} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubgroups()
-	 * @generated
+	 * @generated NOT
      */
-    ActivityGroup getSubgroup(String unqualifiedName);
+	ActivityPartition getSubgroup(String unqualifiedName);
       
     /**
      * Creates a {@link org.eclipse.uml2.ActivityPartition} and appends it to the '<em><b>Subgroup</b></em>' containment reference list.
@@ -212,7 +212,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * @generated NOT
 	 * @deprecated Use #createSubgroup() instead.
      */
-    ActivityGroup createSubgroup(EClass eClass);
+    ActivityPartition createSubgroup(EClass eClass);
 
     /**
      * Creates a {@link org.eclipse.uml2.ActivityPartition} and appends it to the '<em><b>Subgroup</b></em>' containment reference list.
@@ -220,9 +220,9 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.ActivityPartition}.
 	 * @see #getSubgroups()
-	 * @generated
+	 * @generated NOT
      */
-    ActivityGroup createSubgroup();
+    ActivityPartition createSubgroup();
 
 	/**
 	 * Returns the value of the '<em><b>Super Partition</b></em>' container reference.
