@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseUtil.java,v 1.1 2005/05/17 22:09:07 khussey Exp $
+ * $Id: RoseUtil.java,v 1.2 2005/05/25 17:30:05 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.builder;
 
@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.importer.rose.builder.UnitTreeNode;
 
 public class RoseUtil
@@ -25,7 +26,9 @@ public class RoseUtil
 
 	protected Map dependencyTable = new HashMap();
 
-	public RoseUtil() {
+	public RoseUtil(URIConverter uriConverter) {
+		super(uriConverter);
+
 		roseEcoreBuilder = new RoseEcoreBuilder(this);
 	}
 

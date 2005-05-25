@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.1 2005/05/17 22:10:19 khussey Exp $
+ * $Id: UML2Importer.java,v 1.2 2005/05/25 17:30:04 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -215,7 +215,7 @@ public class UML2Importer
 				: ePackage.eResource().getURI().lastSegment();
 		}
 
-		ePackageInfo.setEcoreFileName(new StringBuffer(ecoreFileName));
+		ePackageInfo.setEcoreFileName(ecoreFileName);
 	}
 
 	protected void adjustGenModel(IProgressMonitor progressMonitor) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseImporter.java,v 1.1 2005/05/17 22:09:07 khussey Exp $
+ * $Id: RoseImporter.java,v 1.2 2005/05/25 17:30:05 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose;
 
@@ -20,7 +20,7 @@ public class RoseImporter
 		extends org.eclipse.emf.importer.rose.RoseImporter {
 
 	protected org.eclipse.emf.importer.rose.builder.RoseUtil createRoseUtil() {
-		RoseUtil roseUtil = new RoseUtil();
+		RoseUtil roseUtil = new RoseUtil(createResourceSet().getURIConverter());
 		roseUtil.getRoseEcoreBuilder().noQualify = noQualify;
 		roseUtil.getRoseEcoreBuilder().unsettablePrimitive = unsettablePrimitive;
 		return roseUtil;
