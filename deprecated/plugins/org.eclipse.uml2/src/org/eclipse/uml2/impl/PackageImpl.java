@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.26 2005/05/25 15:21:32 khussey Exp $
+ * $Id: PackageImpl.java,v 1.27 2005/05/25 16:03:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -378,10 +378,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 
 			if (result == null) {
 				EList ownedTypes = PackageOperations.getOwnedTypes(this);
-				getCacheAdapter().put(
-					eResource(),
-					this,
-					UML2Package.eINSTANCE.getPackage_OwnedType(),
+				cache.put(eResource(), this, UML2Package.eINSTANCE
+					.getPackage_OwnedType(),
 					result = new EcoreEList.UnmodifiableEList(this,
 						UML2Package.eINSTANCE.getPackage_OwnedType(),
 						ownedTypes.size(), ownedTypes.toArray()));
@@ -1129,14 +1127,11 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			Set result = (Set) getCacheAdapter().get(eResource(), this,
+			Set result = (Set) cache.get(eResource(), this,
 				GET_ALL_APPLIED_PROFILES);
 
 			if (result == null) {
-				getCacheAdapter().put(
-					eResource(),
-					this,
-					GET_ALL_APPLIED_PROFILES,
+				cache.put(eResource(), this, GET_ALL_APPLIED_PROFILES,
 					result = Collections.unmodifiableSet(ProfileOperations
 						.getAllAppliedProfiles(this)));
 			}

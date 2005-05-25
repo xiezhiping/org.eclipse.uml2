@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.31 2005/05/25 15:21:32 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.32 2005/05/25 16:03:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -848,9 +848,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			Set result = (Set) cache.get(this, GET_ALL_EXTENDED_METACLASSES);
 
 			if (result == null) {
-				getCacheAdapter().put(
-					this,
-					GET_ALL_EXTENDED_METACLASSES,
+				cache.put(this, GET_ALL_EXTENDED_METACLASSES,
 					result = Collections.unmodifiableSet(StereotypeOperations
 						.getAllExtendedMetaclasses(this)));
 			}

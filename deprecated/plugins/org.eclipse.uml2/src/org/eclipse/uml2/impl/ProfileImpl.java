@@ -8,29 +8,31 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.19 2005/05/18 16:38:26 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.20 2005/05/25 16:03:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.Model;
-import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.Profile;
@@ -40,6 +42,8 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 
@@ -129,32 +133,29 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * @generated NOT
 	 */
 	public EList getOwnedStereotypes() {
-		EList ownedStereotypes = (EList) getCacheAdapter().get(eResource(),
-			this, UML2Package.eINSTANCE.getProfile_OwnedStereotype());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == ownedStereotypes) {
-			Set ownedStereotype = new HashSet();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UML2Package.eINSTANCE.getProfile_OwnedStereotype());
 
-			for (Iterator ownedMembers = getOwnedMembers().iterator(); ownedMembers
-				.hasNext();) {
-
-				NamedElement ownedMember = (NamedElement) ownedMembers.next();
-
-				if (Stereotype.class.isInstance(ownedMember)) {
-					ownedStereotype.add(ownedMember);
-				}
+			if (result == null) {
+				EList ownedStereotypes = ProfileOperations
+					.getOwnedStereotypes(this);
+				cache.put(eResource(), this, UML2Package.eINSTANCE
+					.getProfile_OwnedStereotype(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getProfile_OwnedStereotype(),
+						ownedStereotypes.size(), ownedStereotypes.toArray()));
 			}
 
-			ownedStereotypes = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getProfile_OwnedStereotype(),
-				ownedStereotype.size(), ownedStereotype.toArray());
-
-			getCacheAdapter().put(eResource(), this,
-				UML2Package.eINSTANCE.getProfile_OwnedStereotype(),
-				ownedStereotypes);
+			return result;
 		}
 
-		return ownedStereotypes;
+		EList ownedStereotypes = ProfileOperations.getOwnedStereotypes(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getProfile_OwnedStereotype(), ownedStereotypes.size(),
+			ownedStereotypes.toArray());
 	}
 
 	/**
@@ -662,17 +663,26 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * @see org.eclipse.uml2.Profile#getReferencedMetaclasses()
 	 */
 	public Set getReferencedMetaclasses() {
-		Set referencedMetaclasses = (Set) getCacheAdapter().get(eResource(),
-			this, GET_REFERENCED_METACLASSES);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == referencedMetaclasses) {
-			referencedMetaclasses = ProfileOperations
-				.getReferencedMetaclasses(this);
-			getCacheAdapter().put(eResource(), this,
-				GET_REFERENCED_METACLASSES, referencedMetaclasses);
+		if (cache != null) {
+			Set result = (Set) cache.get(eResource(), this,
+				GET_REFERENCED_METACLASSES);
+
+			if (result == null) {
+				getCacheAdapter().put(
+					eResource(),
+					this,
+					GET_REFERENCED_METACLASSES,
+					result = Collections.unmodifiableSet(ProfileOperations
+						.getReferencedMetaclasses(this)));
+			}
+
+			return result;
 		}
 
-		return referencedMetaclasses;
+		return Collections.unmodifiableSet(ProfileOperations
+			.getReferencedMetaclasses(this));
 	}
 
 	private static Method GET_REFERENCED_METAMODELS = null;
@@ -692,17 +702,26 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * @see org.eclipse.uml2.Profile#getReferencedMetamodels()
 	 */
 	public Set getReferencedMetamodels() {
-		Set referencedMetamodels = (Set) getCacheAdapter().get(eResource(),
-			this, GET_REFERENCED_METAMODELS);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == referencedMetamodels) {
-			referencedMetamodels = ProfileOperations
-				.getReferencedMetamodels(this);
-			getCacheAdapter().put(eResource(), this, GET_REFERENCED_METAMODELS,
-				referencedMetamodels);
+		if (cache != null) {
+			Set result = (Set) cache.get(eResource(), this,
+				GET_REFERENCED_METAMODELS);
+
+			if (result == null) {
+				getCacheAdapter().put(
+					eResource(),
+					this,
+					GET_REFERENCED_METAMODELS,
+					result = Collections.unmodifiableSet(ProfileOperations
+						.getReferencedMetamodels(this)));
+			}
+
+			return result;
 		}
 
-		return referencedMetamodels;
+		return Collections.unmodifiableSet(ProfileOperations
+			.getReferencedMetamodels(this));
 	}
 
 	/*

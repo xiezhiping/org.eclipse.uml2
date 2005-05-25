@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.23 2005/05/24 20:27:32 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.24 2005/05/25 16:03:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -1427,6 +1428,25 @@ public final class ProfileOperations
 		ownedStereotype.setName(name);
 		ownedStereotype.setIsAbstract(isAbstract);
 		return ownedStereotype;
+	}
+
+	public static EList getOwnedStereotypes(Profile profile) {
+		EList ownedStereotypes = new UniqueEList();
+
+		if (profile != null) {
+
+			for (Iterator ownedMembers = profile.getOwnedMembers().iterator(); ownedMembers
+				.hasNext();) {
+
+				NamedElement ownedMember = (NamedElement) ownedMembers.next();
+
+				if (Stereotype.class.isInstance(ownedMember)) {
+					ownedStereotypes.add(ownedMember);
+				}
+			}
+		}
+
+		return ownedStereotypes;
 	}
 
 } // ProfileOperations
