@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationItemProvider.java,v 1.1 2005/05/17 22:07:40 khussey Exp $
+ * $Id: GenOperationItemProvider.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -87,18 +87,17 @@ public class GenOperationItemProvider
 	 */
 	protected void addCacheAdapterScopePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenOperation_cacheAdapterScope_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenOperation_cacheAdapterScope_feature", "_UI_GenOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						GenModelPackage.eINSTANCE
-								.getGenOperation_CacheAdapterScope(), true,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-						null));
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GenOperation_cacheAdapterScope_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_GenOperation_cacheAdapterScope_feature", "_UI_GenOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				GenModelPackage.eINSTANCE.getGenOperation_CacheAdapterScope(),
+				true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -132,10 +131,10 @@ public class GenOperationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(GenOperation.class)) {
-		case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
+			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}

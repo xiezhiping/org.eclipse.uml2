@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationImpl.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -51,9 +51,9 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  *
  * @generated
  */
-public class GenOperationImpl extends
-		org.eclipse.emf.codegen.ecore.genmodel.impl.GenOperationImpl implements
-		GenOperation {
+public class GenOperationImpl
+		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenOperationImpl
+		implements GenOperation {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,12 +116,13 @@ public class GenOperationImpl extends
 	 */
 	public void setCacheAdapterScope(GenCacheAdapterScope newCacheAdapterScope) {
 		GenCacheAdapterScope oldCacheAdapterScope = cacheAdapterScope;
-		cacheAdapterScope = newCacheAdapterScope == null ? CACHE_ADAPTER_SCOPE_EDEFAULT
-				: newCacheAdapterScope;
+		cacheAdapterScope = newCacheAdapterScope == null
+			? CACHE_ADAPTER_SCOPE_EDEFAULT
+			: newCacheAdapterScope;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE,
-					oldCacheAdapterScope, cacheAdapterScope));
+				GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE,
+				oldCacheAdapterScope, cacheAdapterScope));
 	}
 
 	/**
@@ -133,16 +134,17 @@ public class GenOperationImpl extends
 			int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case GenModelPackage.GEN_OPERATION__GEN_CLASS:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
+				case GenModelPackage.GEN_OPERATION__GEN_CLASS :
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd,
 						GenModelPackage.GEN_OPERATION__GEN_CLASS, msgs);
-			case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS:
-				return ((InternalEList) getGenParameters()).basicAdd(otherEnd,
+				case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS :
+					return ((InternalEList) getGenParameters()).basicAdd(
+						otherEnd, msgs);
+				default :
+					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
 						msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
 		if (eContainer != null)
@@ -159,15 +161,15 @@ public class GenOperationImpl extends
 			int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case GenModelPackage.GEN_OPERATION__GEN_CLASS:
-				return eBasicSetContainer(null,
+				case GenModelPackage.GEN_OPERATION__GEN_CLASS :
+					return eBasicSetContainer(null,
 						GenModelPackage.GEN_OPERATION__GEN_CLASS, msgs);
-			case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS:
-				return ((InternalEList) getGenParameters()).basicRemove(
+				case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS :
+					return ((InternalEList) getGenParameters()).basicRemove(
 						otherEnd, msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
+				default :
+					return eDynamicInverseRemove(otherEnd, featureID,
+						baseClass, msgs);
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
@@ -181,18 +183,18 @@ public class GenOperationImpl extends
 	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
-			case GenModelPackage.GEN_OPERATION__GEN_CLASS:
-				return eContainer
+				case GenModelPackage.GEN_OPERATION__GEN_CLASS :
+					return eContainer
 						.eInverseRemove(
-								this,
-								org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__GEN_OPERATIONS,
-								GenClass.class, msgs);
-			default:
-				return eDynamicBasicRemoveFromContainer(msgs);
+							this,
+							org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__GEN_OPERATIONS,
+							GenClass.class, msgs);
+				default :
+					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
 		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-				- eContainerFeatureID, null, msgs);
+			- eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -202,16 +204,16 @@ public class GenOperationImpl extends
 	 */
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_OPERATION__GEN_CLASS:
-			return getGenClass();
-		case GenModelPackage.GEN_OPERATION__ECORE_OPERATION:
-			if (resolve)
-				return getEcoreOperation();
-			return basicGetEcoreOperation();
-		case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS:
-			return getGenParameters();
-		case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE:
-			return getCacheAdapterScope();
+			case GenModelPackage.GEN_OPERATION__GEN_CLASS :
+				return getGenClass();
+			case GenModelPackage.GEN_OPERATION__ECORE_OPERATION :
+				if (resolve)
+					return getEcoreOperation();
+				return basicGetEcoreOperation();
+			case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS :
+				return getGenParameters();
+			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
+				return getCacheAdapterScope();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -223,19 +225,19 @@ public class GenOperationImpl extends
 	 */
 	public void eSet(EStructuralFeature eFeature, Object newValue) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_OPERATION__GEN_CLASS:
-			setGenClass((GenClass) newValue);
-			return;
-		case GenModelPackage.GEN_OPERATION__ECORE_OPERATION:
-			setEcoreOperation((EOperation) newValue);
-			return;
-		case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS:
-			getGenParameters().clear();
-			getGenParameters().addAll((Collection) newValue);
-			return;
-		case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE:
-			setCacheAdapterScope((GenCacheAdapterScope) newValue);
-			return;
+			case GenModelPackage.GEN_OPERATION__GEN_CLASS :
+				setGenClass((GenClass) newValue);
+				return;
+			case GenModelPackage.GEN_OPERATION__ECORE_OPERATION :
+				setEcoreOperation((EOperation) newValue);
+				return;
+			case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS :
+				getGenParameters().clear();
+				getGenParameters().addAll((Collection) newValue);
+				return;
+			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
+				setCacheAdapterScope((GenCacheAdapterScope) newValue);
+				return;
 		}
 		eDynamicSet(eFeature, newValue);
 	}
@@ -247,18 +249,18 @@ public class GenOperationImpl extends
 	 */
 	public void eUnset(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_OPERATION__GEN_CLASS:
-			setGenClass((GenClass) null);
-			return;
-		case GenModelPackage.GEN_OPERATION__ECORE_OPERATION:
-			setEcoreOperation((EOperation) null);
-			return;
-		case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS:
-			getGenParameters().clear();
-			return;
-		case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE:
-			setCacheAdapterScope(CACHE_ADAPTER_SCOPE_EDEFAULT);
-			return;
+			case GenModelPackage.GEN_OPERATION__GEN_CLASS :
+				setGenClass((GenClass) null);
+				return;
+			case GenModelPackage.GEN_OPERATION__ECORE_OPERATION :
+				setEcoreOperation((EOperation) null);
+				return;
+			case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS :
+				getGenParameters().clear();
+				return;
+			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
+				setCacheAdapterScope(CACHE_ADAPTER_SCOPE_EDEFAULT);
+				return;
 		}
 		eDynamicUnset(eFeature);
 	}
@@ -270,14 +272,14 @@ public class GenOperationImpl extends
 	 */
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_OPERATION__GEN_CLASS:
-			return getGenClass() != null;
-		case GenModelPackage.GEN_OPERATION__ECORE_OPERATION:
-			return ecoreOperation != null;
-		case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS:
-			return genParameters != null && !genParameters.isEmpty();
-		case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE:
-			return cacheAdapterScope != CACHE_ADAPTER_SCOPE_EDEFAULT;
+			case GenModelPackage.GEN_OPERATION__GEN_CLASS :
+				return getGenClass() != null;
+			case GenModelPackage.GEN_OPERATION__ECORE_OPERATION :
+				return ecoreOperation != null;
+			case GenModelPackage.GEN_OPERATION__GEN_PARAMETERS :
+				return genParameters != null && !genParameters.isEmpty();
+			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
+				return cacheAdapterScope != CACHE_ADAPTER_SCOPE_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -306,13 +308,16 @@ public class GenOperationImpl extends
 	}
 
 	public GenClass getGenClass() {
-		return isDuplicate() ? findGenClass(Generator
-				.getEcoreContainingClass(getEcoreOperation())) : super
-				.getGenClass();
+		return isDuplicate()
+			? findGenClass(Generator
+				.getEcoreContainingClass(getEcoreOperation()))
+			: super.getGenClass();
 	}
 
 	public org.eclipse.emf.codegen.ecore.genmodel.GenModel getGenModel() {
-		return isDuplicate() ? genModel : super.getGenModel();
+		return isDuplicate()
+			? genModel
+			: super.getGenModel();
 	}
 
 	protected String format(String name, String separator, String prefix,
@@ -337,16 +342,18 @@ public class GenOperationImpl extends
 
 		for (Iterator i = parsedName.iterator(); i.hasNext();) {
 			String nameComponent = (String) i.next();
-			result.append(result.length() == 0 ? nameComponent
-					: capName(nameComponent));
+			result.append(result.length() == 0
+				? nameComponent
+				: capName(nameComponent));
 
 			if (i.hasNext() && nameComponent.length() > 1) {
 				result.append(separator);
 			}
 		}
 
-		return result.length() == 0 && prefix != null ? prefix : result
-				.toString();
+		return result.length() == 0 && prefix != null
+			? prefix
+			: result.toString();
 	}
 
 	public String getName() {
@@ -388,12 +395,12 @@ public class GenOperationImpl extends
 		List redefinedGenOperations = new ArrayList();
 
 		for (Iterator redefinedEcoreOperations = Generator
-				.getRedefinedEcoreOperations(getEcoreOperation()).iterator(); redefinedEcoreOperations
-				.hasNext();) {
+			.getRedefinedEcoreOperations(getEcoreOperation()).iterator(); redefinedEcoreOperations
+			.hasNext();) {
 
 			redefinedGenOperations
-					.add(findGenOperation((EOperation) redefinedEcoreOperations
-							.next()));
+				.add(findGenOperation((EOperation) redefinedEcoreOperations
+					.next()));
 		}
 
 		return redefinedGenOperations;
@@ -401,26 +408,30 @@ public class GenOperationImpl extends
 
 	protected String getEffectiveListType() {
 		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75921
-		return getGenModel().isSuppressEMFTypes() ? "java.util.List"
-				: "org.eclipse.emf.common.util.EList";
+		return getGenModel().isSuppressEMFTypes()
+			? "java.util.List"
+			: "org.eclipse.emf.common.util.EList";
 	}
 
 	public String getReturnType() {
 		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75921
-		return getEcoreOperation().isMany() ? getEffectiveListType() : super
-				.getReturnType();
+		return getEcoreOperation().isMany()
+			? getEffectiveListType()
+			: super.getReturnType();
 	}
 
 	public String getImportedReturnType() {
 		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75921
-		return getEcoreOperation().isMany() ? getGenModel().getImportedName(
-				getEffectiveListType()) : super.getImportedReturnType();
+		return getEcoreOperation().isMany()
+			? getGenModel().getImportedName(getEffectiveListType())
+			: super.getImportedReturnType();
 	}
 
 	public String getObjectReturnType() {
 		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75921
-		return getEcoreOperation().isMany() ? getGenModel().getImportedName(
-				getEffectiveListType()) : super.getObjectReturnType();
+		return getEcoreOperation().isMany()
+			? getGenModel().getImportedName(getEffectiveListType())
+			: super.getObjectReturnType();
 	}
 
 	public boolean isPrimitiveReturnType() {
@@ -433,7 +444,7 @@ public class GenOperationImpl extends
 		super.reconcileSettings(oldGenOperationVersion);
 
 		setCacheAdapterScope(UML2GenModelUtil
-				.getCacheAdapterScope(oldGenOperationVersion));
+			.getCacheAdapterScope(oldGenOperationVersion));
 	}
 
 } // GenOperationImpl

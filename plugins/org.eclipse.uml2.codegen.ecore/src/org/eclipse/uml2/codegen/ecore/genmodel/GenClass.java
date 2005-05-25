@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClass.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenClass.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -29,8 +29,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * @model
  * @generated
  */
-public interface GenClass extends
-		org.eclipse.emf.codegen.ecore.genmodel.GenClass, GenClassifier {
+public interface GenClass
+		extends org.eclipse.emf.codegen.ecore.genmodel.GenClass, GenClassifier {
 
 	/**
 	 * <!-- begin-user-doc -->

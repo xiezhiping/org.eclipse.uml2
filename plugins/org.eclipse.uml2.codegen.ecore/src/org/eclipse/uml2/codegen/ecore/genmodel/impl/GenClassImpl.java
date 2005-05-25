@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -52,9 +52,9 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  * @author khussey
  *
  */
-public class GenClassImpl extends
-		org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl implements
-		GenClass {
+public class GenClassImpl
+		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl
+		implements GenClass {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -90,14 +90,15 @@ public class GenClassImpl extends
 			int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case GenModelPackage.GEN_CLASS__GEN_FEATURES:
-				return ((InternalEList) getGenFeatures()).basicAdd(otherEnd,
+				case GenModelPackage.GEN_CLASS__GEN_FEATURES :
+					return ((InternalEList) getGenFeatures()).basicAdd(
+						otherEnd, msgs);
+				case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
+					return ((InternalEList) getGenOperations()).basicAdd(
+						otherEnd, msgs);
+				default :
+					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
 						msgs);
-			case GenModelPackage.GEN_CLASS__GEN_OPERATIONS:
-				return ((InternalEList) getGenOperations()).basicAdd(otherEnd,
-						msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
 			}
 		}
 		if (eContainer != null)
@@ -114,15 +115,15 @@ public class GenClassImpl extends
 			int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case GenModelPackage.GEN_CLASS__GEN_FEATURES:
-				return ((InternalEList) getGenFeatures()).basicRemove(otherEnd,
-						msgs);
-			case GenModelPackage.GEN_CLASS__GEN_OPERATIONS:
-				return ((InternalEList) getGenOperations()).basicRemove(
+				case GenModelPackage.GEN_CLASS__GEN_FEATURES :
+					return ((InternalEList) getGenFeatures()).basicRemove(
 						otherEnd, msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
+				case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
+					return ((InternalEList) getGenOperations()).basicRemove(
+						otherEnd, msgs);
+				default :
+					return eDynamicInverseRemove(otherEnd, featureID,
+						baseClass, msgs);
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
@@ -135,24 +136,26 @@ public class GenClassImpl extends
 	 */
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_CLASS__GEN_PACKAGE:
-			return getGenPackage();
-		case GenModelPackage.GEN_CLASS__PROVIDER:
-			return getProvider();
-		case GenModelPackage.GEN_CLASS__IMAGE:
-			return isImage() ? Boolean.TRUE : Boolean.FALSE;
-		case GenModelPackage.GEN_CLASS__ECORE_CLASS:
-			if (resolve)
-				return getEcoreClass();
-			return basicGetEcoreClass();
-		case GenModelPackage.GEN_CLASS__GEN_FEATURES:
-			return getGenFeatures();
-		case GenModelPackage.GEN_CLASS__GEN_OPERATIONS:
-			return getGenOperations();
-		case GenModelPackage.GEN_CLASS__LABEL_FEATURE:
-			if (resolve)
-				return getLabelFeature();
-			return basicGetLabelFeature();
+			case GenModelPackage.GEN_CLASS__GEN_PACKAGE :
+				return getGenPackage();
+			case GenModelPackage.GEN_CLASS__PROVIDER :
+				return getProvider();
+			case GenModelPackage.GEN_CLASS__IMAGE :
+				return isImage()
+					? Boolean.TRUE
+					: Boolean.FALSE;
+			case GenModelPackage.GEN_CLASS__ECORE_CLASS :
+				if (resolve)
+					return getEcoreClass();
+				return basicGetEcoreClass();
+			case GenModelPackage.GEN_CLASS__GEN_FEATURES :
+				return getGenFeatures();
+			case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
+				return getGenOperations();
+			case GenModelPackage.GEN_CLASS__LABEL_FEATURE :
+				if (resolve)
+					return getLabelFeature();
+				return basicGetLabelFeature();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -164,26 +167,26 @@ public class GenClassImpl extends
 	 */
 	public void eSet(EStructuralFeature eFeature, Object newValue) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_CLASS__PROVIDER:
-			setProvider((GenProviderKind) newValue);
-			return;
-		case GenModelPackage.GEN_CLASS__IMAGE:
-			setImage(((Boolean) newValue).booleanValue());
-			return;
-		case GenModelPackage.GEN_CLASS__ECORE_CLASS:
-			setEcoreClass((EClass) newValue);
-			return;
-		case GenModelPackage.GEN_CLASS__GEN_FEATURES:
-			getGenFeatures().clear();
-			getGenFeatures().addAll((Collection) newValue);
-			return;
-		case GenModelPackage.GEN_CLASS__GEN_OPERATIONS:
-			getGenOperations().clear();
-			getGenOperations().addAll((Collection) newValue);
-			return;
-		case GenModelPackage.GEN_CLASS__LABEL_FEATURE:
-			setLabelFeature((GenFeature) newValue);
-			return;
+			case GenModelPackage.GEN_CLASS__PROVIDER :
+				setProvider((GenProviderKind) newValue);
+				return;
+			case GenModelPackage.GEN_CLASS__IMAGE :
+				setImage(((Boolean) newValue).booleanValue());
+				return;
+			case GenModelPackage.GEN_CLASS__ECORE_CLASS :
+				setEcoreClass((EClass) newValue);
+				return;
+			case GenModelPackage.GEN_CLASS__GEN_FEATURES :
+				getGenFeatures().clear();
+				getGenFeatures().addAll((Collection) newValue);
+				return;
+			case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
+				getGenOperations().clear();
+				getGenOperations().addAll((Collection) newValue);
+				return;
+			case GenModelPackage.GEN_CLASS__LABEL_FEATURE :
+				setLabelFeature((GenFeature) newValue);
+				return;
 		}
 		eDynamicSet(eFeature, newValue);
 	}
@@ -195,24 +198,24 @@ public class GenClassImpl extends
 	 */
 	public void eUnset(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_CLASS__PROVIDER:
-			setProvider(PROVIDER_EDEFAULT);
-			return;
-		case GenModelPackage.GEN_CLASS__IMAGE:
-			setImage(IMAGE_EDEFAULT);
-			return;
-		case GenModelPackage.GEN_CLASS__ECORE_CLASS:
-			setEcoreClass((EClass) null);
-			return;
-		case GenModelPackage.GEN_CLASS__GEN_FEATURES:
-			getGenFeatures().clear();
-			return;
-		case GenModelPackage.GEN_CLASS__GEN_OPERATIONS:
-			getGenOperations().clear();
-			return;
-		case GenModelPackage.GEN_CLASS__LABEL_FEATURE:
-			setLabelFeature((GenFeature) null);
-			return;
+			case GenModelPackage.GEN_CLASS__PROVIDER :
+				setProvider(PROVIDER_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_CLASS__IMAGE :
+				setImage(IMAGE_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_CLASS__ECORE_CLASS :
+				setEcoreClass((EClass) null);
+				return;
+			case GenModelPackage.GEN_CLASS__GEN_FEATURES :
+				getGenFeatures().clear();
+				return;
+			case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
+				getGenOperations().clear();
+				return;
+			case GenModelPackage.GEN_CLASS__LABEL_FEATURE :
+				setLabelFeature((GenFeature) null);
+				return;
 		}
 		eDynamicUnset(eFeature);
 	}
@@ -224,20 +227,20 @@ public class GenClassImpl extends
 	 */
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_CLASS__GEN_PACKAGE:
-			return getGenPackage() != null;
-		case GenModelPackage.GEN_CLASS__PROVIDER:
-			return provider != PROVIDER_EDEFAULT;
-		case GenModelPackage.GEN_CLASS__IMAGE:
-			return image != IMAGE_EDEFAULT;
-		case GenModelPackage.GEN_CLASS__ECORE_CLASS:
-			return ecoreClass != null;
-		case GenModelPackage.GEN_CLASS__GEN_FEATURES:
-			return genFeatures != null && !genFeatures.isEmpty();
-		case GenModelPackage.GEN_CLASS__GEN_OPERATIONS:
-			return genOperations != null && !genOperations.isEmpty();
-		case GenModelPackage.GEN_CLASS__LABEL_FEATURE:
-			return labelFeature != null;
+			case GenModelPackage.GEN_CLASS__GEN_PACKAGE :
+				return getGenPackage() != null;
+			case GenModelPackage.GEN_CLASS__PROVIDER :
+				return provider != PROVIDER_EDEFAULT;
+			case GenModelPackage.GEN_CLASS__IMAGE :
+				return image != IMAGE_EDEFAULT;
+			case GenModelPackage.GEN_CLASS__ECORE_CLASS :
+				return ecoreClass != null;
+			case GenModelPackage.GEN_CLASS__GEN_FEATURES :
+				return genFeatures != null && !genFeatures.isEmpty();
+			case GenModelPackage.GEN_CLASS__GEN_OPERATIONS :
+				return genOperations != null && !genOperations.isEmpty();
+			case GenModelPackage.GEN_CLASS__LABEL_FEATURE :
+				return labelFeature != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -252,24 +255,21 @@ public class GenClassImpl extends
 			}
 
 			if (UML2GenModelUtil.isOperationsClasses(getGenPackage())
-					&& !getDuplicateGenOperations().isEmpty()) {
+				&& !getDuplicateGenOperations().isEmpty()) {
 
 				progressMonitor.beginTask("", 1);
 
 				if (!isInterface()) {
-					progressMonitor
-							.subTask(CodeGenEcorePlugin.INSTANCE
-									.getString(
-											"_UI_GeneratingJavaClass_message",
-											new Object[] { getQualifiedOperationsClassName() }));
+					progressMonitor.subTask(CodeGenEcorePlugin.INSTANCE
+						.getString("_UI_GeneratingJavaClass_message",
+							new Object[]{getQualifiedOperationsClassName()}));
 					generate(new SubProgressMonitor(progressMonitor, 1),
-							Generator.EMF_MODEL_PROJECT_STYLE, getGenModel()
-									.getEffectiveModelPluginVariables(),
-							getGenModel().getModelDirectory(), UML2GenModelUtil
-									.getOperationsPackageName(getGenPackage()),
-							getOperationsClassName(),
-							((GenModel) getGenModel())
-									.getOperationsClassEmitter());
+						Generator.EMF_MODEL_PROJECT_STYLE, getGenModel()
+							.getEffectiveModelPluginVariables(), getGenModel()
+							.getModelDirectory(), UML2GenModelUtil
+							.getOperationsPackageName(getGenPackage()),
+						getOperationsClassName(), ((GenModel) getGenModel())
+							.getOperationsClassEmitter());
 				}
 			}
 
@@ -288,14 +288,14 @@ public class GenClassImpl extends
 			duplicateGenFeatures = new ArrayList();
 
 			for (Iterator duplicateEcoreFeatures = Generator
-					.getDuplicateEcoreFeatures(getEcoreClass()).iterator(); duplicateEcoreFeatures
-					.hasNext();) {
+				.getDuplicateEcoreFeatures(getEcoreClass()).iterator(); duplicateEcoreFeatures
+				.hasNext();) {
 
 				GenFeature duplicateGenFeature = getGenModel()
-						.createGenFeature();
+					.createGenFeature();
 				duplicateGenFeature
-						.initialize((EStructuralFeature) duplicateEcoreFeatures
-								.next());
+					.initialize((EStructuralFeature) duplicateEcoreFeatures
+						.next());
 				duplicateGenFeatures.add(duplicateGenFeature);
 			}
 		}
@@ -313,11 +313,11 @@ public class GenClassImpl extends
 
 			for (Iterator i = genClasses.iterator(); i.hasNext();) {
 				result
-						.addAll(collectGenFeatures(
-								null,
-								UML2GenModelUtil
-										.getDuplicateGenFeatures((org.eclipse.emf.codegen.ecore.genmodel.GenClass) i
-												.next()), filter));
+					.addAll(collectGenFeatures(
+						null,
+						UML2GenModelUtil
+							.getDuplicateGenFeatures((org.eclipse.emf.codegen.ecore.genmodel.GenClass) i
+								.next()), filter));
 			}
 		}
 
@@ -330,19 +330,19 @@ public class GenClassImpl extends
 
 	protected List getAllDuplicateGenFeatures() {
 		return collectDuplicateGenFeatures(getAllBaseGenClasses(),
-				getDuplicateGenFeatures(), null);
+			getDuplicateGenFeatures(), null);
 	}
 
 	public List getDeclaredGenFeatures() {
 		Map declaredGenFeatures = new LinkedHashMap();
 
 		List redefinedGenFeatures = collectGenFeatures(null,
-				getRedefinedGenFeatures(), new GenFeatureFilter() {
+			getRedefinedGenFeatures(), new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return !getAllGenFeatures().contains(genFeature);
-					}
-				});
+				public boolean accept(GenFeature genFeature) {
+					return !getAllGenFeatures().contains(genFeature);
+				}
+			});
 
 		for (Iterator i = redefinedGenFeatures.iterator(); i.hasNext();) {
 			GenFeature genFeature = (GenFeature) i.next();
@@ -350,13 +350,13 @@ public class GenClassImpl extends
 		}
 
 		List duplicateGenFeatures = collectGenFeatures(null,
-				getDuplicateGenFeatures(), new GenFeatureFilter() {
+			getDuplicateGenFeatures(), new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return !UML2GenModelUtil.isDuplicate(genFeature)
-								|| !UML2GenModelUtil.isRedefinition(genFeature);
-					}
-				});
+				public boolean accept(GenFeature genFeature) {
+					return !UML2GenModelUtil.isDuplicate(genFeature)
+						|| !UML2GenModelUtil.isRedefinition(genFeature);
+				}
+			});
 
 		for (Iterator i = duplicateGenFeatures.iterator(); i.hasNext();) {
 			GenFeature genFeature = (GenFeature) i.next();
@@ -371,31 +371,31 @@ public class GenClassImpl extends
 
 		for (Iterator i = getImplementedGenClasses().iterator(); i.hasNext();) {
 			org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = (org.eclipse.emf.codegen.ecore.genmodel.GenClass) i
-					.next();
+				.next();
 
 			for (Iterator j = UML2GenModelUtil.getUnionGenFeatures(genClass)
-					.iterator(); j.hasNext();) {
+				.iterator(); j.hasNext();) {
 
 				GenFeature genFeature = (GenFeature) j.next();
 				implementedGenFeatures.put(genFeature.getName(), genFeature);
 			}
 
 			for (Iterator j = UML2GenModelUtil.getSupersetGenFeatures(genClass)
-					.iterator(); j.hasNext();) {
+				.iterator(); j.hasNext();) {
 
 				GenFeature genFeature = (GenFeature) j.next();
 				implementedGenFeatures.put(genFeature.getName(), genFeature);
 			}
 
 			for (Iterator j = UML2GenModelUtil
-					.getRedefinedGenFeatures(genClass).iterator(); j.hasNext();) {
+				.getRedefinedGenFeatures(genClass).iterator(); j.hasNext();) {
 
 				GenFeature genFeature = (GenFeature) j.next();
 				implementedGenFeatures.put(genFeature.getName(), genFeature);
 			}
 
 			for (Iterator j = UML2GenModelUtil
-					.getDuplicateGenFeatures(genClass).iterator(); j.hasNext();) {
+				.getDuplicateGenFeatures(genClass).iterator(); j.hasNext();) {
 
 				GenFeature genFeature = (GenFeature) j.next();
 				implementedGenFeatures.put(genFeature.getName(), genFeature);
@@ -403,7 +403,7 @@ public class GenClassImpl extends
 		}
 
 		return collectGenFeatures(null, new ArrayList(implementedGenFeatures
-				.values()), filter);
+			.values()), filter);
 	}
 
 	public List getDeclaredFieldGenFeatures() {
@@ -414,22 +414,22 @@ public class GenClassImpl extends
 				if (UML2GenModelUtil.isDuplicate(genFeature)) {
 
 					for (Iterator i = UML2GenModelUtil.getRedefinedGenFeatures(
-							genFeature).iterator(); i.hasNext();) {
+						genFeature).iterator(); i.hasNext();) {
 
 						GenFeature redefinedGenFeature = (GenFeature) i.next();
 
 						if (getExtendedGenFeatures().contains(
-								redefinedGenFeature)) {
+							redefinedGenFeature)) {
 							return !UML2GenModelUtil
-									.isUnion(redefinedGenFeature)
-									&& !isRedefined(redefinedGenFeature);
+								.isUnion(redefinedGenFeature)
+								&& !isRedefined(redefinedGenFeature);
 						}
 					}
 				}
 
 				return !getExtendedGenFeatures().contains(genFeature)
-						&& !UML2GenModelUtil.isUnion(genFeature)
-						&& !isRedefined(genFeature);
+					&& !UML2GenModelUtil.isUnion(genFeature)
+					&& !isRedefined(genFeature);
 			}
 		});
 	}
@@ -439,7 +439,7 @@ public class GenClassImpl extends
 
 			public boolean accept(GenFeature genFeature) {
 				return !UML2GenModelUtil.isUnion(genFeature)
-						&& !isRedefined(genFeature);
+					&& !isRedefined(genFeature);
 			}
 		});
 	}
@@ -457,14 +457,13 @@ public class GenClassImpl extends
 			duplicateGenOperations = new ArrayList();
 
 			for (Iterator duplicateEcoreOperations = Generator
-					.getDuplicateEcoreOperations(getEcoreClass()).iterator(); duplicateEcoreOperations
-					.hasNext();) {
+				.getDuplicateEcoreOperations(getEcoreClass()).iterator(); duplicateEcoreOperations
+				.hasNext();) {
 
 				GenOperation duplicateGenOperation = getGenModel()
-						.createGenOperation();
+					.createGenOperation();
 				duplicateGenOperation
-						.initialize((EOperation) duplicateEcoreOperations
-								.next());
+					.initialize((EOperation) duplicateEcoreOperations.next());
 				duplicateGenOperations.add(duplicateGenOperation);
 			}
 		}
@@ -482,11 +481,11 @@ public class GenClassImpl extends
 
 			for (Iterator i = genClasses.iterator(); i.hasNext();) {
 				result
-						.addAll(collectGenOperations(
-								null,
-								UML2GenModelUtil
-										.getDuplicateGenOperations((org.eclipse.emf.codegen.ecore.genmodel.GenClass) i
-												.next()), filter));
+					.addAll(collectGenOperations(
+						null,
+						UML2GenModelUtil
+							.getDuplicateGenOperations((org.eclipse.emf.codegen.ecore.genmodel.GenClass) i
+								.next()), filter));
 			}
 		}
 
@@ -499,41 +498,40 @@ public class GenClassImpl extends
 
 	protected List getAllDuplicateGenOperations() {
 		return collectDuplicateGenOperations(getAllBaseGenClasses(),
-				getDuplicateGenOperations(), null);
+			getDuplicateGenOperations(), null);
 	}
 
 	public List getDeclaredGenOperations() {
 		Map declaredGenOperations = new LinkedHashMap();
 
 		List redefinedGenOperations = collectGenOperations(null,
-				getRedefinedGenOperations(), new GenOperationFilter() {
+			getRedefinedGenOperations(), new GenOperationFilter() {
 
-					public boolean accept(GenOperation genOperation) {
-						return !getAllDuplicateGenOperations().contains(
-								genOperation);
-					}
-				});
+				public boolean accept(GenOperation genOperation) {
+					return !getAllDuplicateGenOperations().contains(
+						genOperation);
+				}
+			});
 
 		for (Iterator i = redefinedGenOperations.iterator(); i.hasNext();) {
 			GenOperation genOperation = (GenOperation) i.next();
 			declaredGenOperations.put(genOperation.getName()
-					+ genOperation.getParameterTypes(""), genOperation);
+				+ genOperation.getParameterTypes(""), genOperation);
 		}
 
 		List duplicateGenOperations = collectGenOperations(null,
-				getDuplicateGenOperations(), new GenOperationFilter() {
+			getDuplicateGenOperations(), new GenOperationFilter() {
 
-					public boolean accept(GenOperation genOperation) {
-						return !UML2GenModelUtil.isDuplicate(genOperation)
-								|| !UML2GenModelUtil
-										.isRedefinition(genOperation);
-					}
-				});
+				public boolean accept(GenOperation genOperation) {
+					return !UML2GenModelUtil.isDuplicate(genOperation)
+						|| !UML2GenModelUtil.isRedefinition(genOperation);
+				}
+			});
 
 		for (Iterator i = duplicateGenOperations.iterator(); i.hasNext();) {
 			GenOperation genOperation = (GenOperation) i.next();
 			declaredGenOperations.put(genOperation.getName()
-					+ genOperation.getParameterTypes(""), genOperation);
+				+ genOperation.getParameterTypes(""), genOperation);
 		}
 
 		return new ArrayList(declaredGenOperations.values());
@@ -544,27 +542,27 @@ public class GenClassImpl extends
 
 		for (Iterator i = getImplementedGenClasses().iterator(); i.hasNext();) {
 			org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = (org.eclipse.emf.codegen.ecore.genmodel.GenClass) i
-					.next();
+				.next();
 
 			for (Iterator j = UML2GenModelUtil.getRedefinedGenOperations(
-					genClass).iterator(); j.hasNext();) {
+				genClass).iterator(); j.hasNext();) {
 
 				GenOperation genOperation = (GenOperation) j.next();
 				implementedGenOperations.put(genOperation.getName()
-						+ genOperation.getParameterTypes(""), genOperation);
+					+ genOperation.getParameterTypes(""), genOperation);
 			}
 
 			for (Iterator j = UML2GenModelUtil.getDuplicateGenOperations(
-					genClass).iterator(); j.hasNext();) {
+				genClass).iterator(); j.hasNext();) {
 
 				GenOperation genOperation = (GenOperation) j.next();
 				implementedGenOperations.put(genOperation.getName()
-						+ genOperation.getParameterTypes(""), genOperation);
+					+ genOperation.getParameterTypes(""), genOperation);
 			}
 		}
 
 		return collectGenOperations(null, new ArrayList(
-				implementedGenOperations.values()), filter);
+			implementedGenOperations.values()), filter);
 	}
 
 	public List getImplementedGenOperations() {
@@ -578,7 +576,7 @@ public class GenClassImpl extends
 
 	public List getExtendedGenOperations() {
 		return collectDuplicateGenOperations(getExtendedGenClasses(), null,
-				null);
+			null);
 	}
 
 	public String getImportedOperationsClassName() {
@@ -591,7 +589,7 @@ public class GenClassImpl extends
 
 	public String getQualifiedOperationsClassName() {
 		return UML2GenModelUtil.getOperationsPackageName(getGenPackage()) + "."
-				+ getOperationsClassName();
+			+ getOperationsClassName();
 	}
 
 	public String getOperationID(GenOperation genOperation) {
@@ -601,9 +599,9 @@ public class GenClassImpl extends
 
 			if (!isBlank(prefix)) {
 				return getClassifierID()
-						+ "__"
-						+ format(genOperation.getName(), '_', prefix, false)
-								.toUpperCase();
+					+ "__"
+					+ format(genOperation.getName(), '_', prefix, false)
+						.toUpperCase();
 			}
 		}
 
@@ -612,28 +610,30 @@ public class GenClassImpl extends
 
 	public List getEInverseAddGenFeatures() {
 		return collectGenFeatures(null, super.getEInverseAddGenFeatures(),
-				new GenFeatureFilter() {
+			new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return !genFeature.isDerived();
-					}
-				});
+				public boolean accept(GenFeature genFeature) {
+					return !genFeature.isDerived();
+				}
+			});
 	}
 
 	public List getEInverseRemoveGenFeatures() {
 		return collectGenFeatures(null, super.getEInverseRemoveGenFeatures(),
-				new GenFeatureFilter() {
+			new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return !genFeature.isDerived();
-					}
-				});
+				public boolean accept(GenFeature genFeature) {
+					return !genFeature.isDerived();
+				}
+			});
 	}
 
 	protected String getSubsetListConstructor(GenFeature genFeature) {
 		StringBuffer sb = new StringBuffer();
 
-		String unsettable = genFeature.isUnsettable() ? ".Unsettable" : "";
+		String unsettable = genFeature.isUnsettable()
+			? ".Unsettable"
+			: "";
 
 		if (genFeature.isMapType()) {
 			return super.getListConstructor(genFeature);
@@ -641,9 +641,9 @@ public class GenClassImpl extends
 			if (genFeature.isBidirectional()) {
 				GenFeature reverseFeature = genFeature.getReverse();
 				sb
-						.append(getGenModel()
-								.getImportedName(
-										"org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList"));
+					.append(getGenModel()
+						.getImportedName(
+							"org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList"));
 				sb.append(unsettable);
 				sb.append("(");
 				sb.append(genFeature.getListItemType());
@@ -653,13 +653,13 @@ public class GenClassImpl extends
 				sb.append(getSupersetFeatureIDArray(genFeature));
 				sb.append(", ");
 				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
-						reverseFeature));
+					reverseFeature));
 				sb.append(")");
 			} else {
 				sb
-						.append(getGenModel()
-								.getImportedName(
-										"org.eclipse.uml2.common.util.SubsetEObjectContainmentEList"));
+					.append(getGenModel()
+						.getImportedName(
+							"org.eclipse.uml2.common.util.SubsetEObjectContainmentEList"));
 				sb.append(unsettable);
 				sb.append("(");
 				sb.append(genFeature.getListItemType());
@@ -674,14 +674,14 @@ public class GenClassImpl extends
 				GenFeature reverseFeature = genFeature.getReverse();
 				if (genFeature.isResolveProxies()) {
 					sb
-							.append(getGenModel()
-									.getImportedName(
-											"org.eclipse.uml2.common.util.SubsetEObjectWithInverseResolvingEList"));
+						.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SubsetEObjectWithInverseResolvingEList"));
 				} else {
 					sb
-							.append(getGenModel()
-									.getImportedName(
-											"org.eclipse.uml2.common.util.SubsetEObjectWithInverseEList"));
+						.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SubsetEObjectWithInverseEList"));
 				}
 				sb.append(unsettable);
 				if (reverseFeature.isListType()) {
@@ -695,17 +695,17 @@ public class GenClassImpl extends
 				sb.append(getSupersetFeatureIDArray(genFeature));
 				sb.append(", ");
 				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
-						reverseFeature));
+					reverseFeature));
 				sb.append(")");
 			} else {
 				if (genFeature.isResolveProxies()) {
 					sb
-							.append(getGenModel()
-									.getImportedName(
-											"org.eclipse.uml2.common.util.SubsetEObjectResolvingEList"));
+						.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SubsetEObjectResolvingEList"));
 				} else {
 					sb.append(getGenModel().getImportedName(
-							"org.eclipse.uml2.common.util.SubsetEObjectEList"));
+						"org.eclipse.uml2.common.util.SubsetEObjectEList"));
 				}
 				sb.append(unsettable);
 				sb.append("(");
@@ -727,7 +727,9 @@ public class GenClassImpl extends
 	protected String getSupersetListConstructor(GenFeature genFeature) {
 		StringBuffer sb = new StringBuffer();
 
-		String unsettable = genFeature.isUnsettable() ? ".Unsettable" : "";
+		String unsettable = genFeature.isUnsettable()
+			? ".Unsettable"
+			: "";
 
 		if (genFeature.isMapType()) {
 			return super.getListConstructor(genFeature);
@@ -735,9 +737,9 @@ public class GenClassImpl extends
 			if (genFeature.isBidirectional()) {
 				GenFeature reverseFeature = genFeature.getReverse();
 				sb
-						.append(getGenModel()
-								.getImportedName(
-										"org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList"));
+					.append(getGenModel()
+						.getImportedName(
+							"org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList"));
 				sb.append(unsettable);
 				sb.append("(");
 				sb.append(genFeature.getListItemType());
@@ -747,13 +749,13 @@ public class GenClassImpl extends
 				sb.append(getSubsetFeatureIDArray(genFeature));
 				sb.append(", ");
 				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
-						reverseFeature));
+					reverseFeature));
 				sb.append(")");
 			} else {
 				sb
-						.append(getGenModel()
-								.getImportedName(
-										"org.eclipse.uml2.common.util.SupersetEObjectContainmentEList"));
+					.append(getGenModel()
+						.getImportedName(
+							"org.eclipse.uml2.common.util.SupersetEObjectContainmentEList"));
 				sb.append(unsettable);
 				sb.append("(");
 				sb.append(genFeature.getListItemType());
@@ -768,14 +770,14 @@ public class GenClassImpl extends
 				GenFeature reverseFeature = genFeature.getReverse();
 				if (genFeature.isResolveProxies()) {
 					sb
-							.append(getGenModel()
-									.getImportedName(
-											"org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList"));
+						.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList"));
 				} else {
 					sb
-							.append(getGenModel()
-									.getImportedName(
-											"org.eclipse.uml2.common.util.SupersetEObjectWithInverseEList"));
+						.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SupersetEObjectWithInverseEList"));
 				}
 				sb.append(unsettable);
 				if (reverseFeature.isListType()) {
@@ -789,19 +791,17 @@ public class GenClassImpl extends
 				sb.append(getSubsetFeatureIDArray(genFeature));
 				sb.append(", ");
 				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
-						reverseFeature));
+					reverseFeature));
 				sb.append(")");
 			} else {
 				if (genFeature.isResolveProxies()) {
 					sb
-							.append(getGenModel()
-									.getImportedName(
-											"org.eclipse.uml2.common.util.SupersetEObjectResolvingEList"));
+						.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SupersetEObjectResolvingEList"));
 				} else {
-					sb
-							.append(getGenModel()
-									.getImportedName(
-											"org.eclipse.uml2.common.util.SupersetEObjectEList"));
+					sb.append(getGenModel().getImportedName(
+						"org.eclipse.uml2.common.util.SupersetEObjectEList"));
 				}
 				sb.append(unsettable);
 				sb.append("(");
@@ -823,26 +823,25 @@ public class GenClassImpl extends
 	public String getListConstructor(GenFeature genFeature) {
 
 		if (isSuperset(genFeature)
-				&& !collectGenFeatures(null, getSubsetGenFeatures(genFeature),
-						new GenFeatureFilter() {
+			&& !collectGenFeatures(null, getSubsetGenFeatures(genFeature),
+				new GenFeatureFilter() {
 
-							public boolean accept(GenFeature genFeature) {
-								return !genFeature.isDerived();
-							}
-						}).isEmpty()) {
+					public boolean accept(GenFeature genFeature) {
+						return !genFeature.isDerived();
+					}
+				}).isEmpty()) {
 
 			return getSupersetListConstructor(genFeature);
 		}
 
 		if (UML2GenModelUtil.isSubset(genFeature)
-				&& !collectGenFeatures(null,
-						getSupersetGenFeatures(genFeature),
-						new GenFeatureFilter() {
+			&& !collectGenFeatures(null, getSupersetGenFeatures(genFeature),
+				new GenFeatureFilter() {
 
-							public boolean accept(GenFeature genFeature) {
-								return !genFeature.isDerived();
-							}
-						}).isEmpty()) {
+					public boolean accept(GenFeature genFeature) {
+						return !genFeature.isDerived();
+					}
+				}).isEmpty()) {
 
 			return getSubsetListConstructor(genFeature);
 		}
@@ -852,15 +851,15 @@ public class GenClassImpl extends
 
 	public GenFeature findGenFeature(EStructuralFeature ecoreFeature) {
 		org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = findGenClass(Generator
-				.getEcoreContainingClass(ecoreFeature));
+			.getEcoreContainingClass(ecoreFeature));
 
 		for (Iterator i = UML2GenModelUtil.getDuplicateGenFeatures(genClass)
-				.iterator(); i.hasNext();) {
+			.iterator(); i.hasNext();) {
 
 			GenFeature genFeature = (GenFeature) i.next();
 
 			if (ecoreFeature.getName().equals(
-					genFeature.getEcoreFeature().getName())) {
+				genFeature.getEcoreFeature().getName())) {
 				return genFeature;
 			}
 		}
@@ -870,26 +869,25 @@ public class GenClassImpl extends
 
 	public GenOperation findGenOperation(EOperation ecoreOperation) {
 		org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = findGenClass(Generator
-				.getEcoreContainingClass(ecoreOperation));
+			.getEcoreContainingClass(ecoreOperation));
 
-		genOperationsLoop: for (Iterator i = UML2GenModelUtil
-				.getDuplicateGenOperations(genClass).iterator(); i.hasNext();) {
+		genOperationsLoop : for (Iterator i = UML2GenModelUtil
+			.getDuplicateGenOperations(genClass).iterator(); i.hasNext();) {
 
 			GenOperation genOperation = (GenOperation) i.next();
 
 			if (ecoreOperation.getName().equals(
-					genOperation.getEcoreOperation().getName())
-					&& ecoreOperation.getEParameters().size() == genOperation
-							.getEcoreOperation().getEParameters().size()) {
+				genOperation.getEcoreOperation().getName())
+				&& ecoreOperation.getEParameters().size() == genOperation
+					.getEcoreOperation().getEParameters().size()) {
 
 				for (int j = 0; j < ecoreOperation.getEParameters().size(); j++) {
 					EParameter ecoreParameter = (EParameter) ecoreOperation
-							.getEParameters().get(j);
+						.getEParameters().get(j);
 
 					if (!ecoreParameter.getEType().getName().equals(
-							((EParameter) genOperation.getEcoreOperation()
-									.getEParameters().get(j)).getEType()
-									.getName())) {
+						((EParameter) genOperation.getEcoreOperation()
+							.getEParameters().get(j)).getEType().getName())) {
 
 						continue genOperationsLoop;
 					}
@@ -913,7 +911,7 @@ public class GenClassImpl extends
 			}
 
 			for (Iterator j = UML2GenModelUtil.getSubsettedGenFeatures(
-					genFeature).iterator(); j.hasNext();) {
+				genFeature).iterator(); j.hasNext();) {
 
 				GenFeature subsettedGenFeature = (GenFeature) j.next();
 
@@ -931,7 +929,7 @@ public class GenClassImpl extends
 
 			public boolean accept(GenFeature genFeature) {
 				return UML2GenModelUtil.isUnion(genFeature)
-						&& !isRedefined(genFeature);
+					&& !isRedefined(genFeature);
 			}
 		});
 	}
@@ -940,15 +938,15 @@ public class GenClassImpl extends
 		final EStructuralFeature ecoreFeature = genFeature.getEcoreFeature();
 
 		return !genFeature.isDerived()
-				&& !collectGenFeatures(null, getAllDuplicateGenFeatures(),
-						new GenFeatureFilter() {
+			&& !collectGenFeatures(null, getAllDuplicateGenFeatures(),
+				new GenFeatureFilter() {
 
-							public boolean accept(GenFeature genFeature) {
-								return Generator.getSubsettedEcoreFeatures(
-										genFeature.getEcoreFeature()).contains(
-										ecoreFeature);
-							}
-						}).isEmpty();
+					public boolean accept(GenFeature genFeature) {
+						return Generator.getSubsettedEcoreFeatures(
+							genFeature.getEcoreFeature())
+							.contains(ecoreFeature);
+					}
+				}).isEmpty();
 	}
 
 	public List getSupersetGenFeatures() {
@@ -962,7 +960,7 @@ public class GenClassImpl extends
 			}
 
 			for (Iterator j = UML2GenModelUtil.getSubsettedGenFeatures(
-					genFeature).iterator(); j.hasNext();) {
+				genFeature).iterator(); j.hasNext();) {
 
 				GenFeature subsettedGenFeature = (GenFeature) j.next();
 
@@ -979,14 +977,13 @@ public class GenClassImpl extends
 		Map subsetGenFeatures = new LinkedHashMap();
 
 		final EStructuralFeature supersetEcoreFeature = supersetGenFeature
-				.getEcoreFeature();
+			.getEcoreFeature();
 
 		for (Iterator i = getAllDuplicateGenFeatures().iterator(); i.hasNext();) {
 			GenFeature genFeature = (GenFeature) i.next();
 
 			if (Generator.getSubsettedEcoreFeatures(
-					genFeature.getEcoreFeature())
-					.contains(supersetEcoreFeature)) {
+				genFeature.getEcoreFeature()).contains(supersetEcoreFeature)) {
 
 				subsetGenFeatures.put(genFeature.getName(), genFeature);
 			}
@@ -997,12 +994,12 @@ public class GenClassImpl extends
 
 	public List getSubsetGenFeatures() {
 		return collectGenFeatures(null, getDuplicateGenFeatures(),
-				new GenFeatureFilter() {
+			new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return UML2GenModelUtil.isSubset(genFeature);
-					}
-				});
+				public boolean accept(GenFeature genFeature) {
+					return UML2GenModelUtil.isSubset(genFeature);
+				}
+			});
 	}
 
 	public List getImplementedSubsetGenFeatures() {
@@ -1010,26 +1007,26 @@ public class GenClassImpl extends
 
 			public boolean accept(GenFeature genFeature) {
 				return UML2GenModelUtil.isSubset(genFeature)
-						&& !collectGenFeatures(null,
-								getSupersetGenFeatures(genFeature),
-								new GenFeatureFilter() {
+					&& !collectGenFeatures(null,
+						getSupersetGenFeatures(genFeature),
+						new GenFeatureFilter() {
 
-									public boolean accept(GenFeature genFeature) {
-										return !genFeature.isDerived();
-									}
-								}).isEmpty();
+							public boolean accept(GenFeature genFeature) {
+								return !genFeature.isDerived();
+							}
+						}).isEmpty();
 			}
 		});
 	}
 
 	public List getImplementedSubsetGenFeatures(final boolean listType) {
 		return collectGenFeatures(null, getImplementedSubsetGenFeatures(),
-				new GenFeatureFilter() {
+			new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return listType == genFeature.isListType();
-					}
-				});
+				public boolean accept(GenFeature genFeature) {
+					return listType == genFeature.isListType();
+				}
+			});
 	}
 
 	public String getSubsetFeatureAccessorArray(GenFeature supersetGenFeature) {
@@ -1037,17 +1034,16 @@ public class GenClassImpl extends
 
 		sb.append("new ");
 		sb.append(getGenModel().getImportedName(
-				"org.eclipse.emf.ecore.EStructuralFeature"));
+			"org.eclipse.emf.ecore.EStructuralFeature"));
 		sb.append("[] {");
 
 		Iterator subsetGenFeatures = collectGenFeatures(null,
-				getSubsetGenFeatures(supersetGenFeature),
-				new GenFeatureFilter() {
+			getSubsetGenFeatures(supersetGenFeature), new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return !genFeature.isDerived();
-					}
-				}).iterator();
+				public boolean accept(GenFeature genFeature) {
+					return !genFeature.isDerived();
+				}
+			}).iterator();
 
 		while (subsetGenFeatures.hasNext()) {
 			GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();
@@ -1071,13 +1067,12 @@ public class GenClassImpl extends
 		sb.append("new int[] {");
 
 		Iterator subsetGenFeatures = collectGenFeatures(null,
-				getSubsetGenFeatures(supersetGenFeature),
-				new GenFeatureFilter() {
+			getSubsetGenFeatures(supersetGenFeature), new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return !genFeature.isDerived();
-					}
-				}).iterator();
+				public boolean accept(GenFeature genFeature) {
+					return !genFeature.isDerived();
+				}
+			}).iterator();
 
 		while (subsetGenFeatures.hasNext()) {
 			GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();
@@ -1103,26 +1098,26 @@ public class GenClassImpl extends
 
 			public boolean accept(GenFeature genFeature) {
 				return isSuperset(genFeature)
-						&& !collectGenFeatures(null,
-								getSubsetGenFeatures(genFeature),
-								new GenFeatureFilter() {
+					&& !collectGenFeatures(null,
+						getSubsetGenFeatures(genFeature),
+						new GenFeatureFilter() {
 
-									public boolean accept(GenFeature genFeature) {
-										return !genFeature.isDerived();
-									}
-								}).isEmpty();
+							public boolean accept(GenFeature genFeature) {
+								return !genFeature.isDerived();
+							}
+						}).isEmpty();
 			}
 		});
 	}
 
 	public List getImplementedSupersetGenFeatures(final boolean listType) {
 		return collectGenFeatures(null, getImplementedSupersetGenFeatures(),
-				new GenFeatureFilter() {
+			new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return listType == genFeature.isListType();
-					}
-				});
+				public boolean accept(GenFeature genFeature) {
+					return listType == genFeature.isListType();
+				}
+			});
 	}
 
 	public String getSupersetFeatureAccessorArray(GenFeature subsetGenFeature) {
@@ -1130,21 +1125,20 @@ public class GenClassImpl extends
 
 		sb.append("new ");
 		sb.append(getGenModel().getImportedName(
-				"org.eclipse.emf.ecore.EStructuralFeature"));
+			"org.eclipse.emf.ecore.EStructuralFeature"));
 		sb.append("[] {");
 
 		Iterator supersetGenFeatures = collectGenFeatures(null,
-				getSupersetGenFeatures(subsetGenFeature),
-				new GenFeatureFilter() {
+			getSupersetGenFeatures(subsetGenFeature), new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return !genFeature.isDerived();
-					}
-				}).iterator();
+				public boolean accept(GenFeature genFeature) {
+					return !genFeature.isDerived();
+				}
+			}).iterator();
 
 		while (supersetGenFeatures.hasNext()) {
 			GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures
-					.next();
+				.next();
 
 			sb.append(supersetGenFeature.getQualifiedFeatureAccessorName());
 			sb.append("()");
@@ -1165,17 +1159,16 @@ public class GenClassImpl extends
 		sb.append("new int[] {");
 
 		Iterator supersetGenFeatures = collectGenFeatures(null,
-				getSupersetGenFeatures(subsetGenFeature),
-				new GenFeatureFilter() {
+			getSupersetGenFeatures(subsetGenFeature), new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return !genFeature.isDerived();
-					}
-				}).iterator();
+				public boolean accept(GenFeature genFeature) {
+					return !genFeature.isDerived();
+				}
+			}).iterator();
 
 		while (supersetGenFeatures.hasNext()) {
 			GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures
-					.next();
+				.next();
 
 			sb.append(getQualifiedFeatureID(supersetGenFeature));
 
@@ -1193,14 +1186,13 @@ public class GenClassImpl extends
 		final EStructuralFeature ecoreFeature = genFeature.getEcoreFeature();
 
 		return !collectGenFeatures(null, getAllDuplicateGenFeatures(),
-				new GenFeatureFilter() {
+			new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return Generator.getRedefinedEcoreFeatures(
-								genFeature.getEcoreFeature()).contains(
-								ecoreFeature);
-					}
-				}).isEmpty();
+				public boolean accept(GenFeature genFeature) {
+					return Generator.getRedefinedEcoreFeatures(
+						genFeature.getEcoreFeature()).contains(ecoreFeature);
+				}
+			}).isEmpty();
 	}
 
 	public List getRedefinedGenFeatures() {
@@ -1214,7 +1206,7 @@ public class GenClassImpl extends
 			}
 
 			for (Iterator j = UML2GenModelUtil.getRedefinedGenFeatures(
-					genFeature).iterator(); j.hasNext();) {
+				genFeature).iterator(); j.hasNext();) {
 
 				GenFeature redefinedGenFeature = (GenFeature) j.next();
 
@@ -1241,18 +1233,17 @@ public class GenClassImpl extends
 		Map redefinitionGenFeatures = new LinkedHashMap();
 
 		EStructuralFeature redefinedEcoreFeature = redefinedGenFeature
-				.getEcoreFeature();
+			.getEcoreFeature();
 
 		for (Iterator i = getAllDuplicateGenFeatures().iterator(); i.hasNext();) {
 			GenFeature genFeature = (GenFeature) i.next();
 
 			if (Generator.getRedefinedEcoreFeatures(
-					genFeature.getEcoreFeature()).contains(
-					redefinedEcoreFeature)) {
+				genFeature.getEcoreFeature()).contains(redefinedEcoreFeature)) {
 
 				if (!genFeature.getName().equals(redefinedGenFeature.getName())) {
 					redefinitionGenFeatures.put(genFeature.getName(),
-							genFeature);
+						genFeature);
 				}
 			}
 		}
@@ -1264,14 +1255,14 @@ public class GenClassImpl extends
 		final EOperation ecoreOperation = genOperation.getEcoreOperation();
 
 		return !collectGenOperations(null, getAllDuplicateGenOperations(),
-				new GenOperationFilter() {
+			new GenOperationFilter() {
 
-					public boolean accept(GenOperation genOperation) {
-						return Generator.getRedefinedEcoreOperations(
-								genOperation.getEcoreOperation()).contains(
-								ecoreOperation);
-					}
-				}).isEmpty();
+				public boolean accept(GenOperation genOperation) {
+					return Generator.getRedefinedEcoreOperations(
+						genOperation.getEcoreOperation()).contains(
+						ecoreOperation);
+				}
+			}).isEmpty();
 	}
 
 	public List getRedefinedGenOperations() {
@@ -1285,14 +1276,14 @@ public class GenClassImpl extends
 			}
 
 			for (Iterator j = UML2GenModelUtil.getRedefinedGenOperations(
-					genOperation).iterator(); j.hasNext();) {
+				genOperation).iterator(); j.hasNext();) {
 
 				GenOperation redefinedGenOperation = (GenOperation) j.next();
 
 				if (!(genOperation.getName() + genOperation
-						.getParameterTypes("")).equals(redefinedGenOperation
-						.getName()
-						+ redefinedGenOperation.getParameterTypes(""))) {
+					.getParameterTypes("")).equals(redefinedGenOperation
+					.getName()
+					+ redefinedGenOperation.getParameterTypes(""))) {
 
 					redefinedGenOperations.add(redefinedGenOperation);
 				}
@@ -1315,24 +1306,24 @@ public class GenClassImpl extends
 		Map redefinitionGenOperations = new LinkedHashMap();
 
 		EOperation redefinedEcoreOperation = redefinedGenOperation
-				.getEcoreOperation();
+			.getEcoreOperation();
 
 		for (Iterator i = getAllDuplicateGenOperations().iterator(); i
-				.hasNext();) {
+			.hasNext();) {
 
 			GenOperation genOperation = (GenOperation) i.next();
 
 			if (Generator.getRedefinedEcoreOperations(
-					genOperation.getEcoreOperation()).contains(
-					redefinedEcoreOperation)) {
+				genOperation.getEcoreOperation()).contains(
+				redefinedEcoreOperation)) {
 
 				if (!(genOperation.getName() + genOperation
-						.getParameterTypes("")).equals(redefinedGenOperation
-						.getName()
-						+ redefinedGenOperation.getParameterTypes(""))) {
+					.getParameterTypes("")).equals(redefinedGenOperation
+					.getName()
+					+ redefinedGenOperation.getParameterTypes(""))) {
 
 					redefinitionGenOperations.put(genOperation.getName(),
-							genOperation);
+						genOperation);
 				}
 			}
 		}
@@ -1342,12 +1333,12 @@ public class GenClassImpl extends
 
 	public List getKeyGenFeatures() {
 		return collectGenFeatures(null, getAllGenFeatures(),
-				new GenFeatureFilter() {
+			new GenFeatureFilter() {
 
-					public boolean accept(GenFeature genFeature) {
-						return UML2GenModelUtil.isKey(genFeature);
-					}
-				});
+				public boolean accept(GenFeature genFeature) {
+					return UML2GenModelUtil.isKey(genFeature);
+				}
+			});
 	}
 
 	//	public boolean isESetFlag(GenFeature genFeature) {
@@ -1364,14 +1355,14 @@ public class GenClassImpl extends
 
 	public boolean isESetField(GenFeature genFeature) {
 		return super.isESetField(genFeature)
-				&& !UML2GenModelUtil.isUnion(genFeature)
-				&& !isRedefined(genFeature);
+			&& !UML2GenModelUtil.isUnion(genFeature)
+			&& !isRedefined(genFeature);
 	}
 
 	public boolean isField(GenFeature genFeature) {
 		return super.isField(genFeature)
-				&& !UML2GenModelUtil.isUnion(genFeature)
-				&& !isRedefined(genFeature);
+			&& !UML2GenModelUtil.isUnion(genFeature)
+			&& !isRedefined(genFeature);
 	}
 
 }

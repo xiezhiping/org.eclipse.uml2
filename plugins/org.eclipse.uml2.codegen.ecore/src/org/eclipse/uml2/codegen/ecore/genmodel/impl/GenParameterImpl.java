@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenParameterImpl.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenParameterImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -33,9 +33,9 @@ import org.eclipse.uml2.codegen.ecore.genmodel.GenParameter;
  *
  * @generated
  */
-public class GenParameterImpl extends
-		org.eclipse.emf.codegen.ecore.genmodel.impl.GenParameterImpl implements
-		GenParameter {
+public class GenParameterImpl
+		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenParameterImpl
+		implements GenParameter {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,13 +71,14 @@ public class GenParameterImpl extends
 			int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case GenModelPackage.GEN_PARAMETER__GEN_OPERATION:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
+				case GenModelPackage.GEN_PARAMETER__GEN_OPERATION :
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd,
 						GenModelPackage.GEN_PARAMETER__GEN_OPERATION, msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
+				default :
+					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
+						msgs);
 			}
 		}
 		if (eContainer != null)
@@ -94,12 +95,12 @@ public class GenParameterImpl extends
 			int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case GenModelPackage.GEN_PARAMETER__GEN_OPERATION:
-				return eBasicSetContainer(null,
+				case GenModelPackage.GEN_PARAMETER__GEN_OPERATION :
+					return eBasicSetContainer(null,
 						GenModelPackage.GEN_PARAMETER__GEN_OPERATION, msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
+				default :
+					return eDynamicInverseRemove(otherEnd, featureID,
+						baseClass, msgs);
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
@@ -113,18 +114,18 @@ public class GenParameterImpl extends
 	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
-			case GenModelPackage.GEN_PARAMETER__GEN_OPERATION:
-				return eContainer
+				case GenModelPackage.GEN_PARAMETER__GEN_OPERATION :
+					return eContainer
 						.eInverseRemove(
-								this,
-								org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION__GEN_PARAMETERS,
-								GenOperation.class, msgs);
-			default:
-				return eDynamicBasicRemoveFromContainer(msgs);
+							this,
+							org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION__GEN_PARAMETERS,
+							GenOperation.class, msgs);
+				default :
+					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
 		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-				- eContainerFeatureID, null, msgs);
+			- eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -134,12 +135,12 @@ public class GenParameterImpl extends
 	 */
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_PARAMETER__GEN_OPERATION:
-			return getGenOperation();
-		case GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER:
-			if (resolve)
-				return getEcoreParameter();
-			return basicGetEcoreParameter();
+			case GenModelPackage.GEN_PARAMETER__GEN_OPERATION :
+				return getGenOperation();
+			case GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER :
+				if (resolve)
+					return getEcoreParameter();
+				return basicGetEcoreParameter();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -151,12 +152,12 @@ public class GenParameterImpl extends
 	 */
 	public void eSet(EStructuralFeature eFeature, Object newValue) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_PARAMETER__GEN_OPERATION:
-			setGenOperation((GenOperation) newValue);
-			return;
-		case GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER:
-			setEcoreParameter((EParameter) newValue);
-			return;
+			case GenModelPackage.GEN_PARAMETER__GEN_OPERATION :
+				setGenOperation((GenOperation) newValue);
+				return;
+			case GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER :
+				setEcoreParameter((EParameter) newValue);
+				return;
 		}
 		eDynamicSet(eFeature, newValue);
 	}
@@ -168,12 +169,12 @@ public class GenParameterImpl extends
 	 */
 	public void eUnset(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_PARAMETER__GEN_OPERATION:
-			setGenOperation((GenOperation) null);
-			return;
-		case GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER:
-			setEcoreParameter((EParameter) null);
-			return;
+			case GenModelPackage.GEN_PARAMETER__GEN_OPERATION :
+				setGenOperation((GenOperation) null);
+				return;
+			case GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER :
+				setEcoreParameter((EParameter) null);
+				return;
 		}
 		eDynamicUnset(eFeature);
 	}
@@ -185,10 +186,10 @@ public class GenParameterImpl extends
 	 */
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_PARAMETER__GEN_OPERATION:
-			return getGenOperation() != null;
-		case GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER:
-			return ecoreParameter != null;
+			case GenModelPackage.GEN_PARAMETER__GEN_OPERATION :
+				return getGenOperation() != null;
+			case GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER :
+				return ecoreParameter != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

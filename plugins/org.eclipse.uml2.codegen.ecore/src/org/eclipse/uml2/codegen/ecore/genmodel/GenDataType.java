@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenDataType.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenDataType.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -22,8 +22,10 @@ package org.eclipse.uml2.codegen.ecore.genmodel;
  * @model
  * @generated
  */
-public interface GenDataType extends
-		org.eclipse.emf.codegen.ecore.genmodel.GenDataType, GenClassifier {
+public interface GenDataType
+		extends org.eclipse.emf.codegen.ecore.genmodel.GenDataType,
+		GenClassifier {
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

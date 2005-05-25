@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassifierItemProvider.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
+ * $Id: GenTypedElementItemProvider.java,v 1.1 2005/05/25 21:24:23 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -26,20 +26,16 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.uml2.codegen.ecore.genmodel.GenClassifier;
-import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 
 import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.uml2.codegen.ecore.genmodel.GenClassifier} object.
+ * This is the item provider adapter for a {@link org.eclipse.uml2.codegen.ecore.genmodel.GenTypedElement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenClassifierItemProvider
+public class GenTypedElementItemProvider
 		extends GenBaseItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
@@ -57,7 +53,7 @@ public class GenClassifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GenClassifierItemProvider(AdapterFactory adapterFactory) {
+	public GenTypedElementItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -76,23 +72,13 @@ public class GenClassifierItemProvider
 	}
 
 	/**
-	 * This returns GenClassifier.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public Object getImage(Object object) {
-		return super.getImage(object);
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public String getText(Object object) {
-		return super.getText(object);
+		return getString("_UI_GenTypedElement_type"); //$NON-NLS-1$
 	}
 
 	/**
@@ -104,13 +90,6 @@ public class GenClassifierItemProvider
 	 */
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(GenClassifier.class)) {
-			case GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE :
-				fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

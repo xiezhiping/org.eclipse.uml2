@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelItemProviderAdapterFactory.java,v 1.1 2005/05/17 22:07:40 khussey Exp $
+ * $Id: GenModelItemProviderAdapterFactory.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -42,7 +42,8 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.GenModelAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenModelItemProviderAdapterFactory extends GenModelAdapterFactory
+public class GenModelItemProviderAdapterFactory
+		extends GenModelAdapterFactory
 		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 
 	/**
@@ -295,8 +296,9 @@ public class GenModelItemProviderAdapterFactory extends GenModelAdapterFactory
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory
-				.getRootAdapterFactory();
+		return parentAdapterFactory == null
+			? this
+			: parentAdapterFactory.getRootAdapterFactory();
 	}
 
 	/**
@@ -338,7 +340,7 @@ public class GenModelItemProviderAdapterFactory extends GenModelAdapterFactory
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
 			if (!(type instanceof Class)
-					|| (((Class) type).isInstance(adapter))) {
+				|| (((Class) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

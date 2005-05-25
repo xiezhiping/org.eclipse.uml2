@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassItemProvider.java,v 1.1 2005/05/17 22:07:40 khussey Exp $
+ * $Id: GenClassItemProvider.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -37,7 +37,8 @@ import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenClassItemProvider extends
+public class GenClassItemProvider
+		extends
 		org.eclipse.emf.codegen.ecore.genmodel.provider.GenClassItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassifierImpl.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenClassifierImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -27,9 +27,9 @@ import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
  *
  * @generated
  */
-public abstract class GenClassifierImpl extends
-		org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassifierImpl implements
-		GenClassifier {
+public abstract class GenClassifierImpl
+		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassifierImpl
+		implements GenClassifier {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,8 +63,8 @@ public abstract class GenClassifierImpl extends
 	 */
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE:
-			return getGenPackage();
+			case GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE :
+				return getGenPackage();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -76,8 +76,8 @@ public abstract class GenClassifierImpl extends
 	 */
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE:
-			return getGenPackage() != null;
+			case GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE :
+				return getGenPackage() != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

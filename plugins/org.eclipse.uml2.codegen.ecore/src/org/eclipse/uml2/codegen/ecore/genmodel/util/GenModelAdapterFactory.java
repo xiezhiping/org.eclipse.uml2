@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelAdapterFactory.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenModelAdapterFactory.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -29,7 +29,8 @@ import org.eclipse.uml2.codegen.ecore.genmodel.*;
  * @see org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage
  * @generated
  */
-public class GenModelAdapterFactory extends AdapterFactoryImpl {
+public class GenModelAdapterFactory
+		extends AdapterFactoryImpl {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -83,6 +84,7 @@ public class GenModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	protected GenModelSwitch modelSwitch = new GenModelSwitch() {
+
 		public Object caseGenBase(GenBase object) {
 			return createGenBaseAdapter();
 		}
@@ -127,6 +129,10 @@ public class GenModelAdapterFactory extends AdapterFactoryImpl {
 			return createGenParameterAdapter();
 		}
 
+		public Object caseGenTypedElement(GenTypedElement object) {
+			return createGenTypedElementAdapter();
+		}
+
 		public Object caseGenModel_GenBase(
 				org.eclipse.emf.codegen.ecore.genmodel.GenBase object) {
 			return createGenModel_GenBaseAdapter();
@@ -155,6 +161,11 @@ public class GenModelAdapterFactory extends AdapterFactoryImpl {
 		public Object caseGenModel_GenEnumLiteral(
 				org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral object) {
 			return createGenModel_GenEnumLiteralAdapter();
+		}
+
+		public Object caseGenModel_GenTypedElement(
+				org.eclipse.emf.codegen.ecore.genmodel.GenTypedElement object) {
+			return createGenModel_GenTypedElementAdapter();
 		}
 
 		public Object caseGenModel_GenFeature(
@@ -354,6 +365,20 @@ public class GenModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenTypedElement <em>Gen Typed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.uml2.codegen.ecore.genmodel.GenTypedElement
+	 * @generated
+	 */
+	public Adapter createGenTypedElementAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.codegen.ecore.genmodel.GenBase <em>Gen Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -434,6 +459,20 @@ public class GenModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGenModel_GenEnumLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.codegen.ecore.genmodel.GenTypedElement <em>Gen Typed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenTypedElement
+	 * @generated
+	 */
+	public Adapter createGenModel_GenTypedElementAdapter() {
 		return null;
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenEnumImpl.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenEnumImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -36,9 +36,9 @@ import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
  *
  * @generated
  */
-public class GenEnumImpl extends
-		org.eclipse.emf.codegen.ecore.genmodel.impl.GenEnumImpl implements
-		GenEnum {
+public class GenEnumImpl
+		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenEnumImpl
+		implements GenEnum {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,11 +74,12 @@ public class GenEnumImpl extends
 			int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS:
-				return ((InternalEList) getGenEnumLiterals()).basicAdd(
+				case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS :
+					return ((InternalEList) getGenEnumLiterals()).basicAdd(
 						otherEnd, msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
+				default :
+					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
+						msgs);
 			}
 		}
 		if (eContainer != null)
@@ -95,12 +96,12 @@ public class GenEnumImpl extends
 			int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS:
-				return ((InternalEList) getGenEnumLiterals()).basicRemove(
+				case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS :
+					return ((InternalEList) getGenEnumLiterals()).basicRemove(
 						otherEnd, msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
+				default :
+					return eDynamicInverseRemove(otherEnd, featureID,
+						baseClass, msgs);
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
@@ -113,18 +114,18 @@ public class GenEnumImpl extends
 	 */
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_ENUM__GEN_PACKAGE:
-			return getGenPackage();
-		case GenModelPackage.GEN_ENUM__ECORE_DATA_TYPE:
-			if (resolve)
-				return getEcoreDataType();
-			return basicGetEcoreDataType();
-		case GenModelPackage.GEN_ENUM__ECORE_ENUM:
-			if (resolve)
-				return getEcoreEnum();
-			return basicGetEcoreEnum();
-		case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS:
-			return getGenEnumLiterals();
+			case GenModelPackage.GEN_ENUM__GEN_PACKAGE :
+				return getGenPackage();
+			case GenModelPackage.GEN_ENUM__ECORE_DATA_TYPE :
+				if (resolve)
+					return getEcoreDataType();
+				return basicGetEcoreDataType();
+			case GenModelPackage.GEN_ENUM__ECORE_ENUM :
+				if (resolve)
+					return getEcoreEnum();
+				return basicGetEcoreEnum();
+			case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS :
+				return getGenEnumLiterals();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -136,16 +137,16 @@ public class GenEnumImpl extends
 	 */
 	public void eSet(EStructuralFeature eFeature, Object newValue) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_ENUM__ECORE_DATA_TYPE:
-			setEcoreDataType((EDataType) newValue);
-			return;
-		case GenModelPackage.GEN_ENUM__ECORE_ENUM:
-			setEcoreEnum((EEnum) newValue);
-			return;
-		case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS:
-			getGenEnumLiterals().clear();
-			getGenEnumLiterals().addAll((Collection) newValue);
-			return;
+			case GenModelPackage.GEN_ENUM__ECORE_DATA_TYPE :
+				setEcoreDataType((EDataType) newValue);
+				return;
+			case GenModelPackage.GEN_ENUM__ECORE_ENUM :
+				setEcoreEnum((EEnum) newValue);
+				return;
+			case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS :
+				getGenEnumLiterals().clear();
+				getGenEnumLiterals().addAll((Collection) newValue);
+				return;
 		}
 		eDynamicSet(eFeature, newValue);
 	}
@@ -157,15 +158,15 @@ public class GenEnumImpl extends
 	 */
 	public void eUnset(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_ENUM__ECORE_DATA_TYPE:
-			setEcoreDataType((EDataType) null);
-			return;
-		case GenModelPackage.GEN_ENUM__ECORE_ENUM:
-			setEcoreEnum((EEnum) null);
-			return;
-		case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS:
-			getGenEnumLiterals().clear();
-			return;
+			case GenModelPackage.GEN_ENUM__ECORE_DATA_TYPE :
+				setEcoreDataType((EDataType) null);
+				return;
+			case GenModelPackage.GEN_ENUM__ECORE_ENUM :
+				setEcoreEnum((EEnum) null);
+				return;
+			case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS :
+				getGenEnumLiterals().clear();
+				return;
 		}
 		eDynamicUnset(eFeature);
 	}
@@ -177,14 +178,14 @@ public class GenEnumImpl extends
 	 */
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_ENUM__GEN_PACKAGE:
-			return getGenPackage() != null;
-		case GenModelPackage.GEN_ENUM__ECORE_DATA_TYPE:
-			return ecoreDataType != null;
-		case GenModelPackage.GEN_ENUM__ECORE_ENUM:
-			return ecoreEnum != null;
-		case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS:
-			return genEnumLiterals != null && !genEnumLiterals.isEmpty();
+			case GenModelPackage.GEN_ENUM__GEN_PACKAGE :
+				return getGenPackage() != null;
+			case GenModelPackage.GEN_ENUM__ECORE_DATA_TYPE :
+				return ecoreDataType != null;
+			case GenModelPackage.GEN_ENUM__ECORE_ENUM :
+				return ecoreEnum != null;
+			case GenModelPackage.GEN_ENUM__GEN_ENUM_LITERALS :
+				return genEnumLiterals != null && !genEnumLiterals.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
 	}

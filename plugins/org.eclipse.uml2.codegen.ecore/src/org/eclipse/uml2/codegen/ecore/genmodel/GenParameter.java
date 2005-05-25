@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenParameter.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenParameter.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -22,8 +22,10 @@ package org.eclipse.uml2.codegen.ecore.genmodel;
  * @model
  * @generated
  */
-public interface GenParameter extends
-		org.eclipse.emf.codegen.ecore.genmodel.GenParameter, GenBase {
+public interface GenParameter
+		extends org.eclipse.emf.codegen.ecore.genmodel.GenParameter,
+		GenTypedElement {
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

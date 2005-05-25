@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureItemProvider.java,v 1.1 2005/05/17 22:07:40 khussey Exp $
+ * $Id: GenFeatureItemProvider.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -43,7 +43,8 @@ import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenFeatureItemProvider extends
+public class GenFeatureItemProvider
+		extends
 		org.eclipse.emf.codegen.ecore.genmodel.provider.GenFeatureItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
@@ -88,17 +89,17 @@ public class GenFeatureItemProvider extends
 	 */
 	protected void addKeyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenFeature_key_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenFeature_key_feature", "_UI_GenFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						GenModelPackage.eINSTANCE.getGenFeature_Key(), true,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-						null));
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GenFeature_key_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_GenFeature_key_feature", "_UI_GenFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				GenModelPackage.eINSTANCE.getGenFeature_Key(), true,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -132,10 +133,10 @@ public class GenFeatureItemProvider extends
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(GenFeature.class)) {
-		case GenModelPackage.GEN_FEATURE__KEY:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
+			case GenModelPackage.GEN_FEATURE__KEY :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}

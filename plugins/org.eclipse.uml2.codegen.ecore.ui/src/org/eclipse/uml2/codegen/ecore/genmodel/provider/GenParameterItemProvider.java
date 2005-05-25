@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenParameterItemProvider.java,v 1.1 2005/05/17 22:07:40 khussey Exp $
+ * $Id: GenParameterItemProvider.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -42,8 +42,9 @@ import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenParameterItemProvider extends GenBaseItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
+public class GenParameterItemProvider
+		extends GenBaseItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
 	/**
@@ -86,17 +87,16 @@ public class GenParameterItemProvider extends GenBaseItemProvider implements
 	 */
 	protected void addEcoreParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenParameter_ecoreParameter_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenParameter_ecoreParameter_feature", "_UI_GenParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						GenModelPackage.eINSTANCE
-								.getGenParameter_EcoreParameter(), false, null,
-						getString("_UI_EcorePropertyCategory"), //$NON-NLS-1$
-						null));
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GenParameter_ecoreParameter_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_GenParameter_ecoreParameter_feature", "_UI_GenParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				GenModelPackage.eINSTANCE.getGenParameter_EcoreParameter(),
+				false, null, getString("_UI_EcorePropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -130,10 +130,10 @@ public class GenParameterItemProvider extends GenBaseItemProvider implements
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(GenParameter.class)) {
-		case org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
+			case org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}

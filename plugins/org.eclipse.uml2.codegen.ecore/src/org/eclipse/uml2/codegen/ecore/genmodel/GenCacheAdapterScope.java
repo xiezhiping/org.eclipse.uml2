@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GenCacheAdapterScope.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenCacheAdapterScope.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -21,7 +21,8 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class GenCacheAdapterScope extends AbstractEnumerator {
+public final class GenCacheAdapterScope
+		extends AbstractEnumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,7 +85,7 @@ public final class GenCacheAdapterScope extends AbstractEnumerator {
 	 * @ordered
 	 */
 	public static final GenCacheAdapterScope NONE_LITERAL = new GenCacheAdapterScope(
-			NONE, "None"); //$NON-NLS-1$
+		NONE, "None"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Global</b></em>' literal object.
@@ -95,7 +96,7 @@ public final class GenCacheAdapterScope extends AbstractEnumerator {
 	 * @ordered
 	 */
 	public static final GenCacheAdapterScope GLOBAL_LITERAL = new GenCacheAdapterScope(
-			GLOBAL, "Global"); //$NON-NLS-1$
+		GLOBAL, "Global"); //$NON-NLS-1$
 
 	/**
 	 * The '<em><b>Resource</b></em>' literal object.
@@ -106,7 +107,7 @@ public final class GenCacheAdapterScope extends AbstractEnumerator {
 	 * @ordered
 	 */
 	public static final GenCacheAdapterScope RESOURCE_LITERAL = new GenCacheAdapterScope(
-			RESOURCE, "Resource"); //$NON-NLS-1$
+		RESOURCE, "Resource"); //$NON-NLS-1$
 
 	/**
 	 * An array of all the '<em><b>Gen Cache Adapter Scope</b></em>' enumerators.
@@ -114,8 +115,8 @@ public final class GenCacheAdapterScope extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final GenCacheAdapterScope[] VALUES_ARRAY = new GenCacheAdapterScope[] {
-			NONE_LITERAL, GLOBAL_LITERAL, RESOURCE_LITERAL, };
+	private static final GenCacheAdapterScope[] VALUES_ARRAY = new GenCacheAdapterScope[]{
+		NONE_LITERAL, GLOBAL_LITERAL, RESOURCE_LITERAL,};
 
 	/**
 	 * A public read-only list of all the '<em><b>Gen Cache Adapter Scope</b></em>' enumerators.
@@ -124,7 +125,7 @@ public final class GenCacheAdapterScope extends AbstractEnumerator {
 	 * @generated
 	 */
 	public static final List VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+		.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Gen Cache Adapter Scope</b></em>' literal with the specified name.
@@ -150,12 +151,12 @@ public final class GenCacheAdapterScope extends AbstractEnumerator {
 	 */
 	public static GenCacheAdapterScope get(int value) {
 		switch (value) {
-		case NONE:
-			return NONE_LITERAL;
-		case GLOBAL:
-			return GLOBAL_LITERAL;
-		case RESOURCE:
-			return RESOURCE_LITERAL;
+			case NONE :
+				return NONE_LITERAL;
+			case GLOBAL :
+				return GLOBAL_LITERAL;
+			case RESOURCE :
+				return RESOURCE_LITERAL;
 		}
 		return null;
 	}

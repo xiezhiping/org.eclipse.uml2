@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelItemProvider.java,v 1.1 2005/05/17 22:07:40 khussey Exp $
+ * $Id: GenModelItemProvider.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -39,7 +39,8 @@ import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenModelItemProvider extends
+public class GenModelItemProvider
+		extends
 		org.eclipse.emf.codegen.ecore.genmodel.provider.GenModelItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
@@ -88,17 +89,17 @@ public class GenModelItemProvider extends
 	 */
 	protected void addFactoryMethodsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenModel_factoryMethods_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenModel_factoryMethods_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						GenModelPackage.eINSTANCE.getGenModel_FactoryMethods(),
-						true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-						null));
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GenModel_factoryMethods_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_GenModel_factoryMethods_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				GenModelPackage.eINSTANCE.getGenModel_FactoryMethods(), true,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -109,18 +110,17 @@ public class GenModelItemProvider extends
 	 */
 	protected void addPluralizedGettersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenModel_pluralizedGetters_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenModel_pluralizedGetters_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						GenModelPackage.eINSTANCE
-								.getGenModel_PluralizedGetters(), true,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-						null));
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GenModel_pluralizedGetters_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_GenModel_pluralizedGetters_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				GenModelPackage.eINSTANCE.getGenModel_PluralizedGetters(),
+				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -131,18 +131,17 @@ public class GenModelItemProvider extends
 	 */
 	protected void addCacheAdapterSupportPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenModel_cacheAdapterSupport_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenModel_cacheAdapterSupport_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						GenModelPackage.eINSTANCE
-								.getGenModel_CacheAdapterSupport(), true,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-						null));
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GenModel_cacheAdapterSupport_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_GenModel_cacheAdapterSupport_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				GenModelPackage.eINSTANCE.getGenModel_CacheAdapterSupport(),
+				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -153,17 +152,17 @@ public class GenModelItemProvider extends
 	 */
 	protected void addSafeStringsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenModel_safeStrings_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenModel_safeStrings_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						GenModelPackage.eINSTANCE.getGenModel_SafeStrings(),
-						true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-						null));
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GenModel_safeStrings_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_GenModel_safeStrings_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				GenModelPackage.eINSTANCE.getGenModel_SafeStrings(), true,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -174,17 +173,17 @@ public class GenModelItemProvider extends
 	 */
 	protected void addInvariantPrefixPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenModel_invariantPrefix_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenModel_invariantPrefix_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						GenModelPackage.eINSTANCE.getGenModel_InvariantPrefix(),
-						true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-						null));
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GenModel_invariantPrefix_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_GenModel_invariantPrefix_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				GenModelPackage.eINSTANCE.getGenModel_InvariantPrefix(), true,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -208,14 +207,14 @@ public class GenModelItemProvider extends
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(GenModel.class)) {
-		case GenModelPackage.GEN_MODEL__FACTORY_METHODS:
-		case GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS:
-		case GenModelPackage.GEN_MODEL__CACHE_ADAPTER_SUPPORT:
-		case GenModelPackage.GEN_MODEL__SAFE_STRINGS:
-		case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
+			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
+			case GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS :
+			case GenModelPackage.GEN_MODEL__CACHE_ADAPTER_SUPPORT :
+			case GenModelPackage.GEN_MODEL__SAFE_STRINGS :
+			case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}

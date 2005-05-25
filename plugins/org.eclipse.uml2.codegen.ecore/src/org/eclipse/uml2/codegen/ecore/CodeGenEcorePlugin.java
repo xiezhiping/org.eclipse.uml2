@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CodeGenEcorePlugin.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: CodeGenEcorePlugin.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore;
 
@@ -18,7 +18,8 @@ import org.eclipse.emf.common.util.ResourceLocator;
 /**
  * The <b>Plugin </b> for the UML2.CodeGen.Ecore library.
  */
-public final class CodeGenEcorePlugin extends EMFPlugin {
+public final class CodeGenEcorePlugin
+		extends EMFPlugin {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -42,7 +43,7 @@ public final class CodeGenEcorePlugin extends EMFPlugin {
 	 */
 	private CodeGenEcorePlugin() {
 		super(
-				new ResourceLocator[] { org.eclipse.emf.codegen.ecore.CodeGenEcorePlugin.INSTANCE });
+			new ResourceLocator[]{org.eclipse.emf.codegen.ecore.CodeGenEcorePlugin.INSTANCE});
 	}
 
 	/*
@@ -64,7 +65,8 @@ public final class CodeGenEcorePlugin extends EMFPlugin {
 	/**
 	 * The actual implementation of the Eclipse <b>Plugin </b>.
 	 */
-	public static class Implementation extends EMFPlugin.EclipsePlugin {
+	public static class Implementation
+			extends EMFPlugin.EclipsePlugin {
 
 		/**
 		 * Creates an instance.

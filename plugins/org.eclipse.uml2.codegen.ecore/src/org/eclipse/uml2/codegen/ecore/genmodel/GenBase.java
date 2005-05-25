@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenBase.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenBase.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -22,7 +22,8 @@ package org.eclipse.uml2.codegen.ecore.genmodel;
  * @model abstract="true"
  * @generated
  */
-public interface GenBase extends org.eclipse.emf.codegen.ecore.genmodel.GenBase {
+public interface GenBase
+		extends org.eclipse.emf.codegen.ecore.genmodel.GenBase {
 
 	/**
 	 * <!-- begin-user-doc -->

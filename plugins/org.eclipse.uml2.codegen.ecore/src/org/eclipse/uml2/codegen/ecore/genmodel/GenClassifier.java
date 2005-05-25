@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassifier.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenClassifier.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -22,8 +22,9 @@ package org.eclipse.uml2.codegen.ecore.genmodel;
  * @model abstract="true"
  * @generated
  */
-public interface GenClassifier extends
-		org.eclipse.emf.codegen.ecore.genmodel.GenClassifier, GenBase {
+public interface GenClassifier
+		extends org.eclipse.emf.codegen.ecore.genmodel.GenClassifier, GenBase {
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

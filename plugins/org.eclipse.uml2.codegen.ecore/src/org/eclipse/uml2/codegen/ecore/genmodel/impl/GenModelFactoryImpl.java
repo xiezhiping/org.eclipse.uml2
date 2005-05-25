@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelFactoryImpl.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenModelFactoryImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -26,8 +26,9 @@ import org.eclipse.uml2.codegen.ecore.genmodel.*;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenModelFactoryImpl extends EFactoryImpl implements
-		GenModelFactory {
+public class GenModelFactoryImpl
+		extends EFactoryImpl
+		implements GenModelFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -53,26 +54,26 @@ public class GenModelFactoryImpl extends EFactoryImpl implements
 	 */
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case GenModelPackage.GEN_CLASS:
-			return createGenClass();
-		case GenModelPackage.GEN_DATA_TYPE:
-			return createGenDataType();
-		case GenModelPackage.GEN_ENUM:
-			return createGenEnum();
-		case GenModelPackage.GEN_ENUM_LITERAL:
-			return createGenEnumLiteral();
-		case GenModelPackage.GEN_FEATURE:
-			return createGenFeature();
-		case GenModelPackage.GEN_MODEL:
-			return createGenModel();
-		case GenModelPackage.GEN_OPERATION:
-			return createGenOperation();
-		case GenModelPackage.GEN_PACKAGE:
-			return createGenPackage();
-		case GenModelPackage.GEN_PARAMETER:
-			return createGenParameter();
-		default:
-			throw new IllegalArgumentException(
+			case GenModelPackage.GEN_CLASS :
+				return createGenClass();
+			case GenModelPackage.GEN_DATA_TYPE :
+				return createGenDataType();
+			case GenModelPackage.GEN_ENUM :
+				return createGenEnum();
+			case GenModelPackage.GEN_ENUM_LITERAL :
+				return createGenEnumLiteral();
+			case GenModelPackage.GEN_FEATURE :
+				return createGenFeature();
+			case GenModelPackage.GEN_MODEL :
+				return createGenModel();
+			case GenModelPackage.GEN_OPERATION :
+				return createGenOperation();
+			case GenModelPackage.GEN_PACKAGE :
+				return createGenPackage();
+			case GenModelPackage.GEN_PARAMETER :
+				return createGenParameter();
+			default :
+				throw new IllegalArgumentException(
 					"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
@@ -84,16 +85,16 @@ public class GenModelFactoryImpl extends EFactoryImpl implements
 	 */
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-		case GenModelPackage.GEN_CACHE_ADAPTER_SCOPE: {
-			GenCacheAdapterScope result = GenCacheAdapterScope
+			case GenModelPackage.GEN_CACHE_ADAPTER_SCOPE : {
+				GenCacheAdapterScope result = GenCacheAdapterScope
 					.get(initialValue);
-			if (result == null)
-				throw new IllegalArgumentException(
+				if (result == null)
+					throw new IllegalArgumentException(
 						"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			return result;
-		}
-		default:
-			throw new IllegalArgumentException(
+				return result;
+			}
+			default :
+				throw new IllegalArgumentException(
 					"The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
@@ -105,10 +106,12 @@ public class GenModelFactoryImpl extends EFactoryImpl implements
 	 */
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-		case GenModelPackage.GEN_CACHE_ADAPTER_SCOPE:
-			return instanceValue == null ? null : instanceValue.toString();
-		default:
-			throw new IllegalArgumentException(
+			case GenModelPackage.GEN_CACHE_ADAPTER_SCOPE :
+				return instanceValue == null
+					? null
+					: instanceValue.toString();
+			default :
+				throw new IllegalArgumentException(
 					"The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CodeGenEcoreUIPlugin.java,v 1.1 2005/05/17 22:07:40 khussey Exp $
+ * $Id: CodeGenEcoreUIPlugin.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.ui;
 
@@ -26,7 +26,8 @@ import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public final class CodeGenEcoreUIPlugin extends EMFPlugin {
+public final class CodeGenEcoreUIPlugin
+		extends EMFPlugin {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -58,8 +59,8 @@ public final class CodeGenEcoreUIPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public CodeGenEcoreUIPlugin() {
-		super(new ResourceLocator[] { GenModelEditPlugin.INSTANCE,
-				EcoreEditPlugin.INSTANCE, });
+		super(new ResourceLocator[]{GenModelEditPlugin.INSTANCE,
+			EcoreEditPlugin.INSTANCE,});
 	}
 
 	/**
@@ -90,7 +91,8 @@ public final class CodeGenEcoreUIPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class Implementation extends EclipsePlugin {
+	public static class Implementation
+			extends EclipsePlugin {
 
 		/**
 		 * Creates an instance.

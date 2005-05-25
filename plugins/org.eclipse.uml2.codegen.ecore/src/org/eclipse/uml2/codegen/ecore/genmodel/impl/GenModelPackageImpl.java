@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackageImpl.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenModelPackageImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -38,14 +38,17 @@ import org.eclipse.uml2.codegen.ecore.genmodel.GenOperation;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenParameter;
 
+import org.eclipse.uml2.codegen.ecore.genmodel.GenTypedElement;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenModelPackageImpl extends EPackageImpl implements
-		GenModelPackage {
+public class GenModelPackageImpl
+		extends EPackageImpl
+		implements GenModelPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,6 +139,13 @@ public class GenModelPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass genTypedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum genCacheAdapterScopeEEnum = null;
 
 	/**
@@ -189,13 +199,13 @@ public class GenModelPackageImpl extends EPackageImpl implements
 	public static GenModelPackage init() {
 		if (isInited)
 			return (GenModelPackage) EPackage.Registry.INSTANCE
-					.getEPackage(GenModelPackage.eNS_URI);
+				.getEPackage(GenModelPackage.eNS_URI);
 
 		// Obtain or create and register package
 		GenModelPackageImpl theGenModelPackage = (GenModelPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(eNS_URI) instanceof GenModelPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(eNS_URI)
-				: new GenModelPackageImpl());
+			.getEPackage(eNS_URI) instanceof GenModelPackageImpl
+			? EPackage.Registry.INSTANCE.getEPackage(eNS_URI)
+			: new GenModelPackageImpl());
 
 		isInited = true;
 
@@ -400,6 +410,15 @@ public class GenModelPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGenTypedElement() {
+		return genTypedElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getGenCacheAdapterScope() {
 		return genCacheAdapterScopeEEnum;
 	}
@@ -464,6 +483,8 @@ public class GenModelPackageImpl extends EPackageImpl implements
 
 		genParameterEClass = createEClass(GEN_PARAMETER);
 
+		genTypedElementEClass = createEClass(GEN_TYPED_ELEMENT);
+
 		// Create enums
 		genCacheAdapterScopeEEnum = createEEnum(GEN_CACHE_ADAPTER_SCOPE);
 	}
@@ -494,141 +515,145 @@ public class GenModelPackageImpl extends EPackageImpl implements
 
 		// Obtain other dependent packages
 		org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelPackageImpl theGenModelPackage_1 = (org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelPackageImpl) EPackage.Registry.INSTANCE
-				.getEPackage(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eNS_URI);
+			.getEPackage(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eNS_URI);
 		EcorePackageImpl theEcorePackage = (EcorePackageImpl) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
+			.getEPackage(EcorePackage.eNS_URI);
 
 		// Add supertypes to classes
 		genBaseEClass.getESuperTypes().add(theGenModelPackage_1.getGenBase());
 		genClassEClass.getESuperTypes().add(theGenModelPackage_1.getGenClass());
 		genClassEClass.getESuperTypes().add(this.getGenClassifier());
 		genClassifierEClass.getESuperTypes().add(
-				theGenModelPackage_1.getGenClassifier());
+			theGenModelPackage_1.getGenClassifier());
 		genClassifierEClass.getESuperTypes().add(this.getGenBase());
 		genDataTypeEClass.getESuperTypes().add(
-				theGenModelPackage_1.getGenDataType());
+			theGenModelPackage_1.getGenDataType());
 		genDataTypeEClass.getESuperTypes().add(this.getGenClassifier());
 		genEnumEClass.getESuperTypes().add(theGenModelPackage_1.getGenEnum());
 		genEnumEClass.getESuperTypes().add(this.getGenDataType());
 		genEnumLiteralEClass.getESuperTypes().add(
-				theGenModelPackage_1.getGenEnumLiteral());
+			theGenModelPackage_1.getGenEnumLiteral());
 		genEnumLiteralEClass.getESuperTypes().add(this.getGenBase());
 		genFeatureEClass.getESuperTypes().add(
-				theGenModelPackage_1.getGenFeature());
-		genFeatureEClass.getESuperTypes().add(this.getGenBase());
+			theGenModelPackage_1.getGenFeature());
+		genFeatureEClass.getESuperTypes().add(this.getGenTypedElement());
 		genModelEClass.getESuperTypes().add(theGenModelPackage_1.getGenModel());
 		genModelEClass.getESuperTypes().add(this.getGenBase());
 		genOperationEClass.getESuperTypes().add(
-				theGenModelPackage_1.getGenOperation());
-		genOperationEClass.getESuperTypes().add(this.getGenBase());
+			theGenModelPackage_1.getGenOperation());
+		genOperationEClass.getESuperTypes().add(this.getGenTypedElement());
 		genPackageEClass.getESuperTypes().add(
-				theGenModelPackage_1.getGenPackage());
+			theGenModelPackage_1.getGenPackage());
 		genPackageEClass.getESuperTypes().add(this.getGenBase());
 		genParameterEClass.getESuperTypes().add(
-				theGenModelPackage_1.getGenParameter());
-		genParameterEClass.getESuperTypes().add(this.getGenBase());
+			theGenModelPackage_1.getGenParameter());
+		genParameterEClass.getESuperTypes().add(this.getGenTypedElement());
+		genTypedElementEClass.getESuperTypes().add(
+			theGenModelPackage_1.getGenTypedElement());
+		genTypedElementEClass.getESuperTypes().add(this.getGenBase());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(
-				genBaseEClass,
-				GenBase.class,
-				"GenBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(genBaseEClass, GenBase.class,
+			"GenBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(
-				genClassEClass,
-				GenClass.class,
-				"GenClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+			genClassEClass,
+			GenClass.class,
+			"GenClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(
-				genClassifierEClass,
-				GenClassifier.class,
-				"GenClassifier", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+			genClassifierEClass,
+			GenClassifier.class,
+			"GenClassifier", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(
-				genDataTypeEClass,
-				GenDataType.class,
-				"GenDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+			genDataTypeEClass,
+			GenDataType.class,
+			"GenDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+		initEClass(genEnumEClass, GenEnum.class,
+			"GenEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(
-				genEnumEClass,
-				GenEnum.class,
-				"GenEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+			genEnumLiteralEClass,
+			GenEnumLiteral.class,
+			"GenEnumLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(
-				genEnumLiteralEClass,
-				GenEnumLiteral.class,
-				"GenEnumLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(
-				genFeatureEClass,
-				GenFeature.class,
-				"GenFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+			genFeatureEClass,
+			GenFeature.class,
+			"GenFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
-				getGenFeature_Key(),
-				theEcorePackage.getEBoolean(),
-				"key", null, 0, 1, GenFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+			getGenFeature_Key(),
+			theEcorePackage.getEBoolean(),
+			"key", null, 0, 1, GenFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
-				genModelEClass,
-				GenModel.class,
-				"GenModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+			genModelEClass,
+			GenModel.class,
+			"GenModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
-				getGenModel_FactoryMethods(),
-				theEcorePackage.getEBoolean(),
-				"factoryMethods", null, 0, 1, GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+			getGenModel_FactoryMethods(),
+			theEcorePackage.getEBoolean(),
+			"factoryMethods", null, 0, 1, GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
-				getGenModel_PluralizedGetters(),
-				theEcorePackage.getEBoolean(),
-				"pluralizedGetters", null, 0, 1, GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+			getGenModel_PluralizedGetters(),
+			theEcorePackage.getEBoolean(),
+			"pluralizedGetters", null, 0, 1, GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
-				getGenModel_CacheAdapterSupport(),
-				theEcorePackage.getEBoolean(),
-				"cacheAdapterSupport", null, 0, 1, GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+			getGenModel_CacheAdapterSupport(),
+			theEcorePackage.getEBoolean(),
+			"cacheAdapterSupport", null, 0, 1, GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
-				getGenModel_SafeStrings(),
-				theEcorePackage.getEBoolean(),
-				"safeStrings", null, 0, 1, GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+			getGenModel_SafeStrings(),
+			theEcorePackage.getEBoolean(),
+			"safeStrings", null, 0, 1, GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
-				getGenModel_InvariantPrefix(),
-				theEcorePackage.getEString(),
-				"invariantPrefix", null, 0, 1, GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+			getGenModel_InvariantPrefix(),
+			theEcorePackage.getEString(),
+			"invariantPrefix", null, 0, 1, GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
-				genOperationEClass,
-				GenOperation.class,
-				"GenOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+			genOperationEClass,
+			GenOperation.class,
+			"GenOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
-				getGenOperation_CacheAdapterScope(),
-				this.getGenCacheAdapterScope(),
-				"cacheAdapterScope", null, 0, 1, GenOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+			getGenOperation_CacheAdapterScope(),
+			this.getGenCacheAdapterScope(),
+			"cacheAdapterScope", null, 0, 1, GenOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
-				genPackageEClass,
-				GenPackage.class,
-				"GenPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+			genPackageEClass,
+			GenPackage.class,
+			"GenPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
-				getGenPackage_ResourceInterfaces(),
-				theEcorePackage.getEBoolean(),
-				"resourceInterfaces", null, 0, 1, GenPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+			getGenPackage_ResourceInterfaces(),
+			theEcorePackage.getEBoolean(),
+			"resourceInterfaces", null, 0, 1, GenPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
-				getGenPackage_OperationsPackage(),
-				theEcorePackage.getEString(),
-				"operationsPackage", null, 0, 1, GenPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+			getGenPackage_OperationsPackage(),
+			theEcorePackage.getEString(),
+			"operationsPackage", null, 0, 1, GenPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
-				genParameterEClass,
-				GenParameter.class,
-				"GenParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+			genParameterEClass,
+			GenParameter.class,
+			"GenParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+		initEClass(
+			genTypedElementEClass,
+			GenTypedElement.class,
+			"GenTypedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(genCacheAdapterScopeEEnum, GenCacheAdapterScope.class,
-				"GenCacheAdapterScope"); //$NON-NLS-1$
+			"GenCacheAdapterScope"); //$NON-NLS-1$
 		addEEnumLiteral(genCacheAdapterScopeEEnum,
-				GenCacheAdapterScope.NONE_LITERAL);
+			GenCacheAdapterScope.NONE_LITERAL);
 		addEEnumLiteral(genCacheAdapterScopeEEnum,
-				GenCacheAdapterScope.GLOBAL_LITERAL);
+			GenCacheAdapterScope.GLOBAL_LITERAL);
 		addEEnumLiteral(genCacheAdapterScopeEEnum,
-				GenCacheAdapterScope.RESOURCE_LITERAL);
+			GenCacheAdapterScope.RESOURCE_LITERAL);
 
 		// Create resource
 		createResource(eNS_URI);

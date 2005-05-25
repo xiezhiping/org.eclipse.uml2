@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -31,7 +31,8 @@ import org.eclipse.emf.ecore.EPackage;
  * @see org.eclipse.uml2.codegen.ecore.genmodel.GenModelFactory
  * @generated
  */
-public interface GenModelPackage extends EPackage {
+public interface GenModelPackage
+		extends EPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,7 +72,7 @@ public interface GenModelPackage extends EPackage {
 	 * @generated
 	 */
 	GenModelPackage eINSTANCE = org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl
-			.init();
+		.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenBaseImpl <em>Gen Base</em>}' class.
@@ -1120,6 +1121,25 @@ public interface GenModelPackage extends EPackage {
 	int GEN_PARAMETER_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PARAMETER_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenTypedElementImpl <em>Gen Typed Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenTypedElementImpl
+	 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenTypedElement()
+	 * @generated
+	 */
+	int GEN_TYPED_ELEMENT = 11;
+
+	/**
+	 * The number of structural features of the the '<em>Gen Typed Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_TYPED_ELEMENT_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_TYPED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope <em>Gen Cache Adapter Scope</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1127,7 +1147,7 @@ public interface GenModelPackage extends EPackage {
 	 * @see org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelPackageImpl#getGenCacheAdapterScope()
 	 * @generated
 	 */
-	int GEN_CACHE_ADAPTER_SCOPE = 11;
+	int GEN_CACHE_ADAPTER_SCOPE = 12;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenBase <em>Gen Base</em>}'.
@@ -1337,6 +1357,16 @@ public interface GenModelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getGenParameter();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenTypedElement <em>Gen Typed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Gen Typed Element</em>'.
+	 * @see org.eclipse.uml2.codegen.ecore.genmodel.GenTypedElement
+	 * @generated
+	 */
+	EClass getGenTypedElement();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope <em>Gen Cache Adapter Scope</em>}'.

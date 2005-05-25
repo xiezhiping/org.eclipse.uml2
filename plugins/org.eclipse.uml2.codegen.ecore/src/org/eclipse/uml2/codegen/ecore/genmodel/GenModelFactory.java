@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelFactory.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenModelFactory.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -22,7 +22,8 @@ import org.eclipse.emf.ecore.EFactory;
  * @see org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage
  * @generated
  */
-public interface GenModelFactory extends EFactory {
+public interface GenModelFactory
+		extends EFactory {
 
 	/**
 	 * <!-- begin-user-doc -->

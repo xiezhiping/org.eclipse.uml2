@@ -8,27 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenBaseImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenTypedElementImpl.java,v 1.1 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.uml2.codegen.ecore.genmodel.GenBase;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
+import org.eclipse.uml2.codegen.ecore.genmodel.GenTypedElement;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Gen Base</b></em>'.
+ * An implementation of the model object '<em><b>Gen Typed Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public abstract class GenBaseImpl
-		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl
-		implements GenBase {
+public abstract class GenTypedElementImpl
+		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenTypedElementImpl
+		implements GenTypedElement {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -42,7 +42,7 @@ public abstract class GenBaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GenBaseImpl() {
+	protected GenTypedElementImpl() {
 		super();
 	}
 
@@ -52,7 +52,7 @@ public abstract class GenBaseImpl
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return GenModelPackage.eINSTANCE.getGenBase();
+		return GenModelPackage.eINSTANCE.getGenTypedElement();
 	}
 
-}
+} //GenTypedElementImpl

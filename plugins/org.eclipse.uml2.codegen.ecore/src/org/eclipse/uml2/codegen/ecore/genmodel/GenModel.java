@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModel.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenModel.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -34,8 +34,8 @@ import org.eclipse.emf.codegen.jet.JETEmitter;
  * @model
  * @generated
  */
-public interface GenModel extends
-		org.eclipse.emf.codegen.ecore.genmodel.GenModel, GenBase {
+public interface GenModel
+		extends org.eclipse.emf.codegen.ecore.genmodel.GenModel, GenBase {
 
 	/**
 	 * <!-- begin-user-doc -->

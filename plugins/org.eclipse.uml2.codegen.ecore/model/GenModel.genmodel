@@ -45,5 +45,6 @@
       <genFeatures createChild="false" propertyCategory="UML2" ecoreFeature="ecore:EAttribute GenModel.ecore#//GenPackage/operationsPackage"/>
     </genClasses>
     <genClasses image="false" ecoreClass="GenModel.ecore#//GenParameter"/>
+    <genClasses image="false" ecoreClass="GenModel.ecore#//GenTypedElement"/>
   </genPackages>
 </genmodel:GenModel>

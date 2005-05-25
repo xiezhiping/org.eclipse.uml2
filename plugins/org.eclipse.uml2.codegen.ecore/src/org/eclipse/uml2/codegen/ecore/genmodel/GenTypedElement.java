@@ -8,22 +8,22 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenEnumLiteral.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenTypedElement.java,v 1.1 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Gen Enum Literal</b></em>'.
+ * A representation of the model object '<em><b>Gen Typed Element</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage#getGenEnumLiteral()
- * @model
+ * @see org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage#getGenTypedElement()
+ * @model abstract="true"
  * @generated
  */
-public interface GenEnumLiteral
-		extends org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral, GenBase {
+public interface GenTypedElement
+		extends org.eclipse.emf.codegen.ecore.genmodel.GenTypedElement, GenBase {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -32,4 +32,4 @@ public interface GenEnumLiteral
 	 */
 	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
-} // GenEnumLiteral
+} // GenTypedElement

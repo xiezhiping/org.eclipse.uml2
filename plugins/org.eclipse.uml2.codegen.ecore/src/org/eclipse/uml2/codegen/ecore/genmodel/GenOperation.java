@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperation.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenOperation.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -30,8 +30,9 @@ import java.util.List;
  * @model
  * @generated
  */
-public interface GenOperation extends
-		org.eclipse.emf.codegen.ecore.genmodel.GenOperation, GenBase {
+public interface GenOperation
+		extends org.eclipse.emf.codegen.ecore.genmodel.GenOperation,
+		GenTypedElement {
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -49,9 +49,9 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  *
  * @generated
  */
-public class GenFeatureImpl extends
-		org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl implements
-		GenFeature {
+public class GenFeatureImpl
+		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl
+		implements GenFeature {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,7 +120,7 @@ public class GenFeatureImpl extends
 			eFlags &= ~KEY_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					GenModelPackage.GEN_FEATURE__KEY, oldKey, newKey));
+				GenModelPackage.GEN_FEATURE__KEY, oldKey, newKey));
 	}
 
 	/**
@@ -132,13 +132,14 @@ public class GenFeatureImpl extends
 			int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case GenModelPackage.GEN_FEATURE__GEN_CLASS:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
+				case GenModelPackage.GEN_FEATURE__GEN_CLASS :
+					if (eContainer != null)
+						msgs = eBasicRemoveFromContainer(msgs);
+					return eBasicSetContainer(otherEnd,
 						GenModelPackage.GEN_FEATURE__GEN_CLASS, msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
+				default :
+					return eDynamicInverseAdd(otherEnd, featureID, baseClass,
+						msgs);
 			}
 		}
 		if (eContainer != null)
@@ -155,12 +156,12 @@ public class GenFeatureImpl extends
 			int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case GenModelPackage.GEN_FEATURE__GEN_CLASS:
-				return eBasicSetContainer(null,
+				case GenModelPackage.GEN_FEATURE__GEN_CLASS :
+					return eBasicSetContainer(null,
 						GenModelPackage.GEN_FEATURE__GEN_CLASS, msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
+				default :
+					return eDynamicInverseRemove(otherEnd, featureID,
+						baseClass, msgs);
 			}
 		}
 		return eBasicSetContainer(null, featureID, msgs);
@@ -174,18 +175,18 @@ public class GenFeatureImpl extends
 	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
 		if (eContainerFeatureID >= 0) {
 			switch (eContainerFeatureID) {
-			case GenModelPackage.GEN_FEATURE__GEN_CLASS:
-				return eContainer
+				case GenModelPackage.GEN_FEATURE__GEN_CLASS :
+					return eContainer
 						.eInverseRemove(
-								this,
-								org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__GEN_FEATURES,
-								GenClass.class, msgs);
-			default:
-				return eDynamicBasicRemoveFromContainer(msgs);
+							this,
+							org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__GEN_FEATURES,
+							GenClass.class, msgs);
+				default :
+					return eDynamicBasicRemoveFromContainer(msgs);
 			}
 		}
 		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-				- eContainerFeatureID, null, msgs);
+			- eContainerFeatureID, null, msgs);
 	}
 
 	/**
@@ -195,28 +196,36 @@ public class GenFeatureImpl extends
 	 */
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_FEATURE__PROPERTY:
-			return getProperty();
-		case GenModelPackage.GEN_FEATURE__NOTIFY:
-			return isNotify() ? Boolean.TRUE : Boolean.FALSE;
-		case GenModelPackage.GEN_FEATURE__CHILDREN:
-			return isChildren() ? Boolean.TRUE : Boolean.FALSE;
-		case GenModelPackage.GEN_FEATURE__CREATE_CHILD:
-			return isCreateChild() ? Boolean.TRUE : Boolean.FALSE;
-		case GenModelPackage.GEN_FEATURE__PROPERTY_CATEGORY:
-			return getPropertyCategory();
-		case GenModelPackage.GEN_FEATURE__PROPERTY_FILTER_FLAGS:
-			return getPropertyFilterFlags();
-		case GenModelPackage.GEN_FEATURE__PROPERTY_DESCRIPTION:
-			return getPropertyDescription();
-		case GenModelPackage.GEN_FEATURE__GEN_CLASS:
-			return getGenClass();
-		case GenModelPackage.GEN_FEATURE__ECORE_FEATURE:
-			if (resolve)
-				return getEcoreFeature();
-			return basicGetEcoreFeature();
-		case GenModelPackage.GEN_FEATURE__KEY:
-			return isKey() ? Boolean.TRUE : Boolean.FALSE;
+			case GenModelPackage.GEN_FEATURE__PROPERTY :
+				return getProperty();
+			case GenModelPackage.GEN_FEATURE__NOTIFY :
+				return isNotify()
+					? Boolean.TRUE
+					: Boolean.FALSE;
+			case GenModelPackage.GEN_FEATURE__CHILDREN :
+				return isChildren()
+					? Boolean.TRUE
+					: Boolean.FALSE;
+			case GenModelPackage.GEN_FEATURE__CREATE_CHILD :
+				return isCreateChild()
+					? Boolean.TRUE
+					: Boolean.FALSE;
+			case GenModelPackage.GEN_FEATURE__PROPERTY_CATEGORY :
+				return getPropertyCategory();
+			case GenModelPackage.GEN_FEATURE__PROPERTY_FILTER_FLAGS :
+				return getPropertyFilterFlags();
+			case GenModelPackage.GEN_FEATURE__PROPERTY_DESCRIPTION :
+				return getPropertyDescription();
+			case GenModelPackage.GEN_FEATURE__GEN_CLASS :
+				return getGenClass();
+			case GenModelPackage.GEN_FEATURE__ECORE_FEATURE :
+				if (resolve)
+					return getEcoreFeature();
+				return basicGetEcoreFeature();
+			case GenModelPackage.GEN_FEATURE__KEY :
+				return isKey()
+					? Boolean.TRUE
+					: Boolean.FALSE;
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -228,37 +237,37 @@ public class GenFeatureImpl extends
 	 */
 	public void eSet(EStructuralFeature eFeature, Object newValue) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_FEATURE__PROPERTY:
-			setProperty((GenPropertyKind) newValue);
-			return;
-		case GenModelPackage.GEN_FEATURE__NOTIFY:
-			setNotify(((Boolean) newValue).booleanValue());
-			return;
-		case GenModelPackage.GEN_FEATURE__CHILDREN:
-			setChildren(((Boolean) newValue).booleanValue());
-			return;
-		case GenModelPackage.GEN_FEATURE__CREATE_CHILD:
-			setCreateChild(((Boolean) newValue).booleanValue());
-			return;
-		case GenModelPackage.GEN_FEATURE__PROPERTY_CATEGORY:
-			setPropertyCategory((String) newValue);
-			return;
-		case GenModelPackage.GEN_FEATURE__PROPERTY_FILTER_FLAGS:
-			getPropertyFilterFlags().clear();
-			getPropertyFilterFlags().addAll((Collection) newValue);
-			return;
-		case GenModelPackage.GEN_FEATURE__PROPERTY_DESCRIPTION:
-			setPropertyDescription((String) newValue);
-			return;
-		case GenModelPackage.GEN_FEATURE__GEN_CLASS:
-			setGenClass((GenClass) newValue);
-			return;
-		case GenModelPackage.GEN_FEATURE__ECORE_FEATURE:
-			setEcoreFeature((EStructuralFeature) newValue);
-			return;
-		case GenModelPackage.GEN_FEATURE__KEY:
-			setKey(((Boolean) newValue).booleanValue());
-			return;
+			case GenModelPackage.GEN_FEATURE__PROPERTY :
+				setProperty((GenPropertyKind) newValue);
+				return;
+			case GenModelPackage.GEN_FEATURE__NOTIFY :
+				setNotify(((Boolean) newValue).booleanValue());
+				return;
+			case GenModelPackage.GEN_FEATURE__CHILDREN :
+				setChildren(((Boolean) newValue).booleanValue());
+				return;
+			case GenModelPackage.GEN_FEATURE__CREATE_CHILD :
+				setCreateChild(((Boolean) newValue).booleanValue());
+				return;
+			case GenModelPackage.GEN_FEATURE__PROPERTY_CATEGORY :
+				setPropertyCategory((String) newValue);
+				return;
+			case GenModelPackage.GEN_FEATURE__PROPERTY_FILTER_FLAGS :
+				getPropertyFilterFlags().clear();
+				getPropertyFilterFlags().addAll((Collection) newValue);
+				return;
+			case GenModelPackage.GEN_FEATURE__PROPERTY_DESCRIPTION :
+				setPropertyDescription((String) newValue);
+				return;
+			case GenModelPackage.GEN_FEATURE__GEN_CLASS :
+				setGenClass((GenClass) newValue);
+				return;
+			case GenModelPackage.GEN_FEATURE__ECORE_FEATURE :
+				setEcoreFeature((EStructuralFeature) newValue);
+				return;
+			case GenModelPackage.GEN_FEATURE__KEY :
+				setKey(((Boolean) newValue).booleanValue());
+				return;
 		}
 		eDynamicSet(eFeature, newValue);
 	}
@@ -270,36 +279,36 @@ public class GenFeatureImpl extends
 	 */
 	public void eUnset(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_FEATURE__PROPERTY:
-			setProperty(PROPERTY_EDEFAULT);
-			return;
-		case GenModelPackage.GEN_FEATURE__NOTIFY:
-			setNotify(NOTIFY_EDEFAULT);
-			return;
-		case GenModelPackage.GEN_FEATURE__CHILDREN:
-			setChildren(CHILDREN_EDEFAULT);
-			return;
-		case GenModelPackage.GEN_FEATURE__CREATE_CHILD:
-			unsetCreateChild();
-			return;
-		case GenModelPackage.GEN_FEATURE__PROPERTY_CATEGORY:
-			setPropertyCategory(PROPERTY_CATEGORY_EDEFAULT);
-			return;
-		case GenModelPackage.GEN_FEATURE__PROPERTY_FILTER_FLAGS:
-			getPropertyFilterFlags().clear();
-			return;
-		case GenModelPackage.GEN_FEATURE__PROPERTY_DESCRIPTION:
-			setPropertyDescription(PROPERTY_DESCRIPTION_EDEFAULT);
-			return;
-		case GenModelPackage.GEN_FEATURE__GEN_CLASS:
-			setGenClass((GenClass) null);
-			return;
-		case GenModelPackage.GEN_FEATURE__ECORE_FEATURE:
-			setEcoreFeature((EStructuralFeature) null);
-			return;
-		case GenModelPackage.GEN_FEATURE__KEY:
-			setKey(KEY_EDEFAULT);
-			return;
+			case GenModelPackage.GEN_FEATURE__PROPERTY :
+				setProperty(PROPERTY_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_FEATURE__NOTIFY :
+				setNotify(NOTIFY_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_FEATURE__CHILDREN :
+				setChildren(CHILDREN_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_FEATURE__CREATE_CHILD :
+				unsetCreateChild();
+				return;
+			case GenModelPackage.GEN_FEATURE__PROPERTY_CATEGORY :
+				setPropertyCategory(PROPERTY_CATEGORY_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_FEATURE__PROPERTY_FILTER_FLAGS :
+				getPropertyFilterFlags().clear();
+				return;
+			case GenModelPackage.GEN_FEATURE__PROPERTY_DESCRIPTION :
+				setPropertyDescription(PROPERTY_DESCRIPTION_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_FEATURE__GEN_CLASS :
+				setGenClass((GenClass) null);
+				return;
+			case GenModelPackage.GEN_FEATURE__ECORE_FEATURE :
+				setEcoreFeature((EStructuralFeature) null);
+				return;
+			case GenModelPackage.GEN_FEATURE__KEY :
+				setKey(KEY_EDEFAULT);
+				return;
 		}
 		eDynamicUnset(eFeature);
 	}
@@ -311,30 +320,32 @@ public class GenFeatureImpl extends
 	 */
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case GenModelPackage.GEN_FEATURE__PROPERTY:
-			return property != PROPERTY_EDEFAULT;
-		case GenModelPackage.GEN_FEATURE__NOTIFY:
-			return notify != NOTIFY_EDEFAULT;
-		case GenModelPackage.GEN_FEATURE__CHILDREN:
-			return children != CHILDREN_EDEFAULT;
-		case GenModelPackage.GEN_FEATURE__CREATE_CHILD:
-			return isSetCreateChild();
-		case GenModelPackage.GEN_FEATURE__PROPERTY_CATEGORY:
-			return PROPERTY_CATEGORY_EDEFAULT == null ? propertyCategory != null
+			case GenModelPackage.GEN_FEATURE__PROPERTY :
+				return property != PROPERTY_EDEFAULT;
+			case GenModelPackage.GEN_FEATURE__NOTIFY :
+				return notify != NOTIFY_EDEFAULT;
+			case GenModelPackage.GEN_FEATURE__CHILDREN :
+				return children != CHILDREN_EDEFAULT;
+			case GenModelPackage.GEN_FEATURE__CREATE_CHILD :
+				return isSetCreateChild();
+			case GenModelPackage.GEN_FEATURE__PROPERTY_CATEGORY :
+				return PROPERTY_CATEGORY_EDEFAULT == null
+					? propertyCategory != null
 					: !PROPERTY_CATEGORY_EDEFAULT.equals(propertyCategory);
-		case GenModelPackage.GEN_FEATURE__PROPERTY_FILTER_FLAGS:
-			return propertyFilterFlags != null
+			case GenModelPackage.GEN_FEATURE__PROPERTY_FILTER_FLAGS :
+				return propertyFilterFlags != null
 					&& !propertyFilterFlags.isEmpty();
-		case GenModelPackage.GEN_FEATURE__PROPERTY_DESCRIPTION:
-			return PROPERTY_DESCRIPTION_EDEFAULT == null ? propertyDescription != null
+			case GenModelPackage.GEN_FEATURE__PROPERTY_DESCRIPTION :
+				return PROPERTY_DESCRIPTION_EDEFAULT == null
+					? propertyDescription != null
 					: !PROPERTY_DESCRIPTION_EDEFAULT
-							.equals(propertyDescription);
-		case GenModelPackage.GEN_FEATURE__GEN_CLASS:
-			return getGenClass() != null;
-		case GenModelPackage.GEN_FEATURE__ECORE_FEATURE:
-			return ecoreFeature != null;
-		case GenModelPackage.GEN_FEATURE__KEY:
-			return ((eFlags & KEY_EFLAG) != 0) != KEY_EDEFAULT;
+						.equals(propertyDescription);
+			case GenModelPackage.GEN_FEATURE__GEN_CLASS :
+				return getGenClass() != null;
+			case GenModelPackage.GEN_FEATURE__ECORE_FEATURE :
+				return ecoreFeature != null;
+			case GenModelPackage.GEN_FEATURE__KEY :
+				return ((eFlags & KEY_EFLAG) != 0) != KEY_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
 	}
@@ -363,13 +374,15 @@ public class GenFeatureImpl extends
 	}
 
 	public GenClass getGenClass() {
-		return isDuplicate() ? findGenClass(Generator
-				.getEcoreContainingClass(getEcoreFeature())) : super
-				.getGenClass();
+		return isDuplicate()
+			? findGenClass(Generator.getEcoreContainingClass(getEcoreFeature()))
+			: super.getGenClass();
 	}
 
 	public org.eclipse.emf.codegen.ecore.genmodel.GenModel getGenModel() {
-		return isDuplicate() ? genModel : super.getGenModel();
+		return isDuplicate()
+			? genModel
+			: super.getGenModel();
 	}
 
 	protected org.eclipse.emf.codegen.ecore.genmodel.GenFeature findGenFeature(
@@ -379,34 +392,37 @@ public class GenFeatureImpl extends
 	}
 
 	public String getAccessorName() {
-		return isMapEntryFeature() ? "Typed" + getCapName()
-				: (isListType()
-						&& UML2GenModelUtil.isPluralizedGetters(getGenModel()) ? Generator
-						.pluralize(getCapName())
-						: ("Class".equals(getCapName()) ? "Class_"
-								: getCapName()));
+		return isMapEntryFeature()
+			? "Typed" + getCapName()
+			: (isListType()
+				&& UML2GenModelUtil.isPluralizedGetters(getGenModel())
+				? Generator.pluralize(getCapName())
+				: ("Class".equals(getCapName())
+					? "Class_"
+					: getCapName()));
 	}
 
 	public String getGetAccessor() {
-		String result = isBooleanType() ? "is" + getIsName() : "get"
-				+ getAccessorName();
+		String result = isBooleanType()
+			? "is" + getIsName()
+			: "get" + getAccessorName();
 
 		if (!isMapEntryFeature()) {
 
 			GenClass rootImplementsInterface = getGenModel()
-					.getRootImplementsInterfaceGenClass();
+				.getRootImplementsInterfaceGenClass();
 
 			if (rootImplementsInterface != null
-					&& !rootImplementsInterface.isEObject()) {
+				&& !rootImplementsInterface.isEObject()) {
 
 				for (Iterator i = rootImplementsInterface.getAllGenOperations()
-						.iterator(); i.hasNext();) {
+					.iterator(); i.hasNext();) {
 
 					GenOperation genOperation = (GenOperation) i.next();
 
 					if (genOperation.getName().equals(result)
-							&& genOperation.getGenParameters().isEmpty()
-							&& !genOperation.getReturnType().equals(getType())) {
+						&& genOperation.getGenParameters().isEmpty()
+						&& !genOperation.getReturnType().equals(getType())) {
 
 						result = result + "_";
 						break;
@@ -434,12 +450,12 @@ public class GenFeatureImpl extends
 		List subsettedGenFeatures = new ArrayList();
 
 		for (Iterator subsettedEcoreFeatures = Generator
-				.getSubsettedEcoreFeatures(getEcoreFeature()).iterator(); subsettedEcoreFeatures
-				.hasNext();) {
+			.getSubsettedEcoreFeatures(getEcoreFeature()).iterator(); subsettedEcoreFeatures
+			.hasNext();) {
 
 			subsettedGenFeatures
-					.add(findGenFeature((EStructuralFeature) subsettedEcoreFeatures
-							.next()));
+				.add(findGenFeature((EStructuralFeature) subsettedEcoreFeatures
+					.next()));
 		}
 
 		return subsettedGenFeatures;
@@ -453,12 +469,12 @@ public class GenFeatureImpl extends
 		List redefinedGenFeatures = new ArrayList();
 
 		for (Iterator redefinedEcoreFeatures = Generator
-				.getRedefinedEcoreFeatures(getEcoreFeature()).iterator(); redefinedEcoreFeatures
-				.hasNext();) {
+			.getRedefinedEcoreFeatures(getEcoreFeature()).iterator(); redefinedEcoreFeatures
+			.hasNext();) {
 
 			redefinedGenFeatures
-					.add(findGenFeature((EStructuralFeature) redefinedEcoreFeatures
-							.next()));
+				.add(findGenFeature((EStructuralFeature) redefinedEcoreFeatures
+					.next()));
 		}
 
 		return redefinedGenFeatures;
@@ -467,10 +483,10 @@ public class GenFeatureImpl extends
 	public String getRedefinedListItemType() {
 
 		for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
-				.iterator(); redefinedGenFeatures.hasNext();) {
+			.iterator(); redefinedGenFeatures.hasNext();) {
 
 			GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
-					.next();
+				.next();
 
 			if (getName().equals(redefinedGenFeature.getName())) {
 				return redefinedGenFeature.getListItemType();
@@ -485,10 +501,10 @@ public class GenFeatureImpl extends
 		if (isDuplicate()) {
 
 			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
-					.iterator(); redefinedGenFeatures.hasNext();) {
+				.iterator(); redefinedGenFeatures.hasNext();) {
 
 				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
-						.next();
+					.next();
 
 				if (getName().equals(redefinedGenFeature.getName())) {
 					return redefinedGenFeature.getFeatureAccessorName();
@@ -504,14 +520,14 @@ public class GenFeatureImpl extends
 		if (isDuplicate()) {
 
 			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
-					.iterator(); redefinedGenFeatures.hasNext();) {
+				.iterator(); redefinedGenFeatures.hasNext();) {
 
 				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
-						.next();
+					.next();
 
 				if (getName().equals(redefinedGenFeature.getName())) {
 					return redefinedGenFeature
-							.getQualifiedFeatureAccessorName();
+						.getQualifiedFeatureAccessorName();
 				}
 			}
 		}
@@ -521,11 +537,12 @@ public class GenFeatureImpl extends
 
 	public org.eclipse.emf.codegen.ecore.genmodel.GenFeature getReverse() {
 		EReference reverseEcoreFeature = ((EReference) getEcoreFeature())
-				.getEOpposite();
+			.getEOpposite();
 
 		return null != reverseEcoreFeature
-				&& Generator.isDuplicate(reverseEcoreFeature) ? findGenFeature(reverseEcoreFeature)
-				: super.getReverse();
+			&& Generator.isDuplicate(reverseEcoreFeature)
+			? findGenFeature(reverseEcoreFeature)
+			: super.getReverse();
 	}
 
 	public boolean hasDelegateFeature() {
@@ -534,17 +551,18 @@ public class GenFeatureImpl extends
 			EStructuralFeature ecoreFeature = getEcoreFeature();
 			EClass ecoreClass = Generator.getEcoreContainingClass(ecoreFeature);
 			EStructuralFeature mixedFeature = getExtendedMetaData()
-					.getMixedFeature(ecoreClass);
+				.getMixedFeature(ecoreClass);
 			return (mixedFeature != null && mixedFeature != ecoreFeature)
-					|| getExtendedMetaData().getGroup(ecoreFeature) != null;
+				|| getExtendedMetaData().getGroup(ecoreFeature) != null;
 		}
 
 		return super.hasDelegateFeature();
 	}
 
 	public boolean isVolatile() {
-		return isDuplicate() ? getEcoreFeature().isVolatile() : super
-				.isVolatile();
+		return isDuplicate()
+			? getEcoreFeature().isVolatile()
+			: super.isVolatile();
 	}
 
 	protected void reconcileSettings(

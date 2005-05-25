@@ -9,7 +9,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="GenDataType" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenDataType #//GenClassifier"/>
   <eClassifiers xsi:type="ecore:EClass" name="GenEnum" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenEnum #//GenDataType"/>
   <eClassifiers xsi:type="ecore:EClass" name="GenEnumLiteral" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenEnumLiteral #//GenBase"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GenFeature" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenFeature #//GenBase">
+  <eClassifiers xsi:type="ecore:EClass" name="GenFeature" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenFeature #//GenTypedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GenModel" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenModel #//GenBase">
@@ -19,17 +19,18 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="safeStrings" eType="ecore:EDataType ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="invariantPrefix" eType="ecore:EDataType ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenOperation" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenOperation #//GenBase">
+  <eClassifiers xsi:type="ecore:EClass" name="GenOperation" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenOperation #//GenTypedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheAdapterScope" eType="#//GenCacheAdapterScope"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GenPackage" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenPackage #//GenBase">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="resourceInterfaces" eType="ecore:EDataType ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationsPackage" eType="ecore:EDataType ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenParameter" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenParameter #//GenBase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GenParameter" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenParameter #//GenTypedElement"/>
   <eClassifiers xsi:type="ecore:EEnum" name="GenCacheAdapterScope">
     <eLiterals name="None"/>
     <eLiterals name="Global" value="1"/>
     <eLiterals name="Resource" value="2"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GenTypedElement" abstract="true" eSuperTypes="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenTypedElement #//GenBase"/>
 </ecore:EPackage>

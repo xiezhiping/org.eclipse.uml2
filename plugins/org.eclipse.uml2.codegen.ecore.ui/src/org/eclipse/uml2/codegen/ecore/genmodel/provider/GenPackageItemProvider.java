@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageItemProvider.java,v 1.1 2005/05/17 22:07:40 khussey Exp $
+ * $Id: GenPackageItemProvider.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -40,7 +40,8 @@ import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenPackageItemProvider extends
+public class GenPackageItemProvider
+		extends
 		org.eclipse.emf.codegen.ecore.genmodel.provider.GenPackageItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
@@ -86,18 +87,17 @@ public class GenPackageItemProvider extends
 	 */
 	protected void addResourceInterfacesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenPackage_resourceInterfaces_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenPackage_resourceInterfaces_feature", "_UI_GenPackage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						GenModelPackage.eINSTANCE
-								.getGenPackage_ResourceInterfaces(), true,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-						null));
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GenPackage_resourceInterfaces_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_GenPackage_resourceInterfaces_feature", "_UI_GenPackage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				GenModelPackage.eINSTANCE.getGenPackage_ResourceInterfaces(),
+				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -108,18 +108,17 @@ public class GenPackageItemProvider extends
 	 */
 	protected void addOperationsPackagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenPackage_operationsPackage_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenPackage_operationsPackage_feature", "_UI_GenPackage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						GenModelPackage.eINSTANCE
-								.getGenPackage_OperationsPackage(), true,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-						null));
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GenPackage_operationsPackage_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_GenPackage_operationsPackage_feature", "_UI_GenPackage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				GenModelPackage.eINSTANCE.getGenPackage_OperationsPackage(),
+				true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -153,11 +152,11 @@ public class GenPackageItemProvider extends
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(GenPackage.class)) {
-		case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES:
-		case GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
+			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
+			case GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
