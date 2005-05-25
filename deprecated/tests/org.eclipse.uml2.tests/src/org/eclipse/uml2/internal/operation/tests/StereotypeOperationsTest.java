@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperationsTest.java,v 1.9 2005/05/18 17:04:28 khussey Exp $
+ * $Id: StereotypeOperationsTest.java,v 1.10 2005/05/25 17:23:22 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -206,11 +206,11 @@ public class StereotypeOperationsTest
 
 		EnumerationLiteral enumerationLiteral0 = getEnumeration()
 			.createOwnedLiteral();
-		enumerationLiteral0.setName(getName() + String.valueOf(0));
+		enumerationLiteral0.setName(getName() + ' ' + String.valueOf(0));
 
 		EnumerationLiteral enumerationLiteral1 = getEnumeration()
 			.createOwnedLiteral();
-		enumerationLiteral1.setName(getName() + String.valueOf(1));
+		enumerationLiteral1.setName(getName() + ' ' + String.valueOf(1));
 
 		Property enumerationProperty = getElement().createOwnedAttribute(
 			UML2Package.eINSTANCE.getProperty());
@@ -422,11 +422,11 @@ public class StereotypeOperationsTest
 
 	/**
 	 * Tests the '
-	 * {@link org.eclipse.uml2.internal.operation.StereotypeOperations#createExtension(org.eclipse.uml2.Stereotype, org.eclipse.emf.ecore.EClass, boolean) <em>Create Extension</em>}'
+	 * {@link org.eclipse.uml2.internal.operation.StereotypeOperations#createExtension(org.eclipse.uml2.Stereotype, org.eclipse.uml2.Class, boolean) <em>Create Extension</em>}'
 	 * method.
 	 * 
 	 * @see org.eclipse.uml2.internal.operation.StereotypeOperations#createExtension(org.eclipse.uml2.Stereotype,
-	 *      org.eclipse.emf.ecore.EClass, boolean)
+	 *      org.eclipse.uml2.Class, boolean)
 	 */
 	public void testCreateExtension() {
 
@@ -1722,7 +1722,7 @@ public class StereotypeOperationsTest
 
 		stereotypeEObject.eSet(enumerationEStructuralFeature,
 			((EEnum) enumerationEStructuralFeature.getEType()).getEEnumLiteral(
-				getName() + String.valueOf(0)).getInstance());
+				getName() + ' ' + String.valueOf(0)).getInstance());
 
 		try {
 			value = StereotypeOperations.getValue(getElement(), class_,
@@ -1860,7 +1860,8 @@ public class StereotypeOperationsTest
 
 		((List) stereotypeEObject.eGet(enumerationsEStructuralFeature))
 			.add(((EEnum) enumerationsEStructuralFeature.getEType())
-				.getEEnumLiteral(getName() + String.valueOf(0)).getInstance());
+				.getEEnumLiteral(getName() + ' ' + String.valueOf(0))
+				.getInstance());
 
 		try {
 			value = StereotypeOperations.getValue(getElement(), class_,
@@ -5149,7 +5150,7 @@ public class StereotypeOperationsTest
 
 		stereotypeEObject.eSet(enumerationEStructuralFeature,
 			((EEnum) enumerationEStructuralFeature.getEType()).getEEnumLiteral(
-				getName() + String.valueOf(0)).getInstance());
+				getName() + ' ' + String.valueOf(0)).getInstance());
 
 		try {
 			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
@@ -5160,7 +5161,7 @@ public class StereotypeOperationsTest
 
 		stereotypeEObject.eSet(enumerationEStructuralFeature,
 			((EEnum) enumerationEStructuralFeature.getEType()).getEEnumLiteral(
-				getName() + String.valueOf(1)).getInstance());
+				getName() + ' ' + String.valueOf(1)).getInstance());
 
 		try {
 			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
@@ -5285,7 +5286,8 @@ public class StereotypeOperationsTest
 
 		((List) stereotypeEObject.eGet(enumerationsEStructuralFeature))
 			.add(((EEnum) enumerationsEStructuralFeature.getEType())
-				.getEEnumLiteral(getName() + String.valueOf(1)).getInstance());
+				.getEEnumLiteral(getName() + ' ' + String.valueOf(1))
+				.getInstance());
 
 		try {
 			assertTrue(StereotypeOperations.hasValue(getElement(), class_,
@@ -5303,7 +5305,8 @@ public class StereotypeOperationsTest
 
 		((List) stereotypeEObject.eGet(enumerationsEStructuralFeature)).set(0,
 			((EEnum) enumerationsEStructuralFeature.getEType())
-				.getEEnumLiteral(getName() + String.valueOf(0)).getInstance());
+				.getEEnumLiteral(getName() + ' ' + String.valueOf(0))
+				.getInstance());
 
 		try {
 			assertTrue(StereotypeOperations.hasValue(getElement(), class_,

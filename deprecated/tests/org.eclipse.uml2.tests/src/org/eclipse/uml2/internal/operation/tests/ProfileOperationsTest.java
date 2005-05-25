@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperationsTest.java,v 1.6 2005/05/18 17:04:28 khussey Exp $
+ * $Id: ProfileOperationsTest.java,v 1.7 2005/05/25 17:23:22 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -190,11 +190,11 @@ public class ProfileOperationsTest
 
 		EnumerationLiteral enumerationLiteral0 = enumeration
 			.createOwnedLiteral();
-		enumerationLiteral0.setName(getName() + String.valueOf(0));
+		enumerationLiteral0.setName(getName() + ' ' + String.valueOf(0));
 
 		EnumerationLiteral enumerationLiteral1 = enumeration
 			.createOwnedLiteral();
-		enumerationLiteral1.setName(getName() + String.valueOf(1));
+		enumerationLiteral1.setName(getName() + ' ' + String.valueOf(1));
 
 		Property enumerationProperty = stereotype
 			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
@@ -398,13 +398,14 @@ public class ProfileOperationsTest
 			.getEStructuralFeature("enumeration"); //$NON-NLS-1$
 		stereotypeEObject.eSet(enumerationEStructuralFeature,
 			((EEnum) enumerationEStructuralFeature.getEType()).getEEnumLiteral(
-				getName() + String.valueOf(0)).getInstance());
+				getName() + ' ' + String.valueOf(0)).getInstance());
 
 		EStructuralFeature enumerationsEStructuralFeature = eClass
 			.getEStructuralFeature("enumerations"); //$NON-NLS-1$
 		((List) stereotypeEObject.eGet(enumerationsEStructuralFeature))
 			.add(((EEnum) enumerationsEStructuralFeature.getEType())
-				.getEEnumLiteral(getName() + String.valueOf(1)).getInstance());
+				.getEEnumLiteral(getName() + ' ' + String.valueOf(1))
+				.getInstance());
 
 		EStructuralFeature timestampEStructuralFeature = eClass
 			.getEStructuralFeature("timestamp"); //$NON-NLS-1$
@@ -480,14 +481,16 @@ public class ProfileOperationsTest
 
 		enumerationEStructuralFeature = eClass
 			.getEStructuralFeature("enumeration"); //$NON-NLS-1$
-		assertEquals(((EEnum) enumerationEStructuralFeature.getEType())
-			.getEEnumLiteral(getName() + String.valueOf(0)).getInstance(),
+		assertEquals(
+			((EEnum) enumerationEStructuralFeature.getEType()).getEEnumLiteral(
+				getName() + ' ' + String.valueOf(0)).getInstance(),
 			stereotypeEObject.eGet(enumerationEStructuralFeature));
 
 		enumerationsEStructuralFeature = eClass
 			.getEStructuralFeature("enumerations"); //$NON-NLS-1$
-		assertEquals(((EEnum) enumerationEStructuralFeature.getEType())
-			.getEEnumLiteral(getName() + String.valueOf(1)).getInstance(),
+		assertEquals(
+			((EEnum) enumerationEStructuralFeature.getEType()).getEEnumLiteral(
+				getName() + ' ' + String.valueOf(1)).getInstance(),
 			((List) stereotypeEObject.eGet(enumerationsEStructuralFeature))
 				.get(0));
 
