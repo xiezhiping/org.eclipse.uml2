@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.6 2005/05/18 16:38:31 khussey Exp $
+ * $Id: ClassOperations.java,v 1.7 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -17,9 +17,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.UML2Package;
@@ -137,6 +140,26 @@ public final class ClassOperations extends UML2Operations {
 		}
 
 		return extensions;
+	}
+
+	public static EList getSuperClasses(org.eclipse.uml2.Class class_) {
+		EList superClasses = new UniqueEList();
+
+		if (class_ != null) {
+
+			for (Iterator generals = class_.general().iterator(); generals
+				.hasNext();) {
+
+				Classifier general = (Classifier) generals.next();
+
+				if (org.eclipse.uml2.Class.class.isInstance(general)) {
+					superClasses.add(general);
+				}
+			}
+
+		}
+
+		return superClasses;
 	}
 
 	// <!-- end-custom-operations -->

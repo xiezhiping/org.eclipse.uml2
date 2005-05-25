@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.23 2005/05/18 16:38:26 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.24 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -41,7 +39,6 @@ import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.ParameterSet;
-import org.eclipse.uml2.ParameterDirectionKind;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
@@ -49,8 +46,10 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.internal.operation.BehaviorOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -391,33 +390,29 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated NOT
 	 */
 	public EList getFormalParameters() {
-		EList formalParameters = (EList) getCacheAdapter().get(eResource(),
-			this, UML2Package.eINSTANCE.getBehavior_FormalParameter());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == formalParameters) {
-			List formalParameter = new ArrayList();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UML2Package.eINSTANCE.getBehavior_FormalParameter());
 
-			for (Iterator parameters = getParameters().iterator(); parameters
-				.hasNext();) {
-
-				Parameter parameter = (Parameter) parameters.next();
-
-				if (!ParameterDirectionKind.RETURN_LITERAL.equals(parameter
-					.getDirection())) {
-
-					formalParameter.add(parameter);
-				}
+			if (result == null) {
+				EList formalParameters = BehaviorOperations
+					.getFormalParameters(this);
+				cache.put(eResource(), this, UML2Package.eINSTANCE
+					.getBehavior_FormalParameter(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getBehavior_FormalParameter(),
+						formalParameters.size(), formalParameters.toArray()));
 			}
 
-			formalParameters = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getBehavior_FormalParameter(),
-				formalParameter.size(), formalParameter.toArray());
-			getCacheAdapter().put(this,
-				UML2Package.eINSTANCE.getBehavior_FormalParameter(),
-				formalParameters);
+			return result;
 		}
 
-		return formalParameters;
+		EList formalParameters = BehaviorOperations.getFormalParameters(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getBehavior_FormalParameter(), formalParameters.size(),
+			formalParameters.toArray());
 	}
 
 	/**
@@ -441,34 +436,28 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated NOT
 	 */
 	public EList getReturnResults() {
-		EList returnResults = (EList) getCacheAdapter().get(eResource(), this,
-			UML2Package.eINSTANCE.getBehavior_ReturnResult());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == returnResults) {
-			List returnResult = new ArrayList();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UML2Package.eINSTANCE.getBehavior_ReturnResult());
 
-			for (Iterator parameters = getParameters().iterator(); parameters
-				.hasNext();) {
-				
-				Parameter parameter = (Parameter) parameters.next();
-
-				if (ParameterDirectionKind.RETURN_LITERAL.equals(parameter
-					.getDirection())) {
-					
-					returnResult.add(parameter);
-				}
+			if (result == null) {
+				EList returnResults = BehaviorOperations.getReturnResults(this);
+				cache.put(eResource(), this, UML2Package.eINSTANCE
+					.getBehavior_ReturnResult(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getBehavior_ReturnResult(),
+						returnResults.size(), returnResults.toArray()));
 			}
 
-			returnResults = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getBehavior_ReturnResult(), returnResult
-					.size(), returnResult.toArray());
-			getCacheAdapter()
-				.put(eResource(), this,
-					UML2Package.eINSTANCE.getBehavior_ReturnResult(),
-					returnResults);
+			return result;
 		}
 
-		return returnResults;
+		EList returnResults = BehaviorOperations.getReturnResults(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getBehavior_ReturnResult(), returnResults.size(), returnResults
+			.toArray());
 	}
 
 	/**

@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.11 2005/05/18 16:38:26 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.12 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -24,7 +23,6 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -40,7 +38,6 @@ import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Region;
-import org.eclipse.uml2.StateMachine;
 import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Transition;
@@ -50,6 +47,10 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.Vertex;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+
+import org.eclipse.uml2.internal.operation.StateMachineOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -583,41 +584,32 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * @generated NOT
 	 */
 	public EList getRedefinitionContexts() {
-		EList result = (EList) getCacheAdapter().get(this,
-			UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == result) {
-			EObject container = eContainer;
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
+				.getRedefinableElement_RedefinitionContext());
 
-			while (null != container
-				&& !StateMachine.class.isInstance(container)) {
-
-				container = container.eContainer();
-			}
-
-			List redefinitionContexts = Collections.EMPTY_LIST;
-
-			if (null != container) {
-				StateMachine containingStateMachine = (StateMachine) container;
-
-				redefinitionContexts = Collections
-					.singletonList(null != containingStateMachine.getContext()
-						&& containingStateMachine.general().isEmpty()
-						? containingStateMachine.getContext()
-						: containingStateMachine);
-			}
-
-			result = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE
+			if (result == null) {
+				EList redefinitionContexts = StateMachineOperations
+					.getRedefinitionContexts(this);
+				cache.put(this, UML2Package.eINSTANCE
 					.getRedefinableElement_RedefinitionContext(),
-				redefinitionContexts.size(), redefinitionContexts.toArray());
-			getCacheAdapter().put(
-				this,
-				UML2Package.eINSTANCE
-					.getRedefinableElement_RedefinitionContext(), result);
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE
+							.getRedefinableElement_RedefinitionContext(),
+						redefinitionContexts.size(), redefinitionContexts
+							.toArray()));
+			}
+
+			return result;
 		}
 
-		return result;
+		EList redefinitionContexts = StateMachineOperations
+			.getRedefinitionContexts(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getRedefinableElement_RedefinitionContext(), redefinitionContexts
+			.size(), redefinitionContexts.toArray());
 	}
 
 	/**

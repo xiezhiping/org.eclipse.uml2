@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.17 2005/05/18 16:38:26 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.18 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -232,21 +233,28 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @generated NOT
 	 */
 	public EList getImportedMembers() {
-		EList importedMembers = (EList) getCacheAdapter().get(this,
-			UML2Package.eINSTANCE.getNamespace_ImportedMember());
+		CacheAdapter cache = getCacheAdapter();
+		
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
+				.getNamespace_ImportedMember());
 
-		if (null == importedMembers) {
-			Set importedMember = importedMember();
+			if (result == null) {
+				Set importedMember = importedMember();
+				cache.put(this, UML2Package.eINSTANCE
+					.getNamespace_ImportedMember(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getNamespace_ImportedMember(),
+						importedMember.size(), importedMember.toArray()));
+			}
 
-			importedMembers = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getNamespace_ImportedMember(),
-				importedMember.size(), importedMember.toArray());
-			getCacheAdapter().put(this,
-				UML2Package.eINSTANCE.getNamespace_ImportedMember(),
-				importedMembers);
+			return result;
 		}
 
-		return importedMembers;
+		Set importedMember = importedMember();
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getNamespace_ImportedMember(), importedMember.size(),
+			importedMember.toArray());
 	}
 
 	/**
@@ -744,33 +752,40 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 
 	// <!-- begin-custom-operations -->
 
-	private static Method GET_IMPORTED_PACKAGES_METHOD = null;
+	private static Method GET_IMPORTED_PACKAGES = null;
 
 	static {
 		try {
-			GET_IMPORTED_PACKAGES_METHOD = NamespaceImpl.class.getMethod(
+			GET_IMPORTED_PACKAGES = NamespaceImpl.class.getMethod(
 				"getImportedPackages", null); //$NON-NLS-1$
 		} catch (Exception e) {
 			// ignore
 		}
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.eclipse.uml2.Namespace#getImportedPackages()
 	 */
 	public Set getImportedPackages() {
-		Set importedPackages = (Set) getCacheAdapter().get(eResource(), this,
-			GET_IMPORTED_PACKAGES_METHOD);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == importedPackages) {
-			importedPackages = NamespaceOperations.getImportedPackages(this);
-			getCacheAdapter().put(eResource(), this,
-				GET_IMPORTED_PACKAGES_METHOD, importedPackages);
+		if (cache != null) {
+			Set result = (Set) cache.get(eResource(), this,
+				GET_IMPORTED_PACKAGES);
+
+			if (result == null) {
+				cache.put(eResource(), this, GET_IMPORTED_PACKAGES,
+					result = Collections.unmodifiableSet(NamespaceOperations
+						.getImportedPackages(this)));
+			}
+
+			return result;
 		}
 
-		return importedPackages;
+		return Collections.unmodifiableSet(NamespaceOperations
+			.getImportedPackages(this));
 	}
 
 	/*
@@ -779,14 +794,19 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 * @see org.eclipse.uml2.Namespace#importElement(org.eclipse.uml2.VisibilityKind,
 	 *      org.eclipse.uml2.PackageableElement)
 	 */
-	public void importElement(VisibilityKind visibility, PackageableElement element) {
+	public void importElement(VisibilityKind visibility,
+			PackageableElement element) {
 		NamespaceOperations.importElement(this, visibility, element);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.uml2.Namespace#importPackage(org.eclipse.uml2.VisibilityKind, org.eclipse.uml2.Package)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Namespace#importPackage(org.eclipse.uml2.VisibilityKind,
+	 *      org.eclipse.uml2.Package)
 	 */
-	public void importPackage(VisibilityKind visibility, org.eclipse.uml2.Package package_) {
+	public void importPackage(VisibilityKind visibility,
+			org.eclipse.uml2.Package package_) {
 		NamespaceOperations.importPackage(this, visibility, package_);
 	}
 

@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.24 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.25 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -597,21 +598,28 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated NOT
 	 */
 	public EList getInheritedMembers() {
-		EList inheritedMembers = (EList) getCacheAdapter().get(this,
-			UML2Package.eINSTANCE.getClassifier_InheritedMember());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == inheritedMembers) {
-			Set inheritedMember = inheritedMember();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
+				.getClassifier_InheritedMember());
 
-			inheritedMembers = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getClassifier_InheritedMember(),
-				inheritedMember.size(), inheritedMember.toArray());
-			getCacheAdapter().put(this,
-				UML2Package.eINSTANCE.getClassifier_InheritedMember(),
-				inheritedMembers);
+			if (result == null) {
+				Set inheritedMember = inheritedMember();
+				cache.put(this, UML2Package.eINSTANCE
+					.getClassifier_InheritedMember(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getClassifier_InheritedMember(),
+						inheritedMember.size(), inheritedMember.toArray()));
+			}
+
+			return result;
 		}
 
-		return inheritedMembers;
+		Set inheritedMember = inheritedMember();
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getClassifier_InheritedMember(), inheritedMember.size(),
+			inheritedMember.toArray());
 	}
 
 	/**
@@ -635,20 +643,27 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated NOT
 	 */
 	public EList getGenerals() {
-		EList generals = (EList) getCacheAdapter().get(eResource(), this,
-			UML2Package.eINSTANCE.getClassifier_General());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == generals) {
-			Set general = general();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UML2Package.eINSTANCE.getClassifier_General());
 
-			generals = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getClassifier_General(), general.size(),
-				general.toArray());
-			getCacheAdapter().put(eResource(), this,
-				UML2Package.eINSTANCE.getClassifier_General(), generals);
+			if (result == null) {
+				Set general = general();
+				cache.put(eResource(), this, UML2Package.eINSTANCE
+					.getClassifier_General(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getClassifier_General(), general
+							.size(), general.toArray()));
+			}
+
+			return result;
 		}
 
-		return generals;
+		Set general = general();
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getClassifier_General(), general.size(), general.toArray());
 	}
 
 	/**
@@ -1933,27 +1948,27 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 
 	// <!-- begin-custom-operations -->
 
-	 /*
-	  * (non-Javadoc)
-	  * 
-	  * @see org.eclipse.uml2.Type#createAssociation(boolean,
-	  *      org.eclipse.uml2.AggregationKind, java.lang.String, int, int,
-	  *      org.eclipse.uml2.Type, boolean, org.eclipse.uml2.AggregationKind,
-	  *      java.lang.String, int, int)
-	  */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Type#createAssociation(boolean,
+	 *      org.eclipse.uml2.AggregationKind, java.lang.String, int, int,
+	 *      org.eclipse.uml2.Type, boolean,
+	 *      org.eclipse.uml2.AggregationKind, java.lang.String, int, int)
+	 */
 	public Association createAssociation(boolean thisEndIsNavigable,
 			AggregationKind thisEndAggregation, String thisEndName,
 			int thisEndLowerBound, int thisEndUpperBound, Type otherType,
 			boolean otherEndIsNavigable, AggregationKind otherEndAggregation,
 			String otherEndName, int otherEndLowerBound, int otherEndUpperBound) {
-		
+
 		return TypeOperations.createAssociation(this, thisEndIsNavigable,
-				thisEndAggregation, thisEndName, thisEndLowerBound,
-				thisEndUpperBound, otherType, otherEndIsNavigable,
-				otherEndAggregation, otherEndName, otherEndLowerBound,
-				otherEndUpperBound);
+			thisEndAggregation, thisEndName, thisEndLowerBound,
+			thisEndUpperBound, otherType, otherEndIsNavigable,
+			otherEndAggregation, otherEndName, otherEndLowerBound,
+			otherEndUpperBound);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -1961,14 +1976,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public Generalization createGeneralization(Classifier generalClassifier) {
 		return ClassifierOperations.createGeneralization(this,
-				generalClassifier);
+			generalClassifier);
 	}
 
-	private static Method GET_USED_INTERFACES_METHOD = null;
+	private static Method GET_USED_INTERFACES = null;
 
 	static {
 		try {
-			GET_USED_INTERFACES_METHOD = ClassifierImpl.class.getMethod(
+			GET_USED_INTERFACES = ClassifierImpl.class.getMethod(
 				"getUsedInterfaces", null); //$NON-NLS-1$
 		} catch (Exception e) {
 			// ignore
@@ -1981,16 +1996,22 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @see org.eclipse.uml2.Classifier#getUsedInterfaces()
 	 */
 	public Set getUsedInterfaces() {
-		Set useInterfaces = (Set) getCacheAdapter().get(this,
-			GET_USED_INTERFACES_METHOD);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == useInterfaces) {
-			useInterfaces = ClassifierOperations.getUsedInterfaces(this);
-			getCacheAdapter().put(this, GET_USED_INTERFACES_METHOD,
-				useInterfaces);
+		if (cache != null) {
+			Set result = (Set) cache.get(this, GET_USED_INTERFACES);
+
+			if (result == null) {
+				cache.put(this, GET_USED_INTERFACES, result = Collections
+					.unmodifiableSet(ClassifierOperations
+						.getUsedInterfaces(this)));
+			}
+
+			return result;
 		}
 
-		return useInterfaces;
+		return Collections.unmodifiableSet(ClassifierOperations
+			.getUsedInterfaces(this));
 	}
 	
 	// <!-- end-custom-operations -->

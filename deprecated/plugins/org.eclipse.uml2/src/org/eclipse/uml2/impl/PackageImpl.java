@@ -8,14 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.25 2005/05/18 16:38:27 khussey Exp $
+ * $Id: PackageImpl.java,v 1.26 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -305,31 +305,29 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated NOT
 	 */
 	public EList getNestedPackages() {
-		EList nestedPackages = (EList) getCacheAdapter().get(eResource(), this,
-			UML2Package.eINSTANCE.getPackage_NestedPackage());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == nestedPackages) {
-			Set nestedPackage = new HashSet();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UML2Package.eINSTANCE.getPackage_NestedPackage());
 
-			for (Iterator ownedMembers = getOwnedMembers().iterator(); ownedMembers
-				.hasNext();) {
-
-				NamedElement ownedMember = (NamedElement) ownedMembers.next();
-
-				if (org.eclipse.uml2.Package.class.isInstance(ownedMember)) {
-					nestedPackage.add(ownedMember);
-				}
+			if (result == null) {
+				EList nestedPackages = PackageOperations
+					.getNestedPackages(this);
+				cache.put(eResource(), this, UML2Package.eINSTANCE
+					.getPackage_NestedPackage(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getPackage_NestedPackage(),
+						nestedPackages.size(), nestedPackages.toArray()));
 			}
 
-			nestedPackages = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getPackage_NestedPackage(), nestedPackage
-					.size(), nestedPackage.toArray());
-			getCacheAdapter().put(eResource(), this,
-				UML2Package.eINSTANCE.getPackage_NestedPackage(),
-				nestedPackages);
+			return result;
 		}
 
-		return nestedPackages;
+		EList nestedPackages = PackageOperations.getNestedPackages(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getPackage_NestedPackage(), nestedPackages.size(), nestedPackages
+			.toArray());
 	}
 
 	/**
@@ -372,30 +370,29 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated NOT
 	 */
 	public EList getOwnedTypes() {
-		EList ownedTypes = (EList) getCacheAdapter().get(eResource(), this,
-			UML2Package.eINSTANCE.getPackage_OwnedType());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == ownedTypes) {
-			Set ownedType = new HashSet();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UML2Package.eINSTANCE.getPackage_OwnedType());
 
-			for (Iterator ownedMembers = getOwnedMembers().iterator(); ownedMembers
-				.hasNext();) {
-
-				NamedElement ownedMember = (NamedElement) ownedMembers.next();
-
-				if (Type.class.isInstance(ownedMember)) {
-					ownedType.add(ownedMember);
-				}
+			if (result == null) {
+				EList ownedTypes = PackageOperations.getOwnedTypes(this);
+				getCacheAdapter().put(
+					eResource(),
+					this,
+					UML2Package.eINSTANCE.getPackage_OwnedType(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getPackage_OwnedType(),
+						ownedTypes.size(), ownedTypes.toArray()));
 			}
 
-			ownedTypes = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getPackage_OwnedType(), ownedType.size(),
-				ownedType.toArray());
-			getCacheAdapter().put(eResource(), this,
-				UML2Package.eINSTANCE.getPackage_OwnedType(), ownedTypes);
+			return result;
 		}
 
-		return ownedTypes;
+		EList ownedTypes = PackageOperations.getOwnedTypes(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getPackage_OwnedType(), ownedTypes.size(), ownedTypes.toArray());
 	}
 
 	/**
@@ -1129,16 +1126,26 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @see org.eclipse.uml2.Package#getAllAppliedProfiles()
 	 */
 	public Set getAllAppliedProfiles() {
-		Set allAppliedProfiles = (Set) getCacheAdapter().get(eResource(), this,
-			GET_ALL_APPLIED_PROFILES);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == allAppliedProfiles) {
-			allAppliedProfiles = ProfileOperations.getAllAppliedProfiles(this);
-			getCacheAdapter().put(eResource(), this, GET_ALL_APPLIED_PROFILES,
-				allAppliedProfiles);
+		if (cache != null) {
+			Set result = (Set) getCacheAdapter().get(eResource(), this,
+				GET_ALL_APPLIED_PROFILES);
+
+			if (result == null) {
+				getCacheAdapter().put(
+					eResource(),
+					this,
+					GET_ALL_APPLIED_PROFILES,
+					result = Collections.unmodifiableSet(ProfileOperations
+						.getAllAppliedProfiles(this)));
+			}
+
+			return result;
 		}
 
-		return allAppliedProfiles;
+		return Collections.unmodifiableSet(ProfileOperations
+			.getAllAppliedProfiles(this));
 	}
 
 	/*

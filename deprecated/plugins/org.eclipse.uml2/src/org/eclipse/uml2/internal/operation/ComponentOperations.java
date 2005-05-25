@@ -8,13 +8,22 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.2 2005/05/18 16:38:31 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.3 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
+import java.util.Iterator;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.uml2.BehavioredClassifier;
+import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Component;
 import org.eclipse.uml2.Enumeration;
+import org.eclipse.uml2.Interface;
+import org.eclipse.uml2.Port;
 import org.eclipse.uml2.PrimitiveType;
+import org.eclipse.uml2.Realization;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -147,6 +156,66 @@ public final class ComponentOperations
 			.createOwnedMember(UML2Package.eINSTANCE.getPrimitiveType());
 		ownedPrimitiveType.setName(name);
 		return ownedPrimitiveType;
+	}
+
+	public static EList getProvideds(Component component) {
+		EList provideds = new UniqueEList();
+
+		if (component != null) {
+			provideds.addAll(component.getImplementedInterfaces());
+
+			for (Iterator realizations = component.getRealizations().iterator(); realizations
+				.hasNext();) {
+
+				Classifier realizingClassifier = ((Realization) realizations
+					.next()).getRealizingClassifier();
+
+				if (Interface.class.isInstance(realizingClassifier)) {
+					provideds.add(realizingClassifier);
+				} else if (BehavioredClassifier.class
+					.isInstance(realizingClassifier)) {
+
+					provideds
+						.addAll(((BehavioredClassifier) realizingClassifier)
+							.getImplementedInterfaces());
+				}
+			}
+
+			for (Iterator ownedPorts = component.getOwnedPorts().iterator(); ownedPorts
+				.hasNext();) {
+
+				provideds.addAll(((Port) ownedPorts.next()).getProvideds());
+			}
+		}
+
+		return provideds;
+	}
+
+	public static EList getRequireds(Component component) {
+		EList requireds = new UniqueEList();
+
+		if (component != null) {
+			requireds.addAll(component.getUsedInterfaces());
+
+			for (Iterator realizations = component.getRealizations().iterator(); realizations
+				.hasNext();) {
+
+				Realization realization = (Realization) realizations.next();
+
+				if (null != realization.getRealizingClassifier()) {
+					requireds.addAll(realization.getRealizingClassifier()
+						.getUsedInterfaces());
+				}
+			}
+
+			for (Iterator ownedPorts = component.getOwnedPorts().iterator(); ownedPorts
+				.hasNext();) {
+
+				requireds.addAll(((Port) ownedPorts.next()).getRequireds());
+			}
+		}
+
+		return requireds;
 	}
 
 } // ComponentOperations

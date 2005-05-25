@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.18 2005/05/18 16:38:27 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.19 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -47,6 +48,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
@@ -962,11 +964,11 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 
 	// <!-- begin-custom-operations -->
 
-	private static Method GET_IMPLEMENTED_INTERFACES_METHOD = null;
+	private static Method GET_IMPLEMENTED_INTERFACES = null;
 
 	static {
 		try {
-			GET_IMPLEMENTED_INTERFACES_METHOD = BehavioredClassifierImpl.class
+			GET_IMPLEMENTED_INTERFACES = BehavioredClassifierImpl.class
 				.getMethod("getImplementedInterfaces", null); //$NON-NLS-1$
 		} catch (Exception e) {
 			// ignore
@@ -979,24 +981,31 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 * @see org.eclipse.uml2.BehavioredClassifier#getImplementedInterfaces()
 	 */
 	public Set getImplementedInterfaces() {
-		Set implementedInterfaces = (Set) getCacheAdapter().get(eResource(),
-			this, GET_IMPLEMENTED_INTERFACES_METHOD);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == implementedInterfaces) {
-			implementedInterfaces = BehavioredClassifierOperations
-				.getImplementedInterfaces(this);
-			getCacheAdapter().put(eResource(), this,
-				GET_IMPLEMENTED_INTERFACES_METHOD, implementedInterfaces);
+		if (cache != null) {
+			Set result = (Set) cache.get(eResource(), this,
+				GET_IMPLEMENTED_INTERFACES);
+
+			if (result == null) {
+				cache.put(eResource(), this, GET_IMPLEMENTED_INTERFACES,
+					result = Collections
+						.unmodifiableSet(BehavioredClassifierOperations
+							.getImplementedInterfaces(this)));
+			}
+
+			return result;
 		}
 
-		return implementedInterfaces;
+		return Collections.unmodifiableSet(BehavioredClassifierOperations
+			.getImplementedInterfaces(this));
 	}
 
-	private static Method GET_ALL_IMPLEMENTED_INTERFACES_METHOD = null;
+	private static Method GET_ALL_IMPLEMENTED_INTERFACES = null;
 
 	static {
 		try {
-			GET_ALL_IMPLEMENTED_INTERFACES_METHOD = BehavioredClassifierImpl.class
+			GET_ALL_IMPLEMENTED_INTERFACES = BehavioredClassifierImpl.class
 				.getMethod("getAllImplementedInterfaces", null); //$NON-NLS-1$
 		} catch (Exception e) {
 			// ignore
@@ -1009,18 +1018,23 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 * @see org.eclipse.uml2.BehavioredClassifier#getAllImplementedInterfaces()
 	 */
 	public Set getAllImplementedInterfaces() {
-		Set allImplementedInterfaces = (Set) getCacheAdapter().get(eResource(),
-			this, GET_ALL_IMPLEMENTED_INTERFACES_METHOD);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == allImplementedInterfaces) {
-			allImplementedInterfaces = BehavioredClassifierOperations
-				.getAllImplementedInterfaces(this);
-			getCacheAdapter()
-				.put(eResource(), this, GET_ALL_IMPLEMENTED_INTERFACES_METHOD,
-					allImplementedInterfaces);
+		if (cache != null) {
+			Set result = (Set) cache.get(this, GET_ALL_IMPLEMENTED_INTERFACES);
+
+			if (result == null) {
+				cache.put(this, GET_ALL_IMPLEMENTED_INTERFACES,
+					result = Collections
+						.unmodifiableSet(BehavioredClassifierOperations
+							.getAllImplementedInterfaces(this)));
+			}
+
+			return result;
 		}
 
-		return allImplementedInterfaces;
+		return Collections.unmodifiableSet(BehavioredClassifierOperations
+			.getAllImplementedInterfaces(this));
 	}
 
 	/*

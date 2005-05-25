@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.22 2005/05/18 16:38:26 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.23 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -48,8 +46,11 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+
+import org.eclipse.uml2.internal.operation.ActivityOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -456,37 +457,29 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated NOT
 	 */
 	public EList getStructuredNodes() {
-		EList structuredNodes = (EList) getCacheAdapter().get(this,
-			UML2Package.eINSTANCE.getActivity_StructuredNode());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == structuredNodes) {
-			Set structuredNode = new HashSet();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UML2Package.eINSTANCE.getActivity_StructuredNode());
 
-			for (Iterator nodes = getNodes().iterator(); nodes.hasNext();) {
-				ActivityNode node = (ActivityNode) nodes.next();
-
-				if (StructuredActivityNode.class.isInstance(node)) {
-					structuredNode.add(node);
-				}
+			if (result == null) {
+				EList structuredNodes = ActivityOperations
+					.getStructuredNodes(this);
+				cache.put(eResource(), this, UML2Package.eINSTANCE
+					.getActivity_StructuredNode(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getActivity_StructuredNode(),
+						structuredNodes.size(), structuredNodes.toArray()));
 			}
 
-			for (Iterator groups = getGroups().iterator(); groups.hasNext();) {
-				ActivityGroup group = (ActivityGroup) groups.next();
-
-				if (StructuredActivityNode.class.isInstance(group)) {
-					structuredNode.add(group);
-				}
-			}
-
-			structuredNodes = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getActivity_StructuredNode(),
-				structuredNode.size(), structuredNode.toArray());
-			getCacheAdapter().put(this,
-				UML2Package.eINSTANCE.getActivity_StructuredNode(),
-				structuredNodes);
+			return result;
 		}
 
-		return structuredNodes;
+		EList structuredNodes = ActivityOperations.getStructuredNodes(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getActivity_StructuredNode(), structuredNodes.size(),
+			structuredNodes.toArray());
 	}
 
 	/**

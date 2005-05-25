@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.10 2005/05/18 16:38:31 khussey Exp $
+ * $Id: PackageOperations.java,v 1.11 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -21,6 +21,8 @@ import java.util.Set;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.ElementImport;
@@ -29,6 +31,7 @@ import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.PrimitiveType;
+import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
@@ -400,6 +403,46 @@ public final class PackageOperations extends UML2Operations {
 			.createOwnedMember(UML2Package.eINSTANCE.getPrimitiveType());
 		ownedPrimitiveType.setName(name);
 		return ownedPrimitiveType;
+	}
+
+	public static EList getNestedPackages(org.eclipse.uml2.Package package_) {
+		EList nestedPackages = new UniqueEList();
+
+		if (package_ != null) {
+
+			for (Iterator ownedMembers = package_.getOwnedMembers().iterator(); ownedMembers
+				.hasNext();) {
+
+				NamedElement ownedMember = (NamedElement) ownedMembers.next();
+
+				if (org.eclipse.uml2.Package.class.isInstance(ownedMember)) {
+					nestedPackages.add(ownedMember);
+				}
+			}
+
+		}
+
+		return nestedPackages;
+	}
+
+	public static EList getOwnedTypes(org.eclipse.uml2.Package package_) {
+		EList ownedTypes = new UniqueEList();
+
+		if (package_ != null) {
+
+			for (Iterator ownedMembers = package_.getOwnedMembers().iterator(); ownedMembers
+				.hasNext();) {
+
+				NamedElement ownedMember = (NamedElement) ownedMembers.next();
+
+				if (Type.class.isInstance(ownedMember)) {
+					ownedTypes.add(ownedMember);
+				}
+			}
+
+		}
+
+		return ownedTypes;
 	}
 
 	// <!-- end-custom-operations -->

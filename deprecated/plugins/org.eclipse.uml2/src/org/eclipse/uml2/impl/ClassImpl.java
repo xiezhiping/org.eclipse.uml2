@@ -8,15 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.27 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ClassImpl.java,v 1.28 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -60,6 +57,7 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 import org.eclipse.uml2.internal.operation.ClassOperations;
+import org.eclipse.uml2.internal.operation.StructuredClassifierOperations;
 import org.eclipse.uml2.internal.operation.TypeOperations;
 
 /**
@@ -253,30 +251,27 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated NOT
 	 */
 	public EList getParts() {
-		EList parts = (EList) getCacheAdapter().get(eResource(), this,
-			UML2Package.eINSTANCE.getStructuredClassifier_Part());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == parts) {
-			List part = new ArrayList();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UML2Package.eINSTANCE.getStructuredClassifier_Part());
 
-			for (Iterator ownedAttributes = getOwnedAttributes().iterator(); ownedAttributes
-				.hasNext();) {
-
-				Property ownedAttribute = (Property) ownedAttributes.next();
-
-				if (ownedAttribute.isComposite()) {
-					part.add(ownedAttribute);
-				}
+			if (result == null) {
+				EList parts = StructuredClassifierOperations.getParts(this);
+				cache.put(eResource(), this, UML2Package.eINSTANCE
+					.getStructuredClassifier_Part(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getStructuredClassifier_Part(),
+						parts.size(), parts.toArray()));
 			}
 
-			parts = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getStructuredClassifier_Part(), part
-					.size(), part.toArray());
-			getCacheAdapter().put(eResource(), this,
-				UML2Package.eINSTANCE.getStructuredClassifier_Part(), parts);
+			return result;
 		}
 
-		return parts;
+		EList parts = StructuredClassifierOperations.getParts(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getStructuredClassifier_Part(), parts.size(), parts.toArray());
 	}
 
 	/**
@@ -609,28 +604,27 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated NOT
 	 */
 	public EList getSuperClasses() {
-		EList superClasses = (EList) getCacheAdapter().get(eResource(), this,
-			UML2Package.eINSTANCE.getClass_SuperClass());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == superClasses) {
-			Set superClass = new HashSet();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UML2Package.eINSTANCE.getClass_SuperClass());
 
-			for (Iterator generals = general().iterator(); generals.hasNext();) {
-				Classifier general = (Classifier) generals.next();
-
-				if (org.eclipse.uml2.Class.class.isInstance(general)) {
-					superClass.add(general);
-				}
+			if (result == null) {
+				EList superClasses = ClassOperations.getSuperClasses(this);
+				cache.put(eResource(), this, UML2Package.eINSTANCE
+					.getClass_SuperClass(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getClass_SuperClass(),
+						superClasses.size(), superClasses.toArray()));
 			}
 
-			superClasses = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getClass_SuperClass(), superClass.size(),
-				superClass.toArray());
-			getCacheAdapter().put(eResource(), this,
-				UML2Package.eINSTANCE.getClass_SuperClass(), superClasses);
+			return result;
 		}
 
-		return superClasses;
+		EList superClasses = ClassOperations.getSuperClasses(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getClass_SuperClass(), superClasses.size(), superClasses.toArray());
 	}
 	
 	/**
@@ -654,20 +648,26 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated NOT
 	 */
 	public EList getExtensions() {
-		EList result = (EList) getCacheAdapter().get(this,
-			UML2Package.eINSTANCE.getClass_Extension());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == result) {
-			Set extensions = ClassOperations.getExtensions(this);
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
+				.getClass_Extension());
 
-			result = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getClass_Extension(), extensions.size(),
-				extensions.toArray());
-			getCacheAdapter().put(this,
-				UML2Package.eINSTANCE.getClass_Extension(), result);
+			if (result == null) {
+				Set extensions = ClassOperations.getExtensions(this);
+				cache.put(this, UML2Package.eINSTANCE.getClass_Extension(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getClass_Extension(), extensions
+							.size(), extensions.toArray()));
+			}
+
+			return result;
 		}
 
-		return result;
+		Set extensions = ClassOperations.getExtensions(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getClass_Extension(), extensions.size(), extensions.toArray());
 	}
 
 	/**

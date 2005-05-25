@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.11 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.12 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -32,7 +30,6 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Activity;
-import org.eclipse.uml2.CallTrigger;
 import org.eclipse.uml2.Constraint;
 import org.eclipse.uml2.Operation;
 import org.eclipse.uml2.ProtocolTransition;
@@ -43,9 +40,12 @@ import org.eclipse.uml2.Transition;
 import org.eclipse.uml2.TransitionKind;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.Trigger;
 import org.eclipse.uml2.Vertex;
 import org.eclipse.uml2.VisibilityKind;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+
+import org.eclipse.uml2.internal.operation.ProtocolTransitionOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -198,31 +198,29 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 * @generated NOT
 	 */
 	public EList getReferreds() {
-		EList referreds = (EList) getCacheAdapter().get(this,
-			UML2Package.eINSTANCE.getProtocolTransition_Referred());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == referreds) {
-			Set referred = new HashSet();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
+				.getProtocolTransition_Referred());
 
-			for (Iterator triggers = getTriggers().iterator(); triggers
-				.hasNext();) {
-
-				Trigger trigger = (Trigger) triggers.next();
-
-				if (CallTrigger.class.isInstance(trigger)) {
-					referred.add(((CallTrigger) trigger).getOperation());
-				}
+			if (result == null) {
+				EList referreds = ProtocolTransitionOperations
+					.getReferreds(this);
+				cache.put(this, UML2Package.eINSTANCE
+					.getProtocolTransition_Referred(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getProtocolTransition_Referred(),
+						referreds.size(), referreds.toArray()));
 			}
 
-			referreds = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getProtocolTransition_Referred(),
-				referred.size(), referred.toArray());
-			getCacheAdapter().put(this,
-				UML2Package.eINSTANCE.getProtocolTransition_Referred(),
-				referreds);
+			return result;
 		}
 
-		return referreds;
+		EList referreds = ProtocolTransitionOperations.getReferreds(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getProtocolTransition_Referred(), referreds.size(), referreds
+			.toArray());
 	}
 
 	/**

@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.21 2005/05/18 16:38:26 khussey Exp $
+ * $Id: ElementImpl.java,v 1.22 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -32,9 +33,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.EModelElementImpl;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.resource.Resource.Internal;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -87,12 +88,10 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
     /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 	protected ElementImpl() {
         super();
-        
-        getCacheAdapter().adapt(this);
     }
 
 	/**
@@ -349,10 +348,16 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The cache adapter for this '<em><b>Element</b></em>'.
-	 * @generated NOT
+	 * @generated
 	 */
 	protected CacheAdapter getCacheAdapter() {
-		return CacheAdapter.INSTANCE;
+		for (Iterator i = eAdapters().iterator(); i.hasNext();) {
+			Adapter adapter = (Adapter) i.next();
+			if (adapter instanceof CacheAdapter) {
+				return (CacheAdapter) adapter;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -368,19 +373,6 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	}
 
 	// <!-- begin-custom-operations -->
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.ecore.InternalEObject#eSetResource(org.eclipse.emf.ecore.resource.Resource.Internal,
-	 *      org.eclipse.emf.common.notify.NotificationChain)
-	 */
-	public NotificationChain eSetResource(Internal resource,
-			NotificationChain notifications) {
-		getCacheAdapter().adapt(resource);
-
-		return super.eSetResource(resource, notifications);
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -420,11 +412,11 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			qualifiedStereotypeName);
 	}
 
-	private static Method GET_APPLICABLE_STEREOTYPES_METHOD = null;
+	private static Method GET_APPLICABLE_STEREOTYPES = null;
 
 	static {
 		try {
-			GET_APPLICABLE_STEREOTYPES_METHOD = ElementImpl.class.getMethod(
+			GET_APPLICABLE_STEREOTYPES = ElementImpl.class.getMethod(
 				"getApplicableStereotypes", null); //$NON-NLS-1$
 		} catch (Exception e) {
 			// ignore
@@ -437,17 +429,22 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * @see org.eclipse.uml2.Element#getApplicableStereotypes()
 	 */
 	public Set getApplicableStereotypes() {
-		Set applicableStereotypes = (Set) getCacheAdapter().get(this,
-			GET_APPLICABLE_STEREOTYPES_METHOD);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == applicableStereotypes) {
-			applicableStereotypes = StereotypeOperations
-				.getApplicableStereotypes(this);
-			getCacheAdapter().put(this, GET_APPLICABLE_STEREOTYPES_METHOD,
-				applicableStereotypes);
+		if (cache != null) {
+			Set result = (Set) cache.get(this, GET_APPLICABLE_STEREOTYPES);
+
+			if (result == null) {
+				cache.put(this, GET_APPLICABLE_STEREOTYPES,
+					result = Collections.unmodifiableSet(StereotypeOperations
+						.getApplicableStereotypes(this)));
+			}
+
+			return result;
 		}
 
-		return applicableStereotypes;
+		return Collections.unmodifiableSet(StereotypeOperations
+			.getApplicableStereotypes(this));
 	}
 
 	/*
@@ -460,11 +457,11 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			qualifiedStereotypeName);
 	}
 
-	private static Method GET_APPLIED_STEREOTYPES_METHOD = null;
+	private static Method GET_APPLIED_STEREOTYPES = null;
 
 	static {
 		try {
-			GET_APPLIED_STEREOTYPES_METHOD = ElementImpl.class.getMethod(
+			GET_APPLIED_STEREOTYPES = ElementImpl.class.getMethod(
 				"getAppliedStereotypes", null); //$NON-NLS-1$
 		} catch (Exception e) {
 			// ignore
@@ -477,17 +474,22 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * @see org.eclipse.uml2.Element#getAppliedStereotypes()
 	 */
 	public Set getAppliedStereotypes() {
-		Set appliedStereotypes = (Set) getCacheAdapter().get(this,
-			GET_APPLIED_STEREOTYPES_METHOD);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == appliedStereotypes) {
-			appliedStereotypes = StereotypeOperations
-				.getAppliedStereotypes(this);
-			getCacheAdapter().put(this, GET_APPLIED_STEREOTYPES_METHOD,
-				appliedStereotypes);
+		if (cache != null) {
+			Set result = (Set) cache.get(this, GET_APPLIED_STEREOTYPES);
+
+			if (result == null) {
+				cache.put(this, GET_APPLIED_STEREOTYPES, result = Collections
+					.unmodifiableSet(StereotypeOperations
+						.getAppliedStereotypes(this)));
+			}
+
+			return result;
 		}
 
-		return appliedStereotypes;
+		return Collections.unmodifiableSet(StereotypeOperations
+			.getAppliedStereotypes(this));
 	}
 
 	/*
@@ -593,12 +595,11 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		ElementOperations.addKeyword(this, keyword);
 	}
 
-	private static Method GET_KEYWORDS_METHOD = null;
+	private static Method GET_KEYWORDS = null;
 
 	static {
 		try {
-			GET_KEYWORDS_METHOD = ElementImpl.class.getMethod(
-				"getKeywords", null); //$NON-NLS-1$
+			GET_KEYWORDS = ElementImpl.class.getMethod("getKeywords", null); //$NON-NLS-1$
 		} catch (Exception e) {
 			// ignore
 		}
@@ -610,14 +611,20 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * @see org.eclipse.uml2.Element#getKeywords()
 	 */
 	public Set getKeywords() {
-		Set keywords = (Set) getCacheAdapter().get(this, GET_KEYWORDS_METHOD);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == keywords) {
-			keywords = ElementOperations.getKeywords(this);
-			getCacheAdapter().put(this, GET_KEYWORDS_METHOD, keywords);
+		if (cache != null) {
+			Set result = (Set) cache.get(eResource(), this, GET_KEYWORDS);
+
+			if (result == null) {
+				cache.put(eResource(), this, GET_KEYWORDS, result = Collections
+					.unmodifiableSet(ElementOperations.getKeywords(this)));
+			}
+
+			return result;
 		}
 
-		return keywords;
+		return Collections.unmodifiableSet(ElementOperations.getKeywords(this));
 	}
 
 	/*

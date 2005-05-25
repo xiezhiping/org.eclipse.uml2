@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.18 2005/05/18 16:38:27 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.19 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -39,17 +38,14 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.AggregationKind;
-import org.eclipse.uml2.Artifact;
 import org.eclipse.uml2.Association;
 import org.eclipse.uml2.ConnectableElement;
 import org.eclipse.uml2.ConnectorEnd;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.Dependency;
-import org.eclipse.uml2.DeployedArtifact;
 import org.eclipse.uml2.Deployment;
 import org.eclipse.uml2.DeploymentTarget;
 import org.eclipse.uml2.Element;
-import org.eclipse.uml2.Manifestation;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.ParameterableElement;
@@ -68,6 +64,7 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.internal.operation.DeploymentTargetOperations;
 import org.eclipse.uml2.internal.operation.PropertyOperations;
 
 /**
@@ -469,45 +466,31 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated NOT
 	 */
 	public EList getDeployedElements() {
+		CacheAdapter cache = getCacheAdapter();
 
-		EList deployedElements = (EList) getCacheAdapter().get(this,
-			UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement());
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
+				.getDeploymentTarget_DeployedElement());
 
-		if (null == deployedElements) {
-			Set deployedElement = new HashSet();
-
-			for (Iterator deployments = getDeployments().iterator(); deployments
-				.hasNext();) {
-
-				for (Iterator deployedArtifacts = ((Deployment) deployments
-					.next()).getDeployedArtifacts().iterator(); deployedArtifacts
-					.hasNext();) {
-
-					DeployedArtifact deployedArtifact = (DeployedArtifact) deployedArtifacts
-						.next();
-
-					if (Artifact.class.isInstance(deployedArtifact)) {
-
-						for (Iterator manifestations = ((Artifact) deployedArtifact)
-							.getManifestations().iterator(); manifestations
-							.hasNext();) {
-
-							deployedElement.add(((Manifestation) manifestations
-								.next()).getUtilizedElement());
-						}
-					}
-				}
+			if (result == null) {
+				EList deployedElements = DeploymentTargetOperations
+					.getDeployedElements(this);
+				cache.put(this, UML2Package.eINSTANCE
+					.getDeploymentTarget_DeployedElement(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE
+							.getDeploymentTarget_DeployedElement(),
+						deployedElements.size(), deployedElements.toArray()));
 			}
 
-			deployedElements = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
-				deployedElement.size(), deployedElement.toArray());
-			getCacheAdapter().put(this,
-				UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
-				deployedElements);
+			return result;
 		}
 
-		return deployedElements;
+		EList deployedElements = DeploymentTargetOperations
+			.getDeployedElements(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getDeploymentTarget_DeployedElement(), deployedElements.size(),
+			deployedElements.toArray());
 	}
 
 	/**

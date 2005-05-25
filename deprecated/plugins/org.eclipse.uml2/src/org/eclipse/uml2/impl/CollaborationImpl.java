@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.19 2005/05/18 16:38:29 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.20 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -49,6 +47,8 @@ import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
+
+import org.eclipse.uml2.internal.operation.StructuredClassifierOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -184,30 +184,27 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * @generated NOT
 	 */
 	public EList getParts() {
-		EList parts = (EList) getCacheAdapter().get(eResource(), this,
-			UML2Package.eINSTANCE.getStructuredClassifier_Part());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == parts) {
-			List part = new ArrayList();
+		if (cache != null) {
+			EList result = (EList) cache.get(eResource(), this,
+				UML2Package.eINSTANCE.getStructuredClassifier_Part());
 
-			for (Iterator ownedAttributes = getOwnedAttributes().iterator(); ownedAttributes
-				.hasNext();) {
-
-				Property ownedAttribute = (Property) ownedAttributes.next();
-
-				if (ownedAttribute.isComposite()) {
-					part.add(ownedAttribute);
-				}
+			if (result == null) {
+				EList parts = StructuredClassifierOperations.getParts(this);
+				cache.put(eResource(), this, UML2Package.eINSTANCE
+					.getStructuredClassifier_Part(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getStructuredClassifier_Part(),
+						parts.size(), parts.toArray()));
 			}
 
-			parts = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getStructuredClassifier_Part(), part
-					.size(), part.toArray());
-			getCacheAdapter().put(eResource(), this,
-				UML2Package.eINSTANCE.getStructuredClassifier_Part(), parts);
+			return result;
 		}
 
-		return parts;
+		EList parts = StructuredClassifierOperations.getParts(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getStructuredClassifier_Part(), parts.size(), parts.toArray());
 	}
 
 	/**

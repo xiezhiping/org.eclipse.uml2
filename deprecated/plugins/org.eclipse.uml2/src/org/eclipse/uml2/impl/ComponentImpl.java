@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.23 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.24 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -33,8 +31,6 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Behavior;
-import org.eclipse.uml2.BehavioredClassifier;
-import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Component;
 import org.eclipse.uml2.Dependency;
@@ -42,7 +38,6 @@ import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageableElement;
-import org.eclipse.uml2.Port;
 import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.Realization;
 import org.eclipse.uml2.StringExpression;
@@ -52,6 +47,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 
@@ -170,39 +166,26 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated NOT
 	 */
 	public EList getRequireds() {
-		EList requireds = (EList) getCacheAdapter().get(this,
-			UML2Package.eINSTANCE.getComponent_Required());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == requireds) {
-			Set required = new HashSet();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
+				.getComponent_Required());
 
-			required.addAll(getUsedInterfaces());
-
-			for (Iterator realizations = getRealizations().iterator(); realizations
-				.hasNext();) {
-
-				Realization realization = (Realization) realizations.next();
-
-				if (null != realization.getRealizingClassifier()) {
-					required.addAll(realization.getRealizingClassifier()
-						.getUsedInterfaces());
-				}
+			if (result == null) {
+				EList requireds = ComponentOperations.getRequireds(this);
+				cache.put(this, UML2Package.eINSTANCE.getComponent_Required(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getComponent_Required(),
+						requireds.size(), requireds.toArray()));
 			}
 
-			for (Iterator ownedPorts = getOwnedPorts().iterator(); ownedPorts
-				.hasNext();) {
-
-				required.addAll(((Port) ownedPorts.next()).getRequireds());
-			}
-
-			requireds = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getComponent_Required(), required.size(),
-				required.toArray());
-			getCacheAdapter().put(this,
-				UML2Package.eINSTANCE.getComponent_Required(), requireds);
+			return result;
 		}
 
-		return requireds;
+		EList requireds = ComponentOperations.getRequireds(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getComponent_Required(), requireds.size(), requireds.toArray());
 	}
 
 	/**
@@ -226,45 +209,26 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated NOT
 	 */
 	public EList getProvideds() {
-		EList provideds = (EList) getCacheAdapter().get(this,
-			UML2Package.eINSTANCE.getComponent_Provided());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == provideds) {
-			Set provided = new HashSet();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
+				.getComponent_Provided());
 
-			provided.addAll(getImplementedInterfaces());
-
-			for (Iterator realizations = getRealizations().iterator(); realizations
-				.hasNext();) {
-
-				Classifier realizingClassifier = ((Realization) realizations
-					.next()).getRealizingClassifier();
-
-				if (Interface.class.isInstance(realizingClassifier)) {
-					provided.add(realizingClassifier);
-				} else if (BehavioredClassifier.class
-					.isInstance(realizingClassifier)) {
-
-					provided
-						.addAll(((BehavioredClassifier) realizingClassifier)
-							.getImplementedInterfaces());
-				}
+			if (result == null) {
+				EList provideds = ComponentOperations.getProvideds(this);
+				cache.put(this, UML2Package.eINSTANCE.getComponent_Provided(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE.getComponent_Provided(),
+						provideds.size(), provideds.toArray()));
 			}
 
-			for (Iterator ownedPorts = getOwnedPorts().iterator(); ownedPorts
-				.hasNext();) {
-
-				provided.addAll(((Port) ownedPorts.next()).getProvideds());
-			}
-
-			provideds = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getComponent_Provided(), provided.size(),
-				provided.toArray());
-			getCacheAdapter().put(this,
-				UML2Package.eINSTANCE.getComponent_Provided(), provideds);
+			return result;
 		}
 
-		return provideds;
+		EList provideds = ComponentOperations.getProvideds(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getComponent_Provided(), provideds.size(), provideds.toArray());
 	}
 
 	/**

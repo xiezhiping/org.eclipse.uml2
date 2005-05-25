@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.30 2005/05/18 16:38:29 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.31 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -35,6 +36,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.internal.operation.StereotypeOperations;
 
 /**
@@ -758,17 +760,22 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 * @see org.eclipse.uml2.Stereotype#getExtendedEClasses()
 	 */
 	public Set getAllExtendedEClasses() {
-		Set allExtendedEClasses = (Set) getCacheAdapter().get(this,
-			GET_ALL_EXTENDED_E_CLASSES);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == allExtendedEClasses) {
-			allExtendedEClasses = StereotypeOperations
-				.getAllExtendedEClasses(this);
-			getCacheAdapter().put(this, GET_ALL_EXTENDED_E_CLASSES,
-				allExtendedEClasses);
+		if (cache != null) {
+			Set result = (Set) cache.get(this, GET_ALL_EXTENDED_E_CLASSES);
+
+			if (result == null) {
+				cache.put(this, GET_ALL_EXTENDED_E_CLASSES,
+					result = Collections.unmodifiableSet(StereotypeOperations
+						.getAllExtendedEClasses(this)));
+			}
+
+			return result;
 		}
 
-		return allExtendedEClasses;
+		return Collections.unmodifiableSet(StereotypeOperations
+			.getAllExtendedEClasses(this));
 	}
 
 	/*
@@ -835,17 +842,24 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 	 * @see org.eclipse.uml2.Stereotype#getAllExtendedMetaclasses()
 	 */
 	public Set getAllExtendedMetaclasses() {
-		Set allExtendedMetaclasses = (Set) getCacheAdapter().get(this,
-			GET_ALL_EXTENDED_METACLASSES);
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == allExtendedMetaclasses) {
-			allExtendedMetaclasses = StereotypeOperations
-				.getAllExtendedMetaclasses(this);
-			getCacheAdapter().put(this, GET_ALL_EXTENDED_METACLASSES,
-				allExtendedMetaclasses);
+		if (cache != null) {
+			Set result = (Set) cache.get(this, GET_ALL_EXTENDED_METACLASSES);
+
+			if (result == null) {
+				getCacheAdapter().put(
+					this,
+					GET_ALL_EXTENDED_METACLASSES,
+					result = Collections.unmodifiableSet(StereotypeOperations
+						.getAllExtendedMetaclasses(this)));
+			}
+
+			return result;
 		}
 
-		return allExtendedMetaclasses;
+		return Collections.unmodifiableSet(StereotypeOperations
+			.getAllExtendedMetaclasses(this));
 	}
 
 	// <!-- end-custom-operations -->

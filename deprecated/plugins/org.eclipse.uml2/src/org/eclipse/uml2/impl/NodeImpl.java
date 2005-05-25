@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.22 2005/05/18 16:38:26 khussey Exp $
+ * $Id: NodeImpl.java,v 1.23 2005/05/25 15:21:32 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -30,14 +28,11 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.uml2.Artifact;
 import org.eclipse.uml2.Behavior;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Dependency;
-import org.eclipse.uml2.DeployedArtifact;
 import org.eclipse.uml2.Deployment;
 import org.eclipse.uml2.DeploymentTarget;
-import org.eclipse.uml2.Manifestation;
 import org.eclipse.uml2.Node;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.StringExpression;
@@ -47,8 +42,11 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+
+import org.eclipse.uml2.internal.operation.DeploymentTargetOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -175,44 +173,31 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * @generated NOT
 	 */
 	public EList getDeployedElements() {
-		EList deployedElements = (EList) getCacheAdapter().get(this,
-			UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement());
+		CacheAdapter cache = getCacheAdapter();
 
-		if (null == deployedElements) {
-			Set deployedElement = new HashSet();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UML2Package.eINSTANCE
+				.getDeploymentTarget_DeployedElement());
 
-			for (Iterator deployments = getDeployments().iterator(); deployments
-				.hasNext();) {
-
-				for (Iterator deployedArtifacts = ((Deployment) deployments
-					.next()).getDeployedArtifacts().iterator(); deployedArtifacts
-					.hasNext();) {
-
-					DeployedArtifact deployedArtifact = (DeployedArtifact) deployedArtifacts
-						.next();
-
-					if (Artifact.class.isInstance(deployedArtifact)) {
-
-						for (Iterator manifestations = ((Artifact) deployedArtifact)
-							.getManifestations().iterator(); manifestations
-							.hasNext();) {
-							
-							deployedElement.add(((Manifestation) manifestations
-								.next()).getUtilizedElement());
-						}
-					}
-				}
+			if (result == null) {
+				EList deployedElements = DeploymentTargetOperations
+					.getDeployedElements(this);
+				cache.put(this, UML2Package.eINSTANCE
+					.getDeploymentTarget_DeployedElement(),
+					result = new EcoreEList.UnmodifiableEList(this,
+						UML2Package.eINSTANCE
+							.getDeploymentTarget_DeployedElement(),
+						deployedElements.size(), deployedElements.toArray()));
 			}
 
-			deployedElements = new EcoreEList.UnmodifiableEList(this,
-				UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
-				deployedElement.size(), deployedElement.toArray());
-			getCacheAdapter().put(this,
-				UML2Package.eINSTANCE.getDeploymentTarget_DeployedElement(),
-				deployedElements);
+			return result;
 		}
 
-		return deployedElements;
+		EList deployedElements = DeploymentTargetOperations
+			.getDeployedElements(this);
+		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
+			.getDeploymentTarget_DeployedElement(), deployedElements.size(),
+			deployedElements.toArray());
 	}
 
 	/**
