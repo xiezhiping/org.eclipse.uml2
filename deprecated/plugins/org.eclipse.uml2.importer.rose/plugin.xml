@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - initial API and implementation
  *
- * $Id: plugin.xml,v 1.3 2005/05/25 21:33:34 khussey Exp $
+ * $Id: plugin.xml,v 1.4 2005/05/26 13:53:32 khussey Exp $
  */
 -->
 
@@ -52,6 +52,7 @@
 			name="%_UI_RoseModelImporter_label"
 			icon="platform:/plugin/org.eclipse.emf.importer.rose/icons/full/obj16/RoseModelFile.gif"
 			extensions="mdl"
+            description="%_UI_RoseModelImporter_description"
 			wizard="org.eclipse.uml2.importer.rose.ui.RoseImporterWizard"/>
 	</extension>	
   
