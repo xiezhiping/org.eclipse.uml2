@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.2 2005/05/25 17:30:04 khussey Exp $
+ * $Id: UML2Importer.java,v 1.3 2005/05/27 19:17:55 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -37,6 +37,7 @@ import org.eclipse.emf.importer.ModelImporter;
 import org.eclipse.emf.importer.util.ImporterUtil;
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.UML2Package;
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Util;
 
@@ -247,6 +248,12 @@ public class UML2Importer
 		}
 
 		setModelLocation(text.toString().trim());
+	}
+
+	public ResourceSet createResourceSet() {
+		ResourceSet resourceSet = super.createResourceSet();
+		CacheAdapter.INSTANCE.adapt(resourceSet);
+		return resourceSet;
 	}
 
 }

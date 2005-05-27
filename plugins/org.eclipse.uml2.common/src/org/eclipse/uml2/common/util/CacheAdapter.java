@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.1 2005/05/17 22:02:04 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.2 2005/05/27 19:17:41 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -45,6 +45,10 @@ public class CacheAdapter
 		}
 
 		return false;
+	}
+
+	protected void addAdapter(Notifier notifier) {
+		adapt(notifier);
 	}
 
 	/*
