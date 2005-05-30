@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Interface.java,v 1.10 2005/05/30 15:21:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -349,6 +349,28 @@ public interface Interface extends Classifier{
 	 */
 	Property createOwnedAttribute(String name, Type type, int lowerBound,
 			int upperBound);
+
+	/**
+	 * Creates an operation with the specified name, return type, parameter
+	 * names, and parameter types as an owned operation of this interface.
+	 * 
+	 * @param name
+	 *            The name for the owned operation.
+	 * @param returnType
+	 *            The return type for the owned operation, or <code>null</code>.
+	 * @param parameterNames
+	 *            The names of the owned operation's parameters, or
+	 *            <code>null</code>.
+	 * @param parameterTypes
+	 *            The types of the owned operation's parameters, or
+	 *            <code>null</code>.
+	 * @return The new operation.
+	 * @exception IllegalArgumentException
+	 *                If the number of parameter names does not match the number
+	 *                of parameter types.
+	 */
+	Operation createOwnedOperation(String name, Type returnType,
+			String[] parameterNames, Type[] parameterTypes);
 
 	// <!-- end-custom-operations -->
 

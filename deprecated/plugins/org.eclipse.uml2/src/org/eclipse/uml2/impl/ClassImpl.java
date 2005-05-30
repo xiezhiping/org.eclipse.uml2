@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.28 2005/05/25 15:21:32 khussey Exp $
+ * $Id: ClassImpl.java,v 1.29 2005/05/30 15:21:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1578,6 +1578,18 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			lowerBound, upperBound);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Class#createOwnedOperation(java.lang.String,
+	 *      org.eclipse.uml2.Type, java.lang.String[], org.eclipse.uml2.Type[])
+	 */
+	public Operation createOwnedOperation(String name, Type returnType,
+			String[] parameterNames, Type[] parameterTypes) {
+		return TypeOperations.createOwnedOperation(this, name, returnType,
+			parameterNames, parameterTypes);
+	}
+	
 	// <!-- end-custom-operations -->
 
 } //ClassImpl

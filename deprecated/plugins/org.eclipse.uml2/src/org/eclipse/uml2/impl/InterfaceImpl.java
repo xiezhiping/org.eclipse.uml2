@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.18 2005/05/18 16:38:27 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.19 2005/05/30 15:21:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1087,10 +1087,28 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 
 	// <!-- begin-custom-operations -->
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Interface#createOwnedAttribute(java.lang.String,
+	 *      org.eclipse.uml2.Type, int, int)
+	 */
 	public Property createOwnedAttribute(String name, Type type,
 			int lowerBound, int upperBound) {
 		return TypeOperations.createOwnedAttribute(this, name, type,
 			lowerBound, upperBound);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Interface#createOwnedOperation(java.lang.String,
+	 *      org.eclipse.uml2.Type, java.lang.String[], org.eclipse.uml2.Type[])
+	 */
+	public Operation createOwnedOperation(String name, Type returnType,
+			String[] parameterNames, Type[] parameterTypes) {
+		return TypeOperations.createOwnedOperation(this, name, returnType,
+			parameterNames, parameterTypes);
 	}
 
 	// <!-- end-custom-operations -->

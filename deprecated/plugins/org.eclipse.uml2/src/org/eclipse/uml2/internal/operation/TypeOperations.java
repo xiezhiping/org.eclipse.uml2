@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.6 2005/05/18 16:38:31 khussey Exp $
+ * $Id: TypeOperations.java,v 1.7 2005/05/30 15:21:18 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -19,6 +19,9 @@ import org.eclipse.uml2.AssociationClass;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.MultiplicityElement;
+import org.eclipse.uml2.Operation;
+import org.eclipse.uml2.Parameter;
+import org.eclipse.uml2.ParameterDirectionKind;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.Signal;
 import org.eclipse.uml2.StructuredClassifier;
@@ -269,6 +272,86 @@ public final class TypeOperations extends UML2Operations {
 
 		return createOwnedProperty(type, name, attributeType, lowerBound,
 			upperBound);
+	}
+
+	/**
+	 * Creates an operation with the specified name, return type, parameter
+	 * names, and parameter types as an owned operation of the specified type.
+	 * 
+	 * @param type
+	 *            The type in which to create the owned operation.
+	 * @param name
+	 *            The name for the owned operation.
+	 * @param returnType
+	 *            The return type for the owned operation, or <code>null</code>.
+	 * @param parameterNames
+	 *            The names of the owned operation's parameters, or
+	 *            <code>null</code>.
+	 * @param parameterTypes
+	 *            The types of the owned operation's parameters, or
+	 *            <code>null</code>.
+	 * @return The new operation.
+	 * @exception IllegalArgumentException
+	 *                If the number of parameter names does not match the number
+	 *                of parameter types.
+	 */
+	public static Operation createOwnedOperation(Type type, String name,
+			Type returnType, String[] parameterNames, Type[] parameterTypes) {
+
+		if (null == type || null == getOwnedOperations(type)) {
+			throw new IllegalArgumentException(String.valueOf(type));
+		}
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(name));
+		}
+
+		if (null == parameterNames
+			? null != parameterTypes
+			: null == parameterTypes
+				|| parameterNames.length != parameterTypes.length) {
+
+			throw new IllegalArgumentException(String.valueOf(parameterTypes));
+		}
+
+		Operation ownedOperation = (Operation) new UML2Switch() {
+
+			public Object caseArtifact(Artifact artifact) {
+				return artifact.createOwnedOperation();
+			}
+
+			public Object caseClass(org.eclipse.uml2.Class class_) {
+				return class_.createOwnedOperation();
+			}
+
+			public Object caseDataType(DataType dataType) {
+				return dataType.createOwnedOperation();
+			}
+
+			public Object caseInterface(Interface interface_) {
+				return interface_.createOwnedOperation();
+			}
+		}.doSwitch(type);
+
+		ownedOperation.setName(name);
+
+		if (null != returnType) {
+			Parameter returnResult = ownedOperation.createReturnResult();
+			returnResult.setDirection(ParameterDirectionKind.RETURN_LITERAL);
+			returnResult.setType(returnType);
+		}
+
+		if (null != parameterNames) {
+
+			for (int i = 0; i < parameterNames.length; i++) {
+				Parameter ownedParameter = ownedOperation
+					.createOwnedParameter();
+				ownedParameter.setName(parameterNames[i]);
+				ownedParameter.setType(parameterTypes[i]);
+			}
+		}
+
+		return ownedOperation;
 	}
 
 	// <!-- end-custom-operations -->

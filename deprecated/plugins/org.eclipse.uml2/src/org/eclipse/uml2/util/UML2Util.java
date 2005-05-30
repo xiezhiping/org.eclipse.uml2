@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.21 2005/05/24 20:27:32 khussey Exp $
+ * $Id: UML2Util.java,v 1.22 2005/05/30 15:21:18 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -5590,6 +5590,10 @@ public class UML2Util {
 	protected static List getOwnedOperations(Type type) {
 
 		return (List) new UML2Switch() {
+
+			public Object caseArtifact(Artifact artifact) {
+				return artifact.getOwnedOperations();
+			}
 
 			public Object caseClass(org.eclipse.uml2.Class class_) {
 				return class_.getOwnedOperations();
