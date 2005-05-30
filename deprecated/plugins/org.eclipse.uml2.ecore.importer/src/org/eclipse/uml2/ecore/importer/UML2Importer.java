@@ -8,10 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.3 2005/05/27 19:17:55 khussey Exp $
+ * $Id: UML2Importer.java,v 1.4 2005/05/30 13:32:21 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -20,24 +22,33 @@ import java.util.Map;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.importer.ImporterPlugin;
 import org.eclipse.emf.importer.ModelImporter;
+
 import org.eclipse.emf.importer.util.ImporterUtil;
+
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.UML2Package;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
+
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Util;
 
@@ -110,24 +121,18 @@ public class UML2Importer
 			progressMonitor.subTask(UML2ImporterPlugin.INSTANCE.getString(
 				"_UI_Loading_message", new Object[]{locationURIs}));
 
+			Collection packages = new ArrayList();
+
 			ResourceSet uml2ResourceSet = createResourceSet();
 
 			for (Iterator i = locationURIs.iterator(); i.hasNext();) {
 				Resource uml2Resource = uml2ResourceSet.getResource((URI) i
 					.next(), true);
 
-				for (Iterator j = uml2ResourceSet.getAllContents(); j.hasNext();) {
-					Object content = j.next();
+				EcoreUtil.resolveAll(uml2Resource);
 
-					if (content instanceof EObject) {
-
-						for (Iterator k = ((EObject) content)
-							.eCrossReferences().iterator(); k.hasNext();) {
-
-							Object referencedObject = k.next();
-						}
-					}
-				}
+				packages.addAll(EcoreUtil.getObjectsByType(uml2Resource
+					.getContents(), UML2Package.eINSTANCE.getPackage()));
 			}
 
 			progressMonitor.worked(1);
@@ -142,47 +147,40 @@ public class UML2Importer
 			context.put(UML2Util.QualifiedTextProvider.class,
 				new UML2Util.QualifiedTextProvider());
 
-			for (Iterator i = locationURIs.iterator(); i.hasNext();) {
-				getEPackages().addAll(new UML2Util.UML22EcoreConverter() {
+			new UML2Util.UML22EcoreConverter() {
 
-					protected void processEcoreTaggedValues(EPackage ePackage,
-							org.eclipse.uml2.Package package_, Map options,
-							DiagnosticChain diagnostics, Map context) {
+				protected void processEcoreTaggedValues(EPackage ePackage,
+						org.eclipse.uml2.Package package_, Map options,
+						DiagnosticChain diagnostics, Map context) {
 
-						super.processEcoreTaggedValues(ePackage, package_,
-							options, diagnostics, context);
+					super.processEcoreTaggedValues(ePackage, package_, options,
+						diagnostics, context);
 
-						Stereotype ePackageStereotype = getAppliedEcoreStereotype(
-							package_, UML2Util.STEREOTYPE_NAME__E_PACKAGE);
+					Stereotype ePackageStereotype = getAppliedEcoreStereotype(
+						package_, UML2Util.STEREOTYPE_NAME__E_PACKAGE);
 
-						if (null != ePackageStereotype) {
-							EPackageInfo ePackageInfo = getEPackageInfo(ePackage);
+					if (null != ePackageStereotype) {
+						EPackageInfo ePackageInfo = getEPackageInfo(ePackage);
 
-							if (package_.hasValue(ePackageStereotype,
-								UML2Util.PROPERTY_NAME__BASE_PACKAGE)) {
+						if (package_.hasValue(ePackageStereotype,
+							UML2Util.PROPERTY_NAME__BASE_PACKAGE)) {
 
-								getEPackageInfo(ePackage).setBasePackage(
-									(String) package_.getValue(
-										ePackageStereotype,
-										UML2Util.PROPERTY_NAME__BASE_PACKAGE));
-							}
+							getEPackageInfo(ePackage).setBasePackage(
+								(String) package_.getValue(ePackageStereotype,
+									UML2Util.PROPERTY_NAME__BASE_PACKAGE));
+						}
 
-							if (package_.hasValue(ePackageStereotype,
-								UML2Util.PROPERTY_NAME__PREFIX)) {
+						if (package_.hasValue(ePackageStereotype,
+							UML2Util.PROPERTY_NAME__PREFIX)) {
 
-								getEPackageInfo(ePackage).setPrefix(
-									(String) package_.getValue(
-										ePackageStereotype,
-										UML2Util.PROPERTY_NAME__PREFIX));
-							}
+							getEPackageInfo(ePackage).setPrefix(
+								(String) package_.getValue(ePackageStereotype,
+									UML2Util.PROPERTY_NAME__PREFIX));
 						}
 					}
+				}
 
-				}.convert(EcoreUtil.getObjectsByType(
-					((Resource) uml2ResourceSet.getResource((URI) i.next(),
-						true)).getContents(), UML2Package.eINSTANCE
-						.getPackage()), options, diagnostics, context));
-			}
+			}.convert(packages, options, diagnostics, context);
 
 			progressMonitor.done();
 
