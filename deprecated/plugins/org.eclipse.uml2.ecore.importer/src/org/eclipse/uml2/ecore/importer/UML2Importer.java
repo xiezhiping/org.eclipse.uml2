@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.5 2005/05/30 19:48:36 khussey Exp $
+ * $Id: UML2Importer.java,v 1.6 2005/05/30 20:45:06 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -192,7 +192,8 @@ public class UML2Importer
 		return status;
 	}
 
-	public void adjustEPackage(EPackage ePackage) {
+	public void adjustEPackage(IProgressMonitor progressMonitor,
+			EPackage ePackage) {
 		EPackageInfo ePackageInfo = getEPackageInfo(ePackage);
 		String name = ePackage.getName();
 
