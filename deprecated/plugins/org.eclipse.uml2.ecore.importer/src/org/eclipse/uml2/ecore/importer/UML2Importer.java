@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.4 2005/05/30 13:32:21 khussey Exp $
+ * $Id: UML2Importer.java,v 1.5 2005/05/30 19:48:36 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -147,7 +147,7 @@ public class UML2Importer
 			context.put(UML2Util.QualifiedTextProvider.class,
 				new UML2Util.QualifiedTextProvider());
 
-			new UML2Util.UML22EcoreConverter() {
+			getEPackages().addAll(new UML2Util.UML22EcoreConverter() {
 
 				protected void processEcoreTaggedValues(EPackage ePackage,
 						org.eclipse.uml2.Package package_, Map options,
@@ -180,7 +180,7 @@ public class UML2Importer
 					}
 				}
 
-			}.convert(packages, options, diagnostics, context);
+			}.convert(packages, options, diagnostics, context));
 
 			progressMonitor.done();
 
