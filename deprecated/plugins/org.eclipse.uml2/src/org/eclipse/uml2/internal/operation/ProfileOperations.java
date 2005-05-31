@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.24 2005/05/25 16:03:36 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.25 2005/05/31 16:30:12 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -1079,34 +1079,40 @@ public final class ProfileOperations
 	protected static ProfileApplication getProfileApplication(Profile profile,
 			org.eclipse.uml2.Package package_, boolean recurse) {
 
-		for (Iterator appliedProfiles = package_.getAppliedProfiles()
-			.iterator(); appliedProfiles.hasNext();) {
+		EPackage ePackage = getEPackage(profile, profile.getVersion());
 
-			ProfileApplication profileApplication = (ProfileApplication) appliedProfiles
-				.next();
-			Profile importedProfile = profileApplication.getImportedProfile();
+		if (null != ePackage) {
 
-			if (profile == importedProfile) {
-				return profileApplication;
-			} else {
-				EPackage importedEPackage = getEPackage(importedProfile,
-					getVersion(profileApplication));
+			for (Iterator appliedProfiles = package_.getAppliedProfiles()
+				.iterator(); appliedProfiles.hasNext();) {
 
-				if (null != importedEPackage
-					&& getEPackage(profile, profile.getVersion()).getNsURI()
-						.equals(importedEPackage.getNsURI())) {
+				ProfileApplication profileApplication = (ProfileApplication) appliedProfiles
+					.next();
+				Profile importedProfile = profileApplication
+					.getImportedProfile();
 
+				if (profile == importedProfile) {
 					return profileApplication;
+				} else {
+					EPackage importedEPackage = getEPackage(importedProfile,
+						getVersion(profileApplication));
+
+					if (null != importedEPackage
+						&& safeEquals(ePackage.getNsURI(), importedEPackage
+							.getNsURI())) {
+
+						return profileApplication;
+					}
 				}
 			}
-		}
 
-		if (recurse) {
-			EObject eContainer = package_.eContainer();
+			if (recurse) {
+				EObject eContainer = package_.eContainer();
 
-			if (Element.class.isInstance(eContainer)) {
-				return getProfileApplication(profile, ((Element) eContainer)
-					.getNearestPackage(), recurse);
+				if (Element.class.isInstance(eContainer)) {
+					return getProfileApplication(profile,
+						((Element) eContainer).getNearestPackage(), recurse);
+				}
 			}
 		}
 
