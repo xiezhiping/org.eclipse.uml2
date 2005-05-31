@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.10 2005/05/18 16:38:31 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.11 2005/05/31 17:36:00 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -309,7 +309,9 @@ public final class ClassifierOperations extends UML2Operations {
 	public static Set inheritableMembers(Classifier classifier, Classifier c) {
 		Set inheritableMembers = new HashSet();
 
-		if (classifier == c || !c.allParents().contains(classifier)) {
+		if (classifier == c || !c.allParents().contains(classifier)
+			|| classifier.allParents().contains(c)) {
+
 			return inheritableMembers;
 		}
 
