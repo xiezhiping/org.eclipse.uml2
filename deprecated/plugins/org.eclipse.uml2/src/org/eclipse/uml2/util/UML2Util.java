@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.22 2005/05/30 15:21:18 khussey Exp $
+ * $Id: UML2Util.java,v 1.23 2005/05/31 16:35:35 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -107,6 +107,8 @@ public class UML2Util {
 	}
 
 	public static class QualifiedTextProvider {
+
+		public static final QualifiedTextProvider DEFAULT = new QualifiedTextProvider();
 
 		public String getText(EObject eObject) {
 
@@ -3703,7 +3705,7 @@ public class UML2Util {
 
 		protected String getResultingQName(EObject eObject) {
 			StringBuffer resultingQName = appendResultingQName(
-				new StringBuffer(), eObject, new QualifiedTextProvider());
+				new StringBuffer(), eObject, QualifiedTextProvider.DEFAULT);
 
 			return resultingQName.toString();
 		}
@@ -5208,7 +5210,7 @@ public class UML2Util {
 	}
 
 	public static String getQualifiedText(EObject eObject) {
-		return getQualifiedText(eObject, new QualifiedTextProvider());
+		return getQualifiedText(eObject, QualifiedTextProvider.DEFAULT);
 	}
 
 	public static String getQualifiedText(EObject eObject,
@@ -5474,7 +5476,6 @@ public class UML2Util {
 			}
 
 			if (null != context) {
-
 				EValidator.SubstitutionLabelProvider substitutionLabelProvider = (EValidator.SubstitutionLabelProvider) context
 					.get(EValidator.SubstitutionLabelProvider.class);
 
@@ -5482,9 +5483,12 @@ public class UML2Util {
 					return substitutionLabelProvider.getObjectLabel(eObject);
 				}
 
-				return getQualifiedText(eObject,
-					(QualifiedTextProvider) context
-						.get(QualifiedTextProvider.class));
+				QualifiedTextProvider qualifiedTestProvider = (QualifiedTextProvider) context
+					.get(QualifiedTextProvider.class);
+
+				if (null != qualifiedTestProvider) {
+					return getQualifiedText(eObject, qualifiedTestProvider);
+				}
 			}
 
 			Resource resource = eObject.eResource();
