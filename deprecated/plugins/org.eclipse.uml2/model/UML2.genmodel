@@ -17,8 +17,8 @@
   <foreignModel>VABASE_PLUGINS_PATH</foreignModel>
   <foreignModel>../..</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="UML2" basePackage="org.eclipse"
-      disposableProviderFactory="true" ecorePackage="UML2.ecore#/" resourceInterfaces="true"
-      operationsPackage="org.eclipse.uml2.internal.operation">
+      disposableProviderFactory="true" generateExampleClass="false" ecorePackage="UML2.ecore#/"
+      resourceInterfaces="true" operationsPackage="org.eclipse.uml2.internal.operation">
     <genEnums xsi:type="genmodel:GenEnum" ecoreEnum="UML2.ecore#//VisibilityKind">
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML2.ecore#//VisibilityKind/public"/>
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML2.ecore#//VisibilityKind/private"/>
