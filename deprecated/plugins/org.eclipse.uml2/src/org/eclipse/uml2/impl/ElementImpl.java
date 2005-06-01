@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.22 2005/05/25 15:21:32 khussey Exp $
+ * $Id: ElementImpl.java,v 1.23 2005/06/01 15:09:48 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,11 +16,9 @@ import java.lang.reflect.Method;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -36,6 +34,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.EModelElementImpl;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -88,10 +89,12 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
     /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
 	protected ElementImpl() {
         super();
+        
+        CacheAdapter.INSTANCE.adapt(this);
     }
 
 	/**
@@ -348,16 +351,10 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The cache adapter for this '<em><b>Element</b></em>'.
-	 * @generated
+	 * @generated NOT
 	 */
 	protected CacheAdapter getCacheAdapter() {
-		for (Iterator i = eAdapters().iterator(); i.hasNext();) {
-			Adapter adapter = (Adapter) i.next();
-			if (adapter instanceof CacheAdapter) {
-				return (CacheAdapter) adapter;
-			}
-		}
-		return null;
+		return CacheAdapter.INSTANCE;
 	}
 
 	/**
@@ -373,6 +370,19 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	}
 
 	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecore.InternalEObject#eSetResource(org.eclipse.emf.ecore.resource.Resource.Internal,
+	 *      org.eclipse.emf.common.notify.NotificationChain)
+	 */
+	public NotificationChain eSetResource(Resource.Internal resource,
+			NotificationChain notifications) {
+		CacheAdapter.INSTANCE.adapt(resource);
+
+		return super.eSetResource(resource, notifications);
+	}
 
 	/*
 	 * (non-Javadoc)

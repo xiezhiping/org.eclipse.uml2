@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.19 2005/05/27 19:17:46 khussey Exp $
+ * $Id: UML2Editor.java,v 1.20 2005/06/01 15:09:50 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -152,9 +152,8 @@ import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
-import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
 
+import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
 
 import java.util.HashMap;
 
@@ -751,7 +750,7 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void createModelGen() {
+	public void createModel() {
 		// I assume that the input is a file object.
 		//
 		IFileEditorInput modelFile = (IFileEditorInput)getEditorInput();
@@ -764,12 +763,6 @@ public class UML2Editor
 		catch (Exception exception) {
 			UML2EditorPlugin.INSTANCE.log(exception);
 		}
-	}
-
-	public void createModel() {
-		CacheAdapter.INSTANCE.adapt(editingDomain.getResourceSet());
-		
-		createModelGen();
 	}
 
 	/**
