@@ -1,6 +1,6 @@
 <%if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genModel) && genFeature.isChangeable() && genFeature.isContains()) {%>
   <%if (genClass.getChildrenClasses(genFeature).size() > 0) {%>
-   <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getGenClassType().isAbstract()) {%>
+   <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20,7 +20,7 @@
 	}
 
     <%}%>
-    <%if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getGenClassType().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);%>
+    <%if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);%>
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -43,7 +43,7 @@
   <%}%>
 <%}%>
 <%if (!genClass.getExtendedGenFeatures().contains(genFeature) && genFeature.isListType() && genFeature.isReferenceType()) {%>
-  <%for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getGenClassType()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();%>
+  <%for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();%>
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

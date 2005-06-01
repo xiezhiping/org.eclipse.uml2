@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.1 2005/05/17 22:06:28 khussey Exp $" %>
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.2 2005/06/01 21:43:44 khussey Exp $" %>
 <%
 /**
  * <copyright>
@@ -76,7 +76,7 @@ public final class <%=UML2GenModelUtil.getOperationsClassName(genClass)%>
   <%}%>
 	 * @generated
 	 */
-	public static <%=genOperation.getImportedReturnType()%> <%=genOperation.getName()%>(<%=genClass.getImportedInterfaceName()%> <%=genClass.safeName(genClass.getUncapName())%><%if (!genOperation.getGenParameters().isEmpty()) {%>, <%}%><%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
+	public static <%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genClass.getImportedInterfaceName()%> <%=genClass.safeName(genClass.getUncapName())%><%if (!genOperation.getGenParameters().isEmpty()) {%>, <%}%><%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
 	{
   <%if (genOperation.hasBody()) {%>
 		<%=genOperation.getBody(genModel.getIndentation(stringBuffer))%>

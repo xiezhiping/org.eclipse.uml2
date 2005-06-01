@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.3 2005/06/01 21:43:44 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -992,6 +992,69 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_PACKAGE__LOAD_INITIALIZATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__LOAD_INITIALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Interface Package Suffix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX;
+
+	/**
+	 * The feature id for the '<em><b>Class Package Suffix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__CLASS_PACKAGE_SUFFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX;
+
+	/**
+	 * The feature id for the '<em><b>Utility Package Suffix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__UTILITY_PACKAGE_SUFFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__UTILITY_PACKAGE_SUFFIX;
+
+	/**
+	 * The feature id for the '<em><b>Provider Package Suffix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__PROVIDER_PACKAGE_SUFFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__PROVIDER_PACKAGE_SUFFIX;
+
+	/**
+	 * The feature id for the '<em><b>Presentation Package Suffix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__PRESENTATION_PACKAGE_SUFFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__PRESENTATION_PACKAGE_SUFFIX;
+
+	/**
+	 * The feature id for the '<em><b>Tests Package Suffix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__TESTS_PACKAGE_SUFFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__TESTS_PACKAGE_SUFFIX;
+
+	/**
+	 * The feature id for the '<em><b>Generate Example Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__GENERATE_EXAMPLE_CLASS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Ecore Package</b></em>' reference.

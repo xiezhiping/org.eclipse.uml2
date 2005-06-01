@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.3 2005/06/01 21:43:44 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -275,6 +275,22 @@ public class GenPackageImpl
 				return isLoadInitialization()
 					? Boolean.TRUE
 					: Boolean.FALSE;
+			case GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX :
+				return getInterfacePackageSuffix();
+			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
+				return getClassPackageSuffix();
+			case GenModelPackage.GEN_PACKAGE__UTILITY_PACKAGE_SUFFIX :
+				return getUtilityPackageSuffix();
+			case GenModelPackage.GEN_PACKAGE__PROVIDER_PACKAGE_SUFFIX :
+				return getProviderPackageSuffix();
+			case GenModelPackage.GEN_PACKAGE__PRESENTATION_PACKAGE_SUFFIX :
+				return getPresentationPackageSuffix();
+			case GenModelPackage.GEN_PACKAGE__TESTS_PACKAGE_SUFFIX :
+				return getTestsPackageSuffix();
+			case GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS :
+				return isGenerateExampleClass()
+					? Boolean.TRUE
+					: Boolean.FALSE;
 			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
 				if (resolve)
 					return getEcorePackage();
@@ -326,6 +342,27 @@ public class GenPackageImpl
 				return;
 			case GenModelPackage.GEN_PACKAGE__LOAD_INITIALIZATION :
 				setLoadInitialization(((Boolean) newValue).booleanValue());
+				return;
+			case GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX :
+				setInterfacePackageSuffix((String) newValue);
+				return;
+			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
+				setClassPackageSuffix((String) newValue);
+				return;
+			case GenModelPackage.GEN_PACKAGE__UTILITY_PACKAGE_SUFFIX :
+				setUtilityPackageSuffix((String) newValue);
+				return;
+			case GenModelPackage.GEN_PACKAGE__PROVIDER_PACKAGE_SUFFIX :
+				setProviderPackageSuffix((String) newValue);
+				return;
+			case GenModelPackage.GEN_PACKAGE__PRESENTATION_PACKAGE_SUFFIX :
+				setPresentationPackageSuffix((String) newValue);
+				return;
+			case GenModelPackage.GEN_PACKAGE__TESTS_PACKAGE_SUFFIX :
+				setTestsPackageSuffix((String) newValue);
+				return;
+			case GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS :
+				setGenerateExampleClass(((Boolean) newValue).booleanValue());
 				return;
 			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
 				setEcorePackage((EPackage) newValue);
@@ -384,6 +421,27 @@ public class GenPackageImpl
 			case GenModelPackage.GEN_PACKAGE__LOAD_INITIALIZATION :
 				setLoadInitialization(LOAD_INITIALIZATION_EDEFAULT);
 				return;
+			case GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX :
+				setInterfacePackageSuffix(INTERFACE_PACKAGE_SUFFIX_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
+				setClassPackageSuffix(CLASS_PACKAGE_SUFFIX_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_PACKAGE__UTILITY_PACKAGE_SUFFIX :
+				setUtilityPackageSuffix(UTILITY_PACKAGE_SUFFIX_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_PACKAGE__PROVIDER_PACKAGE_SUFFIX :
+				setProviderPackageSuffix(PROVIDER_PACKAGE_SUFFIX_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_PACKAGE__PRESENTATION_PACKAGE_SUFFIX :
+				setPresentationPackageSuffix(PRESENTATION_PACKAGE_SUFFIX_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_PACKAGE__TESTS_PACKAGE_SUFFIX :
+				setTestsPackageSuffix(TESTS_PACKAGE_SUFFIX_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS :
+				setGenerateExampleClass(GENERATE_EXAMPLE_CLASS_EDEFAULT);
+				return;
 			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
 				setEcorePackage((EPackage) null);
 				return;
@@ -435,6 +493,36 @@ public class GenPackageImpl
 				return adapterFactory != ADAPTER_FACTORY_EDEFAULT;
 			case GenModelPackage.GEN_PACKAGE__LOAD_INITIALIZATION :
 				return loadInitialization != LOAD_INITIALIZATION_EDEFAULT;
+			case GenModelPackage.GEN_PACKAGE__INTERFACE_PACKAGE_SUFFIX :
+				return INTERFACE_PACKAGE_SUFFIX_EDEFAULT == null
+					? interfacePackageSuffix != null
+					: !INTERFACE_PACKAGE_SUFFIX_EDEFAULT
+						.equals(interfacePackageSuffix);
+			case GenModelPackage.GEN_PACKAGE__CLASS_PACKAGE_SUFFIX :
+				return CLASS_PACKAGE_SUFFIX_EDEFAULT == null
+					? classPackageSuffix != null
+					: !CLASS_PACKAGE_SUFFIX_EDEFAULT.equals(classPackageSuffix);
+			case GenModelPackage.GEN_PACKAGE__UTILITY_PACKAGE_SUFFIX :
+				return UTILITY_PACKAGE_SUFFIX_EDEFAULT == null
+					? utilityPackageSuffix != null
+					: !UTILITY_PACKAGE_SUFFIX_EDEFAULT
+						.equals(utilityPackageSuffix);
+			case GenModelPackage.GEN_PACKAGE__PROVIDER_PACKAGE_SUFFIX :
+				return PROVIDER_PACKAGE_SUFFIX_EDEFAULT == null
+					? providerPackageSuffix != null
+					: !PROVIDER_PACKAGE_SUFFIX_EDEFAULT
+						.equals(providerPackageSuffix);
+			case GenModelPackage.GEN_PACKAGE__PRESENTATION_PACKAGE_SUFFIX :
+				return PRESENTATION_PACKAGE_SUFFIX_EDEFAULT == null
+					? presentationPackageSuffix != null
+					: !PRESENTATION_PACKAGE_SUFFIX_EDEFAULT
+						.equals(presentationPackageSuffix);
+			case GenModelPackage.GEN_PACKAGE__TESTS_PACKAGE_SUFFIX :
+				return TESTS_PACKAGE_SUFFIX_EDEFAULT == null
+					? testsPackageSuffix != null
+					: !TESTS_PACKAGE_SUFFIX_EDEFAULT.equals(testsPackageSuffix);
+			case GenModelPackage.GEN_PACKAGE__GENERATE_EXAMPLE_CLASS :
+				return generateExampleClass != GENERATE_EXAMPLE_CLASS_EDEFAULT;
 			case GenModelPackage.GEN_PACKAGE__ECORE_PACKAGE :
 				return ecorePackage != null;
 			case GenModelPackage.GEN_PACKAGE__GEN_MODEL :
@@ -476,14 +564,6 @@ public class GenPackageImpl
 		result.append(operationsPackage);
 		result.append(')');
 		return result.toString();
-	}
-
-	public String getQualifiedVirtualFactoryClassName() {
-		return getVirtualClassPackageName() + "." + getFactoryClassName();
-	}
-
-	public String getVirtualClassPackageName() {
-		return getClassPackageName() + ".virtual";
 	}
 
 	public String getOperationsPackageName() {

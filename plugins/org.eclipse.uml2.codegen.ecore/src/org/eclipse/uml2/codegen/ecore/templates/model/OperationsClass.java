@@ -140,7 +140,7 @@ public class OperationsClass
     stringBuffer.append(TEXT_25);
     }
     stringBuffer.append(TEXT_26);
-    stringBuffer.append(genOperation.getImportedReturnType());
+    stringBuffer.append(genOperation.getImportedType());
     stringBuffer.append(TEXT_27);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_28);

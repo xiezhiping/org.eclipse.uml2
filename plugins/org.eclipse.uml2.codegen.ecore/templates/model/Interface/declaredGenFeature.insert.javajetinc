@@ -1,6 +1,6 @@
 <%if (UML2GenModelUtil.isFactoryMethods(genModel) && genFeature.isChangeable() && genFeature.isContains() && !genFeature.isSuppressedSetVisibility()) {%>
   <%if (genClass.getChildrenClasses(genFeature).size() > 0) {%>
-    <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getGenClassType().isAbstract()) {%>
+    <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
     /**
     <%if (genFeature.isListType()) {%>
      * Creates a {@link <%=genFeature.getQualifiedListItemType()%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
@@ -17,7 +17,7 @@
     <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass);
 
     <%}%>
-    <%if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getGenClassType().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);%>
+    <%if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);%>
     /**
       <%if (genFeature.isListType()) {%>
      * Creates a {@link <%=childGenClass.getQualifiedInterfaceName()%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
@@ -36,7 +36,7 @@
   <%}%>
 <%}%>
 <%if (genFeature.isListType() && genFeature.isReferenceType() && !genFeature.isSuppressedSetVisibility()) {%>
-  <%for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getGenClassType()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();%>
+  <%for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();%>
     /**
      * Retrieves the {@link <%=genFeature.getQualifiedListItemType()%>} with the specified '<em><b><%=keyGenFeature.getFormattedName()%></b></em>' from the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
 	 * <!-- begin-user-doc -->

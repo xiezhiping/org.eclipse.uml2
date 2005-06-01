@@ -3,7 +3,7 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public <%=genOperation.getImportedReturnType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
+	public <%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
 	{
 <%if (genOperation.hasBody()) {%>
 		<%=genOperation.getBody(genModel.getIndentation(stringBuffer))%>
@@ -36,11 +36,11 @@
     <%if (UML2GenModelUtil.isCacheAdapterSupport(genModel) && UML2GenModelUtil.isCached(genOperation)) {%>
 		<%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%> cache = getCacheAdapter();
 		if (cache != null) {
-			<%=genOperation.getObjectReturnType()%> result = (<%=genOperation.getObjectReturnType()%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opPackage.getImportedPackageInterfaceName()%>.eINSTANCE.get<%=opClass.getClassifierAccessorName()%>().getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>));
+			<%=genOperation.getObjectType()%> result = (<%=genOperation.getObjectType()%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opPackage.getImportedPackageInterfaceName()%>.eINSTANCE.get<%=opClass.getClassifierAccessorName()%>().getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>));
 			if (result == null) {
-				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opPackage.getImportedPackageInterfaceName()%>.eINSTANCE.get<%=opClass.getClassifierAccessorName()%>().getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>), result = <%if (genOperation.isPrimitiveReturnType()) {%>new <%=genOperation.getObjectReturnType()%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>)<%if (genOperation.isPrimitiveReturnType()) {%>)<%}%>);
+				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opPackage.getImportedPackageInterfaceName()%>.eINSTANCE.get<%=opClass.getClassifierAccessorName()%>().getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>), result = <%if (genOperation.isPrimitiveType()) {%>new <%=genOperation.getObjectType()%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>)<%if (genOperation.isPrimitiveType()) {%>)<%}%>);
 			}
-			return result<%if (genOperation.isPrimitiveReturnType()) {%>.<%=genOperation.getPrimitiveValueFunction()%>()<%}%>;
+			return result<%if (genOperation.isPrimitiveType()) {%>.<%=genOperation.getPrimitiveValueFunction()%>()<%}%>;
 		}
     <%}%>
 		return <%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>);

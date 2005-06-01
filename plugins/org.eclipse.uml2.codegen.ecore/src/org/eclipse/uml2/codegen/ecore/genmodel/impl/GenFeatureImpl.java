@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.3 2005/06/01 21:43:44 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -422,7 +422,7 @@ public class GenFeatureImpl
 
 					if (genOperation.getName().equals(result)
 						&& genOperation.getGenParameters().isEmpty()
-						&& !genOperation.getReturnType().equals(getType())) {
+						&& !genOperation.getType().equals(getType())) {
 
 						result = result + "_";
 						break;

@@ -264,7 +264,7 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public <%=genOperation.getImportedReturnType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
+	public <%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
 	{
   <%if (genOperation.isVoid()) {%>
 		<%=redefinitionGenOperation.getName()%>(<%=genOperation.getParameterNames(", ")%>);

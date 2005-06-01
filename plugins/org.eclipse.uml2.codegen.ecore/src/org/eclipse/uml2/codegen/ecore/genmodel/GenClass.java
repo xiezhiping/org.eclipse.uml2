@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClass.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenClass.java,v 1.3 2005/06/01 21:43:44 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -87,7 +87,8 @@ public interface GenClass
 
 	List/* GenFeature */getImplementedRedefinedGenFeatures();
 
-	List/* GenFeature */getRedefinitionGenFeatures(GenFeature redefinedGenFeature);
+	List/* GenFeature */getRedefinitionGenFeatures(
+			GenFeature redefinedGenFeature);
 
 	boolean isRedefined(GenOperation genOperation);
 
@@ -95,6 +96,7 @@ public interface GenClass
 
 	List/* GenOperation */getImplementedRedefinedGenOperations();
 
-	List/* GenFeature */getRedefinitionGenOperations(GenOperation redefinedGenOperation);
+	List/* GenFeature */getRedefinitionGenOperations(
+			GenOperation redefinedGenOperation);
 
 } // GenClass

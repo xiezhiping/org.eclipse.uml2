@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.3 2005/06/01 21:43:44 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -404,39 +404,6 @@ public class GenOperationImpl
 		}
 
 		return redefinedGenOperations;
-	}
-
-	protected String getEffectiveListType() {
-		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75921
-		return getGenModel().isSuppressEMFTypes()
-			? "java.util.List"
-			: "org.eclipse.emf.common.util.EList";
-	}
-
-	public String getReturnType() {
-		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75921
-		return getEcoreOperation().isMany()
-			? getEffectiveListType()
-			: super.getReturnType();
-	}
-
-	public String getImportedReturnType() {
-		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75921
-		return getEcoreOperation().isMany()
-			? getGenModel().getImportedName(getEffectiveListType())
-			: super.getImportedReturnType();
-	}
-
-	public String getObjectReturnType() {
-		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75921
-		return getEcoreOperation().isMany()
-			? getGenModel().getImportedName(getEffectiveListType())
-			: super.getObjectReturnType();
-	}
-
-	public boolean isPrimitiveReturnType() {
-		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75921
-		return !getEcoreOperation().isMany() && super.isPrimitiveReturnType();
 	}
 
 	protected void reconcileSettings(

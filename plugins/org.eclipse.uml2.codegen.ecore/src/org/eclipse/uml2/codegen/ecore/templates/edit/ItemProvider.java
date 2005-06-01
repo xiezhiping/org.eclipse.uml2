@@ -620,14 +620,14 @@ public class ItemProvider
     stringBuffer.append(TEXT_140);
     if (delegatedFeature.isEnumBasedType()) {
     stringBuffer.append(TEXT_141);
-    stringBuffer.append(delegatedFeature.getGenEnumType().getStaticValue(delegatedFeature.getEcoreFeature().getDefaultValueLiteral()));
+    stringBuffer.append(delegatedFeature.getTypeGenEnum().getStaticValue(delegatedFeature.getEcoreFeature().getDefaultValueLiteral()));
     stringBuffer.append(TEXT_142);
     } else if (delegatedFeature.isStringBasedType()) {
     stringBuffer.append(TEXT_143);
     stringBuffer.append(delegatedFeature.getCreateChildValueLiteral());
     stringBuffer.append(TEXT_144);
     stringBuffer.append(genModel.getNonNLS());
-    } else { String literal = delegatedFeature.getCreateChildValueLiteral(); GenDataType createDataType = delegatedFeature.getGenDataTypeType();
+    } else { String literal = delegatedFeature.getCreateChildValueLiteral(); GenDataType createDataType = delegatedFeature.getTypeGenDataType();
     stringBuffer.append(TEXT_145);
     stringBuffer.append(createDataType.getGenPackage().getImportedFactoryInterfaceName());
     stringBuffer.append(TEXT_146);
@@ -676,14 +676,14 @@ public class ItemProvider
     stringBuffer.append(TEXT_163);
     if (createFeature.isEnumBasedType()) {
     stringBuffer.append(TEXT_164);
-    stringBuffer.append(createFeature.getGenEnumType().getStaticValue(createFeature.getEcoreFeature().getDefaultValueLiteral()));
+    stringBuffer.append(createFeature.getTypeGenEnum().getStaticValue(createFeature.getEcoreFeature().getDefaultValueLiteral()));
     stringBuffer.append(TEXT_165);
     } else if (createFeature.isStringBasedType()) {
     stringBuffer.append(TEXT_166);
     stringBuffer.append(createFeature.getCreateChildValueLiteral());
     stringBuffer.append(TEXT_167);
     stringBuffer.append(genModel.getNonNLS());
-    } else { String literal = createFeature.getCreateChildValueLiteral(); GenDataType createDataType = createFeature.getGenDataTypeType();
+    } else { String literal = createFeature.getCreateChildValueLiteral(); GenDataType createDataType = createFeature.getTypeGenDataType();
     stringBuffer.append(TEXT_168);
     stringBuffer.append(createDataType.getGenPackage().getImportedFactoryInterfaceName());
     stringBuffer.append(TEXT_169);

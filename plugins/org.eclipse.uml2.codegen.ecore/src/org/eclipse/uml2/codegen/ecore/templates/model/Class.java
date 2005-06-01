@@ -1596,7 +1596,7 @@ public class Class
     stringBuffer.append(TEXT_131);
     } else if (genFeature.hasDelegateFeature()) { GenFeature delegateFeature = genFeature.getDelegateFeature();
     if (genFeature.isFeatureMapType()) {
-    if (delegateFeature.isFeatureMapWrapped()) {
+    if (delegateFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_132);
     stringBuffer.append(genFeature.getImportedEffectiveFeatureMapWrapperClass());
     stringBuffer.append(TEXT_133);
@@ -1620,7 +1620,7 @@ public class Class
     stringBuffer.append(TEXT_142);
     }
     } else if (genFeature.isListType()) {
-    if (delegateFeature.isFeatureMapWrapped()) {
+    if (delegateFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_143);
     stringBuffer.append(delegateFeature.getImportedEffectiveFeatureMapWrapperInternalInterface());
     stringBuffer.append(TEXT_144);
@@ -1638,7 +1638,7 @@ public class Class
     stringBuffer.append(TEXT_150);
     }
     } else {
-    if (delegateFeature.isFeatureMapWrapped()) {
+    if (delegateFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_151);
     if (genFeature.isPrimitiveType()) {
     stringBuffer.append(TEXT_152);
@@ -1701,7 +1701,7 @@ public class Class
     stringBuffer.append(genFeature.getSafeName());
     stringBuffer.append(TEXT_178);
     } else if (genFeature.hasDelegateFeature()) { GenFeature delegateFeature = genFeature.getDelegateFeature();
-    if (delegateFeature.isFeatureMapWrapped()) {
+    if (delegateFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_179);
     stringBuffer.append(genFeature.getImportedType());
     stringBuffer.append(TEXT_180);
@@ -1858,7 +1858,7 @@ public class Class
     }
     stringBuffer.append(TEXT_250);
     } else if (genFeature.hasDelegateFeature()) { GenFeature delegateFeature = genFeature.getDelegateFeature();
-    if (delegateFeature.isFeatureMapWrapped()) {
+    if (delegateFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_251);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
     stringBuffer.append(TEXT_252);
@@ -2246,7 +2246,7 @@ public class Class
     }
     }
     } else if (genFeature.hasDelegateFeature()) { GenFeature delegateFeature = genFeature.getDelegateFeature();
-    if (delegateFeature.isFeatureMapWrapped()) {
+    if (delegateFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_427);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
     stringBuffer.append(TEXT_428);
@@ -2544,7 +2544,7 @@ public class Class
     }
     }
     } else if (genFeature.hasDelegateFeature()) { GenFeature delegateFeature = genFeature.getDelegateFeature();
-    if (delegateFeature.isFeatureMapWrapped()) {
+    if (delegateFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_567);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
     stringBuffer.append(TEXT_568);
@@ -2607,7 +2607,7 @@ public class Class
     }
     }
     } else if (genFeature.hasDelegateFeature()) { GenFeature delegateFeature = genFeature.getDelegateFeature();
-    if (delegateFeature.isFeatureMapWrapped()) {
+    if (delegateFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_594);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
     stringBuffer.append(TEXT_595);
@@ -2640,7 +2640,7 @@ public class Class
     stringBuffer.append(TEXT_607);
     if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genModel) && genFeature.isChangeable() && genFeature.isContains()) {
     if (genClass.getChildrenClasses(genFeature).size() > 0) {
-    if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getGenClassType().isAbstract()) {
+    if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {
     stringBuffer.append(TEXT_608);
     stringBuffer.append(UML2GenModelUtil.getRedefinedListItemType(genFeature));
     stringBuffer.append(TEXT_609);
@@ -2677,7 +2677,7 @@ public class Class
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_625);
     }
-    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getGenClassType().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);
+    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);
     stringBuffer.append(TEXT_626);
     stringBuffer.append(UML2GenModelUtil.getRedefinedListItemType(genFeature));
     stringBuffer.append(TEXT_627);
@@ -2717,7 +2717,7 @@ public class Class
     }
     }
     if (!genClass.getExtendedGenFeatures().contains(genFeature) && genFeature.isListType() && genFeature.isReferenceType()) {
-    for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getGenClassType()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();
+    for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();
     stringBuffer.append(TEXT_644);
     stringBuffer.append(UML2GenModelUtil.getRedefinedListItemType(genFeature));
     stringBuffer.append(TEXT_645);
@@ -2752,7 +2752,7 @@ public class Class
     for (Iterator i=genClass.getImplementedGenOperations().iterator(); i.hasNext();) { GenOperation genOperation = (GenOperation)i.next();
     stringBuffer.append(TEXT_658);
     stringBuffer.append(TEXT_659);
-    stringBuffer.append(genOperation.getImportedReturnType());
+    stringBuffer.append(genOperation.getImportedType());
     stringBuffer.append(TEXT_660);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_661);
@@ -2808,9 +2808,9 @@ public class Class
     stringBuffer.append(TEXT_683);
     stringBuffer.append(genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter"));
     stringBuffer.append(TEXT_684);
-    stringBuffer.append(genOperation.getObjectReturnType());
+    stringBuffer.append(genOperation.getObjectType());
     stringBuffer.append(TEXT_685);
-    stringBuffer.append(genOperation.getObjectReturnType());
+    stringBuffer.append(genOperation.getObjectType());
     stringBuffer.append(TEXT_686);
     if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {
     stringBuffer.append(TEXT_687);
@@ -2832,9 +2832,9 @@ public class Class
     stringBuffer.append(TEXT_695);
     stringBuffer.append(opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation()));
     stringBuffer.append(TEXT_696);
-    if (genOperation.isPrimitiveReturnType()) {
+    if (genOperation.isPrimitiveType()) {
     stringBuffer.append(TEXT_697);
-    stringBuffer.append(genOperation.getObjectReturnType());
+    stringBuffer.append(genOperation.getObjectType());
     stringBuffer.append(TEXT_698);
     }
     stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
@@ -2846,11 +2846,11 @@ public class Class
     stringBuffer.append(genOperation.getParameterNames(", "));
     }
     stringBuffer.append(TEXT_702);
-    if (genOperation.isPrimitiveReturnType()) {
+    if (genOperation.isPrimitiveType()) {
     stringBuffer.append(TEXT_703);
     }
     stringBuffer.append(TEXT_704);
-    if (genOperation.isPrimitiveReturnType()) {
+    if (genOperation.isPrimitiveType()) {
     stringBuffer.append(TEXT_705);
     stringBuffer.append(genOperation.getPrimitiveValueFunction());
     stringBuffer.append(TEXT_706);
@@ -2959,7 +2959,7 @@ public class Class
     stringBuffer.append(TEXT_753);
     stringBuffer.append(genFeature.getGetAccessor());
     stringBuffer.append(TEXT_754);
-    } else if (genFeature.isFeatureMapWrapped()) {
+    } else if (genFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_755);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList"));
     stringBuffer.append(TEXT_756);
@@ -3040,7 +3040,7 @@ public class Class
     stringBuffer.append(TEXT_790);
     stringBuffer.append(genFeature.getGetAccessor());
     stringBuffer.append(TEXT_791);
-    } else if (genFeature.isFeatureMapWrapped()) {
+    } else if (genFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_792);
     stringBuffer.append(genFeature.getImportedEffectiveFeatureMapWrapperInternalInterface());
     stringBuffer.append(TEXT_793);
@@ -3063,7 +3063,7 @@ public class Class
     stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
     stringBuffer.append(TEXT_801);
     if (genFeature.isListType()) {
-    if (genFeature.isFeatureMapWrapped()) {
+    if (genFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_802);
     stringBuffer.append(genFeature.getImportedEffectiveFeatureMapWrapperInternalInterface());
     stringBuffer.append(TEXT_803);
@@ -3074,7 +3074,7 @@ public class Class
     stringBuffer.append(genFeature.getGetAccessor());
     stringBuffer.append(TEXT_806);
     }
-    if (genFeature.isFeatureMapWrapped()) {
+    if (genFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_807);
     stringBuffer.append(genFeature.getImportedEffectiveFeatureMapWrapperInternalInterface());
     stringBuffer.append(TEXT_808);
@@ -3122,7 +3122,7 @@ public class Class
     stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
     stringBuffer.append(TEXT_829);
     if (genFeature.isListType() && !genFeature.isUnsettable()) {
-    if (genFeature.isFeatureMapWrapped()) {
+    if (genFeature.isWrappedFeatureMapType()) {
     stringBuffer.append(TEXT_830);
     stringBuffer.append(genFeature.getImportedEffectiveFeatureMapWrapperInternalInterface());
     stringBuffer.append(TEXT_831);
@@ -3163,7 +3163,7 @@ public class Class
     stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
     stringBuffer.append(TEXT_848);
     if (genFeature.isListType() && !genFeature.isUnsettable()) {
-    if (genFeature.isFeatureMapWrapped()) {
+    if (genFeature.isWrappedFeatureMapType()) {
     if (genFeature.isVolatile()) {
     stringBuffer.append(TEXT_849);
     stringBuffer.append(genFeature.getImportedEffectiveFeatureMapWrapperInternalInterface());
@@ -3705,7 +3705,7 @@ public class Class
     stringBuffer.append(TEXT_1086);
     if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genModel) && genFeature.isChangeable() && genFeature.isContains()) {
     if (genClass.getChildrenClasses(genFeature).size() > 0) {
-    if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getGenClassType().isAbstract()) {
+    if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {
     stringBuffer.append(TEXT_1087);
     stringBuffer.append(UML2GenModelUtil.getRedefinedListItemType(genFeature));
     stringBuffer.append(TEXT_1088);
@@ -3742,7 +3742,7 @@ public class Class
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_1104);
     }
-    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getGenClassType().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);
+    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);
     stringBuffer.append(TEXT_1105);
     stringBuffer.append(UML2GenModelUtil.getRedefinedListItemType(genFeature));
     stringBuffer.append(TEXT_1106);
@@ -3782,7 +3782,7 @@ public class Class
     }
     }
     if (!genClass.getExtendedGenFeatures().contains(genFeature) && genFeature.isListType() && genFeature.isReferenceType()) {
-    for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getGenClassType()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();
+    for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();
     stringBuffer.append(TEXT_1123);
     stringBuffer.append(UML2GenModelUtil.getRedefinedListItemType(genFeature));
     stringBuffer.append(TEXT_1124);
@@ -3966,7 +3966,7 @@ public class Class
     stringBuffer.append(TEXT_1203);
     if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genModel) && genFeature.isChangeable() && genFeature.isContains()) {
     if (genClass.getChildrenClasses(genFeature).size() > 0) {
-    if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getGenClassType().isAbstract()) {
+    if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {
     stringBuffer.append(TEXT_1204);
     stringBuffer.append(UML2GenModelUtil.getRedefinedListItemType(genFeature));
     stringBuffer.append(TEXT_1205);
@@ -4003,7 +4003,7 @@ public class Class
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_1221);
     }
-    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getGenClassType().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);
+    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);
     stringBuffer.append(TEXT_1222);
     stringBuffer.append(UML2GenModelUtil.getRedefinedListItemType(genFeature));
     stringBuffer.append(TEXT_1223);
@@ -4043,7 +4043,7 @@ public class Class
     }
     }
     if (!genClass.getExtendedGenFeatures().contains(genFeature) && genFeature.isListType() && genFeature.isReferenceType()) {
-    for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getGenClassType()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();
+    for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();
     stringBuffer.append(TEXT_1240);
     stringBuffer.append(UML2GenModelUtil.getRedefinedListItemType(genFeature));
     stringBuffer.append(TEXT_1241);
@@ -4076,7 +4076,7 @@ public class Class
     }
     for (Iterator i=UML2GenModelUtil.getImplementedRedefinedGenOperations(genClass).iterator(); i.hasNext();) { GenOperation genOperation = (GenOperation)i.next(); GenOperation redefinitionGenOperation = (GenOperation) UML2GenModelUtil.getRedefinitionGenOperations(genClass, genOperation).iterator().next();
     stringBuffer.append(TEXT_1254);
-    stringBuffer.append(genOperation.getImportedReturnType());
+    stringBuffer.append(genOperation.getImportedType());
     stringBuffer.append(TEXT_1255);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_1256);

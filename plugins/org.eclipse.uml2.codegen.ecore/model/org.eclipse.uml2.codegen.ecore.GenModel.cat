@@ -240,7 +240,7 @@
 	    max_height 	28350
 	    max_width  	21600
 	    origin_x   	0
-	    origin_y   	2070
+	    origin_y   	0
 	    items      	(list diagram_item_list
 		(object ClassView "Class" "Logical View::GenModel::GenBase" @1
 		    ShowCompartmentStereotypes 	TRUE
@@ -314,7 +314,7 @@
 			fill_color 	16777215
 			anchor     	2
 			nlines     	6
-			max_width  	653)
+			max_width  	662)
 		    width      	674
 		    height     	386
 		    annotation 	8
@@ -368,7 +368,7 @@
 			fill_color 	16777215
 			anchor     	2
 			nlines     	40
-			max_width  	1279)
+			max_width  	1284)
 		    width      	1300
 		    height     	2132
 		    annotation 	8
@@ -422,7 +422,7 @@
 		    ShowCompartmentStereotypes 	TRUE
 		    IncludeAttribute 	TRUE
 		    IncludeOperation 	TRUE
-		    location   	(800, 864)
+		    location   	(1008, 1216)
 		    font       	(object Font
 			size       	10
 			face       	"Arial"
@@ -434,7 +434,7 @@
 			default_color 	TRUE)
 		    label      	(object ItemLabel
 			Parent_View 	@7
-			location   	(502, 758)
+			location   	(710, 1110)
 			fill_color 	13434879
 			nlines     	1
 			max_width  	596
@@ -446,7 +446,7 @@
 		    quidu      	"418FC80F0106"
 		    compartment 	(object Compartment
 			Parent_View 	@7
-			location   	(502, 819)
+			location   	(710, 1171)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -469,7 +469,7 @@
 		    ShowCompartmentStereotypes 	TRUE
 		    IncludeAttribute 	TRUE
 		    IncludeOperation 	TRUE
-		    location   	(416, 368)
+		    location   	(560, 544)
 		    font       	(object Font
 			size       	10
 			face       	"Arial"
@@ -481,10 +481,10 @@
 			default_color 	TRUE)
 		    label      	(object ItemLabel
 			Parent_View 	@8
-			location   	(63, 139)
+			location   	(69, 140)
 			fill_color 	13434879
 			nlines     	1
-			max_width  	706
+			max_width  	982
 			justify    	0
 			label      	"GenPackage")
 		    icon_style 	"Icon"
@@ -493,7 +493,7 @@
 		    quidu      	"3C17589A01D3"
 		    compartment 	(object Compartment
 			Parent_View 	@8
-			location   	(63, 244)
+			location   	(69, 245)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -506,10 +506,10 @@
 			icon_style 	"Icon"
 			fill_color 	16777215
 			anchor     	2
-			nlines     	7
-			max_width  	704)
-		    width      	724
-		    height     	482
+			nlines     	14
+			max_width  	979)
+		    width      	1000
+		    height     	832
 		    annotation 	8
 		    autoResize 	TRUE)
 		(object InheritView "" @9
@@ -524,7 +524,7 @@
 			default_color 	TRUE)
 		    label      	(object ItemLabel
 			Parent_View 	@9
-			location   	(655, 677)
+			location   	(883, 1029)
 			anchor_loc 	1
 			nlines     	1
 			max_width  	450
@@ -532,7 +532,7 @@
 			label      	"")
 		    stereotype 	(object SegLabel @10
 			Parent_View 	@9
-			location   	(483, 682)
+			location   	(730, 1032)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -548,8 +548,8 @@
 			max_width  	450
 			justify    	0
 			label      	"<<extend>>"
-			pctDist    	1.090340
-			height     	138
+			pctDist    	0.999266
+			height     	129
 			orientation 	0)
 		    line_color 	3342489
 		    quidu      	"418FC866031D"
@@ -560,7 +560,7 @@
 		    ShowCompartmentStereotypes 	TRUE
 		    IncludeAttribute 	TRUE
 		    IncludeOperation 	TRUE
-		    location   	(1168, 368)
+		    location   	(1456, 544)
 		    font       	(object Font
 			size       	10
 			face       	"Arial"
@@ -572,7 +572,7 @@
 			default_color 	TRUE)
 		    label      	(object ItemLabel
 			Parent_View 	@11
-			location   	(1070, 316)
+			location   	(1358, 492)
 			fill_color 	13434879
 			nlines     	1
 			max_width  	196
@@ -966,7 +966,7 @@
 			fill_color 	16777215
 			anchor     	2
 			nlines     	3
-			max_width  	525)
+			max_width  	534)
 		    width      	546
 		    height     	282
 		    annotation 	8
@@ -1626,7 +1626,7 @@
 			fill_color 	16777215
 			anchor     	2
 			nlines     	2
-			max_width  	328)
+			max_width  	337)
 		    width      	348
 		    height     	186
 		    annotation 	8
@@ -1673,7 +1673,7 @@
 			fill_color 	16777215
 			anchor     	2
 			nlines     	8
-			max_width  	707)
+			max_width  	715)
 		    width      	728
 		    height     	532
 		    annotation 	8
@@ -1802,7 +1802,7 @@
 			fill_color 	16777215
 			anchor     	2
 			nlines     	2
-			max_width  	900)
+			max_width  	909)
 		    width      	920
 		    height     	186
 		    annotation 	8

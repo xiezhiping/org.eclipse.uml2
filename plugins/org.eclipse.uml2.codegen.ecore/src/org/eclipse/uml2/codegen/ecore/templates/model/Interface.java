@@ -301,7 +301,7 @@ public class Interface
     stringBuffer.append(genFeature.getFeatureKind());
     stringBuffer.append(TEXT_33);
     if (genFeature.isListType()) {
-    if (genFeature.isMapType()) { GenFeature keyFeature = genFeature.getMapGenClass().getMapEntryKeyFeature(); GenFeature valueFeature = genFeature.getMapGenClass().getMapEntryValueFeature(); 
+    if (genFeature.isMapType()) { GenFeature keyFeature = genFeature.getMapEntryTypeGenClass().getMapEntryKeyFeature(); GenFeature valueFeature = genFeature.getMapEntryTypeGenClass().getMapEntryValueFeature(); 
     stringBuffer.append(TEXT_34);
     if (keyFeature.isListType()) {
     stringBuffer.append(TEXT_35);
@@ -333,9 +333,9 @@ public class Interface
     stringBuffer.append(genFeature.getDefaultValue());
     stringBuffer.append(TEXT_48);
     }
-    if (genFeature.getGenEnumType() != null) {
+    if (genFeature.getTypeGenEnum() != null) {
     stringBuffer.append(TEXT_49);
-    stringBuffer.append(genFeature.getGenEnumType().getQualifiedName());
+    stringBuffer.append(genFeature.getTypeGenEnum().getQualifiedName());
     stringBuffer.append(TEXT_50);
     }
     if (genFeature.isBidirectional() && !genFeature.getReverse().getGenClass().isMapEntry()) { GenFeature reverseGenFeature = genFeature.getReverse(); 
@@ -368,9 +368,9 @@ public class Interface
     stringBuffer.append(TEXT_63);
     stringBuffer.append(genFeature.getFeatureKind());
     stringBuffer.append(TEXT_64);
-    if (genFeature.getGenEnumType() != null) {
+    if (genFeature.getTypeGenEnum() != null) {
     stringBuffer.append(TEXT_65);
-    stringBuffer.append(genFeature.getGenEnumType().getQualifiedName());
+    stringBuffer.append(genFeature.getTypeGenEnum().getQualifiedName());
     }
     if (genFeature.isUnsettable()) {
     if (!genFeature.isSuppressedIsSetVisibility()) {
@@ -436,7 +436,7 @@ public class Interface
     stringBuffer.append(TEXT_90);
     if (genFeature.isEnumType()) {
     stringBuffer.append(TEXT_91);
-    stringBuffer.append(genFeature.getGenEnumType().getQualifiedName());
+    stringBuffer.append(genFeature.getTypeGenEnum().getQualifiedName());
     }
     if (genFeature.isUnsettable()) {
     if (!genFeature.isSuppressedIsSetVisibility()) {
@@ -526,7 +526,7 @@ public class Interface
     stringBuffer.append(TEXT_130);
     if (UML2GenModelUtil.isFactoryMethods(genModel) && genFeature.isChangeable() && genFeature.isContains() && !genFeature.isSuppressedSetVisibility()) {
     if (genClass.getChildrenClasses(genFeature).size() > 0) {
-    if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getGenClassType().isAbstract()) {
+    if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {
     stringBuffer.append(TEXT_131);
     if (genFeature.isListType()) {
     stringBuffer.append(TEXT_132);
@@ -560,7 +560,7 @@ public class Interface
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EClass"));
     stringBuffer.append(TEXT_147);
     }
-    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getGenClassType().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);
+    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);
     stringBuffer.append(TEXT_148);
     if (genFeature.isListType()) {
     stringBuffer.append(TEXT_149);
@@ -593,7 +593,7 @@ public class Interface
     }
     }
     if (genFeature.isListType() && genFeature.isReferenceType() && !genFeature.isSuppressedSetVisibility()) {
-    for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getGenClassType()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();
+    for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();
     stringBuffer.append(TEXT_163);
     stringBuffer.append(genFeature.getQualifiedListItemType());
     stringBuffer.append(TEXT_164);
@@ -645,7 +645,7 @@ public class Interface
     stringBuffer.append(TEXT_184);
     }}
     stringBuffer.append(TEXT_185);
-    stringBuffer.append(genOperation.getImportedReturnType());
+    stringBuffer.append(genOperation.getImportedType());
     stringBuffer.append(TEXT_186);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_187);
