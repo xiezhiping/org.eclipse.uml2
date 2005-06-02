@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.23 2005/05/31 16:35:35 khussey Exp $
+ * $Id: UML2Util.java,v 1.24 2005/06/02 14:04:20 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -1510,21 +1510,27 @@ public class UML2Util {
 		 */
 		public Object caseEnumerationLiteral(
 				EnumerationLiteral enumerationLiteral) {
-			EEnumLiteral eEnumLiteral = EcoreFactory.eINSTANCE
-				.createEEnumLiteral();
-			elementToEModelElementMap.put(enumerationLiteral, eEnumLiteral);
+			Enumeration enumeration = enumerationLiteral.getEnumeration();
 
-			EEnum eEnum = (EEnum) doSwitch(enumerationLiteral.getEnumeration());
-			eEnum.getELiterals().add(eEnumLiteral);
+			if (null == enumeration) {
+				return super.caseEnumerationLiteral(enumerationLiteral);
+			} else {
+				EEnumLiteral eEnumLiteral = EcoreFactory.eINSTANCE
+					.createEEnumLiteral();
+				elementToEModelElementMap.put(enumerationLiteral, eEnumLiteral);
 
-			setName(eEnumLiteral, enumerationLiteral);
+				EEnum eEnum = (EEnum) doSwitch(enumeration);
+				eEnum.getELiterals().add(eEnumLiteral);
 
-			eEnumLiteral.setValue(enumerationLiteral.getEnumeration()
-				.getOwnedLiterals().indexOf(enumerationLiteral));
+				setName(eEnumLiteral, enumerationLiteral);
 
-			defaultCase(enumerationLiteral);
+				eEnumLiteral.setValue(enumeration.getOwnedLiterals().indexOf(
+					enumerationLiteral));
 
-			return eEnumLiteral;
+				defaultCase(enumerationLiteral);
+
+				return eEnumLiteral;
+			}
 		}
 
 		/*
@@ -1533,26 +1539,30 @@ public class UML2Util {
 		 * @see org.eclipse.uml2.util.UML2Switch#caseGeneralization(org.eclipse.uml2.Generalization)
 		 */
 		public Object caseGeneralization(Generalization generalization) {
-			EClassifier specificEClassifier = (EClassifier) doSwitch(generalization
-				.getSpecific());
+			Classifier specific = generalization.getSpecific();
 
-			if (specificEClassifier instanceof EClass) {
-				EClass specificEClass = (EClass) specificEClassifier;
+			if (null != specific) {
+				EClassifier specificEClassifier = (EClassifier) doSwitch(specific);
 
-				if (null != generalization.getGeneral()) {
-					EClassifier generalEClassifier = (EClassifier) doSwitch(generalization
-						.getGeneral());
+				if (specificEClassifier instanceof EClass) {
+					EClass specificEClass = (EClass) specificEClassifier;
+					Classifier general = generalization.getGeneral();
 
-					if (generalEClassifier instanceof EClass) {
-						EClass generalEClass = (EClass) generalEClassifier;
+					if (null != general) {
+						EClassifier generalEClassifier = (EClassifier) doSwitch(general);
 
-						if (!specificEClass.isSuperTypeOf(generalEClass)) {
-							List eSuperTypes = ((EClass) specificEClassifier)
-								.getESuperTypes();
+						if (generalEClassifier instanceof EClass) {
+							EClass generalEClass = (EClass) generalEClassifier;
 
-							eSuperTypes.add(generalization.hasKeyword("extend") //$NON-NLS-1$
-								? 0
-								: eSuperTypes.size(), generalEClassifier);
+							if (!specificEClass.isSuperTypeOf(generalEClass)) {
+								List eSuperTypes = specificEClass
+									.getESuperTypes();
+
+								eSuperTypes.add(generalization
+									.hasKeyword("extend") //$NON-NLS-1$
+									? 0
+									: eSuperTypes.size(), generalEClass);
+							}
 						}
 					}
 				}
@@ -1567,15 +1577,24 @@ public class UML2Util {
 		 * @see org.eclipse.uml2.util.UML2Switch#caseImplementation(org.eclipse.uml2.Implementation)
 		 */
 		public Object caseImplementation(Implementation implementation) {
-			EClass implementingEClass = (EClass) doSwitch(implementation
-				.getImplementingClassifier());
+			BehavioredClassifier implementingClassifier = implementation
+				.getImplementingClassifier();
 
-			if (null != implementingEClass) {
-				EClass contractEClass = (EClass) doSwitch(implementation
-					.getContract());
+			if (null != implementingClassifier) {
+				EClassifier implementingEClassifier = (EClassifier) doSwitch(implementingClassifier);
 
-				if (null != contractEClass) {
-					implementingEClass.getESuperTypes().add(contractEClass);
+				if (implementingEClassifier instanceof EClass) {
+					EClass implementingEClass = (EClass) implementingEClassifier;
+					Interface contract = implementation.getContract();
+
+					if (null != contract) {
+						EClass contractEClass = (EClass) doSwitch(contract);
+
+						if (null != contractEClass) {
+							implementingEClass.getESuperTypes().add(
+								contractEClass);
+						}
+					}
 				}
 			}
 
@@ -5184,7 +5203,9 @@ public class UML2Util {
 	protected static StringBuffer appendValidIdentifier(
 			StringBuffer validIdentifier, String name) {
 
-		if (!isEmpty(name)) {
+		if (isEmpty(name)) {
+			validIdentifier.append('_');
+		} else {
 			char char_0 = name.charAt(0);
 
 			if (Character.isJavaIdentifierStart(char_0)) {
