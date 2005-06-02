@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Type.java,v 1.8 2005/06/02 15:02:47 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -70,7 +70,7 @@ public interface Type extends PackageableElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean conformsTo(Type other);

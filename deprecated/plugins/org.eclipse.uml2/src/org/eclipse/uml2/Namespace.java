@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Namespace.java,v 1.10 2005/06/02 15:02:47 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -272,7 +272,7 @@ public interface Namespace extends NamedElement{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set getNamesOfMember(NamedElement element);
@@ -288,7 +288,7 @@ public interface Namespace extends NamedElement{
 	 * 		memb.isDistinguishableFrom(other, self)))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean membersAreDistinguishable();
@@ -302,7 +302,7 @@ public interface Namespace extends NamedElement{
 	 * self.importedMember->includesAll(self.importedMembers(self.elementImport.importedElement.asSet()->union(self.packageImport.importedPackage->collect(p | p.visibleMembers()))))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateImportedMemberDerived(DiagnosticChain diagnostics, Map context);
@@ -316,7 +316,7 @@ public interface Namespace extends NamedElement{
 	 * self.importedMembers(self.elementImport.importedElement.asSet()->union(self.packageImport.importedPackage->collect(p | p.visibleMembers())))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set importedMember();
@@ -330,7 +330,7 @@ public interface Namespace extends NamedElement{
 	 * self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem | mem.imp.isDistinguishableFrom(mem, self)))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" parameters="org.eclipse.uml2.Set"
+	 * @model dataType="org.eclipse.uml2.Set" impsDataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set importMembers(Set imps);
@@ -344,7 +344,7 @@ public interface Namespace extends NamedElement{
 	 * imps->reject(imp1 | imps.exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" parameters="org.eclipse.uml2.Set"
+	 * @model dataType="org.eclipse.uml2.Set" impsDataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set excludeCollisions(Set imps);
@@ -387,7 +387,7 @@ public interface Namespace extends NamedElement{
 	 * membersAreDistinguishable()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateMembersAreDistinguishable(DiagnosticChain diagnostics, Map context);

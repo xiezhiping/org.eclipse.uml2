@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Property.java,v 1.11 2005/06/02 15:02:47 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -511,7 +511,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * 	endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateOppositeIsOtherEnd(DiagnosticChain diagnostics, Map context);
@@ -543,7 +543,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * isComposite implies (upperBound()->isEmpty() or upperBound() <= 1)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics, Map context);
@@ -560,7 +560,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * 			sp.subsettingContext()->exists(c | sc.conformsTo(c)))))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateSubsettingContext(DiagnosticChain diagnostics, Map context);
@@ -578,7 +578,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * 		implies class->notEmpty())
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateNavigablePropertyRedefinition(DiagnosticChain diagnostics, Map context);
@@ -595,7 +595,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * 			upperBound()<=sp.upperBound() ))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateSubsettingRules(DiagnosticChain diagnostics, Map context);
@@ -609,7 +609,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * isReadOnly implies class->notEmpty()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateNavigableReadonly(DiagnosticChain diagnostics, Map context);
@@ -623,7 +623,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * isDerivedUnion implies isDerived
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics, Map context);
@@ -640,7 +640,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set subsettingContext();

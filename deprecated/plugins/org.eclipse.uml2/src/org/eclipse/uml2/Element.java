@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.12 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Element.java,v 1.13 2005/06/02 15:02:47 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -145,7 +145,7 @@ public interface Element extends EModelElement{
 	 * not self.allOwnedElements()->includes(self)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map context);
@@ -159,7 +159,7 @@ public interface Element extends EModelElement{
 	 * self.mustBeOwned() implies owner->notEmpty()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateHasOwner(DiagnosticChain diagnostics, Map context);
@@ -173,7 +173,7 @@ public interface Element extends EModelElement{
 	 * ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set allOwnedElements();
@@ -187,7 +187,7 @@ public interface Element extends EModelElement{
 	 * true
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean mustBeOwned();

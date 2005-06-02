@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.11 2005/05/18 16:38:30 khussey Exp $
+ * $Id: NamedElement.java,v 1.12 2005/06/02 15:02:47 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -230,7 +230,7 @@ public interface NamedElement extends TemplateableElement{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Sequence" 
+	 * @model dataType="org.eclipse.uml2.Sequence" many="false"
 	 * @generated
 	 */
 	List allNamespaces();
@@ -247,7 +247,7 @@ public interface NamedElement extends TemplateableElement{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isDistinguishableFrom(NamedElement n, Namespace ns);
@@ -261,7 +261,7 @@ public interface NamedElement extends TemplateableElement{
 	 * '::'
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.String" 
+	 * @model dataType="org.eclipse.uml2.String"
 	 * @generated
 	 */
 	String separator();
@@ -280,7 +280,7 @@ public interface NamedElement extends TemplateableElement{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.String" 
+	 * @model dataType="org.eclipse.uml2.String"
 	 * @generated
 	 */
 	String qualifiedName();
@@ -294,7 +294,7 @@ public interface NamedElement extends TemplateableElement{
 	 * namespace->isEmpty() implies visibility->isEmpty()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics, Map context);
@@ -326,7 +326,7 @@ public interface NamedElement extends TemplateableElement{
 	 * 	implies self.qualifiedName->isEmpty()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateNoName(DiagnosticChain diagnostics, Map context);
@@ -343,7 +343,7 @@ public interface NamedElement extends TemplateableElement{
 	 * 		ns.name->union(self.separator())->union(result))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateQualifiedName(DiagnosticChain diagnostics, Map context);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecification.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: ValueSpecification.java,v 1.7 2005/06/02 15:02:47 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -44,7 +44,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean" parameters="-"
 	 * @generated
 	 */
 	boolean isComputable();
@@ -58,7 +58,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * Set{}
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Integer" 
+	 * @model dataType="org.eclipse.uml2.Integer"
 	 * @generated
 	 */
 	int integerValue();
@@ -72,7 +72,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * Set{}
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean booleanValue();
@@ -86,7 +86,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * Set{}
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.String" 
+	 * @model dataType="org.eclipse.uml2.String"
 	 * @generated
 	 */
 	String stringValue();
@@ -100,7 +100,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * Set{}
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.UnlimitedNatural" 
+	 * @model dataType="org.eclipse.uml2.UnlimitedNatural"
 	 * @generated
 	 */
 	int unlimitedValue();
@@ -114,7 +114,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean" parameters="-"
 	 * @generated
 	 */
 	boolean isNull();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.15 2005/05/18 16:38:31 khussey Exp $
+ * $Id: Package.java,v 1.16 2005/06/02 15:02:47 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -287,7 +287,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * self.ownedElements->forAll(e | e.visibility->notEmpty() implies e.visbility = #public or e.visibility = #private)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics, Map context);
@@ -301,7 +301,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * member->select( m | self.makesVisible(m))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set visibleMembers();
@@ -315,7 +315,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * el.visibility->isEmpty() or el.visibility = #public
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean makesVisible(NamedElement el);

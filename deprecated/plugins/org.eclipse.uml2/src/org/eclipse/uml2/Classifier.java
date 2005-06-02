@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.16 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Classifier.java,v 1.17 2005/06/02 15:02:47 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -528,7 +528,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * member->select(oclIsKindOf(Feature))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set allFeatures();
@@ -542,7 +542,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * not self.allParents()->includes(self)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateNoCyclesInGeneralization(DiagnosticChain diagnostics, Map context);
@@ -556,7 +556,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.parents()->forAll(c | self.maySpecializeType(c))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateSpecializeType(DiagnosticChain diagnostics, Map context);
@@ -570,7 +570,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.inheritedMember->includesAll(self.inherit(self.parents()->collect(p | p.inheritableMembers(self)))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateInheritedMember(DiagnosticChain diagnostics, Map context);
@@ -584,7 +584,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.inherit(self.parents()->collect(p | p.inheritableMembers(self))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set inheritedMember();
@@ -598,7 +598,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * generalization.general
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set parents();
@@ -612,7 +612,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.parents()->union(self.parents()->collect(p | p.allParents())
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set allParents();
@@ -626,7 +626,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * member->select(m | c.hasVisibilityOf(m))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set inheritableMembers(Classifier c);
@@ -640,7 +640,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * true
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean hasVisibilityOf(NamedElement n);
@@ -654,7 +654,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * inhs
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" parameters="org.eclipse.uml2.Set"
+	 * @model dataType="org.eclipse.uml2.Set" inhsDataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set inherit(Set inhs);
@@ -668,7 +668,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.oclIsKindOf(c.oclType)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean maySpecializeType(Classifier c);
@@ -682,7 +682,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * self.parents()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Set" 
+	 * @model dataType="org.eclipse.uml2.Set"
 	 * @generated
 	 */
 	Set general();
@@ -696,7 +696,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * general = self.parents()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateGeneralEqualsParents(DiagnosticChain diagnostics, Map context);
@@ -710,7 +710,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * (self=other) or (self.allParents()->includes(other))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean conformsTo(Classifier other);

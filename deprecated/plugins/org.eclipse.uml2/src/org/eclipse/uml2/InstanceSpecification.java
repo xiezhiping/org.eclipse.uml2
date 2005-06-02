@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.10 2005/06/02 15:02:47 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -175,7 +175,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 *   classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateSlotsAreDefined(DiagnosticChain diagnostics, Map context);
@@ -191,7 +191,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * 	)
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateNoDuplicateSlots(DiagnosticChain diagnostics, Map context);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.11 2005/05/18 21:13:19 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.12 2005/06/02 15:02:47 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -117,7 +117,7 @@ public interface RedefinableElement extends NamedElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isConsistentWith(RedefinableElement redefinee);
@@ -131,7 +131,7 @@ public interface RedefinableElement extends NamedElement{
 	 * self.redefinitionContext->exists(c | redefinable.redefinitionContext->exists(r | c.allParents()->includes(r)))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isRedefinitionContextValid(RedefinableElement redefinable);
@@ -172,7 +172,7 @@ public interface RedefinableElement extends NamedElement{
 	 * self.redefinedElement->forAll(e | self.isRedefinitionContextValid(e))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateRedefinitionContextValid(DiagnosticChain diagnostics, Map context);
@@ -186,7 +186,7 @@ public interface RedefinableElement extends NamedElement{
 	 * self.redefinedElement->forAll(re | re.isConsistentWith(self))
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateRedefinitionConsistent(DiagnosticChain diagnostics, Map context);

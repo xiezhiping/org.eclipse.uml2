@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.9 2005/06/02 15:02:47 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -244,7 +244,7 @@ public interface MultiplicityElement extends Element{
 	 * if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Integer" 
+	 * @model dataType="org.eclipse.uml2.Integer"
 	 * @generated
 	 */
 	int lowerBound();
@@ -258,7 +258,7 @@ public interface MultiplicityElement extends Element{
 	 * if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.UnlimitedNatural" 
+	 * @model dataType="org.eclipse.uml2.UnlimitedNatural"
 	 * @generated
 	 */
 	int upperBound();
@@ -272,7 +272,7 @@ public interface MultiplicityElement extends Element{
 	 * upperBound() > 1
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean" parameters="-"
 	 * @generated
 	 */
 	boolean isMultivalued();
@@ -287,7 +287,7 @@ public interface MultiplicityElement extends Element{
 	 * 
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" parameters="org.eclipse.uml2.Integer"
+	 * @model dataType="org.eclipse.uml2.Boolean" CDataType="org.eclipse.uml2.Integer"
 	 * @generated
 	 */
 	boolean includesCardinality(int C);
@@ -301,7 +301,7 @@ public interface MultiplicityElement extends Element{
 	 * (self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound())
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean includesMultiplicity(MultiplicityElement M);
@@ -315,7 +315,7 @@ public interface MultiplicityElement extends Element{
 	 * upperBound()->notEmpty() implies upperBound() > 0
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateUpperGt0(DiagnosticChain diagnostics, Map context);
@@ -329,7 +329,7 @@ public interface MultiplicityElement extends Element{
 	 * lowerBound()->notEmpty() implies lowerBound() >= 0
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateLowerGe0(DiagnosticChain diagnostics, Map context);
@@ -343,7 +343,7 @@ public interface MultiplicityElement extends Element{
 	 * (upperBound()->notEmpty() and lowerBound()->notEmpty()) implies upperBound() >= lowerBound()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context);
@@ -357,7 +357,7 @@ public interface MultiplicityElement extends Element{
 	 * lower=lowerBound()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateLowerEqLowerbound(DiagnosticChain diagnostics, Map context);
@@ -371,7 +371,7 @@ public interface MultiplicityElement extends Element{
 	 * upper = upperBound()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" 
+	 * @model dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean validateUpperEqUpperbound(DiagnosticChain diagnostics, Map context);
@@ -385,7 +385,7 @@ public interface MultiplicityElement extends Element{
 	 * lowerBound()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Integer" 
+	 * @model dataType="org.eclipse.uml2.Integer"
 	 * @generated
 	 */
 	int lower();
@@ -399,7 +399,7 @@ public interface MultiplicityElement extends Element{
 	 * upperBound()
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.UnlimitedNatural" 
+	 * @model dataType="org.eclipse.uml2.UnlimitedNatural"
 	 * @generated
 	 */
 	int upper();
