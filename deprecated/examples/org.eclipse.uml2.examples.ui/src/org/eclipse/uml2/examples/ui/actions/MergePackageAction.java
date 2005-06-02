@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MergePackageAction.java,v 1.6 2005/05/18 16:43:51 khussey Exp $
+ * $Id: MergePackageAction.java,v 1.7 2005/06/02 14:29:45 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -85,11 +85,11 @@ public class MergePackageAction
 			final Map options = new HashMap();
 
 			OptionsDialog optionsDialog = new PackageMergerOptionsDialog(shell,
-				ExamplesUIPlugin.getDefault().getString(
-					"_UI_MergePackageActionCommand_label",
+				ExamplesUIPlugin.INSTANCE.getString(
+					"_UI_MergePackageActionCommand_label", //$NON-NLS-1$
 					new Object[]{getLabelProvider().getText(package_)}),
-				ExamplesUIPlugin.getDefault().getString(
-					"_UI_OptionsDialog_message"), options);
+				ExamplesUIPlugin.INSTANCE
+					.getString("_UI_OptionsDialog_message"), options); //$NON-NLS-1$
 
 			if (Window.OK == optionsDialog.open()) {
 				editingDomain.getCommandStack().execute(
@@ -110,7 +110,7 @@ public class MergePackageAction
 											0,
 											EcorePlugin.INSTANCE
 												.getString(
-													"_UI_DiagnosticRoot_diagnostic",
+													"_UI_DiagnosticRoot_diagnostic", //$NON-NLS-1$
 													new Object[]{substitutionLabelProvider
 														.getObjectLabel(package_)}),
 											new Object[]{package_});
@@ -123,10 +123,9 @@ public class MergePackageAction
 
 										progressMonitor
 											.beginTask(
-												ExamplesUIPlugin
-													.getDefault()
+												ExamplesUIPlugin.INSTANCE
 													.getString(
-														"_UI_MergingPackage_message",
+														"_UI_MergingPackage_message", //$NON-NLS-1$
 														new Object[]{substitutionLabelProvider
 															.getObjectLabel(package_)}),
 												IProgressMonitor.UNKNOWN);
@@ -138,10 +137,9 @@ public class MergePackageAction
 											progressMonitor.isCanceled()
 												? Diagnostic.CANCEL_INSTANCE
 												: diagnostics,
-											ExamplesUIPlugin
-												.getDefault()
+											ExamplesUIPlugin.INSTANCE
 												.getString(
-													"_UI_MergePackageActionCommand_label",
+													"_UI_MergePackageActionCommand_label", //$NON-NLS-1$
 													new Object[]{getLabelProvider()
 														.getText(package_)}));
 									} finally {
@@ -159,10 +157,10 @@ public class MergePackageAction
 								new ProgressMonitorDialog(shell).run(false,
 									true, runnableWithProgress);
 							} catch (Exception exception) {
-								ExamplesUIPlugin.getDefault().log(exception);
+								ExamplesUIPlugin.INSTANCE.log(exception);
 							}
 						}
-					}, ExamplesUIPlugin.getDefault().getString(
+					}, ExamplesUIPlugin.INSTANCE.getString(
 						"_UI_MergePackageActionCommand_label", //$NON-NLS-1$
 						new Object[]{getLabelProvider().getText(package_)})));
 			}

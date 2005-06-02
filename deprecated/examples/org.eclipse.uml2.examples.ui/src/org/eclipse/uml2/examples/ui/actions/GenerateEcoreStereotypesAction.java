@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.3 2005/05/18 16:43:51 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.4 2005/06/02 14:29:45 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -159,9 +159,11 @@ public class GenerateEcoreStereotypesAction
 					generateOwnedLiteral(featureKindEnumeration, "Unspecified"); //$NON-NLS-1$
 					generateOwnedLiteral(featureKindEnumeration, "Simple"); //$NON-NLS-1$
 					generateOwnedLiteral(featureKindEnumeration, "Attribute"); //$NON-NLS-1$
-					generateOwnedLiteral(featureKindEnumeration, "AttributeWildcard"); //$NON-NLS-1$
+					generateOwnedLiteral(featureKindEnumeration,
+						"AttributeWildcard"); //$NON-NLS-1$
 					generateOwnedLiteral(featureKindEnumeration, "Element"); //$NON-NLS-1$
-					generateOwnedLiteral(featureKindEnumeration, "ElementWildcard"); //$NON-NLS-1$
+					generateOwnedLiteral(featureKindEnumeration,
+						"ElementWildcard"); //$NON-NLS-1$
 					generateOwnedLiteral(featureKindEnumeration, "Group"); //$NON-NLS-1$
 
 					Enumeration visibilityKindEnumeration = generateOwnedEnumeration(
@@ -220,7 +222,7 @@ public class GenerateEcoreStereotypesAction
 						"isResolveProxies", booleanPrimitiveType, 0, 1) //$NON-NLS-1$
 						.setBooleanDefault(true);
 				}
-			}, ExamplesUIPlugin.getDefault().getString(
+			}, ExamplesUIPlugin.INSTANCE.getString(
 				"_UI_GenerateEcoreStereotypesActionCommand_label", //$NON-NLS-1$
 				new Object[]{getLabelProvider().getText(profile)}));
 		}

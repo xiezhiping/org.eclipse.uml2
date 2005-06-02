@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateJavaPrimitiveTypesAction.java,v 1.2 2005/05/18 16:43:51 khussey Exp $
+ * $Id: GenerateJavaPrimitiveTypesAction.java,v 1.3 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -51,7 +51,7 @@ public class GenerateJavaPrimitiveTypesAction
 					generateOwnedPrimitiveType(model, "long"); //$NON-NLS-1$
 					generateOwnedPrimitiveType(model, "short"); //$NON-NLS-1$
 				}
-			}, ExamplesUIPlugin.getDefault().getString(
+			}, ExamplesUIPlugin.INSTANCE.getString(
 				"_UI_GenerateJavaPrimitiveTypesActionCommand_label", //$NON-NLS-1$
 				new Object[]{getLabelProvider().getText(model)}));
 		}

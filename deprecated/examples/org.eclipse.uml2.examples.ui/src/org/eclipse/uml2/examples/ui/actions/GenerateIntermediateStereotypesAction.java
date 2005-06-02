@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateIntermediateStereotypesAction.java,v 1.2 2005/05/18 16:43:51 khussey Exp $
+ * $Id: GenerateIntermediateStereotypesAction.java,v 1.3 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -106,7 +106,7 @@ public class GenerateIntermediateStereotypesAction
 					generateExtension(subsystemStereotype, componentMetaclass,
 						false);
 				}
-			}, ExamplesUIPlugin.getDefault().getString(
+			}, ExamplesUIPlugin.INSTANCE.getString(
 				"_UI_GenerateIntermediateStereotypesActionCommand_label", //$NON-NLS-1$
 				new Object[]{getLabelProvider().getText(profile)}));
 		}

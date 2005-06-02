@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyElementAction.java,v 1.3 2005/05/18 16:43:51 khussey Exp $
+ * $Id: DestroyElementAction.java,v 1.4 2005/06/02 14:29:45 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -22,10 +22,10 @@ import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 
 /**
- *  
+ * 
  */
 public class DestroyElementAction
-	extends UML2CommandAction {
+		extends UML2CommandAction {
 
 	public DestroyElementAction() {
 		super();
@@ -49,10 +49,10 @@ public class DestroyElementAction
 				public void run() {
 					((Element) collection.toArray()[0]).destroy();
 				}
-			}, ExamplesUIPlugin.getDefault().getString(
+			}, ExamplesUIPlugin.INSTANCE.getString(
 				"_UI_DestroyElementActionCommand_label", //$NON-NLS-1$
-				new Object[] {getLabelProvider().getText(
-					collection.toArray()[0])}));
+				new Object[]{getLabelProvider()
+					.getText(collection.toArray()[0])}));
 		}
 
 		return UnexecutableCommand.INSTANCE;

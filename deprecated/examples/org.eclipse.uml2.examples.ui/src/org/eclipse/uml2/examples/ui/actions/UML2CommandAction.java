@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2CommandAction.java,v 1.5 2005/05/18 16:43:51 khussey Exp $
+ * $Id: UML2CommandAction.java,v 1.6 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -38,9 +38,9 @@ public class UML2CommandAction
 	}
 
 	protected AdapterFactory getAdapterFactory() {
-		return null == editorPart
-			? null
-			: ((UML2Editor) editorPart).getAdapterFactory();
+		return workbenchPart instanceof UML2Editor
+			? ((UML2Editor) workbenchPart).getAdapterFactory()
+			: null;
 	}
 
 	/*

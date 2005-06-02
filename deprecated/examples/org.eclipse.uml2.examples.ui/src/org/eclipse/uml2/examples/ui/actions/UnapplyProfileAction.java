@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnapplyProfileAction.java,v 1.3 2005/05/18 16:43:51 khussey Exp $
+ * $Id: UnapplyProfileAction.java,v 1.4 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -32,10 +32,10 @@ import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 
 /**
- *  
+ * 
  */
 public class UnapplyProfileAction
-	extends UML2CommandAction {
+		extends UML2CommandAction {
 
 	public UnapplyProfileAction() {
 		super();
@@ -92,15 +92,15 @@ public class UnapplyProfileAction
 				}
 			});
 
-			String label = ExamplesUIPlugin.getDefault().getString(
+			String label = ExamplesUIPlugin.INSTANCE.getString(
 				"_UI_UnapplyProfileActionCommand_label", //$NON-NLS-1$
-				new Object[] {getLabelProvider().getText(
-					collection.toArray()[0])});
+				new Object[]{getLabelProvider()
+					.getText(collection.toArray()[0])});
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
-				editorPart.getSite().getShell(), getLabelProvider(), package_,
-				UML2Package.eINSTANCE.getProfile(), Collections.EMPTY_LIST,
-				label, choiceOfValues);
+				workbenchPart.getSite().getShell(), getLabelProvider(),
+				package_, UML2Package.eINSTANCE.getProfile(),
+				Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 
 			if (FeatureEditorDialog.OK == dialog.getReturnCode()) {

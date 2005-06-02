@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyStereotypeAction.java,v 1.3 2005/05/18 16:43:51 khussey Exp $
+ * $Id: ApplyStereotypeAction.java,v 1.4 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -32,10 +32,10 @@ import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 
 /**
- *  
+ * 
  */
 public class ApplyStereotypeAction
-	extends UML2CommandAction {
+		extends UML2CommandAction {
 
 	public ApplyStereotypeAction() {
 		super();
@@ -91,13 +91,13 @@ public class ApplyStereotypeAction
 				}
 			});
 
-			String label = ExamplesUIPlugin.getDefault().getString(
-				"_UI_ApplyStereotypeActionCommand_label"); //$NON-NLS-1$
+			String label = ExamplesUIPlugin.INSTANCE
+				.getString("_UI_ApplyStereotypeActionCommand_label"); //$NON-NLS-1$
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
-				editorPart.getSite().getShell(), getLabelProvider(), element,
-				UML2Package.eINSTANCE.getElement(), Collections.EMPTY_LIST,
-				label, choiceOfValues);
+				workbenchPart.getSite().getShell(), getLabelProvider(),
+				element, UML2Package.eINSTANCE.getElement(),
+				Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 
 			if (FeatureEditorDialog.OK == dialog.getReturnCode()) {

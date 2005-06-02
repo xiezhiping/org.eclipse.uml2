@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeLabelsAction.java,v 1.1 2005/04/14 17:32:07 khussey Exp $
+ * $Id: ExternalizeLabelsAction.java,v 1.2 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -64,10 +64,10 @@ public class ExternalizeLabelsAction
 					String qualifiedName = namedElement.getQualifiedName();
 
 					if (!isEmpty(qualifiedName)) {
-						propertiesWriter.println(getPropertiesKey("_label_",
+						propertiesWriter.println(getPropertiesKey("_label_", //$NON-NLS-1$
 							qualifiedName)
 							+ PROPERTIES_SEPARATOR
-							+ format(capName(namedElement.getLabel()), " ",
+							+ format(capName(namedElement.getLabel()), " ", //$NON-NLS-1$
 								null, false));
 					}
 

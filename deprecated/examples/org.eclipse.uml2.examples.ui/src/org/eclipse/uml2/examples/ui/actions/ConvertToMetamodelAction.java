@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToMetamodelAction.java,v 1.3 2005/05/18 21:43:38 khussey Exp $
+ * $Id: ConvertToMetamodelAction.java,v 1.4 2005/06/02 14:29:45 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -104,7 +104,7 @@ public class ConvertToMetamodelAction
 						}.doSwitch(model);
 					}
 				}
-			}, ExamplesUIPlugin.getDefault().getString(
+			}, ExamplesUIPlugin.INSTANCE.getString(
 				"_UI_ConvertToMetamodelActionCommand_label", //$NON-NLS-1$
 				new Object[]{getLabelProvider().getText(model)}));
 		}

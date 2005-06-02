@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.8 2005/05/18 16:43:51 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.9 2005/06/02 14:29:45 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -123,13 +123,13 @@ public class ApplyProfileAction
 				}
 			});
 
-			String label = ExamplesUIPlugin.getDefault().getString(
-				"_UI_ApplyProfileActionCommand_label"); //$NON-NLS-1$
+			String label = ExamplesUIPlugin.INSTANCE
+				.getString("_UI_ApplyProfileActionCommand_label"); //$NON-NLS-1$
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
-				editorPart.getSite().getShell(), getLabelProvider(), package_,
-				UML2Package.eINSTANCE.getProfile(), Collections.EMPTY_LIST,
-				label, choiceOfValues);
+				workbenchPart.getSite().getShell(), getLabelProvider(),
+				package_, UML2Package.eINSTANCE.getProfile(),
+				Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 
 			if (FeatureEditorDialog.OK == dialog.getReturnCode()) {

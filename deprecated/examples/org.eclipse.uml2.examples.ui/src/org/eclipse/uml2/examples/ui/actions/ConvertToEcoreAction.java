@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToEcoreAction.java,v 1.6 2005/04/06 19:59:55 khussey Exp $
+ * $Id: ConvertToEcoreAction.java,v 1.7 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -92,11 +92,11 @@ public class ConvertToEcoreAction
 			final Map options = new HashMap();
 
 			OptionsDialog optionsDialog = new UML22EcoreConverterOptionsDialog(
-				shell, ExamplesUIPlugin.getDefault().getString(
-					"_UI_ConvertToEcoreActionCommand_label",
+				shell, ExamplesUIPlugin.INSTANCE.getString(
+					"_UI_ConvertToEcoreActionCommand_label", //$NON-NLS-1$
 					new Object[]{getLabelProvider().getText(package_)}),
-				ExamplesUIPlugin.getDefault().getString(
-					"_UI_OptionsDialog_message"), options);
+				ExamplesUIPlugin.INSTANCE
+					.getString("_UI_OptionsDialog_message"), options); //$NON-NLS-1$
 
 			if (Window.OK == optionsDialog.open()) {
 				IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
@@ -109,7 +109,7 @@ public class ConvertToEcoreAction
 							final BasicDiagnostic diagnostics = new BasicDiagnostic(
 								UML2Validator.DIAGNOSTIC_SOURCE, 0,
 								EcorePlugin.INSTANCE.getString(
-									"_UI_DiagnosticRoot_diagnostic",
+									"_UI_DiagnosticRoot_diagnostic", //$NON-NLS-1$
 									new Object[]{substitutionLabelProvider
 										.getObjectLabel(package_)}),
 								new Object[]{package_});
@@ -118,9 +118,8 @@ public class ConvertToEcoreAction
 							context.put(UML2Util.QualifiedTextProvider.class,
 								qualifiedTextProvider);
 
-							progressMonitor.beginTask(ExamplesUIPlugin
-								.getDefault().getString(
-									"_UI_ConvertingToEcore_message",
+							progressMonitor.beginTask(ExamplesUIPlugin.INSTANCE
+								.getString("_UI_ConvertingToEcore_message", //$NON-NLS-1$
 									new Object[]{substitutionLabelProvider
 										.getObjectLabel(package_)}),
 								IProgressMonitor.UNKNOWN);
@@ -154,15 +153,15 @@ public class ConvertToEcoreAction
 								try {
 									((Resource) i.next()).save(null);
 								} catch (Exception e) {
-									ExamplesUIPlugin.getDefault().log(e);
+									ExamplesUIPlugin.INSTANCE.log(e);
 								}
 							}
 
 							handleDiagnostic(progressMonitor.isCanceled()
 								? Diagnostic.CANCEL_INSTANCE
-								: diagnostics, ExamplesUIPlugin.getDefault()
+								: diagnostics, ExamplesUIPlugin.INSTANCE
 								.getString(
-									"_UI_ConvertToEcoreActionCommand_label",
+									"_UI_ConvertToEcoreActionCommand_label", //$NON-NLS-1$
 									new Object[]{getLabelProvider().getText(
 										package_)}));
 
@@ -181,7 +180,7 @@ public class ConvertToEcoreAction
 					new ProgressMonitorDialog(shell).run(false, true,
 						runnableWithProgress);
 				} catch (Exception exception) {
-					ExamplesUIPlugin.getDefault().log(exception);
+					ExamplesUIPlugin.INSTANCE.log(exception);
 				}
 			}
 		}

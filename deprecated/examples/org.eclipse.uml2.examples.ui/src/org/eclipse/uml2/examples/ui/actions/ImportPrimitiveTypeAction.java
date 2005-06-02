@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImportPrimitiveTypeAction.java,v 1.4 2005/05/18 16:43:51 khussey Exp $
+ * $Id: ImportPrimitiveTypeAction.java,v 1.5 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -35,10 +35,10 @@ import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 import org.eclipse.uml2.util.UML2Resource;
 
 /**
- *  
+ * 
  */
 public class ImportPrimitiveTypeAction
-	extends UML2CommandAction {
+		extends UML2CommandAction {
 
 	public ImportPrimitiveTypeAction() {
 		super();
@@ -156,13 +156,13 @@ public class ImportPrimitiveTypeAction
 				}
 			});
 
-			String label = ExamplesUIPlugin.getDefault().getString(
-				"_UI_ImportPrimitiveTypeActionCommand_label"); //$NON-NLS-1$
+			String label = ExamplesUIPlugin.INSTANCE
+				.getString("_UI_ImportPrimitiveTypeActionCommand_label"); //$NON-NLS-1$
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
-					editorPart.getSite().getShell(), getLabelProvider(),
-					package_, UML2Package.eINSTANCE.getPackageableElement(),
-					Collections.EMPTY_LIST, label, choiceOfValues);
+				workbenchPart.getSite().getShell(), getLabelProvider(),
+				package_, UML2Package.eINSTANCE.getPackageableElement(),
+				Collections.EMPTY_LIST, label, choiceOfValues);
 			dialog.open();
 
 			if (FeatureEditorDialog.OK == dialog.getReturnCode()) {

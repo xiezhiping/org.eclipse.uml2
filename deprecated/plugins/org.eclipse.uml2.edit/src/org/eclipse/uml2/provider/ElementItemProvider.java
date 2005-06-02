@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.23 2005/05/18 16:40:46 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.24 2005/06/02 14:29:47 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -260,6 +260,14 @@ public class ElementItemProvider
 		return UML2EditPlugin.INSTANCE;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#shouldTranslate()
+	 */
+	protected boolean shouldTranslate() {
+		return UML2EditPlugin.INSTANCE.shouldTranslate();
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -376,7 +384,5 @@ public class ElementItemProvider
 			return ((IItemQualifiedTextProvider) itemDelegator).getQualifiedText(object);
 		}
 	}
-
-
 
 }

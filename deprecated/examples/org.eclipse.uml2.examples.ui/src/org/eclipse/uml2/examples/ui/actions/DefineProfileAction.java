@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DefineProfileAction.java,v 1.3 2005/05/18 16:43:51 khussey Exp $
+ * $Id: DefineProfileAction.java,v 1.4 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -22,10 +22,10 @@ import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 
 /**
- *  
+ * 
  */
 public class DefineProfileAction
-	extends UML2CommandAction {
+		extends UML2CommandAction {
 
 	public DefineProfileAction() {
 		super();
@@ -51,10 +51,10 @@ public class DefineProfileAction
 				public void run() {
 					((Profile) collection.toArray()[0]).define();
 				}
-			}, ExamplesUIPlugin.getDefault().getString(
+			}, ExamplesUIPlugin.INSTANCE.getString(
 				"_UI_DefineProfileActionCommand_label", //$NON-NLS-1$
-				new Object[] {getLabelProvider().getText(
-					collection.toArray()[0])}));
+				new Object[]{getLabelProvider()
+					.getText(collection.toArray()[0])}));
 		}
 
 		return UnexecutableCommand.INSTANCE;

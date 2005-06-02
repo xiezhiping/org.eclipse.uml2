@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcorePrimitiveTypesAction.java,v 1.2 2005/05/18 16:43:51 khussey Exp $
+ * $Id: GenerateEcorePrimitiveTypesAction.java,v 1.3 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -72,9 +72,9 @@ public class GenerateEcorePrimitiveTypesAction
 						}
 					}.doSwitch(EcorePackage.eINSTANCE);
 				}
-			}, ExamplesUIPlugin.getDefault().getString(
-				"_UI_GenerateEcorePrimitiveTypesActionCommand_label",
-				new Object[]{getLabelProvider().getText(model)})); //$NON-NLS-1$
+			}, ExamplesUIPlugin.INSTANCE.getString(
+				"_UI_GenerateEcorePrimitiveTypesActionCommand_label", //$NON-NLS-1$
+				new Object[]{getLabelProvider().getText(model)}));
 		}
 
 		return UnexecutableCommand.INSTANCE;

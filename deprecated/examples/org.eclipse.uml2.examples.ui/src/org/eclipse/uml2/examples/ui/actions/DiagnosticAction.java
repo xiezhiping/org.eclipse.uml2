@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DiagnosticAction.java,v 1.4 2005/03/15 18:54:23 khussey Exp $
+ * $Id: DiagnosticAction.java,v 1.5 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -53,12 +53,12 @@ import org.osgi.framework.Bundle;
 public class DiagnosticAction
 		extends UML2CommandAction {
 
-	protected static final String URI_SCHEME_PLATFORM = "platform";
+	protected static final String URI_SCHEME_PLATFORM = "platform"; //$NON-NLS-1$
 
-	protected static final String URI_SEGMENT_RESOURCE = "resource";
+	protected static final String URI_SEGMENT_RESOURCE = "resource"; //$NON-NLS-1$
 
 	protected final Bundle resourcesBundle = Platform
-		.getBundle("org.eclipse.core.resources");
+		.getBundle("org.eclipse.core.resources"); //$NON-NLS-1$
 
 	protected final ValidateAction.EclipseResourcesUtil eclipseResourcesUtil = null == resourcesBundle
 		? null
@@ -104,22 +104,22 @@ public class DiagnosticAction
 			case Diagnostic.OK :
 				MessageDialog.openInformation(PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getShell(), dialogTitle,
-					ExamplesUIPlugin.getDefault().getString(
-						"_UI_DiagnosticOK_message"));
+					ExamplesUIPlugin.INSTANCE
+						.getString("_UI_DiagnosticOK_message")); //$NON-NLS-1$
 				break;
 			case Diagnostic.INFO :
 				ErrorDialog.openError(PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getShell(), dialogTitle,
-					ExamplesUIPlugin.getDefault().getString(
-						"_UI_DiagnosticOK_message"), BasicDiagnostic
+					ExamplesUIPlugin.INSTANCE
+						.getString("_UI_DiagnosticOK_message"), BasicDiagnostic //$NON-NLS-1$
 						.toIStatus(diagnostic));
 				break;
 			default :
 				ErrorDialog.openError(PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getShell(), dialogTitle,
-					ExamplesUIPlugin.getDefault().getString(
-						"_UI_DiagnosticProblems_message"), BasicDiagnostic
-						.toIStatus(diagnostic));
+					ExamplesUIPlugin.INSTANCE
+						.getString("_UI_DiagnosticProblems_message"), //$NON-NLS-1$
+					BasicDiagnostic.toIStatus(diagnostic));
 		}
 
 		if (null != resourcesBundle) {
@@ -139,7 +139,7 @@ public class DiagnosticAction
 							file.deleteMarkers(EValidator.MARKER, true,
 								IResource.DEPTH_ZERO);
 						} catch (CoreException exception) {
-							ExamplesUIPlugin.getDefault().log(exception);
+							ExamplesUIPlugin.INSTANCE.log(exception);
 						}
 
 						fileToDiagnosticMap.put(file,
@@ -171,12 +171,12 @@ public class DiagnosticAction
 
 					if (!data.isEmpty() && data.get(0) instanceof EObject) {
 
-						if (editorPart instanceof ISetSelectionTarget) {
-							((ISetSelectionTarget) editorPart)
+						if (workbenchPart instanceof ISetSelectionTarget) {
+							((ISetSelectionTarget) workbenchPart)
 								.selectReveal(new StructuredSelection(data
 									.get(0)));
-						} else if (editorPart instanceof IViewerProvider) {
-							Viewer viewer = ((IViewerProvider) editorPart)
+						} else if (workbenchPart instanceof IViewerProvider) {
+							Viewer viewer = ((IViewerProvider) workbenchPart)
 								.getViewer();
 
 							if (null != viewer) {

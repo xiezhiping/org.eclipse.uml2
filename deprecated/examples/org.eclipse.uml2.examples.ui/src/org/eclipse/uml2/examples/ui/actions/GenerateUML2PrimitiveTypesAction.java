@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateUML2PrimitiveTypesAction.java,v 1.2 2005/05/18 16:43:51 khussey Exp $
+ * $Id: GenerateUML2PrimitiveTypesAction.java,v 1.3 2005/06/02 14:29:46 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -47,7 +47,7 @@ public class GenerateUML2PrimitiveTypesAction
 					generateOwnedPrimitiveType(model, "String"); //$NON-NLS-1$
 					generateOwnedPrimitiveType(model, "UnlimitedNatural"); //$NON-NLS-1$
 				}
-			}, ExamplesUIPlugin.getDefault().getString(
+			}, ExamplesUIPlugin.INSTANCE.getString(
 				"_UI_GenerateUML2PrimitiveTypesActionCommand_label", //$NON-NLS-1$
 				new Object[]{getLabelProvider().getText(model)}));
 		}
