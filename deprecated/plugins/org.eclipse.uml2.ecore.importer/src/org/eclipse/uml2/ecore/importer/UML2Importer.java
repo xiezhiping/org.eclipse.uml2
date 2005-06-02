@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.8 2005/06/01 15:09:49 khussey Exp $
+ * $Id: UML2Importer.java,v 1.9 2005/06/02 14:12:16 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -60,7 +60,7 @@ public class UML2Importer
 	}
 
 	public String getID() {
-		return "org.eclipse.uml2.ecore.importer";
+		return "org.eclipse.uml2.ecore.importer"; //$NON-NLS-1$
 	}
 
 	public GenModel getGenModel() {
@@ -113,11 +113,11 @@ public class UML2Importer
 		if (locationURIs.isEmpty()) {
 			status = new Status(IStatus.ERROR, ImporterPlugin.ID,
 				ImporterUtil.ACTION_DEFAULT, UML2ImporterPlugin.INSTANCE
-					.getString("_UI_SpecifyAValidUML2Model_message"), null);
+					.getString("_UI_SpecifyAValidUML2Model_message"), null); //$NON-NLS-1$
 		} else {
-			progressMonitor.beginTask("", 2);
+			progressMonitor.beginTask("", 2); //$NON-NLS-1$
 			progressMonitor.subTask(UML2ImporterPlugin.INSTANCE.getString(
-				"_UI_Loading_message", new Object[]{locationURIs}));
+				"_UI_Loading_message", new Object[]{locationURIs})); //$NON-NLS-1$
 
 			Collection packages = new ArrayList();
 
@@ -138,7 +138,7 @@ public class UML2Importer
 			BasicDiagnostic diagnostics = new BasicDiagnostic(
 				ImporterPlugin.ID, ImporterUtil.ACTION_DEFAULT,
 				UML2ImporterPlugin.INSTANCE
-					.getString("_UI_ProblemsEncounteredProcessing_message"),
+					.getString("_UI_ProblemsEncounteredProcessing_message"), //$NON-NLS-1$
 				null);
 
 			Map context = new HashMap();
@@ -209,7 +209,7 @@ public class UML2Importer
 			ecoreFileName = URI.decode(ePackagePath);
 		} else {
 			ecoreFileName = ePackage.eResource() == null
-				? name + ".ecore"
+				? name + ".ecore" //$NON-NLS-1$
 				: ePackage.eResource().getURI().lastSegment();
 		}
 
@@ -240,7 +240,7 @@ public class UML2Importer
 			if (value.endsWith('.' + UML2Resource.FILE_EXTENSION)) {
 				text.append(makeAbsolute(URI.createURI(value), genModelURI)
 					.toString());
-				text.append(" ");
+				text.append(" "); //$NON-NLS-1$
 			}
 		}
 
