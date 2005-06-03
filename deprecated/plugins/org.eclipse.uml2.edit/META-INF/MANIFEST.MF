@@ -8,7 +8,7 @@ Bundle-Activator: org.eclipse.uml2.provider.UML2EditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.eclipse.uml2.edit.internal.command;x-internal:=true,
- org.eclipse.uml2.edit.internal.provider;x-internal:=true,
+ org.eclipse.uml2.edit.internal.provider;x-friends:="org.eclipse.uml2.editor",
  org.eclipse.uml2.edit.util,
  org.eclipse.uml2.provider
 Require-Bundle: org.eclipse.uml2.common.edit;visibility:=reexport,
