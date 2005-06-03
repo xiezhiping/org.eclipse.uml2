@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.11 2005/05/25 15:21:32 khussey Exp $
+ * $Id: PackageOperations.java,v 1.12 2005/06/03 20:11:27 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -95,7 +95,7 @@ public final class PackageOperations extends UML2Operations {
 			Element ownedElement = (Element) ownedElements.next();
 
 			if (NamedElement.class.isInstance(ownedElement)) {
-				VisibilityKind visibility = (VisibilityKind) ((NamedElement) ownedElement)
+				VisibilityKind visibility = ((NamedElement) ownedElement)
 					.getVisibility();
 
 				if (null != visibility
@@ -165,7 +165,7 @@ public final class PackageOperations extends UML2Operations {
 	 */
 	public static boolean makesVisible(org.eclipse.uml2.Package package_, NamedElement el) {
 
-		if (package_.getOwnedMembers().contains(el)) {
+		if (getOwnedMembers(package_).contains(el)) {
 			return null == el.getVisibility()
 				|| VisibilityKind.PUBLIC_LITERAL.equals(el.getVisibility());
 		}
@@ -222,7 +222,7 @@ public final class PackageOperations extends UML2Operations {
 	protected static Set visibleMembersHelper(
 			org.eclipse.uml2.Package package_, Set visibleMembers) {
 
-		for (Iterator ownedMembers = package_.getOwnedMembers().iterator(); ownedMembers
+		for (Iterator ownedMembers = getOwnedMembers(package_).iterator(); ownedMembers
 			.hasNext();) {
 
 			PackageableElement ownedMember = (PackageableElement) ownedMembers
@@ -419,7 +419,6 @@ public final class PackageOperations extends UML2Operations {
 					nestedPackages.add(ownedMember);
 				}
 			}
-
 		}
 
 		return nestedPackages;
@@ -439,10 +438,64 @@ public final class PackageOperations extends UML2Operations {
 					ownedTypes.add(ownedMember);
 				}
 			}
-
 		}
 
 		return ownedTypes;
+	}
+
+	public static EList getOwnedMembers(org.eclipse.uml2.Package package_) {
+		EList ownedMembers = new UniqueEList();
+
+		if (package_ != null) {
+			ownedMembers.addAll(package_.getOwnedRules());
+			ownedMembers.addAll(package_.getOwnedMembers());
+		}
+
+		return ownedMembers;
+	}
+
+	public static Set getNamesOfMember(org.eclipse.uml2.Package package_,
+			NamedElement element) {
+		Set namesOfMember = new HashSet();
+
+		if (getOwnedMembers(package_).contains(element)) {
+
+			if (!isEmpty(element.getName())) {
+				namesOfMember.add(element.getName());
+			}
+		} else {
+			return NamespaceOperations.getNamesOfMember(package_, element);
+		}
+
+		return Collections.unmodifiableSet(namesOfMember);
+	}
+
+	public static Set importMembers(org.eclipse.uml2.Package package_, Set imps) {
+		Set importMembers = new HashSet();
+
+		excludeCollisionsLoop : for (Iterator excludeCollisions = package_
+			.excludeCollisions(imps).iterator(); excludeCollisions.hasNext();) {
+
+			PackageableElement excludeCollision = (PackageableElement) excludeCollisions
+				.next();
+
+			for (Iterator ownedMembers = getOwnedMembers(package_).iterator(); ownedMembers
+				.hasNext();) {
+
+				PackageableElement ownedMember = (PackageableElement) ownedMembers
+					.next();
+
+				if (!excludeCollision.isDistinguishableFrom(ownedMember,
+					package_)) {
+
+					continue excludeCollisionsLoop;
+				}
+			}
+
+			importMembers.add(excludeCollision);
+		}
+
+		return Collections.unmodifiableSet(importMembers);
 	}
 
 	// <!-- end-custom-operations -->

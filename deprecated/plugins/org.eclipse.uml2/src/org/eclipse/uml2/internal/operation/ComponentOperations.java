@@ -8,11 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.3 2005/05/25 15:21:32 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.4 2005/06/03 20:10:46 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
@@ -21,9 +24,12 @@ import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Component;
 import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.Interface;
+import org.eclipse.uml2.NamedElement;
+import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.Port;
 import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.Realization;
+import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -216,6 +222,94 @@ public final class ComponentOperations
 		}
 
 		return requireds;
+	}
+
+	public static EList getOwnedMembers(Component component) {
+		EList ownedMembers = new UniqueEList();
+
+		if (component != null) {
+			ownedMembers.addAll(component.getOwnedRules());
+			ownedMembers.addAll(component.getOwnedUseCases());
+			ownedMembers.addAll(component.getOwnedBehaviors());
+			ownedMembers.addAll(component.getOwnedTriggers());
+			ownedMembers.addAll(component.getOwnedAttributes());
+			ownedMembers.addAll(component.getOwnedConnectors());
+			ownedMembers.addAll(component.getOwnedPorts());
+			ownedMembers.addAll(component.getOwnedOperations());
+			ownedMembers.addAll(component.getNestedClassifiers());
+			ownedMembers.addAll(component.getOwnedReceptions());
+			ownedMembers.addAll(component.getOwnedMembers());
+		}
+
+		return ownedMembers;
+	}
+
+	public static Set getNamesOfMember(Component component, NamedElement element) {
+		Set namesOfMember = new HashSet();
+
+		if (getOwnedMembers(component).contains(element)) {
+
+			if (!isEmpty(element.getName())) {
+				namesOfMember.add(element.getName());
+			}
+		} else {
+			return NamespaceOperations.getNamesOfMember(component, element);
+		}
+
+		return Collections.unmodifiableSet(namesOfMember);
+	}
+
+	public static Set importMembers(Component component, Set imps) {
+		Set importMembers = new HashSet();
+
+		excludeCollisionsLoop : for (Iterator excludeCollisions = component
+			.excludeCollisions(imps).iterator(); excludeCollisions.hasNext();) {
+
+			PackageableElement excludeCollision = (PackageableElement) excludeCollisions
+				.next();
+
+			for (Iterator ownedMembers = getOwnedMembers(component).iterator(); ownedMembers
+				.hasNext();) {
+
+				PackageableElement ownedMember = (PackageableElement) ownedMembers
+					.next();
+
+				if (!excludeCollision.isDistinguishableFrom(ownedMember,
+					component)) {
+
+					continue excludeCollisionsLoop;
+				}
+			}
+
+			importMembers.add(excludeCollision);
+		}
+
+		return Collections.unmodifiableSet(importMembers);
+	}
+
+	public static Set inherit(Component component, Set inhs) {
+		Set inherit = new HashSet();
+
+		iLoop : for (Iterator i = inhs.iterator(); i.hasNext();) {
+			NamedElement inh = (NamedElement) i.next();
+
+			for (Iterator ownedMembers = getOwnedMembers(component).iterator(); ownedMembers
+				.hasNext();) {
+
+				NamedElement ownedMember = (NamedElement) ownedMembers.next();
+
+				if (RedefinableElement.class.isInstance(ownedMember)
+					&& ((RedefinableElement) ownedMember)
+						.getRedefinedElements().contains(inh)) {
+
+					continue iLoop;
+				}
+			}
+
+			inherit.add(inh);
+		}
+
+		return Collections.unmodifiableSet(inherit);
 	}
 
 } // ComponentOperations

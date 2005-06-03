@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.24 2005/05/25 15:21:32 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.25 2005/06/03 20:12:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -1077,18 +1078,60 @@ public class ComponentImpl extends ClassImpl implements Component {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
 		if (realization != null) {
 			ownedElement.addAll(realization);
 		}
+		for (Iterator i = ((InternalEList) super.getOwnedMembers()).basicIterator(); i.hasNext(); ) {
+			ownedElement.add(i.next());
+		}
 		return ownedElement;
 	}
 
-
 	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.impl.NamespaceImpl#getMembersHelper(org.eclipse.emf.common.util.EList)
+	 */
+	protected EList getMembersHelper(EList member) {
+		super.getMembersHelper(member);
+		for (Iterator i = ((InternalEList) super.getOwnedMembers()).basicIterator(); i.hasNext();) {
+			member.add(i.next());
+		}
+		return member;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Namespace#getNamesOfMember(org.eclipse.uml2.NamedElement)
+	 */
+	public Set getNamesOfMember(NamedElement element) {
+		return ComponentOperations.getNamesOfMember(this, element);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Namespace#importMembers(java.util.Set)
+	 */
+	public Set importMembers(Set imps) {
+		return ComponentOperations.importMembers(this, imps);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Classifier#inherit(java.util.Set)
+	 */
+	public Set inherit(Set inhs) {
+		return ComponentOperations.inherit(this, inhs);
+	}
 
 	/*
 	 * (non-Javadoc)

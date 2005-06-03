@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.27 2005/05/25 16:03:36 khussey Exp $
+ * $Id: PackageImpl.java,v 1.28 2005/06/03 20:12:50 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -641,7 +641,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
@@ -651,9 +651,11 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		if (packageExtension != null) {
 			ownedElement.addAll(packageExtension);
 		}
+		for (Iterator i = ((InternalEList) super.getOwnedMembers()).basicIterator(); i.hasNext(); ) {
+			ownedElement.add(i.next());
+		}
 		return ownedElement;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1097,6 +1099,37 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 
 
 	// <!-- begin-custom-operations -->
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.impl.NamespaceImpl#getMembersHelper(org.eclipse.emf.common.util.EList)
+	 */
+	protected EList getMembersHelper(EList member) {
+		super.getMembersHelper(member);
+		for (Iterator i = ((InternalEList) super.getOwnedMembers()).basicIterator(); i.hasNext();) {
+			member.add(i.next());
+		}
+		return member;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Namespace#getNamesOfMember(org.eclipse.uml2.NamedElement)
+	 */
+	public Set getNamesOfMember(NamedElement element) {
+		return PackageOperations.getNamesOfMember(this, element);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Namespace#importMembers(java.util.Set)
+	 */
+	public Set importMembers(Set imps) {
+		return PackageOperations.importMembers(this, imps);
+	}
 
 	/*
 	 * (non-Javadoc)
