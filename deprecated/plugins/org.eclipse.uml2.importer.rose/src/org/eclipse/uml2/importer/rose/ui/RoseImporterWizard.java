@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseImporterWizard.java,v 1.1 2005/05/17 22:09:07 khussey Exp $
+ * $Id: RoseImporterWizard.java,v 1.2 2005/06/03 19:53:40 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.ui;
 
@@ -28,7 +28,7 @@ public class RoseImporterWizard
 
 	public void addPages() {
 		RoseDetailPage detailPage = new RoseDetailPage(getModelImporter(),
-			"RoseModel") {
+			"RoseModel") { //$NON-NLS-1$
 
 			protected ImporterUtil.DecodedAction decodeAction(IStatus status) {
 				return ImporterUtil
@@ -40,7 +40,7 @@ public class RoseImporterWizard
 		addPage(detailPage);
 
 		ModelPackagePage packagePage = new ModelPackagePage(getModelImporter(),
-			"RosePackages");
+			"RosePackages"); //$NON-NLS-1$
 		packagePage.setShowReferencedGenModels(true);
 		addPage(packagePage);
 	}

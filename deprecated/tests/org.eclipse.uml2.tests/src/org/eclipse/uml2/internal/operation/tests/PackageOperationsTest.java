@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperationsTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
+ * $Id: PackageOperationsTest.java,v 1.4 2005/06/03 19:53:23 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -29,13 +29,6 @@ public class PackageOperationsTest
 	 */
 	public PackageOperationsTest(String name) {
 		super(name);
-	}
-
-	/**
-	 * Returns the element for this Package Operations test case.
-	 */
-	private org.eclipse.uml2.Package getElement() {
-		return (org.eclipse.uml2.Package) element;
 	}
 
 }

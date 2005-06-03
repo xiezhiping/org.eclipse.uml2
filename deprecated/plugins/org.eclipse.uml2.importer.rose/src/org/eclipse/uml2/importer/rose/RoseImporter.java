@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseImporter.java,v 1.2 2005/05/25 17:30:05 khussey Exp $
+ * $Id: RoseImporter.java,v 1.3 2005/06/03 19:53:40 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose;
 
@@ -37,7 +37,7 @@ public class RoseImporter
 	}
 
 	public String getID() {
-		return "org.eclipse.uml2.importer.rose";
+		return "org.eclipse.uml2.importer.rose"; //$NON-NLS-1$
 	}
 
 }

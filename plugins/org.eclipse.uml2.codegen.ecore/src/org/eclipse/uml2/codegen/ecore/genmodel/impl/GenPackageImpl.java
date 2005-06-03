@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.3 2005/06/01 21:43:44 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.4 2005/06/03 19:53:35 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -570,7 +570,7 @@ public class GenPackageImpl
 		String operationsPackageName = getOperationsPackage();
 
 		return isBlank(operationsPackageName)
-			? getClassPackageName() + ".operations"
+			? getClassPackageName() + ".operations" //$NON-NLS-1$
 			: operationsPackageName;
 	}
 
@@ -579,11 +579,11 @@ public class GenPackageImpl
 	}
 
 	public String getResourceInterfaceName() {
-		return getPrefixedName("Resource");
+		return getPrefixedName("Resource"); //$NON-NLS-1$
 	}
 
 	public String getQualifiedResourceInterfaceName() {
-		return getUtilitiesPackageName() + "." + getResourceInterfaceName();
+		return getUtilitiesPackageName() + "." + getResourceInterfaceName(); //$NON-NLS-1$
 	}
 
 	public String getImportedResourceInterfaceName() {
@@ -595,36 +595,36 @@ public class GenPackageImpl
 		switch (getResource().getValue()) {
 			case GenResourceKind.XML :
 				return getGenModel().getImportedName(
-					"org.eclipse.emf.ecore.xmi.XMLResource");
+					"org.eclipse.emf.ecore.xmi.XMLResource"); //$NON-NLS-1$
 			case GenResourceKind.XMI :
 				return getGenModel().getImportedName(
-					"org.eclipse.emf.ecore.xmi.XMIResource");
+					"org.eclipse.emf.ecore.xmi.XMIResource"); //$NON-NLS-1$
 			default :
 				return getGenModel().getImportedName(
-					"org.eclipse.emf.ecore.resource.Resource");
+					"org.eclipse.emf.ecore.resource.Resource"); //$NON-NLS-1$
 		}
 	}
 
 	public String getImportedResourceFactoryInterfaceName() {
-		return getImportedResourceInterfaceName() + ".Factory";
+		return getImportedResourceInterfaceName() + ".Factory"; //$NON-NLS-1$
 	}
 
 	public String getImportedResourceFactoryBaseInterfaceName() {
 		return getGenModel().getImportedName(
-			"org.eclipse.emf.ecore.resource.Resource")
-			+ ".Factory";
+			"org.eclipse.emf.ecore.resource.Resource") //$NON-NLS-1$
+			+ ".Factory"; //$NON-NLS-1$
 	}
 
 	public String getImportedResourceBaseClassName() {
 		return isResourceInterfaces()
-			? super.getImportedResourceBaseClassName() + " implements "
+			? super.getImportedResourceBaseClassName() + " implements " //$NON-NLS-1$
 				+ getImportedResourceInterfaceName()
 			: super.getImportedResourceBaseClassName();
 	}
 
 	public String getImportedResourceFactoryBaseClassName() {
 		return isResourceInterfaces()
-			? super.getImportedResourceFactoryBaseClassName() + " implements "
+			? super.getImportedResourceFactoryBaseClassName() + " implements " //$NON-NLS-1$
 				+ getImportedResourceFactoryInterfaceName()
 			: super.getImportedResourceFactoryBaseClassName();
 	}
@@ -650,10 +650,10 @@ public class GenPackageImpl
 
 			if (GenResourceKind.NONE_LITERAL != getResource()
 				&& isResourceInterfaces()) {
-				progressMonitor.beginTask("", 1);
+				progressMonitor.beginTask("", 1); //$NON-NLS-1$
 
 				progressMonitor.subTask(CodeGenEcorePlugin.INSTANCE.getString(
-					"_UI_GeneratingJavaClass_message",
+					"_UI_GeneratingJavaClass_message", //$NON-NLS-1$
 					new Object[]{getQualifiedResourceInterfaceName()}));
 				generate(
 					new SubProgressMonitor(progressMonitor, 1),

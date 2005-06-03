@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ItemPropertyDescriptor.java,v 1.8 2005/05/18 16:40:46 khussey Exp $
+ * $Id: UML2ItemPropertyDescriptor.java,v 1.9 2005/06/03 19:53:28 khussey Exp $
  */
 package org.eclipse.uml2.edit.internal.provider;
 
@@ -58,7 +58,7 @@ public class UML2ItemPropertyDescriptor
 					Object child = i.next();
 
 					if (0 != text.length()) {
-						text.append(", ");
+						text.append(", "); //$NON-NLS-1$
 					}
 
 					text.append(getText(child));
@@ -72,7 +72,7 @@ public class UML2ItemPropertyDescriptor
 				return null != itemQualifiedTextProvider
 					? itemQualifiedTextProvider.getQualifiedText(object)
 					: null == object
-						? ""
+						? "" //$NON-NLS-1$
 						: object.toString();
 			}
 		}

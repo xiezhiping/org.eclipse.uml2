@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseEcoreBuilder.java,v 1.3 2005/05/18 21:08:51 khussey Exp $
+ * $Id: RoseEcoreBuilder.java,v 1.4 2005/06/03 19:53:40 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.builder;
 
@@ -52,9 +52,9 @@ import org.eclipse.uml2.codegen.ecore.Generator;
 public class RoseEcoreBuilder
 		extends org.eclipse.emf.importer.rose.builder.RoseEcoreBuilder {
 
-	protected static final String ANNOTATION_SOURCE__EXCLUSIONS = "exclusions";
+	protected static final String ANNOTATION_SOURCE__EXCLUSIONS = "exclusions"; //$NON-NLS-1$
 
-	protected static final String ANNOTATION_SOURCE__INCLUSIONS = "inclusions";
+	protected static final String ANNOTATION_SOURCE__INCLUSIONS = "inclusions"; //$NON-NLS-1$
 
 	protected Map packageDependencyMap = new HashMap();
 
@@ -71,18 +71,18 @@ public class RoseEcoreBuilder
 
 		if (null != type) {
 
-			if (type.startsWith("Sequence")) {
+			if (type.startsWith("Sequence")) { //$NON-NLS-1$
 				TableObject tableObject = (TableObject) ((RoseUtil) roseUtil)
-					.getNameTable().get("Sequence");
+					.getNameTable().get("Sequence"); //$NON-NLS-1$
 
 				if (null != tableObject) {
 					return tableObject.getName();
 				}
 			}
 
-			if (type.startsWith("Set")) {
+			if (type.startsWith("Set")) { //$NON-NLS-1$
 				TableObject tableObject = (TableObject) ((RoseUtil) roseUtil)
-					.getNameTable().get("Set");
+					.getNameTable().get("Set"); //$NON-NLS-1$
 
 				if (null != tableObject) {
 					return tableObject.getName();
@@ -99,7 +99,7 @@ public class RoseEcoreBuilder
 
 		if (null != roseNode.getSemantics()) {
 			eOperation.getEAnnotation(GenModelPackage.eNS_URI).getDetails()
-				.removeKey("body");
+				.removeKey("body"); //$NON-NLS-1$
 		}
 	}
 
@@ -109,7 +109,7 @@ public class RoseEcoreBuilder
 		// "build" package object...
 		String quid = roseNode.getRoseId();
 
-		if (quid != null && !quid.equals("")) {
+		if (quid != null && !quid.equals("")) { //$NON-NLS-1$
 			quid = quid.substring(1, quid.length() - 1);
 		}
 
@@ -142,29 +142,29 @@ public class RoseEcoreBuilder
 		if (null != roseNode.getConstraints()) {
 
 			for (StringTokenizer st = new StringTokenizer(roseNode
-				.getConstraints(), ","); st.hasMoreTokens();) {
+				.getConstraints(), ","); st.hasMoreTokens();) { //$NON-NLS-1$
 				String constraint = st.nextToken().trim();
 
-				if (constraint.startsWith("redefines")) {
+				if (constraint.startsWith("redefines")) { //$NON-NLS-1$
 					getOrCreateAnnotation(
 						Generator.ANNOTATION_SOURCE__REDEFINES,
 						eStructuralFeature).getDetails().put(
 						constraint.substring(constraint.indexOf(' ')).trim(),
-						"");
+						""); //$NON-NLS-1$
 
 					continue;
 				}
 
-				if (constraint.startsWith("subsets")) {
+				if (constraint.startsWith("subsets")) { //$NON-NLS-1$
 					getOrCreateAnnotation(Generator.ANNOTATION_SOURCE__SUBSETS,
 						eStructuralFeature).getDetails().put(
 						constraint.substring(constraint.indexOf(' ')).trim(),
-						"");
+						""); //$NON-NLS-1$
 
 					continue;
 				}
 
-				if (constraint.startsWith("union")) {
+				if (constraint.startsWith("union")) { //$NON-NLS-1$
 					createAnnotation(Generator.ANNOTATION_SOURCE__UNION,
 						eStructuralFeature);
 
@@ -174,7 +174,7 @@ public class RoseEcoreBuilder
 					continue;
 				}
 
-				if (constraint.startsWith("ordered")) {
+				if (constraint.startsWith("ordered")) { //$NON-NLS-1$
 					eStructuralFeature.setOrdered(true);
 
 					continue;
@@ -194,11 +194,11 @@ public class RoseEcoreBuilder
 			if (eStructuralFeature instanceof EAttribute) {
 				EAttribute eAttribute = (EAttribute) eStructuralFeature;
 
-				if ("java.lang.String".equals(eAttribute.getEAttributeType()
+				if ("java.lang.String".equals(eAttribute.getEAttributeType() //$NON-NLS-1$
 					.getInstanceClassName())
 					&& null == eAttribute.getDefaultValue()) {
 
-					eAttribute.setDefaultValueLiteral("");
+					eAttribute.setDefaultValueLiteral(""); //$NON-NLS-1$
 				}
 			}
 		}
@@ -282,9 +282,9 @@ public class RoseEcoreBuilder
 						}
 					}
 
-					error("Duplicate '" + eOperation.getName()
-						+ "' operation in '" + eClass.getName()
-						+ "' will be discarded");
+					error("Duplicate '" + eOperation.getName() //$NON-NLS-1$
+						+ "' operation in '" + eClass.getName() //$NON-NLS-1$
+						+ "' will be discarded"); //$NON-NLS-1$
 					eOperations.remove();
 					break;
 				}
@@ -306,7 +306,7 @@ public class RoseEcoreBuilder
 				parent);
 		} else if (objectType.equals(RoseStrings.ROLE)) {
 
-			if (objectName.startsWith("/")) {
+			if (objectName.startsWith("/")) { //$NON-NLS-1$
 				objectName = objectName.substring(1);
 
 				// tag the reference as derived...
@@ -330,44 +330,44 @@ public class RoseEcoreBuilder
 		if (parent instanceof EClass) {
 			EOperation eOperation = (EOperation) roseNode.getNode();
 
-			if ("inv".equalsIgnoreCase(roseNode.getStereotype())) {
+			if ("inv".equalsIgnoreCase(roseNode.getStereotype())) { //$NON-NLS-1$
 
 				if (null != roseNode.getSemantics()) {
 					StringBuffer documentation = new StringBuffer();
 
 					documentation
-						.append("An invariant constraint based on the following OCL expression:");
+						.append("An invariant constraint based on the following OCL expression:"); //$NON-NLS-1$
 					documentation.append(System.getProperties().getProperty(
-						"line.separator"));
-					documentation.append("<code>");
+						"line.separator")); //$NON-NLS-1$
+					documentation.append("<code>"); //$NON-NLS-1$
 					documentation.append(System.getProperties().getProperty(
-						"line.separator"));
+						"line.separator")); //$NON-NLS-1$
 					documentation.append(roseNode.getSemantics());
 					documentation.append(System.getProperties().getProperty(
-						"line.separator"));
-					documentation.append("</code>");
+						"line.separator")); //$NON-NLS-1$
+					documentation.append("</code>"); //$NON-NLS-1$
 
 					EcoreUtil.setDocumentation(eOperation, documentation
 						.toString());
 				}
 			}
 
-			if ("spec".equalsIgnoreCase(roseNode.getStereotype())) {
+			if ("spec".equalsIgnoreCase(roseNode.getStereotype())) { //$NON-NLS-1$
 
 				if (null != roseNode.getSemantics()) {
 					StringBuffer documentation = new StringBuffer();
 
 					documentation
-						.append("A query based on the following OCL expression:");
+						.append("A query based on the following OCL expression:"); //$NON-NLS-1$
 					documentation.append(System.getProperties().getProperty(
-						"line.separator"));
-					documentation.append("<code>");
+						"line.separator")); //$NON-NLS-1$
+					documentation.append("<code>"); //$NON-NLS-1$
 					documentation.append(System.getProperties().getProperty(
-						"line.separator"));
+						"line.separator")); //$NON-NLS-1$
 					documentation.append(roseNode.getSemantics());
 					documentation.append(System.getProperties().getProperty(
-						"line.separator"));
-					documentation.append("</code>");
+						"line.separator")); //$NON-NLS-1$
+					documentation.append("</code>"); //$NON-NLS-1$
 
 					EcoreUtil.setDocumentation(eOperation, documentation
 						.toString());
@@ -382,7 +382,7 @@ public class RoseEcoreBuilder
 
 		String quidu = roseNode.getRoseRefId();
 
-		if (quidu != null && !quidu.equals("")) {
+		if (quidu != null && !quidu.equals("")) { //$NON-NLS-1$
 			quidu = quidu.substring(1, quidu.length() - 1);
 		}
 
@@ -409,7 +409,7 @@ public class RoseEcoreBuilder
 				TableObject tableObject = (TableObject) ((RoseUtil) roseUtil)
 					.getQuidTable().get(i.next());
 
-				if ("collapse".equals((String) i.next())) {
+				if ("collapse".equals(i.next())) { //$NON-NLS-1$
 
 					if (null != tableObject
 						&& tableObject.getObject() instanceof EPackage) {
@@ -420,7 +420,7 @@ public class RoseEcoreBuilder
 						collapsedPackages
 							.addAll(getAllSubpackages(collapsedPackage));
 					} else {
-						warning("Cannot process collapse link for "
+						warning("Cannot process collapse link for " //$NON-NLS-1$
 							+ collapsingPackage);
 					}
 				}
@@ -441,14 +441,14 @@ public class RoseEcoreBuilder
 				TableObject tableObject = (TableObject) ((RoseUtil) roseUtil)
 					.getQuidTable().get(i.next());
 
-				if ("extend".equals((String) i.next())) {
+				if ("extend".equals(i.next())) { //$NON-NLS-1$
 
 					if (tableObject != null
 						&& tableObject.getObject() instanceof EPackage) {
 
 						return (EPackage) tableObject.getObject();
 					} else {
-						warning("Cannot process extend link for "
+						warning("Cannot process extend link for " //$NON-NLS-1$
 							+ extendingPackage);
 					}
 				}
@@ -485,15 +485,14 @@ public class RoseEcoreBuilder
 				TableObject tableObject = (TableObject) ((RoseUtil) roseUtil)
 					.getQuidTable().get(i.next());
 
-				if ("import".equals((String) i.next())) {
+				if ("import".equals(i.next())) { //$NON-NLS-1$
 
 					if (tableObject != null
 						&& tableObject.getObject() instanceof EPackage) {
 
-						importedPackages
-							.add((EPackage) tableObject.getObject());
+						importedPackages.add(tableObject.getObject());
 					} else {
-						warning("Cannot process import link for "
+						warning("Cannot process import link for " //$NON-NLS-1$
 							+ importingPackage.getNsPrefix());
 					}
 				}
@@ -640,17 +639,17 @@ public class RoseEcoreBuilder
 
 					if (collapsingClass.isAbstract()) {
 						collapsingClass.setAbstract(false);
-						info("Made abstract class "
+						info("Made abstract class " //$NON-NLS-1$
 							+ getQualifiedName(collapsingClass)
-							+ " concrete from class "
+							+ " concrete from class " //$NON-NLS-1$
 							+ getQualifiedName(collapsedClass)
-							+ " based on package collapse.");
+							+ " based on package collapse."); //$NON-NLS-1$
 					} else {
-						warning("Concrete class "
+						warning("Concrete class " //$NON-NLS-1$
 							+ getQualifiedName(collapsingClass)
-							+ " would become abstract from class "
+							+ " would become abstract from class " //$NON-NLS-1$
 							+ getQualifiedName(collapsedClass)
-							+ " based on package collapse.");
+							+ " based on package collapse."); //$NON-NLS-1$
 					}
 				}
 
@@ -659,17 +658,17 @@ public class RoseEcoreBuilder
 
 					if (collapsingClass.isInterface()) {
 						collapsingClass.setInterface(false);
-						info("Made interface class "
+						info("Made interface class " //$NON-NLS-1$
 							+ getQualifiedName(collapsingClass)
-							+ " non-interface from class "
+							+ " non-interface from class " //$NON-NLS-1$
 							+ getQualifiedName(collapsedClass)
-							+ " based on package collapse.");
+							+ " based on package collapse."); //$NON-NLS-1$
 					} else {
-						warning("Non-interface class "
+						warning("Non-interface class " //$NON-NLS-1$
 							+ getQualifiedName(collapsingClass)
-							+ " would become interface from class "
+							+ " would become interface from class " //$NON-NLS-1$
 							+ getQualifiedName(collapsedClass)
-							+ " based on package collapse.");
+							+ " based on package collapse."); //$NON-NLS-1$
 					}
 				}
 
@@ -686,9 +685,9 @@ public class RoseEcoreBuilder
 
 			collapsingPackage.getEClassifiers().add(collapsingClass);
 
-			info("Created class " + getQualifiedName(collapsingClass)
-				+ " from " + getQualifiedName(collapsedClass)
-				+ " based on package collapse.");
+			info("Created class " + getQualifiedName(collapsingClass) //$NON-NLS-1$
+				+ " from " + getQualifiedName(collapsedClass) //$NON-NLS-1$
+				+ " based on package collapse."); //$NON-NLS-1$
 		}
 
 		return collapsingClass;
@@ -720,9 +719,9 @@ public class RoseEcoreBuilder
 
 			collapsingPackage.getEClassifiers().add(collapsingEnum);
 
-			info("Created enum " + getQualifiedName(collapsingEnum) + " from "
+			info("Created enum " + getQualifiedName(collapsingEnum) + " from " //$NON-NLS-1$ //$NON-NLS-2$
 				+ getQualifiedName(collapsedEnum)
-				+ " based on package collapse.");
+				+ " based on package collapse."); //$NON-NLS-1$
 		}
 
 		for (Iterator collapsedLiterals = collapsedEnum.getELiterals()
@@ -788,9 +787,9 @@ public class RoseEcoreBuilder
 
 			collapsingPackage.getEClassifiers().add(collapsingDataType);
 
-			info("Created data type " + getQualifiedName(collapsingDataType)
-				+ " from " + getQualifiedName(collapsedDataType)
-				+ " based on package collapse.");
+			info("Created data type " + getQualifiedName(collapsingDataType) //$NON-NLS-1$
+				+ " from " + getQualifiedName(collapsedDataType) //$NON-NLS-1$
+				+ " based on package collapse."); //$NON-NLS-1$
 		}
 
 		return collapsingDataType;
@@ -853,8 +852,8 @@ public class RoseEcoreBuilder
 			.hasNext();) {
 
 			EPackage ePackage = (EPackage) packages.next();
-			info(ePackage.getNsPrefix() + " ("
-				+ getPackageDependencyDepth(ePackage) + ")");
+			info(ePackage.getNsPrefix() + " (" //$NON-NLS-1$
+				+ getPackageDependencyDepth(ePackage) + ")"); //$NON-NLS-1$
 		}
 
 		List extendedClassifiers = new ArrayList();
@@ -940,10 +939,10 @@ public class RoseEcoreBuilder
 						collapsingClass.getESuperTypes().add(
 							collapsingSuperClass);
 
-						info("Created sub/super link between "
-							+ getQualifiedName(collapsingClass) + " and "
+						info("Created sub/super link between " //$NON-NLS-1$
+							+ getQualifiedName(collapsingClass) + " and " //$NON-NLS-1$
 							+ getQualifiedName(collapsingSuperClass)
-							+ " based on package collapse.");
+							+ " based on package collapse."); //$NON-NLS-1$
 					}
 				}
 
@@ -1015,10 +1014,10 @@ public class RoseEcoreBuilder
 						collapsingClass.getEStructuralFeatures().add(
 							collapsingAttribute);
 
-						info("Created attribute "
-							+ getQualifiedName(collapsingAttribute) + " from "
+						info("Created attribute " //$NON-NLS-1$
+							+ getQualifiedName(collapsingAttribute) + " from " //$NON-NLS-1$
 							+ getQualifiedName(collapsedAttribute)
-							+ " based on package collapse.");
+							+ " based on package collapse."); //$NON-NLS-1$
 					}
 
 					// collapse union annotations...
@@ -1207,10 +1206,10 @@ public class RoseEcoreBuilder
 						collapsingClass.getEOperations().add(
 							collapsingOperation);
 
-						info("Created operation "
-							+ getQualifiedName(collapsingOperation) + " from "
+						info("Created operation " //$NON-NLS-1$
+							+ getQualifiedName(collapsingOperation) + " from " //$NON-NLS-1$
 							+ getQualifiedName(collapsedOperation)
-							+ " based on package collapse.");
+							+ " based on package collapse."); //$NON-NLS-1$
 					}
 
 					// collapse GenModel annotations...
@@ -1313,10 +1312,10 @@ public class RoseEcoreBuilder
 						collapsingClass.getEStructuralFeatures().add(
 							collapsingReference);
 
-						info("Created reference "
-							+ getQualifiedName(collapsingReference) + " from "
+						info("Created reference " //$NON-NLS-1$
+							+ getQualifiedName(collapsingReference) + " from " //$NON-NLS-1$
 							+ getQualifiedName(collapsedReference)
-							+ " based on package collapse.");
+							+ " based on package collapse."); //$NON-NLS-1$
 
 						if (collapsedClassifiers.contains(collapsedReference
 							.getEReferenceType())) {
@@ -1486,7 +1485,7 @@ public class RoseEcoreBuilder
 
 					inclusionsAnnotation.getDetails().put(
 						((EStructuralFeature) eStructuralFeatures.next())
-							.getName(), "");
+							.getName(), ""); //$NON-NLS-1$
 				}
 
 				return this;
@@ -1524,7 +1523,7 @@ public class RoseEcoreBuilder
 						eStructuralFeature.getName())) {
 
 						exclusionsAnnotation.getDetails().put(
-							eStructuralFeature.getName(), "");
+							eStructuralFeature.getName(), ""); //$NON-NLS-1$
 					}
 				}
 
@@ -1595,8 +1594,8 @@ public class RoseEcoreBuilder
 
 						if (null == redefinedStructuralFeature) {
 							warning(getQualifiedName(eStructuralFeature)
-								+ " redefines unknown feature '"
-								+ entry.getKey() + "'.");
+								+ " redefines unknown feature '" //$NON-NLS-1$
+								+ entry.getKey() + "'."); //$NON-NLS-1$
 						} else {
 
 							if (eStructuralFeature != redefinedStructuralFeature) {
@@ -1630,8 +1629,8 @@ public class RoseEcoreBuilder
 
 						if (null == subsettedStructuralFeature) {
 							warning(getQualifiedName(eStructuralFeature)
-								+ " subsets unknown feature '" + entry.getKey()
-								+ "'.");
+								+ " subsets unknown feature '" + entry.getKey() //$NON-NLS-1$
+								+ "'."); //$NON-NLS-1$
 						} else {
 
 							if (eStructuralFeature != subsettedStructuralFeature) {
@@ -1764,18 +1763,18 @@ public class RoseEcoreBuilder
 				otherETypedElement, eTypedElement);
 
 			if (lesserLowerBound != otherETypedElement.getLowerBound()) {
-				warning("Changed lower bound of "
-					+ getQualifiedName(otherETypedElement) + " from "
-					+ otherETypedElement.getLowerBound() + " to "
+				warning("Changed lower bound of " //$NON-NLS-1$
+					+ getQualifiedName(otherETypedElement) + " from " //$NON-NLS-1$
+					+ otherETypedElement.getLowerBound() + " to " //$NON-NLS-1$
 					+ lesserLowerBound);
 
 				otherETypedElement.setLowerBound(lesserLowerBound);
 			}
 
 			if (lesserLowerBound != eTypedElement.getLowerBound()) {
-				info("Changed lower bound of "
-					+ getQualifiedName(eTypedElement) + " from "
-					+ eTypedElement.getLowerBound() + " to " + lesserLowerBound);
+				info("Changed lower bound of " //$NON-NLS-1$
+					+ getQualifiedName(eTypedElement) + " from " //$NON-NLS-1$
+					+ eTypedElement.getLowerBound() + " to " + lesserLowerBound); //$NON-NLS-1$
 
 				eTypedElement.setLowerBound(lesserLowerBound);
 			}
@@ -1786,18 +1785,18 @@ public class RoseEcoreBuilder
 				otherETypedElement, eTypedElement);
 
 			if (greaterUpperBound != otherETypedElement.getUpperBound()) {
-				warning("Changed upper bound of "
-					+ getQualifiedName(otherETypedElement) + " from "
-					+ otherETypedElement.getUpperBound() + " to "
+				warning("Changed upper bound of " //$NON-NLS-1$
+					+ getQualifiedName(otherETypedElement) + " from " //$NON-NLS-1$
+					+ otherETypedElement.getUpperBound() + " to " //$NON-NLS-1$
 					+ greaterUpperBound);
 
 				otherETypedElement.setUpperBound(greaterUpperBound);
 			}
 
 			if (greaterUpperBound != eTypedElement.getUpperBound()) {
-				info("Changed upper bound of "
-					+ getQualifiedName(eTypedElement) + " from "
-					+ eTypedElement.getUpperBound() + " to "
+				info("Changed upper bound of " //$NON-NLS-1$
+					+ getQualifiedName(eTypedElement) + " from " //$NON-NLS-1$
+					+ eTypedElement.getUpperBound() + " to " //$NON-NLS-1$
 					+ greaterUpperBound);
 
 				eTypedElement.setUpperBound(greaterUpperBound);
@@ -1809,18 +1808,18 @@ public class RoseEcoreBuilder
 				eTypedElement);
 
 			if (commonEType != otherETypedElement.getEType()) {
-				warning("Changed type of "
-					+ getQualifiedName(otherETypedElement) + " from "
-					+ getQualifiedName(otherETypedElement.getEType()) + " to "
+				warning("Changed type of " //$NON-NLS-1$
+					+ getQualifiedName(otherETypedElement) + " from " //$NON-NLS-1$
+					+ getQualifiedName(otherETypedElement.getEType()) + " to " //$NON-NLS-1$
 					+ getQualifiedName(commonEType));
 
 				otherETypedElement.setEType(commonEType);
 			}
 
 			if (commonEType != eTypedElement.getEType()) {
-				info("Changed type of " + getQualifiedName(eTypedElement)
-					+ " from " + getQualifiedName(eTypedElement.getEType())
-					+ " to " + getQualifiedName(commonEType));
+				info("Changed type of " + getQualifiedName(eTypedElement) //$NON-NLS-1$
+					+ " from " + getQualifiedName(eTypedElement.getEType()) //$NON-NLS-1$
+					+ " to " + getQualifiedName(commonEType)); //$NON-NLS-1$
 
 				eTypedElement.setEType(commonEType);
 			}
@@ -1841,8 +1840,8 @@ public class RoseEcoreBuilder
 			qualifiedName = qualifiedName.substring(0, 1).toLowerCase()
 				+ qualifiedName.substring(1);
 
-			info("Renaming " + getQualifiedName(eTypedElement) + " from "
-				+ eTypedElement.getName() + " to " + qualifiedName + ".");
+			info("Renaming " + getQualifiedName(eTypedElement) + " from " //$NON-NLS-1$ //$NON-NLS-2$
+				+ eTypedElement.getName() + " to " + qualifiedName + "."); //$NON-NLS-1$ //$NON-NLS-2$
 
 			eTypedElement.setName(qualifiedName);
 		}
@@ -2301,7 +2300,7 @@ public class RoseEcoreBuilder
 					ANNOTATION_SOURCE__INCLUSIONS, eClass).getDetails()
 					.keySet().iterator(); featureNames.hasNext();) {
 
-					EStructuralFeature includedFeature = (EStructuralFeature) eClass
+					EStructuralFeature includedFeature = eClass
 						.getEStructuralFeature((String) featureNames.next());
 
 					if (null != includedFeature) {
@@ -2325,7 +2324,7 @@ public class RoseEcoreBuilder
 					ANNOTATION_SOURCE__EXCLUSIONS, eClass).getDetails()
 					.keySet().iterator(); featureNames.hasNext();) {
 
-					EStructuralFeature excludedFeature = (EStructuralFeature) eClass
+					EStructuralFeature excludedFeature = eClass
 						.getEStructuralFeature((String) featureNames.next());
 
 					if (null != excludedFeature) {
@@ -2341,18 +2340,18 @@ public class RoseEcoreBuilder
 					}
 				}
 
-				info(getQualifiedName(eClass) + ": " + changeableCount
-					+ " CH, " + manyCount + " MA, " + requiredCount + " RE, "
-					+ transientCount + " TR, " + uniqueCount + " UQ, "
-					+ unsettableCount + " US, " + volatileCount + " VO, "
-					+ containerCount + " CR, " + containmentCount + " CT, "
-					+ derivedCount + " DE, " + redefinitionCount + " RN, "
-					+ subsetCount + " SB, " + unionCount + " UO, "
-					+ inclusionsCount + " IN, " + derivedInclusionsCount
-					+ " ID, " + transientInclusionsCount + " IT, "
-					+ exclusionsCount + " EX, " + derivedExclusionsCount
-					+ " ED, " + transientExclusionsCount + " ET, "
-					+ eClass.getEAllStructuralFeatures().size() + " TO");
+				info(getQualifiedName(eClass) + ": " + changeableCount //$NON-NLS-1$
+					+ " CH, " + manyCount + " MA, " + requiredCount + " RE, " //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					+ transientCount + " TR, " + uniqueCount + " UQ, " //$NON-NLS-1$ //$NON-NLS-2$
+					+ unsettableCount + " US, " + volatileCount + " VO, " //$NON-NLS-1$ //$NON-NLS-2$
+					+ containerCount + " CR, " + containmentCount + " CT, " //$NON-NLS-1$ //$NON-NLS-2$
+					+ derivedCount + " DE, " + redefinitionCount + " RN, " //$NON-NLS-1$ //$NON-NLS-2$
+					+ subsetCount + " SB, " + unionCount + " UO, " //$NON-NLS-1$ //$NON-NLS-2$
+					+ inclusionsCount + " IN, " + derivedInclusionsCount //$NON-NLS-1$
+					+ " ID, " + transientInclusionsCount + " IT, " //$NON-NLS-1$ //$NON-NLS-2$
+					+ exclusionsCount + " EX, " + derivedExclusionsCount //$NON-NLS-1$
+					+ " ED, " + transientExclusionsCount + " ET, " //$NON-NLS-1$ //$NON-NLS-2$
+					+ eClass.getEAllStructuralFeatures().size() + " TO"); //$NON-NLS-1$
 
 				return this;
 			}
@@ -2374,18 +2373,18 @@ public class RoseEcoreBuilder
 		StringBuffer sb = new StringBuffer();
 
 		if (null == classifier) {
-			sb.append("<null>");
+			sb.append("<null>"); //$NON-NLS-1$
 		} else {
 			List information = (List) roseUtil.getEPackageToInformationMap()
 				.get(classifier.getEPackage());
 
 			if (null != information) {
 				sb.append((String) information.get(0));
-				sb.append(".");
+				sb.append("."); //$NON-NLS-1$
 			}
 
 			sb.append(classifier.getEPackage().getName());
-			sb.append(".");
+			sb.append("."); //$NON-NLS-1$
 			sb.append(classifier.getName());
 		}
 
@@ -2396,7 +2395,7 @@ public class RoseEcoreBuilder
 		StringBuffer sb = new StringBuffer();
 
 		sb.append(getQualifiedName(structuralFeature.getEContainingClass()));
-		sb.append(".");
+		sb.append("."); //$NON-NLS-1$
 		sb.append(structuralFeature.getName());
 
 		return sb.toString();
@@ -2406,7 +2405,7 @@ public class RoseEcoreBuilder
 		StringBuffer sb = new StringBuffer();
 
 		sb.append(getQualifiedName(operation.getEContainingClass()));
-		sb.append("#");
+		sb.append("#"); //$NON-NLS-1$
 		sb.append(operation.getName());
 
 		return sb.toString();
@@ -2431,7 +2430,7 @@ public class RoseEcoreBuilder
 	}
 
 	protected void info(String message) {
-		System.err.println("-->Info: " + message);
+		System.err.println("-->Info: " + message); //$NON-NLS-1$
 	}
 
 	protected EClassifier getCommonEType(ETypedElement redefiningTypedElement,

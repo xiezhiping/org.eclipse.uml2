@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.10 2005/05/18 16:38:26 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.11 2005/06/03 19:52:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 

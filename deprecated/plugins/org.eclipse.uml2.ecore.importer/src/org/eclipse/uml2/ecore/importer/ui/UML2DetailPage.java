@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2DetailPage.java,v 1.3 2005/05/18 15:56:14 khussey Exp $
+ * $Id: UML2DetailPage.java,v 1.4 2005/06/03 19:53:39 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer.ui;
 
@@ -47,19 +47,19 @@ public class UML2DetailPage
 	public UML2DetailPage(ModelImporter modelImporter, String pageName) {
 		super(modelImporter, pageName);
 
-		setTitle(UML2ImporterPlugin.INSTANCE.getString("_UI_UML2Import_title"));
+		setTitle(UML2ImporterPlugin.INSTANCE.getString("_UI_UML2Import_title")); //$NON-NLS-1$
 		setDescription(UML2ImporterPlugin.INSTANCE.getString(showGenModel()
-			? "_UI_UML2ImportFile_description"
-			: "_UI_UML2ImportNewProject_description"));
+			? "_UI_UML2ImportFile_description" //$NON-NLS-1$
+			: "_UI_UML2ImportNewProject_description")); //$NON-NLS-1$
 
 		choiceLabels.put(discardChoiceLabel = UML2ImporterPlugin.INSTANCE
-			.getString("_UI_Discard_label"), UML2Util.OPTION__DISCARD);
+			.getString("_UI_Discard_label"), UML2Util.OPTION__DISCARD); //$NON-NLS-1$
 		choiceLabels.put(ignoreChoiceLabel = UML2ImporterPlugin.INSTANCE
-			.getString("_UI_Ignore_label"), UML2Util.OPTION__IGNORE);
+			.getString("_UI_Ignore_label"), UML2Util.OPTION__IGNORE); //$NON-NLS-1$
 		choiceLabels.put(processChoiceLabel = UML2ImporterPlugin.INSTANCE
-			.getString("_UI_Process_label"), UML2Util.OPTION__PROCESS);
+			.getString("_UI_Process_label"), UML2Util.OPTION__PROCESS); //$NON-NLS-1$
 		choiceLabels.put(reportChoiceLabel = UML2ImporterPlugin.INSTANCE
-			.getString("_UI_Report_label"), UML2Util.OPTION__REPORT);
+			.getString("_UI_Report_label"), UML2Util.OPTION__REPORT); //$NON-NLS-1$
 	}
 
 	protected void addOptionControl(Composite parent, String text,
@@ -108,58 +108,58 @@ public class UML2DetailPage
 			group.setLayoutData(data);
 
 			group.setText(UML2ImporterPlugin.INSTANCE
-				.getString("_UI_Options_label"));
+				.getString("_UI_Options_label")); //$NON-NLS-1$
 		}
 
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
-			.getString("_UI_EcoreTaggedValues_label"),
+			.getString("_UI_EcoreTaggedValues_label"), //$NON-NLS-1$
 			UML2Util.UML22EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
-			.getString("_UI_DerivedFeatures_label"),
+			.getString("_UI_DerivedFeatures_label"), //$NON-NLS-1$
 			UML2Util.UML22EcoreConverter.OPTION__DERIVED_FEATURES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
-			.getString("_UI_DuplicateFeatureInheritance_label"),
+			.getString("_UI_DuplicateFeatureInheritance_label"), //$NON-NLS-1$
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, discardChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
-			.getString("_UI_DuplicateFeatures_label"),
+			.getString("_UI_DuplicateFeatures_label"), //$NON-NLS-1$
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_FEATURES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, discardChoiceLabel);
 		addOptionControl(
 			group,
 			UML2ImporterPlugin.INSTANCE
-				.getString("_UI_DuplicateOperationInheritance_label"),
+				.getString("_UI_DuplicateOperationInheritance_label"), //$NON-NLS-1$
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, discardChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
-			.getString("_UI_DuplicateOperations_label"),
+			.getString("_UI_DuplicateOperations_label"), //$NON-NLS-1$
 			UML2Util.UML22EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, discardChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
-			.getString("_UI_RedefiningOperations_label"),
+			.getString("_UI_RedefiningOperations_label"), //$NON-NLS-1$
 			UML2Util.UML22EcoreConverter.OPTION__REDEFINING_OPERATIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, reportChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
-			.getString("_UI_RedefiningProperties_label"),
+			.getString("_UI_RedefiningProperties_label"), //$NON-NLS-1$
 			UML2Util.UML22EcoreConverter.OPTION__REDEFINING_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, reportChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
-			.getString("_UI_SubsettingProperties_label"),
+			.getString("_UI_SubsettingProperties_label"), //$NON-NLS-1$
 			UML2Util.UML22EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, reportChoiceLabel);
 		addOptionControl(group, UML2ImporterPlugin.INSTANCE
-			.getString("_UI_UnionProperties_label"),
+			.getString("_UI_UnionProperties_label"), //$NON-NLS-1$
 			UML2Util.UML22EcoreConverter.OPTION__UNION_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, reportChoiceLabel);
@@ -170,6 +170,6 @@ public class UML2DetailPage
 	}
 
 	protected String[] getFilterExtensions() {
-		return new String[]{"*." + UML2Resource.FILE_EXTENSION};
+		return new String[]{"*." + UML2Resource.FILE_EXTENSION}; //$NON-NLS-1$
 	}
 }

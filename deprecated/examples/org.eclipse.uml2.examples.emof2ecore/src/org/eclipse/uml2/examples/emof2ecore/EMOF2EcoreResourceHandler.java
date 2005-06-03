@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceHandler.java,v 1.2 2005/05/18 16:42:31 khussey Exp $
+ * $Id: EMOF2EcoreResourceHandler.java,v 1.3 2005/06/03 19:53:28 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore;
 
@@ -84,14 +84,14 @@ public class EMOF2EcoreResourceHandler
 
 		if (null != extension) {
 			AnyType ecoreExtension = (AnyType) getValue(extension.getMixed(),
-				"Extension");
+				"Extension"); //$NON-NLS-1$
 
 			if (null != ecoreExtension) {
 				AnyType instanceClassName = (AnyType) getValue(ecoreExtension
 					.getMixed(), name);
 
 				if (null != instanceClassName) {
-					return getValue(instanceClassName.getMixed(), "text");
+					return getValue(instanceClassName.getMixed(), "text"); //$NON-NLS-1$
 				}
 			}
 		}
@@ -114,7 +114,7 @@ public class EMOF2EcoreResourceHandler
 						: EcoreFactory.eINSTANCE.createEAttribute();
 
 					String iD = (String) getEcoreExtension(resource, eObject,
-						"iD");
+						"iD"); //$NON-NLS-1$
 
 					if (null != iD) {
 						eAttribute.setID(Boolean.valueOf(iD).booleanValue());
@@ -127,7 +127,7 @@ public class EMOF2EcoreResourceHandler
 						: EcoreFactory.eINSTANCE.createEReference();
 
 					String resolveProxies = (String) getEcoreExtension(
-						resource, eObject, "resolveProxies");
+						resource, eObject, "resolveProxies"); //$NON-NLS-1$
 
 					if (null != resolveProxies) {
 						eReference.setResolveProxies(Boolean.valueOf(
@@ -135,7 +135,7 @@ public class EMOF2EcoreResourceHandler
 					}
 
 					String transient_ = (String) getEcoreExtension(resource,
-						eObject, "transient");
+						eObject, "transient"); //$NON-NLS-1$
 
 					if (null != transient_) {
 						eReference.setTransient(Boolean.valueOf(transient_)
@@ -143,7 +143,7 @@ public class EMOF2EcoreResourceHandler
 					}
 
 					String volatile_ = (String) getEcoreExtension(resource,
-						eObject, "volatile");
+						eObject, "volatile"); //$NON-NLS-1$
 
 					if (null != volatile_) {
 						eReference.setVolatile(Boolean.valueOf(volatile_)
@@ -198,7 +198,7 @@ public class EMOF2EcoreResourceHandler
 
 				if (null != extension) {
 					System.out.println(eModelElement);
-					System.out.println("->");
+					System.out.println("->"); //$NON-NLS-1$
 					System.out.println(extension);
 
 					if (DEBUG) {
@@ -227,7 +227,7 @@ public class EMOF2EcoreResourceHandler
 
 					if (null != extension) {
 						String isReadOnly = (String) getValue(extension
-							.getAnyAttribute(), "isReadOnly");
+							.getAnyAttribute(), "isReadOnly"); //$NON-NLS-1$
 
 						if (null != isReadOnly) {
 							eStructuralFeature.setChangeable(!Boolean.valueOf(
@@ -239,7 +239,7 @@ public class EMOF2EcoreResourceHandler
 								removeExtension(resource, property));
 
 							String isComposite = (String) getValue(extension
-								.getAnyAttribute(), "isComposite");
+								.getAnyAttribute(), "isComposite"); //$NON-NLS-1$
 
 							if (null != isComposite) {
 								((EReference) eStructuralFeature)
@@ -248,7 +248,7 @@ public class EMOF2EcoreResourceHandler
 							}
 
 							String opposite = (String) getValue(extension
-								.getAnyAttribute(), "opposite");
+								.getAnyAttribute(), "opposite"); //$NON-NLS-1$
 
 							if (null != opposite) {
 								((EReference) eStructuralFeature)
@@ -265,10 +265,10 @@ public class EMOF2EcoreResourceHandler
 
 			public Object caseEDataType(EDataType eDataType) {
 				eDataType.setInstanceClassName((String) getEcoreExtension(
-					resource, eDataType, "instanceClassName"));
+					resource, eDataType, "instanceClassName")); //$NON-NLS-1$
 
 				String serializable = (String) getEcoreExtension(resource,
-					eDataType, "serializable");
+					eDataType, "serializable"); //$NON-NLS-1$
 
 				if (null != serializable) {
 					eDataType.setSerializable(Boolean.valueOf(serializable)
@@ -280,7 +280,7 @@ public class EMOF2EcoreResourceHandler
 
 			public Object caseEPackage(EPackage ePackage) {
 				ePackage.setNsPrefix((String) getEcoreExtension(resource,
-					ePackage, "nsPrefix"));
+					ePackage, "nsPrefix")); //$NON-NLS-1$
 
 				return super.caseEPackage(ePackage);
 			}

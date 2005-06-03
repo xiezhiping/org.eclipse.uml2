@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.3 2005/06/01 21:43:44 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.4 2005/06/03 19:53:35 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -393,19 +393,19 @@ public class GenFeatureImpl
 
 	public String getAccessorName() {
 		return isMapEntryFeature()
-			? "Typed" + getCapName()
+			? "Typed" + getCapName() //$NON-NLS-1$
 			: (isListType()
 				&& UML2GenModelUtil.isPluralizedGetters(getGenModel())
 				? Generator.pluralize(getCapName())
-				: ("Class".equals(getCapName())
-					? "Class_"
+				: ("Class".equals(getCapName()) //$NON-NLS-1$
+					? "Class_" //$NON-NLS-1$
 					: getCapName()));
 	}
 
 	public String getGetAccessor() {
 		String result = isBooleanType()
-			? "is" + getIsName()
-			: "get" + getAccessorName();
+			? "is" + getIsName() //$NON-NLS-1$
+			: "get" + getAccessorName(); //$NON-NLS-1$
 
 		if (!isMapEntryFeature()) {
 
@@ -424,7 +424,7 @@ public class GenFeatureImpl
 						&& genOperation.getGenParameters().isEmpty()
 						&& !genOperation.getType().equals(getType())) {
 
-						result = result + "_";
+						result = result + "_"; //$NON-NLS-1$
 						break;
 					}
 				}

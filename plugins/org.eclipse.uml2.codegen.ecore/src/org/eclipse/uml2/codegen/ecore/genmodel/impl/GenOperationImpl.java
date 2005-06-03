@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationImpl.java,v 1.3 2005/06/01 21:43:44 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.4 2005/06/03 19:53:35 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -362,7 +362,7 @@ public class GenOperationImpl
 			String prefix = UML2GenModelUtil.getInvariantPrefix(getGenModel());
 
 			if (!isBlank(prefix)) {
-				return format(super.getName(), "", prefix, true);
+				return format(super.getName(), "", prefix, true); //$NON-NLS-1$
 			}
 		}
 

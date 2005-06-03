@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperationsTest.java,v 1.10 2005/05/25 17:23:22 khussey Exp $
+ * $Id: StereotypeOperationsTest.java,v 1.11 2005/06/03 19:53:23 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -3643,8 +3643,8 @@ public class StereotypeOperationsTest
 		EClass timestampEClass = (EClass) profileEPackage
 			.getEClassifier(getName() + "__Timestamp"); //$NON-NLS-1$
 
-		EObject timestampEObject = (EObject) profileEPackage
-			.getEFactoryInstance().create(timestampEClass);
+		EObject timestampEObject = profileEPackage.getEFactoryInstance()
+			.create(timestampEClass);
 
 		try {
 			StereotypeOperations.setValue(getElement(), class_, "timestamp", //$NON-NLS-1$
@@ -3678,8 +3678,8 @@ public class StereotypeOperationsTest
 		EClass timeEClass = (EClass) profileEPackage.getEClassifier(getName()
 			+ "__Time"); //$NON-NLS-1$
 
-		EObject timeEObject = (EObject) profileEPackage.getEFactoryInstance()
-			.create(timeEClass);
+		EObject timeEObject = profileEPackage.getEFactoryInstance().create(
+			timeEClass);
 
 		try {
 			StereotypeOperations.setValue(getElement(), class_, "timestamp" //$NON-NLS-1$
@@ -3689,7 +3689,7 @@ public class StereotypeOperationsTest
 		}
 
 		timestampEObject = (EObject) stereotypeEObject.eGet(stereotypeEObject
-			.eClass().getEStructuralFeature("timestamp"));
+			.eClass().getEStructuralFeature("timestamp")); //$NON-NLS-1$
 
 		assertNotNull(timestampEObject);
 
@@ -3888,8 +3888,7 @@ public class StereotypeOperationsTest
 		EClass timeEClass = (EClass) profileEPackage.getEClassifier(getName()
 			+ "__Time"); //$NON-NLS-1$
 
-		timeEObject = (EObject) profileEPackage.getEFactoryInstance().create(
-			timeEClass);
+		timeEObject = profileEPackage.getEFactoryInstance().create(timeEClass);
 
 		try {
 			StereotypeOperations.setValue(getElement(), class_, "timestamps[0]" //$NON-NLS-1$
@@ -4644,7 +4643,7 @@ public class StereotypeOperationsTest
 		}
 
 		stereotypeEObject.eSet(eClass.getEStructuralFeature("string"), //$NON-NLS-1$
-			"");
+			""); //$NON-NLS-1$
 
 		try {
 			assertFalse(StereotypeOperations.hasValue(getElement(), class_,
@@ -4782,7 +4781,7 @@ public class StereotypeOperationsTest
 		}
 
 		((List) stereotypeEObject.eGet(eClass.getEStructuralFeature("strings"))) //$NON-NLS-1$
-			.set(0, "");
+			.set(0, ""); //$NON-NLS-1$
 
 		try {
 			assertTrue(StereotypeOperations.hasValue(getElement(), class_,

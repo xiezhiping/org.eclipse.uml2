@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.20 2005/05/18 16:38:31 khussey Exp $
+ * $Id: UML2Operations.java,v 1.21 2005/06/03 19:52:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -240,12 +240,6 @@ class UML2Operations
 	 * The default URI converter for resource bundle look-ups.
 	 */
 	private static final URIConverter DEFAULT_URI_CONVERTER = new URIConverterImpl();
-
-	/**
-	 * A cache of locales.
-	 */
-	private static final Map LOCALES = Collections
-		.synchronizedMap(new HashMap());
 
 	/**
 	 * A cache of resource bundles.

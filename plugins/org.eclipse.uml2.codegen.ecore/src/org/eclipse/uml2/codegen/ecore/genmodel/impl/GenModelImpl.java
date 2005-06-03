@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.3 2005/06/03 19:53:35 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -1015,7 +1015,7 @@ public class GenModelImpl
 			templatePath[2] = templatePath[1];
 			templatePath[1] = CodeGenEcorePlugin.INSTANCE.getBaseURL()
 				.toString()
-				+ "templates";
+				+ "templates"; //$NON-NLS-1$
 		}
 		return templatePath;
 	}
@@ -1024,19 +1024,19 @@ public class GenModelImpl
 			throws JETException {
 		super.addClasspathEntries(jetEmitter);
 
-		jetEmitter.addVariable("UML2_CODEGEN_ECORE",
-			"org.eclipse.uml2.codegen.ecore");
+		jetEmitter.addVariable("UML2_CODEGEN_ECORE", //$NON-NLS-1$
+			"org.eclipse.uml2.codegen.ecore"); //$NON-NLS-1$
 	}
 
 	public List getEditRequiredPlugins() {
 		List result = super.getEditRequiredPlugins();
-		result.add("org.eclipse.uml2.common.edit");
+		result.add("org.eclipse.uml2.common.edit"); //$NON-NLS-1$
 		return result;
 	}
 
 	public List getModelRequiredPlugins() {
 		List result = super.getModelRequiredPlugins();
-		result.add("org.eclipse.uml2.common");
+		result.add("org.eclipse.uml2.common"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -1044,7 +1044,7 @@ public class GenModelImpl
 		if (classEmitter == null) {
 			classEmitter = createJETEmitter(classTemplateName);
 			setMethod(classEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.Class");
+				"org.eclipse.uml2.codegen.ecore.templates.model.Class"); //$NON-NLS-1$
 		}
 		return classEmitter;
 	}
@@ -1053,7 +1053,7 @@ public class GenModelImpl
 		if (interfaceEmitter == null) {
 			interfaceEmitter = createJETEmitter(interfaceTemplateName);
 			setMethod(interfaceEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.Interface");
+				"org.eclipse.uml2.codegen.ecore.templates.model.Interface"); //$NON-NLS-1$
 		}
 		return interfaceEmitter;
 	}
@@ -1062,7 +1062,7 @@ public class GenModelImpl
 		if (resourceFactoryClassEmitter == null) {
 			resourceFactoryClassEmitter = createJETEmitter(resourceFactoryTemplateName);
 			setMethod(resourceFactoryClassEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.ResourceFactoryClass");
+				"org.eclipse.uml2.codegen.ecore.templates.model.ResourceFactoryClass"); //$NON-NLS-1$
 		}
 		return resourceFactoryClassEmitter;
 	}
@@ -1071,7 +1071,7 @@ public class GenModelImpl
 		if (itemProviderEmitter == null) {
 			itemProviderEmitter = createJETEmitter(itemProviderTemplateName);
 			setMethod(itemProviderEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.edit.ItemProvider");
+				"org.eclipse.uml2.codegen.ecore.templates.edit.ItemProvider"); //$NON-NLS-1$
 		}
 		return itemProviderEmitter;
 	}
@@ -1080,12 +1080,12 @@ public class GenModelImpl
 		if (testCaseEmitter == null) {
 			testCaseEmitter = createJETEmitter(testCaseTemplateName);
 			setMethod(testCaseEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.tests.TestCase");
+				"org.eclipse.uml2.codegen.ecore.templates.model.tests.TestCase"); //$NON-NLS-1$
 		}
 		return testCaseEmitter;
 	}
 
-	protected String resourceInterfaceTemplateName = "model/ResourceInterface.javajet";
+	protected String resourceInterfaceTemplateName = "model/ResourceInterface.javajet"; //$NON-NLS-1$
 
 	protected JETEmitter resourceInterfaceEmitter = null;
 
@@ -1095,13 +1095,13 @@ public class GenModelImpl
 		if (resourceInterfaceEmitter == null) {
 			resourceInterfaceEmitter = createJETEmitter(resourceInterfaceTemplateName);
 			setMethod(resourceInterfaceEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.ResourceInterface");
+				"org.eclipse.uml2.codegen.ecore.templates.model.ResourceInterface"); //$NON-NLS-1$
 		}
 
 		return resourceInterfaceEmitter;
 	}
 
-	protected String operationsClassTemplateName = "model/OperationsClass.javajet";
+	protected String operationsClassTemplateName = "model/OperationsClass.javajet"; //$NON-NLS-1$
 
 	protected JETEmitter operationsClassEmitter = null;
 
@@ -1111,7 +1111,7 @@ public class GenModelImpl
 		if (operationsClassEmitter == null) {
 			operationsClassEmitter = createJETEmitter(operationsClassTemplateName);
 			setMethod(operationsClassEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.OperationsClass");
+				"org.eclipse.uml2.codegen.ecore.templates.model.OperationsClass"); //$NON-NLS-1$
 		}
 
 		return operationsClassEmitter;

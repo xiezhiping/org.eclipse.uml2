@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.2 2005/06/03 19:53:36 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -30,6 +30,7 @@ import org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope;
 public class UML2GenModelUtil {
 
 	protected UML2GenModelUtil() {
+		super();
 	}
 
 	// GenModel utilities

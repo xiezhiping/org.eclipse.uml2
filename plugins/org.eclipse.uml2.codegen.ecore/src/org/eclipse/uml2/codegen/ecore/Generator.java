@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Generator.java,v 1.1 2005/05/17 22:06:28 khussey Exp $
+ * $Id: Generator.java,v 1.2 2005/06/03 19:53:36 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore;
 
@@ -28,13 +28,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 public class Generator
 		extends org.eclipse.emf.codegen.ecore.Generator {
 
-	public static final String ANNOTATION_SOURCE__REDEFINES = "redefines";
+	public static final String ANNOTATION_SOURCE__REDEFINES = "redefines"; //$NON-NLS-1$
 
-	public static final String ANNOTATION_SOURCE__SUBSETS = "subsets";
+	public static final String ANNOTATION_SOURCE__SUBSETS = "subsets"; //$NON-NLS-1$
 
-	public static final String ANNOTATION_SOURCE__UNION = "union";
+	public static final String ANNOTATION_SOURCE__UNION = "union"; //$NON-NLS-1$
 
-	public static final String ANNOTATION_SOURCE__DUPLICATES = "duplicates";
+	public static final String ANNOTATION_SOURCE__DUPLICATES = "duplicates"; //$NON-NLS-1$
 
 	public static boolean isRedefinition(EStructuralFeature eStructuralFeature) {
 		return null != eStructuralFeature
@@ -151,30 +151,30 @@ public class Generator
 
 	public static String pluralize(String name) {
 
-		if (name.equalsIgnoreCase("children") || name.endsWith("Children")) {
+		if (name.equalsIgnoreCase("children") || name.endsWith("Children")) { //$NON-NLS-1$ //$NON-NLS-2$
 			return name;
-		} else if (name.equalsIgnoreCase("child") || name.endsWith("Child")) {
-			return name + "ren";
-		} else if (name.equalsIgnoreCase("data") || name.endsWith("Data")) {
+		} else if (name.equalsIgnoreCase("child") || name.endsWith("Child")) { //$NON-NLS-1$ //$NON-NLS-2$
+			return name + "ren"; //$NON-NLS-1$
+		} else if (name.equalsIgnoreCase("data") || name.endsWith("Data")) { //$NON-NLS-1$ //$NON-NLS-2$
 			return name;
-		} else if (name.equalsIgnoreCase("datum") || name.endsWith("Datum")) {
-			return name.substring(0, name.length() - 2) + "a";
-		} else if (name.endsWith("By")) {
-			return name + "s";
-		} else if (name.endsWith("y")) {
-			return name.substring(0, name.length() - 1) + "ies";
-		} else if (name.endsWith("ex")) {
-			return name.substring(0, name.length() - 2) + "ices";
-		} else if (name.endsWith("x")) {
-			return name + "es";
-		} else if (name.endsWith("us")) {
-			return name.substring(0, name.length() - 2) + "i";
-		} else if (name.endsWith("ss")) {
-			return name + "es";
-		} else if (name.endsWith("s")) {
+		} else if (name.equalsIgnoreCase("datum") || name.endsWith("Datum")) { //$NON-NLS-1$ //$NON-NLS-2$
+			return name.substring(0, name.length() - 2) + "a"; //$NON-NLS-1$
+		} else if (name.endsWith("By")) { //$NON-NLS-1$
+			return name + "s"; //$NON-NLS-1$
+		} else if (name.endsWith("y")) { //$NON-NLS-1$
+			return name.substring(0, name.length() - 1) + "ies"; //$NON-NLS-1$
+		} else if (name.endsWith("ex")) { //$NON-NLS-1$
+			return name.substring(0, name.length() - 2) + "ices"; //$NON-NLS-1$
+		} else if (name.endsWith("x")) { //$NON-NLS-1$
+			return name + "es"; //$NON-NLS-1$
+		} else if (name.endsWith("us")) { //$NON-NLS-1$
+			return name.substring(0, name.length() - 2) + "i"; //$NON-NLS-1$
+		} else if (name.endsWith("ss")) { //$NON-NLS-1$
+			return name + "es"; //$NON-NLS-1$
+		} else if (name.endsWith("s")) { //$NON-NLS-1$
 			return name;
 		} else {
-			return name + "s";
+			return name + "s"; //$NON-NLS-1$
 		}
 	}
 

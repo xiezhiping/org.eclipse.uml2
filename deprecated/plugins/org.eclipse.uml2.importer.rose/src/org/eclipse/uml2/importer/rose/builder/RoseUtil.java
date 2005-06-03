@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseUtil.java,v 1.2 2005/05/25 17:30:05 khussey Exp $
+ * $Id: RoseUtil.java,v 1.3 2005/06/03 19:53:40 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.builder;
 
@@ -61,7 +61,7 @@ public class RoseUtil
 				packageName = packageName.substring(fileSeparatorIndex + 1);
 			}
 
-			int dotIndex = packageName.lastIndexOf(".");
+			int dotIndex = packageName.lastIndexOf('.');
 
 			if (-1 != dotIndex) {
 				packageName = packageName.substring(0, dotIndex);

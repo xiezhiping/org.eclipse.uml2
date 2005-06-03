@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrenceImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
+ * $Id: EventOccurrenceImpl.java,v 1.9 2005/06/03 19:52:31 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 

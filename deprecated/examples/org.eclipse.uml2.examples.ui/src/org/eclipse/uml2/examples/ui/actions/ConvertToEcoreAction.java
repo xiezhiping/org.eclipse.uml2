@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToEcoreAction.java,v 1.7 2005/06/02 14:29:46 khussey Exp $
+ * $Id: ConvertToEcoreAction.java,v 1.8 2005/06/03 19:53:30 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -50,7 +50,7 @@ import org.eclipse.uml2.util.UML2Validator;
 public class ConvertToEcoreAction
 		extends DiagnosticAction {
 
-	protected static final String ECORE_FILE_EXTENSION = "ecore";
+	protected static final String ECORE_FILE_EXTENSION = "ecore"; //$NON-NLS-1$
 
 	public ConvertToEcoreAction() {
 		super();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.3 2005/06/03 19:53:36 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -257,11 +257,11 @@ public class GenClassImpl
 			if (UML2GenModelUtil.isOperationsClasses(getGenPackage())
 				&& !getDuplicateGenOperations().isEmpty()) {
 
-				progressMonitor.beginTask("", 1);
+				progressMonitor.beginTask("", 1); //$NON-NLS-1$
 
 				if (!isInterface()) {
 					progressMonitor.subTask(CodeGenEcorePlugin.INSTANCE
-						.getString("_UI_GeneratingJavaClass_message",
+						.getString("_UI_GeneratingJavaClass_message", //$NON-NLS-1$
 							new Object[]{getQualifiedOperationsClassName()}));
 					generate(new SubProgressMonitor(progressMonitor, 1),
 						Generator.EMF_MODEL_PROJECT_STYLE, getGenModel()
@@ -516,7 +516,7 @@ public class GenClassImpl
 		for (Iterator i = redefinedGenOperations.iterator(); i.hasNext();) {
 			GenOperation genOperation = (GenOperation) i.next();
 			declaredGenOperations.put(genOperation.getName()
-				+ genOperation.getParameterTypes(""), genOperation);
+				+ genOperation.getParameterTypes(""), genOperation); //$NON-NLS-1$
 		}
 
 		List duplicateGenOperations = collectGenOperations(null,
@@ -531,7 +531,7 @@ public class GenClassImpl
 		for (Iterator i = duplicateGenOperations.iterator(); i.hasNext();) {
 			GenOperation genOperation = (GenOperation) i.next();
 			declaredGenOperations.put(genOperation.getName()
-				+ genOperation.getParameterTypes(""), genOperation);
+				+ genOperation.getParameterTypes(""), genOperation); //$NON-NLS-1$
 		}
 
 		return new ArrayList(declaredGenOperations.values());
@@ -549,7 +549,7 @@ public class GenClassImpl
 
 				GenOperation genOperation = (GenOperation) j.next();
 				implementedGenOperations.put(genOperation.getName()
-					+ genOperation.getParameterTypes(""), genOperation);
+					+ genOperation.getParameterTypes(""), genOperation); //$NON-NLS-1$
 			}
 
 			for (Iterator j = UML2GenModelUtil.getDuplicateGenOperations(
@@ -557,7 +557,7 @@ public class GenClassImpl
 
 				GenOperation genOperation = (GenOperation) j.next();
 				implementedGenOperations.put(genOperation.getName()
-					+ genOperation.getParameterTypes(""), genOperation);
+					+ genOperation.getParameterTypes(""), genOperation); //$NON-NLS-1$
 			}
 		}
 
@@ -584,11 +584,11 @@ public class GenClassImpl
 	}
 
 	public String getOperationsClassName() {
-		return getName() + "Operations";
+		return getName() + "Operations"; //$NON-NLS-1$
 	}
 
 	public String getQualifiedOperationsClassName() {
-		return UML2GenModelUtil.getOperationsPackageName(getGenPackage()) + "."
+		return UML2GenModelUtil.getOperationsPackageName(getGenPackage()) + "." //$NON-NLS-1$
 			+ getOperationsClassName();
 	}
 
@@ -599,7 +599,7 @@ public class GenClassImpl
 
 			if (!isBlank(prefix)) {
 				return getClassifierID()
-					+ "__"
+					+ "__" //$NON-NLS-1$
 					+ format(genOperation.getName(), '_', prefix, false)
 						.toUpperCase();
 			}
@@ -632,8 +632,8 @@ public class GenClassImpl
 		StringBuffer sb = new StringBuffer();
 
 		String unsettable = genFeature.isUnsettable()
-			? ".Unsettable"
-			: "";
+			? ".Unsettable" //$NON-NLS-1$
+			: ""; //$NON-NLS-1$
 
 		if (genFeature.isMapType()) {
 			return super.getListConstructor(genFeature);
@@ -643,31 +643,31 @@ public class GenClassImpl
 				sb
 					.append(getGenModel()
 						.getImportedName(
-							"org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList"));
+							"org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList")); //$NON-NLS-1$
 				sb.append(unsettable);
-				sb.append("(");
+				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
-				sb.append(".class, this, ");
+				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(getSupersetFeatureIDArray(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
 					reverseFeature));
-				sb.append(")");
+				sb.append(")"); //$NON-NLS-1$
 			} else {
 				sb
 					.append(getGenModel()
 						.getImportedName(
-							"org.eclipse.uml2.common.util.SubsetEObjectContainmentEList"));
+							"org.eclipse.uml2.common.util.SubsetEObjectContainmentEList")); //$NON-NLS-1$
 				sb.append(unsettable);
-				sb.append("(");
+				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
-				sb.append(".class, this, ");
+				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(getSupersetFeatureIDArray(genFeature));
-				sb.append(")");
+				sb.append(")"); //$NON-NLS-1$
 			}
 		} else if (genFeature.isReferenceType()) {
 			if (genFeature.isBidirectional()) {
@@ -676,45 +676,45 @@ public class GenClassImpl
 					sb
 						.append(getGenModel()
 							.getImportedName(
-								"org.eclipse.uml2.common.util.SubsetEObjectWithInverseResolvingEList"));
+								"org.eclipse.uml2.common.util.SubsetEObjectWithInverseResolvingEList")); //$NON-NLS-1$
 				} else {
 					sb
 						.append(getGenModel()
 							.getImportedName(
-								"org.eclipse.uml2.common.util.SubsetEObjectWithInverseEList"));
+								"org.eclipse.uml2.common.util.SubsetEObjectWithInverseEList")); //$NON-NLS-1$
 				}
 				sb.append(unsettable);
 				if (reverseFeature.isListType()) {
-					sb.append(".ManyInverse");
+					sb.append(".ManyInverse"); //$NON-NLS-1$
 				}
-				sb.append("(");
+				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
-				sb.append(".class, this, ");
+				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(getSupersetFeatureIDArray(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
 					reverseFeature));
-				sb.append(")");
+				sb.append(")"); //$NON-NLS-1$
 			} else {
 				if (genFeature.isResolveProxies()) {
 					sb
 						.append(getGenModel()
 							.getImportedName(
-								"org.eclipse.uml2.common.util.SubsetEObjectResolvingEList"));
+								"org.eclipse.uml2.common.util.SubsetEObjectResolvingEList")); //$NON-NLS-1$
 				} else {
 					sb.append(getGenModel().getImportedName(
-						"org.eclipse.uml2.common.util.SubsetEObjectEList"));
+						"org.eclipse.uml2.common.util.SubsetEObjectEList")); //$NON-NLS-1$
 				}
 				sb.append(unsettable);
-				sb.append("(");
+				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
-				sb.append(".class, this, ");
+				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(getSupersetFeatureIDArray(genFeature));
-				sb.append(")");
+				sb.append(")"); //$NON-NLS-1$
 			}
 		} else if (genFeature.isFeatureMapType()) {
 			return super.getListConstructor(genFeature);
@@ -728,8 +728,8 @@ public class GenClassImpl
 		StringBuffer sb = new StringBuffer();
 
 		String unsettable = genFeature.isUnsettable()
-			? ".Unsettable"
-			: "";
+			? ".Unsettable" //$NON-NLS-1$
+			: ""; //$NON-NLS-1$
 
 		if (genFeature.isMapType()) {
 			return super.getListConstructor(genFeature);
@@ -739,31 +739,31 @@ public class GenClassImpl
 				sb
 					.append(getGenModel()
 						.getImportedName(
-							"org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList"));
+							"org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList")); //$NON-NLS-1$
 				sb.append(unsettable);
-				sb.append("(");
+				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
-				sb.append(".class, this, ");
+				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(getSubsetFeatureIDArray(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
 					reverseFeature));
-				sb.append(")");
+				sb.append(")"); //$NON-NLS-1$
 			} else {
 				sb
 					.append(getGenModel()
 						.getImportedName(
-							"org.eclipse.uml2.common.util.SupersetEObjectContainmentEList"));
+							"org.eclipse.uml2.common.util.SupersetEObjectContainmentEList")); //$NON-NLS-1$
 				sb.append(unsettable);
-				sb.append("(");
+				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
-				sb.append(".class, this, ");
+				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(getSubsetFeatureIDArray(genFeature));
-				sb.append(")");
+				sb.append(")"); //$NON-NLS-1$
 			}
 		} else if (genFeature.isReferenceType()) {
 			if (genFeature.isBidirectional()) {
@@ -772,45 +772,45 @@ public class GenClassImpl
 					sb
 						.append(getGenModel()
 							.getImportedName(
-								"org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList"));
+								"org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList")); //$NON-NLS-1$
 				} else {
 					sb
 						.append(getGenModel()
 							.getImportedName(
-								"org.eclipse.uml2.common.util.SupersetEObjectWithInverseEList"));
+								"org.eclipse.uml2.common.util.SupersetEObjectWithInverseEList")); //$NON-NLS-1$
 				}
 				sb.append(unsettable);
 				if (reverseFeature.isListType()) {
-					sb.append(".ManyInverse");
+					sb.append(".ManyInverse"); //$NON-NLS-1$
 				}
-				sb.append("(");
+				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
-				sb.append(".class, this, ");
+				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(getSubsetFeatureIDArray(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
 					reverseFeature));
-				sb.append(")");
+				sb.append(")"); //$NON-NLS-1$
 			} else {
 				if (genFeature.isResolveProxies()) {
 					sb
 						.append(getGenModel()
 							.getImportedName(
-								"org.eclipse.uml2.common.util.SupersetEObjectResolvingEList"));
+								"org.eclipse.uml2.common.util.SupersetEObjectResolvingEList")); //$NON-NLS-1$
 				} else {
 					sb.append(getGenModel().getImportedName(
-						"org.eclipse.uml2.common.util.SupersetEObjectEList"));
+						"org.eclipse.uml2.common.util.SupersetEObjectEList")); //$NON-NLS-1$
 				}
 				sb.append(unsettable);
-				sb.append("(");
+				sb.append("("); //$NON-NLS-1$
 				sb.append(genFeature.getListItemType());
-				sb.append(".class, this, ");
+				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 				sb.append(getSubsetFeatureIDArray(genFeature));
-				sb.append(")");
+				sb.append(")"); //$NON-NLS-1$
 			}
 		} else if (genFeature.isFeatureMapType()) {
 			return super.getListConstructor(genFeature);
@@ -1032,10 +1032,10 @@ public class GenClassImpl
 	public String getSubsetFeatureAccessorArray(GenFeature supersetGenFeature) {
 		StringBuffer sb = new StringBuffer();
 
-		sb.append("new ");
+		sb.append("new "); //$NON-NLS-1$
 		sb.append(getGenModel().getImportedName(
-			"org.eclipse.emf.ecore.EStructuralFeature"));
-		sb.append("[] {");
+			"org.eclipse.emf.ecore.EStructuralFeature")); //$NON-NLS-1$
+		sb.append("[] {"); //$NON-NLS-1$
 
 		Iterator subsetGenFeatures = collectGenFeatures(null,
 			getSubsetGenFeatures(supersetGenFeature), new GenFeatureFilter() {
@@ -1049,14 +1049,14 @@ public class GenClassImpl
 			GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();
 
 			sb.append(subsetGenFeature.getQualifiedFeatureAccessorName());
-			sb.append("()");
+			sb.append("()"); //$NON-NLS-1$
 
 			if (subsetGenFeatures.hasNext()) {
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 			}
 		}
 
-		sb.append("}");
+		sb.append("}"); //$NON-NLS-1$
 
 		return sb.toString();
 	}
@@ -1064,7 +1064,7 @@ public class GenClassImpl
 	protected String getSubsetFeatureIDArray(GenFeature supersetGenFeature) {
 		StringBuffer sb = new StringBuffer();
 
-		sb.append("new int[] {");
+		sb.append("new int[] {"); //$NON-NLS-1$
 
 		Iterator subsetGenFeatures = collectGenFeatures(null,
 			getSubsetGenFeatures(supersetGenFeature), new GenFeatureFilter() {
@@ -1080,11 +1080,11 @@ public class GenClassImpl
 			sb.append(getQualifiedFeatureID(subsetGenFeature));
 
 			if (subsetGenFeatures.hasNext()) {
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 			}
 		}
 
-		sb.append("}");
+		sb.append("}"); //$NON-NLS-1$
 
 		return sb.toString();
 	}
@@ -1123,10 +1123,10 @@ public class GenClassImpl
 	public String getSupersetFeatureAccessorArray(GenFeature subsetGenFeature) {
 		StringBuffer sb = new StringBuffer();
 
-		sb.append("new ");
+		sb.append("new "); //$NON-NLS-1$
 		sb.append(getGenModel().getImportedName(
-			"org.eclipse.emf.ecore.EStructuralFeature"));
-		sb.append("[] {");
+			"org.eclipse.emf.ecore.EStructuralFeature")); //$NON-NLS-1$
+		sb.append("[] {"); //$NON-NLS-1$
 
 		Iterator supersetGenFeatures = collectGenFeatures(null,
 			getSupersetGenFeatures(subsetGenFeature), new GenFeatureFilter() {
@@ -1141,14 +1141,14 @@ public class GenClassImpl
 				.next();
 
 			sb.append(supersetGenFeature.getQualifiedFeatureAccessorName());
-			sb.append("()");
+			sb.append("()"); //$NON-NLS-1$
 
 			if (supersetGenFeatures.hasNext()) {
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 			}
 		}
 
-		sb.append("}");
+		sb.append("}"); //$NON-NLS-1$
 
 		return sb.toString();
 	}
@@ -1156,7 +1156,7 @@ public class GenClassImpl
 	protected String getSupersetFeatureIDArray(GenFeature subsetGenFeature) {
 		StringBuffer sb = new StringBuffer();
 
-		sb.append("new int[] {");
+		sb.append("new int[] {"); //$NON-NLS-1$
 
 		Iterator supersetGenFeatures = collectGenFeatures(null,
 			getSupersetGenFeatures(subsetGenFeature), new GenFeatureFilter() {
@@ -1173,11 +1173,11 @@ public class GenClassImpl
 			sb.append(getQualifiedFeatureID(supersetGenFeature));
 
 			if (supersetGenFeatures.hasNext()) {
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 			}
 		}
 
-		sb.append("}");
+		sb.append("}"); //$NON-NLS-1$
 
 		return sb.toString();
 	}
@@ -1281,9 +1281,9 @@ public class GenClassImpl
 				GenOperation redefinedGenOperation = (GenOperation) j.next();
 
 				if (!(genOperation.getName() + genOperation
-					.getParameterTypes("")).equals(redefinedGenOperation
+					.getParameterTypes("")).equals(redefinedGenOperation //$NON-NLS-1$
 					.getName()
-					+ redefinedGenOperation.getParameterTypes(""))) {
+					+ redefinedGenOperation.getParameterTypes(""))) { //$NON-NLS-1$
 
 					redefinedGenOperations.add(redefinedGenOperation);
 				}
@@ -1318,9 +1318,9 @@ public class GenClassImpl
 				redefinedEcoreOperation)) {
 
 				if (!(genOperation.getName() + genOperation
-					.getParameterTypes("")).equals(redefinedGenOperation
+					.getParameterTypes("")).equals(redefinedGenOperation //$NON-NLS-1$
 					.getName()
-					+ redefinedGenOperation.getParameterTypes(""))) {
+					+ redefinedGenOperation.getParameterTypes(""))) { //$NON-NLS-1$
 
 					redefinitionGenOperations.put(genOperation.getName(),
 						genOperation);
@@ -1340,18 +1340,6 @@ public class GenClassImpl
 				}
 			});
 	}
-
-	//	public boolean isESetFlag(GenFeature genFeature) {
-	//		return super.isESetFlag(genFeature)
-	//			&& !UML2GenModelUtil.isUnion(genFeature)
-	//			&& !isRedefined(genFeature);
-	//	}
-	//
-	//	public boolean isFlag(GenFeature genFeature) {
-	//		return super.isFlag(genFeature)
-	//			&& !UML2GenModelUtil.isUnion(genFeature)
-	//			&& !isRedefined(genFeature);
-	//	}
 
 	public boolean isESetField(GenFeature genFeature) {
 		return super.isESetField(genFeature)

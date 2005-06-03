@@ -114,7 +114,7 @@
 		if (cache != null) {
           <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
 			try {
-				<%=genModel.getImportedName("java.lang.reflect.Method")%> method = getClass().getMethod("<%=genFeature.getGetAccessor()%>", null);
+				<%=genModel.getImportedName("java.lang.reflect.Method")%> method = getClass().getMethod("<%=genFeature.getGetAccessor()%>", null);<%=genModel.getNonNLS()%>
 				<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>) cache.get(eResource(), this, method);
 				if (<%=genFeature.getSafeName()%> == null) {
 					<%=genModel.getImportedName("org.eclipse.emf.common.util.EList")%> union = <%=genFeature.getGetAccessor()%>Helper(new <%=genModel.getImportedName("org.eclipse.emf.common.util.UniqueEList")%>());
