@@ -3,7 +3,7 @@
 
 <!--
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,44 +12,26 @@
  * Contributors: 
  *   IBM - initial API and implementation
  *
- * $Id: plugin.xml,v 1.14 2005/05/18 16:38:32 khussey Exp $
+ * $Id: plugin.xml,v 1.15 2005/06/03 19:25:07 khussey Exp $
  */
 -->
 
-<plugin
-   id="org.eclipse.uml2"
-   name="%pluginName"
-   version="1.1.0"
-   provider-name="%providerName"
-   class="org.eclipse.uml2.UML2Plugin$Implementation">
+<plugin>
 
-   <runtime>
-      <library name="uml2.jar">
-         <export name="*"/>
-      </library>
-   </runtime>
+  <extension
+     point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri="http://www.eclipse.org/uml2/1.0.0/UML"
+       class="org.eclipse.uml2.UML2Package"
+       genModel = "model/UML2.genmodel"/>
+  </extension>
 
-   <requires>
-      <import plugin="org.eclipse.uml2.common" export="true"/>
-      <import plugin="org.eclipse.emf.ecore.xmi" export="true"/>
-      <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.core.resources" optional="true"/>
-   </requires>
-
-   <extension
-         point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="http://www.eclipse.org/uml2/1.0.0/UML"
-            class="org.eclipse.uml2.UML2Package"
-            genModel = "model/UML2.genmodel"/>
-   </extension>
-
-   <extension
-         point="org.eclipse.emf.ecore.extension_parser">
-      <parser
-            type="uml2"
-            class="org.eclipse.uml2.internal.util.UML2ResourceFactoryImpl">
-      </parser>
-   </extension>
+  <extension
+     point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="uml2"
+       class="org.eclipse.uml2.internal.util.UML2ResourceFactoryImpl">
+    </parser>
+  </extension>
 
 </plugin>

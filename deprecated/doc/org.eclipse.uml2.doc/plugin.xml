@@ -3,7 +3,7 @@
 
 <!--
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2004, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,30 +12,21 @@
  * Contributors: 
  *   IBM - initial API and implementation
  *
- * $Id: plugin.xml,v 1.5 2005/03/15 18:47:17 khussey Exp $
+ * $Id: plugin.xml,v 1.6 2005/06/03 19:26:14 khussey Exp $
  */
 -->
 
-<plugin
-   id="org.eclipse.uml2.doc"
-   name="%pluginName"
-   version="1.1.0"
-   provider-name="%providerName">
-
-   <requires>
-      <import plugin="org.eclipse.core.runtime.compatibility"/>
-      <import plugin="org.eclipse.help"/>
-   </requires>
+<plugin>
 
 <!-- ====================================================================== -->
 <!-- Define primary TOC                                                     -->
 <!-- ====================================================================== -->
-   <extension
-         point="org.eclipse.help.toc">
-      <toc
-            file="toc.xml"
-            primary="true">
-      </toc>
-   </extension>
+  <extension
+     point="org.eclipse.help.toc">
+    <toc
+       file="toc.xml"
+       primary="true">
+    </toc>
+  </extension>
 
 </plugin>

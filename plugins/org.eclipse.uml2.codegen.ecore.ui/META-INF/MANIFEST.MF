@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.uml2.codegen.ecore.ui; singleton:=true
+Bundle-Version: 1.1.0
+Bundle-ClassPath: uml2.codegen.ecore.ui.jar
+Bundle-Activator: org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: org.eclipse.uml2.codegen.ecore.genmodel.provider,
+ org.eclipse.uml2.codegen.ecore.ui
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.emf.codegen.ecore.ui,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.eclipse.uml2.codegen.ecore;visibility:=reexport
+Eclipse-AutoStart: true

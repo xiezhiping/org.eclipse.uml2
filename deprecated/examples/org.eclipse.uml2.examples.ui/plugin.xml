@@ -12,31 +12,11 @@
  * Contributors: 
  *   IBM - initial API and implementation
  *
- * $Id: plugin.xml,v 1.16 2005/06/02 14:29:46 khussey Exp $
+ * $Id: plugin.xml,v 1.17 2005/06/03 19:29:26 khussey Exp $
  */
 -->
 
-<plugin
-   id="org.eclipse.uml2.examples.ui"
-   version="1.1.0"
-   name="%pluginName"
-   provider-name="%providerName"
-   class="org.eclipse.uml2.examples.ui.ExamplesUIPlugin$Implementation">
-
-  <requires>
-    <import plugin="org.eclipse.uml2.examples" export="true"/>
-    <import plugin="org.eclipse.uml2.editor" export="true"/>
-    <import plugin="org.eclipse.ui.ide"/>
-    <import plugin="org.eclipse.emf.ecore.editor"/>
-    <import plugin="org.eclipse.core.runtime"/>
-    <import plugin="org.eclipse.core.resources"/>
-  </requires>
-
-  <runtime>
-    <library name="uml2.examples.ui.jar">
-      <export name="*"/>
-    </library>
-  </runtime>
+<plugin>
 
   <extension
      point="org.eclipse.ui.editorActions">

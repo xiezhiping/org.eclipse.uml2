@@ -12,26 +12,11 @@
  * Contributors: 
  *   IBM - initial API and implementation
  *
- * $Id: plugin.xml,v 1.6 2005/05/18 19:47:10 khussey Exp $
+ * $Id: plugin.xml,v 1.7 2005/06/03 19:27:49 khussey Exp $
  */
 -->
 
-<plugin
-   id="org.eclipse.uml2.examples.emof2ecore"
-   name="%pluginName"
-   version="1.1.0"
-   provider-name="%providerName">
-
-  <runtime>
-    <library name="uml2.examples.emof2ecore.jar">
-      <export name="*"/>
-    </library>
-  </runtime>
-
-  <requires>
-    <import plugin="org.eclipse.emf.ecore.editor" optional="true"/>
-    <import plugin="org.eclipse.emf.mapping.ecore2xml"/>
-  </requires>
+<plugin>
 
   <extension
      point = "org.eclipse.emf.ecore.extension_parser">

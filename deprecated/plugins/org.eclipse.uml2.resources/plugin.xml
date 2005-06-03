@@ -3,7 +3,7 @@
 
 <!--
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2004, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,41 +12,34 @@
  * Contributors: 
  *   IBM - initial API and implementation
  *
- * $Id: plugin.xml,v 1.7 2005/05/18 16:44:00 khussey Exp $
+ * $Id: plugin.xml,v 1.8 2005/06/03 19:29:51 khussey Exp $
  */
 -->
 
-<plugin
-   id="org.eclipse.uml2.resources"
-   name="%pluginName"
-   version="1.1.0"
-   provider-name="%providerName">
+<plugin>
 
-   <runtime>
-   </runtime>
+  <extension
+     point="org.eclipse.emf.ecore.uri_mapping">
+    <mapping
+       source="pathmap://UML2_LIBRARIES/"
+       target="platform:/plugin/org.eclipse.uml2.resources/libraries/">
+    </mapping>
+  </extension>
 
-   <extension
-         point="org.eclipse.emf.ecore.uri_mapping">
-      <mapping
-            source="pathmap://UML2_LIBRARIES/"
-            target="platform:/plugin/org.eclipse.uml2.resources/libraries/">
-      </mapping>
-   </extension>
+  <extension
+     point="org.eclipse.emf.ecore.uri_mapping">
+    <mapping
+       source="pathmap://UML2_METAMODELS/"
+       target="platform:/plugin/org.eclipse.uml2.resources/metamodels/">
+    </mapping>
+  </extension>
 
-   <extension
-         point="org.eclipse.emf.ecore.uri_mapping">
-      <mapping
-            source="pathmap://UML2_METAMODELS/"
-            target="platform:/plugin/org.eclipse.uml2.resources/metamodels/">
-      </mapping>
-   </extension>
-
-   <extension
-         point="org.eclipse.emf.ecore.uri_mapping">
-      <mapping
-            source="pathmap://UML2_PROFILES/"
-            target="platform:/plugin/org.eclipse.uml2.resources/profiles/">
-      </mapping>
-   </extension>
+  <extension
+     point="org.eclipse.emf.ecore.uri_mapping">
+    <mapping
+       source="pathmap://UML2_PROFILES/"
+       target="platform:/plugin/org.eclipse.uml2.resources/profiles/">
+    </mapping>
+  </extension>
 
 </plugin>

@@ -3,7 +3,7 @@
 
 <!--
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,57 +12,38 @@
  * Contributors: 
  *   IBM - initial API and implementation
  *
- * $Id: plugin.xml,v 1.15 2005/05/18 16:42:19 khussey Exp $
+ * $Id: plugin.xml,v 1.16 2005/06/03 19:27:28 khussey Exp $
  */
 -->
 
-<plugin
-   id = "org.eclipse.uml2.editor"
-   version = "1.1.0"
-   name = "%pluginName"
-   provider-name = "%providerName"
-   class = "org.eclipse.uml2.presentation.UML2EditorPlugin$Implementation">
+<plugin>
 
-   <requires>
-      <import plugin="org.eclipse.uml2.edit" export="true"/>
-      <import plugin="org.eclipse.ui.ide"/>
-      <import plugin="org.eclipse.emf.edit.ui" export="true"/>
-      <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.core.resources"/>
-   </requires>
+  <extension
+     point = "org.eclipse.ui.newWizards">
+    <category
+       id = "org.eclipse.emf.ecore.Wizard.category.ID"
+       name="%_UI_Wizard_category">
+    </category>
+    <wizard
+       id = "org.eclipse.uml2.presentation.UML2ModelWizardID"
+       name = "%_UI_UML2ModelWizard_label"
+       class = "org.eclipse.uml2.presentation.UML2ModelWizard"
+       category = "org.eclipse.emf.ecore.Wizard.category.ID"
+       icon = "icons/full/etool16/NewUML2.gif">
+      <description>%_UI_UML2ModelWizard_description</description>
+      <selection class = "org.eclipse.core.resources.IResource" />
+    </wizard>
+  </extension>
 
-   <runtime>
-      <library name="uml2.editor.jar">
-        <export name="*"/>
-      </library>
-   </runtime>
-
-   <extension
-      point = "org.eclipse.ui.newWizards">
-      <category
-         id = "org.eclipse.emf.ecore.Wizard.category.ID"
-         name="%_UI_Wizard_category">
-      </category>
-      <wizard
-         id = "org.eclipse.uml2.presentation.UML2ModelWizardID"
-         name = "%_UI_UML2ModelWizard_label"
-         class = "org.eclipse.uml2.presentation.UML2ModelWizard"
-         category = "org.eclipse.emf.ecore.Wizard.category.ID"
-         icon = "icons/full/etool16/NewUML2.gif">
-         <description>%_UI_UML2ModelWizard_description</description>
-         <selection class = "org.eclipse.core.resources.IResource" />
-      </wizard>
-   </extension>
-
-   <extension point = "org.eclipse.ui.editors">
-      <editor
-         id = "org.eclipse.uml2.presentation.UML2EditorID"
-         name = "%_UI_UML2Editor_label"
-         icon = "icons/full/obj16/UML2ModelFile.gif"
-         extensions = "uml2"
-         class = "org.eclipse.uml2.presentation.UML2Editor" 
-         contributorClass="org.eclipse.uml2.presentation.UML2ActionBarContributor" >
-      </editor>
-   </extension>
+  <extension point = "org.eclipse.ui.editors">
+    <editor
+       id = "org.eclipse.uml2.presentation.UML2EditorID"
+       name = "%_UI_UML2Editor_label"
+       icon = "icons/full/obj16/UML2ModelFile.gif"
+       extensions = "uml2"
+       class = "org.eclipse.uml2.presentation.UML2Editor" 
+       contributorClass="org.eclipse.uml2.presentation.UML2ActionBarContributor" >
+    </editor>
+  </extension>
 
 </plugin>

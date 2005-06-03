@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.uml2.importer.rose; singleton:=true
+Bundle-Version: 1.1.0
+Bundle-ClassPath: uml2.importer.rose.jar
+Bundle-Activator: org.eclipse.uml2.importer.rose.RoseImporterPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: org.eclipse.uml2.importer.rose,
+ org.eclipse.uml2.importer.rose.builder,
+ org.eclipse.uml2.importer.rose.ui
+Require-Bundle: org.apache.ant;resolution:=optional,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.emf.ant;resolution:=optional,
+ org.eclipse.emf.codegen.ecore.ui;resolution:=optional,
+ org.eclipse.emf.importer,
+ org.eclipse.emf.importer.rose,
+ org.eclipse.uml2.codegen.ecore;visibility:=reexport
+Eclipse-AutoStart: true
