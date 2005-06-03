@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.10 2005/06/03 20:40:30 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -144,7 +144,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			try {
-				Method method = getClass().getMethod("getSubgroups", null);
+				Method method = getClass().getMethod("getSubgroups", null); //$NON-NLS-1$
 				EList subgroup = (EList) cache.get(eResource(), this, method);
 				if (subgroup == null) {
 					EList union = getSubgroupsHelper(new UniqueEList());
@@ -152,7 +152,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 				}
 				return subgroup;
 			} catch (NoSuchMethodException nsme) {
-				// do nothing
+				// ignore
 			}
 		}
 		EList union = getSubgroupsHelper(new UniqueEList());

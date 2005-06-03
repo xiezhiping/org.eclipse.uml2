@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.18 2005/05/25 15:21:32 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.19 2005/06/03 20:40:30 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -435,7 +435,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			try {
-				Method method = getClass().getMethod("getOwnedMembers", null);
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
 				EList ownedMember = (EList) cache.get(eResource(), this, method);
 				if (ownedMember == null) {
 					EList union = getOwnedMembersHelper(new UniqueEList());
@@ -443,7 +443,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 				}
 				return ownedMember;
 			} catch (NoSuchMethodException nsme) {
-				// do nothing
+				// ignore
 			}
 		}
 		EList union = getOwnedMembersHelper(new UniqueEList());

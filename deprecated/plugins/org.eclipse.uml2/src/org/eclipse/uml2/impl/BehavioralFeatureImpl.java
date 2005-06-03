@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.13 2005/05/18 16:38:26 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.14 2005/06/03 20:40:30 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -691,7 +691,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			try {
-				Method method = getClass().getMethod("getRedefinedElements", null);
+				Method method = getClass().getMethod("getRedefinedElements", null); //$NON-NLS-1$
 				EList redefinedElement = (EList) cache.get(eResource(), this, method);
 				if (redefinedElement == null) {
 					EList union = getRedefinedElementsHelper(new UniqueEList());
@@ -699,7 +699,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 				}
 				return redefinedElement;
 			} catch (NoSuchMethodException nsme) {
-				// do nothing
+				// ignore
 			}
 		}
 		EList union = getRedefinedElementsHelper(new UniqueEList());

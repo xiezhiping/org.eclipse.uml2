@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.21 2005/05/25 15:21:32 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.22 2005/06/03 20:40:30 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -687,7 +687,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			try {
-				Method method = getClass().getMethod("getSubgroups", null);
+				Method method = getClass().getMethod("getSubgroups", null); //$NON-NLS-1$
 				EList subgroup = (EList) cache.get(eResource(), this, method);
 				if (subgroup == null) {
 					EList union = getSubgroupsHelper(new UniqueEList());
@@ -695,7 +695,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 				}
 				return subgroup;
 			} catch (NoSuchMethodException nsme) {
-				// do nothing
+				// ignore
 			}
 		}
 		EList union = getSubgroupsHelper(new UniqueEList());
@@ -782,7 +782,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			try {
-				Method method = getClass().getMethod("getOwnedMembers", null);
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
 				EList ownedMember = (EList) cache.get(eResource(), this, method);
 				if (ownedMember == null) {
 					EList union = getOwnedMembersHelper(new UniqueEList());
@@ -790,7 +790,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 				}
 				return ownedMember;
 			} catch (NoSuchMethodException nsme) {
-				// do nothing
+				// ignore
 			}
 		}
 		EList union = getOwnedMembersHelper(new UniqueEList());

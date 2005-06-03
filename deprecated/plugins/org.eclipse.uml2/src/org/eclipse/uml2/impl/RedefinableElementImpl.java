@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.12 2005/05/18 16:38:27 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.13 2005/06/03 20:40:30 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -216,7 +216,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			try {
-				Method method = getClass().getMethod("getRedefinedElements", null);
+				Method method = getClass().getMethod("getRedefinedElements", null); //$NON-NLS-1$
 				EList redefinedElement = (EList) cache.get(eResource(), this, method);
 				if (redefinedElement == null) {
 					EList union = getRedefinedElementsHelper(new UniqueEList());
@@ -224,7 +224,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 				}
 				return redefinedElement;
 			} catch (NoSuchMethodException nsme) {
-				// do nothing
+				// ignore
 			}
 		}
 		EList union = getRedefinedElementsHelper(new UniqueEList());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.25 2005/05/25 15:21:32 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.26 2005/06/03 20:40:30 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1332,7 +1332,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			try {
-				Method method = getClass().getMethod("getRedefinedElements", null);
+				Method method = getClass().getMethod("getRedefinedElements", null); //$NON-NLS-1$
 				EList redefinedElement = (EList) cache.get(eResource(), this, method);
 				if (redefinedElement == null) {
 					EList union = getRedefinedElementsHelper(new UniqueEList());
@@ -1340,7 +1340,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				}
 				return redefinedElement;
 			} catch (NoSuchMethodException nsme) {
-				// do nothing
+				// ignore
 			}
 		}
 		EList union = getRedefinedElementsHelper(new UniqueEList());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Validator.java,v 1.15 2005/05/18 16:38:32 khussey Exp $
+ * $Id: UML2Validator.java,v 1.16 2005/06/03 20:38:31 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -280,7 +280,7 @@ public class UML2Validator extends EObjectValidator {
 	 * @see org.eclipse.emf.common.util.Diagnostic#getCode()
 	 * @generated
 	 */
-	public static final String DIAGNOSTIC_SOURCE = "org.eclipse.uml2";
+	public static final String DIAGNOSTIC_SOURCE = "org.eclipse.uml2"; //$NON-NLS-1$
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'validate Not Own Self' of 'Element'.
