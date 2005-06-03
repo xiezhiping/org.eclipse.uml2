@@ -122,7 +122,7 @@
 				}
 				return <%=genFeature.getSafeName()%>;
 			} catch (<%=genModel.getImportedName("java.lang.NoSuchMethodException")%> nsme) {
-				// do nothing
+				// ignore
 			}
           <%} else {%>
 			<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>) cache.get(eResource(), this, <%=genFeature.getQualifiedFeatureAccessorName()%>());

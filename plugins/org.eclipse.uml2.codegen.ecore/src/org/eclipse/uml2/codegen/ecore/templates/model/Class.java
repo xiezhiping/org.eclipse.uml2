@@ -1067,7 +1067,7 @@ public class Class
   protected final String TEXT_1049 = " = new ";
   protected final String TEXT_1050 = "(this, union.size(), union.toArray()));" + NL + "\t\t\t\t}" + NL + "\t\t\t\treturn ";
   protected final String TEXT_1051 = ";" + NL + "\t\t\t} catch (";
-  protected final String TEXT_1052 = " nsme) {" + NL + "\t\t\t\t// do nothing" + NL + "\t\t\t}";
+  protected final String TEXT_1052 = " nsme) {" + NL + "\t\t\t\t// ignore" + NL + "\t\t\t}";
   protected final String TEXT_1053 = NL + "\t\t\t";
   protected final String TEXT_1054 = " ";
   protected final String TEXT_1055 = " = (";
