@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.24 2005/06/02 14:04:20 khussey Exp $
+ * $Id: UML2Util.java,v 1.25 2005/06/03 21:02:47 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -1455,9 +1455,9 @@ public class UML2Util {
 					if (DEBUG) {
 						System.out
 							.println(getQualifiedText(eModelElement)
-								+ " is constrained as '"
+								+ " is constrained as '" //$NON-NLS-1$
 								+ constraint.getSpecification().stringValue()
-								+ "'");
+								+ "'"); //$NON-NLS-1$
 					}
 
 					addConstraint(eModelElement, constraint.getName());
@@ -1824,8 +1824,8 @@ public class UML2Util {
 						eOpposite.setTransient(true);
 
 						if (DEBUG) {
-							System.out.println("Made container "
-								+ getQualifiedText(eOpposite) + " transient");
+							System.out.println("Made container " //$NON-NLS-1$
+								+ getQualifiedText(eOpposite) + " transient"); //$NON-NLS-1$
 						}
 					}
 
@@ -1833,8 +1833,8 @@ public class UML2Util {
 						eOpposite.setDerived(true);
 
 						if (DEBUG) {
-							System.out.println("Made opposite "
-								+ getQualifiedText(eOpposite) + " derived");
+							System.out.println("Made opposite " //$NON-NLS-1$
+								+ getQualifiedText(eOpposite) + " derived"); //$NON-NLS-1$
 						}
 					}
 
@@ -2443,7 +2443,7 @@ public class UML2Util {
 
 						if (DEBUG) {
 							System.out.println(getQualifiedText(eModelElement)
-								+ " redefines " + getQualifiedText(eOperation));
+								+ " redefines " + getQualifiedText(eOperation)); //$NON-NLS-1$
 						}
 
 						if (OPTION__PROCESS.equals(options
@@ -2516,7 +2516,7 @@ public class UML2Util {
 							if (DEBUG) {
 								System.out
 									.println(getQualifiedText(eModelElement)
-										+ " redefines "
+										+ " redefines " //$NON-NLS-1$
 										+ getQualifiedText(eStructuralFeature));
 							}
 
@@ -2594,7 +2594,7 @@ public class UML2Util {
 							if (DEBUG) {
 								System.out
 									.println(getQualifiedText(eModelElement)
-										+ " subsets "
+										+ " subsets " //$NON-NLS-1$
 										+ getQualifiedText(eStructuralFeature));
 							}
 
@@ -2660,7 +2660,7 @@ public class UML2Util {
 
 					if (DEBUG) {
 						System.out.println(getQualifiedText(eModelElement)
-							+ " is a union");
+							+ " is a union"); //$NON-NLS-1$
 					}
 
 					if (OPTION__PROCESS.equals(options
@@ -2779,9 +2779,9 @@ public class UML2Util {
 				if (lesserLowerBound != otherETypedElement.getLowerBound()) {
 
 					if (DEBUG) {
-						System.err.println("Changed lower bound of "
-							+ getQualifiedText(otherETypedElement) + " from "
-							+ otherETypedElement.getLowerBound() + " to "
+						System.err.println("Changed lower bound of " //$NON-NLS-1$
+							+ getQualifiedText(otherETypedElement) + " from " //$NON-NLS-1$
+							+ otherETypedElement.getLowerBound() + " to " //$NON-NLS-1$
 							+ lesserLowerBound);
 					}
 
@@ -2791,9 +2791,9 @@ public class UML2Util {
 				if (lesserLowerBound != eTypedElement.getLowerBound()) {
 
 					if (DEBUG) {
-						System.out.println("Changed lower bound of "
-							+ getQualifiedText(eTypedElement) + " from "
-							+ eTypedElement.getLowerBound() + " to "
+						System.out.println("Changed lower bound of " //$NON-NLS-1$
+							+ getQualifiedText(eTypedElement) + " from " //$NON-NLS-1$
+							+ eTypedElement.getLowerBound() + " to " //$NON-NLS-1$
 							+ lesserLowerBound);
 					}
 
@@ -2808,9 +2808,9 @@ public class UML2Util {
 				if (greaterUpperBound != otherETypedElement.getUpperBound()) {
 
 					if (DEBUG) {
-						System.err.println("Changed upper bound of "
-							+ getQualifiedText(otherETypedElement) + " from "
-							+ otherETypedElement.getUpperBound() + " to "
+						System.err.println("Changed upper bound of " //$NON-NLS-1$
+							+ getQualifiedText(otherETypedElement) + " from " //$NON-NLS-1$
+							+ otherETypedElement.getUpperBound() + " to " //$NON-NLS-1$
 							+ greaterUpperBound);
 					}
 
@@ -2820,9 +2820,9 @@ public class UML2Util {
 				if (greaterUpperBound != eTypedElement.getUpperBound()) {
 
 					if (DEBUG) {
-						System.out.println("Changed upper bound of "
-							+ getQualifiedText(eTypedElement) + " from "
-							+ eTypedElement.getUpperBound() + " to "
+						System.out.println("Changed upper bound of " //$NON-NLS-1$
+							+ getQualifiedText(eTypedElement) + " from " //$NON-NLS-1$
+							+ eTypedElement.getUpperBound() + " to " //$NON-NLS-1$
 							+ greaterUpperBound);
 					}
 
@@ -2837,10 +2837,10 @@ public class UML2Util {
 				if (commonEType != otherETypedElement.getEType()) {
 
 					if (DEBUG) {
-						System.err.println("Changed type of "
-							+ getQualifiedText(otherETypedElement) + " from "
+						System.err.println("Changed type of " //$NON-NLS-1$
+							+ getQualifiedText(otherETypedElement) + " from " //$NON-NLS-1$
 							+ getQualifiedText(otherETypedElement.getEType())
-							+ " to " + getQualifiedText(commonEType));
+							+ " to " + getQualifiedText(commonEType)); //$NON-NLS-1$
 					}
 
 					otherETypedElement.setEType(commonEType);
@@ -2849,10 +2849,10 @@ public class UML2Util {
 				if (commonEType != eTypedElement.getEType()) {
 
 					if (DEBUG) {
-						System.out.println("Changed type of "
-							+ getQualifiedText(eTypedElement) + " from "
+						System.out.println("Changed type of " //$NON-NLS-1$
+							+ getQualifiedText(eTypedElement) + " from " //$NON-NLS-1$
 							+ getQualifiedText(eTypedElement.getEType())
-							+ " to " + getQualifiedText(commonEType));
+							+ " to " + getQualifiedText(commonEType)); //$NON-NLS-1$
 					}
 
 					eTypedElement.setEType(commonEType);
@@ -2872,8 +2872,8 @@ public class UML2Util {
 					+ '_' + eNamedElement.getName();
 
 				if (DEBUG) {
-					System.err.println("Qualified "
-						+ getQualifiedText(eNamedElement) + " as "
+					System.err.println("Qualified " //$NON-NLS-1$
+						+ getQualifiedText(eNamedElement) + " as " //$NON-NLS-1$
 						+ qualifiedName);
 				}
 
@@ -4271,7 +4271,7 @@ public class UML2Util {
 			mergedEObjects.add(eObject);
 
 			if (DEBUG) {
-				System.out.println(getQualifiedText(eObject) + "->"
+				System.out.println(getQualifiedText(eObject) + "->" //$NON-NLS-1$
 					+ getQualifiedText(copyEObject));
 			}
 
@@ -5656,7 +5656,7 @@ public class UML2Util {
 			options = new HashMap();
 		}
 
-		return (Collection) new Ecore2UML2Converter().convert(Collections
+		return new Ecore2UML2Converter().convert(Collections
 			.singleton(ePackage), options, diagnostics, context);
 	}
 
@@ -5803,7 +5803,7 @@ public class UML2Util {
 				OPTION__REPORT);
 		}
 
-		return (Collection) new UML22EcoreConverter().convert(Collections
+		return new UML22EcoreConverter().convert(Collections
 			.singleton(package_), options, diagnostics, context);
 	}
 
