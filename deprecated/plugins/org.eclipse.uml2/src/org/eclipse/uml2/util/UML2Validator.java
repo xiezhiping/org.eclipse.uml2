@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Validator.java,v 1.16 2005/06/03 20:38:31 khussey Exp $
+ * $Id: UML2Validator.java,v 1.17 2005/06/06 19:31:34 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -569,6 +569,7 @@ public class UML2Validator extends EObjectValidator {
 	 * @generated
 	 */
 	public UML2Validator() {
+		super();
 	}
 
 	/**

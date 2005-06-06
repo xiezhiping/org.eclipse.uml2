@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ModelWizard.java,v 1.9 2005/05/18 16:42:19 khussey Exp $
+ * $Id: UML2ModelWizard.java,v 1.10 2005/06/06 19:32:46 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -547,9 +547,10 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 		 */
 		protected String getLabel(String typeName) {
 			try {
-				return UML2EditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
+				return UML2EditPlugin.INSTANCE.getString("_UI_" + typeName + "_type"); //$NON-NLS-1$
 			}
 			catch(MissingResourceException mre) {
+				UML2EditorPlugin.INSTANCE.log(mre);
 			}
 			return typeName;
 		}
@@ -562,7 +563,8 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 		protected Collection getEncodings() {
 			if (encodings == null) {
 				encodings = new ArrayList();
-				for (StringTokenizer stringTokenizer = new StringTokenizer(UML2EditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
+				for (StringTokenizer stringTokenizer = new StringTokenizer(UML2EditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) //$NON-NLS-1$
+				{
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
