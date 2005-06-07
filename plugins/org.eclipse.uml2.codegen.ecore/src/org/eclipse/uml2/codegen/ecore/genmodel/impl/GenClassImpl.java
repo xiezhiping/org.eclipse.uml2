@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.3 2005/06/03 19:53:36 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.4 2005/06/07 14:36:03 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -1282,8 +1282,7 @@ public class GenClassImpl
 
 				if (!(genOperation.getName() + genOperation
 					.getParameterTypes("")).equals(redefinedGenOperation //$NON-NLS-1$
-					.getName()
-					+ redefinedGenOperation.getParameterTypes(""))) { //$NON-NLS-1$
+					.getName() + redefinedGenOperation.getParameterTypes(""))) { //$NON-NLS-1$
 
 					redefinedGenOperations.add(redefinedGenOperation);
 				}
@@ -1319,8 +1318,7 @@ public class GenClassImpl
 
 				if (!(genOperation.getName() + genOperation
 					.getParameterTypes("")).equals(redefinedGenOperation //$NON-NLS-1$
-					.getName()
-					+ redefinedGenOperation.getParameterTypes(""))) { //$NON-NLS-1$
+					.getName() + redefinedGenOperation.getParameterTypes(""))) { //$NON-NLS-1$
 
 					redefinitionGenOperations.put(genOperation.getName(),
 						genOperation);

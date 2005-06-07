@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.3 2005/06/01 21:43:44 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.4 2005/06/07 14:36:03 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -801,6 +801,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__IMPORTER_ID = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__IMPORTER_ID;
+
+	/**
+	 * The feature id for the '<em><b>Bundle Manifest</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__BUNDLE_MANIFEST = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST;
 
 	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.3 2005/06/03 19:53:35 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.4 2005/06/07 14:36:03 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -469,6 +469,10 @@ public class GenModelImpl
 				return new Integer(getBooleanFlagsReservedBits());
 			case GenModelPackage.GEN_MODEL__IMPORTER_ID :
 				return getImporterID();
+			case GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST :
+				return isBundleManifest()
+					? Boolean.TRUE
+					: Boolean.FALSE;
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				return getGenPackages();
 			case GenModelPackage.GEN_MODEL__USED_GEN_PACKAGES :
@@ -622,6 +626,9 @@ public class GenModelImpl
 			case GenModelPackage.GEN_MODEL__IMPORTER_ID :
 				setImporterID((String) newValue);
 				return;
+			case GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST :
+				setBundleManifest(((Boolean) newValue).booleanValue());
+				return;
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				getGenPackages().clear();
 				getGenPackages().addAll((Collection) newValue);
@@ -773,6 +780,9 @@ public class GenModelImpl
 			case GenModelPackage.GEN_MODEL__IMPORTER_ID :
 				setImporterID(IMPORTER_ID_EDEFAULT);
 				return;
+			case GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST :
+				setBundleManifest(BUNDLE_MANIFEST_EDEFAULT);
+				return;
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				getGenPackages().clear();
 				return;
@@ -922,6 +932,8 @@ public class GenModelImpl
 				return IMPORTER_ID_EDEFAULT == null
 					? importerID != null
 					: !IMPORTER_ID_EDEFAULT.equals(importerID);
+			case GenModelPackage.GEN_MODEL__BUNDLE_MANIFEST :
+				return bundleManifest != BUNDLE_MANIFEST_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__GEN_PACKAGES :
 				return genPackages != null && !genPackages.isEmpty();
 			case GenModelPackage.GEN_MODEL__USED_GEN_PACKAGES :
