@@ -246,7 +246,7 @@
 		    ShowCompartmentStereotypes 	TRUE
 		    IncludeAttribute 	TRUE
 		    IncludeOperation 	TRUE
-		    location   	(160, 1184)
+		    location   	(160, 1216)
 		    font       	(object Font
 			size       	10
 			face       	"Arial"
@@ -258,7 +258,7 @@
 			default_color 	TRUE)
 		    label      	(object ItemLabel
 			Parent_View 	@1
-			location   	(62, 1132)
+			location   	(62, 1164)
 			fill_color 	13434879
 			nlines     	1
 			max_width  	196
@@ -276,7 +276,7 @@
 		    ShowCompartmentStereotypes 	TRUE
 		    IncludeAttribute 	TRUE
 		    IncludeOperation 	TRUE
-		    location   	(688, 2592)
+		    location   	(688, 2640)
 		    font       	(object Font
 			size       	10
 			face       	"Arial"
@@ -288,7 +288,7 @@
 			default_color 	TRUE)
 		    label      	(object ItemLabel
 			Parent_View 	@2
-			location   	(360, 2411)
+			location   	(360, 2459)
 			fill_color 	13434879
 			nlines     	1
 			max_width  	656
@@ -300,7 +300,7 @@
 		    quidu      	"418FC78200E5"
 		    compartment 	(object Compartment
 			Parent_View 	@2
-			location   	(360, 2472)
+			location   	(360, 2520)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -314,7 +314,7 @@
 			fill_color 	16777215
 			anchor     	2
 			nlines     	6
-			max_width  	662)
+			max_width  	653)
 		    width      	674
 		    height     	386
 		    annotation 	8
@@ -330,7 +330,7 @@
 		    ShowCompartmentStereotypes 	TRUE
 		    IncludeAttribute 	TRUE
 		    IncludeOperation 	TRUE
-		    location   	(1216, 1184)
+		    location   	(1216, 1216)
 		    font       	(object Font
 			size       	10
 			face       	"Arial"
@@ -342,10 +342,10 @@
 			default_color 	TRUE)
 		    label      	(object ItemLabel
 			Parent_View 	@4
-			location   	(575, 130)
+			location   	(578, 137)
 			fill_color 	13434879
 			nlines     	1
-			max_width  	1282
+			max_width  	1276
 			justify    	0
 			label      	"GenModel")
 		    icon_style 	"Icon"
@@ -354,7 +354,7 @@
 		    quidu      	"3C175881028E"
 		    compartment 	(object Compartment
 			Parent_View 	@4
-			location   	(575, 235)
+			location   	(578, 242)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -367,10 +367,10 @@
 			icon_style 	"Icon"
 			fill_color 	16777215
 			anchor     	2
-			nlines     	40
-			max_width  	1284)
-		    width      	1300
-		    height     	2132
+			nlines     	41
+			max_width  	1278)
+		    width      	1294
+		    height     	2182
 		    annotation 	8
 		    autoResize 	TRUE)
 		(object InheritView "" @5
@@ -385,7 +385,7 @@
 			default_color 	TRUE)
 		    stereotype 	(object SegLabel @6
 			Parent_View 	@5
-			location   	(986, 2334)
+			location   	(982, 2389)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -444,23 +444,6 @@
 		    line_color 	3342489
 		    fill_color 	13434879
 		    quidu      	"418FC80F0106"
-		    compartment 	(object Compartment
-			Parent_View 	@7
-			location   	(710, 1171)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			icon_style 	"Icon"
-			fill_color 	16777215
-			anchor     	2
-			nlines     	3
-			max_width  	594)
 		    width      	614
 		    height     	236
 		    annotation 	8
@@ -491,23 +474,6 @@
 		    line_color 	3342489
 		    fill_color 	13434879
 		    quidu      	"3C17589A01D3"
-		    compartment 	(object Compartment
-			Parent_View 	@8
-			location   	(69, 245)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			icon_style 	"Icon"
-			fill_color 	16777215
-			anchor     	2
-			nlines     	14
-			max_width  	979)
 		    width      	1000
 		    height     	832
 		    annotation 	8
@@ -1786,23 +1752,6 @@
 		    line_color 	3342489
 		    fill_color 	13434879
 		    quidu      	"418FC7B70394"
-		    compartment 	(object Compartment
-			Parent_View 	@59
-			location   	(77, 508)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			icon_style 	"Icon"
-			fill_color 	16777215
-			anchor     	2
-			nlines     	2
-			max_width  	909)
 		    width      	920
 		    height     	186
 		    annotation 	8
