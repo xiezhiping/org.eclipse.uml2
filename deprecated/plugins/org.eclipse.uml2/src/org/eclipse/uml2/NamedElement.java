@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.12 2005/06/02 15:02:47 khussey Exp $
+ * $Id: NamedElement.java,v 1.13 2005/06/07 17:31:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -350,14 +350,14 @@ public interface NamedElement extends TemplateableElement{
 
 	// <!-- begin-custom-operations -->
 
-	public static final String SEPARATOR = "::"; //$NON-NLS-1$
+	static final String SEPARATOR = "::"; //$NON-NLS-1$
 
 	/**
 	 * Retrieves a localized label for this named element.
 	 * 
 	 * @return A localized label for this named element.
 	 */
-	public String getLabel();
+	String getLabel();
 
 	/**
 	 * Retrieves a label for this named element, localized if indicated.
@@ -366,7 +366,20 @@ public interface NamedElement extends TemplateableElement{
 	 *            Whether the label should be localized.
 	 * @return A (localized) label for this named element.
 	 */
-	public String getLabel(boolean localize);
+	String getLabel(boolean localize);
+
+	/**
+	 * Creates a dependency between this named element and the specified
+	 * supplier, owned by this named element's nearest package.
+	 * 
+	 * @param supplier
+	 *            The supplier for the dependency.
+	 * @return The new dependency.
+	 * @exception IllegalArgumentException
+	 *                If this named element is not directly or indirectly owned
+	 *                by a package.
+	 */
+	Dependency createDependency(NamedElement supplier);
 
 	// <!-- end-custom-operations -->
 

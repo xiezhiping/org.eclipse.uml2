@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.12 2005/05/18 21:13:19 khussey Exp $
+ * $Id: Association.java,v 1.13 2005/06/07 17:31:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -205,7 +205,7 @@ public interface Association extends Classifier, Relationship{
 	 * @return <code>true</code> if this association is binary;
 	 *         <code>false</code> otherwise.
 	 */
-	public boolean isBinary();
+	boolean isBinary();
 	
 	// <!-- end-custom-operations -->
 

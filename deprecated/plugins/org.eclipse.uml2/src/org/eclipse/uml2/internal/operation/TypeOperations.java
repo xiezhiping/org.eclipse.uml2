@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.7 2005/05/30 15:21:18 khussey Exp $
+ * $Id: TypeOperations.java,v 1.8 2005/06/07 17:31:26 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -82,7 +82,7 @@ public final class TypeOperations extends UML2Operations {
 	/**
 	 * Creates a(n) (binary) association between the specified types, with the
 	 * specified navigabilities, aggregations, names, lower bounds, and upper
-	 * bounds, and owned by the first type's package.
+	 * bounds, and owned by the first type's nearest package.
 	 * 
 	 * @param type1
 	 *            The type at the first end.
@@ -124,7 +124,9 @@ public final class TypeOperations extends UML2Operations {
 
 		validateTypeAndBounds(type2, end2LowerBound, end2UpperBound);
 
-		if (null == type1.getNearestPackage()) {
+		org.eclipse.uml2.Package package_ = type1.getNearestPackage();
+		
+		if (null == package_) {
 			throw new IllegalArgumentException(String.valueOf(type1));
 		}
 
@@ -144,7 +146,7 @@ public final class TypeOperations extends UML2Operations {
 			throw new IllegalArgumentException(String.valueOf(end2Aggregation));
 		}
 
-		Association association = (Association) type1.getNearestPackage()
+		Association association = (Association) package_
 			.createOwnedMember(UML2Package.eINSTANCE.getAssociation());
 
 		createAssociationEnd(association, type1, end1IsNavigable,

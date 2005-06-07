@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.8 2005/06/02 15:02:47 khussey Exp $
+ * $Id: Type.java,v 1.9 2005/06/07 17:31:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -80,7 +80,7 @@ public interface Type extends PackageableElement{
 	/**
 	 * Creates a(n) (binary) association between this type and the specified
 	 * other type, with the specified navigabilities, aggregations, names, lower
-	 * bounds, and upper bounds, and owned by this type's package.
+	 * bounds, and upper bounds, and owned by this type's nearest package.
 	 * 
 	 * @param thisEndIsNavigable The navigability of this end.
 	 * @param thisEndAggregation The aggregation of this end.
@@ -97,7 +97,7 @@ public interface Type extends PackageableElement{
 	 * @exception IllegalArgumentException If any of the navigabilities, lower
 	 *                                     bounds, or upper bounds are invalid.
 	 */
-	public Association createAssociation(
+	Association createAssociation(
 		boolean thisEndIsNavigable,
 		AggregationKind thisEndAggregation,
 		String thisEndName,

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.13 2005/06/02 15:02:47 khussey Exp $
+ * $Id: Element.java,v 1.14 2005/06/07 17:31:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -196,8 +196,7 @@ public interface Element extends EModelElement{
 
 	/**
 	 * Creates an {@link org.eclipse.emf.ecore.EAnnotation}with the specified
-	 * source and this element as its Ecore model element. <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * source and this element as its Ecore model element.
 	 * 
 	 * @param source
 	 *            The source of the {@link org.eclipse.emf.ecore.EAnnotation}to
@@ -205,7 +204,7 @@ public interface Element extends EModelElement{
 	 * @return The new {@link org.eclipse.emf.ecore.EAnnotation}.
 	 * @see #getEAnnotations()
 	 */
-	public EAnnotation createEAnnotation(String source);
+	EAnnotation createEAnnotation(String source);
 
 	/**
 	 * Determines whether the specified stereotype is applied to this element.
@@ -215,7 +214,7 @@ public interface Element extends EModelElement{
 	 * @return <code>true</code> if the stereotype is applied to this element;
 	 *         <code>false</code> otherwise.
 	 */
-	public boolean isApplied(Stereotype stereotype);
+	boolean isApplied(Stereotype stereotype);
 
 	/**
 	 * Determines whether the specified stereotype is required for this element.
@@ -225,7 +224,7 @@ public interface Element extends EModelElement{
 	 * @return <code>true</code> if the stereotype is required for this
 	 *         element; <code>false</code> otherwise.
 	 */
-	public boolean isRequired(Stereotype stereotype);
+	boolean isRequired(Stereotype stereotype);
 
 	/**
 	 * Retrieves the set of stereotypes that are applicable to this element,
@@ -233,7 +232,7 @@ public interface Element extends EModelElement{
 	 * 
 	 * @return The stereotypes applicable to this element.
 	 */
-	public Set getApplicableStereotypes();
+	Set getApplicableStereotypes();
 
 	/**
 	 * Retrieves the stereotype with the specified qualified name that is
@@ -244,14 +243,14 @@ public interface Element extends EModelElement{
 	 *            The qualified name of the applicable stereotype to retrieve.
 	 * @return The applicable stereotype with the specified qualified name.
 	 */
-	public Stereotype getApplicableStereotype(String qualifiedStereotypeName);
+	Stereotype getApplicableStereotype(String qualifiedStereotypeName);
 
 	/**
 	 * Retrieves the set of stereotypes applied to this element.
 	 * 
 	 * @return The stereotypes applied to this element.
 	 */
-	public Set getAppliedStereotypes();
+	Set getAppliedStereotypes();
 
 	/**
 	 * Retrieves the stereotype with the specified qualified name that is
@@ -262,7 +261,7 @@ public interface Element extends EModelElement{
 	 *            The qualified name of the applied stereotype to retrieve.
 	 * @return The applied stereotype with the specified qualified name.
 	 */
-	public Stereotype getAppliedStereotype(String qualifiedStereotypeName);
+	Stereotype getAppliedStereotype(String qualifiedStereotypeName);
 
 	/**
 	 * Applies the specified stereotype to this element.
@@ -273,7 +272,7 @@ public interface Element extends EModelElement{
 	 *             If the stereotype is already applied or is not applicable to
 	 *             this element.
 	 */
-	public void apply(Stereotype stereotype);
+	void apply(Stereotype stereotype);
 
 	/**
 	 * Unapplies the specified stereotype from this element.
@@ -284,7 +283,7 @@ public interface Element extends EModelElement{
 	 *             If the stereotype is required or is not applied to this
 	 *             element.
 	 */
-	public void unapply(Stereotype stereotype);
+	void unapply(Stereotype stereotype);
 
 	/**
 	 * Retrieves the value of the property with the specified name from the
@@ -299,7 +298,7 @@ public interface Element extends EModelElement{
 	 *             If the stereotype is not applied to this element or the
 	 *             property does not exist.
 	 */
-	public Object getValue(Stereotype stereotype, String propertyName);
+	Object getValue(Stereotype stereotype, String propertyName);
 
 	/**
 	 * Sets the value of the property with the specified name in the specified
@@ -315,8 +314,7 @@ public interface Element extends EModelElement{
 	 *             If the stereotype is not applied to this element or the
 	 *             property does not exist.
 	 */
-	public void setValue(Stereotype stereotype, String propertyName,
-			Object value);
+	void setValue(Stereotype stereotype, String propertyName, Object value);
 
 	/**
 	 * Determines whether this element has a (non-default) value for the
@@ -330,14 +328,14 @@ public interface Element extends EModelElement{
 	 *         (non-default) value; <code>false</code> otherwise.
 	 */
 	boolean hasValue(Stereotype stereotype, String propertyName);
-	
+
 	/**
 	 * Retrieves the model that contains (either directly or indirectly) this
 	 * element.
 	 * 
 	 * @return The model containing this element, or <code>null</code>.
 	 */
-	public Model getModel();
+	Model getModel();
 
 	/**
 	 * Retrieves the nearest package that contains (either directly or
@@ -346,7 +344,7 @@ public interface Element extends EModelElement{
 	 * @return The nearest package containing this element, the element itself,
 	 *         or <code>null</code>.
 	 */
-	public org.eclipse.uml2.Package getNearestPackage();
+	org.eclipse.uml2.Package getNearestPackage();
 
 	/**
 	 * Destroys this element by removing all usage cross references to it (from
@@ -358,7 +356,7 @@ public interface Element extends EModelElement{
 	 * be removed (since references can exist in other resources that don't
 	 * belong to the same resource set).
 	 */
-	public void destroy();
+	void destroy();
 
 	/**
 	 * Retrieves the version of the specified stereotype that is applied to this
@@ -369,14 +367,14 @@ public interface Element extends EModelElement{
 	 * @return The version of the stereotype, or <code>null</code> if not
 	 *         applied.
 	 */
-	public String getAppliedVersion(Stereotype stereotype);
+	String getAppliedVersion(Stereotype stereotype);
 
 	/**
 	 * Retrieves the set of keywords for this element.
 	 * 
 	 * @return The keywords for this element.
 	 */
-	public Set getKeywords();
+	Set getKeywords();
 
 	/**
 	 * Determines whether this element has the specified keyword.
@@ -386,7 +384,7 @@ public interface Element extends EModelElement{
 	 * @return <code>true</code> if this element has the specified keyword;
 	 *         <code>false</code> otherwise.
 	 */
-	public boolean hasKeyword(String keyword);
+	boolean hasKeyword(String keyword);
 
 	/**
 	 * Adds the specified keyword to this element.
@@ -396,7 +394,7 @@ public interface Element extends EModelElement{
 	 * @throws IllegalArgumentException
 	 *             If the keyword is invalid (i.e. empty).
 	 */
-	public void addKeyword(String keyword);
+	void addKeyword(String keyword);
 
 	/**
 	 * Removes the specified keyword from this element.
@@ -406,7 +404,7 @@ public interface Element extends EModelElement{
 	 * @throws IllegalArgumentException
 	 *             If this element does not have the keyword.
 	 */
-	public void removeKeyword(String keyword);
+	void removeKeyword(String keyword);
 
 	// <!-- end-custom-operations -->
 

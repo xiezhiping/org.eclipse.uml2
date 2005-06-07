@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.17 2005/05/30 15:21:18 khussey Exp $
+ * $Id: Class.java,v 1.18 2005/06/07 17:31:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -298,7 +298,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 * @return <code>true</code> if this class is stereotyped as a metaclass;
 	 *         <code>false</code> otherwise.
 	 */
-	public boolean isMetaclass();
+	boolean isMetaclass();
 
 	/**
 	 * Creates a property with the specified name, type, lower bound, and upper

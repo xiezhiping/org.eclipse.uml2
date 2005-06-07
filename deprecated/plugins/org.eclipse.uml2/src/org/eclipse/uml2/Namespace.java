@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.10 2005/06/02 15:02:47 khussey Exp $
+ * $Id: Namespace.java,v 1.11 2005/06/07 17:31:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -403,14 +403,14 @@ public interface Namespace extends NamedElement{
 	 * @exception IllegalArgumentException If this namespace already imports the
 	 *                                     element.
 	 */
-	public void importElement(VisibilityKind visibility, PackageableElement element);
+	void importElement(VisibilityKind visibility, PackageableElement element);
 
 	/**
 	 * Retrieves the set of packages imported by this namespace.
 	 * 
 	 * @return The packages imported by this namespace.
 	 */
-	public Set getImportedPackages();
+	Set getImportedPackages();
 
 	/**
 	 * Imports the specified package into this namespace with the specified
@@ -421,7 +421,7 @@ public interface Namespace extends NamedElement{
 	 * @exception IllegalArgumentException If this namespace already imports the
 	 *                                     package.
 	 */
-	public void importPackage(VisibilityKind visibility, org.eclipse.uml2.Package package_);
+	void importPackage(VisibilityKind visibility, org.eclipse.uml2.Package package_);
 
 	// <!-- end-custom-operations -->
 

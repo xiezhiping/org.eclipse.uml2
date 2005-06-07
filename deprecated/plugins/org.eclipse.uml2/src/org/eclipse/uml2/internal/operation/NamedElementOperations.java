@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.10 2005/05/18 16:38:31 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.11 2005/06/07 17:31:26 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.Dependency;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.UML2Package;
@@ -351,6 +352,45 @@ public final class NamedElementOperations extends UML2Operations {
 		}
 
 		return label;
+	}
+
+	/**
+	 * Creates a dependency between the specified client and supplier, owned by
+	 * the client's nearest package.
+	 * 
+	 * @param client
+	 *            The client for the dependency.
+	 * @param supplier
+	 *            The supplier for the dependency.
+	 * @return The new dependency.
+	 * @exception IllegalArgumentException
+	 *                If the client is not directly or indirectly owned by a
+	 *                package.
+	 */
+	public static Dependency createDependency(NamedElement client,
+			NamedElement supplier) {
+
+		if (null == client) {
+			throw new IllegalArgumentException(String.valueOf(client));
+		}
+
+		org.eclipse.uml2.Package package_ = client.getNearestPackage();
+
+		if (null == package_) {
+			throw new IllegalArgumentException(String.valueOf(client));
+		}
+
+		if (null == supplier) {
+			throw new IllegalArgumentException(String.valueOf(supplier));
+		}
+
+		Dependency dependency = (Dependency) package_
+			.createOwnedMember(UML2Package.eINSTANCE.getDependency());
+
+		dependency.getClients().add(client);
+		dependency.getSuppliers().add(supplier);
+
+		return dependency;
 	}
 
 	// <!-- end-custom-operations -->
