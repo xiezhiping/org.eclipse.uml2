@@ -184,7 +184,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EReference" name="namespace" eType="#//Namespace"
-          changeable="false" transient="true" derived="true" eOpposite="#//Namespace/@eAnnotations.1/ownedMember">
+          changeable="false" transient="true" derived="true" eOpposite="#//Namespace/%duplicates%/ownedMember">
         <eAnnotations source="union"/>
         <eAnnotations source="subsets" references="#//Element/owner"/>
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -270,7 +270,7 @@
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EReference" name="ownedMember" ordered="false" upperBound="-1"
           eType="#//NamedElement" changeable="false" transient="true" derived="true"
-          eOpposite="#//NamedElement/@eAnnotations.1/namespace">
+          eOpposite="#//NamedElement/%duplicates%/namespace">
         <eAnnotations source="union"/>
         <eAnnotations source="subsets" references="#//Element/ownedElement #//Namespace/member"/>
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -330,7 +330,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRule" ordered="false"
         upperBound="-1" eType="#//Constraint" containment="true" eOpposite="#//Constraint/namespace">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies a set of Constraints owned by this Namespace. Subsets Namespace::ownedMember."/>
       </eAnnotations>
@@ -516,21 +516,21 @@
         <eAnnotations source="redefines" references="#//Classifier/inherit"/>
         <eParameters name="inhs" eType="#//Set"/>
       </contents>
+      <contents xsi:type="ecore:EAttribute" name="isAbstract" eType="#//Boolean" defaultValueLiteral="false">
+        <eAnnotations source="redefines" references="#//Classifier/isAbstract"/>
+      </contents>
       <contents xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
           eType="#//Property" containment="true" eOpposite="#//Property/class_">
-        <eAnnotations source="subsets" references="#//Classifier/attribute #//Namespace/@eAnnotations.1/ownedMember"/>
+        <eAnnotations source="subsets" references="#//Classifier/attribute #//Namespace/%duplicates%/ownedMember"/>
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The attributes (i.e. the properties) owned by the class. The association is ordered. Subsets Classifier::attribute and Namespace::ownedMember."/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//StructuredClassifier/ownedAttribute"/>
       </contents>
-      <contents xsi:type="ecore:EAttribute" name="isAbstract" eType="#//Boolean" defaultValueLiteral="false">
-        <eAnnotations source="redefines" references="#//Classifier/isAbstract"/>
-      </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedOperation" upperBound="-1"
         eType="#//Operation" containment="true" eOpposite="#//Operation/class_">
-      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The operations owned by the class. The association is ordered. Subsets Classifier::feature and Namespace::ownedMember."/>
       </eAnnotations>
@@ -548,7 +548,7 @@
         derived="true" eOpposite="#//Extension/metaclass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedClassifier" upperBound="-1"
         eType="#//Classifier" containment="true">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References all the Classifiers that are defined (nested) within the Class. Subsets Element:: ownedMember."/>
       </eAnnotations>
@@ -560,7 +560,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedReception" ordered="false"
         upperBound="-1" eType="#//Reception" containment="true">
-      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Receptions that objects of this class are willing to accept. (Specializes Namespace.owned- Member and Classifier.feature.)"/>
       </eAnnotations>
@@ -578,7 +578,7 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="package" eType="#//Package"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//Package/ownedType">
-      <eAnnotations source="subsets" references="#//NamedElement/@eAnnotations.1/namespace"/>
+      <eAnnotations source="subsets" references="#//NamedElement/%duplicates%/namespace"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the owning package of a package. Subsets NamedElement::namespace."/>
       </eAnnotations>
@@ -676,7 +676,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class_" eType="#//Class"
         changeable="false" volatile="true" transient="true">
-      <eAnnotations source="subsets" references="#//NamedElement/@eAnnotations.1/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//NamedElement/%duplicates%/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//Property"
         changeable="false" volatile="true" transient="true" derived="true"/>
@@ -688,20 +688,20 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningAssociation" eType="#//Association"
         transient="true" eOpposite="#//Association/ownedEnd">
-      <eAnnotations source="subsets" references="#//Property/association #//NamedElement/@eAnnotations.1/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//Property/association #//NamedElement/%duplicates%/namespace #//Feature/featuringClassifier"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the owning association of this property. Subsets Property::association, NamedElement::namespace, Feature::featuringClassifier, and RedefinableElement:: redefinitionContext."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedProperty" ordered="false"
         upperBound="-1" eType="#//Property">
-      <eAnnotations source="subsets" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subsettedProperty" ordered="false"
         upperBound="-1" eType="#//Property"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" eType="#//DataType"
         transient="true" eOpposite="#//DataType/ownedAttribute">
-      <eAnnotations source="subsets" references="#//NamedElement/@eAnnotations.1/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//NamedElement/%duplicates%/namespace #//Feature/featuringClassifier"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Property. Subsets NamedElement::namespace, Feature::featuringClassifier, and Property::classifier."/>
       </eAnnotations>
@@ -739,12 +739,6 @@
       <details key="documentation" value="An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EOperation" name="upper" eType="#//UnlimitedNatural">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;if returnResult->size() = 1 then returnResult->any().upper else Set{} endif&#xD;&#xA;&lt;/code>"/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//MultiplicityElement/upper"/>
-      </contents>
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;(redefinee.oclIsKindOf(Operation) and&#xD;&#xA;    let op: Operation = redefinee.oclAsType(Operation) in&#xD;&#xA;        self.formalParameter.size() = op.formalParameter.size() and&#xD;&#xA;        self.returnResult.size() = op.returnResult.size() and&#xD;&#xA;        forAll(i | op.formalParameter[i].type.conformsTo(self.formalParameter[i].type)) and&#xD;&#xA;        forAll(i | op.returnResult[i].type.conformsTo(self.returnResult[i].type))&#xD;&#xA;)&#xD;&#xA;&lt;/code>"/>
@@ -752,11 +746,24 @@
         <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
         <eParameters name="redefinee" eType="#//RedefinableElement"/>
       </contents>
+      <contents xsi:type="ecore:EOperation" name="upper" eType="#//UnlimitedNatural">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;if returnResult->size() = 1 then returnResult->any().upper else Set{} endif&#xD;&#xA;&lt;/code>"/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//MultiplicityElement/upper"/>
+      </contents>
       <contents xsi:type="ecore:EOperation" name="lower" eType="#//Integer">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;if returnResult->size() = 1 then returnResult->any().lower else Set{} endif&#xD;&#xA;&lt;/code>"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//MultiplicityElement/lower"/>
+      </contents>
+      <contents xsi:type="ecore:EAttribute" name="isUnique" eType="#//Boolean" changeable="false"
+          volatile="true" transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Specifies whether the return parameter is unique or not, if present. This is derived."/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//MultiplicityElement/isUnique"/>
       </contents>
       <contents xsi:type="ecore:EAttribute" name="upper" eType="#//UnlimitedNatural"
           changeable="false" volatile="true" transient="true" derived="true">
@@ -772,27 +779,6 @@
         </eAnnotations>
         <eAnnotations source="redefines" references="#//TypedElement/type"/>
       </contents>
-      <contents xsi:type="ecore:EReference" name="raisedException" ordered="false"
-          upperBound="-1" eType="#//Type">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="References the Types representing exceptions that may be raised during an invocation of this operation. Redefines Basic::Operation.raisedException and BehavioralFeature. raisedException."/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//BehavioralFeature/raisedException"/>
-      </contents>
-      <contents xsi:type="ecore:EAttribute" name="isUnique" eType="#//Boolean" changeable="false"
-          volatile="true" transient="true" derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Specifies whether the return parameter is unique or not, if present. This is derived."/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//MultiplicityElement/isUnique"/>
-      </contents>
-      <contents xsi:type="ecore:EAttribute" name="isOrdered" eType="#//Boolean" changeable="false"
-          volatile="true" transient="true" derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Specifies whether the return parameter is ordered or not, if present. This is derived."/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//MultiplicityElement/isOrdered"/>
-      </contents>
       <contents xsi:type="ecore:EAttribute" name="lower" eType="#//Integer" changeable="false"
           volatile="true" transient="true" derived="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -806,6 +792,20 @@
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="the formal parameters for this Operation. Redefines BehavioralFeature::formal- Parameter."/>
         </eAnnotations>
+      </contents>
+      <contents xsi:type="ecore:EReference" name="raisedException" ordered="false"
+          upperBound="-1" eType="#//Type">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="References the Types representing exceptions that may be raised during an invocation of this operation. Redefines Basic::Operation.raisedException and BehavioralFeature. raisedException."/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//BehavioralFeature/raisedException"/>
+      </contents>
+      <contents xsi:type="ecore:EAttribute" name="isOrdered" eType="#//Boolean" changeable="false"
+          volatile="true" transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Specifies whether the return parameter is ordered or not, if present. This is derived."/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//MultiplicityElement/isOrdered"/>
       </contents>
     </eAnnotations>
     <eOperations name="type_of_result" eType="#//Boolean">
@@ -841,7 +841,7 @@
         eType="#//Parameter" containment="true" eOpposite="#//Parameter/operation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class_" eType="#//Class"
         transient="true" eOpposite="#//Class/ownedOperation">
-      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/@eAnnotations.1/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/%duplicates%/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isQuery" eType="#//Boolean"
         defaultValueLiteral="false">
@@ -851,32 +851,32 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" eType="#//DataType"
         transient="true" eOpposite="#//DataType/ownedOperation">
-      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/@eAnnotations.1/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/%duplicates%/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="precondition" ordered="false"
         upperBound="-1" eType="#//Constraint" resolveProxies="false">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember #//Namespace/ownedRule"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember #//Namespace/ownedRule"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An optional set of Constraints on the state of the system when the Operation is invoked. Subsets Namespace::ownedMember."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postcondition" ordered="false"
         upperBound="-1" eType="#//Constraint" resolveProxies="false">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember #//Namespace/ownedRule"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember #//Namespace/ownedRule"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An optional set of Constraints specifying the state of the system when the Operation is completed. Subsets Namespace::ownedMember."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedOperation" ordered="false"
         upperBound="-1" eType="#//Operation">
-      <eAnnotations source="subsets" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="the Operations that are redefined by this Operation. Subsets RedefinableElement. redefinedElement."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" eType="#//Constraint"
         resolveProxies="false">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember #//Namespace/ownedRule"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember #//Namespace/ownedRule"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="optional Constraint on the result values of an invocation of this Operation. Subsets Namespace::ownedMember."/>
       </eAnnotations>
@@ -898,7 +898,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="#//Operation"
         transient="true" eOpposite="#//Operation/ownedParameter">
-      <eAnnotations source="subsets" references="#//NamedElement/@eAnnotations.1/namespace"/>
+      <eAnnotations source="subsets" references="#//NamedElement/%duplicates%/namespace"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the Operation for which this is a formal parameter. Subsets NamedElement:: namespace."/>
       </eAnnotations>
@@ -967,7 +967,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestingPackage" eType="#//Package"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//Package/nestedPackage">
-      <eAnnotations source="subsets" references="#//NamedElement/@eAnnotations.1/namespace"/>
+      <eAnnotations source="subsets" references="#//NamedElement/%duplicates%/namespace"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedType" ordered="false"
         upperBound="-1" eType="#//Type" changeable="false" volatile="true" transient="true"
@@ -982,7 +982,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the members that are owned by this Package. Redefines Namespace::ownedMember."/>
       </eAnnotations>
-      <eAnnotations source="redefines" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="redefines" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="packageMerge" ordered="false"
         upperBound="-1" eType="#//PackageMerge" containment="true" eOpposite="#//PackageMerge/mergingPackage">
@@ -1003,7 +1003,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedLiteral" upperBound="-1"
         eType="#//EnumerationLiteral" containment="true" eOpposite="#//EnumerationLiteral/enumeration">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="ordered set of literals for this Enumeration. Subsets Element::ownedMember."/>
       </eAnnotations>
@@ -1024,14 +1024,14 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
         eType="#//Property" containment="true" eOpposite="#//Property/datatype">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember #//Classifier/attribute"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember #//Classifier/attribute"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The Attributes owned by the DataType. Subsets Classifier::attribute and Element:: ownedMember."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedOperation" upperBound="-1"
         eType="#//Operation" containment="true" eOpposite="#//Operation/datatype">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember #//Classifier/feature"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember #//Classifier/feature"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The Operations owned by the DataType. Subsets Classifier::feature and Element:: ownedMember."/>
       </eAnnotations>
@@ -1043,7 +1043,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="enumeration" eType="#//Enumeration"
         transient="true" eOpposite="#//Enumeration/ownedLiteral">
-      <eAnnotations source="subsets" references="#//NamedElement/@eAnnotations.1/namespace"/>
+      <eAnnotations source="subsets" references="#//NamedElement/%duplicates%/namespace"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Enumeration that this EnumerationLiteral is a member of. Subsets NamedElement:: namespace."/>
       </eAnnotations>
@@ -1172,7 +1172,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedClassifier" ordered="false"
         upperBound="-1" eType="#//Classifier">
-      <eAnnotations source="subsets" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="substitution" ordered="false"
         upperBound="-1" eType="#//Substitution" containment="true" eOpposite="#//Substitution/substitutingClassifier">
@@ -1182,7 +1182,7 @@
         upperBound="-1" eType="#//GeneralizationSet" eOpposite="#//GeneralizationSet/powertype"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedUseCase" ordered="false"
         upperBound="-1" eType="#//UseCase" containment="true">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="useCase" ordered="false"
         upperBound="-1" eType="#//UseCase" eOpposite="#//UseCase/subject"/>
@@ -1241,7 +1241,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="namespace" eType="#//Namespace"
         transient="true" eOpposite="#//Namespace/ownedRule">
       <eAnnotations source="subsets" references="#//Constraint/context"/>
-      <eAnnotations source="redefines" references="#//NamedElement/@eAnnotations.1/namespace"/>
+      <eAnnotations source="redefines" references="#//NamedElement/%duplicates%/namespace"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specification" lowerBound="1"
         eType="#//ValueSpecification" containment="true">
@@ -1271,17 +1271,17 @@
       <details key="documentation" value="A literal boolean contains a Boolean-valued attribute. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EOperation" name="isComputable" eType="#//Boolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
-      </contents>
       <contents xsi:type="ecore:EOperation" name="booleanValue" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;value&#xD;&#xA;&lt;/code>"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/booleanValue"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="isComputable" eType="#//Boolean">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//Boolean">
@@ -1301,17 +1301,17 @@
       <details key="documentation" value="A literal string contains a String-valued attribute. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EOperation" name="stringValue" eType="#//String">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;value&#xD;&#xA;&lt;/code>"/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
-      </contents>
       <contents xsi:type="ecore:EOperation" name="isComputable" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="stringValue" eType="#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;value&#xD;&#xA;&lt;/code>"/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//String"
@@ -1345,17 +1345,17 @@
       <details key="documentation" value="A literal integer contains an Integer-valued attribute. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EOperation" name="integerValue" eType="#//Integer">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;value&#xD;&#xA;&lt;/code>"/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//ValueSpecification/integerValue"/>
-      </contents>
       <contents xsi:type="ecore:EOperation" name="isComputable" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="integerValue" eType="#//Integer">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;value&#xD;&#xA;&lt;/code>"/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//ValueSpecification/integerValue"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//Integer">
@@ -1369,17 +1369,17 @@
       <details key="documentation" value="A literal unlimited natural contains a UnlimitedNatural-valued attribute. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EOperation" name="isComputable" eType="#//Boolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
-      </contents>
       <contents xsi:type="ecore:EOperation" name="unlimitedValue" eType="#//UnlimitedNatural">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;value&#xD;&#xA;&lt;/code>"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/unlimitedValue"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="isComputable" eType="#//Boolean">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//UnlimitedNatural">
@@ -1412,14 +1412,14 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="formalParameter" ordered="false"
         upperBound="-1" eType="#//Parameter" containment="true">
-      <eAnnotations source="subsets" references="#//BehavioralFeature/parameter #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//BehavioralFeature/parameter #//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the ordered set of formal parameters of this BehavioralFeature. Subsets BehavioralFeature::parameter and Namespace::ownedMember."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnResult" upperBound="-1"
         eType="#//Parameter" containment="true">
-      <eAnnotations source="subsets" references="#//BehavioralFeature/parameter #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//BehavioralFeature/parameter #//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the ordered set of return results of this BehavioralFeature. Subsets Behavioral- Feature::parameter and Namespace::ownedMember."/>
       </eAnnotations>
@@ -1712,7 +1712,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEnd" upperBound="-1"
         eType="#//Property" containment="true" eOpposite="#//Property/owningAssociation">
-      <eAnnotations source="subsets" references="#//Association/memberEnd #//Classifier/feature #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Association/memberEnd #//Classifier/feature #//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The non-navigable ends that are owned by the association itself. This is an ordered association. Subsets Association::memberEnd, Classifier::feature, and Namespace::owned- Member."/>
       </eAnnotations>
@@ -1828,7 +1828,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedBehavior" ordered="false"
         upperBound="-1" eType="#//Behavior">
-      <eAnnotations source="subsets" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specification" eType="#//BehavioralFeature"
         eOpposite="#//BehavioralFeature/method">
@@ -1838,7 +1838,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
         eType="#//Parameter" containment="true">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution. (Specializes Namespace.owned- Member.)"/>
       </eAnnotations>
@@ -1865,7 +1865,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedBehavior" ordered="false"
         upperBound="-1" eType="#//Behavior" containment="true" eOpposite="#//Behavior/context">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References behavior specifications owned by a classifier. (Specializes Namespace.owned- Member.)"/>
       </eAnnotations>
@@ -1886,7 +1886,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTrigger" ordered="false"
         upperBound="-1" eType="#//Trigger" containment="true">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStateMachine" ordered="false"
         upperBound="-1" eType="#//StateMachine" volatile="true" containment="true"
@@ -2107,7 +2107,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedConnector" ordered="false"
         upperBound="-1" eType="#//Connector">
-      <eAnnotations source="subsets" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced. (Subsets Element.redefinedElement.)"/>
       </eAnnotations>
@@ -2130,7 +2130,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
         eType="#//Property" containment="true">
-      <eAnnotations source="subsets" references="#//StructuredClassifier/role #//Classifier/attribute #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//StructuredClassifier/role #//Classifier/attribute #//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the properties owned by the classifier. (Subsets StructuredClassifier.role, Classifier. attribute,and Namespace.ownedMember)"/>
       </eAnnotations>
@@ -2151,7 +2151,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedConnector" ordered="false"
         upperBound="-1" eType="#//Connector" containment="true">
-      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the connectors owned by the classifier. (Subsets Classifier.feature and Namespace.ownedMember)"/>
       </eAnnotations>
@@ -2177,7 +2177,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedElement" ordered="false"
         upperBound="-1" eType="#//ActivityEdge">
-      <eAnnotations source="redefines" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="redefines" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inStructuredNode" eType="#//StructuredActivityNode"
         transient="true" eOpposite="#//StructuredActivityNode/containedEdge">
@@ -2202,14 +2202,14 @@
       <details key="documentation" value="Activity groups are a generic grouping construct for nodes and edges. Nodes and edges can belong to more than group. They have no inherent semantics and can be used for various purposes. Subclasses of ActivityGroup may add semantics. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <contents xsi:type="ecore:EReference" name="containedNode" upperBound="-1" eType="#//ActivityNode"
+          changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//ActivityNode/inGroup"/>
       <contents xsi:type="ecore:EReference" name="subgroup" ordered="false" upperBound="-1"
           eType="#//ActivityGroup" changeable="false" transient="true" derived="true"
           eOpposite="#//ActivityGroup/superGroup">
         <eAnnotations source="union"/>
         <eAnnotations source="subsets" references="#//Element/ownedElement"/>
       </contents>
-      <contents xsi:type="ecore:EReference" name="containedNode" upperBound="-1" eType="#//ActivityNode"
-          changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//ActivityNode/inGroup"/>
       <contents xsi:type="ecore:EReference" name="containedEdge" upperBound="-1" eType="#//ActivityEdge"
           changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//ActivityEdge/inGroup"/>
     </eAnnotations>
@@ -2243,7 +2243,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedElement" ordered="false"
         upperBound="-1" eType="#//ActivityNode">
-      <eAnnotations source="redefines" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="redefines" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inStructuredNode" eType="#//StructuredActivityNode"
         transient="true" eOpposite="#//StructuredActivityNode/containedNode">
@@ -2418,39 +2418,39 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
         eType="#//Property" containment="true">
-      <eAnnotations source="subsets" references="#//Classifier/attribute #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Classifier/attribute #//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the properties owned by the Interface. (Subsets Namespace.ownedMember and Classifier.feature.)"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedOperation" upperBound="-1"
         eType="#//Operation" containment="true">
-      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the operations owned by the Interface. (Subsets Namespace.ownedMember and Classifier.feature.)"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedInterface" ordered="false"
         upperBound="-1" eType="#//Interface">
-      <eAnnotations source="subsets" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="(Subsets Element.redefinedElement.)"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedClassifier" upperBound="-1"
         eType="#//Classifier" containment="true">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedReception" ordered="false"
         upperBound="-1" eType="#//Reception" containment="true">
-      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Receptions that objects providing this interface are willing to accept. (Subsets Namespace.ownedMember and Classifier.feature.)"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="protocol" eType="#//ProtocolStateMachine"
         containment="true">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface."/>
       </eAnnotations>
@@ -2486,11 +2486,11 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedOperation" upperBound="-1"
         eType="#//Operation" containment="true">
-      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
         eType="#//Property" containment="true">
-      <eAnnotations source="subsets" references="#//Classifier/attribute #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Classifier/attribute #//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Manifestation" eSuperTypes="#//Abstraction">
@@ -2538,15 +2538,15 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="include" ordered="false"
         upperBound="-1" eType="#//Include" containment="true" eOpposite="#//Include/includingCase">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extend" ordered="false"
         upperBound="-1" eType="#//Extend" containment="true" eOpposite="#//Extend/extension">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extensionPoint" ordered="false"
         upperBound="-1" eType="#//ExtensionPoint" containment="true" eOpposite="#//ExtensionPoint/useCase">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subject" ordered="false"
         upperBound="-1" eType="#//Classifier" eOpposite="#//Classifier/useCase"/>
@@ -2625,7 +2625,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedPort" ordered="false"
         upperBound="-1" eType="#//Port">
-      <eAnnotations source="subsets" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes. (Subsets Element.redefinedElement.)"/>
       </eAnnotations>
@@ -2650,7 +2650,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPort" ordered="false"
         upperBound="-1" eType="#//Port" containment="true">
-      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References a set of ports that an encapsulated classifier owns. (Subsets Classifier.feature and Namespace.ownedMember.)"/>
       </eAnnotations>
@@ -2719,7 +2719,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
         eType="#//Property" containment="true">
-      <eAnnotations source="subsets" references="#//Classifier/attribute #//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Classifier/attribute #//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SignalTrigger" eSuperTypes="#//MessageTrigger">
@@ -2769,15 +2769,15 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variable" ordered="false"
         upperBound="-1" eType="#//Variable" containment="true" eOpposite="#//Variable/scope">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedNode" upperBound="-1"
         eType="#//ActivityNode" containment="true" eOpposite="#//ActivityNode/inStructuredNode">
-      <eAnnotations source="redefines" references="#//ActivityGroup/@eAnnotations.1/containedNode"/>
+      <eAnnotations source="redefines" references="#//ActivityGroup/%duplicates%/containedNode"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedEdge" upperBound="-1"
         eType="#//ActivityEdge" containment="true" eOpposite="#//ActivityEdge/inStructuredNode">
-      <eAnnotations source="redefines" references="#//ActivityGroup/@eAnnotations.1/containedEdge"/>
+      <eAnnotations source="redefines" references="#//ActivityGroup/%duplicates%/containedEdge"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mustIsolate" eType="#//Boolean"/>
   </eClassifiers>
@@ -2858,17 +2858,17 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lifeline" ordered="false"
         upperBound="-1" eType="#//Lifeline" containment="true" eOpposite="#//Lifeline/interaction">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="message" ordered="false"
         upperBound="-1" eType="#//Message" containment="true" eOpposite="#//Message/interaction">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fragment" upperBound="-1"
         eType="#//InteractionFragment" containment="true" eOpposite="#//InteractionFragment/enclosingInteraction"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="formalGate" ordered="false"
         upperBound="-1" eType="#//Gate" containment="true">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the gates that form the message interface between this Interaction and any InteractionOccurrences which reference it."/>
       </eAnnotations>
@@ -2889,7 +2889,7 @@
         transient="true" eOpposite="#//Interaction/fragment"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="enclosingOperand" eType="#//InteractionOperand"
         transient="true" eOpposite="#//InteractionOperand/fragment">
-      <eAnnotations source="subsets" references="#//NamedElement/@eAnnotations.1/namespace"/>
+      <eAnnotations source="subsets" references="#//NamedElement/%duplicates%/namespace"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="operand enclosing this InteractionFragment (they may nest recursively)"/>
       </eAnnotations>
@@ -2909,7 +2909,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interaction" lowerBound="1"
         eType="#//Interaction" transient="true" eOpposite="#//Interaction/lifeline">
-      <eAnnotations source="subsets" references="#//NamedElement/@eAnnotations.1/namespace"/>
+      <eAnnotations source="subsets" references="#//NamedElement/%duplicates%/namespace"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the Interaction enclosing this Lifeline."/>
       </eAnnotations>
@@ -2953,7 +2953,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interaction" lowerBound="1"
         eType="#//Interaction" transient="true" eOpposite="#//Interaction/message">
-      <eAnnotations source="subsets" references="#//NamedElement/@eAnnotations.1/namespace"/>
+      <eAnnotations source="subsets" references="#//NamedElement/%duplicates%/namespace"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The enclosing Interaction owning the Message"/>
       </eAnnotations>
@@ -3304,16 +3304,16 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedEdge" upperBound="-1"
         eType="#//ActivityEdge" eOpposite="#//ActivityEdge/inPartition">
-      <eAnnotations source="redefines" references="#//ActivityGroup/@eAnnotations.1/containedEdge"/>
+      <eAnnotations source="redefines" references="#//ActivityGroup/%duplicates%/containedEdge"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedNode" upperBound="-1"
         eType="#//ActivityNode" eOpposite="#//ActivityNode/inPartition">
-      <eAnnotations source="redefines" references="#//ActivityGroup/@eAnnotations.1/containedNode"/>
+      <eAnnotations source="redefines" references="#//ActivityGroup/%duplicates%/containedNode"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subgroup" ordered="false"
         upperBound="-1" eType="#//ActivityPartition" containment="true" eOpposite="#//ActivityPartition/superPartition">
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
-      <eAnnotations source="redefines" references="#//ActivityGroup/@eAnnotations.1/subgroup"/>
+      <eAnnotations source="redefines" references="#//ActivityGroup/%duplicates%/subgroup"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="superPartition" eType="#//ActivityPartition"
         transient="true" eOpposite="#//ActivityPartition/subgroup">
@@ -3520,14 +3520,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="StateMachine" eSuperTypes="#//Behavior">
     <eStructuralFeatures xsi:type="ecore:EReference" name="region" ordered="false"
         lowerBound="1" upperBound="-1" eType="#//Region" containment="true" eOpposite="#//Region/stateMachine">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectionPoint" ordered="false"
         upperBound="-1" eType="#//Pseudostate" containment="true">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extendedStateMachine" eType="#//StateMachine">
-      <eAnnotations source="redefines" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="redefines" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stateMachine_redefinitionContext"
         eType="#//BehavioredClassifier" volatile="true" transient="true" eOpposite="#//BehavioredClassifier/ownedStateMachine">
@@ -3552,14 +3552,14 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stateMachine" eType="#//StateMachine"
         transient="true" eOpposite="#//StateMachine/region">
-      <eAnnotations source="subsets" references="#//NamedElement/@eAnnotations.1/namespace"/>
+      <eAnnotations source="subsets" references="#//NamedElement/%duplicates%/namespace"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" eType="#//State"
         transient="true" eOpposite="#//State/region">
-      <eAnnotations source="subsets" references="#//NamedElement/@eAnnotations.1/namespace"/>
+      <eAnnotations source="subsets" references="#//NamedElement/%duplicates%/namespace"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extendedRegion" eType="#//Region">
-      <eAnnotations source="redefines" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="redefines" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pseudostate" eSuperTypes="#//Vertex">
@@ -3587,13 +3587,13 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedState" eType="#//State">
-      <eAnnotations source="redefines" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="redefines" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deferrableTrigger" ordered="false"
         upperBound="-1" eType="#//Trigger"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="region" ordered="false"
         upperBound="-1" eType="#//Region" containment="true" eOpposite="#//Region/state">
-      <eAnnotations source="subsets" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="subsets" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entry" eType="#//Activity"
         containment="true">
@@ -3683,7 +3683,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedTransition" eType="#//Transition">
-      <eAnnotations source="redefines" references="#//RedefinableElement/@eAnnotations.1/redefinedElement"/>
+      <eAnnotations source="redefines" references="#//RedefinableElement/%duplicates%/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" ordered="false"
         upperBound="-1" eType="#//Trigger">
@@ -4228,17 +4228,17 @@
       <details key="documentation" value="A DurationInterval defines the range between two Durations. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EReference" name="max" upperBound="-1" eType="#//Duration">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Refers to the Duration denoting the maximum value of the range."/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//Interval/max"/>
-      </contents>
       <contents xsi:type="ecore:EReference" name="min" upperBound="-1" eType="#//Duration">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Refers to the Duration denoting the minimum value of the range."/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//Interval/min"/>
+      </contents>
+      <contents xsi:type="ecore:EReference" name="max" upperBound="-1" eType="#//Duration">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Refers to the Duration denoting the maximum value of the range."/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//Interval/max"/>
       </contents>
     </eAnnotations>
   </eClassifiers>
@@ -4263,7 +4263,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EReference" name="specification" lowerBound="1" eType="#//ValueSpecification">
-        <eAnnotations source="redefines" references="#//Constraint/specification #//IntervalConstraint/@eAnnotations.1/specification"/>
+        <eAnnotations source="redefines" references="#//Constraint/specification #//IntervalConstraint/%duplicates%/specification"/>
       </contents>
     </eAnnotations>
   </eClassifiers>
@@ -4314,7 +4314,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EReference" name="specification" lowerBound="1" eType="#//ValueSpecification">
-        <eAnnotations source="redefines" references="#//Constraint/specification #//IntervalConstraint/@eAnnotations.1/specification"/>
+        <eAnnotations source="redefines" references="#//Constraint/specification #//IntervalConstraint/%duplicates%/specification"/>
       </contents>
     </eAnnotations>
   </eClassifiers>
@@ -4344,7 +4344,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedNode" upperBound="-1"
         eType="#//ActivityNode" eOpposite="#//ActivityNode/inInterruptibleRegion">
-      <eAnnotations source="redefines" references="#//ActivityGroup/@eAnnotations.1/containedNode"/>
+      <eAnnotations source="redefines" references="#//ActivityGroup/%duplicates%/containedNode"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ObjectNodeOrderingKind">
@@ -4386,7 +4386,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedMember" ordered="false"
         upperBound="-1" eType="#//PackageableElement" containment="true">
-      <eAnnotations source="redefines" references="#//Namespace/@eAnnotations.1/ownedMember"/>
+      <eAnnotations source="redefines" references="#//Namespace/%duplicates%/ownedMember"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ConnectorKind">
@@ -4648,7 +4648,7 @@
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EReference" name="endData" ordered="false" lowerBound="2"
           upperBound="-1" eType="#//LinkEndCreationData" containment="true">
-        <eAnnotations source="redefines" references="#//LinkAction/endData #//CreateLinkAction/@eAnnotations.1/endData"/>
+        <eAnnotations source="redefines" references="#//LinkAction/endData #//CreateLinkAction/%duplicates%/endData"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="result" lowerBound="1"
