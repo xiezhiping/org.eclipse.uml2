@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationItemProvider.java,v 1.3 2005/06/01 21:43:46 khussey Exp $
+ * $Id: GenOperationItemProvider.java,v 1.4 2005/06/09 02:29:08 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+//import org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenOperation;
 

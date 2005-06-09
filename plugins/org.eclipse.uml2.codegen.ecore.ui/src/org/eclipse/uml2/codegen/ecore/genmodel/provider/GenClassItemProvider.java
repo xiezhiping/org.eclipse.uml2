@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassItemProvider.java,v 1.3 2005/06/01 21:43:46 khussey Exp $
+ * $Id: GenClassItemProvider.java,v 1.4 2005/06/09 02:29:08 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
 import java.util.List;
+
+//import org.eclipse.emf.codegen.ecore.genmodel.GenProviderKind;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -24,6 +26,8 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
+//import org.eclipse.uml2.codegen.ecore.genmodel.GenClass;
 
 import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
 

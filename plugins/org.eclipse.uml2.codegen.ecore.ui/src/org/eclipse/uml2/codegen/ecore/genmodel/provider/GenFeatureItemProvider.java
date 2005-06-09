@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureItemProvider.java,v 1.3 2005/06/01 21:43:46 khussey Exp $
+ * $Id: GenFeatureItemProvider.java,v 1.4 2005/06/09 02:29:08 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
 import java.util.List;
+
+//import org.eclipse.emf.codegen.ecore.genmodel.GenPropertyKind;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
