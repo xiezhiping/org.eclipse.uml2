@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImport.java,v 1.9 2005/06/02 15:02:47 khussey Exp $
+ * $Id: ElementImport.java,v 1.10 2005/06/09 02:18:09 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -214,7 +214,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.String" parameters="-"
+	 * @model dataType="org.eclipse.uml2.String" parameters=""
 	 * @generated
 	 */
 	String getName();

@@ -8,17 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.23 2005/06/01 15:09:48 khussey Exp $
+ * $Id: ElementImpl.java,v 1.24 2005/06/09 02:18:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.lang.reflect.Method;
 
 import java.util.Collection;
+//import java.util.Iterator;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
+//import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;

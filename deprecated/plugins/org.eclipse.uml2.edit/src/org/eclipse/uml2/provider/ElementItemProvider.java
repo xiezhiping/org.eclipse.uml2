@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.24 2005/06/02 14:29:47 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.25 2005/06/09 02:18:16 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -259,6 +259,7 @@ public class ElementItemProvider
 	public ResourceLocator getResourceLocator() {
 		return UML2EditPlugin.INSTANCE;
 	}
+
 
 	/*
 	 * (non-Javadoc)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecification.java,v 1.7 2005/06/02 15:02:47 khussey Exp $
+ * $Id: ValueSpecification.java,v 1.8 2005/06/09 02:18:09 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -44,7 +44,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" parameters="-"
+	 * @model dataType="org.eclipse.uml2.Boolean" parameters=""
 	 * @generated
 	 */
 	boolean isComputable();
@@ -114,7 +114,7 @@ public interface ValueSpecification extends TypedElement, ParameterableElement{
 	 * false
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" parameters="-"
+	 * @model dataType="org.eclipse.uml2.Boolean" parameters=""
 	 * @generated
 	 */
 	boolean isNull();

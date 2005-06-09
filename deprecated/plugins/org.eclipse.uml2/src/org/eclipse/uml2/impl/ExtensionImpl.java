@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.19 2005/06/03 19:52:31 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.20 2005/06/09 02:18:09 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+//import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.CollaborationOccurrence;
