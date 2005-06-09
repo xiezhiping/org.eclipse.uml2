@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ImporterWizard.java,v 1.2 2005/06/03 19:53:39 khussey Exp $
+ * $Id: UML2ImporterWizard.java,v 1.3 2005/06/09 21:12:58 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer.ui;
 
@@ -27,8 +27,6 @@ public class UML2ImporterWizard
 	public void addPages() {
 		UML2DetailPage detailPage = new UML2DetailPage(getModelImporter(),
 			"UML2Model"); //$NON-NLS-1$
-		detailPage
-			.setShowGenModel(getModelImporter().getGenModelFileName() == null);
 		addPage(detailPage);
 
 		ModelPackagePage packagePage = new ModelPackagePage(getModelImporter(),
