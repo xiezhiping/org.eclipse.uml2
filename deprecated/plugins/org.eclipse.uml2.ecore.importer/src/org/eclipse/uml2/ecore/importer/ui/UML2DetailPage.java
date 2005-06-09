@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2DetailPage.java,v 1.4 2005/06/03 19:53:39 khussey Exp $
+ * $Id: UML2DetailPage.java,v 1.5 2005/06/09 15:47:30 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer.ui;
 
@@ -49,8 +49,8 @@ public class UML2DetailPage
 
 		setTitle(UML2ImporterPlugin.INSTANCE.getString("_UI_UML2Import_title")); //$NON-NLS-1$
 		setDescription(UML2ImporterPlugin.INSTANCE.getString(showGenModel()
-			? "_UI_UML2ImportFile_description" //$NON-NLS-1$
-			: "_UI_UML2ImportNewProject_description")); //$NON-NLS-1$
+			? "_UI_UML2ImportNewProject_description" //$NON-NLS-1$
+			: "_UI_UML2ImportFile_description")); //$NON-NLS-1$
 
 		choiceLabels.put(discardChoiceLabel = UML2ImporterPlugin.INSTANCE
 			.getString("_UI_Discard_label"), UML2Util.OPTION__DISCARD); //$NON-NLS-1$
