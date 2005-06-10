@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseImporterWizard.java,v 1.2 2005/06/03 19:53:40 khussey Exp $
+ * $Id: RoseImporterWizard.java,v 1.3 2005/06/10 14:39:13 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.ui;
 
@@ -35,8 +35,6 @@ public class RoseImporterWizard
 					.decodeAction(ImporterUtil.ACTION_MESSAGE_SET);
 			}
 		};
-		detailPage
-			.setShowGenModel(getModelImporter().getGenModelFileName() == null);
 		addPage(detailPage);
 
 		ModelPackagePage packagePage = new ModelPackagePage(getModelImporter(),
