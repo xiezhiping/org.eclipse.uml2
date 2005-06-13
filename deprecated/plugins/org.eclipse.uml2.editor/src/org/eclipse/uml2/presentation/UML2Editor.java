@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.21 2005/06/01 15:33:10 khussey Exp $
+ * $Id: UML2Editor.java,v 1.22 2005/06/13 17:58:45 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -1475,7 +1475,7 @@ public class UML2Editor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void dispose() {
+	public void disposeGen() {
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(resourceChangeListener);
 
 		getSite().getPage().removePartListener(partListener);
@@ -1495,6 +1495,16 @@ public class UML2Editor
 		}
 
 		super.dispose();
+	}
+
+	public void dispose() {
+		disposeGen();
+
+		for (Iterator resources = editingDomain.getResourceSet().getResources()
+			.iterator(); resources.hasNext();) {
+
+			((Resource) resources.next()).unload();
+		}
 	}
 
 	protected static class UML2AdapterFactoryContentProvider
