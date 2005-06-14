@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2004, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ExtendedMetaData.java,v 1.3 2005/05/18 16:38:32 khussey Exp $
+ * $Id: UML2ExtendedMetaData.java,v 1.4 2005/06/14 16:48:18 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMLMapImpl;
  * by matching namespace URIs.
  */
 public class UML2ExtendedMetaData
-	extends BasicExtendedMetaData {
+		extends BasicExtendedMetaData {
 
 	/**
 	 * The registry of 'compatible' packages.
@@ -87,28 +87,34 @@ public class UML2ExtendedMetaData
 				return ePackage;
 			}
 
-			String nsURIPattern = getNsURIPattern(namespace);
+			ePackage = findPackage(registry, getNsURIPattern(namespace));
 
-			for (Iterator nsURIs = registry.keySet().iterator(); nsURIs
-				.hasNext();) {
+			if (null != ePackage) {
+				compatibilityRegistry.put(namespace, ePackage);
 
-				String nsURI = (String) nsURIs.next();
-
-				if (nsURI.matches(nsURIPattern)) {
-					ePackage = registry.getEPackage(nsURI);
-
-					compatibilityRegistry.put(namespace, ePackage);
-
-					XMLResource.XMLInfo xmlInfo = new XMLInfoImpl();
-					xmlInfo.setTargetNamespace(namespace);
-					xmlMap.add(ePackage, xmlInfo);
-
-					break;
-				}
+				XMLResource.XMLInfo xmlInfo = new XMLInfoImpl();
+				xmlInfo.setTargetNamespace(namespace);
+				xmlMap.add(ePackage, xmlInfo);
 			}
 		}
 
 		return ePackage;
+	}
+
+	protected EPackage findPackage(EPackage.Registry registry,
+			String nsURIPattern) {
+
+		for (Iterator nsURIs = registry.keySet().iterator(); nsURIs.hasNext();) {
+			String nsURI = (String) nsURIs.next();
+
+			if (nsURI.matches(nsURIPattern)) {
+				return registry.getEPackage(nsURI);
+			}
+		}
+
+		return EPackage.Registry.INSTANCE != registry
+			? findPackage(EPackage.Registry.INSTANCE, nsURIPattern)
+			: null;
 	}
 
 	/*
