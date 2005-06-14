@@ -57,13 +57,17 @@
 				<tag name="implements" description="ignore" enabled="false"/>
 				<tag name="ordered"    description="ignore" enabled="false"/>
 
-				<group title="Common"          packages="org.eclipse.uml2.common:org.eclipse.uml2.common.edit"/>
+				<group title="Common"             packages="@org.eclipse.uml2.common@"/>
+				<group title="Common Edit"        packages="@org.eclipse.uml2.common.edit@"/>
 
-				<group title="UML Model"       packages="@org.eclipse.uml2@"/>
-				<group title="UML Edit"        packages="@org.eclipse.uml2.edit@"/>
-				<group title="UML Editor"      packages="@org.eclipse.uml2.editor@"/>
+				<group title="UML2 Model"         packages="@org.eclipse.uml2@"/>
+				<group title="UML2 Edit"          packages="@org.eclipse.uml2.edit@"/>
+				<group title="UML2 Editor"        packages="@org.eclipse.uml2.editor@"/>
 
-				<group title="Code Generation" packages="org.eclipse.uml2.codegen.ecore:org.eclipse.uml2.codegen.ecore.ui:org.eclipse.uml2.ecore.importer"/>
+				<group title="Code Generation"    packages="@org.eclipse.uml2.codegen.ecore@"/>
+				<group title="Code Generation UI" packages="@org.eclipse.uml2.codegen.ecore.ui@"/>
+
+				<group title="UML2 Importer"      packages="@org.eclipse.uml2.ecore.importer@"/>
 
 @packagesets@
 				
