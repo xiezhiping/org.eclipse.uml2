@@ -29,6 +29,14 @@ function groupPackage
 	fi
 }
 
+groupPackage org.eclipse.uml2.codegen.ecore
+groupPackage org.eclipse.uml2.codegen.ecore.ui
+
+groupPackage org.eclipse.uml2.common
+groupPackage org.eclipse.uml2.common.edit
+
+groupPackage org.eclipse.uml2.ecore.importer
+
 groupPackage org.eclipse.uml2
 
 groupPackage org.eclipse.uml2.edit
