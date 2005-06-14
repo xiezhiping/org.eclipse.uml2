@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: feature.xml,v 1.14 2005/06/09 02:34:46 khussey Exp $
+ $Id: feature.xml,v 1.15 2005/06/14 18:33:51 khussey Exp $
 -->
 
 <feature
@@ -48,19 +48,22 @@
       id="org.eclipse.uml2.examples"
       download-size="0"
       install-size="0"
-      version="1.1.0"/>
+      version="1.1.0"
+      unpack="false"/>
 
    <plugin
       id="org.eclipse.uml2.examples.ui"
       download-size="0"
       install-size="0"
-      version="1.1.0"/>
+      version="1.1.0"
+      unpack="false"/>
 
    <plugin
       id="org.eclipse.uml2.examples.emof2ecore"
       download-size="0"
       install-size="0"
-      version="1.1.0"/>
+      version="1.1.0"
+      unpack="false"/>
 
    <includes
       id="org.eclipse.uml2.examples.source"

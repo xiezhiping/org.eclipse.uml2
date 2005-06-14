@@ -33,7 +33,7 @@ groupPackage org.eclipse.uml2.edit
 groupPackage org.eclipse.uml2.editor
 
 # The directory of the uml2 plugins in the order they were built 
-pluginDirs=`find $eclipseDir/plugins -name *.jar -printf '%T@ %p\n' | sort -n | egrep -e 'org.eclipse.uml2' | egrep -v 'example' | egrep -v 'tests' | cut -f2 -d' ' | sed -e 's/\(\/.*\)\/.*/\1/'`
+pluginDirs=`find $eclipseDir/plugins -name @dot -printf '%T@ %p\n' | sort -n | egrep -e 'org.eclipse.uml2' | egrep -v 'example' | egrep -v 'tests' | cut -f2 -d' ' | sed -e 's/\(\/.*\)\/.*/\1/'`
 
 # All the jars in the pluigins directory
 classpath=`find $eclipseDir/plugins -name *.jar -print | grep -v org.eclipse.uml2 | tr '\n' ';'`
