@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationIntervalImpl.java,v 1.8 2005/06/09 02:18:09 khussey Exp $
+ * $Id: DurationIntervalImpl.java,v 1.9 2005/06/15 15:58:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -40,8 +40,8 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.DurationIntervalImpl#getMins <em>Min</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DurationIntervalImpl#getMaxes <em>Max</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DurationIntervalImpl#getMins <em>Min</em>}</li>
  * </ul>
  * </p>
  *

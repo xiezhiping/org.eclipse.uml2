@@ -1703,22 +1703,6 @@
 						label      	"OpaqueExpression")
 					    icon_style 	"Icon"
 					    quidu      	"3CA00EFB03B9"
-					    compartment 	(object Compartment
-						Parent_View 	@52
-						location   	(670, 1182)
-						font       	(object Font
-						    size       	10
-						    face       	"Arial"
-						    bold       	FALSE
-						    italics    	FALSE
-						    underline  	FALSE
-						    strike     	FALSE
-						    color      	0
-						    default_color 	TRUE)
-						icon_style 	"Icon"
-						anchor     	2
-						nlines     	2
-						max_width  	0)
 					    width      	563
 					    height     	206)
 					(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Abstractions::Ownerships::Element" @53
@@ -5899,22 +5883,6 @@
 					    icon_style 	"Icon"
 					    fill_color 	16777215
 					    quidu      	"3CAC070A03AB"
-					    compartment 	(object Compartment
-						Parent_View 	@216
-						location   	(680, 869)
-						font       	(object Font
-						    size       	10
-						    face       	"Arial"
-						    bold       	FALSE
-						    italics    	FALSE
-						    underline  	FALSE
-						    strike     	FALSE
-						    color      	0
-						    default_color 	TRUE)
-						icon_style 	"Icon"
-						anchor     	2
-						nlines     	1
-						max_width  	240)
 					    width      	290
 					    height     	136)
 					(object AssociationViewNew "$UNNAMED$28" @217
@@ -15243,12 +15211,14 @@
 				    quid       	"3E03284C0289"
 				    type       	"Boolean"
 				    quidu      	"3CA010AC0090"
+				    initv      	"false"
 				    exportControl 	"Public"
 				    derived    	TRUE)
 				(object ClassAttribute "isUnique"
 				    quid       	"3E032859015B"
 				    type       	"Boolean"
 				    quidu      	"3CA010AC0090"
+				    initv      	"true"
 				    exportControl 	"Public"
 				    derived    	TRUE)
 				(object ClassAttribute "lower"
@@ -15256,6 +15226,7 @@
 				    stereotype 	"0..1"
 				    type       	"Integer"
 				    quidu      	"3CA010A4007B"
+				    initv      	"1"
 				    exportControl 	"Public"
 				    derived    	TRUE)
 				(object ClassAttribute "upper"
@@ -15263,6 +15234,7 @@
 				    stereotype 	"0..1"
 				    type       	"UnlimitedNatural"
 				    quidu      	"3DE6A93C0003"
+				    initv      	"1"
 				    exportControl 	"Public"
 				    derived    	TRUE)))
 			(object Class "Parameter"
@@ -21267,6 +21239,22 @@
 				    icon_style 	"Icon"
 				    fill_color 	16777215
 				    quidu      	"3DE6D56F031A"
+				    compartment 	(object Compartment
+					Parent_View 	@783
+					location   	(454, 2293)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					icon_style 	"Icon"
+					anchor     	2
+					nlines     	5
+					max_width  	0)
 				    width      	826
 				    height     	1467)
 				(object InheritView "" @784

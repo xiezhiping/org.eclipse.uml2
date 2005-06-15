@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.21 2005/06/09 02:18:09 khussey Exp $
+ * $Id: OperationImpl.java,v 1.22 2005/06/15 15:58:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -86,8 +86,8 @@ import org.eclipse.uml2.internal.operation.OperationOperations;
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getPostconditions <em>Postcondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getRedefinedOperations <em>Redefined Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getBodyCondition <em>Body Condition</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getFormalParameters <em>Formal Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getRaisedExceptions <em>Raised Exception</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getFormalParameters <em>Formal Parameter</em>}</li>
  * </ul>
  * </p>
  *
@@ -119,7 +119,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_UNIQUE_EDEFAULT = false;
+	protected static final boolean IS_UNIQUE_EDEFAULT = true;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -129,7 +129,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOWER_EDEFAULT = 0;
+	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
 	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
@@ -139,7 +139,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int UPPER_EDEFAULT = 0;
+	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
 	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
@@ -1707,8 +1707,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 				return null != returnResult
 					&& 1 == returnResult.size()
 					&& ((Parameter) returnResult.get(0))
-							.eIsSet(UML2Package.eINSTANCE
-									.getTypedElement_Type());
+						.eIsSet(UML2Package.eINSTANCE.getTypedElement_Type());
 		}
 		return eIsSetGen(eFeature);
 	}

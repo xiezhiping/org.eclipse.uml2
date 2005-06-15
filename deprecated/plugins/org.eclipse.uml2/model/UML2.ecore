@@ -739,12 +739,11 @@
       <details key="documentation" value="An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EOperation" name="isConsistentWith" eType="#//Boolean">
+      <contents xsi:type="ecore:EOperation" name="lower" eType="#//Integer">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;(redefinee.oclIsKindOf(Operation) and&#xD;&#xA;    let op: Operation = redefinee.oclAsType(Operation) in&#xD;&#xA;        self.formalParameter.size() = op.formalParameter.size() and&#xD;&#xA;        self.returnResult.size() = op.returnResult.size() and&#xD;&#xA;        forAll(i | op.formalParameter[i].type.conformsTo(self.formalParameter[i].type)) and&#xD;&#xA;        forAll(i | op.returnResult[i].type.conformsTo(self.returnResult[i].type))&#xD;&#xA;)&#xD;&#xA;&lt;/code>"/>
+          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;if returnResult->size() = 1 then returnResult->any().lower else Set{} endif&#xD;&#xA;&lt;/code>"/>
         </eAnnotations>
-        <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
-        <eParameters name="redefinee" eType="#//RedefinableElement"/>
+        <eAnnotations source="redefines" references="#//MultiplicityElement/lower"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="upper" eType="#//UnlimitedNatural">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -752,21 +751,37 @@
         </eAnnotations>
         <eAnnotations source="redefines" references="#//MultiplicityElement/upper"/>
       </contents>
-      <contents xsi:type="ecore:EOperation" name="lower" eType="#//Integer">
+      <contents xsi:type="ecore:EOperation" name="isConsistentWith" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;if returnResult->size() = 1 then returnResult->any().lower else Set{} endif&#xD;&#xA;&lt;/code>"/>
+          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;(redefinee.oclIsKindOf(Operation) and&#xD;&#xA;    let op: Operation = redefinee.oclAsType(Operation) in&#xD;&#xA;        self.formalParameter.size() = op.formalParameter.size() and&#xD;&#xA;        self.returnResult.size() = op.returnResult.size() and&#xD;&#xA;        forAll(i | op.formalParameter[i].type.conformsTo(self.formalParameter[i].type)) and&#xD;&#xA;        forAll(i | op.returnResult[i].type.conformsTo(self.returnResult[i].type))&#xD;&#xA;)&#xD;&#xA;&lt;/code>"/>
         </eAnnotations>
-        <eAnnotations source="redefines" references="#//MultiplicityElement/lower"/>
+        <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
+        <eParameters name="redefinee" eType="#//RedefinableElement"/>
       </contents>
-      <contents xsi:type="ecore:EAttribute" name="isUnique" eType="#//Boolean" changeable="false"
-          volatile="true" transient="true" derived="true">
+      <contents xsi:type="ecore:EAttribute" name="lower" eType="#//Integer" changeable="false"
+          volatile="true" transient="true" defaultValueLiteral="1" derived="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Specifies whether the return parameter is unique or not, if present. This is derived."/>
+          <details key="documentation" value="Specifies the lower multiplicity of the return parameter, if present. This is derived."/>
         </eAnnotations>
-        <eAnnotations source="redefines" references="#//MultiplicityElement/isUnique"/>
+        <eAnnotations source="redefines" references="#//MultiplicityElement/lower.1"/>
+      </contents>
+      <contents xsi:type="ecore:EReference" name="raisedException" ordered="false"
+          upperBound="-1" eType="#//Type">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="References the Types representing exceptions that may be raised during an invocation of this operation. Redefines Basic::Operation.raisedException and BehavioralFeature. raisedException."/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//BehavioralFeature/raisedException"/>
+      </contents>
+      <contents xsi:type="ecore:EReference" name="formalParameter" ordered="false"
+          upperBound="-1" eType="#//Parameter" containment="true">
+        <eAnnotations source="redefines" references="#//Operation/ownedParameter #//BehavioralFeature/formalParameter"/>
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="the formal parameters for this Operation. Redefines BehavioralFeature::formal- Parameter."/>
+        </eAnnotations>
       </contents>
       <contents xsi:type="ecore:EAttribute" name="upper" eType="#//UnlimitedNatural"
-          changeable="false" volatile="true" transient="true" derived="true">
+          changeable="false" volatile="true" transient="true" defaultValueLiteral="1"
+          derived="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="the upper multiplicity of the return parameter, if present.This is derived."/>
         </eAnnotations>
@@ -779,33 +794,19 @@
         </eAnnotations>
         <eAnnotations source="redefines" references="#//TypedElement/type"/>
       </contents>
-      <contents xsi:type="ecore:EAttribute" name="lower" eType="#//Integer" changeable="false"
-          volatile="true" transient="true" derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Specifies the lower multiplicity of the return parameter, if present. This is derived."/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//MultiplicityElement/lower.1"/>
-      </contents>
-      <contents xsi:type="ecore:EReference" name="formalParameter" ordered="false"
-          upperBound="-1" eType="#//Parameter" containment="true">
-        <eAnnotations source="redefines" references="#//Operation/ownedParameter #//BehavioralFeature/formalParameter"/>
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="the formal parameters for this Operation. Redefines BehavioralFeature::formal- Parameter."/>
-        </eAnnotations>
-      </contents>
-      <contents xsi:type="ecore:EReference" name="raisedException" ordered="false"
-          upperBound="-1" eType="#//Type">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="References the Types representing exceptions that may be raised during an invocation of this operation. Redefines Basic::Operation.raisedException and BehavioralFeature. raisedException."/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//BehavioralFeature/raisedException"/>
-      </contents>
       <contents xsi:type="ecore:EAttribute" name="isOrdered" eType="#//Boolean" changeable="false"
-          volatile="true" transient="true" derived="true">
+          volatile="true" transient="true" defaultValueLiteral="false" derived="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Specifies whether the return parameter is ordered or not, if present. This is derived."/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//MultiplicityElement/isOrdered"/>
+      </contents>
+      <contents xsi:type="ecore:EAttribute" name="isUnique" eType="#//Boolean" changeable="false"
+          volatile="true" transient="true" defaultValueLiteral="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Specifies whether the return parameter is unique or not, if present. This is derived."/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//MultiplicityElement/isUnique"/>
       </contents>
     </eAnnotations>
     <eOperations name="type_of_result" eType="#//Boolean">
@@ -1271,17 +1272,17 @@
       <details key="documentation" value="A literal boolean contains a Boolean-valued attribute. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EOperation" name="booleanValue" eType="#//Boolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;value&#xD;&#xA;&lt;/code>"/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//ValueSpecification/booleanValue"/>
-      </contents>
       <contents xsi:type="ecore:EOperation" name="isComputable" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="booleanValue" eType="#//Boolean">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;value&#xD;&#xA;&lt;/code>"/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//ValueSpecification/booleanValue"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//Boolean">
@@ -1301,17 +1302,17 @@
       <details key="documentation" value="A literal string contains a String-valued attribute. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EOperation" name="isComputable" eType="#//Boolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
-      </contents>
       <contents xsi:type="ecore:EOperation" name="stringValue" eType="#//String">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;value&#xD;&#xA;&lt;/code>"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="isComputable" eType="#//Boolean">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
       </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//String"
@@ -1326,17 +1327,17 @@
       <details key="documentation" value="A literal null is used to represent null, i.e., the absence of a value. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EOperation" name="isNull" eType="#//Boolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//ValueSpecification/isNull"/>
-      </contents>
       <contents xsi:type="ecore:EOperation" name="isComputable" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="isNull" eType="#//Boolean">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="A query based on the following OCL expression:&#xD;&#xA;&lt;code>&#xD;&#xA;true&#xD;&#xA;&lt;/code>"/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//ValueSpecification/isNull"/>
       </contents>
     </eAnnotations>
   </eClassifiers>
@@ -4228,17 +4229,17 @@
       <details key="documentation" value="A DurationInterval defines the range between two Durations. "/>
     </eAnnotations>
     <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EReference" name="min" upperBound="-1" eType="#//Duration">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Refers to the Duration denoting the minimum value of the range."/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//Interval/min"/>
-      </contents>
       <contents xsi:type="ecore:EReference" name="max" upperBound="-1" eType="#//Duration">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Refers to the Duration denoting the maximum value of the range."/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//Interval/max"/>
+      </contents>
+      <contents xsi:type="ecore:EReference" name="min" upperBound="-1" eType="#//Duration">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Refers to the Duration denoting the minimum value of the range."/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//Interval/min"/>
       </contents>
     </eAnnotations>
   </eClassifiers>

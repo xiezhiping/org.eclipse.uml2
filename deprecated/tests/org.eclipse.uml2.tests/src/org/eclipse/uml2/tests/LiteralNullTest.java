@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralNullTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
+ * $Id: LiteralNullTest.java,v 1.3 2005/06/15 15:58:19 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -24,8 +24,8 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.LiteralNull#isNull() <em>Is Null</em>}</li>
  *   <li>{@link org.eclipse.uml2.LiteralNull#isComputable() <em>Is Computable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.LiteralNull#isNull() <em>Is Null</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -100,7 +100,6 @@ public class LiteralNullTest extends LiteralSpecificationTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
-
 	public void testIsComputable() {
 		testIsComputableGen();
 		
@@ -118,6 +117,7 @@ public class LiteralNullTest extends LiteralSpecificationTest {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
 
 	public void testIsNull() {
 		testIsNullGen();
