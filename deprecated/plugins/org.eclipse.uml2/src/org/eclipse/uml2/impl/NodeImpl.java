@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.24 2005/06/15 20:06:01 khussey Exp $
+ * $Id: NodeImpl.java,v 1.25 2005/06/15 21:37:11 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -979,6 +979,8 @@ public class NodeImpl extends ClassImpl implements Node {
 				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.NODE__NESTED_CLASSIFIER:
 				return false;
+			case UML2Package.NODE__OWNED_ATTRIBUTE:
+				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
 		return eIsSetGen(eFeature);
 	}

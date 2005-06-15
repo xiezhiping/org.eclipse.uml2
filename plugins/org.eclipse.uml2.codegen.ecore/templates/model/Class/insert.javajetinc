@@ -28,12 +28,16 @@
 	{
     <%for (Iterator j = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();%>
       <%if (!genClass.getExtendedGenFeatures().contains(subsetGenFeature)) {%>
-        <%if (!genClass.isField(subsetGenFeature)) {%>
+        <%if (genClass.isField(subsetGenFeature)) {%>
+		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+			return <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();
+		}
+        <%} else {%>
 		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();			
-        <%}%>
 		if (<%=subsetGenFeature.getSafeName()%> != null) {
 			return <%=subsetGenFeature.getSafeName()%>;
 		}
+        <%}%>
       <%}%>
     <%}%>
 		return <%if (genClass.getExtendedGenFeatures().contains(genFeature)) {%>super.basicGet<%=genFeature.getAccessorName()%>()<%} else {%>null<%}%>;
@@ -69,32 +73,42 @@
           <%if (subsetGenFeature.isListType()) {%>
             <%if (subsetGenFeature.isResolveProxies() || UML2GenModelUtil.isUnion(subsetGenFeature)) {%>
               <%if (genClass.isField(subsetGenFeature)) {%>
-		if (<%=subsetGenFeature.getSafeName()%> != null) {
-			for (<%=genModel.getImportedName("java.util.Iterator")%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getSafeName()%>).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+			for (<%=genModel.getImportedName("java.util.Iterator")%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); ) {
 				<%=genFeature.getSafeName()%>.add(i.next());
 			}
 		}
               <%} else {%>
-		for (<%=genModel.getImportedName("java.util.Iterator")%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); ) {
-			<%=genFeature.getSafeName()%>.add(i.next());
+		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
+		if (!<%=subsetGenFeature.getSafeName()%>.isEmpty()) {
+			for (<%=genModel.getImportedName("java.util.Iterator")%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getSafeName()%>).basicIterator(); i.hasNext(); ) {
+				<%=genFeature.getSafeName()%>.add(i.next());
+			}
 		}
               <%}%>
             <%} else {%>
               <%if (genClass.isField(subsetGenFeature)) {%>
-		if (<%=subsetGenFeature.getSafeName()%> != null) {
-			<%=genFeature.getSafeName()%>.addAll(<%=subsetGenFeature.getSafeName()%>);
+		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+			<%=genFeature.getSafeName()%>.addAll(<%=subsetGenFeature.getGetAccessor()%>());
 		}
               <%} else {%>
-		<%=genFeature.getSafeName()%>.addAll(<%=subsetGenFeature.getGetAccessor()%>());
+		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
+		if (!<%=subsetGenFeature.getSafeName()%>.isEmpty()) {
+			<%=genFeature.getSafeName()%>.addAll(<%=subsetGenFeature.getSafeName()%>);
+		}
               <%}%>
             <%}%>
           <%} else {%>
-            <%if (!genClass.isField(subsetGenFeature)) {%>
+            <%if (genClass.isField(subsetGenFeature)) {%>
+		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+			<%=genFeature.getSafeName()%>.add(<%=subsetGenFeature.getGetAccessor()%>());
+		}
+            <%} else {%>
 		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();
-            <%}%>
 		if (<%=subsetGenFeature.getSafeName()%> != null) {
 			<%=genFeature.getSafeName()%>.add(<%=subsetGenFeature.getSafeName()%>);
 		}
+            <%}%>
           <%}%>
         <%}%>
       <%}%>
@@ -149,12 +163,16 @@
 	{
       <%for (Iterator j = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();%>
         <%if (!genClass.getExtendedGenFeatures().contains(subsetGenFeature)) {%>
-          <%if (!genClass.isField(subsetGenFeature) || subsetGenFeature.isBasicGet()) {%>
-		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();			
-          <%}%>
+          <%if (genClass.isField(subsetGenFeature) && !subsetGenFeature.isBasicGet()) {%>
+		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
+			return <%=subsetGenFeature.getGetAccessor()%>();
+		}
+          <%} else {%>
+		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
 		if (<%=subsetGenFeature.getSafeName()%> != null) {
 			return <%=subsetGenFeature.getSafeName()%>;
 		}
+          <%}%>
         <%}%>
       <%}%>
 		return <%if (genClass.getExtendedGenFeatures().contains(genFeature)) {%>super.<%=genFeature.getGetAccessor()%>()<%} else {%>null<%}%>;

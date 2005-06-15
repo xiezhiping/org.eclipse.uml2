@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.24 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.25 2005/06/15 21:37:11 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1373,6 +1373,8 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.ACTIVITY__GROUP:
 				return group != null && !group.isEmpty();
+			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
+				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
 		return eIsSetGen(eFeature);
 	}

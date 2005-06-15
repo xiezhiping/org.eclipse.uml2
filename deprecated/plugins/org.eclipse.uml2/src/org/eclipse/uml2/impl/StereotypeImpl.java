@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.32 2005/05/25 16:03:36 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.33 2005/06/15 21:37:11 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -727,6 +727,8 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UML2Package.STEREOTYPE__OWNED_STATE_MACHINE:
 				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+			case UML2Package.STEREOTYPE__OWNED_ATTRIBUTE:
+				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
 		return eIsSetGen(eFeature);
 	}

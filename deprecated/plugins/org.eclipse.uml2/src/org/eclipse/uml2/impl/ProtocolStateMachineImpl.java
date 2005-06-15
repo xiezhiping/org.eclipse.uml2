@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.22 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.23 2005/06/15 21:37:11 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -975,6 +975,8 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_STATE_MACHINE:
 				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+			case UML2Package.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE:
+				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
 		return eIsSetGen(eFeature);
 	}

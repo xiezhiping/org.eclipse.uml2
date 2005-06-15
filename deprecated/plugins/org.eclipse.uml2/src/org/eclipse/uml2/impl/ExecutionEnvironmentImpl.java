@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionEnvironmentImpl.java,v 1.21 2005/05/18 16:38:26 khussey Exp $
+ * $Id: ExecutionEnvironmentImpl.java,v 1.22 2005/06/15 21:37:11 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -749,6 +749,8 @@ public class ExecutionEnvironmentImpl extends NodeImpl implements ExecutionEnvir
 				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
 			case UML2Package.EXECUTION_ENVIRONMENT__NESTED_CLASSIFIER:
 				return false;
+			case UML2Package.EXECUTION_ENVIRONMENT__OWNED_ATTRIBUTE:
+				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
 		return eIsSetGen(eFeature);
 	}

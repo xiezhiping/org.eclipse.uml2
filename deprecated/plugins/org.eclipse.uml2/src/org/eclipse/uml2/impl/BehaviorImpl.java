@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.25 2005/06/15 20:06:01 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.26 2005/06/15 21:37:11 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1364,6 +1364,8 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UML2Package.BEHAVIOR__OWNED_STATE_MACHINE:
 				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+			case UML2Package.BEHAVIOR__OWNED_ATTRIBUTE:
+				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
 		return eIsSetGen(eFeature);
 	}

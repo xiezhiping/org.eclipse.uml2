@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.26 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.27 2005/06/15 21:37:11 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1055,6 +1055,8 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
 				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
+				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
 		return eIsSetGen(eFeature);
 	}

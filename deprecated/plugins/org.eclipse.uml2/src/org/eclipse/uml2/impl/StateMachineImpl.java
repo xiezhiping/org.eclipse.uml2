@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.23 2005/06/15 20:06:01 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.24 2005/06/15 21:37:11 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1159,6 +1159,8 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 				return ownedBehavior != null && !ownedBehavior.isEmpty();
 			case UML2Package.STATE_MACHINE__OWNED_STATE_MACHINE:
 				return ownedStateMachine != null && !ownedStateMachine.isEmpty();
+			case UML2Package.STATE_MACHINE__OWNED_ATTRIBUTE:
+				return ownedAttribute != null && !ownedAttribute.isEmpty();
 		}
 		return eIsSetGen(eFeature);
 	}
