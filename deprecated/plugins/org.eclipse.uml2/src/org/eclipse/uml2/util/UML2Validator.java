@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Validator.java,v 1.17 2005/06/06 19:31:34 khussey Exp $
+ * $Id: UML2Validator.java,v 1.18 2005/06/15 03:18:58 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -561,6 +561,14 @@ public class UML2Validator extends EObjectValidator {
 	 * @generated
 	 */
 	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 34;
+
+	/**
+	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final int DIAGNOSTIC_CODE_COUNT = GENERATED_DIAGNOSTIC_CODE_COUNT;
 
 	/**
 	 * Creates an instance of the switch.
