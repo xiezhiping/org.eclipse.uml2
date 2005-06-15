@@ -4,11 +4,11 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/uml2/1.1.0/GenModel" copyrightText="Copyright (c) IBM Corporation and others."
     modelDirectory="/org.eclipse.uml2/src" creationIcons="false" editorDirectory="/org.eclipse.uml2.editor/src"
     modelPluginID="org.eclipse.uml2" templateDirectory="/org.eclipse.uml2/templates"
-    runtimeJar="true" dynamicTemplates="true" modelName="UML2" modelPluginClass="org.eclipse.uml2.UML2Plugin"
+    dynamicTemplates="true" modelName="UML2" modelPluginClass="org.eclipse.uml2.UML2Plugin"
     editPluginClass="org.eclipse.uml2.provider.UML2EditPlugin" editorPluginClass="org.eclipse.uml2.presentation.UML2EditorPlugin"
-    nonNLSMarkers="true" runtimeCompatibility="false" testsDirectory="/org.eclipse.uml2.tests/src"
-    testSuiteClass="org.eclipse.uml2.tests.UML2AllTests" booleanFlagsField="eFlags"
-    booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.importer.rose" usedGenPackages="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    nonNLSMarkers="true" testsDirectory="/org.eclipse.uml2.tests/src" testSuiteClass="org.eclipse.uml2.tests.UML2AllTests"
+    booleanFlagsField="eFlags" booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.importer.rose"
+    usedGenPackages="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
     factoryMethods="true" pluralizedGetters="true" cacheAdapterSupport="true" safeStrings="true"
     invariantPrefix="validate">
   <foreignModel>UML2.mdl</foreignModel>
