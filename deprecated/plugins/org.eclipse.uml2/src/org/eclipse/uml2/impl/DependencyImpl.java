@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.12 2005/05/18 16:38:27 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -127,8 +127,8 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated NOT
 	 */
 	protected EList getSourcesHelper(EList source) {
-		if (client != null) {
-			for (Iterator i = ((InternalEList) client).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getDependency_Client())) {
+			for (Iterator i = ((InternalEList) getClients()).basicIterator(); i.hasNext(); ) {
 				source.add(i.next());
 			}
 		}
@@ -161,8 +161,8 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated NOT
 	 */
 	protected EList getTargetsHelper(EList target) {
-		if (supplier != null) {
-			for (Iterator i = ((InternalEList) supplier).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getDependency_Supplier())) {
+			for (Iterator i = ((InternalEList) getSuppliers()).basicIterator(); i.hasNext(); ) {
 				target.add(i.next());
 			}
 		}
@@ -599,11 +599,17 @@ public class DependencyImpl extends PackageableElementImpl implements Dependency
 	 * @generated
 	 */
 	protected EList getRelatedElementsHelper(EList relatedElement) {
-		for (Iterator i = ((InternalEList) getSources()).basicIterator(); i.hasNext(); ) {
-			relatedElement.add(i.next());
+		EList source = getSources();
+		if (!source.isEmpty()) {
+			for (Iterator i = ((InternalEList) source).basicIterator(); i.hasNext(); ) {
+				relatedElement.add(i.next());
+			}
 		}
-		for (Iterator i = ((InternalEList) getTargets()).basicIterator(); i.hasNext(); ) {
-			relatedElement.add(i.next());
+		EList target = getTargets();
+		if (!target.isEmpty()) {
+			for (Iterator i = ((InternalEList) target).basicIterator(); i.hasNext(); ) {
+				relatedElement.add(i.next());
+			}
 		}
 		return relatedElement;
 	}

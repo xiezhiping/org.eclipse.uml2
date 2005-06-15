@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interaction.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Interaction.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -66,17 +66,17 @@ public interface Interaction extends Behavior, InteractionFragment{
 	EList getLifelines();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Lifeline} with the specified '<em><b>Name</b></em>' from the '<em><b>Lifeline</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Lifeline} with the specified '<em><b>Name</b></em>' from the '<em><b>Lifeline</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Lifeline} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Lifeline} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getLifelines()
 	 * @generated
-     */
-    Lifeline getLifeline(String unqualifiedName);
-      
+	 */
+    Lifeline getLifeline(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Lifeline} and appends it to the '<em><b>Lifeline</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -89,14 +89,14 @@ public interface Interaction extends Behavior, InteractionFragment{
      */
     Lifeline createLifeline(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Lifeline} and appends it to the '<em><b>Lifeline</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Lifeline} and appends it to the '<em><b>Lifeline</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Lifeline}.
 	 * @see #getLifelines()
 	 * @generated
-     */
+	 */
     Lifeline createLifeline();
 
 	/**
@@ -118,17 +118,17 @@ public interface Interaction extends Behavior, InteractionFragment{
 	EList getMessages();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Message} with the specified '<em><b>Name</b></em>' from the '<em><b>Message</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Message} with the specified '<em><b>Name</b></em>' from the '<em><b>Message</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Message} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Message} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getMessages()
 	 * @generated
-     */
-    Message getMessage(String unqualifiedName);
-      
+	 */
+    Message getMessage(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Message} and appends it to the '<em><b>Message</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -141,14 +141,14 @@ public interface Interaction extends Behavior, InteractionFragment{
      */
     Message createMessage(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Message} and appends it to the '<em><b>Message</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Message} and appends it to the '<em><b>Message</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Message}.
 	 * @see #getMessages()
 	 * @generated
-     */
+	 */
     Message createMessage();
 
 	/**
@@ -170,26 +170,26 @@ public interface Interaction extends Behavior, InteractionFragment{
 	EList getFragments();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Fragment</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Fragment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InteractionFragment} to retrieve.
 	 * @return The {@link org.eclipse.uml2.InteractionFragment} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFragments()
 	 * @generated
-     */
-    InteractionFragment getFragment(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.InteractionFragment} and appends it to the '<em><b>Fragment</b></em>' containment reference list.
+	 */
+    InteractionFragment getFragment(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.InteractionFragment} and appends it to the '<em><b>Fragment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InteractionFragment} to create.
 	 * @return The new {@link org.eclipse.uml2.InteractionFragment}.
 	 * @see #getFragments()
 	 * @generated
-     */
+	 */
     InteractionFragment createFragment(EClass eClass);
 
 	/**
@@ -212,17 +212,17 @@ public interface Interaction extends Behavior, InteractionFragment{
 	EList getFormalGates();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Formal Gate</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Formal Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Gate} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFormalGates()
 	 * @generated
-     */
-    Gate getFormalGate(String unqualifiedName);
-      
+	 */
+    Gate getFormalGate(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Gate} and appends it to the '<em><b>Formal Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -235,14 +235,14 @@ public interface Interaction extends Behavior, InteractionFragment{
      */
     Gate createFormalGate(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Gate} and appends it to the '<em><b>Formal Gate</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Gate} and appends it to the '<em><b>Formal Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Gate}.
 	 * @see #getFormalGates()
 	 * @generated
-     */
+	 */
     Gate createFormalGate();
 
 } // Interaction

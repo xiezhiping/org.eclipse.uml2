@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectAction.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: ReclassifyObjectAction.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -98,17 +98,17 @@ public interface ReclassifyObjectAction extends Action{
 	EList getOldClassifiers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Old Classifier</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Old Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOldClassifiers()
 	 * @generated
-     */
-    Classifier getOldClassifier(String unqualifiedName);
-      
+	 */
+    Classifier getOldClassifier(String name);
+
 	/**
 	 * Returns the value of the '<em><b>New Classifier</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
@@ -129,17 +129,17 @@ public interface ReclassifyObjectAction extends Action{
 	EList getNewClassifiers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>New Classifier</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>New Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNewClassifiers()
 	 * @generated
-     */
-    Classifier getNewClassifier(String unqualifiedName);
-      
+	 */
+    Classifier getNewClassifier(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -170,25 +170,25 @@ public interface ReclassifyObjectAction extends Action{
 	void setObject(InputPin value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getObject()
 	 * @generated
-     */
+	 */
     InputPin createObject(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getObject()
 	 * @generated
-     */
+	 */
     InputPin createObject();
 
 } // ReclassifyObjectAction

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: StateMachine.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -62,17 +62,17 @@ public interface StateMachine extends Behavior{
 	EList getRegions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>' from the '<em><b>Region</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>' from the '<em><b>Region</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Region} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRegions()
 	 * @generated
-     */
-    Region getRegion(String unqualifiedName);
-      
+	 */
+    Region getRegion(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Region} and appends it to the '<em><b>Region</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -85,14 +85,14 @@ public interface StateMachine extends Behavior{
      */
     Region createRegion(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Region} and appends it to the '<em><b>Region</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Region} and appends it to the '<em><b>Region</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Region}.
 	 * @see #getRegions()
 	 * @generated
-     */
+	 */
     Region createRegion();
 
 	/**
@@ -112,17 +112,17 @@ public interface StateMachine extends Behavior{
 	EList getConnectionPoints();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection Point</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Pseudostate} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Pseudostate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConnectionPoints()
 	 * @generated
-     */
-    Pseudostate getConnectionPoint(String unqualifiedName);
-      
+	 */
+    Pseudostate getConnectionPoint(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Pseudostate} and appends it to the '<em><b>Connection Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -135,14 +135,14 @@ public interface StateMachine extends Behavior{
      */
     Pseudostate createConnectionPoint(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Pseudostate} and appends it to the '<em><b>Connection Point</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Pseudostate} and appends it to the '<em><b>Connection Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Pseudostate}.
 	 * @see #getConnectionPoints()
 	 * @generated
-     */
+	 */
     Pseudostate createConnectionPoint();
 
 	/**
@@ -217,15 +217,15 @@ public interface StateMachine extends Behavior{
 	EList getRedefinedElements();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedElements()
 	 * @generated
-     */
+	 */
     RedefinableElement getRedefinedElement(String name);
-      
+
 } // StateMachine

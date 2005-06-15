@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.29 2005/05/30 15:21:18 khussey Exp $
+ * $Id: ClassImpl.java,v 1.30 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -331,8 +331,8 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 */
 	protected EList getAttributesHelper(EList attribute) {
 		super.getAttributesHelper(attribute);
-		if (ownedAttribute != null) {
-			attribute.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())) {
+			attribute.addAll(getOwnedAttributes());
 		}
 		return attribute;
 	}
@@ -345,23 +345,23 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (ownedAttribute != null) {
-			ownedMember.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())) {
+			ownedMember.addAll(getOwnedAttributes());
 		}
-		if (ownedConnector != null) {
-			ownedMember.addAll(ownedConnector);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())) {
+			ownedMember.addAll(getOwnedConnectors());
 		}
-		if (ownedPort != null) {
-			ownedMember.addAll(ownedPort);
+		if (eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())) {
+			ownedMember.addAll(getOwnedPorts());
 		}
-		if (ownedOperation != null) {
-			ownedMember.addAll(ownedOperation);
+		if (eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())) {
+			ownedMember.addAll(getOwnedOperations());
 		}
-		if (nestedClassifier != null) {
-			ownedMember.addAll(nestedClassifier);
+		if (eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())) {
+			ownedMember.addAll(getNestedClassifiers());
 		}
-		if (ownedReception != null) {
-			ownedMember.addAll(ownedReception);
+		if (eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())) {
+			ownedMember.addAll(getOwnedReceptions());
 		}
 		return ownedMember;
 	}
@@ -374,8 +374,11 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		for (Iterator i = ((InternalEList) getRoles()).basicIterator(); i.hasNext(); ) {
-			member.add(i.next());
+		EList role = getRoles();
+		if (!role.isEmpty()) {
+			for (Iterator i = ((InternalEList) role).basicIterator(); i.hasNext(); ) {
+				member.add(i.next());
+			}
 		}
 		return member;
 	}
@@ -388,17 +391,17 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 */
 	protected EList getFeaturesHelper(EList feature) {
 		super.getFeaturesHelper(feature);
-		if (ownedConnector != null) {
-			feature.addAll(ownedConnector);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())) {
+			feature.addAll(getOwnedConnectors());
 		}
-		if (ownedPort != null) {
-			feature.addAll(ownedPort);
+		if (eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())) {
+			feature.addAll(getOwnedPorts());
 		}
-		if (ownedOperation != null) {
-			feature.addAll(ownedOperation);
+		if (eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())) {
+			feature.addAll(getOwnedOperations());
 		}
-		if (ownedReception != null) {
-			feature.addAll(ownedReception);
+		if (eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())) {
+			feature.addAll(getOwnedReceptions());
 		}
 		return feature;
 	}
@@ -1551,7 +1554,10 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 */
 	protected EList getRolesHelper(EList role) {
-		role.addAll(getOwnedAttributes());
+		EList ownedAttribute = getOwnedAttributes();
+		if (!ownedAttribute.isEmpty()) {
+			role.addAll(ownedAttribute);
+		}
 		return role;
 	}
 

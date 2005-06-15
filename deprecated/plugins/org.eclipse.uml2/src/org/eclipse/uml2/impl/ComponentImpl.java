@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.25 2005/06/03 20:12:19 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.26 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1082,11 +1082,14 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (realization != null) {
-			ownedElement.addAll(realization);
+		if (eIsSet(UML2Package.eINSTANCE.getComponent_Realization())) {
+			ownedElement.addAll(getRealizations());
 		}
-		for (Iterator i = ((InternalEList) super.getOwnedMembers()).basicIterator(); i.hasNext(); ) {
-			ownedElement.add(i.next());
+		EList ownedMember = super.getOwnedMembers();
+		if (!ownedMember.isEmpty()) {
+			for (Iterator i = ((InternalEList) ownedMember).basicIterator(); i.hasNext(); ) {
+				ownedElement.add(i.next());
+			}
 		}
 		return ownedElement;
 	}
@@ -1100,8 +1103,11 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		for (Iterator i = ((InternalEList) super.getOwnedMembers()).basicIterator(); i.hasNext();) {
-			member.add(i.next());
+		EList ownedMember = super.getOwnedMembers();
+		if (!ownedMember.isEmpty()) {
+			for (Iterator i = ((InternalEList) ownedMember).basicIterator(); i.hasNext();) {
+				member.add(i.next());
+			}
 		}
 		return member;
 	}

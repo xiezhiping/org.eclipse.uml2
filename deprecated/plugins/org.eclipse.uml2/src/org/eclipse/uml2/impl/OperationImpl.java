@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.22 2005/06/15 15:58:36 khussey Exp $
+ * $Id: OperationImpl.java,v 1.23 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1086,14 +1086,14 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (precondition != null) {
-			ownedMember.addAll(precondition);
+		if (eIsSet(UML2Package.eINSTANCE.getOperation_Precondition())) {
+			ownedMember.addAll(getPreconditions());
 		}
-		if (postcondition != null) {
-			ownedMember.addAll(postcondition);
+		if (eIsSet(UML2Package.eINSTANCE.getOperation_Postcondition())) {
+			ownedMember.addAll(getPostconditions());
 		}
-		if (bodyCondition != null) {
-			ownedMember.add(bodyCondition);
+		if (eIsSet(UML2Package.eINSTANCE.getOperation_BodyCondition())) {
+			ownedMember.add(getBodyCondition());
 		}
 		return ownedMember;
 	}
@@ -1106,8 +1106,8 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	protected EList getRedefinedElementsHelper(EList redefinedElement) {
 		super.getRedefinedElementsHelper(redefinedElement);
-		if (redefinedOperation != null) {
-			for (Iterator i = ((InternalEList) redefinedOperation).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getOperation_RedefinedOperation())) {
+			for (Iterator i = ((InternalEList) getRedefinedOperations()).basicIterator(); i.hasNext(); ) {
 				redefinedElement.add(i.next());
 			}
 		}
@@ -1801,11 +1801,11 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (upperValue != null) {
-			ownedElement.add(upperValue);
+		if (eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())) {
+			ownedElement.add(getUpperValue());
 		}
-		if (lowerValue != null) {
-			ownedElement.add(lowerValue);
+		if (eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue())) {
+			ownedElement.add(getLowerValue());
 		}
 		return ownedElement;
 	}
@@ -1813,18 +1813,35 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 
 	// <!-- begin-custom-operations -->
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.MultiplicityElement#setLowerBound(int)
 	 */
 	public void setLowerBound(int value) {
 		MultiplicityElementOperations.setLowerBound(this, value);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.MultiplicityElement#setUpperBound(int)
 	 */
 	public void setUpperBound(int value) {
 		MultiplicityElementOperations.setUpperBound(this, value);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.impl.BehavioralFeatureImpl#getParametersHelper(org.eclipse.emf.common.util.EList)
+	 */
+	protected EList getParametersHelper(EList parameter) {
+		super.getParametersHelper(parameter);
+		if (eIsSet(UML2Package.eINSTANCE.getOperation_OwnedParameter())) {
+			parameter.add(getOwnedParameters());
+		}
+		return parameter;
 	}
 
 	// <!-- end-custom-operations -->

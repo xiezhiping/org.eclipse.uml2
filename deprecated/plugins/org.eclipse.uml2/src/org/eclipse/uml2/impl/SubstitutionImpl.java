@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.12 2005/05/18 16:38:29 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -580,8 +580,8 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 */
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
-		if (contract != null) {
-			target.add(contract);
+		if (eIsSet(UML2Package.eINSTANCE.getSubstitution_Contract())) {
+			target.add(getContract());
 		}
 		return target;
 	}

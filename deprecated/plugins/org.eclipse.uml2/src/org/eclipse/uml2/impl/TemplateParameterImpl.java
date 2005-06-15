@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.12 2005/05/18 16:38:29 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -406,11 +406,11 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (ownedParameteredElement != null) {
-			ownedElement.add(ownedParameteredElement);
+		if (eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement())) {
+			ownedElement.add(getOwnedParameteredElement());
 		}
-		if (ownedDefault != null) {
-			ownedElement.add(ownedDefault);
+		if (eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault())) {
+			ownedElement.add(getOwnedDefault());
 		}
 		return ownedElement;
 	}

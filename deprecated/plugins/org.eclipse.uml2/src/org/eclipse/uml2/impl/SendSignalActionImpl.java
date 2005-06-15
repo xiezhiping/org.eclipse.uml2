@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: SendSignalActionImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -667,8 +667,8 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (target != null) {
-			input.add(target);
+		if (eIsSet(UML2Package.eINSTANCE.getSendSignalAction_Target())) {
+			input.add(getTarget());
 		}
 		return input;
 	}

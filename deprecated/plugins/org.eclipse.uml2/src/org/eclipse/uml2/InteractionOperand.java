@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperand.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: InteractionOperand.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -87,14 +87,14 @@ public interface InteractionOperand extends Namespace, InteractionFragment{
      */
     InteractionConstraint createGuard(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.InteractionConstraint} and sets the '<em><b>Guard</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.InteractionConstraint} and sets the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.InteractionConstraint}.
 	 * @see #getGuard()
 	 * @generated
-     */
+	 */
     InteractionConstraint createGuard();
 
 	/**
@@ -119,26 +119,26 @@ public interface InteractionOperand extends Namespace, InteractionFragment{
 	EList getFragments();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Fragment</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Fragment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InteractionFragment} to retrieve.
 	 * @return The {@link org.eclipse.uml2.InteractionFragment} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFragments()
 	 * @generated
-     */
-    InteractionFragment getFragment(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.InteractionFragment} and appends it to the '<em><b>Fragment</b></em>' containment reference list.
+	 */
+    InteractionFragment getFragment(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.InteractionFragment} and appends it to the '<em><b>Fragment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InteractionFragment} to create.
 	 * @return The new {@link org.eclipse.uml2.InteractionFragment}.
 	 * @see #getFragments()
 	 * @generated
-     */
+	 */
     InteractionFragment createFragment(EClass eClass);
 
 } // InteractionOperand

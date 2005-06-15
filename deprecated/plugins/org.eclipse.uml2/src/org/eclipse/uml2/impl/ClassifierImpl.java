@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.26 2005/06/03 20:40:30 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.27 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -480,8 +480,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	protected EList getRedefinedElementsHelper(EList redefinedElement) {
-		if (redefinedClassifier != null) {
-			for (Iterator i = ((InternalEList) redefinedClassifier).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getClassifier_RedefinedClassifier())) {
+			for (Iterator i = ((InternalEList) getRedefinedClassifiers()).basicIterator(); i.hasNext(); ) {
 				redefinedElement.add(i.next());
 			}
 		}
@@ -553,11 +553,17 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		for (Iterator i = ((InternalEList) getFeatures()).basicIterator(); i.hasNext(); ) {
-			member.add(i.next());
+		EList feature = getFeatures();
+		if (!feature.isEmpty()) {
+			for (Iterator i = ((InternalEList) feature).basicIterator(); i.hasNext(); ) {
+				member.add(i.next());
+			}
 		}
-		for (Iterator i = ((InternalEList) getInheritedMembers()).basicIterator(); i.hasNext(); ) {
-			member.add(i.next());
+		EList inheritedMember = getInheritedMembers();
+		if (!inheritedMember.isEmpty()) {
+			for (Iterator i = ((InternalEList) inheritedMember).basicIterator(); i.hasNext(); ) {
+				member.add(i.next());
+			}
 		}
 		return member;
 	}
@@ -570,14 +576,14 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (generalization != null) {
-			ownedElement.addAll(generalization);
+		if (eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())) {
+			ownedElement.addAll(getGeneralizations());
 		}
-		if (substitution != null) {
-			ownedElement.addAll(substitution);
+		if (eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())) {
+			ownedElement.addAll(getSubstitutions());
 		}
-		if (occurrence != null) {
-			ownedElement.addAll(occurrence);
+		if (eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())) {
+			ownedElement.addAll(getOccurrences());
 		}
 		return ownedElement;
 	}
@@ -765,8 +771,8 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (ownedUseCase != null) {
-			ownedMember.addAll(ownedUseCase);
+		if (eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())) {
+			ownedMember.addAll(getOwnedUseCases());
 		}
 		return ownedMember;
 	}
@@ -1369,8 +1375,11 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	protected EList getFeaturesHelper(EList feature) {
-		for (Iterator i = ((InternalEList) getAttributes()).basicIterator(); i.hasNext(); ) {
-			feature.add(i.next());
+		EList attribute = getAttributes();
+		if (!attribute.isEmpty()) {
+			for (Iterator i = ((InternalEList) attribute).basicIterator(); i.hasNext(); ) {
+				feature.add(i.next());
+			}
 		}
 		return feature;
 	}

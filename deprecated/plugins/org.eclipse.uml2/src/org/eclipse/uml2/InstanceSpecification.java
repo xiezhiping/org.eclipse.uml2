@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.10 2005/06/02 15:02:47 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -83,14 +83,14 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
      */
     Slot createSlot(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Slot} and appends it to the '<em><b>Slot</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Slot} and appends it to the '<em><b>Slot</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Slot}.
 	 * @see #getSlots()
 	 * @generated
-     */
+	 */
     Slot createSlot();
 
 	/**
@@ -113,17 +113,17 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	EList getClassifiers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Classifier</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getClassifiers()
 	 * @generated
-     */
-    Classifier getClassifier(String unqualifiedName);
-      
+	 */
+    Classifier getClassifier(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Specification</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -154,15 +154,15 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	void setSpecification(ValueSpecification value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Specification</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Specification</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getSpecification()
 	 * @generated
-     */
+	 */
     ValueSpecification createSpecification(EClass eClass);
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.13 2005/06/07 17:31:26 khussey Exp $
+ * $Id: NamedElement.java,v 1.14 2005/06/15 20:06:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -155,17 +155,17 @@ public interface NamedElement extends TemplateableElement{
 	EList getClientDependencies();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Dependency} with the specified '<em><b>Name</b></em>' from the '<em><b>Client Dependency</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Dependency} with the specified '<em><b>Name</b></em>' from the '<em><b>Client Dependency</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Dependency} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Dependency} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getClientDependencies()
 	 * @generated
-     */
-    Dependency getClientDependency(String unqualifiedName);
-      
+	 */
+    Dependency getClientDependency(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Name Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -208,14 +208,14 @@ public interface NamedElement extends TemplateableElement{
      */
     StringExpression createNameExpression(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.StringExpression} and sets the '<em><b>Name Expression</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.StringExpression} and sets the '<em><b>Name Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.StringExpression}.
 	 * @see #getNameExpression()
 	 * @generated
-     */
+	 */
     StringExpression createNameExpression();
 
 	/**

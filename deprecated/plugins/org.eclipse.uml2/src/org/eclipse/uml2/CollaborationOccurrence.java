@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationOccurrence.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: CollaborationOccurrence.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -92,36 +92,36 @@ public interface CollaborationOccurrence extends NamedElement{
 	EList getRoleBindings();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Dependency} with the specified '<em><b>Name</b></em>' from the '<em><b>Role Binding</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Dependency} with the specified '<em><b>Name</b></em>' from the '<em><b>Role Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Dependency} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Dependency} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRoleBindings()
 	 * @generated
-     */
-    Dependency getRoleBinding(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.Dependency} and appends it to the '<em><b>Role Binding</b></em>' containment reference list.
+	 */
+    Dependency getRoleBinding(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.Dependency} and appends it to the '<em><b>Role Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Dependency} to create.
 	 * @return The new {@link org.eclipse.uml2.Dependency}.
 	 * @see #getRoleBindings()
 	 * @generated
-     */
+	 */
     Dependency createRoleBinding(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Dependency} and appends it to the '<em><b>Role Binding</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Dependency} and appends it to the '<em><b>Role Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Dependency}.
 	 * @see #getRoleBindings()
 	 * @generated
-     */
+	 */
     Dependency createRoleBinding();
 
 } // CollaborationOccurrence

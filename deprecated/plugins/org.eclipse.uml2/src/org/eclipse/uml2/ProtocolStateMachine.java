@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachine.java,v 1.7 2005/05/18 16:38:31 khussey Exp $
+ * $Id: ProtocolStateMachine.java,v 1.8 2005/06/15 20:06:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -74,14 +74,14 @@ public interface ProtocolStateMachine extends StateMachine{
      */
     ProtocolConformance createConformance(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ProtocolConformance} and appends it to the '<em><b>Conformance</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ProtocolConformance} and appends it to the '<em><b>Conformance</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.ProtocolConformance}.
 	 * @see #getConformances()
 	 * @generated
-     */
+	 */
     ProtocolConformance createConformance();
 
 } // ProtocolStateMachine

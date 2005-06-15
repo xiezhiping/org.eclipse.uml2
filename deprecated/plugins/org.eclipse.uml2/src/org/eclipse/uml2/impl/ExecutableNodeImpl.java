@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -485,8 +485,8 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (handler != null) {
-			ownedElement.addAll(handler);
+		if (eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())) {
+			ownedElement.addAll(getHandlers());
 		}
 		return ownedElement;
 	}

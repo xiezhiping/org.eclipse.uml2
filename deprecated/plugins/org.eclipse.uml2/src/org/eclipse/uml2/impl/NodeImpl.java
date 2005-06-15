@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.23 2005/05/25 15:21:32 khussey Exp $
+ * $Id: NodeImpl.java,v 1.24 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1023,8 +1023,8 @@ public class NodeImpl extends ClassImpl implements Node {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (deployment != null) {
-			ownedElement.addAll(deployment);
+		if (eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())) {
+			ownedElement.addAll(getDeployments());
 		}
 		return ownedElement;
 	}
@@ -1032,8 +1032,8 @@ public class NodeImpl extends ClassImpl implements Node {
 
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (nestedNode != null) {
-			ownedMember.addAll(nestedNode);
+		if (eIsSet(UML2Package.eINSTANCE.getNode_NestedNode())) {
+			ownedMember.addAll(getNestedNodes());
 		}
 		return ownedMember;
 	}

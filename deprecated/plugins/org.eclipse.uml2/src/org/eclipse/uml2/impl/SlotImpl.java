@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
+ * $Id: SlotImpl.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -234,8 +234,8 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (value != null) {
-			ownedElement.addAll(value);
+		if (eIsSet(UML2Package.eINSTANCE.getSlot_Value())) {
+			ownedElement.addAll(getValues());
 		}
 		return ownedElement;
 	}

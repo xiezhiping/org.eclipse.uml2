@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegion.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: InterruptibleActivityRegion.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -65,17 +65,17 @@ public interface InterruptibleActivityRegion extends ActivityGroup{
 	EList getInterruptingEdges();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Interrupting Edge</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Interrupting Edge</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInterruptingEdges()
 	 * @generated
-     */
-    ActivityEdge getInterruptingEdge(String unqualifiedName);
-      
+	 */
+    ActivityEdge getInterruptingEdge(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Contained Node</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityNode}.
@@ -95,15 +95,15 @@ public interface InterruptibleActivityRegion extends ActivityGroup{
 	EList getContainedNodes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContainedNodes()
 	 * @generated
-     */
-    ActivityNode getContainedNode(String unqualifiedName);
-      
+	 */
+    ActivityNode getContainedNode(String name);
+
 } // InterruptibleActivityRegion

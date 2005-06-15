@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.12 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -479,8 +479,8 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 */
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
-		if (utilizedElement != null) {
-			target.add(utilizedElement);
+		if (eIsSet(UML2Package.eINSTANCE.getManifestation_UtilizedElement())) {
+			target.add(getUtilizedElement());
 		}
 		return target;
 	}

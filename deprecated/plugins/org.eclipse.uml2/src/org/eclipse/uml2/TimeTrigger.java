@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeTrigger.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: TimeTrigger.java,v 1.9 2005/06/15 20:06:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -103,15 +103,15 @@ public interface TimeTrigger extends Trigger{
 	void setWhen(ValueSpecification value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>When</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>When</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getWhen()
 	 * @generated
-     */
+	 */
     ValueSpecification createWhen(EClass eClass);
 
 } // TimeTrigger

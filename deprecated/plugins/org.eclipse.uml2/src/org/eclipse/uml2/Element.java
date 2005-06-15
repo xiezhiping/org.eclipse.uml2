@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.14 2005/06/07 17:31:26 khussey Exp $
+ * $Id: Element.java,v 1.15 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -126,14 +126,14 @@ public interface Element extends EModelElement{
      */
     Comment createOwnedComment(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Comment} and appends it to the '<em><b>Owned Comment</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Comment} and appends it to the '<em><b>Owned Comment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Comment}.
 	 * @see #getOwnedComments()
 	 * @generated
-     */
+	 */
     Comment createOwnedComment();
 
 	/**

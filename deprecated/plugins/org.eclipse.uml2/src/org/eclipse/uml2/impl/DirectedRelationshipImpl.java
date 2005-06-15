@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -94,11 +94,17 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	 */
 	protected EList getRelatedElementsHelper(EList relatedElement) {
 		super.getRelatedElementsHelper(relatedElement);
-		for (Iterator i = ((InternalEList) getSources()).basicIterator(); i.hasNext(); ) {
-			relatedElement.add(i.next());
+		EList source = getSources();
+		if (!source.isEmpty()) {
+			for (Iterator i = ((InternalEList) source).basicIterator(); i.hasNext(); ) {
+				relatedElement.add(i.next());
+			}
 		}
-		for (Iterator i = ((InternalEList) getTargets()).basicIterator(); i.hasNext(); ) {
-			relatedElement.add(i.next());
+		EList target = getTargets();
+		if (!target.isEmpty()) {
+			for (Iterator i = ((InternalEList) target).basicIterator(); i.hasNext(); ) {
+				relatedElement.add(i.next());
+			}
 		}
 		return relatedElement;
 	}

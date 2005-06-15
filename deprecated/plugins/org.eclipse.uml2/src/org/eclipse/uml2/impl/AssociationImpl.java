@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.21 2005/05/25 15:21:32 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.22 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -310,8 +310,8 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 */
 	protected EList getFeaturesHelper(EList feature) {
 		super.getFeaturesHelper(feature);
-		if (ownedEnd != null) {
-			feature.addAll(ownedEnd);
+		if (eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd())) {
+			feature.addAll(getOwnedEnds());
 		}
 		return feature;
 	}
@@ -324,8 +324,8 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (ownedEnd != null) {
-			ownedMember.addAll(ownedEnd);
+		if (eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd())) {
+			ownedMember.addAll(getOwnedEnds());
 		}
 		return ownedMember;
 	}
@@ -338,8 +338,8 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		if (memberEnd != null) {
-			for (Iterator i = ((InternalEList) memberEnd).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getAssociation_MemberEnd())) {
+			for (Iterator i = ((InternalEList) getMemberEnds()).basicIterator(); i.hasNext(); ) {
 				member.add(i.next());
 			}
 		}
@@ -917,8 +917,11 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 * @generated
 	 */
 	protected EList getRelatedElementsHelper(EList relatedElement) {
-		for (Iterator i = ((InternalEList) getEndTypes()).basicIterator(); i.hasNext(); ) {
-			relatedElement.add(i.next());
+		EList endType = getEndTypes();
+		if (!endType.isEmpty()) {
+			for (Iterator i = ((InternalEList) endType).basicIterator(); i.hasNext(); ) {
+				relatedElement.add(i.next());
+			}
 		}
 		return relatedElement;
 	}

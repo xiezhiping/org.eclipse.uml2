@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCase.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
+ * $Id: UseCase.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -66,17 +66,17 @@ public interface UseCase extends BehavioredClassifier{
 	EList getIncludes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Include} with the specified '<em><b>Name</b></em>' from the '<em><b>Include</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Include} with the specified '<em><b>Name</b></em>' from the '<em><b>Include</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Include} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Include} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getIncludes()
 	 * @generated
-     */
-    Include getInclude(String unqualifiedName);
-      
+	 */
+    Include getInclude(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Include} and appends it to the '<em><b>Include</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -89,14 +89,14 @@ public interface UseCase extends BehavioredClassifier{
      */
     Include createInclude(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Include} and appends it to the '<em><b>Include</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Include} and appends it to the '<em><b>Include</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Include}.
 	 * @see #getIncludes()
 	 * @generated
-     */
+	 */
     Include createInclude();
 
 	/**
@@ -118,17 +118,17 @@ public interface UseCase extends BehavioredClassifier{
 	EList getExtends();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Extend} with the specified '<em><b>Name</b></em>' from the '<em><b>Extend</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Extend} with the specified '<em><b>Name</b></em>' from the '<em><b>Extend</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Extend} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Extend} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExtends()
 	 * @generated
-     */
-    Extend getExtend(String unqualifiedName);
-      
+	 */
+    Extend getExtend(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Extend} and appends it to the '<em><b>Extend</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -141,14 +141,14 @@ public interface UseCase extends BehavioredClassifier{
      */
     Extend createExtend(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Extend} and appends it to the '<em><b>Extend</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Extend} and appends it to the '<em><b>Extend</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Extend}.
 	 * @see #getExtends()
 	 * @generated
-     */
+	 */
     Extend createExtend();
 
 	/**
@@ -170,17 +170,17 @@ public interface UseCase extends BehavioredClassifier{
 	EList getExtensionPoints();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ExtensionPoint} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension Point</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ExtensionPoint} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExtensionPoint} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ExtensionPoint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExtensionPoints()
 	 * @generated
-     */
-    ExtensionPoint getExtensionPoint(String unqualifiedName);
-      
+	 */
+    ExtensionPoint getExtensionPoint(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.ExtensionPoint} and appends it to the '<em><b>Extension Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -193,14 +193,14 @@ public interface UseCase extends BehavioredClassifier{
      */
     ExtensionPoint createExtensionPoint(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ExtensionPoint} and appends it to the '<em><b>Extension Point</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ExtensionPoint} and appends it to the '<em><b>Extension Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.ExtensionPoint}.
 	 * @see #getExtensionPoints()
 	 * @generated
-     */
+	 */
     ExtensionPoint createExtensionPoint();
 
 	/**
@@ -222,15 +222,15 @@ public interface UseCase extends BehavioredClassifier{
 	EList getSubjects();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Subject</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Subject</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubjects()
 	 * @generated
-     */
-    Classifier getSubject(String unqualifiedName);
-      
+	 */
+    Classifier getSubject(String name);
+
 } // UseCase

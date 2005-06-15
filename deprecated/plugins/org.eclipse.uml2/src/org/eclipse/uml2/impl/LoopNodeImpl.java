@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.11 2005/05/18 16:38:26 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1204,8 +1204,8 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (result != null) {
-			output.addAll(result);
+		if (eIsSet(UML2Package.eINSTANCE.getLoopNode_Result())) {
+			output.addAll(getResults());
 		}
 		return output;
 	}
@@ -1218,8 +1218,8 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (loopVariable != null) {
-			ownedElement.addAll(loopVariable);
+		if (eIsSet(UML2Package.eINSTANCE.getLoopNode_LoopVariable())) {
+			ownedElement.addAll(getLoopVariables());
 		}
 		return ownedElement;
 	}
@@ -1232,8 +1232,8 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (loopVariableInput != null) {
-			input.addAll(loopVariableInput);
+		if (eIsSet(UML2Package.eINSTANCE.getLoopNode_LoopVariableInput())) {
+			input.addAll(getLoopVariableInputs());
 		}
 		return input;
 	}

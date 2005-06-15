@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.19 2005/05/25 15:21:32 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.20 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -250,8 +250,8 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 */
 	protected EList getAttributesHelper(EList attribute) {
 		super.getAttributesHelper(attribute);
-		if (ownedAttribute != null) {
-			attribute.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())) {
+			attribute.addAll(getOwnedAttributes());
 		}
 		return attribute;
 	}
@@ -264,11 +264,11 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (ownedAttribute != null) {
-			ownedMember.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())) {
+			ownedMember.addAll(getOwnedAttributes());
 		}
-		if (ownedConnector != null) {
-			ownedMember.addAll(ownedConnector);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())) {
+			ownedMember.addAll(getOwnedConnectors());
 		}
 		return ownedMember;
 	}
@@ -281,8 +281,11 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		for (Iterator i = ((InternalEList) getRoles()).basicIterator(); i.hasNext(); ) {
-			member.add(i.next());
+		EList role = getRoles();
+		if (!role.isEmpty()) {
+			for (Iterator i = ((InternalEList) role).basicIterator(); i.hasNext(); ) {
+				member.add(i.next());
+			}
 		}
 		return member;
 	}
@@ -295,8 +298,8 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 */
 	protected EList getFeaturesHelper(EList feature) {
 		super.getFeaturesHelper(feature);
-		if (ownedConnector != null) {
-			feature.addAll(ownedConnector);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())) {
+			feature.addAll(getOwnedConnectors());
 		}
 		return feature;
 	}
@@ -870,8 +873,8 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	protected EList getRolesHelper(EList role) {
-		if (ownedAttribute != null) {
-			role.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())) {
+			role.addAll(getOwnedAttributes());
 		}
 		return role;
 	}

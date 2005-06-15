@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.11 2005/06/07 17:31:26 khussey Exp $
+ * $Id: Namespace.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -72,17 +72,17 @@ public interface Namespace extends NamedElement{
 	EList getMembers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Member</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Member</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.NamedElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getMembers()
 	 * @generated
-     */
-    NamedElement getMember(String unqualifiedName);
-      
+	 */
+    NamedElement getMember(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Owned Rule</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Constraint}.
@@ -105,36 +105,36 @@ public interface Namespace extends NamedElement{
 	EList getOwnedRules();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Rule</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Rule</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedRules()
 	 * @generated
-     */
-    Constraint getOwnedRule(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Owned Rule</b></em>' containment reference list.
+	 */
+    Constraint getOwnedRule(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Owned Rule</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Constraint} to create.
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getOwnedRules()
 	 * @generated
-     */
+	 */
     Constraint createOwnedRule(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Owned Rule</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Owned Rule</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getOwnedRules()
 	 * @generated
-     */
+	 */
     Constraint createOwnedRule();
 
 	/**
@@ -157,17 +157,17 @@ public interface Namespace extends NamedElement{
 	EList getImportedMembers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Imported Member</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Imported Member</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.PackageableElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getImportedMembers()
 	 * @generated
-     */
-    PackageableElement getImportedMember(String unqualifiedName);
-      
+	 */
+    PackageableElement getImportedMember(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Element Import</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ElementImport}.
@@ -202,14 +202,14 @@ public interface Namespace extends NamedElement{
      */
     ElementImport createElementImport(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ElementImport} and appends it to the '<em><b>Element Import</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ElementImport} and appends it to the '<em><b>Element Import</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.ElementImport}.
 	 * @see #getElementImports()
 	 * @generated
-     */
+	 */
     ElementImport createElementImport();
 
 	/**
@@ -234,25 +234,25 @@ public interface Namespace extends NamedElement{
 	EList getPackageImports();
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.PackageImport} and appends it to the '<em><b>Package Import</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.PackageImport} and appends it to the '<em><b>Package Import</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.PackageImport} to create.
 	 * @return The new {@link org.eclipse.uml2.PackageImport}.
 	 * @see #getPackageImports()
 	 * @generated
-     */
+	 */
     PackageImport createPackageImport(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.PackageImport} and appends it to the '<em><b>Package Import</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.PackageImport} and appends it to the '<em><b>Package Import</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.PackageImport}.
 	 * @see #getPackageImports()
 	 * @generated
-     */
+	 */
     PackageImport createPackageImport();
 
 	/**
@@ -367,17 +367,17 @@ public interface Namespace extends NamedElement{
 	EList getOwnedMembers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Member</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Member</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.NamedElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedMembers()
 	 * @generated
-     */
+	 */
     NamedElement getOwnedMember(String name);
-      
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

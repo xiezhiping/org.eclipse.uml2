@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.13 2005/05/25 15:21:32 khussey Exp $
+ * $Id: StateImpl.java,v 1.14 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1619,20 +1619,20 @@ public class StateImpl extends NamespaceImpl implements State {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (connection != null) {
-			ownedElement.addAll(connection);
+		if (eIsSet(UML2Package.eINSTANCE.getState_Connection())) {
+			ownedElement.addAll(getConnections());
 		}
-		if (entry != null) {
-			ownedElement.add(entry);
+		if (eIsSet(UML2Package.eINSTANCE.getState_Entry())) {
+			ownedElement.add(getEntry());
 		}
-		if (exit != null) {
-			ownedElement.add(exit);
+		if (eIsSet(UML2Package.eINSTANCE.getState_Exit())) {
+			ownedElement.add(getExit());
 		}
-		if (doActivity != null) {
-			ownedElement.add(doActivity);
+		if (eIsSet(UML2Package.eINSTANCE.getState_DoActivity())) {
+			ownedElement.add(getDoActivity());
 		}
-		if (stateInvariant != null) {
-			ownedElement.add(stateInvariant);
+		if (eIsSet(UML2Package.eINSTANCE.getState_StateInvariant())) {
+			ownedElement.add(getStateInvariant());
 		}
 		return ownedElement;
 	}
@@ -1645,8 +1645,8 @@ public class StateImpl extends NamespaceImpl implements State {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (region != null) {
-			ownedMember.addAll(region);
+		if (eIsSet(UML2Package.eINSTANCE.getState_Region())) {
+			ownedMember.addAll(getRegions());
 		}
 		return ownedMember;
 	}

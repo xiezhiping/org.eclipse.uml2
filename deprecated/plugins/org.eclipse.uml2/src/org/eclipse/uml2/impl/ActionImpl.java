@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.11 2005/05/18 16:38:26 khussey Exp $
+ * $Id: ActionImpl.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -237,17 +237,23 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		for (Iterator i = ((InternalEList) getOutputs()).basicIterator(); i.hasNext(); ) {
-			ownedElement.add(i.next());
+		EList output = getOutputs();
+		if (!output.isEmpty()) {
+			for (Iterator i = ((InternalEList) output).basicIterator(); i.hasNext(); ) {
+				ownedElement.add(i.next());
+			}
 		}
-		for (Iterator i = ((InternalEList) getInputs()).basicIterator(); i.hasNext(); ) {
-			ownedElement.add(i.next());
+		EList input = getInputs();
+		if (!input.isEmpty()) {
+			for (Iterator i = ((InternalEList) input).basicIterator(); i.hasNext(); ) {
+				ownedElement.add(i.next());
+			}
 		}
-		if (localPrecondition != null) {
-			ownedElement.addAll(localPrecondition);
+		if (eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())) {
+			ownedElement.addAll(getLocalPreconditions());
 		}
-		if (localPostcondition != null) {
-			ownedElement.addAll(localPostcondition);
+		if (eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition())) {
+			ownedElement.addAll(getLocalPostconditions());
 		}
 		return ownedElement;
 	}

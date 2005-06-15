@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.17 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.18 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -967,8 +967,8 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (manifestation != null) {
-			ownedElement.addAll(manifestation);
+		if (eIsSet(UML2Package.eINSTANCE.getArtifact_Manifestation())) {
+			ownedElement.addAll(getManifestations());
 		}
 		return ownedElement;
 	}
@@ -981,8 +981,8 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 */
 	protected EList getFeaturesHelper(EList feature) {
 		super.getFeaturesHelper(feature);
-		if (ownedOperation != null) {
-			feature.addAll(ownedOperation);
+		if (eIsSet(UML2Package.eINSTANCE.getArtifact_OwnedOperation())) {
+			feature.addAll(getOwnedOperations());
 		}
 		return feature;
 	}
@@ -995,11 +995,11 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (ownedOperation != null) {
-			ownedMember.addAll(ownedOperation);
+		if (eIsSet(UML2Package.eINSTANCE.getArtifact_OwnedOperation())) {
+			ownedMember.addAll(getOwnedOperations());
 		}
-		if (ownedAttribute != null) {
-			ownedMember.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getArtifact_OwnedAttribute())) {
+			ownedMember.addAll(getOwnedAttributes());
 		}
 		return ownedMember;
 	}
@@ -1012,8 +1012,8 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 */
 	protected EList getAttributesHelper(EList attribute) {
 		super.getAttributesHelper(attribute);
-		if (ownedAttribute != null) {
-			attribute.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getArtifact_OwnedAttribute())) {
+			attribute.addAll(getOwnedAttributes());
 		}
 		return attribute;
 	}

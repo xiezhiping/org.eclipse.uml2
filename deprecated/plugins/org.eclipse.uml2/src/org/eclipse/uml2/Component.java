@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Component.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -91,17 +91,17 @@ public interface Component extends org.eclipse.uml2.Class{
 	EList getRequireds();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Interface} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRequireds()
 	 * @generated
-     */
-    Interface getRequired(String unqualifiedName);
-      
+	 */
+    Interface getRequired(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Provided</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Interface}.
@@ -119,17 +119,17 @@ public interface Component extends org.eclipse.uml2.Class{
 	EList getProvideds();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Interface} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getProvideds()
 	 * @generated
-     */
-    Interface getProvided(String unqualifiedName);
-      
+	 */
+    Interface getProvided(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Realization</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Realization}.
@@ -149,36 +149,36 @@ public interface Component extends org.eclipse.uml2.Class{
 	EList getRealizations();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Realization} with the specified '<em><b>Name</b></em>' from the '<em><b>Realization</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Realization} with the specified '<em><b>Name</b></em>' from the '<em><b>Realization</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Realization} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Realization} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRealizations()
 	 * @generated
-     */
-    Realization getRealization(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.Realization} and appends it to the '<em><b>Realization</b></em>' containment reference list.
+	 */
+    Realization getRealization(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.Realization} and appends it to the '<em><b>Realization</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Realization} to create.
 	 * @return The new {@link org.eclipse.uml2.Realization}.
 	 * @see #getRealizations()
 	 * @generated
-     */
+	 */
     Realization createRealization(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Realization} and appends it to the '<em><b>Realization</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Realization} and appends it to the '<em><b>Realization</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Realization}.
 	 * @see #getRealizations()
 	 * @generated
-     */
+	 */
     Realization createRealization();
 
 	/**
@@ -198,17 +198,17 @@ public interface Component extends org.eclipse.uml2.Class{
 	EList getOwnedMembers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Member</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Member</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.PackageableElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedMembers()
 	 * @generated
-     */
-    NamedElement getOwnedMember(String unqualifiedName);
-      
+	 */
+    NamedElement getOwnedMember(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.PackageableElement} and appends it to the '<em><b>Owned Member</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Region.java,v 1.7 2005/06/15 20:06:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -63,26 +63,26 @@ public interface Region extends Namespace, RedefinableElement{
 	EList getSubvertices();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Vertex} with the specified '<em><b>Name</b></em>' from the '<em><b>Subvertex</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Vertex} with the specified '<em><b>Name</b></em>' from the '<em><b>Subvertex</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Vertex} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Vertex} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubvertices()
 	 * @generated
-     */
-    Vertex getSubvertex(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.Vertex} and appends it to the '<em><b>Subvertex</b></em>' containment reference list.
+	 */
+    Vertex getSubvertex(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.Vertex} and appends it to the '<em><b>Subvertex</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Vertex} to create.
 	 * @return The new {@link org.eclipse.uml2.Vertex}.
 	 * @see #getSubvertices()
 	 * @generated
-     */
+	 */
     Vertex createSubvertex(EClass eClass);
 
 	/**
@@ -104,36 +104,36 @@ public interface Region extends Namespace, RedefinableElement{
 	EList getTransitions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Transition</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Transition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Transition} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getTransitions()
 	 * @generated
-     */
-    Transition getTransition(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.Transition} and appends it to the '<em><b>Transition</b></em>' containment reference list.
+	 */
+    Transition getTransition(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.Transition} and appends it to the '<em><b>Transition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Transition} to create.
 	 * @return The new {@link org.eclipse.uml2.Transition}.
 	 * @see #getTransitions()
 	 * @generated
-     */
+	 */
     Transition createTransition(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Transition} and appends it to the '<em><b>Transition</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Transition} and appends it to the '<em><b>Transition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Transition}.
 	 * @see #getTransitions()
 	 * @generated
-     */
+	 */
     Transition createTransition();
 
 	/**
@@ -237,15 +237,15 @@ public interface Region extends Namespace, RedefinableElement{
 	EList getRedefinedElements();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedElements()
 	 * @generated
-     */
+	 */
     RedefinableElement getRedefinedElement(String name);
-      
+
 } // Region

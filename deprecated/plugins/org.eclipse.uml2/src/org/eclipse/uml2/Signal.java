@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Signal.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Signal.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -61,36 +61,36 @@ public interface Signal extends Classifier{
 	EList getOwnedAttributes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedAttributes()
 	 * @generated
-     */
-    Property getOwnedAttribute(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 */
+    Property getOwnedAttribute(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to create.
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getOwnedAttributes()
 	 * @generated
-     */
+	 */
     Property createOwnedAttribute(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getOwnedAttributes()
 	 * @generated
-     */
+	 */
     Property createOwnedAttribute();
 
 } // Signal

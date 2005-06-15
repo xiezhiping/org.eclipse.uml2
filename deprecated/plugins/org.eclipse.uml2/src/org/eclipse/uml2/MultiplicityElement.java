@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.11 2005/06/09 02:18:09 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -183,15 +183,15 @@ public interface MultiplicityElement extends Element{
 	void setUpperValue(ValueSpecification value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Upper Value</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Upper Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getUpperValue()
 	 * @generated
-     */
+	 */
     ValueSpecification createUpperValue(EClass eClass);
 
 	/**
@@ -224,15 +224,15 @@ public interface MultiplicityElement extends Element{
 	void setLowerValue(ValueSpecification value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Lower Value</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Lower Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getLowerValue()
 	 * @generated
-     */
+	 */
     ValueSpecification createLowerValue(EClass eClass);
 
 	/**

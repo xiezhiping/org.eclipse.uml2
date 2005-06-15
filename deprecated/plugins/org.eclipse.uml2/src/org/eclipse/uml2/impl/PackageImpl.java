@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.28 2005/06/03 20:12:50 khussey Exp $
+ * $Id: PackageImpl.java,v 1.29 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -645,14 +645,17 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (packageMerge != null) {
-			ownedElement.addAll(packageMerge);
+		if (eIsSet(UML2Package.eINSTANCE.getPackage_PackageMerge())) {
+			ownedElement.addAll(getPackageMerges());
 		}
-		if (packageExtension != null) {
-			ownedElement.addAll(packageExtension);
+		if (eIsSet(UML2Package.eINSTANCE.getPackage_PackageExtension())) {
+			ownedElement.addAll(getPackageExtensions());
 		}
-		for (Iterator i = ((InternalEList) super.getOwnedMembers()).basicIterator(); i.hasNext(); ) {
-			ownedElement.add(i.next());
+		EList ownedMember = super.getOwnedMembers();
+		if (!ownedMember.isEmpty()) {
+			for (Iterator i = ((InternalEList) ownedMember).basicIterator(); i.hasNext(); ) {
+				ownedElement.add(i.next());
+			}
 		}
 		return ownedElement;
 	}
@@ -1107,8 +1110,11 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		for (Iterator i = ((InternalEList) super.getOwnedMembers()).basicIterator(); i.hasNext();) {
-			member.add(i.next());
+		EList ownedMember = super.getOwnedMembers();
+		if (!ownedMember.isEmpty()) {
+			for (Iterator i = ((InternalEList) ownedMember).basicIterator(); i.hasNext();) {
+				member.add(i.next());
+			}
 		}
 		return member;
 	}

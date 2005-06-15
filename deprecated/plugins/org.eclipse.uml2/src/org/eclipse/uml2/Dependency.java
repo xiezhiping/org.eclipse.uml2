@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Dependency.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Dependency.java,v 1.9 2005/06/15 20:06:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -65,17 +65,17 @@ public interface Dependency extends PackageableElement, DirectedRelationship{
 	EList getClients();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Client</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Client</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.NamedElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getClients()
 	 * @generated
-     */
-    NamedElement getClient(String unqualifiedName);
-      
+	 */
+    NamedElement getClient(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Supplier</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
@@ -96,15 +96,15 @@ public interface Dependency extends PackageableElement, DirectedRelationship{
 	EList getSuppliers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Supplier</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Supplier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.NamedElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSuppliers()
 	 * @generated
-     */
-    NamedElement getSupplier(String unqualifiedName);
-      
+	 */
+    NamedElement getSupplier(String name);
+
 } // Dependency

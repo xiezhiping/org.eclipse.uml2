@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.8 2005/05/18 21:13:19 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -59,17 +59,17 @@ public interface AcceptEventAction extends Action{
 	EList getTriggers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Trigger</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Trigger</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Trigger} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getTriggers()
 	 * @generated
-     */
-    Trigger getTrigger(String unqualifiedName);
-      
+	 */
+    Trigger getTrigger(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
@@ -90,15 +90,15 @@ public interface AcceptEventAction extends Action{
 	EList getResults();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
 	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getResults()
 	 * @generated
-     */
-    OutputPin getResult(String unqualifiedName);
-      
+	 */
+    OutputPin getResult(String name);
+
 } // AcceptEventAction

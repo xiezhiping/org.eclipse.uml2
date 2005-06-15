@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.17 2005/05/18 16:38:27 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.18 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -941,14 +941,14 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (include != null) {
-			ownedMember.addAll(include);
+		if (eIsSet(UML2Package.eINSTANCE.getUseCase_Include())) {
+			ownedMember.addAll(getIncludes());
 		}
-		if (extend != null) {
-			ownedMember.addAll(extend);
+		if (eIsSet(UML2Package.eINSTANCE.getUseCase_Extend())) {
+			ownedMember.addAll(getExtends());
 		}
-		if (extensionPoint != null) {
-			ownedMember.addAll(extensionPoint);
+		if (eIsSet(UML2Package.eINSTANCE.getUseCase_ExtensionPoint())) {
+			ownedMember.addAll(getExtensionPoints());
 		}
 		return ownedMember;
 	}

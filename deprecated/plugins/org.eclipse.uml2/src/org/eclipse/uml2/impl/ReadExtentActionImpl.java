@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentActionImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
+ * $Id: ReadExtentActionImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -643,8 +643,8 @@ public class ReadExtentActionImpl extends ActionImpl implements ReadExtentAction
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (result != null) {
-			output.add(result);
+		if (eIsSet(UML2Package.eINSTANCE.getReadExtentAction_Result())) {
+			output.add(getResult());
 		}
 		return output;
 	}

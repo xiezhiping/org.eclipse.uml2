@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.17 2005/05/18 16:38:27 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.18 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -669,8 +669,8 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	 */
 	protected EList getFeaturesHelper(EList feature) {
 		super.getFeaturesHelper(feature);
-		if (ownedPort != null) {
-			feature.addAll(ownedPort);
+		if (eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())) {
+			feature.addAll(getOwnedPorts());
 		}
 		return feature;
 	}
@@ -683,8 +683,8 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (ownedPort != null) {
-			ownedMember.addAll(ownedPort);
+		if (eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())) {
+			ownedMember.addAll(getOwnedPorts());
 		}
 		return ownedMember;
 	}

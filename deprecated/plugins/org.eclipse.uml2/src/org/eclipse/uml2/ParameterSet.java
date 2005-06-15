@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSet.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ParameterSet.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -64,17 +64,17 @@ public interface ParameterSet extends NamedElement{
 	EList getParameters();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParameters()
 	 * @generated
-     */
-    Parameter getParameter(String unqualifiedName);
-      
+	 */
+    Parameter getParameter(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Condition</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Constraint}.
@@ -92,36 +92,36 @@ public interface ParameterSet extends NamedElement{
 	EList getConditions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Condition</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Condition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConditions()
 	 * @generated
-     */
-    Constraint getCondition(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Condition</b></em>' containment reference list.
+	 */
+    Constraint getCondition(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Condition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Constraint} to create.
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getConditions()
 	 * @generated
-     */
+	 */
     Constraint createCondition(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Condition</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Constraint} and appends it to the '<em><b>Condition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getConditions()
 	 * @generated
-     */
+	 */
     Constraint createCondition();
 
 } // ParameterSet

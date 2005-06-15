@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.10 2005/05/18 16:38:26 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -352,11 +352,11 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (guard != null) {
-			ownedElement.add(guard);
+		if (eIsSet(UML2Package.eINSTANCE.getActivityEdge_Guard())) {
+			ownedElement.add(getGuard());
 		}
-		if (weight != null) {
-			ownedElement.add(weight);
+		if (eIsSet(UML2Package.eINSTANCE.getActivityEdge_Weight())) {
+			ownedElement.add(getWeight());
 		}
 		return ownedElement;
 	}
@@ -658,8 +658,8 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		if (inStructuredNode != null) {
 			inGroup.add(inStructuredNode);
 		}
-		if (inPartition != null) {
-			for (Iterator i = ((InternalEList) inPartition).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getActivityEdge_InPartition())) {
+			for (Iterator i = ((InternalEList) getInPartitions()).basicIterator(); i.hasNext(); ) {
 				inGroup.add(i.next());
 			}
 		}

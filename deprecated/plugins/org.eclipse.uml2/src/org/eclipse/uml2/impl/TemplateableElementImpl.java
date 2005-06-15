@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -384,11 +384,11 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (templateBinding != null) {
-			ownedElement.addAll(templateBinding);
+		if (eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())) {
+			ownedElement.addAll(getTemplateBindings());
 		}
-		if (ownedTemplateSignature != null) {
-			ownedElement.add(ownedTemplateSignature);
+		if (eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())) {
+			ownedElement.add(getOwnedTemplateSignature());
 		}
 		return ownedElement;
 	}

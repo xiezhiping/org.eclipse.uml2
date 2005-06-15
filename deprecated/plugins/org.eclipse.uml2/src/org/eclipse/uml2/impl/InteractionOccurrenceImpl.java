@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrenceImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
+ * $Id: InteractionOccurrenceImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -582,8 +582,8 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (actualGate != null) {
-			ownedElement.addAll(actualGate);
+		if (eIsSet(UML2Package.eINSTANCE.getInteractionOccurrence_ActualGate())) {
+			ownedElement.addAll(getActualGates());
 		}
 		return ownedElement;
 	}

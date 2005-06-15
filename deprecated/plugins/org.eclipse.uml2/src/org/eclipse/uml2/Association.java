@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.13 2005/06/07 17:31:26 khussey Exp $
+ * $Id: Association.java,v 1.14 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -100,36 +100,36 @@ public interface Association extends Classifier, Relationship{
 	EList getOwnedEnds();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned End</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned End</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedEnds()
 	 * @generated
-     */
-    Property getOwnedEnd(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned End</b></em>' containment reference list.
+	 */
+    Property getOwnedEnd(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned End</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to create.
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getOwnedEnds()
 	 * @generated
-     */
+	 */
     Property createOwnedEnd(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned End</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned End</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getOwnedEnds()
 	 * @generated
-     */
+	 */
     Property createOwnedEnd();
 
 	/**
@@ -152,17 +152,17 @@ public interface Association extends Classifier, Relationship{
 	EList getEndTypes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>End Type</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>End Type</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getEndTypes()
 	 * @generated
-     */
-    Type getEndType(String unqualifiedName);
-      
+	 */
+    Type getEndType(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Member End</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Property}.
@@ -185,17 +185,17 @@ public interface Association extends Classifier, Relationship{
 	EList getMemberEnds();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Member End</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Member End</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getMemberEnds()
 	 * @generated
-     */
-    Property getMemberEnd(String unqualifiedName);
-      
+	 */
+    Property getMemberEnd(String name);
+
 	// <!-- begin-custom-operations -->
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -599,8 +599,8 @@ public class AcceptCallActionImpl extends AcceptEventActionImpl implements Accep
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (returnInformation != null) {
-			output.add(returnInformation);
+		if (eIsSet(UML2Package.eINSTANCE.getAcceptCallAction_ReturnInformation())) {
+			output.add(getReturnInformation());
 		}
 		return output;
 	}

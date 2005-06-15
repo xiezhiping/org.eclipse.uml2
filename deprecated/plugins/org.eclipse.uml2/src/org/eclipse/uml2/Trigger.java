@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Trigger.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Trigger.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -62,15 +62,15 @@ public interface Trigger extends NamedElement{
 	EList getPorts();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>' from the '<em><b>Port</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>' from the '<em><b>Port</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Port} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPorts()
 	 * @generated
-     */
-    Port getPort(String unqualifiedName);
-      
+	 */
+    Port getPort(String name);
+
 } // Trigger

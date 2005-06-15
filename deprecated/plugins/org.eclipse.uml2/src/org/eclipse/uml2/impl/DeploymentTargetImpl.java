@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.12 2005/05/25 15:21:32 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -435,8 +435,8 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (deployment != null) {
-			ownedElement.addAll(deployment);
+		if (eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())) {
+			ownedElement.addAll(getDeployments());
 		}
 		return ownedElement;
 	}

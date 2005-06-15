@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.24 2005/05/25 15:21:32 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.25 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1391,8 +1391,8 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 */
 	protected EList getRedefinedElementsHelper(EList redefinedElement) {
 		super.getRedefinedElementsHelper(redefinedElement);
-		if (redefinedBehavior != null) {
-			for (Iterator i = ((InternalEList) redefinedBehavior).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getBehavior_RedefinedBehavior())) {
+			for (Iterator i = ((InternalEList) getRedefinedBehaviors()).basicIterator(); i.hasNext(); ) {
 				redefinedElement.add(i.next());
 			}
 		}
@@ -1407,8 +1407,8 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (parameter != null) {
-			ownedMember.addAll(parameter);
+		if (eIsSet(UML2Package.eINSTANCE.getBehavior_Parameter())) {
+			ownedMember.addAll(getParameters());
 		}
 		return ownedMember;
 	}

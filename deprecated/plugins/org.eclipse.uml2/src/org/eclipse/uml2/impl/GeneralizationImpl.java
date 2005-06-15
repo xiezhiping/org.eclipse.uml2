@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -263,8 +263,8 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 */
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
-		if (general != null) {
-			target.add(general);
+		if (eIsSet(UML2Package.eINSTANCE.getGeneralization_General())) {
+			target.add(getGeneral());
 		}
 		return target;
 	}

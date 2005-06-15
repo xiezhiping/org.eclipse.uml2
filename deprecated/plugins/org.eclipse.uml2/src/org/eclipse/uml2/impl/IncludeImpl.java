@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -224,8 +224,8 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	protected EList getTargetsHelper(EList target) {
-		if (addition != null) {
-			target.add(addition);
+		if (eIsSet(UML2Package.eINSTANCE.getInclude_Addition())) {
+			target.add(getAddition());
 		}
 		return target;
 	}
@@ -552,11 +552,17 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	protected EList getRelatedElementsHelper(EList relatedElement) {
-		for (Iterator i = ((InternalEList) getSources()).basicIterator(); i.hasNext(); ) {
-			relatedElement.add(i.next());
+		EList source = getSources();
+		if (!source.isEmpty()) {
+			for (Iterator i = ((InternalEList) source).basicIterator(); i.hasNext(); ) {
+				relatedElement.add(i.next());
+			}
 		}
-		for (Iterator i = ((InternalEList) getTargets()).basicIterator(); i.hasNext(); ) {
-			relatedElement.add(i.next());
+		EList target = getTargets();
+		if (!target.isEmpty()) {
+			for (Iterator i = ((InternalEList) target).basicIterator(); i.hasNext(); ) {
+				relatedElement.add(i.next());
+			}
 		}
 		return relatedElement;
 	}

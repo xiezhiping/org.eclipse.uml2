@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePin.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ValuePin.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -73,15 +73,15 @@ public interface ValuePin extends InputPin{
 	void setValue(ValueSpecification value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Value</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getValue()
 	 * @generated
-     */
+	 */
     ValueSpecification createValue(EClass eClass);
 
 } // ValuePin

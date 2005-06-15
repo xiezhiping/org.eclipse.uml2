@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -177,8 +177,8 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	 */
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
-		if (generalMachine != null) {
-			target.add(generalMachine);
+		if (eIsSet(UML2Package.eINSTANCE.getProtocolConformance_GeneralMachine())) {
+			target.add(getGeneralMachine());
 		}
 		return target;
 	}

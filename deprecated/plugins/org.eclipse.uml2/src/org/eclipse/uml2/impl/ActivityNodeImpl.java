@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -714,13 +714,13 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		if (inStructuredNode != null) {
 			inGroup.add(inStructuredNode);
 		}
-		if (inPartition != null) {
-			for (Iterator i = ((InternalEList) inPartition).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())) {
+			for (Iterator i = ((InternalEList) getInPartitions()).basicIterator(); i.hasNext(); ) {
 				inGroup.add(i.next());
 			}
 		}
-		if (inInterruptibleRegion != null) {
-			for (Iterator i = ((InternalEList) inInterruptibleRegion).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion())) {
+			for (Iterator i = ((InternalEList) getInInterruptibleRegions()).basicIterator(); i.hasNext(); ) {
 				inGroup.add(i.next());
 			}
 		}

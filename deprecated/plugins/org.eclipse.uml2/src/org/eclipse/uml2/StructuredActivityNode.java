@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -89,17 +89,17 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	EList getVariables();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Variable} with the specified '<em><b>Name</b></em>' from the '<em><b>Variable</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Variable} with the specified '<em><b>Name</b></em>' from the '<em><b>Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Variable} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Variable} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getVariables()
 	 * @generated
-     */
-    Variable getVariable(String unqualifiedName);
-      
+	 */
+    Variable getVariable(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Variable} and appends it to the '<em><b>Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -112,14 +112,14 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
      */
     Variable createVariable(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Variable} and appends it to the '<em><b>Variable</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Variable} and appends it to the '<em><b>Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Variable}.
 	 * @see #getVariables()
 	 * @generated
-     */
+	 */
     Variable createVariable();
 
 	/**
@@ -141,26 +141,26 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	EList getContainedNodes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContainedNodes()
 	 * @generated
-     */
-    ActivityNode getContainedNode(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.ActivityNode} and appends it to the '<em><b>Contained Node</b></em>' containment reference list.
+	 */
+    ActivityNode getContainedNode(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.ActivityNode} and appends it to the '<em><b>Contained Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityNode} to create.
 	 * @return The new {@link org.eclipse.uml2.ActivityNode}.
 	 * @see #getContainedNodes()
 	 * @generated
-     */
+	 */
     ActivityNode createContainedNode(EClass eClass);
 
 	/**
@@ -182,26 +182,26 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	EList getContainedEdges();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContainedEdges()
 	 * @generated
-     */
-    ActivityEdge getContainedEdge(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.ActivityEdge} and appends it to the '<em><b>Contained Edge</b></em>' containment reference list.
+	 */
+    ActivityEdge getContainedEdge(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.ActivityEdge} and appends it to the '<em><b>Contained Edge</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityEdge} to create.
 	 * @return The new {@link org.eclipse.uml2.ActivityEdge}.
 	 * @see #getContainedEdges()
 	 * @generated
-     */
+	 */
     ActivityEdge createContainedEdge(EClass eClass);
 
 } // StructuredActivityNode

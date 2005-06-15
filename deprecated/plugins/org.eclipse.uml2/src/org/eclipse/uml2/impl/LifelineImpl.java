@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -362,8 +362,8 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (selector != null) {
-			ownedElement.add(selector);
+		if (eIsSet(UML2Package.eINSTANCE.getLifeline_Selector())) {
+			ownedElement.add(getSelector());
 		}
 		return ownedElement;
 	}

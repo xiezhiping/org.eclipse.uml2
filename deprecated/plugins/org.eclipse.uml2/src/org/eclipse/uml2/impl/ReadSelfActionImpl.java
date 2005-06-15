@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfActionImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
+ * $Id: ReadSelfActionImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -580,8 +580,8 @@ public class ReadSelfActionImpl extends ActionImpl implements ReadSelfAction {
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (result != null) {
-			output.add(result);
+		if (eIsSet(UML2Package.eINSTANCE.getReadSelfAction_Result())) {
+			output.add(getResult());
 		}
 		return output;
 	}

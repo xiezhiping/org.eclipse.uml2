@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariant.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: StateInvariant.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -72,25 +72,25 @@ public interface StateInvariant extends InteractionFragment{
 	void setInvariant(Constraint value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Invariant</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Invariant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Constraint} to create.
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getInvariant()
 	 * @generated
-     */
+	 */
     Constraint createInvariant(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Invariant</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Invariant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getInvariant()
 	 * @generated
-     */
+	 */
     Constraint createInvariant();
 
 } // StateInvariant

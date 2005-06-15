@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.9 2005/06/02 15:02:47 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -81,14 +81,14 @@ public interface TemplateableElement extends Element{
      */
     TemplateBinding createTemplateBinding(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.TemplateBinding} and appends it to the '<em><b>Template Binding</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.TemplateBinding} and appends it to the '<em><b>Template Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.TemplateBinding}.
 	 * @see #getTemplateBindings()
 	 * @generated
-     */
+	 */
     TemplateBinding createTemplateBinding();
 
 	/**
@@ -120,25 +120,25 @@ public interface TemplateableElement extends Element{
 	void setOwnedTemplateSignature(TemplateSignature value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.TemplateSignature} and sets the '<em><b>Owned Template Signature</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.TemplateSignature} and sets the '<em><b>Owned Template Signature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.TemplateSignature} to create.
 	 * @return The new {@link org.eclipse.uml2.TemplateSignature}.
 	 * @see #getOwnedTemplateSignature()
 	 * @generated
-     */
+	 */
     TemplateSignature createOwnedTemplateSignature(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.TemplateSignature} and sets the '<em><b>Owned Template Signature</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.TemplateSignature} and sets the '<em><b>Owned Template Signature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.TemplateSignature}.
 	 * @see #getOwnedTemplateSignature()
 	 * @generated
-     */
+	 */
     TemplateSignature createOwnedTemplateSignature();
 
 	/**

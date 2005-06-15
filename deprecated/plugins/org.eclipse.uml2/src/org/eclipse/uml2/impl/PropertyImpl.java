@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.19 2005/05/25 15:21:32 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.20 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1155,8 +1155,8 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	protected EList getRedefinedElementsHelper(EList redefinedElement) {
 		super.getRedefinedElementsHelper(redefinedElement);
-		if (redefinedProperty != null) {
-			for (Iterator i = ((InternalEList) redefinedProperty).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getProperty_RedefinedProperty())) {
+			for (Iterator i = ((InternalEList) getRedefinedProperties()).basicIterator(); i.hasNext(); ) {
 				redefinedElement.add(i.next());
 			}
 		}
@@ -1189,14 +1189,14 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (deployment != null) {
-			ownedElement.addAll(deployment);
+		if (eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())) {
+			ownedElement.addAll(getDeployments());
 		}
-		if (defaultValue != null) {
-			ownedElement.add(defaultValue);
+		if (eIsSet(UML2Package.eINSTANCE.getProperty_DefaultValue())) {
+			ownedElement.add(getDefaultValue());
 		}
-		if (qualifier != null) {
-			ownedElement.addAll(qualifier);
+		if (eIsSet(UML2Package.eINSTANCE.getProperty_Qualifier())) {
+			ownedElement.addAll(getQualifiers());
 		}
 		return ownedElement;
 	}

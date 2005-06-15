@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.9 2005/06/02 15:02:47 khussey Exp $
+ * $Id: Constraint.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -128,15 +128,15 @@ public interface Constraint extends PackageableElement{
 	void setSpecification(ValueSpecification value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Specification</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Specification</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getSpecification()
 	 * @generated
-     */
+	 */
     ValueSpecification createSpecification(EClass eClass);
 
 	/**

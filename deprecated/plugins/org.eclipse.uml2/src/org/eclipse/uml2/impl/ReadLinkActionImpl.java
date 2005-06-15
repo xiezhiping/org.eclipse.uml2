@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ReadLinkActionImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -593,8 +593,8 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (result != null) {
-			output.add(result);
+		if (eIsSet(UML2Package.eINSTANCE.getReadLinkAction_Result())) {
+			output.add(getResult());
 		}
 		return output;
 	}

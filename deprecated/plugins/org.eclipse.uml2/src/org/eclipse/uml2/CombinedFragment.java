@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragment.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: CombinedFragment.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -99,17 +99,17 @@ public interface CombinedFragment extends InteractionFragment{
 	EList getOperands();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.InteractionOperand} with the specified '<em><b>Name</b></em>' from the '<em><b>Operand</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.InteractionOperand} with the specified '<em><b>Name</b></em>' from the '<em><b>Operand</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InteractionOperand} to retrieve.
 	 * @return The {@link org.eclipse.uml2.InteractionOperand} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOperands()
 	 * @generated
-     */
-    InteractionOperand getOperand(String unqualifiedName);
-      
+	 */
+    InteractionOperand getOperand(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.InteractionOperand} and appends it to the '<em><b>Operand</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -122,14 +122,14 @@ public interface CombinedFragment extends InteractionFragment{
      */
     InteractionOperand createOperand(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.InteractionOperand} and appends it to the '<em><b>Operand</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.InteractionOperand} and appends it to the '<em><b>Operand</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.InteractionOperand}.
 	 * @see #getOperands()
 	 * @generated
-     */
+	 */
     InteractionOperand createOperand();
 
 	/**
@@ -152,17 +152,17 @@ public interface CombinedFragment extends InteractionFragment{
 	EList getCfragmentGates();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Cfragment Gate</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Cfragment Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Gate} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getCfragmentGates()
 	 * @generated
-     */
-    Gate getCfragmentGate(String unqualifiedName);
-      
+	 */
+    Gate getCfragmentGate(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Gate} and appends it to the '<em><b>Cfragment Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -175,14 +175,14 @@ public interface CombinedFragment extends InteractionFragment{
      */
     Gate createCfragmentGate(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Gate} and appends it to the '<em><b>Cfragment Gate</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Gate} and appends it to the '<em><b>Cfragment Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Gate}.
 	 * @see #getCfragmentGates()
 	 * @generated
-     */
+	 */
     Gate createCfragmentGate();
 
 } // CombinedFragment

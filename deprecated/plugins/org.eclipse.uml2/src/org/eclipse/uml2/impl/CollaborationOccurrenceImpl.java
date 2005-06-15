@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationOccurrenceImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
+ * $Id: CollaborationOccurrenceImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -421,8 +421,8 @@ public class CollaborationOccurrenceImpl extends NamedElementImpl implements Col
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (roleBinding != null) {
-			ownedElement.addAll(roleBinding);
+		if (eIsSet(UML2Package.eINSTANCE.getCollaborationOccurrence_RoleBinding())) {
+			ownedElement.addAll(getRoleBindings());
 		}
 		return ownedElement;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.18 2005/05/18 16:38:26 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.19 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -669,8 +669,8 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (ownedLiteral != null) {
-			ownedMember.addAll(ownedLiteral);
+		if (eIsSet(UML2Package.eINSTANCE.getEnumeration_OwnedLiteral())) {
+			ownedMember.addAll(getOwnedLiterals());
 		}
 		return ownedMember;
 	}

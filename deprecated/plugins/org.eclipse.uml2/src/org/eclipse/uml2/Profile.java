@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Profile.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -60,17 +60,17 @@ public interface Profile extends org.eclipse.uml2.Package{
 	EList getOwnedStereotypes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Stereotype} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Stereotype</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Stereotype} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Stereotype</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Stereotype} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Stereotype} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedStereotypes()
 	 * @generated
-     */
-    Stereotype getOwnedStereotype(String unqualifiedName);
-      
+	 */
+    Stereotype getOwnedStereotype(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Metaclass Reference</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ElementImport}.

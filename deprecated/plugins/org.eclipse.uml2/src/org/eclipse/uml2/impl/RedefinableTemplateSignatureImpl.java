@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -648,8 +648,8 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (ownedParameter != null) {
-			ownedElement.addAll(ownedParameter);
+		if (eIsSet(UML2Package.eINSTANCE.getTemplateSignature_OwnedParameter())) {
+			ownedElement.addAll(getOwnedParameters());
 		}
 		return ownedElement;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.17 2005/05/18 16:38:27 khussey Exp $
+ * $Id: SignalImpl.java,v 1.18 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -634,8 +634,8 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 */
 	protected EList getAttributesHelper(EList attribute) {
 		super.getAttributesHelper(attribute);
-		if (ownedAttribute != null) {
-			attribute.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute())) {
+			attribute.addAll(getOwnedAttributes());
 		}
 		return attribute;
 	}
@@ -648,8 +648,8 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (ownedAttribute != null) {
-			ownedMember.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getSignal_OwnedAttribute())) {
+			ownedMember.addAll(getOwnedAttributes());
 		}
 		return ownedMember;
 	}

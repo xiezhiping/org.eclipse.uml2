@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -552,8 +552,8 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (generalOrdering != null) {
-			ownedElement.addAll(generalOrdering);
+		if (eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering())) {
+			ownedElement.addAll(getGeneralOrderings());
 		}
 		return ownedElement;
 	}

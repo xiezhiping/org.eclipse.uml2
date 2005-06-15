@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Comment.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Comment.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -137,14 +137,14 @@ public interface Comment extends TemplateableElement{
      */
     StringExpression createBodyExpression(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.StringExpression} and sets the '<em><b>Body Expression</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.StringExpression} and sets the '<em><b>Body Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.StringExpression}.
 	 * @see #getBodyExpression()
 	 * @generated
-     */
+	 */
     StringExpression createBodyExpression();
 
 } // Comment

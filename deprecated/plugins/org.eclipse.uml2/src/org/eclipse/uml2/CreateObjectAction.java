@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectAction.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: CreateObjectAction.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -115,14 +115,14 @@ public interface CreateObjectAction extends Action{
      */
     OutputPin createResult(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.OutputPin} and sets the '<em><b>Result</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.OutputPin} and sets the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.OutputPin}.
 	 * @see #getResult()
 	 * @generated
-     */
+	 */
     OutputPin createResult();
 
 } // CreateObjectAction

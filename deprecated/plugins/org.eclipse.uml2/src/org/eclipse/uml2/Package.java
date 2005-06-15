@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.16 2005/06/02 15:02:47 khussey Exp $
+ * $Id: Package.java,v 1.17 2005/06/15 20:06:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -77,17 +77,17 @@ public interface Package extends Namespace, PackageableElement{
 	EList getNestedPackages();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Package} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Package</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Package} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Package</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Package} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Package} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNestedPackages()
 	 * @generated
-     */
-    Package getNestedPackage(String unqualifiedName);
-      
+	 */
+    Package getNestedPackage(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Nesting Package</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.Package#getNestedPackages <em>Nested Package</em>}'.
@@ -128,17 +128,17 @@ public interface Package extends Namespace, PackageableElement{
 	EList getOwnedTypes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Type</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Type</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedTypes()
 	 * @generated
-     */
-    Type getOwnedType(String unqualifiedName);
-      
+	 */
+    Type getOwnedType(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Owned Member</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.PackageableElement}.
@@ -159,17 +159,17 @@ public interface Package extends Namespace, PackageableElement{
 	EList getOwnedMembers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Member</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Member</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.PackageableElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedMembers()
 	 * @generated
-     */
-    NamedElement getOwnedMember(String unqualifiedName);
-      
+	 */
+    NamedElement getOwnedMember(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.PackageableElement} and appends it to the '<em><b>Owned Member</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -212,14 +212,14 @@ public interface Package extends Namespace, PackageableElement{
      */
     PackageMerge createPackageMerge(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.PackageMerge} and appends it to the '<em><b>Package Merge</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.PackageMerge} and appends it to the '<em><b>Package Merge</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.PackageMerge}.
 	 * @see #getPackageMerges()
 	 * @generated
-     */
+	 */
     PackageMerge createPackageMerge();
 
 	/**
@@ -268,14 +268,14 @@ public interface Package extends Namespace, PackageableElement{
      */
     PackageMerge createPackageExtension(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.PackageMerge} and appends it to the '<em><b>Package Extension</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.PackageMerge} and appends it to the '<em><b>Package Extension</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.PackageMerge}.
 	 * @see #getPackageExtensions()
 	 * @generated
-     */
+	 */
     PackageMerge createPackageExtension();
 
 	/**

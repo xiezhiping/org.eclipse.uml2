@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -176,8 +176,8 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	 */
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
-		if (mergedPackage != null) {
-			target.add(mergedPackage);
+		if (eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergedPackage())) {
+			target.add(getMergedPackage());
 		}
 		return target;
 	}

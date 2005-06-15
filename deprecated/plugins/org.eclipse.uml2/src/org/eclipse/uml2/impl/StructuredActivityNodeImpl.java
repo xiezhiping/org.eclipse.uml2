@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.22 2005/06/03 20:40:30 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.23 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -230,11 +230,11 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
-		if (ownedRule != null) {
-			ownedMember.addAll(ownedRule);
+		if (eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())) {
+			ownedMember.addAll(getOwnedRules());
 		}
-		if (variable != null) {
-			ownedMember.addAll(variable);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredActivityNode_Variable())) {
+			ownedMember.addAll(getVariables());
 		}
 		return ownedMember;
 	}
@@ -820,17 +820,23 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (elementImport != null) {
-			ownedElement.addAll(elementImport);
+		if (eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())) {
+			ownedElement.addAll(getElementImports());
 		}
-		if (packageImport != null) {
-			ownedElement.addAll(packageImport);
+		if (eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())) {
+			ownedElement.addAll(getPackageImports());
 		}
-		for (Iterator i = ((InternalEList) getOwnedMembers()).basicIterator(); i.hasNext(); ) {
-			ownedElement.add(i.next());
+		EList ownedMember = getOwnedMembers();
+		if (!ownedMember.isEmpty()) {
+			for (Iterator i = ((InternalEList) ownedMember).basicIterator(); i.hasNext(); ) {
+				ownedElement.add(i.next());
+			}
 		}
-		for (Iterator i = ((InternalEList) getSubgroups()).basicIterator(); i.hasNext(); ) {
-			ownedElement.add(i.next());
+		EList subgroup = getSubgroups();
+		if (!subgroup.isEmpty()) {
+			for (Iterator i = ((InternalEList) subgroup).basicIterator(); i.hasNext(); ) {
+				ownedElement.add(i.next());
+			}
 		}
 		return ownedElement;
 	}
@@ -1467,11 +1473,17 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 */
 	protected EList getMembersHelper(EList member) {
-		for (Iterator i = ((InternalEList) getImportedMembers()).basicIterator(); i.hasNext(); ) {
-			member.add(i.next());
+		EList importedMember = getImportedMembers();
+		if (!importedMember.isEmpty()) {
+			for (Iterator i = ((InternalEList) importedMember).basicIterator(); i.hasNext(); ) {
+				member.add(i.next());
+			}
 		}
-		for (Iterator i = ((InternalEList) getOwnedMembers()).basicIterator(); i.hasNext(); ) {
-			member.add(i.next());
+		EList ownedMember = getOwnedMembers();
+		if (!ownedMember.isEmpty()) {
+			for (Iterator i = ((InternalEList) ownedMember).basicIterator(); i.hasNext(); ) {
+				member.add(i.next());
+			}
 		}
 		return member;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -579,8 +579,8 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (result != null) {
-			for (Iterator i = ((InternalEList) result).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getAcceptEventAction_Result())) {
+			for (Iterator i = ((InternalEList) getResults()).basicIterator(); i.hasNext(); ) {
 				output.add(i.next());
 			}
 		}

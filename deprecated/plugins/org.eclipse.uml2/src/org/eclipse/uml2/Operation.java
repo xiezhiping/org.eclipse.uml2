@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.13 2005/06/09 02:18:09 khussey Exp $
+ * $Id: Operation.java,v 1.14 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -104,17 +104,17 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	EList getOwnedParameters();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Parameter</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedParameters()
 	 * @generated
-     */
-    Parameter getOwnedParameter(String unqualifiedName);
-      
+	 */
+    Parameter getOwnedParameter(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -127,14 +127,14 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
      */
     Parameter createOwnedParameter(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Parameter}.
 	 * @see #getOwnedParameters()
 	 * @generated
-     */
+	 */
     Parameter createOwnedParameter();
 
 	/**
@@ -215,17 +215,17 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	EList getPreconditions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPreconditions()
 	 * @generated
-     */
-    Constraint getPrecondition(String unqualifiedName);
-      
+	 */
+    Constraint getPrecondition(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Postcondition</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Constraint}.
@@ -246,17 +246,17 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	EList getPostconditions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPostconditions()
 	 * @generated
-     */
-    Constraint getPostcondition(String unqualifiedName);
-      
+	 */
+    Constraint getPostcondition(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Redefined Operation</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Operation}.
@@ -277,17 +277,17 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	EList getRedefinedOperations();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Operation</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Operation</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedOperations()
 	 * @generated
-     */
-    Operation getRedefinedOperation(String unqualifiedName);
-      
+	 */
+    Operation getRedefinedOperation(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Body Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->

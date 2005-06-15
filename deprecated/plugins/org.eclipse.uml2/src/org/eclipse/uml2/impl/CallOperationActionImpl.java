@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.10 2005/05/18 16:38:26 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -690,8 +690,8 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (target != null) {
-			input.add(target);
+		if (eIsSet(UML2Package.eINSTANCE.getCallOperationAction_Target())) {
+			input.add(getTarget());
 		}
 		return input;
 	}

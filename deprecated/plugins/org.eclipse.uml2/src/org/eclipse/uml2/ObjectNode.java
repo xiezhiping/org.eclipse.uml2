@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNode.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: ObjectNode.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -104,15 +104,15 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	void setUpperBound(ValueSpecification value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Upper Bound</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Upper Bound</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getUpperBound()
 	 * @generated
-     */
+	 */
     ValueSpecification createUpperBound(EClass eClass);
 
 	/**
@@ -135,17 +135,17 @@ public interface ObjectNode extends ActivityNode, TypedElement{
 	EList getInStates();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.State} with the specified '<em><b>Name</b></em>' from the '<em><b>In State</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.State} with the specified '<em><b>Name</b></em>' from the '<em><b>In State</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.State} to retrieve.
 	 * @return The {@link org.eclipse.uml2.State} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInStates()
 	 * @generated
-     */
-    State getInState(String unqualifiedName);
-      
+	 */
+    State getInState(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Selection</b></em>' reference.
 	 * <!-- begin-user-doc -->

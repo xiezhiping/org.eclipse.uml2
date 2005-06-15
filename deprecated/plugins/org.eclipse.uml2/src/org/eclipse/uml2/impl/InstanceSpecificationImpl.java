@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.17 2005/05/25 15:21:32 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.18 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -778,14 +778,14 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (deployment != null) {
-			ownedElement.addAll(deployment);
+		if (eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())) {
+			ownedElement.addAll(getDeployments());
 		}
-		if (slot != null) {
-			ownedElement.addAll(slot);
+		if (eIsSet(UML2Package.eINSTANCE.getInstanceSpecification_Slot())) {
+			ownedElement.addAll(getSlots());
 		}
-		if (specification != null) {
-			ownedElement.add(specification);
+		if (eIsSet(UML2Package.eINSTANCE.getInstanceSpecification_Specification())) {
+			ownedElement.add(getSpecification());
 		}
 		return ownedElement;
 	}

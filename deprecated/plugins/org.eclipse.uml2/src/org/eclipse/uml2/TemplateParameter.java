@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameter.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: TemplateParameter.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -133,15 +133,15 @@ public interface TemplateParameter extends Element{
 	void setOwnedParameteredElement(ParameterableElement value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ParameterableElement} and sets the '<em><b>Owned Parametered Element</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ParameterableElement} and sets the '<em><b>Owned Parametered Element</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ParameterableElement} to create.
 	 * @return The new {@link org.eclipse.uml2.ParameterableElement}.
 	 * @see #getOwnedParameteredElement()
 	 * @generated
-     */
+	 */
     ParameterableElement createOwnedParameteredElement(EClass eClass);
 
 	/**
@@ -201,15 +201,15 @@ public interface TemplateParameter extends Element{
 	void setOwnedDefault(ParameterableElement value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ParameterableElement} and sets the '<em><b>Owned Default</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ParameterableElement} and sets the '<em><b>Owned Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ParameterableElement} to create.
 	 * @return The new {@link org.eclipse.uml2.ParameterableElement}.
 	 * @see #getOwnedDefault()
 	 * @generated
-     */
+	 */
     ParameterableElement createOwnedDefault(EClass eClass);
 
 } // TemplateParameter

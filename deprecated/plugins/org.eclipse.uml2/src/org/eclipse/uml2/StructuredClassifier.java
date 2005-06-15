@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -67,36 +67,36 @@ public interface StructuredClassifier extends Classifier{
 	EList getOwnedAttributes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedAttributes()
 	 * @generated
-     */
-    Property getOwnedAttribute(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 */
+    Property getOwnedAttribute(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to create.
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getOwnedAttributes()
 	 * @generated
-     */
+	 */
     Property createOwnedAttribute(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getOwnedAttributes()
 	 * @generated
-     */
+	 */
     Property createOwnedAttribute();
 
 	/**
@@ -119,17 +119,17 @@ public interface StructuredClassifier extends Classifier{
 	EList getParts();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Part</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Part</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParts()
 	 * @generated
-     */
-    Property getPart(String unqualifiedName);
-      
+	 */
+    Property getPart(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Role</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ConnectableElement}.
@@ -150,17 +150,17 @@ public interface StructuredClassifier extends Classifier{
 	EList getRoles();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ConnectableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Role</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ConnectableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Role</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ConnectableElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ConnectableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRoles()
 	 * @generated
-     */
-    ConnectableElement getRole(String unqualifiedName);
-      
+	 */
+    ConnectableElement getRole(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Owned Connector</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Connector}.
@@ -181,17 +181,17 @@ public interface StructuredClassifier extends Classifier{
 	EList getOwnedConnectors();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Connector} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Connector</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Connector} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Connector</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Connector} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Connector} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedConnectors()
 	 * @generated
-     */
-    Connector getOwnedConnector(String unqualifiedName);
-      
+	 */
+    Connector getOwnedConnector(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Connector} and appends it to the '<em><b>Owned Connector</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -204,14 +204,14 @@ public interface StructuredClassifier extends Classifier{
      */
     Connector createOwnedConnector(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Connector} and appends it to the '<em><b>Owned Connector</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Connector} and appends it to the '<em><b>Owned Connector</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Connector}.
 	 * @see #getOwnedConnectors()
 	 * @generated
-     */
+	 */
     Connector createOwnedConnector();
 
 } // StructuredClassifier

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndData.java,v 1.8 2005/05/18 21:13:19 khussey Exp $
+ * $Id: LinkEndData.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -134,14 +134,14 @@ public interface LinkEndData extends Element{
      */
     QualifierValue createQualifier(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.QualifierValue} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.QualifierValue} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.QualifierValue}.
 	 * @see #getQualifiers()
 	 * @generated
-     */
+	 */
     QualifierValue createQualifier();
 
 } // LinkEndData

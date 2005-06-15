@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.11 2005/05/25 14:33:19 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -472,8 +472,8 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (subgroup != null) {
-			ownedElement.addAll(subgroup);
+		if (eIsSet(UML2Package.eINSTANCE.getActivityPartition_Subgroup())) {
+			ownedElement.addAll(getSubgroups());
 		}
 		return ownedElement;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -632,8 +632,8 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (duration != null) {
-			input.addAll(duration);
+		if (eIsSet(UML2Package.eINSTANCE.getDurationObservationAction_Duration())) {
+			input.addAll(getDurations());
 		}
 		return input;
 	}

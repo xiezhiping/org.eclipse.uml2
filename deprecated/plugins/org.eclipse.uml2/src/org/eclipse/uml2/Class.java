@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.18 2005/06/07 17:31:26 khussey Exp $
+ * $Id: Class.java,v 1.19 2005/06/15 20:06:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -101,17 +101,17 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	EList getOwnedOperations();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedOperations()
 	 * @generated
-     */
-    Operation getOwnedOperation(String unqualifiedName);
-      
+	 */
+    Operation getOwnedOperation(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -124,14 +124,14 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
      */
     Operation createOwnedOperation(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Operation}.
 	 * @see #getOwnedOperations()
 	 * @generated
-     */
+	 */
     Operation createOwnedOperation();
 
 	/**
@@ -154,17 +154,17 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	EList getSuperClasses();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Class} with the specified '<em><b>Name</b></em>' from the '<em><b>Super Class</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Class} with the specified '<em><b>Name</b></em>' from the '<em><b>Super Class</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Class} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Class} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSuperClasses()
 	 * @generated
-     */
-    Class getSuperClass(String unqualifiedName);
-      
+	 */
+    Class getSuperClass(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Extension</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Extension}.
@@ -184,17 +184,17 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	EList getExtensions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Extension} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Extension} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Extension} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Extension} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExtensions()
 	 * @generated
-     */
-    Extension getExtension(String unqualifiedName);
-      
+	 */
+    Extension getExtension(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
@@ -215,26 +215,26 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	EList getNestedClassifiers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Classifier</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNestedClassifiers()
 	 * @generated
-     */
-    Classifier getNestedClassifier(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.Classifier} and appends it to the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 */
+    Classifier getNestedClassifier(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.Classifier} and appends it to the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Classifier} to create.
 	 * @return The new {@link org.eclipse.uml2.Classifier}.
 	 * @see #getNestedClassifiers()
 	 * @generated
-     */
+	 */
     Classifier createNestedClassifier(EClass eClass);
 
 	/**
@@ -257,17 +257,17 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	EList getOwnedReceptions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Reception} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedReceptions()
 	 * @generated
-     */
-    Reception getOwnedReception(String unqualifiedName);
-      
+	 */
+    Reception getOwnedReception(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Reception} and appends it to the '<em><b>Owned Reception</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -280,14 +280,14 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
      */
     Reception createOwnedReception(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Reception} and appends it to the '<em><b>Owned Reception</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Reception} and appends it to the '<em><b>Owned Reception</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Reception}.
 	 * @see #getOwnedReceptions()
 	 * @generated
-     */
+	 */
     Reception createOwnedReception();
 
 	// <!-- begin-custom-operations -->

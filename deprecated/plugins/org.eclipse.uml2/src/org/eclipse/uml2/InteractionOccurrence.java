@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrence.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: InteractionOccurrence.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -96,17 +96,17 @@ public interface InteractionOccurrence extends InteractionFragment{
 	EList getActualGates();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Actual Gate</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Actual Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Gate} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getActualGates()
 	 * @generated
-     */
-    Gate getActualGate(String unqualifiedName);
-      
+	 */
+    Gate getActualGate(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Gate} and appends it to the '<em><b>Actual Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -119,14 +119,14 @@ public interface InteractionOccurrence extends InteractionFragment{
      */
     Gate createActualGate(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Gate} and appends it to the '<em><b>Actual Gate</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Gate} and appends it to the '<em><b>Actual Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Gate}.
 	 * @see #getActualGates()
 	 * @generated
-     */
+	 */
     Gate createActualGate();
 
 	/**
@@ -149,36 +149,36 @@ public interface InteractionOccurrence extends InteractionFragment{
 	EList getArguments();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InputPin} to retrieve.
 	 * @return The {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getArguments()
 	 * @generated
-     */
-    InputPin getArgument(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.InputPin} and appends it to the '<em><b>Argument</b></em>' containment reference list.
+	 */
+    InputPin getArgument(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.InputPin} and appends it to the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getArguments()
 	 * @generated
-     */
+	 */
     InputPin createArgument(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.InputPin} and appends it to the '<em><b>Argument</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.InputPin} and appends it to the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getArguments()
 	 * @generated
-     */
+	 */
     InputPin createArgument();
 
 } // InteractionOccurrence

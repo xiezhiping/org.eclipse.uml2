@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Behavior.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -132,17 +132,17 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	EList getRedefinedBehaviors();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Behavior</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Behavior</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedBehaviors()
 	 * @generated
-     */
-    Behavior getRedefinedBehavior(String unqualifiedName);
-      
+	 */
+    Behavior getRedefinedBehavior(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Specification</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.BehavioralFeature#getMethods <em>Method</em>}'.
@@ -195,17 +195,17 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	EList getParameters();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParameters()
 	 * @generated
-     */
-    Parameter getParameter(String unqualifiedName);
-      
+	 */
+    Parameter getParameter(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -218,14 +218,14 @@ public interface Behavior extends org.eclipse.uml2.Class{
      */
     Parameter createParameter(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Parameter</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Parameter}.
 	 * @see #getParameters()
 	 * @generated
-     */
+	 */
     Parameter createParameter();
 
 	/**
@@ -245,17 +245,17 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	EList getFormalParameters();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Formal Parameter</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Formal Parameter</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFormalParameters()
 	 * @generated
-     */
-    Parameter getFormalParameter(String unqualifiedName);
-      
+	 */
+    Parameter getFormalParameter(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Return Result</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Parameter}.
@@ -273,17 +273,17 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	EList getReturnResults();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Return Result</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Return Result</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getReturnResults()
 	 * @generated
-     */
-    Parameter getReturnResult(String unqualifiedName);
-      
+	 */
+    Parameter getReturnResult(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Precondition</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Constraint}.
@@ -301,17 +301,17 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	EList getPreconditions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPreconditions()
 	 * @generated
-     */
-    Constraint getPrecondition(String unqualifiedName);
-      
+	 */
+    Constraint getPrecondition(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Postcondition</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Constraint}.
@@ -329,17 +329,17 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	EList getPostconditions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPostconditions()
 	 * @generated
-     */
-    Constraint getPostcondition(String unqualifiedName);
-      
+	 */
+    Constraint getPostcondition(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Owned Parameter Set</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ParameterSet}.
@@ -357,17 +357,17 @@ public interface Behavior extends org.eclipse.uml2.Class{
 	EList getOwnedParameterSets();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ParameterSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Parameter Set</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ParameterSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Parameter Set</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ParameterSet} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ParameterSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedParameterSets()
 	 * @generated
-     */
-    ParameterSet getOwnedParameterSet(String unqualifiedName);
-      
+	 */
+    ParameterSet getOwnedParameterSet(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.ParameterSet} and appends it to the '<em><b>Owned Parameter Set</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -380,14 +380,14 @@ public interface Behavior extends org.eclipse.uml2.Class{
      */
     ParameterSet createOwnedParameterSet(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ParameterSet} and appends it to the '<em><b>Owned Parameter Set</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ParameterSet} and appends it to the '<em><b>Owned Parameter Set</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.ParameterSet}.
 	 * @see #getOwnedParameterSets()
 	 * @generated
-     */
+	 */
     ParameterSet createOwnedParameterSet();
 
 } // Behavior

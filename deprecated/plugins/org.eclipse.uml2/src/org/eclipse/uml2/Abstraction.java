@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Abstraction.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Abstraction.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -72,25 +72,25 @@ public interface Abstraction extends Dependency{
 	void setMapping(OpaqueExpression value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.OpaqueExpression} and sets the '<em><b>Mapping</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.OpaqueExpression} and sets the '<em><b>Mapping</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.OpaqueExpression} to create.
 	 * @return The new {@link org.eclipse.uml2.OpaqueExpression}.
 	 * @see #getMapping()
 	 * @generated
-     */
+	 */
     OpaqueExpression createMapping(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.OpaqueExpression} and sets the '<em><b>Mapping</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.OpaqueExpression} and sets the '<em><b>Mapping</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.OpaqueExpression}.
 	 * @see #getMapping()
 	 * @generated
-     */
+	 */
     OpaqueExpression createMapping();
 
 } // Abstraction

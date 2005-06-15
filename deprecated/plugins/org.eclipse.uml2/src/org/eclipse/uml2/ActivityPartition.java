@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.9 2005/05/25 14:32:40 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -131,17 +131,17 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	EList getContainedEdges();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContainedEdges()
 	 * @generated
-     */
-    ActivityEdge getContainedEdge(String unqualifiedName);
-      
+	 */
+    ActivityEdge getContainedEdge(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Contained Node</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityNode}.
@@ -161,17 +161,17 @@ public interface ActivityPartition extends NamedElement, ActivityGroup{
 	EList getContainedNodes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContainedNodes()
 	 * @generated
-     */
-    ActivityNode getContainedNode(String unqualifiedName);
-      
+	 */
+    ActivityNode getContainedNode(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Subgroup</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityPartition}.

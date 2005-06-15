@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
+ * $Id: RaiseExceptionActionImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -543,8 +543,8 @@ public class RaiseExceptionActionImpl extends ActionImpl implements RaiseExcepti
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (exception != null) {
-			input.add(exception);
+		if (eIsSet(UML2Package.eINSTANCE.getRaiseExceptionAction_Exception())) {
+			input.add(getException());
 		}
 		return input;
 	}

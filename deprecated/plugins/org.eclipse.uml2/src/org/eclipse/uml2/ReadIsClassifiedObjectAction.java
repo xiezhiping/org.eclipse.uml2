@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectAction.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ReadIsClassifiedObjectAction.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -148,14 +148,14 @@ public interface ReadIsClassifiedObjectAction extends Action{
      */
     OutputPin createResult(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.OutputPin} and sets the '<em><b>Result</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.OutputPin} and sets the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.OutputPin}.
 	 * @see #getResult()
 	 * @generated
-     */
+	 */
     OutputPin createResult();
 
 	/**
@@ -188,25 +188,25 @@ public interface ReadIsClassifiedObjectAction extends Action{
 	void setObject(InputPin value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getObject()
 	 * @generated
-     */
+	 */
     InputPin createObject(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getObject()
 	 * @generated
-     */
+	 */
     InputPin createObject();
 
 } // ReadIsClassifiedObjectAction

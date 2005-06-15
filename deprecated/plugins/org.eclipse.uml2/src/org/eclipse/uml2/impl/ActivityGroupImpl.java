@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.10 2005/06/03 20:40:30 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -167,8 +167,11 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		for (Iterator i = ((InternalEList) getSubgroups()).basicIterator(); i.hasNext(); ) {
-			ownedElement.add(i.next());
+		EList subgroup = getSubgroups();
+		if (!subgroup.isEmpty()) {
+			for (Iterator i = ((InternalEList) subgroup).basicIterator(); i.hasNext(); ) {
+				ownedElement.add(i.next());
+			}
 		}
 		return ownedElement;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragment.java,v 1.8 2005/05/18 21:13:19 khussey Exp $
+ * $Id: InteractionFragment.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -67,17 +67,17 @@ public interface InteractionFragment extends NamedElement{
 	EList getCovereds();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Lifeline} with the specified '<em><b>Name</b></em>' from the '<em><b>Covered</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Lifeline} with the specified '<em><b>Name</b></em>' from the '<em><b>Covered</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Lifeline} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Lifeline} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getCovereds()
 	 * @generated
-     */
-    Lifeline getCovered(String unqualifiedName);
-      
+	 */
+    Lifeline getCovered(String name);
+
 	/**
 	 * Returns the value of the '<em><b>General Ordering</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.GeneralOrdering}.
@@ -95,17 +95,17 @@ public interface InteractionFragment extends NamedElement{
 	EList getGeneralOrderings();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.GeneralOrdering} with the specified '<em><b>Name</b></em>' from the '<em><b>General Ordering</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.GeneralOrdering} with the specified '<em><b>Name</b></em>' from the '<em><b>General Ordering</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.GeneralOrdering} to retrieve.
 	 * @return The {@link org.eclipse.uml2.GeneralOrdering} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getGeneralOrderings()
 	 * @generated
-     */
-    GeneralOrdering getGeneralOrdering(String unqualifiedName);
-      
+	 */
+    GeneralOrdering getGeneralOrdering(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.GeneralOrdering} and appends it to the '<em><b>General Ordering</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -118,14 +118,14 @@ public interface InteractionFragment extends NamedElement{
      */
     GeneralOrdering createGeneralOrdering(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.GeneralOrdering} and appends it to the '<em><b>General Ordering</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.GeneralOrdering} and appends it to the '<em><b>General Ordering</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.GeneralOrdering}.
 	 * @see #getGeneralOrderings()
 	 * @generated
-     */
+	 */
     GeneralOrdering createGeneralOrdering();
 
 	/**

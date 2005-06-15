@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.10 2005/05/18 16:38:26 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -607,8 +607,8 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 */
 	protected EList getRedefinedElementsHelper(EList redefinedElement) {
 		super.getRedefinedElementsHelper(redefinedElement);
-		if (redefinedConnector != null) {
-			for (Iterator i = ((InternalEList) redefinedConnector).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getConnector_RedefinedConnector())) {
+			for (Iterator i = ((InternalEList) getRedefinedConnectors()).basicIterator(); i.hasNext(); ) {
 				redefinedElement.add(i.next());
 			}
 		}
@@ -623,8 +623,8 @@ public class ConnectorImpl extends FeatureImpl implements Connector {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (end != null) {
-			ownedElement.addAll(end);
+		if (eIsSet(UML2Package.eINSTANCE.getConnector_End())) {
+			ownedElement.addAll(getEnds());
 		}
 		return ownedElement;
 	}

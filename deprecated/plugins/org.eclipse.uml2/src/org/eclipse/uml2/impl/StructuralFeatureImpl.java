@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.13 2005/05/18 16:38:27 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.14 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -928,11 +928,11 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (upperValue != null) {
-			ownedElement.add(upperValue);
+		if (eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())) {
+			ownedElement.add(getUpperValue());
 		}
-		if (lowerValue != null) {
-			ownedElement.add(lowerValue);
+		if (eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue())) {
+			ownedElement.add(getLowerValue());
 		}
 		return ownedElement;
 	}

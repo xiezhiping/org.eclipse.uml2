@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Connector.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Connector.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -128,17 +128,17 @@ public interface Connector extends Feature{
 	EList getRedefinedConnectors();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Connector} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Connector</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Connector} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Connector</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Connector} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Connector} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedConnectors()
 	 * @generated
-     */
-    Connector getRedefinedConnector(String unqualifiedName);
-      
+	 */
+    Connector getRedefinedConnector(String name);
+
 	/**
 	 * Returns the value of the '<em><b>End</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ConnectorEnd}.
@@ -171,14 +171,14 @@ public interface Connector extends Feature{
      */
     ConnectorEnd createEnd(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ConnectorEnd} and appends it to the '<em><b>End</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ConnectorEnd} and appends it to the '<em><b>End</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.ConnectorEnd}.
 	 * @see #getEnds()
 	 * @generated
-     */
+	 */
     ConnectorEnd createEnd();
 
 	/**
@@ -198,15 +198,15 @@ public interface Connector extends Feature{
 	EList getContracts();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Contract</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Contract</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContracts()
 	 * @generated
-     */
-    Behavior getContract(String unqualifiedName);
-      
+	 */
+    Behavior getContract(String name);
+
 } // Connector

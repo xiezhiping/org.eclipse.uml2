@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeTriggerImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
+ * $Id: ChangeTriggerImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -369,8 +369,8 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (changeExpression != null) {
-			ownedElement.add(changeExpression);
+		if (eIsSet(UML2Package.eINSTANCE.getChangeTrigger_ChangeExpression())) {
+			ownedElement.add(getChangeExpression());
 		}
 		return ownedElement;
 	}

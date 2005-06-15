@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Transition.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -220,17 +220,17 @@ public interface Transition extends RedefinableElement{
 	EList getTriggers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Trigger</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Trigger</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Trigger} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getTriggers()
 	 * @generated
-     */
-    Trigger getTrigger(String unqualifiedName);
-      
+	 */
+    Trigger getTrigger(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -261,25 +261,25 @@ public interface Transition extends RedefinableElement{
 	void setGuard(Constraint value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Guard</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Constraint} to create.
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getGuard()
 	 * @generated
-     */
+	 */
     Constraint createGuard(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Guard</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getGuard()
 	 * @generated
-     */
+	 */
     Constraint createGuard();
 
 	/**
@@ -324,14 +324,14 @@ public interface Transition extends RedefinableElement{
      */
     Activity createEffect(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Activity} and sets the '<em><b>Effect</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Activity} and sets the '<em><b>Effect</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Activity}.
 	 * @see #getEffect()
 	 * @generated
-     */
+	 */
     Activity createEffect();
 
 	/**
@@ -350,15 +350,15 @@ public interface Transition extends RedefinableElement{
 	EList getRedefinedElements();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedElements()
 	 * @generated
-     */
+	 */
     RedefinableElement getRedefinedElement(String name);
-      
+
 } // Transition

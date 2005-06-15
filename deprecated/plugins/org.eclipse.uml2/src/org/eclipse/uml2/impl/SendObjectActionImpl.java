@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.11 2005/05/18 16:38:26 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -721,8 +721,8 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (target != null) {
-			input.add(target);
+		if (eIsSet(UML2Package.eINSTANCE.getSendObjectAction_Target())) {
+			input.add(getTarget());
 		}
 		return input;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNode.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: LoopNode.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -92,17 +92,17 @@ public interface LoopNode extends StructuredActivityNode{
 	EList getBodyParts();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Part</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Part</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getBodyParts()
 	 * @generated
-     */
-    ActivityNode getBodyPart(String unqualifiedName);
-      
+	 */
+    ActivityNode getBodyPart(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Setup Part</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityNode}.
@@ -120,17 +120,17 @@ public interface LoopNode extends StructuredActivityNode{
 	EList getSetupParts();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Setup Part</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Setup Part</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSetupParts()
 	 * @generated
-     */
-    ActivityNode getSetupPart(String unqualifiedName);
-      
+	 */
+    ActivityNode getSetupPart(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Decider</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -175,17 +175,17 @@ public interface LoopNode extends StructuredActivityNode{
 	EList getTests();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Test</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Test</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getTests()
 	 * @generated
-     */
-    ActivityNode getTest(String unqualifiedName);
-      
+	 */
+    ActivityNode getTest(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.OutputPin}.
@@ -206,17 +206,17 @@ public interface LoopNode extends StructuredActivityNode{
 	EList getResults();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
 	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getResults()
 	 * @generated
-     */
-    OutputPin getResult(String unqualifiedName);
-      
+	 */
+    OutputPin getResult(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.OutputPin} and appends it to the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -229,14 +229,14 @@ public interface LoopNode extends StructuredActivityNode{
      */
     OutputPin createResult(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.OutputPin} and appends it to the '<em><b>Result</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.OutputPin} and appends it to the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.OutputPin}.
 	 * @see #getResults()
 	 * @generated
-     */
+	 */
     OutputPin createResult();
 
 	/**
@@ -259,17 +259,17 @@ public interface LoopNode extends StructuredActivityNode{
 	EList getLoopVariables();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
 	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getLoopVariables()
 	 * @generated
-     */
-    OutputPin getLoopVariable(String unqualifiedName);
-      
+	 */
+    OutputPin getLoopVariable(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.OutputPin} and appends it to the '<em><b>Loop Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -282,14 +282,14 @@ public interface LoopNode extends StructuredActivityNode{
      */
     OutputPin createLoopVariable(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.OutputPin} and appends it to the '<em><b>Loop Variable</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.OutputPin} and appends it to the '<em><b>Loop Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.OutputPin}.
 	 * @see #getLoopVariables()
 	 * @generated
-     */
+	 */
     OutputPin createLoopVariable();
 
 	/**
@@ -312,17 +312,17 @@ public interface LoopNode extends StructuredActivityNode{
 	EList getBodyOutputs();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Output</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Output</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
 	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getBodyOutputs()
 	 * @generated
-     */
-    OutputPin getBodyOutput(String unqualifiedName);
-      
+	 */
+    OutputPin getBodyOutput(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Loop Variable Input</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.InputPin}.
@@ -343,36 +343,36 @@ public interface LoopNode extends StructuredActivityNode{
 	EList getLoopVariableInputs();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable Input</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable Input</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InputPin} to retrieve.
 	 * @return The {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getLoopVariableInputs()
 	 * @generated
-     */
-    InputPin getLoopVariableInput(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.InputPin} and appends it to the '<em><b>Loop Variable Input</b></em>' containment reference list.
+	 */
+    InputPin getLoopVariableInput(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.InputPin} and appends it to the '<em><b>Loop Variable Input</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getLoopVariableInputs()
 	 * @generated
-     */
+	 */
     InputPin createLoopVariableInput(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.InputPin} and appends it to the '<em><b>Loop Variable Input</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.InputPin} and appends it to the '<em><b>Loop Variable Input</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getLoopVariableInputs()
 	 * @generated
-     */
+	 */
     InputPin createLoopVariableInput();
 
 } // LoopNode

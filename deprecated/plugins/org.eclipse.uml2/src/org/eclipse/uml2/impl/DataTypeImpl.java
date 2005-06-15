@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.19 2005/05/30 15:21:18 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.20 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -734,11 +734,11 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (ownedAttribute != null) {
-			ownedMember.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getDataType_OwnedAttribute())) {
+			ownedMember.addAll(getOwnedAttributes());
 		}
-		if (ownedOperation != null) {
-			ownedMember.addAll(ownedOperation);
+		if (eIsSet(UML2Package.eINSTANCE.getDataType_OwnedOperation())) {
+			ownedMember.addAll(getOwnedOperations());
 		}
 		return ownedMember;
 	}
@@ -751,8 +751,8 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 */
 	protected EList getAttributesHelper(EList attribute) {
 		super.getAttributesHelper(attribute);
-		if (ownedAttribute != null) {
-			attribute.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getDataType_OwnedAttribute())) {
+			attribute.addAll(getOwnedAttributes());
 		}
 		return attribute;
 	}
@@ -765,8 +765,8 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 	 */
 	protected EList getFeaturesHelper(EList feature) {
 		super.getFeaturesHelper(feature);
-		if (ownedOperation != null) {
-			feature.addAll(ownedOperation);
+		if (eIsSet(UML2Package.eINSTANCE.getDataType_OwnedOperation())) {
+			feature.addAll(getOwnedOperations());
 		}
 		return feature;
 	}

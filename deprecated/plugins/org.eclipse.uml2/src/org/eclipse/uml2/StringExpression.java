@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpression.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: StringExpression.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -72,14 +72,14 @@ public interface StringExpression extends TemplateableElement{
      */
     StringExpression createSubExpression(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.StringExpression} and appends it to the '<em><b>Sub Expression</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.StringExpression} and appends it to the '<em><b>Sub Expression</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.StringExpression}.
 	 * @see #getSubExpressions()
 	 * @generated
-     */
+	 */
     StringExpression createSubExpression();
 
 	/**

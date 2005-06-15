@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -809,11 +809,11 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (generalOrdering != null) {
-			ownedElement.addAll(generalOrdering);
+		if (eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering())) {
+			ownedElement.addAll(getGeneralOrderings());
 		}
-		if (guard != null) {
-			ownedElement.add(guard);
+		if (eIsSet(UML2Package.eINSTANCE.getInteractionOperand_Guard())) {
+			ownedElement.add(getGuard());
 		}
 		return ownedElement;
 	}

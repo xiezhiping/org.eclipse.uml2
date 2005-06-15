@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.24 2005/06/09 02:18:09 khussey Exp $
+ * $Id: ElementImpl.java,v 1.25 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -365,8 +365,8 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 * @generated
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
-		if (ownedComment != null) {
-			ownedElement.addAll(ownedComment);
+		if (eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())) {
+			ownedElement.addAll(getOwnedComments());
 		}
 		return ownedElement;
 	}

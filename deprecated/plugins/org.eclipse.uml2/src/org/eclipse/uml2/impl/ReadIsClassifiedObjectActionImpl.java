@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -810,8 +810,8 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (result != null) {
-			output.add(result);
+		if (eIsSet(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Result())) {
+			output.add(getResult());
 		}
 		return output;
 	}
@@ -824,8 +824,8 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (object != null) {
-			input.add(object);
+		if (eIsSet(UML2Package.eINSTANCE.getReadIsClassifiedObjectAction_Object())) {
+			input.add(getObject());
 		}
 		return input;
 	}

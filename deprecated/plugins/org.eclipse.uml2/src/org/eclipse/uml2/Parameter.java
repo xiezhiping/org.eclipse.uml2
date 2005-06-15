@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Parameter.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -250,15 +250,15 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	void setDefaultValue(ValueSpecification value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Default Value</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Default Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getDefaultValue()
 	 * @generated
-     */
+	 */
     ValueSpecification createDefaultValue(EClass eClass);
 
 	/**
@@ -280,17 +280,17 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	EList getParameterSets();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ParameterSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter Set</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ParameterSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter Set</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ParameterSet} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ParameterSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParameterSets()
 	 * @generated
-     */
-    ParameterSet getParameterSet(String unqualifiedName);
-      
+	 */
+    ParameterSet getParameterSet(String name);
+
 	// <!-- begin-custom-operations -->
 
 	/**

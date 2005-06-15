@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndActionImpl.java,v 1.10 2005/05/18 16:38:27 khussey Exp $
+ * $Id: ReadLinkObjectEndActionImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -741,8 +741,8 @@ public class ReadLinkObjectEndActionImpl extends ActionImpl implements ReadLinkO
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (object != null) {
-			input.add(object);
+		if (eIsSet(UML2Package.eINSTANCE.getReadLinkObjectEndAction_Object())) {
+			input.add(getObject());
 		}
 		return input;
 	}
@@ -755,8 +755,8 @@ public class ReadLinkObjectEndActionImpl extends ActionImpl implements ReadLinkO
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (result != null) {
-			output.add(result);
+		if (eIsSet(UML2Package.eINSTANCE.getReadLinkObjectEndAction_Result())) {
+			output.add(getResult());
 		}
 		return output;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.19 2005/05/25 15:21:32 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.20 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -940,9 +940,12 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		ownedMember.addAll(getOwnedBehaviors());
-		if (ownedTrigger != null) {
-			ownedMember.addAll(ownedTrigger);
+		EList ownedBehavior = getOwnedBehaviors();
+		if (!ownedBehavior.isEmpty()) {
+			ownedMember.addAll(ownedBehavior);
+		}
+		if (eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())) {
+			ownedMember.addAll(getOwnedTriggers());
 		}
 		return ownedMember;
 	}
@@ -955,8 +958,8 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (implementation != null) {
-			ownedElement.addAll(implementation);
+		if (eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation())) {
+			ownedElement.addAll(getImplementations());
 		}
 		return ownedElement;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.9 2005/05/18 16:38:30 khussey Exp $
+ * $Id: Activity.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -188,26 +188,26 @@ public interface Activity extends Behavior{
 	EList getEdges();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Edge</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Edge</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getEdges()
 	 * @generated
-     */
-    ActivityEdge getEdge(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.ActivityEdge} and appends it to the '<em><b>Edge</b></em>' containment reference list.
+	 */
+    ActivityEdge getEdge(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.ActivityEdge} and appends it to the '<em><b>Edge</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityEdge} to create.
 	 * @return The new {@link org.eclipse.uml2.ActivityEdge}.
 	 * @see #getEdges()
 	 * @generated
-     */
+	 */
     ActivityEdge createEdge(EClass eClass);
 
 	/**
@@ -229,15 +229,15 @@ public interface Activity extends Behavior{
 	EList getGroups();
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ActivityGroup} and appends it to the '<em><b>Group</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ActivityGroup} and appends it to the '<em><b>Group</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityGroup} to create.
 	 * @return The new {@link org.eclipse.uml2.ActivityGroup}.
 	 * @see #getGroups()
 	 * @generated
-     */
+	 */
     ActivityGroup createGroup(EClass eClass);
 
 	/**
@@ -259,26 +259,26 @@ public interface Activity extends Behavior{
 	EList getNodes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNodes()
 	 * @generated
-     */
-    ActivityNode getNode(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.ActivityNode} and appends it to the '<em><b>Node</b></em>' containment reference list.
+	 */
+    ActivityNode getNode(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.ActivityNode} and appends it to the '<em><b>Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityNode} to create.
 	 * @return The new {@link org.eclipse.uml2.ActivityNode}.
 	 * @see #getNodes()
 	 * @generated
-     */
+	 */
     ActivityNode createNode(EClass eClass);
 
 	/**
@@ -298,17 +298,17 @@ public interface Activity extends Behavior{
 	EList getActions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Action</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Action</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Action} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Action} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getActions()
 	 * @generated
-     */
-    Action getAction(String unqualifiedName);
-      
+	 */
+    Action getAction(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Structured Node</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.StructuredActivityNode}.
@@ -326,15 +326,15 @@ public interface Activity extends Behavior{
 	EList getStructuredNodes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.StructuredActivityNode} to retrieve.
 	 * @return The {@link org.eclipse.uml2.StructuredActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getStructuredNodes()
 	 * @generated
-     */
-    StructuredActivityNode getStructuredNode(String unqualifiedName);
-      
+	 */
+    StructuredActivityNode getStructuredNode(String name);
+
 } // Activity

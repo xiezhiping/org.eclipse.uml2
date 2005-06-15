@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrence.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: EventOccurrence.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -64,17 +64,17 @@ public interface EventOccurrence extends InteractionFragment, MessageEnd{
 	EList getStartExecs();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ExecutionOccurrence} with the specified '<em><b>Name</b></em>' from the '<em><b>Start Exec</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ExecutionOccurrence} with the specified '<em><b>Name</b></em>' from the '<em><b>Start Exec</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExecutionOccurrence} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ExecutionOccurrence} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getStartExecs()
 	 * @generated
-     */
-    ExecutionOccurrence getStartExec(String unqualifiedName);
-      
+	 */
+    ExecutionOccurrence getStartExec(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Finish Exec</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ExecutionOccurrence}.
@@ -94,17 +94,17 @@ public interface EventOccurrence extends InteractionFragment, MessageEnd{
 	EList getFinishExecs();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ExecutionOccurrence} with the specified '<em><b>Name</b></em>' from the '<em><b>Finish Exec</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ExecutionOccurrence} with the specified '<em><b>Name</b></em>' from the '<em><b>Finish Exec</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExecutionOccurrence} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ExecutionOccurrence} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFinishExecs()
 	 * @generated
-     */
-    ExecutionOccurrence getFinishExec(String unqualifiedName);
-      
+	 */
+    ExecutionOccurrence getFinishExec(String name);
+
 	/**
 	 * Returns the value of the '<em><b>To After</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.GeneralOrdering}.
@@ -124,17 +124,17 @@ public interface EventOccurrence extends InteractionFragment, MessageEnd{
 	EList getToAfters();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.GeneralOrdering} with the specified '<em><b>Name</b></em>' from the '<em><b>To After</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.GeneralOrdering} with the specified '<em><b>Name</b></em>' from the '<em><b>To After</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.GeneralOrdering} to retrieve.
 	 * @return The {@link org.eclipse.uml2.GeneralOrdering} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getToAfters()
 	 * @generated
-     */
-    GeneralOrdering getToAfter(String unqualifiedName);
-      
+	 */
+    GeneralOrdering getToAfter(String name);
+
 	/**
 	 * Returns the value of the '<em><b>To Before</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.GeneralOrdering}.
@@ -154,15 +154,15 @@ public interface EventOccurrence extends InteractionFragment, MessageEnd{
 	EList getToBefores();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.GeneralOrdering} with the specified '<em><b>Name</b></em>' from the '<em><b>To Before</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.GeneralOrdering} with the specified '<em><b>Name</b></em>' from the '<em><b>To Before</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.GeneralOrdering} to retrieve.
 	 * @return The {@link org.eclipse.uml2.GeneralOrdering} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getToBefores()
 	 * @generated
-     */
-    GeneralOrdering getToBefore(String unqualifiedName);
-      
+	 */
+    GeneralOrdering getToBefore(String name);
+
 } // EventOccurrence

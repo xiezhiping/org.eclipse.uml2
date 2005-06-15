@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.12 2005/05/18 16:38:26 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -609,8 +609,8 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 */
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
-		if (deployedArtifact != null) {
-			for (Iterator i = ((InternalEList) deployedArtifact).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getDeployment_DeployedArtifact())) {
+			for (Iterator i = ((InternalEList) getDeployedArtifacts()).basicIterator(); i.hasNext(); ) {
 				target.add(i.next());
 			}
 		}
@@ -640,8 +640,8 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (configuration != null) {
-			ownedElement.addAll(configuration);
+		if (eIsSet(UML2Package.eINSTANCE.getDeployment_Configuration())) {
+			ownedElement.addAll(getConfigurations());
 		}
 		return ownedElement;
 	}

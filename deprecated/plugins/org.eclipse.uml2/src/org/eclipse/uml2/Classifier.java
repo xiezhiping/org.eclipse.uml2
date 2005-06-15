@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.17 2005/06/02 15:02:47 khussey Exp $
+ * $Id: Classifier.java,v 1.18 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -110,17 +110,17 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	EList getFeatures();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Feature} with the specified '<em><b>Name</b></em>' from the '<em><b>Feature</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Feature} with the specified '<em><b>Name</b></em>' from the '<em><b>Feature</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Feature} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Feature} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFeatures()
 	 * @generated
-     */
-    Feature getFeature(String unqualifiedName);
-      
+	 */
+    Feature getFeature(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Inherited Member</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.NamedElement}.
@@ -138,17 +138,17 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	EList getInheritedMembers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Inherited Member</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Inherited Member</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.NamedElement} to retrieve.
 	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInheritedMembers()
 	 * @generated
-     */
-    NamedElement getInheritedMember(String unqualifiedName);
-      
+	 */
+    NamedElement getInheritedMember(String name);
+
 	/**
 	 * Returns the value of the '<em><b>General</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
@@ -166,17 +166,17 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	EList getGenerals();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>General</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>General</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getGenerals()
 	 * @generated
-     */
-    Classifier getGeneral(String unqualifiedName);
-      
+	 */
+    Classifier getGeneral(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Generalization</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Generalization}.
@@ -208,14 +208,14 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
      */
     Generalization createGeneralization(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Generalization} and appends it to the '<em><b>Generalization</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Generalization} and appends it to the '<em><b>Generalization</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Generalization}.
 	 * @see #getGeneralizations()
 	 * @generated
-     */
+	 */
     Generalization createGeneralization();
 
 	/**
@@ -235,17 +235,17 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	EList getAttributes();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Attribute</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Attribute</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getAttributes()
 	 * @generated
-     */
-    Property getAttribute(String unqualifiedName);
-      
+	 */
+    Property getAttribute(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Redefined Classifier</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Classifier}.
@@ -263,17 +263,17 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	EList getRedefinedClassifiers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Classifier</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedClassifiers()
 	 * @generated
-     */
-    Classifier getRedefinedClassifier(String unqualifiedName);
-      
+	 */
+    Classifier getRedefinedClassifier(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Substitution</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Substitution}.
@@ -293,17 +293,17 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	EList getSubstitutions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Substitution} with the specified '<em><b>Name</b></em>' from the '<em><b>Substitution</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Substitution} with the specified '<em><b>Name</b></em>' from the '<em><b>Substitution</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Substitution} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Substitution} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubstitutions()
 	 * @generated
-     */
-    Substitution getSubstitution(String unqualifiedName);
-      
+	 */
+    Substitution getSubstitution(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Substitution} and appends it to the '<em><b>Substitution</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -316,14 +316,14 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
      */
     Substitution createSubstitution(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Substitution} and appends it to the '<em><b>Substitution</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Substitution} and appends it to the '<em><b>Substitution</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Substitution}.
 	 * @see #getSubstitutions()
 	 * @generated
-     */
+	 */
     Substitution createSubstitution();
 
 	/**
@@ -345,17 +345,17 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	EList getPowertypeExtents();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Powertype Extent</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.GeneralizationSet} to retrieve.
 	 * @return The {@link org.eclipse.uml2.GeneralizationSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPowertypeExtents()
 	 * @generated
-     */
-    GeneralizationSet getPowertypeExtent(String unqualifiedName);
-      
+	 */
+    GeneralizationSet getPowertypeExtent(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Owned Use Case</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.UseCase}.
@@ -373,17 +373,17 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	EList getOwnedUseCases();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Use Case</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Use Case</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.UseCase} to retrieve.
 	 * @return The {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedUseCases()
 	 * @generated
-     */
-    UseCase getOwnedUseCase(String unqualifiedName);
-      
+	 */
+    UseCase getOwnedUseCase(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.UseCase} and appends it to the '<em><b>Owned Use Case</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -396,14 +396,14 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
      */
     UseCase createOwnedUseCase(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.UseCase} and appends it to the '<em><b>Owned Use Case</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.UseCase} and appends it to the '<em><b>Owned Use Case</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.UseCase}.
 	 * @see #getOwnedUseCases()
 	 * @generated
-     */
+	 */
     UseCase createOwnedUseCase();
 
 	/**
@@ -425,17 +425,17 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	EList getUseCases();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Use Case</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Use Case</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.UseCase} to retrieve.
 	 * @return The {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getUseCases()
 	 * @generated
-     */
-    UseCase getUseCase(String unqualifiedName);
-      
+	 */
+    UseCase getUseCase(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Representation</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -486,17 +486,17 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	EList getOccurrences();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.CollaborationOccurrence} with the specified '<em><b>Name</b></em>' from the '<em><b>Occurrence</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.CollaborationOccurrence} with the specified '<em><b>Name</b></em>' from the '<em><b>Occurrence</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.CollaborationOccurrence} to retrieve.
 	 * @return The {@link org.eclipse.uml2.CollaborationOccurrence} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOccurrences()
 	 * @generated
-     */
-    CollaborationOccurrence getOccurrence(String unqualifiedName);
-      
+	 */
+    CollaborationOccurrence getOccurrence(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.CollaborationOccurrence} and appends it to the '<em><b>Occurrence</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -509,14 +509,14 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
      */
     CollaborationOccurrence createOccurrence(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.CollaborationOccurrence} and appends it to the '<em><b>Occurrence</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.CollaborationOccurrence} and appends it to the '<em><b>Occurrence</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.CollaborationOccurrence}.
 	 * @see #getOccurrences()
 	 * @generated
-     */
+	 */
     CollaborationOccurrence createOccurrence();
 
 	/**

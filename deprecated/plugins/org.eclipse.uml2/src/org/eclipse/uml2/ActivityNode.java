@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ActivityNode.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -64,17 +64,17 @@ public interface ActivityNode extends RedefinableElement{
 	EList getOutgoings();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Outgoing</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Outgoing</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOutgoings()
 	 * @generated
-     */
-    ActivityEdge getOutgoing(String unqualifiedName);
-      
+	 */
+    ActivityEdge getOutgoing(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Incoming</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityEdge}.
@@ -94,17 +94,17 @@ public interface ActivityNode extends RedefinableElement{
 	EList getIncomings();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Incoming</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getIncomings()
 	 * @generated
-     */
-    ActivityEdge getIncoming(String unqualifiedName);
-      
+	 */
+    ActivityEdge getIncoming(String name);
+
 	/**
 	 * Returns the value of the '<em><b>In Group</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityGroup}.
@@ -168,17 +168,17 @@ public interface ActivityNode extends RedefinableElement{
 	EList getRedefinedElements();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedElements()
 	 * @generated
-     */
-    RedefinableElement getRedefinedElement(String unqualifiedName);
-      
+	 */
+    RedefinableElement getRedefinedElement(String name);
+
 	/**
 	 * Returns the value of the '<em><b>In Structured Node</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.StructuredActivityNode#getContainedNodes <em>Contained Node</em>}'.
@@ -230,17 +230,17 @@ public interface ActivityNode extends RedefinableElement{
 	EList getInPartitions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>' from the '<em><b>In Partition</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>' from the '<em><b>In Partition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityPartition} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInPartitions()
 	 * @generated
-     */
-    ActivityPartition getInPartition(String unqualifiedName);
-      
+	 */
+    ActivityPartition getInPartition(String name);
+
 	/**
 	 * Returns the value of the '<em><b>In Interruptible Region</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.InterruptibleActivityRegion}.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -249,8 +249,8 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 */
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
-		if (signature != null) {
-			target.add(signature);
+		if (eIsSet(UML2Package.eINSTANCE.getTemplateBinding_Signature())) {
+			target.add(getSignature());
 		}
 		return target;
 	}
@@ -263,8 +263,8 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (parameterSubstitution != null) {
-			ownedElement.addAll(parameterSubstitution);
+		if (eIsSet(UML2Package.eINSTANCE.getTemplateBinding_ParameterSubstitution())) {
+			ownedElement.addAll(getParameterSubstitutions());
 		}
 		return ownedElement;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -374,8 +374,8 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (subExpression != null) {
-			ownedElement.addAll(subExpression);
+		if (eIsSet(UML2Package.eINSTANCE.getStringExpression_SubExpression())) {
+			ownedElement.addAll(getSubExpressions());
 		}
 		return ownedElement;
 	}

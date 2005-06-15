@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.14 2005/06/03 20:40:30 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.15 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -355,11 +355,11 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 */
 	protected EList getParametersHelper(EList parameter) {
-		if (formalParameter != null) {
-			parameter.addAll(formalParameter);
+		if (eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())) {
+			parameter.addAll(getFormalParameters());
 		}
-		if (returnResult != null) {
-			parameter.addAll(returnResult);
+		if (eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult())) {
+			parameter.addAll(getReturnResults());
 		}
 		return parameter;
 	}
@@ -470,8 +470,11 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		for (Iterator i = ((InternalEList) getParameters()).basicIterator(); i.hasNext(); ) {
-			member.add(i.next());
+		EList parameter = getParameters();
+		if (!parameter.isEmpty()) {
+			for (Iterator i = ((InternalEList) parameter).basicIterator(); i.hasNext(); ) {
+				member.add(i.next());
+			}
 		}
 		return member;
 	}
@@ -484,11 +487,11 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (formalParameter != null) {
-			ownedMember.addAll(formalParameter);
+		if (eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())) {
+			ownedMember.addAll(getFormalParameters());
 		}
-		if (returnResult != null) {
-			ownedMember.addAll(returnResult);
+		if (eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult())) {
+			ownedMember.addAll(getReturnResults());
 		}
 		return ownedMember;
 	}

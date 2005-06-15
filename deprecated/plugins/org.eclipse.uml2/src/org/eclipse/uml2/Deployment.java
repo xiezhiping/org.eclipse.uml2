@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Deployment.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Deployment.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -59,17 +59,17 @@ public interface Deployment extends Dependency{
 	EList getDeployedArtifacts();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.DeployedArtifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Artifact</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.DeployedArtifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Artifact</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.DeployedArtifact} to retrieve.
 	 * @return The {@link org.eclipse.uml2.DeployedArtifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getDeployedArtifacts()
 	 * @generated
-     */
-    DeployedArtifact getDeployedArtifact(String unqualifiedName);
-      
+	 */
+    DeployedArtifact getDeployedArtifact(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Location</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.DeploymentTarget#getDeployments <em>Deployment</em>}'.
@@ -116,17 +116,17 @@ public interface Deployment extends Dependency{
 	EList getConfigurations();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.DeploymentSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Configuration</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.DeploymentSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Configuration</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.DeploymentSpecification} to retrieve.
 	 * @return The {@link org.eclipse.uml2.DeploymentSpecification} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConfigurations()
 	 * @generated
-     */
-    DeploymentSpecification getConfiguration(String unqualifiedName);
-      
+	 */
+    DeploymentSpecification getConfiguration(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.DeploymentSpecification} and appends it to the '<em><b>Configuration</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -139,14 +139,14 @@ public interface Deployment extends Dependency{
      */
     DeploymentSpecification createConfiguration(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.DeploymentSpecification} and appends it to the '<em><b>Configuration</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.DeploymentSpecification} and appends it to the '<em><b>Configuration</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.DeploymentSpecification}.
 	 * @see #getConfigurations()
 	 * @generated
-     */
+	 */
     DeploymentSpecification createConfiguration();
 
 } // Deployment

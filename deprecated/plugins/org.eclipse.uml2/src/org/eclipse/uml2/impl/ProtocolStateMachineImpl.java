@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.21 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.22 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -986,8 +986,8 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (conformance != null) {
-			ownedElement.addAll(conformance);
+		if (eIsSet(UML2Package.eINSTANCE.getProtocolStateMachine_Conformance())) {
+			ownedElement.addAll(getConformances());
 		}
 		return ownedElement;
 	}

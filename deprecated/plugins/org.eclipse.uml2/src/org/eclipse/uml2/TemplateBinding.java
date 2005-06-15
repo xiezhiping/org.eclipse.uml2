@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBinding.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: TemplateBinding.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -139,14 +139,14 @@ public interface TemplateBinding extends DirectedRelationship{
      */
     TemplateParameterSubstitution createParameterSubstitution(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.TemplateParameterSubstitution} and appends it to the '<em><b>Parameter Substitution</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.TemplateParameterSubstitution} and appends it to the '<em><b>Parameter Substitution</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.TemplateParameterSubstitution}.
 	 * @see #getParameterSubstitutions()
 	 * @generated
-     */
+	 */
     TemplateParameterSubstitution createParameterSubstitution();
 
 } // TemplateBinding

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableAction.java,v 1.6 2005/05/18 16:38:30 khussey Exp $
+ * $Id: WriteVariableAction.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -72,25 +72,25 @@ public interface WriteVariableAction extends VariableAction{
 	void setValue(InputPin value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Value</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getValue()
 	 * @generated
-     */
+	 */
     InputPin createValue(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Value</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getValue()
 	 * @generated
-     */
+	 */
     InputPin createValue();
 
 } // WriteVariableAction

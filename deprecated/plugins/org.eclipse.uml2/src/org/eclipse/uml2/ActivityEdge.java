@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -180,15 +180,15 @@ public interface ActivityEdge extends RedefinableElement{
 	void setGuard(ValueSpecification value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Guard</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getGuard()
 	 * @generated
-     */
+	 */
     ValueSpecification createGuard(EClass eClass);
 
 	/**
@@ -208,17 +208,17 @@ public interface ActivityEdge extends RedefinableElement{
 	EList getRedefinedElements();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedElements()
 	 * @generated
-     */
-    RedefinableElement getRedefinedElement(String unqualifiedName);
-      
+	 */
+    RedefinableElement getRedefinedElement(String name);
+
 	/**
 	 * Returns the value of the '<em><b>In Structured Node</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.StructuredActivityNode#getContainedEdges <em>Contained Edge</em>}'.
@@ -270,17 +270,17 @@ public interface ActivityEdge extends RedefinableElement{
 	EList getInPartitions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>' from the '<em><b>In Partition</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>' from the '<em><b>In Partition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityPartition} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityPartition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInPartitions()
 	 * @generated
-     */
-    ActivityPartition getInPartition(String unqualifiedName);
-      
+	 */
+    ActivityPartition getInPartition(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Weight</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -308,15 +308,15 @@ public interface ActivityEdge extends RedefinableElement{
 	void setWeight(ValueSpecification value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Weight</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Weight</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getWeight()
 	 * @generated
-     */
+	 */
     ValueSpecification createWeight(EClass eClass);
 
 	/**

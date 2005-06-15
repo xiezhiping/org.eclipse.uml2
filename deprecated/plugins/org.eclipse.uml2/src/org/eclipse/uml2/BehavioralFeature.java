@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -130,17 +130,17 @@ public interface BehavioralFeature extends Namespace, Feature{
 	EList getParameters();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParameters()
 	 * @generated
-     */
-    Parameter getParameter(String unqualifiedName);
-      
+	 */
+    Parameter getParameter(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Formal Parameter</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Parameter}.
@@ -161,17 +161,17 @@ public interface BehavioralFeature extends Namespace, Feature{
 	EList getFormalParameters();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Formal Parameter</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Formal Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFormalParameters()
 	 * @generated
-     */
-    Parameter getFormalParameter(String unqualifiedName);
-      
+	 */
+    Parameter getFormalParameter(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Formal Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -184,14 +184,14 @@ public interface BehavioralFeature extends Namespace, Feature{
      */
     Parameter createFormalParameter(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Formal Parameter</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Formal Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Parameter}.
 	 * @see #getFormalParameters()
 	 * @generated
-     */
+	 */
     Parameter createFormalParameter();
 
 	/**
@@ -214,17 +214,17 @@ public interface BehavioralFeature extends Namespace, Feature{
 	EList getReturnResults();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Return Result</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Return Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getReturnResults()
 	 * @generated
-     */
-    Parameter getReturnResult(String unqualifiedName);
-      
+	 */
+    Parameter getReturnResult(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Return Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -237,14 +237,14 @@ public interface BehavioralFeature extends Namespace, Feature{
      */
     Parameter createReturnResult(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Return Result</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Return Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Parameter}.
 	 * @see #getReturnResults()
 	 * @generated
-     */
+	 */
     Parameter createReturnResult();
 
 	/**
@@ -267,17 +267,17 @@ public interface BehavioralFeature extends Namespace, Feature{
 	EList getRaisedExceptions();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Raised Exception</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Raised Exception</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRaisedExceptions()
 	 * @generated
-     */
-    Type getRaisedException(String unqualifiedName);
-      
+	 */
+    Type getRaisedException(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Method</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Behavior}.
@@ -300,15 +300,15 @@ public interface BehavioralFeature extends Namespace, Feature{
 	EList getMethods();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Method</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Method</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getMethods()
 	 * @generated
-     */
-    Behavior getMethod(String unqualifiedName);
-      
+	 */
+    Behavior getMethod(String name);
+
 } // BehavioralFeature

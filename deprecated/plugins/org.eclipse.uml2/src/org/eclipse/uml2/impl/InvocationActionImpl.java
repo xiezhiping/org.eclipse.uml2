@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -627,8 +627,8 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (argument != null) {
-			input.addAll(argument);
+		if (eIsSet(UML2Package.eINSTANCE.getInvocationAction_Argument())) {
+			input.addAll(getArguments());
 		}
 		return input;
 	}

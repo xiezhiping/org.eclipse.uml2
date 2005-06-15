@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReference.java,v 1.8 2005/05/18 16:38:30 khussey Exp $
+ * $Id: ConnectionPointReference.java,v 1.9 2005/06/15 20:06:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -63,17 +63,17 @@ public interface ConnectionPointReference extends Vertex{
 	EList getEntries();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Entry</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Entry</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Pseudostate} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Pseudostate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getEntries()
 	 * @generated
-     */
-    Pseudostate getEntry(String unqualifiedName);
-      
+	 */
+    Pseudostate getEntry(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Exit</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Pseudostate}.
@@ -94,15 +94,15 @@ public interface ConnectionPointReference extends Vertex{
 	EList getExits();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Exit</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Exit</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Pseudostate} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Pseudostate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExits()
 	 * @generated
-     */
-    Pseudostate getExit(String unqualifiedName);
-      
+	 */
+    Pseudostate getExit(String name);
+
 } // ConnectionPointReference

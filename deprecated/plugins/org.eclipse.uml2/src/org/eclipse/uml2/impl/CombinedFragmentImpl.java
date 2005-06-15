@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.9 2005/05/18 16:38:27 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -591,11 +591,11 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (operand != null) {
-			ownedElement.addAll(operand);
+		if (eIsSet(UML2Package.eINSTANCE.getCombinedFragment_Operand())) {
+			ownedElement.addAll(getOperands());
 		}
-		if (cfragmentGate != null) {
-			ownedElement.addAll(cfragmentGate);
+		if (eIsSet(UML2Package.eINSTANCE.getCombinedFragment_CfragmentGate())) {
+			ownedElement.addAll(getCfragmentGates());
 		}
 		return ownedElement;
 	}

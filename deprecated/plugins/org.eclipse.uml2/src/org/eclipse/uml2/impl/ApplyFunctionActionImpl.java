@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionActionImpl.java,v 1.10 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ApplyFunctionActionImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -709,8 +709,8 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (argument != null) {
-			input.addAll(argument);
+		if (eIsSet(UML2Package.eINSTANCE.getApplyFunctionAction_Argument())) {
+			input.addAll(getArguments());
 		}
 		return input;
 	}
@@ -723,8 +723,8 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (result != null) {
-			output.addAll(result);
+		if (eIsSet(UML2Package.eINSTANCE.getApplyFunctionAction_Result())) {
+			output.addAll(getResults());
 		}
 		return output;
 	}

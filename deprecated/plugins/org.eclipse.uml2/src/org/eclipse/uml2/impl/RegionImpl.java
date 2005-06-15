@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.13 2005/05/25 15:21:32 khussey Exp $
+ * $Id: RegionImpl.java,v 1.14 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -913,11 +913,11 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (subvertex != null) {
-			ownedElement.addAll(subvertex);
+		if (eIsSet(UML2Package.eINSTANCE.getRegion_Subvertex())) {
+			ownedElement.addAll(getSubvertices());
 		}
-		if (transition != null) {
-			ownedElement.addAll(transition);
+		if (eIsSet(UML2Package.eINSTANCE.getRegion_Transition())) {
+			ownedElement.addAll(getTransitions());
 		}
 		return ownedElement;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Clause.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Clause.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -60,17 +60,17 @@ public interface Clause extends Element{
 	EList getTests();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Test</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Test</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getTests()
 	 * @generated
-     */
-    ActivityNode getTest(String unqualifiedName);
-      
+	 */
+    ActivityNode getTest(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Body</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.ActivityNode}.
@@ -88,17 +88,17 @@ public interface Clause extends Element{
 	EList getBodies();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Body</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Body</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
 	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getBodies()
 	 * @generated
-     */
-    ActivityNode getBody(String unqualifiedName);
-      
+	 */
+    ActivityNode getBody(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Predecessor Clause</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Clause}.
@@ -184,15 +184,15 @@ public interface Clause extends Element{
 	EList getBodyOutputs();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Output</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Output</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
 	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getBodyOutputs()
 	 * @generated
-     */
-    OutputPin getBodyOutput(String unqualifiedName);
-      
+	 */
+    OutputPin getBodyOutput(String name);
+
 } // Clause

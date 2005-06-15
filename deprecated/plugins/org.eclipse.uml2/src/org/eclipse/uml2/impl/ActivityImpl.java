@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.23 2005/05/25 15:21:32 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.24 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1406,12 +1406,15 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (edge != null) {
-			ownedElement.addAll(edge);
+		if (eIsSet(UML2Package.eINSTANCE.getActivity_Edge())) {
+			ownedElement.addAll(getEdges());
 		}
-		ownedElement.addAll(getGroups());
-		if (node != null) {
-			ownedElement.addAll(node);
+		EList group = getGroups();
+		if (!group.isEmpty()) {
+			ownedElement.addAll(group);
+		}
+		if (eIsSet(UML2Package.eINSTANCE.getActivity_Node())) {
+			ownedElement.addAll(getNodes());
 		}
 		return ownedElement;
 	}

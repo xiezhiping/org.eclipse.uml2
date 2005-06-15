@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.11 2005/06/02 15:02:47 khussey Exp $
+ * $Id: Property.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -273,17 +273,17 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	EList getRedefinedProperties();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Property</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Property</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedProperties()
 	 * @generated
-     */
-    Property getRedefinedProperty(String unqualifiedName);
-      
+	 */
+    Property getRedefinedProperty(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Subsetted Property</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Property}.
@@ -301,17 +301,17 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	EList getSubsettedProperties();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Subsetted Property</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Subsetted Property</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubsettedProperties()
 	 * @generated
-     */
-    Property getSubsettedProperty(String unqualifiedName);
-      
+	 */
+    Property getSubsettedProperty(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Datatype</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.DataType#getOwnedAttributes <em>Owned Attribute</em>}'.
@@ -406,15 +406,15 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	void setDefaultValue(ValueSpecification value);
 
 
-    /**
-     * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Default Value</b></em>' containment reference.
+	/**
+	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Default Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getDefaultValue()
 	 * @generated
-     */
+	 */
     ValueSpecification createDefaultValue(EClass eClass);
 
 	/**
@@ -436,36 +436,36 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	EList getQualifiers();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Qualifier</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Qualifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getQualifiers()
 	 * @generated
-     */
-    Property getQualifier(String unqualifiedName);
-      
-    /**
-     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
+	 */
+    Property getQualifier(String name);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to create.
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getQualifiers()
 	 * @generated
-     */
+	 */
     Property createQualifier(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getQualifiers()
 	 * @generated
-     */
+	 */
     Property createQualifier();
 
 	/**

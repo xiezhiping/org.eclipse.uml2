@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -413,8 +413,8 @@ public class ParameterSetImpl extends NamedElementImpl implements ParameterSet {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (condition != null) {
-			ownedElement.addAll(condition);
+		if (eIsSet(UML2Package.eINSTANCE.getParameterSet_Condition())) {
+			ownedElement.addAll(getConditions());
 		}
 		return ownedElement;
 	}

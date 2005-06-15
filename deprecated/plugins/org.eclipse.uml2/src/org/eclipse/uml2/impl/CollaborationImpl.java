@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.20 2005/05/25 15:21:32 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.21 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -244,8 +244,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 */
 	protected EList getAttributesHelper(EList attribute) {
 		super.getAttributesHelper(attribute);
-		if (ownedAttribute != null) {
-			attribute.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())) {
+			attribute.addAll(getOwnedAttributes());
 		}
 		return attribute;
 	}
@@ -258,11 +258,11 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (ownedAttribute != null) {
-			ownedMember.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())) {
+			ownedMember.addAll(getOwnedAttributes());
 		}
-		if (ownedConnector != null) {
-			ownedMember.addAll(ownedConnector);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())) {
+			ownedMember.addAll(getOwnedConnectors());
 		}
 		return ownedMember;
 	}
@@ -275,8 +275,11 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 */
 	protected EList getMembersHelper(EList member) {
 		super.getMembersHelper(member);
-		for (Iterator i = ((InternalEList) getRoles()).basicIterator(); i.hasNext(); ) {
-			member.add(i.next());
+		EList role = getRoles();
+		if (!role.isEmpty()) {
+			for (Iterator i = ((InternalEList) role).basicIterator(); i.hasNext(); ) {
+				member.add(i.next());
+			}
 		}
 		return member;
 	}
@@ -289,8 +292,8 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 */
 	protected EList getFeaturesHelper(EList feature) {
 		super.getFeaturesHelper(feature);
-		if (ownedConnector != null) {
-			feature.addAll(ownedConnector);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())) {
+			feature.addAll(getOwnedConnectors());
 		}
 		return feature;
 	}
@@ -1038,11 +1041,11 @@ public class CollaborationImpl extends BehavioredClassifierImpl implements Colla
 	 * @generated
 	 */
 	protected EList getRolesHelper(EList role) {
-		if (ownedAttribute != null) {
-			role.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())) {
+			role.addAll(getOwnedAttributes());
 		}
-		if (collaborationRole != null) {
-			for (Iterator i = ((InternalEList) collaborationRole).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getCollaboration_CollaborationRole())) {
+			for (Iterator i = ((InternalEList) getCollaborationRoles()).basicIterator(); i.hasNext(); ) {
 				role.add(i.next());
 			}
 		}

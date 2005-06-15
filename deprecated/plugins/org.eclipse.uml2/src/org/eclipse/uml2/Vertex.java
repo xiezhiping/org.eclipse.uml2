@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Vertex.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: Vertex.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -94,17 +94,17 @@ public interface Vertex extends NamedElement{
 	EList getOutgoings();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Outgoing</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Outgoing</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Transition} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOutgoings()
 	 * @generated
-     */
-    Transition getOutgoing(String unqualifiedName);
-      
+	 */
+    Transition getOutgoing(String name);
+
 	/**
 	 * Returns the value of the '<em><b>Incoming</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.Transition}.
@@ -127,15 +127,15 @@ public interface Vertex extends NamedElement{
 	EList getIncomings();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Incoming</b></em>' reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Transition} to retrieve.
 	 * @return The {@link org.eclipse.uml2.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getIncomings()
 	 * @generated
-     */
-    Transition getIncoming(String unqualifiedName);
-      
+	 */
+    Transition getIncoming(String name);
+
 } // Vertex

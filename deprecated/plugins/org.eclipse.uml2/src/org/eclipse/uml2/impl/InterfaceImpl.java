@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.19 2005/05/30 15:21:18 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.20 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1019,8 +1019,8 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 */
 	protected EList getAttributesHelper(EList attribute) {
 		super.getAttributesHelper(attribute);
-		if (ownedAttribute != null) {
-			attribute.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getInterface_OwnedAttribute())) {
+			attribute.addAll(getOwnedAttributes());
 		}
 		return attribute;
 	}
@@ -1033,20 +1033,20 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (ownedAttribute != null) {
-			ownedMember.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.eINSTANCE.getInterface_OwnedAttribute())) {
+			ownedMember.addAll(getOwnedAttributes());
 		}
-		if (ownedOperation != null) {
-			ownedMember.addAll(ownedOperation);
+		if (eIsSet(UML2Package.eINSTANCE.getInterface_OwnedOperation())) {
+			ownedMember.addAll(getOwnedOperations());
 		}
-		if (nestedClassifier != null) {
-			ownedMember.addAll(nestedClassifier);
+		if (eIsSet(UML2Package.eINSTANCE.getInterface_NestedClassifier())) {
+			ownedMember.addAll(getNestedClassifiers());
 		}
-		if (ownedReception != null) {
-			ownedMember.addAll(ownedReception);
+		if (eIsSet(UML2Package.eINSTANCE.getInterface_OwnedReception())) {
+			ownedMember.addAll(getOwnedReceptions());
 		}
-		if (protocol != null) {
-			ownedMember.add(protocol);
+		if (eIsSet(UML2Package.eINSTANCE.getInterface_Protocol())) {
+			ownedMember.add(getProtocol());
 		}
 		return ownedMember;
 	}
@@ -1059,11 +1059,11 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 */
 	protected EList getFeaturesHelper(EList feature) {
 		super.getFeaturesHelper(feature);
-		if (ownedOperation != null) {
-			feature.addAll(ownedOperation);
+		if (eIsSet(UML2Package.eINSTANCE.getInterface_OwnedOperation())) {
+			feature.addAll(getOwnedOperations());
 		}
-		if (ownedReception != null) {
-			feature.addAll(ownedReception);
+		if (eIsSet(UML2Package.eINSTANCE.getInterface_OwnedReception())) {
+			feature.addAll(getOwnedReceptions());
 		}
 		return feature;
 	}
@@ -1076,8 +1076,8 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 */
 	protected EList getRedefinedElementsHelper(EList redefinedElement) {
 		super.getRedefinedElementsHelper(redefinedElement);
-		if (redefinedInterface != null) {
-			for (Iterator i = ((InternalEList) redefinedInterface).basicIterator(); i.hasNext(); ) {
+		if (eIsSet(UML2Package.eINSTANCE.getInterface_RedefinedInterface())) {
+			for (Iterator i = ((InternalEList) getRedefinedInterfaces()).basicIterator(); i.hasNext(); ) {
 				redefinedElement.add(i.next());
 			}
 		}

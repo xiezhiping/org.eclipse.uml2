@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.22 2005/05/18 16:38:27 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.23 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1170,11 +1170,11 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (region != null) {
-			ownedMember.addAll(region);
+		if (eIsSet(UML2Package.eINSTANCE.getStateMachine_Region())) {
+			ownedMember.addAll(getRegions());
 		}
-		if (connectionPoint != null) {
-			ownedMember.addAll(connectionPoint);
+		if (eIsSet(UML2Package.eINSTANCE.getStateMachine_ConnectionPoint())) {
+			ownedMember.addAll(getConnectionPoints());
 		}
 		return ownedMember;
 	}

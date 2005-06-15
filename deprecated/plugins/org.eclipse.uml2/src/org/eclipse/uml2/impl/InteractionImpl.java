@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.21 2005/05/18 16:38:26 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.22 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -542,14 +542,14 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
-		if (lifeline != null) {
-			ownedMember.addAll(lifeline);
+		if (eIsSet(UML2Package.eINSTANCE.getInteraction_Lifeline())) {
+			ownedMember.addAll(getLifelines());
 		}
-		if (message != null) {
-			ownedMember.addAll(message);
+		if (eIsSet(UML2Package.eINSTANCE.getInteraction_Message())) {
+			ownedMember.addAll(getMessages());
 		}
-		if (formalGate != null) {
-			ownedMember.addAll(formalGate);
+		if (eIsSet(UML2Package.eINSTANCE.getInteraction_FormalGate())) {
+			ownedMember.addAll(getFormalGates());
 		}
 		return ownedMember;
 	}
@@ -1488,8 +1488,8 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (generalOrdering != null) {
-			ownedElement.addAll(generalOrdering);
+		if (eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering())) {
+			ownedElement.addAll(getGeneralOrderings());
 		}
 		return ownedElement;
 	}

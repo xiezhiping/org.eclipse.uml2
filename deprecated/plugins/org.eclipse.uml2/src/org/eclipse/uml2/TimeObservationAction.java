@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationAction.java,v 1.7 2005/05/18 16:38:30 khussey Exp $
+ * $Id: TimeObservationAction.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -64,17 +64,17 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
 	EList getNows();
 
 
-    /**
-     * Retrieves the {@link org.eclipse.uml2.TimeExpression} with the specified '<em><b>Name</b></em>' from the '<em><b>Now</b></em>' containment reference list.
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.TimeExpression} with the specified '<em><b>Name</b></em>' from the '<em><b>Now</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.TimeExpression} to retrieve.
 	 * @return The {@link org.eclipse.uml2.TimeExpression} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNows()
 	 * @generated
-     */
-    TimeExpression getNow(String unqualifiedName);
-      
+	 */
+    TimeExpression getNow(String name);
+
     /**
      * Creates a {@link org.eclipse.uml2.TimeExpression} and appends it to the '<em><b>Now</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -87,14 +87,14 @@ public interface TimeObservationAction extends WriteStructuralFeatureAction{
      */
     TimeExpression createNow(EClass eClass);
 
-    /**
-     * Creates a {@link org.eclipse.uml2.TimeExpression} and appends it to the '<em><b>Now</b></em>' containment reference list.
+	/**
+	 * Creates a {@link org.eclipse.uml2.TimeExpression} and appends it to the '<em><b>Now</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.TimeExpression}.
 	 * @see #getNows()
 	 * @generated
-     */
+	 */
     TimeExpression createNow();
 
 } // TimeObservationAction

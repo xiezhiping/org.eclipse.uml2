@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.11 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -901,8 +901,8 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (clause != null) {
-			ownedElement.addAll(clause);
+		if (eIsSet(UML2Package.eINSTANCE.getConditionalNode_Clause())) {
+			ownedElement.addAll(getClauses());
 		}
 		return ownedElement;
 	}
@@ -915,8 +915,8 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (result != null) {
-			output.addAll(result);
+		if (eIsSet(UML2Package.eINSTANCE.getConditionalNode_Result())) {
+			output.addAll(getResults());
 		}
 		return output;
 	}
