@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.12 2005/06/03 20:11:27 khussey Exp $
+ * $Id: PackageOperations.java,v 1.13 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -166,8 +166,9 @@ public final class PackageOperations extends UML2Operations {
 	public static boolean makesVisible(org.eclipse.uml2.Package package_, NamedElement el) {
 
 		if (getOwnedMembers(package_).contains(el)) {
-			return null == el.getVisibility()
-				|| VisibilityKind.PUBLIC_LITERAL.equals(el.getVisibility());
+			VisibilityKind visibility = el.getVisibility();
+			return null == visibility
+				|| VisibilityKind.PUBLIC_LITERAL.equals(visibility);
 		}
 
 		for (Iterator elementImports = package_.getElementImports().iterator(); elementImports
@@ -176,9 +177,9 @@ public final class PackageOperations extends UML2Operations {
 			ElementImport elementImport = (ElementImport) elementImports.next();
 
 			if (safeEquals(elementImport.getImportedElement(), el)) {
-				return null == elementImport.getVisibility()
-					|| VisibilityKind.PUBLIC_LITERAL.equals(elementImport
-						.getVisibility());
+				VisibilityKind visibility = elementImport.getVisibility();
+				return null == visibility
+					|| VisibilityKind.PUBLIC_LITERAL.equals(visibility);
 			}
 		}
 
@@ -186,10 +187,10 @@ public final class PackageOperations extends UML2Operations {
 			.hasNext();) {
 
 			PackageImport packageImport = (PackageImport) packageImports.next();
+			VisibilityKind visibility = packageImport.getVisibility();
 
-			if (null == packageImport.getVisibility()
-				|| VisibilityKind.PUBLIC_LITERAL.equals(packageImport
-					.getVisibility())) {
+			if (null == visibility
+				|| VisibilityKind.PUBLIC_LITERAL.equals(visibility)) {
 
 				org.eclipse.uml2.Package importedPackage = packageImport
 					.getImportedPackage();
@@ -227,10 +228,10 @@ public final class PackageOperations extends UML2Operations {
 
 			PackageableElement ownedMember = (PackageableElement) ownedMembers
 				.next();
+			VisibilityKind visibility = ownedMember.getVisibility();
 
-			if (null == ownedMember.getVisibility()
-				|| VisibilityKind.PUBLIC_LITERAL.equals(ownedMember
-					.getVisibility())) {
+			if (null == visibility
+				|| VisibilityKind.PUBLIC_LITERAL.equals(visibility)) {
 
 				visibleMembers.add(ownedMember);
 			}
@@ -240,10 +241,10 @@ public final class PackageOperations extends UML2Operations {
 			.hasNext();) {
 
 			ElementImport elementImport = (ElementImport) elementImports.next();
+			VisibilityKind visibility = elementImport.getVisibility();
 
-			if (null == elementImport.getVisibility()
-				|| VisibilityKind.PUBLIC_LITERAL.equals(elementImport
-					.getVisibility())) {
+			if (null == visibility
+				|| VisibilityKind.PUBLIC_LITERAL.equals(visibility)) {
 
 				PackageableElement importedElement = elementImport
 					.getImportedElement();
@@ -264,10 +265,10 @@ public final class PackageOperations extends UML2Operations {
 			.hasNext();) {
 
 			PackageImport packageImport = (PackageImport) packageImports.next();
+			VisibilityKind visibility = packageImport.getVisibility();
 
-			if (null == packageImport.getVisibility()
-				|| VisibilityKind.PUBLIC_LITERAL.equals(packageImport
-					.getVisibility())) {
+			if (null == visibility
+				|| VisibilityKind.PUBLIC_LITERAL.equals(visibility)) {
 
 				org.eclipse.uml2.Package importedPackage = packageImport
 					.getImportedPackage();
@@ -459,9 +460,10 @@ public final class PackageOperations extends UML2Operations {
 		Set namesOfMember = new HashSet();
 
 		if (getOwnedMembers(package_).contains(element)) {
+			String name = element.getName();
 
-			if (!isEmpty(element.getName())) {
-				namesOfMember.add(element.getName());
+			if (!isEmpty(name)) {
+				namesOfMember.add(name);
 			}
 		} else {
 			return NamespaceOperations.getNamesOfMember(package_, element);
@@ -473,20 +475,18 @@ public final class PackageOperations extends UML2Operations {
 	public static Set importMembers(org.eclipse.uml2.Package package_, Set imps) {
 		Set importMembers = new HashSet();
 
+		EList ownedMembers = getOwnedMembers(package_);
+
 		excludeCollisionsLoop : for (Iterator excludeCollisions = package_
 			.excludeCollisions(imps).iterator(); excludeCollisions.hasNext();) {
 
 			PackageableElement excludeCollision = (PackageableElement) excludeCollisions
 				.next();
 
-			for (Iterator ownedMembers = getOwnedMembers(package_).iterator(); ownedMembers
-				.hasNext();) {
+			for (Iterator i = ownedMembers.iterator(); i.hasNext();) {
 
-				PackageableElement ownedMember = (PackageableElement) ownedMembers
-					.next();
-
-				if (!excludeCollision.isDistinguishableFrom(ownedMember,
-					package_)) {
+				if (!excludeCollision.isDistinguishableFrom(
+					(PackageableElement) i.next(), package_)) {
 
 					continue excludeCollisionsLoop;
 				}

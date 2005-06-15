@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.24 2005/05/24 20:27:32 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.25 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.uml2.AggregationKind;
+import org.eclipse.uml2.Association;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.EnumerationLiteral;
@@ -151,12 +153,12 @@ public final class StereotypeOperations
 	 * @return The stereotype represented by the Ecore class.
 	 */
 	protected static Stereotype getStereotype(EClass eClass) {
-		EAnnotation stereotypeEAnnotation = safeGetEAnnotation(eClass,
-			ANNOTATION_SOURCE__STEREOTYPE);
+		EList stereotypeEAnnotationReferences = safeGetEAnnotation(eClass,
+			ANNOTATION_SOURCE__STEREOTYPE).getReferences();
 
-		return stereotypeEAnnotation.getReferences().isEmpty()
+		return stereotypeEAnnotationReferences.isEmpty()
 			? null
-			: (Stereotype) stereotypeEAnnotation.getReferences().get(0);
+			: (Stereotype) stereotypeEAnnotationReferences.get(0);
 	}
 
 	/**
@@ -170,13 +172,14 @@ public final class StereotypeOperations
 	 */
 	public static EnumerationLiteral getEnumerationLiteral(
 			EEnumLiteral eEnumLiteral) {
-		EAnnotation enumerationLiteralEAnnotation = safeGetEAnnotation(
-			eEnumLiteral, ANNOTATION_SOURCE__ENUMERATION_LITERAL);
+		EList enumerationLiteralEAnnotationReferences = safeGetEAnnotation(
+			eEnumLiteral, ANNOTATION_SOURCE__ENUMERATION_LITERAL)
+			.getReferences();
 
-		return enumerationLiteralEAnnotation.getReferences().isEmpty()
+		return enumerationLiteralEAnnotationReferences.isEmpty()
 			? null
-			: (EnumerationLiteral) enumerationLiteralEAnnotation
-				.getReferences().get(0);
+			: (EnumerationLiteral) enumerationLiteralEAnnotationReferences
+				.get(0);
 	}
 
 	/**
@@ -305,9 +308,19 @@ public final class StereotypeOperations
 	public static Extension createExtension(Stereotype stereotype,
 			EClass eClass, boolean required) {
 
-		if (null == stereotype || isEmpty(stereotype.getName())
-			|| null == stereotype.getProfile()) {
+		if (null == stereotype) {
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
 
+		String name = stereotype.getName();
+
+		if (isEmpty(name)) {
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
+
+		Profile profile = stereotype.getProfile();
+
+		if (null == stereotype.getProfile()) {
 			throw new IllegalArgumentException(String.valueOf(stereotype));
 		}
 
@@ -324,15 +337,16 @@ public final class StereotypeOperations
 		}
 
 		org.eclipse.uml2.Class class_ = null;
+		String eClassName = eClass.getName();
 
-		for (Iterator referencedMetaclasses = stereotype.getProfile()
+		for (Iterator referencedMetaclasses = profile
 			.getReferencedMetaclasses().iterator(); referencedMetaclasses
 			.hasNext();) {
 
 			org.eclipse.uml2.Class referencedMetaclass = (org.eclipse.uml2.Class) referencedMetaclasses
 				.next();
 
-			if (eClass.getName().equals(referencedMetaclass.getName())) {
+			if (eClassName.equals(referencedMetaclass.getName())) {
 				class_ = referencedMetaclass;
 				break;
 			}
@@ -340,12 +354,12 @@ public final class StereotypeOperations
 
 		if (null == class_) {
 
-			for (Iterator referencedMetamodels = stereotype.getProfile()
+			for (Iterator referencedMetamodels = profile
 				.getReferencedMetamodels().iterator(); referencedMetamodels
 				.hasNext();) {
 
 				Type type = ((Model) referencedMetamodels.next())
-					.getOwnedType(eClass.getName());
+					.getOwnedType(eClassName);
 
 				if (org.eclipse.uml2.Class.class.isInstance(type)) {
 					class_ = (org.eclipse.uml2.Class) type;
@@ -358,16 +372,16 @@ public final class StereotypeOperations
 			throw new IllegalArgumentException(String.valueOf(eClass));
 		}
 
-		Extension extension = (Extension) stereotype.getPackage()
+		String className = class_.getName();
+		Extension extension = (Extension) profile
 			.createOwnedMember(UML2Package.eINSTANCE.getExtension());
 
-		extension.setName(class_.getName() + '_' + stereotype.getName());
+		extension.setName(className + '_' + name);
 
 		ExtensionEnd extensionEnd = (ExtensionEnd) extension
 			.createOwnedEnd(UML2Package.eINSTANCE.getExtensionEnd());
 
-		extensionEnd.setName(STEREOTYPE_EXTENSION_ROLE_PREFIX
-			+ stereotype.getName());
+		extensionEnd.setName(STEREOTYPE_EXTENSION_ROLE_PREFIX + name);
 		extensionEnd.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 		extensionEnd.setType(stereotype);
 
@@ -379,7 +393,7 @@ public final class StereotypeOperations
 		Property property = stereotype
 			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
 
-		property.setName(METACLASS_EXTENSION_ROLE_PREFIX + class_.getName());
+		property.setName(METACLASS_EXTENSION_ROLE_PREFIX + className);
 		property.setType(class_);
 		property.setAssociation(extension);
 
@@ -397,16 +411,21 @@ public final class StereotypeOperations
 	public static Set getApplicableStereotypes(Element element) {
 		Set applicableStereotypes = new HashSet();
 
-		if (null == element || null == element.getNearestPackage()) {
+		if (null == element) {
 			return applicableStereotypes;
 		}
 
-		for (Iterator allAppliedProfiles = element.getNearestPackage()
-			.getAllAppliedProfiles().iterator(); allAppliedProfiles.hasNext();) {
+		org.eclipse.uml2.Package package_ = element.getNearestPackage();
+
+		if (null == package_) {
+			return applicableStereotypes;
+		}
+
+		for (Iterator allAppliedProfiles = package_.getAllAppliedProfiles()
+			.iterator(); allAppliedProfiles.hasNext();) {
 
 			Profile profile = (Profile) allAppliedProfiles.next();
-			String appliedVersion = ProfileOperations.getAppliedVersion(
-				profile, element.getNearestPackage());
+			String appliedVersion = package_.getAppliedVersion(profile);
 
 			for (Iterator ownedStereotypes = profile.getOwnedStereotypes()
 				.iterator(); ownedStereotypes.hasNext();) {
@@ -420,10 +439,10 @@ public final class StereotypeOperations
 						.getAllExtendedMetaclasses().iterator(); extendedMetaclasses
 						.hasNext();) {
 
-						if (getEClass(
-							(org.eclipse.uml2.Class) extendedMetaclasses.next())
-							.isInstance(element)) {
+						EClass eClass = getEClass((org.eclipse.uml2.Class) extendedMetaclasses
+							.next());
 
+						if (null != eClass && eClass.isInstance(element)) {
 							applicableStereotypes.add(stereotype);
 							break;
 						}
@@ -745,17 +764,20 @@ public final class StereotypeOperations
 			.iterator(); ownedAttributes.hasNext();) {
 
 			Property property = (Property) ownedAttributes.next();
+			Type type = property.getType();
 
-			if (org.eclipse.uml2.Class.class.isInstance(property.getType())
-				&& Extension.class.isInstance(property.getAssociation())) {
+			if (org.eclipse.uml2.Class.class.isInstance(type)) {
+				Association association = property.getAssociation();
 
-				EClassifier eClassifier = UML2Package.eINSTANCE
-					.getEClassifier(property.getType().getName());
+				if (Extension.class.isInstance(association)) {
+					EClassifier eClassifier = UML2Package.eINSTANCE
+						.getEClassifier(type.getName());
 
-				if (EClass.class.isInstance(eClassifier)
-					&& ((EClass) eClassifier).isInstance(element)) {
+					if (EClass.class.isInstance(eClassifier)
+						&& ((EClass) eClassifier).isInstance(element)) {
 
-					return ((Extension) property.getAssociation()).isRequired();
+						return ((Extension) association).isRequired();
+					}
 				}
 			}
 		}
@@ -1002,8 +1024,6 @@ public final class StereotypeOperations
 					return false;
 				}
 
-				Object value = null;
-
 				if (eStructuralFeature.isMany()) {
 					List list = null == eObject
 						? Collections.EMPTY_LIST
@@ -1046,16 +1066,18 @@ public final class StereotypeOperations
 
 		EAnnotation appliedStereotypesEAnnotation = safeGetEAnnotation(element,
 			ANNOTATION_SOURCE__APPLIED_STEREOTYPES);
+		EList appliedStereotypesEAnnotationContents = appliedStereotypesEAnnotation
+			.getContents();
 
-		for (Iterator contents = appliedStereotypesEAnnotation.getContents()
-			.iterator(); contents.hasNext();) {
+		for (Iterator i = appliedStereotypesEAnnotationContents.iterator(); i
+			.hasNext();) {
 
-			if (stereotype == getStereotype((EObject) contents.next())) {
-				contents.remove();
+			if (stereotype == getStereotype((EObject) i.next())) {
+				i.remove();
 			}
 		}
 
-		if (appliedStereotypesEAnnotation.getContents().isEmpty()) {
+		if (appliedStereotypesEAnnotationContents.isEmpty()) {
 			element.getEAnnotations().remove(appliedStereotypesEAnnotation);
 		}
 	}
@@ -1137,7 +1159,13 @@ public final class StereotypeOperations
 	public static Extension createExtension(Stereotype stereotype,
 			org.eclipse.uml2.Class metaclass, boolean required) {
 
-		if (null == stereotype || isEmpty(stereotype.getName())) {
+		if (null == stereotype) {
+			throw new IllegalArgumentException(String.valueOf(stereotype));
+		}
+
+		String name = stereotype.getName();
+
+		if (isEmpty(name)) {
 			throw new IllegalArgumentException(String.valueOf(stereotype));
 		}
 
@@ -1160,16 +1188,16 @@ public final class StereotypeOperations
 			throw new IllegalArgumentException(String.valueOf(metaclass));
 		}
 
-		Extension extension = (Extension) stereotype.getPackage()
+		String metaclassName = metaclass.getName();
+		Extension extension = (Extension) profile
 			.createOwnedMember(UML2Package.eINSTANCE.getExtension());
 
-		extension.setName(metaclass.getName() + '_' + stereotype.getName());
+		extension.setName(metaclassName + '_' + name);
 
 		ExtensionEnd extensionEnd = (ExtensionEnd) extension
 			.createOwnedEnd(UML2Package.eINSTANCE.getExtensionEnd());
 
-		extensionEnd.setName(STEREOTYPE_EXTENSION_ROLE_PREFIX
-			+ stereotype.getName());
+		extensionEnd.setName(STEREOTYPE_EXTENSION_ROLE_PREFIX + name);
 		extensionEnd.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 		extensionEnd.setType(stereotype);
 
@@ -1181,7 +1209,7 @@ public final class StereotypeOperations
 		Property property = stereotype
 			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
 
-		property.setName(METACLASS_EXTENSION_ROLE_PREFIX + metaclass.getName());
+		property.setName(METACLASS_EXTENSION_ROLE_PREFIX + metaclassName);
 		property.setType(metaclass);
 		property.setAssociation(extension);
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierOperations.java,v 1.5 2005/05/18 16:38:32 khussey Exp $
+ * $Id: BehavioredClassifierOperations.java,v 1.6 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -53,11 +53,11 @@ public final class BehavioredClassifierOperations
 			for (Iterator implementations = behavioredClassifier
 				.getImplementations().iterator(); implementations.hasNext();) {
 
-				Implementation implementation = (Implementation) implementations
-					.next();
+				Interface contract = ((Implementation) implementations.next())
+					.getContract();
 
-				if (null != implementation.getContract()) {
-					implementedInterfaces.add(implementation.getContract());
+				if (null != contract) {
+					implementedInterfaces.add(contract);
 				}
 			}
 		}

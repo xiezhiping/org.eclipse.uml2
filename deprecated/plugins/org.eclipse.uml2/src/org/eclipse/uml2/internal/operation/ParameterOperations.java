@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.4 2005/05/18 16:38:31 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.5 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -18,6 +18,7 @@ import org.eclipse.uml2.LiteralString;
 import org.eclipse.uml2.LiteralUnlimitedNatural;
 import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.UML2Package;
+import org.eclipse.uml2.ValueSpecification;
 
 /**
  * A static utility class that provides operations related to '<em><b>Parameter</b></em>'
@@ -47,9 +48,10 @@ public final class ParameterOperations
 			throw new IllegalArgumentException(String.valueOf(parameter));
 		}
 
-		((LiteralBoolean) (LiteralBoolean.class.isInstance(parameter
-			.getDefaultValue())
-			? parameter.getDefaultValue()
+		ValueSpecification defaultValue = parameter.getDefaultValue();
+
+		((LiteralBoolean) (LiteralBoolean.class.isInstance(defaultValue)
+			? defaultValue
 			: parameter.createDefaultValue(UML2Package.eINSTANCE
 				.getLiteralBoolean()))).setValue(value);
 	}
@@ -69,9 +71,10 @@ public final class ParameterOperations
 			throw new IllegalArgumentException(String.valueOf(parameter));
 		}
 
-		((LiteralInteger) (LiteralInteger.class.isInstance(parameter
-			.getDefaultValue())
-			? parameter.getDefaultValue()
+		ValueSpecification defaultValue = parameter.getDefaultValue();
+
+		((LiteralInteger) (LiteralInteger.class.isInstance(defaultValue)
+			? defaultValue
 			: parameter.createDefaultValue(UML2Package.eINSTANCE
 				.getLiteralInteger()))).setValue(value);
 	}
@@ -91,9 +94,10 @@ public final class ParameterOperations
 			throw new IllegalArgumentException(String.valueOf(parameter));
 		}
 
-		((LiteralString) (LiteralString.class.isInstance(parameter
-			.getDefaultValue())
-			? parameter.getDefaultValue()
+		ValueSpecification defaultValue = parameter.getDefaultValue();
+
+		((LiteralString) (LiteralString.class.isInstance(defaultValue)
+			? defaultValue
 			: parameter.createDefaultValue(UML2Package.eINSTANCE
 				.getLiteralString()))).setValue(value);
 	}
@@ -113,17 +117,20 @@ public final class ParameterOperations
 			throw new IllegalArgumentException(String.valueOf(parameter));
 		}
 
+		ValueSpecification defaultValue = parameter.getDefaultValue();
+
 		((LiteralUnlimitedNatural) (LiteralUnlimitedNatural.class
-			.isInstance(parameter.getDefaultValue())
-			? parameter.getDefaultValue()
+			.isInstance(defaultValue)
+			? defaultValue
 			: parameter.createDefaultValue(UML2Package.eINSTANCE
 				.getLiteralUnlimitedNatural()))).setValue(value);
 	}
 
 	public static String getDefault(Parameter parameter) {
-		return null == parameter.getDefaultValue()
+		ValueSpecification defaultValue = parameter.getDefaultValue();
+		return null == defaultValue
 			? EMPTY_STRING
-			: parameter.getDefaultValue().stringValue();
+			: defaultValue.stringValue();
 	}
 
 } // ParameterOperations

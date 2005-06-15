@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.25 2005/06/03 21:02:47 khussey Exp $
+ * $Id: UML2Util.java,v 1.26 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.UniqueEList;
@@ -234,14 +235,18 @@ public class UML2Util {
 			property.setType(getType(eAttribute));
 			property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
 
-			if (eAttribute.getUpperBound() != ETypedElement.UNSPECIFIED_MULTIPLICITY
-				&& eAttribute.getUpperBound() != property.getUpper()) {
+			int upperBound = eAttribute.getUpperBound();
 
-				property.setUpperBound(eAttribute.getUpperBound());
+			if (upperBound != ETypedElement.UNSPECIFIED_MULTIPLICITY
+				&& upperBound != property.getUpper()) {
+
+				property.setUpperBound(upperBound);
 			}
 
-			if (eAttribute.getLowerBound() != property.getLower()) {
-				property.setLowerBound(eAttribute.getLowerBound());
+			int lowerBound = eAttribute.getLowerBound();
+
+			if (lowerBound != property.getLower()) {
+				property.setLowerBound(lowerBound);
 			}
 
 			defaultCase(eAttribute);
@@ -478,14 +483,18 @@ public class UML2Util {
 			end1Property.setIsOrdered(end1.isOrdered());
 			end1Property.setIsReadOnly(!end1.isChangeable());
 
-			if (end1.getUpperBound() != ETypedElement.UNSPECIFIED_MULTIPLICITY
-				&& end1.getUpperBound() != end1Property.getUpper()) {
+			int end1UpperBound = end1.getUpperBound();
 
-				end1Property.setUpperBound(end1.getUpperBound());
+			if (end1UpperBound != ETypedElement.UNSPECIFIED_MULTIPLICITY
+				&& end1UpperBound != end1Property.getUpper()) {
+
+				end1Property.setUpperBound(end1UpperBound);
 			}
 
-			if (end1.getLowerBound() != end1Property.getLower()) {
-				end1Property.setLowerBound(end1.getLowerBound());
+			int end1LowerBound = end1.getLowerBound();
+
+			if (end1LowerBound != end1Property.getLower()) {
+				end1Property.setLowerBound(end1LowerBound);
 			}
 
 			end1Property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
@@ -509,14 +518,18 @@ public class UML2Util {
 				end2Property.setIsOrdered(end1.isOrdered());
 				end2Property.setIsReadOnly(!end2.isChangeable());
 
-				if (end2.getUpperBound() != ETypedElement.UNSPECIFIED_MULTIPLICITY
-					&& end2.getUpperBound() != end2Property.getUpper()) {
+				int end2UpperBound = end2.getUpperBound();
 
-					end2Property.setUpperBound(end2.getUpperBound());
+				if (end2UpperBound != ETypedElement.UNSPECIFIED_MULTIPLICITY
+					&& end2UpperBound != end2Property.getUpper()) {
+
+					end2Property.setUpperBound(end2UpperBound);
 				}
 
-				if (end2.getLowerBound() != end2Property.getLower()) {
-					end2Property.setLowerBound(end2.getLowerBound());
+				int end2LowerBound = end2.getLowerBound();
+
+				if (end2LowerBound != end2Property.getLower()) {
+					end2Property.setLowerBound(end2LowerBound);
 				}
 
 				end2Property.setType(end1Classifier);
@@ -607,6 +620,7 @@ public class UML2Util {
 
 						switch (ExtendedMetaData.INSTANCE
 							.getContentKind((EClass) eModelElement)) {
+
 							case ExtendedMetaData.EMPTY_CONTENT :
 								value = contentKindEnumeration
 									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__EMPTY);
@@ -639,6 +653,7 @@ public class UML2Util {
 
 						switch (ExtendedMetaData.INSTANCE
 							.getFeatureKind((EStructuralFeature) eModelElement)) {
+
 							case ExtendedMetaData.SIMPLE_FEATURE :
 								value = featureKindEnumeration
 									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__SIMPLE);
@@ -794,7 +809,6 @@ public class UML2Util {
 		protected void processEcoreTaggedValues(Classifier classifier,
 				final EClassifier eClassifier, final Map options,
 				final DiagnosticChain diagnostics, final Map context) {
-
 			Stereotype eClassifierStereotype = (Stereotype) new UML2Switch() {
 
 				public Object caseClass(org.eclipse.uml2.Class class_) {
@@ -1249,12 +1263,13 @@ public class UML2Util {
 
 				if (super.matches(otherEObject)) {
 					List eParameters = ((EOperation) eObject).getEParameters();
+					int eParametersSize = eParameters.size();
 					List otherEParameters = ((EOperation) otherEObject)
 						.getEParameters();
 
-					if (eParameters.size() == otherEParameters.size()) {
+					if (eParametersSize == otherEParameters.size()) {
 
-						for (int i = 0; i < eParameters.size(); i++) {
+						for (int i = 0; i < eParametersSize; i++) {
 
 							if (!new ETypeMatcher((ETypedElement) eParameters
 								.get(i)).matches((EObject) otherEParameters
@@ -1334,36 +1349,36 @@ public class UML2Util {
 			EClassifier eType = null;
 
 			if (null != type) {
-				String name = type.getName();
+				String typeName = type.getName();
 
-				if (!isEmpty(name) && type instanceof PrimitiveType) {
+				if (!isEmpty(typeName) && type instanceof PrimitiveType) {
 
-					if ("Boolean".equals(name)) { //$NON-NLS-1$
+					if ("Boolean".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEBoolean();
-					} else if ("Integer".equals(name)) { //$NON-NLS-1$
+					} else if ("Integer".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEInt();
-					} else if ("String".equals(name)) { //$NON-NLS-1$
+					} else if ("String".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEString();
-					} else if ("UnlimitedNatural".equals(name)) { //$NON-NLS-1$
+					} else if ("UnlimitedNatural".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEInt();
-					} else if ("boolean".equals(name)) { //$NON-NLS-1$
+					} else if ("boolean".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEBoolean();
-					} else if ("byte".equals(name)) { //$NON-NLS-1$
+					} else if ("byte".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEByte();
-					} else if ("char".equals(name)) { //$NON-NLS-1$
+					} else if ("char".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEChar();
-					} else if ("double".equals(name)) { //$NON-NLS-1$
+					} else if ("double".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEDouble();
-					} else if ("float".equals(name)) { //$NON-NLS-1$
+					} else if ("float".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEFloat();
-					} else if ("int".equals(name)) { //$NON-NLS-1$
+					} else if ("int".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEInt();
-					} else if ("long".equals(name)) { //$NON-NLS-1$
+					} else if ("long".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getELong();
-					} else if ("short".equals(name)) { //$NON-NLS-1$
+					} else if ("short".equals(typeName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEShort();
 					} else {
-						eType = EcorePackage.eINSTANCE.getEClassifier(name);
+						eType = EcorePackage.eINSTANCE.getEClassifier(typeName);
 					}
 				}
 
@@ -1442,6 +1457,8 @@ public class UML2Util {
 		 * @see org.eclipse.uml2.util.UML2Switch#caseConstraint(org.eclipse.uml2.Constraint)
 		 */
 		public Object caseConstraint(Constraint constraint) {
+			String name = constraint.getName();
+			String specification = constraint.getSpecification().stringValue();
 
 			for (Iterator constrainedElements = constraint
 				.getConstrainedElements().iterator(); constrainedElements
@@ -1453,16 +1470,13 @@ public class UML2Util {
 				if (null != eModelElement) {
 
 					if (DEBUG) {
-						System.out
-							.println(getQualifiedText(eModelElement)
-								+ " is constrained as '" //$NON-NLS-1$
-								+ constraint.getSpecification().stringValue()
-								+ "'"); //$NON-NLS-1$
+						System.out.println(getQualifiedText(eModelElement)
+							+ " is constrained as '" //$NON-NLS-1$
+							+ specification + "'"); //$NON-NLS-1$
 					}
 
-					addConstraint(eModelElement, constraint.getName());
-					addDocumentation(eModelElement, constraint
-						.getSpecification().stringValue());
+					addConstraint(eModelElement, name);
+					addDocumentation(eModelElement, specification);
 				}
 			}
 
@@ -1657,12 +1671,13 @@ public class UML2Util {
 					eOperation.setEType(getEType(type));
 				}
 
+				EList eExceptions = eOperation.getEExceptions();
+
 				for (Iterator raisedExceptions = operation
 					.getRaisedExceptions().iterator(); raisedExceptions
 					.hasNext();) {
 
-					eOperation.getEExceptions().add(
-						getEType((Type) raisedExceptions.next()));
+					eExceptions.add(getEType((Type) raisedExceptions.next()));
 				}
 
 				defaultCase(operation);
@@ -1841,12 +1856,16 @@ public class UML2Util {
 					((EReference) eStructuralFeature).setEOpposite(eOpposite);
 				}
 
-				if (property.getUpper() != eStructuralFeature.getUpperBound()) {
-					eStructuralFeature.setUpperBound(property.getUpper());
+				int upper = property.getUpper();
+
+				if (upper != eStructuralFeature.getUpperBound()) {
+					eStructuralFeature.setUpperBound(upper);
 				}
 
-				if (property.getLower() != eStructuralFeature.getLowerBound()) {
-					eStructuralFeature.setLowerBound(property.getLower());
+				int lower = property.getLower();
+
+				if (lower != eStructuralFeature.getLowerBound()) {
+					eStructuralFeature.setLowerBound(lower);
 				}
 
 				eStructuralFeature.setUnique(property.isUnique());
@@ -2011,6 +2030,11 @@ public class UML2Util {
 								(String) value);
 						} else if (PROPERTY_NAME__VISIBILITY == propertyName) {
 							eStructuralFeature = (EStructuralFeature) eModelElement;
+							boolean isChangeable = eStructuralFeature
+								.isChangeable();
+							boolean isMany = eStructuralFeature.isMany();
+							boolean isUnsettable = eStructuralFeature
+								.isUnsettable();
 
 							Enumeration visibilityKindEnumeration = ((EnumerationLiteral) value)
 								.getEnumeration();
@@ -2021,21 +2045,19 @@ public class UML2Util {
 								EcoreUtil.setSuppressedVisibility(
 									eStructuralFeature, EcoreUtil.GET, true);
 
-								if (eStructuralFeature.isChangeable()
-									&& !eStructuralFeature.isMany()) {
-
+								if (isChangeable && !isMany) {
 									EcoreUtil
 										.setSuppressedVisibility(
 											eStructuralFeature, EcoreUtil.SET,
 											true);
 								}
 
-								if (eStructuralFeature.isUnsettable()) {
+								if (isUnsettable) {
 									EcoreUtil.setSuppressedVisibility(
 										eStructuralFeature, EcoreUtil.IS_SET,
 										true);
 
-									if (eStructuralFeature.isChangeable()) {
+									if (isChangeable) {
 										EcoreUtil.setSuppressedVisibility(
 											eStructuralFeature,
 											EcoreUtil.UNSET, true);
@@ -2044,21 +2066,19 @@ public class UML2Util {
 							} else if (visibilityKindEnumeration
 								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_ONLY) == value) {
 
-								if (!eStructuralFeature.isMany()
-									&& eStructuralFeature.isChangeable()) {
-
+								if (!isMany && isChangeable) {
 									EcoreUtil
 										.setSuppressedVisibility(
 											eStructuralFeature, EcoreUtil.SET,
 											true);
 								}
 
-								if (eStructuralFeature.isUnsettable()) {
+								if (isUnsettable) {
 									EcoreUtil.setSuppressedVisibility(
 										eStructuralFeature, EcoreUtil.IS_SET,
 										true);
 
-									if (eStructuralFeature.isChangeable()) {
+									if (isChangeable) {
 										EcoreUtil.setSuppressedVisibility(
 											eStructuralFeature,
 											EcoreUtil.UNSET, true);
@@ -2067,12 +2087,12 @@ public class UML2Util {
 							} else if (visibilityKindEnumeration
 								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_WRITE) == value) {
 
-								if (eStructuralFeature.isUnsettable()) {
+								if (isUnsettable) {
 									EcoreUtil.setSuppressedVisibility(
 										eStructuralFeature, EcoreUtil.IS_SET,
 										true);
 
-									if (eStructuralFeature.isChangeable()) {
+									if (isChangeable) {
 										EcoreUtil.setSuppressedVisibility(
 											eStructuralFeature,
 											EcoreUtil.UNSET, true);
@@ -2081,18 +2101,14 @@ public class UML2Util {
 							} else if (visibilityKindEnumeration
 								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_ONLY_UNSETTABLE) == value) {
 
-								if (!eStructuralFeature.isMany()
-									&& eStructuralFeature.isChangeable()) {
-
+								if (!isMany && isChangeable) {
 									EcoreUtil
 										.setSuppressedVisibility(
 											eStructuralFeature, EcoreUtil.SET,
 											true);
 								}
 
-								if (eStructuralFeature.isUnsettable()
-									&& eStructuralFeature.isChangeable()) {
-
+								if (isUnsettable && isChangeable) {
 									EcoreUtil.setSuppressedVisibility(
 										eStructuralFeature, EcoreUtil.UNSET,
 										true);
@@ -2239,8 +2255,10 @@ public class UML2Util {
 						PROPERTY_NAME__BASE_PACKAGE, options, diagnostics,
 						context);
 
-					if (!isEmpty(ePackage.getNsPrefix())) {
-						ePackage.setNsPrefix(ePackage.getNsPrefix() + '.'
+					String nsPrefix = ePackage.getNsPrefix();
+
+					if (!isEmpty(nsPrefix)) {
+						ePackage.setNsPrefix(nsPrefix + '.'
 							+ ePackage.getName());
 					}
 				}
@@ -2772,28 +2790,30 @@ public class UML2Util {
 				ETypedElement otherETypedElement) {
 
 			if (eTypedElement.isRequired() != otherETypedElement.isRequired()) {
+				int lowerBound = eTypedElement.getLowerBound();
+				int otherLowerBound = otherETypedElement.getLowerBound();
 
-				int lesserLowerBound = getLesserLowerBound(otherETypedElement
-					.getLowerBound(), eTypedElement.getLowerBound());
+				int lesserLowerBound = getLesserLowerBound(otherLowerBound,
+					lowerBound);
 
-				if (lesserLowerBound != otherETypedElement.getLowerBound()) {
+				if (lesserLowerBound != otherLowerBound) {
 
 					if (DEBUG) {
 						System.err.println("Changed lower bound of " //$NON-NLS-1$
 							+ getQualifiedText(otherETypedElement) + " from " //$NON-NLS-1$
-							+ otherETypedElement.getLowerBound() + " to " //$NON-NLS-1$
+							+ otherLowerBound + " to " //$NON-NLS-1$
 							+ lesserLowerBound);
 					}
 
 					otherETypedElement.setLowerBound(lesserLowerBound);
 				}
 
-				if (lesserLowerBound != eTypedElement.getLowerBound()) {
+				if (lesserLowerBound != lowerBound) {
 
 					if (DEBUG) {
 						System.out.println("Changed lower bound of " //$NON-NLS-1$
 							+ getQualifiedText(eTypedElement) + " from " //$NON-NLS-1$
-							+ eTypedElement.getLowerBound() + " to " //$NON-NLS-1$
+							+ lowerBound + " to " //$NON-NLS-1$
 							+ lesserLowerBound);
 					}
 
@@ -2801,28 +2821,34 @@ public class UML2Util {
 				}
 			}
 
-			if (eTypedElement.isMany() != otherETypedElement.isMany()) {
-				int greaterUpperBound = getGreaterUpperBound(otherETypedElement
-					.getUpperBound(), eTypedElement.getUpperBound());
+			boolean isMany = eTypedElement.isMany();
+			boolean otherIsMany = otherETypedElement.isMany();
 
-				if (greaterUpperBound != otherETypedElement.getUpperBound()) {
+			if (isMany != otherIsMany) {
+				int upperBound = eTypedElement.getUpperBound();
+				int otherUpperBound = otherETypedElement.getUpperBound();
+
+				int greaterUpperBound = getGreaterUpperBound(otherUpperBound,
+					upperBound);
+
+				if (greaterUpperBound != otherUpperBound) {
 
 					if (DEBUG) {
 						System.err.println("Changed upper bound of " //$NON-NLS-1$
 							+ getQualifiedText(otherETypedElement) + " from " //$NON-NLS-1$
-							+ otherETypedElement.getUpperBound() + " to " //$NON-NLS-1$
+							+ otherUpperBound + " to " //$NON-NLS-1$
 							+ greaterUpperBound);
 					}
 
 					otherETypedElement.setUpperBound(greaterUpperBound);
 				}
 
-				if (greaterUpperBound != eTypedElement.getUpperBound()) {
+				if (greaterUpperBound != upperBound) {
 
 					if (DEBUG) {
 						System.out.println("Changed upper bound of " //$NON-NLS-1$
 							+ getQualifiedText(eTypedElement) + " from " //$NON-NLS-1$
-							+ eTypedElement.getUpperBound() + " to " //$NON-NLS-1$
+							+ upperBound + " to " //$NON-NLS-1$
 							+ greaterUpperBound);
 					}
 
@@ -2830,28 +2856,30 @@ public class UML2Util {
 				}
 			}
 
-			if (!eTypedElement.isMany() && !otherETypedElement.isMany()) {
-				EClassifier commonEType = getCommonEType(otherETypedElement
-					.getEType(), eTypedElement.getEType());
+			if (!isMany && !otherIsMany) {
+				EClassifier eType = eTypedElement.getEType();
+				EClassifier otherEType = otherETypedElement.getEType();
 
-				if (commonEType != otherETypedElement.getEType()) {
+				EClassifier commonEType = getCommonEType(otherEType, eType);
+
+				if (commonEType != otherEType) {
 
 					if (DEBUG) {
 						System.err.println("Changed type of " //$NON-NLS-1$
 							+ getQualifiedText(otherETypedElement) + " from " //$NON-NLS-1$
-							+ getQualifiedText(otherETypedElement.getEType())
+							+ getQualifiedText(otherEType)
 							+ " to " + getQualifiedText(commonEType)); //$NON-NLS-1$
 					}
 
 					otherETypedElement.setEType(commonEType);
 				}
 
-				if (commonEType != eTypedElement.getEType()) {
+				if (commonEType != eType) {
 
 					if (DEBUG) {
 						System.out.println("Changed type of " //$NON-NLS-1$
 							+ getQualifiedText(eTypedElement) + " from " //$NON-NLS-1$
-							+ getQualifiedText(eTypedElement.getEType())
+							+ getQualifiedText(eType)
 							+ " to " + getQualifiedText(commonEType)); //$NON-NLS-1$
 					}
 
@@ -4428,6 +4456,8 @@ public class UML2Util {
 
 				if (resultingEObject instanceof Property) {
 					Property redefiningProperty = (Property) resultingEObject;
+					EList redefiningRedefinedProperties = redefiningProperty
+						.getRedefinedProperties();
 
 					for (Iterator redefinitionContexts = redefiningProperty
 						.getRedefinitionContexts().iterator(); redefinitionContexts
@@ -4445,9 +4475,8 @@ public class UML2Util {
 								Property redefinedProperty = (Property) redefinedProperties
 									.next();
 
-								if (!redefiningProperty
-									.getRedefinedProperties().contains(
-										redefinedProperty)) {
+								if (!redefiningRedefinedProperties
+									.contains(redefinedProperty)) {
 
 									if (OPTION__PROCESS.equals(options
 										.get(OPTION__IMPLICIT_REDEFINITIONS))) {
@@ -4470,9 +4499,8 @@ public class UML2Util {
 														redefinedProperty}));
 										}
 
-										redefiningProperty
-											.getRedefinedProperties().add(
-												redefinedProperty);
+										redefiningRedefinedProperties
+											.add(redefinedProperty);
 									} else if (OPTION__REPORT.equals(options
 										.get(OPTION__IMPLICIT_REDEFINITIONS))
 										&& null != diagnostics) {
@@ -4773,38 +4801,62 @@ public class UML2Util {
 
 				if (resultingEObject instanceof Classifier) {
 					Classifier classifier = (Classifier) resultingEObject;
+					EList generalizations = classifier.getGeneralizations();
 
-					for (Iterator generalizations = new ArrayList(classifier
-						.getGeneralizations()).iterator(); generalizations
+					for (Iterator i = new ArrayList(generalizations).iterator(); i
 						.hasNext();) {
 
-						Classifier general = ((Generalization) generalizations
-							.next()).getGeneral();
+						Classifier general = ((Generalization) i.next())
+							.getGeneral();
 
-						for (Iterator otherGeneralizations = classifier
-							.getGeneralizations().iterator(); otherGeneralizations
-							.hasNext();) {
+						if (null != general) {
+							Set generalAllParents = general.allParents();
 
-							Generalization otherGeneralization = (Generalization) otherGeneralizations
-								.next();
-							Classifier otherGeneral = otherGeneralization
-								.getGeneral();
+							for (Iterator j = generalizations.iterator(); j
+								.hasNext();) {
 
-							if (general != null && general != otherGeneral
-								&& general.allParents().contains(otherGeneral)) {
+								Classifier otherGeneral = ((Generalization) j
+									.next()).getGeneral();
 
-								if (OPTION__DISCARD.equals(options
-									.get(OPTION__REDUNDANT_GENERALIZATIONS))) {
+								if (general != otherGeneral
+									&& generalAllParents.contains(otherGeneral)) {
 
-									if (null != diagnostics) {
+									if (OPTION__DISCARD
+										.equals(options
+											.get(OPTION__REDUNDANT_GENERALIZATIONS))) {
+
+										if (null != diagnostics) {
+											diagnostics
+												.add(new BasicDiagnostic(
+													Diagnostic.INFO,
+													UML2Validator.DIAGNOSTIC_SOURCE,
+													REDUNDANT_GENERALIZATION,
+													UML2Plugin.INSTANCE
+														.getString(
+															"_UI_PackageMerger_DiscardRedundantGeneralization_diagnostic", //$NON-NLS-1$
+															getMessageSubstitutions(
+																context,
+																classifier,
+																otherGeneral,
+																general)),
+													new Object[]{classifier,
+														otherGeneral}));
+										}
+
+										j.remove();
+									} else if (OPTION__REPORT
+										.equals(options
+											.get(OPTION__REDUNDANT_GENERALIZATIONS))
+										&& null != diagnostics) {
+
 										diagnostics
 											.add(new BasicDiagnostic(
-												Diagnostic.INFO,
+												Diagnostic.WARNING,
 												UML2Validator.DIAGNOSTIC_SOURCE,
 												REDUNDANT_GENERALIZATION,
 												UML2Plugin.INSTANCE
 													.getString(
-														"_UI_PackageMerger_DiscardRedundantGeneralization_diagnostic", //$NON-NLS-1$
+														"_UI_PackageMerger_ReportRedundantGeneralization_diagnostic", //$NON-NLS-1$
 														getMessageSubstitutions(
 															context,
 															classifier,
@@ -4814,27 +4866,8 @@ public class UML2Util {
 													otherGeneral}));
 									}
 
-									otherGeneralizations.remove();
-								} else if (OPTION__REPORT.equals(options
-									.get(OPTION__REDUNDANT_GENERALIZATIONS))
-									&& null != diagnostics) {
-
-									diagnostics
-										.add(new BasicDiagnostic(
-											Diagnostic.WARNING,
-											UML2Validator.DIAGNOSTIC_SOURCE,
-											REDUNDANT_GENERALIZATION,
-											UML2Plugin.INSTANCE
-												.getString(
-													"_UI_PackageMerger_ReportRedundantGeneralization_diagnostic", //$NON-NLS-1$
-													getMessageSubstitutions(
-														context, classifier,
-														otherGeneral, general)),
-											new Object[]{classifier,
-												otherGeneral}));
+									break;
 								}
-
-								break;
 							}
 						}
 					}
@@ -5072,7 +5105,6 @@ public class UML2Util {
 						if (eClass.isSuperTypeOf(otherEClass)) {
 							return eClass;
 						} else if (otherEClass.isSuperTypeOf(eClass)) {
-
 							return otherEClass;
 						}
 
@@ -5083,7 +5115,6 @@ public class UML2Util {
 							EClass eSuperType = (EClass) eAllSuperTypes.next();
 
 							if (eSuperType.isSuperTypeOf(otherEClass)) {
-
 								return eSuperType;
 							}
 						}
@@ -5096,7 +5127,6 @@ public class UML2Util {
 								.next();
 
 							if (otherESuperType.isSuperTypeOf(eClass)) {
-
 								return otherESuperType;
 							}
 						}

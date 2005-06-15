@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.26 2005/06/02 14:04:20 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.27 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -61,6 +61,7 @@ import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
+import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Switch;
@@ -89,10 +90,10 @@ public final class ProfileOperations
 
 		public Object caseProfile(Profile profile) {
 			EPackage ePackage = (EPackage) casePackage(profile);
-			ePackage.setNsPrefix(ePackage.getName());
-			ePackage
-				.setNsURI("http:///" + ePackage.getName() + EcoreUtil.generateUUID() //$NON-NLS-1$
-					+ "." + UML2Resource.PROFILE_FILE_EXTENSION); //$NON-NLS-1$
+			String name = ePackage.getName();
+			ePackage.setNsPrefix(name);
+			ePackage.setNsURI("http:///" + name + EcoreUtil.generateUUID() //$NON-NLS-1$
+				+ "." + UML2Resource.PROFILE_FILE_EXTENSION); //$NON-NLS-1$
 			return ePackage;
 		}
 
@@ -260,10 +261,9 @@ public final class ProfileOperations
 			.hasNext();) {
 
 			EPackage ePackage = (EPackage) ePackages.next();
+			String name = ePackage.getName();
 
-			if (safeEquals(version, ePackage.getName().substring(
-				ePackage.getName().lastIndexOf('_') + 1))) {
-
+			if (safeEquals(version, name.substring(name.lastIndexOf('_') + 1))) {
 				return ePackage;
 			}
 		}
@@ -284,41 +284,42 @@ public final class ProfileOperations
 	 * @deprecated Use EPackage.getEClassifier(String) instead.
 	 */
 	public static EClassifier getEClassifier(EPackage ePackage, Type type) {
-		EClassifier eClassifier = ePackage.getEClassifier(type.getName());
+		String typeName = type.getName();
+		EClassifier eClassifier = ePackage.getEClassifier(typeName);
 
 		if (null == eClassifier) {
 
 			if (PrimitiveType.class.isInstance(type)) {
 
-				if ("Boolean".equals(type.getName())) { //$NON-NLS-1$
+				if ("Boolean".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getEBoolean();
-				} else if ("Integer".equals(type.getName())) { //$NON-NLS-1$
+				} else if ("Integer".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getEInt();
-				} else if ("String".equals(type.getName())) { //$NON-NLS-1$
+				} else if ("String".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getEString();
-				} else if ("UnlimitedNatural".equals(type.getName())) { //$NON-NLS-1$
+				} else if ("UnlimitedNatural".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getEInt();
-				} else if ("boolean".equals(type.getName())) { //$NON-NLS-1$
+				} else if ("boolean".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getEBoolean();
-				} else if ("byte".equals(type.getName())) { //$NON-NLS-1$
+				} else if ("byte".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getEByte();
-				} else if ("char".equals(type.getName())) { //$NON-NLS-1$
+				} else if ("char".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getEChar();
-				} else if ("double".equals(type.getName())) { //$NON-NLS-1$
+				} else if ("double".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getEDouble();
-				} else if ("float".equals(type.getName())) { //$NON-NLS-1$
+				} else if ("float".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getEFloat();
-				} else if ("int".equals(type.getName())) { //$NON-NLS-1$
+				} else if ("int".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getEInt();
-				} else if ("long".equals(type.getName())) { //$NON-NLS-1$
+				} else if ("long".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getELong();
-				} else if ("short".equals(type.getName())) { //$NON-NLS-1$
+				} else if ("short".equals(typeName)) { //$NON-NLS-1$
 					eClassifier = EcorePackage.eINSTANCE.getEShort();
 				} else if (EDataType.class.isInstance(EcorePackage.eINSTANCE
-					.getEClassifier(type.getName()))) {
+					.getEClassifier(typeName))) {
 
-					eClassifier = EcorePackage.eINSTANCE.getEClassifier(type
-						.getName());
+					eClassifier = EcorePackage.eINSTANCE
+						.getEClassifier(typeName);
 				} else {
 					eClassifier = EcorePackage.eINSTANCE.getEString();
 				}
@@ -414,13 +415,18 @@ public final class ProfileOperations
 				Property property = (Property) ownedAttributes.next();
 
 				if (!isEmpty(property.getName())
-					&& !Extension.class.isInstance(property.getAssociation())
-					&& null != property.getType()) {
+					&& !Extension.class.isInstance(property.getAssociation())) {
 
-					if (DataType.class.isInstance(property.getType())) {
-						createEAttribute(eClass, property);
-					} else {
-						createEReference(eClass, property);
+					Type type = property.getType();
+
+					if (null != type) {
+
+						if (DataType.class.isInstance(type)) {
+							createEAttribute(eClass, property);
+						} else {
+							createEReference(eClass, property);
+						}
+
 					}
 				}
 			}
@@ -471,12 +477,16 @@ public final class ProfileOperations
 
 				Property property = (Property) ownedAttributes.next();
 
-				if (!isEmpty(property.getName()) && null != property.getType()) {
+				if (!isEmpty(property.getName())) {
+					Type type = property.getType();
 
-					if (DataType.class.isInstance(property.getType())) {
-						createEAttribute(eClass, property);
-					} else {
-						createEReference(eClass, property);
+					if (null != type) {
+
+						if (DataType.class.isInstance(type)) {
+							createEAttribute(eClass, property);
+						} else {
+							createEReference(eClass, property);
+						}
 					}
 				}
 			}
@@ -542,12 +552,16 @@ public final class ProfileOperations
 
 				Property property = (Property) ownedAttributes.next();
 
-				if (!isEmpty(property.getName()) && null != property.getType()) {
+				if (!isEmpty(property.getName())) {
+					Type type = property.getType();
 
-					if (DataType.class.isInstance(property.getType())) {
-						createEAttribute(eClass, property);
-					} else {
-						createEReference(eClass, property);
+					if (null != type) {
+
+						if (DataType.class.isInstance(type)) {
+							createEAttribute(eClass, property);
+						} else {
+							createEReference(eClass, property);
+						}
 					}
 				}
 			}
@@ -592,9 +606,12 @@ public final class ProfileOperations
 
 			ePackage.getEClassifiers().add(eEnum);
 
-			for (int index = 0; index < enumeration.getOwnedLiterals().size(); index++) {
-				EnumerationLiteral enumerationLiteral = (EnumerationLiteral) enumeration
-					.getOwnedLiterals().get(index);
+			EList eLiterals = eEnum.getELiterals();
+			EList ownedLiterals = enumeration.getOwnedLiterals();
+
+			for (int index = 0; index < ownedLiterals.size(); index++) {
+				EnumerationLiteral enumerationLiteral = (EnumerationLiteral) ownedLiterals
+					.get(index);
 
 				EEnumLiteral eEnumLiteral = EcoreFactory.eINSTANCE
 					.createEEnumLiteral();
@@ -606,7 +623,7 @@ public final class ProfileOperations
 				eEnumLiteral.setName(enumerationLiteral.getName());
 				eEnumLiteral.setValue(index);
 
-				eEnum.getELiterals().add(eEnumLiteral);
+				eLiterals.add(eEnumLiteral);
 			}
 		}
 
@@ -641,21 +658,23 @@ public final class ProfileOperations
 			eAttribute.setEType(getEClassifier(eClass.getEPackage(), property
 				.getType()));
 
-			if (InstanceValue.class.isInstance(property.getDefaultValue())
+			ValueSpecification defaultValue = property.getDefaultValue();
+
+			if (InstanceValue.class.isInstance(defaultValue)
 				&& EnumerationLiteral.class
-					.isInstance(((InstanceValue) property.getDefaultValue())
-						.getInstance())) {
+					.isInstance(((InstanceValue) defaultValue).getInstance())) {
 
 				eAttribute
-					.setDefaultValueLiteral(((EnumerationLiteral) ((InstanceValue) property
-						.getDefaultValue()).getInstance()).getName());
+					.setDefaultValueLiteral(((EnumerationLiteral) ((InstanceValue) defaultValue)
+						.getInstance()).getName());
 			} else {
 
 				try {
+					String default_ = property.getDefault();
 					EcorePackage.eINSTANCE.getEFactoryInstance()
 						.createFromString(eAttribute.getEAttributeType(),
-							property.getDefault());
-					eAttribute.setDefaultValueLiteral(property.getDefault());
+							default_);
+					eAttribute.setDefaultValueLiteral(default_);
 				} catch (Exception e) {
 					// ignore
 				}
@@ -719,9 +738,13 @@ public final class ProfileOperations
 	 */
 	public static void apply(Profile profile, org.eclipse.uml2.Package package_) {
 
-		if (null == profile
-			|| null == getEPackage(profile, profile.getVersion())) {
+		if (null == profile) {
+			throw new IllegalArgumentException(String.valueOf(profile));
+		}
 
+		String version = profile.getVersion();
+
+		if (null == getEPackage(profile, version)) {
 			throw new IllegalArgumentException(String.valueOf(profile));
 		}
 
@@ -742,7 +765,7 @@ public final class ProfileOperations
 		} else {
 
 			if (package_ != profileApplication.getImportingNamespace()
-				|| profile.getVersion().equals(getVersion(profileApplication))) {
+				|| version.equals(getVersion(profileApplication))) {
 
 				throw new IllegalArgumentException(String.valueOf(profile));
 			}
@@ -776,7 +799,7 @@ public final class ProfileOperations
 							appliedStereotypes.remove(oldStereotypeApplication);
 						} else {
 							EClass eClass = StereotypeOperations.getEClass(
-								stereotype, profile.getVersion());
+								stereotype, version);
 							EObject newStereotypeApplication = eClass
 								.getEPackage().getEFactoryInstance().create(
 									eClass);
@@ -804,8 +827,7 @@ public final class ProfileOperations
 		}
 
 		getEAnnotation(profileApplication, ANNOTATION_SOURCE__ATTRIBUTES, true)
-			.getDetails().put(ANNOTATION_DETAILS_KEY__VERSION,
-				profile.getVersion());
+			.getDetails().put(ANNOTATION_DETAILS_KEY__VERSION, version);
 	}
 
 	protected static void copyValues(EObject sourceEObject,
@@ -1007,11 +1029,11 @@ public final class ProfileOperations
 		for (Iterator appliedProfiles = package_.getAppliedProfiles()
 			.iterator(); appliedProfiles.hasNext();) {
 
-			ProfileApplication profileApplication = (ProfileApplication) appliedProfiles
-				.next();
+			Profile importedProfile = ((ProfileApplication) appliedProfiles
+				.next()).getImportedProfile();
 
-			if (null != profileApplication.getImportedProfile()) {
-				allAppliedProfiles.add(profileApplication.getImportedProfile());
+			if (null != importedProfile) {
+				allAppliedProfiles.add(importedProfile);
 			}
 		}
 
@@ -1223,11 +1245,13 @@ public final class ProfileOperations
 				EAnnotation appliedStereotypesEAnnotation = safeGetEAnnotation(
 					element,
 					StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES);
+				EList appliedStereotypesEAnnotationContents = appliedStereotypesEAnnotation
+					.getContents();
 
-				appliedStereotypesEAnnotation.getContents().removeAll(
-					getStereotypeApplications(profile, element));
+				appliedStereotypesEAnnotationContents
+					.removeAll(getStereotypeApplications(profile, element));
 
-				if (appliedStereotypesEAnnotation.getContents().isEmpty()) {
+				if (appliedStereotypesEAnnotationContents.isEmpty()) {
 					eAnnotationsToRemove.add(appliedStereotypesEAnnotation);
 				}
 			}

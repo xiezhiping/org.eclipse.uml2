@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.8 2005/05/18 16:38:31 khussey Exp $
+ * $Id: OperationOperations.java,v 1.9 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -17,6 +17,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.Operation;
@@ -84,12 +85,14 @@ public final class OperationOperations extends UML2Operations {
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean validateTypeOfResult(Operation operation, DiagnosticChain diagnostics, Map context) {
+	public static boolean validateTypeOfResult(Operation operation,
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
-		if (!safeEquals(operation.getType(), 1 == operation
-			.getReturnResults().size()
-			? ((Parameter) operation.getReturnResults().get(0)).getType()
+		EList returnResults = operation.getReturnResults();
+
+		if (!safeEquals(operation.getType(), 1 == returnResults.size()
+			? ((Parameter) returnResults.get(0)).getType()
 			: null)) {
 
 			result = false;
@@ -120,8 +123,9 @@ public final class OperationOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static boolean isOrdered(Operation operation) {
-		return 1 == operation.getReturnResults().size()
-			? ((Parameter) operation.getReturnResults().get(0)).isOrdered()
+		EList returnResults = operation.getReturnResults();
+		return 1 == returnResults.size()
+			? ((Parameter) returnResults.get(0)).isOrdered()
 			: false;
 	}
 
@@ -137,8 +141,9 @@ public final class OperationOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static boolean isUnique(Operation operation) {
-		return 1 == operation.getReturnResults().size()
-			? ((Parameter) operation.getReturnResults().get(0)).isUnique()
+		EList returnResults = operation.getReturnResults();
+		return 1 == returnResults.size()
+			? ((Parameter) returnResults.get(0)).isUnique()
 			: true;
 	}
 
@@ -154,9 +159,9 @@ public final class OperationOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static Classifier type(Operation operation) {
-		return 1 == operation.getReturnResults().size()
-			? (Classifier) ((Parameter) operation.getReturnResults().get(0))
-				.getType()
+		EList returnResults = operation.getReturnResults();
+		return 1 == returnResults.size()
+			? (Classifier) ((Parameter) returnResults.get(0)).getType()
 			: null;
 	}
 
@@ -204,8 +209,9 @@ public final class OperationOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static int lower(Operation operation) {
-		return 1 == operation.getReturnResults().size()
-			? ((Parameter) operation.getReturnResults().get(0)).lower()
+		EList returnResults = operation.getReturnResults();
+		return 1 == returnResults.size()
+			? ((Parameter) returnResults.get(0)).lower()
 			: 1;
 	}
 
@@ -229,50 +235,55 @@ public final class OperationOperations extends UML2Operations {
 	public static boolean isConsistentWith(Operation operation, RedefinableElement redefinee) {
 
 		if (redefinee.isRedefinitionContextValid(operation)
-				&& Operation.class.isInstance(redefinee)) {
+			&& Operation.class.isInstance(redefinee)) {
 
-				Operation op = (Operation) redefinee;
+			Operation op = (Operation) redefinee;
 
-				if (operation.getFormalParameters().size() == op
-					.getFormalParameters().size()
-					&& operation.getReturnResults().size() == op.getReturnResults()
-						.size()) {
+			EList formalParameters = operation.getFormalParameters();
+			int formalParametersSize = formalParameters.size();
+			EList opFormalParameters = op.getFormalParameters();
 
-					for (int i = 0; i < operation.getFormalParameters().size(); i++) {
-						Type opFormalParameterType = ((Parameter) op
-							.getFormalParameters().get(i)).getType();
-						Type operationFormalParameterType = ((Parameter) operation
-							.getFormalParameters().get(i)).getType();
+			EList returnResults = operation.getReturnResults();
+			int returnResultsSize = returnResults.size();
+			EList opReturnResults = op.getReturnResults();
 
-						if (null == opFormalParameterType
-							? null != operationFormalParameterType
-							: !opFormalParameterType
-								.conformsTo(operationFormalParameterType)) {
+			if (formalParametersSize == opFormalParameters.size()
+				&& returnResultsSize == opReturnResults.size()) {
 
-							return false;
-						}
+				for (int i = 0; i < formalParametersSize; i++) {
+					Type opFormalParameterType = ((Parameter) opFormalParameters
+						.get(i)).getType();
+					Type formalParameterType = ((Parameter) formalParameters
+						.get(i)).getType();
+
+					if (null == opFormalParameterType
+						? null != formalParameterType
+						: !opFormalParameterType
+							.conformsTo(formalParameterType)) {
+
+						return false;
 					}
-
-					for (int i = 0; i < operation.getReturnResults().size(); i++) {
-						Type opReturnResultType = ((Parameter) op
-							.getReturnResults().get(i)).getType();
-						Type operationReturnResultType = ((Parameter) operation
-							.getReturnResults().get(i)).getType();
-
-						if (null == opReturnResultType
-							? null != operationReturnResultType
-							: !opReturnResultType
-								.conformsTo(operationReturnResultType)) {
-
-							return false;
-						}
-					}
-
-					return true;
 				}
-			}
 
-			return false;
+				for (int i = 0; i < returnResultsSize; i++) {
+					Type opReturnResultType = ((Parameter) opReturnResults
+						.get(i)).getType();
+					Type returnResultType = ((Parameter) returnResults.get(i))
+						.getType();
+
+					if (null == opReturnResultType
+						? null != returnResultType
+						: !opReturnResultType.conformsTo(returnResultType)) {
+
+						return false;
+					}
+				}
+
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -287,8 +298,9 @@ public final class OperationOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static int upper(Operation operation) {
-		return 1 == operation.getReturnResults().size()
-			? ((Parameter) operation.getReturnResults().get(0)).upper()
+		EList returnResults = operation.getReturnResults();
+		return 1 == returnResults.size()
+			? ((Parameter) returnResults.get(0)).upper()
 			: 1;
 	}
 } // OperationOperations

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportOperations.java,v 1.8 2005/05/18 16:38:31 khussey Exp $
+ * $Id: ElementImportOperations.java,v 1.9 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -74,10 +74,9 @@ public final class ElementImportOperations extends UML2Operations {
 	public static boolean validateVisibilityPublicOrPrivate(ElementImport elementImport, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
-		if (!VisibilityKind.PUBLIC_LITERAL
-			.equals(elementImport.getVisibility())
-			&& !VisibilityKind.PRIVATE_LITERAL.equals(elementImport
-				.getVisibility())) {
+		VisibilityKind visibility = elementImport.getVisibility();
+		if (!VisibilityKind.PUBLIC_LITERAL.equals(visibility)
+			&& !VisibilityKind.PRIVATE_LITERAL.equals(visibility)) {
 
 			result = false;
 
@@ -115,11 +114,12 @@ public final class ElementImportOperations extends UML2Operations {
 		boolean result = true;
 
 		PackageableElement importedElement = elementImport.getImportedElement();
+		VisibilityKind visibility = null == importedElement
+			? null
+			: importedElement.getVisibility();
 
-		if (null != importedElement
-			&& null != importedElement.getVisibility()
-			&& !VisibilityKind.PUBLIC_LITERAL.equals(importedElement
-				.getVisibility())) {
+		if (null != visibility
+			&& !VisibilityKind.PUBLIC_LITERAL.equals(visibility)) {
 
 			result = false;
 
@@ -158,11 +158,17 @@ public final class ElementImportOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static String getName(ElementImport elementImport) {
-		return isEmpty(elementImport.getAlias())
-			? (null == elementImport.getImportedElement()
+		String alias = elementImport.getAlias();
+
+		if (isEmpty(alias)) {
+			PackageableElement importedElement = elementImport
+				.getImportedElement();
+			return null == importedElement
 				? EMPTY_STRING
-				: elementImport.getImportedElement().getName())
-			: elementImport.getAlias();
+				: importedElement.getName();
+		}
+
+		return alias;
 	}
 
 } // ElementImportOperations

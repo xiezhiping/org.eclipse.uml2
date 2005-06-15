@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.11 2005/06/07 17:31:26 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.12 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -21,6 +21,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.Dependency;
 import org.eclipse.uml2.NamedElement;
@@ -131,23 +132,26 @@ public final class NamedElementOperations extends UML2Operations {
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean validateQualifiedName(NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
+	public static boolean validateQualifiedName(NamedElement namedElement,
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
-		if (!isEmpty(namedElement.getName())) {
-			StringBuffer qualifiedName = new StringBuffer(namedElement
-				.getName());
+		String name = namedElement.getName();
+
+		if (!isEmpty(name)) {
+			StringBuffer qualifiedName = new StringBuffer(name);
 
 			for (Iterator allNamespaces = namedElement.allNamespaces()
 				.iterator(); allNamespaces.hasNext();) {
 
-				Namespace namespace = (Namespace) allNamespaces.next();
+				String namespaceName = ((Namespace) allNamespaces.next())
+					.getName();
 
-				if (isEmpty(namespace.getName())) {
+				if (isEmpty(namespaceName)) {
 					return result;
 				} else {
 					qualifiedName.insert(0, namedElement.separator());
-					qualifiedName.insert(0, namespace.getName());
+					qualifiedName.insert(0, namespaceName);
 				}
 			}
 
@@ -160,8 +164,8 @@ public final class NamedElementOperations extends UML2Operations {
 						UML2Validator.NAMED_ELEMENT__NO_NAME,
 						UML2Plugin.INSTANCE.getString(
 							"_UI_NamedElement_QualifiedName_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context,
-								namedElement)), new Object[]{namedElement}));
+							getMessageSubstitutions(context, namedElement)),
+						new Object[]{namedElement}));
 				}
 			}
 		}
@@ -186,9 +190,11 @@ public final class NamedElementOperations extends UML2Operations {
 	public static List allNamespaces(NamedElement namedElement) {
 		List allNamespaces = new ArrayList();
 
-		if (null != namedElement.getNamespace()) {
-			allNamespaces.addAll(namedElement.getNamespace().allNamespaces());
-			allNamespaces.add(0, namedElement.getNamespace());
+		Namespace namespace = namedElement.getNamespace();
+
+		if (null != namespace) {
+			allNamespaces.addAll(namespace.allNamespaces());
+			allNamespaces.add(0, namespace);
 		}
 
 		return Collections.unmodifiableList(allNamespaces);
@@ -210,9 +216,10 @@ public final class NamedElementOperations extends UML2Operations {
 	 */
 	public static boolean isDistinguishableFrom(NamedElement namedElement,
 			NamedElement n, Namespace ns) {
+		EClass eClass = namedElement.eClass();
+		EClass nEClass = n.eClass();
 
-		if (n.eClass().isSuperTypeOf(namedElement.eClass())
-			|| namedElement.eClass().isSuperTypeOf(n.eClass())) {
+		if (nEClass.isSuperTypeOf(eClass) || eClass.isSuperTypeOf(nEClass)) {
 
 			for (Iterator namesOfMember = ns.getNamesOfMember(namedElement)
 				.iterator(); namesOfMember.hasNext();) {
@@ -258,27 +265,28 @@ public final class NamedElementOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static String qualifiedName(NamedElement namedElement) {
+		String name = namedElement.getName();
 
-		if (isEmpty(namedElement.getName())) {
+		if (isEmpty(name)) {
 			return EMPTY_STRING;
 		}
 
-		String qualifiedName = namedElement.getName();
+		StringBuffer qualifiedName = new StringBuffer(name);
 
 		for (Iterator allNamespaces = namedElement.allNamespaces().iterator(); allNamespaces
 			.hasNext();) {
 
-			Namespace namespace = (Namespace) allNamespaces.next();
+			String namespaceName = ((Namespace) allNamespaces.next()).getName();
 
-			if (isEmpty(namespace.getName())) {
+			if (isEmpty(namespaceName)) {
 				return EMPTY_STRING;
 			} else {
-				qualifiedName = namespace.getName() + namedElement.separator()
-					+ qualifiedName;
+				qualifiedName.insert(0, namedElement.separator());
+				qualifiedName.insert(0, namespaceName);
 			}
 		}
 
-		return qualifiedName;
+		return qualifiedName.toString();
 	}
 
 	/**

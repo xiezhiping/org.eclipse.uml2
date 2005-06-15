@@ -8,16 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.9 2005/05/18 16:38:32 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.10 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.RedefinableElement;
@@ -182,24 +184,27 @@ public final class RedefinableElementOperations extends UML2Operations {
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean isRedefinitionContextValid(RedefinableElement redefinableElement, RedefinableElement redefinable) {
+	public static boolean isRedefinitionContextValid(
+			RedefinableElement redefinableElement,
+			RedefinableElement redefinable) {
+		EList redefinableRedefinitionContexts = redefinable
+			.getRedefinitionContexts();
 
 		for (Iterator redefinitionContexts = redefinableElement
 			.getRedefinitionContexts().iterator(); redefinitionContexts
 			.hasNext();) {
 
-			Classifier redefinitionContext = (Classifier) redefinitionContexts
-				.next();
+			Set redefinitionContextAllParents = ((Classifier) redefinitionContexts
+				.next()).allParents();
 
-			for (Iterator redefinableRedefinitionContexts = redefinable
-				.getRedefinitionContexts().iterator(); redefinableRedefinitionContexts
+			for (Iterator i = redefinableRedefinitionContexts.iterator(); i
 				.hasNext();) {
 
-				Classifier redefinableRedefinitionContext = (Classifier) redefinableRedefinitionContexts
+				Classifier redefinableRedefinitionContext = (Classifier) i
 					.next();
 
-				if (redefinitionContext.allParents().contains(
-					redefinableRedefinitionContext)) {
+				if (redefinitionContextAllParents
+					.contains(redefinableRedefinitionContext)) {
 
 					return true;
 				}

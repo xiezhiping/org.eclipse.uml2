@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.8 2005/05/18 16:38:31 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.9 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -23,6 +23,7 @@ import org.eclipse.uml2.LiteralUnlimitedNatural;
 import org.eclipse.uml2.MultiplicityElement;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
+import org.eclipse.uml2.ValueSpecification;
 
 import org.eclipse.uml2.util.UML2Validator;
 
@@ -81,9 +82,9 @@ public final class MultiplicityElementOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static int lowerBound(MultiplicityElement multiplicityElement) {
-		return LiteralInteger.class.isInstance(multiplicityElement
-			.getLowerValue())
-			? multiplicityElement.getLowerValue().integerValue()
+		ValueSpecification lowerValue = multiplicityElement.getLowerValue();
+		return LiteralInteger.class.isInstance(lowerValue)
+			? lowerValue.integerValue()
 			: 1;
 	}
 
@@ -99,9 +100,9 @@ public final class MultiplicityElementOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static int upperBound(MultiplicityElement multiplicityElement) {
-		return LiteralUnlimitedNatural.class.isInstance(multiplicityElement
-			.getUpperValue())
-			? multiplicityElement.getUpperValue().unlimitedValue()
+		ValueSpecification upperValue = multiplicityElement.getUpperValue();
+		return LiteralUnlimitedNatural.class.isInstance(upperValue)
+			? upperValue.unlimitedValue()
 			: 1;
 	}
 
@@ -117,9 +118,9 @@ public final class MultiplicityElementOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static boolean isMultivalued(MultiplicityElement multiplicityElement) {
-		return MultiplicityElement.UNLIMITED_UPPER_BOUND == multiplicityElement
-			.upperBound()
-			|| multiplicityElement.upperBound() > 1;
+		int upperBound = multiplicityElement.upperBound();
+		return MultiplicityElement.UNLIMITED_UPPER_BOUND == upperBound
+			|| upperBound > 1;
 	}
 
 	/**
@@ -134,14 +135,23 @@ public final class MultiplicityElementOperations extends UML2Operations {
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean includesCardinality(MultiplicityElement multiplicityElement, int C) {
-		return MultiplicityElement.UNLIMITED_UPPER_BOUND == C
-			? MultiplicityElement.UNLIMITED_UPPER_BOUND == multiplicityElement
-				.upperBound()
-			: (multiplicityElement.lowerBound() <= C && (MultiplicityElement.UNLIMITED_UPPER_BOUND == multiplicityElement
-				.upperBound()
-				? true
-				: multiplicityElement.upperBound() >= C));
+	public static boolean includesCardinality(
+			MultiplicityElement multiplicityElement, int C) {
+
+		if (MultiplicityElement.UNLIMITED_UPPER_BOUND == C) {
+			return MultiplicityElement.UNLIMITED_UPPER_BOUND == multiplicityElement
+				.upperBound();
+		} else {
+
+			if (multiplicityElement.lowerBound() <= C) {
+				int upperBound = multiplicityElement.upperBound();
+				return MultiplicityElement.UNLIMITED_UPPER_BOUND == upperBound
+					? true
+					: upperBound >= C;
+			} else {
+				return false;
+			}
+		}
 	}
 
 	/**
@@ -155,14 +165,23 @@ public final class MultiplicityElementOperations extends UML2Operations {
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean includesMultiplicity(MultiplicityElement multiplicityElement, MultiplicityElement M) {
-		return multiplicityElement.lowerBound() <= M.lowerBound()
-			&& (MultiplicityElement.UNLIMITED_UPPER_BOUND == multiplicityElement
-				.upperBound()
-				? true
-				: (MultiplicityElement.UNLIMITED_UPPER_BOUND == M.upperBound()
+	public static boolean includesMultiplicity(
+			MultiplicityElement multiplicityElement, MultiplicityElement M) {
+
+		if (multiplicityElement.lowerBound() <= M.lowerBound()) {
+			int upperBound = multiplicityElement.upperBound();
+
+			if (MultiplicityElement.UNLIMITED_UPPER_BOUND == upperBound) {
+				return true;
+			} else {
+				int mUpperBound = M.upperBound();
+				return MultiplicityElement.UNLIMITED_UPPER_BOUND == mUpperBound
 					? false
-					: multiplicityElement.upperBound() >= M.upperBound()));
+					: upperBound >= mUpperBound;
+			}
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -409,16 +428,16 @@ public final class MultiplicityElementOperations extends UML2Operations {
 				.valueOf(multiplicityElement));
 		}
 
+		int upperBound = multiplicityElement.upperBound();
 		if (0 > value
-			|| (MultiplicityElement.UNLIMITED_UPPER_BOUND != multiplicityElement
-				.upperBound() && multiplicityElement.upperBound() < value)) {
+			|| (MultiplicityElement.UNLIMITED_UPPER_BOUND != upperBound && upperBound < value)) {
 
 			throw new IllegalArgumentException(String.valueOf(value));
 		}
 
-		((LiteralInteger) (LiteralInteger.class.isInstance(multiplicityElement
-			.getLowerValue())
-			? multiplicityElement.getLowerValue()
+		ValueSpecification lowerValue = multiplicityElement.getLowerValue();
+		((LiteralInteger) (LiteralInteger.class.isInstance(lowerValue)
+			? lowerValue
 			: multiplicityElement.createLowerValue(UML2Package.eINSTANCE
 				.getLiteralInteger()))).setValue(value);
 	}
@@ -448,9 +467,10 @@ public final class MultiplicityElementOperations extends UML2Operations {
 			throw new IllegalArgumentException(String.valueOf(value));
 		}
 
+		ValueSpecification upperValue = multiplicityElement.getUpperValue();
 		((LiteralUnlimitedNatural) (LiteralUnlimitedNatural.class
-			.isInstance(multiplicityElement.getUpperValue())
-			? multiplicityElement.getUpperValue()
+			.isInstance(upperValue)
+			? upperValue
 			: multiplicityElement.createUpperValue(UML2Package.eINSTANCE
 				.getLiteralUnlimitedNatural()))).setValue(value);
 	}

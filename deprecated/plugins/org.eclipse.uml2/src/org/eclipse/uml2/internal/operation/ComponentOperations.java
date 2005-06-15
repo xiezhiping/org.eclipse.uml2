@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.4 2005/06/03 20:10:46 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.5 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -206,11 +206,11 @@ public final class ComponentOperations
 			for (Iterator realizations = component.getRealizations().iterator(); realizations
 				.hasNext();) {
 
-				Realization realization = (Realization) realizations.next();
+				Classifier realizingClassifier = ((Realization) realizations
+					.next()).getRealizingClassifier();
 
-				if (null != realization.getRealizingClassifier()) {
-					requireds.addAll(realization.getRealizingClassifier()
-						.getUsedInterfaces());
+				if (null != realizingClassifier) {
+					requireds.addAll(realizingClassifier.getUsedInterfaces());
 				}
 			}
 

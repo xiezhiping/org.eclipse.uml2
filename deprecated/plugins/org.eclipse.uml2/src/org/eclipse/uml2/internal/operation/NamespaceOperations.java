@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.10 2005/05/18 16:38:31 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.11 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -22,6 +22,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.NamedElement;
@@ -127,9 +128,10 @@ public final class NamespaceOperations extends UML2Operations {
 		Set namesOfMember = new HashSet();
 
 		if (namespace.getOwnedMembers().contains(element)) {
+			String name = element.getName();
 
-			if (!isEmpty(element.getName())) {
-				namesOfMember.add(element.getName());
+			if (!isEmpty(name)) {
+				namesOfMember.add(name);
 			}
 		} else {
 
@@ -139,10 +141,12 @@ public final class NamespaceOperations extends UML2Operations {
 				ElementImport elementImport = (ElementImport) elementImports
 					.next();
 
-				if (element.equals(elementImport.getImportedElement())
-					&& !isEmpty(elementImport.getName())) {
+				if (element.equals(elementImport.getImportedElement())) {
+					String name = elementImport.getName();
 
-					namesOfMember.add(elementImport.getName());
+					if (!isEmpty(name)) {
+						namesOfMember.add(name);
+					}
 				}
 			}
 
@@ -151,14 +155,13 @@ public final class NamespaceOperations extends UML2Operations {
 				for (Iterator packageImports = namespace.getPackageImports()
 					.iterator(); packageImports.hasNext();) {
 
-					PackageImport packageImport = (PackageImport) packageImports
-						.next();
+					org.eclipse.uml2.Package importedPackage = ((PackageImport) packageImports
+						.next()).getImportedPackage();
 
-					if (null != packageImport.getImportedPackage()
-						&& packageImport.getImportedPackage().visibleMembers()
-							.contains(element)) {
+					if (null != importedPackage
+						&& importedPackage.visibleMembers().contains(element)) {
 
-						namesOfMember.addAll(packageImport.getImportedPackage()
+						namesOfMember.addAll(importedPackage
 							.getNamesOfMember(element));
 					}
 				}
@@ -216,7 +219,8 @@ public final class NamespaceOperations extends UML2Operations {
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean validateImportedMemberDerived(Namespace namespace, DiagnosticChain diagnostics, Map context) {
+	public static boolean validateImportedMemberDerived(Namespace namespace,
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
 		Set importedMember = new HashSet();
@@ -224,21 +228,22 @@ public final class NamespaceOperations extends UML2Operations {
 		for (Iterator elementImports = namespace.getElementImports().iterator(); elementImports
 			.hasNext();) {
 
-			ElementImport elementImport = (ElementImport) elementImports.next();
+			PackageableElement importedElement = ((ElementImport) elementImports
+				.next()).getImportedElement();
 
-			if (null != elementImport.getImportedElement()) {
-				importedMember.add(elementImport.getImportedElement());
+			if (null != importedElement) {
+				importedMember.add(importedElement);
 			}
 		}
 
 		for (Iterator packageImports = namespace.getPackageImports().iterator(); packageImports
 			.hasNext();) {
 
-			PackageImport packageImport = (PackageImport) packageImports.next();
+			org.eclipse.uml2.Package importedPackage = ((PackageImport) packageImports
+				.next()).getImportedPackage();
 
-			if (null != packageImport.getImportedPackage()) {
-				importedMember.addAll(packageImport.getImportedPackage()
-					.visibleMembers());
+			if (null != importedPackage) {
+				importedMember.addAll(importedPackage.visibleMembers());
 			}
 		}
 
@@ -314,20 +319,18 @@ public final class NamespaceOperations extends UML2Operations {
 	public static Set importMembers(Namespace namespace, Set imps) {
 		Set importMembers = new HashSet();
 
+		EList ownedMembers = namespace.getOwnedMembers();
+		
 		excludeCollisionsLoop : for (Iterator excludeCollisions = namespace
 			.excludeCollisions(imps).iterator(); excludeCollisions.hasNext();) {
 
 			PackageableElement excludeCollision = (PackageableElement) excludeCollisions
 				.next();
 
-			for (Iterator ownedMembers = namespace.getOwnedMembers().iterator(); ownedMembers
-				.hasNext();) {
+			for (Iterator i = ownedMembers.iterator(); i.hasNext();) {
 
-				PackageableElement ownedMember = (PackageableElement) ownedMembers
-					.next();
-
-				if (!excludeCollision.isDistinguishableFrom(ownedMember,
-					namespace)) {
+				if (!excludeCollision.isDistinguishableFrom(
+					(PackageableElement) i.next(), namespace)) {
 
 					continue excludeCollisionsLoop;
 				}
@@ -425,10 +428,11 @@ public final class NamespaceOperations extends UML2Operations {
 		for (Iterator packageImports = namespace.getPackageImports().iterator(); packageImports
 			.hasNext();) {
 
-			PackageImport packageImport = (PackageImport) packageImports.next();
+			org.eclipse.uml2.Package importedPackage = ((PackageImport) packageImports
+				.next()).getImportedPackage();
 
-			if (null != packageImport.getImportedPackage()) {
-				importedPackages.add(packageImport.getImportedPackage());
+			if (null != importedPackage) {
+				importedPackages.add(importedPackage);
 			}
 		}
 

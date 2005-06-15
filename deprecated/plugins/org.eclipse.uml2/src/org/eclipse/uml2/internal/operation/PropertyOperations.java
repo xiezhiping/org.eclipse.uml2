@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.13 2005/05/18 16:38:31 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.14 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -34,8 +34,10 @@ import org.eclipse.uml2.LiteralUnlimitedNatural;
 import org.eclipse.uml2.MultiplicityElement;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.RedefinableElement;
+import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UML2Plugin;
+import org.eclipse.uml2.ValueSpecification;
 
 import org.eclipse.uml2.util.UML2Validator;
 
@@ -351,18 +353,21 @@ public final class PropertyOperations extends UML2Operations {
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean validateSubsettingRules(Property property, DiagnosticChain diagnostics, Map context) {
+	public static boolean validateSubsettingRules(Property property,
+			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
+
+		Type type = property.getType();
+		int upperBound = property.upperBound();
 
 		for (Iterator subsettedProperties = property.getSubsettedProperties()
 			.iterator(); subsettedProperties.hasNext();) {
 
 			Property subsettedProperty = (Property) subsettedProperties.next();
+			int subsettedUpperBound = subsettedProperty.upperBound();
 
-			if (!property.getType().conformsTo(subsettedProperty.getType())
-				|| (MultiplicityElement.UNLIMITED_UPPER_BOUND != subsettedProperty
-					.upperBound() && (property.upperBound() == MultiplicityElement.UNLIMITED_UPPER_BOUND || property
-					.upperBound() > subsettedProperty.upperBound()))) {
+			if (!type.conformsTo(subsettedProperty.getType())
+				|| (MultiplicityElement.UNLIMITED_UPPER_BOUND != subsettedUpperBound && (upperBound == MultiplicityElement.UNLIMITED_UPPER_BOUND || upperBound > subsettedUpperBound))) {
 
 				result = false;
 
@@ -500,20 +505,25 @@ public final class PropertyOperations extends UML2Operations {
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean isConsistentWith(Property property, RedefinableElement redefinee) {
+	public static boolean isConsistentWith(Property property,
+			RedefinableElement redefinee) {
 
 		if (redefinee.isRedefinitionContextValid(property)
 			&& Property.class.isInstance(redefinee)) {
 
 			Property prop = (Property) redefinee;
 
-			return (null == property.getType()
-				? null == prop.getType()
-				: prop.getType().conformsTo(property.getType()))
+			Type type = property.getType();
+			int upperBound = property.upperBound();
+
+			Type propType = prop.getType();
+			int propUpperBound = prop.upperBound();
+
+			return (null == type
+				? null == propType
+				: propType.conformsTo(type))
 				&& prop.lowerBound() >= property.lowerBound()
-				&& (MultiplicityElement.UNLIMITED_UPPER_BOUND == property
-					.upperBound() || (prop.upperBound() != MultiplicityElement.UNLIMITED_UPPER_BOUND && prop
-					.upperBound() <= property.upperBound()))
+				&& (MultiplicityElement.UNLIMITED_UPPER_BOUND == upperBound || (propUpperBound != MultiplicityElement.UNLIMITED_UPPER_BOUND && propUpperBound <= upperBound))
 				&& (property.isDerived()
 					? prop.isDerived()
 					: true);
@@ -612,9 +622,10 @@ public final class PropertyOperations extends UML2Operations {
 			throw new IllegalArgumentException(String.valueOf(property));
 		}
 
-		((LiteralBoolean) (LiteralBoolean.class.isInstance(property
-			.getDefaultValue())
-			? property.getDefaultValue()
+		ValueSpecification defaultValue = property.getDefaultValue();
+
+		((LiteralBoolean) (LiteralBoolean.class.isInstance(defaultValue)
+			? defaultValue
 			: property.createDefaultValue(UML2Package.eINSTANCE
 				.getLiteralBoolean()))).setValue(value);
 	}
@@ -634,9 +645,10 @@ public final class PropertyOperations extends UML2Operations {
 			throw new IllegalArgumentException(String.valueOf(property));
 		}
 
-		((LiteralInteger) (LiteralInteger.class.isInstance(property
-			.getDefaultValue())
-			? property.getDefaultValue()
+		ValueSpecification defaultValue = property.getDefaultValue();
+
+		((LiteralInteger) (LiteralInteger.class.isInstance(defaultValue)
+			? defaultValue
 			: property.createDefaultValue(UML2Package.eINSTANCE
 				.getLiteralInteger()))).setValue(value);
 	}
@@ -655,9 +667,10 @@ public final class PropertyOperations extends UML2Operations {
 			throw new IllegalArgumentException(String.valueOf(property));
 		}
 
-		((LiteralString) (LiteralString.class.isInstance(property
-			.getDefaultValue())
-			? property.getDefaultValue()
+		ValueSpecification defaultValue = property.getDefaultValue();
+
+		((LiteralString) (LiteralString.class.isInstance(defaultValue)
+			? defaultValue
 			: property.createDefaultValue(UML2Package.eINSTANCE
 				.getLiteralString()))).setValue(value);
 	}
@@ -677,17 +690,20 @@ public final class PropertyOperations extends UML2Operations {
 			throw new IllegalArgumentException(String.valueOf(property));
 		}
 
+		ValueSpecification defaultValue = property.getDefaultValue();
+
 		((LiteralUnlimitedNatural) (LiteralUnlimitedNatural.class
-			.isInstance(property.getDefaultValue())
-			? property.getDefaultValue()
+			.isInstance(defaultValue)
+			? defaultValue
 			: property.createDefaultValue(UML2Package.eINSTANCE
 				.getLiteralUnlimitedNatural()))).setValue(value);
 	}
 
 	public static String getDefault(Property property) {
-		return null == property.getDefaultValue()
+		ValueSpecification defaultValue = property.getDefaultValue();
+		return null == defaultValue
 			? EMPTY_STRING
-			: property.getDefaultValue().stringValue();
+			: defaultValue.stringValue();
 	}
 
 	// <!-- end-custom-operations -->

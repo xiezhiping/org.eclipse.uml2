@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.12 2005/05/18 16:38:31 khussey Exp $
+ * $Id: ElementOperations.java,v 1.13 2005/06/15 17:18:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -21,6 +21,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -145,14 +146,11 @@ public final class ElementOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static Set allOwnedElements(Element element) {
-		Set allOwnedElements = new HashSet();
-		allOwnedElements.addAll(element.getOwnedElements());
+		EList ownedElements = element.getOwnedElements();
+		Set allOwnedElements = new HashSet(ownedElements);
 
-		for (Iterator ownedElements = element.getOwnedElements().iterator(); ownedElements
-			.hasNext();) {
-
-			allOwnedElements.addAll(((Element) ownedElements.next())
-				.allOwnedElements());
+		for (Iterator i = ownedElements.iterator(); i.hasNext();) {
+			allOwnedElements.addAll(((Element) i.next()).allOwnedElements());
 		}
 
 		return Collections.unmodifiableSet(allOwnedElements);
@@ -190,15 +188,14 @@ public final class ElementOperations extends UML2Operations {
 	 */
 	public static Model getModel(Element element) {
 
-		if (null == element) {
-			return null;
+		if (null == element || Model.class.isInstance(element)) {
+			return (Model) element;
 		}
 
-		return Model.class.isInstance(element)
-			? (Model) element
-			: (Element.class.isInstance(element.eContainer())
-				? getModel((Element) element.eContainer())
-				: null);
+		EObject eContainer = element.eContainer();
+		return Element.class.isInstance(eContainer)
+			? getModel((Element) eContainer)
+			: null;
 	}
 
 	/**
@@ -213,15 +210,16 @@ public final class ElementOperations extends UML2Operations {
 	 */
 	public static org.eclipse.uml2.Package getNearestPackage(Element element) {
 
-		if (null == element) {
-			return null;
+		if (null == element
+			|| org.eclipse.uml2.Package.class.isInstance(element)) {
+
+			return (org.eclipse.uml2.Package) element;
 		}
 
-		return org.eclipse.uml2.Package.class.isInstance(element)
-			? (org.eclipse.uml2.Package) element
-			: (Element.class.isInstance(element.eContainer())
-				? getNearestPackage((Element) element.eContainer())
-				: null);
+		EObject eContainer = element.eContainer();
+		return Element.class.isInstance(eContainer)
+			? getNearestPackage((Element) eContainer)
+			: null;
 	}
 
 	/**
