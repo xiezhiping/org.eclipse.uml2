@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.23 2005/06/15 20:06:01 khussey Exp $
+ * $Id: OperationImpl.java,v 1.24 2005/06/16 00:59:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1082,7 +1082,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected EList getOwnedMembersHelper(EList ownedMember) {
 		super.getOwnedMembersHelper(ownedMember);
@@ -1094,6 +1094,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		}
 		if (eIsSet(UML2Package.eINSTANCE.getOperation_BodyCondition())) {
 			ownedMember.add(getBodyCondition());
+		}
+		if (eIsSet(UML2Package.eINSTANCE.getOperation_OwnedParameter())) {
+			ownedMember.addAll(getOwnedParameters());
 		}
 		return ownedMember;
 	}
@@ -1839,7 +1842,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	protected EList getParametersHelper(EList parameter) {
 		super.getParametersHelper(parameter);
 		if (eIsSet(UML2Package.eINSTANCE.getOperation_OwnedParameter())) {
-			parameter.add(getOwnedParameters());
+			parameter.addAll(getOwnedParameters());
 		}
 		return parameter;
 	}
