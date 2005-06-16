@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.2 2005/05/27 19:17:41 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.3 2005/06/16 00:48:20 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -31,24 +31,49 @@ public class CacheAdapter
 
 	public static final CacheAdapter INSTANCE = new CacheAdapter();
 
-	private static final Map values = Collections
-		.synchronizedMap(new HashMap());
+	private final Map values = Collections.synchronizedMap(new HashMap());
 
-	public boolean adapt(Notifier notifier) {
+	protected boolean adapting = false;
 
-		if (null != notifier) {
-			EList eAdapters = notifier.eAdapters();
-
-			if (!eAdapters.contains(this)) {
-				return eAdapters.add(this);
-			}
-		}
-
-		return false;
+	protected boolean addAdapter(EList adapters) {
+		return adapters.contains(this)
+			? false
+			: adapters.add(this);
 	}
 
+	public boolean adapt(Notifier notifier) {
+		boolean result = false;
+
+		if (null != notifier) {
+			adapting = true;
+			result = addAdapter(notifier.eAdapters());
+			adapting = false;
+		}
+
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecore.util.EContentAdapter#addAdapter(org.eclipse.emf.common.notify.Notifier)
+	 */
 	protected void addAdapter(Notifier notifier) {
-		adapt(notifier);
+		addAdapter(notifier.eAdapters());
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecore.util.EContentAdapter#setTarget(org.eclipse.emf.common.notify.Notifier)
+	 */
+	public void setTarget(Notifier target) {
+
+		if (adapting) {
+			this.target = target;
+		} else {
+			super.setTarget(target);
+		}
 	}
 
 	/*
