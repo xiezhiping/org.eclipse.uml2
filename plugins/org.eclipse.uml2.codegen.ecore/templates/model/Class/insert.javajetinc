@@ -132,7 +132,7 @@
 				<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>) cache.get(eResource(), this, method);
 				if (<%=genFeature.getSafeName()%> == null) {
 					<%=genModel.getImportedName("org.eclipse.emf.common.util.EList")%> union = <%=genFeature.getGetAccessor()%>Helper(new <%=genModel.getImportedName("org.eclipse.emf.common.util.UniqueEList")%>());
-					cache.put(eResource(), this, method, <%=genFeature.getSafeName()%> = new <%=genModel.getImportedName("org.eclipse.uml2.common.util.UnionEObjectEList")%>(this, union.size(), union.toArray()));
+					cache.put(eResource(), this, method, <%=genFeature.getSafeName()%> = new <%=genModel.getImportedName("org.eclipse.uml2.common.util.UnionEObjectEList")%>(this, <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>null<%} else {%><%=genFeature.getQualifiedFeatureAccessorName()%>()<%}%>, union.size(), union.toArray()));
 				}
 				return <%=genFeature.getSafeName()%>;
 			} catch (<%=genModel.getImportedName("java.lang.NoSuchMethodException")%> nsme) {
@@ -142,14 +142,14 @@
 			<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>) cache.get(eResource(), this, <%=genFeature.getQualifiedFeatureAccessorName()%>());
 			if (<%=genFeature.getSafeName()%> == null) {
 				<%=genModel.getImportedName("org.eclipse.emf.common.util.EList")%> union = <%=genFeature.getGetAccessor()%>Helper(new <%=genModel.getImportedName("org.eclipse.emf.common.util.UniqueEList")%>());
-				cache.put(eResource(), this, <%=genFeature.getQualifiedFeatureAccessorName()%>(), <%=genFeature.getSafeName()%> = new <%=genModel.getImportedName("org.eclipse.uml2.common.util.UnionEObjectEList")%>(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, <%=genFeature.getQualifiedFeatureAccessorName()%>(), <%=genFeature.getSafeName()%> = new <%=genModel.getImportedName("org.eclipse.uml2.common.util.UnionEObjectEList")%>(this, <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>null<%} else {%><%=genFeature.getQualifiedFeatureAccessorName()%>()<%}%>, union.size(), union.toArray()));
 			}
 			return <%=genFeature.getSafeName()%>;
           <%}%>
 		}
         <%}%>
 		<%=genModel.getImportedName("org.eclipse.emf.common.util.EList")%> union = <%=genFeature.getGetAccessor()%>Helper(new <%=genModel.getImportedName("org.eclipse.emf.common.util.UniqueEList")%>());
-		return new <%=genModel.getImportedName("org.eclipse.uml2.common.util.UnionEObjectEList")%>(this, union.size(), union.toArray());
+		return new <%=genModel.getImportedName("org.eclipse.uml2.common.util.UnionEObjectEList")%>(this, <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>null<%} else {%><%=genFeature.getQualifiedFeatureAccessorName()%>()<%}%>, union.size(), union.toArray());
 	}
 
       <%}%>
@@ -195,11 +195,7 @@
       <%if (redefinitionGenFeature.isListType()) {%>
 		return <%=redefinitionGenFeature.getGetAccessor()%>();
       <%} else {%>
-        <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
-		return new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicEList")%>.UnmodifiableEList(0, <%=genModel.getImportedName("java.util.Collections")%>.EMPTY_LIST.toArray());
-        <%} else {%>
-		return new <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList")%>.UnmodifiableEList(this, <%=genFeature.getQualifiedFeatureAccessorName()%>(), 0, <%=genModel.getImportedName("java.util.Collections")%>.EMPTY_LIST.toArray());
-        <%}%>
+		return new <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList")%>.UnmodifiableEList(this, <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>null<%} else {%><%=genFeature.getQualifiedFeatureAccessorName()%>()<%}%>, 0, <%=genModel.getImportedName("java.util.Collections")%>.EMPTY_LIST.toArray());
       <%}%>
     <%} else {%>
       <%if (redefinitionGenFeature.isListType()) {%>
