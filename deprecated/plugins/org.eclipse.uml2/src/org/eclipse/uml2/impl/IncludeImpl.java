@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.12 2005/06/20 19:57:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -103,12 +103,12 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 			EList relatedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
 			if (relatedElement == null) {
 				EList union = getRelatedElementsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray()));
 			}
 			return relatedElement;
 		}
 		EList union = getRelatedElementsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
 	}
 
 
@@ -209,12 +209,12 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 			EList source = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
 			if (source == null) {
 				EList union = getSourcesHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray()));
 			}
 			return source;
 		}
 		EList union = getSourcesHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
 	}
 
 
@@ -241,12 +241,12 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 			EList target = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
 			if (target == null) {
 				EList union = getTargetsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray()));
 			}
 			return target;
 		}
 		EList union = getTargetsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
 	}
 
 

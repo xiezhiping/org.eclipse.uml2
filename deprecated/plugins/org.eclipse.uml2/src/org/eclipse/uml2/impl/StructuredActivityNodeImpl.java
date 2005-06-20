@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.23 2005/06/15 20:06:01 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.24 2005/06/20 19:57:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -200,12 +200,12 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			EList member = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member());
 			if (member == null) {
 				EList union = getMembersHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member(), member = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member(), member = new UnionEObjectEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray()));
 			}
 			return member;
 		}
 		EList union = getMembersHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
 	}
 
 
@@ -691,7 +691,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 				EList subgroup = (EList) cache.get(eResource(), this, method);
 				if (subgroup == null) {
 					EList union = getSubgroupsHelper(new UniqueEList());
-					cache.put(eResource(), this, method, subgroup = new UnionEObjectEList(this, union.size(), union.toArray()));
+					cache.put(eResource(), this, method, subgroup = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return subgroup;
 			} catch (NoSuchMethodException nsme) {
@@ -699,7 +699,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			}
 		}
 		EList union = getSubgroupsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
 
@@ -786,7 +786,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 				EList ownedMember = (EList) cache.get(eResource(), this, method);
 				if (ownedMember == null) {
 					EList union = getOwnedMembersHelper(new UniqueEList());
-					cache.put(eResource(), this, method, ownedMember = new UnionEObjectEList(this, union.size(), union.toArray()));
+					cache.put(eResource(), this, method, ownedMember = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return ownedMember;
 			} catch (NoSuchMethodException nsme) {
@@ -794,7 +794,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			}
 		}
 		EList union = getOwnedMembersHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
 

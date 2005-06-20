@@ -8,32 +8,24 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnionEObjectEList.java,v 1.1 2005/05/17 22:02:04 khussey Exp $
+ * $Id: UnionEObjectEList.java,v 1.2 2005/06/20 19:57:46 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EcoreEList;
 
 /**
  * 
  */
 public class UnionEObjectEList
-		extends BasicEList.UnmodifiableEList
-		implements InternalEList {
+		extends EcoreEList.UnmodifiableEList {
 
-	protected final InternalEObject owner;
-
-	public UnionEObjectEList(InternalEObject owner, int size, Object[] data) {
-		super(size, data);
-		this.owner = owner;
+	public UnionEObjectEList(InternalEObject owner,
+			EStructuralFeature eStructuralFeature, int size, Object[] data) {
+		super(owner, eStructuralFeature, size, data);
 	}
 
 	protected EObject resolveProxy(EObject eObject) {
@@ -114,32 +106,6 @@ public class UnionEObjectEList
 		}
 
 		return result;
-	}
-
-	public NotificationChain basicAdd(Object object,
-			NotificationChain notifications) {
-		throw new UnsupportedOperationException();
-	}
-
-	public Iterator basicIterator() {
-		return super.basicIterator();
-	}
-
-	public List basicList() {
-		return super.basicList();
-	}
-
-	public ListIterator basicListIterator() {
-		return super.basicListIterator();
-	}
-
-	public ListIterator basicListIterator(int index) {
-		return super.basicListIterator(index);
-	}
-
-	public NotificationChain basicRemove(Object object,
-			NotificationChain notifications) {
-		throw new UnsupportedOperationException();
 	}
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.12 2005/06/20 19:57:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,7 +21,7 @@ import java.util.Collections;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.Activity;
@@ -148,7 +149,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 				EList subgroup = (EList) cache.get(eResource(), this, method);
 				if (subgroup == null) {
 					EList union = getSubgroupsHelper(new UniqueEList());
-					cache.put(eResource(), this, method, subgroup = new UnionEObjectEList(this, union.size(), union.toArray()));
+					cache.put(eResource(), this, method, subgroup = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return subgroup;
 			} catch (NoSuchMethodException nsme) {
@@ -156,7 +157,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			}
 		}
 		EList union = getSubgroupsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
 
@@ -183,7 +184,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated NOT
 	 */
 	public EList getContainedEdges() {
-		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
+		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
 	}
 
 	/**
@@ -207,7 +208,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated NOT
 	 */
 	public EList getContainedNodes() {
-		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
+		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
 	}
 
 	/**

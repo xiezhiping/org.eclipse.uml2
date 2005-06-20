@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ActionImpl.java,v 1.13 2005/06/20 19:57:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -162,12 +162,12 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			EList output = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getAction_Output());
 			if (output == null) {
 				EList union = getOutputsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getAction_Output(), output = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getAction_Output(), output = new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray()));
 			}
 			return output;
 		}
 		EList union = getOutputsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
 	}
 
 
@@ -206,12 +206,12 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			EList input = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getAction_Input());
 			if (input == null) {
 				EList union = getInputsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getAction_Input(), input = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getAction_Input(), input = new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray()));
 			}
 			return input;
 		}
 		EList union = getInputsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
 	}
 
 

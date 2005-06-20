@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.14 2005/06/15 20:06:01 khussey Exp $
+ * $Id: StateImpl.java,v 1.15 2005/06/20 19:57:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -20,7 +20,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
@@ -1070,7 +1069,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
+		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
 	}
 
 

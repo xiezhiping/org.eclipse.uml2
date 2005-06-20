@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.24 2005/06/15 21:37:11 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.25 2005/06/20 19:57:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,7 +19,6 @@ import java.util.Iterator;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -317,7 +316,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
+		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
 	}
 
 

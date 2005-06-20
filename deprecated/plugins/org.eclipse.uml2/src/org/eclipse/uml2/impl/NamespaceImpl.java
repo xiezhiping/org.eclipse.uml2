@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.20 2005/06/15 20:06:01 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.21 2005/06/20 19:57:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -135,12 +135,12 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 			EList member = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member());
 			if (member == null) {
 				EList union = getMembersHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member(), member = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member(), member = new UnionEObjectEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray()));
 			}
 			return member;
 		}
 		EList union = getMembersHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
 	}
 
 
@@ -439,7 +439,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 				EList ownedMember = (EList) cache.get(eResource(), this, method);
 				if (ownedMember == null) {
 					EList union = getOwnedMembersHelper(new UniqueEList());
-					cache.put(eResource(), this, method, ownedMember = new UnionEObjectEList(this, union.size(), union.toArray()));
+					cache.put(eResource(), this, method, ownedMember = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return ownedMember;
 			} catch (NoSuchMethodException nsme) {
@@ -447,7 +447,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 			}
 		}
 		EList union = getOwnedMembersHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
 

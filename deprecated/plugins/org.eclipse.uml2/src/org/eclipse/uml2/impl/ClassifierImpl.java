@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.27 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.28 2005/06/20 19:57:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -450,12 +450,12 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			EList redefinitionContext = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
 			if (redefinitionContext == null) {
 				EList union = getRedefinitionContextsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray()));
 			}
 			return redefinitionContext;
 		}
 		EList union = getRedefinitionContextsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
 	}
 
 
@@ -522,12 +522,12 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			EList feature = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getClassifier_Feature());
 			if (feature == null) {
 				EList union = getFeaturesHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getClassifier_Feature(), feature = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getClassifier_Feature(), feature = new UnionEObjectEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray()));
 			}
 			return feature;
 		}
 		EList union = getFeaturesHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getClassifier_Feature(), union.size(), union.toArray());
 	}
 
 
@@ -740,12 +740,12 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			EList attribute = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getClassifier_Attribute());
 			if (attribute == null) {
 				EList union = getAttributesHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getClassifier_Attribute(), attribute = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getClassifier_Attribute(), attribute = new UnionEObjectEList(this, UML2Package.eINSTANCE.getClassifier_Attribute(), union.size(), union.toArray()));
 			}
 			return attribute;
 		}
 		EList union = getAttributesHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getClassifier_Attribute(), union.size(), union.toArray());
 	}
 
 
@@ -1342,7 +1342,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				EList redefinedElement = (EList) cache.get(eResource(), this, method);
 				if (redefinedElement == null) {
 					EList union = getRedefinedElementsHelper(new UniqueEList());
-					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, union.size(), union.toArray()));
+					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return redefinedElement;
 			} catch (NoSuchMethodException nsme) {
@@ -1350,7 +1350,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			}
 		}
 		EList union = getRedefinedElementsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
 

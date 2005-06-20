@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.13 2005/06/03 20:40:30 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.14 2005/06/20 19:57:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -156,12 +156,12 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 			EList redefinitionContext = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
 			if (redefinitionContext == null) {
 				EList union = getRedefinitionContextsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray()));
 			}
 			return redefinitionContext;
 		}
 		EList union = getRedefinitionContextsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
 	}
 
 
@@ -220,7 +220,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 				EList redefinedElement = (EList) cache.get(eResource(), this, method);
 				if (redefinedElement == null) {
 					EList union = getRedefinedElementsHelper(new UniqueEList());
-					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, union.size(), union.toArray()));
+					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return redefinedElement;
 			} catch (NoSuchMethodException nsme) {
@@ -228,7 +228,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 			}
 		}
 		EList union = getRedefinedElementsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
 

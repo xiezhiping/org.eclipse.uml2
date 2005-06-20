@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.11 2005/06/20 19:57:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -210,12 +210,12 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			EList inGroup = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getActivityNode_InGroup());
 			if (inGroup == null) {
 				EList union = getInGroupsHelper(new UniqueEList());
-				cache.put(eResource(), this, UML2Package.eINSTANCE.getActivityNode_InGroup(), inGroup = new UnionEObjectEList(this, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.eINSTANCE.getActivityNode_InGroup(), inGroup = new UnionEObjectEList(this, UML2Package.eINSTANCE.getActivityNode_InGroup(), union.size(), union.toArray()));
 			}
 			return inGroup;
 		}
 		EList union = getInGroupsHelper(new UniqueEList());
-		return new UnionEObjectEList(this, union.size(), union.toArray());
+		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getActivityNode_InGroup(), union.size(), union.toArray());
 	}
 
 

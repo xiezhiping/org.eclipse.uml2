@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.14 2005/06/20 19:57:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,7 +19,6 @@ import java.util.Iterator;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -664,7 +663,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		return new BasicEList.UnmodifiableEList(0, Collections.EMPTY_LIST.toArray());
+		return new EcoreEList.UnmodifiableEList(this, null, 0, Collections.EMPTY_LIST.toArray());
 	}
 
 
