@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2006 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.14 2005/06/21 16:42:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
