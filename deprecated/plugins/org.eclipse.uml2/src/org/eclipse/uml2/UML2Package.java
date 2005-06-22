@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Package.java,v 1.18 2005/05/18 16:38:30 khussey Exp $
+ * $Id: UML2Package.java,v 1.19 2005/06/22 20:59:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EcorePackage;
  * </ul>
  * <!-- end-user-doc -->
  * @see org.eclipse.uml2.UML2Factory
+ * @model kind="package"
  * @generated
  */
 public interface UML2Package extends EPackage{

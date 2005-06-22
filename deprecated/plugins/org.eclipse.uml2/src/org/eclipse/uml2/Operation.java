@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.14 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Operation.java,v 1.15 2005/06/22 20:59:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -346,7 +346,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * if returnResult->size() = 1 then returnResult->any().isOrdered else false endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" parameters=""
+	 * @model kind="operation" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isOrdered();
@@ -360,7 +360,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 *  if returnResult->size() = 1 then returnResult->any().isUnique else true endif
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" parameters=""
+	 * @model kind="operation" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isUnique();

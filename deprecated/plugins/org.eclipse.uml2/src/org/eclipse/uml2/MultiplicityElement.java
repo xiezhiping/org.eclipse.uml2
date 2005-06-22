@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.13 2005/06/22 20:59:18 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -272,7 +272,7 @@ public interface MultiplicityElement extends Element{
 	 * upperBound() > 1
 	 * </code>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.Boolean" parameters=""
+	 * @model kind="operation" dataType="org.eclipse.uml2.Boolean"
 	 * @generated
 	 */
 	boolean isMultivalued();
