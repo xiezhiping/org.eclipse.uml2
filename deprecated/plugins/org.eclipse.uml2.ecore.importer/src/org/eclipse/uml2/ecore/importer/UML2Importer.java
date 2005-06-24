@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.9 2005/06/02 14:12:16 khussey Exp $
+ * $Id: UML2Importer.java,v 1.10 2005/06/24 16:53:14 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -163,17 +163,17 @@ public class UML2Importer
 						if (package_.hasValue(ePackageStereotype,
 							UML2Util.PROPERTY_NAME__BASE_PACKAGE)) {
 
-							getEPackageInfo(ePackage).setBasePackage(
-								(String) package_.getValue(ePackageStereotype,
+							ePackageInfo.setBasePackage((String) package_
+								.getValue(ePackageStereotype,
 									UML2Util.PROPERTY_NAME__BASE_PACKAGE));
 						}
 
 						if (package_.hasValue(ePackageStereotype,
 							UML2Util.PROPERTY_NAME__PREFIX)) {
 
-							getEPackageInfo(ePackage).setPrefix(
-								(String) package_.getValue(ePackageStereotype,
-									UML2Util.PROPERTY_NAME__PREFIX));
+							ePackageInfo.setPrefix((String) package_.getValue(
+								ePackageStereotype,
+								UML2Util.PROPERTY_NAME__PREFIX));
 						}
 					}
 				}
