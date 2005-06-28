@@ -8,11 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceImpl.java,v 1.5 2005/05/18 16:42:31 khussey Exp $
+ * $Id: EMOF2EcoreResourceImpl.java,v 1.6 2005/06/28 16:26:34 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore.internal;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.xmi.XMLHelper;
+import org.eclipse.emf.ecore.xmi.impl.XMIHelperImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.uml2.examples.emof2ecore.EMOF2EcoreResource;
 
@@ -35,6 +41,28 @@ public class EMOF2EcoreResourceImpl
 	 */
 	public EMOF2EcoreResourceImpl(URI uri) {
 		super(uri);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl#createXMLHelper()
+	 */
+	protected XMLHelper createXMLHelper() {
+		return new XMIHelperImpl(this) {
+
+			public void setValue(EObject object, EStructuralFeature feature,
+					Object value, int position) {
+
+				if (EcorePackage.eINSTANCE.getETypedElement_UpperBound() == feature
+					&& "*".equals(value)) { //$NON-NLS-1$
+
+					((ETypedElement) object).setUpperBound(-1);
+				} else {
+					super.setValue(object, feature, value, position);
+				}
+			}
+		};
 	}
 
 } // EMOF2EcoreResourceImpl
