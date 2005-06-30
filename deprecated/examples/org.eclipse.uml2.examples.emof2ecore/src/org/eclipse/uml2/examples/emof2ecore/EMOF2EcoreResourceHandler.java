@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceHandler.java,v 1.3 2005/06/03 19:53:28 khussey Exp $
+ * $Id: EMOF2EcoreResourceHandler.java,v 1.4 2005/06/30 03:17:57 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore;
 
@@ -163,6 +163,25 @@ public class EMOF2EcoreResourceHandler
 							((EStructuralFeature) eObject).getEAnnotations());
 				}
 			}
+
+			protected void copyReference(EReference eReference,
+					EObject eObject, EObject copyEObject) {
+
+				if (EcorePackage.eINSTANCE.getETypedElement_EType() == eReference) {
+
+					if (eObject.eIsSet(eReference)) {
+						EClassifier eType = (EClassifier) eObject.eGet(
+							eReference, false);
+
+						if (null == eType || eType.eIsProxy()) {
+							copyEObject.eSet(getTarget(eReference), eType);
+							return;
+						}
+					}
+				}
+
+				super.copyReference(eReference, eObject, copyEObject);
+			}
 		};
 
 		EStructuralFeature copyEStructuralFeature = (EStructuralFeature) copier
@@ -289,9 +308,7 @@ public class EMOF2EcoreResourceHandler
 				EClassifier eType = (EClassifier) eTypedElement.eGet(
 					EcorePackage.eINSTANCE.getETypedElement_EType(), false);
 
-				if (null != eType && eType.eIsProxy()
-					&& eType == EcoreUtil.resolve(eType, eTypedElement)) {
-
+				if (null != eType && eType.eIsProxy()) {
 					URI eProxyURI = ((InternalEObject) eType).eProxyURI();
 					EPackage ePackage = extendedMetaData.getPackage(eProxyURI
 						.trimFragment().toString());
