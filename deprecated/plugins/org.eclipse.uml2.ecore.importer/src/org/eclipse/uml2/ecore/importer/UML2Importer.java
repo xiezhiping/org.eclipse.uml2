@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.10 2005/06/24 16:53:14 khussey Exp $
+ * $Id: UML2Importer.java,v 1.11 2005/06/30 03:17:08 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -34,7 +34,6 @@ import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.EPackage;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -124,14 +123,12 @@ public class UML2Importer
 			ResourceSet uml2ResourceSet = createResourceSet();
 
 			for (Iterator i = locationURIs.iterator(); i.hasNext();) {
-				Resource uml2Resource = uml2ResourceSet.getResource((URI) i
-					.next(), true);
-
-				EcoreUtil.resolveAll(uml2Resource);
-
-				packages.addAll(EcoreUtil.getObjectsByType(uml2Resource
-					.getContents(), UML2Package.eINSTANCE.getPackage()));
+				packages.addAll(EcoreUtil.getObjectsByType(uml2ResourceSet
+					.getResource((URI) i.next(), true).getContents(),
+					UML2Package.eINSTANCE.getPackage()));
 			}
+
+			EcoreUtil.resolveAll(uml2ResourceSet);
 
 			progressMonitor.worked(1);
 
