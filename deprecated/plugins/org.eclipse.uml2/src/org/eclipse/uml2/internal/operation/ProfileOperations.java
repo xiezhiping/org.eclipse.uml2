@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.27 2005/06/15 17:18:21 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.28 2005/08/26 14:50:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -108,8 +108,14 @@ public final class ProfileOperations
 
 						if (EcorePackage.eINSTANCE.getEString() == eAttribute
 							.getEAttributeType()) {
-							eAttribute.setDefaultValueLiteral(property
-								.getDefault());
+
+							ValueSpecification defaultValue = property
+								.getDefaultValue();
+
+							if (null == defaultValue || !defaultValue.isNull()) {
+								eAttribute.setDefaultValueLiteral(property
+									.getDefault());
+							}
 						}
 
 						return eAttribute;

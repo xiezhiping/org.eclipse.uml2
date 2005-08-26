@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperationsTest.java,v 1.7 2005/05/25 17:23:22 khussey Exp $
+ * $Id: ProfileOperationsTest.java,v 1.8 2005/08/26 14:50:26 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -180,6 +180,8 @@ public class ProfileOperationsTest
 		stringsProperty.setIsUnique(false);
 		stringsProperty.setName("strings"); //$NON-NLS-1$
 		stringsProperty.setType(stringPrimitiveType);
+		stringsProperty.createDefaultValue(UML2Package.eINSTANCE
+			.getLiteralNull());
 		stringsProperty
 			.setUpperBound(MultiplicityElement.UNLIMITED_UPPER_BOUND);
 
@@ -618,6 +620,7 @@ public class ProfileOperationsTest
 		EStructuralFeature stringsEStructuralFeature = stereotypeEClass
 			.getEStructuralFeature("strings"); //$NON-NLS-1$
 		assertTrue(EAttribute.class.isInstance(stringsEStructuralFeature));
+		assertNull(stringsEStructuralFeature.getDefaultValue());
 		assertFalse(stringsEStructuralFeature.isUnique());
 		assertSame(EcorePackage.eINSTANCE.getEString(),
 			stringsEStructuralFeature.getEType());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
+ * $Id: OperationTest.java,v 1.4 2005/08/26 14:50:26 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -136,13 +136,20 @@ public class OperationTest extends BehavioralFeatureTest {
 
 	public void testLowerBound() {
 		testLowerBoundGen();
-		
-		getFixture().setLowerValue(null);
+
+		getFixture().getReturnResults().clear();
 
 		assertEquals(1, getFixture().lowerBound());
 
-		LiteralInteger lowerValue = UML2Factory.eINSTANCE.createLiteralInteger();
-		getFixture().setLowerValue(lowerValue);
+		getFixture().getReturnResults().add(
+			UML2Factory.eINSTANCE.createParameter());
+
+		assertEquals(1, getFixture().lowerBound());
+
+		LiteralInteger lowerValue = UML2Factory.eINSTANCE
+			.createLiteralInteger();
+		((Parameter) getFixture().getReturnResults().get(0))
+			.setLowerValue(lowerValue);
 
 		lowerValue.setValue(0);
 
@@ -167,19 +174,26 @@ public class OperationTest extends BehavioralFeatureTest {
 
 	public void testUpperBound() {
 		testUpperBoundGen();
-		
-		getFixture().setUpperValue(null);
+
+		getFixture().getReturnResults().clear();
 
 		assertEquals(1, getFixture().upperBound());
 
-		LiteralUnlimitedNatural upperBound = UML2Factory.eINSTANCE.createLiteralUnlimitedNatural();
-		getFixture().setUpperValue(upperBound);
+		getFixture().getReturnResults().add(
+			UML2Factory.eINSTANCE.createParameter());
 
-		upperBound.setValue(0);
+		assertEquals(1, getFixture().upperBound());
+
+		LiteralUnlimitedNatural upperValue = UML2Factory.eINSTANCE
+			.createLiteralUnlimitedNatural();
+		((Parameter) getFixture().getReturnResults().get(0))
+			.setUpperValue(upperValue);
+
+		upperValue.setValue(0);
 
 		assertEquals(0, getFixture().upperBound());
 
-		upperBound.setValue(Integer.MAX_VALUE);
+		upperValue.setValue(Integer.MAX_VALUE);
 
 		assertEquals(Integer.MAX_VALUE, getFixture().upperBound());
 	}
@@ -198,13 +212,20 @@ public class OperationTest extends BehavioralFeatureTest {
 
 	public void testIsMultivalued() {
 		testIsMultivaluedGen();
-		
-		getFixture().setUpperValue(null);
+
+		getFixture().getReturnResults().clear();
 
 		assertFalse(getFixture().isMultivalued());
 
-		LiteralUnlimitedNatural upperValue = UML2Factory.eINSTANCE.createLiteralUnlimitedNatural();
-		getFixture().setUpperValue(upperValue);
+		getFixture().getReturnResults().add(
+			UML2Factory.eINSTANCE.createParameter());
+
+		assertFalse(getFixture().isMultivalued());
+
+		LiteralUnlimitedNatural upperValue = UML2Factory.eINSTANCE
+			.createLiteralUnlimitedNatural();
+		((Parameter) getFixture().getReturnResults().get(0))
+			.setUpperValue(upperValue);
 
 		upperValue.setValue(1);
 
@@ -233,48 +254,65 @@ public class OperationTest extends BehavioralFeatureTest {
 
 	public void testIncludesCardinality__int() {
 		testIncludesCardinality__intGen();
-		
-		getFixture().setLowerValue(null);
-		getFixture().setUpperValue(null);
+
+		getFixture().getReturnResults().clear();
 
 		assertTrue(getFixture().includesCardinality(1));
-		assertFalse(getFixture().includesCardinality(MultiplicityElement.UNLIMITED_UPPER_BOUND));
+		assertFalse(getFixture().includesCardinality(
+			MultiplicityElement.UNLIMITED_UPPER_BOUND));
 
-		LiteralInteger lowerValue = UML2Factory.eINSTANCE.createLiteralInteger();
-		getFixture().setLowerValue(lowerValue);
+		getFixture().getReturnResults().add(
+			UML2Factory.eINSTANCE.createParameter());
+
+		assertTrue(getFixture().includesCardinality(1));
+		assertFalse(getFixture().includesCardinality(
+			MultiplicityElement.UNLIMITED_UPPER_BOUND));
+
+		LiteralInteger lowerValue = UML2Factory.eINSTANCE
+			.createLiteralInteger();
+		((Parameter) getFixture().getReturnResults().get(0))
+			.setLowerValue(lowerValue);
 
 		lowerValue.setValue(0);
 
 		assertTrue(getFixture().includesCardinality(1));
-		assertFalse(getFixture().includesCardinality(MultiplicityElement.UNLIMITED_UPPER_BOUND));
+		assertFalse(getFixture().includesCardinality(
+			MultiplicityElement.UNLIMITED_UPPER_BOUND));
 
-		LiteralUnlimitedNatural upperValue = UML2Factory.eINSTANCE.createLiteralUnlimitedNatural();
-		getFixture().setUpperValue(upperValue);
+		LiteralUnlimitedNatural upperValue = UML2Factory.eINSTANCE
+			.createLiteralUnlimitedNatural();
+		((Parameter) getFixture().getReturnResults().get(0))
+			.setUpperValue(upperValue);
 
 		upperValue.setValue(0);
 
 		assertFalse(getFixture().includesCardinality(1));
-		assertFalse(getFixture().includesCardinality(MultiplicityElement.UNLIMITED_UPPER_BOUND));
+		assertFalse(getFixture().includesCardinality(
+			MultiplicityElement.UNLIMITED_UPPER_BOUND));
 
 		upperValue.setValue(Integer.MAX_VALUE);
 
 		assertTrue(getFixture().includesCardinality(1));
-		assertFalse(getFixture().includesCardinality(MultiplicityElement.UNLIMITED_UPPER_BOUND));
+		assertFalse(getFixture().includesCardinality(
+			MultiplicityElement.UNLIMITED_UPPER_BOUND));
 
 		upperValue.setValue(MultiplicityElement.UNLIMITED_UPPER_BOUND);
 
 		assertTrue(getFixture().includesCardinality(1));
-		assertTrue(getFixture().includesCardinality(MultiplicityElement.UNLIMITED_UPPER_BOUND));
+		assertTrue(getFixture().includesCardinality(
+			MultiplicityElement.UNLIMITED_UPPER_BOUND));
 
 		lowerValue.setValue(1);
 
 		assertTrue(getFixture().includesCardinality(1));
-		assertTrue(getFixture().includesCardinality(MultiplicityElement.UNLIMITED_UPPER_BOUND));
+		assertTrue(getFixture().includesCardinality(
+			MultiplicityElement.UNLIMITED_UPPER_BOUND));
 
 		lowerValue.setValue(Integer.MAX_VALUE);
 
 		assertFalse(getFixture().includesCardinality(1));
-		assertTrue(getFixture().includesCardinality(MultiplicityElement.UNLIMITED_UPPER_BOUND));
+		assertTrue(getFixture().includesCardinality(
+			MultiplicityElement.UNLIMITED_UPPER_BOUND));
 	}
 
 	/**
@@ -291,35 +329,53 @@ public class OperationTest extends BehavioralFeatureTest {
 
 	public void testIncludesMultiplicity__MultiplicityElement() {
 		testIncludesMultiplicity__MultiplicityElementGen();
-		
-		MultiplicityElement defaultMultiplicity = (MultiplicityElement) UML2Factory.eINSTANCE.create(getFixture().eClass());
 
-		MultiplicityElement unboundedMultiplicity = (MultiplicityElement) UML2Factory.eINSTANCE.create(getFixture().eClass());
+		Operation defaultMultiplicity = (Operation) UML2Factory.eINSTANCE
+			.create(getFixture().eClass());
 
-		LiteralInteger optionalLowerValue = UML2Factory.eINSTANCE.createLiteralInteger();
-		unboundedMultiplicity.setLowerValue(optionalLowerValue);
+		Operation unboundedMultiplicity = (Operation) UML2Factory.eINSTANCE
+			.create(getFixture().eClass());
+
+		unboundedMultiplicity.getReturnResults().add(
+			UML2Factory.eINSTANCE.createParameter());
+
+		LiteralInteger optionalLowerValue = UML2Factory.eINSTANCE
+			.createLiteralInteger();
+		((Parameter) unboundedMultiplicity.getReturnResults().get(0))
+			.setLowerValue(optionalLowerValue);
 		optionalLowerValue.setValue(0);
 
-		LiteralUnlimitedNatural unlimitedUpperValue = UML2Factory.eINSTANCE.createLiteralUnlimitedNatural();
-		unboundedMultiplicity.setUpperValue(unlimitedUpperValue);
+		LiteralUnlimitedNatural unlimitedUpperValue = UML2Factory.eINSTANCE
+			.createLiteralUnlimitedNatural();
+		((Parameter) unboundedMultiplicity.getReturnResults().get(0))
+			.setUpperValue(unlimitedUpperValue);
 		unlimitedUpperValue.setValue(MultiplicityElement.UNLIMITED_UPPER_BOUND);
 
-		getFixture().setLowerValue(null);
-		getFixture().setUpperValue(null);
+		getFixture().getReturnResults().clear();
 
 		assertTrue(getFixture().includesMultiplicity(defaultMultiplicity));
 		assertFalse(getFixture().includesMultiplicity(unboundedMultiplicity));
 
-		LiteralInteger lowerValue = UML2Factory.eINSTANCE.createLiteralInteger();
-		getFixture().setLowerValue(lowerValue);
+		getFixture().getReturnResults().add(
+			UML2Factory.eINSTANCE.createParameter());
+
+		assertTrue(getFixture().includesMultiplicity(defaultMultiplicity));
+		assertFalse(getFixture().includesMultiplicity(unboundedMultiplicity));
+
+		LiteralInteger lowerValue = UML2Factory.eINSTANCE
+			.createLiteralInteger();
+		((Parameter) getFixture().getReturnResults().get(0))
+			.setLowerValue(lowerValue);
 
 		lowerValue.setValue(0);
 
 		assertTrue(getFixture().includesMultiplicity(defaultMultiplicity));
 		assertFalse(getFixture().includesMultiplicity(unboundedMultiplicity));
 
-		LiteralUnlimitedNatural upperValue = UML2Factory.eINSTANCE.createLiteralUnlimitedNatural();
-		getFixture().setUpperValue(upperValue);
+		LiteralUnlimitedNatural upperValue = UML2Factory.eINSTANCE
+			.createLiteralUnlimitedNatural();
+		((Parameter) getFixture().getReturnResults().get(0))
+			.setUpperValue(upperValue);
 
 		upperValue.setValue(0);
 
@@ -583,8 +639,6 @@ public class OperationTest extends BehavioralFeatureTest {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
-
 
 	/**
 	 * Tests the '{@link org.eclipse.uml2.Operation#isOrdered() <em>Is Ordered</em>}' feature getter.
@@ -944,21 +998,28 @@ public class OperationTest extends BehavioralFeatureTest {
 		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.impl.tests.NamedElementImplTest#setUpNamespace()
 	 */
 	protected void setUpNamespace() {
 		UML2Factory.eINSTANCE.createClass().getOwnedOperations().add(getFixture());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwner()
 	 */
 	protected void setUpOwner() {
 		UML2Factory.eINSTANCE.createTemplateParameter().setOwnedParameteredElement(getFixture());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.impl.tests.ElementImplTest#setUpOwnedElements()
 	 */
 	protected void setUpOwnedElements() {
@@ -969,7 +1030,9 @@ public class OperationTest extends BehavioralFeatureTest {
 		getFixture().setUpperValue(UML2Factory.eINSTANCE.createLiteralUnlimitedNatural());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.impl.tests.NamespaceImplTest#setUpOwnedMembers()
 	 */
 	protected void setUpOwnedMembers() {
@@ -984,7 +1047,9 @@ public class OperationTest extends BehavioralFeatureTest {
 		getFixture().getPreconditions().add(UML2Factory.eINSTANCE.createConstraint());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.impl.tests.BehavioralFeatureImplTest#setUpRedefinedElements()
 	 */
 	protected void setUpRedefinedElements() {
@@ -994,7 +1059,9 @@ public class OperationTest extends BehavioralFeatureTest {
 		getFixture().getRedefinedOperations().add(UML2Factory.eINSTANCE.createOperation());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.impl.tests.BehavioralFeatureImplTest#setUpRedefinitionContexts()
 	 */
 	protected void setUpRedefinitionContexts() {
@@ -1003,7 +1070,9 @@ public class OperationTest extends BehavioralFeatureTest {
 		getFixture().setClass_(UML2Factory.eINSTANCE.createClass());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uml2.impl.tests.BehavioralFeatureImplTest#setUpFeaturingClassifiers()
 	 */
 	protected void setUpFeaturingClassifiers() {
@@ -1012,4 +1081,4 @@ public class OperationTest extends BehavioralFeatureTest {
 		getFixture().setClass_(UML2Factory.eINSTANCE.createClass());
 	}
 
-} //OperationImplTest
+} // OperationImplTest

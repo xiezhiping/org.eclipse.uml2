@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.24 2005/06/16 00:59:22 khussey Exp $
+ * $Id: OperationImpl.java,v 1.25 2005/08/26 14:50:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -731,19 +731,25 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public int lowerBound() {
-		return MultiplicityElementOperations.lowerBound(this);
+		EList returnResults = getReturnResults();
+		return 1 == returnResults.size()
+			? ((Parameter) returnResults.get(0)).lowerBound()
+			: 1;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public int upperBound() {
-		return MultiplicityElementOperations.upperBound(this);
+		EList returnResults = getReturnResults();
+		return 1 == returnResults.size()
+			? ((Parameter) returnResults.get(0)).upperBound()
+			: 1;
 	}
 
 	/**
@@ -861,9 +867,10 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	}
 
 	public void setIsOrdered(boolean newIsOrdered) {
+		EList returnResults = getReturnResults();
 
-		if (1 == getReturnResults().size()) {
-			((Parameter) getReturnResults().get(0)).setIsOrdered(newIsOrdered);
+		if (1 == returnResults.size()) {
+			((Parameter) returnResults.get(0)).setIsOrdered(newIsOrdered);
 		}
 	}
 
@@ -877,9 +884,10 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	}
 
 	public void setIsUnique(boolean newIsUnique) {
+		EList returnResults = getReturnResults();
 
-		if (1 == getReturnResults().size()) {
-			((Parameter) getReturnResults().get(0)).setIsUnique(newIsUnique);
+		if (1 == returnResults.size()) {
+			((Parameter) returnResults.get(0)).setIsUnique(newIsUnique);
 		}
 	}
 
@@ -1036,9 +1044,10 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	}
 
 	public void setType(Type newType) {
-		
-		if (1 == getReturnResults().size()) {
-			((Parameter) getReturnResults().get(0)).setType(newType);
+		EList returnResults = getReturnResults();
+
+		if (1 == returnResults.size()) {
+			((Parameter) returnResults.get(0)).setType(newType);
 		}
 	}
 
@@ -1822,7 +1831,11 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @see org.eclipse.uml2.MultiplicityElement#setLowerBound(int)
 	 */
 	public void setLowerBound(int value) {
-		MultiplicityElementOperations.setLowerBound(this, value);
+		EList returnResults = getReturnResults();
+
+		if (1 == returnResults.size()) {
+			((Parameter) returnResults.get(0)).setLowerBound(value);
+		}
 	}
 
 	/*
@@ -1831,7 +1844,11 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @see org.eclipse.uml2.MultiplicityElement#setUpperBound(int)
 	 */
 	public void setUpperBound(int value) {
-		MultiplicityElementOperations.setUpperBound(this, value);
+		EList returnResults = getReturnResults();
+
+		if (1 == returnResults.size()) {
+			((Parameter) returnResults.get(0)).setUpperBound(value);
+		}
 	}
 
 	/*

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.26 2005/06/15 17:18:21 khussey Exp $
+ * $Id: UML2Util.java,v 1.27 2005/08/26 14:50:36 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -232,22 +232,9 @@ public class UML2Util {
 			property.setName(eAttribute.getName());
 			property.setIsReadOnly(!eAttribute.isChangeable());
 			property.setIsDerived(eAttribute.isDerived());
-			property.setType(getType(eAttribute));
 			property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
 
-			int upperBound = eAttribute.getUpperBound();
-
-			if (upperBound != ETypedElement.UNSPECIFIED_MULTIPLICITY
-				&& upperBound != property.getUpper()) {
-
-				property.setUpperBound(upperBound);
-			}
-
-			int lowerBound = eAttribute.getLowerBound();
-
-			if (lowerBound != property.getLower()) {
-				property.setLowerBound(lowerBound);
-			}
+			caseETypedElement(eAttribute);
 
 			defaultCase(eAttribute);
 
@@ -382,10 +369,8 @@ public class UML2Util {
 			operation.setName(eOperation.getName());
 
 			if (null != eOperation.getEType()) {
-				Parameter parameter = operation.createReturnResult();
-
-				parameter.setDirection(ParameterDirectionKind.RETURN_LITERAL);
-				parameter.setType(getType(eOperation));
+				operation.createReturnResult().setDirection(
+					ParameterDirectionKind.RETURN_LITERAL);
 			}
 
 			for (Iterator eExceptions = eOperation.getEExceptions().iterator(); eExceptions
@@ -396,6 +381,8 @@ public class UML2Util {
 			}
 
 			operation.setVisibility(VisibilityKind.PUBLIC_LITERAL);
+
+			caseETypedElement(eOperation);
 
 			defaultCase(eOperation);
 
@@ -444,7 +431,8 @@ public class UML2Util {
 			operation.getOwnedParameters().add(parameter);
 
 			parameter.setName(eParameter.getName());
-			parameter.setType(getType(eParameter));
+
+			caseETypedElement(eParameter);
 
 			defaultCase(eParameter);
 
@@ -480,67 +468,76 @@ public class UML2Util {
 				: AggregationKind.NONE_LITERAL);
 			end1Property.setAssociation(association);
 			end1Property.setIsDerived(end1.isDerived());
-			end1Property.setIsOrdered(end1.isOrdered());
 			end1Property.setIsReadOnly(!end1.isChangeable());
-
-			int end1UpperBound = end1.getUpperBound();
-
-			if (end1UpperBound != ETypedElement.UNSPECIFIED_MULTIPLICITY
-				&& end1UpperBound != end1Property.getUpper()) {
-
-				end1Property.setUpperBound(end1UpperBound);
-			}
-
-			int end1LowerBound = end1.getLowerBound();
-
-			if (end1LowerBound != end1Property.getLower()) {
-				end1Property.setLowerBound(end1LowerBound);
-			}
 
 			end1Property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
 
-			Classifier end2Classifier = null;
+			caseETypedElement(end1);
 
 			if (null == end2) {
-				end2Classifier = (Classifier) doSwitch(end1.getEType());
 				association.createOwnedEnd(UML2Package.eINSTANCE.getProperty())
 					.setType(end1Classifier);
 			} else {
 				Property end2Property = UML2Factory.eINSTANCE.createProperty();
 				eModelElementToElementMap.put(end2, end2Property);
 
-				end2Classifier = (Classifier) doSwitch(end1.getEType());
-				getOwnedAttributes(end2Classifier).add(end2Property);
+				getOwnedAttributes((Classifier) doSwitch(end1.getEType())).add(
+					end2Property);
 
 				end2Property.setName(end2.getName());
 				end2Property.setAssociation(association);
 				end2Property.setIsDerived(end2.isDerived());
-				end2Property.setIsOrdered(end1.isOrdered());
 				end2Property.setIsReadOnly(!end2.isChangeable());
 
-				int end2UpperBound = end2.getUpperBound();
-
-				if (end2UpperBound != ETypedElement.UNSPECIFIED_MULTIPLICITY
-					&& end2UpperBound != end2Property.getUpper()) {
-
-					end2Property.setUpperBound(end2UpperBound);
-				}
-
-				int end2LowerBound = end2.getLowerBound();
-
-				if (end2LowerBound != end2Property.getLower()) {
-					end2Property.setLowerBound(end2LowerBound);
-				}
-
-				end2Property.setType(end1Classifier);
 				end2Property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
-			}
 
-			end1Property.setType(end2Classifier);
+				caseETypedElement(end2);
+			}
 
 			defaultCase(eReference);
 
 			return end1Property;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseETypedElement(org.eclipse.emf.ecore.ETypedElement)
+		 */
+		public Object caseETypedElement(ETypedElement eTypedElement) {
+			Object element = eModelElementToElementMap.get(eTypedElement);
+
+			if (null == element) {
+				return super.caseETypedElement(eTypedElement);
+			} else {
+
+				if (element instanceof TypedElement) {
+					((TypedElement) element).setType(getType(eTypedElement));
+				}
+
+				if (element instanceof MultiplicityElement) {
+					MultiplicityElement multiplicityElement = (MultiplicityElement) element;
+
+					int upperBound = eTypedElement.getUpperBound();
+
+					if (upperBound != ETypedElement.UNSPECIFIED_MULTIPLICITY
+						&& upperBound != multiplicityElement.getUpper()) {
+
+						multiplicityElement.setUpperBound(upperBound);
+					}
+
+					int lowerBound = eTypedElement.getLowerBound();
+
+					if (lowerBound != multiplicityElement.getLower()) {
+						multiplicityElement.setLowerBound(lowerBound);
+					}
+
+					multiplicityElement.setIsOrdered(eTypedElement.isOrdered());
+					multiplicityElement.setIsUnique(eTypedElement.isUnique());
+				}
+
+				return element;
+			}
 		}
 
 		/*
@@ -1646,6 +1643,40 @@ public class UML2Util {
 		/*
 		 * (non-Javadoc)
 		 * 
+		 * @see org.eclipse.uml2.util.UML2Switch#caseMultiplicityElement(org.eclipse.uml2.MultiplicityElement)
+		 */
+		public Object caseMultiplicityElement(
+				MultiplicityElement multiplicityElement) {
+			Object eModelElement = elementToEModelElementMap
+				.get(multiplicityElement);
+
+			if (eModelElement instanceof ETypedElement) {
+				ETypedElement eTypedElement = (ETypedElement) eModelElement;
+
+				int upper = multiplicityElement.getUpper();
+
+				if (upper != eTypedElement.getUpperBound()) {
+					eTypedElement.setUpperBound(upper);
+				}
+
+				int lower = multiplicityElement.getLower();
+
+				if (lower != eTypedElement.getLowerBound()) {
+					eTypedElement.setLowerBound(lower);
+				}
+
+				eTypedElement.setOrdered(multiplicityElement.isOrdered());
+				eTypedElement.setUnique(multiplicityElement.isUnique());
+
+				return eTypedElement;
+			} else {
+				return super.caseMultiplicityElement(multiplicityElement);
+			}
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see org.eclipse.uml2.util.UML2Switch#caseOperation(org.eclipse.uml2.Operation)
 		 */
 		public Object caseOperation(Operation operation) {
@@ -1665,12 +1696,6 @@ public class UML2Util {
 
 				setName(eOperation, operation);
 
-				Type type = operation.getType();
-
-				if (null != type) {
-					eOperation.setEType(getEType(type));
-				}
-
 				EList eExceptions = eOperation.getEExceptions();
 
 				for (Iterator raisedExceptions = operation
@@ -1679,6 +1704,9 @@ public class UML2Util {
 
 					eExceptions.add(getEType((Type) raisedExceptions.next()));
 				}
+
+				caseTypedElement(operation);
+				caseMultiplicityElement(operation);
 
 				defaultCase(operation);
 
@@ -1745,7 +1773,8 @@ public class UML2Util {
 
 				setName(eParameter, parameter);
 
-				eParameter.setEType(getEType(parameter));
+				caseTypedElement(parameter);
+				caseMultiplicityElement(parameter);
 
 				defaultCase(parameter);
 
@@ -1796,17 +1825,20 @@ public class UML2Util {
 			} else {
 				EStructuralFeature eStructuralFeature = null;
 
-				if (DataType.class.isInstance(property.getType())) {
+				if (property.getType() instanceof DataType) {
 					EAttribute eAttribute = (EAttribute) (eStructuralFeature = EcoreFactory.eINSTANCE
 						.createEAttribute());
 					elementToEModelElementMap.put(property, eAttribute);
 
-					String default_ = property.getDefault();
+					ValueSpecification defaultValue = property
+						.getDefaultValue();
 
-					if (!isEmpty(default_)) {
-						EDataType eDataType = (EDataType) getEType(property);
+					if (null != defaultValue && !defaultValue.isNull()) {
+						String default_ = defaultValue.stringValue();
 
 						try {
+							EDataType eDataType = (EDataType) getEType(property);
+
 							eDataType.getEPackage().getEFactoryInstance()
 								.createFromString(eDataType, default_);
 							eAttribute.setDefaultValueLiteral(default_);
@@ -1831,9 +1863,10 @@ public class UML2Util {
 
 				eStructuralFeature.setDerived(property.isDerived());
 
-				if (null != property.getOpposite()) {
-					EReference eOpposite = (EReference) doSwitch(property
-						.getOpposite());
+				Property opposite = property.getOpposite();
+
+				if (null != opposite) {
+					EReference eOpposite = (EReference) doSwitch(opposite);
 
 					if (property.isComposite() && !eOpposite.isTransient()) {
 						eOpposite.setTransient(true);
@@ -1856,24 +1889,31 @@ public class UML2Util {
 					((EReference) eStructuralFeature).setEOpposite(eOpposite);
 				}
 
-				int upper = property.getUpper();
-
-				if (upper != eStructuralFeature.getUpperBound()) {
-					eStructuralFeature.setUpperBound(upper);
-				}
-
-				int lower = property.getLower();
-
-				if (lower != eStructuralFeature.getLowerBound()) {
-					eStructuralFeature.setLowerBound(lower);
-				}
-
-				eStructuralFeature.setUnique(property.isUnique());
-				eStructuralFeature.setEType(getEType(property));
+				caseTypedElement(property);
+				caseMultiplicityElement(property);
 
 				defaultCase(property);
 
 				return eStructuralFeature;
+			}
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.util.UML2Switch#caseTypedElement(org.eclipse.uml2.TypedElement)
+		 */
+		public Object caseTypedElement(TypedElement typedElement) {
+			Object eModelElement = elementToEModelElementMap.get(typedElement);
+
+			if (eModelElement instanceof ETypedElement) {
+				ETypedElement eTypedElement = (ETypedElement) eModelElement;
+
+				eTypedElement.setEType(getEType(typedElement));
+
+				return eTypedElement;
+			} else {
+				return super.caseTypedElement(typedElement);
 			}
 		}
 
@@ -5087,7 +5127,7 @@ public class UML2Util {
 	protected static EClassifier getCommonEType(EClassifier eType,
 			final EClassifier otherEType) {
 
-		if (eType.equals(otherEType)) {
+		if (null == eType || eType.equals(otherEType)) {
 			return eType;
 		} else {
 			return (EClassifier) new EcoreSwitch() {
@@ -5275,7 +5315,9 @@ public class UML2Util {
 			StringBuffer qualifiedText, EObject eObject,
 			QualifiedTextProvider qualifiedTextProvider) {
 
-		EObject eContainer = eObject.eContainer();
+		EObject eContainer = null == eObject
+			? null
+			: eObject.eContainer();
 
 		if (null != eContainer) {
 			appendQualifiedText(qualifiedText, eContainer,
@@ -5298,6 +5340,8 @@ public class UML2Util {
 
 		if (!isEmpty(text)) {
 			return qualifiedText.append(text);
+		} else if (null == eObject) {
+			return qualifiedText.append(String.valueOf(eObject));
 		}
 
 		qualifiedText.append('{');

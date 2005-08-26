@@ -422,7 +422,7 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML2.ecore#//Property/subsettingContext"
           cacheAdapterScope="Global"/>
     </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Operation">
+    <genClasses xsi:type="genmodel:GenClass" provider="Stateful" ecoreClass="UML2.ecore#//Operation">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           ecoreFeature="ecore:EReference UML2.ecore#//Operation/ownedParameter">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>

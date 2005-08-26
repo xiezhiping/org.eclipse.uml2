@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.edit
-Bundle-Version: 1.1.0
+Bundle-Version: 1.2.0
 Bundle-ClassPath: uml2.edit.jar
 Bundle-Activator: org.eclipse.uml2.provider.UML2EditPlugin$Implementation
 Bundle-Vendor: %providerName

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.1 2005/05/25 16:03:36 khussey Exp $
+ * $Id: PortOperations.java,v 1.2 2005/08/26 14:50:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -45,7 +45,7 @@ public final class PortOperations
 				provideds.add(type);
 			} else if (BehavioredClassifier.class.isInstance(type)) {
 				provideds.addAll(((BehavioredClassifier) type)
-					.getImplementedInterfaces());
+					.getAllImplementedInterfaces());
 			}
 		}
 

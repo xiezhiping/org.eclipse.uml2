@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.11 2005/05/31 17:36:00 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.12 2005/08/26 14:50:36 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -344,7 +344,9 @@ public final class ClassifierOperations extends UML2Operations {
 		for (Iterator allParents = classifier.allParents().iterator(); allParents
 			.hasNext();) {
 
-			if (((Classifier) allParents.next()).getMembers().contains(n)) {
+			Classifier parent = (Classifier) allParents.next();
+
+			if (classifier != parent && parent.getMembers().contains(n)) {
 				return VisibilityKind.PRIVATE_LITERAL != n.getVisibility();
 			}
 		}
@@ -473,8 +475,9 @@ public final class ClassifierOperations extends UML2Operations {
 	 *            The classifier to which to create a generalization.
 	 * @return The new generalization.
 	 * @exception IllegalArgumentException
-	 *                If either of the classifiers is already a direct or
-	 *                indirect parent of the other.
+	 *                If the classifiers are identical or if either of the
+	 *                classifiers is already a direct or indirect parent of the
+	 *                other.
 	 */
 	public static Generalization createGeneralization(Classifier classifier,
 			Classifier generalClassifier) {
@@ -483,7 +486,7 @@ public final class ClassifierOperations extends UML2Operations {
 			throw new IllegalArgumentException(String.valueOf(classifier));
 		}
 
-		if (null == generalClassifier
+		if (null == generalClassifier || classifier == generalClassifier
 			|| classifier.allParents().contains(generalClassifier)
 			|| generalClassifier.allParents().contains(classifier)) {
 

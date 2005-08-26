@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.25 2005/06/20 19:57:42 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.26 2005/08/26 14:50:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -285,7 +285,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	 */
 	public BehavioredClassifier getStateMachine_redefinitionContext() {
 		if (eContainerFeatureID != UML2Package.STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT) return null;
-		return (Activity)eContainer;
+		return (BehavioredClassifier)eContainer;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.20 2005/05/18 16:40:46 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.21 2005/08/26 14:50:42 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -36,6 +36,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.BehavioralFeature;
 import org.eclipse.uml2.Operation;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
@@ -113,7 +114,7 @@ public class OperationItemProvider
 	 * This adds a property descriptor for the Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -123,7 +124,7 @@ public class OperationItemProvider
 				 getString("_UI_TypedElement_type_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_TypedElement_type_feature", "_UI_TypedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getTypedElement_Type(),
-				 true,
+				 1 == ((Operation)object).getReturnResults().size(),
 				 null,
 				 null,
 				 null));
@@ -133,7 +134,7 @@ public class OperationItemProvider
 	 * This adds a property descriptor for the Is Ordered feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addIsOrderedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -143,7 +144,7 @@ public class OperationItemProvider
 				 getString("_UI_MultiplicityElement_isOrdered_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isOrdered_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getMultiplicityElement_IsOrdered(),
-				 true,
+				 1 == ((Operation)object).getReturnResults().size(),
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
@@ -153,7 +154,7 @@ public class OperationItemProvider
 	 * This adds a property descriptor for the Is Unique feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addIsUniquePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -163,7 +164,7 @@ public class OperationItemProvider
 				 getString("_UI_MultiplicityElement_isUnique_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isUnique_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 UML2Package.eINSTANCE.getMultiplicityElement_IsUnique(),
-				 true,
+				 1 == ((Operation)object).getReturnResults().size(),
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
@@ -533,7 +534,7 @@ public class OperationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Operation.class)) {
@@ -551,6 +552,16 @@ public class OperationItemProvider
 				return;
 		}
 		super.notifyChanged(notification);
+	}
+
+	public void notifyChanged(Notification notification) {
+
+		switch (notification.getFeatureID(BehavioralFeature.class)) {
+			case UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT :
+				itemPropertyDescriptors = null;
+			default :
+				notifyChangedGen(notification);
+		}
 	}
 
 	/**
