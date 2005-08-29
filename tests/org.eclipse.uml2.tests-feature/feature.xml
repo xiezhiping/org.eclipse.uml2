@@ -11,13 +11,13 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: feature.xml,v 1.12 2005/08/26 14:50:39 khussey Exp $
+ $Id: feature.xml,v 1.13 2005/08/29 17:11:22 khussey Exp $
 -->
 
 <feature
       id="org.eclipse.uml2.tests"
       label="%feature-label"
-      version="1.2.0"
+      version="2.0.0"
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg">
 
@@ -46,7 +46,7 @@
          id="org.eclipse.uml2.tests"
          download-size="0"
          install-size="0"
-         version="1.2.0"/>
+         version="2.0.0"/>
 
    <plugin
          id="org.eclipse.uml2.edit.tests"
