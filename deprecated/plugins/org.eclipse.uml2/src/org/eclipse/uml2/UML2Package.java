@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Package.java,v 1.19 2005/06/22 20:59:18 khussey Exp $
+ * $Id: UML2Package.java,v 1.20 2005/08/29 19:23:43 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -122,7 +122,7 @@ public interface UML2Package extends EPackage{
 	int ELEMENT__OWNED_COMMENT = EcorePackage.EMODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Element</em>' class.
+	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -231,7 +231,7 @@ public interface UML2Package extends EPackage{
 	int MULTIPLICITY_ELEMENT__LOWER_VALUE = ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The number of structural features of the the '<em>Multiplicity Element</em>' class.
+	 * The number of structural features of the '<em>Multiplicity Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -924,7 +924,7 @@ public interface UML2Package extends EPackage{
 	int TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE = ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Templateable Element</em>' class.
+	 * The number of structural features of the '<em>Templateable Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1032,7 +1032,7 @@ public interface UML2Package extends EPackage{
 	int NAMED_ELEMENT__NAME_EXPRESSION = TEMPLATEABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Named Element</em>' class.
+	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1185,7 +1185,7 @@ public interface UML2Package extends EPackage{
 	int NAMESPACE__PACKAGE_IMPORT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Namespace</em>' class.
+	 * The number of structural features of the '<em>Namespace</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1302,7 +1302,7 @@ public interface UML2Package extends EPackage{
 	int TYPED_ELEMENT__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Typed Element</em>' class.
+	 * The number of structural features of the '<em>Typed Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1437,7 +1437,7 @@ public interface UML2Package extends EPackage{
 	int VALUE_SPECIFICATION__OWNING_PARAMETER = TYPED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Value Specification</em>' class.
+	 * The number of structural features of the '<em>Value Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1608,7 +1608,7 @@ public interface UML2Package extends EPackage{
 	int OPAQUE_EXPRESSION__BEHAVIOR = VALUE_SPECIFICATION_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Opaque Expression</em>' class.
+	 * The number of structural features of the '<em>Opaque Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1797,7 +1797,7 @@ public interface UML2Package extends EPackage{
 	int EXPRESSION__OPERAND = OPAQUE_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Expression</em>' class.
+	 * The number of structural features of the '<em>Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1887,7 +1887,7 @@ public interface UML2Package extends EPackage{
 	int COMMENT__BODY_EXPRESSION = TEMPLATEABLE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Comment</em>' class.
+	 * The number of structural features of the '<em>Comment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1941,7 +1941,7 @@ public interface UML2Package extends EPackage{
 	int RELATIONSHIP__RELATED_ELEMENT = ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Relationship</em>' class.
+	 * The number of structural features of the '<em>Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2013,7 +2013,7 @@ public interface UML2Package extends EPackage{
 	int DIRECTED_RELATIONSHIP__TARGET = RELATIONSHIP_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Directed Relationship</em>' class.
+	 * The number of structural features of the '<em>Directed Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2337,7 +2337,7 @@ public interface UML2Package extends EPackage{
 	int CLASSIFIER__OCCURRENCE = NAMESPACE_FEATURE_COUNT + 18;
 
 	/**
-	 * The number of structural features of the the '<em>Classifier</em>' class.
+	 * The number of structural features of the '<em>Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2706,7 +2706,7 @@ public interface UML2Package extends EPackage{
 	int BEHAVIORED_CLASSIFIER__OWNED_STATE_MACHINE = CLASSIFIER_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Behaviored Classifier</em>' class.
+	 * The number of structural features of the '<em>Behaviored Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3174,7 +3174,7 @@ public interface UML2Package extends EPackage{
 	int CLASS__OWNED_RECEPTION = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 10;
 
 	/**
-	 * The number of structural features of the the '<em>Class</em>' class.
+	 * The number of structural features of the '<em>Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3309,7 +3309,7 @@ public interface UML2Package extends EPackage{
 	int PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Packageable Element</em>' class.
+	 * The number of structural features of the '<em>Packageable Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3453,7 +3453,7 @@ public interface UML2Package extends EPackage{
 	int TYPE__PACKAGE = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Type</em>' class.
+	 * The number of structural features of the '<em>Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3579,7 +3579,7 @@ public interface UML2Package extends EPackage{
 	int REDEFINABLE_ELEMENT__IS_LEAF = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Redefinable Element</em>' class.
+	 * The number of structural features of the '<em>Redefinable Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3723,7 +3723,7 @@ public interface UML2Package extends EPackage{
 	int FEATURE__IS_STATIC = REDEFINABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Feature</em>' class.
+	 * The number of structural features of the '<em>Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3939,7 +3939,7 @@ public interface UML2Package extends EPackage{
 	int STRUCTURAL_FEATURE__IS_READ_ONLY = FEATURE_FEATURE_COUNT + 7;
 
 	/**
-	 * The number of structural features of the the '<em>Structural Feature</em>' class.
+	 * The number of structural features of the '<em>Structural Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4335,7 +4335,7 @@ public interface UML2Package extends EPackage{
 	int PROPERTY__ASSOCIATION_END = STRUCTURAL_FEATURE_FEATURE_COUNT + 19;
 
 	/**
-	 * The number of structural features of the the '<em>Property</em>' class.
+	 * The number of structural features of the '<em>Property</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4587,7 +4587,7 @@ public interface UML2Package extends EPackage{
 	int BEHAVIORAL_FEATURE__CONCURRENCY = NAMESPACE_FEATURE_COUNT + 10;
 
 	/**
-	 * The number of structural features of the the '<em>Behavioral Feature</em>' class.
+	 * The number of structural features of the '<em>Behavioral Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4992,7 +4992,7 @@ public interface UML2Package extends EPackage{
 	int OPERATION__BODY_CONDITION = BEHAVIORAL_FEATURE_FEATURE_COUNT + 16;
 
 	/**
-	 * The number of structural features of the the '<em>Operation</em>' class.
+	 * The number of structural features of the '<em>Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5127,7 +5127,7 @@ public interface UML2Package extends EPackage{
 	int CONNECTABLE_ELEMENT__END = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Connectable Element</em>' class.
+	 * The number of structural features of the '<em>Connectable Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5397,7 +5397,7 @@ public interface UML2Package extends EPackage{
 	int PARAMETER__PARAMETER_SET = CONNECTABLE_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
-	 * The number of structural features of the the '<em>Parameter</em>' class.
+	 * The number of structural features of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5640,7 +5640,7 @@ public interface UML2Package extends EPackage{
 	int PACKAGE__PACKAGE_EXTENSION = NAMESPACE_FEATURE_COUNT + 9;
 
 	/**
-	 * The number of structural features of the the '<em>Package</em>' class.
+	 * The number of structural features of the '<em>Package</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5982,7 +5982,7 @@ public interface UML2Package extends EPackage{
 	int DATA_TYPE__OWNED_OPERATION = CLASSIFIER_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Data Type</em>' class.
+	 * The number of structural features of the '<em>Data Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6333,7 +6333,7 @@ public interface UML2Package extends EPackage{
 	int ENUMERATION__OWNED_LITERAL = DATA_TYPE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Enumeration</em>' class.
+	 * The number of structural features of the '<em>Enumeration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6513,7 +6513,7 @@ public interface UML2Package extends EPackage{
 	int INSTANCE_SPECIFICATION__SPECIFICATION = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Instance Specification</em>' class.
+	 * The number of structural features of the '<em>Instance Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6702,7 +6702,7 @@ public interface UML2Package extends EPackage{
 	int ENUMERATION_LITERAL__ENUMERATION = INSTANCE_SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Enumeration Literal</em>' class.
+	 * The number of structural features of the '<em>Enumeration Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7044,7 +7044,7 @@ public interface UML2Package extends EPackage{
 	int PRIMITIVE_TYPE__OWNED_OPERATION = DATA_TYPE__OWNED_OPERATION;
 
 	/**
-	 * The number of structural features of the the '<em>Primitive Type</em>' class.
+	 * The number of structural features of the '<em>Primitive Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7215,7 +7215,7 @@ public interface UML2Package extends EPackage{
 	int CONSTRAINT__CONSTRAINED_ELEMENT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Constraint</em>' class.
+	 * The number of structural features of the '<em>Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7350,7 +7350,7 @@ public interface UML2Package extends EPackage{
 	int LITERAL_SPECIFICATION__OWNING_PARAMETER = VALUE_SPECIFICATION__OWNING_PARAMETER;
 
 	/**
-	 * The number of structural features of the the '<em>Literal Specification</em>' class.
+	 * The number of structural features of the '<em>Literal Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7494,7 +7494,7 @@ public interface UML2Package extends EPackage{
 	int LITERAL_BOOLEAN__VALUE = LITERAL_SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Literal Boolean</em>' class.
+	 * The number of structural features of the '<em>Literal Boolean</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7638,7 +7638,7 @@ public interface UML2Package extends EPackage{
 	int LITERAL_STRING__VALUE = LITERAL_SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Literal String</em>' class.
+	 * The number of structural features of the '<em>Literal String</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7773,7 +7773,7 @@ public interface UML2Package extends EPackage{
 	int LITERAL_NULL__OWNING_PARAMETER = LITERAL_SPECIFICATION__OWNING_PARAMETER;
 
 	/**
-	 * The number of structural features of the the '<em>Literal Null</em>' class.
+	 * The number of structural features of the '<em>Literal Null</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7917,7 +7917,7 @@ public interface UML2Package extends EPackage{
 	int LITERAL_INTEGER__VALUE = LITERAL_SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Literal Integer</em>' class.
+	 * The number of structural features of the '<em>Literal Integer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8061,7 +8061,7 @@ public interface UML2Package extends EPackage{
 	int LITERAL_UNLIMITED_NATURAL__VALUE = LITERAL_SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Literal Unlimited Natural</em>' class.
+	 * The number of structural features of the '<em>Literal Unlimited Natural</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8133,7 +8133,7 @@ public interface UML2Package extends EPackage{
 	int SLOT__DEFINING_FEATURE = ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Slot</em>' class.
+	 * The number of structural features of the '<em>Slot</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8277,7 +8277,7 @@ public interface UML2Package extends EPackage{
 	int INSTANCE_VALUE__INSTANCE = VALUE_SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Instance Value</em>' class.
+	 * The number of structural features of the '<em>Instance Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8385,7 +8385,7 @@ public interface UML2Package extends EPackage{
 	int GENERALIZATION__GENERALIZATION_SET = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Generalization</em>' class.
+	 * The number of structural features of the '<em>Generalization</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8493,7 +8493,7 @@ public interface UML2Package extends EPackage{
 	int ELEMENT_IMPORT__IMPORTING_NAMESPACE = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Element Import</em>' class.
+	 * The number of structural features of the '<em>Element Import</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8592,7 +8592,7 @@ public interface UML2Package extends EPackage{
 	int PACKAGE_IMPORT__IMPORTING_NAMESPACE = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Package Import</em>' class.
+	 * The number of structural features of the '<em>Package Import</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8961,7 +8961,7 @@ public interface UML2Package extends EPackage{
 	int ASSOCIATION__MEMBER_END = CLASSIFIER_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Association</em>' class.
+	 * The number of structural features of the '<em>Association</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9051,7 +9051,7 @@ public interface UML2Package extends EPackage{
 	int PACKAGE_MERGE__MERGED_PACKAGE = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Package Merge</em>' class.
+	 * The number of structural features of the '<em>Package Merge</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9519,7 +9519,7 @@ public interface UML2Package extends EPackage{
 	int STEREOTYPE__OWNED_RECEPTION = CLASS__OWNED_RECEPTION;
 
 	/**
-	 * The number of structural features of the the '<em>Stereotype</em>' class.
+	 * The number of structural features of the '<em>Stereotype</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9789,7 +9789,7 @@ public interface UML2Package extends EPackage{
 	int PROFILE__METAMODEL_REFERENCE = PACKAGE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Profile</em>' class.
+	 * The number of structural features of the '<em>Profile</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9897,7 +9897,7 @@ public interface UML2Package extends EPackage{
 	int PROFILE_APPLICATION__IMPORTED_PROFILE = PACKAGE_IMPORT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Profile Application</em>' class.
+	 * The number of structural features of the '<em>Profile Application</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10284,7 +10284,7 @@ public interface UML2Package extends EPackage{
 	int EXTENSION__METACLASS = ASSOCIATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Extension</em>' class.
+	 * The number of structural features of the '<em>Extension</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10680,7 +10680,7 @@ public interface UML2Package extends EPackage{
 	int EXTENSION_END__ASSOCIATION_END = PROPERTY__ASSOCIATION_END;
 
 	/**
-	 * The number of structural features of the the '<em>Extension End</em>' class.
+	 * The number of structural features of the '<em>Extension End</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -11238,7 +11238,7 @@ public interface UML2Package extends EPackage{
 	int BEHAVIOR__OWNED_PARAMETER_SET = CLASS_FEATURE_COUNT + 9;
 
 	/**
-	 * The number of structural features of the the '<em>Behavior</em>' class.
+	 * The number of structural features of the '<em>Behavior</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -11877,7 +11877,7 @@ public interface UML2Package extends EPackage{
 	int ACTIVITY__IS_READ_ONLY = BEHAVIOR_FEATURE_COUNT + 8;
 
 	/**
-	 * The number of structural features of the the '<em>Activity</em>' class.
+	 * The number of structural features of the '<em>Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -12057,7 +12057,7 @@ public interface UML2Package extends EPackage{
 	int DEPENDENCY__SUPPLIER = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Dependency</em>' class.
+	 * The number of structural features of the '<em>Dependency</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -12237,7 +12237,7 @@ public interface UML2Package extends EPackage{
 	int PERMISSION__SUPPLIER = DEPENDENCY__SUPPLIER;
 
 	/**
-	 * The number of structural features of the the '<em>Permission</em>' class.
+	 * The number of structural features of the '<em>Permission</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -12417,7 +12417,7 @@ public interface UML2Package extends EPackage{
 	int USAGE__SUPPLIER = DEPENDENCY__SUPPLIER;
 
 	/**
-	 * The number of structural features of the the '<em>Usage</em>' class.
+	 * The number of structural features of the '<em>Usage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -12606,7 +12606,7 @@ public interface UML2Package extends EPackage{
 	int ABSTRACTION__MAPPING = DEPENDENCY_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Abstraction</em>' class.
+	 * The number of structural features of the '<em>Abstraction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -12813,7 +12813,7 @@ public interface UML2Package extends EPackage{
 	int REALIZATION__REALIZING_CLASSIFIER = ABSTRACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Realization</em>' class.
+	 * The number of structural features of the '<em>Realization</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -13038,7 +13038,7 @@ public interface UML2Package extends EPackage{
 	int SUBSTITUTION__SUBSTITUTING_CLASSIFIER = REALIZATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Substitution</em>' class.
+	 * The number of structural features of the '<em>Substitution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -13209,7 +13209,7 @@ public interface UML2Package extends EPackage{
 	int GENERALIZATION_SET__GENERALIZATION = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Generalization Set</em>' class.
+	 * The number of structural features of the '<em>Generalization Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -13722,7 +13722,7 @@ public interface UML2Package extends EPackage{
 	int ASSOCIATION_CLASS__MEMBER_END = CLASS_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Association Class</em>' class.
+	 * The number of structural features of the '<em>Association Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -14055,7 +14055,7 @@ public interface UML2Package extends EPackage{
 	int INFORMATION_ITEM__REPRESENTED = CLASSIFIER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Information Item</em>' class.
+	 * The number of structural features of the '<em>Information Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -14235,7 +14235,7 @@ public interface UML2Package extends EPackage{
 	int INFORMATION_FLOW__CONVEYED = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Information Flow</em>' class.
+	 * The number of structural features of the '<em>Information Flow</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -14487,7 +14487,7 @@ public interface UML2Package extends EPackage{
 	int MODEL__VIEWPOINT = PACKAGE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Model</em>' class.
+	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -15053,7 +15053,7 @@ public interface UML2Package extends EPackage{
 	int CONNECTOR_END__PART_WITH_PORT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Connector End</em>' class.
+	 * The number of structural features of the '<em>Connector End</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -15242,7 +15242,7 @@ public interface UML2Package extends EPackage{
 	int CONNECTOR__CONTRACT = FEATURE_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Connector</em>' class.
+	 * The number of structural features of the '<em>Connector</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -15602,7 +15602,7 @@ public interface UML2Package extends EPackage{
 	int STRUCTURED_CLASSIFIER__OWNED_CONNECTOR = CLASSIFIER_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Structured Classifier</em>' class.
+	 * The number of structural features of the '<em>Structured Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -15818,7 +15818,7 @@ public interface UML2Package extends EPackage{
 	int ACTIVITY_EDGE__INTERRUPTS = REDEFINABLE_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
-	 * The number of structural features of the the '<em>Activity Edge</em>' class.
+	 * The number of structural features of the '<em>Activity Edge</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -15881,7 +15881,7 @@ public interface UML2Package extends EPackage{
 	int ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY = ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Activity Group</em>' class.
+	 * The number of structural features of the '<em>Activity Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -16079,7 +16079,7 @@ public interface UML2Package extends EPackage{
 	int ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION = REDEFINABLE_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
-	 * The number of structural features of the the '<em>Activity Node</em>' class.
+	 * The number of structural features of the '<em>Activity Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -16286,7 +16286,7 @@ public interface UML2Package extends EPackage{
 	int EXECUTABLE_NODE__HANDLER = ACTIVITY_NODE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Executable Node</em>' class.
+	 * The number of structural features of the '<em>Executable Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -16547,7 +16547,7 @@ public interface UML2Package extends EPackage{
 	int ACTION__LOCAL_POSTCONDITION = EXECUTABLE_NODE_FEATURE_COUNT + 5;
 
 	/**
-	 * The number of structural features of the the '<em>Action</em>' class.
+	 * The number of structural features of the '<em>Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -16790,7 +16790,7 @@ public interface UML2Package extends EPackage{
 	int OBJECT_NODE__SELECTION = ACTIVITY_NODE_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Object Node</em>' class.
+	 * The number of structural features of the '<em>Object Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -16988,7 +16988,7 @@ public interface UML2Package extends EPackage{
 	int CONTROL_NODE__IN_INTERRUPTIBLE_REGION = ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION;
 
 	/**
-	 * The number of structural features of the the '<em>Control Node</em>' class.
+	 * The number of structural features of the '<em>Control Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -17204,7 +17204,7 @@ public interface UML2Package extends EPackage{
 	int CONTROL_FLOW__INTERRUPTS = ACTIVITY_EDGE__INTERRUPTS;
 
 	/**
-	 * The number of structural features of the the '<em>Control Flow</em>' class.
+	 * The number of structural features of the '<em>Control Flow</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -17456,7 +17456,7 @@ public interface UML2Package extends EPackage{
 	int OBJECT_FLOW__SELECTION = ACTIVITY_EDGE_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Object Flow</em>' class.
+	 * The number of structural features of the '<em>Object Flow</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -17654,7 +17654,7 @@ public interface UML2Package extends EPackage{
 	int INITIAL_NODE__IN_INTERRUPTIBLE_REGION = CONTROL_NODE__IN_INTERRUPTIBLE_REGION;
 
 	/**
-	 * The number of structural features of the the '<em>Initial Node</em>' class.
+	 * The number of structural features of the '<em>Initial Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -17852,7 +17852,7 @@ public interface UML2Package extends EPackage{
 	int FINAL_NODE__IN_INTERRUPTIBLE_REGION = CONTROL_NODE__IN_INTERRUPTIBLE_REGION;
 
 	/**
-	 * The number of structural features of the the '<em>Final Node</em>' class.
+	 * The number of structural features of the '<em>Final Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -18050,7 +18050,7 @@ public interface UML2Package extends EPackage{
 	int ACTIVITY_FINAL_NODE__IN_INTERRUPTIBLE_REGION = FINAL_NODE__IN_INTERRUPTIBLE_REGION;
 
 	/**
-	 * The number of structural features of the the '<em>Activity Final Node</em>' class.
+	 * The number of structural features of the '<em>Activity Final Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -18257,7 +18257,7 @@ public interface UML2Package extends EPackage{
 	int DECISION_NODE__DECISION_INPUT = CONTROL_NODE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Decision Node</em>' class.
+	 * The number of structural features of the '<em>Decision Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -18455,7 +18455,7 @@ public interface UML2Package extends EPackage{
 	int MERGE_NODE__IN_INTERRUPTIBLE_REGION = CONTROL_NODE__IN_INTERRUPTIBLE_REGION;
 
 	/**
-	 * The number of structural features of the the '<em>Merge Node</em>' class.
+	 * The number of structural features of the '<em>Merge Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -18752,7 +18752,7 @@ public interface UML2Package extends EPackage{
 	int PIN__LOWER_VALUE = OBJECT_NODE_FEATURE_COUNT + 5;
 
 	/**
-	 * The number of structural features of the the '<em>Pin</em>' class.
+	 * The number of structural features of the '<em>Pin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -19049,7 +19049,7 @@ public interface UML2Package extends EPackage{
 	int OUTPUT_PIN__LOWER_VALUE = PIN__LOWER_VALUE;
 
 	/**
-	 * The number of structural features of the the '<em>Output Pin</em>' class.
+	 * The number of structural features of the '<em>Output Pin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -19346,7 +19346,7 @@ public interface UML2Package extends EPackage{
 	int INPUT_PIN__LOWER_VALUE = PIN__LOWER_VALUE;
 
 	/**
-	 * The number of structural features of the the '<em>Input Pin</em>' class.
+	 * The number of structural features of the '<em>Input Pin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -19598,7 +19598,7 @@ public interface UML2Package extends EPackage{
 	int ACTIVITY_PARAMETER_NODE__PARAMETER = OBJECT_NODE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Activity Parameter Node</em>' class.
+	 * The number of structural features of the '<em>Activity Parameter Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -19904,7 +19904,7 @@ public interface UML2Package extends EPackage{
 	int VALUE_PIN__VALUE = INPUT_PIN_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Value Pin</em>' class.
+	 * The number of structural features of the '<em>Value Pin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -20282,7 +20282,7 @@ public interface UML2Package extends EPackage{
 	int INTERFACE__PROTOCOL = CLASSIFIER_FEATURE_COUNT + 5;
 
 	/**
-	 * The number of structural features of the the '<em>Interface</em>' class.
+	 * The number of structural features of the '<em>Interface</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -20507,7 +20507,7 @@ public interface UML2Package extends EPackage{
 	int IMPLEMENTATION__IMPLEMENTING_CLASSIFIER = REALIZATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Implementation</em>' class.
+	 * The number of structural features of the '<em>Implementation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -20876,7 +20876,7 @@ public interface UML2Package extends EPackage{
 	int ARTIFACT__OWNED_ATTRIBUTE = CLASSIFIER_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Artifact</em>' class.
+	 * The number of structural features of the '<em>Artifact</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -21074,7 +21074,7 @@ public interface UML2Package extends EPackage{
 	int MANIFESTATION__UTILIZED_ELEMENT = ABSTRACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Manifestation</em>' class.
+	 * The number of structural features of the '<em>Manifestation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -21398,7 +21398,7 @@ public interface UML2Package extends EPackage{
 	int ACTOR__OCCURRENCE = CLASSIFIER__OCCURRENCE;
 
 	/**
-	 * The number of structural features of the the '<em>Actor</em>' class.
+	 * The number of structural features of the '<em>Actor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -21569,7 +21569,7 @@ public interface UML2Package extends EPackage{
 	int EXTEND__EXTENSION_LOCATION = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
-	 * The number of structural features of the the '<em>Extend</em>' class.
+	 * The number of structural features of the '<em>Extend</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -21974,7 +21974,7 @@ public interface UML2Package extends EPackage{
 	int USE_CASE__SUBJECT = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Use Case</em>' class.
+	 * The number of structural features of the '<em>Use Case</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -22109,7 +22109,7 @@ public interface UML2Package extends EPackage{
 	int EXTENSION_POINT__USE_CASE = REDEFINABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Extension Point</em>' class.
+	 * The number of structural features of the '<em>Extension Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -22262,7 +22262,7 @@ public interface UML2Package extends EPackage{
 	int INCLUDE__ADDITION = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Include</em>' class.
+	 * The number of structural features of the '<em>Include</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -23128,7 +23128,7 @@ public interface UML2Package extends EPackage{
 	int COLLABORATION_OCCURRENCE__ROLE_BINDING = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Collaboration Occurrence</em>' class.
+	 * The number of structural features of the '<em>Collaboration Occurrence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -23542,7 +23542,7 @@ public interface UML2Package extends EPackage{
 	int COLLABORATION__COLLABORATION_ROLE = BEHAVIORED_CLASSIFIER_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Collaboration</em>' class.
+	 * The number of structural features of the '<em>Collaboration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -23992,7 +23992,7 @@ public interface UML2Package extends EPackage{
 	int PORT__PROTOCOL = PROPERTY_FEATURE_COUNT + 5;
 
 	/**
-	 * The number of structural features of the the '<em>Port</em>' class.
+	 * The number of structural features of the '<em>Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -24361,7 +24361,7 @@ public interface UML2Package extends EPackage{
 	int ENCAPSULATED_CLASSIFIER__OWNED_PORT = STRUCTURED_CLASSIFIER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Encapsulated Classifier</em>' class.
+	 * The number of structural features of the '<em>Encapsulated Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -24478,7 +24478,7 @@ public interface UML2Package extends EPackage{
 	int TRIGGER__PORT = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Trigger</em>' class.
+	 * The number of structural features of the '<em>Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -24595,7 +24595,7 @@ public interface UML2Package extends EPackage{
 	int MESSAGE_TRIGGER__PORT = TRIGGER__PORT;
 
 	/**
-	 * The number of structural features of the the '<em>Message Trigger</em>' class.
+	 * The number of structural features of the '<em>Message Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -24721,7 +24721,7 @@ public interface UML2Package extends EPackage{
 	int CALL_TRIGGER__OPERATION = MESSAGE_TRIGGER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Call Trigger</em>' class.
+	 * The number of structural features of the '<em>Call Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -24847,7 +24847,7 @@ public interface UML2Package extends EPackage{
 	int CHANGE_TRIGGER__CHANGE_EXPRESSION = TRIGGER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Change Trigger</em>' class.
+	 * The number of structural features of the '<em>Change Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -25108,7 +25108,7 @@ public interface UML2Package extends EPackage{
 	int RECEPTION__SIGNAL = BEHAVIORAL_FEATURE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Reception</em>' class.
+	 * The number of structural features of the '<em>Reception</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -25441,7 +25441,7 @@ public interface UML2Package extends EPackage{
 	int SIGNAL__OWNED_ATTRIBUTE = CLASSIFIER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Signal</em>' class.
+	 * The number of structural features of the '<em>Signal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -25567,7 +25567,7 @@ public interface UML2Package extends EPackage{
 	int SIGNAL_TRIGGER__SIGNAL = MESSAGE_TRIGGER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Signal Trigger</em>' class.
+	 * The number of structural features of the '<em>Signal Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -25702,7 +25702,7 @@ public interface UML2Package extends EPackage{
 	int TIME_TRIGGER__WHEN = TRIGGER_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Time Trigger</em>' class.
+	 * The number of structural features of the '<em>Time Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -25819,7 +25819,7 @@ public interface UML2Package extends EPackage{
 	int ANY_TRIGGER__PORT = MESSAGE_TRIGGER__PORT;
 
 	/**
-	 * The number of structural features of the the '<em>Any Trigger</em>' class.
+	 * The number of structural features of the '<em>Any Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -26026,7 +26026,7 @@ public interface UML2Package extends EPackage{
 	int VARIABLE__SCOPE = CONNECTABLE_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
-	 * The number of structural features of the the '<em>Variable</em>' class.
+	 * The number of structural features of the '<em>Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -26386,7 +26386,7 @@ public interface UML2Package extends EPackage{
 	int STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE = ACTION_FEATURE_COUNT + 10;
 
 	/**
-	 * The number of structural features of the the '<em>Structured Activity Node</em>' class.
+	 * The number of structural features of the '<em>Structured Activity Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -26782,7 +26782,7 @@ public interface UML2Package extends EPackage{
 	int CONDITIONAL_NODE__RESULT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Conditional Node</em>' class.
+	 * The number of structural features of the '<em>Conditional Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -26881,7 +26881,7 @@ public interface UML2Package extends EPackage{
 	int CLAUSE__BODY_OUTPUT = ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The number of structural features of the the '<em>Clause</em>' class.
+	 * The number of structural features of the '<em>Clause</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -27322,7 +27322,7 @@ public interface UML2Package extends EPackage{
 	int LOOP_NODE__LOOP_VARIABLE_INPUT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 8;
 
 	/**
-	 * The number of structural features of the the '<em>Loop Node</em>' class.
+	 * The number of structural features of the '<em>Loop Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -27952,7 +27952,7 @@ public interface UML2Package extends EPackage{
 	int INTERACTION__FORMAL_GATE = BEHAVIOR_FEATURE_COUNT + 7;
 
 	/**
-	 * The number of structural features of the the '<em>Interaction</em>' class.
+	 * The number of structural features of the '<em>Interaction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -28096,7 +28096,7 @@ public interface UML2Package extends EPackage{
 	int INTERACTION_FRAGMENT__ENCLOSING_OPERAND = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Interaction Fragment</em>' class.
+	 * The number of structural features of the '<em>Interaction Fragment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -28249,7 +28249,7 @@ public interface UML2Package extends EPackage{
 	int LIFELINE__DECOMPOSED_AS = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Lifeline</em>' class.
+	 * The number of structural features of the '<em>Lifeline</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -28429,7 +28429,7 @@ public interface UML2Package extends EPackage{
 	int MESSAGE__ARGUMENT = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
-	 * The number of structural features of the the '<em>Message</em>' class.
+	 * The number of structural features of the '<em>Message</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -28555,7 +28555,7 @@ public interface UML2Package extends EPackage{
 	int GENERAL_ORDERING__AFTER = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>General Ordering</em>' class.
+	 * The number of structural features of the '<em>General Ordering</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -28681,7 +28681,7 @@ public interface UML2Package extends EPackage{
 	int MESSAGE_END__SEND_MESSAGE = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Message End</em>' class.
+	 * The number of structural features of the '<em>Message End</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -28879,7 +28879,7 @@ public interface UML2Package extends EPackage{
 	int EVENT_OCCURRENCE__TO_BEFORE = INTERACTION_FRAGMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The number of structural features of the the '<em>Event Occurrence</em>' class.
+	 * The number of structural features of the '<em>Event Occurrence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -29050,7 +29050,7 @@ public interface UML2Package extends EPackage{
 	int EXECUTION_OCCURRENCE__BEHAVIOR = INTERACTION_FRAGMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Execution Occurrence</em>' class.
+	 * The number of structural features of the '<em>Execution Occurrence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -29203,7 +29203,7 @@ public interface UML2Package extends EPackage{
 	int STATE_INVARIANT__INVARIANT = INTERACTION_FRAGMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>State Invariant</em>' class.
+	 * The number of structural features of the '<em>State Invariant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -29401,7 +29401,7 @@ public interface UML2Package extends EPackage{
 	int STOP__TO_BEFORE = EVENT_OCCURRENCE__TO_BEFORE;
 
 	/**
-	 * The number of structural features of the the '<em>Stop</em>' class.
+	 * The number of structural features of the '<em>Stop</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -29491,7 +29491,7 @@ public interface UML2Package extends EPackage{
 	int TEMPLATE_SIGNATURE__TEMPLATE = ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Template Signature</em>' class.
+	 * The number of structural features of the '<em>Template Signature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -29581,7 +29581,7 @@ public interface UML2Package extends EPackage{
 	int TEMPLATE_PARAMETER__OWNED_DEFAULT = ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Template Parameter</em>' class.
+	 * The number of structural features of the '<em>Template Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -29662,7 +29662,7 @@ public interface UML2Package extends EPackage{
 	int STRING_EXPRESSION__OWNING_EXPRESSION = TEMPLATEABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>String Expression</em>' class.
+	 * The number of structural features of the '<em>String Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -29725,7 +29725,7 @@ public interface UML2Package extends EPackage{
 	int PARAMETERABLE_ELEMENT__OWNING_PARAMETER = ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Parameterable Element</em>' class.
+	 * The number of structural features of the '<em>Parameterable Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -29824,7 +29824,7 @@ public interface UML2Package extends EPackage{
 	int TEMPLATE_BINDING__PARAMETER_SUBSTITUTION = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Template Binding</em>' class.
+	 * The number of structural features of the '<em>Template Binding</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -29905,7 +29905,7 @@ public interface UML2Package extends EPackage{
 	int TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL = ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Template Parameter Substitution</em>' class.
+	 * The number of structural features of the '<em>Template Parameter Substitution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -29995,7 +29995,7 @@ public interface UML2Package extends EPackage{
 	int OPERATION_TEMPLATE_PARAMETER__OWNED_DEFAULT = TEMPLATE_PARAMETER__OWNED_DEFAULT;
 
 	/**
-	 * The number of structural features of the the '<em>Operation Template Parameter</em>' class.
+	 * The number of structural features of the '<em>Operation Template Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -30094,7 +30094,7 @@ public interface UML2Package extends EPackage{
 	int CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE = TEMPLATE_PARAMETER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Classifier Template Parameter</em>' class.
+	 * The number of structural features of the '<em>Classifier Template Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -30418,7 +30418,7 @@ public interface UML2Package extends EPackage{
 	int PARAMETERABLE_CLASSIFIER__OCCURRENCE = CLASSIFIER__OCCURRENCE;
 
 	/**
-	 * The number of structural features of the the '<em>Parameterable Classifier</em>' class.
+	 * The number of structural features of the '<em>Parameterable Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -30589,7 +30589,7 @@ public interface UML2Package extends EPackage{
 	int REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE = REDEFINABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Redefinable Template Signature</em>' class.
+	 * The number of structural features of the '<em>Redefinable Template Signature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -30913,7 +30913,7 @@ public interface UML2Package extends EPackage{
 	int TEMPLATEABLE_CLASSIFIER__OCCURRENCE = CLASSIFIER__OCCURRENCE;
 
 	/**
-	 * The number of structural features of the the '<em>Templateable Classifier</em>' class.
+	 * The number of structural features of the '<em>Templateable Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -31003,7 +31003,7 @@ public interface UML2Package extends EPackage{
 	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT = TEMPLATE_PARAMETER__OWNED_DEFAULT;
 
 	/**
-	 * The number of structural features of the the '<em>Connectable Element Template Parameter</em>' class.
+	 * The number of structural features of the '<em>Connectable Element Template Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -31551,7 +31551,7 @@ public interface UML2Package extends EPackage{
 	int FORK_NODE__IN_INTERRUPTIBLE_REGION = CONTROL_NODE__IN_INTERRUPTIBLE_REGION;
 
 	/**
-	 * The number of structural features of the the '<em>Fork Node</em>' class.
+	 * The number of structural features of the '<em>Fork Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -31767,7 +31767,7 @@ public interface UML2Package extends EPackage{
 	int JOIN_NODE__JOIN_SPEC = CONTROL_NODE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Join Node</em>' class.
+	 * The number of structural features of the '<em>Join Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -31965,7 +31965,7 @@ public interface UML2Package extends EPackage{
 	int FLOW_FINAL_NODE__IN_INTERRUPTIBLE_REGION = FINAL_NODE__IN_INTERRUPTIBLE_REGION;
 
 	/**
-	 * The number of structural features of the the '<em>Flow Final Node</em>' class.
+	 * The number of structural features of the '<em>Flow Final Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -32208,7 +32208,7 @@ public interface UML2Package extends EPackage{
 	int CENTRAL_BUFFER_NODE__SELECTION = OBJECT_NODE__SELECTION;
 
 	/**
-	 * The number of structural features of the the '<em>Central Buffer Node</em>' class.
+	 * The number of structural features of the '<em>Central Buffer Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -32397,7 +32397,7 @@ public interface UML2Package extends EPackage{
 	int ACTIVITY_PARTITION__REPRESENTS = NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
-	 * The number of structural features of the the '<em>Activity Partition</em>' class.
+	 * The number of structural features of the '<em>Activity Partition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -32658,7 +32658,7 @@ public interface UML2Package extends EPackage{
 	int EXPANSION_NODE__REGION_AS_INPUT = OBJECT_NODE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Expansion Node</em>' class.
+	 * The number of structural features of the '<em>Expansion Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -33045,7 +33045,7 @@ public interface UML2Package extends EPackage{
 	int EXPANSION_REGION__INPUT_ELEMENT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Expansion Region</em>' class.
+	 * The number of structural features of the '<em>Expansion Region</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -33126,7 +33126,7 @@ public interface UML2Package extends EPackage{
 	int EXCEPTION_HANDLER__EXCEPTION_TYPE = ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Exception Handler</em>' class.
+	 * The number of structural features of the '<em>Exception Handler</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -33297,7 +33297,7 @@ public interface UML2Package extends EPackage{
 	int INTERACTION_OCCURRENCE__ARGUMENT = INTERACTION_FRAGMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Interaction Occurrence</em>' class.
+	 * The number of structural features of the '<em>Interaction Occurrence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -33423,7 +33423,7 @@ public interface UML2Package extends EPackage{
 	int GATE__SEND_MESSAGE = MESSAGE_END__SEND_MESSAGE;
 
 	/**
-	 * The number of structural features of the the '<em>Gate</em>' class.
+	 * The number of structural features of the '<em>Gate</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -33594,7 +33594,7 @@ public interface UML2Package extends EPackage{
 	int PART_DECOMPOSITION__ARGUMENT = INTERACTION_OCCURRENCE__ARGUMENT;
 
 	/**
-	 * The number of structural features of the the '<em>Part Decomposition</em>' class.
+	 * The number of structural features of the '<em>Part Decomposition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -33801,7 +33801,7 @@ public interface UML2Package extends EPackage{
 	int INTERACTION_OPERAND__FRAGMENT = NAMESPACE_FEATURE_COUNT + 5;
 
 	/**
-	 * The number of structural features of the the '<em>Interaction Operand</em>' class.
+	 * The number of structural features of the '<em>Interaction Operand</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -33990,7 +33990,7 @@ public interface UML2Package extends EPackage{
 	int INTERACTION_CONSTRAINT__MAXINT = CONSTRAINT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Interaction Constraint</em>' class.
+	 * The number of structural features of the '<em>Interaction Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -34161,7 +34161,7 @@ public interface UML2Package extends EPackage{
 	int COMBINED_FRAGMENT__CFRAGMENT_GATE = INTERACTION_FRAGMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Combined Fragment</em>' class.
+	 * The number of structural features of the '<em>Combined Fragment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -34314,7 +34314,7 @@ public interface UML2Package extends EPackage{
 	int CONTINUATION__SETTING = INTERACTION_FRAGMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Continuation</em>' class.
+	 * The number of structural features of the '<em>Continuation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -34908,7 +34908,7 @@ public interface UML2Package extends EPackage{
 	int STATE_MACHINE__STATE_MACHINE_REDEFINITION_CONTEXT = BEHAVIOR_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>State Machine</em>' class.
+	 * The number of structural features of the '<em>State Machine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -35124,7 +35124,7 @@ public interface UML2Package extends EPackage{
 	int REGION__EXTENDED_REGION = NAMESPACE_FEATURE_COUNT + 6;
 
 	/**
-	 * The number of structural features of the the '<em>Region</em>' class.
+	 * The number of structural features of the '<em>Region</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -35259,7 +35259,7 @@ public interface UML2Package extends EPackage{
 	int VERTEX__INCOMING = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Vertex</em>' class.
+	 * The number of structural features of the '<em>Vertex</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -35403,7 +35403,7 @@ public interface UML2Package extends EPackage{
 	int PSEUDOSTATE__KIND = VERTEX_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Pseudostate</em>' class.
+	 * The number of structural features of the '<em>Pseudostate</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -35718,7 +35718,7 @@ public interface UML2Package extends EPackage{
 	int STATE__STATE_INVARIANT = NAMESPACE_FEATURE_COUNT + 17;
 
 	/**
-	 * The number of structural features of the the '<em>State</em>' class.
+	 * The number of structural features of the '<em>State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -35871,7 +35871,7 @@ public interface UML2Package extends EPackage{
 	int CONNECTION_POINT_REFERENCE__EXIT = VERTEX_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Connection Point Reference</em>' class.
+	 * The number of structural features of the '<em>Connection Point Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -36069,7 +36069,7 @@ public interface UML2Package extends EPackage{
 	int TRANSITION__EFFECT = REDEFINABLE_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
-	 * The number of structural features of the the '<em>Transition</em>' class.
+	 * The number of structural features of the '<em>Transition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -36384,7 +36384,7 @@ public interface UML2Package extends EPackage{
 	int FINAL_STATE__STATE_INVARIANT = STATE__STATE_INVARIANT;
 
 	/**
-	 * The number of structural features of the the '<em>Final State</em>' class.
+	 * The number of structural features of the '<em>Final State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -36663,7 +36663,7 @@ public interface UML2Package extends EPackage{
 	int CREATE_OBJECT_ACTION__RESULT = ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Create Object Action</em>' class.
+	 * The number of structural features of the '<em>Create Object Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -36951,7 +36951,7 @@ public interface UML2Package extends EPackage{
 	int DESTROY_OBJECT_ACTION__TARGET = ACTION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Destroy Object Action</em>' class.
+	 * The number of structural features of the '<em>Destroy Object Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -37239,7 +37239,7 @@ public interface UML2Package extends EPackage{
 	int TEST_IDENTITY_ACTION__RESULT = ACTION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Test Identity Action</em>' class.
+	 * The number of structural features of the '<em>Test Identity Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -37509,7 +37509,7 @@ public interface UML2Package extends EPackage{
 	int READ_SELF_ACTION__RESULT = ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Read Self Action</em>' class.
+	 * The number of structural features of the '<em>Read Self Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -37788,7 +37788,7 @@ public interface UML2Package extends EPackage{
 	int STRUCTURAL_FEATURE_ACTION__OBJECT = ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Structural Feature Action</em>' class.
+	 * The number of structural features of the '<em>Structural Feature Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -38076,7 +38076,7 @@ public interface UML2Package extends EPackage{
 	int READ_STRUCTURAL_FEATURE_ACTION__RESULT = STRUCTURAL_FEATURE_ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Read Structural Feature Action</em>' class.
+	 * The number of structural features of the '<em>Read Structural Feature Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -38364,7 +38364,7 @@ public interface UML2Package extends EPackage{
 	int WRITE_STRUCTURAL_FEATURE_ACTION__VALUE = STRUCTURAL_FEATURE_ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Write Structural Feature Action</em>' class.
+	 * The number of structural features of the '<em>Write Structural Feature Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -38643,7 +38643,7 @@ public interface UML2Package extends EPackage{
 	int CLEAR_STRUCTURAL_FEATURE_ACTION__OBJECT = STRUCTURAL_FEATURE_ACTION__OBJECT;
 
 	/**
-	 * The number of structural features of the the '<em>Clear Structural Feature Action</em>' class.
+	 * The number of structural features of the '<em>Clear Structural Feature Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -38931,7 +38931,7 @@ public interface UML2Package extends EPackage{
 	int REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__VALUE = WRITE_STRUCTURAL_FEATURE_ACTION__VALUE;
 
 	/**
-	 * The number of structural features of the the '<em>Remove Structural Feature Value Action</em>' class.
+	 * The number of structural features of the '<em>Remove Structural Feature Value Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -39237,7 +39237,7 @@ public interface UML2Package extends EPackage{
 	int ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT = WRITE_STRUCTURAL_FEATURE_ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Add Structural Feature Value Action</em>' class.
+	 * The number of structural features of the '<em>Add Structural Feature Value Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -39507,7 +39507,7 @@ public interface UML2Package extends EPackage{
 	int LINK_ACTION__END_DATA = ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Link Action</em>' class.
+	 * The number of structural features of the '<em>Link Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -39579,7 +39579,7 @@ public interface UML2Package extends EPackage{
 	int LINK_END_DATA__QUALIFIER = ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Link End Data</em>' class.
+	 * The number of structural features of the '<em>Link End Data</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -39858,7 +39858,7 @@ public interface UML2Package extends EPackage{
 	int READ_LINK_ACTION__RESULT = LINK_ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Read Link Action</em>' class.
+	 * The number of structural features of the '<em>Read Link Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -39948,7 +39948,7 @@ public interface UML2Package extends EPackage{
 	int LINK_END_CREATION_DATA__INSERT_AT = LINK_END_DATA_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Link End Creation Data</em>' class.
+	 * The number of structural features of the '<em>Link End Creation Data</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -40218,7 +40218,7 @@ public interface UML2Package extends EPackage{
 	int WRITE_LINK_ACTION__END_DATA = LINK_ACTION__END_DATA;
 
 	/**
-	 * The number of structural features of the the '<em>Write Link Action</em>' class.
+	 * The number of structural features of the '<em>Write Link Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -40488,7 +40488,7 @@ public interface UML2Package extends EPackage{
 	int CREATE_LINK_ACTION__END_DATA = WRITE_LINK_ACTION__END_DATA;
 
 	/**
-	 * The number of structural features of the the '<em>Create Link Action</em>' class.
+	 * The number of structural features of the '<em>Create Link Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -40758,7 +40758,7 @@ public interface UML2Package extends EPackage{
 	int DESTROY_LINK_ACTION__END_DATA = WRITE_LINK_ACTION__END_DATA;
 
 	/**
-	 * The number of structural features of the the '<em>Destroy Link Action</em>' class.
+	 * The number of structural features of the '<em>Destroy Link Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -41037,7 +41037,7 @@ public interface UML2Package extends EPackage{
 	int CLEAR_ASSOCIATION_ACTION__ASSOCIATION = ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Clear Association Action</em>' class.
+	 * The number of structural features of the '<em>Clear Association Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -41307,7 +41307,7 @@ public interface UML2Package extends EPackage{
 	int VARIABLE_ACTION__VARIABLE = ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Variable Action</em>' class.
+	 * The number of structural features of the '<em>Variable Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -41586,7 +41586,7 @@ public interface UML2Package extends EPackage{
 	int READ_VARIABLE_ACTION__RESULT = VARIABLE_ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Read Variable Action</em>' class.
+	 * The number of structural features of the '<em>Read Variable Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -41865,7 +41865,7 @@ public interface UML2Package extends EPackage{
 	int WRITE_VARIABLE_ACTION__VALUE = VARIABLE_ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Write Variable Action</em>' class.
+	 * The number of structural features of the '<em>Write Variable Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -42135,7 +42135,7 @@ public interface UML2Package extends EPackage{
 	int CLEAR_VARIABLE_ACTION__VARIABLE = VARIABLE_ACTION__VARIABLE;
 
 	/**
-	 * The number of structural features of the the '<em>Clear Variable Action</em>' class.
+	 * The number of structural features of the '<em>Clear Variable Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -42432,7 +42432,7 @@ public interface UML2Package extends EPackage{
 	int ADD_VARIABLE_VALUE_ACTION__INSERT_AT = WRITE_VARIABLE_ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Add Variable Value Action</em>' class.
+	 * The number of structural features of the '<em>Add Variable Value Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -42711,7 +42711,7 @@ public interface UML2Package extends EPackage{
 	int REMOVE_VARIABLE_VALUE_ACTION__VALUE = WRITE_VARIABLE_ACTION__VALUE;
 
 	/**
-	 * The number of structural features of the the '<em>Remove Variable Value Action</em>' class.
+	 * The number of structural features of the '<em>Remove Variable Value Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -42999,7 +42999,7 @@ public interface UML2Package extends EPackage{
 	int APPLY_FUNCTION_ACTION__RESULT = ACTION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Apply Function Action</em>' class.
+	 * The number of structural features of the '<em>Apply Function Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -43152,7 +43152,7 @@ public interface UML2Package extends EPackage{
 	int PRIMITIVE_FUNCTION__LANGUAGE = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Primitive Function</em>' class.
+	 * The number of structural features of the '<em>Primitive Function</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -43431,7 +43431,7 @@ public interface UML2Package extends EPackage{
 	int INVOCATION_ACTION__ON_PORT = ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Invocation Action</em>' class.
+	 * The number of structural features of the '<em>Invocation Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -43728,7 +43728,7 @@ public interface UML2Package extends EPackage{
 	int CALL_ACTION__RESULT = INVOCATION_ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Call Action</em>' class.
+	 * The number of structural features of the '<em>Call Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -44025,7 +44025,7 @@ public interface UML2Package extends EPackage{
 	int SEND_SIGNAL_ACTION__SIGNAL = INVOCATION_ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Send Signal Action</em>' class.
+	 * The number of structural features of the '<em>Send Signal Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -44313,7 +44313,7 @@ public interface UML2Package extends EPackage{
 	int BROADCAST_SIGNAL_ACTION__SIGNAL = INVOCATION_ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Broadcast Signal Action</em>' class.
+	 * The number of structural features of the '<em>Broadcast Signal Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -44610,7 +44610,7 @@ public interface UML2Package extends EPackage{
 	int SEND_OBJECT_ACTION__REQUEST = INVOCATION_ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Send Object Action</em>' class.
+	 * The number of structural features of the '<em>Send Object Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -44925,7 +44925,7 @@ public interface UML2Package extends EPackage{
 	int CALL_OPERATION_ACTION__TARGET = CALL_ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Call Operation Action</em>' class.
+	 * The number of structural features of the '<em>Call Operation Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -45231,7 +45231,7 @@ public interface UML2Package extends EPackage{
 	int CALL_BEHAVIOR_ACTION__BEHAVIOR = CALL_ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Call Behavior Action</em>' class.
+	 * The number of structural features of the '<em>Call Behavior Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -45464,7 +45464,7 @@ public interface UML2Package extends EPackage{
 	int TIME_EXPRESSION__EVENT = VALUE_SPECIFICATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Time Expression</em>' class.
+	 * The number of structural features of the '<em>Time Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -45617,7 +45617,7 @@ public interface UML2Package extends EPackage{
 	int DURATION__EVENT = VALUE_SPECIFICATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Duration</em>' class.
+	 * The number of structural features of the '<em>Duration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -45914,7 +45914,7 @@ public interface UML2Package extends EPackage{
 	int TIME_OBSERVATION_ACTION__NOW = WRITE_STRUCTURAL_FEATURE_ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Time Observation Action</em>' class.
+	 * The number of structural features of the '<em>Time Observation Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -46067,7 +46067,7 @@ public interface UML2Package extends EPackage{
 	int INTERVAL__MAX = VALUE_SPECIFICATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Interval</em>' class.
+	 * The number of structural features of the '<em>Interval</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -46220,7 +46220,7 @@ public interface UML2Package extends EPackage{
 	int DURATION_INTERVAL__MAX = INTERVAL__MAX;
 
 	/**
-	 * The number of structural features of the the '<em>Duration Interval</em>' class.
+	 * The number of structural features of the '<em>Duration Interval</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -46391,7 +46391,7 @@ public interface UML2Package extends EPackage{
 	int INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT = CONSTRAINT__CONSTRAINED_ELEMENT;
 
 	/**
-	 * The number of structural features of the the '<em>Interval Constraint</em>' class.
+	 * The number of structural features of the '<em>Interval Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -46562,7 +46562,7 @@ public interface UML2Package extends EPackage{
 	int TIME_CONSTRAINT__CONSTRAINED_ELEMENT = INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT;
 
 	/**
-	 * The number of structural features of the the '<em>Time Constraint</em>' class.
+	 * The number of structural features of the '<em>Time Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -46715,7 +46715,7 @@ public interface UML2Package extends EPackage{
 	int TIME_INTERVAL__MAX = INTERVAL__MAX;
 
 	/**
-	 * The number of structural features of the the '<em>Time Interval</em>' class.
+	 * The number of structural features of the '<em>Time Interval</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -47012,7 +47012,7 @@ public interface UML2Package extends EPackage{
 	int DURATION_OBSERVATION_ACTION__DURATION = WRITE_STRUCTURAL_FEATURE_ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Duration Observation Action</em>' class.
+	 * The number of structural features of the '<em>Duration Observation Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -47183,7 +47183,7 @@ public interface UML2Package extends EPackage{
 	int DURATION_CONSTRAINT__CONSTRAINED_ELEMENT = INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT;
 
 	/**
-	 * The number of structural features of the the '<em>Duration Constraint</em>' class.
+	 * The number of structural features of the '<em>Duration Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -47426,7 +47426,7 @@ public interface UML2Package extends EPackage{
 	int DATA_STORE_NODE__SELECTION = CENTRAL_BUFFER_NODE__SELECTION;
 
 	/**
-	 * The number of structural features of the the '<em>Data Store Node</em>' class.
+	 * The number of structural features of the '<em>Data Store Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -47507,7 +47507,7 @@ public interface UML2Package extends EPackage{
 	int INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE = ACTIVITY_GROUP_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Interruptible Activity Region</em>' class.
+	 * The number of structural features of the '<em>Interruptible Activity Region</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -47633,7 +47633,7 @@ public interface UML2Package extends EPackage{
 	int PARAMETER_SET__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Parameter Set</em>' class.
+	 * The number of structural features of the '<em>Parameter Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -48146,7 +48146,7 @@ public interface UML2Package extends EPackage{
 	int COMPONENT__OWNED_MEMBER = CLASS_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>Component</em>' class.
+	 * The number of structural features of the '<em>Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -48353,7 +48353,7 @@ public interface UML2Package extends EPackage{
 	int DEPLOYMENT__CONFIGURATION = DEPENDENCY_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Deployment</em>' class.
+	 * The number of structural features of the '<em>Deployment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -48461,7 +48461,7 @@ public interface UML2Package extends EPackage{
 	int DEPLOYED_ARTIFACT__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
 
 	/**
-	 * The number of structural features of the the '<em>Deployed Artifact</em>' class.
+	 * The number of structural features of the '<em>Deployed Artifact</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -48587,7 +48587,7 @@ public interface UML2Package extends EPackage{
 	int DEPLOYMENT_TARGET__DEPLOYED_ELEMENT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Deployment Target</em>' class.
+	 * The number of structural features of the '<em>Deployment Target</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -49082,7 +49082,7 @@ public interface UML2Package extends EPackage{
 	int NODE__NESTED_NODE = CLASS_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Node</em>' class.
+	 * The number of structural features of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -49577,7 +49577,7 @@ public interface UML2Package extends EPackage{
 	int DEVICE__NESTED_NODE = NODE__NESTED_NODE;
 
 	/**
-	 * The number of structural features of the the '<em>Device</em>' class.
+	 * The number of structural features of the '<em>Device</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -50072,7 +50072,7 @@ public interface UML2Package extends EPackage{
 	int EXECUTION_ENVIRONMENT__NESTED_NODE = NODE__NESTED_NODE;
 
 	/**
-	 * The number of structural features of the the '<em>Execution Environment</em>' class.
+	 * The number of structural features of the '<em>Execution Environment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -50441,7 +50441,7 @@ public interface UML2Package extends EPackage{
 	int COMMUNICATION_PATH__MEMBER_END = ASSOCIATION__MEMBER_END;
 
 	/**
-	 * The number of structural features of the the '<em>Communication Path</em>' class.
+	 * The number of structural features of the '<em>Communication Path</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -50531,7 +50531,7 @@ public interface UML2Package extends EPackage{
 	int PROTOCOL_CONFORMANCE__GENERAL_MACHINE = DIRECTED_RELATIONSHIP_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Protocol Conformance</em>' class.
+	 * The number of structural features of the '<em>Protocol Conformance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -51134,7 +51134,7 @@ public interface UML2Package extends EPackage{
 	int PROTOCOL_STATE_MACHINE__CONFORMANCE = STATE_MACHINE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Protocol State Machine</em>' class.
+	 * The number of structural features of the '<em>Protocol State Machine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -51359,7 +51359,7 @@ public interface UML2Package extends EPackage{
 	int PROTOCOL_TRANSITION__PRE_CONDITION = TRANSITION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Protocol Transition</em>' class.
+	 * The number of structural features of the '<em>Protocol Transition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -51638,7 +51638,7 @@ public interface UML2Package extends EPackage{
 	int READ_EXTENT_ACTION__CLASSIFIER = ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Read Extent Action</em>' class.
+	 * The number of structural features of the '<em>Read Extent Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -51935,7 +51935,7 @@ public interface UML2Package extends EPackage{
 	int RECLASSIFY_OBJECT_ACTION__OBJECT = ACTION_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Reclassify Object Action</em>' class.
+	 * The number of structural features of the '<em>Reclassify Object Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -52232,7 +52232,7 @@ public interface UML2Package extends EPackage{
 	int READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT = ACTION_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>Read Is Classified Object Action</em>' class.
+	 * The number of structural features of the '<em>Read Is Classified Object Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -52502,7 +52502,7 @@ public interface UML2Package extends EPackage{
 	int START_OWNED_BEHAVIOR_ACTION__OBJECT = ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Start Owned Behavior Action</em>' class.
+	 * The number of structural features of the '<em>Start Owned Behavior Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -52565,7 +52565,7 @@ public interface UML2Package extends EPackage{
 	int QUALIFIER_VALUE__VALUE = ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Qualifier Value</em>' class.
+	 * The number of structural features of the '<em>Qualifier Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -52853,7 +52853,7 @@ public interface UML2Package extends EPackage{
 	int READ_LINK_OBJECT_END_ACTION__RESULT = ACTION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Read Link Object End Action</em>' class.
+	 * The number of structural features of the '<em>Read Link Object End Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -53141,7 +53141,7 @@ public interface UML2Package extends EPackage{
 	int READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER = ACTION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Read Link Object End Qualifier Action</em>' class.
+	 * The number of structural features of the '<em>Read Link Object End Qualifier Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -53420,7 +53420,7 @@ public interface UML2Package extends EPackage{
 	int CREATE_LINK_OBJECT_ACTION__RESULT = CREATE_LINK_ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Create Link Object Action</em>' class.
+	 * The number of structural features of the '<em>Create Link Object Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -53699,7 +53699,7 @@ public interface UML2Package extends EPackage{
 	int ACCEPT_EVENT_ACTION__RESULT = ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Accept Event Action</em>' class.
+	 * The number of structural features of the '<em>Accept Event Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -53987,7 +53987,7 @@ public interface UML2Package extends EPackage{
 	int ACCEPT_CALL_ACTION__RETURN_INFORMATION = ACCEPT_EVENT_ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Accept Call Action</em>' class.
+	 * The number of structural features of the '<em>Accept Call Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -54275,7 +54275,7 @@ public interface UML2Package extends EPackage{
 	int REPLY_ACTION__RETURN_INFORMATION = ACTION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the the '<em>Reply Action</em>' class.
+	 * The number of structural features of the '<em>Reply Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -54545,7 +54545,7 @@ public interface UML2Package extends EPackage{
 	int RAISE_EXCEPTION_ACTION__EXCEPTION = ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Raise Exception Action</em>' class.
+	 * The number of structural features of the '<em>Raise Exception Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -54942,7 +54942,7 @@ public interface UML2Package extends EPackage{
 	int DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION = ARTIFACT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Deployment Specification</em>' class.
+	 * The number of structural features of the '<em>Deployment Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

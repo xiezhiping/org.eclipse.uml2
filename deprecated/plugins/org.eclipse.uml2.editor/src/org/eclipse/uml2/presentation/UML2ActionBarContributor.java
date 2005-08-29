@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ActionBarContributor.java,v 1.12 2005/05/18 16:42:19 khussey Exp $
+ * $Id: UML2ActionBarContributor.java,v 1.13 2005/08/29 19:23:15 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -439,6 +439,16 @@ public class UML2ActionBarContributor
 		menuManager.insertAfter("ui-actions", refreshViewerAction); //$NON-NLS-1$
 
 		super.addGlobalActions(menuManager);
+	}
+
+	/**
+	 * This ensures that a delete action will clean up all references to deleted objects.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected boolean removeAllReferencesOnDelete() {
+		return true;
 	}
 
 }

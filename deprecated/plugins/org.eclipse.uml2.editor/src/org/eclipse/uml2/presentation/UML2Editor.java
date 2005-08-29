@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.22 2005/06/13 17:58:45 khussey Exp $
+ * $Id: UML2Editor.java,v 1.23 2005/08/29 19:23:15 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -47,6 +47,8 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+
 import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
 
@@ -120,7 +122,6 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -1007,14 +1008,6 @@ public class UML2Editor
 	protected void pageChange(int pageIndex) {
 		super.pageChange(pageIndex);
 
-		// This is a temporary workaround... EATM
-		//
-		Control control = getControl(pageIndex);
-		if (control != null) {
-			control.setVisible(true);
-			control.setFocus();
-		}
-
 		if (contentOutlinePage != null) {
 			handleContentOutlineSelection(contentOutlinePage.getSelection());
 		}
@@ -1113,9 +1106,10 @@ public class UML2Editor
 	public IPropertySheetPage getPropertySheetPageGen() {
 		if (propertySheetPage == null) {
 			propertySheetPage =
-				new PropertySheetPage() {
-					public void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager, IStatusLineManager statusLineManager) {
-						super.makeContributions(menuManager, toolBarManager, statusLineManager);
+				new ExtendedPropertySheetPage(editingDomain) {
+					public void setSelectionToViewer(List selection) {
+						UML2Editor.this.setSelectionToViewer(selection);
+						UML2Editor.this.setFocus();
 					}
 
 					public void setActionBars(IActionBars actionBars) {
@@ -1132,16 +1126,17 @@ public class UML2Editor
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null) {
 			propertySheetPage =
-				new PropertySheetPage() {
-					public void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager, IStatusLineManager statusLineManager) {
-						super.makeContributions(menuManager, toolBarManager, statusLineManager);
-					}
+				new ExtendedPropertySheetPage(editingDomain) {
+				public void setSelectionToViewer(List selection) {
+					UML2Editor.this.setSelectionToViewer(selection);
+					UML2Editor.this.setFocus();
+				}
 
-					public void setActionBars(IActionBars actionBars) {
-						super.setActionBars(actionBars);
-						getActionBarContributor().shareGlobalActions(this, actionBars);
-					}
-				};
+				public void setActionBars(IActionBars actionBars) {
+					super.setActionBars(actionBars);
+					getActionBarContributor().shareGlobalActions(this, actionBars);
+				}
+			};
 			propertySheetPage.setPropertySourceProvider(new UML2AdapterFactoryContentProvider(adapterFactory));
 		}
 
@@ -1276,7 +1271,7 @@ public class UML2Editor
 	 */
 	protected void doSaveAs(URI uri, IEditorInput editorInput) {
 		((Resource)editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
-		setInput(editorInput);
+		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
 		IProgressMonitor progressMonitor =
 			getActionBars().getStatusLineManager() != null ?
@@ -1316,7 +1311,7 @@ public class UML2Editor
 	 */
 	public void init(IEditorSite site, IEditorInput editorInput) {
 		setSite(site);
-		setInput(editorInput);
+		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
 		site.setSelectionProvider(this);
 		site.getPage().addPartListener(partListener);
@@ -1329,7 +1324,12 @@ public class UML2Editor
 	 * @generated
 	 */
 	public void setFocus() {
-		getControl(getActivePage()).setFocus();
+		if (currentViewerPane != null) {
+			currentViewerPane.setFocus();
+		}
+		else {
+			getControl(getActivePage()).setFocus();
+		}
 	}
 
 	/**

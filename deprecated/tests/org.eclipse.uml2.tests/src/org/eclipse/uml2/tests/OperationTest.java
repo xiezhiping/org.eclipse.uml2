@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTest.java,v 1.4 2005/08/26 14:50:26 khussey Exp $
+ * $Id: OperationTest.java,v 1.5 2005/08/29 19:23:17 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -640,6 +640,8 @@ public class OperationTest extends BehavioralFeatureTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
+
 	/**
 	 * Tests the '{@link org.eclipse.uml2.Operation#isOrdered() <em>Is Ordered</em>}' feature getter.
 	 * <!-- begin-user-doc -->
@@ -998,7 +1000,6 @@ public class OperationTest extends BehavioralFeatureTest {
 		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
