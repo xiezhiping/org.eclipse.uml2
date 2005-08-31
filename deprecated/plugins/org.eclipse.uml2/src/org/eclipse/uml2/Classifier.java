@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.18 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Classifier.java,v 1.19 2005/08/31 15:26:23 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -725,8 +725,9 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 *            The classifier to which to create a generalization.
 	 * @return The new generalization.
 	 * @exception IllegalArgumentException
-	 *                If this classifier is already a direct or indirect parent
-	 *                or child of the general classifier.
+	 *                If this classifier is identical to the general classifier
+	 *                or is already a direct or indirect parent or child of the
+	 *                general classifier.
 	 */
 	Generalization createGeneralization(Classifier generalClassifier);
 

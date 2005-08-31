@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: feature.xml,v 1.21 2005/08/29 19:23:50 khussey Exp $
+ $Id: feature.xml,v 1.22 2005/08/31 15:26:07 khussey Exp $
 -->
 
 <feature
@@ -60,35 +60,35 @@
       id="org.eclipse.uml2.codegen.ecore"
       download-size="0"
       install-size="0"
-      version="1.1.0"
+      version="2.0.0"
       unpack="false"/>
 
    <plugin
       id="org.eclipse.uml2.codegen.ecore.ui"
       download-size="0"
       install-size="0"
-      version="1.1.0"
+      version="2.0.0"
       unpack="false"/>
 
    <plugin
       id="org.eclipse.uml2.common"
       download-size="0"
       install-size="0"
-      version="1.1.0"
+      version="2.0.0"
       unpack="false"/>
 
    <plugin
       id="org.eclipse.uml2.common.edit"
       download-size="0"
       install-size="0"
-      version="1.1.0"
+      version="2.0.0"
       unpack="false"/>
 
    <plugin
       id="org.eclipse.uml2.ecore.importer"
       download-size="0"
       install-size="0"
-      version="1.1.0"
+      version="2.0.0"
       unpack="false"/>
 
    <plugin

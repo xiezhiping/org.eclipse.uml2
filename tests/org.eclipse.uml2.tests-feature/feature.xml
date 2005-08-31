@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: feature.xml,v 1.13 2005/08/29 17:11:22 khussey Exp $
+ $Id: feature.xml,v 1.14 2005/08/31 15:26:15 khussey Exp $
 -->
 
 <feature
@@ -52,7 +52,7 @@
          id="org.eclipse.uml2.edit.tests"
          download-size="0"
          install-size="0"
-         version="1.1.0"/>
+         version="2.0.0"/>
 
    <plugin
          id="org.eclipse.test"

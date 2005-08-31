@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.28 2005/08/26 14:50:36 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.29 2005/08/31 15:26:23 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -89,11 +89,22 @@ public final class ProfileOperations
 		}
 
 		public Object caseProfile(Profile profile) {
-			EPackage ePackage = (EPackage) casePackage(profile);
-			String name = ePackage.getName();
-			ePackage.setNsPrefix(name);
-			ePackage.setNsURI("http:///" + name + EcoreUtil.generateUUID() //$NON-NLS-1$
-				+ "." + UML2Resource.PROFILE_FILE_EXTENSION); //$NON-NLS-1$
+			EPackage ePackage = packages.contains(profile)
+				? EcoreFactory.eINSTANCE.createEPackage()
+				: (EPackage) doSwitch((Profile) packages.iterator().next());
+			elementToEModelElementMap.put(profile, ePackage);
+
+			if (packages.contains(profile)) {
+				setName(ePackage, profile);
+
+				String name = ePackage.getName();
+				ePackage.setNsPrefix(name);
+				ePackage.setNsURI("http:///" + name + EcoreUtil.generateUUID() //$NON-NLS-1$
+					+ "." + UML2Resource.PROFILE_FILE_EXTENSION); //$NON-NLS-1$				
+			}
+
+			defaultCase(profile);
+
 			return ePackage;
 		}
 

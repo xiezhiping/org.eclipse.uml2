@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenTypedElementItemProvider.java,v 1.1 2005/05/25 21:24:23 khussey Exp $
+ * $Id: GenTypedElementItemProvider.java,v 1.2 2005/08/31 15:26:27 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -75,10 +75,10 @@ public class GenTypedElementItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return getString("_UI_GenTypedElement_type"); //$NON-NLS-1$
+		return super.getText(object);
 	}
 
 	/**
