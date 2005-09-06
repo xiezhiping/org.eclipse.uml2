@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.7 2005/06/03 19:53:28 khussey Exp $
+ * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.8 2005/09/06 15:20:03 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore.internal;
 
@@ -74,7 +74,7 @@ public class EMOF2EcoreResourceFactoryImpl
 						new ResourceSetImpl()
 							.getResource(
 								URI
-									.createURI("platform:/plugin/org.eclipse.uml2.examples.emof2ecore/EMOF_2_Ecore.ecore2xml"), //$NON-NLS-1$
+									.createURI("platform:/plugin/org.eclipse.uml2.examples.emof2ecore/model/EMOF_2_Ecore.ecore2xml"), //$NON-NLS-1$
 								true).getContents(), Ecore2XMLPackage.eINSTANCE
 							.getXMLMap()));
 
