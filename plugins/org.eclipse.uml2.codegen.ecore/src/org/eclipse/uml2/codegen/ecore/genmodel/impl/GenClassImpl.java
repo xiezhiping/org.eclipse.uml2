@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.4 2005/06/07 14:36:03 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.5 2005/09/06 15:17:24 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
 import org.eclipse.emf.codegen.ecore.genmodel.GenProviderKind;
+import org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl.CollidingGenOperationFilter;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
@@ -534,7 +535,8 @@ public class GenClassImpl
 				+ genOperation.getParameterTypes(""), genOperation); //$NON-NLS-1$
 		}
 
-		return new ArrayList(declaredGenOperations.values());
+		return collectGenOperations(null, new ArrayList(declaredGenOperations
+			.values()), new CollidingGenOperationFilter());
 	}
 
 	protected List getImplementedGenOperations(GenOperationFilter filter) {

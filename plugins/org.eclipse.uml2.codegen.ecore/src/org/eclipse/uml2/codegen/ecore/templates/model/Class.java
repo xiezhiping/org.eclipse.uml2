@@ -3674,7 +3674,7 @@ public class Class
     stringBuffer.append(TEXT_1058);
     stringBuffer.append(genFeature.getSafeName());
     stringBuffer.append(TEXT_1059);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.util.EList"));
+    stringBuffer.append(genModel.getImportedName("java.util.List"));
     stringBuffer.append(TEXT_1060);
     stringBuffer.append(genFeature.getGetAccessor());
     stringBuffer.append(TEXT_1061);
@@ -3707,7 +3707,7 @@ public class Class
     stringBuffer.append(TEXT_1074);
     stringBuffer.append(genFeature.getSafeName());
     stringBuffer.append(TEXT_1075);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.util.EList"));
+    stringBuffer.append(genModel.getImportedName("java.util.List"));
     stringBuffer.append(TEXT_1076);
     stringBuffer.append(genFeature.getGetAccessor());
     stringBuffer.append(TEXT_1077);
@@ -3732,7 +3732,7 @@ public class Class
     stringBuffer.append(TEXT_1086);
     }
     stringBuffer.append(TEXT_1087);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.util.EList"));
+    stringBuffer.append(genModel.getImportedName("java.util.List"));
     stringBuffer.append(TEXT_1088);
     stringBuffer.append(genFeature.getGetAccessor());
     stringBuffer.append(TEXT_1089);
