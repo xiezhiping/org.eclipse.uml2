@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.27 2005/08/26 14:50:36 khussey Exp $
+ * $Id: UML2Util.java,v 1.28 2005/09/06 15:18:47 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -86,6 +86,7 @@ import org.eclipse.uml2.ParameterDirectionKind;
 import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.Profile;
 import org.eclipse.uml2.Property;
+import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.Signal;
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.StructuralFeature;
@@ -3270,16 +3271,6 @@ public class UML2Util {
 
 										ensureConformity(eStructuralFeature,
 											eAllStructuralFeature);
-
-										if (duplicateEStructuralFeature instanceof EReference) {
-											EReference eOpposite = ((EReference) duplicateEStructuralFeature)
-												.getEOpposite();
-
-											if (null != eOpposite) {
-												featuresToDuplicate
-													.add(eOpposite);
-											}
-										}
 									}
 
 									List redefinedFeatures = getEAnnotation(
@@ -3358,6 +3349,24 @@ public class UML2Util {
 				getEAnnotation(eStructuralFeature.getEContainingClass(),
 					ANNOTATION_SOURCE__DUPLICATES, true).getContents().add(
 					eStructuralFeature);
+
+				if (eStructuralFeature instanceof EReference) {
+					EReference eOpposite = ((EReference) eStructuralFeature)
+						.getEOpposite();
+
+					if (null != eOpposite
+						&& !featuresToDuplicate.contains(eOpposite)) {
+
+						eOpposite.setEOpposite(null);
+
+						if (eOpposite.isContainer()) {
+							eOpposite.setChangeable(false);
+							eOpposite.setTransient(true);
+						}
+
+						eOpposite.setVolatile(true);
+					}
+				}
 			}
 
 			for (Iterator eStructuralFeatures = featuresToRemove.iterator(); eStructuralFeatures
@@ -3745,6 +3754,8 @@ public class UML2Util {
 
 		public static final String OPTION__EMPTY_UNIONS = "EMPTY_UNIONS"; //$NON-NLS-1$
 
+		public static final String OPTION__CAPABILITIES = "CAPABILITIES"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 1000;
 
 		public static final int DIFFERENT_PROPERTY_STATICITY = DIAGNOSTIC_CODE_OFFSET + 1;
@@ -3761,7 +3772,11 @@ public class UML2Util {
 
 		public static final int EMPTY_UNION = DIAGNOSTIC_CODE_OFFSET + 7;
 
+		public static final int CAPABILITY = DIAGNOSTIC_CODE_OFFSET + 8;
+
 		protected static final String ANNOTATION_SOURCE__STEREOTYPE = "stereotype"; //$NON-NLS-1$
+
+		protected static final String ANNOTATION_SOURCE__CAPABILITIES = "capabilities"; //$NON-NLS-1$
 
 		protected org.eclipse.uml2.Package receivingPackage = null;
 
@@ -4915,6 +4930,71 @@ public class UML2Util {
 			}
 		}
 
+		protected void processCapabilities(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator entries = resultingToMergedEObjectMap.entrySet()
+				.iterator(); entries.hasNext();) {
+
+				Map.Entry entry = (Map.Entry) entries.next();
+				EObject resultingEObject = (EObject) entry.getKey();
+
+				if (resultingEObject instanceof RedefinableElement) {
+					org.eclipse.uml2.Package resultingPackage = ((RedefinableElement) resultingEObject)
+						.getNearestPackage();
+
+					for (Iterator mergedEObjects = ((List) entry.getValue())
+						.iterator(); mergedEObjects.hasNext();) {
+
+						org.eclipse.uml2.Package mergedPackage = ((Element) mergedEObjects
+							.next()).getNearestPackage();
+
+						if (OPTION__PROCESS.equals(options
+							.get(OPTION__CAPABILITIES))) {
+
+							if (null != diagnostics) {
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.INFO,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										CAPABILITY,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_PackageMerger_ProcessCapability_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, resultingEObject,
+													mergedPackage)),
+										new Object[]{resultingEObject,
+											mergedPackage}));
+							}
+
+							getEAnnotation(
+								getEAnnotation(resultingPackage,
+									ANNOTATION_SOURCE__CAPABILITIES, true),
+								mergedPackage.getQualifiedName(), true)
+								.getReferences().add(resultingEObject);
+						} else if (OPTION__REPORT.equals(options
+							.get(OPTION__CAPABILITIES))
+							&& null != diagnostics) {
+
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.ERROR,
+									UML2Validator.DIAGNOSTIC_SOURCE,
+									CAPABILITY,
+									UML2Plugin.INSTANCE
+										.getString(
+											"_UI_PackageMerger_ReportCapability_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												resultingEObject, mergedPackage)),
+									new Object[]{resultingEObject,
+										mergedPackage}));
+						}
+					}
+				}
+			}
+		}
+
 		protected void processOptions(Map options, DiagnosticChain diagnostics,
 				Map context) {
 
@@ -4953,6 +5033,10 @@ public class UML2Util {
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__EMPTY_UNIONS))) {
 				processEmptyUnions(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options.get(OPTION__CAPABILITIES))) {
+				processCapabilities(options, diagnostics, context);
 			}
 		}
 
@@ -5926,6 +6010,10 @@ public class UML2Util {
 			options.put(PackageMerger.OPTION__EMPTY_UNIONS, OPTION__IGNORE);
 		}
 
+		if (!options.containsKey(PackageMerger.OPTION__CAPABILITIES)) {
+			options.put(PackageMerger.OPTION__CAPABILITIES, OPTION__IGNORE);
+		}
+
 		merge(package_, options, null, null);
 	}
 
@@ -5973,6 +6061,10 @@ public class UML2Util {
 
 		if (!options.containsKey(PackageMerger.OPTION__EMPTY_UNIONS)) {
 			options.put(PackageMerger.OPTION__EMPTY_UNIONS, OPTION__REPORT);
+		}
+
+		if (!options.containsKey(PackageMerger.OPTION__CAPABILITIES)) {
+			options.put(PackageMerger.OPTION__CAPABILITIES, OPTION__REPORT);
 		}
 
 		new PackageMerger().merge(package_, options, diagnostics, context);

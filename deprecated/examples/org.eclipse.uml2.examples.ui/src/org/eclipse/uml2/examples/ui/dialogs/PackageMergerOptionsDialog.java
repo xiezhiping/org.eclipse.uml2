@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergerOptionsDialog.java,v 1.2 2005/03/15 18:54:23 khussey Exp $
+ * $Id: PackageMergerOptionsDialog.java,v 1.3 2005/09/06 15:18:51 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.dialogs;
 
@@ -65,5 +65,8 @@ public class PackageMergerOptionsDialog
 			UML2Util.PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__DISCARD}, UML2Util.OPTION__DISCARD);
+		createOptionArea(parent, UML2Util.PackageMerger.OPTION__CAPABILITIES,
+			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
+				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__REPORT);
 	}
 }
