@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.2 2005/06/03 19:53:36 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.3 2005/09/07 21:13:18 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -195,14 +195,14 @@ public class UML2GenModelUtil {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getDuplicateGenFeatures()
-			: Collections.EMPTY_LIST;
+			: genClass.getGenFeatures();
 	}
 
 	public static List getDuplicateGenOperations(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getDuplicateGenOperations()
-			: Collections.EMPTY_LIST;
+			: genClass.getGenOperations();
 	}
 
 	public static List getUnionGenFeatures(GenClass genClass) {
