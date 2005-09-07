@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.14 2005/06/15 17:18:21 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.15 2005/09/07 21:11:26 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -481,7 +481,20 @@ public final class PropertyOperations extends UML2Operations {
 				subsettingContext.add(eContainer);
 			}
 		} else {
-			subsettingContext.addAll(association.getEndTypes());
+
+			for (Iterator memberEnds = association.getMemberEnds().iterator(); memberEnds
+				.hasNext();) {
+
+				Property memberEnd = (Property) memberEnds.next();
+
+				if (memberEnd != property) {
+					Type memberEndType = memberEnd.getType();
+
+					if (Classifier.class.isInstance(memberEndType)) {
+						subsettingContext.add(memberEndType);
+					}
+				}
+			}
 		}
 
 		return Collections.unmodifiableSet(subsettingContext);
