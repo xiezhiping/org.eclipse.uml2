@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseEcoreBuilder.java,v 1.4 2005/06/03 19:53:40 khussey Exp $
+ * $Id: RoseEcoreBuilder.java,v 1.5 2005/09/08 18:03:13 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.builder;
 
@@ -236,11 +236,11 @@ public class RoseEcoreBuilder
 					EClass otherSuperClass = (EClass) otherSuperClasses.next();
 
 					if (superClass != otherSuperClass
-						&& otherSuperClass.isSuperTypeOf(superClass)) {
+						&& otherSuperClass.isSuperTypeOf(superClass)
+						&& !collections[0].contains(otherSuperClass)) {
 
 						otherSuperClasses.remove();
 
-						collections[0].remove(otherSuperClass);
 						collections[1].remove(otherSuperClass);
 						collections[2].remove(otherSuperClass);
 					}
