@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.4 2005/06/03 19:53:35 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.5 2005/09/08 20:20:46 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -489,7 +489,7 @@ public class GenFeatureImpl
 				.next();
 
 			if (getName().equals(redefinedGenFeature.getName())) {
-				return redefinedGenFeature.getListItemType();
+				return redefinedGenFeature.getRedefinedListItemType();
 			}
 		}
 
