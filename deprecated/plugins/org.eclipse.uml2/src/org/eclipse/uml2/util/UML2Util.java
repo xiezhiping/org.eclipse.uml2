@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.30 2005/09/08 18:11:22 khussey Exp $
+ * $Id: UML2Util.java,v 1.31 2005/09/08 20:23:37 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -4510,63 +4510,35 @@ public class UML2Util {
 
 				if (resultingEObject instanceof Feature) {
 					Feature redefiningFeature = (Feature) resultingEObject;
-					List redefiningRedefinedFeatures = getRedefinedFeatures(redefiningFeature);
+					List redefinedFeatures = getRedefinedFeatures(redefiningFeature);
 
 					for (Iterator redefinitionContexts = redefiningFeature
 						.getRedefinitionContexts().iterator(); redefinitionContexts
 						.hasNext();) {
 
-						for (Iterator generals = ((Classifier) redefinitionContexts
-							.next()).getGenerals().iterator(); generals
-							.hasNext();) {
+						for (Iterator validRedefinedFeatures = findRedefinedFeatures(
+							new HashSet(), redefiningFeature,
+							redefiningFeature.getName(),
+							(Classifier) redefinitionContexts.next())
+							.iterator(); validRedefinedFeatures.hasNext();) {
 
-							for (Iterator redefinedFeatures = findRedefinedFeatures(
-								new HashSet(), redefiningFeature,
-								redefiningFeature.getName(),
-								(Classifier) generals.next()).iterator(); redefinedFeatures
-								.hasNext();) {
+							Feature redefinedFeature = (Feature) validRedefinedFeatures
+								.next();
 
-								Feature redefinedFeature = (Feature) redefinedFeatures
-									.next();
+							if (!redefinedFeatures.contains(redefinedFeature)) {
 
-								if (!redefiningRedefinedFeatures
-									.contains(redefinedFeature)) {
+								if (OPTION__PROCESS.equals(options
+									.get(OPTION__IMPLICIT_REDEFINITIONS))) {
 
-									if (OPTION__PROCESS.equals(options
-										.get(OPTION__IMPLICIT_REDEFINITIONS))) {
-
-										if (null != diagnostics) {
-											diagnostics
-												.add(new BasicDiagnostic(
-													Diagnostic.INFO,
-													UML2Validator.DIAGNOSTIC_SOURCE,
-													IMPLICIT_REDEFINITION,
-													UML2Plugin.INSTANCE
-														.getString(
-															"_UI_PackageMerger_ProcessImplicitFeatureRedefinition_diagnostic", //$NON-NLS-1$
-															getMessageSubstitutions(
-																context,
-																redefiningFeature,
-																redefinedFeature)),
-													new Object[]{
-														redefiningFeature,
-														redefinedFeature}));
-										}
-
-										redefiningRedefinedFeatures
-											.add(redefinedFeature);
-									} else if (OPTION__REPORT.equals(options
-										.get(OPTION__IMPLICIT_REDEFINITIONS))
-										&& null != diagnostics) {
-
+									if (null != diagnostics) {
 										diagnostics
 											.add(new BasicDiagnostic(
-												Diagnostic.WARNING,
+												Diagnostic.INFO,
 												UML2Validator.DIAGNOSTIC_SOURCE,
 												IMPLICIT_REDEFINITION,
 												UML2Plugin.INSTANCE
 													.getString(
-														"_UI_PackageMerger_ReportImplicitFeatureRedefinition_diagnostic", //$NON-NLS-1$
+														"_UI_PackageMerger_ProcessImplicitFeatureRedefinition_diagnostic", //$NON-NLS-1$
 														getMessageSubstitutions(
 															context,
 															redefiningFeature,
@@ -4574,6 +4546,26 @@ public class UML2Util {
 												new Object[]{redefiningFeature,
 													redefinedFeature}));
 									}
+
+									redefinedFeatures.add(redefinedFeature);
+								} else if (OPTION__REPORT.equals(options
+									.get(OPTION__IMPLICIT_REDEFINITIONS))
+									&& null != diagnostics) {
+
+									diagnostics
+										.add(new BasicDiagnostic(
+											Diagnostic.WARNING,
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											IMPLICIT_REDEFINITION,
+											UML2Plugin.INSTANCE
+												.getString(
+													"_UI_PackageMerger_ReportImplicitFeatureRedefinition_diagnostic", //$NON-NLS-1$
+													getMessageSubstitutions(
+														context,
+														redefiningFeature,
+														redefinedFeature)),
+											new Object[]{redefiningFeature,
+												redefinedFeature}));
 								}
 							}
 						}
@@ -4613,7 +4605,8 @@ public class UML2Util {
 							Feature otherFeature = (Feature) otherEObject;
 
 							return (null == feature && null == otherFeature)
-								|| (otherFeature.getName().equals(name) && isRedefinitionValid(
+								|| (feature != otherFeature
+									&& otherFeature.getName().equals(name) && isRedefinitionValid(
 									feature, otherFeature));
 						}
 
@@ -4674,35 +4667,13 @@ public class UML2Util {
 
 						Set validRedefinedFeatures = new HashSet();
 
-						if (redefiningFeature.getName().equals(
-							redefinedFeatureName)) {
+						for (Iterator redefinitionContexts = redefiningFeature
+							.getRedefinitionContexts().iterator(); redefinitionContexts
+							.hasNext();) {
 
-							for (Iterator redefinitionContexts = redefiningFeature
-								.getRedefinitionContexts().iterator(); redefinitionContexts
-								.hasNext();) {
-
-								for (Iterator generals = ((Classifier) redefinitionContexts
-									.next()).getGenerals().iterator(); generals
-									.hasNext();) {
-
-									findRedefinedFeatures(
-										validRedefinedFeatures,
-										redefiningFeature,
-										redefinedFeatureName,
-										(Classifier) generals.next());
-								}
-							}
-
-						} else {
-
-							for (Iterator redefinitionContexts = redefiningFeature
-								.getRedefinitionContexts().iterator(); redefinitionContexts
-								.hasNext();) {
-
-								findRedefinedFeatures(validRedefinedFeatures,
-									redefiningFeature, redefinedFeatureName,
-									(Classifier) redefinitionContexts.next());
-							}
+							findRedefinedFeatures(validRedefinedFeatures,
+								redefiningFeature, redefinedFeatureName,
+								(Classifier) redefinitionContexts.next());
 						}
 
 						if (!validRedefinedFeatures.contains(redefinedFeature)) {
@@ -4849,7 +4820,8 @@ public class UML2Util {
 							Property otherProperty = (Property) otherEObject;
 
 							return (null == property && null == otherProperty)
-								|| (otherProperty.getName().equals(name) && isSubsetValid(
+								|| (property != otherProperty
+									&& otherProperty.getName().equals(name) && isSubsetValid(
 									property, otherProperty));
 						}
 
