@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.29 2005/09/07 21:12:17 khussey Exp $
+ * $Id: UML2Util.java,v 1.30 2005/09/08 18:11:22 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -4478,36 +4478,26 @@ public class UML2Util {
 			}
 		}
 
+		/**
+		 * @deprecated
+		 */
 		protected Set getImplicitlyRedefinedProperties(Set redefinedProperties,
 				Property redefiningProperty, Classifier redefinitionContext) {
 
-			return getImplicitlyRedefinedFeatures(redefinedProperties,
-				redefiningProperty, redefinitionContext);
-		}
+			findRedefinedFeatures(redefinedProperties, redefiningProperty,
+				redefiningProperty.getName(), redefinitionContext);
 
-		protected Set getImplicitlyRedefinedFeatures(Set redefinedFeatures,
-				Feature redefiningFeature, Classifier redefinitionContext) {
+			List redefiningRedefinedProperties = redefiningProperty
+				.getRedefinedProperties();
 
-			Feature redefinedFeature = (Feature) findEObject(
-				redefinitionContext.getFeatures(), new NameMatcher(
-					redefiningFeature));
+			for (Iterator i = redefinedProperties.iterator(); i.hasNext();) {
 
-			if (null == redefinedFeature) {
-
-				for (Iterator generals = redefinitionContext.getGenerals()
-					.iterator(); generals.hasNext();) {
-
-					getImplicitlyRedefinedFeatures(redefinedFeatures,
-						redefiningFeature, (Classifier) generals.next());
+				if (redefiningRedefinedProperties.contains(i.next())) {
+					i.remove();
 				}
-			} else if (isRedefinitionValid(redefiningFeature, redefinedFeature)
-				&& !getRedefinedFeatures(redefiningFeature).contains(
-					redefinedFeature)) {
-
-				redefinedFeatures.add(redefinedFeature);
 			}
 
-			return redefinedFeatures;
+			return redefinedProperties;
 		}
 
 		protected void processImplicitRedefinitions(Map options,
@@ -4530,8 +4520,9 @@ public class UML2Util {
 							.next()).getGenerals().iterator(); generals
 							.hasNext();) {
 
-							for (Iterator redefinedFeatures = getImplicitlyRedefinedFeatures(
+							for (Iterator redefinedFeatures = findRedefinedFeatures(
 								new HashSet(), redefiningFeature,
+								redefiningFeature.getName(),
 								(Classifier) generals.next()).iterator(); redefinedFeatures
 								.hasNext();) {
 
@@ -4591,6 +4582,9 @@ public class UML2Util {
 			}
 		}
 
+		/**
+		 * @deprecated
+		 */
 		protected boolean isRedefinitionValid(Property redefiningProperty,
 				Property redefinedProperty) {
 
@@ -4602,6 +4596,44 @@ public class UML2Util {
 				Feature redefinedFeature) {
 
 			return redefinedFeature.isConsistentWith(redefiningFeature);
+		}
+
+		protected Set findRedefinedFeatures(Set redefinedFeatures,
+				Feature redefiningFeature, final String name,
+				Classifier redefinitionContext) {
+
+			Feature redefinedFeature = (Feature) findEObject(
+				redefinitionContext.getFeatures(), new EClassMatcher(
+					redefiningFeature) {
+
+					public boolean matches(EObject otherEObject) {
+
+						if (super.matches(otherEObject)) {
+							Feature feature = (Feature) eObject;
+							Feature otherFeature = (Feature) otherEObject;
+
+							return (null == feature && null == otherFeature)
+								|| (otherFeature.getName().equals(name) && isRedefinitionValid(
+									feature, otherFeature));
+						}
+
+						return false;
+					}
+				});
+
+			if (null == redefinedFeature) {
+
+				for (Iterator generals = redefinitionContext.getGenerals()
+					.iterator(); generals.hasNext();) {
+
+					findRedefinedFeatures(redefinedFeatures, redefiningFeature,
+						name, (Classifier) generals.next());
+				}
+			} else {
+				redefinedFeatures.add(redefinedFeature);
+			}
+
+			return redefinedFeatures;
 		}
 
 		protected List getRedefinedFeatures(Feature feature) {
@@ -4631,18 +4663,109 @@ public class UML2Util {
 
 				if (resultingEObject instanceof Feature) {
 					Feature redefiningFeature = (Feature) resultingEObject;
+					List redefinedFeatures = getRedefinedFeatures(redefiningFeature);
 
-					for (Iterator redefinedFeatures = getRedefinedFeatures(
-						redefiningFeature).iterator(); redefinedFeatures
-						.hasNext();) {
+					for (Iterator i = new ArrayList(redefinedFeatures)
+						.iterator(); i.hasNext();) {
 
-						Feature redefinedFeature = (Feature) redefinedFeatures
-							.next();
+						Feature redefinedFeature = (Feature) i.next();
+						String redefinedFeatureName = redefinedFeature
+							.getName();
 
-						if (!isRedefinitionValid(redefiningFeature,
-							redefinedFeature)) {
+						Set validRedefinedFeatures = new HashSet();
 
-							if (OPTION__DISCARD.equals(options
+						if (redefiningFeature.getName().equals(
+							redefinedFeatureName)) {
+
+							for (Iterator redefinitionContexts = redefiningFeature
+								.getRedefinitionContexts().iterator(); redefinitionContexts
+								.hasNext();) {
+
+								for (Iterator generals = ((Classifier) redefinitionContexts
+									.next()).getGenerals().iterator(); generals
+									.hasNext();) {
+
+									findRedefinedFeatures(
+										validRedefinedFeatures,
+										redefiningFeature,
+										redefinedFeatureName,
+										(Classifier) generals.next());
+								}
+							}
+
+						} else {
+
+							for (Iterator redefinitionContexts = redefiningFeature
+								.getRedefinitionContexts().iterator(); redefinitionContexts
+								.hasNext();) {
+
+								findRedefinedFeatures(validRedefinedFeatures,
+									redefiningFeature, redefinedFeatureName,
+									(Classifier) redefinitionContexts.next());
+							}
+						}
+
+						if (!validRedefinedFeatures.contains(redefinedFeature)) {
+
+							if (OPTION__PROCESS.equals(options
+								.get(OPTION__INVALID_REDEFINITIONS))) {
+
+								if (validRedefinedFeatures.isEmpty()) {
+
+									if (null != diagnostics) {
+										diagnostics
+											.add(new BasicDiagnostic(
+												Diagnostic.INFO,
+												UML2Validator.DIAGNOSTIC_SOURCE,
+												INVALID_REDEFINITION,
+												UML2Plugin.INSTANCE
+													.getString(
+														"_UI_PackageMerger_DiscardInvalidFeatureRedefinition_diagnostic", //$NON-NLS-1$
+														getMessageSubstitutions(
+															context,
+															redefiningFeature,
+															redefinedFeature)),
+												new Object[]{redefiningFeature,
+													redefinedFeature}));
+									}
+								} else {
+
+									for (Iterator j = validRedefinedFeatures
+										.iterator(); j.hasNext();) {
+
+										Feature validRedefinedFeature = (Feature) j
+											.next();
+
+										if (!redefinedFeatures
+											.contains(validRedefinedFeature)) {
+
+											if (null != diagnostics) {
+												diagnostics
+													.add(new BasicDiagnostic(
+														Diagnostic.INFO,
+														UML2Validator.DIAGNOSTIC_SOURCE,
+														INVALID_REDEFINITION,
+														UML2Plugin.INSTANCE
+															.getString(
+																"_UI_PackageMerger_ProcessInvalidRedefinition_diagnostic", //$NON-NLS-1$
+																getMessageSubstitutions(
+																	context,
+																	redefiningFeature,
+																	redefinedFeature,
+																	validRedefinedFeature)),
+														new Object[]{
+															redefiningFeature,
+															validRedefinedFeature}));
+											}
+
+											redefinedFeatures
+												.add(validRedefinedFeature);
+										}
+									}
+								}
+
+								redefinedFeatures.remove(redefinedFeature);
+							} else if (OPTION__DISCARD.equals(options
 								.get(OPTION__INVALID_REDEFINITIONS))) {
 
 								if (null != diagnostics) {
@@ -4662,7 +4785,7 @@ public class UML2Util {
 												redefinedFeature}));
 								}
 
-								redefinedFeatures.remove();
+								redefinedFeatures.remove(redefinedFeature);
 							} else if (OPTION__REPORT.equals(options
 								.get(OPTION__INVALID_REDEFINITIONS))
 								&& null != diagnostics) {
@@ -4711,6 +4834,44 @@ public class UML2Util {
 			return true;
 		}
 
+		protected Set findSubsettedProperties(Set subsettedProperties,
+				Property subsettingProperty, final String name,
+				Classifier subsettingContext) {
+
+			Property subsettedProperty = (Property) findEObject(
+				subsettingContext.getAttributes(), new EClassMatcher(
+					subsettingProperty) {
+
+					public boolean matches(EObject otherEObject) {
+
+						if (super.matches(otherEObject)) {
+							Property property = (Property) eObject;
+							Property otherProperty = (Property) otherEObject;
+
+							return (null == property && null == otherProperty)
+								|| (otherProperty.getName().equals(name) && isSubsetValid(
+									property, otherProperty));
+						}
+
+						return false;
+					}
+				});
+
+			if (null == subsettedProperty) {
+
+				for (Iterator generals = subsettingContext.getGenerals()
+					.iterator(); generals.hasNext();) {
+
+					findSubsettedProperties(subsettedProperties,
+						subsettingProperty, name, (Classifier) generals.next());
+				}
+			} else {
+				subsettedProperties.add(subsettedProperty);
+			}
+
+			return subsettedProperties;
+		}
+
 		protected void processInvalidSubsets(Map options,
 				DiagnosticChain diagnostics, Map context) {
 
@@ -4721,18 +4882,89 @@ public class UML2Util {
 
 				if (resultingEObject instanceof Property) {
 					Property subsettingProperty = (Property) resultingEObject;
+					List subsettedProperties = subsettingProperty
+						.getSubsettedProperties();
 
-					for (Iterator subsettedProperties = subsettingProperty
-						.getSubsettedProperties().iterator(); subsettedProperties
-						.hasNext();) {
+					for (Iterator i = new ArrayList(subsettedProperties)
+						.iterator(); i.hasNext();) {
 
-						Property subsettedProperty = (Property) subsettedProperties
-							.next();
+						Property subsettedProperty = (Property) i.next();
+						String subsettedPropertyName = subsettedProperty
+							.getName();
 
-						if (!isSubsetValid(subsettingProperty,
-							subsettedProperty)) {
+						Set validSubsettedProperties = new HashSet();
 
-							if (OPTION__DISCARD.equals(options
+						for (Iterator subsettingContexts = subsettingProperty
+							.subsettingContext().iterator(); subsettingContexts
+							.hasNext();) {
+
+							findSubsettedProperties(validSubsettedProperties,
+								subsettingProperty, subsettedPropertyName,
+								(Classifier) subsettingContexts.next());
+						}
+
+						if (!validSubsettedProperties
+							.contains(subsettedProperty)) {
+
+							if (OPTION__PROCESS.equals(options
+								.get(OPTION__INVALID_SUBSETS))) {
+
+								if (validSubsettedProperties.isEmpty()) {
+
+									if (null != diagnostics) {
+										diagnostics
+											.add(new BasicDiagnostic(
+												Diagnostic.INFO,
+												UML2Validator.DIAGNOSTIC_SOURCE,
+												INVALID_SUBSET,
+												UML2Plugin.INSTANCE
+													.getString(
+														"_UI_PackageMerger_DiscardInvalidSubset_diagnostic", //$NON-NLS-1$
+														getMessageSubstitutions(
+															context,
+															subsettingProperty,
+															subsettedProperty)),
+												new Object[]{
+													subsettingProperty,
+													subsettedProperty}));
+									}
+								} else {
+
+									for (Iterator j = validSubsettedProperties
+										.iterator(); j.hasNext();) {
+										Property validSubsettedProperty = (Property) j
+											.next();
+
+										if (!subsettedProperties
+											.contains(validSubsettedProperty)) {
+
+											if (null != diagnostics) {
+												diagnostics
+													.add(new BasicDiagnostic(
+														Diagnostic.INFO,
+														UML2Validator.DIAGNOSTIC_SOURCE,
+														INVALID_SUBSET,
+														UML2Plugin.INSTANCE
+															.getString(
+																"_UI_PackageMerger_ProcessInvalidSubset_diagnostic", //$NON-NLS-1$
+																getMessageSubstitutions(
+																	context,
+																	subsettingProperty,
+																	subsettedProperty,
+																	validSubsettedProperty)),
+														new Object[]{
+															subsettingProperty,
+															validSubsettedProperty}));
+											}
+
+											subsettedProperties
+												.add(validSubsettedProperty);
+										}
+									}
+								}
+
+								subsettedProperties.remove(subsettedProperty);
+							} else if (OPTION__DISCARD.equals(options
 								.get(OPTION__INVALID_SUBSETS))) {
 
 								if (null != diagnostics) {
@@ -4752,7 +4984,7 @@ public class UML2Util {
 												subsettedProperty}));
 								}
 
-								subsettedProperties.remove();
+								subsettedProperties.remove(subsettedProperty);
 							} else if (OPTION__REPORT.equals(options
 								.get(OPTION__INVALID_SUBSETS))
 								&& null != diagnostics) {
@@ -4891,11 +5123,15 @@ public class UML2Util {
 							for (Iterator j = generalizations.iterator(); j
 								.hasNext();) {
 
-								Classifier otherGeneral = ((Generalization) j
-									.next()).getGeneral();
+								Generalization otherGeneralization = (Generalization) j
+									.next();
+								Classifier otherGeneral = otherGeneralization
+									.getGeneral();
 
 								if (general != otherGeneral
-									&& generalAllParents.contains(otherGeneral)) {
+									&& generalAllParents.contains(otherGeneral)
+									&& !otherGeneralization
+										.hasKeyword("extend")) { //$NON-NLS-1$
 
 									if (OPTION__DISCARD
 										.equals(options

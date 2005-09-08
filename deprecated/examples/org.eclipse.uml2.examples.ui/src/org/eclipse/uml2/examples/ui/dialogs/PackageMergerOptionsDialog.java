@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergerOptionsDialog.java,v 1.3 2005/09/06 15:18:51 khussey Exp $
+ * $Id: PackageMergerOptionsDialog.java,v 1.4 2005/09/08 18:11:18 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.dialogs;
 
@@ -56,17 +56,19 @@ public class PackageMergerOptionsDialog
 		createOptionArea(parent,
 			UML2Util.PackageMerger.OPTION__INVALID_REDEFINITIONS, new String[]{
 				UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
-				UML2Util.OPTION__DISCARD}, UML2Util.OPTION__DISCARD);
+				UML2Util.OPTION__DISCARD, UML2Util.OPTION__PROCESS},
+			UML2Util.OPTION__PROCESS);
 		createOptionArea(parent,
 			UML2Util.PackageMerger.OPTION__INVALID_SUBSETS, new String[]{
 				UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
-				UML2Util.OPTION__DISCARD}, UML2Util.OPTION__DISCARD);
+				UML2Util.OPTION__DISCARD, UML2Util.OPTION__PROCESS},
+			UML2Util.OPTION__PROCESS);
 		createOptionArea(parent,
 			UML2Util.PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__DISCARD}, UML2Util.OPTION__DISCARD);
 		createOptionArea(parent, UML2Util.PackageMerger.OPTION__CAPABILITIES,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
-				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__REPORT);
+				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
 	}
 }
