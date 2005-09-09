@@ -8,9 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnionEObjectEList.java,v 1.2 2005/06/20 19:57:46 khussey Exp $
+ * $Id: UnionEObjectEList.java,v 1.3 2005/09/09 19:16:42 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
+
+import java.util.Iterator;
+import java.util.ListIterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -106,6 +109,23 @@ public class UnionEObjectEList
 		}
 
 		return result;
+	}
+
+	public Iterator iterator() {
+		return listIterator();
+	}
+
+	public ListIterator listIterator() {
+		return new EListIterator();
+	}
+
+	public ListIterator listIterator(int index) {
+
+		if (index < 0 || index > size()) {
+			throw new BasicIndexOutOfBoundsException(index, size);
+		}
+
+		return new EListIterator(index);
 	}
 
 }
