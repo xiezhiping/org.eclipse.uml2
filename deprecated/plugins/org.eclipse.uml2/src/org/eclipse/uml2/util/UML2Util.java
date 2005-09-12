@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.32 2005/09/09 02:24:07 khussey Exp $
+ * $Id: UML2Util.java,v 1.33 2005/09/12 19:42:08 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -3934,134 +3934,162 @@ public class UML2Util {
 		protected void copyAttribute(EAttribute eAttribute, EObject eObject,
 				EObject copyEObject) {
 
-			if (receivingPackage == copyEObject) {
-				return;
-			} else if (resultingToMergedEObjectMap.containsKey(copyEObject)) {
+			if (eObject != copyEObject) {
 
-				if (UML2Package.eINSTANCE.getAssociation_IsDerived() == eAttribute) {
-					mergeAssociation_IsDerived((Association) copyEObject,
-						(Association) eObject);
-				} else if (UML2Package.eINSTANCE.getClassifier_IsAbstract() == eAttribute) {
-					mergeClassifier_IsAbstract((Classifier) copyEObject,
-						(Classifier) eObject);
-				} else if (UML2Package.eINSTANCE.getLiteralInteger_Value() == eAttribute
-					&& UML2Package.eINSTANCE
-						.getMultiplicityElement_LowerValue() == copyEObject
-						.eContainingFeature()) {
+				if (receivingPackage == copyEObject) {
+					return;
+				} else if (resultingToMergedEObjectMap.containsKey(copyEObject)) {
 
-					mergeLiteralInteger_Value((LiteralInteger) copyEObject,
-						(LiteralInteger) eObject);
-				} else if (UML2Package.eINSTANCE
-					.getLiteralUnlimitedNatural_Value() == eAttribute
-					&& UML2Package.eINSTANCE
-						.getMultiplicityElement_UpperValue() == copyEObject
-						.eContainingFeature()) {
+					if (UML2Package.eINSTANCE.getAssociation_IsDerived() == eAttribute) {
+						mergeAssociation_IsDerived((Association) copyEObject,
+							(Association) eObject);
+					} else if (UML2Package.eINSTANCE.getClassifier_IsAbstract() == eAttribute) {
+						mergeClassifier_IsAbstract((Classifier) copyEObject,
+							(Classifier) eObject);
+					} else if (UML2Package.eINSTANCE.getLiteralInteger_Value() == eAttribute
+						&& UML2Package.eINSTANCE
+							.getMultiplicityElement_LowerValue() == copyEObject
+							.eContainingFeature()) {
 
-					mergeLiteralUnlimitedNatural_Value(
-						(LiteralUnlimitedNatural) copyEObject,
-						(LiteralUnlimitedNatural) eObject);
-				} else if (UML2Package.eINSTANCE
-					.getMultiplicityElement_IsOrdered() == eAttribute) {
+						mergeLiteralInteger_Value((LiteralInteger) copyEObject,
+							(LiteralInteger) eObject);
+					} else if (UML2Package.eINSTANCE
+						.getLiteralUnlimitedNatural_Value() == eAttribute
+						&& UML2Package.eINSTANCE
+							.getMultiplicityElement_UpperValue() == copyEObject
+							.eContainingFeature()) {
 
-					mergeMultiplicityElement_IsOrdered(
-						(MultiplicityElement) copyEObject,
-						(MultiplicityElement) eObject);
-				} else if (UML2Package.eINSTANCE
-					.getMultiplicityElement_IsUnique() == eAttribute) {
+						mergeLiteralUnlimitedNatural_Value(
+							(LiteralUnlimitedNatural) copyEObject,
+							(LiteralUnlimitedNatural) eObject);
+					} else if (UML2Package.eINSTANCE
+						.getMultiplicityElement_IsOrdered() == eAttribute) {
 
-					mergeMultiplicityElement_IsUnique(
-						(MultiplicityElement) copyEObject,
-						(MultiplicityElement) eObject);
-				} else if (UML2Package.eINSTANCE.getNamedElement_Visibility() == eAttribute) {
-					mergeNamedElement_Visibility((NamedElement) copyEObject,
-						(NamedElement) eObject);
-				} else if (UML2Package.eINSTANCE
-					.getPackageableElement_PackageableElement_visibility() == eAttribute) {
+						mergeMultiplicityElement_IsOrdered(
+							(MultiplicityElement) copyEObject,
+							(MultiplicityElement) eObject);
+					} else if (UML2Package.eINSTANCE
+						.getMultiplicityElement_IsUnique() == eAttribute) {
 
-					mergePackageableElement_PackageableElement_visibility(
-						(PackageableElement) copyEObject,
-						(PackageableElement) eObject);
-				} else if (UML2Package.eINSTANCE.getProperty_IsDerived() == eAttribute) {
-					mergeProperty_IsDerived((Property) copyEObject,
-						(Property) eObject);
-				} else if (UML2Package.eINSTANCE.getProperty_IsDerivedUnion() == eAttribute) {
-					mergeProperty_IsDerivedUnion((Property) copyEObject,
-						(Property) eObject);
-				} else if (UML2Package.eINSTANCE
-					.getStructuralFeature_IsReadOnly() == eAttribute) {
+						mergeMultiplicityElement_IsUnique(
+							(MultiplicityElement) copyEObject,
+							(MultiplicityElement) eObject);
+					} else if (UML2Package.eINSTANCE
+						.getNamedElement_Visibility() == eAttribute) {
+						mergeNamedElement_Visibility(
+							(NamedElement) copyEObject, (NamedElement) eObject);
+					} else if (UML2Package.eINSTANCE
+						.getPackageableElement_PackageableElement_visibility() == eAttribute) {
 
-					mergeStructuralFeature_IsReadOnly(
-						(StructuralFeature) copyEObject,
-						(StructuralFeature) eObject);
+						mergePackageableElement_PackageableElement_visibility(
+							(PackageableElement) copyEObject,
+							(PackageableElement) eObject);
+					} else if (UML2Package.eINSTANCE.getProperty_IsDerived() == eAttribute) {
+						mergeProperty_IsDerived((Property) copyEObject,
+							(Property) eObject);
+					} else if (UML2Package.eINSTANCE
+						.getProperty_IsDerivedUnion() == eAttribute) {
+						mergeProperty_IsDerivedUnion((Property) copyEObject,
+							(Property) eObject);
+					} else if (UML2Package.eINSTANCE
+						.getStructuralFeature_IsReadOnly() == eAttribute) {
+
+						mergeStructuralFeature_IsReadOnly(
+							(StructuralFeature) copyEObject,
+							(StructuralFeature) eObject);
+					} else {
+						super.copyAttribute(eAttribute, eObject, copyEObject);
+					}
 				} else {
 					super.copyAttribute(eAttribute, eObject, copyEObject);
 				}
-			} else {
-				super.copyAttribute(eAttribute, eObject, copyEObject);
 			}
 		}
 
 		protected void copyContainment(EReference eReference, EObject eObject,
 				EObject copyEObject) {
 
-			if (eObject.eIsSet(eReference) && eReference.isMany()) {
-				List targetList = (List) copyEObject
-					.eGet(getTarget(eReference));
+			if (eObject != copyEObject) {
 
-				for (Iterator i = ((List) eObject.eGet(eReference)).iterator(); i
-					.hasNext();) {
+				if (eReference.isMany()) {
+					InternalEList targetList = (InternalEList) copyEObject
+						.eGet(getTarget(eReference));
 
-					targetList.add(copy((EObject) i.next()));
+					for (Iterator i = ((List) eObject.eGet(eReference))
+						.iterator(); i.hasNext();) {
+
+						EObject childEObject = (EObject) i.next();
+						EObject copyChildEObject = copy(childEObject);
+
+						if (childEObject != copyChildEObject) {
+							targetList.addUnique(copyChildEObject);
+						}
+					}
+				} else {
+					EObject childEObject = (EObject) eObject.eGet(eReference);
+					EObject copyChildEObject = null == childEObject
+						? null
+						: copy(childEObject);
+
+					if (childEObject != copyChildEObject) {
+						copyEObject.eSet(getTarget(eReference),
+							copyChildEObject);
+					}
 				}
-			} else {
-				super.copyContainment(eReference, eObject, copyEObject);
 			}
 		}
 
 		protected void copyReference(EReference eReference, EObject eObject,
 				EObject copyEObject) {
 
-			if (eObject.eIsSet(eReference) && eReference.isMany()) {
-				InternalEList targetList = (InternalEList) copyEObject
-					.eGet(getTarget(eReference));
+			if (eObject != copyEObject) {
 
-				boolean isBidirectional = eReference.getEOpposite() != null;
-				int index = 0;
+				if (eObject.eIsSet(eReference) && eReference.isMany()) {
+					InternalEList targetList = (InternalEList) copyEObject
+						.eGet(getTarget(eReference));
 
-				for (Iterator i = ((List) eObject.eGet(eReference)).iterator(); i
-					.hasNext();) {
+					boolean isBidirectional = eReference.getEOpposite() != null;
+					int index = 0;
 
-					Object referencedEObject = i.next();
-					Object copyReferencedEObject = get(referencedEObject);
+					for (Iterator i = ((List) eObject.eGet(eReference))
+						.iterator(); i.hasNext();) {
 
-					if (copyReferencedEObject == null) {
+						Object referencedEObject = i.next();
+						Object copyReferencedEObject = get(referencedEObject);
 
-						if (!isBidirectional
-							&& !targetList.contains(referencedEObject)) {
+						if (copyReferencedEObject == null) {
 
-							targetList.add(index++, referencedEObject);
-						}
-					} else {
+							if (!isBidirectional
+								&& !targetList.contains(referencedEObject)) {
 
-						if (isBidirectional) {
-							int position = targetList
-								.indexOf(copyReferencedEObject);
+								targetList
+									.addUnique(index++, referencedEObject);
+							}
+						} else {
 
-							if (position == -1) {
+							if (isBidirectional) {
+								int position = targetList
+									.indexOf(copyReferencedEObject);
+
+								if (position == -1) {
+									targetList.addUnique(index++,
+										copyReferencedEObject);
+								} else if (index != position) {
+									targetList.move(index < targetList.size()
+										? index++
+										: --index, copyReferencedEObject);
+								}
+							} else if (!targetList
+								.contains(copyReferencedEObject)) {
+
 								targetList.addUnique(index++,
 									copyReferencedEObject);
-							} else if (index != position) {
-								targetList.move(index < targetList.size()
-									? index++
-									: --index, copyReferencedEObject);
 							}
-						} else if (!targetList.contains(copyReferencedEObject)) {
-							targetList.add(index++, copyReferencedEObject);
 						}
 					}
+				} else {
+					super.copyReference(eReference, eObject, copyEObject);
 				}
-			} else {
-				super.copyReference(eReference, eObject, copyEObject);
 			}
 		}
 
@@ -4091,8 +4119,19 @@ public class UML2Util {
 
 											if (null == findEObject(
 												otherMemberEnds,
-												new TypeMatcher(
-													(TypedElement) i.next()))) {
+												new NameMatcher(
+													(TypedElement) i.next()) {
+
+													public boolean matches(
+															EObject otherEObject) {
+
+														return super
+															.matches(otherEObject)
+															|| new TypeMatcher(
+																(TypedElement) eObject)
+																.matches(otherEObject);
+													}
+												})) {
 
 												return false;
 											}
@@ -4162,6 +4201,13 @@ public class UML2Util {
 
 				public Object caseDirectedRelationship(
 						DirectedRelationship directedRelationship) {
+
+					if (mergedPackages.containsAll(directedRelationship
+						.getTargets())) {
+
+						return directedRelationship;
+					}
+
 					DirectedRelationship matchingDirectedRelationship = (DirectedRelationship) findEObject(
 						getMatchCandidates(directedRelationship),
 						new EClassMatcher(directedRelationship) {
@@ -4340,15 +4386,17 @@ public class UML2Util {
 		public EObject copy(EObject eObject) {
 			EObject copyEObject = super.copy(eObject);
 
-			List mergedEObjects = (List) resultingToMergedEObjectMap
-				.get(copyEObject);
+			if (eObject != copyEObject) {
+				List mergedEObjects = (List) resultingToMergedEObjectMap
+					.get(copyEObject);
 
-			if (null == mergedEObjects) {
-				resultingToMergedEObjectMap.put(copyEObject,
-					mergedEObjects = new ArrayList(1));
+				if (null == mergedEObjects) {
+					resultingToMergedEObjectMap.put(copyEObject,
+						mergedEObjects = new UniqueEList(1));
+				}
+
+				mergedEObjects.add(eObject);
 			}
-
-			mergedEObjects.add(eObject);
 
 			if (DEBUG) {
 				System.out.println(getQualifiedText(eObject) + "->" //$NON-NLS-1$
@@ -4360,13 +4408,13 @@ public class UML2Util {
 
 		protected Collection getAllMergedPackages(
 				org.eclipse.uml2.Package package_) {
-			Collection allMergedPackages = new ArrayList();
 
-			getAllMergedPackagesHelper(package_, allMergedPackages);
-
-			return allMergedPackages;
+			return getAllMergedPackages(package_, new UniqueEList());
 		}
 
+		/**
+		 * @deprecated
+		 */
 		protected void getAllMergedPackagesHelper(
 				org.eclipse.uml2.Package package_, Collection allMergedPackages) {
 
@@ -4379,11 +4427,28 @@ public class UML2Util {
 				if (null != mergedPackage) {
 					getAllMergedPackagesHelper(mergedPackage, allMergedPackages);
 
-					if (!allMergedPackages.contains(mergedPackage)) {
-						allMergedPackages.add(mergedPackage);
-					}
+					allMergedPackages.add(mergedPackage);
 				}
 			}
+		}
+
+		private Collection getAllMergedPackages(
+				org.eclipse.uml2.Package package_, Collection allMergedPackages) {
+
+			for (Iterator packageMerges = package_.getPackageMerges()
+				.iterator(); packageMerges.hasNext();) {
+
+				org.eclipse.uml2.Package mergedPackage = ((PackageMerge) packageMerges
+					.next()).getMergedPackage();
+
+				if (null != mergedPackage) {
+					getAllMergedPackages(mergedPackage, allMergedPackages);
+
+					allMergedPackages.add(mergedPackage);
+				}
+			}
+
+			return allMergedPackages;
 		}
 
 		protected void processDifferentPropertyStaticity(Map options,
@@ -4588,70 +4653,11 @@ public class UML2Util {
 						.iterator(); i.hasNext();) {
 
 						Feature redefinedFeature = (Feature) i.next();
-						Collection validRedefinitions = findValidRedefinitions(
-							redefiningFeature, redefinedFeature.getName());
 
-						if (!validRedefinitions.contains(redefinedFeature)) {
+						if (!UML2Util.isRedefinitionValid(redefiningFeature,
+							redefinedFeature)) {
 
-							if (OPTION__PROCESS.equals(options
-								.get(OPTION__INVALID_REDEFINITIONS))) {
-
-								if (validRedefinitions.isEmpty()) {
-
-									if (null != diagnostics) {
-										diagnostics
-											.add(new BasicDiagnostic(
-												Diagnostic.INFO,
-												UML2Validator.DIAGNOSTIC_SOURCE,
-												INVALID_REDEFINITION,
-												UML2Plugin.INSTANCE
-													.getString(
-														"_UI_PackageMerger_DiscardInvalidFeatureRedefinition_diagnostic", //$NON-NLS-1$
-														getMessageSubstitutions(
-															context,
-															redefiningFeature,
-															redefinedFeature)),
-												new Object[]{redefiningFeature,
-													redefinedFeature}));
-									}
-								} else {
-
-									for (Iterator j = validRedefinitions
-										.iterator(); j.hasNext();) {
-
-										Feature validRedefinition = (Feature) j
-											.next();
-
-										if (!redefinedFeatures
-											.contains(validRedefinition)) {
-
-											if (null != diagnostics) {
-												diagnostics
-													.add(new BasicDiagnostic(
-														Diagnostic.INFO,
-														UML2Validator.DIAGNOSTIC_SOURCE,
-														INVALID_REDEFINITION,
-														UML2Plugin.INSTANCE
-															.getString(
-																"_UI_PackageMerger_ProcessInvalidRedefinition_diagnostic", //$NON-NLS-1$
-																getMessageSubstitutions(
-																	context,
-																	redefiningFeature,
-																	redefinedFeature,
-																	validRedefinition)),
-														new Object[]{
-															redefiningFeature,
-															validRedefinition}));
-											}
-
-											redefinedFeatures
-												.add(validRedefinition);
-										}
-									}
-								}
-
-								redefinedFeatures.remove(redefinedFeature);
-							} else if (OPTION__DISCARD.equals(options
+							if (OPTION__DISCARD.equals(options
 								.get(OPTION__INVALID_REDEFINITIONS))) {
 
 								if (null != diagnostics) {
@@ -4691,6 +4697,55 @@ public class UML2Util {
 											redefinedFeature}));
 							}
 						}
+
+						if (OPTION__PROCESS.equals(options
+							.get(OPTION__INVALID_REDEFINITIONS))) {
+
+							Collection validRedefinitions = findValidRedefinitions(
+								redefiningFeature, redefinedFeature.getName());
+
+							if (!validRedefinitions.isEmpty()) {
+
+								for (Iterator j = validRedefinitions.iterator(); j
+									.hasNext();) {
+
+									Feature validRedefinition = (Feature) j
+										.next();
+
+									if (!redefinedFeatures
+										.contains(validRedefinition)) {
+
+										if (null != diagnostics) {
+											diagnostics
+												.add(new BasicDiagnostic(
+													Diagnostic.INFO,
+													UML2Validator.DIAGNOSTIC_SOURCE,
+													INVALID_REDEFINITION,
+													UML2Plugin.INSTANCE
+														.getString(
+															"_UI_PackageMerger_ProcessInvalidRedefinition_diagnostic", //$NON-NLS-1$
+															getMessageSubstitutions(
+																context,
+																redefiningFeature,
+																redefinedFeature,
+																validRedefinition)),
+													new Object[]{
+														redefiningFeature,
+														validRedefinition}));
+										}
+
+										redefinedFeatures
+											.add(validRedefinition);
+									}
+								}
+
+								if (!validRedefinitions
+									.contains(redefinedFeature)) {
+
+									redefinedFeatures.remove(redefinedFeature);
+								}
+							}
+						}
 					}
 				}
 			}
@@ -4723,71 +4778,11 @@ public class UML2Util {
 						.iterator(); i.hasNext();) {
 
 						Property subsettedProperty = (Property) i.next();
-						Collection validSubsets = findValidSubsets(
-							subsettingProperty, subsettedProperty.getName());
 
-						if (!validSubsets.contains(subsettedProperty)) {
+						if (!UML2Util.isSubsetValid(subsettingProperty,
+							subsettedProperty)) {
 
-							if (OPTION__PROCESS.equals(options
-								.get(OPTION__INVALID_SUBSETS))) {
-
-								if (validSubsets.isEmpty()) {
-
-									if (null != diagnostics) {
-										diagnostics
-											.add(new BasicDiagnostic(
-												Diagnostic.INFO,
-												UML2Validator.DIAGNOSTIC_SOURCE,
-												INVALID_SUBSET,
-												UML2Plugin.INSTANCE
-													.getString(
-														"_UI_PackageMerger_DiscardInvalidSubset_diagnostic", //$NON-NLS-1$
-														getMessageSubstitutions(
-															context,
-															subsettingProperty,
-															subsettedProperty)),
-												new Object[]{
-													subsettingProperty,
-													subsettedProperty}));
-									}
-								} else {
-
-									for (Iterator j = validSubsets.iterator(); j
-										.hasNext();) {
-
-										Property validSubset = (Property) j
-											.next();
-
-										if (!subsettedProperties
-											.contains(validSubset)) {
-
-											if (null != diagnostics) {
-												diagnostics
-													.add(new BasicDiagnostic(
-														Diagnostic.INFO,
-														UML2Validator.DIAGNOSTIC_SOURCE,
-														INVALID_SUBSET,
-														UML2Plugin.INSTANCE
-															.getString(
-																"_UI_PackageMerger_ProcessInvalidSubset_diagnostic", //$NON-NLS-1$
-																getMessageSubstitutions(
-																	context,
-																	subsettingProperty,
-																	subsettedProperty,
-																	validSubset)),
-														new Object[]{
-															subsettingProperty,
-															validSubset}));
-											}
-
-											subsettedProperties
-												.add(validSubset);
-										}
-									}
-								}
-
-								subsettedProperties.remove(subsettedProperty);
-							} else if (OPTION__DISCARD.equals(options
+							if (OPTION__DISCARD.equals(options
 								.get(OPTION__INVALID_SUBSETS))) {
 
 								if (null != diagnostics) {
@@ -4826,6 +4821,52 @@ public class UML2Util {
 													subsettedProperty)),
 										new Object[]{subsettingProperty,
 											subsettedProperty}));
+							}
+						}
+
+						if (OPTION__PROCESS.equals(options
+							.get(OPTION__INVALID_SUBSETS))) {
+
+							Collection validSubsets = findValidSubsets(
+								subsettingProperty, subsettedProperty.getName());
+
+							if (!validSubsets.isEmpty()) {
+
+								for (Iterator j = validSubsets.iterator(); j
+									.hasNext();) {
+
+									Property validSubset = (Property) j.next();
+
+									if (!subsettedProperties
+										.contains(validSubset)) {
+
+										if (null != diagnostics) {
+											diagnostics
+												.add(new BasicDiagnostic(
+													Diagnostic.INFO,
+													UML2Validator.DIAGNOSTIC_SOURCE,
+													INVALID_SUBSET,
+													UML2Plugin.INSTANCE
+														.getString(
+															"_UI_PackageMerger_ProcessInvalidSubset_diagnostic", //$NON-NLS-1$
+															getMessageSubstitutions(
+																context,
+																subsettingProperty,
+																subsettedProperty,
+																validSubset)),
+													new Object[]{
+														subsettingProperty,
+														validSubset}));
+										}
+
+										subsettedProperties.add(validSubset);
+									}
+								}
+
+								if (!validSubsets.contains(subsettedProperty)) {
+									subsettedProperties
+										.remove(subsettedProperty);
+								}
 							}
 						}
 					}
