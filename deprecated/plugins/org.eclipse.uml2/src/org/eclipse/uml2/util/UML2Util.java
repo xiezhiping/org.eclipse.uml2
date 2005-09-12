@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.33 2005/09/12 19:42:08 khussey Exp $
+ * $Id: UML2Util.java,v 1.34 2005/09/12 21:20:36 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -4119,19 +4119,8 @@ public class UML2Util {
 
 											if (null == findEObject(
 												otherMemberEnds,
-												new NameMatcher(
-													(TypedElement) i.next()) {
-
-													public boolean matches(
-															EObject otherEObject) {
-
-														return super
-															.matches(otherEObject)
-															|| new TypeMatcher(
-																(TypedElement) eObject)
-																.matches(otherEObject);
-													}
-												})) {
+												new TypeMatcher(
+													(TypedElement) i.next()))) {
 
 												return false;
 											}
@@ -4657,8 +4646,10 @@ public class UML2Util {
 						if (!UML2Util.isRedefinitionValid(redefiningFeature,
 							redefinedFeature)) {
 
-							if (OPTION__DISCARD.equals(options
-								.get(OPTION__INVALID_REDEFINITIONS))) {
+							if (OPTION__PROCESS.equals(options
+								.get(OPTION__INVALID_REDEFINITIONS))
+								|| OPTION__DISCARD.equals(options
+									.get(OPTION__INVALID_REDEFINITIONS))) {
 
 								if (null != diagnostics) {
 									diagnostics
@@ -4782,8 +4773,10 @@ public class UML2Util {
 						if (!UML2Util.isSubsetValid(subsettingProperty,
 							subsettedProperty)) {
 
-							if (OPTION__DISCARD.equals(options
-								.get(OPTION__INVALID_SUBSETS))) {
+							if (OPTION__PROCESS.equals(options
+								.get(OPTION__INVALID_SUBSETS))
+								|| OPTION__DISCARD.equals(options
+									.get(OPTION__INVALID_SUBSETS))) {
 
 								if (null != diagnostics) {
 									diagnostics
