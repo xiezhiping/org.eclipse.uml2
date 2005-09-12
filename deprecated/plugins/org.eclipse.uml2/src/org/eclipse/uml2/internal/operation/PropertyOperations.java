@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.15 2005/09/07 21:11:26 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.16 2005/09/12 19:41:23 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -300,7 +300,7 @@ public final class PropertyOperations extends UML2Operations {
 							UML2Validator.PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION,
 							UML2Plugin.INSTANCE
 								.getString(
-									"_UI_Property_NavigablePropertyRedefinition_diagnostic", //$NON-NLS-1$
+									"_UI_Property_NavigablePropertySubsetted_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context, property,
 										subsettedProperty)), new Object[]{
 								property, subsettedProperty}));
@@ -326,7 +326,7 @@ public final class PropertyOperations extends UML2Operations {
 							UML2Validator.PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION,
 							UML2Plugin.INSTANCE
 								.getString(
-									"_UI_Property_NavigablePropertyRedefinition_diagnostic", //$NON-NLS-1$
+									"_UI_Property_NavigablePropertyRedefined_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context, property,
 										redefinedProperty)), new Object[]{
 								property, redefinedProperty}));
