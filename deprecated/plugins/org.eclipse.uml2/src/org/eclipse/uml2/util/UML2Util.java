@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.34 2005/09/12 21:20:36 khussey Exp $
+ * $Id: UML2Util.java,v 1.35 2005/09/13 19:10:51 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -2671,6 +2671,17 @@ public class UML2Util {
 														eStructuralFeature)),
 											new Object[]{eModelElement,
 												eStructuralFeature}));
+								}
+
+								if (!eStructuralFeature.isDerived()
+									&& eStructuralFeature instanceof EReference
+									&& ((EReference) eStructuralFeature)
+										.isContainment()) {
+
+									EReference eReference = (EReference) eModelElement;
+
+									eReference.setContainment(false);
+									eReference.setResolveProxies(false);
 								}
 
 								getEAnnotation(eModelElement,
