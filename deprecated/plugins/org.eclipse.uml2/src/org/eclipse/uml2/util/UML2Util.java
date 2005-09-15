@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.35 2005/09/13 19:10:51 khussey Exp $
+ * $Id: UML2Util.java,v 1.36 2005/09/15 21:18:44 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -3741,10 +3741,27 @@ public class UML2Util {
 
 			public boolean matches(EObject otherEObject) {
 
-				return super.matches(otherEObject)
-					&& ((null == eObject && null == otherEObject) || new ResultingQNameMatcher(
-						((TypedElement) eObject).getType())
-						.matches(((TypedElement) otherEObject).getType()));
+				if (super.matches(otherEObject)) {
+
+					if (null == eObject && null == otherEObject) {
+						return true;
+					} else {
+						Type type = ((TypedElement) eObject).getType();
+						Type otherType = ((TypedElement) otherEObject)
+							.getType();
+
+						return new ResultingQNameMatcher(type)
+							.matches(otherType)
+							|| (type instanceof Classifier
+								&& otherType instanceof Classifier && (null != findEObject(
+								((Classifier) type).allParents(),
+								new ResultingQNameMatcher(otherType)) || null != findEObject(
+								((Classifier) otherType).allParents(),
+								new ResultingQNameMatcher(type))));
+					}
+				}
+
+				return false;
 			}
 		}
 
@@ -4418,18 +4435,7 @@ public class UML2Util {
 		protected void getAllMergedPackagesHelper(
 				org.eclipse.uml2.Package package_, Collection allMergedPackages) {
 
-			for (Iterator packageMerges = package_.getPackageMerges()
-				.iterator(); packageMerges.hasNext();) {
-
-				org.eclipse.uml2.Package mergedPackage = ((PackageMerge) packageMerges
-					.next()).getMergedPackage();
-
-				if (null != mergedPackage) {
-					getAllMergedPackagesHelper(mergedPackage, allMergedPackages);
-
-					allMergedPackages.add(mergedPackage);
-				}
-			}
+			getAllMergedPackages(package_, allMergedPackages);
 		}
 
 		private Collection getAllMergedPackages(
@@ -4442,9 +4448,9 @@ public class UML2Util {
 					.next()).getMergedPackage();
 
 				if (null != mergedPackage) {
-					getAllMergedPackages(mergedPackage, allMergedPackages);
-
 					allMergedPackages.add(mergedPackage);
+
+					getAllMergedPackages(mergedPackage, allMergedPackages);
 				}
 			}
 
