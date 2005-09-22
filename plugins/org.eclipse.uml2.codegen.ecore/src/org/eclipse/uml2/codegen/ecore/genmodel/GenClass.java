@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClass.java,v 1.3 2005/06/01 21:43:44 khussey Exp $
+ * $Id: GenClass.java,v 1.4 2005/09/22 19:49:45 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -78,6 +78,8 @@ public interface GenClass
 	List/* GenFeature */getImplementedSupersetGenFeatures(boolean listType);
 
 	List/* GenFeature */getSubsetGenFeatures(GenFeature supersetGenFeature);
+
+	List/* GenFeature */getEIsSetSubsetGenFeatures(GenFeature unionGenFeature);
 
 	String getSubsetFeatureAccessorArray(GenFeature supersetGenFeature);
 

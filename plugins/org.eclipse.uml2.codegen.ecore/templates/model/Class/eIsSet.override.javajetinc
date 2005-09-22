@@ -1,0 +1,71 @@
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean eIsSet(<%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> eFeature)
+	{
+		switch (eDerivedStructuralFeatureID(eFeature))
+		{
+<%for (Iterator i=genClass.getAllGenFeatures().iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
+			case <%=genClass.getQualifiedFeatureID(genFeature)%>:
+  <%if (UML2GenModelUtil.isUnion(genFeature) && !UML2GenModelUtil.getEIsSetSubsetGenFeatures(genClass, genFeature).isEmpty()) { boolean first = true;%>
+    <%for (Iterator j = UML2GenModelUtil.getEIsSetSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();%>
+      <%if (first) { first = false;%>
+				return eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())<%if (!j.hasNext()) {%>;<%}%>
+      <%} else {%>
+					|| eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())<%if (!j.hasNext()) {%>;<%}%>
+      <%}%>
+    <%}%>
+  <%} else {%>
+    <%if (genFeature.isListType() && !genFeature.isUnsettable()) {%>
+      <%if (genFeature.isWrappedFeatureMapType()) {%>
+        <%if (genFeature.isVolatile()) {%>
+				return !((<%=genFeature.getImportedEffectiveFeatureMapWrapperInternalInterface()%>)<%=genFeature.getGetAccessor()%>()).featureMap().isEmpty();
+        <%} else {%>
+				return <%=genFeature.getSafeName()%> != null && !<%=genFeature.getSafeName()%>.featureMap().isEmpty();
+        <%}%>
+      <%} else {%>
+        <%if (genClass.isField(genFeature)) {%>
+				return <%=genFeature.getSafeName()%> != null && !<%=genFeature.getSafeName()%>.isEmpty();
+        <%} else {%>
+				return !<%=genFeature.getGetAccessor()%>().isEmpty();
+        <%}%>
+      <%}%>
+    <%} else if (genFeature.isUnsettable()) {%>
+				return isSet<%=genFeature.getAccessorName()%>();
+    <%} else if (genFeature.isResolveProxies()) {%>
+      <%if (genClass.isField(genFeature)) {%>
+				return <%=genFeature.getSafeName()%> != null;
+      <%} else {%>
+				return basicGet<%=genFeature.getAccessorName()%>() != null;
+      <%}%>
+    <%} else if (genFeature.isReferenceType()) {%>
+      <%if (genClass.isField(genFeature)) {%>
+				return <%=genFeature.getSafeName()%> != null;
+      <%} else {%>
+				return <%=genFeature.getGetAccessor()%>() != null;
+      <%}%>
+    <%} else if (genFeature.isPrimitiveType() || genFeature.isEnumType()) {%>
+      <%if (genClass.isField(genFeature)) {%>
+        <%if (genClass.isFlag(genFeature)) {%>
+				return ((<%=genClass.getFlagsField(genFeature)%> & <%=genFeature.getUpperName()%>_EFLAG) != 0) != <%=genFeature.getUpperName()%>_EDEFAULT;
+        <%} else {%>
+				return <%=genFeature.getSafeName()%> != <%=genFeature.getUpperName()%>_EDEFAULT;
+        <%}%>
+      <%} else {%>
+				return <%=genFeature.getGetAccessor()%>() != <%=genFeature.getUpperName()%>_EDEFAULT;
+      <%}%>
+    <%} else {//datatype%>
+      <%if (genClass.isField(genFeature)) {%>
+				return <%=genFeature.getUpperName()%>_EDEFAULT == null ? <%=genFeature.getSafeName()%> != null : !<%=genFeature.getUpperName()%>_EDEFAULT.equals(<%=genFeature.getSafeName()%>);
+      <%} else {%>
+				return <%=genFeature.getUpperName()%>_EDEFAULT == null ? <%=genFeature.getGetAccessor()%>() != null : !<%=genFeature.getUpperName()%>_EDEFAULT.equals(<%=genFeature.getGetAccessor()%>());
+      <%}%>
+    <%}%>
+  <%}%>
+<%}%>
+		}
+		return eDynamicIsSet(eFeature);
+	}
+

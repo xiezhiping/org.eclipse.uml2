@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Generator.java,v 1.2 2005/06/03 19:53:36 khussey Exp $
+ * $Id: Generator.java,v 1.3 2005/09/22 19:49:45 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
@@ -47,27 +49,60 @@ public class Generator
 
 	public static List getRedefinedEcoreFeatures(
 			EStructuralFeature eStructuralFeature) {
-		List redefinedEcoreFeatures = new ArrayList();
+		return getRedefinedEcoreFeatures(eStructuralFeature, false);
+	}
+
+	public static List getRedefinedEcoreFeatures(
+			EStructuralFeature eStructuralFeature, boolean recurse) {
+		List redefinedEcoreFeatures = new UniqueEList();
 
 		EAnnotation redefinesAnnotation = eStructuralFeature
 			.getEAnnotation(ANNOTATION_SOURCE__REDEFINES);
 
 		if (null != redefinesAnnotation) {
-			redefinedEcoreFeatures.addAll(redefinesAnnotation.getReferences());
+
+			for (Iterator references = redefinesAnnotation.getReferences()
+				.iterator(); references.hasNext();) {
+				EStructuralFeature redefinedFeature = (EStructuralFeature) references
+					.next();
+
+				redefinedEcoreFeatures.add(redefinedFeature);
+
+				if (recurse) {
+					redefinedEcoreFeatures.addAll(getRedefinedEcoreFeatures(
+						redefinedFeature, recurse));
+				}
+			}
 		}
 
 		return redefinedEcoreFeatures;
 	}
 
 	public static List getRedefinedEcoreOperations(EOperation eOperation) {
-		List redefinedEcoreOperations = new ArrayList();
+		return getRedefinedEcoreOperations(eOperation, false);
+	}
+
+	public static List getRedefinedEcoreOperations(EOperation eOperation,
+			boolean recurse) {
+		List redefinedEcoreOperations = new UniqueEList();
 
 		EAnnotation redefinesAnnotation = eOperation
 			.getEAnnotation(ANNOTATION_SOURCE__REDEFINES);
 
 		if (null != redefinesAnnotation) {
-			redefinedEcoreOperations
-				.addAll(redefinesAnnotation.getReferences());
+
+			for (Iterator references = redefinesAnnotation.getReferences()
+				.iterator(); references.hasNext();) {
+				EOperation redefinedOperation = (EOperation) references.next();
+
+				redefinedEcoreOperations.add(redefinedOperation);
+
+				if (recurse) {
+					redefinedEcoreOperations
+						.addAll(getRedefinedEcoreOperations(redefinedOperation,
+							recurse));
+				}
+			}
 		}
 
 		return redefinedEcoreOperations;
@@ -80,13 +115,30 @@ public class Generator
 
 	public static List getSubsettedEcoreFeatures(
 			EStructuralFeature eStructuralFeature) {
-		List subsettedEcoreFeatures = new ArrayList();
+		return getSubsettedEcoreFeatures(eStructuralFeature, false);
+	}
+
+	public static List getSubsettedEcoreFeatures(
+			EStructuralFeature eStructuralFeature, boolean recurse) {
+		List subsettedEcoreFeatures = new UniqueEList();
 
 		EAnnotation subsetsAnnotation = eStructuralFeature
 			.getEAnnotation(ANNOTATION_SOURCE__SUBSETS);
 
 		if (null != subsetsAnnotation) {
-			subsettedEcoreFeatures.addAll(subsetsAnnotation.getReferences());
+
+			for (Iterator references = subsetsAnnotation.getReferences()
+				.iterator(); references.hasNext();) {
+				EStructuralFeature subsettedFeature = (EStructuralFeature) references
+					.next();
+
+				subsettedEcoreFeatures.add(subsettedFeature);
+
+				if (recurse) {
+					subsettedEcoreFeatures.addAll(getSubsettedEcoreFeatures(
+						subsettedFeature, recurse));
+				}
+			}
 		}
 
 		return subsettedEcoreFeatures;

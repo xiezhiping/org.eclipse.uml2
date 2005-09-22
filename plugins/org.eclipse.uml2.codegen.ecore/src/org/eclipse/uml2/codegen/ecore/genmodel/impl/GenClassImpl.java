@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.5 2005/09/06 15:17:24 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.6 2005/09/22 19:49:45 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
 import org.eclipse.emf.codegen.ecore.genmodel.GenProviderKind;
-import org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl.CollidingGenOperationFilter;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
@@ -986,6 +985,27 @@ public class GenClassImpl
 
 			if (Generator.getSubsettedEcoreFeatures(
 				genFeature.getEcoreFeature()).contains(supersetEcoreFeature)) {
+
+				subsetGenFeatures.put(genFeature.getName(), genFeature);
+			}
+		}
+
+		return new ArrayList(subsetGenFeatures.values());
+	}
+
+	public List getEIsSetSubsetGenFeatures(GenFeature unionGenFeature) {
+		Map subsetGenFeatures = new LinkedHashMap();
+
+		final EStructuralFeature supersetEcoreFeature = unionGenFeature
+			.getEcoreFeature();
+
+		for (Iterator i = getAllDuplicateGenFeatures().iterator(); i.hasNext();) {
+			GenFeature genFeature = (GenFeature) i.next();
+
+			if (!UML2GenModelUtil.isUnion(genFeature)
+				&& Generator.getSubsettedEcoreFeatures(
+					genFeature.getEcoreFeature(), true).contains(
+					supersetEcoreFeature)) {
 
 				subsetGenFeatures.put(genFeature.getName(), genFeature);
 			}
