@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: feature.xml,v 1.14 2005/08/31 15:26:15 khussey Exp $
+ $Id: feature.xml,v 1.15 2005/09/22 15:18:23 khussey Exp $
 -->
 
 <feature
@@ -64,7 +64,7 @@
          id="org.eclipse.ant.optional.junit"
          download-size="0"
          install-size="0"
-         version="2.1.0"
-         fragment="true"/>
+         fragment="true"
+         version="2.1.0"/>
 
 </feature>
