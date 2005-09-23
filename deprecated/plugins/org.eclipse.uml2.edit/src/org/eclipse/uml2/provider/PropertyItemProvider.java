@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -37,6 +37,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.Property;
+import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
@@ -578,13 +579,32 @@ public class PropertyItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Property)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Property_type") : //$NON-NLS-1$
-			getString("_UI_Property_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_Property_type"); //$NON-NLS-1$
+
+		Property property = (Property) object;
+		String label = property.getLabel(shouldTranslate());
+
+		if (label.length() > 0) {
+			appendString(text, label);
+		} else if (null != property.getAssociation()) {
+			Type type = property.getType();
+
+			if (null != type) {
+				String typeName = type.getName();
+
+				if (typeName.length() > 0) {
+					appendString(text, Character
+						.toLowerCase(typeName.charAt(0))
+						+ typeName.substring(1));
+				}
+			}
+		}
+
+		return text.toString();
 	}
 
 	/**

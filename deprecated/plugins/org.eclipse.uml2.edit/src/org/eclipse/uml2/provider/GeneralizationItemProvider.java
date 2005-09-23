@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationItemProvider.java,v 1.12 2005/05/18 16:40:45 khussey Exp $
+ * $Id: GeneralizationItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -175,11 +175,12 @@ public class GeneralizationItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		Generalization generalization = (Generalization)object;
-		return getString("_UI_Generalization_type") + " " + generalization.isSubstitutable(); //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Generalization_type"), ((Generalization) object).getGeneral()).toString(); //$NON-NLS-1$
 	}
 
 	/**
@@ -193,6 +194,7 @@ public class GeneralizationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Generalization.class)) {
+			case UML2Package.GENERALIZATION__GENERAL:
 			case UML2Package.GENERALIZATION__IS_SUBSTITUTABLE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

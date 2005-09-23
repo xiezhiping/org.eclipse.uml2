@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionItemProvider.java,v 1.13 2005/05/18 16:40:46 khussey Exp $
+ * $Id: RegionItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -278,13 +278,12 @@ public class RegionItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Region)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Region_type") : //$NON-NLS-1$
-			getString("_UI_Region_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Region_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingItemProvider.java,v 1.12 2005/05/18 16:40:45 khussey Exp $
+ * $Id: TemplateBindingItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -172,10 +172,12 @@ public class TemplateBindingItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return getString("_UI_TemplateBinding_type"); //$NON-NLS-1$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_TemplateBinding_type"), ((TemplateBinding) object).getBoundElement()).toString(); //$NON-NLS-1$
 	}
 
 	/**
@@ -189,6 +191,9 @@ public class TemplateBindingItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TemplateBinding.class)) {
+			case UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

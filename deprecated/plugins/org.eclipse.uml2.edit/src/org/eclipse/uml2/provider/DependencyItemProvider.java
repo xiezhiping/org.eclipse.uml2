@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyItemProvider.java,v 1.12 2005/05/18 16:40:46 khussey Exp $
+ * $Id: DependencyItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -24,7 +25,10 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.eclipse.uml2.Dependency;
+import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -197,24 +201,53 @@ public class DependencyItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Dependency)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Dependency_type") : //$NON-NLS-1$
-			getString("_UI_Dependency_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_Dependency_type"); //$NON-NLS-1$
+
+		Dependency dependency = (Dependency) object;
+		String label = dependency.getLabel(shouldTranslate());
+
+		if (label.length() > 0) {
+			appendString(text, label);
+		} else {
+
+			for (Iterator i = dependency.getSuppliers().iterator(); i.hasNext();) {
+				NamedElement supplier = (NamedElement) i.next();
+				String supplierLabel = supplier.getLabel(shouldTranslate());
+
+				if (supplierLabel.length() > 0) {
+					appendString(text, supplierLabel);
+				} else {
+					appendType(text, supplier);
+				}
+
+				if (i.hasNext()) {
+					text.append(',');
+				}
+			}
+		}
+
+		return text.toString();
 	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Dependency.class)) {
+			case UML2Package.DEPENDENCY__SUPPLIER:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionItemProvider.java,v 1.12 2005/05/18 16:40:46 khussey Exp $
+ * $Id: OpaqueExpressionItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -175,13 +175,20 @@ public class OpaqueExpressionItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((OpaqueExpression)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_OpaqueExpression_type") : //$NON-NLS-1$
-			getString("_UI_OpaqueExpression_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_OpaqueExpression_type"); //$NON-NLS-1$
+
+		OpaqueExpression opaqueExpression = (OpaqueExpression) object;
+		String label = opaqueExpression.getLabel(shouldTranslate());
+
+		appendString(text, label.length() > 0
+			? label
+			: opaqueExpression.stringValue());
+
+		return text.toString();
 	}
 
 	/**

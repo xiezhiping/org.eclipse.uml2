@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeItemProvider.java,v 1.13 2005/05/18 16:40:46 khussey Exp $
+ * $Id: ObjectNodeItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -223,6 +223,7 @@ public class ObjectNodeItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ObjectNode.class)) {
+			case UML2Package.OBJECT_NODE__TYPE:
 			case UML2Package.OBJECT_NODE__ORDERING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

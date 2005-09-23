@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionItemProvider.java,v 1.12 2005/05/18 16:40:46 khussey Exp $
+ * $Id: AbstractionItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -27,6 +28,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.Abstraction;
+import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
@@ -128,13 +130,38 @@ public class AbstractionItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Abstraction)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Abstraction_type") : //$NON-NLS-1$
-			getString("_UI_Abstraction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_Abstraction_type"); //$NON-NLS-1$
+
+		Abstraction abstraction = (Abstraction) object;
+		String label = abstraction.getLabel(shouldTranslate());
+
+		if (label.length() > 0) {
+			appendString(text, label);
+		} else {
+
+			for (Iterator i = abstraction.getSuppliers().iterator(); i
+				.hasNext();) {
+
+				NamedElement supplier = (NamedElement) i.next();
+				String supplierLabel = supplier.getLabel(shouldTranslate());
+
+				if (supplierLabel.length() > 0) {
+					appendString(text, supplierLabel);
+				} else {
+					appendType(text, supplier);
+				}
+
+				if (i.hasNext()) {
+					text.append(',');
+				}
+			}
+		}
+
+		return text.toString();
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataItemProvider.java,v 1.12 2005/05/18 16:40:45 khussey Exp $
+ * $Id: LinkEndCreationDataItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -131,11 +131,11 @@ public class LinkEndCreationDataItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		LinkEndCreationData linkEndCreationData = (LinkEndCreationData)object;
-		return getString("_UI_LinkEndCreationData_type") + " " + linkEndCreationData.isReplaceAll(); //$NON-NLS-1$ //$NON-NLS-2$
+		return appendType(appendKeywords(new StringBuffer(), object),
+			"_UI_LinkEndCreationData_type").toString(); //$NON-NLS-1$
 	}
 
 	/**

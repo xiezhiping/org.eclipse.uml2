@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotItemProvider.java,v 1.12 2005/05/18 16:40:46 khussey Exp $
+ * $Id: SlotItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -172,10 +172,12 @@ public class SlotItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return getString("_UI_Slot_type"); //$NON-NLS-1$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Slot_type"), ((Slot) object).getDefiningFeature()).toString(); //$NON-NLS-1$
 	}
 
 	/**
@@ -189,6 +191,9 @@ public class SlotItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Slot.class)) {
+			case UML2Package.SLOT__DEFINING_FEATURE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case UML2Package.SLOT__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

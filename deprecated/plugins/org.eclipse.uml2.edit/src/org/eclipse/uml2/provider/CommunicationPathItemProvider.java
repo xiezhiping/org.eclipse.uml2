@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommunicationPathItemProvider.java,v 1.9 2005/05/18 16:40:46 khussey Exp $
+ * $Id: CommunicationPathItemProvider.java,v 1.10 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -24,6 +25,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.uml2.CommunicationPath;
+import org.eclipse.uml2.Property;
+import org.eclipse.uml2.Type;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.CommunicationPath} object.
@@ -84,13 +87,57 @@ public class CommunicationPathItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((CommunicationPath)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_CommunicationPath_type") : //$NON-NLS-1$
-			getString("_UI_CommunicationPath_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_CommunicationPath_type"); //$NON-NLS-1$
+
+		CommunicationPath communicationPath = (CommunicationPath) object;
+		String label = communicationPath.getLabel(shouldTranslate());
+
+		if (label.length() > 0) {
+			appendString(text, label);
+		} else {
+			List memberEnds = communicationPath.getMemberEnds();
+
+			if (!memberEnds.isEmpty()) {
+				appendString(text, "A"); //$NON-NLS-1$
+
+				for (Iterator i = memberEnds.iterator(); i.hasNext();) {
+					Property memberEnd = (Property) i.next();
+					String memberEndName = memberEnd.getName();
+
+					text.append('_');
+
+					if (memberEndName.length() > 0) {
+						text.append(memberEndName);
+					} else {
+						Type type = memberEnd.getType();
+
+						if (null != type) {
+							String typeName = type.getName();
+
+							if (typeName.length() > 0) {
+								memberEndName = Character.toLowerCase(typeName
+									.charAt(0))
+									+ typeName.substring(1);
+							}
+						}
+
+						if (memberEndName.length() > 0) {
+							text.append(memberEndName);
+						} else {
+							text.append('<');
+							text.append(getTypeText(memberEnd));
+							text.append('>');
+						}
+					}
+				}
+			}
+		}
+
+		return text.toString();
 	}
 
 	/**

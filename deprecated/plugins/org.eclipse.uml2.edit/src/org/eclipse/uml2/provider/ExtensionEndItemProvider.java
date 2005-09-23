@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndItemProvider.java,v 1.10 2005/05/18 16:40:45 khussey Exp $
+ * $Id: ExtensionEndItemProvider.java,v 1.11 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.uml2.ExtensionEnd;
+import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -82,16 +83,33 @@ public class ExtensionEndItemProvider
 	}
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((ExtensionEnd)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ExtensionEnd_type") : //$NON-NLS-1$
-			getString("_UI_ExtensionEnd_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_ExtensionEnd_type"); //$NON-NLS-1$
+
+		ExtensionEnd extensionEnd = (ExtensionEnd) object;
+		String label = extensionEnd.getLabel(shouldTranslate());
+
+		if (label.length() > 0) {
+			appendString(text, label);
+		} else if (null != extensionEnd.getAssociation()) {
+			Type type = extensionEnd.getType();
+
+			if (null != type) {
+				String typeName = type.getName();
+
+				if (typeName.length() > 0) {
+					appendString(text, "extension$" + typeName); //$NON-NLS-1$
+				}
+			}
+		}
+
+		return text.toString();
 	}
 
 	/**

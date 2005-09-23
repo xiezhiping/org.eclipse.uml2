@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: InteractionConstraintItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -166,13 +166,12 @@ public class InteractionConstraintItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((InteractionConstraint)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_InteractionConstraint_type") : //$NON-NLS-1$
-			getString("_UI_InteractionConstraint_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_InteractionConstraint_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

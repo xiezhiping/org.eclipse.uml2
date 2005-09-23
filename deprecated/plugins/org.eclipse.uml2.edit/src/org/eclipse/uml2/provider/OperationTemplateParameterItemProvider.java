@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTemplateParameterItemProvider.java,v 1.10 2005/05/18 16:40:45 khussey Exp $
+ * $Id: OperationTemplateParameterItemProvider.java,v 1.11 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.uml2.OperationTemplateParameter;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -84,10 +85,12 @@ public class OperationTemplateParameterItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return getString("_UI_OperationTemplateParameter_type"); //$NON-NLS-1$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_OperationTemplateParameter_type"), ((OperationTemplateParameter) object).getParameteredElement()).toString(); //$NON-NLS-1$
 	}
 
 	/**

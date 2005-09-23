@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -110,11 +110,23 @@ public class LiteralUnlimitedNaturalItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		LiteralUnlimitedNatural literalUnlimitedNatural = (LiteralUnlimitedNatural)object;
-		return getString("_UI_LiteralUnlimitedNatural_type") + " " + literalUnlimitedNatural.getValue(); //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_LiteralUnlimitedNatural_type"); //$NON-NLS-1$
+
+		LiteralUnlimitedNatural literalUnlimitedNatural = (LiteralUnlimitedNatural) object;
+		String label = literalUnlimitedNatural.getLabel(shouldTranslate());
+
+		if (label.length() > 0) {
+			appendString(text, label);
+		} else {
+			String stringValue = literalUnlimitedNatural.stringValue();
+			appendString(text, "-1".equals(stringValue) ? "*" : stringValue); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+
+		return text.toString();
 	}
 
 	/**

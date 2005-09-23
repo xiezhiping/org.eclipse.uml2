@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.21 2005/08/26 14:50:42 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.22 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -518,13 +518,12 @@ public class OperationItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Operation)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Operation_type") : //$NON-NLS-1$
-			getString("_UI_Operation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Operation_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**
@@ -538,6 +537,7 @@ public class OperationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Operation.class)) {
+			case UML2Package.OPERATION__TYPE:
 			case UML2Package.OPERATION__IS_ORDERED:
 			case UML2Package.OPERATION__IS_UNIQUE:
 			case UML2Package.OPERATION__LOWER:

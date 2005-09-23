@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationItemProvider.java,v 1.12 2005/05/18 16:40:46 khussey Exp $
+ * $Id: ManifestationItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -33,6 +33,8 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.Manifestation;
 import org.eclipse.uml2.UML2Package;
@@ -121,24 +123,35 @@ public class ManifestationItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Manifestation)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Manifestation_type") : //$NON-NLS-1$
-			getString("_UI_Manifestation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_Manifestation_type"); //$NON-NLS-1$
+
+		Manifestation manifestation = (Manifestation) object;
+		String label = manifestation.getLabel(shouldTranslate());
+
+		return ((label.length() > 0)
+			? appendString(text, label)
+			: appendLabel(text, manifestation.getUtilizedElement())).toString();
 	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Manifestation.class)) {
+			case UML2Package.MANIFESTATION__UTILIZED_ELEMENT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

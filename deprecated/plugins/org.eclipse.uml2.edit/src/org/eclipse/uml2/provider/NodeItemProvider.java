@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeItemProvider.java,v 1.22 2005/05/18 16:40:46 khussey Exp $
+ * $Id: NodeItemProvider.java,v 1.23 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -201,13 +201,12 @@ public class NodeItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Node)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Node_type") : //$NON-NLS-1$
-			getString("_UI_Node_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Node_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

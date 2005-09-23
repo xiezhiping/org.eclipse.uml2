@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PrimitiveFunctionItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: PrimitiveFunctionItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -131,13 +131,12 @@ public class PrimitiveFunctionItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((PrimitiveFunction)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PrimitiveFunction_type") : //$NON-NLS-1$
-			getString("_UI_PrimitiveFunction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_PrimitiveFunction_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendItemProvider.java,v 1.12 2005/05/18 16:40:45 khussey Exp $
+ * $Id: ExtendItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -262,13 +262,18 @@ public class ExtendItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Extend)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Extend_type") : //$NON-NLS-1$
-			getString("_UI_Extend_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_Extend_type"); //$NON-NLS-1$
+
+		Extend extend = (Extend) object;
+		String label = extend.getLabel(shouldTranslate());
+
+		return ((label.length() > 0)
+			? appendString(text, label)
+			: appendLabel(text, extend.getExtendedCase())).toString();
 	}
 
 	/**
@@ -282,6 +287,9 @@ public class ExtendItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Extend.class)) {
+			case UML2Package.EXTEND__EXTENDED_CASE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case UML2Package.EXTEND__CONDITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

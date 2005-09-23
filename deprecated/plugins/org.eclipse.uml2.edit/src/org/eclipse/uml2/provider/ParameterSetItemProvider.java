@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetItemProvider.java,v 1.12 2005/05/18 16:40:46 khussey Exp $
+ * $Id: ParameterSetItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -26,6 +27,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.Parameter;
 import org.eclipse.uml2.ParameterSet;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
@@ -149,20 +151,47 @@ public class ParameterSetItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((ParameterSet)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ParameterSet_type") : //$NON-NLS-1$
-			getString("_UI_ParameterSet_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_ParameterSet_type"); //$NON-NLS-1$
+
+		ParameterSet parameterSet = (ParameterSet) object;
+		String label = parameterSet.getLabel(shouldTranslate());
+
+		if (label.length() > 0) {
+			appendString(text, label);
+		} else {
+
+			for (Iterator i = parameterSet.getParameters().iterator(); i
+				.hasNext();) {
+
+				Parameter parameter = (Parameter) i.next();
+				String parameterLabel = parameter.getLabel(shouldTranslate());
+
+				if (parameterLabel.length() > 0) {
+					appendString(text, parameterLabel);
+				} else {
+					appendType(text, parameter);
+				}
+
+				if (i.hasNext()) {
+					text.append(',');
+				}
+			}
+		}
+
+		return text.toString();
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to
+	 * update any cached children and by creating a viewer notification, which
+	 * it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!--end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void notifyChanged(Notification notification) {

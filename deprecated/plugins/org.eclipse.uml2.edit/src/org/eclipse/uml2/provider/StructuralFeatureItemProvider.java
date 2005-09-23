@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureItemProvider.java,v 1.13 2005/05/18 16:40:45 khussey Exp $
+ * $Id: StructuralFeatureItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -307,6 +307,7 @@ public class StructuralFeatureItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(StructuralFeature.class)) {
+			case UML2Package.STRUCTURAL_FEATURE__TYPE:
 			case UML2Package.STRUCTURAL_FEATURE__IS_ORDERED:
 			case UML2Package.STRUCTURAL_FEATURE__IS_UNIQUE:
 			case UML2Package.STRUCTURAL_FEATURE__LOWER:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringItemProvider.java,v 1.13 2005/05/18 16:40:46 khussey Exp $
+ * $Id: LiteralStringItemProvider.java,v 1.14 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -110,13 +110,20 @@ public class LiteralStringItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((LiteralString)object).getValue();
-		return label == null || label.length() == 0 ?
-			getString("_UI_LiteralString_type") : //$NON-NLS-1$
-			getString("_UI_LiteralString_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_LiteralString_type"); //$NON-NLS-1$
+
+		LiteralString literalString = (LiteralString) object;
+		String label = literalString.getLabel(shouldTranslate());
+
+		appendString(text, label.length() > 0
+			? label
+			: literalString.stringValue());
+
+		return text.toString();
 	}
 
 	/**

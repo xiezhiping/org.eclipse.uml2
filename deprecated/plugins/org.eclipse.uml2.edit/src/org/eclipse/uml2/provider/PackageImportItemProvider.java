@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportItemProvider.java,v 1.12 2005/05/18 16:40:46 khussey Exp $
+ * $Id: PackageImportItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -29,7 +29,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.VisibilityKind;
+
+//import org.eclipse.uml2.VisibilityKind;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.PackageImport} object.
@@ -155,14 +156,12 @@ public class PackageImportItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		VisibilityKind labelValue = ((PackageImport)object).getVisibility();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PackageImport_type") : //$NON-NLS-1$
-			getString("_UI_PackageImport_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_PackageImport_type"), ((PackageImport) object).getImportedPackage()).toString(); //$NON-NLS-1$
 	}
 
 	/**
@@ -177,6 +176,7 @@ public class PackageImportItemProvider
 
 		switch (notification.getFeatureID(PackageImport.class)) {
 			case UML2Package.PACKAGE_IMPORT__VISIBILITY:
+			case UML2Package.PACKAGE_IMPORT__IMPORTED_PACKAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

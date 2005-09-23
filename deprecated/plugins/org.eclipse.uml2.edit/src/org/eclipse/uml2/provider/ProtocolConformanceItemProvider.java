@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceItemProvider.java,v 1.12 2005/05/18 16:40:46 khussey Exp $
+ * $Id: ProtocolConformanceItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -24,6 +24,9 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import org.eclipse.uml2.ProtocolConformance;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -129,10 +132,12 @@ public class ProtocolConformanceItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return getString("_UI_ProtocolConformance_type"); //$NON-NLS-1$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_ProtocolConformance_type"), ((ProtocolConformance) object).getGeneralMachine()).toString(); //$NON-NLS-1$
 	}
 
 	/**
@@ -144,6 +149,12 @@ public class ProtocolConformanceItemProvider
 	 */
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(ProtocolConformance.class)) {
+			case UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

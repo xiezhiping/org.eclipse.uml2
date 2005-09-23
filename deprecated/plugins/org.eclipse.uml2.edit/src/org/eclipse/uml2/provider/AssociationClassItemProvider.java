@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassItemProvider.java,v 1.22 2005/05/18 16:40:46 khussey Exp $
+ * $Id: AssociationClassItemProvider.java,v 1.23 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -37,6 +38,8 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.AssociationClass;
+import org.eclipse.uml2.Property;
+import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
@@ -231,13 +234,57 @@ public class AssociationClassItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((AssociationClass)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_AssociationClass_type") : //$NON-NLS-1$
-			getString("_UI_AssociationClass_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_AssociationClass_type"); //$NON-NLS-1$
+
+		AssociationClass associationClass = (AssociationClass) object;
+		String label = associationClass.getLabel(shouldTranslate());
+
+		if (label.length() > 0) {
+			appendString(text, label);
+		} else {
+			List memberEnds = associationClass.getMemberEnds();
+
+			if (!memberEnds.isEmpty()) {
+				appendString(text, "A"); //$NON-NLS-1$
+
+				for (Iterator i = memberEnds.iterator(); i.hasNext();) {
+					Property memberEnd = (Property) i.next();
+					String memberEndName = memberEnd.getName();
+
+					text.append('_');
+
+					if (memberEndName.length() > 0) {
+						text.append(memberEndName);
+					} else {
+						Type type = memberEnd.getType();
+
+						if (null != type) {
+							String typeName = type.getName();
+
+							if (typeName.length() > 0) {
+								memberEndName = Character.toLowerCase(typeName
+									.charAt(0))
+									+ typeName.substring(1);
+							}
+						}
+
+						if (memberEndName.length() > 0) {
+							text.append(memberEndName);
+						} else {
+							text.append('<');
+							text.append(getTypeText(memberEnd));
+							text.append('>');
+						}
+					}
+				}
+			}
+		}
+
+		return text.toString();
 	}
 
 	/**
@@ -252,6 +299,7 @@ public class AssociationClassItemProvider
 
 		switch (notification.getFeatureID(AssociationClass.class)) {
 			case UML2Package.ASSOCIATION_CLASS__IS_DERIVED:
+			case UML2Package.ASSOCIATION_CLASS__MEMBER_END:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_END:

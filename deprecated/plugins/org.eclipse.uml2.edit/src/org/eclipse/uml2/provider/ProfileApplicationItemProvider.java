@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationItemProvider.java,v 1.12 2005/05/18 16:40:45 khussey Exp $
+ * $Id: ProfileApplicationItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -34,9 +34,12 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.eclipse.uml2.ProfileApplication;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.VisibilityKind;
+
+//import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
@@ -121,14 +124,12 @@ public class ProfileApplicationItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		VisibilityKind labelValue = ((ProfileApplication)object).getVisibility();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ProfileApplication_type") : //$NON-NLS-1$
-			getString("_UI_ProfileApplication_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_ProfileApplication_type"), ((ProfileApplication) object).getImportedProfile()).toString(); //$NON-NLS-1$
 	}
 
 	/**
@@ -140,6 +141,12 @@ public class ProfileApplicationItemProvider
 	 */
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(ProfileApplication.class)) {
+			case UML2Package.PROFILE_APPLICATION__IMPORTED_PROFILE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralNullItemProvider.java,v 1.9 2005/05/18 16:40:46 khussey Exp $
+ * $Id: LiteralNullItemProvider.java,v 1.10 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -84,13 +84,20 @@ public class LiteralNullItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((LiteralNull)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_LiteralNull_type") : //$NON-NLS-1$
-			getString("_UI_LiteralNull_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_LiteralNull_type"); //$NON-NLS-1$
+
+		LiteralNull literalNull = (LiteralNull) object;
+		String label = literalNull.getLabel(shouldTranslate());
+
+		appendString(text, label.length() > 0
+			? label
+			: literalNull.stringValue());
+
+		return text.toString();
 	}
 
 	/**

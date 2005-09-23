@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterItemProvider.java,v 1.20 2005/05/18 16:40:46 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.21 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -241,10 +241,12 @@ public class TemplateParameterItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return getString("_UI_TemplateParameter_type"); //$NON-NLS-1$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_TemplateParameter_type"), ((TemplateParameter) object).getParameteredElement()).toString(); //$NON-NLS-1$
 	}
 
 	/**
@@ -258,6 +260,9 @@ public class TemplateParameterItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TemplateParameter.class)) {
+			case UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT:
 			case UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

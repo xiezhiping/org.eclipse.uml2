@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineItemProvider.java,v 1.21 2005/05/18 16:40:46 khussey Exp $
+ * $Id: StateMachineItemProvider.java,v 1.22 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -187,13 +187,12 @@ public class StateMachineItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((StateMachine)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_StateMachine_type") : //$NON-NLS-1$
-			getString("_UI_StateMachine_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_StateMachine_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

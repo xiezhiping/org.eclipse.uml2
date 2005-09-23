@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.25 2005/06/09 02:18:16 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.26 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -41,6 +41,8 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.Element;
+import org.eclipse.uml2.NamedElement;
+import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
@@ -287,6 +289,86 @@ public class ElementItemProvider
 			}
 
 		});
+	}
+
+	protected StringBuffer appendKeywords(StringBuffer text, Object object) {
+
+		if (object instanceof Element) {
+			Element element = (Element) object;
+
+			Iterator appliedStereotypes = element.getAppliedStereotypes()
+				.iterator();
+			Iterator keywords = element.getKeywords().iterator();
+
+			if (appliedStereotypes.hasNext() || keywords.hasNext()) {
+
+				if (text.length() > 0) {
+					text.append(' ');
+				}
+
+				text.append("<<"); //$NON-NLS-1$
+
+				while (appliedStereotypes.hasNext()) {
+					text.append(((Stereotype) appliedStereotypes.next())
+						.getKeyword(shouldTranslate()));
+
+					if (appliedStereotypes.hasNext() || keywords.hasNext()) {
+						text.append(", "); //$NON-NLS-1$
+					}
+				}
+
+				while (keywords.hasNext()) {
+					text.append((String) keywords.next());
+
+					if (keywords.hasNext()) {
+						text.append(", "); //$NON-NLS-1$
+					}
+				}
+
+				text.append(">>"); //$NON-NLS-1$
+			}
+		}
+
+		return text;
+	}
+
+	protected StringBuffer appendType(StringBuffer text, Object object) {
+
+		if (text.length() > 0) {
+			text.append(' ');
+		}
+
+		return text.append('<').append(getTypeText(object)).append('>');
+	}
+
+	protected StringBuffer appendType(StringBuffer text, String key) {
+
+		if (text.length() > 0) {
+			text.append(' ');
+		}
+
+		return text.append('<').append(getString(key)).append('>');
+	}
+
+	protected StringBuffer appendLabel(StringBuffer text, Object object) {
+		return object instanceof NamedElement
+			? appendString(text, ((NamedElement) object)
+				.getLabel(shouldTranslate()))
+			: text;
+	}
+
+	protected StringBuffer appendString(StringBuffer text, String string) {
+		
+		if (string.length() > 0) {
+
+			if (text.length() > 0) {
+				text.append(' ');
+			}
+
+			text.append(string);
+		}
+
+		return text;
 	}
 
 	/*

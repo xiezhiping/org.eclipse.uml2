@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureItemProvider.java,v 1.12 2005/05/18 16:40:46 khussey Exp $
+ * $Id: TemplateSignatureItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -228,10 +228,12 @@ public class TemplateSignatureItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return getString("_UI_TemplateSignature_type"); //$NON-NLS-1$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_TemplateSignature_type"), ((TemplateSignature) object).getTemplate()).toString(); //$NON-NLS-1$
 	}
 
 	/**
@@ -245,6 +247,9 @@ public class TemplateSignatureItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TemplateSignature.class)) {
+			case UML2Package.TEMPLATE_SIGNATURE__TEMPLATE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

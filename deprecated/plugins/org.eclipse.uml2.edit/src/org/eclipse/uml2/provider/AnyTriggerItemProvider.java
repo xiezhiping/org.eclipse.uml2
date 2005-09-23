@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AnyTriggerItemProvider.java,v 1.9 2005/05/18 16:40:46 khussey Exp $
+ * $Id: AnyTriggerItemProvider.java,v 1.10 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.eclipse.uml2.AnyTrigger;
+//import org.eclipse.uml2.AnyTrigger;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.AnyTrigger} object.
@@ -85,13 +85,12 @@ public class AnyTriggerItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((AnyTrigger)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_AnyTrigger_type") : //$NON-NLS-1$
-			getString("_UI_AnyTrigger_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_AnyTrigger_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UsageItemProvider.java,v 1.9 2005/05/18 16:40:45 khussey Exp $
+ * $Id: UsageItemProvider.java,v 1.10 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -23,6 +24,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Usage;
 
 /**
@@ -84,13 +86,36 @@ public class UsageItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Usage)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Usage_type") : //$NON-NLS-1$
-			getString("_UI_Usage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_Usage_type"); //$NON-NLS-1$
+
+		Usage usage = (Usage) object;
+		String label = usage.getLabel(shouldTranslate());
+
+		if (label.length() > 0) {
+			appendString(text, label);
+		} else {
+
+			for (Iterator i = usage.getSuppliers().iterator(); i.hasNext();) {
+				NamedElement supplier = (NamedElement) i.next();
+				String supplierLabel = supplier.getLabel(shouldTranslate());
+
+				if (supplierLabel.length() > 0) {
+					appendString(text, supplierLabel);
+				} else {
+					appendType(text, supplier);
+				}
+
+				if (i.hasNext()) {
+					text.append(',');
+				}
+			}
+		}
+
+		return text.toString();
 	}
 
 	/**

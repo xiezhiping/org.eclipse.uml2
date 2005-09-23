@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointItemProvider.java,v 1.11 2005/05/18 16:40:46 khussey Exp $
+ * $Id: ExtensionPointItemProvider.java,v 1.12 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -25,8 +25,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.eclipse.uml2.ExtensionPoint;
-
+//import org.eclipse.uml2.ExtensionPoint;
 import org.eclipse.uml2.UML2Package;
 
 /**
@@ -111,13 +110,12 @@ public class ExtensionPointItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((ExtensionPoint)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ExtensionPoint_type") : //$NON-NLS-1$
-			getString("_UI_ExtensionPoint_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_ExtensionPoint_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

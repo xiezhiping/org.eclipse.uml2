@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerItemProvider.java,v 1.12 2005/05/18 16:40:45 khussey Exp $
+ * $Id: ExceptionHandlerItemProvider.java,v 1.13 2005/09/23 20:14:53 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -171,10 +171,11 @@ public class ExceptionHandlerItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return getString("_UI_ExceptionHandler_type"); //$NON-NLS-1$
+		return appendType(appendKeywords(new StringBuffer(), object),
+			"_UI_ExceptionHandler_type").toString(); //$NON-NLS-1$
 	}
 
 	/**

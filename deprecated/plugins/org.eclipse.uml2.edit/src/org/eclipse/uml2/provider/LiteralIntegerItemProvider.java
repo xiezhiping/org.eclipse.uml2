@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerItemProvider.java,v 1.13 2005/05/18 16:40:46 khussey Exp $
+ * $Id: LiteralIntegerItemProvider.java,v 1.14 2005/09/23 20:14:52 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -110,11 +110,20 @@ public class LiteralIntegerItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		LiteralInteger literalInteger = (LiteralInteger)object;
-		return getString("_UI_LiteralInteger_type") + " " + literalInteger.getValue(); //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_LiteralInteger_type"); //$NON-NLS-1$
+
+		LiteralInteger literalInteger = (LiteralInteger) object;
+		String label = literalInteger.getLabel(shouldTranslate());
+
+		appendString(text, label.length() > 0
+			? label
+			: literalInteger.stringValue());
+
+		return text.toString();
 	}
 
 	/**
