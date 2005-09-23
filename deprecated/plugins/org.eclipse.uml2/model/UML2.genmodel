@@ -457,8 +457,7 @@
       </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML2.ecore#//TypedElement">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//TypedElement/type"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//TypedElement/type"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Parameter">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -721,8 +720,7 @@
           ecoreFeature="ecore:EReference UML2.ecore#//Slot/value">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//Slot/definingFeature"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Slot/definingFeature"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//InstanceValue">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -754,8 +752,7 @@
           ecoreFeature="ecore:EReference UML2.ecore#//Generalization/specific">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//Generalization/general"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Generalization/general"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//Generalization/isSubstitutable"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML2.ecore#//Generalization/generalizationSet"/>
@@ -766,8 +763,7 @@
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//ElementImport">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//ElementImport/visibility"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//ElementImport/alias"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//ElementImport/importedElement"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ElementImport/importedElement"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML2.ecore#//ElementImport/importingNamespace">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -784,8 +780,7 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//PackageImport">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML2.ecore#//PackageImport/visibility"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//PackageImport/importedPackage"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//PackageImport/importedPackage"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML2.ecore#//PackageImport/importingNamespace">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -805,16 +800,14 @@
           createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Association/endType">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//Association/memberEnd"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Association/memberEnd"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//PackageMerge">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML2.ecore#//PackageMerge/mergingPackage">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//PackageMerge/mergedPackage"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//PackageMerge/mergedPackage"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Stereotype"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Profile">
@@ -828,8 +821,7 @@
           ecoreFeature="ecore:EReference UML2.ecore#//Profile/metamodelReference"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//ProfileApplication">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//ProfileApplication/importedProfile"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ProfileApplication/importedProfile"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Extension">
       <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" createChild="false"
@@ -921,8 +913,7 @@
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Dependency">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML2.ecore#//Dependency/client"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//Dependency/supplier"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Dependency/supplier"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Usage"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Abstraction">
@@ -936,12 +927,10 @@
           ecoreFeature="ecore:EReference UML2.ecore#//Realization/abstraction">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//Realization/realizingClassifier"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Realization/realizingClassifier"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Substitution">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//Substitution/contract"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Substitution/contract"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML2.ecore#//Substitution/substitutingClassifier">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -1176,8 +1165,7 @@
       </genFeatures>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Implementation">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//Implementation/contract"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Implementation/contract"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML2.ecore#//Implementation/implementingClassifier">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -1203,13 +1191,11 @@
       </genFeatures>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Manifestation">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//Manifestation/utilizedElement"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Manifestation/utilizedElement"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Actor"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Extend">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//Extend/extendedCase"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Extend/extendedCase"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML2.ecore#//Extend/extension">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -1248,8 +1234,7 @@
           ecoreFeature="ecore:EReference UML2.ecore#//Include/includingCase">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//Include/addition"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Include/addition"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//CollaborationOccurrence">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -1515,8 +1500,7 @@
           ecoreFeature="ecore:EReference UML2.ecore#//TemplateSignature/nestedSignature"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML2.ecore#//TemplateSignature/nestingSignature"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//TemplateSignature/template">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//TemplateSignature/template">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
     </genClasses>
@@ -1525,8 +1509,7 @@
           ecoreFeature="ecore:EReference UML2.ecore#//TemplateParameter/signature">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//TemplateParameter/parameteredElement"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//TemplateParameter/parameteredElement"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           ecoreFeature="ecore:EReference UML2.ecore#//TemplateParameter/ownedParameteredElement">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -1569,8 +1552,7 @@
       </genFeatures>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//TemplateBinding">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//TemplateBinding/boundElement">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//TemplateBinding/boundElement">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -2091,8 +2073,7 @@
       </genFeatures>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//Deployment">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//Deployment/deployedArtifact"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//Deployment/deployedArtifact"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML2.ecore#//Deployment/location">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -2127,8 +2108,7 @@
           ecoreFeature="ecore:EReference UML2.ecore#//ProtocolConformance/specificMachine">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML2.ecore#//ProtocolConformance/generalMachine"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML2.ecore#//ProtocolConformance/generalMachine"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML2.ecore#//ProtocolStateMachine">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
