@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.15 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.16 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1226,9 +1226,16 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PARAMETER__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
+					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue())
+					|| eIsSet(UML2Package.eINSTANCE.getParameter_DefaultValue());
 			case UML2Package.PARAMETER__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getParameter_Operation());
 			case UML2Package.PARAMETER__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PARAMETER__TEMPLATE_BINDING:

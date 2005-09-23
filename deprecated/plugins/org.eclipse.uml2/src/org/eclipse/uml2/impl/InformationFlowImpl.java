@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.13 2005/06/20 19:57:42 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.14 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import java.util.Iterator;
+
+import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -111,12 +113,12 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		if (cache != null) {
 			EList relatedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
 			if (relatedElement == null) {
-				EList union = getRelatedElementsHelper(new UniqueEList());
+				List union = getRelatedElementsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray()));
 			}
 			return relatedElement;
 		}
-		EList union = getRelatedElementsHelper(new UniqueEList());
+		List union = getRelatedElementsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
 	}
 
@@ -140,12 +142,12 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		if (cache != null) {
 			EList source = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
 			if (source == null) {
-				EList union = getSourcesHelper(new UniqueEList());
+				List union = getSourcesHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray()));
 			}
 			return source;
 		}
-		EList union = getSourcesHelper(new UniqueEList());
+		List union = getSourcesHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
 	}
 
@@ -169,12 +171,12 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		if (cache != null) {
 			EList target = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
 			if (target == null) {
-				EList union = getTargetsHelper(new UniqueEList());
+				List union = getTargetsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray()));
 			}
 			return target;
 		}
-		EList union = getTargetsHelper(new UniqueEList());
+		List union = getTargetsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
 	}
 
@@ -470,9 +472,12 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 			case UML2Package.INFORMATION_FLOW__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INFORMATION_FLOW__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 			case UML2Package.INFORMATION_FLOW__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
 			case UML2Package.INFORMATION_FLOW__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INFORMATION_FLOW__TEMPLATE_BINDING:

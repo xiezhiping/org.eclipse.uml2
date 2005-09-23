@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
+ * $Id: CommentImpl.java,v 1.10 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -386,7 +386,10 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 			case UML2Package.COMMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.COMMENT__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getComment_BodyExpression());
 			case UML2Package.COMMENT__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.COMMENT__OWNED_COMMENT:

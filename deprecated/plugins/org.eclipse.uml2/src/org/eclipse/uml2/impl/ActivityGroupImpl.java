@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.12 2005/06/20 19:57:42 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.13 2005/09/23 21:22:56 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,6 +16,8 @@ import java.lang.reflect.Method;
 
 import java.util.Collection;
 import java.util.Iterator;
+
+import java.util.List;
 
 import java.util.Collections;
 
@@ -148,7 +150,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 				Method method = getClass().getMethod("getSubgroups", null); //$NON-NLS-1$
 				EList subgroup = (EList) cache.get(eResource(), this, method);
 				if (subgroup == null) {
-					EList union = getSubgroupsHelper(new UniqueEList());
+					List union = getSubgroupsHelper(new UniqueEList());
 					cache.put(eResource(), this, method, subgroup = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return subgroup;
@@ -156,7 +158,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 				// ignore
 			}
 		}
-		EList union = getSubgroupsHelper(new UniqueEList());
+		List union = getSubgroupsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
@@ -424,9 +426,9 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			case UML2Package.ACTIVITY_GROUP__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_GROUP__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.ACTIVITY_GROUP__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity());
 			case UML2Package.ACTIVITY_GROUP__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY_GROUP__SUPER_GROUP:

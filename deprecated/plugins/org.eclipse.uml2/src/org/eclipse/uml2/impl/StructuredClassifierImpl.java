@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.21 2005/06/20 19:57:42 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.22 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+
+import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -218,12 +220,12 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 		if (cache != null) {
 			EList role = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getStructuredClassifier_Role());
 			if (role == null) {
-				EList union = getRolesHelper(new UniqueEList());
+				List union = getRolesHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), role = new UnionEObjectEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), union.size(), union.toArray()));
 			}
 			return role;
 		}
-		EList union = getRolesHelper(new UniqueEList());
+		List union = getRolesHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), union.size(), union.toArray());
 	}
 
@@ -777,9 +779,23 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector());
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getType_Package());
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__TEMPLATE_BINDING:
@@ -797,7 +813,12 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.STRUCTURED_CLASSIFIER__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector());
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__IMPORTED_MEMBER:
@@ -819,7 +840,8 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.STRUCTURED_CLASSIFIER__FEATURE:
-				return !getFeatures().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector());
 			case UML2Package.STRUCTURED_CLASSIFIER__IS_ABSTRACT:
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.STRUCTURED_CLASSIFIER__INHERITED_MEMBER:
@@ -829,7 +851,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__ATTRIBUTE:
-				return !getAttributes().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
 			case UML2Package.STRUCTURED_CLASSIFIER__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
@@ -849,7 +871,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__PART:
 				return !getParts().isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__ROLE:
-				return !getRoles().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR:
 				return ownedConnector != null && !ownedConnector.isEmpty();
 		}

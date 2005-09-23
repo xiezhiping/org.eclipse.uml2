@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.26 2005/06/20 19:57:42 khussey Exp $
+ * $Id: ElementImpl.java,v 1.27 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
 
 import java.util.Collection;
 //import java.util.Iterator;
+import java.util.List;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
@@ -118,12 +119,12 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		if (cache != null) {
 			EList ownedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement());
 			if (ownedElement == null) {
-				EList union = getOwnedElementsHelper(new UniqueEList());
+				List union = getOwnedElementsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getElement_OwnedElement(), ownedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray()));
 			}
 			return ownedElement;
 		}
-		EList union = getOwnedElementsHelper(new UniqueEList());
+		List union = getOwnedElementsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getElement_OwnedElement(), union.size(), union.toArray());
 	}
 
@@ -338,7 +339,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			case UML2Package.ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ELEMENT__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.ELEMENT__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.ELEMENT__OWNED_COMMENT:

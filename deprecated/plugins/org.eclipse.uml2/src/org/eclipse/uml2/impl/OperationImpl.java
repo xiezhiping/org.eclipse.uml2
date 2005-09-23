@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.25 2005/08/26 14:50:36 khussey Exp $
+ * $Id: OperationImpl.java,v 1.26 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1620,9 +1620,24 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.OPERATION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult())
+					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
+					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue())
+					|| eIsSet(UML2Package.eINSTANCE.getOperation_Precondition())
+					|| eIsSet(UML2Package.eINSTANCE.getOperation_Postcondition())
+					|| eIsSet(UML2Package.eINSTANCE.getOperation_BodyCondition());
 			case UML2Package.OPERATION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
+					|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
 			case UML2Package.OPERATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.OPERATION__TEMPLATE_BINDING:
@@ -1640,7 +1655,13 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.OPERATION__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult())
+					|| eIsSet(UML2Package.eINSTANCE.getOperation_Precondition())
+					|| eIsSet(UML2Package.eINSTANCE.getOperation_Postcondition())
+					|| eIsSet(UML2Package.eINSTANCE.getOperation_BodyCondition());
 			case UML2Package.OPERATION__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.OPERATION__IMPORTED_MEMBER:
@@ -1650,15 +1671,18 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__PACKAGE_IMPORT:
 				return packageImport != null && !packageImport.isEmpty();
 			case UML2Package.OPERATION__REDEFINITION_CONTEXT:
-				return !getRedefinitionContexts().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
+					|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
 			case UML2Package.OPERATION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.OPERATION__FEATURING_CLASSIFIER:
-				return !getFeaturingClassifiers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getOperation_Class_())
+					|| eIsSet(UML2Package.eINSTANCE.getOperation_Datatype());
 			case UML2Package.OPERATION__IS_STATIC:
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.OPERATION__PARAMETER:
-				return !getParameters().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
 			case UML2Package.OPERATION__FORMAL_PARAMETER:
 				return !getFormalParameters().isEmpty();
 			case UML2Package.OPERATION__RETURN_RESULT:

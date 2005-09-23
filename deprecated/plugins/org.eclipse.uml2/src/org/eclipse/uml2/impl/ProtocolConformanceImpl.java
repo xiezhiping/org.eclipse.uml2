@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.9 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -178,7 +178,7 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
 		if (eIsSet(UML2Package.eINSTANCE.getProtocolConformance_GeneralMachine())) {
-			target.add(getGeneralMachine());
+			target.add(basicGetGeneralMachine());
 		}
 		return target;
 	}
@@ -334,17 +334,18 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 			case UML2Package.PROTOCOL_CONFORMANCE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROTOCOL_CONFORMANCE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.PROTOCOL_CONFORMANCE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine());
 			case UML2Package.PROTOCOL_CONFORMANCE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROTOCOL_CONFORMANCE__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine())
+					|| eIsSet(UML2Package.eINSTANCE.getProtocolConformance_GeneralMachine());
 			case UML2Package.PROTOCOL_CONFORMANCE__SOURCE:
-				return !getSources().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getProtocolConformance_SpecificMachine());
 			case UML2Package.PROTOCOL_CONFORMANCE__TARGET:
-				return !getTargets().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getProtocolConformance_GeneralMachine());
 			case UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE:
 				return getSpecificMachine() != null;
 			case UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE:

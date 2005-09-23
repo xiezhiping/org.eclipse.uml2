@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.30 2005/06/20 19:57:42 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.31 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -145,12 +147,12 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 		if (cache != null) {
 			EList relatedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
 			if (relatedElement == null) {
-				EList union = getRelatedElementsHelper(new UniqueEList());
+				List union = getRelatedElementsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray()));
 			}
 			return relatedElement;
 		}
-		EList union = getRelatedElementsHelper(new UniqueEList());
+		List union = getRelatedElementsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
 	}
 
@@ -925,9 +927,32 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
+					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())
+					|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd());
 			case UML2Package.ASSOCIATION_CLASS__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getType_Package());
 			case UML2Package.ASSOCIATION_CLASS__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__TEMPLATE_BINDING:
@@ -945,7 +970,21 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.ASSOCIATION_CLASS__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
+					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())
+					|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd())
+					|| eIsSet(UML2Package.eINSTANCE.getAssociation_MemberEnd());
 			case UML2Package.ASSOCIATION_CLASS__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__IMPORTED_MEMBER:
@@ -967,7 +1006,12 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ASSOCIATION_CLASS__FEATURE:
-				return !getFeatures().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
+					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())
+					|| eIsSet(UML2Package.eINSTANCE.getAssociation_OwnedEnd());
 			case UML2Package.ASSOCIATION_CLASS__IS_ABSTRACT:
 				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.ASSOCIATION_CLASS__INHERITED_MEMBER:
@@ -977,7 +1021,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__ATTRIBUTE:
-				return !getAttributes().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
 			case UML2Package.ASSOCIATION_CLASS__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__SUBSTITUTION:
@@ -1007,7 +1051,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__PART:
 				return !getParts().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__ROLE:
-				return !getRoles().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
 			case UML2Package.ASSOCIATION_CLASS__OWNED_CONNECTOR:
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__OWNED_PORT:
@@ -1025,7 +1069,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getAssociation_EndType());
 			case UML2Package.ASSOCIATION_CLASS__IS_DERIVED:
 				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_END:

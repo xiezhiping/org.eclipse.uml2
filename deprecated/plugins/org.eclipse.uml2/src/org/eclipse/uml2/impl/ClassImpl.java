@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.32 2005/06/20 19:57:42 khussey Exp $
+ * $Id: ClassImpl.java,v 1.33 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -299,12 +300,12 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		if (cache != null) {
 			EList role = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getStructuredClassifier_Role());
 			if (role == null) {
-				EList union = getRolesHelper(new UniqueEList());
+				List union = getRolesHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), role = new UnionEObjectEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), union.size(), union.toArray()));
 			}
 			return role;
 		}
-		EList union = getRolesHelper(new UniqueEList());
+		List union = getRolesHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getStructuredClassifier_Role(), union.size(), union.toArray());
 	}
 
@@ -1367,9 +1368,31 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CLASS__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
+					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception());
 			case UML2Package.CLASS__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getType_Package());
 			case UML2Package.CLASS__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CLASS__TEMPLATE_BINDING:
@@ -1387,7 +1410,19 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.CLASS__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
+					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception());
 			case UML2Package.CLASS__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.CLASS__IMPORTED_MEMBER:
@@ -1409,7 +1444,11 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CLASS__FEATURE:
-				return !getFeatures().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
+					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception());
 			case UML2Package.CLASS__IS_ABSTRACT:
 				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.CLASS__INHERITED_MEMBER:
@@ -1419,7 +1458,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.CLASS__ATTRIBUTE:
-				return !getAttributes().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
 			case UML2Package.CLASS__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.CLASS__SUBSTITUTION:
@@ -1449,7 +1488,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			case UML2Package.CLASS__PART:
 				return !getParts().isEmpty();
 			case UML2Package.CLASS__ROLE:
-				return !getRoles().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
 			case UML2Package.CLASS__OWNED_CONNECTOR:
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.CLASS__OWNED_PORT:

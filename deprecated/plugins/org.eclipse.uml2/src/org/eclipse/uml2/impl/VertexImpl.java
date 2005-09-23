@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
+ * $Id: VertexImpl.java,v 1.8 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -437,7 +437,10 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 			case UML2Package.VERTEX__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.VERTEX__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 			case UML2Package.VERTEX__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.VERTEX__OWNED_COMMENT:

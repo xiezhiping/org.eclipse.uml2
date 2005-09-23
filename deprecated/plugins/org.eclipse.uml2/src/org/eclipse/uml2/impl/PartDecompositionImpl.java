@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PartDecompositionImpl.java,v 1.6 2005/05/18 16:38:26 khussey Exp $
+ * $Id: PartDecompositionImpl.java,v 1.7 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -336,9 +336,14 @@ public class PartDecompositionImpl extends InteractionOccurrenceImpl implements 
 			case UML2Package.PART_DECOMPOSITION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PART_DECOMPOSITION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering())
+					|| eIsSet(UML2Package.eINSTANCE.getInteractionOccurrence_ActualGate());
 			case UML2Package.PART_DECOMPOSITION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
 			case UML2Package.PART_DECOMPOSITION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PART_DECOMPOSITION__TEMPLATE_BINDING:

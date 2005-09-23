@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.20 2005/06/15 20:06:01 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.21 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1675,9 +1675,21 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROPERTY__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
+					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue())
+					|| eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())
+					|| eIsSet(UML2Package.eINSTANCE.getProperty_DefaultValue())
+					|| eIsSet(UML2Package.eINSTANCE.getProperty_Qualifier());
 			case UML2Package.PROPERTY__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getProperty_Class_())
+					|| eIsSet(UML2Package.eINSTANCE.getProperty_OwningAssociation())
+					|| eIsSet(UML2Package.eINSTANCE.getProperty_Datatype())
+					|| eIsSet(UML2Package.eINSTANCE.getProperty_AssociationEnd());
 			case UML2Package.PROPERTY__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROPERTY__TEMPLATE_BINDING:
@@ -1699,7 +1711,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.PROPERTY__FEATURING_CLASSIFIER:
-				return !getFeaturingClassifiers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getProperty_Class_())
+					|| eIsSet(UML2Package.eINSTANCE.getProperty_OwningAssociation())
+					|| eIsSet(UML2Package.eINSTANCE.getProperty_Datatype());
 			case UML2Package.PROPERTY__IS_STATIC:
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.PROPERTY__TYPE:

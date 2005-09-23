@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.14 2005/05/18 16:38:27 khussey Exp $
+ * $Id: ModelImpl.java,v 1.15 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -440,9 +440,19 @@ public class ModelImpl extends PackageImpl implements Model {
 			case UML2Package.MODEL__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.MODEL__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageMerge())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_AppliedProfile())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageExtension());
 			case UML2Package.MODEL__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_NestingPackage());
 			case UML2Package.MODEL__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.MODEL__TEMPLATE_BINDING:
@@ -460,7 +470,8 @@ public class ModelImpl extends PackageImpl implements Model {
 			case UML2Package.MODEL__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.MODEL__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember());
 			case UML2Package.MODEL__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.MODEL__IMPORTED_MEMBER:
@@ -497,8 +508,14 @@ public class ModelImpl extends PackageImpl implements Model {
 
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.MODEL__OWNED_ELEMENT:
+				return eIsSetGen(eFeature)
+					|| eIsSetGen(UML2Package.eINSTANCE.getPackage_OwnedMember());
 			case UML2Package.MODEL__VISIBILITY:
 				return false;
+			case UML2Package.MODEL__MEMBER:
+				return eIsSetGen(eFeature)
+					|| eIsSetGen(UML2Package.eINSTANCE.getPackage_OwnedMember());
 			case UML2Package.MODEL__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}

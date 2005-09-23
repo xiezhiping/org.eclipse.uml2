@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearVariableActionImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
+ * $Id: ClearVariableActionImpl.java,v 1.8 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -414,9 +414,15 @@ public class ClearVariableActionImpl extends VariableActionImpl implements Clear
 			case UML2Package.CLEAR_VARIABLE_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CLEAR_VARIABLE_ACTION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())
+					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
+					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition());
 			case UML2Package.CLEAR_VARIABLE_ACTION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
 			case UML2Package.CLEAR_VARIABLE_ACTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CLEAR_VARIABLE_ACTION__TEMPLATE_BINDING:
@@ -442,7 +448,9 @@ public class ClearVariableActionImpl extends VariableActionImpl implements Clear
 			case UML2Package.CLEAR_VARIABLE_ACTION__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.CLEAR_VARIABLE_ACTION__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
 			case UML2Package.CLEAR_VARIABLE_ACTION__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.CLEAR_VARIABLE_ACTION__REDEFINED_ELEMENT:

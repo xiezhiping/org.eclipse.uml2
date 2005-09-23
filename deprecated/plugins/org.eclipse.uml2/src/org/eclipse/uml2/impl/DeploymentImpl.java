@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.14 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -546,9 +546,13 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			case UML2Package.DEPLOYMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DEPLOYMENT__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getDeployment_Configuration());
 			case UML2Package.DEPLOYMENT__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
 			case UML2Package.DEPLOYMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.DEPLOYMENT__TEMPLATE_BINDING:
@@ -572,11 +576,12 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			case UML2Package.DEPLOYMENT__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.DEPLOYMENT__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getDeployment_DeployedArtifact())
+					|| eIsSet(UML2Package.eINSTANCE.getDeployment_Location());
 			case UML2Package.DEPLOYMENT__SOURCE:
-				return !getSources().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getDeployment_Location());
 			case UML2Package.DEPLOYMENT__TARGET:
-				return !getTargets().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getDeployment_DeployedArtifact());
 			case UML2Package.DEPLOYMENT__CLIENT:
 				return client != null && !client.isEmpty();
 			case UML2Package.DEPLOYMENT__SUPPLIER:

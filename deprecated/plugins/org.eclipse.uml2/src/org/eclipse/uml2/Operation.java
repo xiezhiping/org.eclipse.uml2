@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.15 2005/06/22 20:59:18 khussey Exp $
+ * $Id: Operation.java,v 1.16 2005/09/23 21:22:56 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -336,34 +336,6 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @generated
 	 */
 	boolean validateTypeOfResult(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A query based on the following OCL expression:
-	 * <code>
-	 * if returnResult->size() = 1 then returnResult->any().isOrdered else false endif
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.Boolean"
-	 * @generated
-	 */
-	boolean isOrdered();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A query based on the following OCL expression:
-	 * <code>
-	 *  if returnResult->size() = 1 then returnResult->any().isUnique else true endif
-	 * </code>
-	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.Boolean"
-	 * @generated
-	 */
-	boolean isUnique();
 
 	/**
 	 * <!-- begin-user-doc -->

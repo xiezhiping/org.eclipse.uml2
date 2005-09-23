@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.12 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -500,9 +500,13 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 			case UML2Package.JOIN_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.JOIN_NODE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getJoinNode_JoinSpec());
 			case UML2Package.JOIN_NODE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
 			case UML2Package.JOIN_NODE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.JOIN_NODE__TEMPLATE_BINDING:
@@ -528,7 +532,9 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 			case UML2Package.JOIN_NODE__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.JOIN_NODE__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
 			case UML2Package.JOIN_NODE__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.JOIN_NODE__REDEFINED_ELEMENT:

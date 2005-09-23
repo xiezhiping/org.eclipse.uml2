@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.7 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -288,7 +288,7 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 			case UML2Package.QUALIFIER_VALUE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.QUALIFIER_VALUE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.QUALIFIER_VALUE__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.QUALIFIER_VALUE__OWNED_COMMENT:

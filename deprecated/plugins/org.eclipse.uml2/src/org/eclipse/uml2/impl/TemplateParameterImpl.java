@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.14 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -599,9 +599,11 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 			case UML2Package.TEMPLATE_PARAMETER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATE_PARAMETER__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault());
 			case UML2Package.TEMPLATE_PARAMETER__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getTemplateParameter_Signature());
 			case UML2Package.TEMPLATE_PARAMETER__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.TEMPLATE_PARAMETER__SIGNATURE:

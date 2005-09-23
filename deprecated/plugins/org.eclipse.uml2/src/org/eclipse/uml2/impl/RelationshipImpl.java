@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.8 2005/06/20 19:57:42 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.9 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
+
+import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -76,12 +78,12 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 		if (cache != null) {
 			EList relatedElement = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
 			if (relatedElement == null) {
-				EList union = getRelatedElementsHelper(new UniqueEList());
+				List union = getRelatedElementsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray()));
 			}
 			return relatedElement;
 		}
-		EList union = getRelatedElementsHelper(new UniqueEList());
+		List union = getRelatedElementsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
 	}
 
@@ -192,7 +194,7 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 			case UML2Package.RELATIONSHIP__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.RELATIONSHIP__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.RELATIONSHIP__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.RELATIONSHIP__OWNED_COMMENT:

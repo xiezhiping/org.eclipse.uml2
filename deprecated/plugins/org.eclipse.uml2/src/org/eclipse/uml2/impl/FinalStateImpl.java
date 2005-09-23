@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalStateImpl.java,v 1.8 2005/05/18 16:38:27 khussey Exp $
+ * $Id: FinalStateImpl.java,v 1.9 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -446,7 +446,19 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 			case UML2Package.FINAL_STATE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.FINAL_STATE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getState_Connection())
+					|| eIsSet(UML2Package.eINSTANCE.getState_Region())
+					|| eIsSet(UML2Package.eINSTANCE.getState_Entry())
+					|| eIsSet(UML2Package.eINSTANCE.getState_Exit())
+					|| eIsSet(UML2Package.eINSTANCE.getState_DoActivity())
+					|| eIsSet(UML2Package.eINSTANCE.getState_StateInvariant());
 			case UML2Package.FINAL_STATE__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.FINAL_STATE__OWNED_COMMENT:
@@ -466,7 +478,9 @@ public class FinalStateImpl extends StateImpl implements FinalState {
 			case UML2Package.FINAL_STATE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.FINAL_STATE__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getState_Region());
 			case UML2Package.FINAL_STATE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.FINAL_STATE__IMPORTED_MEMBER:

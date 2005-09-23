@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.20 2005/05/25 16:03:36 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.21 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -565,9 +565,21 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROFILE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageMerge())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_AppliedProfile())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageExtension())
+					|| eIsSet(UML2Package.eINSTANCE.getProfile_MetaclassReference())
+					|| eIsSet(UML2Package.eINSTANCE.getProfile_MetamodelReference());
 			case UML2Package.PROFILE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_NestingPackage());
 			case UML2Package.PROFILE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROFILE__TEMPLATE_BINDING:
@@ -585,7 +597,8 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.PROFILE__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember());
 			case UML2Package.PROFILE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.PROFILE__IMPORTED_MEMBER:
@@ -627,8 +640,14 @@ public class ProfileImpl extends PackageImpl implements Profile {
 
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.PROFILE__OWNED_ELEMENT:
+				return eIsSetGen(eFeature)
+					|| eIsSetGen(UML2Package.eINSTANCE.getPackage_OwnedMember());
 			case UML2Package.PROFILE__VISIBILITY:
 				return false;
+			case UML2Package.PROFILE__MEMBER:
+				return eIsSetGen(eFeature)
+					|| eIsSetGen(UML2Package.eINSTANCE.getPackage_OwnedMember());
 			case UML2Package.PROFILE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}

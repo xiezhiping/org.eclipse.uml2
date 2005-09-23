@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalTriggerImpl.java,v 1.7 2005/05/18 16:38:26 khussey Exp $
+ * $Id: SignalTriggerImpl.java,v 1.8 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -298,7 +298,10 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 			case UML2Package.SIGNAL_TRIGGER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SIGNAL_TRIGGER__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 			case UML2Package.SIGNAL_TRIGGER__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.SIGNAL_TRIGGER__OWNED_COMMENT:

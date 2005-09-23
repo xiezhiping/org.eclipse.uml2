@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.12 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -458,17 +458,18 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 			case UML2Package.ELEMENT_IMPORT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ELEMENT_IMPORT__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.ELEMENT_IMPORT__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getElementImport_ImportingNamespace());
 			case UML2Package.ELEMENT_IMPORT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ELEMENT_IMPORT__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElementImport_ImportedElement())
+					|| eIsSet(UML2Package.eINSTANCE.getElementImport_ImportingNamespace());
 			case UML2Package.ELEMENT_IMPORT__SOURCE:
-				return !getSources().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElementImport_ImportingNamespace());
 			case UML2Package.ELEMENT_IMPORT__TARGET:
-				return !getTargets().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElementImport_ImportedElement());
 			case UML2Package.ELEMENT_IMPORT__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.ELEMENT_IMPORT__ALIAS:
@@ -507,7 +508,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
 		if (eIsSet(UML2Package.eINSTANCE.getElementImport_ImportedElement())) {
-			target.add(getImportedElement());
+			target.add(basicGetImportedElement());
 		}
 		return target;
 	}

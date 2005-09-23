@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.9 2005/05/18 16:38:26 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.10 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -330,17 +330,20 @@ public class ProfileApplicationImpl extends PackageImportImpl implements Profile
 			case UML2Package.PROFILE_APPLICATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PROFILE_APPLICATION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.PROFILE_APPLICATION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportingNamespace());
 			case UML2Package.PROFILE_APPLICATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PROFILE_APPLICATION__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportedPackage())
+					|| eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportingNamespace())
+					|| eIsSet(UML2Package.eINSTANCE.getProfileApplication_ImportedProfile());
 			case UML2Package.PROFILE_APPLICATION__SOURCE:
-				return !getSources().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportingNamespace());
 			case UML2Package.PROFILE_APPLICATION__TARGET:
-				return !getTargets().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportedPackage())
+					|| eIsSet(UML2Package.eINSTANCE.getProfileApplication_ImportedProfile());
 			case UML2Package.PROFILE_APPLICATION__VISIBILITY:
 				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.PROFILE_APPLICATION__IMPORTED_PACKAGE:

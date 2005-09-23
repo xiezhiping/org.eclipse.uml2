@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.8 2005/05/18 16:38:26 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.9 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -474,9 +474,13 @@ public class ActivityParameterNodeImpl extends ObjectNodeImpl implements Activit
 			case UML2Package.ACTIVITY_PARAMETER_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_PARAMETER_NODE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getObjectNode_UpperBound());
 			case UML2Package.ACTIVITY_PARAMETER_NODE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
 			case UML2Package.ACTIVITY_PARAMETER_NODE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY_PARAMETER_NODE__TEMPLATE_BINDING:
@@ -502,7 +506,9 @@ public class ActivityParameterNodeImpl extends ObjectNodeImpl implements Activit
 			case UML2Package.ACTIVITY_PARAMETER_NODE__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.ACTIVITY_PARAMETER_NODE__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
 			case UML2Package.ACTIVITY_PARAMETER_NODE__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.ACTIVITY_PARAMETER_NODE__REDEFINED_ELEMENT:

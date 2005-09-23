@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.14 2005/06/21 16:42:15 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.15 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -515,9 +515,14 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			case UML2Package.IMPLEMENTATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.IMPLEMENTATION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getAbstraction_Mapping());
 			case UML2Package.IMPLEMENTATION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction());
 			case UML2Package.IMPLEMENTATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.IMPLEMENTATION__TEMPLATE_BINDING:
@@ -541,11 +546,16 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			case UML2Package.IMPLEMENTATION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.IMPLEMENTATION__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction())
+					|| eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier())
+					|| eIsSet(UML2Package.eINSTANCE.getImplementation_Contract())
+					|| eIsSet(UML2Package.eINSTANCE.getImplementation_ImplementingClassifier());
 			case UML2Package.IMPLEMENTATION__SOURCE:
-				return !getSources().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction())
+					|| eIsSet(UML2Package.eINSTANCE.getImplementation_ImplementingClassifier());
 			case UML2Package.IMPLEMENTATION__TARGET:
-				return !getTargets().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier())
+					|| eIsSet(UML2Package.eINSTANCE.getImplementation_Contract());
 			case UML2Package.IMPLEMENTATION__CLIENT:
 				return client != null && !client.isEmpty();
 			case UML2Package.IMPLEMENTATION__SUPPLIER:
@@ -583,7 +593,7 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
 		if (eIsSet(UML2Package.eINSTANCE.getImplementation_Contract())) {
-			target.add(getContract());
+			target.add(basicGetContract());
 		}
 		return target;
 	}

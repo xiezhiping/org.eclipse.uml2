@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypedElementImpl.java,v 1.8 2005/05/18 16:38:26 khussey Exp $
+ * $Id: TypedElementImpl.java,v 1.9 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -298,7 +298,10 @@ public abstract class TypedElementImpl extends NamedElementImpl implements Typed
 			case UML2Package.TYPED_ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TYPED_ELEMENT__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 			case UML2Package.TYPED_ELEMENT__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.TYPED_ELEMENT__OWNED_COMMENT:

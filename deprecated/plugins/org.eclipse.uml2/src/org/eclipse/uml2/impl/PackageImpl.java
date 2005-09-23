@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.29 2005/06/15 20:06:01 khussey Exp $
+ * $Id: PackageImpl.java,v 1.30 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -993,9 +993,19 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PACKAGE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageMerge())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_AppliedProfile())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_PackageExtension());
 			case UML2Package.PACKAGE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getPackage_NestingPackage());
 			case UML2Package.PACKAGE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PACKAGE__TEMPLATE_BINDING:
@@ -1013,7 +1023,8 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.PACKAGE__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember());
 			case UML2Package.PACKAGE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.PACKAGE__IMPORTED_MEMBER:
@@ -1048,8 +1059,14 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.PACKAGE__OWNED_ELEMENT:
+				return eIsSetGen(eFeature)
+					|| eIsSetGen(UML2Package.eINSTANCE.getPackage_OwnedMember());
 			case UML2Package.PACKAGE__VISIBILITY:
 				return false;
+			case UML2Package.PACKAGE__MEMBER:
+				return eIsSetGen(eFeature)
+					|| eIsSetGen(UML2Package.eINSTANCE.getPackage_OwnedMember());
 			case UML2Package.PACKAGE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 		}

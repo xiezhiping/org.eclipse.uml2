@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.14 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -196,7 +196,7 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
 		if (eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier())) {
-			target.add(getRealizingClassifier());
+			target.add(basicGetRealizingClassifier());
 		}
 		return target;
 	}
@@ -517,9 +517,14 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 			case UML2Package.REALIZATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.REALIZATION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getAbstraction_Mapping());
 			case UML2Package.REALIZATION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction());
 			case UML2Package.REALIZATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.REALIZATION__TEMPLATE_BINDING:
@@ -543,11 +548,12 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 			case UML2Package.REALIZATION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.REALIZATION__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction())
+					|| eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier());
 			case UML2Package.REALIZATION__SOURCE:
-				return !getSources().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction());
 			case UML2Package.REALIZATION__TARGET:
-				return !getTargets().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier());
 			case UML2Package.REALIZATION__CLIENT:
 				return client != null && !client.isEmpty();
 			case UML2Package.REALIZATION__SUPPLIER:

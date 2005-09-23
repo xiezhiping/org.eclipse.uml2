@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.25 2005/06/15 21:37:11 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.26 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1220,9 +1220,39 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
+					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Parameter())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Precondition())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Postcondition())
+					|| eIsSet(UML2Package.eINSTANCE.getActivity_Edge())
+					|| eIsSet(UML2Package.eINSTANCE.getActivity_Group())
+					|| eIsSet(UML2Package.eINSTANCE.getActivity_Node())
+					|| eIsSet(UML2Package.eINSTANCE.getActivity_Action())
+					|| eIsSet(UML2Package.eINSTANCE.getActivity_StructuredNode());
 			case UML2Package.ACTIVITY__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getType_Package());
 			case UML2Package.ACTIVITY__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY__TEMPLATE_BINDING:
@@ -1240,7 +1270,22 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.ACTIVITY__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
+					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_NestedClassifier())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Parameter())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Precondition())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavior_Postcondition());
 			case UML2Package.ACTIVITY__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.ACTIVITY__IMPORTED_MEMBER:
@@ -1262,7 +1307,11 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.ACTIVITY__FEATURE:
-				return !getFeatures().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedConnector())
+					|| eIsSet(UML2Package.eINSTANCE.getEncapsulatedClassifier_OwnedPort())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedOperation())
+					|| eIsSet(UML2Package.eINSTANCE.getClass_OwnedReception());
 			case UML2Package.ACTIVITY__IS_ABSTRACT:
 				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.ACTIVITY__INHERITED_MEMBER:
@@ -1272,7 +1321,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__GENERALIZATION:
 				return generalization != null && !generalization.isEmpty();
 			case UML2Package.ACTIVITY__ATTRIBUTE:
-				return !getAttributes().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
 			case UML2Package.ACTIVITY__REDEFINED_CLASSIFIER:
 				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
 			case UML2Package.ACTIVITY__SUBSTITUTION:
@@ -1302,7 +1351,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__PART:
 				return !getParts().isEmpty();
 			case UML2Package.ACTIVITY__ROLE:
-				return !getRoles().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuredClassifier_OwnedAttribute());
 			case UML2Package.ACTIVITY__OWNED_CONNECTOR:
 				return ownedConnector != null && !ownedConnector.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_PORT:

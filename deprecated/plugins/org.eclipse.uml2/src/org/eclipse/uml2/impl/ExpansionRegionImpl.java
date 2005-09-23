@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.9 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.10 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -683,9 +683,20 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXPANSION_REGION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())
+					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
+					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredActivityNode_Variable());
 			case UML2Package.EXPANSION_REGION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity());
 			case UML2Package.EXPANSION_REGION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.EXPANSION_REGION__TEMPLATE_BINDING:
@@ -711,7 +722,9 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.EXPANSION_REGION__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
 			case UML2Package.EXPANSION_REGION__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.EXPANSION_REGION__REDEFINED_ELEMENT:
@@ -737,7 +750,9 @@ public class ExpansionRegionImpl extends StructuredActivityNodeImpl implements E
 			case UML2Package.EXPANSION_REGION__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.EXPANSION_REGION__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredActivityNode_Variable());
 			case UML2Package.EXPANSION_REGION__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.EXPANSION_REGION__IMPORTED_MEMBER:

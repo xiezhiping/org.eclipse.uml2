@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.12 2005/06/20 19:57:42 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.13 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -335,12 +337,12 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		if (cache != null) {
 			EList inGroup = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getActivityEdge_InGroup());
 			if (inGroup == null) {
-				EList union = getInGroupsHelper(new UniqueEList());
+				List union = getInGroupsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getActivityEdge_InGroup(), inGroup = new UnionEObjectEList(this, UML2Package.eINSTANCE.getActivityEdge_InGroup(), union.size(), union.toArray()));
 			}
 			return inGroup;
 		}
-		EList union = getInGroupsHelper(new UniqueEList());
+		List union = getInGroupsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getActivityEdge_InGroup(), union.size(), union.toArray());
 	}
 
@@ -984,9 +986,14 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Guard())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Weight());
 			case UML2Package.ACTIVITY_EDGE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityEdge_Activity());
 			case UML2Package.ACTIVITY_EDGE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY_EDGE__TEMPLATE_BINDING:
@@ -1014,7 +1021,8 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__TARGET:
 				return target != null;
 			case UML2Package.ACTIVITY_EDGE__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityEdge_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_InPartition());
 			case UML2Package.ACTIVITY_EDGE__GUARD:
 				return guard != null;
 			case UML2Package.ACTIVITY_EDGE__REDEFINED_ELEMENT:

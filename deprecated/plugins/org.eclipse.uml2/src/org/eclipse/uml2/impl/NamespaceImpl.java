@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.21 2005/06/20 19:57:42 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.22 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -134,12 +135,12 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		if (cache != null) {
 			EList member = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member());
 			if (member == null) {
-				EList union = getMembersHelper(new UniqueEList());
+				List union = getMembersHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getNamespace_Member(), member = new UnionEObjectEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray()));
 			}
 			return member;
 		}
-		EList union = getMembersHelper(new UniqueEList());
+		List union = getMembersHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getNamespace_Member(), union.size(), union.toArray());
 	}
 
@@ -438,7 +439,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
 				EList ownedMember = (EList) cache.get(eResource(), this, method);
 				if (ownedMember == null) {
-					EList union = getOwnedMembersHelper(new UniqueEList());
+					List union = getOwnedMembersHelper(new UniqueEList());
 					cache.put(eResource(), this, method, ownedMember = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return ownedMember;
@@ -446,7 +447,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 				// ignore
 			}
 		}
-		EList union = getOwnedMembersHelper(new UniqueEList());
+		List union = getOwnedMembersHelper(new UniqueEList());
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
@@ -704,7 +705,13 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 			case UML2Package.NAMESPACE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.NAMESPACE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport());
 			case UML2Package.NAMESPACE__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.NAMESPACE__OWNED_COMMENT:
@@ -724,7 +731,8 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 			case UML2Package.NAMESPACE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.NAMESPACE__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember());
 			case UML2Package.NAMESPACE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.NAMESPACE__IMPORTED_MEMBER:

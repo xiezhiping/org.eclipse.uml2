@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.8 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -356,7 +356,7 @@ public class LinkEndDataImpl extends ElementImpl implements LinkEndData {
 			case UML2Package.LINK_END_DATA__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.LINK_END_DATA__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.LINK_END_DATA__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.LINK_END_DATA__OWNED_COMMENT:

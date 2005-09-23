@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2FactoryImpl.java,v 1.18 2005/05/18 16:38:27 khussey Exp $
+ * $Id: UML2FactoryImpl.java,v 1.19 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -435,71 +435,32 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 	 */
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case UML2Package.VISIBILITY_KIND: {
-				VisibilityKind result = VisibilityKind.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.PARAMETER_DIRECTION_KIND: {
-				ParameterDirectionKind result = ParameterDirectionKind.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.AGGREGATION_KIND: {
-				AggregationKind result = AggregationKind.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.CALL_CONCURRENCY_KIND: {
-				CallConcurrencyKind result = CallConcurrencyKind.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.MESSAGE_KIND: {
-				MessageKind result = MessageKind.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.MESSAGE_SORT: {
-				MessageSort result = MessageSort.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.EXPANSION_KIND: {
-				ExpansionKind result = ExpansionKind.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.INTERACTION_OPERATOR: {
-				InteractionOperator result = InteractionOperator.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.TRANSITION_KIND: {
-				TransitionKind result = TransitionKind.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.PSEUDOSTATE_KIND: {
-				PseudostateKind result = PseudostateKind.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.PARAMETER_EFFECT_KIND: {
-				ParameterEffectKind result = ParameterEffectKind.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.OBJECT_NODE_ORDERING_KIND: {
-				ObjectNodeOrderingKind result = ObjectNodeOrderingKind.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
-			case UML2Package.CONNECTOR_KIND: {
-				ConnectorKind result = ConnectorKind.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				return result;
-			}
+			case UML2Package.VISIBILITY_KIND:
+				return createVisibilityKindFromString(eDataType, initialValue);
+			case UML2Package.PARAMETER_DIRECTION_KIND:
+				return createParameterDirectionKindFromString(eDataType, initialValue);
+			case UML2Package.AGGREGATION_KIND:
+				return createAggregationKindFromString(eDataType, initialValue);
+			case UML2Package.CALL_CONCURRENCY_KIND:
+				return createCallConcurrencyKindFromString(eDataType, initialValue);
+			case UML2Package.MESSAGE_KIND:
+				return createMessageKindFromString(eDataType, initialValue);
+			case UML2Package.MESSAGE_SORT:
+				return createMessageSortFromString(eDataType, initialValue);
+			case UML2Package.EXPANSION_KIND:
+				return createExpansionKindFromString(eDataType, initialValue);
+			case UML2Package.INTERACTION_OPERATOR:
+				return createInteractionOperatorFromString(eDataType, initialValue);
+			case UML2Package.TRANSITION_KIND:
+				return createTransitionKindFromString(eDataType, initialValue);
+			case UML2Package.PSEUDOSTATE_KIND:
+				return createPseudostateKindFromString(eDataType, initialValue);
+			case UML2Package.PARAMETER_EFFECT_KIND:
+				return createParameterEffectKindFromString(eDataType, initialValue);
+			case UML2Package.OBJECT_NODE_ORDERING_KIND:
+				return createObjectNodeOrderingKindFromString(eDataType, initialValue);
+			case UML2Package.CONNECTOR_KIND:
+				return createConnectorKindFromString(eDataType, initialValue);
 			case UML2Package.INTEGER:
 				return createIntegerFromString(eDataType, initialValue);
 			case UML2Package.BOOLEAN:
@@ -525,31 +486,31 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case UML2Package.VISIBILITY_KIND:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertVisibilityKindToString(eDataType, instanceValue);
 			case UML2Package.PARAMETER_DIRECTION_KIND:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertParameterDirectionKindToString(eDataType, instanceValue);
 			case UML2Package.AGGREGATION_KIND:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertAggregationKindToString(eDataType, instanceValue);
 			case UML2Package.CALL_CONCURRENCY_KIND:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertCallConcurrencyKindToString(eDataType, instanceValue);
 			case UML2Package.MESSAGE_KIND:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertMessageKindToString(eDataType, instanceValue);
 			case UML2Package.MESSAGE_SORT:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertMessageSortToString(eDataType, instanceValue);
 			case UML2Package.EXPANSION_KIND:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertExpansionKindToString(eDataType, instanceValue);
 			case UML2Package.INTERACTION_OPERATOR:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertInteractionOperatorToString(eDataType, instanceValue);
 			case UML2Package.TRANSITION_KIND:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertTransitionKindToString(eDataType, instanceValue);
 			case UML2Package.PSEUDOSTATE_KIND:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertPseudostateKindToString(eDataType, instanceValue);
 			case UML2Package.PARAMETER_EFFECT_KIND:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertParameterEffectKindToString(eDataType, instanceValue);
 			case UML2Package.OBJECT_NODE_ORDERING_KIND:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertObjectNodeOrderingKindToString(eDataType, instanceValue);
 			case UML2Package.CONNECTOR_KIND:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertConnectorKindToString(eDataType, instanceValue);
 			case UML2Package.INTEGER:
 				return convertIntegerToString(eDataType, instanceValue);
 			case UML2Package.BOOLEAN:
@@ -2355,6 +2316,266 @@ public class UML2FactoryImpl extends EFactoryImpl implements UML2Factory {
 	public DeploymentSpecification createDeploymentSpecification() {
 		DeploymentSpecificationImpl deploymentSpecification = new DeploymentSpecificationImpl();
 		return deploymentSpecification;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VisibilityKind createVisibilityKindFromString(EDataType eDataType, String initialValue) {
+		VisibilityKind result = VisibilityKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVisibilityKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterDirectionKind createParameterDirectionKindFromString(EDataType eDataType, String initialValue) {
+		ParameterDirectionKind result = ParameterDirectionKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertParameterDirectionKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AggregationKind createAggregationKindFromString(EDataType eDataType, String initialValue) {
+		AggregationKind result = AggregationKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAggregationKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CallConcurrencyKind createCallConcurrencyKindFromString(EDataType eDataType, String initialValue) {
+		CallConcurrencyKind result = CallConcurrencyKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCallConcurrencyKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MessageKind createMessageKindFromString(EDataType eDataType, String initialValue) {
+		MessageKind result = MessageKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMessageKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MessageSort createMessageSortFromString(EDataType eDataType, String initialValue) {
+		MessageSort result = MessageSort.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMessageSortToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExpansionKind createExpansionKindFromString(EDataType eDataType, String initialValue) {
+		ExpansionKind result = ExpansionKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExpansionKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionOperator createInteractionOperatorFromString(EDataType eDataType, String initialValue) {
+		InteractionOperator result = InteractionOperator.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInteractionOperatorToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TransitionKind createTransitionKindFromString(EDataType eDataType, String initialValue) {
+		TransitionKind result = TransitionKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTransitionKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PseudostateKind createPseudostateKindFromString(EDataType eDataType, String initialValue) {
+		PseudostateKind result = PseudostateKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPseudostateKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterEffectKind createParameterEffectKindFromString(EDataType eDataType, String initialValue) {
+		ParameterEffectKind result = ParameterEffectKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertParameterEffectKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ObjectNodeOrderingKind createObjectNodeOrderingKindFromString(EDataType eDataType, String initialValue) {
+		ObjectNodeOrderingKind result = ObjectNodeOrderingKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertObjectNodeOrderingKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConnectorKind createConnectorKindFromString(EDataType eDataType, String initialValue) {
+		ConnectorKind result = ConnectorKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertConnectorKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

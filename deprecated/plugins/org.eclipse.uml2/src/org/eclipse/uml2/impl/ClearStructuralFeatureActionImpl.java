@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearStructuralFeatureActionImpl.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ClearStructuralFeatureActionImpl.java,v 1.8 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -425,9 +425,16 @@ public class ClearStructuralFeatureActionImpl extends StructuralFeatureActionImp
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())
+					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
+					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuralFeatureAction_Object());
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__TEMPLATE_BINDING:
@@ -453,7 +460,9 @@ public class ClearStructuralFeatureActionImpl extends StructuralFeatureActionImp
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__REDEFINED_ELEMENT:
@@ -471,7 +480,7 @@ public class ClearStructuralFeatureActionImpl extends StructuralFeatureActionImp
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__OUTPUT:
 				return !getOutputs().isEmpty();
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__INPUT:
-				return !getInputs().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getStructuralFeatureAction_Object());
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__CONTEXT:
 				return basicGetContext() != null;
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__LOCAL_PRECONDITION:

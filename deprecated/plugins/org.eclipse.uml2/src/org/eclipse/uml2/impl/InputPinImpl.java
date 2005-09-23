@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InputPinImpl.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
+ * $Id: InputPinImpl.java,v 1.9 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -443,9 +443,15 @@ public class InputPinImpl extends PinImpl implements InputPin {
 			case UML2Package.INPUT_PIN__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INPUT_PIN__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getObjectNode_UpperBound())
+					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
+					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
 			case UML2Package.INPUT_PIN__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
 			case UML2Package.INPUT_PIN__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INPUT_PIN__TEMPLATE_BINDING:
@@ -471,7 +477,9 @@ public class InputPinImpl extends PinImpl implements InputPin {
 			case UML2Package.INPUT_PIN__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.INPUT_PIN__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
 			case UML2Package.INPUT_PIN__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.INPUT_PIN__REDEFINED_ELEMENT:

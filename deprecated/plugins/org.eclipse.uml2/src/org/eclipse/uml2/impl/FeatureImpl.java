@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.11 2005/06/20 19:57:42 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.12 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -131,12 +133,12 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 		if (cache != null) {
 			EList featuringClassifier = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
 			if (featuringClassifier == null) {
-				EList union = getFeaturingClassifiersHelper(new UniqueEList());
+				List union = getFeaturingClassifiersHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), featuringClassifier = new UnionEObjectEList(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), union.size(), union.toArray()));
 			}
 			return featuringClassifier;
 		}
-		EList union = getFeaturingClassifiersHelper(new UniqueEList());
+		List union = getFeaturingClassifiersHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), union.size(), union.toArray());
 	}
 
@@ -348,7 +350,10 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 			case UML2Package.FEATURE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.FEATURE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 			case UML2Package.FEATURE__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.FEATURE__OWNED_COMMENT:

@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.13 2005/06/20 19:57:42 khussey Exp $
+ * $Id: ActionImpl.java,v 1.14 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -161,12 +163,12 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		if (cache != null) {
 			EList output = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getAction_Output());
 			if (output == null) {
-				EList union = getOutputsHelper(new UniqueEList());
+				List union = getOutputsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getAction_Output(), output = new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray()));
 			}
 			return output;
 		}
-		EList union = getOutputsHelper(new UniqueEList());
+		List union = getOutputsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Output(), union.size(), union.toArray());
 	}
 
@@ -205,12 +207,12 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		if (cache != null) {
 			EList input = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getAction_Input());
 			if (input == null) {
-				EList union = getInputsHelper(new UniqueEList());
+				List union = getInputsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getAction_Input(), input = new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray()));
 			}
 			return input;
 		}
-		EList union = getInputsHelper(new UniqueEList());
+		List union = getInputsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getAction_Input(), union.size(), union.toArray());
 	}
 
@@ -734,9 +736,15 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			case UML2Package.ACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())
+					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
+					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition());
 			case UML2Package.ACTION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
 			case UML2Package.ACTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTION__TEMPLATE_BINDING:
@@ -762,7 +770,9 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			case UML2Package.ACTION__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.ACTION__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
 			case UML2Package.ACTION__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.ACTION__REDEFINED_ELEMENT:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.7 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -427,9 +427,9 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 			case UML2Package.EXCEPTION_HANDLER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXCEPTION_HANDLER__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.EXCEPTION_HANDLER__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getExceptionHandler_ProtectedNode());
 			case UML2Package.EXCEPTION_HANDLER__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.EXCEPTION_HANDLER__PROTECTED_NODE:

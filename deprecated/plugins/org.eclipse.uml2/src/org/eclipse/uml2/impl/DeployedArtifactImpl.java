@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeployedArtifactImpl.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: DeployedArtifactImpl.java,v 1.7 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -232,7 +232,10 @@ public abstract class DeployedArtifactImpl extends NamedElementImpl implements D
 			case UML2Package.DEPLOYED_ARTIFACT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DEPLOYED_ARTIFACT__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 			case UML2Package.DEPLOYED_ARTIFACT__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.DEPLOYED_ARTIFACT__OWNED_COMMENT:

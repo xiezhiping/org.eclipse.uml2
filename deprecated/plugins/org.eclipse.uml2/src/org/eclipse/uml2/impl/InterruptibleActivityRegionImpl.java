@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.8 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -323,9 +323,9 @@ public class InterruptibleActivityRegionImpl extends ActivityGroupImpl implement
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity());
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.9 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -177,7 +177,7 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
 		if (eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergedPackage())) {
-			target.add(getMergedPackage());
+			target.add(basicGetMergedPackage());
 		}
 		return target;
 	}
@@ -333,17 +333,18 @@ public class PackageMergeImpl extends DirectedRelationshipImpl implements Packag
 			case UML2Package.PACKAGE_MERGE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PACKAGE_MERGE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.PACKAGE_MERGE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergingPackage());
 			case UML2Package.PACKAGE_MERGE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.PACKAGE_MERGE__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergingPackage())
+					|| eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergedPackage());
 			case UML2Package.PACKAGE_MERGE__SOURCE:
-				return !getSources().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergingPackage());
 			case UML2Package.PACKAGE_MERGE__TARGET:
-				return !getTargets().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getPackageMerge_MergedPackage());
 			case UML2Package.PACKAGE_MERGE__MERGING_PACKAGE:
 				return getMergingPackage() != null;
 			case UML2Package.PACKAGE_MERGE__MERGED_PACKAGE:

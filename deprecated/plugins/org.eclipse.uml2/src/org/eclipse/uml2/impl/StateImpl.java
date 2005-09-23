@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.15 2005/06/20 19:57:42 khussey Exp $
+ * $Id: StateImpl.java,v 1.16 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1478,7 +1478,19 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STATE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getState_Connection())
+					|| eIsSet(UML2Package.eINSTANCE.getState_Region())
+					|| eIsSet(UML2Package.eINSTANCE.getState_Entry())
+					|| eIsSet(UML2Package.eINSTANCE.getState_Exit())
+					|| eIsSet(UML2Package.eINSTANCE.getState_DoActivity())
+					|| eIsSet(UML2Package.eINSTANCE.getState_StateInvariant());
 			case UML2Package.STATE__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.STATE__OWNED_COMMENT:
@@ -1498,7 +1510,9 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.STATE__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getState_Region());
 			case UML2Package.STATE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.STATE__IMPORTED_MEMBER:

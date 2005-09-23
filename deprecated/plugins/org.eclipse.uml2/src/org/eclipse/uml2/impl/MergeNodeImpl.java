@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MergeNodeImpl.java,v 1.7 2005/05/18 16:38:27 khussey Exp $
+ * $Id: MergeNodeImpl.java,v 1.8 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -354,9 +354,12 @@ public class MergeNodeImpl extends ControlNodeImpl implements MergeNode {
 			case UML2Package.MERGE_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.MERGE_NODE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 			case UML2Package.MERGE_NODE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
 			case UML2Package.MERGE_NODE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.MERGE_NODE__TEMPLATE_BINDING:
@@ -382,7 +385,9 @@ public class MergeNodeImpl extends ControlNodeImpl implements MergeNode {
 			case UML2Package.MERGE_NODE__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.MERGE_NODE__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
 			case UML2Package.MERGE_NODE__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.MERGE_NODE__REDEFINED_ELEMENT:

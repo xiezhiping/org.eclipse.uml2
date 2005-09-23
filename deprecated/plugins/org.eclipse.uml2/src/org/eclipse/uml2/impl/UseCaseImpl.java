@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.18 2005/06/15 20:06:01 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.19 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -830,9 +830,28 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.USE_CASE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Generalization())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Substitution())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Representation())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_Occurrence())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_Implementation())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
+					|| eIsSet(UML2Package.eINSTANCE.getUseCase_Include())
+					|| eIsSet(UML2Package.eINSTANCE.getUseCase_Extend())
+					|| eIsSet(UML2Package.eINSTANCE.getUseCase_ExtensionPoint());
 			case UML2Package.USE_CASE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getType_Package());
 			case UML2Package.USE_CASE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.USE_CASE__TEMPLATE_BINDING:
@@ -850,7 +869,16 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			case UML2Package.USE_CASE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.USE_CASE__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_InheritedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getClassifier_OwnedUseCase())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_ClassifierBehavior())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioredClassifier_OwnedTrigger())
+					|| eIsSet(UML2Package.eINSTANCE.getUseCase_Include())
+					|| eIsSet(UML2Package.eINSTANCE.getUseCase_Extend())
+					|| eIsSet(UML2Package.eINSTANCE.getUseCase_ExtensionPoint());
 			case UML2Package.USE_CASE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.USE_CASE__IMPORTED_MEMBER:

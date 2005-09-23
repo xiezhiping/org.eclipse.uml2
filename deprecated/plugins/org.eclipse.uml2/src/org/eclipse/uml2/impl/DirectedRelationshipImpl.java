@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.9 2005/06/20 19:57:42 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.10 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+
+import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -77,12 +79,12 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 		if (cache != null) {
 			EList source = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source());
 			if (source == null) {
-				EList union = getSourcesHelper(new UniqueEList());
+				List union = getSourcesHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), source = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray()));
 			}
 			return source;
 		}
-		EList union = getSourcesHelper(new UniqueEList());
+		List union = getSourcesHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Source(), union.size(), union.toArray());
 	}
 
@@ -129,12 +131,12 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 		if (cache != null) {
 			EList target = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target());
 			if (target == null) {
-				EList union = getTargetsHelper(new UniqueEList());
+				List union = getTargetsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), target = new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray()));
 			}
 			return target;
 		}
-		EList union = getTargetsHelper(new UniqueEList());
+		List union = getTargetsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getDirectedRelationship_Target(), union.size(), union.toArray());
 	}
 
@@ -249,7 +251,7 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 			case UML2Package.DIRECTED_RELATIONSHIP__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DIRECTED_RELATIONSHIP__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.DIRECTED_RELATIONSHIP__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.DIRECTED_RELATIONSHIP__OWNED_COMMENT:

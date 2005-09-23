@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.9 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -300,9 +300,11 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedParameteredElement())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateParameter_OwnedDefault());
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getTemplateParameter_Signature());
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.14 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -513,9 +513,14 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			case UML2Package.SUBSTITUTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SUBSTITUTION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getAbstraction_Mapping());
 			case UML2Package.SUBSTITUTION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction());
 			case UML2Package.SUBSTITUTION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.SUBSTITUTION__TEMPLATE_BINDING:
@@ -539,11 +544,16 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			case UML2Package.SUBSTITUTION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.SUBSTITUTION__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction())
+					|| eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier())
+					|| eIsSet(UML2Package.eINSTANCE.getSubstitution_Contract())
+					|| eIsSet(UML2Package.eINSTANCE.getSubstitution_SubstitutingClassifier());
 			case UML2Package.SUBSTITUTION__SOURCE:
-				return !getSources().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getRealization_Abstraction())
+					|| eIsSet(UML2Package.eINSTANCE.getSubstitution_SubstitutingClassifier());
 			case UML2Package.SUBSTITUTION__TARGET:
-				return !getTargets().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier())
+					|| eIsSet(UML2Package.eINSTANCE.getSubstitution_Contract());
 			case UML2Package.SUBSTITUTION__CLIENT:
 				return client != null && !client.isEmpty();
 			case UML2Package.SUBSTITUTION__SUPPLIER:
@@ -581,7 +591,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
 		if (eIsSet(UML2Package.eINSTANCE.getSubstitution_Contract())) {
-			target.add(getContract());
+			target.add(basicGetContract());
 		}
 		return target;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.11 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -513,9 +513,13 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 			case UML2Package.INTERACTION_FRAGMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERACTION_FRAGMENT__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getInteractionFragment_GeneralOrdering());
 			case UML2Package.INTERACTION_FRAGMENT__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getInteractionFragment_EnclosingOperand());
 			case UML2Package.INTERACTION_FRAGMENT__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INTERACTION_FRAGMENT__TEMPLATE_BINDING:

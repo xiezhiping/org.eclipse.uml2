@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.11 2005/06/20 19:57:42 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.12 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -209,12 +211,12 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		if (cache != null) {
 			EList inGroup = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getActivityNode_InGroup());
 			if (inGroup == null) {
-				EList union = getInGroupsHelper(new UniqueEList());
+				List union = getInGroupsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getActivityNode_InGroup(), inGroup = new UnionEObjectEList(this, UML2Package.eINSTANCE.getActivityNode_InGroup(), union.size(), union.toArray()));
 			}
 			return inGroup;
 		}
-		EList union = getInGroupsHelper(new UniqueEList());
+		List union = getInGroupsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getActivityNode_InGroup(), union.size(), union.toArray());
 	}
 
@@ -660,9 +662,12 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_NODE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 			case UML2Package.ACTIVITY_NODE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity());
 			case UML2Package.ACTIVITY_NODE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.ACTIVITY_NODE__TEMPLATE_BINDING:
@@ -688,7 +693,9 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_NODE__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.ACTIVITY_NODE__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
 			case UML2Package.ACTIVITY_NODE__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.ACTIVITY_NODE__REDEFINED_ELEMENT:

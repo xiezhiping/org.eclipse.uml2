@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.9 2005/06/15 20:06:01 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.10 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -264,7 +264,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
 		if (eIsSet(UML2Package.eINSTANCE.getGeneralization_General())) {
-			target.add(getGeneral());
+			target.add(basicGetGeneral());
 		}
 		return target;
 	}
@@ -441,17 +441,18 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 			case UML2Package.GENERALIZATION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.GENERALIZATION__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment());
 			case UML2Package.GENERALIZATION__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getGeneralization_Specific());
 			case UML2Package.GENERALIZATION__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.GENERALIZATION__RELATED_ELEMENT:
-				return !getRelatedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getGeneralization_Specific())
+					|| eIsSet(UML2Package.eINSTANCE.getGeneralization_General());
 			case UML2Package.GENERALIZATION__SOURCE:
-				return !getSources().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getGeneralization_Specific());
 			case UML2Package.GENERALIZATION__TARGET:
-				return !getTargets().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getGeneralization_General());
 			case UML2Package.GENERALIZATION__SPECIFIC:
 				return getSpecific() != null;
 			case UML2Package.GENERALIZATION__GENERAL:

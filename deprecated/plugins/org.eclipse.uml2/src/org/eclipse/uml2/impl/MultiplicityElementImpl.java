@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.13 2005/06/15 20:06:01 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.14 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -596,7 +596,9 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 			case UML2Package.MULTIPLICITY_ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.MULTIPLICITY_ELEMENT__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())
+					|| eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue());
 			case UML2Package.MULTIPLICITY_ELEMENT__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.MULTIPLICITY_ELEMENT__OWNED_COMMENT:

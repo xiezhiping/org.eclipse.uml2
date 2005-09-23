@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.13 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -779,9 +779,22 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getExecutableNode_Handler())
+					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPrecondition())
+					|| eIsSet(UML2Package.eINSTANCE.getAction_LocalPostcondition())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredActivityNode_Variable())
+					|| eIsSet(UML2Package.eINSTANCE.getConditionalNode_Clause())
+					|| eIsSet(UML2Package.eINSTANCE.getConditionalNode_Result());
 			case UML2Package.CONDITIONAL_NODE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_Activity())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityGroup_ActivityGroup_activity());
 			case UML2Package.CONDITIONAL_NODE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__TEMPLATE_BINDING:
@@ -807,7 +820,9 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__INCOMING:
 				return incoming != null && !incoming.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityNode_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InPartition())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityNode_InInterruptibleRegion());
 			case UML2Package.CONDITIONAL_NODE__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.CONDITIONAL_NODE__REDEFINED_ELEMENT:
@@ -823,7 +838,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__EFFECT:
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.CONDITIONAL_NODE__OUTPUT:
-				return !getOutputs().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getConditionalNode_Result());
 			case UML2Package.CONDITIONAL_NODE__INPUT:
 				return !getInputs().isEmpty();
 			case UML2Package.CONDITIONAL_NODE__CONTEXT:
@@ -833,7 +848,9 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 			case UML2Package.CONDITIONAL_NODE__LOCAL_POSTCONDITION:
 				return localPostcondition != null && !localPostcondition.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getStructuredActivityNode_Variable());
 			case UML2Package.CONDITIONAL_NODE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.CONDITIONAL_NODE__IMPORTED_MEMBER:

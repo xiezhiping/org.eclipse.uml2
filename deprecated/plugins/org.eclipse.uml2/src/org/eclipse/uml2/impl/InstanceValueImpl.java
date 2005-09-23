@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueImpl.java,v 1.8 2005/05/18 16:38:29 khussey Exp $
+ * $Id: InstanceValueImpl.java,v 1.9 2005/09/23 21:22:56 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -357,9 +357,12 @@ public class InstanceValueImpl extends ValueSpecificationImpl implements Instanc
 			case UML2Package.INSTANCE_VALUE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INSTANCE_VALUE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 			case UML2Package.INSTANCE_VALUE__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getParameterableElement_OwningParameter());
 			case UML2Package.INSTANCE_VALUE__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.INSTANCE_VALUE__TEMPLATE_BINDING:

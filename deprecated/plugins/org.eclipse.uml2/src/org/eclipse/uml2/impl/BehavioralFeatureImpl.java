@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.16 2005/06/20 19:57:42 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.17 2005/09/23 21:22:53 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -257,12 +258,12 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		if (cache != null) {
 			EList redefinitionContext = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
 			if (redefinitionContext == null) {
-				EList union = getRedefinitionContextsHelper(new UniqueEList());
+				List union = getRedefinitionContextsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray()));
 			}
 			return redefinitionContext;
 		}
-		EList union = getRedefinitionContextsHelper(new UniqueEList());
+		List union = getRedefinitionContextsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
 	}
 
@@ -324,12 +325,12 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		if (cache != null) {
 			EList featuringClassifier = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier());
 			if (featuringClassifier == null) {
-				EList union = getFeaturingClassifiersHelper(new UniqueEList());
+				List union = getFeaturingClassifiersHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), featuringClassifier = new UnionEObjectEList(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), union.size(), union.toArray()));
 			}
 			return featuringClassifier;
 		}
-		EList union = getFeaturingClassifiersHelper(new UniqueEList());
+		List union = getFeaturingClassifiersHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getFeature_FeaturingClassifier(), union.size(), union.toArray());
 	}
 
@@ -438,12 +439,12 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		if (cache != null) {
 			EList parameter = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getBehavioralFeature_Parameter());
 			if (parameter == null) {
-				EList union = getParametersHelper(new UniqueEList());
+				List union = getParametersHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getBehavioralFeature_Parameter(), parameter = new UnionEObjectEList(this, UML2Package.eINSTANCE.getBehavioralFeature_Parameter(), union.size(), union.toArray()));
 			}
 			return parameter;
 		}
-		EList union = getParametersHelper(new UniqueEList());
+		List union = getParametersHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getBehavioralFeature_Parameter(), union.size(), union.toArray());
 	}
 
@@ -697,7 +698,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 				Method method = getClass().getMethod("getRedefinedElements", null); //$NON-NLS-1$
 				EList redefinedElement = (EList) cache.get(eResource(), this, method);
 				if (redefinedElement == null) {
-					EList union = getRedefinedElementsHelper(new UniqueEList());
+					List union = getRedefinedElementsHelper(new UniqueEList());
 					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return redefinedElement;
@@ -705,7 +706,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 				// ignore
 			}
 		}
-		EList union = getRedefinedElementsHelper(new UniqueEList());
+		List union = getRedefinedElementsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
@@ -1043,7 +1044,15 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			case UML2Package.BEHAVIORAL_FEATURE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ElementImport())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_PackageImport())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
 			case UML2Package.BEHAVIORAL_FEATURE__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.BEHAVIORAL_FEATURE__OWNED_COMMENT:
@@ -1063,7 +1072,10 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			case UML2Package.BEHAVIORAL_FEATURE__NAME_EXPRESSION:
 				return nameExpression != null;
 			case UML2Package.BEHAVIORAL_FEATURE__MEMBER:
-				return !getMembers().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getNamespace_OwnedRule())
+					|| eIsSet(UML2Package.eINSTANCE.getNamespace_ImportedMember())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
 			case UML2Package.BEHAVIORAL_FEATURE__OWNED_RULE:
 				return ownedRule != null && !ownedRule.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__IMPORTED_MEMBER:
@@ -1081,7 +1093,8 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			case UML2Package.BEHAVIORAL_FEATURE__IS_STATIC:
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.BEHAVIORAL_FEATURE__PARAMETER:
-				return !getParameters().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_FormalParameter())
+					|| eIsSet(UML2Package.eINSTANCE.getBehavioralFeature_ReturnResult());
 			case UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER:
 				return formalParameter != null && !formalParameter.isEmpty();
 			case UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT:

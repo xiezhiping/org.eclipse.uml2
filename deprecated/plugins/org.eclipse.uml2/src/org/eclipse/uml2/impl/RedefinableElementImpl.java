@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.14 2005/06/20 19:57:42 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.15 2005/09/23 21:22:55 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -155,12 +156,12 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		if (cache != null) {
 			EList redefinitionContext = (EList) cache.get(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext());
 			if (redefinitionContext == null) {
-				EList union = getRedefinitionContextsHelper(new UniqueEList());
+				List union = getRedefinitionContextsHelper(new UniqueEList());
 				cache.put(eResource(), this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), redefinitionContext = new UnionEObjectEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray()));
 			}
 			return redefinitionContext;
 		}
-		EList union = getRedefinitionContextsHelper(new UniqueEList());
+		List union = getRedefinitionContextsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, UML2Package.eINSTANCE.getRedefinableElement_RedefinitionContext(), union.size(), union.toArray());
 	}
 
@@ -219,7 +220,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 				Method method = getClass().getMethod("getRedefinedElements", null); //$NON-NLS-1$
 				EList redefinedElement = (EList) cache.get(eResource(), this, method);
 				if (redefinedElement == null) {
-					EList union = getRedefinedElementsHelper(new UniqueEList());
+					List union = getRedefinedElementsHelper(new UniqueEList());
 					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return redefinedElement;
@@ -227,7 +228,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 				// ignore
 			}
 		}
-		EList union = getRedefinedElementsHelper(new UniqueEList());
+		List union = getRedefinedElementsHelper(new UniqueEList());
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
@@ -429,7 +430,10 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 			case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.REDEFINABLE_ELEMENT__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression());
 			case UML2Package.REDEFINABLE_ELEMENT__OWNER:
 				return basicGetOwner() != null;
 			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:

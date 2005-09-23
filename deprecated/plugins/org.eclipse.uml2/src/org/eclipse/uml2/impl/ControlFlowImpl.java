@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ControlFlowImpl.java,v 1.7 2005/05/18 16:38:29 khussey Exp $
+ * $Id: ControlFlowImpl.java,v 1.8 2005/09/23 21:22:54 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -383,9 +383,14 @@ public class ControlFlowImpl extends ActivityEdgeImpl implements ControlFlow {
 			case UML2Package.CONTROL_FLOW__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONTROL_FLOW__OWNED_ELEMENT:
-				return !getOwnedElements().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getElement_OwnedComment())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_TemplateBinding())
+					|| eIsSet(UML2Package.eINSTANCE.getTemplateableElement_OwnedTemplateSignature())
+					|| eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Guard())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_Weight());
 			case UML2Package.CONTROL_FLOW__OWNER:
-				return basicGetOwner() != null;
+				return eIsSet(UML2Package.eINSTANCE.getActivityEdge_Activity());
 			case UML2Package.CONTROL_FLOW__OWNED_COMMENT:
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UML2Package.CONTROL_FLOW__TEMPLATE_BINDING:
@@ -413,7 +418,8 @@ public class ControlFlowImpl extends ActivityEdgeImpl implements ControlFlow {
 			case UML2Package.CONTROL_FLOW__TARGET:
 				return target != null;
 			case UML2Package.CONTROL_FLOW__IN_GROUP:
-				return !getInGroups().isEmpty();
+				return eIsSet(UML2Package.eINSTANCE.getActivityEdge_InStructuredNode())
+					|| eIsSet(UML2Package.eINSTANCE.getActivityEdge_InPartition());
 			case UML2Package.CONTROL_FLOW__GUARD:
 				return guard != null;
 			case UML2Package.CONTROL_FLOW__REDEFINED_ELEMENT:
