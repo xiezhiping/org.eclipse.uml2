@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.13 2005/09/23 21:22:55 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.14 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -565,11 +565,13 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getInteractionConstraint_Minint())) {
-			ownedElement.add(getMinint());
+		ValueSpecification minint = getMinint();
+		if (minint != null) {
+			ownedElement.add(minint);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getInteractionConstraint_Maxint())) {
-			ownedElement.add(getMaxint());
+		ValueSpecification maxint = getMaxint();
+		if (maxint != null) {
+			ownedElement.add(maxint);
 		}
 		return ownedElement;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.16 2005/09/23 21:22:54 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.17 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1377,14 +1377,17 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_UpperValue())) {
-			ownedElement.add(getUpperValue());
+		ValueSpecification upperValue = getUpperValue();
+		if (upperValue != null) {
+			ownedElement.add(upperValue);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getMultiplicityElement_LowerValue())) {
-			ownedElement.add(getLowerValue());
+		ValueSpecification lowerValue = getLowerValue();
+		if (lowerValue != null) {
+			ownedElement.add(lowerValue);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getParameter_DefaultValue())) {
-			ownedElement.add(getDefaultValue());
+		ValueSpecification defaultValue = getDefaultValue();
+		if (defaultValue != null) {
+			ownedElement.add(defaultValue);
 		}
 		return ownedElement;
 	}

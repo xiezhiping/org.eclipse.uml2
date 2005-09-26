@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.15 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.16 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -592,8 +592,9 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 */
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
-		if (eIsSet(UML2Package.eINSTANCE.getImplementation_Contract())) {
-			target.add(basicGetContract());
+		Interface contract = basicGetContract();
+		if (contract != null) {
+			target.add(contract);
 		}
 		return target;
 	}

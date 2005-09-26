@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.13 2005/09/23 21:22:54 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.14 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -786,8 +786,9 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getObjectNode_UpperBound())) {
-			ownedElement.add(getUpperBound());
+		ValueSpecification upperBound = getUpperBound();
+		if (upperBound != null) {
+			ownedElement.add(upperBound);
 		}
 		return ownedElement;
 	}

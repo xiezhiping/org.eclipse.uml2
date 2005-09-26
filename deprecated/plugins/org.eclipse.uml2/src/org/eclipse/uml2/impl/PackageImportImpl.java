@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.13 2005/09/23 21:22:55 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.14 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -431,8 +431,9 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 */
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
-		if (eIsSet(UML2Package.eINSTANCE.getPackageImport_ImportedPackage())) {
-			target.add(basicGetImportedPackage());
+		org.eclipse.uml2.Package importedPackage = basicGetImportedPackage();
+		if (importedPackage != null) {
+			target.add(importedPackage);
 		}
 		return target;
 	}

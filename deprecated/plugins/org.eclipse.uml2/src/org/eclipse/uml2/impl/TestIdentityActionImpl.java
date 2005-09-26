@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.12 2005/09/23 21:22:54 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.13 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -787,11 +787,13 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (eIsSet(UML2Package.eINSTANCE.getTestIdentityAction_First())) {
-			input.add(getFirst());
+		InputPin first = getFirst();
+		if (first != null) {
+			input.add(first);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getTestIdentityAction_Second())) {
-			input.add(getSecond());
+		InputPin second = getSecond();
+		if (second != null) {
+			input.add(second);
 		}
 		return input;
 	}
@@ -804,8 +806,9 @@ public class TestIdentityActionImpl extends ActionImpl implements TestIdentityAc
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (eIsSet(UML2Package.eINSTANCE.getTestIdentityAction_Result())) {
-			output.add(getResult());
+		OutputPin result = getResult();
+		if (result != null) {
+			output.add(result);
 		}
 		return output;
 	}

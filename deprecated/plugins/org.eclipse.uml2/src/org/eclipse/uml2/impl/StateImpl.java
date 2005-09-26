@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.16 2005/09/23 21:22:54 khussey Exp $
+ * $Id: StateImpl.java,v 1.17 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1635,17 +1635,21 @@ public class StateImpl extends NamespaceImpl implements State {
 		if (eIsSet(UML2Package.eINSTANCE.getState_Connection())) {
 			ownedElement.addAll(getConnections());
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getState_Entry())) {
-			ownedElement.add(getEntry());
+		Activity entry = getEntry();
+		if (entry != null) {
+			ownedElement.add(entry);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getState_Exit())) {
-			ownedElement.add(getExit());
+		Activity exit = getExit();
+		if (exit != null) {
+			ownedElement.add(exit);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getState_DoActivity())) {
-			ownedElement.add(getDoActivity());
+		Activity doActivity = getDoActivity();
+		if (doActivity != null) {
+			ownedElement.add(doActivity);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getState_StateInvariant())) {
-			ownedElement.add(getStateInvariant());
+		Constraint stateInvariant = getStateInvariant();
+		if (stateInvariant != null) {
+			ownedElement.add(stateInvariant);
 		}
 		return ownedElement;
 	}

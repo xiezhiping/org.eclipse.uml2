@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.11 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.12 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -674,8 +674,9 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 				input.add(i.next());
 			}
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getReplyAction_ReturnInformation())) {
-			input.add(basicGetReturnInformation());
+		InputPin returnInformation = basicGetReturnInformation();
+		if (returnInformation != null) {
+			input.add(returnInformation);
 		}
 		return input;
 	}

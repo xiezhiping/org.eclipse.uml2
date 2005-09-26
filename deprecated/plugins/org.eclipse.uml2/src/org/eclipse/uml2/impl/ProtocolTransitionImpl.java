@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.14 2005/09/23 21:22:56 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.15 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -677,8 +677,9 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getProtocolTransition_PostCondition())) {
-			ownedElement.add(getPostCondition());
+		Constraint postCondition = getPostCondition();
+		if (postCondition != null) {
+			ownedElement.add(postCondition);
 		}
 		return ownedElement;
 	}

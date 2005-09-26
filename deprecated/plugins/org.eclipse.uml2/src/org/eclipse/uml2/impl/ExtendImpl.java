@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.14 2005/09/23 21:22:56 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.15 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -356,8 +356,9 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getExtend_Condition())) {
-			ownedElement.add(getCondition());
+		Constraint condition = getCondition();
+		if (condition != null) {
+			ownedElement.add(condition);
 		}
 		return ownedElement;
 	}
@@ -389,8 +390,9 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	 * @generated
 	 */
 	protected EList getTargetsHelper(EList target) {
-		if (eIsSet(UML2Package.eINSTANCE.getExtend_ExtendedCase())) {
-			target.add(basicGetExtendedCase());
+		UseCase extendedCase = basicGetExtendedCase();
+		if (extendedCase != null) {
+			target.add(extendedCase);
 		}
 		return target;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.21 2005/09/23 21:22:53 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.22 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1072,8 +1072,9 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		if (eIsSet(UML2Package.eINSTANCE.getInterface_OwnedReception())) {
 			ownedMember.addAll(getOwnedReceptions());
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getInterface_Protocol())) {
-			ownedMember.add(getProtocol());
+		ProtocolStateMachine protocol = getProtocol();
+		if (protocol != null) {
+			ownedMember.add(protocol);
 		}
 		return ownedMember;
 	}

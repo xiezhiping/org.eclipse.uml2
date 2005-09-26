@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.13 2005/09/23 21:22:55 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.14 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -487,8 +487,9 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getAbstraction_Mapping())) {
-			ownedElement.add(getMapping());
+		OpaqueExpression mapping = getMapping();
+		if (mapping != null) {
+			ownedElement.add(mapping);
 		}
 		return ownedElement;
 	}

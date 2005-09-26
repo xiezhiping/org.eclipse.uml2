@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImpl.java,v 1.12 2005/09/23 21:22:54 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImpl.java,v 1.13 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -614,8 +614,9 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (eIsSet(UML2Package.eINSTANCE.getWriteStructuralFeatureAction_Value())) {
-			input.add(getValue());
+		InputPin value = getValue();
+		if (value != null) {
+			input.add(value);
 		}
 		return input;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.13 2005/09/23 21:22:54 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.14 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -712,8 +712,9 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 */
 	protected EList getInputsHelper(EList input) {
 		super.getInputsHelper(input);
-		if (eIsSet(UML2Package.eINSTANCE.getDestroyObjectAction_Target())) {
-			input.add(getTarget());
+		InputPin target = getTarget();
+		if (target != null) {
+			input.add(target);
 		}
 		return input;
 	}

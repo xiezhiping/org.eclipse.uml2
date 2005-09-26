@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.14 2005/09/23 21:22:55 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.15 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -195,8 +195,9 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 */
 	protected EList getTargetsHelper(EList target) {
 		super.getTargetsHelper(target);
-		if (eIsSet(UML2Package.eINSTANCE.getRealization_RealizingClassifier())) {
-			target.add(basicGetRealizingClassifier());
+		Classifier realizingClassifier = basicGetRealizingClassifier();
+		if (realizingClassifier != null) {
+			target.add(realizingClassifier);
 		}
 		return target;
 	}

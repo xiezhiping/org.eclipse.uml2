@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.21 2005/09/23 21:22:53 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.22 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1192,8 +1192,9 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		if (eIsSet(UML2Package.eINSTANCE.getDeploymentTarget_Deployment())) {
 			ownedElement.addAll(getDeployments());
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getProperty_DefaultValue())) {
-			ownedElement.add(getDefaultValue());
+		ValueSpecification defaultValue = getDefaultValue();
+		if (defaultValue != null) {
+			ownedElement.add(defaultValue);
 		}
 		if (eIsSet(UML2Package.eINSTANCE.getProperty_Qualifier())) {
 			ownedElement.addAll(getQualifiers());

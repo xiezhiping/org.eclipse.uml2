@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.14 2005/09/23 21:22:54 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.15 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -494,8 +494,9 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getStateInvariant_Invariant())) {
-			ownedElement.add(getInvariant());
+		Constraint invariant = getInvariant();
+		if (invariant != null) {
+			ownedElement.add(invariant);
 		}
 		return ownedElement;
 	}

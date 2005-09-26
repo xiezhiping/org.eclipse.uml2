@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.15 2005/09/23 21:22:53 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.16 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -122,8 +122,9 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getConstraint_Specification())) {
-			ownedElement.add(getSpecification());
+		ValueSpecification specification = getSpecification();
+		if (specification != null) {
+			ownedElement.add(specification);
 		}
 		return ownedElement;
 	}

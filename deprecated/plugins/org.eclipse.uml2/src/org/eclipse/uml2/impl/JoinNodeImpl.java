@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.12 2005/09/23 21:22:54 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.13 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -576,8 +576,9 @@ public class JoinNodeImpl extends ControlNodeImpl implements JoinNode {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getJoinNode_JoinSpec())) {
-			ownedElement.add(getJoinSpec());
+		ValueSpecification joinSpec = getJoinSpec();
+		if (joinSpec != null) {
+			ownedElement.add(joinSpec);
 		}
 		return ownedElement;
 	}

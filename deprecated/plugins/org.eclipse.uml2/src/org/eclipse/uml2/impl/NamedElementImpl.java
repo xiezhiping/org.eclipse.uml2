@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.19 2005/09/23 21:22:54 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.20 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -660,8 +660,9 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getNamedElement_NameExpression())) {
-			ownedElement.add(getNameExpression());
+		StringExpression nameExpression = getNameExpression();
+		if (nameExpression != null) {
+			ownedElement.add(nameExpression);
 		}
 		return ownedElement;
 	}

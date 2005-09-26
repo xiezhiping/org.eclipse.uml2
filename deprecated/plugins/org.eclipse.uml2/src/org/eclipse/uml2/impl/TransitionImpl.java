@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.15 2005/09/23 21:22:54 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.16 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -647,11 +647,13 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getTransition_Guard())) {
-			ownedElement.add(getGuard());
+		Constraint guard = getGuard();
+		if (guard != null) {
+			ownedElement.add(guard);
 		}
-		if (eIsSet(UML2Package.eINSTANCE.getTransition_Effect())) {
-			ownedElement.add(getEffect());
+		Activity effect = getEffect();
+		if (effect != null) {
+			ownedElement.add(effect);
 		}
 		return ownedElement;
 	}

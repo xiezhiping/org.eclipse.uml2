@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.10 2005/09/23 21:22:54 khussey Exp $
+ * $Id: CommentImpl.java,v 1.11 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -431,8 +431,9 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 */
 	protected EList getOwnedElementsHelper(EList ownedElement) {
 		super.getOwnedElementsHelper(ownedElement);
-		if (eIsSet(UML2Package.eINSTANCE.getComment_BodyExpression())) {
-			ownedElement.add(getBodyExpression());
+		StringExpression bodyExpression = getBodyExpression();
+		if (bodyExpression != null) {
+			ownedElement.add(bodyExpression);
 		}
 		return ownedElement;
 	}

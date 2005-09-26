@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadVariableActionImpl.java,v 1.12 2005/09/23 21:22:56 khussey Exp $
+ * $Id: ReadVariableActionImpl.java,v 1.13 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -601,8 +601,9 @@ public class ReadVariableActionImpl extends VariableActionImpl implements ReadVa
 	 */
 	protected EList getOutputsHelper(EList output) {
 		super.getOutputsHelper(output);
-		if (eIsSet(UML2Package.eINSTANCE.getReadVariableAction_Result())) {
-			output.add(getResult());
+		OutputPin result = getResult();
+		if (result != null) {
+			output.add(result);
 		}
 		return output;
 	}

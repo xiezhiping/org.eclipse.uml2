@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.13 2005/09/23 21:22:55 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.14 2005/09/26 15:54:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -226,8 +226,9 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	 * @generated
 	 */
 	protected EList getTargetsHelper(EList target) {
-		if (eIsSet(UML2Package.eINSTANCE.getInclude_Addition())) {
-			target.add(basicGetAddition());
+		UseCase addition = basicGetAddition();
+		if (addition != null) {
+			target.add(addition);
 		}
 		return target;
 	}
