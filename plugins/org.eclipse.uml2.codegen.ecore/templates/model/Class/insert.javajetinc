@@ -99,16 +99,10 @@
               <%}%>
             <%}%>
           <%} else {%>
-            <%if (genClass.isField(subsetGenFeature)) {%>
-		if (eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())) {
-			<%=genFeature.getSafeName()%>.add(<%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>());
-		}
-            <%} else {%>
 		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();
 		if (<%=subsetGenFeature.getSafeName()%> != null) {
 			<%=genFeature.getSafeName()%>.add(<%=subsetGenFeature.getSafeName()%>);
 		}
-            <%}%>
           <%}%>
         <%}%>
       <%}%>
