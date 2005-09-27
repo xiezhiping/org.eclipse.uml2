@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.11 2005/06/30 03:17:08 khussey Exp $
+ * $Id: UML2Importer.java,v 1.12 2005/09/27 15:55:33 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -43,6 +43,7 @@ import org.eclipse.emf.importer.ModelImporter;
 
 import org.eclipse.emf.importer.util.ImporterUtil;
 
+import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.UML2Package;
 
@@ -145,30 +146,30 @@ public class UML2Importer
 			getEPackages().addAll(new UML2Util.UML22EcoreConverter() {
 
 				protected void processEcoreTaggedValues(EPackage ePackage,
-						org.eclipse.uml2.Package package_, Map options,
+						Element element, Map options,
 						DiagnosticChain diagnostics, Map context) {
 
-					super.processEcoreTaggedValues(ePackage, package_, options,
+					super.processEcoreTaggedValues(ePackage, element, options,
 						diagnostics, context);
 
 					Stereotype ePackageStereotype = getAppliedEcoreStereotype(
-						package_, UML2Util.STEREOTYPE_NAME__E_PACKAGE);
+						element, UML2Util.STEREOTYPE_NAME__E_PACKAGE);
 
 					if (null != ePackageStereotype) {
 						EPackageInfo ePackageInfo = getEPackageInfo(ePackage);
 
-						if (package_.hasValue(ePackageStereotype,
+						if (element.hasValue(ePackageStereotype,
 							UML2Util.PROPERTY_NAME__BASE_PACKAGE)) {
 
-							ePackageInfo.setBasePackage((String) package_
+							ePackageInfo.setBasePackage((String) element
 								.getValue(ePackageStereotype,
 									UML2Util.PROPERTY_NAME__BASE_PACKAGE));
 						}
 
-						if (package_.hasValue(ePackageStereotype,
+						if (element.hasValue(ePackageStereotype,
 							UML2Util.PROPERTY_NAME__PREFIX)) {
 
-							ePackageInfo.setPrefix((String) package_.getValue(
+							ePackageInfo.setPrefix((String) element.getValue(
 								ePackageStereotype,
 								UML2Util.PROPERTY_NAME__PREFIX));
 						}
