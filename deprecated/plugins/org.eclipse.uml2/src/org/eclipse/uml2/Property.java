@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.12 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Property.java,v 1.13 2005/09/27 14:06:56 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -702,6 +702,14 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see #getDefault()
 	 */
 	void setUnlimitedNaturalDefault(int value);
+
+	/**
+	 * Retrieves the other end of the (binary) association in which this
+	 * property is a member end.
+	 * 
+	 * @return The other end.
+	 */
+	Property getOtherEnd();
 
 	// <!-- end-custom-operations -->
 

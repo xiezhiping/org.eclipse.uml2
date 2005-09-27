@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.16 2005/09/12 19:41:23 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.17 2005/09/27 14:06:56 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -107,7 +107,7 @@ public final class PropertyOperations extends UML2Operations {
 		Property opposite = null;
 
 		if (null == property.getOwningAssociation()) {
-			Property otherEnd = getOtherEnd(property);
+			Property otherEnd = property.getOtherEnd();
 
 			if (null != otherEnd && null == otherEnd.getOwningAssociation()) {
 				opposite = otherEnd;
@@ -150,7 +150,7 @@ public final class PropertyOperations extends UML2Operations {
 	public static Property opposite(Property property) {
 
 		if (null == property.getOwningAssociation()) {
-			Property otherEnd = getOtherEnd(property);
+			Property otherEnd = property.getOtherEnd();
 
 			if (null != otherEnd && null == otherEnd.getOwningAssociation()) {
 				return otherEnd;
@@ -177,7 +177,7 @@ public final class PropertyOperations extends UML2Operations {
 		boolean result = true;
 
 		if (property.isComposite()) {
-			Property otherEnd = getOtherEnd(property);
+			Property otherEnd = property.getOtherEnd();
 
 			if (null != otherEnd) {
 				int upperBound = otherEnd.upperBound();
@@ -547,7 +547,15 @@ public final class PropertyOperations extends UML2Operations {
 
 	// <!-- begin-custom-operations -->
 
-	protected static Property getOtherEnd(Property property) {
+	/**
+	 * Retrieves the other end of the (binary) association in which the
+	 * specified property is a member end.
+	 * 
+	 * @param property
+	 *            The property for which to retrieve the other end.
+	 * @return The other end.
+	 */
+	public static Property getOtherEnd(Property property) {
 		Association association = property.getAssociation();
 
 		if (null != association && association.isBinary()) {
@@ -605,8 +613,8 @@ public final class PropertyOperations extends UML2Operations {
 		if (navigable != isNavigable(property)) {
 
 			if (navigable) {
-				List ownedAttributes = getOwnedAttributes(getOtherEnd(
-					property).getType());
+				List ownedAttributes = getOwnedAttributes(property
+					.getOtherEnd().getType());
 
 				if (null == ownedAttributes) {
 					throw new IllegalArgumentException(String

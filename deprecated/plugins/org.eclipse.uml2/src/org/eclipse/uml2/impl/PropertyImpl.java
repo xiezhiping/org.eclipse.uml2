@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.22 2005/09/26 15:54:22 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.23 2005/09/27 14:06:56 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1909,6 +1909,15 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	public void setUnlimitedNaturalDefault(int value) {
 		PropertyOperations.setUnlimitedNaturalDefault(this, value);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Property#getOtherEnd()
+	 */
+	public Property getOtherEnd() {
+		return PropertyOperations.getOtherEnd(this);
 	}
 	
 	// <!-- end-custom-operations -->
