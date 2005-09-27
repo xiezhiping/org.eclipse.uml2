@@ -8,9 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataType.java,v 1.10 2005/06/15 20:06:01 khussey Exp $
+ * $Id: DataType.java,v 1.11 2005/09/27 20:03:02 khussey Exp $
  */
 package org.eclipse.uml2;
+
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -196,6 +198,13 @@ public interface DataType extends Classifier{
 	 */
 	Operation createOwnedOperation(String name, Type returnType,
 			String[] parameterNames, Type[] parameterTypes);
+
+	/**
+	 * Retrieves all the (inherited and owned) operations of this data type.
+	 * 
+	 * @return The inherited and owned operations of this data type.
+	 */
+	Set getAllOperations();
 
 	// <!-- end-custom-operations -->
 

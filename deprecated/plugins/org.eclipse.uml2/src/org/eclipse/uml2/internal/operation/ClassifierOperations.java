@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.12 2005/08/26 14:50:36 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.13 2005/09/27 20:03:02 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -28,6 +28,8 @@ import org.eclipse.uml2.Feature;
 import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.NamedElement;
+import org.eclipse.uml2.Operation;
+import org.eclipse.uml2.Property;
 import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.Usage;
 import org.eclipse.uml2.VisibilityKind;
@@ -505,7 +507,7 @@ public final class ClassifierOperations extends UML2Operations {
 	 * dependency.
 	 * 
 	 * @param classifier
-	 *            The classfier for which to retrieve the useed interfaces.
+	 *            The classfier for which to retrieve the used interfaces.
 	 * @return The interfaces used by the specified classifier.
 	 */
 	public static Set getUsedInterfaces(Classifier classifier) {
@@ -536,6 +538,60 @@ public final class ClassifierOperations extends UML2Operations {
 		}
 
 		return usedInterfaces;
+	}
+
+	/**
+	 * Retrieves all the (inherited and owned) attributes of the specified
+	 * classifier.
+	 * 
+	 * @param classifier
+	 *            The classifier for which to retrieve the attributes.
+	 * @return The inherited and owned attributes of the classifier.
+	 */
+	public static Set getAllAttributes(Classifier classifier) {
+		Set allAttributes = new HashSet();
+
+		if (null != classifier) {
+
+			for (Iterator allFeatures = classifier.allFeatures().iterator(); allFeatures
+				.hasNext();) {
+
+				Feature feature = (Feature) allFeatures.next();
+
+				if (Property.class.isInstance(feature)) {
+					allAttributes.add(feature);
+				}
+			}
+		}
+
+		return allAttributes;
+	}
+
+	/**
+	 * Retrieves all the (inherited and owned) operations of the specified
+	 * classifier.
+	 * 
+	 * @param classifier
+	 *            The classifier for which to retrieve the operations.
+	 * @return The inherited and owned operations of the classifier.
+	 */
+	public static Set getAllOperations(Classifier classifier) {
+		Set allOperations = new HashSet();
+
+		if (null != classifier) {
+
+			for (Iterator allFeatures = classifier.allFeatures().iterator(); allFeatures
+				.hasNext();) {
+
+				Feature feature = (Feature) allFeatures.next();
+
+				if (Operation.class.isInstance(feature)) {
+					allOperations.add(feature);
+				}
+			}
+		}
+
+		return allOperations;
 	}
 
 	// <!-- end-custom-operations -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Artifact.java,v 1.7 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Artifact.java,v 1.8 2005/09/27 20:03:02 khussey Exp $
  */
 package org.eclipse.uml2;
+
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -261,5 +263,16 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * @generated
 	 */
     Property createOwnedAttribute();
+
+	// <!-- begin-custom-operations -->
+	
+	/**
+	 * Retrieves all the (inherited and owned) operations of this artifact.
+	 * 
+	 * @return The inherited and owned operations of this artifact.
+	 */
+	Set getAllOperations();
+
+	// <!-- end-custom-operations -->
 
 } // Artifact

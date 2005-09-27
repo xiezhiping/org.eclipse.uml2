@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.29 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.30 2005/09/27 20:03:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -2038,7 +2038,42 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return Collections.unmodifiableSet(ClassifierOperations
 			.getUsedInterfaces(this));
 	}
-	
+
+	private static Method GET_ALL_ATTRIBUTES = null;
+
+	static {
+		try {
+			GET_ALL_ATTRIBUTES = ClassifierImpl.class.getMethod(
+				"getAllAttributes", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// ignore
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Classifier#getAllAttributes()
+	 */
+	public Set getAllAttributes() {
+		CacheAdapter cache = getCacheAdapter();
+
+		if (cache != null) {
+			Set result = (Set) cache.get(this, GET_ALL_ATTRIBUTES);
+
+			if (result == null) {
+				cache.put(this, GET_ALL_ATTRIBUTES, result = Collections
+					.unmodifiableSet(ClassifierOperations
+						.getAllAttributes(this)));
+			}
+
+			return result;
+		}
+
+		return Collections.unmodifiableSet(ClassifierOperations
+			.getAllAttributes(this));
+	}
+
 	// <!-- end-custom-operations -->
 
 } //ClassifierImpl

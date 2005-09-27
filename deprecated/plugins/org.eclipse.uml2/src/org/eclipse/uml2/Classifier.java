@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.19 2005/08/31 15:26:23 khussey Exp $
+ * $Id: Classifier.java,v 1.20 2005/09/27 20:03:02 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -737,7 +737,14 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * @return The interfaces used by this classifier.
 	 */
 	Set getUsedInterfaces();
-	
+
+	/**
+	 * Retrieves all the (inherited and owned) attributes of this classifier.
+	 * 
+	 * @return The inherited and owned attributes of this classifier.
+	 */
+	Set getAllAttributes();
+
 	// <!-- end-custom-operations -->
 
 } // Classifier

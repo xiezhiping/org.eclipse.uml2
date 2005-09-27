@@ -8,12 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.19 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.20 2005/09/27 20:03:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
+import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -42,8 +45,10 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetEObjectContainmentEList;
 import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.internal.operation.ClassifierOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -1039,5 +1044,43 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 		return attribute;
 	}
 
+	// <!-- begin-custom-operations -->
+	
+	private static Method GET_ALL_OPERATIONS = null;
+
+	static {
+		try {
+			GET_ALL_OPERATIONS = ArtifactImpl.class.getMethod(
+				"getAllOperations", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// ignore
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Artifact#getAllOperations()
+	 */
+	public Set getAllOperations() {
+		CacheAdapter cache = getCacheAdapter();
+
+		if (cache != null) {
+			Set result = (Set) cache.get(this, GET_ALL_OPERATIONS);
+
+			if (result == null) {
+				cache.put(this, GET_ALL_OPERATIONS, result = Collections
+					.unmodifiableSet(ClassifierOperations
+						.getAllOperations(this)));
+			}
+
+			return result;
+		}
+
+		return Collections.unmodifiableSet(ClassifierOperations
+			.getAllOperations(this));
+	}
+
+	// <!-- end-custom-operations -->
 
 } //ArtifactImpl

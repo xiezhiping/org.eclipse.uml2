@@ -8,9 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.11 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Interface.java,v 1.12 2005/09/27 20:03:02 khussey Exp $
  */
 package org.eclipse.uml2;
+
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -371,6 +373,13 @@ public interface Interface extends Classifier{
 	 */
 	Operation createOwnedOperation(String name, Type returnType,
 			String[] parameterNames, Type[] parameterTypes);
+
+	/**
+	 * Retrieves all the (inherited and owned) operations of this interface.
+	 * 
+	 * @return The inherited and owned operations of this interface.
+	 */
+	Set getAllOperations();
 
 	// <!-- end-custom-operations -->
 

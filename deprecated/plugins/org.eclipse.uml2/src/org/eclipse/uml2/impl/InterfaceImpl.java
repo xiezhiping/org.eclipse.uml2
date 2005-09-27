@@ -8,12 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.22 2005/09/26 15:54:22 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.23 2005/09/27 20:03:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
+import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -45,6 +48,8 @@ import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.internal.operation.ClassifierOperations;
 import org.eclipse.uml2.internal.operation.TypeOperations;
 
 /**
@@ -1137,6 +1142,42 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			String[] parameterNames, Type[] parameterTypes) {
 		return TypeOperations.createOwnedOperation(this, name, returnType,
 			parameterNames, parameterTypes);
+	}
+
+	
+	private static Method GET_ALL_OPERATIONS = null;
+
+	static {
+		try {
+			GET_ALL_OPERATIONS = InterfaceImpl.class.getMethod(
+				"getAllOperations", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// ignore
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Interface#getAllOperations()
+	 */
+	public Set getAllOperations() {
+		CacheAdapter cache = getCacheAdapter();
+
+		if (cache != null) {
+			Set result = (Set) cache.get(this, GET_ALL_OPERATIONS);
+
+			if (result == null) {
+				cache.put(this, GET_ALL_OPERATIONS, result = Collections
+					.unmodifiableSet(ClassifierOperations
+						.getAllOperations(this)));
+			}
+
+			return result;
+		}
+
+		return Collections.unmodifiableSet(ClassifierOperations
+			.getAllOperations(this));
 	}
 
 	// <!-- end-custom-operations -->

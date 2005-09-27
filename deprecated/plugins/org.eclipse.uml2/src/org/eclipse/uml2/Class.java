@@ -8,9 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.19 2005/06/15 20:06:02 khussey Exp $
+ * $Id: Class.java,v 1.20 2005/09/27 20:03:02 khussey Exp $
  */
 package org.eclipse.uml2;
+
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -340,6 +342,13 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier{
 	 */
 	Operation createOwnedOperation(String name, Type returnType,
 			String[] parameterNames, Type[] parameterTypes);
+
+	/**
+	 * Retrieves all the (inherited and owned) operations of this class.
+	 * 
+	 * @return The inherited and owned operations of this class.
+	 */
+	Set getAllOperations();
 
 	// <!-- end-custom-operations -->
 
