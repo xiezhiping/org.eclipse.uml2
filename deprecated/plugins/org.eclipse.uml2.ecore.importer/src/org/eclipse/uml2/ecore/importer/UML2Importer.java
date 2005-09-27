@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.12 2005/09/27 15:55:33 khussey Exp $
+ * $Id: UML2Importer.java,v 1.13 2005/09/27 16:21:50 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -180,7 +180,7 @@ public class UML2Importer
 
 			progressMonitor.done();
 
-			if (Diagnostic.OK < diagnostics.getSeverity()) {
+			if (Diagnostic.INFO < diagnostics.getSeverity()) {
 				status = BasicDiagnostic.toIStatus(diagnostics);
 			}
 		}
