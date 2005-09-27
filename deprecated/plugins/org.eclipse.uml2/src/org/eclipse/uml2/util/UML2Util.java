@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.37 2005/09/20 20:08:50 khussey Exp $
+ * $Id: UML2Util.java,v 1.38 2005/09/27 13:27:59 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -787,24 +787,44 @@ public class UML2Util
 			}
 		}
 
+		/**
+		 * @deprecated
+		 */
 		protected void processEcoreTaggedValues(
 				org.eclipse.uml2.Package package_, EPackage ePackage,
 				Map options, DiagnosticChain diagnostics, Map context) {
+			processEcoreTaggedValues((Element) package_, ePackage, options,
+				diagnostics, context);
+		}
+
+		protected void processEcoreTaggedValues(Element element,
+				EPackage ePackage, Map options, DiagnosticChain diagnostics,
+				Map context) {
 			Stereotype ePackageStereotype = getEcoreStereotype(ePackage,
 				STEREOTYPE_NAME__E_PACKAGE);
 
 			if (null != ePackageStereotype) {
-				processEcoreTaggedValue(package_, ePackageStereotype,
+				processEcoreTaggedValue(element, ePackageStereotype,
 					PROPERTY_NAME__NS_PREFIX, ePackage, EcorePackage.eINSTANCE
 						.getEPackage_NsPrefix(), options, diagnostics, context);
 
-				processEcoreTaggedValue(package_, ePackageStereotype,
+				processEcoreTaggedValue(element, ePackageStereotype,
 					PROPERTY_NAME__NS_URI, ePackage, EcorePackage.eINSTANCE
 						.getEPackage_NsURI(), options, diagnostics, context);
 			}
 		}
 
+		/**
+		 * @deprecated
+		 */
 		protected void processEcoreTaggedValues(Classifier classifier,
+				EClassifier eClassifier, Map options,
+				DiagnosticChain diagnostics, Map context) {
+			processEcoreTaggedValues((Element) classifier, eClassifier,
+				options, diagnostics, context);
+		}
+
+		protected void processEcoreTaggedValues(Element element,
 				final EClassifier eClassifier, final Map options,
 				final DiagnosticChain diagnostics, final Map context) {
 			Stereotype eClassifierStereotype = (Stereotype) new UML2Switch() {
@@ -834,21 +854,31 @@ public class UML2Util
 
 					return eClassStereotype;
 				}
-			}.doSwitch(classifier);
+			}.doSwitch(element);
 
 			if (null != eClassifierStereotype) {
-				processEcoreTaggedValue(classifier, eClassifierStereotype,
+				processEcoreTaggedValue(element, eClassifierStereotype,
 					PROPERTY_NAME__XML_NAME, eClassifier, null, options,
 					diagnostics, context);
 
-				processEcoreTaggedValue(classifier, eClassifierStereotype,
+				processEcoreTaggedValue(element, eClassifierStereotype,
 					PROPERTY_NAME__INSTANCE_CLASS_NAME, eClassifier,
 					EcorePackage.eINSTANCE.getEClassifier_InstanceClassName(),
 					options, diagnostics, context);
 			}
 		}
 
-		protected void processEcoreTaggedValues(final Property property,
+		/**
+		 * @deprecated
+		 */
+		protected void processEcoreTaggedValues(Property property,
+				EStructuralFeature eStructuralFeature, Map options,
+				DiagnosticChain diagnostics, Map context) {
+			processEcoreTaggedValues((Element) property, eStructuralFeature,
+				options, diagnostics, context);
+		}
+
+		protected void processEcoreTaggedValues(final Element element,
 				EStructuralFeature eStructuralFeature, final Map options,
 				final DiagnosticChain diagnostics, final Map context) {
 			Stereotype eStructuralFeatureStereotype = (Stereotype) new EcoreSwitch() {
@@ -858,7 +888,7 @@ public class UML2Util
 						eAttribute, STEREOTYPE_NAME__E_ATTRIBUTE);
 
 					if (null != eAttributeStereotype) {
-						processEcoreTaggedValue(property, eAttributeStereotype,
+						processEcoreTaggedValue(element, eAttributeStereotype,
 							PROPERTY_NAME__IS_ID, eAttribute,
 							EcorePackage.eINSTANCE.getEAttribute_ID(), options,
 							diagnostics, context);
@@ -872,7 +902,7 @@ public class UML2Util
 						eReference, STEREOTYPE_NAME__E_REFERENCE);
 
 					if (null != eReferenceStereotype) {
-						processEcoreTaggedValue(property, eReferenceStereotype,
+						processEcoreTaggedValue(element, eReferenceStereotype,
 							PROPERTY_NAME__IS_RESOLVE_PROXIES, eReference,
 							EcorePackage.eINSTANCE
 								.getEReference_ResolveProxies(), options,
@@ -884,34 +914,34 @@ public class UML2Util
 			}.doSwitch(eStructuralFeature);
 
 			if (null != eStructuralFeatureStereotype) {
-				processEcoreTaggedValue(property, eStructuralFeatureStereotype,
+				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					PROPERTY_NAME__IS_TRANSIENT, eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Transient(),
 					options, diagnostics, context);
 
-				processEcoreTaggedValue(property, eStructuralFeatureStereotype,
+				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					PROPERTY_NAME__IS_UNSETTABLE, eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Unsettable(),
 					options, diagnostics, context);
 
-				processEcoreTaggedValue(property, eStructuralFeatureStereotype,
+				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					PROPERTY_NAME__IS_VOLATILE, eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Volatile(),
 					options, diagnostics, context);
 
-				processEcoreTaggedValue(property, eStructuralFeatureStereotype,
+				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					PROPERTY_NAME__XML_FEATURE_KIND, eStructuralFeature, null,
 					options, diagnostics, context);
 
-				processEcoreTaggedValue(property, eStructuralFeatureStereotype,
+				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					PROPERTY_NAME__XML_NAME, eStructuralFeature, null, options,
 					diagnostics, context);
 
-				processEcoreTaggedValue(property, eStructuralFeatureStereotype,
+				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					PROPERTY_NAME__XML_NAMESPACE, eStructuralFeature, null,
 					options, diagnostics, context);
 
-				processEcoreTaggedValue(property, eStructuralFeatureStereotype,
+				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					PROPERTY_NAME__VISIBILITY, eStructuralFeature, null,
 					options, diagnostics, context);
 			}
@@ -929,15 +959,14 @@ public class UML2Util
 				new EcoreSwitch() {
 
 					public Object caseEClassifier(EClassifier eClassifier) {
-						processEcoreTaggedValues((Classifier) entry.getValue(),
+						processEcoreTaggedValues((Element) entry.getValue(),
 							eClassifier, options, diagnostics, context);
 
 						return eClassifier;
 					}
 
 					public Object caseEPackage(EPackage ePackage) {
-						processEcoreTaggedValues(
-							(org.eclipse.uml2.Package) entry.getValue(),
+						processEcoreTaggedValues((Element) entry.getValue(),
 							ePackage, options, diagnostics, context);
 
 						return ePackage;
@@ -945,7 +974,7 @@ public class UML2Util
 
 					public Object caseEStructuralFeature(
 							EStructuralFeature eStructuralFeature) {
-						processEcoreTaggedValues((Property) entry.getValue(),
+						processEcoreTaggedValues((Element) entry.getValue(),
 							eStructuralFeature, options, diagnostics, context);
 
 						return eStructuralFeature;
@@ -2174,22 +2203,32 @@ public class UML2Util
 			}
 		}
 
+		/**
+		 * @deprecated
+		 */
 		protected void processEcoreTaggedValues(EClassifier eClassifier,
-				final Classifier classifier, final Map options,
+				Classifier classifier, Map options,
+				DiagnosticChain diagnostics, Map context) {
+			processEcoreTaggedValues(eClassifier, (Element) classifier,
+				options, diagnostics, context);
+		}
+
+		protected void processEcoreTaggedValues(EClassifier eClassifier,
+				final Element element, final Map options,
 				final DiagnosticChain diagnostics, final Map context) {
 			Stereotype eClassifierStereotype = (Stereotype) new EcoreSwitch() {
 
 				public Object caseEClass(EClass eClass) {
 					Stereotype eClassStereotype = getAppliedEcoreStereotype(
-						classifier, STEREOTYPE_NAME__E_CLASS);
+						element, STEREOTYPE_NAME__E_CLASS);
 
 					if (null != eClassStereotype) {
 						processEcoreTaggedValue(eClass, EcorePackage.eINSTANCE
-							.getENamedElement_Name(), classifier,
+							.getENamedElement_Name(), element,
 							eClassStereotype, PROPERTY_NAME__CLASS_NAME,
 							options, diagnostics, context);
 
-						processEcoreTaggedValue(eClass, null, classifier,
+						processEcoreTaggedValue(eClass, null, element,
 							eClassStereotype, PROPERTY_NAME__XML_CONTENT_KIND,
 							options, diagnostics, context);
 					}
@@ -2199,12 +2238,12 @@ public class UML2Util
 
 				public Object caseEDataType(EDataType eDataType) {
 					Stereotype eDataTypeStereotype = getAppliedEcoreStereotype(
-						classifier, STEREOTYPE_NAME__E_DATA_TYPE);
+						element, STEREOTYPE_NAME__E_DATA_TYPE);
 
 					if (null != eDataTypeStereotype) {
 						processEcoreTaggedValue(eDataType,
 							EcorePackage.eINSTANCE.getENamedElement_Name(),
-							classifier, eDataTypeStereotype,
+							element, eDataTypeStereotype,
 							PROPERTY_NAME__DATA_TYPE_NAME, options,
 							diagnostics, context);
 					}
@@ -2214,81 +2253,118 @@ public class UML2Util
 			}.doSwitch(eClassifier);
 
 			if (null != eClassifierStereotype) {
-				processEcoreTaggedValue(eClassifier, null, classifier,
+				processEcoreTaggedValue(eClassifier, null, element,
 					eClassifierStereotype, PROPERTY_NAME__XML_NAME, options,
 					diagnostics, context);
 
 				processEcoreTaggedValue(eClassifier, EcorePackage.eINSTANCE
-					.getEClassifier_InstanceClassName(), classifier,
+					.getEClassifier_InstanceClassName(), element,
 					eClassifierStereotype, PROPERTY_NAME__INSTANCE_CLASS_NAME,
 					options, diagnostics, context);
 			}
 		}
 
+		/**
+		 * @deprecated
+		 */
 		protected void processEcoreTaggedValues(EEnum eEnum,
 				Enumeration enumeration, Map options,
 				DiagnosticChain diagnostics, Map context) {
-			Stereotype eEnumStereotype = getAppliedEcoreStereotype(enumeration,
+			processEcoreTaggedValues(eEnum, (Element) enumeration, options,
+				diagnostics, context);
+		}
+
+		protected void processEcoreTaggedValues(EEnum eEnum, Element element,
+				Map options, DiagnosticChain diagnostics, Map context) {
+			Stereotype eEnumStereotype = getAppliedEcoreStereotype(element,
 				STEREOTYPE_NAME__E_ENUM);
 
 			if (null != eEnumStereotype) {
 				processEcoreTaggedValue(eEnum, EcorePackage.eINSTANCE
-					.getENamedElement_Name(), enumeration, eEnumStereotype,
+					.getENamedElement_Name(), element, eEnumStereotype,
 					PROPERTY_NAME__ENUM_NAME, options, diagnostics, context);
 
-				processEcoreTaggedValue(eEnum, null, enumeration,
-					eEnumStereotype, PROPERTY_NAME__XML_NAME, options,
-					diagnostics, context);
+				processEcoreTaggedValue(eEnum, null, element, eEnumStereotype,
+					PROPERTY_NAME__XML_NAME, options, diagnostics, context);
 			}
 		}
 
-		protected void processEcoreTaggedValues(
+		/**
+		 * @deprecated
+		 */
+		protected void processEcoreTaggedValues(EEnumLiteral eEnumLiteral,
+				EnumerationLiteral enumerationLiteral, Map options,
+				DiagnosticChain diagnostics, Map context) {
+			processEcoreTaggedValues(eEnumLiteral,
+				(Element) enumerationLiteral, options, diagnostics, context);
+		}
 
-		EEnumLiteral eEnumLiteral, EnumerationLiteral enumerationLiteral,
-				Map options, DiagnosticChain diagnostics, Map context) {
+		protected void processEcoreTaggedValues(EEnumLiteral eEnumLiteral,
+				Element element, Map options, DiagnosticChain diagnostics,
+				Map context) {
 			Stereotype eEnumLiteralStereotype = getAppliedEcoreStereotype(
-				enumerationLiteral, STEREOTYPE_NAME__E_ENUM_LITERAL);
+				element, STEREOTYPE_NAME__E_ENUM_LITERAL);
 
 			if (null != eEnumLiteralStereotype) {
 				processEcoreTaggedValue(eEnumLiteral, EcorePackage.eINSTANCE
-					.getENamedElement_Name(), enumerationLiteral,
-					eEnumLiteralStereotype, PROPERTY_NAME__ENUM_LITERAL_NAME,
-					options, diagnostics, context);
+					.getENamedElement_Name(), element, eEnumLiteralStereotype,
+					PROPERTY_NAME__ENUM_LITERAL_NAME, options, diagnostics,
+					context);
 			}
 		}
 
+		/**
+		 * @deprecated
+		 */
 		protected void processEcoreTaggedValues(EOperation eOperation,
 				Operation operation, Map options, DiagnosticChain diagnostics,
 				Map context) {
+			processEcoreTaggedValues(eOperation, (Element) operation, options,
+				diagnostics, context);
+		}
+
+		protected void processEcoreTaggedValues(EOperation eOperation,
+				Element element, Map options, DiagnosticChain diagnostics,
+				Map context) {
 			Stereotype eOperationStereotype = getAppliedEcoreStereotype(
-				operation, STEREOTYPE_NAME__E_OPERATION);
+				element, STEREOTYPE_NAME__E_OPERATION);
 
 			if (null != eOperationStereotype) {
 				processEcoreTaggedValue(eOperation, EcorePackage.eINSTANCE
-					.getENamedElement_Name(), operation, eOperationStereotype,
+					.getENamedElement_Name(), element, eOperationStereotype,
 					PROPERTY_NAME__OPERATION_NAME, options, diagnostics,
 					context);
 			}
 		}
 
+		/**
+		 * @deprecated
+		 */
 		protected void processEcoreTaggedValues(EPackage ePackage,
 				org.eclipse.uml2.Package package_, Map options,
 				DiagnosticChain diagnostics, Map context) {
-			Stereotype ePackageStereotype = getAppliedEcoreStereotype(package_,
+			processEcoreTaggedValues(ePackage, (Element) package_, options,
+				diagnostics, context);
+		}
+
+		protected void processEcoreTaggedValues(EPackage ePackage,
+				Element element, Map options, DiagnosticChain diagnostics,
+				Map context) {
+			Stereotype ePackageStereotype = getAppliedEcoreStereotype(element,
 				STEREOTYPE_NAME__E_PACKAGE);
 
 			if (null != ePackageStereotype) {
 				processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
-					.getENamedElement_Name(), package_, ePackageStereotype,
+					.getENamedElement_Name(), element, ePackageStereotype,
 					PROPERTY_NAME__PACKAGE_NAME, options, diagnostics, context);
 
 				processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
-					.getEPackage_NsPrefix(), package_, ePackageStereotype,
+					.getEPackage_NsPrefix(), element, ePackageStereotype,
 					PROPERTY_NAME__NS_PREFIX, options, diagnostics, context);
 
 				if (isEmpty(ePackage.getNsPrefix())) {
 					processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
-						.getEPackage_NsPrefix(), package_, ePackageStereotype,
+						.getEPackage_NsPrefix(), element, ePackageStereotype,
 						PROPERTY_NAME__BASE_PACKAGE, options, diagnostics,
 						context);
 
@@ -2301,46 +2377,66 @@ public class UML2Util
 				}
 
 				processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
-					.getEPackage_NsURI(), package_, ePackageStereotype,
+					.getEPackage_NsURI(), element, ePackageStereotype,
 					PROPERTY_NAME__NS_URI, options, diagnostics, context);
 			}
 		}
 
+		/**
+		 * @deprecated
+		 */
 		protected void processEcoreTaggedValues(EParameter eParameter,
 				Parameter parameter, Map options, DiagnosticChain diagnostics,
 				Map context) {
+			processEcoreTaggedValues(eParameter, (Element) parameter, options,
+				diagnostics, context);
+		}
+
+		protected void processEcoreTaggedValues(EParameter eParameter,
+				Element element, Map options, DiagnosticChain diagnostics,
+				Map context) {
 			Stereotype eParameterStereotype = getAppliedEcoreStereotype(
-				parameter, STEREOTYPE_NAME__E_PARAMETER);
+				element, STEREOTYPE_NAME__E_PARAMETER);
 
 			if (null != eParameterStereotype) {
 				processEcoreTaggedValue(eParameter, EcorePackage.eINSTANCE
-					.getENamedElement_Name(), parameter, eParameterStereotype,
+					.getENamedElement_Name(), element, eParameterStereotype,
 					PROPERTY_NAME__PARAMETER_NAME, options, diagnostics,
 					context);
 			}
 		}
 
+		/**
+		 * @deprecated
+		 */
 		protected void processEcoreTaggedValues(
-				EStructuralFeature eStructuralFeature, final Property property,
+				EStructuralFeature eStructuralFeature, Property property,
+				Map options, DiagnosticChain diagnostics, Map context) {
+			processEcoreTaggedValues(eStructuralFeature, (Element) property,
+				options, diagnostics, context);
+		}
+
+		protected void processEcoreTaggedValues(
+				EStructuralFeature eStructuralFeature, final Element element,
 				final Map options, final DiagnosticChain diagnostics,
 				final Map context) {
 			Stereotype eStructuralFeatureStereotype = (Stereotype) new EcoreSwitch() {
 
 				public Object caseEAttribute(EAttribute eAttribute) {
 					Stereotype eAttributeStereotype = getAppliedEcoreStereotype(
-						property, STEREOTYPE_NAME__E_ATTRIBUTE);
+						element, STEREOTYPE_NAME__E_ATTRIBUTE);
 
 					if (null != eAttributeStereotype) {
 						processEcoreTaggedValue(eAttribute,
 							EcorePackage.eINSTANCE.getENamedElement_Name(),
-							property, eAttributeStereotype,
+							element, eAttributeStereotype,
 							PROPERTY_NAME__ATTRIBUTE_NAME, options,
 							diagnostics, context);
 
 						processEcoreTaggedValue(eAttribute,
-							EcorePackage.eINSTANCE.getEAttribute_ID(),
-							property, eAttributeStereotype,
-							PROPERTY_NAME__IS_ID, options, diagnostics, context);
+							EcorePackage.eINSTANCE.getEAttribute_ID(), element,
+							eAttributeStereotype, PROPERTY_NAME__IS_ID,
+							options, diagnostics, context);
 					}
 
 					return eAttributeStereotype;
@@ -2348,18 +2444,18 @@ public class UML2Util
 
 				public Object caseEReference(EReference eReference) {
 					Stereotype eReferenceStereotype = getAppliedEcoreStereotype(
-						property, STEREOTYPE_NAME__E_REFERENCE);
+						element, STEREOTYPE_NAME__E_REFERENCE);
 
 					if (null != eReferenceStereotype) {
 						processEcoreTaggedValue(eReference,
 							EcorePackage.eINSTANCE.getENamedElement_Name(),
-							property, eReferenceStereotype,
+							element, eReferenceStereotype,
 							PROPERTY_NAME__REFERENCE_NAME, options,
 							diagnostics, context);
 
 						processEcoreTaggedValue(eReference,
 							EcorePackage.eINSTANCE
-								.getEReference_ResolveProxies(), property,
+								.getEReference_ResolveProxies(), element,
 							eReferenceStereotype,
 							PROPERTY_NAME__IS_RESOLVE_PROXIES, options,
 							diagnostics, context);
@@ -2372,33 +2468,33 @@ public class UML2Util
 			if (null != eStructuralFeatureStereotype) {
 				processEcoreTaggedValue(eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Transient(),
-					property, eStructuralFeatureStereotype,
+					element, eStructuralFeatureStereotype,
 					PROPERTY_NAME__IS_TRANSIENT, options, diagnostics, context);
 
 				processEcoreTaggedValue(eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Unsettable(),
-					property, eStructuralFeatureStereotype,
+					element, eStructuralFeatureStereotype,
 					PROPERTY_NAME__IS_UNSETTABLE, options, diagnostics, context);
 
 				processEcoreTaggedValue(eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Volatile(),
-					property, eStructuralFeatureStereotype,
+					element, eStructuralFeatureStereotype,
 					PROPERTY_NAME__IS_VOLATILE, options, diagnostics, context);
 
-				processEcoreTaggedValue(eStructuralFeature, null, property,
+				processEcoreTaggedValue(eStructuralFeature, null, element,
 					eStructuralFeatureStereotype, PROPERTY_NAME__XML_NAME,
 					options, diagnostics, context);
 
-				processEcoreTaggedValue(eStructuralFeature, null, property,
+				processEcoreTaggedValue(eStructuralFeature, null, element,
 					eStructuralFeatureStereotype, PROPERTY_NAME__XML_NAMESPACE,
 					options, diagnostics, context);
 
-				processEcoreTaggedValue(eStructuralFeature, null, property,
+				processEcoreTaggedValue(eStructuralFeature, null, element,
 					eStructuralFeatureStereotype,
 					PROPERTY_NAME__XML_FEATURE_KIND, options, diagnostics,
 					context);
 
-				processEcoreTaggedValue(eStructuralFeature, null, property,
+				processEcoreTaggedValue(eStructuralFeature, null, element,
 					eStructuralFeatureStereotype, PROPERTY_NAME__VISIBILITY,
 					options, diagnostics, context);
 			}
@@ -2416,30 +2512,28 @@ public class UML2Util
 				new EcoreSwitch() {
 
 					public Object caseEClassifier(EClassifier eClassifier) {
-						processEcoreTaggedValues(eClassifier,
-							(Classifier) entry.getKey(), options, diagnostics,
-							context);
+						processEcoreTaggedValues(eClassifier, (Element) entry
+							.getKey(), options, diagnostics, context);
 
 						return eClassifier;
 					}
 
 					public Object caseEEnum(EEnum eEnum) {
-						processEcoreTaggedValues(eEnum, (Enumeration) entry
+						processEcoreTaggedValues(eEnum, (Element) entry
 							.getKey(), options, diagnostics, context);
 
 						return eEnum;
 					}
 
 					public Object caseEEnumLiteral(EEnumLiteral eEnumLiteral) {
-						processEcoreTaggedValues(eEnumLiteral,
-							(EnumerationLiteral) entry.getKey(), options,
-							diagnostics, context);
+						processEcoreTaggedValues(eEnumLiteral, (Element) entry
+							.getKey(), options, diagnostics, context);
 
 						return eEnumLiteral;
 					}
 
 					public Object caseEOperation(EOperation eOperation) {
-						processEcoreTaggedValues(eOperation, (Operation) entry
+						processEcoreTaggedValues(eOperation, (Element) entry
 							.getKey(), options, diagnostics, context);
 
 						return eOperation;
@@ -2448,14 +2542,14 @@ public class UML2Util
 					public Object caseEPackage(EPackage ePackage) {
 						processEcoreTaggedValues(
 
-						ePackage, (org.eclipse.uml2.Package) entry.getKey(),
-							options, diagnostics, context);
+						ePackage, (Element) entry.getKey(), options,
+							diagnostics, context);
 
 						return ePackage;
 					}
 
 					public Object caseEParameter(EParameter eParameter) {
-						processEcoreTaggedValues(eParameter, (Parameter) entry
+						processEcoreTaggedValues(eParameter, (Element) entry
 							.getKey(), options, diagnostics, context);
 
 						return eParameter;
@@ -2464,7 +2558,7 @@ public class UML2Util
 					public Object caseEStructuralFeature(
 							EStructuralFeature eStructuralFeature) {
 						processEcoreTaggedValues(eStructuralFeature,
-							(Property) entry.getKey(), options, diagnostics,
+							(Element) entry.getKey(), options, diagnostics,
 							context);
 
 						return eStructuralFeature;
@@ -2914,7 +3008,8 @@ public class UML2Util
 
 					if (DEBUG) {
 						System.err.println("Changed type of " //$NON-NLS-1$
-							+ getQualifiedText(otherETypedElement) + " from " //$NON-NLS-1$
+							+ getQualifiedText(otherETypedElement)
+							+ " from " //$NON-NLS-1$
 							+ getQualifiedText(otherEType)
 							+ " to " + getQualifiedText(commonEType)); //$NON-NLS-1$
 					}
@@ -2926,7 +3021,8 @@ public class UML2Util
 
 					if (DEBUG) {
 						System.out.println("Changed type of " //$NON-NLS-1$
-							+ getQualifiedText(eTypedElement) + " from " //$NON-NLS-1$
+							+ getQualifiedText(eTypedElement)
+							+ " from " //$NON-NLS-1$
 							+ getQualifiedText(eType)
 							+ " to " + getQualifiedText(commonEType)); //$NON-NLS-1$
 					}
