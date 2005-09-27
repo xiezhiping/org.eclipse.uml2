@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.27 2005/09/23 21:22:54 khussey Exp $
+ * $Id: ElementImpl.java,v 1.28 2005/09/27 14:37:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -470,6 +470,18 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 			qualifiedStereotypeName);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Element#getAppliedSubstereotype(org.eclipse.uml2.Stereotype,
+	 *      java.lang.String)
+	 */
+	public Stereotype getAppliedSubstereotype(Stereotype superstereotype,
+			String qualifiedStereotypeName) {
+		return StereotypeOperations.getAppliedSubstereotype(this,
+			superstereotype, qualifiedStereotypeName);
+	}
+
 	private static Method GET_APPLIED_STEREOTYPES = null;
 
 	static {
@@ -503,6 +515,16 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 
 		return Collections.unmodifiableSet(StereotypeOperations
 			.getAppliedStereotypes(this));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Element#getAppliedSubstereotypes(org.eclipse.uml2.Stereotype)
+	 */
+	public Set getAppliedSubstereotypes(Stereotype superstereotype) {
+		return StereotypeOperations.getAppliedSubstereotypes(this,
+			superstereotype);
 	}
 
 	/*

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.15 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Element.java,v 1.16 2005/09/27 14:37:43 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -253,6 +253,17 @@ public interface Element extends EModelElement{
 	Set getAppliedStereotypes();
 
 	/**
+	 * Retrieves the set of substereotypes of the specified superstereotype that
+	 * are applied to this element.
+	 * 
+	 * @param superstereotype
+	 *            The superstereotype of the applied (sub)stereotypes to
+	 *            retrieve.
+	 * @return The (sub)stereotypes applied to this element.
+	 */
+	Set getAppliedSubstereotypes(Stereotype superstereotype);
+
+	/**
 	 * Retrieves the stereotype with the specified qualified name that is
 	 * applied to this element, or <code>null</code> if no such stereotype is
 	 * applied.
@@ -262,6 +273,21 @@ public interface Element extends EModelElement{
 	 * @return The applied stereotype with the specified qualified name.
 	 */
 	Stereotype getAppliedStereotype(String qualifiedStereotypeName);
+
+	/**
+	 * Retrieves the substereotype (of the specified superstereotype) with the
+	 * specified qualified name that is applied to this element, or
+	 * <code>null</code> if no such stereotype is applied.
+	 * 
+	 * @param superstereotype
+	 *            The superstereotype of the applied (sub)stereotype to
+	 *            retrieve.
+	 * @param qualifiedStereotypeName
+	 *            The qualified name of the applied (sub)stereotype to retrieve.
+	 * @return The applied (sub)stereotype with the specified qualified name.
+	 */
+	Stereotype getAppliedSubstereotype(Stereotype superstereotype,
+			String qualifiedStereotypeName);
 
 	/**
 	 * Applies the specified stereotype to this element.

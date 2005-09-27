@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.25 2005/06/15 17:18:21 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.26 2005/09/27 14:37:43 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -519,6 +519,38 @@ public final class StereotypeOperations
 	}
 
 	/**
+	 * Retrieves the set of substereotypes of the specified superstereotype that
+	 * are applied to the specified element.
+	 * 
+	 * @param element
+	 *            The element for which to retrieve applied (sub)stereotypes.
+	 * @param superstereotype
+	 *            The superstereotype of the applied (sub)stereotypes to
+	 *            retrieve.
+	 * @return The (sub)stereotypes applied to the element.
+	 */
+	public static Set getAppliedSubstereotypes(Element element,
+			Stereotype superstereotype) {
+		Set appliedSubstereotypes = new HashSet();
+
+		if (null == element) {
+			return appliedSubstereotypes;
+		}
+
+		for (Iterator appliedStereotypes = element.getAppliedStereotypes()
+			.iterator(); appliedStereotypes.hasNext();) {
+
+			Stereotype stereotype = (Stereotype) appliedStereotypes.next();
+
+			if (stereotype.allParents().contains(superstereotype)) {
+				appliedSubstereotypes.add(stereotype);
+			}
+		}
+
+		return appliedSubstereotypes;
+	}
+
+	/**
 	 * Retrieves the stereotype with the specified qualified name that is
 	 * applied to the specified element, or <code>null</code> if no such
 	 * stereotype is applied.
@@ -546,6 +578,43 @@ public final class StereotypeOperations
 				.getQualifiedName())) {
 
 				return appliedStereotype;
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Retrieves the substereotype (of the specified superstereotype) with the
+	 * specified qualified name that is applied to the specified element, or
+	 * <code>null</code> if no such stereotype is applied.
+	 * 
+	 * @param element
+	 *            The element for which to retrieve the applied (sub)stereotype.
+	 * @param superstereotype
+	 *            The superstereotype of the applied (sub)stereotype to
+	 *            retrieve.
+	 * @param qualifiedStereotypeName
+	 *            The qualified name of the applied (sub)stereotype to retrieve.
+	 * @return The applied (sub)stereotype with the specified qualified name.
+	 */
+	public static Stereotype getAppliedSubstereotype(Element element,
+			Stereotype superstereotype, String qualifiedStereotypeName) {
+
+		if (null == element || isEmpty(qualifiedStereotypeName)) {
+			return null;
+		}
+
+		for (Iterator appliedSubstereotypes = element.getAppliedSubstereotypes(
+			superstereotype).iterator(); appliedSubstereotypes.hasNext();) {
+
+			Stereotype appliedSubstereotype = (Stereotype) appliedSubstereotypes
+				.next();
+
+			if (qualifiedStereotypeName.equals(appliedSubstereotype
+				.getQualifiedName())) {
+
+				return appliedSubstereotype;
 			}
 		}
 
