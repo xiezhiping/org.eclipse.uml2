@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperationsTest.java,v 1.11 2005/06/03 19:53:23 khussey Exp $
+ * $Id: StereotypeOperationsTest.java,v 1.12 2005/09/27 18:49:10 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -2558,6 +2559,20 @@ public class StereotypeOperationsTest
 		assertEquals(Boolean.FALSE,
 			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
 				.getEStructuralFeature("booleans"))).get(1)); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "booleans", //$NON-NLS-1$
+				Arrays.asList(new Boolean[]{Boolean.TRUE, Boolean.TRUE}));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(Boolean.TRUE,
+			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
+				.getEStructuralFeature("booleans"))).get(0)); //$NON-NLS-1$
+		assertEquals(Boolean.TRUE,
+			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
+				.getEStructuralFeature("booleans"))).get(1)); //$NON-NLS-1$
 	}
 
 	/**
@@ -2828,6 +2843,21 @@ public class StereotypeOperationsTest
 		}
 
 		assertEquals(new Integer(0),
+			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
+				.getEStructuralFeature("integers"))).get(1)); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "integers", //$NON-NLS-1$
+				Arrays.asList(new Integer[]{new Integer(Integer.MIN_VALUE),
+					new Integer(Integer.MIN_VALUE)}));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(new Integer(Integer.MIN_VALUE),
+			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
+				.getEStructuralFeature("integers"))).get(0)); //$NON-NLS-1$
+		assertEquals(new Integer(Integer.MIN_VALUE),
 			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
 				.getEStructuralFeature("integers"))).get(1)); //$NON-NLS-1$
 	}
@@ -3118,6 +3148,22 @@ public class StereotypeOperationsTest
 		assertEquals(new Integer(0), ((List) stereotypeEObject
 			.eGet(stereotypeEObject.eClass().getEStructuralFeature(
 				"unlimitedNaturals"))).get(1)); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_,
+				"unlimitedNaturals", //$NON-NLS-1$
+				Arrays.asList(new Integer[]{new Integer(Integer.MAX_VALUE),
+					new Integer(Integer.MAX_VALUE)}));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(new Integer(Integer.MAX_VALUE), ((List) stereotypeEObject
+			.eGet(stereotypeEObject.eClass().getEStructuralFeature(
+				"unlimitedNaturals"))).get(0)); //$NON-NLS-1$
+		assertEquals(new Integer(Integer.MAX_VALUE), ((List) stereotypeEObject
+			.eGet(stereotypeEObject.eClass().getEStructuralFeature(
+				"unlimitedNaturals"))).get(1)); //$NON-NLS-1$
 	}
 
 	/**
@@ -3346,6 +3392,20 @@ public class StereotypeOperationsTest
 
 		assertEquals("", ((List) stereotypeEObject.eGet(stereotypeEObject //$NON-NLS-1$
 			.eClass().getEStructuralFeature("strings"))).get(1)); //$NON-NLS-1$
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "strings", //$NON-NLS-1$
+				Arrays.asList(new String[]{getName(), getName()}));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(getName(),
+			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
+				.getEStructuralFeature("strings"))).get(0)); //$NON-NLS-1$
+		assertEquals(getName(),
+			((List) stereotypeEObject.eGet(stereotypeEObject.eClass()
+				.getEStructuralFeature("strings"))).get(1)); //$NON-NLS-1$
 	}
 
 	/**
@@ -3568,6 +3628,51 @@ public class StereotypeOperationsTest
 			fail();
 		}
 
+		assertEquals(getEnumeration().getOwnedLiterals().get(0),
+			StereotypeOperations
+				.getEnumerationLiteral((EEnumLiteral) ((List) stereotypeEObject
+					.eGet(stereotypeEObject.eClass().getEStructuralFeature(
+						"enumerations"))) //$NON-NLS-1$
+					.get(1)));
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "enumerations", //$NON-NLS-1$
+				Arrays.asList(new EnumerationLiteral[]{
+					(EnumerationLiteral) getEnumeration().getOwnedLiterals()
+						.get(1),
+					(EnumerationLiteral) getEnumeration().getOwnedLiterals()
+						.get(1)}));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(getEnumeration().getOwnedLiterals().get(1),
+			StereotypeOperations
+				.getEnumerationLiteral((EEnumLiteral) ((List) stereotypeEObject
+					.eGet(stereotypeEObject.eClass().getEStructuralFeature(
+						"enumerations"))) //$NON-NLS-1$
+					.get(0)));
+		assertEquals(getEnumeration().getOwnedLiterals().get(1),
+			StereotypeOperations
+				.getEnumerationLiteral((EEnumLiteral) ((List) stereotypeEObject
+					.eGet(stereotypeEObject.eClass().getEStructuralFeature(
+						"enumerations"))) //$NON-NLS-1$
+					.get(1)));
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "enumerations", //$NON-NLS-1$
+				Arrays.asList(new String[]{getName() + ' ' + String.valueOf(0),
+					getName() + ' ' + String.valueOf(0)}));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(getEnumeration().getOwnedLiterals().get(0),
+			StereotypeOperations
+				.getEnumerationLiteral((EEnumLiteral) ((List) stereotypeEObject
+					.eGet(stereotypeEObject.eClass().getEStructuralFeature(
+						"enumerations"))) //$NON-NLS-1$
+					.get(0)));
 		assertEquals(getEnumeration().getOwnedLiterals().get(0),
 			StereotypeOperations
 				.getEnumerationLiteral((EEnumLiteral) ((List) stereotypeEObject
@@ -3923,6 +4028,25 @@ public class StereotypeOperationsTest
 
 		assertEquals(new Integer(Integer.MAX_VALUE), timeEObject
 			.eGet(timeEObject.eClass().getEStructuralFeature("milliseconds"))); //$NON-NLS-1$
+
+		EClass timestampEClass = (EClass) profileEPackage
+			.getEClassifier(getName() + "__Timestamp"); //$NON-NLS-1$
+
+		timestampEObject = profileEPackage.getEFactoryInstance().create(
+			timestampEClass);
+
+		try {
+			StereotypeOperations.setValue(getElement(), class_, "timestamps" //$NON-NLS-1$
+				, Arrays.asList(new EObject[]{timestampEObject}));
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(1, ((List) stereotypeEObject.eGet(stereotypeEObject
+			.eClass().getEStructuralFeature("timestamps"))).size()); //$NON-NLS-1$
+		assertEquals(timestampEObject, ((List) stereotypeEObject
+			.eGet(stereotypeEObject.eClass()
+				.getEStructuralFeature("timestamps"))).get(0)); //$NON-NLS-1$
 	}
 
 	/**

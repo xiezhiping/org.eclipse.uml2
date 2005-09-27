@@ -8,14 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.26 2005/09/27 14:37:43 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.27 2005/09/27 18:49:04 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
@@ -25,11 +27,11 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.Association;
 import org.eclipse.uml2.Classifier;
@@ -953,30 +955,90 @@ public final class StereotypeOperations
 
 				if (null != value) {
 
-					if (EcorePackage.eINSTANCE.getEClass().isInstance(eType)
-						&& !((EClass) eType).isInstance(value)) {
+					if (EcorePackage.eINSTANCE.getEClass().isInstance(eType)) {
+						EClass eClassType = (EClass) eType;
 
-						throw new IllegalArgumentException(String
-							.valueOf(value));
-					} else if (EcorePackage.eINSTANCE.getEEnum().isInstance(
-						eType)
-						&& EnumerationLiteral.class.isInstance(value)) {
+						if (value instanceof List) {
 
-						value = ((EEnum) eType).getEEnumLiteral(
-							((EnumerationLiteral) value).getName())
-							.getInstance();
+							for (Iterator j = ((List) value).iterator(); j
+								.hasNext();) {
+
+								if (!eClassType.isInstance(j.next())) {
+									throw new IllegalArgumentException(String
+										.valueOf(value));
+								}
+							}
+						} else if (!eClassType.isInstance(value)) {
+							throw new IllegalArgumentException(String
+								.valueOf(value));
+						}
 					} else if (EcorePackage.eINSTANCE.getEDataType()
-						.isInstance(eType)
-						&& String.class.isInstance(value)) {
+						.isInstance(eType)) {
 
 						EDataType eDataType = (EDataType) eType;
+						EFactory eFactoryInstance = eDataType.getEPackage()
+							.getEFactoryInstance();
 
-						try {
-							value = eDataType.getEPackage()
-								.getEFactoryInstance().createFromString(
-									eDataType, (String) value);
-						} catch (Exception e) {
-							// ignore
+						if (value instanceof List) {
+							value = new ArrayList((List) value);
+
+							if (EcorePackage.eINSTANCE.getEEnum().isInstance(
+								eType)) {
+
+								EEnum eEnum = (EEnum) eDataType;
+
+								for (ListIterator li = ((List) value)
+									.listIterator(); li.hasNext();) {
+
+									Object item = li.next();
+
+									if (item instanceof EnumerationLiteral) {
+										li.set(eEnum.getEEnumLiteral(
+											((EnumerationLiteral) item)
+												.getName()).getInstance());
+									}
+								}
+							}
+
+							for (ListIterator li = ((List) value)
+								.listIterator(); li.hasNext();) {
+
+								Object item = li.next();
+
+								if (item instanceof String) {
+
+									try {
+										li.set(eFactoryInstance
+											.createFromString(eDataType,
+												(String) item));
+									} catch (Exception e) {
+										// ignore
+									}
+								}
+							}
+						} else {
+
+							if (EcorePackage.eINSTANCE.getEEnum().isInstance(
+								eType)) {
+
+								EEnum eEnum = (EEnum) eDataType;
+
+								if (value instanceof EnumerationLiteral) {
+									value = eEnum.getEEnumLiteral(
+										((EnumerationLiteral) value).getName())
+										.getInstance();
+								}
+							}
+
+							if (value instanceof String) {
+
+								try {
+									value = eFactoryInstance.createFromString(
+										eDataType, (String) value);
+								} catch (Exception e) {
+									// ignore
+								}
+							}
 						}
 					}
 				}
@@ -988,21 +1050,27 @@ public final class StereotypeOperations
 				if (eStructuralFeature.isMany()) {
 
 					if (-1 == index) {
-						throw new IllegalArgumentException(String
-							.valueOf(propertyName));
-					}
 
-					List list = (List) eObject.eGet(eStructuralFeature);
-
-					for (int j = list.size(); j < index; j++) {
-						list.add(j, eStructuralFeature.getDefaultValue());
-					}
-
-					if (index == list.size()) {
-						list.add(index, value);
+						if (value instanceof List) {
+							eObject.eSet(eStructuralFeature, value);
+						} else {
+							throw new IllegalArgumentException(String
+								.valueOf(value));
+						}
 					} else {
-						list.set(index, value);
+						List list = (List) eObject.eGet(eStructuralFeature);
+
+						for (int j = list.size(); j < index; j++) {
+							list.add(j, eStructuralFeature.getDefaultValue());
+						}
+
+						if (index == list.size()) {
+							list.add(index, value);
+						} else {
+							list.set(index, value);
+						}
 					}
+
 				} else {
 					eObject.eSet(eStructuralFeature, value);
 				}
