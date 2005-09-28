@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.39 2005/09/28 15:26:32 khussey Exp $
+ * $Id: UML2Util.java,v 1.40 2005/09/28 20:50:30 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -804,6 +804,8 @@ public class UML2Util
 				STEREOTYPE_NAME__E_PACKAGE);
 
 			if (null != ePackageStereotype) {
+				safeApplyStereotype(element, ePackageStereotype);
+
 				processEcoreTaggedValue(element, ePackageStereotype,
 					PROPERTY_NAME__NS_PREFIX, ePackage, EcorePackage.eINSTANCE
 						.getEPackage_NsPrefix(), options, diagnostics, context);
@@ -834,6 +836,8 @@ public class UML2Util
 						eClassifier, STEREOTYPE_NAME__E_CLASS);
 
 					if (null != eClassStereotype) {
+						safeApplyStereotype(class_, eClassStereotype);
+
 						processEcoreTaggedValue(class_, eClassStereotype,
 							PROPERTY_NAME__XML_CONTENT_KIND, eClassifier, null,
 							options, diagnostics, context);
@@ -847,6 +851,8 @@ public class UML2Util
 						eClassifier, STEREOTYPE_NAME__E_CLASS);
 
 					if (null != eClassStereotype) {
+						safeApplyStereotype(interface_, eClassStereotype);
+
 						processEcoreTaggedValue(interface_, eClassStereotype,
 							PROPERTY_NAME__XML_CONTENT_KIND, eClassifier, null,
 							options, diagnostics, context);
@@ -888,6 +894,8 @@ public class UML2Util
 						eAttribute, STEREOTYPE_NAME__E_ATTRIBUTE);
 
 					if (null != eAttributeStereotype) {
+						safeApplyStereotype(element, eAttributeStereotype);
+
 						processEcoreTaggedValue(element, eAttributeStereotype,
 							PROPERTY_NAME__IS_ID, eAttribute,
 							EcorePackage.eINSTANCE.getEAttribute_ID(), options,
@@ -902,6 +910,8 @@ public class UML2Util
 						eReference, STEREOTYPE_NAME__E_REFERENCE);
 
 					if (null != eReferenceStereotype) {
+						safeApplyStereotype(element, eReferenceStereotype);
+
 						processEcoreTaggedValue(element, eReferenceStereotype,
 							PROPERTY_NAME__IS_RESOLVE_PROXIES, eReference,
 							EcorePackage.eINSTANCE
@@ -953,29 +963,85 @@ public class UML2Util
 			for (Iterator entries = eModelElementToElementMap.entrySet()
 				.iterator(); entries.hasNext();) {
 
-				final Map.Entry entry = (Map.Entry) entries.next();
+				Map.Entry entry = (Map.Entry) entries.next();
 				EModelElement eModelElement = (EModelElement) entry.getKey();
+				final Element element = (Element) entry.getValue();
 
 				new EcoreSwitch() {
 
 					public Object caseEClassifier(EClassifier eClassifier) {
-						processEcoreTaggedValues((Element) entry.getValue(),
-							eClassifier, options, diagnostics, context);
+						processEcoreTaggedValues(element, eClassifier, options,
+							diagnostics, context);
 
 						return eClassifier;
 					}
 
+					public Object caseEDataType(EDataType eDataType) {
+						Stereotype eDataTypeStereotype = getEcoreStereotype(
+							eDataType, STEREOTYPE_NAME__E_DATA_TYPE);
+
+						if (null != eDataTypeStereotype) {
+							safeApplyStereotype(element, eDataTypeStereotype);
+						}
+
+						return eDataType;
+					}
+
+					public Object caseEEnum(EEnum eEnum) {
+						Stereotype eEnumStereotype = getEcoreStereotype(eEnum,
+							STEREOTYPE_NAME__E_ENUM);
+
+						if (null != eEnumStereotype) {
+							safeApplyStereotype(element, eEnumStereotype);
+						}
+
+						return eEnum;
+					}
+
+					public Object caseEEnumLiteral(EEnumLiteral eEnumLiteral) {
+						Stereotype eEnumLiteralStereotype = getEcoreStereotype(
+							eEnumLiteral, STEREOTYPE_NAME__E_ENUM_LITERAL);
+
+						if (null != eEnumLiteralStereotype) {
+							safeApplyStereotype(element, eEnumLiteralStereotype);
+						}
+
+						return eEnumLiteral;
+					}
+
+					public Object caseEOperation(EOperation eOperation) {
+						Stereotype eOperationStereotype = getEcoreStereotype(
+							eOperation, STEREOTYPE_NAME__E_OPERATION);
+
+						if (null != eOperationStereotype) {
+							safeApplyStereotype(element, eOperationStereotype);
+						}
+
+						return eOperation;
+					}
+
 					public Object caseEPackage(EPackage ePackage) {
-						processEcoreTaggedValues((Element) entry.getValue(),
-							ePackage, options, diagnostics, context);
+						processEcoreTaggedValues(element, ePackage, options,
+							diagnostics, context);
 
 						return ePackage;
 					}
 
+					public Object caseEParameter(EParameter eParameter) {
+						Stereotype eParameterStereotype = getEcoreStereotype(
+							eParameter, STEREOTYPE_NAME__E_PARAMETER);
+
+						if (null != eParameterStereotype) {
+							safeApplyStereotype(element, eParameterStereotype);
+						}
+
+						return eParameter;
+					}
+
 					public Object caseEStructuralFeature(
 							EStructuralFeature eStructuralFeature) {
-						processEcoreTaggedValues((Element) entry.getValue(),
-							eStructuralFeature, options, diagnostics, context);
+						processEcoreTaggedValues(element, eStructuralFeature,
+							options, diagnostics, context);
 
 						return eStructuralFeature;
 					}
@@ -5461,8 +5527,8 @@ public class UML2Util
 			: element.getValue(stereotype, propertyName);
 	}
 
-	protected static void setTaggedValue(Element element,
-			Stereotype stereotype, String propertyName, Object value) {
+	protected static void safeApplyStereotype(Element element,
+			Stereotype stereotype) {
 
 		if (!element.isApplied(stereotype)) {
 			Profile profile = stereotype.getProfile();
@@ -5475,6 +5541,12 @@ public class UML2Util
 
 			element.apply(stereotype);
 		}
+	}
+
+	protected static void setTaggedValue(Element element,
+			Stereotype stereotype, String propertyName, Object value) {
+
+		safeApplyStereotype(element, stereotype);
 
 		element.setValue(stereotype, propertyName, value);
 	}
