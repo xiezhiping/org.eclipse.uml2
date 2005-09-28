@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.6 2005/09/22 19:49:45 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.7 2005/09/28 20:55:27 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -578,6 +578,16 @@ public class GenClassImpl
 	public List getExtendedGenOperations() {
 		return collectDuplicateGenOperations(getExtendedGenClasses(), null,
 			null);
+	}
+
+	public List getInvariantOperations() {
+		return collectGenOperations(null, getDuplicateGenOperations(),
+			new GenOperationFilter() {
+
+				public boolean accept(GenOperation genOperation) {
+					return genOperation.isInvariant();
+				}
+			});
 	}
 
 	public String getImportedOperationsClassName() {
