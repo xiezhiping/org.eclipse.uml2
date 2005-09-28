@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.38 2005/09/27 13:27:59 khussey Exp $
+ * $Id: UML2Util.java,v 1.39 2005/09/28 15:26:32 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -1480,26 +1480,72 @@ public class UML2Util
 		 * @see org.eclipse.uml2.util.UML2Switch#caseConstraint(org.eclipse.uml2.Constraint)
 		 */
 		public Object caseConstraint(Constraint constraint) {
-			String name = constraint.getName();
-			String specification = constraint.getSpecification().stringValue();
+			Namespace context = constraint.getContext();
 
-			for (Iterator constrainedElements = constraint
-				.getConstrainedElements().iterator(); constrainedElements
-				.hasNext();) {
-
-				EModelElement eModelElement = (EModelElement) doSwitch((Element) constrainedElements
-					.next());
+			if (null != context) {
+				EModelElement eModelElement = (EModelElement) doSwitch(context);
 
 				if (null != eModelElement) {
+					String name = constraint.getName();
 
-					if (DEBUG) {
-						System.out.println(getQualifiedText(eModelElement)
-							+ " is constrained as '" //$NON-NLS-1$
-							+ specification + "'"); //$NON-NLS-1$
+					if (!isEmpty(name)) {
+
+						if (eModelElement instanceof EClass) {
+							EOperation eOperation = EcoreFactory.eINSTANCE
+								.createEOperation();
+							elementToEModelElementMap.put(constraint,
+								eOperation);
+
+							((EClass) eModelElement).getEOperations().add(
+								eOperation);
+
+							setName(eOperation, name, true);
+
+							eOperation.setEType(EcorePackage.eINSTANCE
+								.getEBoolean());
+
+							EParameter eParameter = EcoreFactory.eINSTANCE
+								.createEParameter();
+
+							eOperation.getEParameters().add(eParameter);
+
+							setName(eParameter, "diagnostics", false); //$NON-NLS-1$
+							eParameter.setEType(EcorePackage.eINSTANCE
+								.getEDiagnosticChain());
+
+							eParameter = EcoreFactory.eINSTANCE
+								.createEParameter();
+
+							eOperation.getEParameters().add(eParameter);
+
+							setName(eParameter, "context", false); //$NON-NLS-1$
+							eParameter.setEType(EcorePackage.eINSTANCE
+								.getEMap());
+
+							defaultCase(constraint);
+
+							eModelElement = eOperation;
+						} else {
+							addConstraint(eModelElement, name);
+
+							if (DEBUG) {
+								System.out
+									.println(getQualifiedText(eModelElement)
+										+ " is constrained with '" //$NON-NLS-1$
+										+ name + "'"); //$NON-NLS-1$
+							}
+						}
 					}
 
-					addConstraint(eModelElement, name);
-					addDocumentation(eModelElement, specification);
+					ValueSpecification specification = constraint
+						.getSpecification();
+
+					if (null != specification) {
+						addDocumentation(eModelElement, specification
+							.stringValue());
+					}
+
+					return eModelElement;
 				}
 			}
 
@@ -2575,10 +2621,13 @@ public class UML2Util
 				.iterator(); entries.hasNext();) {
 
 				Map.Entry entry = (Map.Entry) entries.next();
+				Element element = (Element) entry.getKey();
 				EModelElement eModelElement = (EModelElement) entry.getValue();
 
-				if (eModelElement instanceof EOperation) {
-					Operation operation = (Operation) entry.getKey();
+				if (eModelElement instanceof EOperation
+					&& element instanceof Operation) {
+
+					Operation operation = (Operation) element;
 
 					for (Iterator redefinedOperations = operation
 						.getRedefinedOperations().iterator(); redefinedOperations
@@ -2644,10 +2693,13 @@ public class UML2Util
 				.iterator(); entries.hasNext();) {
 
 				Map.Entry entry = (Map.Entry) entries.next();
+				Element element = (Element) entry.getKey();
 				EModelElement eModelElement = (EModelElement) entry.getValue();
 
-				if (eModelElement instanceof EStructuralFeature) {
-					Property property = (Property) entry.getKey();
+				if (eModelElement instanceof EStructuralFeature
+					&& element instanceof Property) {
+
+					Property property = (Property) element;
 
 					for (Iterator redefinedProperties = property
 						.getRedefinedProperties().iterator(); redefinedProperties
@@ -2722,10 +2774,13 @@ public class UML2Util
 				.iterator(); entries.hasNext();) {
 
 				Map.Entry entry = (Map.Entry) entries.next();
+				Element element = (Element) entry.getKey();
 				EModelElement eModelElement = (EModelElement) entry.getValue();
 
-				if (eModelElement instanceof EStructuralFeature) {
-					Property property = (Property) entry.getKey();
+				if (eModelElement instanceof EStructuralFeature
+					&& element instanceof Property) {
+
+					Property property = (Property) element;
 
 					for (Iterator subsettedProperties = property
 						.getSubsettedProperties().iterator(); subsettedProperties
@@ -2813,10 +2868,12 @@ public class UML2Util
 				.iterator(); entries.hasNext();) {
 
 				Map.Entry entry = (Map.Entry) entries.next();
+				Element element = (Element) entry.getKey();
 				EModelElement eModelElement = (EModelElement) entry.getValue();
 
 				if (eModelElement instanceof EStructuralFeature
-					&& ((Property) entry.getKey()).isDerivedUnion()) {
+					&& element instanceof Property
+					&& ((Property) element).isDerivedUnion()) {
 
 					if (DEBUG) {
 						System.out.println(getQualifiedText(eModelElement)
