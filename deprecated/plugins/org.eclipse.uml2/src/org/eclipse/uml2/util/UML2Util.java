@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.41 2005/09/29 18:06:23 khussey Exp $
+ * $Id: UML2Util.java,v 1.42 2005/09/29 20:33:58 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -4381,12 +4381,37 @@ public class UML2Util
 			}
 		}
 
+		protected void mergeTypedElement_Type(
+				TypedElement receivingTypedElement,
+				TypedElement mergedTypedElement) {
+
+			Classifier receivingType = (Classifier) receivingTypedElement
+				.getType();
+			Type mergedType = mergedTypedElement.getType();
+			Type resultingType = null == mergedType
+				? null
+				: (Type) get(mergedType);
+
+			if (null == receivingType
+				|| receivingType.conformsTo(null == resultingType
+					? mergedType
+					: resultingType)) {
+
+				receivingTypedElement.setType(null == resultingType
+					? mergedType
+					: resultingType);
+			}
+		}
+
 		protected void copyReference(EReference eReference, EObject eObject,
 				EObject copyEObject) {
 
-			if (eObject != copyEObject) {
+			if (eObject != copyEObject && eObject.eIsSet(eReference)) {
 
-				if (eObject.eIsSet(eReference) && eReference.isMany()) {
+				if (UML2Package.eINSTANCE.getTypedElement_Type() == eReference) {
+					mergeTypedElement_Type((TypedElement) copyEObject,
+						(TypedElement) eObject);
+				} else if (eReference.isMany()) {
 					InternalEList targetList = (InternalEList) copyEObject
 						.eGet(getTarget(eReference));
 
