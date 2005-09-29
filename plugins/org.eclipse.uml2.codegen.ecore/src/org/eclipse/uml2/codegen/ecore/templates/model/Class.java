@@ -865,25 +865,25 @@ public class Class
   protected final String TEXT_847 = " eFeature)" + NL + "\t{" + NL + "\t\tswitch (eDerivedStructuralFeatureID(eFeature))" + NL + "\t\t{";
   protected final String TEXT_848 = NL + "\t\t\tcase ";
   protected final String TEXT_849 = ":";
-  protected final String TEXT_850 = NL + "\t\t\t\treturn eIsSet(";
-  protected final String TEXT_851 = "())";
+  protected final String TEXT_850 = NL + "\t\t\t\treturn !";
+  protected final String TEXT_851 = "().isEmpty()";
   protected final String TEXT_852 = ";";
-  protected final String TEXT_853 = NL + "\t\t\t\treturn !";
-  protected final String TEXT_854 = "().isEmpty()";
-  protected final String TEXT_855 = ";";
-  protected final String TEXT_856 = NL + "\t\t\t\treturn ";
-  protected final String TEXT_857 = "basicGet";
-  protected final String TEXT_858 = "() != null";
+  protected final String TEXT_853 = NL + "\t\t\t\treturn ";
+  protected final String TEXT_854 = "basicGet";
+  protected final String TEXT_855 = "() != null";
+  protected final String TEXT_856 = ";";
+  protected final String TEXT_857 = NL + "\t\t\t\treturn eIsSet(";
+  protected final String TEXT_858 = "())";
   protected final String TEXT_859 = ";";
-  protected final String TEXT_860 = NL + "\t\t\t\t\t|| eIsSet(";
-  protected final String TEXT_861 = "())";
+  protected final String TEXT_860 = NL + "\t\t\t\t\t|| !";
+  protected final String TEXT_861 = "().isEmpty()";
   protected final String TEXT_862 = ";";
-  protected final String TEXT_863 = NL + "\t\t\t\t\t|| !";
-  protected final String TEXT_864 = "().isEmpty()";
-  protected final String TEXT_865 = ";";
-  protected final String TEXT_866 = NL + "\t\t\t\t\t|| ";
-  protected final String TEXT_867 = "basicGet";
-  protected final String TEXT_868 = "() != null";
+  protected final String TEXT_863 = NL + "\t\t\t\t\t|| ";
+  protected final String TEXT_864 = "basicGet";
+  protected final String TEXT_865 = "() != null";
+  protected final String TEXT_866 = ";";
+  protected final String TEXT_867 = NL + "\t\t\t\t\t|| eIsSet(";
+  protected final String TEXT_868 = "())";
   protected final String TEXT_869 = ";";
   protected final String TEXT_870 = NL + "\t\t\t\treturn !((";
   protected final String TEXT_871 = ")";
@@ -3208,63 +3208,63 @@ public class Class
     if (UML2GenModelUtil.isUnion(genFeature) && !UML2GenModelUtil.getEIsSetSubsetGenFeatures(genClass, genFeature).isEmpty()) { boolean first = true;
     for (Iterator j = UML2GenModelUtil.getEIsSetSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();
     if (first) { first = false;
-    if (genClass.isField(subsetGenFeature)) {
+    if (UML2GenModelUtil.isDuplicate(subsetGenFeature) && !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {
+    if (subsetGenFeature.isListType()) {
     stringBuffer.append(TEXT_850);
-    stringBuffer.append(subsetGenFeature.getQualifiedFeatureAccessorName());
+    stringBuffer.append(subsetGenFeature.getGetAccessor());
     stringBuffer.append(TEXT_851);
     if (!j.hasNext()) {
     stringBuffer.append(TEXT_852);
     }
     } else {
-    if (subsetGenFeature.isListType()) {
     stringBuffer.append(TEXT_853);
-    stringBuffer.append(subsetGenFeature.getGetAccessor());
-    stringBuffer.append(TEXT_854);
-    if (!j.hasNext()) {
-    stringBuffer.append(TEXT_855);
-    }
-    } else {
-    stringBuffer.append(TEXT_856);
     if (subsetGenFeature.isBasicGet()) {
-    stringBuffer.append(TEXT_857);
+    stringBuffer.append(TEXT_854);
     stringBuffer.append(subsetGenFeature.getAccessorName());
     } else {
     stringBuffer.append(subsetGenFeature.getGetAccessor());
     }
+    stringBuffer.append(TEXT_855);
+    if (!j.hasNext()) {
+    stringBuffer.append(TEXT_856);
+    }
+    }
+    } else {
+    stringBuffer.append(TEXT_857);
+    stringBuffer.append(subsetGenFeature.getQualifiedFeatureAccessorName());
     stringBuffer.append(TEXT_858);
     if (!j.hasNext()) {
     stringBuffer.append(TEXT_859);
     }
     }
-    }
     } else {
-    if (genClass.isField(subsetGenFeature)) {
+    if (UML2GenModelUtil.isDuplicate(subsetGenFeature) && !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {
+    if (subsetGenFeature.isListType()) {
     stringBuffer.append(TEXT_860);
-    stringBuffer.append(subsetGenFeature.getQualifiedFeatureAccessorName());
+    stringBuffer.append(subsetGenFeature.getGetAccessor());
     stringBuffer.append(TEXT_861);
     if (!j.hasNext()) {
     stringBuffer.append(TEXT_862);
     }
     } else {
-    if (subsetGenFeature.isListType()) {
     stringBuffer.append(TEXT_863);
-    stringBuffer.append(subsetGenFeature.getGetAccessor());
-    stringBuffer.append(TEXT_864);
-    if (!j.hasNext()) {
-    stringBuffer.append(TEXT_865);
-    }
-    } else {
-    stringBuffer.append(TEXT_866);
     if (subsetGenFeature.isBasicGet()) {
-    stringBuffer.append(TEXT_867);
+    stringBuffer.append(TEXT_864);
     stringBuffer.append(subsetGenFeature.getAccessorName());
     } else {
     stringBuffer.append(subsetGenFeature.getGetAccessor());
     }
+    stringBuffer.append(TEXT_865);
+    if (!j.hasNext()) {
+    stringBuffer.append(TEXT_866);
+    }
+    }
+    } else {
+    stringBuffer.append(TEXT_867);
+    stringBuffer.append(subsetGenFeature.getQualifiedFeatureAccessorName());
     stringBuffer.append(TEXT_868);
     if (!j.hasNext()) {
     stringBuffer.append(TEXT_869);
-    }
     }
     }
     }
