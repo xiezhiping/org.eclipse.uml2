@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22EcoreConverterOptionsDialog.java,v 1.4 2005/05/04 20:20:10 khussey Exp $
+ * $Id: UML22EcoreConverterOptionsDialog.java,v 1.5 2005/09/29 18:06:16 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.dialogs;
 
@@ -81,6 +81,10 @@ public class UML22EcoreConverterOptionsDialog
 				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
 		createOptionArea(parent,
 			UML2Util.UML22EcoreConverter.OPTION__UNION_PROPERTIES,
+			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
+				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
+		createOptionArea(parent,
+			UML2Util.UML22EcoreConverter.OPTION__SUPER_CLASS_ORDER,
 			new String[]{UML2Util.OPTION__IGNORE, UML2Util.OPTION__REPORT,
 				UML2Util.OPTION__PROCESS}, UML2Util.OPTION__PROCESS);
 	}

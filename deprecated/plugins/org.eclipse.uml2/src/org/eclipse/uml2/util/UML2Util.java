@@ -8,17 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.40 2005/09/28 20:50:30 khussey Exp $
+ * $Id: UML2Util.java,v 1.41 2005/09/29 18:06:23 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -1396,6 +1398,8 @@ public class UML2Util
 
 		public static final String OPTION__DUPLICATE_FEATURE_INHERITANCE = "DUPLICATE_FEATURE_INHERITANCE"; //$NON-NLS-1$
 
+		public static final String OPTION__SUPER_CLASS_ORDER = "SUPER_CLASS_ORDER"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		public static final int ECORE_TAGGED_VALUE = DIAGNOSTIC_CODE_OFFSET + 1;
@@ -1417,6 +1421,8 @@ public class UML2Util
 		public static final int DUPLICATE_FEATURE = DIAGNOSTIC_CODE_OFFSET + 9;
 
 		public static final int DUPLICATE_FEATURE_INHERITANCE = DIAGNOSTIC_CODE_OFFSET + 10;
+
+		public static final int SUPER_CLASS_ORDER = DIAGNOSTIC_CODE_OFFSET + 11;
 
 		protected final Map elementToEModelElementMap = new HashMap();
 
@@ -1704,13 +1710,8 @@ public class UML2Util
 							EClass generalEClass = (EClass) generalEClassifier;
 
 							if (!specificEClass.isSuperTypeOf(generalEClass)) {
-								List eSuperTypes = specificEClass
-									.getESuperTypes();
-
-								eSuperTypes.add(generalization
-									.hasKeyword("extend") //$NON-NLS-1$
-									? 0
-									: eSuperTypes.size(), generalEClass);
+								specificEClass.getESuperTypes().add(
+									generalEClass);
 							}
 						}
 					}
@@ -3742,6 +3743,122 @@ public class UML2Util
 			}
 		}
 
+		protected void processSuperClassOrder(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			Comparator eClassComparator = new Comparator() {
+
+				public int compare(Object object, Object otherObject) {
+					EClass eClass = (EClass) object;
+					EClass otherEClass = (EClass) otherObject;
+
+					int eAllStructuralFeaturesSize = eClass
+						.getEAllStructuralFeatures().size();
+					int otherEAllStructuralFeaturesSize = otherEClass
+						.getEAllStructuralFeatures().size();
+
+					return eAllStructuralFeaturesSize < otherEAllStructuralFeaturesSize
+						? 1
+						: (otherEAllStructuralFeaturesSize < eAllStructuralFeaturesSize
+							? -1
+							: eClass.getName().compareTo(otherEClass.getName()));
+				}
+			};
+
+			for (Iterator entries = elementToEModelElementMap.entrySet()
+				.iterator(); entries.hasNext();) {
+				Map.Entry entry = (Map.Entry) entries.next();
+				Object key = entry.getKey();
+				Object value = entry.getValue();
+
+				if (key instanceof Classifier && value instanceof EClass) {
+					EClass eClass = (EClass) value;
+					EList eSuperTypes = eClass.getESuperTypes();
+
+					List extendSuperClasses = new ArrayList();
+					List unspecifiedSuperClasses = new ArrayList();
+					List mixinSuperClasses = new ArrayList();
+
+					for (Iterator generalizations = ((Classifier) key)
+						.getGeneralizations().iterator(); generalizations
+						.hasNext();) {
+						Generalization generalization = (Generalization) generalizations
+							.next();
+						Classifier general = generalization.getGeneral();
+
+						if (null != general) {
+							EModelElement eModelElement = (EModelElement) elementToEModelElementMap
+								.get(general);
+
+							if (eSuperTypes.contains(eModelElement)) {
+
+								if (generalization.hasKeyword("extend")) { //$NON-NLS-1$
+									extendSuperClasses.add(eModelElement);
+								} else if (generalization.hasKeyword("mixin")) { //$NON-NLS-1$
+									mixinSuperClasses.add(eModelElement);
+								} else {
+									unspecifiedSuperClasses.add(eModelElement);
+								}
+							}
+						}
+
+					}
+
+					Collections.sort(extendSuperClasses, eClassComparator);
+					Collections.sort(unspecifiedSuperClasses, eClassComparator);
+					Collections.sort(mixinSuperClasses, eClassComparator);
+
+					List superClasses = new UniqueEList(extendSuperClasses);
+					superClasses.addAll(unspecifiedSuperClasses);
+					superClasses.addAll(mixinSuperClasses);
+
+					if (!superClasses.equals(eSuperTypes)) {
+
+						if (OPTION__PROCESS.equals(options
+							.get(OPTION__SUPER_CLASS_ORDER))) {
+
+							if (null != diagnostics) {
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.INFO,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										SUPER_CLASS_ORDER,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_UML22EcoreConverter_ProcessSuperClassOrder_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, eClass)),
+										new Object[]{eClass}));
+							}
+
+							for (ListIterator li = superClasses.listIterator(); li
+								.hasNext();) {
+								Object superClass = li.next();
+								eSuperTypes
+									.move(li.previousIndex(), superClass);
+							}
+
+						}
+						if (OPTION__REPORT.equals(options
+							.get(OPTION__SUPER_CLASS_ORDER))
+							&& null != diagnostics) {
+
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UML2Validator.DIAGNOSTIC_SOURCE,
+									SUPER_CLASS_ORDER,
+									UML2Plugin.INSTANCE
+										.getString(
+											"_UI_UML22EcoreConverter_ReportSuperClassOrder_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												eClass)), new Object[]{eClass}));
+						}
+					}
+				}
+			}
+		}
+
 		protected void processOptions(Map options, DiagnosticChain diagnostics,
 				Map context) {
 
@@ -3799,6 +3916,10 @@ public class UML2Util
 
 				processDuplicateFeatureInheritance(options, diagnostics,
 					context);
+			}
+
+			if (!OPTION__IGNORE.equals(options.get(OPTION__SUPER_CLASS_ORDER))) {
+				processSuperClassOrder(options, diagnostics, context);
 			}
 		}
 
@@ -6132,6 +6253,11 @@ public class UML2Util
 				OPTION__IGNORE);
 		}
 
+		if (!options.containsKey(UML22EcoreConverter.OPTION__SUPER_CLASS_ORDER)) {
+			options.put(UML22EcoreConverter.OPTION__SUPER_CLASS_ORDER,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(package_, options, null, null);
 	}
 
@@ -6202,6 +6328,11 @@ public class UML2Util
 
 			options.put(
 				UML22EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML22EcoreConverter.OPTION__SUPER_CLASS_ORDER)) {
+			options.put(UML22EcoreConverter.OPTION__SUPER_CLASS_ORDER,
 				OPTION__REPORT);
 		}
 
