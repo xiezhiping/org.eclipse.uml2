@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetItemProvider.java,v 1.13 2005/09/23 20:14:52 khussey Exp $
+ * $Id: GeneralizationSetItemProvider.java,v 1.14 2005/09/29 14:54:23 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -209,11 +209,10 @@ public class GeneralizationSetItemProvider
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached children and by creating a viewer notification, which
-	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void notifyChanged(Notification notification) {
