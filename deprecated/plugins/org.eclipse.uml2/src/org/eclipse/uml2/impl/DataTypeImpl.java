@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.22 2005/09/27 20:03:01 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.23 2005/09/29 15:11:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -822,7 +822,6 @@ public class DataTypeImpl extends ClassifierImpl implements DataType {
 			parameterNames, parameterTypes);
 	}
 
-	
 	private static Method GET_ALL_OPERATIONS = null;
 
 	static {

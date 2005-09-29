@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.21 2005/09/29 14:54:25 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.22 2005/09/29 15:11:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1043,7 +1043,6 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 		}
 		return attribute;
 	}
-
 
 	// <!-- begin-custom-operations -->
 	

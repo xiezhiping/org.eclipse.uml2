@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.34 2005/09/27 20:03:01 khussey Exp $
+ * $Id: ClassImpl.java,v 1.35 2005/09/29 15:11:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1639,8 +1639,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return TypeOperations.createOwnedOperation(this, name, returnType,
 			parameterNames, parameterTypes);
 	}
-	
-	
+
 	private static Method GET_ALL_OPERATIONS = null;
 
 	static {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.23 2005/09/27 20:03:01 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.24 2005/09/29 15:11:29 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1144,7 +1144,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			parameterNames, parameterTypes);
 	}
 
-	
 	private static Method GET_ALL_OPERATIONS = null;
 
 	static {
