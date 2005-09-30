@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.42 2005/09/29 20:33:58 khussey Exp $
+ * $Id: UML2Util.java,v 1.43 2005/09/30 13:38:08 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -4093,6 +4093,8 @@ public class UML2Util
 
 		public static final String OPTION__EMPTY_UNIONS = "EMPTY_UNIONS"; //$NON-NLS-1$
 
+		public static final String OPTION__ASSOCIATION_SPECIALIZATIONS = "ASSOCIATION_SPECIALIZATIONS"; //$NON-NLS-1$
+
 		public static final String OPTION__CAPABILITIES = "CAPABILITIES"; //$NON-NLS-1$
 
 		private static final int DIAGNOSTIC_CODE_OFFSET = 1000;
@@ -4111,7 +4113,9 @@ public class UML2Util
 
 		public static final int EMPTY_UNION = DIAGNOSTIC_CODE_OFFSET + 7;
 
-		public static final int CAPABILITY = DIAGNOSTIC_CODE_OFFSET + 8;
+		public static final int ASSOCIATION_SPECIALIZATION = DIAGNOSTIC_CODE_OFFSET + 8;
+
+		public static final int CAPABILITY = DIAGNOSTIC_CODE_OFFSET + 9;
 
 		protected static final String ANNOTATION_SOURCE__STEREOTYPE = "stereotype"; //$NON-NLS-1$
 
@@ -5401,6 +5405,103 @@ public class UML2Util
 			}
 		}
 
+		protected void processAssociationSpecializations(Map options,
+				DiagnosticChain diagnostics, Map context) {
+
+			for (Iterator entries = resultingToMergedEObjectMap.entrySet()
+				.iterator(); entries.hasNext();) {
+
+				Map.Entry entry = (Map.Entry) entries.next();
+				EObject resultingEObject = (EObject) entry.getKey();
+
+				if (resultingEObject instanceof Association) {
+					Association association = (Association) resultingEObject;
+
+					List generalAssociations = new UniqueEList();
+
+					for (Iterator memberEnds = association.getMemberEnds()
+						.iterator(); memberEnds.hasNext();) {
+
+						Property memberEnd = (Property) memberEnds.next();
+
+						for (Iterator redefinedProperties = memberEnd
+							.getRedefinedProperties().iterator(); redefinedProperties
+							.hasNext();) {
+
+							Association redefinedAssociation = ((Property) redefinedProperties
+								.next()).getAssociation();
+
+							if (null != redefinedAssociation) {
+								generalAssociations.add(redefinedAssociation);
+							}
+						}
+
+						for (Iterator subsettedProperties = memberEnd
+							.getSubsettedProperties().iterator(); subsettedProperties
+							.hasNext();) {
+
+							Association subsettedAssociation = ((Property) subsettedProperties
+								.next()).getAssociation();
+
+							if (null != subsettedAssociation) {
+								generalAssociations.add(subsettedAssociation);
+							}
+						}
+					}
+
+					for (Iterator i = generalAssociations.iterator(); i
+						.hasNext();) {
+
+						Association generalAssocation = (Association) i.next();
+
+						if (!association.allParents().contains(
+							generalAssocation)) {
+
+							if (OPTION__PROCESS.equals(options
+								.get(OPTION__ASSOCIATION_SPECIALIZATIONS))) {
+
+								if (null != diagnostics) {
+									diagnostics
+										.add(new BasicDiagnostic(
+											Diagnostic.INFO,
+											UML2Validator.DIAGNOSTIC_SOURCE,
+											ASSOCIATION_SPECIALIZATION,
+											UML2Plugin.INSTANCE
+												.getString(
+													"_UI_PackageMerger_ProcessAssociationSpecialization_diagnostic", //$NON-NLS-1$
+													getMessageSubstitutions(
+														context, association,
+														generalAssocation)),
+											new Object[]{association,
+												generalAssocation}));
+								}
+
+								association
+									.createGeneralization(generalAssocation);
+							} else if (OPTION__REPORT.equals(options
+								.get(OPTION__ASSOCIATION_SPECIALIZATIONS))
+								&& null != diagnostics) {
+
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.WARNING,
+										UML2Validator.DIAGNOSTIC_SOURCE,
+										ASSOCIATION_SPECIALIZATION,
+										UML2Plugin.INSTANCE
+											.getString(
+												"_UI_PackageMerger_ReportAssociationSpecialization_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, association,
+													generalAssocation)),
+										new Object[]{association,
+											generalAssocation}));
+							}
+						}
+					}
+				}
+			}
+		}
+
 		protected void processCapabilities(Map options,
 				DiagnosticChain diagnostics, Map context) {
 
@@ -5450,7 +5551,7 @@ public class UML2Util
 
 							diagnostics
 								.add(new BasicDiagnostic(
-									Diagnostic.ERROR,
+									Diagnostic.WARNING,
 									UML2Validator.DIAGNOSTIC_SOURCE,
 									CAPABILITY,
 									UML2Plugin.INSTANCE
@@ -5483,18 +5584,14 @@ public class UML2Util
 			}
 
 			if (!OPTION__IGNORE.equals(options
-				.get(OPTION__REDUNDANT_GENERALIZATIONS))) {
-
-				processRedundantGeneralizations(options, diagnostics, context);
-			}
-
-			if (!OPTION__IGNORE.equals(options
 				.get(OPTION__IMPLICIT_REDEFINITIONS))) {
+
 				processImplicitRedefinitions(options, diagnostics, context);
 			}
 
 			if (!OPTION__IGNORE.equals(options
 				.get(OPTION__INVALID_REDEFINITIONS))) {
+
 				processInvalidRedefinitions(options, diagnostics, context);
 			}
 
@@ -5504,6 +5601,18 @@ public class UML2Util
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__EMPTY_UNIONS))) {
 				processEmptyUnions(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__ASSOCIATION_SPECIALIZATIONS))) {
+
+				processAssociationSpecializations(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__REDUNDANT_GENERALIZATIONS))) {
+
+				processRedundantGeneralizations(options, diagnostics, context);
 			}
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__CAPABILITIES))) {
@@ -6410,6 +6519,13 @@ public class UML2Util
 			options.put(PackageMerger.OPTION__EMPTY_UNIONS, OPTION__IGNORE);
 		}
 
+		if (!options
+			.containsKey(PackageMerger.OPTION__ASSOCIATION_SPECIALIZATIONS)) {
+
+			options.put(PackageMerger.OPTION__ASSOCIATION_SPECIALIZATIONS,
+				OPTION__IGNORE);
+		}
+
 		if (!options.containsKey(PackageMerger.OPTION__CAPABILITIES)) {
 			options.put(PackageMerger.OPTION__CAPABILITIES, OPTION__IGNORE);
 		}
@@ -6461,6 +6577,13 @@ public class UML2Util
 
 		if (!options.containsKey(PackageMerger.OPTION__EMPTY_UNIONS)) {
 			options.put(PackageMerger.OPTION__EMPTY_UNIONS, OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(PackageMerger.OPTION__ASSOCIATION_SPECIALIZATIONS)) {
+
+			options.put(PackageMerger.OPTION__ASSOCIATION_SPECIALIZATIONS,
+				OPTION__REPORT);
 		}
 
 		if (!options.containsKey(PackageMerger.OPTION__CAPABILITIES)) {
