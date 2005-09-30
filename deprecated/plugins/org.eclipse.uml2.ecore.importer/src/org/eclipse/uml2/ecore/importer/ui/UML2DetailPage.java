@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2DetailPage.java,v 1.6 2005/09/29 18:06:18 khussey Exp $
+ * $Id: UML2DetailPage.java,v 1.7 2005/09/30 13:36:03 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer.ui;
 
@@ -21,9 +21,14 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.uml2.ecore.importer.UML2Importer;
@@ -95,9 +100,26 @@ public class UML2DetailPage
 		}
 	}
 
+	protected void addOptionButton(final Group group, Composite parent,
+			String text, final String choiceLabel) {
+		Button button = new Button(parent, SWT.PUSH);
+		button.setText(text);
+		button.addSelectionListener(new SelectionAdapter() {
+
+			public void widgetSelected(SelectionEvent se) {
+				Control[] children = group.getChildren();
+				for (int i = 0; i < children.length; i++) {
+					if (children[i] instanceof CCombo) {
+						((CCombo) children[i]).setText(choiceLabel);
+					}
+				}
+			}
+		});
+	}
+
 	protected void addControl(Composite parent) {
 
-		Group group = new Group(parent, SWT.SHADOW_ETCHED_IN);
+		final Group group = new Group(parent, SWT.SHADOW_ETCHED_IN);
 		{
 			GridLayout layout = new GridLayout();
 			layout.numColumns = 2;
@@ -175,6 +197,22 @@ public class UML2DetailPage
 			UML2Util.UML22EcoreConverter.OPTION__SUPER_CLASS_ORDER,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
+
+		Composite composite = new Composite(group, SWT.NONE);
+		{
+			composite.setLayout(new RowLayout());
+
+			GridData data = new GridData();
+			data.horizontalAlignment = GridData.END;
+			data.horizontalSpan = 2;
+			composite.setLayoutData(data);
+		}
+
+		addOptionButton(group, composite, UML2ImporterPlugin.INSTANCE
+			.getString("_UI_IgnoreAll_label"), ignoreChoiceLabel); //$NON-NLS-1$
+
+		addOptionButton(group, composite, UML2ImporterPlugin.INSTANCE
+			.getString("_UI_ProcessAll_label"), processChoiceLabel); //$NON-NLS-1$
 	}
 
 	protected UML2Importer getUML2Importer() {
