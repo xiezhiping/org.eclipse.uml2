@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.24 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.25 2005/10/04 21:55:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -373,8 +373,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.PROTOCOL_STATE_MACHINE__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.PROTOCOL_STATE_MACHINE__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_LEAF:
@@ -912,7 +911,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 			case UML2Package.PROTOCOL_STATE_MACHINE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.PROTOCOL_STATE_MACHINE__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.PROTOCOL_STATE_MACHINE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.PROTOCOL_STATE_MACHINE__IS_LEAF:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.27 2005/09/23 21:22:54 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.28 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -817,8 +817,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.BEHAVIOR__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.BEHAVIOR__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.BEHAVIOR__IS_LEAF:
@@ -1307,7 +1306,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			case UML2Package.BEHAVIOR__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.BEHAVIOR__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.BEHAVIOR__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.BEHAVIOR__IS_LEAF:

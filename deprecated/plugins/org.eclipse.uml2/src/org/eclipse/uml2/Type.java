@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.9 2005/06/07 17:31:26 khussey Exp $
+ * $Id: Type.java,v 1.10 2005/10/04 21:55:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -55,7 +55,7 @@ public interface Type extends PackageableElement{
 	 * @return the value of the '<em>Package</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getType_Package()
 	 * @see org.eclipse.uml2.Package#getOwnedTypes
-	 * @model opposite="ownedType" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model opposite="ownedType" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	org.eclipse.uml2.Package getPackage();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearStructuralFeatureActionImpl.java,v 1.8 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ClearStructuralFeatureActionImpl.java,v 1.9 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -234,8 +234,7 @@ public class ClearStructuralFeatureActionImpl extends StructuralFeatureActionImp
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__LOCAL_POSTCONDITION:
@@ -482,7 +481,7 @@ public class ClearStructuralFeatureActionImpl extends StructuralFeatureActionImp
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__INPUT:
 				return eIsSet(UML2Package.eINSTANCE.getStructuralFeatureAction_Object());
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.CLEAR_STRUCTURAL_FEATURE_ACTION__LOCAL_POSTCONDITION:

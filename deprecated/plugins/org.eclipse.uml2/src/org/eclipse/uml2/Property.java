@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.13 2005/09/27 14:06:56 khussey Exp $
+ * $Id: Property.java,v 1.14 2005/10/04 21:55:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -202,7 +202,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Class </em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getProperty_Class_()
-	 * @model transient="true" changeable="false" volatile="true"
+	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true"
 	 * @generated
 	 */
 	org.eclipse.uml2.Class getClass_();

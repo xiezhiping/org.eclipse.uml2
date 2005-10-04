@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.12 2005/09/26 15:54:22 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.13 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -386,8 +386,7 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 			case UML2Package.REPLY_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.REPLY_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.REPLY_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.REPLY_ACTION__LOCAL_POSTCONDITION:
@@ -646,7 +645,7 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 				return eIsSet(UML2Package.eINSTANCE.getReplyAction_ReplyValue())
 					|| eIsSet(UML2Package.eINSTANCE.getReplyAction_ReturnInformation());
 			case UML2Package.REPLY_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.REPLY_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.REPLY_ACTION__LOCAL_POSTCONDITION:

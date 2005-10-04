@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.10 2005/09/23 21:22:55 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.11 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -293,8 +293,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 			case UML2Package.LINK_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.LINK_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.LINK_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.LINK_ACTION__LOCAL_POSTCONDITION:
@@ -532,7 +531,7 @@ public abstract class LinkActionImpl extends ActionImpl implements LinkAction {
 			case UML2Package.LINK_ACTION__INPUT:
 				return !getInputs().isEmpty();
 			case UML2Package.LINK_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.LINK_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.LINK_ACTION__LOCAL_POSTCONDITION:

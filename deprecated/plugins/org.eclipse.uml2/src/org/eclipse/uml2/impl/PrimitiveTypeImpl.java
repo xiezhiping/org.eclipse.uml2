@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PrimitiveTypeImpl.java,v 1.18 2005/09/23 21:22:55 khussey Exp $
+ * $Id: PrimitiveTypeImpl.java,v 1.19 2005/10/04 21:55:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -233,8 +233,7 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 			case UML2Package.PRIMITIVE_TYPE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.PRIMITIVE_TYPE__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.PRIMITIVE_TYPE__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.PRIMITIVE_TYPE__IS_LEAF:
@@ -532,7 +531,7 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
 			case UML2Package.PRIMITIVE_TYPE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.PRIMITIVE_TYPE__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.PRIMITIVE_TYPE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.PRIMITIVE_TYPE__IS_LEAF:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.30 2005/09/27 20:03:01 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.31 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -401,20 +401,10 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.eclipse.uml2.Package getPackage() {
-		org.eclipse.uml2.Package package_ = basicGetPackage();
-		return package_ == null ? null : (org.eclipse.uml2.Package)eResolveProxy((InternalEObject)package_);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public org.eclipse.uml2.Package basicGetPackage() {
-		return org.eclipse.uml2.Package.class.isInstance(eContainer) ? (org.eclipse.uml2.Package) eContainer : null;
+	public org.eclipse.uml2.Package getPackage() {
+		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer : null;
 	}
 
 	/**
@@ -1126,7 +1116,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.Package package_ = basicGetPackage();			
+		org.eclipse.uml2.Package package_ = getPackage();			
 		if (package_ != null) {
 			return package_;
 		}
@@ -1561,8 +1551,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.CLASSIFIER__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.CLASSIFIER__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.CLASSIFIER__IS_LEAF:
@@ -1838,7 +1827,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			case UML2Package.CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.CLASSIFIER__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.CLASSIFIER__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CLASSIFIER__IS_LEAF:

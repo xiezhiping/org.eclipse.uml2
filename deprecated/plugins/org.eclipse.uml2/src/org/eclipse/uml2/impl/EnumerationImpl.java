@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.20 2005/09/23 21:22:53 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.21 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -321,8 +321,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.ENUMERATION__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.ENUMERATION__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.ENUMERATION__IS_LEAF:
@@ -631,7 +630,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.ENUMERATION__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.ENUMERATION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.ENUMERATION__IS_LEAF:

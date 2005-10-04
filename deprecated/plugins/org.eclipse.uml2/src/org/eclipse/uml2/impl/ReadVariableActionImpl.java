@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadVariableActionImpl.java,v 1.13 2005/09/26 15:54:22 khussey Exp $
+ * $Id: ReadVariableActionImpl.java,v 1.14 2005/10/04 21:55:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -332,8 +332,7 @@ public class ReadVariableActionImpl extends VariableActionImpl implements ReadVa
 			case UML2Package.READ_VARIABLE_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.READ_VARIABLE_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.READ_VARIABLE_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.READ_VARIABLE_ACTION__LOCAL_POSTCONDITION:
@@ -580,7 +579,7 @@ public class ReadVariableActionImpl extends VariableActionImpl implements ReadVa
 			case UML2Package.READ_VARIABLE_ACTION__INPUT:
 				return !getInputs().isEmpty();
 			case UML2Package.READ_VARIABLE_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.READ_VARIABLE_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.READ_VARIABLE_ACTION__LOCAL_POSTCONDITION:

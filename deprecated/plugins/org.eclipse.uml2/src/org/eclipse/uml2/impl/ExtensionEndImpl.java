@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.10 2005/09/23 21:22:55 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.11 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -323,8 +323,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__IS_DERIVED:
 				return isDerived() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.EXTENSION_END__CLASS_:
-				if (resolve) return getClass_();
-				return basicGetClass_();
+				return getClass_();
 			case UML2Package.EXTENSION_END__OPPOSITE:
 				if (resolve) return getOpposite();
 				return basicGetOpposite();
@@ -654,7 +653,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__IS_DERIVED:
 				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UML2Package.EXTENSION_END__CLASS_:
-				return basicGetClass_() != null;
+				return getClass_() != null;
 			case UML2Package.EXTENSION_END__OPPOSITE:
 				return basicGetOpposite() != null;
 			case UML2Package.EXTENSION_END__IS_DERIVED_UNION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.22 2005/09/23 21:22:55 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.23 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -531,8 +531,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.STRUCTURED_CLASSIFIER__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.STRUCTURED_CLASSIFIER__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.STRUCTURED_CLASSIFIER__IS_LEAF:
@@ -834,7 +833,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.STRUCTURED_CLASSIFIER__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.STRUCTURED_CLASSIFIER__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__IS_LEAF:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.27 2005/09/26 15:54:22 khussey Exp $
+ * $Id: OperationImpl.java,v 1.28 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -86,8 +86,8 @@ import org.eclipse.uml2.internal.operation.OperationOperations;
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getPostconditions <em>Postcondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getRedefinedOperations <em>Redefined Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getBodyCondition <em>Body Condition</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getRaisedExceptions <em>Raised Exception</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getFormalParameters <em>Formal Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getRaisedExceptions <em>Raised Exception</em>}</li>
  * </ul>
  * </p>
  *

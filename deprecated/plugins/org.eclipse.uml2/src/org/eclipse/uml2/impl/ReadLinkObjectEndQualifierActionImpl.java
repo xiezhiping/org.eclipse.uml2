@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.13 2005/09/26 15:54:22 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.14 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -471,8 +471,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_POSTCONDITION:
@@ -728,7 +727,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INPUT:
 				return eIsSet(UML2Package.eINSTANCE.getReadLinkObjectEndQualifierAction_Object());
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_POSTCONDITION:

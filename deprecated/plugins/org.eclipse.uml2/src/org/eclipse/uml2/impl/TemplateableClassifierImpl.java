@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableClassifierImpl.java,v 1.18 2005/09/23 21:22:53 khussey Exp $
+ * $Id: TemplateableClassifierImpl.java,v 1.19 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -225,8 +225,7 @@ public abstract class TemplateableClassifierImpl extends ClassifierImpl implemen
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__IS_LEAF:
@@ -502,7 +501,7 @@ public abstract class TemplateableClassifierImpl extends ClassifierImpl implemen
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.TEMPLATEABLE_CLASSIFIER__IS_LEAF:

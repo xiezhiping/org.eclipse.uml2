@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.18 2005/09/23 21:22:55 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.19 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -272,8 +272,7 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 			case UML2Package.INFORMATION_ITEM__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.INFORMATION_ITEM__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.INFORMATION_ITEM__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.INFORMATION_ITEM__IS_LEAF:
@@ -558,7 +557,7 @@ public class InformationItemImpl extends ClassifierImpl implements InformationIt
 			case UML2Package.INFORMATION_ITEM__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.INFORMATION_ITEM__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.INFORMATION_ITEM__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.INFORMATION_ITEM__IS_LEAF:

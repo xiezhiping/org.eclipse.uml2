@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.12 2005/09/23 21:22:55 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.13 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -363,8 +363,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 			case UML2Package.CALL_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.CALL_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.CALL_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.CALL_ACTION__LOCAL_POSTCONDITION:
@@ -630,7 +629,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 			case UML2Package.CALL_ACTION__INPUT:
 				return eIsSet(UML2Package.eINSTANCE.getInvocationAction_Argument());
 			case UML2Package.CALL_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.CALL_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.CALL_ACTION__LOCAL_POSTCONDITION:

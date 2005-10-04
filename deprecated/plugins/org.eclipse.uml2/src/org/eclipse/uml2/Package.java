@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.17 2005/06/15 20:06:02 khussey Exp $
+ * $Id: Package.java,v 1.18 2005/10/04 21:55:15 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -100,7 +100,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * @return the value of the '<em>Nesting Package</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_NestingPackage()
 	 * @see org.eclipse.uml2.Package#getNestedPackages
-	 * @model opposite="nestedPackage" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model opposite="nestedPackage" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	Package getNestingPackage();

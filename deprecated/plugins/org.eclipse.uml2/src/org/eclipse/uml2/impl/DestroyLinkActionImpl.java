@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.8 2005/09/23 21:22:54 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.9 2005/10/04 21:55:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -232,8 +232,7 @@ public class DestroyLinkActionImpl extends WriteLinkActionImpl implements Destro
 			case UML2Package.DESTROY_LINK_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.DESTROY_LINK_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.DESTROY_LINK_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.DESTROY_LINK_ACTION__LOCAL_POSTCONDITION:
@@ -471,7 +470,7 @@ public class DestroyLinkActionImpl extends WriteLinkActionImpl implements Destro
 			case UML2Package.DESTROY_LINK_ACTION__INPUT:
 				return !getInputs().isEmpty();
 			case UML2Package.DESTROY_LINK_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.DESTROY_LINK_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.DESTROY_LINK_ACTION__LOCAL_POSTCONDITION:

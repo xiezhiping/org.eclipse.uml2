@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.11 2005/09/23 21:22:54 khussey Exp $
+ * $Id: TypeImpl.java,v 1.12 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -72,20 +72,10 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.eclipse.uml2.Package getPackage() {
-		org.eclipse.uml2.Package package_ = basicGetPackage();
-		return package_ == null ? null : (org.eclipse.uml2.Package)eResolveProxy((InternalEObject)package_);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public org.eclipse.uml2.Package basicGetPackage() {
-		return org.eclipse.uml2.Package.class.isInstance(eContainer) ? (org.eclipse.uml2.Package) eContainer : null;
+	public org.eclipse.uml2.Package getPackage() {
+		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer : null;
 	}
 
 	/**
@@ -103,7 +93,7 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.Package package_ = basicGetPackage();			
+		org.eclipse.uml2.Package package_ = getPackage();			
 		if (package_ != null) {
 			return package_;
 		}
@@ -232,8 +222,7 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 			case UML2Package.TYPE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.TYPE__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 		}
 		return eDynamicGet(eFeature, resolve);
 	}
@@ -370,7 +359,7 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 			case UML2Package.TYPE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.TYPE__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 		}
 		return eDynamicIsSet(eFeature);
 	}

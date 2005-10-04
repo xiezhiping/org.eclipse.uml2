@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.14 2005/09/26 15:54:22 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.15 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -432,8 +432,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 			case UML2Package.SEND_OBJECT_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.SEND_OBJECT_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.SEND_OBJECT_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.SEND_OBJECT_ACTION__LOCAL_POSTCONDITION:
@@ -699,7 +698,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 				return eIsSet(UML2Package.eINSTANCE.getInvocationAction_Argument())
 					|| eIsSet(UML2Package.eINSTANCE.getSendObjectAction_Target());
 			case UML2Package.SEND_OBJECT_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.SEND_OBJECT_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__LOCAL_POSTCONDITION:

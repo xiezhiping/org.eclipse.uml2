@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.25 2005/09/23 21:22:53 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.26 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -734,21 +734,11 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Activity getActivity() {
-		Activity activity = basicGetActivity();
-		return activity == null ? null : (Activity)eResolveProxy((InternalEObject)activity);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public Activity basicGetActivity() {
+	public Activity getActivity() {
 		if (eContainerFeatureID != UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY && eContainerFeatureID != UML2Package.STRUCTURED_ACTIVITY_NODE__ACTIVITY_GROUP_ACTIVITY) return null;
-		return (Activity)eContainer;
+		return (Activity) eContainer;
 	}
 
 	public void setActivity(Activity newActivity) {
@@ -1060,8 +1050,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__INPUT:
 				return getInputs();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION:
@@ -1372,7 +1361,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__INPUT:
 				return !getInputs().isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION:

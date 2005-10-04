@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.34 2005/09/23 21:22:55 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.35 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -273,8 +273,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.STEREOTYPE__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.STEREOTYPE__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.STEREOTYPE__IS_LEAF:
@@ -683,7 +682,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.STEREOTYPE__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.STEREOTYPE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.STEREOTYPE__IS_LEAF:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.12 2005/09/23 21:22:55 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.13 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -348,8 +348,7 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 			case UML2Package.DURATION_OBSERVATION_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.DURATION_OBSERVATION_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.DURATION_OBSERVATION_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.DURATION_OBSERVATION_ACTION__LOCAL_POSTCONDITION:
@@ -615,7 +614,7 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 				return eIsSet(UML2Package.eINSTANCE.getStructuralFeatureAction_Object())
 					|| eIsSet(UML2Package.eINSTANCE.getWriteStructuralFeatureAction_Value());
 			case UML2Package.DURATION_OBSERVATION_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.DURATION_OBSERVATION_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__LOCAL_POSTCONDITION:

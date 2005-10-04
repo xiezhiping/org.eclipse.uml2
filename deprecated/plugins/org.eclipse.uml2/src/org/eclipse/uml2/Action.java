@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.8 2005/06/15 20:06:01 khussey Exp $
+ * $Id: Action.java,v 1.10 2005/10/04 21:56:43 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -139,7 +139,7 @@ public interface Action extends ExecutableNode{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Context</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getAction_Context()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	Classifier getContext();

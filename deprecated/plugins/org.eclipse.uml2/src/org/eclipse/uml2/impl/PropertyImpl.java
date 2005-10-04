@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.23 2005/09/27 14:06:56 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.24 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -598,20 +598,10 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.eclipse.uml2.Class getClass_() {
-		org.eclipse.uml2.Class class_ = basicGetClass_();
-		return class_ == null ? null : (org.eclipse.uml2.Class)eResolveProxy((InternalEObject)class_);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public org.eclipse.uml2.Class basicGetClass_() {
-		return org.eclipse.uml2.Class.class.isInstance(eContainer) ? (org.eclipse.uml2.Class) eContainer : null;
+	public org.eclipse.uml2.Class getClass_() {
+		return eContainer instanceof org.eclipse.uml2.Class	? (org.eclipse.uml2.Class) eContainer : null;
 	}
 
 	/**
@@ -1109,7 +1099,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.Class class_ = basicGetClass_();			
+		org.eclipse.uml2.Class class_ = getClass_();			
 		if (class_ != null) {
 			return class_;
 		}
@@ -1132,7 +1122,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	protected EList getFeaturingClassifiersHelper(EList featuringClassifier) {
 		super.getFeaturingClassifiersHelper(featuringClassifier);
-		org.eclipse.uml2.Class class_ = basicGetClass_();
+		org.eclipse.uml2.Class class_ = getClass_();
 		if (class_ != null) {
 			featuringClassifier.add(class_);
 		}
@@ -1419,8 +1409,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__IS_DERIVED:
 				return isDerived() ? Boolean.TRUE : Boolean.FALSE;
 			case UML2Package.PROPERTY__CLASS_:
-				if (resolve) return getClass_();
-				return basicGetClass_();
+				return getClass_();
 			case UML2Package.PROPERTY__OPPOSITE:
 				if (resolve) return getOpposite();
 				return basicGetOpposite();
@@ -1750,7 +1739,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			case UML2Package.PROPERTY__IS_DERIVED:
 				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UML2Package.PROPERTY__CLASS_:
-				return basicGetClass_() != null;
+				return getClass_() != null;
 			case UML2Package.PROPERTY__OPPOSITE:
 				return basicGetOpposite() != null;
 			case UML2Package.PROPERTY__IS_DERIVED_UNION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalImpl.java,v 1.8 2005/09/23 21:22:53 khussey Exp $
+ * $Id: TimeIntervalImpl.java,v 1.9 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -40,8 +40,8 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.TimeIntervalImpl#getMaxes <em>Max</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TimeIntervalImpl#getMins <em>Min</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TimeIntervalImpl#getMaxes <em>Max</em>}</li>
  * </ul>
  * </p>
  *

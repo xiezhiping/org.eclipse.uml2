@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.10 2005/09/23 21:22:54 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.11 2005/10/04 21:55:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -280,8 +280,7 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 			case UML2Package.CREATE_LINK_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.CREATE_LINK_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.CREATE_LINK_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.CREATE_LINK_ACTION__LOCAL_POSTCONDITION:
@@ -519,7 +518,7 @@ public class CreateLinkActionImpl extends WriteLinkActionImpl implements CreateL
 			case UML2Package.CREATE_LINK_ACTION__INPUT:
 				return !getInputs().isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.CREATE_LINK_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.CREATE_LINK_ACTION__LOCAL_POSTCONDITION:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.30 2005/09/23 21:22:53 khussey Exp $
+ * $Id: PackageImpl.java,v 1.31 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -348,19 +348,9 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.eclipse.uml2.Package getNestingPackage() {
-		org.eclipse.uml2.Package nestingPackage = basicGetNestingPackage();
-		return nestingPackage == null ? null : (org.eclipse.uml2.Package)eResolveProxy((InternalEObject)nestingPackage);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public org.eclipse.uml2.Package basicGetNestingPackage() {
+	public org.eclipse.uml2.Package getNestingPackage() {
 		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer : null;
 	}
 
@@ -630,7 +620,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.Package nestingPackage = basicGetNestingPackage();			
+		org.eclipse.uml2.Package nestingPackage = getNestingPackage();			
 		if (nestingPackage != null) {
 			return nestingPackage;
 		}
@@ -826,8 +816,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__NESTED_PACKAGE:
 				return getNestedPackages();
 			case UML2Package.PACKAGE__NESTING_PACKAGE:
-				if (resolve) return getNestingPackage();
-				return basicGetNestingPackage();
+				return getNestingPackage();
 			case UML2Package.PACKAGE__OWNED_TYPE:
 				return getOwnedTypes();
 			case UML2Package.PACKAGE__OWNED_MEMBER:
@@ -1042,7 +1031,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__NESTED_PACKAGE:
 				return !getNestedPackages().isEmpty();
 			case UML2Package.PACKAGE__NESTING_PACKAGE:
-				return basicGetNestingPackage() != null;
+				return getNestingPackage() != null;
 			case UML2Package.PACKAGE__OWNED_TYPE:
 				return !getOwnedTypes().isEmpty();
 			case UML2Package.PACKAGE__OWNED_MEMBER:

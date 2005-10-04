@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.21 2005/09/23 21:22:53 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.22 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -378,8 +378,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__NESTED_PACKAGE:
 				return getNestedPackages();
 			case UML2Package.PROFILE__NESTING_PACKAGE:
-				if (resolve) return getNestingPackage();
-				return basicGetNestingPackage();
+				return getNestingPackage();
 			case UML2Package.PROFILE__OWNED_TYPE:
 				return getOwnedTypes();
 			case UML2Package.PROFILE__OWNED_MEMBER:
@@ -616,7 +615,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 			case UML2Package.PROFILE__NESTED_PACKAGE:
 				return !getNestedPackages().isEmpty();
 			case UML2Package.PROFILE__NESTING_PACKAGE:
-				return basicGetNestingPackage() != null;
+				return getNestingPackage() != null;
 			case UML2Package.PROFILE__OWNED_TYPE:
 				return !getOwnedTypes().isEmpty();
 			case UML2Package.PROFILE__OWNED_MEMBER:

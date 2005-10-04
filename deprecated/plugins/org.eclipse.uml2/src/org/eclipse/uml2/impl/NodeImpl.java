@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.26 2005/09/23 21:22:53 khussey Exp $
+ * $Id: NodeImpl.java,v 1.27 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -498,8 +498,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.NODE__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.NODE__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.NODE__IS_LEAF:
@@ -929,7 +928,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.NODE__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.NODE__IS_LEAF:

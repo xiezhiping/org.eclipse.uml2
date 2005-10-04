@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.21 2005/09/23 21:22:56 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.22 2005/10/04 21:55:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -357,8 +357,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.EXTENSION__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.EXTENSION__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.EXTENSION__IS_LEAF:
@@ -672,7 +671,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.EXTENSION__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.EXTENSION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.EXTENSION__IS_LEAF:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionImpl.java,v 1.13 2005/09/26 15:54:22 khussey Exp $
+ * $Id: SendSignalActionImpl.java,v 1.14 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -385,8 +385,7 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 			case UML2Package.SEND_SIGNAL_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.SEND_SIGNAL_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.SEND_SIGNAL_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.SEND_SIGNAL_ACTION__LOCAL_POSTCONDITION:
@@ -653,7 +652,7 @@ public class SendSignalActionImpl extends InvocationActionImpl implements SendSi
 				return eIsSet(UML2Package.eINSTANCE.getInvocationAction_Argument())
 					|| eIsSet(UML2Package.eINSTANCE.getSendSignalAction_Target());
 			case UML2Package.SEND_SIGNAL_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.SEND_SIGNAL_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.SEND_SIGNAL_ACTION__LOCAL_POSTCONDITION:

@@ -11820,7 +11820,11 @@
 					(object Attribute
 					    tool       	"Ecore"
 					    name       	"referenceName"
-					    value      	(value Text "class_")))
+					    value      	(value Text "class_"))
+					(object Attribute
+					    tool       	"Ecore"
+					    name       	"isResolveProxies"
+					    value      	FALSE))
 				    quid       	"3DE6ACA00029"
 				    label      	"class"
 				    supplier   	"Logical View::InfrastructureLibrary::Core::Basic::Class"
@@ -11958,6 +11962,11 @@
 				    exportControl 	"Implementation"
 				    is_navigable 	TRUE)
 				(object Role "nestingPackage"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Ecore"
+					    name       	"isResolveProxies"
+					    value      	FALSE))
 				    quid       	"3DE6AFB70171"
 				    label      	"nestingPackage"
 				    supplier   	"Logical View::InfrastructureLibrary::Core::Basic::Package"
@@ -11979,6 +11988,11 @@
 				    exportControl 	"Implementation"
 				    is_navigable 	TRUE)
 				(object Role "package"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Ecore"
+					    name       	"isResolveProxies"
+					    value      	FALSE))
 				    quid       	"3DE6B0040398"
 				    label      	"package"
 				    supplier   	"Logical View::InfrastructureLibrary::Core::Basic::Package"
@@ -12154,6 +12168,22 @@
 				    icon_style 	"Icon"
 				    fill_color 	16777215
 				    quidu      	"3DE6AB4B0001"
+				    compartment 	(object Compartment
+					Parent_View 	@442
+					location   	(1405, 617)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					icon_style 	"Icon"
+					anchor     	2
+					nlines     	4
+					max_width  	553)
 				    width      	581
 				    height     	293)
 				(object InheritView "" @443
@@ -12549,6 +12579,22 @@
 				    icon_style 	"Icon"
 				    fill_color 	16777215
 				    quidu      	"3DE6AB400163"
+				    compartment 	(object Compartment
+					Parent_View 	@463
+					location   	(251, 668)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					icon_style 	"Icon"
+					anchor     	2
+					nlines     	1
+					max_width  	512)
 				    width      	549
 				    height     	1162)
 				(object InheritView "" @464
@@ -15607,7 +15653,11 @@
 					(object Attribute
 					    tool       	"Ecore"
 					    name       	"referenceName"
-					    value      	(value Text "class_")))
+					    value      	(value Text "class_"))
+					(object Attribute
+					    tool       	"Ecore"
+					    name       	"isResolveProxies"
+					    value      	FALSE))
 				    quid       	"3DE6E2E20299"
 				    label      	"class"
 				    supplier   	"Logical View::InfrastructureLibrary::Core::Constructs::Class"
@@ -16184,6 +16234,11 @@
 				    exportControl 	"Implementation"
 				    is_navigable 	TRUE)
 				(object Role "package"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Ecore"
+					    name       	"isResolveProxies"
+					    value      	FALSE))
 				    quid       	"3DEE344701FE"
 				    label      	"package"
 				    supplier   	"Logical View::InfrastructureLibrary::Core::Constructs::Package"
@@ -16230,6 +16285,11 @@
 				    exportControl 	"Implementation"
 				    is_navigable 	TRUE)
 				(object Role "nestingPackage"
+				    attributes 	(list Attribute_Set
+					(object Attribute
+					    tool       	"Ecore"
+					    name       	"isResolveProxies"
+					    value      	FALSE))
 				    quid       	"3DEE6FD302F9"
 				    label      	"nestingPackage"
 				    supplier   	"Logical View::InfrastructureLibrary::Core::Constructs::Package"
@@ -16677,8 +16737,8 @@
 			    zoom       	100
 			    max_height 	28350
 			    max_width  	21600
-			    origin_x   	1506
-			    origin_y   	1260
+			    origin_x   	2525
+			    origin_y   	5288
 			    items      	(list diagram_item_list
 				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Constructs::StructuralFeature" @555
 				    SuppressAttribute 	TRUE
@@ -16896,6 +16956,22 @@
 				    icon_style 	"Icon"
 				    fill_color 	16777215
 				    quidu      	"3DE6D5AD039B"
+				    compartment 	(object Compartment
+					Parent_View 	@564
+					location   	(875, 3212)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					icon_style 	"Icon"
+					anchor     	2
+					nlines     	1
+					max_width  	512)
 				    width      	618
 				    height     	894)
 				(object AssociationViewNew "$UNNAMED$65" @565
@@ -17264,6 +17340,22 @@
 				    icon_style 	"Icon"
 				    fill_color 	16777215
 				    quidu      	"3DE6D57500AC"
+				    compartment 	(object Compartment
+					Parent_View 	@583
+					location   	(2946, 1911)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					icon_style 	"Icon"
+					anchor     	2
+					nlines     	2
+					max_width  	593)
 				    width      	757
 				    height     	1467)
 				(object AssociationViewNew "$UNNAMED$68" @584
@@ -17999,6 +18091,22 @@
 				    icon_style 	"Icon"
 				    fill_color 	16777215
 				    quidu      	"3DE6E15D033A"
+				    compartment 	(object Compartment
+					Parent_View 	@621
+					location   	(1411, 2468)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					icon_style 	"Icon"
+					anchor     	2
+					nlines     	1
+					max_width  	490)
 				    width      	556
 				    height     	643)
 				(object InheritView "" @622
@@ -21239,22 +21347,6 @@
 				    icon_style 	"Icon"
 				    fill_color 	16777215
 				    quidu      	"3DE6D56F031A"
-				    compartment 	(object Compartment
-					Parent_View 	@783
-					location   	(454, 2293)
-					font       	(object Font
-					    size       	10
-					    face       	"Arial"
-					    bold       	FALSE
-					    italics    	FALSE
-					    underline  	FALSE
-					    strike     	FALSE
-					    color      	0
-					    default_color 	TRUE)
-					icon_style 	"Icon"
-					anchor     	2
-					nlines     	5
-					max_width  	0)
 				    width      	826
 				    height     	1467)
 				(object InheritView "" @784
@@ -22343,8 +22435,8 @@
 			    zoom       	100
 			    max_height 	28350
 			    max_width  	21600
-			    origin_x   	1051
-			    origin_y   	127
+			    origin_x   	0
+			    origin_y   	0
 			    items      	(list diagram_item_list
 				(object ClassView "Class" "Logical View::InfrastructureLibrary::Core::Basic::Package" @843
 				    SuppressAttribute 	TRUE

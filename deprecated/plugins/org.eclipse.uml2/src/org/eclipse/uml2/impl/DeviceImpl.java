@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeviceImpl.java,v 1.23 2005/09/23 21:22:53 khussey Exp $
+ * $Id: DeviceImpl.java,v 1.24 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -267,8 +267,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility();
 			case UML2Package.DEVICE__PACKAGE:
-				if (resolve) return getPackage();
-				return basicGetPackage();
+				return getPackage();
 			case UML2Package.DEVICE__REDEFINITION_CONTEXT:
 				return getRedefinitionContexts();
 			case UML2Package.DEVICE__IS_LEAF:
@@ -698,7 +697,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return getPackageableElement_visibility() != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
 			case UML2Package.DEVICE__PACKAGE:
-				return basicGetPackage() != null;
+				return getPackage() != null;
 			case UML2Package.DEVICE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.DEVICE__IS_LEAF:

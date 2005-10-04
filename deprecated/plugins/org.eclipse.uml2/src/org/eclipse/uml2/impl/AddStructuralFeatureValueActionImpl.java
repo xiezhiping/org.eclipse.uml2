@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionImpl.java,v 1.13 2005/09/26 15:54:22 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionImpl.java,v 1.14 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -379,8 +379,7 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__LOCAL_POSTCONDITION:
@@ -655,7 +654,7 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 					|| eIsSet(UML2Package.eINSTANCE.getWriteStructuralFeatureAction_Value())
 					|| eIsSet(UML2Package.eINSTANCE.getAddStructuralFeatureValueAction_InsertAt());
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__LOCAL_POSTCONDITION:

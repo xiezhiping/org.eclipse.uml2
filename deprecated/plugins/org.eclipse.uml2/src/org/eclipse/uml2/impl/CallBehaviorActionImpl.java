@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionImpl.java,v 1.9 2005/09/23 21:22:53 khussey Exp $
+ * $Id: CallBehaviorActionImpl.java,v 1.10 2005/10/04 21:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -292,8 +292,7 @@ public class CallBehaviorActionImpl extends CallActionImpl implements CallBehavi
 			case UML2Package.CALL_BEHAVIOR_ACTION__INPUT:
 				return getInputs();
 			case UML2Package.CALL_BEHAVIOR_ACTION__CONTEXT:
-				if (resolve) return getContext();
-				return basicGetContext();
+				return getContext();
 			case UML2Package.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION:
 				return getLocalPreconditions();
 			case UML2Package.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION:
@@ -568,7 +567,7 @@ public class CallBehaviorActionImpl extends CallActionImpl implements CallBehavi
 			case UML2Package.CALL_BEHAVIOR_ACTION__INPUT:
 				return eIsSet(UML2Package.eINSTANCE.getInvocationAction_Argument());
 			case UML2Package.CALL_BEHAVIOR_ACTION__CONTEXT:
-				return basicGetContext() != null;
+				return getContext() != null;
 			case UML2Package.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION:
 				return localPrecondition != null && !localPrecondition.isEmpty();
 			case UML2Package.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION:
