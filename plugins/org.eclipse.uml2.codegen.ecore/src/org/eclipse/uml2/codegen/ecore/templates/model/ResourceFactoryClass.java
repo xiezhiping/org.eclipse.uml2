@@ -49,19 +49,25 @@ public class ResourceFactoryClass
   protected final String TEXT_32 = " result = new ";
   protected final String TEXT_33 = "(uri);";
   protected final String TEXT_34 = NL + "\t\tresult.getDefaultSaveOptions().put(";
-  protected final String TEXT_35 = ".OPTION_EXTENDED_META_DATA, extendedMetaData);" + NL + "\t\tresult.getDefaultLoadOptions().put(";
-  protected final String TEXT_36 = ".OPTION_EXTENDED_META_DATA, extendedMetaData);" + NL + "" + NL + "\t\tresult.getDefaultSaveOptions().put(";
-  protected final String TEXT_37 = ".OPTION_SCHEMA_LOCATION, Boolean.TRUE);" + NL + "\t\tresult.getDefaultSaveOptions().put(";
-  protected final String TEXT_38 = ".OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);" + NL + "" + NL + "\t\tresult.getDefaultLoadOptions().put(";
-  protected final String TEXT_39 = ".OPTION_USE_LEXICAL_HANDLER, Boolean.TRUE);";
-  protected final String TEXT_40 = NL + "\t\tresult.getDefaultSaveOptions().put(";
-  protected final String TEXT_41 = ".OPTION_XML_MAP, xmlMap);" + NL + "\t\tresult.getDefaultLoadOptions().put(";
-  protected final String TEXT_42 = ".OPTION_XML_MAP, xmlMap);";
-  protected final String TEXT_43 = NL + "\t\tresult.setEncoding(";
-  protected final String TEXT_44 = ".DEFAULT_ENCODING);";
-  protected final String TEXT_45 = NL + "\t\treturn result;";
-  protected final String TEXT_46 = NL + "\t}" + NL + "" + NL + "} //";
-  protected final String TEXT_47 = NL;
+  protected final String TEXT_35 = ".OPTION_EXTENDED_META_DATA, ";
+  protected final String TEXT_36 = "Boolean.TRUE";
+  protected final String TEXT_37 = "extendedMetaData";
+  protected final String TEXT_38 = ");" + NL + "\t\tresult.getDefaultLoadOptions().put(";
+  protected final String TEXT_39 = ".OPTION_EXTENDED_META_DATA, ";
+  protected final String TEXT_40 = "Boolean.TRUE";
+  protected final String TEXT_41 = "extendedMetaData";
+  protected final String TEXT_42 = ");" + NL + "" + NL + "\t\tresult.getDefaultSaveOptions().put(";
+  protected final String TEXT_43 = ".OPTION_SCHEMA_LOCATION, Boolean.TRUE);" + NL + "\t\tresult.getDefaultSaveOptions().put(";
+  protected final String TEXT_44 = ".OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);" + NL + "" + NL + "\t\tresult.getDefaultLoadOptions().put(";
+  protected final String TEXT_45 = ".OPTION_USE_LEXICAL_HANDLER, Boolean.TRUE);";
+  protected final String TEXT_46 = NL + "\t\tresult.getDefaultSaveOptions().put(";
+  protected final String TEXT_47 = ".OPTION_XML_MAP, xmlMap);" + NL + "\t\tresult.getDefaultLoadOptions().put(";
+  protected final String TEXT_48 = ".OPTION_XML_MAP, xmlMap);";
+  protected final String TEXT_49 = NL + "\t\tresult.setEncoding(";
+  protected final String TEXT_50 = ".DEFAULT_ENCODING);";
+  protected final String TEXT_51 = NL + "\t\treturn result;";
+  protected final String TEXT_52 = NL + "\t}" + NL + "" + NL + "} //";
+  protected final String TEXT_53 = NL;
 
   public String generate(Object argument)
   {
@@ -143,7 +149,7 @@ public class ResourceFactoryClass
     stringBuffer.append(TEXT_29);
     stringBuffer.append(TEXT_30);
     stringBuffer.append(TEXT_31);
-    stringBuffer.append(UML2GenModelUtil.isResourceInterfaces(genPackage) ? UML2GenModelUtil.getImportedResourceInterfaceName(genPackage) : genModel.getImportedName("org.eclipse.emf.ecore.resource.Resource"));
+    stringBuffer.append(UML2GenModelUtil.isResourceInterfaces(genPackage) ? UML2GenModelUtil.getImportedResourceInterfaceName(genPackage) : (UML2GenModelUtil.isXMLResource(genPackage) ? genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource") : genModel.getImportedName("org.eclipse.emf.ecore.resource.Resource")));
     stringBuffer.append(TEXT_32);
     stringBuffer.append(genPackage.getResourceClassName());
     stringBuffer.append(TEXT_33);
@@ -151,32 +157,44 @@ public class ResourceFactoryClass
     stringBuffer.append(TEXT_34);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
     stringBuffer.append(TEXT_35);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
+    if (genPackage.hasTargetNamespace()){
     stringBuffer.append(TEXT_36);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
+    }else{
     stringBuffer.append(TEXT_37);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
+    }
     stringBuffer.append(TEXT_38);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
     stringBuffer.append(TEXT_39);
-    } else if (genPackage.hasXMLMap()) {
+    if (genPackage.hasTargetNamespace()){
     stringBuffer.append(TEXT_40);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
+    }else{
     stringBuffer.append(TEXT_41);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
+    }
     stringBuffer.append(TEXT_42);
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
+    stringBuffer.append(TEXT_43);
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
+    stringBuffer.append(TEXT_44);
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
+    stringBuffer.append(TEXT_45);
+    } else if (genPackage.hasXMLMap()) {
+    stringBuffer.append(TEXT_46);
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
+    stringBuffer.append(TEXT_47);
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"));
+    stringBuffer.append(TEXT_48);
     }
     if (UML2GenModelUtil.isResourceInterfaces(genPackage) && UML2GenModelUtil.isXMLResource(genPackage)) {
-    stringBuffer.append(TEXT_43);
+    stringBuffer.append(TEXT_49);
     stringBuffer.append(UML2GenModelUtil.getImportedResourceInterfaceName(genPackage));
-    stringBuffer.append(TEXT_44);
+    stringBuffer.append(TEXT_50);
     }
-    stringBuffer.append(TEXT_45);
+    stringBuffer.append(TEXT_51);
     //ResourceFactoryClass/createResource.override.javajetinc
-    stringBuffer.append(TEXT_46);
+    stringBuffer.append(TEXT_52);
     stringBuffer.append(genPackage.getResourceFactoryClassName());
     genModel.emitSortedImports();
-    stringBuffer.append(TEXT_47);
+    stringBuffer.append(TEXT_53);
     return stringBuffer.toString();
   }
 }

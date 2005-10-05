@@ -1,7 +1,7 @@
-		<%=UML2GenModelUtil.isResourceInterfaces(genPackage) ? UML2GenModelUtil.getImportedResourceInterfaceName(genPackage) : genModel.getImportedName("org.eclipse.emf.ecore.resource.Resource")%> result = new <%=genPackage.getResourceClassName()%>(uri);
+		<%=UML2GenModelUtil.isResourceInterfaces(genPackage) ? UML2GenModelUtil.getImportedResourceInterfaceName(genPackage) : (UML2GenModelUtil.isXMLResource(genPackage) ? genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource") : genModel.getImportedName("org.eclipse.emf.ecore.resource.Resource"))%> result = new <%=genPackage.getResourceClassName()%>(uri);
 <%if (genPackage.hasExtendedMetaData()) {%>
-		result.getDefaultSaveOptions().put(<%=genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource")%>.OPTION_EXTENDED_META_DATA, extendedMetaData);
-		result.getDefaultLoadOptions().put(<%=genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource")%>.OPTION_EXTENDED_META_DATA, extendedMetaData);
+		result.getDefaultSaveOptions().put(<%=genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource")%>.OPTION_EXTENDED_META_DATA, <%if (genPackage.hasTargetNamespace()){%>Boolean.TRUE<%}else{%>extendedMetaData<%}%>);
+		result.getDefaultLoadOptions().put(<%=genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource")%>.OPTION_EXTENDED_META_DATA, <%if (genPackage.hasTargetNamespace()){%>Boolean.TRUE<%}else{%>extendedMetaData<%}%>);
 
 		result.getDefaultSaveOptions().put(<%=genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource")%>.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		result.getDefaultSaveOptions().put(<%=genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource")%>.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
