@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.24 2005/10/04 21:55:12 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.25 2005/10/05 15:24:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -611,7 +611,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 */
 	public Property getOpposite() {
 		Property opposite = basicGetOpposite();
-		return opposite == null ? null : (Property)eResolveProxy((InternalEObject)opposite);
+		return opposite == null ? null : (opposite.eIsProxy() ? (Property)eResolveProxy((InternalEObject)opposite) : opposite);
 	}
 
 	/**

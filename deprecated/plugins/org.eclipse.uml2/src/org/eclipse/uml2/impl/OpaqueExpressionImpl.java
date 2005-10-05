@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.10 2005/09/23 21:22:54 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.11 2005/10/05 15:24:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -179,7 +179,7 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 	 */
 	public Parameter getResult() {
 		Parameter result = basicGetResult();
-		return result == null ? null : (Parameter)eResolveProxy((InternalEObject)result);
+		return result == null ? null : (result.eIsProxy() ? (Parameter)eResolveProxy((InternalEObject)result) : result);
 	}
 
 	/**

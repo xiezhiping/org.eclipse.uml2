@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerTest.java,v 1.3 2005/06/09 02:18:19 khussey Exp $
+ * $Id: LiteralIntegerTest.java,v 1.4 2005/10/05 15:24:23 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -24,8 +24,8 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.LiteralInteger#isComputable() <em>Is Computable</em>}</li>
  *   <li>{@link org.eclipse.uml2.LiteralInteger#integerValue() <em>Integer Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.LiteralInteger#isComputable() <em>Is Computable</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -100,6 +100,7 @@ public class LiteralIntegerTest extends LiteralSpecificationTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
 	public void testIsComputable() {
 		testIsComputableGen();
 		
@@ -117,7 +118,6 @@ public class LiteralIntegerTest extends LiteralSpecificationTest {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 
 	public void testIntegerValue() {
 		testIntegerValueGen();

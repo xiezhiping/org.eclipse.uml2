@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.10 2005/09/23 21:22:56 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.11 2005/10/05 15:24:17 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -98,7 +98,7 @@ public class ConnectorEndImpl extends MultiplicityElementImpl implements Connect
 	 */
 	public Property getDefiningEnd() {
 		Property definingEnd = basicGetDefiningEnd();
-		return definingEnd == null ? null : (Property)eResolveProxy((InternalEObject)definingEnd);
+		return definingEnd == null ? null : (definingEnd.eIsProxy() ? (Property)eResolveProxy((InternalEObject)definingEnd) : definingEnd);
 	}
 
 	/**

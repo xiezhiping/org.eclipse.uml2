@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringTest.java,v 1.5 2005/06/15 15:58:19 khussey Exp $
+ * $Id: LiteralStringTest.java,v 1.6 2005/10/05 15:24:23 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -24,8 +24,8 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.LiteralString#stringValue() <em>String Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.LiteralString#isComputable() <em>Is Computable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.LiteralString#stringValue() <em>String Value</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -100,7 +100,6 @@ public class LiteralStringTest extends LiteralSpecificationTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
-
 	public void testIsComputable() {
 		testIsComputableGen();
 		
@@ -118,6 +117,7 @@ public class LiteralStringTest extends LiteralSpecificationTest {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
 
 	public void testStringValue() {
 		testStringValueGen();
