@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.13 2005/09/27 16:21:50 khussey Exp $
+ * $Id: UML2Importer.java,v 1.14 2005/10/05 14:03:40 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -26,6 +27,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+import org.eclipse.emf.codegen.util.CodeGenUtil;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -161,9 +163,22 @@ public class UML2Importer
 						if (element.hasValue(ePackageStereotype,
 							UML2Util.PROPERTY_NAME__BASE_PACKAGE)) {
 
-							ePackageInfo.setBasePackage((String) element
-								.getValue(ePackageStereotype,
-									UML2Util.PROPERTY_NAME__BASE_PACKAGE));
+							StringBuffer basePackage = new StringBuffer();
+
+							for (StringTokenizer stringTokenizer = new StringTokenizer(
+								(String) element.getValue(ePackageStereotype,
+									UML2Util.PROPERTY_NAME__BASE_PACKAGE), "."); stringTokenizer //$NON-NLS-1$
+								.hasMoreTokens();) {
+
+								basePackage.append(CodeGenUtil
+									.safeName(stringTokenizer.nextToken()));
+
+								if (stringTokenizer.hasMoreTokens()) {
+									basePackage.append('.');
+								}
+							}
+
+							ePackageInfo.setBasePackage(basePackage.toString());
 						}
 
 						if (element.hasValue(ePackageStereotype,
