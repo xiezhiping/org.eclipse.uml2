@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Importer.java,v 1.14 2005/10/05 14:03:40 khussey Exp $
+ * $Id: UML2Importer.java,v 1.15 2005/10/07 20:43:09 khussey Exp $
  */
 package org.eclipse.uml2.ecore.importer;
 
@@ -20,35 +20,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
-
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.emf.importer.ImporterPlugin;
 import org.eclipse.emf.importer.ModelImporter;
-
 import org.eclipse.emf.importer.util.ImporterUtil;
-
 import org.eclipse.uml2.Element;
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.UML2Package;
-
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Util;
 
@@ -240,7 +232,8 @@ public class UML2Importer
 		}
 	}
 
-	protected void loadOriginalGenModel(URI genModelURI) {
+	protected void loadOriginalGenModel(URI genModelURI)
+			throws CoreException {
 		super.loadOriginalGenModel(genModelURI);
 
 		StringBuffer text = new StringBuffer();
