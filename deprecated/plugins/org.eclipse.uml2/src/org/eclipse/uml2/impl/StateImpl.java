@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.17 2005/09/26 15:54:22 khussey Exp $
+ * $Id: StateImpl.java,v 1.18 2005/10/13 20:28:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1012,7 +1012,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		return getContainer();
+		return getOwner();
 	}
 
 	/**

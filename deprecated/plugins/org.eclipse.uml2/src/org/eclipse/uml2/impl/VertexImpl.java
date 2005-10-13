@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.8 2005/09/23 21:22:55 khussey Exp $
+ * $Id: VertexImpl.java,v 1.9 2005/10/13 20:28:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -191,7 +191,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		return getContainer();
+		return getOwner();
 	}
 
 	/**
