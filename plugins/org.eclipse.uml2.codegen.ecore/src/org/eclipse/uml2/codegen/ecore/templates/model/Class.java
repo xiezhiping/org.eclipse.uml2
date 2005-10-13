@@ -4031,7 +4031,7 @@ public class Class
     stringBuffer.append(TEXT_1202);
     stringBuffer.append(genFeature.getAccessorName());
     } else {
-    stringBuffer.append(redefinitionGenFeature.getGetAccessor());
+    stringBuffer.append(genFeature.getGetAccessor());
     }
     stringBuffer.append(TEXT_1203);
     }

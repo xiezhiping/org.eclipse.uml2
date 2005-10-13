@@ -212,7 +212,7 @@
     <%if (redefinitionGenFeature.isListType()) {%>
 		return null;
     <%} else {%>
-		return <%if (redefinitionGenFeature.isBasicGet()) {%>basicGet<%=genFeature.getAccessorName()%><%} else {%><%=redefinitionGenFeature.getGetAccessor()%><%}%>();
+		return <%if (redefinitionGenFeature.isBasicGet()) {%>basicGet<%=genFeature.getAccessorName()%><%} else {%><%=genFeature.getGetAccessor()%><%}%>();
     <%}%>
 	}
 

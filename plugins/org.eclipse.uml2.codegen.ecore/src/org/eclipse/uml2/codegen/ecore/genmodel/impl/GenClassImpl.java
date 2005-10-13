@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.7 2005/09/28 20:55:27 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.8 2005/10/13 20:27:42 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -420,6 +420,7 @@ public class GenClassImpl
 
 						if (getExtendedGenFeatures().contains(
 							redefinedGenFeature)) {
+
 							return !UML2GenModelUtil
 								.isUnion(redefinedGenFeature)
 								&& !isRedefined(redefinedGenFeature);
@@ -1381,6 +1382,17 @@ public class GenClassImpl
 		return super.isField(genFeature)
 			&& !UML2GenModelUtil.isUnion(genFeature)
 			&& !isRedefined(genFeature);
+	}
+
+	protected class CollidingGenOperationFilter
+			extends
+			org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl.CollidingGenOperationFilter {
+
+		protected CollidingGenOperationFilter() {
+			super();
+
+			allGenFeatures = getAllDuplicateGenFeatures();
+		}
 	}
 
 }
