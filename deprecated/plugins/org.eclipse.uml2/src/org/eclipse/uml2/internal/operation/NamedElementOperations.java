@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.12 2005/06/15 17:18:21 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.13 2005/10/19 19:37:57 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -220,11 +221,12 @@ public final class NamedElementOperations extends UML2Operations {
 		EClass nEClass = n.eClass();
 
 		if (nEClass.isSuperTypeOf(eClass) || eClass.isSuperTypeOf(nEClass)) {
+			Set namesOfN = ns.getNamesOfMember(n);
 
 			for (Iterator namesOfMember = ns.getNamesOfMember(namedElement)
 				.iterator(); namesOfMember.hasNext();) {
 
-				if (ns.getNamesOfMember(n).contains(namesOfMember.next())) {
+				if (namesOfN.contains(namesOfMember.next())) {
 					return false;
 				}
 			}
