@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.43 2005/09/30 13:38:08 khussey Exp $
+ * $Id: UML2Util.java,v 1.44 2005/10/19 19:44:48 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -3493,6 +3493,16 @@ public class UML2Util
 											? eAllStructuralFeature
 											: eStructuralFeature;
 
+										if (DEBUG
+											&& eAllStructuralFeature == duplicateEStructuralFeature) {
+
+											System.err
+												.println("Non-derived feature " //$NON-NLS-1$
+													+ getQualifiedText(eStructuralFeature)
+													+ " is a duplicate of derived feature " //$NON-NLS-1$
+													+ getQualifiedText(eAllStructuralFeature));
+										}
+
 										featuresToDuplicate
 											.add(duplicateEStructuralFeature);
 
@@ -4532,18 +4542,7 @@ public class UML2Util
 				public Object caseConstraint(Constraint constraint) {
 					Constraint matchingConstraint = (Constraint) findEObject(
 						getMatchCandidates(constraint), new NameMatcher(
-							constraint) {
-
-							public boolean matches(EObject otherEObject) {
-
-								return super.matches(otherEObject)
-									&& new StringValueMatcher(
-										((Constraint) eObject)
-											.getSpecification())
-										.matches(((Constraint) otherEObject)
-											.getSpecification());
-							}
-						});
+							constraint));
 
 					return null == matchingConstraint
 						? super.caseConstraint(constraint)
@@ -4792,9 +4791,9 @@ public class UML2Util
 					.next()).getMergedPackage();
 
 				if (null != mergedPackage) {
-					allMergedPackages.add(mergedPackage);
-
 					getAllMergedPackages(mergedPackage, allMergedPackages);
+
+					allMergedPackages.add(mergedPackage);
 				}
 			}
 

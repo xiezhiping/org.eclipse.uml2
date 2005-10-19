@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.17 2005/09/27 14:06:56 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.18 2005/10/19 19:44:48 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -265,14 +265,11 @@ public final class PropertyOperations extends UML2Operations {
 	/**
 	 * <!-- begin-user-doc -->
 	 * A navigable property (one that is owned by a class) can only be redefined
-	 * or subsetted by a navigable property.
+	 * by a navigable property.
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An invariant constraint based on the following OCL expression:
 	 * <code>
-	 * (subsettedProperty->exists(sp | sp.class->notEmpty())	
-	 * 		implies class->notEmpty())
-	 * and
 	 * (redefinedProperty->exists(rp | rp.class->notEmpty())	
 	 * 		implies class->notEmpty())
 	 * </code>
@@ -281,32 +278,6 @@ public final class PropertyOperations extends UML2Operations {
 	 */
 	public static boolean validateNavigablePropertyRedefinition(Property property, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
-
-		for (Iterator subsettedProperties = property.getSubsettedProperties()
-			.iterator(); subsettedProperties.hasNext();) {
-
-			Property subsettedProperty = (Property) subsettedProperties.next();
-
-			if (subsettedProperty.isNavigable() && !property.isNavigable()) {
-				result = false;
-
-				if (null == diagnostics) {
-					return result;
-				} else {
-					diagnostics
-						.add(new BasicDiagnostic(
-							Diagnostic.WARNING,
-							UML2Validator.DIAGNOSTIC_SOURCE,
-							UML2Validator.PROPERTY__NAVIGABLE_PROPERTY_REDEFINITION,
-							UML2Plugin.INSTANCE
-								.getString(
-									"_UI_Property_NavigablePropertySubsetted_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context, property,
-										subsettedProperty)), new Object[]{
-								property, subsettedProperty}));
-				}
-			}
-		}
 
 		for (Iterator redefinedProperties = property.getRedefinedProperties()
 			.iterator(); redefinedProperties.hasNext();) {
