@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: feature.xml,v 1.17 2005/09/22 15:18:22 khussey Exp $
+ $Id: feature.xml,v 1.18 2005/10/19 19:43:14 khussey Exp $
 -->
 
 <feature
@@ -35,13 +35,7 @@
    </url>
 
    <requires>
-      <import plugin="org.eclipse.core.resources"/>
-      <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.emf.ecore.editor"/>
-      <import plugin="org.eclipse.emf.mapping.ecore2xml"/>
-      <import plugin="org.eclipse.ui.ide"/>
-      <import plugin="org.eclipse.uml2"/>
-      <import plugin="org.eclipse.uml2.editor"/>
+      <import feature="org.eclipse.uml2" version="2.0.0" match="compatible"/>
    </requires>
 
    <plugin

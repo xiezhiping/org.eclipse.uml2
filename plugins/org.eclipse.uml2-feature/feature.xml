@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: feature.xml,v 1.23 2005/09/22 15:18:24 khussey Exp $
+ $Id: feature.xml,v 1.24 2005/10/19 19:43:16 khussey Exp $
 -->
 
 <feature
@@ -35,18 +35,8 @@
    </url>
 
    <requires>
-      <import plugin="org.eclipse.core.resources"/>
-      <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.emf.ecore"/>
-      <import plugin="org.eclipse.emf.codegen.ecore"/>
-      <import plugin="org.eclipse.emf.codegen.ecore.ui"/>
-      <import plugin="org.eclipse.emf.ecore.change.edit"/>
-      <import plugin="org.eclipse.emf.ecore.edit"/>
-      <import plugin="org.eclipse.emf.ecore.xmi"/>
-      <import plugin="org.eclipse.emf.edit"/>
-      <import plugin="org.eclipse.emf.edit.ui"/>
-   	  <import plugin="org.eclipse.emf.importer"/>
-      <import plugin="org.eclipse.ui.ide"/>
+      <import feature="org.eclipse.emf" version="2.2.0" match="compatible"/>
+      <import feature="org.eclipse.platform" version="3.1.0" match="compatible"/>
    </requires>
 
    <plugin
