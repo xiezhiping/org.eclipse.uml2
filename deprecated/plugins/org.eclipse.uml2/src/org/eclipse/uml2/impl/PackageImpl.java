@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.31 2005/10/04 21:55:12 khussey Exp $
+ * $Id: PackageImpl.java,v 1.32 2005/10/19 19:42:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1123,24 +1123,6 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			}
 		}
 		return member;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.uml2.Namespace#getNamesOfMember(org.eclipse.uml2.NamedElement)
-	 */
-	public Set getNamesOfMember(NamedElement element) {
-		return PackageOperations.getNamesOfMember(this, element);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.uml2.Namespace#importMembers(java.util.Set)
-	 */
-	public Set importMembers(Set imps) {
-		return PackageOperations.importMembers(this, imps);
 	}
 
 	/*

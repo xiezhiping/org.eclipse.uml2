@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.29 2005/10/04 21:55:12 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.30 2005/10/19 19:42:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1156,24 +1156,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 			}
 		}
 		return member;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.uml2.Namespace#getNamesOfMember(org.eclipse.uml2.NamedElement)
-	 */
-	public Set getNamesOfMember(NamedElement element) {
-		return ComponentOperations.getNamesOfMember(this, element);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.uml2.Namespace#importMembers(java.util.Set)
-	 */
-	public Set importMembers(Set imps) {
-		return ComponentOperations.importMembers(this, imps);
 	}
 
 	/*

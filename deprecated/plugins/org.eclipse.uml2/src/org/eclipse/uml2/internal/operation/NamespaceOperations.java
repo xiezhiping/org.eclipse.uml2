@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.11 2005/06/15 17:18:21 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.12 2005/10/19 19:42:10 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.uml2.Component;
 import org.eclipse.uml2.ElementImport;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
@@ -125,50 +126,70 @@ public final class NamespaceOperations extends UML2Operations {
 	 * @generated NOT
 	 */
 	public static Set getNamesOfMember(Namespace namespace, NamedElement element) {
-		Set namesOfMember = new HashSet();
+		return Collections.unmodifiableSet(getNamesOfMemberHelper(namespace,
+			element, new HashSet(), new HashSet()));
+	}
 
-		if (namespace.getOwnedMembers().contains(element)) {
-			String name = element.getName();
+	protected static Set getNamesOfMemberHelper(Namespace namespace,
+			NamedElement element, Set namespaces, Set namesOfMember) {
 
-			if (!isEmpty(name)) {
-				namesOfMember.add(name);
-			}
-		} else {
+		if (!namespaces.contains(namespace)) {
+			namespaces.add(namespace);
 
-			for (Iterator elementImports = namespace.getElementImports()
-				.iterator(); elementImports.hasNext();) {
+			if (getOwnedMembers(namespace).contains(element)) {
+				String name = element.getName();
 
-				ElementImport elementImport = (ElementImport) elementImports
-					.next();
+				if (!isEmpty(name)) {
+					namesOfMember.add(name);
+				}
+			} else {
 
-				if (element.equals(elementImport.getImportedElement())) {
-					String name = elementImport.getName();
+				for (Iterator elementImports = namespace.getElementImports()
+					.iterator(); elementImports.hasNext();) {
 
-					if (!isEmpty(name)) {
-						namesOfMember.add(name);
+					ElementImport elementImport = (ElementImport) elementImports
+						.next();
+
+					if (element == elementImport.getImportedElement()) {
+						String name = elementImport.getName();
+
+						if (!isEmpty(name)) {
+							namesOfMember.add(name);
+						}
 					}
 				}
-			}
 
-			if (namesOfMember.isEmpty()) {
+				if (namesOfMember.isEmpty()) {
 
-				for (Iterator packageImports = namespace.getPackageImports()
-					.iterator(); packageImports.hasNext();) {
+					for (Iterator packageImports = namespace
+						.getPackageImports().iterator(); packageImports
+						.hasNext();) {
 
-					org.eclipse.uml2.Package importedPackage = ((PackageImport) packageImports
-						.next()).getImportedPackage();
+						org.eclipse.uml2.Package importedPackage = ((PackageImport) packageImports
+							.next()).getImportedPackage();
 
-					if (null != importedPackage
-						&& importedPackage.visibleMembers().contains(element)) {
+						if (null != importedPackage
+							&& importedPackage.visibleMembers().contains(
+								element)) {
 
-						namesOfMember.addAll(importedPackage
-							.getNamesOfMember(element));
+							getNamesOfMemberHelper(importedPackage, element,
+								namespaces, namesOfMember);
+						}
 					}
 				}
 			}
 		}
 
-		return Collections.unmodifiableSet(namesOfMember);
+		return namesOfMember;
+	}
+
+	protected static EList getOwnedMembers(Namespace namespace) {
+		return namespace instanceof org.eclipse.uml2.Package
+			? PackageOperations
+				.getOwnedMembers((org.eclipse.uml2.Package) namespace)
+			: (namespace instanceof Component
+				? ComponentOperations.getOwnedMembers((Component) namespace)
+				: namespace.getOwnedMembers());
 	}
 
 	/**
@@ -319,7 +340,7 @@ public final class NamespaceOperations extends UML2Operations {
 	public static Set importMembers(Namespace namespace, Set imps) {
 		Set importMembers = new HashSet();
 
-		EList ownedMembers = namespace.getOwnedMembers();
+		EList ownedMembers = getOwnedMembers(namespace);
 		
 		excludeCollisionsLoop : for (Iterator excludeCollisions = namespace
 			.excludeCollisions(imps).iterator(); excludeCollisions.hasNext();) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.13 2005/06/15 17:18:21 khussey Exp $
+ * $Id: PackageOperations.java,v 1.14 2005/10/19 19:42:10 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -455,47 +455,19 @@ public final class PackageOperations extends UML2Operations {
 		return ownedMembers;
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public static Set getNamesOfMember(org.eclipse.uml2.Package package_,
 			NamedElement element) {
-		Set namesOfMember = new HashSet();
-
-		if (getOwnedMembers(package_).contains(element)) {
-			String name = element.getName();
-
-			if (!isEmpty(name)) {
-				namesOfMember.add(name);
-			}
-		} else {
-			return NamespaceOperations.getNamesOfMember(package_, element);
-		}
-
-		return Collections.unmodifiableSet(namesOfMember);
+		return NamespaceOperations.getNamesOfMember(package_, element);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public static Set importMembers(org.eclipse.uml2.Package package_, Set imps) {
-		Set importMembers = new HashSet();
-
-		EList ownedMembers = getOwnedMembers(package_);
-
-		excludeCollisionsLoop : for (Iterator excludeCollisions = package_
-			.excludeCollisions(imps).iterator(); excludeCollisions.hasNext();) {
-
-			PackageableElement excludeCollision = (PackageableElement) excludeCollisions
-				.next();
-
-			for (Iterator i = ownedMembers.iterator(); i.hasNext();) {
-
-				if (!excludeCollision.isDistinguishableFrom(
-					(PackageableElement) i.next(), package_)) {
-
-					continue excludeCollisionsLoop;
-				}
-			}
-
-			importMembers.add(excludeCollision);
-		}
-
-		return Collections.unmodifiableSet(importMembers);
+		return NamespaceOperations.importMembers(package_, imps);
 	}
 
 	// <!-- end-custom-operations -->

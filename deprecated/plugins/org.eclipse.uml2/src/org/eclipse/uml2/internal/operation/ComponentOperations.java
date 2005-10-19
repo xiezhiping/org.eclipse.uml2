@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.5 2005/06/15 17:18:21 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.6 2005/10/19 19:42:10 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -25,7 +25,6 @@ import org.eclipse.uml2.Component;
 import org.eclipse.uml2.Enumeration;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.NamedElement;
-import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.Port;
 import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.Realization;
@@ -244,47 +243,18 @@ public final class ComponentOperations
 		return ownedMembers;
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public static Set getNamesOfMember(Component component, NamedElement element) {
-		Set namesOfMember = new HashSet();
-
-		if (getOwnedMembers(component).contains(element)) {
-
-			if (!isEmpty(element.getName())) {
-				namesOfMember.add(element.getName());
-			}
-		} else {
-			return NamespaceOperations.getNamesOfMember(component, element);
-		}
-
-		return Collections.unmodifiableSet(namesOfMember);
+		return NamespaceOperations.getNamesOfMember(component, element);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public static Set importMembers(Component component, Set imps) {
-		Set importMembers = new HashSet();
-
-		excludeCollisionsLoop : for (Iterator excludeCollisions = component
-			.excludeCollisions(imps).iterator(); excludeCollisions.hasNext();) {
-
-			PackageableElement excludeCollision = (PackageableElement) excludeCollisions
-				.next();
-
-			for (Iterator ownedMembers = getOwnedMembers(component).iterator(); ownedMembers
-				.hasNext();) {
-
-				PackageableElement ownedMember = (PackageableElement) ownedMembers
-					.next();
-
-				if (!excludeCollision.isDistinguishableFrom(ownedMember,
-					component)) {
-
-					continue excludeCollisionsLoop;
-				}
-			}
-
-			importMembers.add(excludeCollision);
-		}
-
-		return Collections.unmodifiableSet(importMembers);
+		return NamespaceOperations.importMembers(component, imps);
 	}
 
 	public static Set inherit(Component component, Set inhs) {
