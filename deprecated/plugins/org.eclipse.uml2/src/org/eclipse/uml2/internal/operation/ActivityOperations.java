@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityOperations.java,v 1.1 2005/05/25 15:21:32 khussey Exp $
+ * $Id: ActivityOperations.java,v 1.2 2005/10/26 20:59:34 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -25,6 +25,8 @@ import org.eclipse.uml2.StructuredActivityNode;
 /**
  * A static utility class that provides operations related to '<em><b>Activity</b></em>'
  * model objects.
+ * 
+ * @deprecated
  */
 public final class ActivityOperations
 		extends UML2Operations {

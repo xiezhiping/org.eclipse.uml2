@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.27 2005/10/04 21:55:12 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.28 2005/10/26 20:59:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Action;
@@ -46,11 +45,9 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
-
-import org.eclipse.uml2.internal.operation.ActivityOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -451,35 +448,18 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		return null;
 	}
 
+	protected EList structuredNode = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList getStructuredNodes() {
-		CacheAdapter cache = getCacheAdapter();
-
-		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getActivity_StructuredNode());
-
-			if (result == null) {
-				EList structuredNodes = ActivityOperations
-					.getStructuredNodes(this);
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getActivity_StructuredNode(),
-					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getActivity_StructuredNode(),
-						structuredNodes.size(), structuredNodes.toArray()));
-			}
-
-			return result;
+		if (structuredNode == null) {
+			structuredNode = new DerivedSubsetEObjectEList(StructuredActivityNode.class, this, UML2Package.ACTIVITY__STRUCTURED_NODE, new EStructuralFeature[] {UML2Package.eINSTANCE.getActivity_Node(), UML2Package.eINSTANCE.getActivity_Group()});
 		}
-
-		EList structuredNodes = ActivityOperations.getStructuredNodes(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getActivity_StructuredNode(), structuredNodes.size(),
-			structuredNodes.toArray());
+		return structuredNode;
 	}
 
 	/**

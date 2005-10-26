@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.14 2005/10/19 19:42:10 khussey Exp $
+ * $Id: PackageOperations.java,v 1.15 2005/10/26 20:59:34 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -406,6 +406,9 @@ public final class PackageOperations extends UML2Operations {
 		return ownedPrimitiveType;
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public static EList getNestedPackages(org.eclipse.uml2.Package package_) {
 		EList nestedPackages = new UniqueEList();
 
@@ -425,6 +428,9 @@ public final class PackageOperations extends UML2Operations {
 		return nestedPackages;
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public static EList getOwnedTypes(org.eclipse.uml2.Package package_) {
 		EList ownedTypes = new UniqueEList();
 

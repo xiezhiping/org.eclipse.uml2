@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.32 2005/10/19 19:42:10 khussey Exp $
+ * $Id: PackageImpl.java,v 1.33 2005/10/26 20:59:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -35,7 +35,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -59,6 +58,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 
@@ -298,6 +298,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGEABLE_ELEMENT__PACKAGEABLE_ELEMENT_VISIBILITY, oldVisibility, visibility));
 	}
 
+	protected EList nestedPackage = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -305,29 +306,10 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated NOT
 	 */
 	public EList getNestedPackages() {
-		CacheAdapter cache = getCacheAdapter();
-
-		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getPackage_NestedPackage());
-
-			if (result == null) {
-				EList nestedPackages = PackageOperations
-					.getNestedPackages(this);
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getPackage_NestedPackage(),
-					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getPackage_NestedPackage(),
-						nestedPackages.size(), nestedPackages.toArray()));
-			}
-
-			return result;
+		if (nestedPackage == null) {
+			nestedPackage = new DerivedSubsetEObjectEList(org.eclipse.uml2.Package.class, this, UML2Package.PACKAGE__NESTED_PACKAGE, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackage_OwnedMember()});
 		}
-
-		EList nestedPackages = PackageOperations.getNestedPackages(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getPackage_NestedPackage(), nestedPackages.size(), nestedPackages
-			.toArray());
+		return nestedPackage;
 	}
 
 	/**
@@ -354,33 +336,18 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer : null;
 	}
 
+	protected EList ownedType = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList getOwnedTypes() {
-		CacheAdapter cache = getCacheAdapter();
-
-		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getPackage_OwnedType());
-
-			if (result == null) {
-				EList ownedTypes = PackageOperations.getOwnedTypes(this);
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getPackage_OwnedType(),
-					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getPackage_OwnedType(),
-						ownedTypes.size(), ownedTypes.toArray()));
-			}
-
-			return result;
+		if (ownedType == null) {
+			ownedType = new DerivedSubsetEObjectEList(Type.class, this, UML2Package.PACKAGE__OWNED_TYPE, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackage_OwnedMember()});
 		}
-
-		EList ownedTypes = PackageOperations.getOwnedTypes(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getPackage_OwnedType(), ownedTypes.size(), ownedTypes.toArray());
+		return ownedType;
 	}
 
 	/**

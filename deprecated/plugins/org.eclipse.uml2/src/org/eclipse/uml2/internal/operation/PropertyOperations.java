@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.18 2005/10/19 19:44:48 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.19 2005/10/26 20:59:34 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -510,6 +510,9 @@ public final class PropertyOperations extends UML2Operations {
 				&& (MultiplicityElement.UNLIMITED_UPPER_BOUND == upperBound || (propUpperBound != MultiplicityElement.UNLIMITED_UPPER_BOUND && propUpperBound <= upperBound))
 				&& (property.isDerived()
 					? prop.isDerived()
+					: true)
+				&& (property.isComposite()
+					? prop.isComposite()
 					: true);
 		}
 

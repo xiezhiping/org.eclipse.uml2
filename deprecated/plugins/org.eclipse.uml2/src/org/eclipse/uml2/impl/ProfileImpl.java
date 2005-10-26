@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.22 2005/10/04 21:55:12 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.23 2005/10/26 20:59:34 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Classifier;
@@ -44,6 +43,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.SubsetEObjectEList;
 import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 
@@ -126,6 +126,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 		return ownedMember;
 	}
 
+	protected EList ownedStereotype = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,29 +134,10 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	 * @generated NOT
 	 */
 	public EList getOwnedStereotypes() {
-		CacheAdapter cache = getCacheAdapter();
-
-		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
-				UML2Package.eINSTANCE.getProfile_OwnedStereotype());
-
-			if (result == null) {
-				EList ownedStereotypes = ProfileOperations
-					.getOwnedStereotypes(this);
-				cache.put(eResource(), this, UML2Package.eINSTANCE
-					.getProfile_OwnedStereotype(),
-					result = new EcoreEList.UnmodifiableEList(this,
-						UML2Package.eINSTANCE.getProfile_OwnedStereotype(),
-						ownedStereotypes.size(), ownedStereotypes.toArray()));
-			}
-
-			return result;
+		if (ownedStereotype == null) {
+			ownedStereotype = new DerivedSubsetEObjectEList(Stereotype.class, this, UML2Package.PROFILE__OWNED_STEREOTYPE, new EStructuralFeature[] {UML2Package.eINSTANCE.getPackage_OwnedMember()});
 		}
-
-		EList ownedStereotypes = ProfileOperations.getOwnedStereotypes(this);
-		return new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE
-			.getProfile_OwnedStereotype(), ownedStereotypes.size(),
-			ownedStereotypes.toArray());
+		return ownedStereotype;
 	}
 
 	/**
