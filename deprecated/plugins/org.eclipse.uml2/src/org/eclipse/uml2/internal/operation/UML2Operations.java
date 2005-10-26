@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.21 2005/06/03 19:52:31 khussey Exp $
+ * $Id: UML2Operations.java,v 1.22 2005/10/26 20:51:27 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -367,10 +367,7 @@ class UML2Operations
 					.synchronizedMap(new HashMap()));
 			}
 
-			ResourceBundle resourceBundle = (ResourceBundle) resourceBundles
-				.get(locale);
-
-			if (null == resourceBundle) {
+			if (!resourceBundles.containsKey(locale)) {
 				ResourceSet resourceSet = resource.getResourceSet();
 				URIConverter uriConverter = null == resourceSet
 					? DEFAULT_URI_CONVERTER
@@ -414,6 +411,8 @@ class UML2Operations
 					}
 				}
 
+				ResourceBundle resourceBundle = null;
+
 				for (Iterator i = resourceBundleURIs.iterator(); i.hasNext();) {
 
 					try {
@@ -434,7 +433,7 @@ class UML2Operations
 				resourceBundles.put(locale, resourceBundle);
 			}
 
-			return resourceBundle;
+			return (ResourceBundle) resourceBundles.get(locale);
 		}
 
 		return null;
