@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.8 2005/10/13 20:27:42 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.9 2005/10/26 21:11:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -421,15 +421,14 @@ public class GenClassImpl
 						if (getExtendedGenFeatures().contains(
 							redefinedGenFeature)) {
 
-							return !UML2GenModelUtil
-								.isUnion(redefinedGenFeature)
+							return (!UML2GenModelUtil.isUnion(redefinedGenFeature) || redefinedGenFeature.isListType())
 								&& !isRedefined(redefinedGenFeature);
 						}
 					}
 				}
 
 				return !getExtendedGenFeatures().contains(genFeature)
-					&& !UML2GenModelUtil.isUnion(genFeature)
+					&& (!UML2GenModelUtil.isUnion(genFeature) || genFeature.isListType())
 					&& !isRedefined(genFeature);
 			}
 		});
@@ -439,7 +438,7 @@ public class GenClassImpl
 		return getImplementedGenFeatures(new GenFeatureFilter() {
 
 			public boolean accept(GenFeature genFeature) {
-				return !UML2GenModelUtil.isUnion(genFeature)
+				return (!UML2GenModelUtil.isUnion(genFeature) || genFeature.isListType())
 					&& !isRedefined(genFeature);
 			}
 		});
@@ -832,28 +831,43 @@ public class GenClassImpl
 		return sb.toString();
 	}
 
+	protected String getDerivedUnionListConstructor(GenFeature genFeature) {
+		StringBuffer sb = new StringBuffer();
+
+		if (genFeature.isMapType()) {
+			return super.getListConstructor(genFeature);
+		} else if (genFeature.isReferenceType()) {
+			sb.append(getGenModel().getImportedName(
+				"org.eclipse.uml2.common.util.DerivedUnionEObjectEList")); //$NON-NLS-1$
+			sb.append("("); //$NON-NLS-1$
+			sb.append(genFeature.getListItemType());
+			sb.append(".class, this, "); //$NON-NLS-1$
+			sb.append(getQualifiedFeatureID(genFeature));
+			sb.append(", "); //$NON-NLS-1$
+			sb.append(getSubsetFeatureAccessorArray(genFeature, true));
+			sb.append(")"); //$NON-NLS-1$
+		} else if (genFeature.isFeatureMapType()) {
+			return super.getListConstructor(genFeature);
+		} else { // datatype
+			return super.getListConstructor(genFeature);
+		}
+		return sb.toString();
+	}
+
 	public String getListConstructor(GenFeature genFeature) {
 
-		if (isSuperset(genFeature)
-			&& !collectGenFeatures(null, getSubsetGenFeatures(genFeature),
-				new GenFeatureFilter() {
+		if (UML2GenModelUtil.isUnion(genFeature)) {
+			return getDerivedUnionListConstructor(genFeature);
+		}
 
-					public boolean accept(GenFeature genFeature) {
-						return !genFeature.isDerived();
-					}
-				}).isEmpty()) {
+		if (isSuperset(genFeature)
+			&& !getSubsetGenFeatures(genFeature, false).isEmpty()) {
 
 			return getSupersetListConstructor(genFeature);
 		}
 
 		if (UML2GenModelUtil.isSubset(genFeature)
-			&& !collectGenFeatures(null, getSupersetGenFeatures(genFeature),
-				new GenFeatureFilter() {
-
-					public boolean accept(GenFeature genFeature) {
-						return !genFeature.isDerived();
-					}
-				}).isEmpty()) {
+			&& !getSupersetGenFeatures(genFeature, false).isEmpty()) {
 
 			return getSubsetListConstructor(genFeature);
 		}
@@ -986,6 +1000,11 @@ public class GenClassImpl
 	}
 
 	public List getSubsetGenFeatures(GenFeature supersetGenFeature) {
+		return getSubsetGenFeatures(supersetGenFeature, true);
+	}
+
+	public List getSubsetGenFeatures(GenFeature supersetGenFeature,
+			boolean includedDerived) {
 		Map subsetGenFeatures = new LinkedHashMap();
 
 		final EStructuralFeature supersetEcoreFeature = supersetGenFeature
@@ -995,7 +1014,8 @@ public class GenClassImpl
 			GenFeature genFeature = (GenFeature) i.next();
 
 			if (Generator.getSubsettedEcoreFeatures(
-				genFeature.getEcoreFeature()).contains(supersetEcoreFeature)) {
+				genFeature.getEcoreFeature()).contains(supersetEcoreFeature)
+				&& (includedDerived || !genFeature.isDerived())) {
 
 				subsetGenFeatures.put(genFeature.getName(), genFeature);
 			}
@@ -1005,24 +1025,7 @@ public class GenClassImpl
 	}
 
 	public List getEIsSetSubsetGenFeatures(GenFeature unionGenFeature) {
-		Map subsetGenFeatures = new LinkedHashMap();
-
-		final EStructuralFeature supersetEcoreFeature = unionGenFeature
-			.getEcoreFeature();
-
-		for (Iterator i = getAllDuplicateGenFeatures().iterator(); i.hasNext();) {
-			GenFeature genFeature = (GenFeature) i.next();
-
-			if (!UML2GenModelUtil.isUnion(genFeature)
-				&& Generator.getSubsettedEcoreFeatures(
-					genFeature.getEcoreFeature(), true).contains(
-					supersetEcoreFeature)) {
-
-				subsetGenFeatures.put(genFeature.getName(), genFeature);
-			}
-		}
-
-		return new ArrayList(subsetGenFeatures.values());
+		return getSubsetGenFeatures(unionGenFeature);
 	}
 
 	public List getSubsetGenFeatures() {
@@ -1063,6 +1066,11 @@ public class GenClassImpl
 	}
 
 	public String getSubsetFeatureAccessorArray(GenFeature supersetGenFeature) {
+		return getSubsetFeatureAccessorArray(supersetGenFeature, false);
+	}
+
+	public String getSubsetFeatureAccessorArray(GenFeature supersetGenFeature,
+			boolean includeDerived) {
 		StringBuffer sb = new StringBuffer();
 
 		sb.append("new "); //$NON-NLS-1$
@@ -1070,13 +1078,8 @@ public class GenClassImpl
 			"org.eclipse.emf.ecore.EStructuralFeature")); //$NON-NLS-1$
 		sb.append("[] {"); //$NON-NLS-1$
 
-		Iterator subsetGenFeatures = collectGenFeatures(null,
-			getSubsetGenFeatures(supersetGenFeature), new GenFeatureFilter() {
-
-				public boolean accept(GenFeature genFeature) {
-					return !genFeature.isDerived();
-				}
-			}).iterator();
+		Iterator subsetGenFeatures = getSubsetGenFeatures(supersetGenFeature,
+			includeDerived).iterator();
 
 		while (subsetGenFeatures.hasNext()) {
 			GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();
@@ -1095,17 +1098,17 @@ public class GenClassImpl
 	}
 
 	protected String getSubsetFeatureIDArray(GenFeature supersetGenFeature) {
+		return getSubsetFeatureIDArray(supersetGenFeature, false);
+	}
+
+	protected String getSubsetFeatureIDArray(GenFeature supersetGenFeature,
+			boolean includeDerived) {
 		StringBuffer sb = new StringBuffer();
 
 		sb.append("new int[] {"); //$NON-NLS-1$
 
-		Iterator subsetGenFeatures = collectGenFeatures(null,
-			getSubsetGenFeatures(supersetGenFeature), new GenFeatureFilter() {
-
-				public boolean accept(GenFeature genFeature) {
-					return !genFeature.isDerived();
-				}
-			}).iterator();
+		Iterator subsetGenFeatures = getSubsetGenFeatures(supersetGenFeature,
+			includeDerived).iterator();
 
 		while (subsetGenFeatures.hasNext()) {
 			GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();
@@ -1123,7 +1126,21 @@ public class GenClassImpl
 	}
 
 	public List getSupersetGenFeatures(GenFeature subsetGenFeature) {
-		return UML2GenModelUtil.getSubsettedGenFeatures(subsetGenFeature);
+		return getSupersetGenFeatures(subsetGenFeature, true);
+	}
+
+	public List getSupersetGenFeatures(GenFeature subsetGenFeature,
+			boolean includeDerived) {
+		return includeDerived
+			? UML2GenModelUtil.getSubsettedGenFeatures(subsetGenFeature)
+			: collectGenFeatures(null, UML2GenModelUtil
+				.getSubsettedGenFeatures(subsetGenFeature),
+				new GenFeatureFilter() {
+
+					public boolean accept(GenFeature genFeature) {
+						return !genFeature.isDerived();
+					}
+				});
 	}
 
 	public List getImplementedSupersetGenFeatures() {
@@ -1131,14 +1148,7 @@ public class GenClassImpl
 
 			public boolean accept(GenFeature genFeature) {
 				return isSuperset(genFeature)
-					&& !collectGenFeatures(null,
-						getSubsetGenFeatures(genFeature),
-						new GenFeatureFilter() {
-
-							public boolean accept(GenFeature genFeature) {
-								return !genFeature.isDerived();
-							}
-						}).isEmpty();
+					&& !getSubsetGenFeatures(genFeature, false).isEmpty();
 			}
 		});
 	}
@@ -1161,13 +1171,8 @@ public class GenClassImpl
 			"org.eclipse.emf.ecore.EStructuralFeature")); //$NON-NLS-1$
 		sb.append("[] {"); //$NON-NLS-1$
 
-		Iterator supersetGenFeatures = collectGenFeatures(null,
-			getSupersetGenFeatures(subsetGenFeature), new GenFeatureFilter() {
-
-				public boolean accept(GenFeature genFeature) {
-					return !genFeature.isDerived();
-				}
-			}).iterator();
+		Iterator supersetGenFeatures = getSupersetGenFeatures(subsetGenFeature,
+			false).iterator();
 
 		while (supersetGenFeatures.hasNext()) {
 			GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures
@@ -1191,13 +1196,8 @@ public class GenClassImpl
 
 		sb.append("new int[] {"); //$NON-NLS-1$
 
-		Iterator supersetGenFeatures = collectGenFeatures(null,
-			getSupersetGenFeatures(subsetGenFeature), new GenFeatureFilter() {
-
-				public boolean accept(GenFeature genFeature) {
-					return !genFeature.isDerived();
-				}
-			}).iterator();
+		Iterator supersetGenFeatures = getSupersetGenFeatures(subsetGenFeature,
+			false).iterator();
 
 		while (supersetGenFeatures.hasNext()) {
 			GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures
@@ -1374,13 +1374,13 @@ public class GenClassImpl
 
 	public boolean isESetField(GenFeature genFeature) {
 		return super.isESetField(genFeature)
-			&& !UML2GenModelUtil.isUnion(genFeature)
+			&& (!UML2GenModelUtil.isUnion(genFeature) || genFeature.isListType())
 			&& !isRedefined(genFeature);
 	}
 
 	public boolean isField(GenFeature genFeature) {
 		return super.isField(genFeature)
-			&& !UML2GenModelUtil.isUnion(genFeature)
+			&& (!UML2GenModelUtil.isUnion(genFeature) || genFeature.isListType())
 			&& !isRedefined(genFeature);
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.44 2005/10/19 19:44:48 khussey Exp $
+ * $Id: UML2Util.java,v 1.45 2005/10/26 21:11:24 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -2942,8 +2942,10 @@ public class UML2Util
 					&& element instanceof Property
 					&& ((Property) element).isDerivedUnion()) {
 
+					EStructuralFeature eStructuralFeature = (EStructuralFeature) eModelElement;
+
 					if (DEBUG) {
-						System.out.println(getQualifiedText(eModelElement)
+						System.out.println(getQualifiedText(eStructuralFeature)
 							+ " is a union"); //$NON-NLS-1$
 					}
 
@@ -2960,15 +2962,15 @@ public class UML2Util
 										.getString(
 											"_UI_UML22EcoreConverter_ProcessUnionProperty_diagnostic", //$NON-NLS-1$
 											getMessageSubstitutions(context,
-												eModelElement)),
-									new Object[]{eModelElement}));
+												eStructuralFeature)),
+									new Object[]{eStructuralFeature}));
 						}
 
-						getEAnnotation(eModelElement, ANNOTATION_SOURCE__UNION,
-							true);
+						getEAnnotation(eStructuralFeature,
+							ANNOTATION_SOURCE__UNION, true);
 
-						((EStructuralFeature) eModelElement)
-							.setChangeable(false);
+						eStructuralFeature.setChangeable(false);
+						eStructuralFeature.setVolatile(false);
 					} else if (OPTION__REPORT.equals(options
 						.get(OPTION__UNION_PROPERTIES))
 						&& null != diagnostics) {
@@ -3896,12 +3898,12 @@ public class UML2Util
 				processSubsettingProperties(options, diagnostics, context);
 			}
 
-			if (!OPTION__IGNORE.equals(options.get(OPTION__UNION_PROPERTIES))) {
-				processUnionProperties(options, diagnostics, context);
-			}
-
 			if (!OPTION__IGNORE.equals(options.get(OPTION__DERIVED_FEATURES))) {
 				processDerivedFeatures(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options.get(OPTION__UNION_PROPERTIES))) {
+				processUnionProperties(options, diagnostics, context);
 			}
 
 			if (!OPTION__IGNORE.equals(options

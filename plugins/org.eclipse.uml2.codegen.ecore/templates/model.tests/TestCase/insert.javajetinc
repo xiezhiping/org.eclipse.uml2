@@ -1,5 +1,6 @@
 <%for (Iterator i=UML2GenModelUtil.getImplementedUnionGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
-  <%if (genFeature.isGet() && !genFeature.isSuppressedGetVisibility()) {%>
+  <%if (!genFeature.isListType()) {%>
+    <%if (genFeature.isGet() && !genFeature.isSuppressedGetVisibility()) {%>
 
 	/**
 	 * Tests the '{@link <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#<%=genFeature.getGetAccessor()%>() <em><%=genFeature.getFormattedName()%></em>}' feature getter.
@@ -13,8 +14,8 @@
 		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-  <%}%>
-  <%if (genFeature.isIsSet() && !genFeature.isSuppressedIsSetVisibility()) {%>
+    <%}%>
+    <%if (genFeature.isIsSet() && !genFeature.isSuppressedIsSetVisibility()) {%>
 
 	/**
 	 * Tests the '{@link <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#isSet<%=genFeature.getAccessorName()%>() <em>isSet<%=genFeature.getAccessorName()%>()</em>}' method.
@@ -28,6 +29,7 @@
 		// TODO: implement this union test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+    <%}%>
   <%}%>
 <%}%>
 <%for (Iterator i=UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
