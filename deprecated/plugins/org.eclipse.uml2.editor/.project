@@ -3,8 +3,6 @@
 	<name>org.eclipse.uml2.editor</name>
 	<comment></comment>
 	<projects>
-		<project>org.eclipse.uml2</project>
-		<project>org.eclipse.uml2.edit</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

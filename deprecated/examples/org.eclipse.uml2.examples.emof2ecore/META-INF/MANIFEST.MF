@@ -10,4 +10,4 @@ Export-Package: org.eclipse.uml2.examples.emof2ecore,
  org.eclipse.uml2.examples.emof2ecore.internal;x-internal:=true
 Require-Bundle: org.eclipse.emf.ecore.editor;resolution:=optional,
  org.eclipse.emf.mapping.ecore2xml
-Eclipse-AutoStart: true
+Eclipse-LazyStart: true

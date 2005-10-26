@@ -3,10 +3,6 @@
 	<name>org.eclipse.uml2.examples.ui</name>
 	<comment></comment>
 	<projects>
-		<project>org.eclipse.uml2</project>
-		<project>org.eclipse.uml2.edit</project>
-		<project>org.eclipse.uml2.editor</project>
-		<project>org.eclipse.uml2.examples</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

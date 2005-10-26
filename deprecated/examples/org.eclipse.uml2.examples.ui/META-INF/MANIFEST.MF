@@ -19,4 +19,4 @@ Require-Bundle: org.eclipse.uml2.examples;visibility:=reexport,
  org.eclipse.emf.ecore.editor,
  org.eclipse.core.runtime,
  org.eclipse.core.resources
-Eclipse-AutoStart: true
+Eclipse-LazyStart: true

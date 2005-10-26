@@ -13,4 +13,4 @@ Export-Package: org.eclipse.uml2.examples,
 Require-Bundle: org.eclipse.uml2;visibility:=reexport,
  org.eclipse.core.runtime,
  org.eclipse.core.resources
-Eclipse-AutoStart: true
+Eclipse-LazyStart: true

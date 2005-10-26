@@ -15,4 +15,4 @@ Require-Bundle: org.eclipse.uml2.common.edit;visibility:=reexport,
  org.eclipse.uml2;visibility:=reexport,
  org.eclipse.emf.ecore.change.edit;visibility:=reexport,
  org.eclipse.core.runtime
-Eclipse-AutoStart: true
+Eclipse-LazyStart: true

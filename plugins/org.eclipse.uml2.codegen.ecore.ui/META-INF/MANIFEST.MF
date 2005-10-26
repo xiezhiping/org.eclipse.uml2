@@ -15,4 +15,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.codegen.ecore.ui,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.uml2.codegen.ecore;visibility:=reexport
-Eclipse-AutoStart: true
+Eclipse-LazyStart: true

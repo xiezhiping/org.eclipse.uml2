@@ -3,7 +3,6 @@
 	<name>org.eclipse.uml2.tests</name>
 	<comment></comment>
 	<projects>
-		<project>org.eclipse.uml2</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
