@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationImpl.java,v 1.4 2005/06/03 19:53:35 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.5 2005/11/04 21:55:54 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -412,6 +412,10 @@ public class GenOperationImpl
 
 		setCacheAdapterScope(UML2GenModelUtil
 			.getCacheAdapterScope(oldGenOperationVersion));
+	}
+
+	public boolean isOverrideOf(org.eclipse.emf.codegen.ecore.genmodel.GenOperation genOperation) {
+		return false;
 	}
 
 } // GenOperationImpl

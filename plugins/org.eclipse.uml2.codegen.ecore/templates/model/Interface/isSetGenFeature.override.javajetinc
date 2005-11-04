@@ -1,0 +1,18 @@
+<%if (genFeature.getEcoreFeature().isUnsettable()) {%>
+	/**
+	 * Returns whether the value of the '{@link <%=genClass.getQualifiedInterfaceName()%>#<%=genFeature.getGetAccessor()%> <em><%=genFeature.getFormattedName()%></em>}' <%=genFeature.getFeatureKind()%> is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em><%=genFeature.getFormattedName()%></em>' <%=genFeature.getFeatureKind()%> is set.
+    <%if (genFeature.isChangeable() && !genFeature.isSuppressedUnsetVisibility()) {%>
+	 * @see #unset<%=genFeature.getAccessorName()%>()
+    <%}%>
+	 * @see #<%=genFeature.getGetAccessor()%>()
+    <%if (!genFeature.isListType() && genFeature.isChangeable() && !genFeature.isSuppressedSetVisibility()) {%>
+	 * @see #set<%=genFeature.getAccessorName()%>(<%=genFeature.getImportedType()%>)
+    <%}%>
+	 * @generated
+	 */
+	boolean isSet<%=genFeature.getAccessorName()%>();
+
+<%}%>

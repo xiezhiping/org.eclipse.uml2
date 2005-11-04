@@ -441,7 +441,7 @@ public class TestCase
     stringBuffer.append(TEXT_109);
     stringBuffer.append(TEXT_110);
     for (Iterator i=UML2GenModelUtil.getImplementedUnionGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();
-    if (!genFeature.isListType()) {
+    if (!genFeature.isListType() || !UML2GenModelUtil.isDerivedUnionListType(genClass, genFeature)) {
     if (genFeature.isGet() && !genFeature.isSuppressedGetVisibility()) {
     stringBuffer.append(TEXT_111);
     stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());

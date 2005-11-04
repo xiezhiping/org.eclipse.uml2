@@ -1,5 +1,5 @@
 <%for (Iterator i=UML2GenModelUtil.getImplementedUnionGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
-  <%if (!genFeature.isListType()) {%>
+  <%if (!genFeature.isListType() || !UML2GenModelUtil.isDerivedUnionListType(genClass, genFeature)) {%>
     <%if (genFeature.isGet() && !genFeature.isSuppressedGetVisibility()) {%>
 
 	/**

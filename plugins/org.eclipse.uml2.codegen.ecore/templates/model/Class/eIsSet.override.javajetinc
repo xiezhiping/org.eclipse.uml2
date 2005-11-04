@@ -9,30 +9,8 @@
 		{
 <%for (Iterator i=genClass.getAllGenFeatures().iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
 			case <%=genClass.getQualifiedFeatureID(genFeature)%>:
-  <%if (UML2GenModelUtil.isUnion(genFeature) && !UML2GenModelUtil.getEIsSetSubsetGenFeatures(genClass, genFeature).isEmpty()) { boolean first = true;%>
-    <%for (Iterator j = UML2GenModelUtil.getEIsSetSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();%>
-      <%if (first) { first = false;%>
-        <%if (UML2GenModelUtil.isDuplicate(subsetGenFeature) && !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {%>
-          <%if (subsetGenFeature.isListType()) {%>
-				return !<%=subsetGenFeature.getGetAccessor()%>().isEmpty()<%if (!j.hasNext()) {%>;<%}%>
-          <%} else {%>
-				return <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>() != null<%if (!j.hasNext()) {%>;<%}%>
-          <%}%>
-        <%} else {%>
-				return eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())<%if (!j.hasNext()) {%>;<%}%>
-        <%}%>
-      <%} else {%>
-        <%if (UML2GenModelUtil.isDuplicate(subsetGenFeature) && !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {%>
-          <%if (subsetGenFeature.isListType()) {%>
-					|| !<%=subsetGenFeature.getGetAccessor()%>().isEmpty()<%if (!j.hasNext()) {%>;<%}%>
-          <%} else {%>
-					|| <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>() != null<%if (!j.hasNext()) {%>;<%}%>
-          <%}%>
-        <%} else {%>
-					|| eIsSet(<%=subsetGenFeature.getQualifiedFeatureAccessorName()%>())<%if (!j.hasNext()) {%>;<%}%>
-        <%}%>
-      <%}%>
-    <%}%>
+  <%if (UML2GenModelUtil.isUnion(genFeature) || UML2GenModelUtil.isRedefinition(genFeature)) {%>
+				return isSet<%=genFeature.getAccessorName()%>();
   <%} else {%>
     <%if (genFeature.isListType() && !genFeature.isUnsettable()) {%>
       <%if (genFeature.isWrappedFeatureMapType()) {%>

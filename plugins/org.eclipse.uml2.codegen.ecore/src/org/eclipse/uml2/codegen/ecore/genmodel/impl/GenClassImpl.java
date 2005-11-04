@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.9 2005/10/26 21:11:30 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.10 2005/11/04 21:55:54 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -47,10 +47,6 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  * </p>
  *
  * @generated
- */
-/**
- * @author khussey
- *
  */
 public class GenClassImpl
 		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl
@@ -421,14 +417,14 @@ public class GenClassImpl
 						if (getExtendedGenFeatures().contains(
 							redefinedGenFeature)) {
 
-							return (!UML2GenModelUtil.isUnion(redefinedGenFeature) || redefinedGenFeature.isListType())
+							return (!UML2GenModelUtil.isUnion(redefinedGenFeature) || isDerivedUnionListType(redefinedGenFeature))
 								&& !isRedefined(redefinedGenFeature);
 						}
 					}
 				}
 
 				return !getExtendedGenFeatures().contains(genFeature)
-					&& (!UML2GenModelUtil.isUnion(genFeature) || genFeature.isListType())
+					&& (!UML2GenModelUtil.isUnion(genFeature) || isDerivedUnionListType(genFeature))
 					&& !isRedefined(genFeature);
 			}
 		});
@@ -438,7 +434,7 @@ public class GenClassImpl
 		return getImplementedGenFeatures(new GenFeatureFilter() {
 
 			public boolean accept(GenFeature genFeature) {
-				return (!UML2GenModelUtil.isUnion(genFeature) || genFeature.isListType())
+				return (!UML2GenModelUtil.isUnion(genFeature) || isDerivedUnionListType(genFeature))
 					&& !isRedefined(genFeature);
 			}
 		});
@@ -611,7 +607,7 @@ public class GenClassImpl
 			if (!isBlank(prefix)) {
 				return getClassifierID()
 					+ "__" //$NON-NLS-1$
-					+ format(genOperation.getName(), '_', prefix, false)
+					+ format(genOperation.getName(), '_', prefix, false, false)
 						.toUpperCase();
 			}
 		}
@@ -926,6 +922,35 @@ public class GenClassImpl
 		return null;
 	}
 
+	public boolean isDerivedUnionListType(GenFeature genFeature) {
+
+		if (UML2GenModelUtil.isUnion(genFeature) && genFeature.isListType()) {
+
+			if (UML2GenModelUtil.isDuplicate(genFeature)
+				&& !UML2GenModelUtil.isRedefinition(genFeature)) {
+
+				return false;
+			}
+
+			for (Iterator subsetGenFeatures = getSubsetGenFeatures(genFeature)
+				.iterator(); subsetGenFeatures.hasNext();) {
+
+				GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures
+					.next();
+
+				if (UML2GenModelUtil.isDuplicate(subsetGenFeature)
+					&& !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {
+
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		return false;
+	}
+
 	public List getUnionGenFeatures() {
 		List unionGenFeatures = new UniqueEList();
 
@@ -1024,8 +1049,14 @@ public class GenClassImpl
 		return new ArrayList(subsetGenFeatures.values());
 	}
 
-	public List getEIsSetSubsetGenFeatures(GenFeature unionGenFeature) {
-		return getSubsetGenFeatures(unionGenFeature);
+	public List getIsSetSubsetGenFeatures(GenFeature unionGenFeature) {
+		return collectGenFeatures(null, getSubsetGenFeatures(unionGenFeature),
+			new GenFeatureFilter() {
+
+				public boolean accept(GenFeature genFeature) {
+					return !getExtendedGenFeatures().contains(genFeature);
+				}
+			});
 	}
 
 	public List getSubsetGenFeatures() {
@@ -1374,13 +1405,13 @@ public class GenClassImpl
 
 	public boolean isESetField(GenFeature genFeature) {
 		return super.isESetField(genFeature)
-			&& (!UML2GenModelUtil.isUnion(genFeature) || genFeature.isListType())
+			&& (!UML2GenModelUtil.isUnion(genFeature) || isDerivedUnionListType(genFeature))
 			&& !isRedefined(genFeature);
 	}
 
 	public boolean isField(GenFeature genFeature) {
 		return super.isField(genFeature)
-			&& (!UML2GenModelUtil.isUnion(genFeature) || genFeature.isListType())
+			&& (!UML2GenModelUtil.isUnion(genFeature) || isDerivedUnionListType(genFeature))
 			&& !isRedefined(genFeature);
 	}
 

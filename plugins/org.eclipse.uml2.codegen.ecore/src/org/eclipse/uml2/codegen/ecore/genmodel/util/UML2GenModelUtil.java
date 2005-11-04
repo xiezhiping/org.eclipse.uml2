@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.4 2005/09/22 19:49:45 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.5 2005/11/04 21:55:54 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -205,6 +205,14 @@ public class UML2GenModelUtil {
 			: genClass.getGenOperations();
 	}
 
+	public static boolean isDerivedUnionListType(GenClass genClass,
+			GenFeature genFeature) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.isDerivedUnionListType(genFeature)
+			: false;
+	}
+
 	public static List getUnionGenFeatures(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
@@ -293,11 +301,11 @@ public class UML2GenModelUtil {
 			: Collections.EMPTY_LIST;
 	}
 
-	public static List getEIsSetSubsetGenFeatures(GenClass genClass,
+	public static List getIsSetSubsetGenFeatures(GenClass genClass,
 			GenFeature unionGenFeature) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
-				.getEIsSetSubsetGenFeatures(unionGenFeature)
+				.getIsSetSubsetGenFeatures(unionGenFeature)
 			: Collections.EMPTY_LIST;
 	}
 

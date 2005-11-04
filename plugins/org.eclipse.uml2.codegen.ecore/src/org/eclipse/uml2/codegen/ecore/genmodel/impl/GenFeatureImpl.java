@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.5 2005/09/08 20:20:46 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.6 2005/11/04 21:55:54 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -563,6 +563,10 @@ public class GenFeatureImpl
 		return isDuplicate()
 			? getEcoreFeature().isVolatile()
 			: super.isVolatile();
+	}
+
+	public boolean isIsSet() {
+		return super.isIsSet() || isUnion() || isRedefinition();
 	}
 
 	protected void reconcileSettings(
