@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedEObjectEList.java,v 1.1 2005/10/26 20:58:43 khussey Exp $
+ * $Id: DerivedEObjectEList.java,v 1.2 2005/11/04 21:53:33 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -524,7 +524,7 @@ public class DerivedEObjectEList
 
 	protected ListIterator listIterator(int index, boolean resolve) {
 
-		if (sourceFeatures == null) {
+		if (sourceFeatures == null || sourceFeatures.length == 0) {
 
 			if (index != 0) {
 				throw new IndexOutOfBoundsException("index = " + index //$NON-NLS-1$
